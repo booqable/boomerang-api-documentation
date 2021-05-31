@@ -53,7 +53,7 @@ code_clipboard: true
 
 # Introduction
 
-The Booqable API is a RESTful API (JSONand as such is designed to have predictable, resource-oriented URLs and to use HTTP response codes to indicate API errors. We use standard HTTP features, like HTTP authentication and HTTP verbs, which can be understood by off-the-shelf HTTP clients.
+The Booqable API is a RESTful [JSON API](https://jsonapi.org/) as such is designed to have predictable, resource-oriented URLs and to use HTTP response codes to indicate API errors. We use standard HTTP features, like HTTP authentication and HTTP verbs, which can be understood by [off-the-shelf HTTP clients](https://jsonapi.org/implementations/).
 
 <aside class="warning">
   <b>WARNING:</b> Booqable's API is still in Beta we might introduce non-backwards compatible changes in the future!
@@ -78,10 +78,6 @@ You can have multiple API keys active at one time.
   Your API keys carry many privileges, so be sure to keep them secret! <br>
   <b>Don't expose your API key in any public websites client-side code.</b>
 </aside>
-
-## Contributing
-
-The API is going to be a very important part of our eco system. We've designed the docs in a way every developer is able to contribute to our API. If you find a bug or you have a great suggestion open an issue or pull request on Github. Check [our github repository](https://github.com/booqable/api-documentation) for a readme on how to participate. We love to see your additions!
 
 # Endpoint
 
