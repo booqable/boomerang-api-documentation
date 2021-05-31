@@ -46,7 +46,7 @@ includes:
   - tags
   - exports
 
-search: false
+search: true
 
 code_clipboard: true
 ---

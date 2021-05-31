@@ -108,22 +108,31 @@ html, body {
 
     input {
       background: $nav-bg;
-      border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      border: 1px solid $search-box-border-color;
+      padding: 8px 0 8px 30px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
-      width: $nav-width - ($nav-padding*2);
+      margin-left: ($nav-padding/2);
+      width: $nav-width - ($nav-padding);
       outline: none;
       color: $nav-text;
-      border-radius: 0; /* ios has a default border radius */
+      border-radius: 25px; /* ios has a default border radius */
+
+      &::placeholder {
+        color: #BBC0C1;
+      }
+
+      &:focus {
+        background: #fff;
+        border-color: #2484FF;
+      }
     }
 
     &:before {
       position: absolute;
-      top: 17px;
-      left: $nav-padding;
-      color: $nav-text;
+      top: 20px;
+      left: 30px;
+      color: #BBC0C1;
       @extend %icon-search;
     }
   }
