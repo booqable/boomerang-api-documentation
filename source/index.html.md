@@ -103,9 +103,5 @@ You authenticate to the Booqable API by providing on of your API keys in the req
 This can be done by appending `?api_key=API_KEY_HERE` to the end of your request URL.
 
 <aside class="notice">
-  A request sent with a correct API key will recieve a session cookie in the response. You can use this cookie for further requests.
-</aside>
-
-<aside class="notice">
   Unless otherwise specified all further examples will omit authentication for the sake of brevity
 </aside>
