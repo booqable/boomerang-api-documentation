@@ -1,4 +1,4 @@
-@charset "utf-8";
+  @charset "utf-8";
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
@@ -21,8 +21,30 @@ under the License.
 */
 
 ////////////////////////////////////////////////////////////////////////////////
+// Overrides
+////////////////////////////////////////////////////////////////////////////////
+
+.toc-h1 {
+  font-size: 18px !important;
+  font-weight: 400;
+  padding: 7px 30px !important;
+}
+
+.toc-h2 {
+  font-size: 15px !important;
+  font-weight: 400;
+  padding: 7px 30px 5px 40px !important;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
+
+html {
+  font-family: 'proxima-nova';
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
 
 html, body {
   color: $main-text;
@@ -34,6 +56,7 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
+  font-size: 15px;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -62,6 +85,8 @@ html, body {
   font-size: 13px;
   font-weight: bold;
 
+  border-right: 1px solid #e9edf5;
+
   // language selector for mobile devices
   .lang-selector {
     display: none;
@@ -74,7 +99,7 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
+    width: 100px;
     margin-bottom: $logo-margin;
   }
 
@@ -347,14 +372,12 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    font-size: 30px;
+    padding-top: 2em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    font-weight: 500;
+    border-top: 1px solid #e9edf5;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -365,12 +388,11 @@ html, body {
   h2 {
     @extend %header-font;
     font-size: 19px;
-    margin-top: 4em;
+    margin-top: 2em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
-    padding-top: 1.2em;
+    border-top: 1px solid #e9edf5;
+    padding-top: 2em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
   }
 
   // h2s right after h1s should bump right up
@@ -391,6 +413,10 @@ html, body {
     font-size: 10px;
   }
 
+  p {
+    font-size: 15px;
+  }
+
   hr {
     margin: 2em 0;
     border-top: 2px solid $examples-bg;
@@ -398,8 +424,10 @@ html, body {
   }
 
   table {
+    padding-top: 1em;
     margin-bottom: 1em;
     overflow: auto;
+
     th,td {
       text-align: left;
       vertical-align: top;
@@ -411,7 +439,7 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #e9edf5;
       vertical-align: bottom;
     }
 
@@ -419,9 +447,9 @@ html, body {
       padding: 10px;
     }
 
-    tr:last-child {
-      border-bottom: 1px solid #ccc;
-    }
+    // tr:last-child {
+    //   border-bottom: 1px solid #e9edf5;
+    // }
 
     tr:nth-child(odd)>td {
       background-color: lighten($main-bg,4.2%);
@@ -482,7 +510,7 @@ html, body {
   aside:before {
     vertical-align: middle;
     padding-right: 0.5em;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   aside.notice:before {
