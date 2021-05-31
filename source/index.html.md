@@ -9,7 +9,42 @@ title: Booqable API documentation
 
 includes:
   - errors
+  - session
+  - companies
+  - employees
+  - items
+  - plannable_items
+  - product_groups
+  - bundles
+  - bundle_items
+  - stock_items
+  - stock_counts
+  - categories
+  - barcodes
+  - customers
   - orders
+  - documents
+  - lines
+  - plannings
+  - stock_item_plannings
+  - payments
+  - transactions
+  - clusters
+  - locations
+  - transfers
+  - notes
+  - emails
+  - tax_categories
+  - tax_regions
+  - tax_rates
+  - price_structures
+  - price_tiles
+  - price_rulesets
+  - price_rules
+  - default_properties
+  - properties
+  - tags
+  - exports
 
 search: false
 
