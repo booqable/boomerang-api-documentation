@@ -9,10 +9,7 @@ title: Booqable API documentation
 
 includes:
   - errors
-  - items
-  - product_groups
   - orders
-  - plannings
 
 search: false
 
