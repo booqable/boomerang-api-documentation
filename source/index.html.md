@@ -12,6 +12,7 @@ includes:
   - session
   - companies
   - employees
+  - employee_invitations
   - items
   - plannable_items
   - product_groups
@@ -45,6 +46,7 @@ includes:
   - properties
   - tags
   - exports
+  - login_activities
 
 search: true
 
