@@ -35,6 +35,7 @@ includes:
   - transfers
   - notes
   - emails
+  - email_templates
   - tax_categories
   - tax_regions
   - tax_rates
