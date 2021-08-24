@@ -24,9 +24,9 @@ Name | Description
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `name` | **String** `readonly`<br>Full name of the employee
-`firstname` | **String** `required`<br>First name of the employee
-`lastname` | **String** `required`<br>Last name of the employee
-`email` | **String** `required`<br>Employee's e-mail address
+`firstname` | **String**<br>First name of the employee
+`lastname` | **String**<br>Last name of the employee
+`email` | **String**<br>Employee's e-mail address
 `unconfirmed_email` | **String** `readonly`<br>Unconfirmed e-mail address if present
 `current_password` | **String** `writeonly`<br>Current password, needed to update password or email address
 `password` | **String** `writeonly`<br>Set a new password
@@ -34,9 +34,10 @@ Name | Description
 `active` | **Boolean**<br>Whether this employee is active (counts towards billing)
 `owner` | **Boolean** `readonly`<br>Whether this employee is the account owner
 `confirmed` | **Boolean** `readonly`<br>Wheter this employee confirmed it's email address
-`time_to_confirm` | **Integer** `readonly`<br>Time in seconds left to confirm
+`time_to_confirm` | **Integer** `readonly`<br>Time in days left to confirm
 `permissions` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `avatar_base64` | **String** `writeonly`<br>Base64 encoded avatar
+`remove_avatar` | **Boolean** `writeonly`<br>Remove current avatar
 `avatar_url` | **String** `readonly`<br>Url to avatar
 `large_avatar_url` | **String** `readonly`<br>Url to avatar (Large)
 
@@ -57,9 +58,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "7722b164-bc1c-4cdc-811c-82d137966b05",
-      "created_at": "2021-08-10T11:24:30+00:00",
-      "updated_at": "2021-08-10T11:24:30+00:00",
+      "id": "7d956db0-8e57-4efb-9bdf-02ce160b2bbb",
+      "created_at": "2021-08-24T12:40:56+00:00",
+      "updated_at": "2021-08-24T12:40:56+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -99,7 +100,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[employees]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-08-10T11:24:28Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-08-24T12:40:42Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -119,7 +120,6 @@ Name | Description
 `active` | **Boolean**<br>`eq`
 `owner` | **Boolean**<br>`eq`
 `confirmed` | **Boolean**<br>`eq`
-`time_to_confirm` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -140,7 +140,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/ee5b4f92-ea36-4d23-8e4f-33211798b677' \
+    --url 'https://example.booqable.com/api/boomerang/employees/f2cbfd46-4ebf-4acc-bde2-b986dc1afcf2' \
     --header 'content-type: application/json' \
 ```
 
@@ -149,9 +149,9 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ee5b4f92-ea36-4d23-8e4f-33211798b677",
-    "created_at": "2021-08-10T11:24:31+00:00",
-    "updated_at": "2021-08-10T11:24:31+00:00",
+    "id": "f2cbfd46-4ebf-4acc-bde2-b986dc1afcf2",
+    "created_at": "2021-08-24T12:40:56+00:00",
+    "updated_at": "2021-08-24T12:40:56+00:00",
     "name": "John Doe",
     "firstname": "John",
     "lastname": "Doe",
@@ -201,11 +201,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/53891f34-6d90-44e9-9a28-18ba267587ce' \
+    --url 'https://example.booqable.com/api/boomerang/employees/65ac3255-e97c-41c1-abd5-76df1ae2e99b' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "53891f34-6d90-44e9-9a28-18ba267587ce",
+        "id": "65ac3255-e97c-41c1-abd5-76df1ae2e99b",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -219,11 +219,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "53891f34-6d90-44e9-9a28-18ba267587ce",
+    "id": "65ac3255-e97c-41c1-abd5-76df1ae2e99b",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-08-10T11:24:31+00:00",
-      "updated_at": "2021-08-10T11:24:31+00:00",
+      "created_at": "2021-08-24T12:40:56+00:00",
+      "updated_at": "2021-08-24T12:40:56+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -256,11 +256,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/96de0b12-58ab-4569-884a-da08043debc6' \
+    --url 'https://example.booqable.com/api/boomerang/employees/05ff86e3-8c01-42c8-b039-d8e0faaac377' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "96de0b12-58ab-4569-884a-da08043debc6",
+        "id": "05ff86e3-8c01-42c8-b039-d8e0faaac377",
         "type": "employees",
         "attributes": {
           "active": false
@@ -274,11 +274,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "96de0b12-58ab-4569-884a-da08043debc6",
+    "id": "05ff86e3-8c01-42c8-b039-d8e0faaac377",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-08-10T11:24:31+00:00",
-      "updated_at": "2021-08-10T11:24:31+00:00",
+      "created_at": "2021-08-24T12:40:56+00:00",
+      "updated_at": "2021-08-24T12:40:56+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -311,11 +311,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/790f05f1-920c-4a56-8b0d-d8b25850e187' \
+    --url 'https://example.booqable.com/api/boomerang/employees/36ba74dd-09cc-4099-b371-3cabd8d7c374' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "790f05f1-920c-4a56-8b0d-d8b25850e187",
+        "id": "36ba74dd-09cc-4099-b371-3cabd8d7c374",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -332,11 +332,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "790f05f1-920c-4a56-8b0d-d8b25850e187",
+    "id": "36ba74dd-09cc-4099-b371-3cabd8d7c374",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-08-10T11:24:31+00:00",
-      "updated_at": "2021-08-10T11:24:31+00:00",
+      "created_at": "2021-08-24T12:40:56+00:00",
+      "updated_at": "2021-08-24T12:40:57+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -388,6 +388,7 @@ Name | Description
 `data[attributes][active]` | **Boolean**<br>Whether this employee is active (counts towards billing)
 `data[attributes][permissions[]]` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `data[attributes][avatar_base64]` | **String**<br>Base64 encoded avatar
+`data[attributes][remove_avatar]` | **Boolean**<br>Remove current avatar
 
 
 ### Includes

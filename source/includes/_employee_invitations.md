@@ -25,7 +25,7 @@ Name | Description
 
 
 ## Relationships
-For employee invitations you can include the following relationships:
+A employee invitations has the following relationships:
 
 Name | Description
 - | -
@@ -58,29 +58,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7f682991-7503-505f-8a61-4dc07beee720",
+    "id": "377f5cea-8447-5963-81a4-6ec57f190713",
     "type": "employee_invitations",
     "attributes": {
       "created_at": null,
       "updated_at": null,
-      "employee_id": "c4671c29-7b5b-411c-bd2b-ba6f3fa9fc6d"
+      "employee_id": "ce15ee8e-f2ec-478a-94c3-3a830d01d4e2"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "c4671c29-7b5b-411c-bd2b-ba6f3fa9fc6d"
+          "id": "ce15ee8e-f2ec-478a-94c3-3a830d01d4e2"
         }
       }
     }
   },
   "included": [
     {
-      "id": "c4671c29-7b5b-411c-bd2b-ba6f3fa9fc6d",
+      "id": "ce15ee8e-f2ec-478a-94c3-3a830d01d4e2",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-08-10T09:50:17+00:00",
-        "updated_at": "2021-08-10T09:50:17+00:00",
+        "created_at": "2021-08-24T12:40:55+00:00",
+        "updated_at": "2021-08-24T12:40:55+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -112,7 +112,7 @@ Note that you can also update other fields.
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0",
+          "id": "ff2e2bab-287c-4ce9-8c17-60f21d72af3e",
           "email": "jane@doe.com"
         }
       },
@@ -125,29 +125,29 @@ Note that you can also update other fields.
 ```json
   {
   "data": {
-    "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0",
+    "id": "ff2e2bab-287c-4ce9-8c17-60f21d72af3e",
     "type": "employee_invitations",
     "attributes": {
       "created_at": null,
       "updated_at": null,
-      "employee_id": "208851fa-fb3d-4f65-a9e9-a54185d396a0"
+      "employee_id": "ff2e2bab-287c-4ce9-8c17-60f21d72af3e"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0"
+          "id": "ff2e2bab-287c-4ce9-8c17-60f21d72af3e"
         }
       }
     }
   },
   "included": [
     {
-      "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0",
+      "id": "ff2e2bab-287c-4ce9-8c17-60f21d72af3e",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-08-10T09:50:18+00:00",
-        "updated_at": "2021-08-10T09:50:18+00:00",
+        "created_at": "2021-08-24T12:40:55+00:00",
+        "updated_at": "2021-08-24T12:40:56+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -207,4 +207,11 @@ Name | Description
 
 ### Includes
 
-All includes are allowed on this request
+This request accepts the following includes:
+
+`employee`
+
+
+
+
+
