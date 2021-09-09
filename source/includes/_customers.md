@@ -32,7 +32,7 @@ Name | Description
 `properties` | **Hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties)
 `properties_attributes` | **Array** `writeonly`<br>Create or update multiple properties associated with this customer
 `tag_list` | **Array**<br>Case insensitive tag list
-`merge_suggestion_customer_id` | **Uuid** `readonly`<br>The associated Merge suggestion customer
+`merge_suggestion_customer_id` | **Uuid**<br>The associated Merge suggestion customer
 `tax_region_id` | **Uuid** `nullable`<br>The associated Tax region
 
 
@@ -42,7 +42,7 @@ A customers has the following relationships:
 Name | Description
 - | -
 `merge_suggestion_customer` | **Customers** `readonly`<br>Associated Merge suggestion customer
-`tax_region` | **Tax regions**<br>Associated Tax region
+`tax_region` | **Tax regions** `readonly`<br>Associated Tax region
 
 
 ## Listing customers
@@ -61,12 +61,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "9e7ee86e-e910-4b6e-994e-3c848370e64d",
-      "created_at": "2021-08-26T11:11:20+00:00",
-      "updated_at": "2021-08-26T11:11:20+00:00",
+      "id": "4b5ba92d-15d8-4cec-be0e-5be71d10d38d",
+      "created_at": "2021-09-09T10:10:39+00:00",
+      "updated_at": "2021-09-09T10:10:39+00:00",
       "number": 1,
       "name": "John Doe",
-      "email": "doe_john@beahan.name",
+      "email": "doe_john@skiles.net",
       "archived": false,
       "deposit_type": "default",
       "deposit_value": 0.0,
@@ -94,7 +94,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-08-26T11:11:15Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-09-09T10:10:34Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -142,7 +142,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/fd371bf1-b69e-4b66-a4bd-fc9213323bb8' \
+    --url 'https://example.booqable.com/api/boomerang/customers/410c43a9-fe59-466b-bf45-9c4cff7bcb35' \
     --header 'content-type: application/json' \
 ```
 
@@ -151,12 +151,12 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "fd371bf1-b69e-4b66-a4bd-fc9213323bb8",
-    "created_at": "2021-08-26T11:11:22+00:00",
-    "updated_at": "2021-08-26T11:11:22+00:00",
+    "id": "410c43a9-fe59-466b-bf45-9c4cff7bcb35",
+    "created_at": "2021-09-09T10:10:41+00:00",
+    "updated_at": "2021-09-09T10:10:41+00:00",
     "number": 1,
     "name": "John Doe",
-    "email": "doe.john@kemmer-nikolaus.co",
+    "email": "doe.john@hermiston.info",
     "archived": false,
     "deposit_type": "default",
     "deposit_value": 0.0,
@@ -226,11 +226,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7034c956-4c96-41ae-a920-b5c586e8036e",
+    "id": "4f1ad977-ec00-49ed-bce3-eaf91b81a97d",
     "type": "customers",
     "attributes": {
-      "created_at": "2021-08-26T11:11:24+00:00",
-      "updated_at": "2021-08-26T11:11:24+00:00",
+      "created_at": "2021-09-09T10:10:42+00:00",
+      "updated_at": "2021-09-09T10:10:42+00:00",
       "number": 2,
       "name": "John Doe",
       "email": "john@doe.com",
@@ -290,6 +290,7 @@ Name | Description
 `data[attributes][legal_type]` | **String**<br>Either `person` or `commercial`
 `data[attributes][properties_attributes][]` | **Array**<br>Create or update multiple properties associated with this customer
 `data[attributes][tag_list][]` | **Array**<br>Case insensitive tag list
+`data[attributes][merge_suggestion_customer_id]` | **Uuid**<br>The associated Merge suggestion customer
 `data[attributes][tax_region_id]` | **Uuid**<br>The associated Tax region
 
 
@@ -310,11 +311,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/02af66b0-790d-46d2-b733-421461895c0d' \
+    --url 'https://example.booqable.com/api/boomerang/customers/7bc0b7c4-2445-4054-90a6-cd201aed1ee5' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "02af66b0-790d-46d2-b733-421461895c0d",
+        "id": "7bc0b7c4-2445-4054-90a6-cd201aed1ee5",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -328,14 +329,14 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "02af66b0-790d-46d2-b733-421461895c0d",
+    "id": "7bc0b7c4-2445-4054-90a6-cd201aed1ee5",
     "type": "customers",
     "attributes": {
-      "created_at": "2021-08-26T11:11:25+00:00",
-      "updated_at": "2021-08-26T11:11:25+00:00",
+      "created_at": "2021-09-09T10:10:43+00:00",
+      "updated_at": "2021-09-09T10:10:43+00:00",
       "number": 1,
       "name": "Jane Doe",
-      "email": "john.doe@runte.co",
+      "email": "john_doe@lind-langworth.com",
       "archived": false,
       "deposit_type": "default",
       "deposit_value": 0.0,
@@ -392,6 +393,7 @@ Name | Description
 `data[attributes][legal_type]` | **String**<br>Either `person` or `commercial`
 `data[attributes][properties_attributes][]` | **Array**<br>Create or update multiple properties associated with this customer
 `data[attributes][tag_list][]` | **Array**<br>Case insensitive tag list
+`data[attributes][merge_suggestion_customer_id]` | **Uuid**<br>The associated Merge suggestion customer
 `data[attributes][tax_region_id]` | **Uuid**<br>The associated Tax region
 
 
@@ -412,7 +414,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/dfb061d3-3945-4bc9-883a-12a684f62fc1' \
+    --url 'https://example.booqable.com/api/boomerang/customers/8e26239c-82cd-4200-847a-c792645db7c4' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
