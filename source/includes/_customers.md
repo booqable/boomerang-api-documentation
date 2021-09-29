@@ -43,6 +43,7 @@ Name | Description
 - | -
 `merge_suggestion_customer` | **Customers** `readonly`<br>Associated Merge suggestion customer
 `tax_region` | **Tax regions** `readonly`<br>Associated Tax region
+`barcode` | **Barcodes**<br>Associated Barcode
 
 
 ## Listing customers
@@ -61,23 +62,44 @@ Name | Description
   {
   "data": [
     {
-      "id": "d406fbda-1d86-45a3-a321-d654c7c23add",
-      "created_at": "2021-09-27T13:17:15+00:00",
-      "updated_at": "2021-09-27T13:17:15+00:00",
-      "number": 1,
-      "name": "John Doe",
-      "email": "doe.john@runte-padberg.name",
-      "archived": false,
-      "deposit_type": "default",
-      "deposit_value": 0.0,
-      "discount_percentage": 0.0,
-      "legal_type": "person",
-      "properties": {},
-      "tag_list": [],
-      "merge_suggestion_customer_id": null,
-      "tax_region_id": null
+      "id": "17b49110-7099-40ba-9109-a067574021f0",
+      "type": "customers",
+      "attributes": {
+        "created_at": "2021-09-29T15:35:22+00:00",
+        "updated_at": "2021-09-29T15:35:22+00:00",
+        "number": 1,
+        "name": "John Doe",
+        "email": "john_doe@mcdermott-barrows.org",
+        "archived": false,
+        "deposit_type": "default",
+        "deposit_value": 0.0,
+        "discount_percentage": 0.0,
+        "legal_type": "person",
+        "properties": {},
+        "tag_list": [],
+        "merge_suggestion_customer_id": null,
+        "tax_region_id": null
+      },
+      "relationships": {
+        "merge_suggestion_customer": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_region": {
+          "links": {
+            "related": null
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=17b49110-7099-40ba-9109-a067574021f0"
+          }
+        }
+      }
     }
-  ]
+  ],
+  "meta": {}
 }
 ```
 
@@ -92,9 +114,9 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-09-27T13:17:09Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-09-29T15:35:12Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -142,7 +164,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/2451f6f1-1e7a-43d1-a0fc-e639a9cd0efd' \
+    --url 'https://example.booqable.com/api/boomerang/customers/f6c1563c-c28a-4a67-85c1-ef2d369d8b61' \
     --header 'content-type: application/json' \
 ```
 
@@ -151,22 +173,43 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2451f6f1-1e7a-43d1-a0fc-e639a9cd0efd",
-    "created_at": "2021-09-27T13:17:16+00:00",
-    "updated_at": "2021-09-27T13:17:16+00:00",
-    "number": 1,
-    "name": "John Doe",
-    "email": "doe_john@feeney.biz",
-    "archived": false,
-    "deposit_type": "default",
-    "deposit_value": 0.0,
-    "discount_percentage": 0.0,
-    "legal_type": "person",
-    "properties": {},
-    "tag_list": [],
-    "merge_suggestion_customer_id": null,
-    "tax_region_id": null
-  }
+    "id": "f6c1563c-c28a-4a67-85c1-ef2d369d8b61",
+    "type": "customers",
+    "attributes": {
+      "created_at": "2021-09-29T15:35:23+00:00",
+      "updated_at": "2021-09-29T15:35:23+00:00",
+      "number": 1,
+      "name": "John Doe",
+      "email": "doe_john@koepp.com",
+      "archived": false,
+      "deposit_type": "default",
+      "deposit_value": 0.0,
+      "discount_percentage": 0.0,
+      "legal_type": "person",
+      "properties": {},
+      "tag_list": [],
+      "merge_suggestion_customer_id": null,
+      "tax_region_id": null
+    },
+    "relationships": {
+      "merge_suggestion_customer": {
+        "links": {
+          "related": null
+        }
+      },
+      "tax_region": {
+        "links": {
+          "related": null
+        }
+      },
+      "barcode": {
+        "links": {
+          "related": "api/boomerang/barcodes?filter[owner_id]=f6c1563c-c28a-4a67-85c1-ef2d369d8b61"
+        }
+      }
+    }
+  },
+  "meta": {}
 }
 ```
 
@@ -181,7 +224,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 
@@ -226,11 +269,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "42ba91ed-bd0a-402d-a180-c20fce56d127",
+    "id": "22981174-fc91-4f48-a687-505659180a67",
     "type": "customers",
     "attributes": {
-      "created_at": "2021-09-27T13:17:17+00:00",
-      "updated_at": "2021-09-27T13:17:17+00:00",
+      "created_at": "2021-09-29T15:35:24+00:00",
+      "updated_at": "2021-09-29T15:35:24+00:00",
       "number": 2,
       "name": "John Doe",
       "email": "john@doe.com",
@@ -254,6 +297,11 @@ This request accepts the following includes:
         "meta": {
           "included": false
         }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
       }
     }
   },
@@ -272,7 +320,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 
@@ -311,11 +359,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/3b38d2e3-b08c-4eb1-897d-18b2402c6f7c' \
+    --url 'https://example.booqable.com/api/boomerang/customers/89a5d81b-964e-4356-9919-38915f95faa0' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "3b38d2e3-b08c-4eb1-897d-18b2402c6f7c",
+        "id": "89a5d81b-964e-4356-9919-38915f95faa0",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -329,14 +377,14 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3b38d2e3-b08c-4eb1-897d-18b2402c6f7c",
+    "id": "89a5d81b-964e-4356-9919-38915f95faa0",
     "type": "customers",
     "attributes": {
-      "created_at": "2021-09-27T13:17:18+00:00",
-      "updated_at": "2021-09-27T13:17:18+00:00",
+      "created_at": "2021-09-29T15:35:26+00:00",
+      "updated_at": "2021-09-29T15:35:26+00:00",
       "number": 1,
       "name": "Jane Doe",
-      "email": "doe.john@bogan-hoppe.name",
+      "email": "doe_john@grimes.info",
       "archived": false,
       "deposit_type": "default",
       "deposit_value": 0.0,
@@ -354,6 +402,11 @@ This request accepts the following includes:
         }
       },
       "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
         "meta": {
           "included": false
         }
@@ -375,7 +428,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 
@@ -414,9 +467,8 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/2663e5ff-267f-4f8f-98ec-d53a4b582bbe' \
+    --url 'https://example.booqable.com/api/boomerang/customers/08514969-5d90-4929-9606-f900a36779d5' \
     --header 'content-type: application/json' \
-    --data '{}'
 ```
 
 > A 200 status response looks like this:
@@ -438,7 +490,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 
