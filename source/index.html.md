@@ -14,12 +14,13 @@ includes:
   - employees
   - employee_invitations
   - items
-  - plannable_items
   - product_groups
+  - products
   - bundles
   - bundle_items
   - stock_items
   - stock_counts
+  - photos
   - categories
   - barcodes
   - customers
@@ -46,7 +47,7 @@ includes:
   - default_properties
   - properties
   - tags
-  - exports
+  - coupons
   - login_activities
 
 search: true
