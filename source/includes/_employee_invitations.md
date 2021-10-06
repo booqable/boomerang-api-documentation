@@ -25,11 +25,11 @@ Name | Description
 
 
 ## Relationships
-For employee invitations you can include the following relationships:
+A employee invitations has the following relationships:
 
 Name | Description
 - | -
-`employee` | **Employees**<br>Associated Employee
+`employee` | **Employees** `readonly`<br>Associated Employee
 
 
 ## Sending invitations
@@ -58,29 +58,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7f682991-7503-505f-8a61-4dc07beee720",
+    "id": "0b819afa-3205-52d9-b114-a9368cec4b95",
     "type": "employee_invitations",
     "attributes": {
       "created_at": null,
       "updated_at": null,
-      "employee_id": "c4671c29-7b5b-411c-bd2b-ba6f3fa9fc6d"
+      "employee_id": "7fac8a42-8858-49a1-8c66-45a8548d8287"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "c4671c29-7b5b-411c-bd2b-ba6f3fa9fc6d"
+          "id": "7fac8a42-8858-49a1-8c66-45a8548d8287"
         }
       }
     }
   },
   "included": [
     {
-      "id": "c4671c29-7b5b-411c-bd2b-ba6f3fa9fc6d",
+      "id": "7fac8a42-8858-49a1-8c66-45a8548d8287",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-08-10T09:50:17+00:00",
-        "updated_at": "2021-08-10T09:50:17+00:00",
+        "created_at": "2021-09-29T15:35:32+00:00",
+        "updated_at": "2021-09-29T15:35:32+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -112,7 +112,7 @@ Note that you can also update other fields.
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0",
+          "id": "05318379-03d3-4b4c-8548-02413af62602",
           "email": "jane@doe.com"
         }
       },
@@ -125,29 +125,29 @@ Note that you can also update other fields.
 ```json
   {
   "data": {
-    "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0",
+    "id": "05318379-03d3-4b4c-8548-02413af62602",
     "type": "employee_invitations",
     "attributes": {
       "created_at": null,
       "updated_at": null,
-      "employee_id": "208851fa-fb3d-4f65-a9e9-a54185d396a0"
+      "employee_id": "05318379-03d3-4b4c-8548-02413af62602"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0"
+          "id": "05318379-03d3-4b4c-8548-02413af62602"
         }
       }
     }
   },
   "included": [
     {
-      "id": "208851fa-fb3d-4f65-a9e9-a54185d396a0",
+      "id": "05318379-03d3-4b4c-8548-02413af62602",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-08-10T09:50:18+00:00",
-        "updated_at": "2021-08-10T09:50:18+00:00",
+        "created_at": "2021-09-29T15:35:32+00:00",
+        "updated_at": "2021-09-29T15:35:32+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -201,10 +201,17 @@ Name | Description
 `data[attributes][firstname]` | **String**<br>First name of the employee
 `data[attributes][lastname]` | **String**<br>Last name of the employee
 `data[attributes][email]` | **String**<br>Employee's e-mail address
-`data[attributes][permissions[]]` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
+`data[attributes][permissions][]` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
 `data[attributes][employee_id]` | **Uuid**<br>The associated Employee
 
 
 ### Includes
 
-All includes are allowed on this request
+This request accepts the following includes:
+
+`employee`
+
+
+
+
+
