@@ -957,6 +957,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#currencies" class="toc-h1 toc-link" data-title="Currencies">Currencies</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#currencies-endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#currencies-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#currencies-fetching-a-currency" class="toc-h2 toc-link" data-title="Fetching a currency">Fetching a currency</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -15396,6 +15410,131 @@ A tax region can have one of the following strategies:</p>
 </tr>
 </tbody></table>
 <h3 id='coupons-archiving-a-coupon-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='currencies'>Currencies</h1>
+<p>The currency object encapsulates all information about a monetary unit.</p>
+<h2 id='currencies-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/currencies/{id}</code></p>
+<h2 id='currencies-fields'>Fields</h2>
+<p>Every currency has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The ISO code of the currency you want to fetch</td>
+</tr>
+<tr>
+<td><code>decimal_mark</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Character between the whole and fraction amounts</td>
+</tr>
+<tr>
+<td><code>disambiguate_symbol</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Alternative currency used if symbol is ambiguous</td>
+</tr>
+<tr>
+<td><code>html_entity</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The html entity for the currency symbol</td>
+</tr>
+<tr>
+<td><code>iso_code</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The international 3-letter code as defined by the ISO 4217 standard</td>
+</tr>
+<tr>
+<td><code>iso_numeric</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The international 3-digit code as defined by the ISO 4217 standard</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The currency name</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>A numerical value you can use to sort/group the currency list</td>
+</tr>
+<tr>
+<td><code>smallest_denomination</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Smallest amount of cash possible (in the subunit of this currency)</td>
+</tr>
+<tr>
+<td><code>subunit</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The name of the fractional monetary unit</td>
+</tr>
+<tr>
+<td><code>subunit_to_unit</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>The proportion between the unit and the subunit</td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The currency symbol (UTF-8 encoded)</td>
+</tr>
+<tr>
+<td><code>symbol_first</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>States if the currency symbol should be shown before or after the moneyary value</td>
+</tr>
+<tr>
+<td><code>thousands_separator</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Character between each thousands place</td>
+</tr>
+</tbody></table>
+<h2 id='currencies-fetching-a-currency'>Fetching a currency</h2>
+<blockquote>
+<p>How to fetch a currency:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/currencies/eur'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eur"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"currencies"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"decimal_mark"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"disambiguate_symbol"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"html_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&amp;#x20AC;"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"978"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"smallest_denomination"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subunit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cent"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subunit_to_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol_first"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"thousands_separator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='currencies-fetching-a-currency-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/currencies/{id}</code></p>
+<h3 id='currencies-fetching-a-currency-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[currencies]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='currencies-fetching-a-currency-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 
       </div>
