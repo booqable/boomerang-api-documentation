@@ -49,6 +49,7 @@ includes:
   - tags
   - coupons
   - login_activities
+  - currencies
 
 search: true
 
