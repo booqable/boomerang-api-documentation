@@ -22,7 +22,7 @@ Name | Description
 `body` | **String**<br>The body of the note
 `notable_id` | **Uuid**<br>ID if the resource that the note was left for
 `notable_type` | **String**<br>The resource type of the resource that the note was left for. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
-`employee_id` | **Uuid**<br>The associated Employee
+`employee_id` | **Uuid** `readonly`<br>The associated Employee
 
 
 ## Relationships
@@ -50,25 +50,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "b1fd2eef-3307-43e3-b89b-7fc0a7a6b3f6",
+      "id": "4ef38996-17c9-4a7f-81ff-e140a7c5d95b",
       "type": "notes",
       "attributes": {
-        "created_at": "2021-10-07T13:04:27+00:00",
-        "updated_at": "2021-10-07T13:04:27+00:00",
+        "created_at": "2021-10-14T14:20:18+00:00",
+        "updated_at": "2021-10-14T14:20:18+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "notable_id": "4a247273-b20b-46cd-9a31-212c9d90d491",
-        "notable_type": "Customer",
-        "employee_id": "f78a5a16-9978-4dfa-8463-72aa74c264e8"
+        "notable_id": null,
+        "notable_type": null,
+        "employee_id": "96e76827-8b71-4de9-9b37-c3eef01e10bf"
       },
       "relationships": {
         "notable": {
           "links": {
-            "related": "api/boomerang/customers/4a247273-b20b-46cd-9a31-212c9d90d491"
+            "related": null
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/f78a5a16-9978-4dfa-8463-72aa74c264e8"
+            "related": "api/boomerang/employees/96e76827-8b71-4de9-9b37-c3eef01e10bf"
           }
         }
       }
@@ -91,7 +91,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=notable,employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-07T13:04:25Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-14T14:20:15Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -138,7 +138,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/dfaf4c92-979c-4725-b6ed-5cc44739e922' \
+    --url 'https://example.booqable.com/api/boomerang/notes/bddc64d7-0480-46dd-ad4c-b99fb35b7eac' \
     --header 'content-type: application/json' \
 ```
 
@@ -147,25 +147,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dfaf4c92-979c-4725-b6ed-5cc44739e922",
+    "id": "bddc64d7-0480-46dd-ad4c-b99fb35b7eac",
     "type": "notes",
     "attributes": {
-      "created_at": "2021-10-07T13:04:28+00:00",
-      "updated_at": "2021-10-07T13:04:28+00:00",
+      "created_at": "2021-10-14T14:20:19+00:00",
+      "updated_at": "2021-10-14T14:20:19+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "notable_id": "f1648990-a78d-4d58-831b-7e624fa3837e",
-      "notable_type": "Customer",
-      "employee_id": "c721c534-9b3c-4882-a5dd-c72735b6766e"
+      "notable_id": null,
+      "notable_type": null,
+      "employee_id": "1c4ab166-63b4-4e78-9556-84752435a2d6"
     },
     "relationships": {
       "notable": {
         "links": {
-          "related": "api/boomerang/customers/f1648990-a78d-4d58-831b-7e624fa3837e"
+          "related": null
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/c721c534-9b3c-4882-a5dd-c72735b6766e"
+          "related": "api/boomerang/employees/1c4ab166-63b4-4e78-9556-84752435a2d6"
         }
       }
     }
@@ -202,57 +202,6 @@ This request accepts the following includes:
 
 ## Creating a note
 
-> How to create a note:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/notes' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "notes",
-        "attributes": {
-          "body": "Agreed to give this customer a 20% discount on the next order",
-          "notable_id": "27f824e5-f54e-4161-a6db-5e552eb5825c",
-          "notable_type": "Customer"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "09710f16-14ed-4a5c-af81-5751eb9cea38",
-    "type": "notes",
-    "attributes": {
-      "created_at": "2021-10-07T13:04:29+00:00",
-      "updated_at": "2021-10-07T13:04:29+00:00",
-      "body": "Agreed to give this customer a 20% discount on the next order",
-      "notable_id": "27f824e5-f54e-4161-a6db-5e552eb5825c",
-      "notable_type": "Customer",
-      "employee_id": "97479af2-7d8a-44cd-8df9-c13dec3dabb9"
-    },
-    "relationships": {
-      "notable": {
-        "meta": {
-          "included": false
-        }
-      },
-      "employee": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
 ### HTTP Request
 
 `POST /api/boomerang/notes`
@@ -276,7 +225,6 @@ Name | Description
 `data[attributes][body]` | **String**<br>The body of the note
 `data[attributes][notable_id]` | **Uuid**<br>ID if the resource that the note was left for
 `data[attributes][notable_type]` | **String**<br>The resource type of the resource that the note was left for. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
-`data[attributes][employee_id]` | **Uuid**<br>The associated Employee
 
 
 ### Includes
@@ -296,7 +244,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/d8d79a81-d999-4ff1-af29-d44f20a7873f' \
+    --url 'https://example.booqable.com/api/boomerang/notes/f53a1962-2d1a-42e7-a539-9023f5d2be21' \
     --header 'content-type: application/json' \
 ```
 

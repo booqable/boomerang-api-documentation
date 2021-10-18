@@ -2,17 +2,25 @@
 
 Product groups hold general information and configuration about products. A product group is always associated with at least one product. When a product group is enabled to have variations, it can have multiple products. Note that product groups are not plannable on orders.
 
-A product group supports the following product types:
+**A product group supports the following product types:**
 
 - **Rental:** Rental products are your main products that you rent out. Even if your main product is officially a service, in Booqable you will want to add it as a rental product.
 - **Conusmable:** Consumable products are products that you do not plan on getting back. These are meant to be small items that you plan on selling along with a rental but do not expect to be returned with the rest of the order.
 - **Service:** Service Item or Service Products are the optional extra services (or items) your want to offer to your products. These are not trackable, therefore they do not have an instock number.
 
-The following tracking types can be defined:
+**The following tracking types can be defined:**
 
 - **None:** Products are not tracked (only for product_type `service`, `consumable`)
 - **Trackable:** Trackable Products tend to be the larger ticket items; the products you want to know specifically who has what stock item of what product and when. With trackable products, every stock item is has its own identifier so you can assign and track the individual products (only for product_type `rental`).
 - **Bulk:** Bulk products are for those products you don't necessarily need to track each specific stock item but rather you just need to know how many you have in stock. These tend to be your smaller ticket items or items that are quicker to replace in bulk if some are lost (only for product_type `rental`, `consumable`).
+
+**Pricing can be configured by setting one of the following price types:**
+
+- **None:** Products are free (applies to all product types)
+- **Fixed:** Charge a fixed price (applies to all product types).
+- **Simple:** Apply simple pricing (depends on `price_period`, only for product_type `rental`, `service`).
+- **Structure:** Applies associated price structure (only for product_type `rental`, `service`).
+- **Private structure:** Applies associated private price structure (only for product_type `rental`, `service`).
 
 ## Endpoints
 `GET /api/boomerang/product_groups`
@@ -51,7 +59,7 @@ Name | Description
 `show_in_store` | **Boolean**<br>Whether to show this item in the online
 `sorting_weight` | **Integer**<br>Defines sort order in the online store, the higher the weight - the higher it shows up in lists
 `base_price_in_cents` | **Integer**<br>The base price in cents
-`price_type` | **String**<br>
+`price_type` | **String**<br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
 `price_period` | **String**<br>One of `hour`, `day`, `week`, `month` (Only used for price type `simple`)
 `flat_fee_price_in_cents` | **Integer**<br>Use this value when price type is `simple`
 `structure_price_in_cents` | **Integer**<br>Use this value when price type is `structure` or `private_structure`
@@ -59,7 +67,7 @@ Name | Description
 `discountable` | **Boolean**<br>Whether discounts should be applied to this item (note that price rules will still apply)
 `taxable` | **Boolean**<br>Whether item is taxable
 `tag_list` | **Array**<br>List of tags
-`properties` | **Hash** `readonly`<br>
+`properties` | **Hash** `readonly`<br>Key value pairs of associated properties
 `tax_category_id` | **Uuid**<br>The associated Tax category
 `allow_shortage` | **Boolean**<br>Whether shortages are allowed
 `shortage_limit` | **Integer**<br>The maximum allowed shortage for any date range
@@ -93,11 +101,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "dc3fa19b-acf4-4f41-b6e6-2b8b9cd00416",
+      "id": "42e80331-c1ed-4b49-86fc-1dde3d1fd07c",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2021-10-08T11:22:30+00:00",
-        "updated_at": "2021-10-08T11:22:30+00:00",
+        "created_at": "2021-10-13T22:03:29+00:00",
+        "updated_at": "2021-10-13T22:03:29+00:00",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
@@ -137,7 +145,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=dc3fa19b-acf4-4f41-b6e6-2b8b9cd00416"
+            "related": "api/boomerang/products?filter[item_group_id]=42e80331-c1ed-4b49-86fc-1dde3d1fd07c"
           }
         }
       }
@@ -160,7 +168,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_category,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-08T11:22:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-13T22:03:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -185,13 +193,11 @@ Name | Description
 `trackable` | **Boolean**<br>`eq`
 `archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`photo_url` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `allow_shortage` | **Boolean**<br>`eq`
 `shortage_limit` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`variation_fields` | **Array**<br>`eq`
 
 
 ### Meta
@@ -226,7 +232,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/f9fa88d9-fad2-4b94-883a-5a77007d9418' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/8bc38f46-fce8-4340-b4ac-7cc5e77e5946' \
     --header 'content-type: application/json' \
 ```
 
@@ -235,11 +241,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f9fa88d9-fad2-4b94-883a-5a77007d9418",
+    "id": "8bc38f46-fce8-4340-b4ac-7cc5e77e5946",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-10-08T11:22:33+00:00",
-      "updated_at": "2021-10-08T11:22:33+00:00",
+      "created_at": "2021-10-13T22:03:31+00:00",
+      "updated_at": "2021-10-13T22:03:31+00:00",
       "name": "iPad Pro",
       "slug": "ipad-pro",
       "sku": "sku",
@@ -279,7 +285,7 @@ This request does not accept any includes
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[item_group_id]=f9fa88d9-fad2-4b94-883a-5a77007d9418"
+          "related": "api/boomerang/products?filter[item_group_id]=8bc38f46-fce8-4340-b4ac-7cc5e77e5946"
         }
       }
     }
@@ -336,7 +342,11 @@ This request accepts the following includes:
           "tracking_type": "trackable",
           "trackable": true,
           "price_type": "simple",
-          "price_period": "day"
+          "price_period": "day",
+          "tag_list": [
+            "tablets",
+            "apple"
+          ]
         }
       }
     }'
@@ -347,11 +357,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "442ac2fc-9d76-4d23-9661-6d108f37fe4e",
+    "id": "4a173411-bd02-4748-a50a-06d83bf71310",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-10-08T11:22:35+00:00",
-      "updated_at": "2021-10-08T11:22:35+00:00",
+      "created_at": "2021-10-13T22:03:31+00:00",
+      "updated_at": "2021-10-13T22:03:31+00:00",
       "name": "iPad mini",
       "slug": "ipad-mini",
       "sku": "I_PAD_MINI",
@@ -376,7 +386,10 @@ This request accepts the following includes:
       "deposit_in_cents": 0,
       "discountable": true,
       "taxable": true,
-      "tag_list": [],
+      "tag_list": [
+        "tablets",
+        "apple"
+      ],
       "properties": {},
       "tax_category_id": null,
       "allow_shortage": false,
@@ -433,7 +446,7 @@ Name | Description
 `data[attributes][show_in_store]` | **Boolean**<br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer**<br>Defines sort order in the online store, the higher the weight - the higher it shows up in lists
 `data[attributes][base_price_in_cents]` | **Integer**<br>The base price in cents
-`data[attributes][price_type]` | **String**<br>
+`data[attributes][price_type]` | **String**<br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
 `data[attributes][price_period]` | **String**<br>One of `hour`, `day`, `week`, `month` (Only used for price type `simple`)
 `data[attributes][flat_fee_price_in_cents]` | **Integer**<br>Use this value when price type is `simple`
 `data[attributes][structure_price_in_cents]` | **Integer**<br>Use this value when price type is `structure` or `private_structure`
@@ -466,11 +479,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/2b01c1c1-025e-46d3-baa7-59ee9c725de0' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/63ab95c6-a641-4d36-85a0-0525c8fe71e4' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "2b01c1c1-025e-46d3-baa7-59ee9c725de0",
+        "id": "63ab95c6-a641-4d36-85a0-0525c8fe71e4",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -484,11 +497,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2b01c1c1-025e-46d3-baa7-59ee9c725de0",
+    "id": "63ab95c6-a641-4d36-85a0-0525c8fe71e4",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-10-08T11:22:37+00:00",
-      "updated_at": "2021-10-08T11:22:38+00:00",
+      "created_at": "2021-10-13T22:03:32+00:00",
+      "updated_at": "2021-10-13T22:03:32+00:00",
       "name": "iPad mini",
       "slug": "ipad-pro",
       "sku": "sku",
@@ -570,7 +583,7 @@ Name | Description
 `data[attributes][show_in_store]` | **Boolean**<br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer**<br>Defines sort order in the online store, the higher the weight - the higher it shows up in lists
 `data[attributes][base_price_in_cents]` | **Integer**<br>The base price in cents
-`data[attributes][price_type]` | **String**<br>
+`data[attributes][price_type]` | **String**<br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
 `data[attributes][price_period]` | **String**<br>One of `hour`, `day`, `week`, `month` (Only used for price type `simple`)
 `data[attributes][flat_fee_price_in_cents]` | **Integer**<br>Use this value when price type is `simple`
 `data[attributes][structure_price_in_cents]` | **Integer**<br>Use this value when price type is `structure` or `private_structure`
@@ -603,7 +616,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/9e45a285-f869-466d-8667-b37fb178ebfe' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/7c509a0e-2b31-4ec9-bb21-96d949d9e658' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

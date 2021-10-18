@@ -14,50 +14,18 @@ The description of the behavior for these resources can be found in their respec
 `GET /api/boomerang/items/{id}`
 
 ## Fields
-Every item has the following fields:
+For this resource fields are described in the following resources:
 
-Name | Description
-- | -
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the item
-`slug` | **String** `readonly`<br>Slug of the item
-`sku` | **String**<br>Stock keeping unit
-`type` | **String** `readonly`<br>One of `ProductGroup`, `Product`, `Bundle`
-`lead_time` | **Integer**<br>The amount of seconds the item should be unavailable before a reservation
-`lag_time` | **Integer**<br>The amount of seconds the item should be unavailable after a reservation
-`product_type` | **String**<br>One of `rental`, `consumable`, `service`
-`tracking_type` | **String**<br>Tracking type (One of `none`, `bulk`, `trackable`, can only be set on creating ProductGroups)
-`trackable` | **Boolean**<br>Wheter stock items are tracked
-`archived` | **Boolean** `readonly`<br>Whether item is archived
-`archived_at` | **Datetime** `readonly`<br>When the item was archived
-`extra_information` | **String** `nullable`<br>Extra information about the item, shown on orders and documents
-`photo_url` | **String** `readonly`<br>Main photo url
-`photo_base64` | **String** `writeonly`<br>Base64 encoded photo, use this field to store a main photo
-`description` | **String** `nullable`<br>Description used in the online store
-`show_in_store` | **Boolean**<br>Whether to show this item in the online
-`sorting_weight` | **Integer**<br>Defines sort order in the online store, the higher the weight - the higher it shows up in lists
-`base_price_in_cents` | **Integer**<br>The base price in cents
-`price_type` | **String**<br>
-`price_period` | **String**<br>One of `hour`, `day`, `week`, `month` (Only used for price type `simple`)
-`flat_fee_price_in_cents` | **Integer**<br>Use this value when price type is `simple`
-`structure_price_in_cents` | **Integer**<br>Use this value when price type is `structure` or `private_structure`
-`deposit_in_cents` | **Integer**<br>The value to use for deposit calculations
-`discountable` | **Boolean**<br>Whether discounts should be applied to this item (note that price rules will still apply)
-`taxable` | **Boolean**<br>Whether item is taxable
-`tag_list` | **Array**<br>List of tags
-`properties` | **Hash** `readonly`<br>
-`tax_category_id` | **Uuid**<br>The associated Tax category
-
+- Product groups
+- Products
+- Bundles
 
 ## Relationships
-Items have the following relationships:
+For this resource relationships are described in the following resources:
 
-Name | Description
-- | -
-`tax_category` | **Tax categories** `readonly`<br>Associated Tax category
-
+- Product groups
+- Products
+- Bundles
 
 ## Listing items
 
@@ -75,11 +43,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "67c763bd-0128-44c3-bd93-d501ddcd8f73",
+      "id": "2eff539c-6164-4e43-a492-7c49ba4f43bb",
       "type": "bundles",
       "attributes": {
-        "created_at": "2021-10-08T11:22:50+00:00",
-        "updated_at": "2021-10-08T11:22:50+00:00",
+        "created_at": "2021-10-13T22:09:11+00:00",
+        "updated_at": "2021-10-13T22:09:11+00:00",
         "name": "iPad Bundle",
         "slug": "ipad-bundle",
         "product_type": "bundle",
@@ -101,22 +69,22 @@ Name | Description
       "relationships": {
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=67c763bd-0128-44c3-bd93-d501ddcd8f73"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=2eff539c-6164-4e43-a492-7c49ba4f43bb"
           }
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[bundle_id]=67c763bd-0128-44c3-bd93-d501ddcd8f73"
+            "related": "api/boomerang/products?filter[bundle_id]=2eff539c-6164-4e43-a492-7c49ba4f43bb"
           }
         }
       }
     },
     {
-      "id": "ad500002-52fc-4098-af62-17ae2f020c9e",
+      "id": "fa941821-df59-4c22-88ca-32ba49e5a630",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2021-10-08T11:22:51+00:00",
-        "updated_at": "2021-10-08T11:22:51+00:00",
+        "created_at": "2021-10-13T22:09:12+00:00",
+        "updated_at": "2021-10-13T22:09:12+00:00",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
@@ -146,7 +114,7 @@ Name | Description
           "apple"
         ],
         "properties": {},
-        "tax_category_id": "61e0c241-2f48-43d0-9381-3b0779c4b03e",
+        "tax_category_id": "88d127a0-e051-4ddf-b795-26e9d4fd35d4",
         "allow_shortage": true,
         "shortage_limit": 3,
         "variation_fields": []
@@ -154,22 +122,22 @@ Name | Description
       "relationships": {
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/61e0c241-2f48-43d0-9381-3b0779c4b03e"
+            "related": "api/boomerang/tax_categories/88d127a0-e051-4ddf-b795-26e9d4fd35d4"
           }
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=ad500002-52fc-4098-af62-17ae2f020c9e"
+            "related": "api/boomerang/products?filter[item_group_id]=fa941821-df59-4c22-88ca-32ba49e5a630"
           }
         }
       }
     },
     {
-      "id": "75556e0d-e7b5-4a06-8d9e-411abf87c4a4",
+      "id": "b53a5be9-e521-4814-8e19-8e29d620efcb",
       "type": "products",
       "attributes": {
-        "created_at": "2021-10-08T11:22:51+00:00",
-        "updated_at": "2021-10-08T11:22:51+00:00",
+        "created_at": "2021-10-13T22:09:12+00:00",
+        "updated_at": "2021-10-13T22:09:12+00:00",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
@@ -194,28 +162,31 @@ Name | Description
         "deposit_in_cents": 10000,
         "discountable": true,
         "taxable": true,
-        "tag_list": [],
+        "tag_list": [
+          "tablets",
+          "apple"
+        ],
         "properties": {},
-        "tax_category_id": "61e0c241-2f48-43d0-9381-3b0779c4b03e",
+        "tax_category_id": "88d127a0-e051-4ddf-b795-26e9d4fd35d4",
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "ad500002-52fc-4098-af62-17ae2f020c9e"
+        "product_group_id": "fa941821-df59-4c22-88ca-32ba49e5a630"
       },
       "relationships": {
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/61e0c241-2f48-43d0-9381-3b0779c4b03e"
+            "related": "api/boomerang/tax_categories/88d127a0-e051-4ddf-b795-26e9d4fd35d4"
           }
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/ad500002-52fc-4098-af62-17ae2f020c9e"
+            "related": "api/boomerang/product_groups/fa941821-df59-4c22-88ca-32ba49e5a630"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=75556e0d-e7b5-4a06-8d9e-411abf87c4a4"
+            "related": "api/boomerang/barcodes?filter[owner_id]=b53a5be9-e521-4814-8e19-8e29d620efcb"
           }
         }
       }
@@ -238,7 +209,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_category`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-08T11:22:48Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-13T22:09:09Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -263,7 +234,6 @@ Name | Description
 `trackable` | **Boolean**<br>`eq`
 `archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`photo_url` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **String**<br>`eq`, `not_eq`, `prefix`, `match`
@@ -309,7 +279,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/items/3e0c9d66-3666-46c5-986b-3294c2a5b1fb' \
+    --url 'https://example.booqable.com/api/boomerang/items/a8403923-daec-473a-823e-bfbfd7d29b90' \
     --header 'content-type: application/json' \
 ```
 
@@ -318,11 +288,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3e0c9d66-3666-46c5-986b-3294c2a5b1fb",
+    "id": "a8403923-daec-473a-823e-bfbfd7d29b90",
     "type": "products",
     "attributes": {
-      "created_at": "2021-10-08T11:22:53+00:00",
-      "updated_at": "2021-10-08T11:22:53+00:00",
+      "created_at": "2021-10-13T22:09:13+00:00",
+      "updated_at": "2021-10-13T22:09:13+00:00",
       "name": "iPad Pro",
       "slug": "ipad-pro",
       "sku": "sku",
@@ -347,28 +317,31 @@ This request accepts the following includes:
       "deposit_in_cents": 10000,
       "discountable": true,
       "taxable": true,
-      "tag_list": [],
+      "tag_list": [
+        "tablets",
+        "apple"
+      ],
       "properties": {},
-      "tax_category_id": "4ab1198a-a9f3-4be6-8f62-1e05d7615c7d",
+      "tax_category_id": "6cfed544-15e9-4d58-887b-f209b0deafe9",
       "variation_values": [],
       "allow_shortage": true,
       "shortage_limit": 3,
-      "product_group_id": "b571dc35-f4d6-45b4-9440-377640c7ee2d"
+      "product_group_id": "8c8e37c2-a22f-47a8-a52e-f5ed36533f7d"
     },
     "relationships": {
       "tax_category": {
         "links": {
-          "related": "api/boomerang/tax_categories/4ab1198a-a9f3-4be6-8f62-1e05d7615c7d"
+          "related": "api/boomerang/tax_categories/6cfed544-15e9-4d58-887b-f209b0deafe9"
         }
       },
       "product_group": {
         "links": {
-          "related": "api/boomerang/product_groups/b571dc35-f4d6-45b4-9440-377640c7ee2d"
+          "related": "api/boomerang/product_groups/8c8e37c2-a22f-47a8-a52e-f5ed36533f7d"
         }
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=3e0c9d66-3666-46c5-986b-3294c2a5b1fb"
+          "related": "api/boomerang/barcodes?filter[owner_id]=a8403923-daec-473a-823e-bfbfd7d29b90"
         }
       }
     }

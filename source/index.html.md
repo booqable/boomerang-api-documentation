@@ -50,6 +50,7 @@ includes:
   - coupons
   - login_activities
   - currencies
+  - ip_addresses
 
 search: true
 
