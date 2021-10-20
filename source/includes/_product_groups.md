@@ -58,7 +58,7 @@ Name | Description
 `description` | **String** `nullable`<br>Description used in the online store
 `show_in_store` | **Boolean**<br>Whether to show this item in the online
 `sorting_weight` | **Integer**<br>Defines sort order in the online store, the higher the weight - the higher it shows up in lists
-`base_price_in_cents` | **Integer**<br>The base price in cents
+`base_price_in_cents` | **Integer** `readonly`<br>The base price in cents (based on the current `price_type`)
 `price_type` | **String**<br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
 `price_period` | **String**<br>One of `hour`, `day`, `week`, `month` (Only used for price type `simple`)
 `flat_fee_price_in_cents` | **Integer**<br>Use this value when price type is `simple`
@@ -101,11 +101,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "42e80331-c1ed-4b49-86fc-1dde3d1fd07c",
+      "id": "e3ce3ab6-a767-4c08-b461-9e2053870804",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2021-10-13T22:03:29+00:00",
-        "updated_at": "2021-10-13T22:03:29+00:00",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
@@ -145,12 +143,17 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=42e80331-c1ed-4b49-86fc-1dde3d1fd07c"
+            "related": "api/boomerang/products?filter[item_group_id]=e3ce3ab6-a767-4c08-b461-9e2053870804"
           }
         }
       }
     }
   ],
+  "links": {
+    "self": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  },
   "meta": {}
 }
 ```
@@ -168,7 +171,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_category,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-13T22:03:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-20T13:38:01Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -232,7 +235,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/8bc38f46-fce8-4340-b4ac-7cc5e77e5946' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/cdb92799-82ff-482b-876d-d09fba5adcaf' \
     --header 'content-type: application/json' \
 ```
 
@@ -241,11 +244,9 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8bc38f46-fce8-4340-b4ac-7cc5e77e5946",
+    "id": "cdb92799-82ff-482b-876d-d09fba5adcaf",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-10-13T22:03:31+00:00",
-      "updated_at": "2021-10-13T22:03:31+00:00",
       "name": "iPad Pro",
       "slug": "ipad-pro",
       "sku": "sku",
@@ -285,7 +286,7 @@ This request does not accept any includes
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[item_group_id]=8bc38f46-fce8-4340-b4ac-7cc5e77e5946"
+          "related": "api/boomerang/products?filter[item_group_id]=cdb92799-82ff-482b-876d-d09fba5adcaf"
         }
       }
     }
@@ -357,11 +358,9 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4a173411-bd02-4748-a50a-06d83bf71310",
+    "id": "3371a6c9-a305-4a2f-9e77-a2564bab229b",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-10-13T22:03:31+00:00",
-      "updated_at": "2021-10-13T22:03:31+00:00",
       "name": "iPad mini",
       "slug": "ipad-mini",
       "sku": "I_PAD_MINI",
@@ -409,6 +408,11 @@ This request accepts the following includes:
       }
     }
   },
+  "links": {
+    "self": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  },
   "meta": {}
 }
 ```
@@ -445,7 +449,6 @@ Name | Description
 `data[attributes][photo_base64]` | **String**<br>Base64 encoded photo, use this field to store a main photo
 `data[attributes][show_in_store]` | **Boolean**<br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer**<br>Defines sort order in the online store, the higher the weight - the higher it shows up in lists
-`data[attributes][base_price_in_cents]` | **Integer**<br>The base price in cents
 `data[attributes][price_type]` | **String**<br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
 `data[attributes][price_period]` | **String**<br>One of `hour`, `day`, `week`, `month` (Only used for price type `simple`)
 `data[attributes][flat_fee_price_in_cents]` | **Integer**<br>Use this value when price type is `simple`
@@ -479,11 +482,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/63ab95c6-a641-4d36-85a0-0525c8fe71e4' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/288cd2b1-bd66-4cd0-90bb-8a9f3f463fe2' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "63ab95c6-a641-4d36-85a0-0525c8fe71e4",
+        "id": "288cd2b1-bd66-4cd0-90bb-8a9f3f463fe2",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -497,11 +500,9 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "63ab95c6-a641-4d36-85a0-0525c8fe71e4",
+    "id": "288cd2b1-bd66-4cd0-90bb-8a9f3f463fe2",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-10-13T22:03:32+00:00",
-      "updated_at": "2021-10-13T22:03:32+00:00",
       "name": "iPad mini",
       "slug": "ipad-pro",
       "sku": "sku",
@@ -582,7 +583,6 @@ Name | Description
 `data[attributes][photo_base64]` | **String**<br>Base64 encoded photo, use this field to store a main photo
 `data[attributes][show_in_store]` | **Boolean**<br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer**<br>Defines sort order in the online store, the higher the weight - the higher it shows up in lists
-`data[attributes][base_price_in_cents]` | **Integer**<br>The base price in cents
 `data[attributes][price_type]` | **String**<br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
 `data[attributes][price_period]` | **String**<br>One of `hour`, `day`, `week`, `month` (Only used for price type `simple`)
 `data[attributes][flat_fee_price_in_cents]` | **Integer**<br>Use this value when price type is `simple`
@@ -616,7 +616,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/7c509a0e-2b31-4ec9-bb21-96d949d9e658' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/76a50356-ee95-4657-9924-27d635306533' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
