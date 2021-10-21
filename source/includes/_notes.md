@@ -1,6 +1,6 @@
 # Notes
 
-Notes allow you to leave notes about a resource.
+Allows you to leave notes attached to other resources.
 
 ## Endpoints
 `GET /api/boomerang/notes`
@@ -19,18 +19,18 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`body` | **String**<br>The body of the note
-`notable_id` | **Uuid**<br>ID if the resource that the note was left for
-`notable_type` | **String**<br>The resource type of the resource that the note was left for. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
+`body` | **String**<br>The content of the note
+`owner_id` | **Uuid**<br>ID of the resource the note is attached to
+`owner_type` | **String**<br>The resource type of the owner. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
 
 
 ## Relationships
-A notes has the following relationships:
+Notes have the following relationships:
 
 Name | Description
 - | -
-`notable` | **Customer**<br>Associated Notable
+`owner` | **Customer**<br>Associated Owner
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
@@ -50,30 +50,33 @@ Name | Description
   {
   "data": [
     {
-      "id": "4ef38996-17c9-4a7f-81ff-e140a7c5d95b",
+      "id": "f3bc4872-3125-413d-9176-7160b5ddc173",
       "type": "notes",
       "attributes": {
-        "created_at": "2021-10-14T14:20:18+00:00",
-        "updated_at": "2021-10-14T14:20:18+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "notable_id": null,
-        "notable_type": null,
-        "employee_id": "96e76827-8b71-4de9-9b37-c3eef01e10bf"
+        "owner_id": "1f4f4344-0e44-46b9-96cc-955061d43bb9",
+        "owner_type": "Customer",
+        "employee_id": "654d36a3-1d32-4502-94ec-675f159d067e"
       },
       "relationships": {
-        "notable": {
+        "owner": {
           "links": {
-            "related": null
+            "related": "api/boomerang/customers/1f4f4344-0e44-46b9-96cc-955061d43bb9"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/96e76827-8b71-4de9-9b37-c3eef01e10bf"
+            "related": "api/boomerang/employees/654d36a3-1d32-4502-94ec-675f159d067e"
           }
         }
       }
     }
   ],
+  "links": {
+    "self": "api/boomerang/notes?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/notes?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/notes?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  },
   "meta": {}
 }
 ```
@@ -89,9 +92,9 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=notable,employee`
+`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-14T14:20:15Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -107,8 +110,8 @@ Name | Description
 `id` | **Uuid**<br>`eq`, `not_eq`
 `created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`notable_id` | **Uuid**<br>`eq`, `not_eq`
-`notable_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`owner_id` | **Uuid**<br>`eq`, `not_eq`
+`owner_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `employee_id` | **Uuid**<br>`eq`, `not_eq`
 
 
@@ -138,7 +141,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/bddc64d7-0480-46dd-ad4c-b99fb35b7eac' \
+    --url 'https://example.booqable.com/api/boomerang/notes/2c5d43f2-a39e-44ea-9a83-67524e68ed48' \
     --header 'content-type: application/json' \
 ```
 
@@ -147,25 +150,23 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "bddc64d7-0480-46dd-ad4c-b99fb35b7eac",
+    "id": "2c5d43f2-a39e-44ea-9a83-67524e68ed48",
     "type": "notes",
     "attributes": {
-      "created_at": "2021-10-14T14:20:19+00:00",
-      "updated_at": "2021-10-14T14:20:19+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "notable_id": null,
-      "notable_type": null,
-      "employee_id": "1c4ab166-63b4-4e78-9556-84752435a2d6"
+      "owner_id": "a5bed174-e094-4584-b4b8-217ebc078825",
+      "owner_type": "Customer",
+      "employee_id": "25d0e263-300a-4a81-bc26-dfd26c804de3"
     },
     "relationships": {
-      "notable": {
+      "owner": {
         "links": {
-          "related": null
+          "related": "api/boomerang/customers/a5bed174-e094-4584-b4b8-217ebc078825"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/1c4ab166-63b4-4e78-9556-84752435a2d6"
+          "related": "api/boomerang/employees/25d0e263-300a-4a81-bc26-dfd26c804de3"
         }
       }
     }
@@ -185,7 +186,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=notable,employee`
+`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
 
 
@@ -202,6 +203,60 @@ This request accepts the following includes:
 
 ## Creating a note
 
+> How to create a note:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/notes' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "notes",
+        "attributes": {
+          "body": "Agreed to give this customer a 20% discount on the next order",
+          "owner_id": "f2cc920a-f912-45f4-9239-795e8c14518e",
+          "owner_type": "Customer"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "ed0e7b3b-a003-4882-8001-4db2501c5ca3",
+    "type": "notes",
+    "attributes": {
+      "body": "Agreed to give this customer a 20% discount on the next order",
+      "owner_id": "f2cc920a-f912-45f4-9239-795e8c14518e",
+      "owner_type": "Customer",
+      "employee_id": "5b42d95f-d613-4536-9423-40786ac0333d"
+    },
+    "relationships": {
+      "owner": {
+        "meta": {
+          "included": false
+        }
+      },
+      "employee": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "links": {
+    "self": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=f2cc920a-f912-45f4-9239-795e8c14518e&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=f2cc920a-f912-45f4-9239-795e8c14518e&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=f2cc920a-f912-45f4-9239-795e8c14518e&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  },
+  "meta": {}
+}
+```
+
+
 ### HTTP Request
 
 `POST /api/boomerang/notes`
@@ -212,7 +267,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=notable,employee`
+`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
 
 
@@ -222,9 +277,9 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][body]` | **String**<br>The body of the note
-`data[attributes][notable_id]` | **Uuid**<br>ID if the resource that the note was left for
-`data[attributes][notable_type]` | **String**<br>The resource type of the resource that the note was left for. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
+`data[attributes][body]` | **String**<br>The content of the note
+`data[attributes][owner_id]` | **Uuid**<br>ID of the resource the note is attached to
+`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
 
 
 ### Includes
@@ -244,7 +299,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/f53a1962-2d1a-42e7-a539-9023f5d2be21' \
+    --url 'https://example.booqable.com/api/boomerang/notes/8837431c-07cb-4c53-8041-09c5674b43bd' \
     --header 'content-type: application/json' \
 ```
 
@@ -267,7 +322,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=notable,employee`
+`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
 
 

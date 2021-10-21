@@ -49,7 +49,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "35672668-23e6-48a7-944b-a58c4f787546",
+      "id": "8f1078a8-9520-4110-8b35-594caba3ea46",
       "type": "clusters",
       "attributes": {
         "name": "Main",
@@ -58,7 +58,7 @@ Name | Description
       "relationships": {
         "locations": {
           "links": {
-            "related": "api/boomerang/locations?filter[cluster_id]=35672668-23e6-48a7-944b-a58c4f787546"
+            "related": "api/boomerang/locations?filter[cluster_id]=8f1078a8-9520-4110-8b35-594caba3ea46"
           }
         }
       }
@@ -86,7 +86,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=locations`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-20T13:38:01Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -132,7 +132,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/clusters/7d95fec3-cbe3-4ec5-9964-2723b580b4a8' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/196dbb6b-3f6e-4a2b-bb4d-4acba536823a' \
     --header 'content-type: application/json' \
 ```
 
@@ -141,7 +141,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7d95fec3-cbe3-4ec5-9964-2723b580b4a8",
+    "id": "196dbb6b-3f6e-4a2b-bb4d-4acba536823a",
     "type": "clusters",
     "attributes": {
       "name": "Main",
@@ -150,7 +150,7 @@ This request accepts the following includes:
     "relationships": {
       "locations": {
         "links": {
-          "related": "api/boomerang/locations?filter[cluster_id]=7d95fec3-cbe3-4ec5-9964-2723b580b4a8"
+          "related": "api/boomerang/locations?filter[cluster_id]=196dbb6b-3f6e-4a2b-bb4d-4acba536823a"
         }
       }
     }
@@ -208,7 +208,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2d5878dc-5727-4b9c-be4f-330d0e07be40",
+    "id": "be7612b9-d447-4fc6-aa5f-4af6b3550a31",
     "type": "clusters",
     "attributes": {
       "name": "Amsterdam",
@@ -273,11 +273,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/clusters/006b2289-b33e-42b6-961d-7181e87d992b' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/61851c05-982d-429b-885b-03a5550aab97' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "006b2289-b33e-42b6-961d-7181e87d992b",
+        "id": "61851c05-982d-429b-885b-03a5550aab97",
         "type": "clusters",
         "attributes": {
           "name": "Rotterdam"
@@ -291,7 +291,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "006b2289-b33e-42b6-961d-7181e87d992b",
+    "id": "61851c05-982d-429b-885b-03a5550aab97",
     "type": "clusters",
     "attributes": {
       "name": "Rotterdam",
@@ -351,7 +351,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/8f97986a-5c36-454c-b6d7-6ea1c0ff63be' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/90aa07b4-24c2-46c1-bf3f-bba920943191' \
     --header 'content-type: application/json' \
 ```
 
@@ -368,7 +368,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/5b6c219f-9868-466c-9883-d2f9143e3805' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/acf80cb2-395c-4490-a262-33150d9c4a05' \
     --header 'content-type: application/json' \
 ```
 
@@ -384,7 +384,7 @@ This request accepts the following includes:
       "detail": "This cluster has 1 or more active locations",
       "meta": {
         "location_ids": [
-          "57f0e7e3-dbf1-4424-a88c-a7fe7afb9ef7"
+          "d078edb4-754c-4df8-b672-e97a3e4bfba5"
         ]
       }
     }
