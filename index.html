@@ -1050,6 +1050,12 @@
                   <li>
                     <a href="#users-updating-a-user" class="toc-h2 toc-link" data-title="Updating a user">Updating a user</a>
                   </li>
+                  <li>
+                    <a href="#users-enabling-a-user" class="toc-h2 toc-link" data-title="Enabling a user">Enabling a user</a>
+                  </li>
+                  <li>
+                    <a href="#users-disabling-a-user" class="toc-h2 toc-link" data-title="Disabling a user">Disabling a user</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -16401,6 +16407,10 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p><code>POST /api/boomerang/users</code></p>
 
 <p><code>PUT /api/boomerang/users/{id}</code></p>
+
+<p><code>PUT /api/boomerang/users/{id}</code></p>
+
+<p><code>PUT /api/boomerang/users/{id}</code></p>
 <h2 id='users-fields'>Fields</h2>
 <p>Every user has the following fields:</p>
 
@@ -16452,7 +16462,7 @@ Because of this, a user should always be an actual person, not a legal person.</
 </tr>
 </tbody></table>
 <h2 id='users-relationships'>Relationships</h2>
-<p>A users has the following relationships:</p>
+<p>Users have the following relationships:</p>
 
 <table><thead>
 <tr>
@@ -16487,20 +16497,20 @@ Because of this, a user should always be an actual person, not a legal person.</
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"df986318-01b0-4d9d-ae91-9a9795d8affe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a819e4eb-d320-467f-8176-f52ca64f76f5"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cruz"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fay"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cruz Fay"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cruz.fay@ruecker-spencer.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Corinne"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kozey"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Corinne Kozey"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"corinne.kozey@orn-stehr.org"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5d8e659-cee3-4177-be16-84ed2d9dc32c"</span><span class="w">
+        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7c7a9e4-ba01-42e3-b444-a56aac37730c"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/c5d8e659-cee3-4177-be16-84ed2d9dc32c"</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/b7c7a9e4-ba01-42e3-b444-a56aac37730c"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"disabled_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16510,12 +16520,17 @@ Because of this, a user should always be an actual person, not a legal person.</
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/notes?filter[notable_id]=df986318-01b0-4d9d-ae91-9a9795d8affe&amp;filter[notable_type]=User"</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/notes?filter[notable_id]=a819e4eb-d320-467f-8176-f52ca64f76f5&amp;filter[notable_type]=User"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -16523,7 +16538,7 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p>How to find users belonging to a customer:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=a3d24c69-d4d6-4714-8364-bd9ac4df2dc1&amp;include=customer'</span> <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=874feffa-e807-4b80-80a4-cec186304059&amp;include=customer'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
@@ -16532,24 +16547,20 @@ Because of this, a user should always be an actual person, not a legal person.</
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae76bc40-392b-4fce-ad41-6e285e4bd2cf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7491600a-bcf1-4659-9329-9f6306aa0b0e"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audrey"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rowe"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audrey Rowe"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rowe.audrey@brekke-kuhn.biz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lady"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wunsch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lady Wunsch"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wunsch.lady@gislason.io"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3d24c69-d4d6-4714-8364-bd9ac4df2dc1"</span><span class="w">
+        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"874feffa-e807-4b80-80a4-cec186304059"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/a3d24c69-d4d6-4714-8364-bd9ac4df2dc1"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customers"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3d24c69-d4d6-4714-8364-bd9ac4df2dc1"</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/874feffa-e807-4b80-80a4-cec186304059"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"disabled_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16559,49 +16570,17 @@ Because of this, a user should always be an actual person, not a legal person.</
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/notes?filter[notable_id]=ae76bc40-392b-4fce-ad41-6e285e4bd2cf&amp;filter[notable_type]=User"</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/notes?filter[notable_id]=7491600a-bcf1-4659-9329-9f6306aa0b0e&amp;filter[notable_type]=User"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3d24c69-d4d6-4714-8364-bd9ac4df2dc1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customers"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glover-Rice"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rice_glover@heller-bailey.org"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"discount_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"legal_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-        </span><span class="nl">"tag_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="nl">"merge_suggestion_customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tax_region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"merge_suggestion_customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"tax_region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/barcodes?filter[owner_id]=a3d24c69-d4d6-4714-8364-bd9ac4df2dc1"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?filter%5Bcustomer_id%5D=874feffa-e807-4b80-80a4-cec186304059&amp;include=customer&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?filter%5Bcustomer_id%5D=874feffa-e807-4b80-80a4-cec186304059&amp;include=customer&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?filter%5Bcustomer_id%5D=874feffa-e807-4b80-80a4-cec186304059&amp;include=customer&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='users-listing-users-http-request'>HTTP Request</h3>
@@ -16625,7 +16604,7 @@ Because of this, a user should always be an actual person, not a legal person.</
 </tr>
 <tr>
 <td><code>filter</code></td>
-<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-10-20T11:12:38Z</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-10-21T11:45:54Z</code></td>
 </tr>
 <tr>
 <td><code>sort</code></td>
@@ -16705,19 +16684,13 @@ Because of this, a user should always be an actual person, not a legal person.</
 </tr>
 </tbody></table>
 <h3 id='users-listing-users-includes'>Includes</h3>
-<p>This request accepts the following includes:</p>
-
-<p><code>customer</code></p>
-
-<p><code>disabled_by</code></p>
-
-<p><code>notes</code></p>
+<p>This request does not accept any includes</p>
 <h2 id='users-fetching-a-user'>Fetching a user</h2>
 <blockquote>
 <p>How to fetch a user:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users/4d155456-997e-4e04-9048-bb97b2658e69'</span> <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users/dccb110b-7405-4133-a5bf-2988ec0b4f48'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
@@ -16725,20 +16698,20 @@ Because of this, a user should always be an actual person, not a legal person.</
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d155456-997e-4e04-9048-bb97b2658e69"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dccb110b-7405-4133-a5bf-2988ec0b4f48"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missy"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cruickshank"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missy Cruickshank"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"missy.cruickshank@kshlerin.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leonore"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ullrich"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leonore Ullrich"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ullrich.leonore@walter.name"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"825c43f9-5665-4ce1-97b4-b2c786ae7c29"</span><span class="w">
+      </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4328eb5b-0ec1-4319-ad5e-4179887f626f"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/825c43f9-5665-4ce1-97b4-b2c786ae7c29"</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/4328eb5b-0ec1-4319-ad5e-4179887f626f"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"disabled_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16748,7 +16721,7 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/notes?filter[notable_id]=4d155456-997e-4e04-9048-bb97b2658e69&amp;filter[notable_type]=User"</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/notes?filter[notable_id]=dccb110b-7405-4133-a5bf-2988ec0b4f48&amp;filter[notable_type]=User"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -16783,7 +16756,66 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p><code>disabled_by</code></p>
 
 <p><code>notes</code></p>
-<h2 id='users-inviting-a-user'>Inviting a user</h2><h3 id='users-inviting-a-user-http-request'>HTTP Request</h3>
+<h2 id='users-inviting-a-user'>Inviting a user</h2>
+<blockquote>
+<p>How to invite a user:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "users",
+        "attributes": {
+          "first_name": "Bob",
+          "last_name": "Bobsen",
+          "email": "bob@booqable.com",
+          "customer_id": "cb63523a-ce5d-4ff2-a467-2ddd8a34eef3"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d7e08030-3e9c-44ec-820d-4a22acb6988d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobsen"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob Bobsen"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob@booqable.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invited"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cb63523a-ce5d-4ff2-a467-2ddd8a34eef3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"disabled_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?data%5Battributes%5D%5Bcustomer_id%5D=cb63523a-ce5d-4ff2-a467-2ddd8a34eef3&amp;data%5Battributes%5D%5Bemail%5D=bob%40booqable.com&amp;data%5Battributes%5D%5Bfirst_name%5D=Bob&amp;data%5Battributes%5D%5Blast_name%5D=Bobsen&amp;data%5Btype%5D=users&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?data%5Battributes%5D%5Bcustomer_id%5D=cb63523a-ce5d-4ff2-a467-2ddd8a34eef3&amp;data%5Battributes%5D%5Bemail%5D=bob%40booqable.com&amp;data%5Battributes%5D%5Bfirst_name%5D=Bob&amp;data%5Battributes%5D%5Blast_name%5D=Bobsen&amp;data%5Btype%5D=users&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/users?data%5Battributes%5D%5Bcustomer_id%5D=cb63523a-ce5d-4ff2-a467-2ddd8a34eef3&amp;data%5Battributes%5D%5Bemail%5D=bob%40booqable.com&amp;data%5Battributes%5D%5Bfirst_name%5D=Bob&amp;data%5Battributes%5D%5Blast_name%5D=Bobsen&amp;data%5Btype%5D=users&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='users-inviting-a-user-http-request'>HTTP Request</h3>
 <p><code>POST /api/boomerang/users</code></p>
 <h3 id='users-inviting-a-user-request-params'>Request params</h3>
 <p>This request accepts the following paramaters:</p>
@@ -16846,11 +16878,11 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p>How to update a user:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> PUT <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users/97c9e16e-e899-4f1b-97e8-d8fe4a2f1e93'</span> <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users/a83590c1-2d5b-4aa6-b97f-6eb0123a839e'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
     <span class="nt">--data</span> <span class="s1">'{
       "data": {
-        "id": "97c9e16e-e899-4f1b-97e8-d8fe4a2f1e93",
+        "id": "a83590c1-2d5b-4aa6-b97f-6eb0123a839e",
         "type": "users",
         "attributes": {
           "first_name": "Bobba"
@@ -16863,15 +16895,15 @@ Because of this, a user should always be an actual person, not a legal person.</
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97c9e16e-e899-4f1b-97e8-d8fe4a2f1e93"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a83590c1-2d5b-4aa6-b97f-6eb0123a839e"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Milford"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sanford"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Milford Sanford"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sanford_milford@grant-roob.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobba"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stoltenberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bobba Stoltenberg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stoltenberg.trinidad@gottlieb-roob.org"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3f65eeee-a5d4-43ee-81b0-eb28d0695d90"</span><span class="w">
+      </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f67194f9-aaa6-4a78-8bd1-e6ef4f80defb"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -16944,6 +16976,226 @@ Because of this, a user should always be an actual person, not a legal person.</
 </tr>
 </tbody></table>
 <h3 id='users-updating-a-user-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>customer</code></p>
+
+<p><code>disabled_by</code></p>
+
+<p><code>notes</code></p>
+<h2 id='users-enabling-a-user'>Enabling a user</h2>
+<blockquote>
+<p>How to enable a user:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> PUT <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users/c2185a97-ccc7-4c27-b513-e0104a6eb51b'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "id": "c2185a97-ccc7-4c27-b513-e0104a6eb51b",
+        "type": "users",
+        "attributes": {
+          "disabled": false
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c2185a97-ccc7-4c27-b513-e0104a6eb51b"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ben"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Emard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ben Emard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ben.emard@mckenzie.name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11a4a5fe-12a4-429f-b6bc-1cbf0a42d96e"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"disabled_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='users-enabling-a-user-http-request'>HTTP Request</h3>
+<p><code>PUT /api/boomerang/users/{id}</code></p>
+<h3 id='users-enabling-a-user-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=customer,disabled_by,notes</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[users]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='users-enabling-a-user-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][first_name]</code></td>
+<td><strong>String</strong><br>The first name of the user</td>
+</tr>
+<tr>
+<td><code>data[attributes][last_name]</code></td>
+<td><strong>String</strong><br>The last name of the user</td>
+</tr>
+<tr>
+<td><code>data[attributes][email]</code></td>
+<td><strong>String</strong><br>The email of the user</td>
+</tr>
+<tr>
+<td><code>data[attributes][disabled]</code></td>
+<td><strong>Boolean</strong><br>When a user is disabled they cannot log into their account or create orders</td>
+</tr>
+<tr>
+<td><code>data[attributes][customer_id]</code></td>
+<td><strong>Uuid</strong><br>The associated Customer</td>
+</tr>
+</tbody></table>
+<h3 id='users-enabling-a-user-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>customer</code></p>
+
+<p><code>disabled_by</code></p>
+
+<p><code>notes</code></p>
+<h2 id='users-disabling-a-user'>Disabling a user</h2>
+<blockquote>
+<p>How to disable a user:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> PUT <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/users/44fb56a0-78bc-465e-ac2f-dd4d7404145c'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "id": "44fb56a0-78bc-465e-ac2f-dd4d7404145c",
+        "type": "users",
+        "attributes": {
+          "disabled": true
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44fb56a0-78bc-465e-ac2f-dd4d7404145c"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tennille"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zulauf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tennille Zulauf"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tennille_zulauf@windler.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disabled"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eee8103e-66c2-468a-a3da-ea20866adfa7"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"disabled_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='users-disabling-a-user-http-request'>HTTP Request</h3>
+<p><code>PUT /api/boomerang/users/{id}</code></p>
+<h3 id='users-disabling-a-user-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=customer,disabled_by,notes</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[users]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='users-disabling-a-user-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][first_name]</code></td>
+<td><strong>String</strong><br>The first name of the user</td>
+</tr>
+<tr>
+<td><code>data[attributes][last_name]</code></td>
+<td><strong>String</strong><br>The last name of the user</td>
+</tr>
+<tr>
+<td><code>data[attributes][email]</code></td>
+<td><strong>String</strong><br>The email of the user</td>
+</tr>
+<tr>
+<td><code>data[attributes][disabled]</code></td>
+<td><strong>Boolean</strong><br>When a user is disabled they cannot log into their account or create orders</td>
+</tr>
+<tr>
+<td><code>data[attributes][customer_id]</code></td>
+<td><strong>Uuid</strong><br>The associated Customer</td>
+</tr>
+</tbody></table>
+<h3 id='users-disabling-a-user-includes'>Includes</h3>
 <p>This request accepts the following includes:</p>
 
 <p><code>customer</code></p>
