@@ -29,6 +29,7 @@ includes:
   - lines
   - plannings
   - stock_item_plannings
+  - payment_methods
   - payments
   - transactions
   - clusters
