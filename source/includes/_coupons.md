@@ -1,6 +1,6 @@
 # Coupons
 
-Create codes to discount orders by a fixed amount or a percentage. Customers can redeem the codes online at checkout. Coupons can also be added to orders through the API.
+Create codes to discount orders by a fixed amount or a percentage. Customers can redeem the codes online at checkout. Coupons can also be added to orders.
 
 ## Endpoints
 `GET /api/boomerang/coupons`
@@ -24,7 +24,7 @@ Name | Description
 `identifier` | **String**<br>The code that customers need to type in
 `coupon_type` | **String**<br>One of `percentage`, `cents`
 `value` | **Integer**<br>A percentage for type `percentage` or a value in cents for `cents`
-`active` | **Boolean**<br>Whether coupon is currently active
+`active` | **Boolean**<br>Whether coupon can be redeemed at the moment
 `archived` | **Boolean** `readonly`<br>Whether coupon is archived
 
 
@@ -44,11 +44,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "f1e8982d-be51-4983-bd32-49f7d24c98cf",
+      "id": "868d9e36-1fa7-4a5f-bc8a-fbc2b9f6f327",
       "type": "coupons",
       "attributes": {
-        "created_at": "2021-10-14T21:43:47+00:00",
-        "updated_at": "2021-10-14T21:43:47+00:00",
         "identifier": "SUMMER20OFF",
         "coupon_type": "percentage",
         "value": 20,
@@ -57,6 +55,11 @@ Name | Description
       }
     }
   ],
+  "links": {
+    "self": "api/boomerang/coupons?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/coupons?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/coupons?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  },
   "meta": {}
 }
 ```
@@ -74,7 +77,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-14T21:43:45Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -115,7 +118,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/coupons/eac58800-79ae-422b-bebb-7cc07f429321' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/10ad0c32-7254-486f-a612-ecb09f2ab686' \
     --header 'content-type: application/json' \
 ```
 
@@ -124,11 +127,9 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "eac58800-79ae-422b-bebb-7cc07f429321",
+    "id": "10ad0c32-7254-486f-a612-ecb09f2ab686",
     "type": "coupons",
     "attributes": {
-      "created_at": "2021-10-14T21:43:48+00:00",
-      "updated_at": "2021-10-14T21:43:48+00:00",
       "identifier": "SUMMER20OFF",
       "coupon_type": "percentage",
       "value": 20,
@@ -184,17 +185,20 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3d2fc1ea-4f31-45ff-b27f-90ee1eba989f",
+    "id": "4d9faad7-138e-400a-b7d1-d5a69963eaf0",
     "type": "coupons",
     "attributes": {
-      "created_at": "2021-10-14T21:43:49+00:00",
-      "updated_at": "2021-10-14T21:43:49+00:00",
       "identifier": "WINTERDISCOUNT",
       "coupon_type": "cents",
       "value": 2000,
       "active": true,
       "archived": false
     }
+  },
+  "links": {
+    "self": "api/boomerang/coupons?data%5Battributes%5D%5Bactive%5D=true&data%5Battributes%5D%5Bcoupon_type%5D=cents&data%5Battributes%5D%5Bidentifier%5D=WINTERDISCOUNT&data%5Battributes%5D%5Bvalue%5D=2000&data%5Btype%5D=coupons&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/coupons?data%5Battributes%5D%5Bactive%5D=true&data%5Battributes%5D%5Bcoupon_type%5D=cents&data%5Battributes%5D%5Bidentifier%5D=WINTERDISCOUNT&data%5Battributes%5D%5Bvalue%5D=2000&data%5Btype%5D=coupons&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/coupons?data%5Battributes%5D%5Bactive%5D=true&data%5Battributes%5D%5Bcoupon_type%5D=cents&data%5Battributes%5D%5Bidentifier%5D=WINTERDISCOUNT&data%5Battributes%5D%5Bvalue%5D=2000&data%5Btype%5D=coupons&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -224,7 +228,7 @@ Name | Description
 `data[attributes][identifier]` | **String**<br>The code that customers need to type in
 `data[attributes][coupon_type]` | **String**<br>One of `percentage`, `cents`
 `data[attributes][value]` | **Integer**<br>A percentage for type `percentage` or a value in cents for `cents`
-`data[attributes][active]` | **Boolean**<br>Whether coupon is currently active
+`data[attributes][active]` | **Boolean**<br>Whether coupon can be redeemed at the moment
 
 
 ### Includes
@@ -236,11 +240,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/12d48803-f2bb-44a8-a510-efdd3489e3fa' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/1ed8072c-db57-44ea-a0c9-e4ee82b6caed' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "12d48803-f2bb-44a8-a510-efdd3489e3fa",
+        "id": "1ed8072c-db57-44ea-a0c9-e4ee82b6caed",
         "type": "coupons",
         "attributes": {
           "identifier": "SUMMER30OFF",
@@ -256,11 +260,9 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "a9a8ecc5-ebae-4331-9678-2581dec5f84b",
+    "id": "97eb42ef-2085-4b68-ba1d-043504e212db",
     "type": "coupons",
     "attributes": {
-      "created_at": "2021-10-14T21:43:50+00:00",
-      "updated_at": "2021-10-14T21:43:50+00:00",
       "identifier": "SUMMER30OFF",
       "coupon_type": "percentage",
       "value": 30,
@@ -277,11 +279,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/dbdee0d0-b706-475b-a7f8-4dc09114b9ca' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/40274dd8-45ea-40d5-be0b-765b91ac9271' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "dbdee0d0-b706-475b-a7f8-4dc09114b9ca",
+        "id": "40274dd8-45ea-40d5-be0b-765b91ac9271",
         "type": "coupons",
         "attributes": {
           "active": false
@@ -295,11 +297,9 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "27be810f-a0dd-4f1b-a2d8-1740ad13733f",
+    "id": "93048b17-b812-43cf-a607-a3819230fa79",
     "type": "coupons",
     "attributes": {
-      "created_at": "2021-10-14T21:43:51+00:00",
-      "updated_at": "2021-10-14T21:43:51+00:00",
       "identifier": "SUMMER20OFF",
       "coupon_type": "percentage",
       "value": 20,
@@ -336,7 +336,7 @@ Name | Description
 `data[attributes][identifier]` | **String**<br>The code that customers need to type in
 `data[attributes][coupon_type]` | **String**<br>One of `percentage`, `cents`
 `data[attributes][value]` | **Integer**<br>A percentage for type `percentage` or a value in cents for `cents`
-`data[attributes][active]` | **Boolean**<br>Whether coupon is currently active
+`data[attributes][active]` | **Boolean**<br>Whether coupon can be redeemed at the moment
 
 
 ### Includes
@@ -348,7 +348,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/coupons/4b4995f7-b81d-4af2-94af-586b1414b5f7' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/9f9d332d-10c8-49e5-97d5-0c1769426ed7' \
     --header 'content-type: application/json' \
 ```
 

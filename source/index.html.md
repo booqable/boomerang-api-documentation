@@ -52,6 +52,7 @@ includes:
   - login_activities
   - currencies
   - ip_addresses
+  - users
 
 search: true
 
