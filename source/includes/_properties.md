@@ -81,12 +81,12 @@ Name | Description
 `country` | **String**<br>For type `address`
 `value` | **String**<br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
 `owner_id` | **Uuid**<br>ID of its owner
-`owner_type` | **String**<br>The resource type of the owner. One of `Order`, `Item`, `Customer`, `User`, `StockItem`
+`owner_type` | **String**<br>The resource type of the owner. One of `Order`, `ProductGroup`, `Customer`, `User`, `StockItem`
 `default_property_id` | **Uuid**<br>The associated Default property
 
 
 ## Relationships
-A properties has the following relationships:
+Properties have the following relationships:
 
 Name | Description
 - | -
@@ -112,18 +112,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "60105784-5b70-4a89-8707-8d4b80234bb4",
+      "id": "b28abd66-072b-489d-ba15-c663604aab10",
       "type": "properties",
       "attributes": {
-        "created_at": "2021-10-08T11:20:05+00:00",
-        "updated_at": "2021-10-08T11:20:05+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": null,
         "property_type": "phone",
         "show_on": [],
         "value": "+316000000",
-        "owner_id": "244e30a0-39e0-4066-b21d-5b79734bdcd2",
+        "owner_id": "b45711d3-e448-4bc1-8374-92a5992054d0",
         "owner_type": "Customer",
         "default_property_id": null
       },
@@ -135,11 +133,11 @@ Name | Description
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/244e30a0-39e0-4066-b21d-5b79734bdcd2"
+            "related": "api/boomerang/customers/b45711d3-e448-4bc1-8374-92a5992054d0"
           },
           "data": {
             "type": "customers",
-            "id": "244e30a0-39e0-4066-b21d-5b79734bdcd2"
+            "id": "b45711d3-e448-4bc1-8374-92a5992054d0"
           }
         }
       }
@@ -147,14 +145,12 @@ Name | Description
   ],
   "included": [
     {
-      "id": "244e30a0-39e0-4066-b21d-5b79734bdcd2",
+      "id": "b45711d3-e448-4bc1-8374-92a5992054d0",
       "type": "customers",
       "attributes": {
-        "created_at": "2021-10-08T11:20:05+00:00",
-        "updated_at": "2021-10-08T11:20:05+00:00",
         "number": 1,
-        "name": "Spencer Group",
-        "email": "group_spencer@mosciski.io",
+        "name": "Hettinger Group",
+        "email": "hettinger_group@fahey.io",
         "archived": false,
         "deposit_type": "default",
         "deposit_value": 0.0,
@@ -180,17 +176,27 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=244e30a0-39e0-4066-b21d-5b79734bdcd2&filter[owner_type]=Customer"
+            "related": "api/boomerang/properties?filter[owner_id]=b45711d3-e448-4bc1-8374-92a5992054d0&filter[owner_type]=Customer"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=244e30a0-39e0-4066-b21d-5b79734bdcd2"
+            "related": "api/boomerang/barcodes?filter[owner_id]=b45711d3-e448-4bc1-8374-92a5992054d0"
+          }
+        },
+        "notes": {
+          "links": {
+            "related": "api/boomerang/notes?filter[notable_id]=b45711d3-e448-4bc1-8374-92a5992054d0&filter[notable_type]=Customer"
           }
         }
       }
     }
   ],
+  "links": {
+    "self": "api/boomerang/properties?include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/properties?include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/properties?include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  },
   "meta": {}
 }
 ```
@@ -207,7 +213,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=default_property,owner`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-08T11:20:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-25T12:33:46Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -258,7 +264,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/properties/b007ae4c-cbb0-4a99-9387-1bb9008a74ce?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/properties/c2b12262-6def-4c4c-920b-7f33befadbff?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -267,18 +273,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b007ae4c-cbb0-4a99-9387-1bb9008a74ce",
+    "id": "c2b12262-6def-4c4c-920b-7f33befadbff",
     "type": "properties",
     "attributes": {
-      "created_at": "2021-10-08T11:20:06+00:00",
-      "updated_at": "2021-10-08T11:20:06+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": null,
       "property_type": "phone",
       "show_on": [],
       "value": "+316000000",
-      "owner_id": "38e67d51-1803-45be-8031-53938a1ee8cc",
+      "owner_id": "5fdeb454-0c84-43b6-aaa2-88edd3d50fc0",
       "owner_type": "Customer",
       "default_property_id": null
     },
@@ -290,25 +294,23 @@ This request accepts the following includes:
       },
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/38e67d51-1803-45be-8031-53938a1ee8cc"
+          "related": "api/boomerang/customers/5fdeb454-0c84-43b6-aaa2-88edd3d50fc0"
         },
         "data": {
           "type": "customers",
-          "id": "38e67d51-1803-45be-8031-53938a1ee8cc"
+          "id": "5fdeb454-0c84-43b6-aaa2-88edd3d50fc0"
         }
       }
     }
   },
   "included": [
     {
-      "id": "38e67d51-1803-45be-8031-53938a1ee8cc",
+      "id": "5fdeb454-0c84-43b6-aaa2-88edd3d50fc0",
       "type": "customers",
       "attributes": {
-        "created_at": "2021-10-08T11:20:06+00:00",
-        "updated_at": "2021-10-08T11:20:06+00:00",
         "number": 1,
-        "name": "Nitzsche, Blick and Jones",
-        "email": "nitzsche.jones.and.blick@cummings-gottlieb.com",
+        "name": "Mohr Group",
+        "email": "group_mohr@smith.co",
         "archived": false,
         "deposit_type": "default",
         "deposit_value": 0.0,
@@ -334,12 +336,17 @@ This request accepts the following includes:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=38e67d51-1803-45be-8031-53938a1ee8cc&filter[owner_type]=Customer"
+            "related": "api/boomerang/properties?filter[owner_id]=5fdeb454-0c84-43b6-aaa2-88edd3d50fc0&filter[owner_type]=Customer"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=38e67d51-1803-45be-8031-53938a1ee8cc"
+            "related": "api/boomerang/barcodes?filter[owner_id]=5fdeb454-0c84-43b6-aaa2-88edd3d50fc0"
+          }
+        },
+        "notes": {
+          "links": {
+            "related": "api/boomerang/notes?filter[notable_id]=5fdeb454-0c84-43b6-aaa2-88edd3d50fc0&filter[notable_type]=Customer"
           }
         }
       }
@@ -391,7 +398,7 @@ This request accepts the following includes:
           "name": "Phone",
           "property_type": "phone",
           "value": "+316000000",
-          "owner_id": "766b143a-c50a-4e9a-9afa-fa53b247ddba",
+          "owner_id": "e1b9397c-53e1-4f53-a5d9-9c8646f23c9d",
           "owner_type": "Customer"
         }
       },
@@ -404,18 +411,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "84f007d9-761e-49fc-b354-be5cc4fd519a",
+    "id": "0a111fad-b84c-47a8-8845-923bf4c4da11",
     "type": "properties",
     "attributes": {
-      "created_at": "2021-10-08T11:20:07+00:00",
-      "updated_at": "2021-10-08T11:20:07+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": null,
       "property_type": "phone",
       "show_on": [],
       "value": "+316000000",
-      "owner_id": "766b143a-c50a-4e9a-9afa-fa53b247ddba",
+      "owner_id": "e1b9397c-53e1-4f53-a5d9-9c8646f23c9d",
       "owner_type": "Customer",
       "default_property_id": null
     },
@@ -428,21 +433,19 @@ This request accepts the following includes:
       "owner": {
         "data": {
           "type": "customers",
-          "id": "766b143a-c50a-4e9a-9afa-fa53b247ddba"
+          "id": "e1b9397c-53e1-4f53-a5d9-9c8646f23c9d"
         }
       }
     }
   },
   "included": [
     {
-      "id": "766b143a-c50a-4e9a-9afa-fa53b247ddba",
+      "id": "e1b9397c-53e1-4f53-a5d9-9c8646f23c9d",
       "type": "customers",
       "attributes": {
-        "created_at": "2021-10-08T11:20:07+00:00",
-        "updated_at": "2021-10-08T11:20:07+00:00",
         "number": 2,
         "name": "Jane Doe",
-        "email": "jane.doe@sawayn.name",
+        "email": "jane_doe@tillman.biz",
         "archived": false,
         "deposit_type": "default",
         "deposit_value": 0.0,
@@ -475,10 +478,20 @@ This request accepts the following includes:
           "meta": {
             "included": false
           }
+        },
+        "notes": {
+          "meta": {
+            "included": false
+          }
         }
       }
     }
   ],
+  "links": {
+    "self": "api/boomerang/properties?data%5Battributes%5D%5Bname%5D=Phone&data%5Battributes%5D%5Bowner_id%5D=e1b9397c-53e1-4f53-a5d9-9c8646f23c9d&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Battributes%5D%5Bvalue%5D=%2B316000000&data%5Btype%5D=properties&include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/properties?data%5Battributes%5D%5Bname%5D=Phone&data%5Battributes%5D%5Bowner_id%5D=e1b9397c-53e1-4f53-a5d9-9c8646f23c9d&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Battributes%5D%5Bvalue%5D=%2B316000000&data%5Btype%5D=properties&include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/properties?data%5Battributes%5D%5Bname%5D=Phone&data%5Battributes%5D%5Bowner_id%5D=e1b9397c-53e1-4f53-a5d9-9c8646f23c9d&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Battributes%5D%5Bvalue%5D=%2B316000000&data%5Btype%5D=properties&include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  },
   "meta": {}
 }
 ```
@@ -518,7 +531,7 @@ Name | Description
 `data[attributes][country]` | **String**<br>For type `address`
 `data[attributes][value]` | **String**<br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
 `data[attributes][owner_id]` | **Uuid**<br>ID of its owner
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `Item`, `Customer`, `User`, `StockItem`
+`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `ProductGroup`, `Customer`, `User`, `StockItem`
 `data[attributes][default_property_id]` | **Uuid**<br>The associated Default property
 
 
@@ -541,11 +554,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/properties/9af6ad12-3b43-4b57-9e42-074ada0626d5' \
+    --url 'https://example.booqable.com/api/boomerang/properties/6c28e702-5773-48f5-b438-754fedcd39f8' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9af6ad12-3b43-4b57-9e42-074ada0626d5",
+        "id": "6c28e702-5773-48f5-b438-754fedcd39f8",
         "type": "properties",
         "attributes": {
           "value": "+316000001"
@@ -559,18 +572,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9af6ad12-3b43-4b57-9e42-074ada0626d5",
+    "id": "6c28e702-5773-48f5-b438-754fedcd39f8",
     "type": "properties",
     "attributes": {
-      "created_at": "2021-10-08T11:20:08+00:00",
-      "updated_at": "2021-10-08T11:20:08+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": null,
       "property_type": "phone",
       "show_on": [],
       "value": "+316000001",
-      "owner_id": "71c897e1-cb1d-4402-a696-b02eec1b32e4",
+      "owner_id": "7294ac8b-1b0a-471c-9ea1-8d0189b6901c",
       "owner_type": "Customer",
       "default_property_id": null
     },
@@ -626,7 +637,7 @@ Name | Description
 `data[attributes][country]` | **String**<br>For type `address`
 `data[attributes][value]` | **String**<br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
 `data[attributes][owner_id]` | **Uuid**<br>ID of its owner
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `Item`, `Customer`, `User`, `StockItem`
+`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `ProductGroup`, `Customer`, `User`, `StockItem`
 `data[attributes][default_property_id]` | **Uuid**<br>The associated Default property
 
 
@@ -649,7 +660,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/properties/e271e62a-4938-4842-8315-d75fbeedcbfa' \
+    --url 'https://example.booqable.com/api/boomerang/properties/f9448b10-f895-42c6-ad5d-d363f200f777' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -716,11 +727,9 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "2b0323bc-3ff6-4cc8-aa01-d83de41014a0",
+    "id": "921437f6-72df-42a4-923f-b7f6b1b33fda",
     "type": "customers",
     "attributes": {
-      "created_at": "2021-10-08T11:20:10+00:00",
-      "updated_at": "2021-10-08T11:20:10+00:00",
       "number": 2,
       "name": "John Doe",
       "email": null,
@@ -756,8 +765,18 @@ On the following resources you can manage multiple properties at once:
         "meta": {
           "included": false
         }
+      },
+      "notes": {
+        "meta": {
+          "included": false
+        }
       }
     }
+  },
+  "links": {
+    "self": "api/boomerang/customers?data%5Battributes%5D%5Bname%5D=John+Doe&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bidentifier%5D=phone&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bvalue%5D=%2B316000000&data%5Btype%5D=customers&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/customers?data%5Battributes%5D%5Bname%5D=John+Doe&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bidentifier%5D=phone&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bvalue%5D=%2B316000000&data%5Btype%5D=customers&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/customers?data%5Battributes%5D%5Bname%5D=John+Doe&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bidentifier%5D=phone&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bvalue%5D=%2B316000000&data%5Btype%5D=customers&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -792,11 +811,9 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "f2cee2e7-e257-46ce-b0f4-9cd1be4c3ed7",
+    "id": "35ed66c1-5d7c-42a6-bcab-5446606ad32b",
     "type": "customers",
     "attributes": {
-      "created_at": "2021-10-08T11:20:10+00:00",
-      "updated_at": "2021-10-08T11:20:10+00:00",
       "number": 2,
       "name": "John Doe",
       "email": null,
@@ -832,8 +849,18 @@ On the following resources you can manage multiple properties at once:
         "meta": {
           "included": false
         }
+      },
+      "notes": {
+        "meta": {
+          "included": false
+        }
       }
     }
+  },
+  "links": {
+    "self": "api/boomerang/customers?data%5Battributes%5D%5Bname%5D=John+Doe&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bname%5D=Phone&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bvalue%5D=%2B316000000&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bproperty_type%5D=phone&data%5Btype%5D=customers&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/customers?data%5Battributes%5D%5Bname%5D=John+Doe&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bname%5D=Phone&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bvalue%5D=%2B316000000&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bproperty_type%5D=phone&data%5Btype%5D=customers&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/customers?data%5Battributes%5D%5Bname%5D=John+Doe&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bname%5D=Phone&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bvalue%5D=%2B316000000&data%5Battributes%5D%5Bproperties_attributes%5D%5B%5D%5Bproperty_type%5D=phone&data%5Btype%5D=customers&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -844,12 +871,12 @@ On the following resources you can manage multiple properties at once:
 
 ```shell
   curl --request  \
-    --url 'https://example.booqable.com/api/boomerang/customers/65796e65-63bf-44d1-877b-a1f2f446d856' \
+    --url 'https://example.booqable.com/api/boomerang/customers/530204eb-7646-42bd-ba29-5710b4effbb4' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "customers",
-        "id": "65796e65-63bf-44d1-877b-a1f2f446d856",
+        "id": "530204eb-7646-42bd-ba29-5710b4effbb4",
         "attributes": {
           "name": "John Doe",
           "properties_attributes": [
@@ -872,14 +899,12 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "65796e65-63bf-44d1-877b-a1f2f446d856",
+    "id": "530204eb-7646-42bd-ba29-5710b4effbb4",
     "type": "customers",
     "attributes": {
-      "created_at": "2021-10-08T11:20:11+00:00",
-      "updated_at": "2021-10-08T11:20:11+00:00",
       "number": 2,
       "name": "John Doe",
-      "email": "cummerata_hilll_bogisich_and@hane-hansen.net",
+      "email": "mcclure_collins_and_corkery@cartwright.net",
       "archived": false,
       "deposit_type": "default",
       "deposit_value": 0.0,
@@ -909,6 +934,11 @@ On the following resources you can manage multiple properties at once:
         }
       },
       "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "notes": {
         "meta": {
           "included": false
         }

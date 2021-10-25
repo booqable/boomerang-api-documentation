@@ -36,6 +36,8 @@ Name | Description
 
 ## Listing tax categories
 
+
+
 > How to fetch a list of tax categories:
 
 ```shell
@@ -50,7 +52,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "5836c061-751b-456a-8591-d232f18b2f56",
+      "id": "33ab4d00-faf1-40e2-a7f3-28e84aa9f2b9",
       "type": "tax_categories",
       "attributes": {
         "name": "Sales Tax",
@@ -59,7 +61,7 @@ Name | Description
       "relationships": {
         "tax_rates": {
           "links": {
-            "related": "api/boomerang/tax_rates?filter[owner_id]=5836c061-751b-456a-8591-d232f18b2f56&filter[owner_type]=TaxCategory"
+            "related": "api/boomerang/tax_rates?filter[owner_id]=33ab4d00-faf1-40e2-a7f3-28e84aa9f2b9&filter[owner_type]=TaxCategory"
           }
         }
       }
@@ -74,7 +76,6 @@ Name | Description
 }
 ```
 
-
 ### HTTP Request
 
 `GET /api/boomerang/tax_categories`
@@ -87,7 +88,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_categories]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-25T12:33:46Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -128,11 +129,13 @@ This request accepts the following includes:
 
 ## Fetching a tax category
 
+
+
 > How to fetch a tax categories with it's tax rates:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/47908455-c607-46c4-aa82-f61caa8113cb?include=tax_rates' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/0543fb62-63f0-4c3c-a8be-75c32c7bc1e7?include=tax_rates' \
     --header 'content-type: application/json' \
 ```
 
@@ -141,7 +144,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "47908455-c607-46c4-aa82-f61caa8113cb",
+    "id": "0543fb62-63f0-4c3c-a8be-75c32c7bc1e7",
     "type": "tax_categories",
     "attributes": {
       "name": "Sales Tax",
@@ -150,12 +153,12 @@ This request accepts the following includes:
     "relationships": {
       "tax_rates": {
         "links": {
-          "related": "api/boomerang/tax_rates?filter[owner_id]=47908455-c607-46c4-aa82-f61caa8113cb&filter[owner_type]=TaxCategory"
+          "related": "api/boomerang/tax_rates?filter[owner_id]=0543fb62-63f0-4c3c-a8be-75c32c7bc1e7&filter[owner_type]=TaxCategory"
         },
         "data": [
           {
             "type": "tax_rates",
-            "id": "08dd0ebc-a795-4a56-9042-1f5c927e5926"
+            "id": "a62c23dc-0d8b-43a4-9985-bcd2668a7a6d"
           }
         ]
       }
@@ -163,19 +166,19 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "08dd0ebc-a795-4a56-9042-1f5c927e5926",
+      "id": "a62c23dc-0d8b-43a4-9985-bcd2668a7a6d",
       "type": "tax_rates",
       "attributes": {
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "47908455-c607-46c4-aa82-f61caa8113cb",
+        "owner_id": "0543fb62-63f0-4c3c-a8be-75c32c7bc1e7",
         "owner_type": "TaxCategory"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/tax_categories/47908455-c607-46c4-aa82-f61caa8113cb"
+            "related": "api/boomerang/tax_categories/0543fb62-63f0-4c3c-a8be-75c32c7bc1e7"
           }
         }
       }
@@ -184,7 +187,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -212,6 +214,8 @@ This request accepts the following includes:
 
 
 ## Creating a tax category
+
+
 
 > How to create a tax category with tax rates:
 
@@ -241,7 +245,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8f7cf83f-dfc2-462d-9df6-67da5a87ac53",
+    "id": "006c0897-d3eb-43d3-a85e-fbd15d5373f8",
     "type": "tax_categories",
     "attributes": {
       "name": "Sales Tax",
@@ -252,7 +256,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "7ca08e0f-bfae-47a8-b8c1-c9616c91b2fd"
+            "id": "3689c1e3-1df0-4f82-8649-f91fe1077ac5"
           }
         ]
       }
@@ -260,13 +264,13 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "7ca08e0f-bfae-47a8-b8c1-c9616c91b2fd",
+      "id": "3689c1e3-1df0-4f82-8649-f91fe1077ac5",
       "type": "tax_rates",
       "attributes": {
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "8f7cf83f-dfc2-462d-9df6-67da5a87ac53",
+        "owner_id": "006c0897-d3eb-43d3-a85e-fbd15d5373f8",
         "owner_type": "TaxCategory"
       },
       "relationships": {
@@ -286,7 +290,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -326,15 +329,17 @@ This request accepts the following includes:
 
 ## Updating a tax category
 
+
+
 > How to update a tax category with tax rates:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/4e806bda-442a-45d3-9221-b2a5926206a2' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/ea219048-a8ac-423c-91b1-ade2fa0dffdb' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4e806bda-442a-45d3-9221-b2a5926206a2",
+        "id": "ea219048-a8ac-423c-91b1-ade2fa0dffdb",
         "type": "tax_categories",
         "attributes": {
           "name": "State Tax",
@@ -344,7 +349,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "c501e7df-a90f-4ae6-99d7-894071596147",
+              "id": "260fb9b4-d970-485d-8174-2d44ea75f25d",
               "_destroy": true
             }
           ]
@@ -359,7 +364,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4e806bda-442a-45d3-9221-b2a5926206a2",
+    "id": "ea219048-a8ac-423c-91b1-ade2fa0dffdb",
     "type": "tax_categories",
     "attributes": {
       "name": "State Tax",
@@ -370,7 +375,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "ab6e22c2-133d-4835-9e47-869f65d77410"
+            "id": "3e2b61d5-3600-474a-a856-51bb78cf9a6d"
           }
         ]
       }
@@ -378,13 +383,13 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "ab6e22c2-133d-4835-9e47-869f65d77410",
+      "id": "3e2b61d5-3600-474a-a856-51bb78cf9a6d",
       "type": "tax_rates",
       "attributes": {
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "4e806bda-442a-45d3-9221-b2a5926206a2",
+        "owner_id": "ea219048-a8ac-423c-91b1-ade2fa0dffdb",
         "owner_type": "TaxCategory"
       },
       "relationships": {
@@ -399,7 +404,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -439,11 +443,13 @@ This request accepts the following includes:
 
 ## Deleting a tax category
 
+
+
 > How to delete a tax category with tax rates:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/10c760cd-7674-480a-b7be-d73d8809582d' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/885b6385-670d-43f1-8fd7-7d96ca93368f' \
     --header 'content-type: application/json' \
 ```
 
@@ -454,7 +460,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 

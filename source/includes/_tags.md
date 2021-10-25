@@ -24,6 +24,8 @@ Name | Description
 
 ## Listing tags
 
+
+
 > How to fetch a list of tags with their counts:
 
 ```shell
@@ -38,7 +40,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "ce299b19-2b0c-49fd-83a8-76721d21a500",
+      "id": "027800b5-0c04-456f-b279-a7265e85e6cb",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -46,7 +48,7 @@ Name | Description
       }
     },
     {
-      "id": "f7a6bb5a-508c-4947-9de2-f7cf618e6341",
+      "id": "d8cce4ed-809b-4871-a640-567476bdafa3",
       "type": "tags",
       "attributes": {
         "name": "webshop",
@@ -64,7 +66,6 @@ Name | Description
 }
 ```
 
-
 ### HTTP Request
 
 `GET /api/boomerang/tags`
@@ -77,7 +78,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-25T12:33:46Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

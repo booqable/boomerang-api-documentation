@@ -28,6 +28,8 @@ Name | Description
 
 ## Fetching a currency
 
+
+
 > How to fetch a currency:
 
 ```shell
@@ -62,7 +64,6 @@ Name | Description
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
