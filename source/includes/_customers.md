@@ -43,11 +43,14 @@ Name | Description
 - | -
 `merge_suggestion_customer` | **Customers** `readonly`<br>Associated Merge suggestion customer
 `tax_region` | **Tax regions** `readonly`<br>Associated Tax region
+`properties` | **Properties** `readonly`<br>Associated Properties
 `barcode` | **Barcodes**<br>Associated Barcode
 `notes` | **Notes** `readonly`<br>Associated Notes
 
 
 ## Listing customers
+
+
 
 > How to fetch a list of customers:
 
@@ -63,12 +66,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "ed89eb6d-5d0d-4206-a378-e2f7e2556554",
+      "id": "a1aaaf97-2650-4919-8cd8-3bb997d4c393",
       "type": "customers",
       "attributes": {
         "number": 1,
         "name": "John Doe",
-        "email": "doe.john@shields-rempel.co",
+        "email": "john.doe@swift-russel.org",
         "archived": false,
         "deposit_type": "default",
         "deposit_value": 0.0,
@@ -90,14 +93,19 @@ Name | Description
             "related": null
           }
         },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=a1aaaf97-2650-4919-8cd8-3bb997d4c393&filter[owner_type]=Customer"
+          }
+        },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=ed89eb6d-5d0d-4206-a378-e2f7e2556554"
+            "related": "api/boomerang/barcodes?filter[owner_id]=a1aaaf97-2650-4919-8cd8-3bb997d4c393"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[notable_id]=ed89eb6d-5d0d-4206-a378-e2f7e2556554&filter[notable_type]=Customer"
+            "related": "api/boomerang/notes?filter[notable_id]=a1aaaf97-2650-4919-8cd8-3bb997d4c393&filter[notable_type]=Customer"
           }
         }
       }
@@ -112,7 +120,6 @@ Name | Description
 }
 ```
 
-
 ### HTTP Request
 
 `GET /api/boomerang/customers`
@@ -123,9 +130,9 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-26T09:51:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -169,11 +176,13 @@ Name | Description
 This request does not accept any includes
 ## Fetching a customer
 
+
+
 > How to fetch a customers:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/b28c3d7d-e9d3-4244-82f4-f62d32c9c5a0' \
+    --url 'https://example.booqable.com/api/boomerang/customers/1ee19c6f-e79e-4436-bef4-ea013c19fc71' \
     --header 'content-type: application/json' \
 ```
 
@@ -182,12 +191,12 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b28c3d7d-e9d3-4244-82f4-f62d32c9c5a0",
+    "id": "1ee19c6f-e79e-4436-bef4-ea013c19fc71",
     "type": "customers",
     "attributes": {
       "number": 1,
       "name": "John Doe",
-      "email": "john.doe@vandervort.net",
+      "email": "doe.john@beahan-walsh.info",
       "archived": false,
       "deposit_type": "default",
       "deposit_value": 0.0,
@@ -209,14 +218,19 @@ This request does not accept any includes
           "related": null
         }
       },
+      "properties": {
+        "links": {
+          "related": "api/boomerang/properties?filter[owner_id]=1ee19c6f-e79e-4436-bef4-ea013c19fc71&filter[owner_type]=Customer"
+        }
+      },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=b28c3d7d-e9d3-4244-82f4-f62d32c9c5a0"
+          "related": "api/boomerang/barcodes?filter[owner_id]=1ee19c6f-e79e-4436-bef4-ea013c19fc71"
         }
       },
       "notes": {
         "links": {
-          "related": "api/boomerang/notes?filter[notable_id]=b28c3d7d-e9d3-4244-82f4-f62d32c9c5a0&filter[notable_type]=Customer"
+          "related": "api/boomerang/notes?filter[notable_id]=1ee19c6f-e79e-4436-bef4-ea013c19fc71&filter[notable_type]=Customer"
         }
       }
     }
@@ -224,7 +238,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -236,7 +249,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 
@@ -258,6 +271,8 @@ This request accepts the following includes:
 
 
 ## Creating a customer
+
+
 
 > How to create a customer:
 
@@ -281,7 +296,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f645080e-4793-41c8-866a-73e6ca68c2e8",
+    "id": "59946fdc-f7f6-41d9-bb14-15405bd321ac",
     "type": "customers",
     "attributes": {
       "number": 2,
@@ -308,6 +323,11 @@ This request accepts the following includes:
           "included": false
         }
       },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
       "barcode": {
         "meta": {
           "included": false
@@ -329,7 +349,6 @@ This request accepts the following includes:
 }
 ```
 
-
 ### HTTP Request
 
 `POST /api/boomerang/customers`
@@ -340,7 +359,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 
@@ -375,15 +394,17 @@ This request accepts the following includes:
 
 ## Updating a customer
 
+
+
 > How to update a customer:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/fd223c72-c109-4405-89bf-b7a3be1f6e25' \
+    --url 'https://example.booqable.com/api/boomerang/customers/7718d2f5-135f-49a9-ad05-39c100af2593' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "fd223c72-c109-4405-89bf-b7a3be1f6e25",
+        "id": "7718d2f5-135f-49a9-ad05-39c100af2593",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -397,12 +418,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fd223c72-c109-4405-89bf-b7a3be1f6e25",
+    "id": "7718d2f5-135f-49a9-ad05-39c100af2593",
     "type": "customers",
     "attributes": {
       "number": 1,
       "name": "Jane Doe",
-      "email": "john.doe@hane-emmerich.io",
+      "email": "doe_john@legros-gleichner.info",
       "archived": false,
       "deposit_type": "default",
       "deposit_value": 0.0,
@@ -424,6 +445,11 @@ This request accepts the following includes:
           "included": false
         }
       },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
       "barcode": {
         "meta": {
           "included": false
@@ -440,7 +466,6 @@ This request accepts the following includes:
 }
 ```
 
-
 ### HTTP Request
 
 `PUT /api/boomerang/customers/{id}`
@@ -451,7 +476,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 
@@ -486,11 +511,13 @@ This request accepts the following includes:
 
 ## Archiving a customer
 
+
+
 > How to delete a customer:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/a106a763-ecd0-447a-902c-7121f07d51fb' \
+    --url 'https://example.booqable.com/api/boomerang/customers/3c62017a-6ebf-4ae5-813e-334f8ede586c' \
     --header 'content-type: application/json' \
 ```
 
@@ -502,7 +529,6 @@ This request accepts the following includes:
 }
 ```
 
-
 ### HTTP Request
 
 `DELETE /api/boomerang/customers/{id}`
@@ -513,7 +539,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,barcode`
+`include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
 
 

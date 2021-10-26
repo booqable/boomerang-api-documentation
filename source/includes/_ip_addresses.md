@@ -27,6 +27,8 @@ Name | Description
 
 ## Listing restricted IP addresses
 
+
+
 > How to fetch a list of restricted IP addresses:
 
 ```shell
@@ -41,7 +43,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "70646710-0e07-4f1c-837a-07520ed051b6",
+      "id": "604c10e6-c380-42db-94e3-bd1683623bd4",
       "type": "ip_addresses",
       "attributes": {
         "label": "John's home office",
@@ -58,7 +60,6 @@ Name | Description
 }
 ```
 
-
 ### HTTP Request
 
 `GET /api/boomerang/ip_addresses`
@@ -71,7 +72,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[ip_addresses]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-26T09:51:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -105,11 +106,13 @@ Name | Description
 This request does not accept any includes
 ## Fetching restricted IP address
 
+
+
 > How to fetch a restricted IP address:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/52bf886b-5354-4b06-828d-ed35c33e94de' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/f60fd93f-2701-44f4-ae00-5550371d1419' \
     --header 'content-type: application/json' \
 ```
 
@@ -118,7 +121,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "52bf886b-5354-4b06-828d-ed35c33e94de",
+    "id": "f60fd93f-2701-44f4-ae00-5550371d1419",
     "type": "ip_addresses",
     "attributes": {
       "label": "John's home office",
@@ -128,7 +131,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -148,6 +150,8 @@ Name | Description
 
 This request does not accept any includes
 ## Creating restricted IP address
+
+
 
 > How to create a restricted IP address:
 
@@ -171,7 +175,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d2cda767-5a0c-4c9c-93c2-12c01b87159a",
+    "id": "a6e6d581-960e-47ba-918d-8a32fb108f2d",
     "type": "ip_addresses",
     "attributes": {
       "label": "Leeuwarden office",
@@ -186,7 +190,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -217,15 +220,17 @@ Name | Description
 This request does not accept any includes
 ## Updating restricted IP address
 
+
+
 > How to update a restricted IP address:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/50542550-7199-407a-91b5-6afcac9e259b' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/5a67e1ce-bdc9-4c66-898e-d8723520470d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "50542550-7199-407a-91b5-6afcac9e259b",
+        "id": "5a67e1ce-bdc9-4c66-898e-d8723520470d",
         "type": "ip_addresses",
         "attributes": {
           "label": "Palo Alto office",
@@ -240,7 +245,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "50542550-7199-407a-91b5-6afcac9e259b",
+    "id": "5a67e1ce-bdc9-4c66-898e-d8723520470d",
     "type": "ip_addresses",
     "attributes": {
       "label": "Palo Alto office",
@@ -250,7 +255,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -281,11 +285,13 @@ Name | Description
 This request does not accept any includes
 ## Deleting restricted IP address
 
+
+
 > How to delete a restricted IP address:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/b2b3e79e-0b2a-4382-a857-b6dfbb2b4985' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/7548024b-3ded-4bc1-ad8f-82c46057d836' \
     --header 'content-type: application/json' \
 ```
 
@@ -296,7 +302,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
