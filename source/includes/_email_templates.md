@@ -46,6 +46,8 @@ Name | Description
 
 ## Listing email templates
 
+
+
 > How to fetch a list of email templates:
 
 ```shell
@@ -60,7 +62,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "45a5e873-1a4b-49bb-9cbb-0703e752afc9",
+      "id": "632e6a8a-2c8f-48ad-90ad-9fbe42ffb6d9",
       "type": "email_templates",
       "attributes": {
         "name": "Webshop confirmation",
@@ -81,7 +83,6 @@ Name | Description
 }
 ```
 
-
 ### HTTP Request
 
 `GET /api/boomerang/email_templates`
@@ -94,7 +95,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[email_templates]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-26T09:51:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -130,11 +131,13 @@ Name | Description
 This request does not accept any includes
 ## Fetching an email template
 
+
+
 > How to fetch an email templates:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/e94b082c-9578-4770-9cdb-987a37b177bf' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/dc9d253b-a179-4eb1-959e-c6c0f7606c51' \
     --header 'content-type: application/json' \
 ```
 
@@ -143,7 +146,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e94b082c-9578-4770-9cdb-987a37b177bf",
+    "id": "dc9d253b-a179-4eb1-959e-c6c0f7606c51",
     "type": "email_templates",
     "attributes": {
       "name": "Webshop confirmation",
@@ -157,7 +160,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -186,6 +188,8 @@ This request accepts the following includes:
 
 ## Creating an email template
 
+
+
 > How to create a email template:
 
 ```shell
@@ -210,7 +214,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e885fde7-de48-4c60-9661-3fc152bbcebf",
+    "id": "f3993f82-f2a5-4068-8280-3e336d2c5a33",
     "type": "email_templates",
     "attributes": {
       "name": "Webshop confirmation",
@@ -229,7 +233,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -262,15 +265,17 @@ Name | Description
 This request does not accept any includes
 ## Updating an email template
 
+
+
 > How to update an email template:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/48a9c6e4-8a3a-4a70-873c-5803f230f1fc' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/0bf3a4b1-1fda-4c97-853c-5d64e04e5350' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "48a9c6e4-8a3a-4a70-873c-5803f230f1fc",
+        "id": "0bf3a4b1-1fda-4c97-853c-5d64e04e5350",
         "type": "email_templates",
         "attributes": {
           "name": "Order confirmation"
@@ -284,7 +289,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "48a9c6e4-8a3a-4a70-873c-5803f230f1fc",
+    "id": "0bf3a4b1-1fda-4c97-853c-5d64e04e5350",
     "type": "email_templates",
     "attributes": {
       "name": "Order confirmation",
@@ -304,11 +309,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/d3e2c3fa-974c-43a2-a53a-c997fdebd26d' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/1b1e28fe-b990-47e5-a791-2a83b932e9e3' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d3e2c3fa-974c-43a2-a53a-c997fdebd26d",
+        "id": "1b1e28fe-b990-47e5-a791-2a83b932e9e3",
         "type": "email_templates",
         "attributes": {
           "name": "Order confirmation"
@@ -322,7 +327,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d3e2c3fa-974c-43a2-a53a-c997fdebd26d",
+    "id": "1b1e28fe-b990-47e5-a791-2a83b932e9e3",
     "type": "email_templates",
     "attributes": {
       "name": "Order confirmation",
@@ -336,7 +341,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -369,11 +373,13 @@ Name | Description
 This request does not accept any includes
 ## Deleting an email template
 
+
+
 > How to delete a email template:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/2baf4d24-0332-4330-8184-dbc775667678' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/c7543186-ba3c-4d7c-87df-8806a9fceaa0' \
     --header 'content-type: application/json' \
 ```
 
@@ -390,7 +396,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/4f02ebb7-c937-446a-ae4a-6e66989713b5' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/8591f65a-b3f0-4a0e-b287-cfc0ae378313' \
     --header 'content-type: application/json' \
 ```
 
@@ -409,7 +415,6 @@ This request does not accept any includes
   ]
 }
 ```
-
 
 ### HTTP Request
 

@@ -42,6 +42,8 @@ Name | Description
 
 ## Listing tax regions
 
+
+
 > How to fetch a list of tax regions:
 
 ```shell
@@ -56,7 +58,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "732607a0-3945-49d6-8b76-3292bbdfd1c7",
+      "id": "89ed2d67-e161-4333-b561-7f7ac5270099",
       "name": "Sales Tax",
       "strategy": "add_to",
       "default": false
@@ -64,7 +66,6 @@ Name | Description
   ]
 }
 ```
-
 
 ### HTTP Request
 
@@ -78,7 +79,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-26T09:51:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -120,11 +121,13 @@ This request accepts the following includes:
 
 ## Fetching a tax region
 
+
+
 > How to fetch a tax regions with it's tax rates:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/3f229f21-7696-4741-b7d6-cfbdbf6d570e?include=tax_rates' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/ebebc04e-3d11-423a-88bf-36ca362dd58e?include=tax_rates' \
     --header 'content-type: application/json' \
 ```
 
@@ -133,24 +136,23 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3f229f21-7696-4741-b7d6-cfbdbf6d570e",
+    "id": "ebebc04e-3d11-423a-88bf-36ca362dd58e",
     "name": "Sales Tax",
     "strategy": "add_to",
     "default": false,
     "tax_rates": [
       {
-        "id": "7197f89d-c1a3-452b-9167-9bbc33f69d2e",
+        "id": "82fdb988-5cac-4d6e-a46d-a78af3188d24",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "3f229f21-7696-4741-b7d6-cfbdbf6d570e",
+        "owner_id": "ebebc04e-3d11-423a-88bf-36ca362dd58e",
         "owner_type": "TaxRegion"
       }
     ]
   }
 }
 ```
-
 
 ### HTTP Request
 
@@ -178,6 +180,8 @@ This request accepts the following includes:
 
 
 ## Creating a tax region
+
+
 
 > How to create a tax region with tax rates:
 
@@ -208,7 +212,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1b6eb1be-84ef-4e2a-bbc7-07b44fdb1a11",
+    "id": "d8721ed4-0584-43a7-94cf-ecbfb4b320e2",
     "type": "tax_regions",
     "attributes": {
       "name": "Sales Tax",
@@ -220,7 +224,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "1106c32d-3bad-4f4b-8da5-6ad27e87746e"
+            "id": "93823024-ee52-4aaa-98db-7df0f586c72f"
           }
         ]
       }
@@ -228,13 +232,13 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "1106c32d-3bad-4f4b-8da5-6ad27e87746e",
+      "id": "93823024-ee52-4aaa-98db-7df0f586c72f",
       "type": "tax_rates",
       "attributes": {
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "1b6eb1be-84ef-4e2a-bbc7-07b44fdb1a11",
+        "owner_id": "d8721ed4-0584-43a7-94cf-ecbfb4b320e2",
         "owner_type": "TaxRegion"
       },
       "relationships": {
@@ -254,7 +258,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -295,15 +298,17 @@ This request accepts the following includes:
 
 ## Updating a tax region
 
+
+
 > How to update a tax region with tax rates:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/190176d6-63a0-4a06-bd5b-6d6077dafa55' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/91179481-8539-4c0a-baa6-acb14dbda768' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "190176d6-63a0-4a06-bd5b-6d6077dafa55",
+        "id": "91179481-8539-4c0a-baa6-acb14dbda768",
         "type": "tax_regions",
         "attributes": {
           "name": "State Tax",
@@ -313,7 +318,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "c77752cf-0560-42fc-87ee-b60ce8a14dd3",
+              "id": "a23aaf81-7fc8-4ac5-a241-fbf93bc44145",
               "_destroy": true
             }
           ]
@@ -328,7 +333,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "190176d6-63a0-4a06-bd5b-6d6077dafa55",
+    "id": "91179481-8539-4c0a-baa6-acb14dbda768",
     "type": "tax_regions",
     "attributes": {
       "name": "State Tax",
@@ -340,7 +345,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "fb407247-f9ea-4908-97c0-86e6013f2e1e"
+            "id": "5b13f656-6a34-482d-9912-d255f6a330d9"
           }
         ]
       }
@@ -348,13 +353,13 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "fb407247-f9ea-4908-97c0-86e6013f2e1e",
+      "id": "5b13f656-6a34-482d-9912-d255f6a330d9",
       "type": "tax_rates",
       "attributes": {
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "190176d6-63a0-4a06-bd5b-6d6077dafa55",
+        "owner_id": "91179481-8539-4c0a-baa6-acb14dbda768",
         "owner_type": "TaxRegion"
       },
       "relationships": {
@@ -369,7 +374,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -410,11 +414,13 @@ This request accepts the following includes:
 
 ## Deleting a tax region
 
+
+
 > How to delete a tax region with tax rates:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/8cc8c6d0-c152-4a76-a3fb-60fe801f64b1' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/3325cae7-ca92-424c-890d-6ac4e06506b0' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -426,7 +432,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
