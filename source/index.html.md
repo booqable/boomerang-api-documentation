@@ -24,6 +24,7 @@ includes:
   - categories
   - barcodes
   - customers
+  - customer_merges
   - users
   - orders
   - documents
