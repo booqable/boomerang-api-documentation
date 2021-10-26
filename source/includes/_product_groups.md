@@ -87,6 +87,8 @@ Name | Description
 
 ## Listing product groups
 
+
+
 > How to fetch a list of product groups:
 
 ```shell
@@ -101,7 +103,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "36fc07da-3095-4980-a367-433863c42166",
+      "id": "f6ac1d41-f9e5-4b97-a7d6-55a6df60f3b2",
       "type": "product_groups",
       "attributes": {
         "name": "iPad Pro",
@@ -143,7 +145,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=36fc07da-3095-4980-a367-433863c42166"
+            "related": "api/boomerang/products?filter[item_group_id]=f6ac1d41-f9e5-4b97-a7d6-55a6df60f3b2"
           }
         }
       }
@@ -158,7 +160,6 @@ Name | Description
 }
 ```
 
-
 ### HTTP Request
 
 `GET /api/boomerang/product_groups`
@@ -171,7 +172,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_category,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-21T11:39:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-26T09:51:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -231,11 +232,13 @@ Name | Description
 This request does not accept any includes
 ## Fetching a product group
 
+
+
 > How to fetch a product group:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/f283ed43-1044-418f-8877-8030640b49f3' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/a6a744b1-74bd-4fc4-834f-b8b8da6ac314' \
     --header 'content-type: application/json' \
 ```
 
@@ -244,7 +247,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f283ed43-1044-418f-8877-8030640b49f3",
+    "id": "a6a744b1-74bd-4fc4-834f-b8b8da6ac314",
     "type": "product_groups",
     "attributes": {
       "name": "iPad Pro",
@@ -286,7 +289,7 @@ This request does not accept any includes
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[item_group_id]=f283ed43-1044-418f-8877-8030640b49f3"
+          "related": "api/boomerang/products?filter[item_group_id]=a6a744b1-74bd-4fc4-834f-b8b8da6ac314"
         }
       }
     }
@@ -294,7 +297,6 @@ This request does not accept any includes
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -329,6 +331,8 @@ This request accepts the following includes:
 
 ## Creating a product group
 
+
+
 > How to create a product group:
 
 ```shell
@@ -358,7 +362,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b8e9e7a6-ee78-4cf8-8e51-a0e49e0b664b",
+    "id": "03f6b159-4297-40bb-b6b8-34b572b4ef5a",
     "type": "product_groups",
     "attributes": {
       "name": "iPad mini",
@@ -416,7 +420,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -478,15 +481,17 @@ This request accepts the following includes:
 
 ## Updating a product group
 
+
+
 > How to update a product group:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/dda2fe6a-9bcf-4eec-9400-d4a89ee2e80c' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/6688409f-fb75-4b97-8c6c-29aca650d19d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "dda2fe6a-9bcf-4eec-9400-d4a89ee2e80c",
+        "id": "6688409f-fb75-4b97-8c6c-29aca650d19d",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -500,7 +505,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dda2fe6a-9bcf-4eec-9400-d4a89ee2e80c",
+    "id": "6688409f-fb75-4b97-8c6c-29aca650d19d",
     "type": "product_groups",
     "attributes": {
       "name": "iPad mini",
@@ -550,7 +555,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -612,11 +616,13 @@ This request accepts the following includes:
 
 ## Archiving a product group
 
+
+
 > How to delete a product group:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/f6af0109-f5bc-4dde-9391-a7485cf235f4' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/1788b55b-e168-4e35-afc0-f413155201b1' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -628,7 +634,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
