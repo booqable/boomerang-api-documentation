@@ -54,6 +54,7 @@ includes:
   - ip_addresses
   - operating_rules
   - login_activities
+  - billing_invoices
 
 search: true
 
