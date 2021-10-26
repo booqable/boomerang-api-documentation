@@ -24,6 +24,7 @@ includes:
   - categories
   - barcodes
   - customers
+  - users
   - orders
   - documents
   - lines
@@ -49,10 +50,10 @@ includes:
   - properties
   - tags
   - coupons
-  - login_activities
   - currencies
   - ip_addresses
-  - users
+  - operating_rules
+  - login_activities
 
 search: true
 
