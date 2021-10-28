@@ -43,7 +43,7 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "c6d2f4a8-1414-46e6-a1ea-7c8dcff8ea81",
+      "id": "8756c4a9-4ef5-40d4-afb8-c8842d937143",
       "type": "bundles",
       "attributes": {
         "name": "iPad Bundle",
@@ -62,18 +62,30 @@ For this resource relationships are described in the following resources:
         "tag_list": [
           "tablets",
           "apple"
-        ]
+        ],
+        "photo_id": null,
+        "tax_category_id": null
       },
       "relationships": {
+        "photo": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_category": {
+          "links": {
+            "related": null
+          }
+        },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=c6d2f4a8-1414-46e6-a1ea-7c8dcff8ea81"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=8756c4a9-4ef5-40d4-afb8-c8842d937143"
           }
         }
       }
     },
     {
-      "id": "553660ca-c3e7-40cf-b411-214fc7648739",
+      "id": "18775372-ba24-4353-b279-d4dc41ff803c",
       "type": "product_groups",
       "attributes": {
         "name": "iPad Pro",
@@ -95,8 +107,6 @@ For this resource relationships are described in the following resources:
         "base_price_in_cents": 1995,
         "price_type": "simple",
         "price_period": "day",
-        "flat_fee_price_in_cents": 1995,
-        "structure_price_in_cents": 0,
         "deposit_in_cents": 10000,
         "discountable": true,
         "taxable": true,
@@ -105,26 +115,39 @@ For this resource relationships are described in the following resources:
           "apple"
         ],
         "properties": {},
-        "tax_category_id": "3c067bf1-0691-43b1-b266-1f07660fab0d",
+        "photo_id": null,
         "allow_shortage": true,
         "shortage_limit": 3,
-        "variation_fields": []
+        "variation_fields": [],
+        "flat_fee_price_in_cents": 1995,
+        "structure_price_in_cents": 0,
+        "tax_category_id": "3ad79ea1-9e30-49fe-ab1f-bf85d53fa8fc"
       },
       "relationships": {
-        "tax_category": {
+        "photo": {
           "links": {
-            "related": "api/boomerang/tax_categories/3c067bf1-0691-43b1-b266-1f07660fab0d"
+            "related": null
           }
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=553660ca-c3e7-40cf-b411-214fc7648739"
+            "related": "api/boomerang/products?filter[item_group_id]=18775372-ba24-4353-b279-d4dc41ff803c"
+          }
+        },
+        "tax_category": {
+          "links": {
+            "related": "api/boomerang/tax_categories/3ad79ea1-9e30-49fe-ab1f-bf85d53fa8fc"
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=18775372-ba24-4353-b279-d4dc41ff803c&filter[owner_type]=ProductGroup"
           }
         }
       }
     },
     {
-      "id": "96854a09-ccfb-469d-acda-6e757875ee43",
+      "id": "6af11bcb-f1be-4654-8942-5a454dc99bed",
       "type": "products",
       "attributes": {
         "name": "iPad Pro",
@@ -146,8 +169,6 @@ For this resource relationships are described in the following resources:
         "base_price_in_cents": 1995,
         "price_type": "simple",
         "price_period": "day",
-        "flat_fee_price_in_cents": 0,
-        "structure_price_in_cents": 0,
         "deposit_in_cents": 10000,
         "discountable": true,
         "taxable": true,
@@ -156,26 +177,37 @@ For this resource relationships are described in the following resources:
           "apple"
         ],
         "properties": {},
-        "tax_category_id": "3c067bf1-0691-43b1-b266-1f07660fab0d",
+        "photo_id": null,
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "553660ca-c3e7-40cf-b411-214fc7648739"
+        "product_group_id": "18775372-ba24-4353-b279-d4dc41ff803c",
+        "tax_category_id": "3ad79ea1-9e30-49fe-ab1f-bf85d53fa8fc"
       },
       "relationships": {
-        "tax_category": {
+        "photo": {
           "links": {
-            "related": "api/boomerang/tax_categories/3c067bf1-0691-43b1-b266-1f07660fab0d"
+            "related": null
           }
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/553660ca-c3e7-40cf-b411-214fc7648739"
+            "related": "api/boomerang/product_groups/18775372-ba24-4353-b279-d4dc41ff803c"
+          }
+        },
+        "tax_category": {
+          "links": {
+            "related": "api/boomerang/tax_categories/3ad79ea1-9e30-49fe-ab1f-bf85d53fa8fc"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=96854a09-ccfb-469d-acda-6e757875ee43"
+            "related": "api/boomerang/barcodes?filter[owner_id]=6af11bcb-f1be-4654-8942-5a454dc99bed"
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=18775372-ba24-4353-b279-d4dc41ff803c"
           }
         }
       }
@@ -200,9 +232,9 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=tax_category`
+`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-26T09:51:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-28T10:25:24Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -229,6 +261,7 @@ Name | Description
 `extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`photo_id` | **Uuid**<br>`eq`, `not_eq`
 `q` | **String**<br>`eq`, `not_eq`, `prefix`, `match`
 
 
@@ -245,8 +278,6 @@ Name | Description
 `base_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
 `price_type` | **Array**<br>`count`
 `price_period` | **Array**<br>`count`
-`flat_fee_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`structure_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
 `deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
 `discountable` | **Array**<br>`count`
 `taxable` | **Array**<br>`count`

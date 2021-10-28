@@ -1,8 +1,9 @@
 # Operating rules
 
-Operating rules allow creating various rules for changing how a user can select dates in the online webshop.
-The rules are only enabled when the applicable setting is enabled.
-There's 4 types of rules currently available and the type of rule is determined by the `data_type` attribute:
+Operating rules allow creating various rules for changing how a user can select dates in the online webshop. The rules are only enabled when the applicable setting is enabled.
+
+**There's 4 types of rules currently available and the type of rule is determined by the `data_type` attribute:**
+
   - `hours` Sets opening hours key in data determines what days these hours apply to, data must have this format `{ weekday: { from: 'HH:mm', till: 'HH:mm' } }`, days without applicable opening hours are considered closed. Settting that enables this type of rule: `store.use_business_hours`
   - `away` Sets away mode disabling overlapping days in the period picker, data must have a `from` and `till` with dates: { away: { from: 'YYYY-MM-DD', till: 'YYYY-MM-DD' } }. Settting that enables this type of rule: `store.use_away_mode`
   - `timeslot_fixed` Sets a fixed timeslot, used when datepicker is in fixed time slots mode. Same format as hours: `{ weekday: { from: 'HH:mm', till: 'HH:mm' } }` Picker mode setting for this rule: `store.period_type` set to `timeslot_fixed`
@@ -47,7 +48,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "952cc91f-16b3-4ffb-a7e1-f57adce111b8",
+      "id": "4013c9a1-7e24-4870-90b7-dcc83bdbe6a2",
       "data_type": "away",
       "data": {
         "away": {
@@ -72,7 +73,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-26T09:51:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-28T10:25:24Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -134,7 +135,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f599f4f4-709f-4009-bc24-569c362ad0da",
+    "id": "ff3d597f-9203-4bca-9200-ba2f1ed66e47",
     "type": "operating_rules",
     "attributes": {
       "data_type": "hours",
@@ -183,7 +184,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e4571db2-6ec5-4e19-afd3-ff8c53bb2475",
+    "id": "c9c85822-2bc3-4db6-baa2-5260bec4dff9",
     "type": "operating_rules",
     "attributes": {
       "data_type": "hours",
@@ -232,7 +233,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e0c3a33b-4dad-4913-9863-79523eb78168",
+    "id": "34735ff0-02b0-4211-b2f2-4758ec36487c",
     "type": "operating_rules",
     "attributes": {
       "data_type": "away",
@@ -281,7 +282,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7cc1875d-0d20-4855-be92-51daec3405b5",
+    "id": "0a167840-a2fd-4a2d-ae81-66544ecbc950",
     "type": "operating_rules",
     "attributes": {
       "data_type": "timeslot_fixed",
@@ -327,7 +328,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "90118d8e-ea6c-4a87-9d77-1bd100a640ad",
+    "id": "77a2ee09-6a5d-4fbb-aa57-ccabc9e3bb1e",
     "type": "operating_rules",
     "attributes": {
       "data_type": "timeslot_duration",
@@ -380,11 +381,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/c84078b7-9832-4fca-b764-7b48731b91b0' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/c680a942-cd6c-47b3-80b9-2df7c75dc375' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c84078b7-9832-4fca-b764-7b48731b91b0",
+        "id": "c680a942-cd6c-47b3-80b9-2df7c75dc375",
         "type": "operating_rules",
         "attributes": {
           "data": {
@@ -403,7 +404,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c84078b7-9832-4fca-b764-7b48731b91b0",
+    "id": "c680a942-cd6c-47b3-80b9-2df7c75dc375",
     "type": "operating_rules",
     "attributes": {
       "data_type": "away",
@@ -454,7 +455,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/80ad7291-09f2-4620-b769-57ec2e16a582' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/97da2b2e-c795-4baa-85e4-d70b0855cf84' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
