@@ -56,6 +56,8 @@ includes:
   - operating_rules
   - login_activities
   - billing_invoices
+  - users
+  - operations
 
 search: true
 
