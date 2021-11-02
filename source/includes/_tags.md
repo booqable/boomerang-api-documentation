@@ -40,7 +40,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "811bfea4-50aa-4bc3-978e-4991e0ecc505",
+      "id": "d263ab4d-762a-43ec-8ec9-0debe1f55f14",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -48,7 +48,7 @@ Name | Description
       }
     },
     {
-      "id": "af97ee7a-4dbf-4551-a661-410938d4a419",
+      "id": "fb553b89-9321-48a9-8f36-1e32ea56e0f4",
       "type": "tags",
       "attributes": {
         "name": "webshop",
@@ -78,7 +78,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-29T10:21:52Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-02T08:22:24Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
