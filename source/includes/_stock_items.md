@@ -68,10 +68,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "6742e507-0a42-452a-8d21-1a1beee8fd84",
+      "id": "f0fbd012-2b2f-4054-aa88-d78daba8eebf",
       "type": "stock_items",
       "attributes": {
-        "identifier": "id1",
+        "identifier": "id8",
         "archived": false,
         "archived_at": null,
         "status": "in_stock",
@@ -79,23 +79,23 @@ Name | Description
         "till": null,
         "stock_item_type": "regular",
         "properties": {},
-        "product_id": "f6ca15f2-66df-4be3-a93c-ea42aea523db",
-        "location_id": "19b40822-6d5f-4a64-8e29-dfb412325206"
+        "product_id": "e9e558fa-56c3-4d87-9e94-d51354a0739a",
+        "location_id": "dad37eec-0ea6-4cd6-b02f-e777572f3345"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/f6ca15f2-66df-4be3-a93c-ea42aea523db"
+            "related": "api/boomerang/products/e9e558fa-56c3-4d87-9e94-d51354a0739a"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/19b40822-6d5f-4a64-8e29-dfb412325206"
+            "related": "api/boomerang/locations/dad37eec-0ea6-4cd6-b02f-e777572f3345"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=6742e507-0a42-452a-8d21-1a1beee8fd84"
+            "related": "api/boomerang/barcodes?filter[owner_id]=f0fbd012-2b2f-4054-aa88-d78daba8eebf"
           }
         }
       }
@@ -122,7 +122,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=product,location,barcode`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-29T10:21:52Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-02T11:56:25Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -170,7 +170,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/86e83a5f-4475-405a-a8d5-8df432e6d43c' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/21ca1a5e-6a88-41bf-9a59-e40b76733eec' \
     --header 'content-type: application/json' \
 ```
 
@@ -179,10 +179,10 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "86e83a5f-4475-405a-a8d5-8df432e6d43c",
+    "id": "21ca1a5e-6a88-41bf-9a59-e40b76733eec",
     "type": "stock_items",
     "attributes": {
-      "identifier": "id2",
+      "identifier": "id9",
       "archived": false,
       "archived_at": null,
       "status": "in_stock",
@@ -190,23 +190,23 @@ This request does not accept any includes
       "till": null,
       "stock_item_type": "regular",
       "properties": {},
-      "product_id": "f15aba5f-3d74-4e5b-93d8-e87365139ec7",
-      "location_id": "84ba923e-9288-4154-b61f-9babaed2ec23"
+      "product_id": "efa6a8af-80a5-40fb-97ee-566dd22cc106",
+      "location_id": "77848b16-1bc5-479c-9edb-3056829ea490"
     },
     "relationships": {
       "product": {
         "links": {
-          "related": "api/boomerang/products/f15aba5f-3d74-4e5b-93d8-e87365139ec7"
+          "related": "api/boomerang/products/efa6a8af-80a5-40fb-97ee-566dd22cc106"
         }
       },
       "location": {
         "links": {
-          "related": "api/boomerang/locations/84ba923e-9288-4154-b61f-9babaed2ec23"
+          "related": "api/boomerang/locations/77848b16-1bc5-479c-9edb-3056829ea490"
         }
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=86e83a5f-4475-405a-a8d5-8df432e6d43c"
+          "related": "api/boomerang/barcodes?filter[owner_id]=21ca1a5e-6a88-41bf-9a59-e40b76733eec"
         }
       }
     }
@@ -264,7 +264,7 @@ This request accepts the following includes:
         "type": "stock_items",
         "attributes": {
           "identifier": "12345",
-          "product_id": "aea052a8-9e0a-45d2-94be-09cd3e7b81cc"
+          "product_id": "32d90d00-f81f-4a43-b496-7cd13a44e510"
         }
       }
     }'
@@ -275,7 +275,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a7e59eb3-5a80-4031-a888-e10ec48fd7b2",
+    "id": "b061ea97-6c18-4e65-8b50-a1b9524cd61a",
     "type": "stock_items",
     "attributes": {
       "identifier": "12345",
@@ -286,8 +286,8 @@ This request accepts the following includes:
       "till": null,
       "stock_item_type": "regular",
       "properties": {},
-      "product_id": "aea052a8-9e0a-45d2-94be-09cd3e7b81cc",
-      "location_id": "ade97a83-bd0f-43f2-88d3-33b738dff831"
+      "product_id": "32d90d00-f81f-4a43-b496-7cd13a44e510",
+      "location_id": "d8130fd5-70b6-4358-b6ae-74e256d5248f"
     },
     "relationships": {
       "product": {
@@ -308,9 +308,9 @@ This request accepts the following includes:
     }
   },
   "links": {
-    "self": "api/boomerang/stock_items?data%5Battributes%5D%5Bidentifier%5D=12345&data%5Battributes%5D%5Bproduct_id%5D=aea052a8-9e0a-45d2-94be-09cd3e7b81cc&data%5Btype%5D=stock_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/stock_items?data%5Battributes%5D%5Bidentifier%5D=12345&data%5Battributes%5D%5Bproduct_id%5D=aea052a8-9e0a-45d2-94be-09cd3e7b81cc&data%5Btype%5D=stock_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/stock_items?data%5Battributes%5D%5Bidentifier%5D=12345&data%5Battributes%5D%5Bproduct_id%5D=aea052a8-9e0a-45d2-94be-09cd3e7b81cc&data%5Btype%5D=stock_items&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/stock_items?data%5Battributes%5D%5Bidentifier%5D=12345&data%5Battributes%5D%5Bproduct_id%5D=32d90d00-f81f-4a43-b496-7cd13a44e510&data%5Btype%5D=stock_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/stock_items?data%5Battributes%5D%5Bidentifier%5D=12345&data%5Battributes%5D%5Bproduct_id%5D=32d90d00-f81f-4a43-b496-7cd13a44e510&data%5Btype%5D=stock_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/stock_items?data%5Battributes%5D%5Bidentifier%5D=12345&data%5Battributes%5D%5Bproduct_id%5D=32d90d00-f81f-4a43-b496-7cd13a44e510&data%5Btype%5D=stock_items&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -372,11 +372,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/79b31566-9ad6-4edf-9933-ee93e5b778d7' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/00b1ff8b-7294-4682-a68d-d7e92343eeff' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "79b31566-9ad6-4edf-9933-ee93e5b778d7",
+        "id": "00b1ff8b-7294-4682-a68d-d7e92343eeff",
         "type": "stock_items",
         "attributes": {
           "identifier": "12346"
@@ -390,7 +390,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "79b31566-9ad6-4edf-9933-ee93e5b778d7",
+    "id": "00b1ff8b-7294-4682-a68d-d7e92343eeff",
     "type": "stock_items",
     "attributes": {
       "identifier": "12346",
@@ -401,8 +401,8 @@ This request accepts the following includes:
       "till": null,
       "stock_item_type": "regular",
       "properties": {},
-      "product_id": "2a9799c2-8548-4412-b675-646d76a7a72a",
-      "location_id": "63156ec2-8707-4b07-a036-3d93a67e4fa5"
+      "product_id": "2bbaa117-1e23-48c6-9f11-880d057b5323",
+      "location_id": "9d44312b-fee2-49e6-9d65-d698bf445708"
     },
     "relationships": {
       "product": {
@@ -482,7 +482,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/03b0b853-b25e-4cc4-869c-f7cfd9620a8f' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/fd652d84-3645-4e08-bdda-319201667f24' \
     --header 'content-type: application/json' \
 ```
 

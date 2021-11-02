@@ -46,7 +46,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "5d1ea1b8-f09b-40b8-9d2b-2df2a303c9aa",
+      "id": "a61c06e6-cada-4750-a62f-a823019881c6",
       "type": "coupons",
       "attributes": {
         "identifier": "SUMMER20OFF",
@@ -78,7 +78,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-29T10:21:52Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-02T11:56:25Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -121,7 +121,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/coupons/7111ddfc-cea8-478e-8d2c-5a92afb7a9d2' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/589e2675-d50a-45c7-b679-86bfbd9b6fdf' \
     --header 'content-type: application/json' \
 ```
 
@@ -130,7 +130,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7111ddfc-cea8-478e-8d2c-5a92afb7a9d2",
+    "id": "589e2675-d50a-45c7-b679-86bfbd9b6fdf",
     "type": "coupons",
     "attributes": {
       "identifier": "SUMMER20OFF",
@@ -189,7 +189,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "37bc9ec8-846a-423c-a7b0-6af24714773c",
+    "id": "5c745688-ec8b-4143-9b64-76f1f0062246",
     "type": "coupons",
     "attributes": {
       "identifier": "WINTERDISCOUNT",
@@ -246,11 +246,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/864ad3ff-67c7-4c8f-82cb-fedc9d1adcbc' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/1edc4f79-d476-415e-81ab-023d9d06d974' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "864ad3ff-67c7-4c8f-82cb-fedc9d1adcbc",
+        "id": "1edc4f79-d476-415e-81ab-023d9d06d974",
         "type": "coupons",
         "attributes": {
           "identifier": "SUMMER30OFF",
@@ -266,7 +266,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "16976d4e-18ff-4d32-ae4b-26349f48ee44",
+    "id": "6c7b64cb-86ae-4004-8a77-a972f2576daa",
     "type": "coupons",
     "attributes": {
       "identifier": "SUMMER30OFF",
@@ -285,11 +285,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/19622d7d-c1d7-47e4-9cca-b96c837538a1' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/6a78a622-1b80-42c3-859b-ea0494dbaa0a' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "19622d7d-c1d7-47e4-9cca-b96c837538a1",
+        "id": "6a78a622-1b80-42c3-859b-ea0494dbaa0a",
         "type": "coupons",
         "attributes": {
           "active": false
@@ -303,7 +303,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "eed625d5-1150-47db-8065-d8ea2c59701b",
+    "id": "40fdeae7-19a8-48c3-b1f1-b767fbcec400",
     "type": "coupons",
     "attributes": {
       "identifier": "SUMMER20OFF",
@@ -354,7 +354,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/coupons/21eab45b-c241-415c-a6d8-64a33babf7ac' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/05297d57-a229-456d-bd83-bf6f5f6e6524' \
     --header 'content-type: application/json' \
 ```
 
