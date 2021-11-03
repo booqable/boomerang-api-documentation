@@ -27,6 +27,7 @@ includes:
   - customer_merges
   - users
   - orders
+  - order_bookings
   - documents
   - lines
   - plannings
