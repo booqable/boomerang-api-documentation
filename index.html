@@ -1151,20 +1151,6 @@
               </ul>
           </li>
           <li>
-            <a href="#login-activities" class="toc-h1 toc-link" data-title="Login activities">Login activities</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#login-activities-endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
-                  </li>
-                  <li>
-                    <a href="#login-activities-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
-                  </li>
-                  <li>
-                    <a href="#login-activities-listing-login-activities" class="toc-h2 toc-link" data-title="Listing login activities">Listing login activities</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#billing-invoices" class="toc-h1 toc-link" data-title="Billing invoices">Billing invoices</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1254,6 +1240,20 @@
                   </li>
                   <li>
                     <a href="#operations-creating-an-operation" class="toc-h2 toc-link" data-title="Creating an operation">Creating an operation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#login-activities" class="toc-h1 toc-link" data-title="Login activities">Login activities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login-activities-endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#login-activities-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#login-activities-listing-login-activities" class="toc-h2 toc-link" data-title="Listing login activities">Listing login activities</a>
                   </li>
               </ul>
           </li>
@@ -19586,189 +19586,6 @@ A tax region can have one of the following strategies:</p>
 </tbody></table>
 <h3 id='operating-rules-deleting-an-operating-rule-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
-<h1 id='login-activities'>Login activities</h1>
-<p>A list of all login attempts for the current employee.</p>
-<h2 id='login-activities-endpoints'>Endpoints</h2>
-<p><code>GET /api/boomerang/login_activities</code></p>
-<h2 id='login-activities-fields'>Fields</h2>
-<p>Every login activity has the following fields:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
-</tr>
-<tr>
-<td><code>ip</code></td>
-<td><strong>String</strong> <code>readonly</code><br>IP address of the login attempt</td>
-</tr>
-<tr>
-<td><code>strategy</code></td>
-<td><strong>String</strong> <code>readonly</code><br>One of <code>saml</code>, <code>token</code>, <code>single_use</code>, <code>database_authenticatable</code>, <code>rememberable</code>, <code>BooqableApp-iOS</code></td>
-</tr>
-<tr>
-<td><code>success</code></td>
-<td><strong>Boolean</strong> <code>readonly</code><br>Whether attempt was succesful</td>
-</tr>
-<tr>
-<td><code>failure_reason</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Why the login failed, One of <code>not_found_in_database</code>, <code>inactive</code>, <code>unconfirmed</code>, <code>invalid</code>, <code>session_limited</code>, <code>invited</code></td>
-</tr>
-<tr>
-<td><code>user_agent</code></td>
-<td><strong>String</strong> <code>readonly</code><br>Client application identifier</td>
-</tr>
-<tr>
-<td><code>city</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>City where login attempt was performed</td>
-</tr>
-<tr>
-<td><code>region</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Region where login attempt was performed</td>
-</tr>
-<tr>
-<td><code>country</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Country where login attempt was performed</td>
-</tr>
-</tbody></table>
-<h2 id='login-activities-listing-login-activities'>Listing login activities</h2>
-<blockquote>
-<p>How to fetch a list of login activities</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/login_activities'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>A 200 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b97fe543-8230-4462-bee1-96574e79f89c"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login_activities"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.28"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saml"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"failure_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almere"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flevoland"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='login-activities-listing-login-activities-http-request'>HTTP Request</h3>
-<p><code>GET /api/boomerang/login_activities</code></p>
-<h3 id='login-activities-listing-login-activities-request-params'>Request params</h3>
-<p>This request accepts the following paramaters:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>include</code></td>
-<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
-</tr>
-<tr>
-<td><code>fields[]</code></td>
-<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[login_activities]=id,created_at,updated_at</code></td>
-</tr>
-<tr>
-<td><code>filter</code></td>
-<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-11-03T08:54:06Z</code></td>
-</tr>
-<tr>
-<td><code>sort</code></td>
-<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
-</tr>
-<tr>
-<td><code>meta</code></td>
-<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
-</tr>
-<tr>
-<td><code>page[number]</code></td>
-<td><strong>String</strong><br>The page to request</td>
-</tr>
-<tr>
-<td><code>page[per]</code></td>
-<td><strong>String</strong><br>The amount of items per page (max 100)</td>
-</tr>
-</tbody></table>
-<h3 id='login-activities-listing-login-activities-filters'>Filters</h3>
-<p>This request can be filtered on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
-</tr>
-<tr>
-<td><code>ip</code></td>
-<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
-</tr>
-<tr>
-<td><code>strategy</code></td>
-<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
-</tr>
-<tr>
-<td><code>success</code></td>
-<td><strong>Boolean</strong><br><code>eq</code></td>
-</tr>
-</tbody></table>
-<h3 id='login-activities-listing-login-activities-meta'>Meta</h3>
-<p>Results can be aggregated on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>total</code></td>
-<td><strong>Array</strong><br><code>count</code></td>
-</tr>
-</tbody></table>
-<h3 id='login-activities-listing-login-activities-includes'>Includes</h3>
-<p>This request does not accept any includes</p>
 <h1 id='billing-invoices'>Billing invoices</h1>
 <p>Invoices received from Booqable</p>
 <h2 id='billing-invoices-endpoints'>Endpoints</h2>
@@ -21703,6 +21520,189 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 <p>This request accepts the following includes:</p>
 
 <p><code>employee</code></p>
+<h1 id='login-activities'>Login activities</h1>
+<p>A list of all login attempts for the current employee.</p>
+<h2 id='login-activities-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/login_activities</code></p>
+<h2 id='login-activities-fields'>Fields</h2>
+<p>Every login activity has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td><strong>String</strong> <code>readonly</code><br>IP address of the login attempt</td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong> <code>readonly</code><br>One of <code>saml</code>, <code>token</code>, <code>single_use</code>, <code>database_authenticatable</code>, <code>rememberable</code>, <code>BooqableApp-iOS</code></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>Whether attempt was succesful</td>
+</tr>
+<tr>
+<td><code>failure_reason</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Why the login failed, One of <code>not_found_in_database</code>, <code>inactive</code>, <code>unconfirmed</code>, <code>invalid</code>, <code>session_limited</code>, <code>invited</code></td>
+</tr>
+<tr>
+<td><code>user_agent</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Client application identifier</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>City where login attempt was performed</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Region where login attempt was performed</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Country where login attempt was performed</td>
+</tr>
+</tbody></table>
+<h2 id='login-activities-listing-login-activities'>Listing login activities</h2>
+<blockquote>
+<p>How to fetch a list of login activities</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/login_activities'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b97fe543-8230-4462-bee1-96574e79f89c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login_activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saml"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"failure_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almere"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flevoland"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='login-activities-listing-login-activities-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/login_activities</code></p>
+<h3 id='login-activities-listing-login-activities-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[login_activities]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-11-03T08:54:06Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[per]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><strong>Boolean</strong><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 
       </div>
       <div class="dark-box">
