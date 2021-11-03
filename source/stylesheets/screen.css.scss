@@ -28,6 +28,10 @@ under the License.
   font-size: 18px !important;
   font-weight: 400;
   padding: 7px 30px !important;
+
+  &.toc-header {
+    font-weight: 600;
+  }
 }
 
 .toc-h2 {

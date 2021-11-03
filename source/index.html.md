@@ -9,6 +9,7 @@ title: Booqable API documentation
 
 includes:
   - errors
+  - resources
   - session
   - companies
   - employees
