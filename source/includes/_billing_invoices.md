@@ -53,7 +53,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "286529c0-a0f9-454a-b39c-984a26b6e878",
+      "id": "c58ecdb8-a4bf-4206-8f70-a67dae3cc76c",
       "type": "billing_invoices",
       "attributes": {
         "number": 10001,
@@ -98,7 +98,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-03T08:54:06Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-03T12:57:36Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -143,7 +143,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/49bb19b7-7db7-4755-a968-29cf095c3516' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/c934f432-93c6-4bc2-b136-768d1aebe911' \
     --header 'content-type: application/json' \
 ```
 
@@ -152,7 +152,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "49bb19b7-7db7-4755-a968-29cf095c3516",
+    "id": "c934f432-93c6-4bc2-b136-768d1aebe911",
     "type": "billing_invoices",
     "attributes": {
       "number": 10001,
