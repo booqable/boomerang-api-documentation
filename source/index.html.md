@@ -135,7 +135,8 @@ Single-Use Tokens to sign requests are generated on the client and can only be u
 1. Go to your account settings page
 `{company-name-here}.booqable.com/employees/current`
 2. Name your new authentication method
-3. Click "Create new authentication method"
+3. Insert your public key (for `ES256` and `RS256` only)
+4. Click "Create new authentication method"
 
 <aside class="success">
   You are now ready to <b>Sign requests!</b>
