@@ -315,6 +315,13 @@
     <script>
       $(function() { setupCodeCopy(); });
     </script>
+
+    <script>
+      window.segmentToken = '';
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+      analytics.load(segmentToken);
+      }}();
+    </script>
   </head>
 
   <body class="index" data-languages="[]">
@@ -743,6 +750,23 @@
                   </li>
                   <li>
                     <a href="#orders-updating-an-order" class="toc-h2 toc-link" data-title="Updating an order">Updating an order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#order-bookings" class="toc-h1 toc-link" data-title="Order bookings">Order bookings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-bookings-endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#order-bookings-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#order-bookings-relationships" class="toc-h2 toc-link" data-title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#order-bookings-creating-an-order-booking" class="toc-h2 toc-link" data-title="Creating an order booking">Creating an order booking</a>
                   </li>
               </ul>
           </li>
@@ -1409,7 +1433,7 @@ You can have multiple authentication methods active at one time.</p>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized -- You are not authenticated.</td>
 </tr>
 <tr>
 <td>403</td>
@@ -11805,6 +11829,642 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p><code>start_location</code></p>
 
 <p><code>stop_location</code></p>
+<h1 id='order-bookings'>Order bookings</h1>
+<p>Order booking</p>
+<h2 id='order-bookings-endpoints'>Endpoints</h2>
+<p><code>POST /api/boomerang/order_bookings</code></p>
+<h2 id='order-bookings-fields'>Fields</h2>
+<p>Every order booking has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br></td>
+</tr>
+<tr>
+<td><code>products</code></td>
+<td><strong>Array</strong> <code>writeonly</code><br></td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>Uuid</strong><br>The associated Order</td>
+</tr>
+</tbody></table>
+<h2 id='order-bookings-relationships'>Relationships</h2>
+<p>Order bookings have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order</code></td>
+<td><strong>Orders</strong> <code>readonly</code><br>Associated Order</td>
+</tr>
+<tr>
+<td><code>lines</code></td>
+<td><strong>Lines</strong> <code>readonly</code><br>Associated Lines</td>
+</tr>
+<tr>
+<td><code>plannings</code></td>
+<td><strong>Plannings</strong> <code>readonly</code><br>Associated Plannings</td>
+</tr>
+<tr>
+<td><code>stock_item_plannings</code></td>
+<td><strong>Stock item plannings</strong> <code>readonly</code><br>Associated Stock item plannings</td>
+</tr>
+</tbody></table>
+<h2 id='order-bookings-creating-an-order-booking'>Creating an order booking</h2>
+<blockquote>
+<p>How to create an order booking:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_bookings'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_bookings",
+        "attributes": {
+          "order_id": "fdec1932-5da0-44dd-9e18-c04f79c96e48",
+          "products": [
+            {
+              "id": "b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3",
+              "stock_item_ids": [
+                "2b39a773-da1d-44f0-962e-42fa562d6019",
+                "d052b65d-7bb0-460e-9306-a814eaef935a",
+                "7387d37f-08d6-46aa-ba2e-798d8410f90b",
+                "b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00"
+              ]
+            },
+            {
+              "id": "31999bba-ca0d-4090-91c8-da192aad1d93",
+              "quantity": 3
+            }
+          ]
+        }
+      },
+      "include": "order,lines,plannings,stock_item_plannings"
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"207fbb3f-ce78-53d2-8b6c-877393286f1f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_bookings"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3546c92-c9a1-4b62-a5fc-1aafbf4881af"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"627c6628-aa87-41fa-8452-4badcdeb0f5a"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1406db72-975a-42c6-aa4f-784fb83d928c"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ec51342-0642-4711-9292-24e88206ae50"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63b5964e-1924-4355-9d84-40e788586768"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46dad3cc-e02e-4cb9-9bf5-a7bf82f44a0f"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a4d7abf-4e3e-473e-b7c7-4d4f71d9a6f8"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"new"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"status_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"concept"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"new"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"entirely_stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_shortage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tag_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"grand_total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"grand_total_with_tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coupon_discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_refunded_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_held_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_to_refund_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to_be_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coupon_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"tax_region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"coupon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"start_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"stop_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3546c92-c9a1-4b62-a5fc-1aafbf4881af"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"extra_information"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 days"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">345600</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discountable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"line_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31999bba-ca0d-4090-91c8-da192aad1d93"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_line_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"tax_category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"parent_line"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"nested_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"627c6628-aa87-41fa-8452-4badcdeb0f5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"extra_information"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 days"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">345600</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discountable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"line_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_line_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"tax_category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"parent_line"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"nested_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1406db72-975a-42c6-aa4f-784fb83d928c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31999bba-ca0d-4090-91c8-da192aad1d93"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_planning_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order_line"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"start_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"stop_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"parent_planning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"nested_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:14:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:16:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_planning_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order_line"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"start_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"stop_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"parent_planning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"nested_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ec51342-0642-4711-9292-24e88206ae50"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2b39a773-da1d-44f0-962e-42fa562d6019"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"planning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63b5964e-1924-4355-9d84-40e788586768"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d052b65d-7bb0-460e-9306-a814eaef935a"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"planning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46dad3cc-e02e-4cb9-9bf5-a7bf82f44a0f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7387d37f-08d6-46aa-ba2e-798d8410f90b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"planning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a4d7abf-4e3e-473e-b7c7-4d4f71d9a6f8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"planning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=2&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-bookings-creating-an-order-booking-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/order_bookings</code></p>
+<h3 id='order-bookings-creating-an-order-booking-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=order,lines,plannings</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[order_bookings]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-bookings-creating-an-order-booking-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][id]</code></td>
+<td><strong>Uuid</strong><br></td>
+</tr>
+<tr>
+<td><code>data[attributes][products][]</code></td>
+<td><strong>Array</strong><br></td>
+</tr>
+<tr>
+<td><code>data[attributes][order_id]</code></td>
+<td><strong>Uuid</strong><br>The associated Order</td>
+</tr>
+</tbody></table>
+<h3 id='order-bookings-creating-an-order-booking-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>order</code></p>
+
+<p><code>lines</code></p>
+
+<p><code>plannings</code></p>
+
+<p><code>stock_item_plannings</code></p>
 <h1 id='payment-methods'>Payment methods</h1>
 <p>Re-usable payment methods stored on file.</p>
 <h2 id='payment-methods-endpoints'>Endpoints</h2>
