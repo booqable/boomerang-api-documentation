@@ -66,7 +66,7 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: Developer documentation for the Booqable API
 ---
 
 # Introduction
