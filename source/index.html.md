@@ -54,10 +54,11 @@ includes:
   - currencies
   - ip_addresses
   - operating_rules
-  - login_activities
   - billing_invoices
   - users
   - operations
+  - authentication_methods
+  - login_activities
 
 search: true
 
