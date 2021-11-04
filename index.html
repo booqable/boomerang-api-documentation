@@ -757,19 +757,19 @@
               </ul>
           </li>
           <li>
-            <a href="#order-bookings" class="toc-h1 toc-link" data-title="Order bookings">Order bookings</a>
+            <a href="#bookings" class="toc-h1 toc-link" data-title="Bookings">Bookings</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#order-bookings-endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+                    <a href="#bookings-endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
                   </li>
                   <li>
-                    <a href="#order-bookings-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                    <a href="#bookings-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
                   </li>
                   <li>
-                    <a href="#order-bookings-relationships" class="toc-h2 toc-link" data-title="Relationships">Relationships</a>
+                    <a href="#bookings-relationships" class="toc-h2 toc-link" data-title="Relationships">Relationships</a>
                   </li>
                   <li>
-                    <a href="#order-bookings-creating-an-order-booking" class="toc-h2 toc-link" data-title="Creating an order booking">Creating an order booking</a>
+                    <a href="#bookings-creating-a-booking" class="toc-h2 toc-link" data-title="Creating a booking">Creating a booking</a>
                   </li>
               </ul>
           </li>
@@ -11832,12 +11832,84 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p><code>start_location</code></p>
 
 <p><code>stop_location</code></p>
-<h1 id='order-bookings'>Order bookings</h1>
-<p>Order booking</p>
-<h2 id='order-bookings-endpoints'>Endpoints</h2>
-<p><code>POST /api/boomerang/order_bookings</code></p>
-<h2 id='order-bookings-fields'>Fields</h2>
-<p>Every order booking has the following fields:</p>
+<h1 id='bookings'>Bookings</h1>
+<p>Add products, bundles and specific stock items to an order.</p>
+
+<p>Items can be added quantitatively or, for trackable products, specific stock items can be specified. Specifying stock items is not required on booking; they can also be defined when transitioning the order status to a <code>started</code> state.</p>
+
+<blockquote>
+<p>Adding items quantitatively:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>  "items": [
+    {
+      "type": "Product",
+      "id": "69a6ac18-244e-4b1e-b2e1-c88d155b51e5",
+      "quantity": 10
+    }
+  ]
+</code></pre></div>
+<blockquote>
+<p>Adding specific stock items:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>  "items": [
+    {
+      "type": "Product",
+      "id": "a2d96edf-7d8b-42de-9897-e5aee335f3ca",
+      "quantity": 3,
+      "stock_item_ids": [
+        "1456d221-029c-42ad-abcd-ad8d70c9e3f0",
+        "ee64a622-3ac5-4859-a582-b3467b8027e8"
+      ]
+    }
+  ]
+</code></pre></div>
+<blockquote>
+<p>Adding a bundle:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>  "items": [
+    {
+      "type": "Bundle",
+      "id": "9bf34d16-2144-45a5-8461-ebae7bf0f4ca",
+      "quantity": 3
+    }
+  ]
+</code></pre></div>
+<blockquote>
+<p>Adding a bundle and specifying a variation (for product that has variations)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>  "items": [
+    {
+      "type": "Bundle",
+      "id": "9bf34d16-2144-45a5-8461-ebae7bf0f4ca",
+      "products": [
+        {
+          id: ""9bf34d16-2144-45a5-8461-ebae7bf0f4ca"
+        }
+      }
+    }
+  ]
+</code></pre></div>
+<p><strong>When a booking is successful, the price and status information of the order will be updated, and the following resources are created:</strong></p>
+
+<ul>
+<li><strong>Plannings</strong> Quantitative data about the planning of an item.</li>
+<li><strong>Stock item plannings</strong> Planning for specific stock items (when stock items are specified).</li>
+<li><strong>Lines</strong> Individual elements on order, which in the case of bookings contain price and planning information.</li>
+</ul>
+
+<p>Note that these newly created or updated resources can be included in the response. Also, lines will automatically be synced with a proforma invoice (and prorated if there was already a finalized invoice for this order).</p>
+
+<p><strong>Adding items (and stock items) to a reserved order can result in shortage errors. There are three kinds of errors:</strong></p>
+
+<ol>
+<li><strong>Stock item specified</strong> This Means that one of the specified stock items is not available.</li>
+<li><strong>Blocking shortage</strong> A blocking shortage occurs when an item is quantitively unavailable and exceeds its <code>shortage_limit</code>.</li>
+<li><strong>Shortage warning</strong> Warns about a quantitive shortage for an item that is within limits of its <code>shortage_limit</code>.  The action can be retried with by setting <code>confirm_shortage</code> to <code>true</code>.</li>
+</ol>
+<h2 id='bookings-endpoints'>Endpoints</h2>
+<p><code>POST /api/boomerang/bookings</code></p>
+<h2 id='bookings-fields'>Fields</h2>
+<p>Every booking has the following fields:</p>
 
 <table><thead>
 <tr>
@@ -11850,16 +11922,20 @@ Because of this, a user should always be an actual person, not a legal person.</
 <td><strong>Uuid</strong><br></td>
 </tr>
 <tr>
-<td><code>products</code></td>
-<td><strong>Array</strong> <code>writeonly</code><br></td>
+<td><code>items</code></td>
+<td><strong>Array</strong> <code>writeonly</code><br>Array with details about the items (and stock item) to add to the order</td>
+</tr>
+<tr>
+<td><code>confirm_shortage</code></td>
+<td><strong>Boolean</strong> <code>writeonly</code><br>Whether to confirm the shortage if they are non-blocking</td>
 </tr>
 <tr>
 <td><code>order_id</code></td>
 <td><strong>Uuid</strong><br>The associated Order</td>
 </tr>
 </tbody></table>
-<h2 id='order-bookings-relationships'>Relationships</h2>
-<p>Order bookings have the following relationships:</p>
+<h2 id='bookings-relationships'>Relationships</h2>
+<p>Bookings have the following relationships:</p>
 
 <table><thead>
 <tr>
@@ -11884,31 +11960,99 @@ Because of this, a user should always be an actual person, not a legal person.</
 <td><strong>Stock item plannings</strong> <code>readonly</code><br>Associated Stock item plannings</td>
 </tr>
 </tbody></table>
-<h2 id='order-bookings-creating-an-order-booking'>Creating an order booking</h2>
+<h2 id='bookings-creating-a-booking'>Creating a booking</h2>
 <blockquote>
-<p>How to create an order booking:</p>
+<p>Adding products to an order resulting in a shortage:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_bookings'</span> <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/bookings'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
     <span class="nt">--data</span> <span class="s1">'{
       "data": {
-        "type": "order_bookings",
+        "type": "bookings",
         "attributes": {
-          "order_id": "fdec1932-5da0-44dd-9e18-c04f79c96e48",
-          "products": [
+          "order_id": "6c976c08-abf1-424a-af1c-dc553ce0d6a5",
+          "items": [
             {
-              "id": "b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3",
+              "type": "Product",
+              "id": "75617109-a0da-4dd4-9d13-d1894caa4ac1",
+              "quantity": 10
+            },
+            {
+              "type": "Product",
+              "id": "5a19cb4f-8100-4758-bc9b-0e7b3c472b6f",
               "stock_item_ids": [
-                "2b39a773-da1d-44f0-962e-42fa562d6019",
-                "d052b65d-7bb0-460e-9306-a814eaef935a",
-                "7387d37f-08d6-46aa-ba2e-798d8410f90b",
-                "b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00"
+                "726b4c7c-e50c-4ba1-a12a-8087297436c4",
+                "ef9fc0f1-15f9-4fac-91cc-56266d6f80a3"
+              ]
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 422 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"items_not_available"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Items not available"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One or more items are not available"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"warning"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"blocking"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shortage"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75617109-a0da-4dd4-9d13-d1894caa4ac1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"stock_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"needed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"shortage"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_specified"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a19cb4f-8100-4758-bc9b-0e7b3c472b6f"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unavailable"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"726b4c7c-e50c-4ba1-a12a-8087297436c4"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"ef9fc0f1-15f9-4fac-91cc-56266d6f80a3"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>How to add products to an order:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/bookings'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "bookings",
+        "attributes": {
+          "order_id": "dd801687-27d5-43ab-8703-f54a6bb2b72b",
+          "items": [
+            {
+              "type": "Product",
+              "id": "9ddea90b-a947-4372-9e81-e5cf4cecc8d2",
+              "stock_item_ids": [
+                "245590f6-692c-4bd0-9ed7-19344b7f11b1",
+                "84fa58de-813d-4011-8a1e-cacea03d1bf4",
+                "a302a363-d379-4a97-9050-6f9a74500eb9"
               ]
             },
             {
-              "id": "31999bba-ca0d-4090-91c8-da192aad1d93",
-              "quantity": 3
+              "type": "Product",
+              "id": "dbfbc8a1-2c1d-474c-b66a-37e10df2571b",
+              "quantity": 1
             }
           ]
         }
@@ -11921,27 +12065,27 @@ Because of this, a user should always be an actual person, not a legal person.</
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"207fbb3f-ce78-53d2-8b6c-877393286f1f"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_bookings"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b275e833-fa33-5682-ae4e-da794f49d889"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bookings"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3546c92-c9a1-4b62-a5fc-1aafbf4881af"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06e8cc6f-d07d-489e-8282-115cc38777df"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"627c6628-aa87-41fa-8452-4badcdeb0f5a"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa182b00-d991-4273-8f73-6fde538884a5"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -11949,11 +12093,11 @@ Because of this, a user should always be an actual person, not a legal person.</
         </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1406db72-975a-42c6-aa4f-784fb83d928c"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51495bc2-1e7d-47d6-a76d-0b57163ed5fd"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7b6a985c-2f48-436a-b357-a1b45f56d966"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -11961,19 +12105,15 @@ Because of this, a user should always be an actual person, not a legal person.</
         </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ec51342-0642-4711-9292-24e88206ae50"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74ef8221-ae61-4dae-9a1a-b66b2c89b183"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63b5964e-1924-4355-9d84-40e788586768"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5409a61-2373-42be-8f11-1a1436e7cf02"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46dad3cc-e02e-4cb9-9bf5-a7bf82f44a0f"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a4d7abf-4e3e-473e-b7c7-4d4f71d9a6f8"</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d88d56f7-195b-4ffe-b75d-f958b44f8ecb"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -11981,52 +12121,54 @@ Because of this, a user should always be an actual person, not a legal person.</
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reserved"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"new"</span><span class="w">
+          </span><span class="s2">"reserved"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"status_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"concept"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"new"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"new"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
           </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-04-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-05-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
         </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"entirely_stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"location_shortage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"shortage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tag_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment_due"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tag_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"webshop"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"grand_total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"grand_total_with_tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">256800</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"grand_total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">231120</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"grand_total_with_tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">279655</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">48535</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">25680</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coupon_discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total_discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"deposit_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">25680</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_refunded_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_held_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_to_refund_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"to_be_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to_be_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">314655</span><span class="p">,</span><span class="w">
         </span><span class="nl">"paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"discount_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d93e7eb-2959-4fd8-86e2-8866d8cd0367"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"tax_region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coupon_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="w">
+        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a0a9ede-117a-4a51-80a0-a4557d1b010c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a0a9ede-117a-4a51-80a0-a4557d1b010c"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12062,27 +12204,41 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3546c92-c9a1-4b62-a5fc-1aafbf4881af"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06e8cc6f-d07d-489e-8282-115cc38777df"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 2"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"extra_information"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"original_price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Macbook Pro"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"extra_information"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comes with a mouse"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">72500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">80250</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">160500</span><span class="p">,</span><span class="w">
         </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 days"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">345600</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29 days"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">2505600</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-04-02T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-05-01T00:00:00.000Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High-Season"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339200</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7750.0"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"stacked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nl">"discountable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"line_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31999bba-ca0d-4090-91c8-da192aad1d93"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbfbc8a1-2c1d-474c-b66a-37e10df2571b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6be3aab0-822c-4804-9dd5-2ef87d8ee765"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"parent_line_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12114,27 +12270,41 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"627c6628-aa87-41fa-8452-4badcdeb0f5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fa182b00-d991-4273-8f73-6fde538884a5"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lines"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"extra_information"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"original_price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iPad Pro"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"extra_information"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comes with a case"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">29000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_each_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">32100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">96300</span><span class="p">,</span><span class="w">
         </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 days"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">345600</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29 days"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">2505600</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-04-02T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-05-01T00:00:00.000Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High-Season"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339200</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"multiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3100.0"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"stacked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nl">"discountable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"taxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"line_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"relevant"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ddea90b-a947-4372-9e81-e5cf4cecc8d2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6be3aab0-822c-4804-9dd5-2ef87d8ee765"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"parent_line_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12166,23 +12336,23 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1406db72-975a-42c6-aa4f-784fb83d928c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51495bc2-1e7d-47d6-a76d-0b57163ed5fd"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-04-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-05-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-04-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-05-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"location_shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31999bba-ca0d-4090-91c8-da192aad1d93"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9ddea90b-a947-4372-9e81-e5cf4cecc8d2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a0a9ede-117a-4a51-80a0-a4557d1b010c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a0a9ede-117a-4a51-80a0-a4557d1b010c"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"parent_planning_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12229,23 +12399,23 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7b6a985c-2f48-436a-b357-a1b45f56d966"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plannings"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:15:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:15:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-01T20:14:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-05T20:16:00+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-04-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-05-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-04-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-05-01T12:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"location_shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"shortage_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aa6b6cf-0a71-49ae-85ac-7ad0edbbdad4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbfbc8a1-2c1d-474c-b66a-37e10df2571b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a0a9ede-117a-4a51-80a0-a4557d1b010c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a0a9ede-117a-4a51-80a0-a4557d1b010c"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"parent_planning_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12292,15 +12462,15 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ec51342-0642-4711-9292-24e88206ae50"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74ef8221-ae61-4dae-9a1a-b66b2c89b183"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2b39a773-da1d-44f0-962e-42fa562d6019"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"245590f6-692c-4bd0-9ed7-19344b7f11b1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51495bc2-1e7d-47d6-a76d-0b57163ed5fd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12321,15 +12491,15 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63b5964e-1924-4355-9d84-40e788586768"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5409a61-2373-42be-8f11-1a1436e7cf02"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d052b65d-7bb0-460e-9306-a814eaef935a"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84fa58de-813d-4011-8a1e-cacea03d1bf4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51495bc2-1e7d-47d6-a76d-0b57163ed5fd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12350,44 +12520,15 @@ Because of this, a user should always be an actual person, not a legal person.</
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46dad3cc-e02e-4cb9-9bf5-a7bf82f44a0f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d88d56f7-195b-4ffe-b75d-f958b44f8ecb"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7387d37f-08d6-46aa-ba2e-798d8410f90b"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"planning"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a4d7abf-4e3e-473e-b7c7-4d4f71d9a6f8"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_plannings"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2105e890-f845-47fe-a65f-f485446470b7"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fdec1932-5da0-44dd-9e18-c04f79c96e48"</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a302a363-d379-4a97-9050-6f9a74500eb9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51495bc2-1e7d-47d6-a76d-0b57163ed5fd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dd801687-27d5-43ab-8703-f54a6bb2b72b"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12409,16 +12550,16 @@ Because of this, a user should always be an actual person, not a legal person.</
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/order_bookings?data%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;data%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;data%5Btype%5D=order_bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;order_booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=fdec1932-5da0-44dd-9e18-c04f79c96e48&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=b7a9b4ff-4af9-4b58-96ea-5d8f128d1da3&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=2b39a773-da1d-44f0-962e-42fa562d6019&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=d052b65d-7bb0-460e-9306-a814eaef935a&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=7387d37f-08d6-46aa-ba2e-798d8410f90b&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=b8d52dfd-9e45-4eee-a2c8-0d5605d3ab00&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bid%5D=31999bba-ca0d-4090-91c8-da192aad1d93&amp;order_booking%5Bdata%5D%5Battributes%5D%5Bproducts%5D%5B%5D%5Bquantity%5D=3&amp;order_booking%5Bdata%5D%5Btype%5D=order_bookings&amp;order_booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=2&amp;page%5Bsize%5D=25"</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;booking%5Bdata%5D%5Btype%5D=bookings&amp;booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;data%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;data%5Btype%5D=bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;booking%5Bdata%5D%5Btype%5D=bookings&amp;booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;data%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;data%5Btype%5D=bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;booking%5Bdata%5D%5Btype%5D=bookings&amp;booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;data%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;data%5Btype%5D=bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;booking%5Bdata%5D%5Btype%5D=bookings&amp;booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=9ddea90b-a947-4372-9e81-e5cf4cecc8d2&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=245590f6-692c-4bd0-9ed7-19344b7f11b1&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=84fa58de-813d-4011-8a1e-cacea03d1bf4&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=a302a363-d379-4a97-9050-6f9a74500eb9&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=dbfbc8a1-2c1d-474c-b66a-37e10df2571b&amp;data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&amp;data%5Battributes%5D%5Border_id%5D=dd801687-27d5-43ab-8703-f54a6bb2b72b&amp;data%5Btype%5D=bookings&amp;include=order%2Clines%2Cplannings%2Cstock_item_plannings&amp;page%5Bnumber%5D=2&amp;page%5Bsize%5D=25"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='order-bookings-creating-an-order-booking-http-request'>HTTP Request</h3>
-<p><code>POST /api/boomerang/order_bookings</code></p>
-<h3 id='order-bookings-creating-an-order-booking-request-params'>Request params</h3>
+</span></code></pre></div><h3 id='bookings-creating-a-booking-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/bookings</code></p>
+<h3 id='bookings-creating-a-booking-request-params'>Request params</h3>
 <p>This request accepts the following paramaters:</p>
 
 <table><thead>
@@ -12433,10 +12574,10 @@ Because of this, a user should always be an actual person, not a legal person.</
 </tr>
 <tr>
 <td><code>fields[]</code></td>
-<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[order_bookings]=id,created_at,updated_at</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[bookings]=id,created_at,updated_at</code></td>
 </tr>
 </tbody></table>
-<h3 id='order-bookings-creating-an-order-booking-request-body'>Request body</h3>
+<h3 id='bookings-creating-a-booking-request-body'>Request body</h3>
 <p>This request accepts the following body:</p>
 
 <table><thead>
@@ -12450,15 +12591,19 @@ Because of this, a user should always be an actual person, not a legal person.</
 <td><strong>Uuid</strong><br></td>
 </tr>
 <tr>
-<td><code>data[attributes][products][]</code></td>
-<td><strong>Array</strong><br></td>
+<td><code>data[attributes][items][]</code></td>
+<td><strong>Array</strong><br>Array with details about the items (and stock item) to add to the order</td>
+</tr>
+<tr>
+<td><code>data[attributes][confirm_shortage]</code></td>
+<td><strong>Boolean</strong><br>Whether to confirm the shortage if they are non-blocking</td>
 </tr>
 <tr>
 <td><code>data[attributes][order_id]</code></td>
 <td><strong>Uuid</strong><br>The associated Order</td>
 </tr>
 </tbody></table>
-<h3 id='order-bookings-creating-an-order-booking-includes'>Includes</h3>
+<h3 id='bookings-creating-a-booking-includes'>Includes</h3>
 <p>This request accepts the following includes:</p>
 
 <p><code>order</code></p>
