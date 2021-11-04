@@ -46,7 +46,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "4c37f098-c884-44e1-b5b9-3766fc685bd0",
+      "id": "34411190-4b43-41a3-b172-1198d2b6eba4",
       "type": "coupons",
       "attributes": {
         "identifier": "SUMMER20OFF",
@@ -78,11 +78,11 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-03T08:54:06Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-04T16:17:06Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
-`page[per]` | **String**<br>The amount of items per page (max 100)
+`page[size]` | **String**<br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -121,7 +121,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/coupons/e7a7c29b-a14b-4d38-b184-9474be5a32f8' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/6b8bc9e2-8753-4840-aabe-d78c5952dca6' \
     --header 'content-type: application/json' \
 ```
 
@@ -130,7 +130,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e7a7c29b-a14b-4d38-b184-9474be5a32f8",
+    "id": "6b8bc9e2-8753-4840-aabe-d78c5952dca6",
     "type": "coupons",
     "attributes": {
       "identifier": "SUMMER20OFF",
@@ -189,7 +189,7 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d0b8b4c0-b135-4078-aaff-0518974ce049",
+    "id": "32455ad5-6d59-4352-ab07-b35c323c1c82",
     "type": "coupons",
     "attributes": {
       "identifier": "WINTERDISCOUNT",
@@ -246,11 +246,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/470e32b9-87b9-4e14-9e80-34302f3a67d2' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/68238bd5-6386-4a24-b416-f149b4b8b645' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "470e32b9-87b9-4e14-9e80-34302f3a67d2",
+        "id": "68238bd5-6386-4a24-b416-f149b4b8b645",
         "type": "coupons",
         "attributes": {
           "identifier": "SUMMER30OFF",
@@ -266,7 +266,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "eebda924-25eb-4632-9598-bd77cf61f3f9",
+    "id": "d6a3bc90-59c7-4e86-98c9-2f94f8d240d2",
     "type": "coupons",
     "attributes": {
       "identifier": "SUMMER30OFF",
@@ -285,11 +285,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/6ea15f30-09a8-477d-bd5b-958fea5d9480' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/1d43d856-fdd9-4f63-835f-1701745bc848' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "6ea15f30-09a8-477d-bd5b-958fea5d9480",
+        "id": "1d43d856-fdd9-4f63-835f-1701745bc848",
         "type": "coupons",
         "attributes": {
           "active": false
@@ -303,7 +303,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "396ccdf2-567b-40da-8760-62c29eb4f594",
+    "id": "577549d8-4397-48e6-8e31-d71a8f1cf288",
     "type": "coupons",
     "attributes": {
       "identifier": "SUMMER20OFF",
@@ -354,7 +354,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/coupons/8226d7f4-2255-4808-8125-ea709709fac9' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/53341463-49d2-4a3b-847e-15056c9a3987' \
     --header 'content-type: application/json' \
 ```
 

@@ -303,6 +303,8 @@ Name | Description
 
 ## Listing operations
 
+
+
 > How to fetch a list of operations:
 
 ```shell
@@ -317,7 +319,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "3756c850-0b7e-4bcb-adb7-1d7a8644eddb",
+      "id": "e36b1f79-ef80-441e-a51d-8634aeadf038",
       "type": "operations",
       "attributes": {
         "status": "scheduled",
@@ -329,12 +331,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "e511163b-c32a-4707-b9ad-8af1ef91f193"
+        "employee_id": "2be7e4e6-efbe-418e-bec9-b9fef52823c3"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/e511163b-c32a-4707-b9ad-8af1ef91f193"
+            "related": "api/boomerang/employees/2be7e4e6-efbe-418e-bec9-b9fef52823c3"
           }
         }
       }
@@ -349,7 +351,6 @@ Name | Description
 }
 ```
 
-
 ### HTTP Request
 
 `GET /api/boomerang/operations`
@@ -362,11 +363,11 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-10-28T14:36:11Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-04T16:17:06Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
-`page[per]` | **String**<br>The amount of items per page (max 100)
+`page[size]` | **String**<br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -405,11 +406,13 @@ This request accepts the following includes:
 
 ## Fetching an operation
 
+
+
 > How to fetch an operation:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/73443c93-7015-4ad3-9a1d-cfd2f9932d23' \
+    --url 'https://example.booqable.com/api/boomerang/operations/846a00c4-f041-416e-a302-f86cc5ac15ca' \
     --header 'content-type: application/json' \
 ```
 
@@ -418,7 +421,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "73443c93-7015-4ad3-9a1d-cfd2f9932d23",
+    "id": "846a00c4-f041-416e-a302-f86cc5ac15ca",
     "type": "operations",
     "attributes": {
       "status": "scheduled",
@@ -430,12 +433,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "bef984a8-9225-48b0-b667-5096926023ad"
+      "employee_id": "8a3c6592-a427-41c9-84ac-99a47167c642"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/bef984a8-9225-48b0-b667-5096926023ad"
+          "related": "api/boomerang/employees/8a3c6592-a427-41c9-84ac-99a47167c642"
         }
       }
     }
@@ -443,7 +446,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
 
 ### HTTP Request
 
@@ -471,6 +473,9 @@ This request accepts the following includes:
 
 
 ## Creating an operation
+
+When creating an operation it will start running in the background. With the `id` provided in the response, you can poll the `operations/{id}` endpoint to check it's status.
+
 
 > How to create an operation:
 
@@ -501,7 +506,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c9694218-5224-47d5-81f4-ad0baec77e2d",
+    "id": "f9bcf713-8e33-435e-a45f-0183ff313886",
     "type": "operations",
     "attributes": {
       "status": "scheduled",
@@ -513,7 +518,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "d46c1573-319d-4196-983f-4d5ea432281c"
+      "employee_id": "d665e626-88b2-409d-8f74-da15dd998fff"
     },
     "relationships": {
       "employee": {
@@ -531,8 +536,6 @@ This request accepts the following includes:
   "meta": {}
 }
 ```
-
-When creating an operation it will start running in the background. With the `id` provided in the response, you can poll the `operations/{id}` endpoint to check it's status.
 
 ### HTTP Request
 
