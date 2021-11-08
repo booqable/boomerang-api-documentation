@@ -46,7 +46,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "51decc25-5650-4866-90ab-c5b1acd8b580",
+      "id": "768c913f-fdaa-4d89-96f2-cd2339938a50",
       "type": "payment_methods",
       "attributes": {
         "data": {
@@ -89,7 +89,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=customer`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-04T16:17:06Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-08T12:27:12Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -129,7 +129,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/9b37110b-69c7-4a4a-a059-80e18a25878d' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/41962990-8e34-4658-9baa-c276a2699637' \
     --header 'content-type: application/json' \
 ```
 
