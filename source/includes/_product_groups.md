@@ -106,7 +106,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "6b7a0120-9018-42cf-a66e-a2cf111f3f50",
+      "id": "24a4dbbc-f18a-4bc2-b74f-bd9ca991e80a",
       "type": "product_groups",
       "attributes": {
         "name": "iPad Pro",
@@ -149,7 +149,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=6b7a0120-9018-42cf-a66e-a2cf111f3f50"
+            "related": "api/boomerang/products?filter[item_group_id]=24a4dbbc-f18a-4bc2-b74f-bd9ca991e80a"
           }
         },
         "tax_category": {
@@ -159,7 +159,7 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=6b7a0120-9018-42cf-a66e-a2cf111f3f50&filter[owner_type]=ProductGroup"
+            "related": "api/boomerang/properties?filter[owner_id]=24a4dbbc-f18a-4bc2-b74f-bd9ca991e80a&filter[owner_type]=ProductGroup"
           }
         }
       }
@@ -186,7 +186,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-04T16:17:06Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-08T09:21:29Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -261,7 +261,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/b05af8ac-20c0-4c24-9df9-47af017c6c56' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/f517deb8-ee8f-4e5d-aea1-a586bfac5d78' \
     --header 'content-type: application/json' \
 ```
 
@@ -270,7 +270,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b05af8ac-20c0-4c24-9df9-47af017c6c56",
+    "id": "f517deb8-ee8f-4e5d-aea1-a586bfac5d78",
     "type": "product_groups",
     "attributes": {
       "name": "iPad Pro",
@@ -313,7 +313,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[item_group_id]=b05af8ac-20c0-4c24-9df9-47af017c6c56"
+          "related": "api/boomerang/products?filter[item_group_id]=f517deb8-ee8f-4e5d-aea1-a586bfac5d78"
         }
       },
       "tax_category": {
@@ -323,7 +323,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=b05af8ac-20c0-4c24-9df9-47af017c6c56&filter[owner_type]=ProductGroup"
+          "related": "api/boomerang/properties?filter[owner_id]=f517deb8-ee8f-4e5d-aea1-a586bfac5d78&filter[owner_type]=ProductGroup"
         }
       }
     }
@@ -399,7 +399,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b637687b-5cc2-4452-819b-3ffe6bc299ce",
+    "id": "f93bf59a-ce77-4be6-8f77-f47930a096d0",
     "type": "product_groups",
     "attributes": {
       "name": "iPad mini",
@@ -545,11 +545,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/6b1c5116-8ec4-4890-a54a-eace0823b9c9' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/9fbf0477-71a8-44cf-a42d-0e2cb3b32c22' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "6b1c5116-8ec4-4890-a54a-eace0823b9c9",
+        "id": "9fbf0477-71a8-44cf-a42d-0e2cb3b32c22",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -563,7 +563,7 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6b1c5116-8ec4-4890-a54a-eace0823b9c9",
+    "id": "9fbf0477-71a8-44cf-a42d-0e2cb3b32c22",
     "type": "product_groups",
     "attributes": {
       "name": "iPad mini",
@@ -701,7 +701,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/77652d54-c162-4a49-8e19-cd5541c1ee41' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/db02aa3e-232f-49ff-8c5d-e22bb3b085bb' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
