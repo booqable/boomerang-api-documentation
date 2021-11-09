@@ -10,57 +10,56 @@ title: Booqable API documentation
 includes:
   - errors
   - resources
-  - session
-  - companies
-  - employees
-  - employee_invitations
-  - items
-  - product_groups
-  - products
-  - bundles
-  - bundle_items
-  - stock_items
-  - stock_counts
-  - photos
-  - categories
+  - authentication_methods
   - barcodes
-  - customers
-  - customer_merges
-  - users
-  - orders
+  - billing_invoices
   - bookings
-  - documents
-  - lines
-  - plannings
-  - stock_item_plannings
-  - payment_methods
-  - payments
-  - transactions
+  - bundle_items
+  - bundles
+  - categories
   - clusters
-  - locations
-  - transfers
-  - notes
-  - emails
-  - email_templates
-  - tax_categories
-  - tax_regions
-  - tax_rates
-  - price_structures
-  - price_tiles
-  - price_rulesets
-  - price_rules
-  - default_properties
-  - properties
-  - tags
+  - companies
   - coupons
   - currencies
+  - customer_merges
+  - customers
+  - default_properties
+  - documents
+  - email_templates
+  - emails
+  - employee_invitations
+  - employees
   - ip_addresses
-  - operating_rules
-  - billing_invoices
-  - users
-  - operations
-  - authentication_methods
+  - items
+  - lines
+  - locations
   - login_activities
+  - notes
+  - operating_rules
+  - operations
+  - orders
+  - payment_methods
+  - payments
+  - photos
+  - plannings
+  - price_rules
+  - price_rulesets
+  - price_structures
+  - price_tiles
+  - product_groups
+  - products
+  - properties
+  - session
+  - stock_counts
+  - stock_item_plannings
+  - stock_items
+  - tags
+  - tax_categories
+  - tax_rates
+  - tax_regions
+  - transactions
+  - transfers
+  - users
 
 search: true
 
