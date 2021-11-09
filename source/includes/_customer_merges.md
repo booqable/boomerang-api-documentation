@@ -38,8 +38,8 @@ Name | Description
       "data": {
         "type": "customer_merges",
         "attributes": {
-          "merge_from_customer_id": "7387446f-2b49-4b29-8c44-ac4ea28b6c16",
-          "merge_into_customer_id": "e0833af0-3abe-4492-a560-d561aaf6a036"
+          "merge_from_customer_id": "9a3a0f70-d287-420a-8312-7e14000d153d",
+          "merge_into_customer_id": "e0af3959-7b9b-40b0-b67d-35c2e013b6a8"
         }
       },
       "include": "customer"
@@ -51,27 +51,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d4b3c207-1b7b-52a6-b603-a4d183841384",
+    "id": "9ee2f457-f683-5923-a313-1942d799052b",
     "type": "customer_merges",
     "attributes": {
-      "merge_into_customer_id": "e0833af0-3abe-4492-a560-d561aaf6a036",
-      "merge_from_customer_id": "7387446f-2b49-4b29-8c44-ac4ea28b6c16",
-      "customer_id": "e0833af0-3abe-4492-a560-d561aaf6a036"
+      "merge_into_customer_id": "e0af3959-7b9b-40b0-b67d-35c2e013b6a8",
+      "merge_from_customer_id": "9a3a0f70-d287-420a-8312-7e14000d153d",
+      "customer_id": "e0af3959-7b9b-40b0-b67d-35c2e013b6a8"
     },
     "relationships": {
       "customer": {
         "data": {
           "type": "customers",
-          "id": "e0833af0-3abe-4492-a560-d561aaf6a036"
+          "id": "e0af3959-7b9b-40b0-b67d-35c2e013b6a8"
         }
       }
     }
   },
   "included": [
     {
-      "id": "e0833af0-3abe-4492-a560-d561aaf6a036",
+      "id": "e0af3959-7b9b-40b0-b67d-35c2e013b6a8",
       "type": "customers",
       "attributes": {
+        "created_at": "2021-11-09T00:08:28+00:00",
+        "updated_at": "2021-11-09T00:08:28+00:00",
         "number": 1,
         "name": "John Doe",
         "email": "johndoe@company.test",
@@ -115,10 +117,10 @@ Name | Description
     }
   ],
   "links": {
-    "self": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=7387446f-2b49-4b29-8c44-ac4ea28b6c16&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0833af0-3abe-4492-a560-d561aaf6a036&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/customer_merges?customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&customer_merge%5Bdata%5D%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&customer_merge%5Bdata%5D%5Btype%5D=customer_merges&customer_merge%5Binclude%5D=customer&data%5Battributes%5D%5Bmerge_from_customer_id%5D=9a3a0f70-d287-420a-8312-7e14000d153d&data%5Battributes%5D%5Bmerge_into_customer_id%5D=e0af3959-7b9b-40b0-b67d-35c2e013b6a8&data%5Btype%5D=customer_merges&include=customer&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }

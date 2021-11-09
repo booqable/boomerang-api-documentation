@@ -48,7 +48,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "579e2040-aca7-4d44-9254-25e93e7d2507",
+      "id": "635cfbc8-c86b-4572-a0aa-793a3eeddea9",
+      "created_at": "2021-11-09T00:08:54+00:00",
+      "updated_at": "2021-11-09T00:08:54+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -73,7 +75,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-04T16:17:06Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-09T00:07:58Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -135,9 +137,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "16c9cb5a-482c-4670-a251-a96f697f7ac9",
+    "id": "2a641436-3529-423e-b429-4501a1297ffc",
     "type": "operating_rules",
     "attributes": {
+      "created_at": "2021-11-09T00:08:54+00:00",
+      "updated_at": "2021-11-09T00:08:54+00:00",
       "data_type": "hours",
       "data": {
         "mon": {
@@ -184,9 +188,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "eb5386a8-bd9d-418a-924e-bb08ce2f8171",
+    "id": "5524e4c0-a3fd-4ecf-a31b-72d6881bb97c",
     "type": "operating_rules",
     "attributes": {
+      "created_at": "2021-11-09T00:08:54+00:00",
+      "updated_at": "2021-11-09T00:08:54+00:00",
       "data_type": "hours",
       "data": {
         "weekday": {
@@ -233,9 +239,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d273696e-0b08-43ca-b595-848e1b09bb94",
+    "id": "0a81f5cb-217c-4d3f-ac46-d3e78aa44001",
     "type": "operating_rules",
     "attributes": {
+      "created_at": "2021-11-09T00:08:55+00:00",
+      "updated_at": "2021-11-09T00:08:55+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -282,9 +290,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "cbe87d49-41a4-4259-99f4-7566ad742eec",
+    "id": "d8118034-d6bf-4869-83d9-de98f5b6f837",
     "type": "operating_rules",
     "attributes": {
+      "created_at": "2021-11-09T00:08:55+00:00",
+      "updated_at": "2021-11-09T00:08:55+00:00",
       "data_type": "timeslot_fixed",
       "data": {
         "weekend": {
@@ -328,9 +338,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "47fcf0c9-e939-4166-a504-799f9e141069",
+    "id": "50002178-168b-426b-9780-1b19f8a483a9",
     "type": "operating_rules",
     "attributes": {
+      "created_at": "2021-11-09T00:08:55+00:00",
+      "updated_at": "2021-11-09T00:08:55+00:00",
       "data_type": "timeslot_duration",
       "data": {
         "length": 86000
@@ -381,11 +393,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/e4629385-c142-41dc-b534-de393903f6e7' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/cf2bd8f9-6bc1-48b1-8830-7211051d3220' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e4629385-c142-41dc-b534-de393903f6e7",
+        "id": "cf2bd8f9-6bc1-48b1-8830-7211051d3220",
         "type": "operating_rules",
         "attributes": {
           "data": {
@@ -404,9 +416,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e4629385-c142-41dc-b534-de393903f6e7",
+    "id": "cf2bd8f9-6bc1-48b1-8830-7211051d3220",
     "type": "operating_rules",
     "attributes": {
+      "created_at": "2021-11-09T00:08:56+00:00",
+      "updated_at": "2021-11-09T00:08:56+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -455,7 +469,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/6d653a66-ba88-4b28-9ad8-e552e61f6391' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/1e8c7af4-1f0b-450b-a6a5-6f984b68b8f3' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

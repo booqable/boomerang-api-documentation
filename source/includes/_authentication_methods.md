@@ -54,9 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "3b709312-82a6-46ac-beef-27889e9e611a",
+      "id": "c56c7072-94bb-4228-9131-a52ab10b95ce",
       "type": "authentication_methods",
       "attributes": {
+        "created_at": "2021-11-09T00:08:04+00:00",
+        "updated_at": "2021-11-09T00:08:04+00:00",
         "name": "Segment integration",
         "kind": "token",
         "algorithm": null
@@ -84,7 +86,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-04T16:17:06Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-09T00:07:57Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -125,7 +127,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/ef5b53ba-e4ed-46ef-8ab8-1f7495508645' \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/986edce4-c5db-4193-b69e-d1954e6a42ab' \
     --header 'content-type: application/json' \
 ```
 
@@ -134,11 +136,13 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ef5b53ba-e4ed-46ef-8ab8-1f7495508645",
+    "id": "986edce4-c5db-4193-b69e-d1954e6a42ab",
     "type": "authentication_methods",
     "attributes": {
+      "created_at": "2021-11-09T00:08:06+00:00",
+      "updated_at": "2021-11-09T00:08:06+00:00",
       "name": "Segment integration",
-      "key": "26b4cea6d6be7dbd674cd70ee1787246859185f40f484406bc92fd945ad3af10",
+      "key": "5861bc4b1f8657bcf9e6c3c1ae602ad94057b12567d40249b633d57ff84b06fd",
       "kind": "token",
       "algorithm": null
     }
@@ -189,11 +193,13 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c7c10055-fdca-4b74-ac9c-f83f1a889909",
+    "id": "8163d09e-eb6a-45b2-b75c-24ecb3c1efe4",
     "type": "authentication_methods",
     "attributes": {
+      "created_at": "2021-11-09T00:08:07+00:00",
+      "updated_at": "2021-11-09T00:08:07+00:00",
       "name": "Segment integration",
-      "key": "03fb83ef189931298809ae88063eb61bdd07374db78f6fc5b978ae7ab846447b",
+      "key": "d9f650e544ea9383e91f883f30d9bebe9ab892748372fe76a05694c0311f793e",
       "kind": "token",
       "algorithm": null
     }
@@ -232,9 +238,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7219125c-3a50-4252-ac2b-63deb3cd34f1",
+    "id": "f7253d2a-1e3d-4808-bfaf-5c51db33f921",
     "type": "authentication_methods",
     "attributes": {
+      "created_at": "2021-11-09T00:08:09+00:00",
+      "updated_at": "2021-11-09T00:08:09+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
@@ -275,9 +283,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e1d751e4-1998-4abf-aaca-27e91ad6d233",
+    "id": "5a9f6cf9-54c5-4205-b12a-72c98d0973c0",
     "type": "authentication_methods",
     "attributes": {
+      "created_at": "2021-11-09T00:08:10+00:00",
+      "updated_at": "2021-11-09T00:08:10+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtRuZD4X3MhIz1ntbxpkp\njVFUTdH7mspUNXmE0bcQ3bJrgWYZmtPm64+lpo7KWqQIL28dhtNAjImJmzcr04ve\nRAxxyQT0f0uwe3zUBEqaxKim1aCJV60c71cPKJVfhXElnjhMkBW6ftIEgf7J4bwe\n7kPCK/NfdiOuFlMjfaY+5WmaA1lAZ/SSetwglSaHPPQKaix3LW4ocHtHUd7OBKNC\nIU/DO3baUDAkymF7ZCnMaf3F9Le9sGSpgUA8Fof69rH1EdagQFmIkftflj/IlJiC\nPDEoc1x7b4opEuGp287S+DsRRgr6vzVZi4CPQcJJsG+07jZQN5K3wboBlx8LW2jT\nfQIDAQAB\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
@@ -317,11 +327,13 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "06b7e88e-3f39-4ef9-9d0c-b0a46cf3de2d",
+    "id": "10733383-e7ff-44c9-a19b-4571b927f307",
     "type": "authentication_methods",
     "attributes": {
+      "created_at": "2021-11-09T00:08:11+00:00",
+      "updated_at": "2021-11-09T00:08:11+00:00",
       "name": "Segment integration",
-      "key": "bad5ef15fc1377e3302aafb1fa6fde10addec9de143f488eeabb2435f17f441d",
+      "key": "ebb863fe52e375a9d068802454708b2822914e7d2f20ac05ff83ea67b0147190",
       "kind": "single_use",
       "algorithm": "HS256"
     }
@@ -372,7 +384,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/b0925095-5132-473f-8442-1d9423dc9135' \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/da290719-4dae-4cb9-b6d7-a6d80306dbcb' \
     --header 'content-type: application/json' \
 ```
 
