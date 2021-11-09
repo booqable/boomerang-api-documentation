@@ -1462,7 +1462,77 @@ The format is as follows:</p>
 <p>How to filter a request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>/api/boomerang/orders?filter[starts_at][gte]=1980-11-16T09:00:00+00:00&amp;filter[starts_at][lte]=1990-11-16T09:00:00+00:00&amp;filter[status]=reserved
-</code></pre></div><h2 id='introduction-includes'>Includes</h2><h2 id='introduction-stats'>Stats</h2>
+</code></pre></div><h2 id='introduction-includes'>Includes</h2>
+<p>The Booqable API consists of many resources related to each other. Therefore the API supports loading associated resources in a single request. Use the dot-syntax to deeply nest includes.</p>
+
+<aside class="notice">
+  Note that not all includes are supported on each request even though the relation is present on a resource. Make sure to check out the resource-specific documentation.
+</aside>
+
+<blockquote>
+<p>Including associated data:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET api/boomerang/orders?include=customer,customer.properties
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f2afdb0e-55bd-4993-b9c2-4f04b569419d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-12T16:00:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-13T16:00:00+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/404021af-c889-4d72-9296-481640f4c750"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customers"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404021af-c889-4d72-9296-481640f4c750"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404021af-c889-4d72-9296-481640f4c750"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customers"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/properties?filter[owner_id]=404021af-c889-4d72-9296-481640f4c750&amp;filter[owner_type]=Customer"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"properties"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9625bd15-732e-4301-8c1c-f5b3e03c1bed"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9625bd15-732e-4301-8c1c-f5b3e03c1bed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"properties"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+31600000000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/404021af-c889-4d72-9296-481640f4c750"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='introduction-stats'>Stats</h2>
 <p>Results from list requests can be aggregated by providing stats. These stats are always computed over the unpaginated filtered collection. The following aggregations are supported: <code>count</code>, <code>count_each</code>, <code>average</code>, <code>sum</code>, <code>maximum</code>, <code>minimum</code>. You can supply multiple types for each field.</p>
 
 <aside class="notice">
