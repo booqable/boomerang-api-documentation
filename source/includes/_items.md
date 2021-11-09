@@ -43,9 +43,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "48eaa41b-f0e2-496b-95f6-c240d5d4741e",
+      "id": "b7aff0f4-db9e-494c-8ddb-8bd74d7f0902",
       "type": "bundles",
       "attributes": {
+        "created_at": "2021-11-09T11:44:20+00:00",
+        "updated_at": "2021-11-09T11:44:20+00:00",
         "name": "iPad Bundle",
         "slug": "ipad-bundle",
         "product_type": "bundle",
@@ -79,15 +81,17 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=48eaa41b-f0e2-496b-95f6-c240d5d4741e"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=b7aff0f4-db9e-494c-8ddb-8bd74d7f0902"
           }
         }
       }
     },
     {
-      "id": "f201ba43-8f8f-41d4-bcd8-05fa0ae7072e",
+      "id": "b1e93ce6-44f1-47b2-9231-698a8c0a3ba6",
       "type": "product_groups",
       "attributes": {
+        "created_at": "2021-11-09T11:44:20+00:00",
+        "updated_at": "2021-11-09T11:44:20+00:00",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
@@ -121,7 +125,7 @@ For this resource relationships are described in the following resources:
         "variation_fields": [],
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
-        "tax_category_id": "4429f931-18f3-483e-95df-bf4932d9b241"
+        "tax_category_id": "48e82000-1676-4882-a7a3-c6d30783d21b"
       },
       "relationships": {
         "photo": {
@@ -131,25 +135,27 @@ For this resource relationships are described in the following resources:
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=f201ba43-8f8f-41d4-bcd8-05fa0ae7072e"
+            "related": "api/boomerang/products?filter[item_group_id]=b1e93ce6-44f1-47b2-9231-698a8c0a3ba6"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/4429f931-18f3-483e-95df-bf4932d9b241"
+            "related": "api/boomerang/tax_categories/48e82000-1676-4882-a7a3-c6d30783d21b"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=f201ba43-8f8f-41d4-bcd8-05fa0ae7072e&filter[owner_type]=ProductGroup"
+            "related": "api/boomerang/properties?filter[owner_id]=b1e93ce6-44f1-47b2-9231-698a8c0a3ba6&filter[owner_type]=ProductGroup"
           }
         }
       }
     },
     {
-      "id": "e12366c7-0197-4d26-8ab6-37dbf0da2fda",
+      "id": "05b393f0-6258-4573-90ec-af579550fb2c",
       "type": "products",
       "attributes": {
+        "created_at": "2021-11-09T11:44:20+00:00",
+        "updated_at": "2021-11-09T11:44:20+00:00",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
@@ -165,7 +171,7 @@ For this resource relationships are described in the following resources:
         "photo_url": null,
         "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
         "show_in_store": true,
-        "sorting_weight": 0,
+        "sorting_weight": 1,
         "base_price_in_cents": 1995,
         "price_type": "simple",
         "price_period": "day",
@@ -181,8 +187,8 @@ For this resource relationships are described in the following resources:
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "f201ba43-8f8f-41d4-bcd8-05fa0ae7072e",
-        "tax_category_id": "4429f931-18f3-483e-95df-bf4932d9b241"
+        "product_group_id": "b1e93ce6-44f1-47b2-9231-698a8c0a3ba6",
+        "tax_category_id": "48e82000-1676-4882-a7a3-c6d30783d21b"
       },
       "relationships": {
         "photo": {
@@ -192,22 +198,22 @@ For this resource relationships are described in the following resources:
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/f201ba43-8f8f-41d4-bcd8-05fa0ae7072e"
+            "related": "api/boomerang/product_groups/b1e93ce6-44f1-47b2-9231-698a8c0a3ba6"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/4429f931-18f3-483e-95df-bf4932d9b241"
+            "related": "api/boomerang/tax_categories/48e82000-1676-4882-a7a3-c6d30783d21b"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=e12366c7-0197-4d26-8ab6-37dbf0da2fda"
+            "related": "api/boomerang/barcodes?filter[owner_id]=05b393f0-6258-4573-90ec-af579550fb2c"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=f201ba43-8f8f-41d4-bcd8-05fa0ae7072e"
+            "related": "api/boomerang/properties?filter[owner_id]=b1e93ce6-44f1-47b2-9231-698a8c0a3ba6"
           }
         }
       }
@@ -234,7 +240,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-08T12:27:12Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-09T11:43:40Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
