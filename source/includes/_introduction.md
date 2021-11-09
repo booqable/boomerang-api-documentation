@@ -119,7 +119,7 @@ On every request, you can specify fields to be returned in the response. Note th
 
 ## Filtering
 
-Collections returned in list requests can be filtered on specific fields; the API supports the following operators:
+Collections returned in list requests can be filtered on specific fields; filters support the following operators:
 
 | Type            | Operators                                                                                              |
 |-----------------|--------------------------------------------------------------------------------------------------------|
