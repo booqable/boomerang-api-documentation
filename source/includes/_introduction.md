@@ -104,7 +104,6 @@ GET /api/boomerang/orders.json?include=customer
 ```
 
 
-
 ## Fields
 
 For every resource, fields can be written, read, filtered, sorted, and aggregated. The behavior of fields is described for each resource.
@@ -116,6 +115,7 @@ On every request, you can specify fields to be returned in the response. Note th
 ```
 ?fields[orders]=starts_at,stops_at&fields[plannings]=reserved_from,reserved_till
 ```
+
 
 ## Filtering
 
@@ -146,9 +146,82 @@ Collections returned in list requests can be filtered on specific fields; the AP
 /api/boomerang/orders?filter[starts_at][gte]=1980-11-16T09:00:00+00:00&filter[starts_at][lte]=1990-11-16T09:00:00+00:00&filter[status]=reserved
 ```
 
+
 ## Includes
 
+The Booqable API consists of many resources related to each other. Therefore the API supports loading associated resources in a single request. Use the dot-syntax to deeply nest includes.
 
+<aside class="notice">
+  Note that not all includes are supported on each request even though the relation is present on a resource. Make sure to check out the resource-specific documentation.
+</aside>
+
+> Including associated data:
+
+```
+GET api/boomerang/orders?include=customer,customer.properties
+```
+
+```json
+  {
+  "data": {
+    "id": "f2afdb0e-55bd-4993-b9c2-4f04b569419d",
+    "type": "orders",
+    "attributes": {
+      "starts_at": "2021-11-12T16:00:00+00:00",
+      "stops_at": "2021-11-13T16:00:00+00:00"
+    },
+    "relationships": {
+      "customer": {
+        "links": {
+          "related": "api/boomerang/customers/404021af-c889-4d72-9296-481640f4c750"
+        },
+        "data": {
+          "type": "customers",
+          "id": "404021af-c889-4d72-9296-481640f4c750"
+        }
+      },
+    }
+  },
+  "included": [
+    {
+      "id": "404021af-c889-4d72-9296-481640f4c750",
+      "type": "customers",
+      "attributes": {
+        "name": "John Doe"
+      },
+      "relationships": {
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=404021af-c889-4d72-9296-481640f4c750&filter[owner_type]=Customer"
+          },
+          "data": [
+            {
+              "type": "properties",
+              "id": "9625bd15-732e-4301-8c1c-f5b3e03c1bed"
+            }
+          ]
+        },
+      }
+    },
+    {
+      "id": "9625bd15-732e-4301-8c1c-f5b3e03c1bed",
+      "type": "properties",
+      "attributes": {
+        "name": "Phone",
+        "value": "+31600000000"
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": "api/boomerang/customers/404021af-c889-4d72-9296-481640f4c750"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
 
 ## Stats
 
