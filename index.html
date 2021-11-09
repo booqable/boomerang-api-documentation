@@ -340,9 +340,29 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#endpoint" class="toc-h1 toc-link" data-title="Endpoint">Endpoint</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#introduction-endpoint" class="toc-h2 toc-link" data-title="Endpoint">Endpoint</a>
+                  </li>
+                  <li>
+                    <a href="#introduction-response-types" class="toc-h2 toc-link" data-title="Response types">Response types</a>
+                  </li>
+                  <li>
+                    <a href="#introduction-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#introduction-filtering" class="toc-h2 toc-link" data-title="Filtering">Filtering</a>
+                  </li>
+                  <li>
+                    <a href="#introduction-includes" class="toc-h2 toc-link" data-title="Includes">Includes</a>
+                  </li>
+                  <li>
+                    <a href="#introduction-stats" class="toc-h2 toc-link" data-title="Stats">Stats</a>
+                  </li>
+                  <li>
+                    <a href="#introduction-sideposting" class="toc-h2 toc-link" data-title="Sideposting">Sideposting</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -1283,7 +1303,7 @@
 <aside class="warning">
   <b>WARNING:</b> Booqable's API is still in Beta we might introduce non-backwards compatible changes in the future!
 </aside>
-<h1 id='endpoint'>Endpoint</h1>
+<h2 id='introduction-endpoint'>Endpoint</h2>
 <p>All API requests need to be directed to the correct company-specific endpoint.
 The format is as follows:</p>
 
@@ -1292,6 +1312,202 @@ The format is as follows:</p>
 <aside class="notice">
   You must replace <code>{company_slug}</code> with the name of your company.
 </aside>
+<h2 id='introduction-response-types'>Response types</h2>
+<p>The Booqable API supports two response types <code>jsonapi</code> and <code>json</code>.</p>
+
+<p>By default, the API returns <code>jsonapi</code> responses. These responses are designed to return graph data more efficiently and also include links to related resources.</p>
+
+<p>You can, however, also request data in nested structure by appending <code>.json</code> to the path of each request.</p>
+
+<blockquote>
+<p>A typical JSON API response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /api/boomerang/orders?include=customer
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54808378-a247-4715-89f6-0a8da2e7ad62"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-12T15:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-13T15:00:00+00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/customers/24e54970-7473-49a9-a71a-8c07eb97e510"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customers"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24e54970-7473-49a9-a71a-8c07eb97e510"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24e54970-7473-49a9-a71a-8c07eb97e510"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customers"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/properties?filter[owner_id]=24e54970-7473-49a9-a71a-8c07eb97e510&amp;filter[owner_type]=Customer"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders?fields%5Bcustomer%5D=name&amp;fields%5Borders%5D=starts_at%2Cstops_at&amp;include=customer&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders?fields%5Bcustomer%5D=name&amp;fields%5Borders%5D=starts_at%2Cstops_at&amp;include=customer&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders?fields%5Bcustomer%5D=name&amp;fields%5Borders%5D=starts_at%2Cstops_at&amp;include=customer&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>A JSON response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>GET /api/boomerang/orders.json?include=customer
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30d35575-c8d1-4f5c-b4c6-cc0abc32c6ed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-12T15:15:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-13T15:15:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92ec8fee-423e-4f7e-8565-3e6028a0f437"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='introduction-fields'>Fields</h2>
+<p>For every resource, fields can be written, read, filtered, sorted, and aggregated. The behavior of fields is described for each resource.</p>
+
+<p>On every request, you can specify fields to be returned in the response. Note that you can also specify fields of included resources.</p>
+
+<blockquote>
+<p>Including specific fields can be done like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>?fields[orders]=starts_at,stops_at&amp;fields[plannings]=reserved_from,reserved_till
+</code></pre></div><h2 id='introduction-filtering'>Filtering</h2>
+<p>Collections returned in list requests can be filtered on specific fields; the API supports the following operators:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Operators</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>String</strong></td>
+<td><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><strong>Uuid</strong></td>
+<td><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><strong>Enum</strong></td>
+<td><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><strong>Integer</strong></td>
+<td><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><strong>Integer</strong></td>
+<td><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><strong>Big Decimal</strong></td>
+<td><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><strong>Float</strong></td>
+<td><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><strong>Boolean</strong></td>
+<td><code>eq</code></td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><strong>DateTime</strong></td>
+<td><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><strong>Hash</strong></td>
+<td><code>eq</code></td>
+</tr>
+<tr>
+<td><strong>Array</strong></td>
+<td><code>eq</code></td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Note that not all operators may be supported on each field, make sure to check the filters section for each resource.
+</aside>
+
+<blockquote>
+<p>How to filter a request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>/api/boomerang/orders?filter[starts_at][gte]=1980-11-16T09:00:00+00:00&amp;filter[starts_at][lte]=1990-11-16T09:00:00+00:00&amp;filter[status]=reserved
+</code></pre></div><h2 id='introduction-includes'>Includes</h2><h2 id='introduction-stats'>Stats</h2>
+<p>Results from list requests can be aggregated by providing stats. These stats are always computed over the unpaginated filtered collection. The following aggregations are supported: <code>count</code>, <code>count_each</code>, <code>average</code>, <code>sum</code>, <code>maximum</code>, <code>minimum</code>. You can supply multiple types for each field.</p>
+
+<aside class="notice">
+  Note that not all types are supported for each field; check the resource-specific documentation for more information.
+</aside>
+
+<blockquote>
+<p>Example of how to request stats:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>?stats[to_be_paid_in_cents][]=sum&amp;stats[grand_total_in_cents][]=average&amp;stats[grand_total_in_cents][]=sum&amp;stats[total]=count&amp;stats[payment_status]=count
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"to_be_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">79000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"grand_total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"average"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1198000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">237</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"payment_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">161</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"partially_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"overpaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"process_deposit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='introduction-sideposting'>Sideposting</h2>
+<p>Due to the nature of actions in the API, the API does not support official JSON API compliant side posting. Instead, actions are designed in a way that related resources are managed automatically.</p>
+
+<p>There are a few exceptions though, in these cases, resources can be created or associated by setting:</p>
+
+<ul>
+<li><code>{resource_name}_attributes</code> array of resources to create, update and associate.</li>
+<li><code>{resource_name}_ids</code> array of resources to associate.</li>
+<li><code>{resource_name}_id</code> id off the resource to associate.</li>
+</ul>
+
+<p>When side posting is supported, it will be mentioned in the resource-specific documentation.</p>
 <h1 id='authentication'>Authentication</h1>
 <p>To interact with the Booqable API, first, you have to have a means of authentification, here&#39;s how to setup authentication.</p>
 
