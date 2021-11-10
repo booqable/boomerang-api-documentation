@@ -1261,6 +1261,26 @@
               </ul>
           </li>
           <li>
+            <a href="#tax-values" class="toc-h1 toc-link" data-title="Tax values">Tax values</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tax-values-endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#tax-values-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#tax-values-relationships" class="toc-h2 toc-link" data-title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#tax-values-listing-tax-values" class="toc-h2 toc-link" data-title="Listing tax values">Listing tax values</a>
+                  </li>
+                  <li>
+                    <a href="#tax-values-fetching-a-tax-value" class="toc-h2 toc-link" data-title="Fetching a tax value">Fetching a tax value</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
@@ -21603,6 +21623,357 @@ A tax region can have one of the following strategies:</p>
 </tbody></table>
 <h3 id='tax-regions-deleting-a-tax-region-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
+<h1 id='tax-values'>Tax values</h1>
+<p>Tax values are always generated automatically by price calculations for <code>orders</code> and <code>carts</code>. They hold information about the amount taxed for a specific rate.</p>
+<h2 id='tax-values-endpoints'>Endpoints</h2>
+<p><code>GET api/boomerang/tax_values</code></p>
+
+<p><code>GET /api/boomerang/tax_values/{id}</code></p>
+<h2 id='tax-values-fields'>Fields</h2>
+<p>Every tax value has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Name of the tax rate</td>
+</tr>
+<tr>
+<td><code>percentage</code></td>
+<td><strong>Float</strong> <code>readonly</code><br>The percentage taxed</td>
+</tr>
+<tr>
+<td><code>value_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Amount of tax in cents</td>
+</tr>
+<tr>
+<td><code>tax_rate_id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>The associated Tax rate</td>
+</tr>
+</tbody></table>
+<h2 id='tax-values-relationships'>Relationships</h2>
+<p>Tax values have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tax_rate</code></td>
+<td><strong>Tax rates</strong> <code>readonly</code><br>Associated Tax rate</td>
+</tr>
+<tr>
+<td><code>owner</code></td>
+<td><strong>Order</strong> <code>readonly</code><br>Associated Owner</td>
+</tr>
+</tbody></table>
+<h2 id='tax-values-listing-tax-values'>Listing tax values</h2>
+<blockquote>
+<p>How to fetch a list of tax values:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/tax_values'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de958b4e-9d1c-4ef7-a3ae-2d46b80eb47e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tax_values"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T22:46:07+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T22:46:07+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VAT 19%"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">13800</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"350ff20a-e81b-4434-840c-b5371ae3f7ee"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/tax_rates/350ff20a-e81b-4434-840c-b5371ae3f7ee"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders/13f435dd-ec40-47ba-8869-242021d6654b"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/tax_values?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/tax_values?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/tax_values?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='tax-values-listing-tax-values-http-request'>HTTP Request</h3>
+<p><code>GET api/boomerang/tax_values</code></p>
+<h3 id='tax-values-listing-tax-values-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=tax_rate,owner</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[tax_values]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-11-10T22:45:57Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='tax-values-listing-tax-values-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>percentage</code></td>
+<td><strong>Float</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>tax_rate_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='tax-values-listing-tax-values-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>value_in_cents</code></td>
+<td><strong>Array</strong><br><code>sum</code>, <code>maximum</code>, <code>minimum</code>, <code>average</code></td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='tax-values-listing-tax-values-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='tax-values-fetching-a-tax-value'>Fetching a tax value</h2>
+<blockquote>
+<p>How to fetch a tax value:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/tax_values/50dc01f4-c85b-4c2b-91ea-3b3c3e0d0112?include=owner'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50dc01f4-c85b-4c2b-91ea-3b3c3e0d0112"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tax_values"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T22:46:07+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T22:46:07+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VAT 19%"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">13800</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tax_rate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4e59c11c-ca73-4dc3-be19-c2f3dc3b18d3"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"tax_rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/tax_rates/4e59c11c-ca73-4dc3-be19-c2f3dc3b18d3"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders/168a52a1-da5a-4f8f-82e3-ca6c54ec0f9c"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"168a52a1-da5a-4f8f-82e3-ca6c54ec0f9c"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"168a52a1-da5a-4f8f-82e3-ca6c54ec0f9c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T22:46:07+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T22:46:07+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"new"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"status_counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-08T22:45:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-12T22:45:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"entirely_stopped"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_shortage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shortage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tag_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"grand_total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"grand_total_with_tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coupon_discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_refunded_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_held_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_to_refund_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"to_be_paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paid_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"discount_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coupon_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6c43655b-ef0e-4830-8157-76d5a981ec4b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6c43655b-ef0e-4830-8157-76d5a981ec4b"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"tax_region"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"coupon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"barcode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/barcodes?filter[owner_id]=168a52a1-da5a-4f8f-82e3-ca6c54ec0f9c"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"start_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/6c43655b-ef0e-4830-8157-76d5a981ec4b"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"stop_location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/6c43655b-ef0e-4830-8157-76d5a981ec4b"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"tax_values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/tax_values?filter[owner_id]=168a52a1-da5a-4f8f-82e3-ca6c54ec0f9c"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='tax-values-fetching-a-tax-value-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/tax_values/{id}</code></p>
+<h3 id='tax-values-fetching-a-tax-value-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=tax_rate,owner</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[tax_values]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='tax-values-fetching-a-tax-value-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>owner</code></p>
 <h1 id='users'>Users</h1>
 <p>Users can be used to log into the web shop. They are useful for exposing your shop to a limited audience or verifiying that a customers can actually be reached via an email.</p>
 
