@@ -59,6 +59,7 @@ includes:
   - tax_categories
   - tax_rates
   - tax_regions
+  - tax_values
   - transactions
   - transfers
   - users
