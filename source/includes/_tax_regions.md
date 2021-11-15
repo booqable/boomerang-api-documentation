@@ -58,7 +58,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "4b63d1ed-58e4-4992-b8b3-669b0d2225a2",
+      "id": "6c50172e-a47e-4773-bada-fbbc3d8c01b1",
+      "created_at": "2021-11-15T07:46:56+00:00",
+      "updated_at": "2021-11-15T07:46:56+00:00",
       "name": "Sales Tax",
       "strategy": "add_to",
       "default": false
@@ -79,7 +81,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-08T12:27:13Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-15T07:45:26Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -127,7 +129,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/bbcd83a0-0e75-49df-a32e-aa6c874d0884?include=tax_rates' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/afe8aba7-1d83-438e-990e-18f5e0445229?include=tax_rates' \
     --header 'content-type: application/json' \
 ```
 
@@ -136,17 +138,21 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "bbcd83a0-0e75-49df-a32e-aa6c874d0884",
+    "id": "afe8aba7-1d83-438e-990e-18f5e0445229",
+    "created_at": "2021-11-15T07:46:56+00:00",
+    "updated_at": "2021-11-15T07:46:56+00:00",
     "name": "Sales Tax",
     "strategy": "add_to",
     "default": false,
     "tax_rates": [
       {
-        "id": "19891ae1-3eb4-47a7-af03-d24bda342f1b",
+        "id": "c447bb5c-34d8-479a-bf06-b33026896465",
+        "created_at": "2021-11-15T07:46:56+00:00",
+        "updated_at": "2021-11-15T07:46:56+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "bbcd83a0-0e75-49df-a32e-aa6c874d0884",
+        "owner_id": "afe8aba7-1d83-438e-990e-18f5e0445229",
         "owner_type": "TaxRegion"
       }
     ]
@@ -212,9 +218,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ecd817f5-9e0c-4f35-aea8-29fd43deeb89",
+    "id": "dfa37c14-df48-4384-a240-b6cda4329b46",
     "type": "tax_regions",
     "attributes": {
+      "created_at": "2021-11-15T07:46:57+00:00",
+      "updated_at": "2021-11-15T07:46:57+00:00",
       "name": "Sales Tax",
       "strategy": "compound",
       "default": false
@@ -224,7 +232,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "753c14ac-c7df-4d30-8433-e69c0c8fa76f"
+            "id": "a633013b-39fb-4302-bcca-9cfe19e7d7b5"
           }
         ]
       }
@@ -232,13 +240,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "753c14ac-c7df-4d30-8433-e69c0c8fa76f",
+      "id": "a633013b-39fb-4302-bcca-9cfe19e7d7b5",
       "type": "tax_rates",
       "attributes": {
+        "created_at": "2021-11-15T07:46:57+00:00",
+        "updated_at": "2021-11-15T07:46:57+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "ecd817f5-9e0c-4f35-aea8-29fd43deeb89",
+        "owner_id": "dfa37c14-df48-4384-a240-b6cda4329b46",
         "owner_type": "TaxRegion"
       },
       "relationships": {
@@ -304,11 +314,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/07cabccc-3943-4985-8aef-6c704ed3fdb1' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/c3605df8-0dc7-4d15-b2d6-6fb09e6ad2b3' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "07cabccc-3943-4985-8aef-6c704ed3fdb1",
+        "id": "c3605df8-0dc7-4d15-b2d6-6fb09e6ad2b3",
         "type": "tax_regions",
         "attributes": {
           "name": "State Tax",
@@ -318,7 +328,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "6d9cd06b-155a-4163-8219-71d247d2dfb0",
+              "id": "60341c70-b0ab-4afe-86c0-90c5f359455b",
               "_destroy": true
             }
           ]
@@ -333,9 +343,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "07cabccc-3943-4985-8aef-6c704ed3fdb1",
+    "id": "c3605df8-0dc7-4d15-b2d6-6fb09e6ad2b3",
     "type": "tax_regions",
     "attributes": {
+      "created_at": "2021-11-15T07:46:57+00:00",
+      "updated_at": "2021-11-15T07:46:57+00:00",
       "name": "State Tax",
       "strategy": "add_to",
       "default": false
@@ -345,7 +357,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "278152c4-8d6c-4bf9-9c2b-1bf851a42662"
+            "id": "8589063e-d19f-4c51-922f-a9d6885d1744"
           }
         ]
       }
@@ -353,13 +365,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "278152c4-8d6c-4bf9-9c2b-1bf851a42662",
+      "id": "8589063e-d19f-4c51-922f-a9d6885d1744",
       "type": "tax_rates",
       "attributes": {
+        "created_at": "2021-11-15T07:46:57+00:00",
+        "updated_at": "2021-11-15T07:46:57+00:00",
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "07cabccc-3943-4985-8aef-6c704ed3fdb1",
+        "owner_id": "c3605df8-0dc7-4d15-b2d6-6fb09e6ad2b3",
         "owner_type": "TaxRegion"
       },
       "relationships": {
@@ -420,7 +434,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/889c19df-90fe-49cb-81f8-a04e1e2f3021' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/757ed144-f45d-4bae-8e0a-441f8412edc4' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

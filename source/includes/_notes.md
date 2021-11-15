@@ -21,7 +21,7 @@ Name | Description
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `body` | **String**<br>The content of the note
 `owner_id` | **Uuid**<br>ID of the resource the note is attached to
-`owner_type` | **String**<br>The resource type of the owner. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
+`owner_type` | **String**<br>The resource type of the owner. One of `Order`, `Document`, `ProductGroup`, `Bundle`, `Product`, `Customer`, `StockItem`
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
 
 
@@ -52,23 +52,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "5aaf7503-9ab3-4990-beff-9fe17d73ac5f",
+      "id": "8ab26a73-abfd-4c5a-96f1-c9cf02090f40",
       "type": "notes",
       "attributes": {
+        "created_at": "2021-11-15T07:46:15+00:00",
+        "updated_at": "2021-11-15T07:46:15+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "be9618f2-ca0b-4f62-a99a-4a585526cf8f",
+        "owner_id": "f18a54b9-355f-4d48-bd13-cb7e6d15c6c0",
         "owner_type": "Customer",
-        "employee_id": "7f0a7162-9a25-45d0-8e07-cbf41f7f3600"
+        "employee_id": "d66b44c5-1bd9-417d-8250-df9d930d9051"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/be9618f2-ca0b-4f62-a99a-4a585526cf8f"
+            "related": "api/boomerang/customers/f18a54b9-355f-4d48-bd13-cb7e6d15c6c0"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/7f0a7162-9a25-45d0-8e07-cbf41f7f3600"
+            "related": "api/boomerang/employees/d66b44c5-1bd9-417d-8250-df9d930d9051"
           }
         }
       }
@@ -95,7 +97,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-08T12:27:12Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-15T07:45:26Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -144,7 +146,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/4c403645-617c-4b19-9b1f-df7fa15b2c48' \
+    --url 'https://example.booqable.com/api/boomerang/notes/78d9fb2f-ebf0-4acb-8a2a-ce35c5bc7264' \
     --header 'content-type: application/json' \
 ```
 
@@ -153,23 +155,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4c403645-617c-4b19-9b1f-df7fa15b2c48",
+    "id": "78d9fb2f-ebf0-4acb-8a2a-ce35c5bc7264",
     "type": "notes",
     "attributes": {
+      "created_at": "2021-11-15T07:46:16+00:00",
+      "updated_at": "2021-11-15T07:46:16+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "1702d467-8b80-4de9-80d7-951ba1b6a36d",
+      "owner_id": "55870e15-280b-4b1b-a232-f40e41eb9e64",
       "owner_type": "Customer",
-      "employee_id": "f1caa764-5cf6-4f20-9c41-26ea81cf7ffc"
+      "employee_id": "3bc17334-e201-4e83-b71f-311288e7c21b"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/1702d467-8b80-4de9-80d7-951ba1b6a36d"
+          "related": "api/boomerang/customers/55870e15-280b-4b1b-a232-f40e41eb9e64"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/f1caa764-5cf6-4f20-9c41-26ea81cf7ffc"
+          "related": "api/boomerang/employees/3bc17334-e201-4e83-b71f-311288e7c21b"
         }
       }
     }
@@ -218,7 +222,7 @@ This request accepts the following includes:
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "eb01a782-1327-4d37-85c5-69c38b95dcbf",
+          "owner_id": "ee9ebeba-5a78-466d-94f8-15cc38be0025",
           "owner_type": "Customer"
         }
       }
@@ -230,13 +234,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "38d447d0-5553-4064-ad91-9661bf780cf4",
+    "id": "5adb4fea-22f9-4126-9df7-e42832f02452",
     "type": "notes",
     "attributes": {
+      "created_at": "2021-11-15T07:46:16+00:00",
+      "updated_at": "2021-11-15T07:46:16+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "eb01a782-1327-4d37-85c5-69c38b95dcbf",
+      "owner_id": "ee9ebeba-5a78-466d-94f8-15cc38be0025",
       "owner_type": "Customer",
-      "employee_id": "69cffedc-d20a-42fa-a634-925ec8b9ab21"
+      "employee_id": "bf1c6468-a841-4893-aac5-ba25078e6f9a"
     },
     "relationships": {
       "owner": {
@@ -252,9 +258,9 @@ This request accepts the following includes:
     }
   },
   "links": {
-    "self": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=eb01a782-1327-4d37-85c5-69c38b95dcbf&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=eb01a782-1327-4d37-85c5-69c38b95dcbf&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=eb01a782-1327-4d37-85c5-69c38b95dcbf&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=ee9ebeba-5a78-466d-94f8-15cc38be0025&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=ee9ebeba-5a78-466d-94f8-15cc38be0025&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=ee9ebeba-5a78-466d-94f8-15cc38be0025&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -282,7 +288,7 @@ Name | Description
 - | -
 `data[attributes][body]` | **String**<br>The content of the note
 `data[attributes][owner_id]` | **Uuid**<br>ID of the resource the note is attached to
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `Document`, `ProductGroup`, `Product`, `Customer`, `StockItem`
+`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `Document`, `ProductGroup`, `Bundle`, `Product`, `Customer`, `StockItem`
 
 
 ### Includes
@@ -304,7 +310,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/2be05652-86de-4b15-8f2b-1a34b34d5646' \
+    --url 'https://example.booqable.com/api/boomerang/notes/933ce669-daad-4bdf-90c9-6eb465154a38' \
     --header 'content-type: application/json' \
 ```
 
