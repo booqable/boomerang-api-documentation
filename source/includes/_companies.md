@@ -72,24 +72,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e5288738-4a71-4383-9925-31a4b314ace9",
+    "id": "cfb283c7-00bb-4fec-a86a-1f8609436edc",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-17T09:30:03+00:00",
-      "updated_at": "2021-11-17T09:30:03+00:00",
+      "created_at": "2021-11-17T21:04:39+00:00",
+      "updated_at": "2021-11-17T21:04:39+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail46@company.com",
+      "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-884-544-6038",
-      "website": "http://greenholt-abbott.co/kiana",
-      "address": "Apolonia Tunnel\n939 Haydee Road\n84357-3427 McLaughlinstad\nKiribati",
-      "address_line_1": "Apolonia Tunnel",
-      "address_line_2": "939 Haydee Road",
-      "zipcode": "84357-3427",
-      "city": "McLaughlinstad",
+      "phone": "685.581.7938 x0518",
+      "website": "http://okuneva-nader.co/vance_rice",
+      "address": "Quigley Ville\n2581 Kertzmann Underpass\n40934 North Erasmoville\nSaint Pierre and Miquelon",
+      "address_line_1": "Quigley Ville",
+      "address_line_2": "2581 Kertzmann Underpass",
+      "zipcode": "40934",
+      "city": "North Erasmoville",
       "region": null,
-      "country": "Kiribati",
+      "country": "Saint Pierre and Miquelon",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -100,10 +100,10 @@ Name | Description
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "91308 Gregg Radial",
-      "financial_line_2": "25448 Salvadorhaven",
+      "financial_line_1": "64177 Reilly Burg",
+      "financial_line_2": "42920 Prohaskaburgh",
       "vat_number": null,
-      "continent": "Oceania",
+      "continent": "Americas",
       "custom_domain": null,
       "development": false
     }
@@ -141,7 +141,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5915964a-e6a2-4b3b-bf26-2c1fd964262c",
+        "id": "49558994-02f1-47cb-961d-ad9f9befbfca",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -155,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5915964a-e6a2-4b3b-bf26-2c1fd964262c",
+    "id": "49558994-02f1-47cb-961d-ad9f9befbfca",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-17T09:30:03+00:00",
-      "updated_at": "2021-11-17T09:30:03+00:00",
+      "created_at": "2021-11-17T21:04:39+00:00",
+      "updated_at": "2021-11-17T21:04:39+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail47@company.com",
+      "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "1-922-631-0147 x1858",
-      "website": "http://pagac-dare.name/lemuel",
-      "address": "Muller Tunnel\n6894 Abshire Common\n73605-0115 Anibalmouth\nNiue",
-      "address_line_1": "Muller Tunnel",
-      "address_line_2": "6894 Abshire Common",
-      "zipcode": "73605-0115",
-      "city": "Anibalmouth",
+      "phone": "265-971-5890 x546",
+      "website": "http://lehner.net/philip",
+      "address": "Reinger Camp\n1431 Mante Land\n73377 Port Kami\nOman",
+      "address_line_1": "Reinger Camp",
+      "address_line_2": "1431 Mante Land",
+      "zipcode": "73377",
+      "city": "Port Kami",
       "region": null,
-      "country": "Niue",
+      "country": "Oman",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -183,10 +183,10 @@ This request does not accept any includes
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "103 Billy Lane",
-      "financial_line_2": "81347 Predovichaven",
+      "financial_line_1": "9881 Sanda Burgs",
+      "financial_line_2": "37771-5807 North Yahairaport",
       "vat_number": null,
-      "continent": "Oceania",
+      "continent": "Asia",
       "custom_domain": null,
       "development": false
     }
