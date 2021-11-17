@@ -68,7 +68,7 @@ You can have multiple authentication methods active at one time.
 request_method = 'POST'
 
 # Encoded request params
-fullpath = '/?filter%5Bcreated_at%5D%5Bgte%5D%3D1231232131132'
+fullpath = '/api/boomerang/orders/?filter%5Bcreated_at%5D%5Bgte%5D%3D1231232131132'
 
 # Base64 encoded SHA256 body
 body = '{"note":"Let me in!"}'
