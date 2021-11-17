@@ -75,17 +75,19 @@ body = '{"note":"Let me in!"}'
 encoded_body = Base64.strict_encode64(::OpenSSL::Digest::SHA256.new(body).digest)
 
 # Compute data value
-data = Base64.strict_encode64([request_method, fullpath, encoded_body].join('.'))
+data = Base64.strict_encode64(
+  ::OpenSSL::Digest::SHA256.new([request_method, fullpath, encoded_body].join('.').join('.')).digest
+)
 
 # Generate a unique request identifier (can be anything unique)
 uuid = Digest::UUID.uuid_v4
 
 # We define the authentication method id (which you have obtained in a previous step) and kind in the header
-headers = { kid: authentication_method.id, kind: 'single_use' }
+headers = { kid: authentication_method_id, kind: 'single_use' }
 payload = {
   iss: 'http://company-name.booqable.com',
-  sub: employee.id,
-  aud: Company.current.id,
+  sub: employee_id,
+  aud: company_id,
   exp: (Time.current + 10.minutes).to_i, # Can not exceed 10 minutes
   iat: Time.current.to_i,
   jti: "#{uuid}.#{data}"
