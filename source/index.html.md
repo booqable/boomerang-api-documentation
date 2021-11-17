@@ -19,11 +19,11 @@ includes:
   - bundle_items
   - bundles
   - categories
+  - category_items
   - clusters
   - companies
   - coupons
   - currencies
-  - customer_merges
   - customers
   - default_properties
   - documents
@@ -36,6 +36,7 @@ includes:
   - lines
   - locations
   - login_activities
+  - merges
   - notes
   - operating_rules
   - operations
