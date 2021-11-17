@@ -290,7 +290,7 @@ Name | Description
 `error_data` | **Array** `readonly`<br>An array of strings with errors that happened during execution of the operation.
 `error_count` | **Integer** `readonly`<br>The number of errors that happened during the execution. See `error_data`.
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
-`operation_data` | **Hash**<br>An object with the params used to initiate the operation. See the description of the operation.
+`operation_data` | **Hash** `extra`<br>An object with the params used to initiate the operation. See the description of the operation.
 
 
 ## Relationships
@@ -319,9 +319,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "2c1fdd04-ee64-4e4b-a922-40cc828af8f2",
+      "id": "88a5fe4c-0d4e-425c-8f3f-48a75fe95078",
       "type": "operations",
       "attributes": {
+        "created_at": "2021-11-17T09:30:30+00:00",
+        "updated_at": "2021-11-17T09:30:30+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -331,12 +333,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "037ee432-4218-4cd8-91e9-20d467ca1447"
+        "employee_id": "4f80b2f4-e193-44ea-a943-982996ae59d0"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/037ee432-4218-4cd8-91e9-20d467ca1447"
+            "related": "api/boomerang/employees/4f80b2f4-e193-44ea-a943-982996ae59d0"
           }
         }
       }
@@ -363,7 +365,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-08T12:27:12Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-17T09:29:36Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -412,7 +414,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/f05d1e27-d313-4e5f-ab77-b548159747f7' \
+    --url 'https://example.booqable.com/api/boomerang/operations/f8961921-f43b-4870-95af-c704a30b72e8' \
     --header 'content-type: application/json' \
 ```
 
@@ -421,9 +423,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f05d1e27-d313-4e5f-ab77-b548159747f7",
+    "id": "f8961921-f43b-4870-95af-c704a30b72e8",
     "type": "operations",
     "attributes": {
+      "created_at": "2021-11-17T09:30:30+00:00",
+      "updated_at": "2021-11-17T09:30:30+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -433,12 +437,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "e0490710-e2b0-43a6-8ece-e6af47f5a157"
+      "employee_id": "63a35991-627b-4633-a504-275264902e19"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/e0490710-e2b0-43a6-8ece-e6af47f5a157"
+          "related": "api/boomerang/employees/63a35991-627b-4633-a504-275264902e19"
         }
       }
     }
@@ -506,9 +510,11 @@ When creating an operation it will start running in the background. With the `id
 ```json
   {
   "data": {
-    "id": "c275524c-d146-407d-aa75-7d3f3d86c298",
+    "id": "f98f407d-5096-4719-851b-a6ffbd989ccb",
     "type": "operations",
     "attributes": {
+      "created_at": "2021-11-17T09:30:31+00:00",
+      "updated_at": "2021-11-17T09:30:31+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -518,7 +524,7 @@ When creating an operation it will start running in the background. With the `id
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "87a851ec-6db6-450d-9551-8a04442811c2"
+      "employee_id": "6cd6405c-d242-4f7a-b700-5da7f161481e"
     },
     "relationships": {
       "employee": {

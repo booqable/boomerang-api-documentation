@@ -1,11 +1,11 @@
 # Companies
 
-The company
+Every action performed in a Booqable account is scoped to a company; A company holds information and configuration about an account.
 
 ## Endpoints
-`GET /api/boomerang/companies/{id}`
+`GET /api/boomerang/companies/current`
 
-`PUT /api/boomerang/companies/{id}`
+`PUT /api/boomerang/companies/current`
 
 ## Fields
 Every company has the following fields:
@@ -38,34 +38,32 @@ Name | Description
 `logo_url` | **String** `readonly`<br>Url of the uploaded logo
 `logo_base64` | **String** `writeonly`<br>To update a logo send it as base64 encoded string
 `timezone` | **String**<br>Company's timezone
-`timezone_offset` | **String** `readonly`<br>The timezone offset in seconds
 `currency` | **String**<br>Currency of the company
 `financial_line_1` | **String**<br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
 `financial_line_2` | **String**<br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
 `vat_number` | **String**<br>Company's vat number, used in customer communication and to define tax exempts
 `continent` | **String** `readonly`<br>Continent the company is situated
-`trial_ends_at` | **Datetime** `readonly`<br>When the trial ends
-`activated` | **Boolean** `readonly`<br>Whether company has an active subscription
-`suspended` | **Boolean** `readonly`<br>Whether company is suspended
-`canceled` | **Boolean** `readonly`<br>Whether subscription is canceled
-`canceled_at` | **Datetime** `readonly`<br>When the subscription will be or was canceled
-`on_hold` | **Boolean** `readonly`<br>Whether account is on-hold
-`needs_activation` | **Boolean** `readonly`<br>Whether account needs to activate a subscription
-`market` | **String** `readonly`<br>The market the company operates in
 `custom_domain` | **String**<br>Custom domain to use for hosted store and checkout
 `development` | **Boolean** `readonly`<br>Wheter this is a development account
-`tenant_token` | **String** `readonly`<br>Token
-`in_europe` | **Boolean** `readonly`<br>Whether company is situated in europe
-`trial_extension_count` | **Integer** `readonly`<br>Amount of times the trial was extended
+`in_europe` | **Boolean** `extra` `readonly`<br>Whether company is situated in europe
+`trial_ends_at` | **Datetime** `extra` `readonly`<br>When the trial ends
+`activated` | **Boolean** `extra` `readonly`<br>Whether company has an active subscription
+`suspended` | **Boolean** `extra` `readonly`<br>Whether company is suspended
+`canceled` | **Boolean** `extra` `readonly`<br>Whether subscription is canceled
+`canceled_at` | **Datetime** `extra` `readonly`<br>When the subscription will be or was canceled
+`on_hold` | **Boolean** `extra` `readonly`<br>Whether account is on-hold
+`needs_activation` | **Boolean** `extra` `readonly`<br>Whether account needs to activate a subscription
 
 
 ## Fetching a company
+
+
 
 > How to fetch a companies:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/eba61369-f9ee-4911-b7b5-3a473f94c34d' \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
     --header 'content-type: application/json' \
 ```
 
@@ -74,55 +72,49 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "eba61369-f9ee-4911-b7b5-3a473f94c34d",
-    "created_at": "2021-10-08T11:26:49+00:00",
-    "updated_at": "2021-10-08T11:26:49+00:00",
-    "name": "iRent",
-    "slug": "irent",
-    "email": "mail1@company.com",
-    "billing_email": null,
-    "phone": "779.445.7519",
-    "website": "http://hintz.name/fausto.wehner",
-    "address": "Braun Mall\n9999 Thompson Brook\n06748-4911 Rexfort\nTanzania",
-    "address_line_1": "Braun Mall",
-    "address_line_2": "9999 Thompson Brook",
-    "zipcode": "06748-4911",
-    "city": "Rexfort",
-    "region": null,
-    "country": "Tanzania",
-    "billing_company": null,
-    "billing_address_line_1": null,
-    "billing_address_line_2": null,
-    "billing_address_zipcode": null,
-    "billing_address_city": null,
-    "billing_address_region": null,
-    "billing_address_country": null,
-    "logo_url": null,
-    "timezone": "UTC",
-    "timezone_offset": "0",
-    "currency": "usd",
-    "financial_line_1": "585 Kling Keys",
-    "financial_line_2": "23041 Raymundofort",
-    "vat_number": null,
-    "continent": "Africa",
-    "trial_ends_at": "2021-10-22T11:26:48+00:00",
-    "activated": false,
-    "suspended": false,
-    "canceled": false,
-    "canceled_at": null,
-    "on_hold": false,
-    "needs_activation": false,
-    "market": null,
-    "custom_domain": null,
-    "development": false
-  }
+    "id": "e5288738-4a71-4383-9925-31a4b314ace9",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2021-11-17T09:30:03+00:00",
+      "updated_at": "2021-11-17T09:30:03+00:00",
+      "name": "iRent",
+      "slug": "irent",
+      "email": "mail46@company.com",
+      "billing_email": null,
+      "phone": "1-884-544-6038",
+      "website": "http://greenholt-abbott.co/kiana",
+      "address": "Apolonia Tunnel\n939 Haydee Road\n84357-3427 McLaughlinstad\nKiribati",
+      "address_line_1": "Apolonia Tunnel",
+      "address_line_2": "939 Haydee Road",
+      "zipcode": "84357-3427",
+      "city": "McLaughlinstad",
+      "region": null,
+      "country": "Kiribati",
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "91308 Gregg Radial",
+      "financial_line_2": "25448 Salvadorhaven",
+      "vat_number": null,
+      "continent": "Oceania",
+      "custom_domain": null,
+      "development": false
+    }
+  },
+  "meta": {}
 }
 ```
 
-
 ### HTTP Request
 
-`GET /api/boomerang/companies/{id}`
+`GET /api/boomerang/companies/current`
 
 ### Request params
 
@@ -139,15 +131,17 @@ Name | Description
 This request does not accept any includes
 ## Updating a company
 
+
+
 > How to update a company:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/companies/785c59c2-f922-4aa0-ba3c-5e104008af5e' \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "785c59c2-f922-4aa0-ba3c-5e104008af5e",
+        "id": "5915964a-e6a2-4b3b-bf26-2c1fd964262c",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -161,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "785c59c2-f922-4aa0-ba3c-5e104008af5e",
+    "id": "5915964a-e6a2-4b3b-bf26-2c1fd964262c",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-10-08T11:26:50+00:00",
-      "updated_at": "2021-10-08T11:26:51+00:00",
+      "created_at": "2021-11-17T09:30:03+00:00",
+      "updated_at": "2021-11-17T09:30:03+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail2@company.com",
+      "email": "mail47@company.com",
       "billing_email": null,
-      "phone": "714.839.1379 x47085",
-      "website": "http://lockman-oconner.org/kandis.wuckert",
-      "address": "Despina Course\n4716 Latina Corners\n60528-8760 Langoshland\nCosta Rica",
-      "address_line_1": "Despina Course",
-      "address_line_2": "4716 Latina Corners",
-      "zipcode": "60528-8760",
-      "city": "Langoshland",
+      "phone": "1-922-631-0147 x1858",
+      "website": "http://pagac-dare.name/lemuel",
+      "address": "Muller Tunnel\n6894 Abshire Common\n73605-0115 Anibalmouth\nNiue",
+      "address_line_1": "Muller Tunnel",
+      "address_line_2": "6894 Abshire Common",
+      "zipcode": "73605-0115",
+      "city": "Anibalmouth",
       "region": null,
-      "country": "Costa Rica",
+      "country": "Niue",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -188,20 +182,11 @@ This request does not accept any includes
       "billing_address_country": null,
       "logo_url": null,
       "timezone": "UTC",
-      "timezone_offset": "0",
       "currency": "usd",
-      "financial_line_1": "2393 Walter Roads",
-      "financial_line_2": "77477 Lake Kelvinberg",
+      "financial_line_1": "103 Billy Lane",
+      "financial_line_2": "81347 Predovichaven",
       "vat_number": null,
-      "continent": "Americas",
-      "trial_ends_at": "2021-10-22T11:26:50+00:00",
-      "activated": false,
-      "suspended": false,
-      "canceled": false,
-      "canceled_at": null,
-      "on_hold": false,
-      "needs_activation": false,
-      "market": null,
+      "continent": "Oceania",
       "custom_domain": null,
       "development": false
     }
@@ -210,10 +195,9 @@ This request does not accept any includes
 }
 ```
 
-
 ### HTTP Request
 
-`PUT /api/boomerang/companies/{id}`
+`PUT /api/boomerang/companies/current`
 
 ### Request params
 
