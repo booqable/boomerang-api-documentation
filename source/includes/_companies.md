@@ -72,24 +72,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f9210120-6952-4f7a-be1e-005fd0824e2e",
+    "id": "894e5ef3-7a0e-4702-8920-885450b7f9bc",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-18T14:42:08+00:00",
-      "updated_at": "2021-11-18T14:42:08+00:00",
+      "created_at": "2021-11-18T15:31:51+00:00",
+      "updated_at": "2021-11-18T15:31:51+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-893-328-7909",
-      "website": "http://dare.com/virginia",
-      "address": "Hessel Keys\n343 Jeannie Locks\n82194-6927 Lake Sabrina\nVirgin Islands, British",
-      "address_line_1": "Hessel Keys",
-      "address_line_2": "343 Jeannie Locks",
-      "zipcode": "82194-6927",
-      "city": "Lake Sabrina",
+      "phone": "324.281.7454 x651",
+      "website": "http://hayes.name/estrella_williamson",
+      "address": "Stoltenberg Court\n600 Edgar Cliff\n01030-1486 New Joliebury\nBangladesh",
+      "address_line_1": "Stoltenberg Court",
+      "address_line_2": "600 Edgar Cliff",
+      "zipcode": "01030-1486",
+      "city": "New Joliebury",
       "region": null,
-      "country": "Virgin Islands, British",
+      "country": "Bangladesh",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -100,10 +100,10 @@ Name | Description
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "842 Mann Hill",
-      "financial_line_2": "74392-8744 North Austinberg",
+      "financial_line_1": "724 Wiza Junctions",
+      "financial_line_2": "14789 Port Revamouth",
       "vat_number": null,
-      "continent": "Americas",
+      "continent": "Asia",
       "custom_domain": null,
       "development": false
     }
@@ -141,7 +141,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e5804dfe-4eab-42ae-b529-874737ff4741",
+        "id": "b2676df6-97b0-4edd-84ee-3d6cec5e388a",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -155,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e5804dfe-4eab-42ae-b529-874737ff4741",
+    "id": "b2676df6-97b0-4edd-84ee-3d6cec5e388a",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-18T14:42:09+00:00",
-      "updated_at": "2021-11-18T14:42:09+00:00",
+      "created_at": "2021-11-18T15:31:52+00:00",
+      "updated_at": "2021-11-18T15:31:52+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "(268) 708-5211 x4988",
-      "website": "http://effertz-ullrich.net/kurtis.funk",
-      "address": "Cronin Springs\n7358 Orville Pass\n41406 West Tericaport\nZimbabwe",
-      "address_line_1": "Cronin Springs",
-      "address_line_2": "7358 Orville Pass",
-      "zipcode": "41406",
-      "city": "West Tericaport",
+      "phone": "880.821.8590",
+      "website": "http://mohr.name/candyce.yundt",
+      "address": "Kutch Heights\n6016 Gleichner Curve\n96011-5741 Effertzland\nCook Islands",
+      "address_line_1": "Kutch Heights",
+      "address_line_2": "6016 Gleichner Curve",
+      "zipcode": "96011-5741",
+      "city": "Effertzland",
       "region": null,
-      "country": "Zimbabwe",
+      "country": "Cook Islands",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -183,10 +183,10 @@ This request does not accept any includes
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "59505 Florentino Hills",
-      "financial_line_2": "67949-6606 Kymberlyhaven",
+      "financial_line_1": "10173 Evonne Crossroad",
+      "financial_line_2": "33725 Lowefurt",
       "vat_number": null,
-      "continent": "Africa",
+      "continent": "Oceania",
       "custom_domain": null,
       "development": false
     }

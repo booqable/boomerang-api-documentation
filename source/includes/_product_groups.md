@@ -41,7 +41,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`type` | **String** `readonly`<br>One of `ProductGroup`, `Product`, `Bundle`
+`type` | **String** `readonly`<br>One of `product_groups`, `products`, `bundles`
 `name` | **String**<br>Name of the item
 `slug` | **String** `readonly`<br>Slug of the item
 `sku` | **String**<br>Stock keeping unit
@@ -108,11 +108,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "f66cc947-590b-4954-88cc-19355b1836e5",
+      "id": "ccb617a6-7d68-4c97-99b6-a966d9d8fa5f",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2021-11-18T14:43:21+00:00",
-        "updated_at": "2021-11-18T14:43:21+00:00",
+        "created_at": "2021-11-18T15:32:47+00:00",
+        "updated_at": "2021-11-18T15:32:47+00:00",
         "type": "product_groups",
         "name": "iPad Pro",
         "slug": "ipad-pro",
@@ -148,7 +148,7 @@ Name | Description
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=f66cc947-590b-4954-88cc-19355b1836e5"
+            "related": "api/boomerang/categories?filter[item_id]=ccb617a6-7d68-4c97-99b6-a966d9d8fa5f"
           }
         },
         "photo": {
@@ -158,7 +158,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=f66cc947-590b-4954-88cc-19355b1836e5"
+            "related": "api/boomerang/products?filter[product_group_id]=ccb617a6-7d68-4c97-99b6-a966d9d8fa5f"
           }
         },
         "tax_category": {
@@ -168,7 +168,7 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=f66cc947-590b-4954-88cc-19355b1836e5&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=ccb617a6-7d68-4c97-99b6-a966d9d8fa5f&filter[owner_type]=product_groups"
           }
         }
       }
@@ -195,7 +195,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,categories,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-18T14:41:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-18T15:31:20Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -270,7 +270,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/1589d98c-6ab5-40ef-ab84-2b0dca81586c' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/617df78a-f82d-439b-930d-78c20d0cea5c' \
     --header 'content-type: application/json' \
 ```
 
@@ -279,11 +279,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1589d98c-6ab5-40ef-ab84-2b0dca81586c",
+    "id": "617df78a-f82d-439b-930d-78c20d0cea5c",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-11-18T14:43:21+00:00",
-      "updated_at": "2021-11-18T14:43:21+00:00",
+      "created_at": "2021-11-18T15:32:47+00:00",
+      "updated_at": "2021-11-18T15:32:47+00:00",
       "type": "product_groups",
       "name": "iPad Pro",
       "slug": "ipad-pro",
@@ -319,7 +319,7 @@ This request accepts the following includes:
     "relationships": {
       "categories": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=1589d98c-6ab5-40ef-ab84-2b0dca81586c"
+          "related": "api/boomerang/categories?filter[item_id]=617df78a-f82d-439b-930d-78c20d0cea5c"
         }
       },
       "photo": {
@@ -329,7 +329,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=1589d98c-6ab5-40ef-ab84-2b0dca81586c"
+          "related": "api/boomerang/products?filter[product_group_id]=617df78a-f82d-439b-930d-78c20d0cea5c"
         }
       },
       "tax_category": {
@@ -339,7 +339,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=1589d98c-6ab5-40ef-ab84-2b0dca81586c&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=617df78a-f82d-439b-930d-78c20d0cea5c&filter[owner_type]=product_groups"
         }
       }
     }
@@ -418,11 +418,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fec85d99-948c-411d-b48a-565b6dce35d0",
+    "id": "81d5fab6-5f5c-48bb-b69b-60f7746ba903",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-11-18T14:43:22+00:00",
-      "updated_at": "2021-11-18T14:43:22+00:00",
+      "created_at": "2021-11-18T15:32:48+00:00",
+      "updated_at": "2021-11-18T15:32:48+00:00",
       "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-mini",
@@ -575,11 +575,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/3d944911-a84e-461f-bc86-07d531f5409e' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/26b0f8c3-4e0a-4dd3-8d1d-14ff89e57329' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "3d944911-a84e-461f-bc86-07d531f5409e",
+        "id": "26b0f8c3-4e0a-4dd3-8d1d-14ff89e57329",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -593,11 +593,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3d944911-a84e-461f-bc86-07d531f5409e",
+    "id": "26b0f8c3-4e0a-4dd3-8d1d-14ff89e57329",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-11-18T14:43:23+00:00",
-      "updated_at": "2021-11-18T14:43:23+00:00",
+      "created_at": "2021-11-18T15:32:48+00:00",
+      "updated_at": "2021-11-18T15:32:49+00:00",
       "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-pro",
@@ -742,7 +742,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/1e5ef47f-4339-460c-9a92-cee3ba8aff10' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/a4f87c27-8a64-4936-a41f-437f54100bc4' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
