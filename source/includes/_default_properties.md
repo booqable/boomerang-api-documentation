@@ -32,7 +32,7 @@ Name | Description
 `position` | **Integer**<br>Which position the property has
 `property_type` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
 `show_on` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`owner_type` | **String**<br>The resource type of the owner. One of `Order`, `ProductGroup`, `Customer`, `User`
+`owner_type` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
 `select_options` | **Array**<br>For type `select`. The select options as array.
 `editable` | **Boolean** `readonly`<br>Whether this property is editable
 
@@ -55,17 +55,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "b13b32a9-50e8-4d0f-9ca8-b6012bdfd35e",
+      "id": "2d419223-d5a5-415b-9d5b-13ed6e0fc8cb",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2021-11-17T21:04:47+00:00",
-        "updated_at": "2021-11-17T21:04:47+00:00",
+        "created_at": "2021-11-18T14:42:17+00:00",
+        "updated_at": "2021-11-18T14:42:17+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
         "property_type": "phone",
         "show_on": [],
-        "owner_type": "Customer",
+        "owner_type": "customers",
         "select_options": [],
         "editable": true
       }
@@ -92,7 +92,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-17T21:04:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-18T14:41:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -110,7 +110,7 @@ Name | Description
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `identifier` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`owner_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`owner_type` | **String**<br>`eq`, `not_eq`
 `editable` | **Boolean**<br>`eq`
 
 
@@ -134,7 +134,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/b7f8739a-8989-428c-bb12-53dfb21a2465?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/2ef5012c-c4fb-4769-9ef2-e1fbfe378845?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -143,17 +143,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b7f8739a-8989-428c-bb12-53dfb21a2465",
+    "id": "2ef5012c-c4fb-4769-9ef2-e1fbfe378845",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2021-11-17T21:04:47+00:00",
-      "updated_at": "2021-11-17T21:04:47+00:00",
+      "created_at": "2021-11-18T14:42:17+00:00",
+      "updated_at": "2021-11-18T14:42:17+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
       "property_type": "phone",
       "show_on": [],
-      "owner_type": "Customer",
+      "owner_type": "customers",
       "select_options": [],
       "editable": true
     }
@@ -195,7 +195,7 @@ This request does not accept any includes
         "attributes": {
           "name": "Mobile phone",
           "property_type": "phone",
-          "owner_type": "Customer"
+          "owner_type": "customers"
         }
       }
     }'
@@ -206,25 +206,25 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e595e896-e5b3-4b2b-b03f-6a502553f802",
+    "id": "f5e62caa-e854-4447-841a-bd298e94c59f",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2021-11-17T21:04:47+00:00",
-      "updated_at": "2021-11-17T21:04:47+00:00",
+      "created_at": "2021-11-18T14:42:17+00:00",
+      "updated_at": "2021-11-18T14:42:17+00:00",
       "name": "Mobile phone",
       "identifier": "mobile_phone",
       "position": 2,
       "property_type": "phone",
       "show_on": [],
-      "owner_type": "Customer",
+      "owner_type": "customers",
       "select_options": [],
       "editable": true
     }
   },
   "links": {
-    "self": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=Customer&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -255,7 +255,7 @@ Name | Description
 `data[attributes][position]` | **Integer**<br>Which position the property has
 `data[attributes][property_type]` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
 `data[attributes][show_on][]` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `ProductGroup`, `Customer`, `User`
+`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
 `data[attributes][select_options][]` | **Array**<br>For type `select`. The select options as array.
 
 
@@ -270,11 +270,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/31dd6575-c028-4adb-8e50-185145179a55' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/c79dd275-f9cf-4680-9f2d-3f58f97ce84f' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "31dd6575-c028-4adb-8e50-185145179a55",
+        "id": "c79dd275-f9cf-4680-9f2d-3f58f97ce84f",
         "type": "default_properties",
         "attributes": {
           "property_type": "text_field"
@@ -288,17 +288,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "31dd6575-c028-4adb-8e50-185145179a55",
+    "id": "c79dd275-f9cf-4680-9f2d-3f58f97ce84f",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2021-11-17T21:04:48+00:00",
-      "updated_at": "2021-11-17T21:04:48+00:00",
+      "created_at": "2021-11-18T14:42:18+00:00",
+      "updated_at": "2021-11-18T14:42:18+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
       "property_type": "text_field",
       "show_on": [],
-      "owner_type": "Customer",
+      "owner_type": "customers",
       "select_options": [],
       "editable": true
     }
@@ -332,7 +332,7 @@ Name | Description
 `data[attributes][position]` | **Integer**<br>Which position the property has
 `data[attributes][property_type]` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
 `data[attributes][show_on][]` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `Order`, `ProductGroup`, `Customer`, `User`
+`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
 `data[attributes][select_options][]` | **Array**<br>For type `select`. The select options as array.
 
 
@@ -347,7 +347,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/dff81ce1-9d7e-4332-b7c4-579e37423251' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/d80564a8-d670-4864-b0b6-16afbb1254e5' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

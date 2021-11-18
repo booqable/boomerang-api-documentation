@@ -9,7 +9,7 @@ Items can be added quantitatively or, for trackable products, specific stock ite
 ```
   "items": [
     {
-      "type": "Product",
+      "type": "products",
       "id": "69a6ac18-244e-4b1e-b2e1-c88d155b51e5",
       "quantity": 10
     }
@@ -21,7 +21,7 @@ Items can be added quantitatively or, for trackable products, specific stock ite
 ```
   "items": [
     {
-      "type": "Product",
+      "type": "products",
       "id": "a2d96edf-7d8b-42de-9897-e5aee335f3ca",
       "quantity": 3,
       "stock_item_ids": [
@@ -37,7 +37,7 @@ Items can be added quantitatively or, for trackable products, specific stock ite
 ```
   "items": [
     {
-      "type": "Bundle",
+      "type": "bundles",
       "id": "9bf34d16-2144-45a5-8461-ebae7bf0f4ca",
       "quantity": 3
     }
@@ -49,11 +49,11 @@ Items can be added quantitatively or, for trackable products, specific stock ite
 ```
   "items": [
     {
-      "type": "Bundle",
+      "type": "bundles",
       "id": "9bf34d16-2144-45a5-8461-ebae7bf0f4ca",
       "products": [
         {
-          type: "Product",
+          type: "products",
           bundle_item_id: "1456d221-029c-42ad-abcd-ad8d70c9e3f0",
           id: "ee64a622-3ac5-4859-a582-b3467b8027e8"
         }
@@ -115,19 +115,19 @@ Name | Description
       "data": {
         "type": "bookings",
         "attributes": {
-          "order_id": "67b6e36a-6edc-43fa-932a-c75081c74fb6",
+          "order_id": "2cd75933-98d0-4c54-aec1-09b83ffc471c",
           "items": [
             {
-              "type": "Product",
-              "id": "ba76f59d-e784-491c-809c-eb8d08413803",
+              "type": "products",
+              "id": "c99dc8bc-ddd5-4933-a4fe-80db98eb248c",
               "quantity": 10
             },
             {
-              "type": "Product",
-              "id": "52a53657-0208-4672-baa0-aebdf92fb5fe",
+              "type": "products",
+              "id": "5da1950c-8230-4b4a-bc03-6e1c92d355f1",
               "stock_item_ids": [
-                "43d0de09-f40d-4361-b81f-a53035e4a41d",
-                "947c67f8-2698-4c16-af63-6607d61d83fa"
+                "e295a989-0881-41be-ad01-4c103ec89b92",
+                "e29ca7ab-c140-4203-8aed-06d5ee6b1684"
               ]
             }
           ]
@@ -151,7 +151,7 @@ Name | Description
         "blocking": [
           {
             "reason": "shortage",
-            "item_id": "ba76f59d-e784-491c-809c-eb8d08413803",
+            "item_id": "c99dc8bc-ddd5-4933-a4fe-80db98eb248c",
             "stock_count": 4,
             "reserved": 0,
             "needed": 10,
@@ -159,12 +159,12 @@ Name | Description
           },
           {
             "reason": "stock_item_specified",
-            "item_id": "52a53657-0208-4672-baa0-aebdf92fb5fe",
+            "item_id": "5da1950c-8230-4b4a-bc03-6e1c92d355f1",
             "unavailable": [
-              "43d0de09-f40d-4361-b81f-a53035e4a41d"
+              "e295a989-0881-41be-ad01-4c103ec89b92"
             ],
             "available": [
-              "947c67f8-2698-4c16-af63-6607d61d83fa"
+              "e29ca7ab-c140-4203-8aed-06d5ee6b1684"
             ]
           }
         ]
@@ -185,20 +185,20 @@ Name | Description
       "data": {
         "type": "bookings",
         "attributes": {
-          "order_id": "778b7009-32aa-469a-9d72-e52fe12f36f6",
+          "order_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd",
           "items": [
             {
-              "type": "Product",
-              "id": "d88c4600-4a70-4299-9b4c-a401089a4f6d",
+              "type": "products",
+              "id": "c839cbab-27e6-4db0-9796-fe94a9e794e7",
               "stock_item_ids": [
-                "60e327ae-f6a1-4bca-a037-f7e29d4a6e79",
-                "beacdeb6-dc8f-428b-9d70-b5105cd32e28",
-                "80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd"
+                "70e5c703-24d4-4363-bfde-3bac9c5eede6",
+                "5a72f9f0-1d8f-4081-82e3-ba68aaf0970e",
+                "f5d1c6dc-b892-45a1-88f8-ac7f1baccee7"
               ]
             },
             {
-              "type": "Product",
-              "id": "791c88c5-b222-44f9-b6fa-28a4330ba41e",
+              "type": "products",
+              "id": "0cfead44-b68c-49aa-96e9-1d846e703683",
               "quantity": 1
             }
           ]
@@ -213,27 +213,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "51401b46-ee83-55d2-9197-ac5a82f5be46",
+    "id": "38f2eb67-47db-527b-b403-93693ec2a0a2",
     "type": "bookings",
     "attributes": {
-      "order_id": "778b7009-32aa-469a-9d72-e52fe12f36f6"
+      "order_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd"
     },
     "relationships": {
       "order": {
         "data": {
           "type": "orders",
-          "id": "778b7009-32aa-469a-9d72-e52fe12f36f6"
+          "id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd"
         }
       },
       "lines": {
         "data": [
           {
             "type": "lines",
-            "id": "9c3b2f83-a99b-44b8-827b-f64264f0cc2a"
+            "id": "5c9f30b5-4689-4afc-a158-16233af54d97"
           },
           {
             "type": "lines",
-            "id": "455c2be8-016e-4ea3-85be-6df2d0ed9e83"
+            "id": "45dd248d-e693-4c1f-850f-740fa02ffb93"
           }
         ]
       },
@@ -241,11 +241,11 @@ Name | Description
         "data": [
           {
             "type": "plannings",
-            "id": "e0509e1c-6833-42e3-8df5-e0e6ac4f1e16"
+            "id": "54a1c4bd-49be-4198-8edb-91a5478423a2"
           },
           {
             "type": "plannings",
-            "id": "6bb58fe2-6937-4695-ba92-5aa4402dfc3d"
+            "id": "1f3e6d8c-9422-43c5-a7f1-9a82be18174d"
           }
         ]
       },
@@ -253,15 +253,15 @@ Name | Description
         "data": [
           {
             "type": "stock_item_plannings",
-            "id": "b5f15995-feec-4bf0-9765-23575fa74107"
+            "id": "8fd30fc2-9430-4048-8362-69c4aab6515a"
           },
           {
             "type": "stock_item_plannings",
-            "id": "4ef51a8b-ab97-4e81-8aa2-928cb3deba82"
+            "id": "cc59a27f-ae0c-4402-b9e7-f988fe164e1d"
           },
           {
             "type": "stock_item_plannings",
-            "id": "3c296c46-fc7f-40e2-953a-41183ec70a96"
+            "id": "2a0164bf-8027-427e-9f51-76fa3032cf5d"
           }
         ]
       }
@@ -269,11 +269,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "778b7009-32aa-469a-9d72-e52fe12f36f6",
+      "id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd",
       "type": "orders",
       "attributes": {
-        "created_at": "2021-11-17T21:04:20+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:46+00:00",
+        "updated_at": "2021-11-18T14:41:49+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -314,11 +314,11 @@ Name | Description
         "to_be_paid_in_cents": 314655,
         "paid_in_cents": 0,
         "discount_percentage": 10.0,
-        "customer_id": "0ef4dc95-9891-4e96-96f5-61d8ebab21b2",
+        "customer_id": "26371499-2d10-4ebb-91c8-3a390d9ff7cc",
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "ee30f0bc-7479-4343-82b6-09802554255a",
-        "stop_location_id": "ee30f0bc-7479-4343-82b6-09802554255a"
+        "start_location_id": "1b5caa1b-983e-4920-b13e-ace24a406626",
+        "stop_location_id": "1b5caa1b-983e-4920-b13e-ace24a406626"
       },
       "relationships": {
         "customer": {
@@ -341,6 +341,11 @@ Name | Description
             "included": false
           }
         },
+        "properties": {
+          "meta": {
+            "included": false
+          }
+        },
         "start_location": {
           "meta": {
             "included": false
@@ -355,15 +360,25 @@ Name | Description
           "meta": {
             "included": false
           }
+        },
+        "lines": {
+          "meta": {
+            "included": false
+          }
+        },
+        "stock_item_plannings": {
+          "meta": {
+            "included": false
+          }
         }
       }
     },
     {
-      "id": "9c3b2f83-a99b-44b8-827b-f64264f0cc2a",
+      "id": "5c9f30b5-4689-4afc-a158-16233af54d97",
       "type": "lines",
       "attributes": {
-        "created_at": "2021-11-17T21:04:21+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:47+00:00",
+        "updated_at": "2021-11-18T14:41:48+00:00",
         "title": "Macbook Pro",
         "extra_information": "Comes with a mouse",
         "quantity": 2,
@@ -392,11 +407,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "owner_id": "778b7009-32aa-469a-9d72-e52fe12f36f6",
-        "owner_type": "Order",
-        "item_id": "791c88c5-b222-44f9-b6fa-28a4330ba41e",
-        "tax_category_id": "8602e506-2454-4d2b-9c22-3402b4e9c871",
-        "parent_line_id": null
+        "item_id": "0cfead44-b68c-49aa-96e9-1d846e703683",
+        "tax_category_id": "ac218401-e7e4-40f0-83d2-ebd6742ac24a",
+        "parent_line_id": null,
+        "owner_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd",
+        "owner_type": "orders"
       },
       "relationships": {
         "item": {
@@ -427,11 +442,11 @@ Name | Description
       }
     },
     {
-      "id": "455c2be8-016e-4ea3-85be-6df2d0ed9e83",
+      "id": "45dd248d-e693-4c1f-850f-740fa02ffb93",
       "type": "lines",
       "attributes": {
-        "created_at": "2021-11-17T21:04:22+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:48+00:00",
+        "updated_at": "2021-11-18T14:41:48+00:00",
         "title": "iPad Pro",
         "extra_information": "Comes with a case",
         "quantity": 3,
@@ -460,11 +475,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "owner_id": "778b7009-32aa-469a-9d72-e52fe12f36f6",
-        "owner_type": "Order",
-        "item_id": "d88c4600-4a70-4299-9b4c-a401089a4f6d",
-        "tax_category_id": "8602e506-2454-4d2b-9c22-3402b4e9c871",
-        "parent_line_id": null
+        "item_id": "c839cbab-27e6-4db0-9796-fe94a9e794e7",
+        "tax_category_id": "ac218401-e7e4-40f0-83d2-ebd6742ac24a",
+        "parent_line_id": null,
+        "owner_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd",
+        "owner_type": "orders"
       },
       "relationships": {
         "item": {
@@ -495,11 +510,11 @@ Name | Description
       }
     },
     {
-      "id": "e0509e1c-6833-42e3-8df5-e0e6ac4f1e16",
+      "id": "54a1c4bd-49be-4198-8edb-91a5478423a2",
       "type": "plannings",
       "attributes": {
-        "created_at": "2021-11-17T21:04:21+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:47+00:00",
+        "updated_at": "2021-11-18T14:41:48+00:00",
         "quantity": 2,
         "starts_at": "1980-04-01T12:00:00+00:00",
         "stops_at": "1980-05-01T12:00:00+00:00",
@@ -510,10 +525,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "791c88c5-b222-44f9-b6fa-28a4330ba41e",
-        "order_id": "778b7009-32aa-469a-9d72-e52fe12f36f6",
-        "start_location_id": "ee30f0bc-7479-4343-82b6-09802554255a",
-        "stop_location_id": "ee30f0bc-7479-4343-82b6-09802554255a",
+        "item_id": "0cfead44-b68c-49aa-96e9-1d846e703683",
+        "order_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd",
+        "start_location_id": "1b5caa1b-983e-4920-b13e-ace24a406626",
+        "stop_location_id": "1b5caa1b-983e-4920-b13e-ace24a406626",
         "parent_planning_id": null
       },
       "relationships": {
@@ -560,11 +575,11 @@ Name | Description
       }
     },
     {
-      "id": "6bb58fe2-6937-4695-ba92-5aa4402dfc3d",
+      "id": "1f3e6d8c-9422-43c5-a7f1-9a82be18174d",
       "type": "plannings",
       "attributes": {
-        "created_at": "2021-11-17T21:04:22+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:48+00:00",
+        "updated_at": "2021-11-18T14:41:48+00:00",
         "quantity": 3,
         "starts_at": "1980-04-01T12:00:00+00:00",
         "stops_at": "1980-05-01T12:00:00+00:00",
@@ -575,10 +590,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "d88c4600-4a70-4299-9b4c-a401089a4f6d",
-        "order_id": "778b7009-32aa-469a-9d72-e52fe12f36f6",
-        "start_location_id": "ee30f0bc-7479-4343-82b6-09802554255a",
-        "stop_location_id": "ee30f0bc-7479-4343-82b6-09802554255a",
+        "item_id": "c839cbab-27e6-4db0-9796-fe94a9e794e7",
+        "order_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd",
+        "start_location_id": "1b5caa1b-983e-4920-b13e-ace24a406626",
+        "stop_location_id": "1b5caa1b-983e-4920-b13e-ace24a406626",
         "parent_planning_id": null
       },
       "relationships": {
@@ -625,17 +640,17 @@ Name | Description
       }
     },
     {
-      "id": "b5f15995-feec-4bf0-9765-23575fa74107",
+      "id": "8fd30fc2-9430-4048-8362-69c4aab6515a",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2021-11-17T21:04:22+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:48+00:00",
+        "updated_at": "2021-11-18T14:41:48+00:00",
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "60e327ae-f6a1-4bca-a037-f7e29d4a6e79",
-        "planning_id": "6bb58fe2-6937-4695-ba92-5aa4402dfc3d",
-        "order_id": "778b7009-32aa-469a-9d72-e52fe12f36f6"
+        "stock_item_id": "70e5c703-24d4-4363-bfde-3bac9c5eede6",
+        "planning_id": "1f3e6d8c-9422-43c5-a7f1-9a82be18174d",
+        "order_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd"
       },
       "relationships": {
         "stock_item": {
@@ -656,17 +671,17 @@ Name | Description
       }
     },
     {
-      "id": "4ef51a8b-ab97-4e81-8aa2-928cb3deba82",
+      "id": "cc59a27f-ae0c-4402-b9e7-f988fe164e1d",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2021-11-17T21:04:22+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:48+00:00",
+        "updated_at": "2021-11-18T14:41:48+00:00",
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "beacdeb6-dc8f-428b-9d70-b5105cd32e28",
-        "planning_id": "6bb58fe2-6937-4695-ba92-5aa4402dfc3d",
-        "order_id": "778b7009-32aa-469a-9d72-e52fe12f36f6"
+        "stock_item_id": "5a72f9f0-1d8f-4081-82e3-ba68aaf0970e",
+        "planning_id": "1f3e6d8c-9422-43c5-a7f1-9a82be18174d",
+        "order_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd"
       },
       "relationships": {
         "stock_item": {
@@ -687,17 +702,17 @@ Name | Description
       }
     },
     {
-      "id": "3c296c46-fc7f-40e2-953a-41183ec70a96",
+      "id": "2a0164bf-8027-427e-9f51-76fa3032cf5d",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2021-11-17T21:04:22+00:00",
-        "updated_at": "2021-11-17T21:04:22+00:00",
+        "created_at": "2021-11-18T14:41:48+00:00",
+        "updated_at": "2021-11-18T14:41:48+00:00",
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd",
-        "planning_id": "6bb58fe2-6937-4695-ba92-5aa4402dfc3d",
-        "order_id": "778b7009-32aa-469a-9d72-e52fe12f36f6"
+        "stock_item_id": "f5d1c6dc-b892-45a1-88f8-ac7f1baccee7",
+        "planning_id": "1f3e6d8c-9422-43c5-a7f1-9a82be18174d",
+        "order_id": "5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd"
       },
       "relationships": {
         "stock_item": {
@@ -719,10 +734,10 @@ Name | Description
     }
   ],
   "links": {
-    "self": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=d88c4600-4a70-4299-9b4c-a401089a4f6d&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=60e327ae-f6a1-4bca-a037-f7e29d4a6e79&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=beacdeb6-dc8f-428b-9d70-b5105cd32e28&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=80b3d6c1-eb57-4f38-bb37-c5dc3c02afbd&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=791c88c5-b222-44f9-b6fa-28a4330ba41e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=778b7009-32aa-469a-9d72-e52fe12f36f6&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=c839cbab-27e6-4db0-9796-fe94a9e794e7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=70e5c703-24d4-4363-bfde-3bac9c5eede6&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=5a72f9f0-1d8f-4081-82e3-ba68aaf0970e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bstock_item_ids%5D%5B%5D=f5d1c6dc-b892-45a1-88f8-ac7f1baccee7&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=0cfead44-b68c-49aa-96e9-1d846e703683&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bquantity%5D=1&data%5Battributes%5D%5Border_id%5D=5f31f2ee-a5c9-4ff6-a79e-0e85e017a4cd&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -739,16 +754,16 @@ Name | Description
       "data": {
         "type": "bookings",
         "attributes": {
-          "order_id": "4f970d78-5f3f-4fd4-bfe4-415e78f09d81",
+          "order_id": "08ca5af6-6ad4-4282-b317-5231eb3522ec",
           "items": [
             {
-              "type": "Bundle",
-              "id": "5226daf9-cf99-456e-af8b-eaa3e32dfdc3",
+              "type": "bundles",
+              "id": "41c09787-bcd8-4012-af9d-3df48178c53e",
               "products": [
                 {
-                  "type": "Product",
-                  "bundle_item_id": "796e0595-afa4-4e0c-9afc-5cb1cea90eaa",
-                  "id": "290bef13-3bbe-4b60-bf13-d477f78f8dd4"
+                  "type": "products",
+                  "bundle_item_id": "84ed74e9-dbb6-4685-b87f-5e47b19e3754",
+                  "id": "9bd9432c-9916-4786-b9ac-b339f61f4e68"
                 }
               ]
             }
@@ -764,23 +779,23 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4119243b-d2ec-5964-b4fb-cd737d15c01a",
+    "id": "1ecda00b-8645-548f-a578-c98cb1ab5f35",
     "type": "bookings",
     "attributes": {
-      "order_id": "4f970d78-5f3f-4fd4-bfe4-415e78f09d81"
+      "order_id": "08ca5af6-6ad4-4282-b317-5231eb3522ec"
     },
     "relationships": {
       "order": {
         "data": {
           "type": "orders",
-          "id": "4f970d78-5f3f-4fd4-bfe4-415e78f09d81"
+          "id": "08ca5af6-6ad4-4282-b317-5231eb3522ec"
         }
       },
       "lines": {
         "data": [
           {
             "type": "lines",
-            "id": "ea8d82d4-a39d-4480-90bf-ee3e353ce074"
+            "id": "0fe3596c-9bcc-4383-8df5-d0e8188ee63a"
           }
         ]
       },
@@ -788,7 +803,7 @@ Name | Description
         "data": [
           {
             "type": "plannings",
-            "id": "f0591d9e-61bb-455f-8866-4a2901532421"
+            "id": "ca367c53-040f-4647-ade6-f5a695dbdf37"
           }
         ]
       },
@@ -799,11 +814,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "4f970d78-5f3f-4fd4-bfe4-415e78f09d81",
+      "id": "08ca5af6-6ad4-4282-b317-5231eb3522ec",
       "type": "orders",
       "attributes": {
-        "created_at": "2021-11-17T21:04:24+00:00",
-        "updated_at": "2021-11-17T21:04:25+00:00",
+        "created_at": "2021-11-18T14:41:51+00:00",
+        "updated_at": "2021-11-18T14:41:52+00:00",
         "number": null,
         "status": "new",
         "statuses": [
@@ -816,8 +831,8 @@ Name | Description
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2021-11-15T21:00:00+00:00",
-        "stops_at": "2021-11-19T21:00:00+00:00",
+        "starts_at": "2021-11-16T14:30:00+00:00",
+        "stops_at": "2021-11-20T14:30:00+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100,
         "entirely_started": false,
@@ -845,8 +860,8 @@ Name | Description
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "acdd2fae-b08e-403e-9a7b-876384aee0db",
-        "stop_location_id": "acdd2fae-b08e-403e-9a7b-876384aee0db"
+        "start_location_id": "9aee75a0-fb6a-430c-ab82-7ceb0f93d0ea",
+        "stop_location_id": "9aee75a0-fb6a-430c-ab82-7ceb0f93d0ea"
       },
       "relationships": {
         "customer": {
@@ -869,6 +884,11 @@ Name | Description
             "included": false
           }
         },
+        "properties": {
+          "meta": {
+            "included": false
+          }
+        },
         "start_location": {
           "meta": {
             "included": false
@@ -883,15 +903,25 @@ Name | Description
           "meta": {
             "included": false
           }
+        },
+        "lines": {
+          "meta": {
+            "included": false
+          }
+        },
+        "stock_item_plannings": {
+          "meta": {
+            "included": false
+          }
         }
       }
     },
     {
-      "id": "ea8d82d4-a39d-4480-90bf-ee3e353ce074",
+      "id": "0fe3596c-9bcc-4383-8df5-d0e8188ee63a",
       "type": "lines",
       "attributes": {
-        "created_at": "2021-11-17T21:04:25+00:00",
-        "updated_at": "2021-11-17T21:04:25+00:00",
+        "created_at": "2021-11-18T14:41:52+00:00",
+        "updated_at": "2021-11-18T14:41:52+00:00",
         "title": "Bundle item 1",
         "extra_information": null,
         "quantity": 1,
@@ -906,11 +936,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "owner_id": "4f970d78-5f3f-4fd4-bfe4-415e78f09d81",
-        "owner_type": "Order",
-        "item_id": "5226daf9-cf99-456e-af8b-eaa3e32dfdc3",
+        "item_id": "41c09787-bcd8-4012-af9d-3df48178c53e",
         "tax_category_id": null,
-        "parent_line_id": null
+        "parent_line_id": null,
+        "owner_id": "08ca5af6-6ad4-4282-b317-5231eb3522ec",
+        "owner_type": "orders"
       },
       "relationships": {
         "item": {
@@ -941,25 +971,25 @@ Name | Description
       }
     },
     {
-      "id": "f0591d9e-61bb-455f-8866-4a2901532421",
+      "id": "ca367c53-040f-4647-ade6-f5a695dbdf37",
       "type": "plannings",
       "attributes": {
-        "created_at": "2021-11-17T21:04:25+00:00",
-        "updated_at": "2021-11-17T21:04:25+00:00",
+        "created_at": "2021-11-18T14:41:52+00:00",
+        "updated_at": "2021-11-18T14:41:52+00:00",
         "quantity": 1,
-        "starts_at": "2021-11-15T21:00:00+00:00",
-        "stops_at": "2021-11-19T21:00:00+00:00",
-        "reserved_from": "2021-11-15T21:00:00+00:00",
-        "reserved_till": "2021-11-19T21:00:00+00:00",
+        "starts_at": "2021-11-16T14:30:00+00:00",
+        "stops_at": "2021-11-20T14:30:00+00:00",
+        "reserved_from": "2021-11-16T14:30:00+00:00",
+        "reserved_till": "2021-11-20T14:30:00+00:00",
         "reserved": false,
         "started": 0,
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "5226daf9-cf99-456e-af8b-eaa3e32dfdc3",
-        "order_id": "4f970d78-5f3f-4fd4-bfe4-415e78f09d81",
-        "start_location_id": "acdd2fae-b08e-403e-9a7b-876384aee0db",
-        "stop_location_id": "acdd2fae-b08e-403e-9a7b-876384aee0db",
+        "item_id": "41c09787-bcd8-4012-af9d-3df48178c53e",
+        "order_id": "08ca5af6-6ad4-4282-b317-5231eb3522ec",
+        "start_location_id": "9aee75a0-fb6a-430c-ab82-7ceb0f93d0ea",
+        "stop_location_id": "9aee75a0-fb6a-430c-ab82-7ceb0f93d0ea",
         "parent_planning_id": null
       },
       "relationships": {
@@ -1007,10 +1037,10 @@ Name | Description
     }
   ],
   "links": {
-    "self": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&data%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&data%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&data%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=Bundle&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=5226daf9-cf99-456e-af8b-eaa3e32dfdc3&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=Product&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=796e0595-afa4-4e0c-9afc-5cb1cea90eaa&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=290bef13-3bbe-4b60-bf13-d477f78f8dd4&data%5Battributes%5D%5Border_id%5D=4f970d78-5f3f-4fd4-bfe4-415e78f09d81&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&data%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&data%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&data%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/bookings?booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&booking%5Bdata%5D%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&booking%5Bdata%5D%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&booking%5Bdata%5D%5Btype%5D=bookings&booking%5Binclude%5D=order%2Clines%2Cplannings%2Cstock_item_plannings&data%5Battributes%5D%5Bitems%5D%5B%5D%5Btype%5D=bundles&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bid%5D=41c09787-bcd8-4012-af9d-3df48178c53e&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Btype%5D=products&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bbundle_item_id%5D=84ed74e9-dbb6-4685-b87f-5e47b19e3754&data%5Battributes%5D%5Bitems%5D%5B%5D%5Bproducts%5D%5B%5D%5Bid%5D=9bd9432c-9916-4786-b9ac-b339f61f4e68&data%5Battributes%5D%5Border_id%5D=08ca5af6-6ad4-4282-b317-5231eb3522ec&data%5Btype%5D=bookings&include=order%2Clines%2Cplannings%2Cstock_item_plannings&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }
