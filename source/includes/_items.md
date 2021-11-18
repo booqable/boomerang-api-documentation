@@ -43,11 +43,12 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "230a27a0-5057-467e-b243-53cac8590423",
+      "id": "8623a0a7-ecdb-45da-a42d-d3189fbe520c",
       "type": "bundles",
       "attributes": {
-        "created_at": "2021-11-17T21:04:58+00:00",
-        "updated_at": "2021-11-17T21:04:58+00:00",
+        "created_at": "2021-11-18T15:14:55+00:00",
+        "updated_at": "2021-11-18T15:14:55+00:00",
+        "type": "bundles",
         "name": "iPad Bundle",
         "slug": "ipad-bundle",
         "product_type": "bundle",
@@ -60,7 +61,6 @@ For this resource relationships are described in the following resources:
         "sorting_weight": 0,
         "discountable": true,
         "taxable": true,
-        "type": "Bundle",
         "tag_list": [
           "tablets",
           "apple"
@@ -81,26 +81,26 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=230a27a0-5057-467e-b243-53cac8590423"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=8623a0a7-ecdb-45da-a42d-d3189fbe520c"
           }
         },
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=230a27a0-5057-467e-b243-53cac8590423"
+            "related": "api/boomerang/categories?filter[item_id]=8623a0a7-ecdb-45da-a42d-d3189fbe520c"
           }
         }
       }
     },
     {
-      "id": "f351bcea-fb81-43fb-bd3c-4701dbea6958",
+      "id": "a98fa87d-7ea4-410e-88e7-dbc83deef9a3",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2021-11-17T21:04:58+00:00",
-        "updated_at": "2021-11-17T21:04:58+00:00",
+        "created_at": "2021-11-18T15:14:55+00:00",
+        "updated_at": "2021-11-18T15:14:55+00:00",
+        "type": "product_groups",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
-        "type": "ProductGroup",
         "lead_time": 0,
         "lag_time": 0,
         "product_type": "rental",
@@ -130,12 +130,12 @@ For this resource relationships are described in the following resources:
         "variation_fields": [],
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
-        "tax_category_id": "af8e8a73-47dc-40af-b5d1-7396283dc9bf"
+        "tax_category_id": "439eea4c-27c0-474f-a233-e90487a44a89"
       },
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=f351bcea-fb81-43fb-bd3c-4701dbea6958"
+            "related": "api/boomerang/categories?filter[item_id]=a98fa87d-7ea4-410e-88e7-dbc83deef9a3"
           }
         },
         "photo": {
@@ -145,31 +145,31 @@ For this resource relationships are described in the following resources:
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=f351bcea-fb81-43fb-bd3c-4701dbea6958"
+            "related": "api/boomerang/products?filter[product_group_id]=a98fa87d-7ea4-410e-88e7-dbc83deef9a3"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/af8e8a73-47dc-40af-b5d1-7396283dc9bf"
+            "related": "api/boomerang/tax_categories/439eea4c-27c0-474f-a233-e90487a44a89"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=f351bcea-fb81-43fb-bd3c-4701dbea6958&filter[owner_type]=ProductGroup"
+            "related": "api/boomerang/properties?filter[owner_id]=a98fa87d-7ea4-410e-88e7-dbc83deef9a3&filter[owner_type]=product_groups"
           }
         }
       }
     },
     {
-      "id": "217f0f39-0ef9-4ed4-a1da-78c3dc987a80",
+      "id": "a17c69ca-4fd9-48ef-8c14-85afdbef7a6b",
       "type": "products",
       "attributes": {
-        "created_at": "2021-11-17T21:04:58+00:00",
-        "updated_at": "2021-11-17T21:04:58+00:00",
+        "created_at": "2021-11-18T15:14:55+00:00",
+        "updated_at": "2021-11-18T15:14:55+00:00",
+        "type": "products",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
-        "type": "Product",
         "lead_time": 0,
         "lag_time": 0,
         "product_type": "rental",
@@ -197,8 +197,8 @@ For this resource relationships are described in the following resources:
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "f351bcea-fb81-43fb-bd3c-4701dbea6958",
-        "tax_category_id": "af8e8a73-47dc-40af-b5d1-7396283dc9bf"
+        "product_group_id": "a98fa87d-7ea4-410e-88e7-dbc83deef9a3",
+        "tax_category_id": "439eea4c-27c0-474f-a233-e90487a44a89"
       },
       "relationships": {
         "photo": {
@@ -208,27 +208,27 @@ For this resource relationships are described in the following resources:
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/f351bcea-fb81-43fb-bd3c-4701dbea6958"
+            "related": "api/boomerang/product_groups/a98fa87d-7ea4-410e-88e7-dbc83deef9a3"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/af8e8a73-47dc-40af-b5d1-7396283dc9bf"
+            "related": "api/boomerang/tax_categories/439eea4c-27c0-474f-a233-e90487a44a89"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=217f0f39-0ef9-4ed4-a1da-78c3dc987a80"
+            "related": "api/boomerang/barcodes?filter[owner_id]=a17c69ca-4fd9-48ef-8c14-85afdbef7a6b&filter[owner_type]=products"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=f351bcea-fb81-43fb-bd3c-4701dbea6958"
+            "related": "api/boomerang/properties?filter[owner_id]=a98fa87d-7ea4-410e-88e7-dbc83deef9a3&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=f351bcea-fb81-43fb-bd3c-4701dbea6958"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=a98fa87d-7ea4-410e-88e7-dbc83deef9a3"
           }
         }
       }
@@ -253,9 +253,9 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category`
+`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-17T21:04:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-18T15:14:06Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -271,10 +271,10 @@ Name | Description
 `id` | **Uuid**<br>`eq`, `not_eq`
 `created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`type` | **String**<br>`eq`, `not_eq`
 `name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `slug` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sku` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`type` | **String**<br>`eq`, `not_eq`, `prefix`, `match`
 `lead_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `lag_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `trackable` | **Boolean**<br>`eq`
@@ -285,6 +285,7 @@ Name | Description
 `photo_id` | **Uuid**<br>`eq`, `not_eq`
 `category_id` | **Uuid**<br>`eq`, `not_eq`
 `q` | **String**<br>`eq`, `not_eq`, `prefix`, `match`
+`product_group_id` | **Uuid**<br>`eq`
 
 
 ### Meta

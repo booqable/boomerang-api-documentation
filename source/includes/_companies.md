@@ -72,24 +72,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cfb283c7-00bb-4fec-a86a-1f8609436edc",
+    "id": "532e8905-3035-48f6-9dd0-cac2baf9d62b",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-17T21:04:39+00:00",
-      "updated_at": "2021-11-17T21:04:39+00:00",
+      "created_at": "2021-11-18T15:14:38+00:00",
+      "updated_at": "2021-11-18T15:14:38+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "685.581.7938 x0518",
-      "website": "http://okuneva-nader.co/vance_rice",
-      "address": "Quigley Ville\n2581 Kertzmann Underpass\n40934 North Erasmoville\nSaint Pierre and Miquelon",
-      "address_line_1": "Quigley Ville",
-      "address_line_2": "2581 Kertzmann Underpass",
-      "zipcode": "40934",
-      "city": "North Erasmoville",
+      "phone": "(219) 820-8299 x2625",
+      "website": "http://rohan-nikolaus.info/wilfred",
+      "address": "Hand Landing\n20104 Lane Walk\n84446-8759 Springmouth\nKenya",
+      "address_line_1": "Hand Landing",
+      "address_line_2": "20104 Lane Walk",
+      "zipcode": "84446-8759",
+      "city": "Springmouth",
       "region": null,
-      "country": "Saint Pierre and Miquelon",
+      "country": "Kenya",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -100,10 +100,10 @@ Name | Description
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "64177 Reilly Burg",
-      "financial_line_2": "42920 Prohaskaburgh",
+      "financial_line_1": "29043 Simonis Bypass",
+      "financial_line_2": "36368 Vonbury",
       "vat_number": null,
-      "continent": "Americas",
+      "continent": "Africa",
       "custom_domain": null,
       "development": false
     }
@@ -141,7 +141,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "49558994-02f1-47cb-961d-ad9f9befbfca",
+        "id": "d718ce38-3417-4d84-8683-b74965af3ec0",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -155,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "49558994-02f1-47cb-961d-ad9f9befbfca",
+    "id": "d718ce38-3417-4d84-8683-b74965af3ec0",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-17T21:04:39+00:00",
-      "updated_at": "2021-11-17T21:04:39+00:00",
+      "created_at": "2021-11-18T15:14:38+00:00",
+      "updated_at": "2021-11-18T15:14:38+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "265-971-5890 x546",
-      "website": "http://lehner.net/philip",
-      "address": "Reinger Camp\n1431 Mante Land\n73377 Port Kami\nOman",
-      "address_line_1": "Reinger Camp",
-      "address_line_2": "1431 Mante Land",
-      "zipcode": "73377",
-      "city": "Port Kami",
+      "phone": "358.567.2045",
+      "website": "http://kassulke-leannon.org/dyan_mayer",
+      "address": "Lemke Lakes\n88737 Nader Plains\n04268 Westshire\nGuinea-Bissau",
+      "address_line_1": "Lemke Lakes",
+      "address_line_2": "88737 Nader Plains",
+      "zipcode": "04268",
+      "city": "Westshire",
       "region": null,
-      "country": "Oman",
+      "country": "Guinea-Bissau",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -183,10 +183,10 @@ This request does not accept any includes
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "9881 Sanda Burgs",
-      "financial_line_2": "37771-5807 North Yahairaport",
+      "financial_line_1": "4846 Nader Mount",
+      "financial_line_2": "28495 South Josephina",
       "vat_number": null,
-      "continent": "Asia",
+      "continent": "Africa",
       "custom_domain": null,
       "development": false
     }

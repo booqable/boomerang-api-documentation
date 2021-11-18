@@ -41,10 +41,10 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
+`type` | **String** `readonly`<br>One of `ProductGroup`, `Product`, `Bundle`
 `name` | **String**<br>Name of the item
 `slug` | **String** `readonly`<br>Slug of the item
 `sku` | **String**<br>Stock keeping unit
-`type` | **String** `readonly`<br>One of `ProductGroup`, `Product`, `Bundle`
 `lead_time` | **Integer**<br>The amount of seconds the item should be unavailable before a reservation
 `lag_time` | **Integer**<br>The amount of seconds the item should be unavailable after a reservation
 `product_type` | **String**<br>One of `rental`, `consumable`, `service`
@@ -108,15 +108,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "f0ea1497-b19e-4798-b0a1-2968a2a0e69c",
+      "id": "8b1c0a4e-a0ad-477c-b3ac-20d00548b47c",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2021-11-17T21:05:45+00:00",
-        "updated_at": "2021-11-17T21:05:45+00:00",
+        "created_at": "2021-11-18T15:15:39+00:00",
+        "updated_at": "2021-11-18T15:15:39+00:00",
+        "type": "product_groups",
         "name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": "sku",
-        "type": "ProductGroup",
         "lead_time": 0,
         "lag_time": 0,
         "product_type": "rental",
@@ -148,7 +148,7 @@ Name | Description
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=f0ea1497-b19e-4798-b0a1-2968a2a0e69c"
+            "related": "api/boomerang/categories?filter[item_id]=8b1c0a4e-a0ad-477c-b3ac-20d00548b47c"
           }
         },
         "photo": {
@@ -158,7 +158,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[item_group_id]=f0ea1497-b19e-4798-b0a1-2968a2a0e69c"
+            "related": "api/boomerang/products?filter[product_group_id]=8b1c0a4e-a0ad-477c-b3ac-20d00548b47c"
           }
         },
         "tax_category": {
@@ -168,7 +168,7 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=f0ea1497-b19e-4798-b0a1-2968a2a0e69c&filter[owner_type]=ProductGroup"
+            "related": "api/boomerang/properties?filter[owner_id]=8b1c0a4e-a0ad-477c-b3ac-20d00548b47c&filter[owner_type]=product_groups"
           }
         }
       }
@@ -195,7 +195,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,categories,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-17T21:04:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-18T15:14:06Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -211,10 +211,10 @@ Name | Description
 `id` | **Uuid**<br>`eq`, `not_eq`
 `created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`type` | **String**<br>`eq`, `not_eq`
 `name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `slug` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sku` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `lead_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `lag_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `trackable` | **Boolean**<br>`eq`
@@ -270,7 +270,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/6fa0dc5e-3842-4446-a8c2-7d707e1160cc' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/4232f374-7a83-4a8f-ab9a-2789616c5e3e' \
     --header 'content-type: application/json' \
 ```
 
@@ -279,15 +279,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6fa0dc5e-3842-4446-a8c2-7d707e1160cc",
+    "id": "4232f374-7a83-4a8f-ab9a-2789616c5e3e",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-11-17T21:05:45+00:00",
-      "updated_at": "2021-11-17T21:05:45+00:00",
+      "created_at": "2021-11-18T15:15:40+00:00",
+      "updated_at": "2021-11-18T15:15:40+00:00",
+      "type": "product_groups",
       "name": "iPad Pro",
       "slug": "ipad-pro",
       "sku": "sku",
-      "type": "ProductGroup",
       "lead_time": 0,
       "lag_time": 0,
       "product_type": "rental",
@@ -319,7 +319,7 @@ This request accepts the following includes:
     "relationships": {
       "categories": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=6fa0dc5e-3842-4446-a8c2-7d707e1160cc"
+          "related": "api/boomerang/categories?filter[item_id]=4232f374-7a83-4a8f-ab9a-2789616c5e3e"
         }
       },
       "photo": {
@@ -329,7 +329,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[item_group_id]=6fa0dc5e-3842-4446-a8c2-7d707e1160cc"
+          "related": "api/boomerang/products?filter[product_group_id]=4232f374-7a83-4a8f-ab9a-2789616c5e3e"
         }
       },
       "tax_category": {
@@ -339,7 +339,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=6fa0dc5e-3842-4446-a8c2-7d707e1160cc&filter[owner_type]=ProductGroup"
+          "related": "api/boomerang/properties?filter[owner_id]=4232f374-7a83-4a8f-ab9a-2789616c5e3e&filter[owner_type]=product_groups"
         }
       }
     }
@@ -418,15 +418,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8112d84a-e7f9-4797-a588-4d1c55614134",
+    "id": "ced12b54-d7de-454a-a329-bb6e21e1451f",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-11-17T21:05:46+00:00",
-      "updated_at": "2021-11-17T21:05:46+00:00",
+      "created_at": "2021-11-18T15:15:40+00:00",
+      "updated_at": "2021-11-18T15:15:40+00:00",
+      "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-mini",
       "sku": "I_PAD_MINI",
-      "type": "ProductGroup",
       "lead_time": 0,
       "lag_time": 0,
       "product_type": "rental",
@@ -575,11 +575,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/df895712-3e06-40fb-b78c-4adb7f38cc7b' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/13e86bd4-19a6-4937-859b-4f702dd79171' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "df895712-3e06-40fb-b78c-4adb7f38cc7b",
+        "id": "13e86bd4-19a6-4937-859b-4f702dd79171",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -593,15 +593,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "df895712-3e06-40fb-b78c-4adb7f38cc7b",
+    "id": "13e86bd4-19a6-4937-859b-4f702dd79171",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2021-11-17T21:05:47+00:00",
-      "updated_at": "2021-11-17T21:05:47+00:00",
+      "created_at": "2021-11-18T15:15:41+00:00",
+      "updated_at": "2021-11-18T15:15:41+00:00",
+      "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-pro",
       "sku": "sku",
-      "type": "ProductGroup",
       "lead_time": 0,
       "lag_time": 0,
       "product_type": "rental",
@@ -742,7 +742,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/cd1e96b7-6ac3-4d7d-bc52-2bae7db48e39' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/127f2e07-7d60-4b6f-9dec-494c8f1598df' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
