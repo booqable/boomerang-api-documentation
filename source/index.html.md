@@ -15,7 +15,7 @@ includes:
   - authentication_methods
   - barcodes
   - billing_invoices
-  - bookings
+  - bulk_upserts
   - bundle_items
   - bundles
   - categories
@@ -41,6 +41,8 @@ includes:
   - operating_rules
   - operations
   - orders
+  - order_bookings
+  - order_transitions
   - payment_methods
   - payments
   - photos
