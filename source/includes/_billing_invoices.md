@@ -53,11 +53,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "dd926743-8783-4623-913a-e3b036fb53cb",
+      "id": "892d688e-0eb8-44e5-b32b-eb47941840ae",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2021-11-17T21:04:16+00:00",
-        "updated_at": "2021-11-17T21:04:16+00:00",
+        "created_at": "2021-11-18T14:41:42+00:00",
+        "updated_at": "2021-11-18T14:41:42+00:00",
         "number": 10001,
         "status": "open",
         "billing_reason": "subscription_create",
@@ -100,7 +100,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-17T21:04:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-18T14:41:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -145,7 +145,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/77cacded-bee4-4d00-b30b-a41664f9cb4c' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/97a5b27e-afeb-436e-9447-d2e78c0e5b25' \
     --header 'content-type: application/json' \
 ```
 
@@ -154,11 +154,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "77cacded-bee4-4d00-b30b-a41664f9cb4c",
+    "id": "97a5b27e-afeb-436e-9447-d2e78c0e5b25",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2021-11-17T21:04:17+00:00",
-      "updated_at": "2021-11-17T21:04:17+00:00",
+      "created_at": "2021-11-18T14:41:42+00:00",
+      "updated_at": "2021-11-18T14:41:42+00:00",
       "number": 10001,
       "status": "open",
       "billing_reason": "subscription_create",
