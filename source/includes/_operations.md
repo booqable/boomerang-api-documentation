@@ -5,10 +5,10 @@ Once an operation has been started, it cannot be paused or cancelled. It's statu
 
 An operation required the `operation_data` object to be set during creation. It contains the params required for initiating an operation and is validated quite strictly. The structure of the object looks as follows:
 
-```
+```json
 {
-  type: '<operation_type>',
-  data: { ... }
+  "type": "<operation_type>",
+  "data": { ... }
 }
 ```
 
@@ -22,24 +22,24 @@ Only orders that are have the status `stopped` can be archived. The target_ids w
 
 **Params**
 
-```
+```json
 {
-  type: 'archive',
-  data: {
-    target_type: 'customer',
-    target_ids: [
-      '123',
-      '456'
+  "type": "archive",
+  "data": {
+    "target_type": "customer",
+    "target_ids": [
+      "123",
+      "456"
     ]
   }
 }
 ```
 
-| Key                | Type                      | Possible values         | Description                                                                                 |
-|--------------------|---------------------------|-------------------------|---------------------------------------------------------------------------------------------|
-| `type`             | String                    | `"archive"`             | Required to start this specific operation.                                                  |
-| `data.target_type` | String                    | `["customer", "order"]` | The type of resource that should be archived. Only one resource per operation is supported. |
-| `data.target_ids`  | Array\<String&vert;Uuid\> | `[]`                    | An array of primary keys for the entities that should be archived.                          |
+| Key                | Type          | Possible values         | Description                                                                                 |
+|--------------------|---------------|-------------------------|---------------------------------------------------------------------------------------------|
+| `type`             | String        | `archive`               | Required to start this specific operation.                                                  |
+| `data.target_type` | String        | `customer`, `order`     | The type of resource that should be archived. Only one resource per operation is supported. |
+| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`          | An array of primary keys for the entities that should be archived.                          |
 
 **Artifact**
 
@@ -51,24 +51,24 @@ A one-off migration that converts untracked consumables to bulk tracked ones.
 
 **Params**
 
-```
+```json
 {
-  type: 'consumable_tracking_migration',
-  data: {
-    target_type: 'product_group',
-    target_ids: [
-      '123',
-      '456'
+  "type": "consumable_tracking_migration",
+  "data": {
+    "target_type": "product_group",
+    "target_ids": [
+      "123",
+      "456"
     ]
   }
 }
 ```
 
-| Key                | Type                      | Possible values                   | Description                                                         |
-|--------------------|---------------------------|-----------------------------------|---------------------------------------------------------------------|
-| `type`             | String                    | `"consumable_tracking_migration"` | Required to start this specific operation.                          |
-| `data.target_type` | String                    | `"product_group"`                 | The type of resource that should be converted.                      |
-| `data.target_ids`  | Array\<String&vert;Uuid\> | `[]`                              | An array of primary keys for the entities that should be converted. |
+| Key                | Type          | Possible values                   | Description                                                         |
+|--------------------|---------------|-----------------------------------|---------------------------------------------------------------------|
+| `type`             | String        | `consumable_tracking_migration`   | Required to start this specific operation.                          |
+| `data.target_type` | String        | `product_group`                   | The type of resource that should be converted.                      |
+| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`                    | An array of primary keys for the entities that should be converted. |
 
 **Artifact**
 
@@ -80,26 +80,26 @@ Generates a barcode for all entities that are still missing one. Entities with e
 
 **Params**
 
-```
+```json
 {
-  type: 'generate_barcode',
-  data: {
-    target_type: 'customer',
-    target_ids: [
-      '123',
-      '456'
+  "type": "generate_barcode",
+  "data": {
+    "target_type": "customer",
+    "target_ids": [
+      "123",
+      "456"
     ],
-    barcode_type: 'code128'
+    "barcode_type": "code128"
   }
 }
 ```
 
-| Key                 | Type                      | Possible values                                                | Description                                                                                                                 |
-|---------------------|---------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| `type`              | String                    | `"generate_barcode"`                                           | Required to start this specific operation.                                                                                  |
-| `data.target_type`  | String                    | `["product", "stock_item", "customer"]`                        | The type of resource that should have its barcodes generated. Only one resource per operation is supported. |
-| `data.target_ids`   | Array\<String&vert;Uuid\> | `[]`                                                           | An array of primary keys for the entities that should have its barcodes generated.                                          |
-| `data.barcode_type` | String                    | `["code39", "code93", "code128", "ean8", "ean13", "qr_code"]` | The barcode type that should be generated for all entities.                          |
+| Key                 | Type          | Possible values                                                | Description                                                                                                                 |
+|---------------------|---------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `type`              | String        | `generate_barcode`                                             | Required to start this specific operation.                                                                                  |
+| `data.target_type`  | String        | `product`, `stock_item`, `customer`                            | The type of resource that should have its barcodes generated. Only one resource per operation is supported. |
+| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                                          |
+| `data.barcode_type` | String        | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                          |
 
 **Artifact**
 
@@ -111,28 +111,28 @@ Generates documents in bulk, either by a list of documents or all documents for 
 
 **Params**
 
-```
+```json
 {
-  type: 'generate_document',
-  data: {
-    target_type: 'document',
-    target_ids: [
-      '123',
-      '456'
+  "type": "generate_document",
+  "data": {
+    "target_type": "document",
+    "target_ids": [
+      "123",
+      "456"
     ],
-    document_type: 'invoice',
-    document_extension: 'pdf'
+    "document_type": "invoice",
+    "document_extension": "pdf"
   }
 }
 ```
 
-| Key                       | Type                      | Possible values                                    | Description                                                                                                     |
-|---------------------------|---------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `type`                    | String                    | `"generate_document"`                              | Required to start this specific operation.                                                                      |
-| `data.target_type`        | String                    | `["order", "document"]`                            | The type of resource that should have its documents generated. Only one resource per operation is supported.    |
-| `data.target_ids`         | Array\<String&vert;Uuid\> | `[]`                                               | An array of primary keys for the entities that should have its documents generated.                             |
-| `data.document_type`      | String                    | `["packing_slip", "invoice", "quote", "contract"]` | The document type that should be generated for all entities. Only one document type per operation is supported. |
-| `data.document_extension` | String                    | `"pdf"`                                            | The filetype for the generated document.                                                                        |
+| Key                       | Type          | Possible values                                    | Description                                                                                                     |
+|---------------------------|---------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| `type`                    | String        | `generate_document`                                | Required to start this specific operation.                                                                      |
+| `data.target_type`        | String        | `order`, `document`                                | The type of resource that should have its documents generated. Only one resource per operation is supported.    |
+| `data.target_ids`         | Array\<Uuid\> | `[{id}, {id}]`                                     | An array of primary keys for the entities that should have its documents generated.                             |
+| `data.document_type`      | String        | `packing_slip`, `invoice`, `quote`, `contract`     | The document type that should be generated for all entities. Only one document type per operation is supported. |
+| `data.document_extension` | String        | `"pdf"`                                            | The filetype for the generated document.                                                                        |
 
 **Artifact**
 
@@ -144,31 +144,31 @@ Updates the categories associated to the entities by mutating them with the acti
 
 **Params**
 
-```
+```json
 {
-  type: 'update_category',
-  data: {
-    target_type: 'product_group',
-    target_ids: [
-      '123',
-      '456'
+  "type": "update_category",
+  "data": {
+    "target_type": "product_group",
+    "target_ids": [
+      "123",
+      "456"
     ],
-    action: 'add_entities',
-    category_ids: [
-      '789',
-      '101'
+    "action": "add_entities",
+    "category_ids": [
+      "789",
+      "101"
     ]
   }
 }
 ```
 
-| Key                 | Type                      | Possible values                       | Description                                                                                                            |
-|---------------------|---------------------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| `type`              | String                    | `"update_category"`                   | Required to start this specific operation.                                                                             |
-| `data.target_type`  | String                    | `"product_group"`                     | The type of resource that should have the associated categories updated. Only one resource per operation is supported. |
-| `data.target_ids`   | Array\<String&vert;Uuid\> | `[]`                                  | An array of primary keys for the entities that should have the associated categories updated.                          |
-| `data.action`       | String                    | `["add_entities", "remove_entities"]` | The action that should be executed on the categories of the entities.                                                  |
-| `data.category_ids` | Array\<String&vert;Uuid\> | `[]`                                  | The primary keys of the categories that should be used with the action.                                                |
+| Key                 | Type          | Possible values                       | Description                                                                                                            |
+|---------------------|---------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `type`              | String        | `update_category`                     | Required to start this specific operation.                                                                             |
+| `data.target_type`  | String        | `product_group`                       | The type of resource that should have the associated categories updated. Only one resource per operation is supported. |
+| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                        | An array of primary keys for the entities that should have the associated categories updated.                          |
+| `data.action`       | String        | `add_entities`, `remove_entities`     | The action that should be executed on the categories of the entities.                                                  |
+| `data.category_ids` | Array\<Uuid\> | `[{id}, {id}]`                        | The primary keys of the categories that should be used with the action.                                                |
 
 **Artifact**
 
@@ -180,31 +180,31 @@ Updates the tags associated to the entities by mutating them with the action.
 
 **Params**
 
-```
+```json
 {
-  type: 'update_tag',
-  data: {
-    target_type: 'customer',
-    target_ids: [
-      '123',
-      '456'
+  "type": "update_tag",
+  "data": {
+    "target_type": "customer",
+    "target_ids": [
+      "123",
+      "456"
     ],
-    action: 'replace',
-    tags: [
-      'Tag A',
-      'Tag B'
+    "action": "replace",
+    "tags": [
+      "Tag A",
+      "Tag B"
     ]
   }
 }
 ```
 
-| Key                 | Type                      | Possible values                              | Description                                                                                                      |
-|---------------------|---------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| `type`              | String                    | `"update_tag"`                               | Required to start this specific operation.                                                                       |
-| `data.target_type`  | String                    | `["product_group", "customer", "order"]`     | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
-| `data.target_ids`   | Array\<String&vert;Uuid\> | `[]`                                         | An array of primary keys for the entities that should have the associated tags updated.                          |
-| `data.action`       | String                    | `["add", "replace", "remove", "remove_all"]` | The action that should be executed on the tags of the entities.                                                  |
-| `data.tags`         | Array<String>             | `[]`                                         | The primary keys of the tags that should be used with the action.                                                |
+| Key                 | Type          | Possible values                              | Description                                                                                                      |
+|---------------------|---------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `type`              | String        | `update_tag`                                 | Required to start this specific operation.                                                                       |
+| `data.target_type`  | String        | `product_group`, `customer`, `order`         | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
+| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                               | An array of primary keys for the entities that should have the associated tags updated.                          |
+| `data.action`       | String        | `add`, `replace`, `remove`, `remove_all`     | The action that should be executed on the tags of the entities.                                                  |
+| `data.tags`         | Array<String> | `[{tag}, {tag}]`                             | The tags that should be used with the action.                                                                    |
 
 **Artifact**
 
@@ -216,33 +216,34 @@ Updates the attribute of all the entities with the new value(s).
 
 **Params**
 
-```
+```json
 {
-  type: 'update',
-  data: {
-    target_type: 'customer',
-    target_ids: [
-      '123',
-      '456'
+  "type": "update",
+  "data": {
+    "target_type": "customer",
+    "target_ids": [
+      "123",
+      "456"
     ],
-    attributes: {
-      discount_percentage: 50,
-      tax_region_id: '789'
+    "attributes": {
+      "discount_percentage": 50,
+      "tax_region_id": "789"
     }
   }
 }
 ```
 
-| Key                | Type                      | Possible values                 | Description                                                                                 |
-|--------------------|---------------------------|---------------------------------|---------------------------------------------------------------------------------------------|
-| `type`             | String                    | `"update"`                      | Required to start this specific operation.                                                  |
-| `data.target_type` | String                    | `["product_group", "customer"]` | The type of resource that should be updated. Only one resource per operation is supported. |
-| `data.target_ids`  | Array\<String&vert;Uuid\> | `[]`                            | An array of primary keys for the entities that should be updated.                          |
-| `data.attributes`  | Object                    | `{}`                            | The allowed keys for the attributes are listed below. |
+| Key                | Type          | Possible values                 | Description                                                                                 |
+|--------------------|---------------|---------------------------------|---------------------------------------------------------------------------------------------|
+| `type`             | String        | `update`                        | Required to start this specific operation.                                                  |
+| `data.target_type` | String        | `product_group`, `customer`     | The type of resource that should be updated. Only one resource per operation is supported. |
+| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`                  | An array of primary keys for the entities that should be updated.                          |
+| `data.attributes`  | Object        | `{}`                            | The allowed keys for the attributes are listed below. |
 
 Allowed attribute keys:
 
 **Product group**
+
 - `taxable`
 - `tax_category_id`
 - `lag_time`
@@ -258,6 +259,7 @@ Allowed attribute keys:
 - `price_ruleset_id`
 
 **Customer**
+
 - `deposit_type`
 - `deposit_value`
 - `tax_region_id`
@@ -319,11 +321,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "84e8907e-5e8e-4fe2-a817-5003525cafc1",
+      "id": "8ab083fe-d2af-471e-9d75-0d24f154a912",
       "type": "operations",
       "attributes": {
-        "created_at": "2021-11-18T14:42:52+00:00",
-        "updated_at": "2021-11-18T14:42:52+00:00",
+        "created_at": "2021-11-23T12:48:34+00:00",
+        "updated_at": "2021-11-23T12:48:34+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -333,12 +335,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "a13320c7-11ed-40a5-8664-ec760210e681"
+        "employee_id": "5fe68427-943f-4c16-b1a6-61fddb6b7acb"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/a13320c7-11ed-40a5-8664-ec760210e681"
+            "related": "api/boomerang/employees/5fe68427-943f-4c16-b1a6-61fddb6b7acb"
           }
         }
       }
@@ -365,7 +367,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-18T14:41:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-23T12:47:36Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -414,7 +416,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/1824fab6-cc4d-4df7-8886-c4013eca329a' \
+    --url 'https://example.booqable.com/api/boomerang/operations/a0dc929e-ca23-47dc-9f67-f4cfc93c04bc' \
     --header 'content-type: application/json' \
 ```
 
@@ -423,11 +425,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1824fab6-cc4d-4df7-8886-c4013eca329a",
+    "id": "a0dc929e-ca23-47dc-9f67-f4cfc93c04bc",
     "type": "operations",
     "attributes": {
-      "created_at": "2021-11-18T14:42:52+00:00",
-      "updated_at": "2021-11-18T14:42:52+00:00",
+      "created_at": "2021-11-23T12:48:34+00:00",
+      "updated_at": "2021-11-23T12:48:34+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -437,12 +439,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "f1f0babd-2762-4faa-ad62-a025ce526765"
+      "employee_id": "f605f5af-1b3c-476e-87d1-9f5d0a570db7"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/f1f0babd-2762-4faa-ad62-a025ce526765"
+          "related": "api/boomerang/employees/f605f5af-1b3c-476e-87d1-9f5d0a570db7"
         }
       }
     }
@@ -478,7 +480,7 @@ This request accepts the following includes:
 
 ## Creating an operation
 
-When creating an operation it will start running in the background. With the `id` provided in the response, you can poll the `operations/{id}` endpoint to check it's status.
+When creating an operation, it will start running in the background. With the `id` provided in the response, you can poll the `operations/{id}` endpoint to check its status.
 
 
 > How to create an operation:
@@ -510,11 +512,11 @@ When creating an operation it will start running in the background. With the `id
 ```json
   {
   "data": {
-    "id": "58488f3c-2b2f-42ad-9626-ac5f4edfcd38",
+    "id": "cfd6257d-0297-4b29-ae58-b32d80d7aaad",
     "type": "operations",
     "attributes": {
-      "created_at": "2021-11-18T14:42:52+00:00",
-      "updated_at": "2021-11-18T14:42:52+00:00",
+      "created_at": "2021-11-23T12:48:34+00:00",
+      "updated_at": "2021-11-23T12:48:34+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -524,7 +526,7 @@ When creating an operation it will start running in the background. With the `id
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "a962352e-4783-47e8-89ea-59b53a36822f"
+      "employee_id": "f640d434-b863-4450-b9f5-83a2cd6684f3"
     },
     "relationships": {
       "employee": {
