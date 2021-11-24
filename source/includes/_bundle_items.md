@@ -49,7 +49,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=3fe1c1ba-f0ae-4f8f-b5ab-c0cdfe0c7f96' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=bfd87893-b345-4920-a6e7-150f2163dc3a' \
     --header 'content-type: application/json' \
 ```
 
@@ -59,41 +59,41 @@ Name | Description
   {
   "data": [
     {
-      "id": "c9ff83e3-7e6c-448a-a9b5-589f2582acf1",
+      "id": "5abecc88-ec5b-4783-9e0d-de554848eb36",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2021-11-23T12:47:48+00:00",
-        "updated_at": "2021-11-23T12:47:48+00:00",
+        "created_at": "2021-11-24T18:21:09+00:00",
+        "updated_at": "2021-11-24T18:21:09+00:00",
         "quantity": "2",
         "discount_percentage": 15,
         "position": 1,
-        "bundle_id": "3fe1c1ba-f0ae-4f8f-b5ab-c0cdfe0c7f96",
-        "product_group_id": "4953baaf-319b-4d53-a82c-bb714e0f7928",
-        "product_id": "f303bb76-b024-4d91-a3bf-0f9fd93af07a"
+        "bundle_id": "bfd87893-b345-4920-a6e7-150f2163dc3a",
+        "product_group_id": "7618a680-7bdc-45ef-9c64-2840d89c2acf",
+        "product_id": "15002c10-0ffb-49d4-b01b-4fc21d964b5f"
       },
       "relationships": {
         "bundle": {
           "links": {
-            "related": "api/boomerang/bundles/3fe1c1ba-f0ae-4f8f-b5ab-c0cdfe0c7f96"
+            "related": "api/boomerang/bundles/bfd87893-b345-4920-a6e7-150f2163dc3a"
           }
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/4953baaf-319b-4d53-a82c-bb714e0f7928"
+            "related": "api/boomerang/product_groups/7618a680-7bdc-45ef-9c64-2840d89c2acf"
           }
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/f303bb76-b024-4d91-a3bf-0f9fd93af07a"
+            "related": "api/boomerang/products/15002c10-0ffb-49d4-b01b-4fc21d964b5f"
           }
         }
       }
     }
   ],
   "links": {
-    "self": "api/boomerang/bundle_items?filter%5Bbundle_id%5D=3fe1c1ba-f0ae-4f8f-b5ab-c0cdfe0c7f96&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/bundle_items?filter%5Bbundle_id%5D=3fe1c1ba-f0ae-4f8f-b5ab-c0cdfe0c7f96&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/bundle_items?filter%5Bbundle_id%5D=3fe1c1ba-f0ae-4f8f-b5ab-c0cdfe0c7f96&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/bundle_items?filter%5Bbundle_id%5D=bfd87893-b345-4920-a6e7-150f2163dc3a&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/bundle_items?filter%5Bbundle_id%5D=bfd87893-b345-4920-a6e7-150f2163dc3a&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/bundle_items?filter%5Bbundle_id%5D=bfd87893-b345-4920-a6e7-150f2163dc3a&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -111,7 +111,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=bundle,product_group,product`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-23T12:47:36Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-24T18:20:55Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -169,7 +169,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/131b7ded-e6b1-426f-9c6d-1a65e1a29fc0' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/949871ec-d0ed-4272-bdd5-28102c2db5a0' \
     --header 'content-type: application/json' \
 ```
 
@@ -178,32 +178,32 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "131b7ded-e6b1-426f-9c6d-1a65e1a29fc0",
+    "id": "949871ec-d0ed-4272-bdd5-28102c2db5a0",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2021-11-23T12:47:48+00:00",
-      "updated_at": "2021-11-23T12:47:48+00:00",
+      "created_at": "2021-11-24T18:21:09+00:00",
+      "updated_at": "2021-11-24T18:21:09+00:00",
       "quantity": "2",
       "discount_percentage": 15,
       "position": 1,
-      "bundle_id": "2740c1f3-82fc-492b-bd7b-e10eca52d86c",
-      "product_group_id": "bfbcc970-1e64-423a-a6b7-9a79a071b015",
-      "product_id": "173ca465-4674-4d40-b734-218341ff271b"
+      "bundle_id": "92427eb5-3858-462c-94e9-f9dab168d7eb",
+      "product_group_id": "a9828728-64d1-4036-a14f-1a038d651430",
+      "product_id": "88ba265f-5c41-4d2a-8523-8ce121ac39d1"
     },
     "relationships": {
       "bundle": {
         "links": {
-          "related": "api/boomerang/bundles/2740c1f3-82fc-492b-bd7b-e10eca52d86c"
+          "related": "api/boomerang/bundles/92427eb5-3858-462c-94e9-f9dab168d7eb"
         }
       },
       "product_group": {
         "links": {
-          "related": "api/boomerang/product_groups/bfbcc970-1e64-423a-a6b7-9a79a071b015"
+          "related": "api/boomerang/product_groups/a9828728-64d1-4036-a14f-1a038d651430"
         }
       },
       "product": {
         "links": {
-          "related": "api/boomerang/products/173ca465-4674-4d40-b734-218341ff271b"
+          "related": "api/boomerang/products/88ba265f-5c41-4d2a-8523-8ce121ac39d1"
         }
       }
     }
@@ -257,9 +257,9 @@ This request accepts the following includes:
       "data": {
         "type": "bundle_items",
         "attributes": {
-          "bundle_id": "78024bc6-3e08-4f52-985b-519fb9369686",
-          "product_group_id": "b131cd92-f28e-48c0-b371-f88ba0d39d18",
-          "product_id": "e23fc8cb-3e63-4e60-884c-31c8bc69ad2b",
+          "bundle_id": "2a26d434-73ed-4b93-bccf-a2ca9eec8edc",
+          "product_group_id": "0d734de5-fb7c-4000-b763-08c71d41bf06",
+          "product_id": "5a8bcb51-b2f8-4839-a816-878af745402a",
           "quantity": 2,
           "discount_percentage": 15
         }
@@ -272,17 +272,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "02f3119f-a9cc-465c-89a6-6639d8997134",
+    "id": "f4b4b494-572d-4836-96ce-fc208e1ecd30",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2021-11-23T12:47:49+00:00",
-      "updated_at": "2021-11-23T12:47:49+00:00",
+      "created_at": "2021-11-24T18:21:10+00:00",
+      "updated_at": "2021-11-24T18:21:10+00:00",
       "quantity": "2",
       "discount_percentage": 15,
       "position": 2,
-      "bundle_id": "78024bc6-3e08-4f52-985b-519fb9369686",
-      "product_group_id": "b131cd92-f28e-48c0-b371-f88ba0d39d18",
-      "product_id": "e23fc8cb-3e63-4e60-884c-31c8bc69ad2b"
+      "bundle_id": "2a26d434-73ed-4b93-bccf-a2ca9eec8edc",
+      "product_group_id": "0d734de5-fb7c-4000-b763-08c71d41bf06",
+      "product_id": "5a8bcb51-b2f8-4839-a816-878af745402a"
     },
     "relationships": {
       "bundle": {
@@ -303,9 +303,9 @@ This request accepts the following includes:
     }
   },
   "links": {
-    "self": "api/boomerang/bundle_items?data%5Battributes%5D%5Bbundle_id%5D=78024bc6-3e08-4f52-985b-519fb9369686&data%5Battributes%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bproduct_group_id%5D=b131cd92-f28e-48c0-b371-f88ba0d39d18&data%5Battributes%5D%5Bproduct_id%5D=e23fc8cb-3e63-4e60-884c-31c8bc69ad2b&data%5Battributes%5D%5Bquantity%5D=2&data%5Btype%5D=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/bundle_items?data%5Battributes%5D%5Bbundle_id%5D=78024bc6-3e08-4f52-985b-519fb9369686&data%5Battributes%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bproduct_group_id%5D=b131cd92-f28e-48c0-b371-f88ba0d39d18&data%5Battributes%5D%5Bproduct_id%5D=e23fc8cb-3e63-4e60-884c-31c8bc69ad2b&data%5Battributes%5D%5Bquantity%5D=2&data%5Btype%5D=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/bundle_items?data%5Battributes%5D%5Bbundle_id%5D=78024bc6-3e08-4f52-985b-519fb9369686&data%5Battributes%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bproduct_group_id%5D=b131cd92-f28e-48c0-b371-f88ba0d39d18&data%5Battributes%5D%5Bproduct_id%5D=e23fc8cb-3e63-4e60-884c-31c8bc69ad2b&data%5Battributes%5D%5Bquantity%5D=2&data%5Btype%5D=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/bundle_items?data%5Battributes%5D%5Bbundle_id%5D=2a26d434-73ed-4b93-bccf-a2ca9eec8edc&data%5Battributes%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bproduct_group_id%5D=0d734de5-fb7c-4000-b763-08c71d41bf06&data%5Battributes%5D%5Bproduct_id%5D=5a8bcb51-b2f8-4839-a816-878af745402a&data%5Battributes%5D%5Bquantity%5D=2&data%5Btype%5D=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/bundle_items?data%5Battributes%5D%5Bbundle_id%5D=2a26d434-73ed-4b93-bccf-a2ca9eec8edc&data%5Battributes%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bproduct_group_id%5D=0d734de5-fb7c-4000-b763-08c71d41bf06&data%5Battributes%5D%5Bproduct_id%5D=5a8bcb51-b2f8-4839-a816-878af745402a&data%5Battributes%5D%5Bquantity%5D=2&data%5Btype%5D=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/bundle_items?data%5Battributes%5D%5Bbundle_id%5D=2a26d434-73ed-4b93-bccf-a2ca9eec8edc&data%5Battributes%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bproduct_group_id%5D=0d734de5-fb7c-4000-b763-08c71d41bf06&data%5Battributes%5D%5Bproduct_id%5D=5a8bcb51-b2f8-4839-a816-878af745402a&data%5Battributes%5D%5Bquantity%5D=2&data%5Btype%5D=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -364,11 +364,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/528ae71c-be6e-4989-93ee-59f1ccbce2a8' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/d19f766c-ab40-48f7-91c7-9d9fb406fd15' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "528ae71c-be6e-4989-93ee-59f1ccbce2a8",
+        "id": "d19f766c-ab40-48f7-91c7-9d9fb406fd15",
         "type": "bundle_items",
         "attributes": {
           "quantity": 3,
@@ -383,17 +383,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "528ae71c-be6e-4989-93ee-59f1ccbce2a8",
+    "id": "d19f766c-ab40-48f7-91c7-9d9fb406fd15",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2021-11-23T12:47:49+00:00",
-      "updated_at": "2021-11-23T12:47:49+00:00",
+      "created_at": "2021-11-24T18:21:10+00:00",
+      "updated_at": "2021-11-24T18:21:10+00:00",
       "quantity": "3",
       "discount_percentage": 20,
       "position": 1,
-      "bundle_id": "50f3d821-5063-432b-9eb8-1527786ced7f",
-      "product_group_id": "a99941b8-dc38-4940-b48c-917eb032f251",
-      "product_id": "1bbfa9cf-64e4-4be3-b5ec-dd3acc208cdc"
+      "bundle_id": "5b3756f1-43e0-4214-93b7-648a7b96bbd4",
+      "product_group_id": "7d99d0bd-80eb-4943-99ce-d63071d750a6",
+      "product_id": "20248fc0-0088-4183-b74e-c086206e691d"
     },
     "relationships": {
       "bundle": {
@@ -470,7 +470,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/56843636-37b0-4da9-8eda-f389f3107815' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/3ca7cff4-69bf-4725-8d66-fc1a6376170f' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
