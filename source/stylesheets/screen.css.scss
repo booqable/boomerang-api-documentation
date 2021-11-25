@@ -155,6 +155,8 @@ ul#toc {
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
     background: $nav-subitem-bg;
+    box-shadow: inset 0px 11px 8px -10px $aside-notice-bg, inset 0px -11px 8px -10px $aside-notice-bg;
+
     &.visible {
       height: 30%;
       margin-bottom: 1em;
