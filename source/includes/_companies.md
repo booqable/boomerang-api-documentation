@@ -72,24 +72,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d793de09-f90a-4ef8-aa64-d1c1f3d5e4d1",
+    "id": "6c7d0851-1af4-4da3-b56a-fa47f32a7526",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-23T12:47:59+00:00",
-      "updated_at": "2021-11-23T12:47:59+00:00",
+      "created_at": "2021-11-25T13:40:55+00:00",
+      "updated_at": "2021-11-25T13:40:55+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail46@company.com",
       "billing_email": null,
-      "phone": "366.056.4016 x43627",
-      "website": "http://ryan-hills.info/demetria",
-      "address": "Kuhic Freeway\n602 Legros Vista\n86448-0998 Goldnerville\nBarbados",
-      "address_line_1": "Kuhic Freeway",
-      "address_line_2": "602 Legros Vista",
-      "zipcode": "86448-0998",
-      "city": "Goldnerville",
+      "phone": "501.168.1772 x53551",
+      "website": "http://schowalter-gottlieb.biz/gary",
+      "address": "Frederick Junction\n1258 Schmidt Fort\n65243 North Mandy\nUzbekistan",
+      "address_line_1": "Frederick Junction",
+      "address_line_2": "1258 Schmidt Fort",
+      "zipcode": "65243",
+      "city": "North Mandy",
       "region": null,
-      "country": "Barbados",
+      "country": "Uzbekistan",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -100,10 +100,10 @@ Name | Description
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8213 Artie Trafficway",
-      "financial_line_2": "19173 Kilbackmouth",
+      "financial_line_1": "56959 Jaunita Manor",
+      "financial_line_2": "87211-6092 Lake Marieton",
       "vat_number": null,
-      "continent": "Americas",
+      "continent": "Asia",
       "custom_domain": null,
       "development": false
     }
@@ -141,7 +141,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "73de6b8a-aff9-4091-8654-8715a70f3705",
+        "id": "ed0f8554-fd7c-48cb-9d92-3b9419a14bb2",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -155,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "73de6b8a-aff9-4091-8654-8715a70f3705",
+    "id": "ed0f8554-fd7c-48cb-9d92-3b9419a14bb2",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-23T12:47:59+00:00",
-      "updated_at": "2021-11-23T12:47:59+00:00",
+      "created_at": "2021-11-25T13:40:55+00:00",
+      "updated_at": "2021-11-25T13:40:56+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail47@company.com",
       "billing_email": null,
-      "phone": "274.465.7513",
-      "website": "http://kertzmann.org/gregory",
-      "address": "Roob Walks\n2082 Aufderhar Station\n14687 New Marget\nTimor-Leste",
-      "address_line_1": "Roob Walks",
-      "address_line_2": "2082 Aufderhar Station",
-      "zipcode": "14687",
-      "city": "New Marget",
+      "phone": "806.981.5877",
+      "website": "http://altenwerth-lebsack.info/zack",
+      "address": "Hettie Field\n3348 Hessel Viaduct\n64998 Jonieshire\nSaint Lucia",
+      "address_line_1": "Hettie Field",
+      "address_line_2": "3348 Hessel Viaduct",
+      "zipcode": "64998",
+      "city": "Jonieshire",
       "region": null,
-      "country": "Timor-Leste",
+      "country": "Saint Lucia",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -183,10 +183,10 @@ This request does not accept any includes
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "6392 Duncan Tunnel",
-      "financial_line_2": "31151 Linoview",
+      "financial_line_1": "90876 Tenisha Parkways",
+      "financial_line_2": "30747-2785 West Maziemouth",
       "vat_number": null,
-      "continent": "Asia",
+      "continent": "Americas",
       "custom_domain": null,
       "development": false
     }
