@@ -69,7 +69,7 @@ html, body {
 
 #toc > ul > li > a > span {
   float: right;
-  background-color: #2484FF;
+  background-color: #000;
   border-radius: 40px;
   width: 20px;
 }
@@ -132,7 +132,7 @@ ul#toc {
 
       &:focus {
         background: #fff;
-        border-color: #2484FF;
+        border-color: #000;
       }
     }
 
@@ -362,6 +362,14 @@ ul#toc {
   // to place content above the dark box
   position: relative;
   z-index: 30;
+
+  a {
+    color: #000;
+
+    &:hover {
+
+    }
+  }
 
   &:after {
     content: '';
