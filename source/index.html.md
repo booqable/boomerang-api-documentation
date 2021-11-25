@@ -54,7 +54,8 @@ includes:
   - product_groups
   - products
   - properties
-  - session
+  - sessions
+  - settings
   - stock_counts
   - stock_item_plannings
   - stock_items
