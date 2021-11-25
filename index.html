@@ -308,7 +308,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-2368b88a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-af070565.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-7f861aa6.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-b12a2749.js"></script>
 
@@ -1304,16 +1304,27 @@
               </ul>
           </li>
           <li>
-            <a href="#session" class="toc-h1 toc-link" data-title="Session">Session</a>
+            <a href="#sessions" class="toc-h1 toc-link" data-title="Sessions">Sessions</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#session-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                    <a href="#sessions-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
                   </li>
                   <li>
-                    <a href="#session-relationships" class="toc-h2 toc-link" data-title="Relationships">Relationships</a>
+                    <a href="#sessions-relationships" class="toc-h2 toc-link" data-title="Relationships">Relationships</a>
                   </li>
                   <li>
-                    <a href="#session-retreiving-the-session" class="toc-h2 toc-link" data-title="Retreiving the session">Retreiving the session</a>
+                    <a href="#sessions-fetching-the-session" class="toc-h2 toc-link" data-title="Fetching the session">Fetching the session</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#settings" class="toc-h1 toc-link" data-title="Settings">Settings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#settings-fields" class="toc-h2 toc-link" data-title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#settings-fetching-settings" class="toc-h2 toc-link" data-title="Fetching settings">Fetching settings</a>
                   </li>
               </ul>
           </li>
@@ -23995,9 +24006,19 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='properties-managing-multiple-properties-on-a-resource-includes'>Includes</h3>
 <p>All includes are allowed on this request</p>
-<h1 id='session'>Session</h1>
-<p>Session</p>
-<h2 id='session-fields'>Fields</h2>
+<h1 id='sessions'>Sessions</h1>
+<p>The session tells you whether settings are changed since the last time they were being requested. Every response includes a <code>Session-Id</code> header which contains a session ID. If that ID does not match with the ID of the last session that was fetched, this indicates that the following information may have been changed:</p>
+
+<ul>
+<li>Employee&#39;s permissions</li>
+<li>Company&#39;s subscription</li>
+<li>Settings</li>
+<li>Default properties</li>
+<li>Clusters and Locations</li>
+</ul>
+
+<p>When there&#39;s an ID mismatch, it&#39;s advised to fetch the session again and include <code>employee</code>, <code>company</code>, and <code>settings</code>. Default properties, clusters, and locations should be requested separately as they can be paginated.</p>
+<h2 id='sessions-fields'>Fields</h2>
 <p>Every session has the following fields:</p>
 
 <table><thead>
@@ -24008,15 +24029,7 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+<td><strong>Uuid</strong><br></td>
 </tr>
 <tr>
 <td><code>company_id</code></td>
@@ -24027,60 +24040,20 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 <td><strong>Uuid</strong><br>The associated Employee</td>
 </tr>
 <tr>
-<td><code>token</code></td>
-<td><strong>String</strong><br></td>
+<td><code>locations_updated_at</code></td>
+<td><strong>Datetime</strong><br>When locations were last updated</td>
 </tr>
 <tr>
-<td><code>currency</code></td>
-<td><strong>Hash</strong><br></td>
+<td><code>clusters_updated_at</code></td>
+<td><strong>Datetime</strong><br>When the clusters were last updated</td>
 </tr>
 <tr>
-<td><code>features</code></td>
-<td><strong>Array</strong><br></td>
-</tr>
-<tr>
-<td><code>enabled_features</code></td>
-<td><strong>Array</strong><br></td>
-</tr>
-<tr>
-<td><code>restrictions</code></td>
-<td><strong>Hash</strong><br></td>
-</tr>
-<tr>
-<td><code>settings</code></td>
-<td><strong>Hash</strong><br></td>
-</tr>
-<tr>
-<td><code>subscription</code></td>
-<td><strong>Hash</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>counts</code></td>
-<td><strong>Hash</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>default_tax_category_id</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>default_tax_region_id</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>has_multiple_locations</code></td>
-<td><strong>Boolean</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>company_third_party_id</code></td>
-<td><strong>String</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>employee_third_party_id</code></td>
-<td><strong>String</strong> <code>readonly</code><br></td>
+<td><code>default_properties_updated_at</code></td>
+<td><strong>Datetime</strong><br>When the default properties were last updated</td>
 </tr>
 </tbody></table>
-<h2 id='session-relationships'>Relationships</h2>
-<p>A session has the following relationships:</p>
+<h2 id='sessions-relationships'>Relationships</h2>
+<p>Sessions have the following relationships:</p>
 
 <table><thead>
 <tr>
@@ -24096,137 +24069,311 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 <td><code>employee</code></td>
 <td><strong>Employees</strong> <code>readonly</code><br>Associated Employee</td>
 </tr>
+<tr>
+<td><code>settings</code></td>
+<td><strong>Settings</strong> <code>readonly</code><br>Associated Settings</td>
+</tr>
 </tbody></table>
-<h2 id='session-retreiving-the-session'>Retreiving the session</h2>
+<h2 id='sessions-fetching-the-session'>Fetching the session</h2>
 <blockquote>
-<p>How to retreive the session:</p>
+<p>How to fetch the session:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/session'</span> <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/sessions/current?extra_fields%5Bcompanies%5D=subscription&amp;include=company%2Cemployee%2Csettings'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
 <p>A 200 status response looks like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-ee3f40a8-27ca-58f8-97d2-1dfb1ae18d4f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-08T11:32:52+00:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"264c3f5f-2694-46d7-9608-7b867a2e6fcc"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46d9173-3587-43d7-9552-d56758952ee6"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ee3f40a8-27ca-58f8-97d2-1dfb1ae18d4f"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"decimal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"thousand"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%s%v"</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0161b4bb-576a-5661-9546-f0401b2b92b7"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sessions"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-24T23:38:52+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71047f56-b667-4092-9ff5-1a573333bcc0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47498134-ebc8-4f31-b179-2f232c00b108"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locations_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clusters_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default_properties_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/boomerang/companies/current"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"companies"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71047f56-b667-4092-9ff5-1a573333bcc0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"bundles"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"advanced_pricing"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"multiple_locations"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"custom_fields"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"overbookings"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"categories"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"customer_auth"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"barcodes"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"reports"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"permissions"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"exports"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"coupons"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"remove_powered_by"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shop_tracking"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"custom_domain"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sso"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"iprestrictions"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"enabled_features"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nl">"restrictions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"employees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email_max_recipients"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rate_limit_max"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"rate_limit_period"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+      </span><span class="nl">"employee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/boomerang/employees/current"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"employees"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47498134-ebc8-4f31-b179-2f232c00b108"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"documents.show_tax_column"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"documents.scope_numbering_to_prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"invoices.show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"invoices.show_free_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"invoices.hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"quotes.show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"quotes.hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"contracts.show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"contracts.hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pricing.enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pricing.tax_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exclusive"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pricing.deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pricing.deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pricing.currency_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"symbol"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"pricing.currency_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dashboard.orders.period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"setup.completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"quickstart.step"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"quickstart.completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dates.format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DD-MM-YYYY"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dates.use_am_pm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dates.first_day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orders.use_times"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orders.start_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orders.start_relative_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orders.start_fixed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orders.stop_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orders.stop_relative_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"orders.stop_fixed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sso.forced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"iprestrictions.enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.send_order_confirmation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.brand_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#2B80FF"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.use_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.use_prices"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.display_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"period"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.show_powered_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.payment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.payment_strategy_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.payment_deposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-        </span><span class="nl">"store.use_toc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.toc_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.toc_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.use_business_hours"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.use_away_mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.period_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"freely"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.use_times"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.use_coupons_in_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.default_sorting"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.default_filtering"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.time_increment"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.show_product_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.hide_product_availability_quantities"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"store.show_cart_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"address.use_billing_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"address.fields_order"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="s2">"zipcode"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"city"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"region"</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"user.auth_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user.allow_signup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user.allow_guest_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user.require_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/boomerang/settings/current"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ebd0208-8328-5d69-8c44-ec50939c0967"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71047f56-b667-4092-9ff5-1a573333bcc0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"companies"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-24T23:38:52+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-24T23:38:52+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Company name 1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"company-name-1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mail1@company.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423.566.7823 x320"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hauck.biz/ramiro"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heidenreich Road</span><span class="se">\n</span><span class="s2">795 Carroll Trail</span><span class="se">\n</span><span class="s2">75957 South Joey</span><span class="se">\n</span><span class="s2">Fiji"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heidenreich Road"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"795 Carroll Trail"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75957"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Joey"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fiji"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_company"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_address_zipcode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_address_city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_address_region"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_address_country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default_timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"financial_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"510 Kristofer Glen"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"financial_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48162 Claudeview"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"custom_domain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"development"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subscription"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"trial_ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-08T23:38:51.986Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"activated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"suspended"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"canceled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"canceled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"on_hold"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"needs_activation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"legacy"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pro_monthly"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"current_period_end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"extra_employees"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">29900</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"discount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"balance_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"coupon"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge_automatically"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"enabled_features"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nl">"allowed_features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"bundles"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"advanced_pricing"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiple_locations"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"custom_fields"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"overbookings"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"categories"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"customer_auth"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"barcodes"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"reports"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"permissions"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"exports"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"coupons"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"remove_powered_by"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"shop_tracking"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"custom_domain"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sso"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"iprestrictions"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"restrictions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"employees"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email_max_recipients"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rate_limit_max"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rate_limit_period"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47498134-ebc8-4f31-b179-2f232c00b108"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"employees"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-24T23:38:52+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-24T23:38:52+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@doe.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unconfirmed_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"confirmed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time_to_confirm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"reports"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"products"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"account"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"cancel_orders"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"revert_orders"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"delete_invoices"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"make_invoice_revisions"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large_avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&amp;size=200"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ebd0208-8328-5d69-8c44-ec50939c0967"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"decimal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"thousand"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%s%v"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tax_region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tax_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exclusive"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"symbol"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DD-MM-YYYY"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_am_pm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"first_day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"use_times"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"start_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"start_relative_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"start_fixed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stop_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stop_relative_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stop_fixed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"security"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"secuity.sso_forced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"secuity.iprestrictions_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"use_billing_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"fields_order"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"zipcode"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"region"</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"send_order_confirmation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"send_orders_to_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"brand_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#2B80FF"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_prices"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"display_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"period"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_powered_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_order_lag_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"order_lag_time_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"order_lag_time_interval"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"payment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"payment_strategy_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"payment_deposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nl">"use_toc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"toc_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"toc_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_business_hours"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_away_mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"period_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"freely"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_times"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"use_coupons_in_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"default_sorting"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"default_filtering"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"time_increment"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_product_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hide_product_availability_quantities"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_cart_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"custom_scripts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"google_analytics_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"facebook_pixel_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"auth_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"allow_signup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"allow_guest_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"require_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"show_tax_column"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"css"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"scss"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"scope_numbering_to_prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"page_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a4"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"footer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_product_photos"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_free_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"quotes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"footer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_product_photos"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"contracts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"footer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_product_photos"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='session-retreiving-the-session-http-request'>HTTP Request</h3>
-<p><code>GET /api/boomerang/sessions/{id}</code></p>
-<h3 id='session-retreiving-the-session-request-params'>Request params</h3>
+</span></code></pre></div><h3 id='sessions-fetching-the-session-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/sessions/current</code></p>
+<h3 id='sessions-fetching-the-session-request-params'>Request params</h3>
 <p>This request accepts the following paramaters:</p>
 
 <table><thead>
@@ -24237,14 +24384,352 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 </thead><tbody>
 <tr>
 <td><code>include</code></td>
-<td><strong>String</strong><br>List of comma seperated relationships <code>?include=company,employee</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=company,employee,settings</code></td>
 </tr>
 <tr>
 <td><code>fields[]</code></td>
-<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[session]=id,created_at,updated_at</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[sessions]=id,created_at,updated_at</code></td>
 </tr>
 </tbody></table>
-<h3 id='session-retreiving-the-session-includes'>Includes</h3>
+<h3 id='sessions-fetching-the-session-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>employee</code></p>
+
+<p><code>company</code></p>
+
+<p><code>settings</code></p>
+<h1 id='settings'>Settings</h1>
+<p>Settings</p>
+
+<p><strong>Currency</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Currency code</td>
+</tr>
+<tr>
+<td><code>decimal</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Decimal seperator</td>
+</tr>
+<tr>
+<td><code>thousand</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Thousand seperator</td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Currency symbol</td>
+</tr>
+<tr>
+<td><code>precision</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Precision</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The format</td>
+</tr>
+</tbody></table>
+
+<p><strong>Defaults</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>timezone</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The default timezone (managed on the company resource)</td>
+</tr>
+<tr>
+<td><code>tax_category_id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>ID the default tax category</td>
+</tr>
+<tr>
+<td><code>tax_region_id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>ID the default tax region</td>
+</tr>
+</tbody></table>
+
+<p><strong>pricing</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>Whether pricing is enabled</td>
+</tr>
+<tr>
+<td><code>tax_strategy</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>How taxes should be calcualted, one of <code>exclusive</code>, <code>inclusive</code></td>
+</tr>
+<tr>
+<td><code>deposit_type</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Default deposit type (applied to orders if customer deposit type is <code>default</code>)</td>
+</tr>
+<tr>
+<td><code>deposit_value</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Default deposit value (applied to orders if customer deposit type is <code>default</code>)</td>
+</tr>
+<tr>
+<td><code>currency_format</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Currency format</td>
+</tr>
+<tr>
+<td><code>currency_position</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Where to place the currency symbol, one of <code>left</code>, <code>right</code></td>
+</tr>
+</tbody></table>
+<h2 id='settings-fields'>Fields</h2>
+<p>Every setting has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br></td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><strong>Hash</strong> <code>readonly</code><br>Information about the currency (managed on Company resource)</td>
+</tr>
+<tr>
+<td><code>defaults</code></td>
+<td><strong>Hash</strong> <code>readonly</code><br>Information about defaults</td>
+</tr>
+<tr>
+<td><code>pricing</code></td>
+<td><strong>Hash</strong><br>Pricing settings</td>
+</tr>
+<tr>
+<td><code>dates</code></td>
+<td><strong>Hash</strong><br>Date settings</td>
+</tr>
+<tr>
+<td><code>orders</code></td>
+<td><strong>Hash</strong><br>Order settings</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td><strong>Hash</strong><br>Security settings</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td><strong>Hash</strong><br>Address settings</td>
+</tr>
+<tr>
+<td><code>store</code></td>
+<td><strong>Hash</strong><br>Store settings</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><strong>Hash</strong><br>User settings</td>
+</tr>
+<tr>
+<td><code>documents</code></td>
+<td><strong>Hash</strong><br>Document settings (applies to all document types)</td>
+</tr>
+<tr>
+<td><code>invoices</code></td>
+<td><strong>Hash</strong><br>Invoice settings</td>
+</tr>
+<tr>
+<td><code>quotes</code></td>
+<td><strong>Hash</strong><br>Quote settings</td>
+</tr>
+<tr>
+<td><code>contracts</code></td>
+<td><strong>Hash</strong><br>Contract settings</td>
+</tr>
+<tr>
+<td><code>dashboard</code></td>
+<td><strong>Hash</strong> <code>extra</code><br>Dashboard settings (Used internally by Booqable)</td>
+</tr>
+<tr>
+<td><code>setup</code></td>
+<td><strong>Hash</strong> <code>extra</code><br>Setup settings (Used internally by Booqable)</td>
+</tr>
+<tr>
+<td><code>quickstart</code></td>
+<td><strong>Hash</strong> <code>extra</code><br>Quickstart settings (Used internally by Booqable)</td>
+</tr>
+</tbody></table>
+<h2 id='settings-fetching-settings'>Fetching settings</h2>
+<blockquote>
+<p>How to fetch settings:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/settings/current'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ebd0208-8328-5d69-8c44-ec50939c0967"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settings"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"decimal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thousand"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"%s%v"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_region_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exclusive"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"symbol"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency_position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"dates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DD-MM-YYYY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_am_pm"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_day_of_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"use_times"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_relative_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"start_fixed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixed"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_relative_offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stop_fixed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"security"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"secuity.sso_forced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secuity.iprestrictions_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"use_billing_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fields_order"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"zipcode"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"send_order_confirmation"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"send_orders_to_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"brand_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#2B80FF"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_prices"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"period"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_powered_by"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_order_lag_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_lag_time_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"order_lag_time_interval"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_strategy_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_deposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"use_toc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"toc_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"toc_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_business_hours"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_away_mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"period_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"freely"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_times"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"use_coupons_in_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default_sorting"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default_filtering"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time_increment"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_product_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hide_product_availability_quantities"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_cart_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"custom_scripts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"google_analytics_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facebook_pixel_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"auth_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"allow_signup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"allow_guest_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"require_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"show_tax_column"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"css"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"scss"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"scope_numbering_to_prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"page_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a4"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"invoices"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"footer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_product_photos"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_free_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"quotes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"footer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_product_photos"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"contracts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"footer"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_product_photos"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_stock_identifiers"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hide_section_lines"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='settings-fetching-settings-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/settings/current</code></p>
+<h3 id='settings-fetching-settings-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[settings]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='settings-fetching-settings-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='stock-item-plannings'>Stock item plannings</h1>
 <p>Stock item plannings hold information about the planning of individual stock items (for trackable products). They make it possible to know precisely which stock items have been where and define when an item is available during a given period.</p>
