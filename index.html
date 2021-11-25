@@ -24400,9 +24400,9 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 
 <p><code>settings</code></p>
 <h1 id='settings'>Settings</h1>
-<p>Settings</p>
-
-<p><strong>Currency</strong></p>
+<p>Settings can be configured globally for a company account. They are divided in the following sections:</p>
+<h4 id='settings-fetching-the-session-includes-currency'>Currency</h4>
+<p>Information on how to display and handle the currency.</p>
 
 <table><thead>
 <tr>
@@ -24435,8 +24435,8 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 <td><strong>String</strong> <code>readonly</code><br>The format</td>
 </tr>
 </tbody></table>
-
-<p><strong>Defaults</strong></p>
+<h4 id='settings-fetching-the-session-includes-defaults'>Defaults</h4>
+<p>Defaults derived from other resources.</p>
 
 <table><thead>
 <tr>
@@ -24457,8 +24457,8 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 <td><strong>Uuid</strong> <code>readonly</code><br>ID the default tax region</td>
 </tr>
 </tbody></table>
-
-<p><strong>pricing</strong></p>
+<h4 id='settings-fetching-the-session-includes-pricing'>Pricing</h4>
+<p>Configuration on how to handle and display pricing</p>
 
 <table><thead>
 <tr>
@@ -24468,27 +24468,427 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 </thead><tbody>
 <tr>
 <td><code>enabled</code></td>
-<td><strong>Boolean</strong> <code>readonly</code><br>Whether pricing is enabled</td>
+<td><strong>Boolean</strong><br>Whether pricing is enabled</td>
 </tr>
 <tr>
 <td><code>tax_strategy</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br>How taxes should be calcualted, one of <code>exclusive</code>, <code>inclusive</code></td>
+<td><strong>Uuid</strong><br>How taxes should be calcualted, one of <code>exclusive</code>, <code>inclusive</code></td>
 </tr>
 <tr>
 <td><code>deposit_type</code></td>
-<td><strong>String</strong> <code>readonly</code><br>Default deposit type (applied to orders if customer deposit type is <code>default</code>)</td>
+<td><strong>String</strong><br>Default deposit type (applied to orders if customer deposit type is <code>default</code>, one of <code>none</code>, <code>percentage_total</code>, <code>percentage</code>, <code>fixed</code>)</td>
 </tr>
 <tr>
 <td><code>deposit_value</code></td>
-<td><strong>Integer</strong> <code>readonly</code><br>Default deposit value (applied to orders if customer deposit type is <code>default</code>)</td>
+<td><strong>Integer</strong><br>Default deposit value (applied to orders if customer deposit type is <code>default</code>)</td>
 </tr>
 <tr>
 <td><code>currency_format</code></td>
-<td><strong>String</strong> <code>readonly</code><br>Currency format</td>
+<td><strong>String</strong><br>Currency format</td>
 </tr>
 <tr>
 <td><code>currency_position</code></td>
-<td><strong>String</strong> <code>readonly</code><br>Where to place the currency symbol, one of <code>left</code>, <code>right</code></td>
+<td><strong>String</strong><br>Where to place the currency symbol, one of <code>left</code>, <code>right</code></td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-dates'>Dates</h4>
+<p>Information on how to display dates</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>format</code></td>
+<td><strong>String</strong><br>How dates should be formatted, e.g. <code>DD-MM-YYYY</code></td>
+</tr>
+<tr>
+<td><code>use_am_pm</code></td>
+<td><strong>Boolean</strong><br>Whether to use 24h clock or AM/PM</td>
+</tr>
+<tr>
+<td><code>first_day_of_week</code></td>
+<td><strong>Integer</strong><br>Which day to display as first day of the week (<code>0</code> for Sunday)</td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-orders'>Orders</h4>
+<p>Configuration for <a href="#orders">orders</a> (these settings also apply to the online store)</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>use_times</code></td>
+<td><strong>Boolean</strong><br>Whether time selection is enabled, if not, full days are always planned and calculated</td>
+</tr>
+<tr>
+<td><code>start_type</code></td>
+<td><strong>String</strong><br>Behavior of default start time, one of <code>fixed</code>, <code>relative</code></td>
+</tr>
+<tr>
+<td><code>start_relative_offset</code></td>
+<td><strong>Integer</strong><br>Offset in seconds from now, used when <code>start_type</code> is <code>relative</code></td>
+</tr>
+<tr>
+<td><code>start_fixed_at</code></td>
+<td><strong>String</strong><br>Fixed time of day, e.g. <code>14:00</code>, used when <code>start_type</code> is <code>fixed</code></td>
+</tr>
+<tr>
+<td><code>stop_type</code></td>
+<td><strong>String</strong><br>Behavior of default stop time, one of <code>fixed</code>, <code>relative</code></td>
+</tr>
+<tr>
+<td><code>stop_relative_offset</code></td>
+<td><strong>Integer</strong><br>Offset in seconds from now, used when <code>stop_type</code> is <code>relative</code></td>
+</tr>
+<tr>
+<td><code>stop_fixed_at</code></td>
+<td><strong>String</strong><br>Fixed time of day, e.g. <code>14:00</code>, used when <code>stop_type</code> is <code>fixed</code></td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-security'>Security</h4>
+<p>Global security settings</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sso_forced</code></td>
+<td><strong>Boolean</strong><br>Whether to force SSO</td>
+</tr>
+<tr>
+<td><code>iprestrictions_enabled</code></td>
+<td><strong>Boolean</strong><br>Whether IP restrictions are enabled</td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-address'>Address</h4>
+<p>Settings on how to display addresses</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields_order</code></td>
+<td><strong>Array</strong><br>Order of how the fields are displayed, e.g. <code>[&quot;zipcode&quot;, &quot;city&quot;, &quot;region&quot;]</code></td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-store'>Store</h4>
+<p>Settings for the online store</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><strong>Boolean</strong><br>Whether to accept online reservations</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td><strong>Boolean</strong><br>Whether to hosted online store is public</td>
+</tr>
+<tr>
+<td><code>send_order_confirmation</code></td>
+<td><strong>Boolean</strong><br>Whether to send order confirmations automatically after checkout</td>
+</tr>
+<tr>
+<td><code>send_orders_to_email</code></td>
+<td><strong>String</strong><br>Email address to send a blind copy to after checkout</td>
+</tr>
+<tr>
+<td><code>brand_color</code></td>
+<td><strong>String</strong><br>Brand color as HEX code</td>
+</tr>
+<tr>
+<td><code>use_availability</code></td>
+<td><strong>Boolean</strong><br>Whether to show availability and block checkouts when items are unavailable</td>
+</tr>
+<tr>
+<td><code>use_prices</code></td>
+<td><strong>Boolean</strong><br>Whether to show prices</td>
+</tr>
+<tr>
+<td><code>display_price</code></td>
+<td><strong>String</strong><br>One of <code>period</code> (label will be populated with actual period), <code>charge</code> (label will be populated with the name of the price tile), <code>cheapest</code> (show &quot;starting from&quot; as label)</td>
+</tr>
+<tr>
+<td><code>show_powered_by</code></td>
+<td><strong>Boolean</strong><br>Whether to display &quot;Powered by&quot; in the cart</td>
+</tr>
+<tr>
+<td><code>use_order_lag_time</code></td>
+<td><strong>Boolean</strong><br>Whether to prevent last-minute reservations</td>
+</tr>
+<tr>
+<td><code>order_lag_time_interval</code></td>
+<td><strong>String</strong><br>One of <code>minutes</code>, <code>hours</code>, <code>days</code>, <code>weeks</code>, <code>months</code></td>
+</tr>
+<tr>
+<td><code>order_lag_time_value</code></td>
+<td><strong>Integer</strong><br>The value applied for <code>order_lag_time_interval</code></td>
+</tr>
+<tr>
+<td><code>payment_strategy</code></td>
+<td><strong>String</strong><br>One of <code>none</code> (no payment required at checkout), <code>full</code> (full payment required at checkout), <code>partial</code> (partial payment required at checkout)</td>
+</tr>
+<tr>
+<td><code>payment_strategy_value</code></td>
+<td><strong>Integer</strong><br>Percentage to be paid at checkout (for payment_strategy <code>partial</code>)</td>
+</tr>
+<tr>
+<td><code>payment_deposit</code></td>
+<td><strong>Boolean</strong><br>Whether deposit should be paid during checkout</td>
+</tr>
+<tr>
+<td><code>payment_methods</code></td>
+<td><strong>Array</strong><br>List of enabled payment methods, any of <code>ideal</code>, <code>giropay</code>, <code>bancontact</code>, <code>eps</code>, <code>alipay</code>, <code>p24</code>, <code>creditcard</code>, <code>paypal</code></td>
+</tr>
+<tr>
+<td><code>use_toc</code></td>
+<td><strong>Boolean</strong><br>Wheter the agreement should be accepted during checkout</td>
+</tr>
+<tr>
+<td><code>toc_label</code></td>
+<td><strong>String</strong><br>The label of the agreement checkbox</td>
+</tr>
+<tr>
+<td><code>toc_content</code></td>
+<td><strong>String</strong><br>The contents of the actual agreement</td>
+</tr>
+<tr>
+<td><code>toc_content</code></td>
+<td><strong>String</strong><br>The contents of the actual agreement</td>
+</tr>
+<tr>
+<td><code>use_business_hours</code></td>
+<td><strong>Boolean</strong><br>Whether to take opening hours into account while selecting a period (see <a href="#operating-rules">operating rules</a> for more information)</td>
+</tr>
+<tr>
+<td><code>use_away_mode</code></td>
+<td><strong>Boolean</strong><br>Whether away mode is enabled (see <a href="#operating-rules">operating rules</a> for more information)</td>
+</tr>
+<tr>
+<td><code>period_type</code></td>
+<td><strong>String</strong><br>How the period picker is setup, one of <code>freely</code> (free selection), <code>timeslot_duration</code> (select a day, time and duration), <code>timeslot_fixed</code> (fixed timeslots for days). See <a href="#operating-rules">operating rules</a> for more information</td>
+</tr>
+<tr>
+<td><code>use_times</code></td>
+<td><strong>Boolean</strong><br>Whether to use time selection in the online store</td>
+</tr>
+<tr>
+<td><code>use_coupons_in_checkout</code></td>
+<td><strong>Boolean</strong><br>Whether supplying coupons during checkout is enabled</td>
+</tr>
+<tr>
+<td><code>time_increment</code></td>
+<td><strong>Integer</strong><br>Time increments for time selection (e.g. <code>15</code>, <code>30</code>, <code>60</code>)</td>
+</tr>
+<tr>
+<td><code>show_product_availability</code></td>
+<td><strong>Boolean</strong><br>Whether to show detailed product availability for products</td>
+</tr>
+<tr>
+<td><code>hide_product_availability_quantities</code></td>
+<td><strong>Boolean</strong><br>Whether hide quantities in the product availability calendar</td>
+</tr>
+<tr>
+<td><code>show_cart_availability</code></td>
+<td><strong>Boolean</strong><br>Whether to show on which dates the products in a cart are available during the period selection</td>
+</tr>
+<tr>
+<td><code>website</code></td>
+<td><strong>String</strong><br>Website to use to redirect back to from the checkout</td>
+</tr>
+<tr>
+<td><code>custom_scripts</code></td>
+<td><strong>String</strong><br>Custom scripts to execute during checkout</td>
+</tr>
+<tr>
+<td><code>google_analytics_id</code></td>
+<td><strong>String</strong><br>Google analytics ID to use for tracking</td>
+</tr>
+<tr>
+<td><code>facebook_pixel_id</code></td>
+<td><strong>String</strong><br>Facebook pixel ID to use for tracking</td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-user'>User</h4>
+<p>Settings that apply to <a href="#users">user</a> accounts</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>auth_enabled</code></td>
+<td><strong>Boolean</strong><br>Whether user accounts are enabled</td>
+</tr>
+<tr>
+<td><code>allow_signup</code></td>
+<td><strong>Boolean</strong><br>Whether signup during checkout is allowed</td>
+</tr>
+<tr>
+<td><code>allow_guest_checkout</code></td>
+<td><strong>Boolean</strong><br>Whether to allow guest checkouts</td>
+</tr>
+<tr>
+<td><code>require_verification</code></td>
+<td><strong>Boolean</strong><br>Whether e-mail addresses need to be verified</td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-documents'>Documents</h4>
+<p>Settings that apply to all <a href="#documents">document</a> types</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>show_tax_column</code></td>
+<td><strong>Boolean</strong><br>Whether to show the tax column on lines</td>
+</tr>
+<tr>
+<td><code>css</code></td>
+<td><strong>String</strong><br>Custom css used for documents</td>
+</tr>
+<tr>
+<td><code>scss</code></td>
+<td><strong>String</strong><br>Custom scss used for documents</td>
+</tr>
+<tr>
+<td><code>scope_numbering_to_prefix</code></td>
+<td><strong>Boolean</strong><br>Whether to scope numbering to prefix, e.g. <code>1980-1</code>, <code>1980-2</code>, <code>1981-1</code> or <code>1980-1</code>, <code>1980-2</code>, <code>1981-3</code></td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><strong>String</strong><br>The page size to use for pdf downloads, one of <code>a4</code>, <code>letter</code></td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-invoices'>Invoices</h4>
+<p>Settings that apply to invoices</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>footer</code></td>
+<td><strong>String</strong><br>HTML formatted footer to display on invoices</td>
+</tr>
+<tr>
+<td><code>show_product_photos</code></td>
+<td><strong>Boolean</strong><br>Whether to show product photos</td>
+</tr>
+<tr>
+<td><code>show_stock_identifiers</code></td>
+<td><strong>Boolean</strong><br>Whether to show identifiers of the stock items that are booked</td>
+</tr>
+<tr>
+<td><code>show_free_lines</code></td>
+<td><strong>Boolean</strong><br>Whether to lines that don&#39;t have price</td>
+</tr>
+<tr>
+<td><code>hide_section_lines</code></td>
+<td><strong>Boolean</strong><br>Whether to hide lines within a section, if enabled to total price of all lines in a section is summed and displayed next to the section</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><strong>String</strong><br>Prefix to use for document numbering, e.g. <code>{{year}}</code> or <code>{{customer_number}}</code>, combinations are also possible <code>{{year}}-{{order_number}}</code></td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-quotes'>Quotes</h4>
+<p>Settings that apply to quotes</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>footer</code></td>
+<td><strong>String</strong><br>HTML formatted footer to display on quotes</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><strong>String</strong><br>HTML formatted body to display on quotes</td>
+</tr>
+<tr>
+<td><code>show_product_photos</code></td>
+<td><strong>Boolean</strong><br>Whether to show product photos</td>
+</tr>
+<tr>
+<td><code>show_stock_identifiers</code></td>
+<td><strong>Boolean</strong><br>Whether to show identifiers of the stock items that are booked</td>
+</tr>
+<tr>
+<td><code>show_free_lines</code></td>
+<td><strong>Boolean</strong><br>Whether to lines that don&#39;t have price</td>
+</tr>
+<tr>
+<td><code>hide_section_lines</code></td>
+<td><strong>Boolean</strong><br>Whether to hide lines within a section, if enabled to total price of all lines in a section is summed and displayed next to the section</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><strong>String</strong><br>Prefix to use for document numbering, e.g. <code>{{year}}</code> or <code>{{customer_number}}</code>, combinations are also possible <code>{{year}}-{{order_number}}</code></td>
+</tr>
+</tbody></table>
+<h4 id='settings-fetching-the-session-includes-contracts'>Contracts</h4>
+<p>Settings that apply to contracts</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>footer</code></td>
+<td><strong>String</strong><br>HTML formatted footer to display on contracts</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><strong>String</strong><br>HTML formatted body to display on contracts</td>
+</tr>
+<tr>
+<td><code>show_product_photos</code></td>
+<td><strong>Boolean</strong><br>Whether to show product photos</td>
+</tr>
+<tr>
+<td><code>show_stock_identifiers</code></td>
+<td><strong>Boolean</strong><br>Whether to show identifiers of the stock items that are booked</td>
+</tr>
+<tr>
+<td><code>show_free_lines</code></td>
+<td><strong>Boolean</strong><br>Whether to lines that don&#39;t have price</td>
+</tr>
+<tr>
+<td><code>hide_section_lines</code></td>
+<td><strong>Boolean</strong><br>Whether to hide lines within a section, if enabled to total price of all lines in a section is summed and displayed next to the section</td>
+</tr>
+<tr>
+<td><code>prefix</code></td>
+<td><strong>String</strong><br>Prefix to use for document numbering, e.g. <code>{{year}}</code> or <code>{{customer_number}}</code>, combinations are also possible <code>{{year}}-{{order_number}}</code></td>
 </tr>
 </tbody></table>
 <h2 id='settings-fields'>Fields</h2>
@@ -24506,55 +24906,55 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 </tr>
 <tr>
 <td><code>currency</code></td>
-<td><strong>Hash</strong> <code>readonly</code><br>Information about the currency (managed on Company resource)</td>
+<td><strong>Hash</strong> <code>readonly</code><br>Information on how to display and handle the currency (managed on Company resource)</td>
 </tr>
 <tr>
 <td><code>defaults</code></td>
-<td><strong>Hash</strong> <code>readonly</code><br>Information about defaults</td>
+<td><strong>Hash</strong> <code>readonly</code><br>Defaults derived from other resources</td>
 </tr>
 <tr>
 <td><code>pricing</code></td>
-<td><strong>Hash</strong><br>Pricing settings</td>
+<td><strong>Hash</strong><br>Configuration on how to handle and display pricing</td>
 </tr>
 <tr>
 <td><code>dates</code></td>
-<td><strong>Hash</strong><br>Date settings</td>
+<td><strong>Hash</strong><br>Information on how to display dates</td>
 </tr>
 <tr>
 <td><code>orders</code></td>
-<td><strong>Hash</strong><br>Order settings</td>
+<td><strong>Hash</strong><br>Configuration for <a href="#orders">orders</a> (these settings also apply to the online store)</td>
 </tr>
 <tr>
 <td><code>security</code></td>
-<td><strong>Hash</strong><br>Security settings</td>
+<td><strong>Hash</strong><br>Global security settings</td>
 </tr>
 <tr>
 <td><code>address</code></td>
-<td><strong>Hash</strong><br>Address settings</td>
+<td><strong>Hash</strong><br>Settings on how to display addresses</td>
 </tr>
 <tr>
 <td><code>store</code></td>
-<td><strong>Hash</strong><br>Store settings</td>
+<td><strong>Hash</strong><br>Settings for the online store</td>
 </tr>
 <tr>
 <td><code>user</code></td>
-<td><strong>Hash</strong><br>User settings</td>
+<td><strong>Hash</strong><br>Settings that apply to <a href="#users">user</a> accounts</td>
 </tr>
 <tr>
 <td><code>documents</code></td>
-<td><strong>Hash</strong><br>Document settings (applies to all document types)</td>
+<td><strong>Hash</strong><br>Settings that apply to all <a href="#documents">document</a> types</td>
 </tr>
 <tr>
 <td><code>invoices</code></td>
-<td><strong>Hash</strong><br>Invoice settings</td>
+<td><strong>Hash</strong><br>Settings that apply to invoices</td>
 </tr>
 <tr>
 <td><code>quotes</code></td>
-<td><strong>Hash</strong><br>Quote settings</td>
+<td><strong>Hash</strong><br>Settings that apply to quotes</td>
 </tr>
 <tr>
 <td><code>contracts</code></td>
-<td><strong>Hash</strong><br>Contract settings</td>
+<td><strong>Hash</strong><br>Settings that apply to contracts</td>
 </tr>
 <tr>
 <td><code>dashboard</code></td>
@@ -24621,8 +25021,8 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
         </span><span class="nl">"stop_fixed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"security"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"secuity.sso_forced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"secuity.iprestrictions_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="nl">"sso_forced"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"iprestrictions_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"use_billing_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -24657,8 +25057,6 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
         </span><span class="nl">"period_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"freely"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"use_times"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"use_coupons_in_checkout"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"default_sorting"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"default_filtering"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"time_increment"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
         </span><span class="nl">"show_product_availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"hide_product_availability_quantities"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
