@@ -453,6 +453,29 @@ ul#toc {
     padding-top: 1em;
     margin-bottom: 1em;
     overflow: auto;
+    table-layout: auto  ;
+    overflow-wrap: break-word;
+    display: table;
+    width: calc(50% - 52px);
+    padding: 0;
+    margin: 0 $main-padding;
+
+    td:first-child {
+      width: 100  px;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid lighten(#e9edf5, 2%);
+    }
+
+    td:first-child {
+      border-left: 1px solid #e9edf5;
+    }
+
+    td:last-child {
+      border-right: 1px solid #e9edf5;
+    }
 
     th,td {
       text-align: left;
@@ -464,18 +487,19 @@ ul#toc {
     }
 
     th {
-      padding: 5px 10px;
+      padding: 8px 10px;
       border-bottom: 1px solid #e9edf5;
       vertical-align: bottom;
-    }
+      background: lighten(#000, 90%);
 
-    td {
-      padding: 10px;
-    }
+      &:first-child {
+        border-top-left-radius: 8px;
+      }
 
-    // tr:last-child {
-    //   border-bottom: 1px solid #e9edf5;
-    // }
+      &:last-child {
+        border-top-right-radius: 8px;
+      }
+    }
 
     tr:nth-child(odd)>td {
       background-color: lighten($main-bg,4.2%);
