@@ -76,13 +76,13 @@ Name | Description
       "data": {
         "type": "price_rules",
         "attributes": {
-          "price_ruleset_id": "7dfdd4fe-7381-4743-9ee6-1ad6d64e87aa",
+          "price_ruleset_id": "7a1c339b-e7b9-4655-9d88-01d8746417ca",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "value": 25,
-          "from": "2021-10-23T12:49:03.783Z",
-          "till": "2021-12-23T12:49:03.783Z"
+          "from": "2021-10-25T13:42:16.607Z",
+          "till": "2021-12-25T13:42:16.607Z"
         }
       },
       "include": "price_rules"
@@ -94,18 +94,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c1e0a844-2319-43e2-8550-e9bfccb08fc5",
+    "id": "e3905b5c-85cd-4d45-aad5-b850281c94c9",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2021-11-23T12:49:03+00:00",
-      "updated_at": "2021-11-23T12:49:03+00:00",
+      "created_at": "2021-11-25T13:42:16+00:00",
+      "updated_at": "2021-11-25T13:42:16+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
       "adjustment_strategy": "percentage",
       "value": 25.0,
-      "from": "2021-10-23T12:49:03+00:00",
-      "till": "2021-12-23T12:49:03+00:00",
+      "from": "2021-10-25T13:42:16+00:00",
+      "till": "2021-12-25T13:42:16+00:00",
       "from_day": null,
       "till_day": null,
       "from_time": null,
@@ -113,7 +113,7 @@ Name | Description
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "7dfdd4fe-7381-4743-9ee6-1ad6d64e87aa"
+      "price_ruleset_id": "7a1c339b-e7b9-4655-9d88-01d8746417ca"
     },
     "relationships": {
       "price_ruleset": {
@@ -124,9 +124,9 @@ Name | Description
     }
   },
   "links": {
-    "self": "api/boomerang/price_rules?data%5Battributes%5D%5Bfrom%5D=2021-10-23T12%3A49%3A03.783Z&data%5Battributes%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_ruleset_id%5D=7dfdd4fe-7381-4743-9ee6-1ad6d64e87aa&data%5Battributes%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Btill%5D=2021-12-23T12%3A49%3A03.783Z&data%5Battributes%5D%5Bvalue%5D=25&data%5Btype%5D=price_rules&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/price_rules?data%5Battributes%5D%5Bfrom%5D=2021-10-23T12%3A49%3A03.783Z&data%5Battributes%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_ruleset_id%5D=7dfdd4fe-7381-4743-9ee6-1ad6d64e87aa&data%5Battributes%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Btill%5D=2021-12-23T12%3A49%3A03.783Z&data%5Battributes%5D%5Bvalue%5D=25&data%5Btype%5D=price_rules&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/price_rules?data%5Battributes%5D%5Bfrom%5D=2021-10-23T12%3A49%3A03.783Z&data%5Battributes%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_ruleset_id%5D=7dfdd4fe-7381-4743-9ee6-1ad6d64e87aa&data%5Battributes%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Btill%5D=2021-12-23T12%3A49%3A03.783Z&data%5Battributes%5D%5Bvalue%5D=25&data%5Btype%5D=price_rules&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/price_rules?data%5Battributes%5D%5Bfrom%5D=2021-10-25T13%3A42%3A16.607Z&data%5Battributes%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_ruleset_id%5D=7a1c339b-e7b9-4655-9d88-01d8746417ca&data%5Battributes%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Btill%5D=2021-12-25T13%3A42%3A16.607Z&data%5Battributes%5D%5Bvalue%5D=25&data%5Btype%5D=price_rules&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/price_rules?data%5Battributes%5D%5Bfrom%5D=2021-10-25T13%3A42%3A16.607Z&data%5Battributes%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_ruleset_id%5D=7a1c339b-e7b9-4655-9d88-01d8746417ca&data%5Battributes%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Btill%5D=2021-12-25T13%3A42%3A16.607Z&data%5Battributes%5D%5Bvalue%5D=25&data%5Btype%5D=price_rules&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/price_rules?data%5Battributes%5D%5Bfrom%5D=2021-10-25T13%3A42%3A16.607Z&data%5Battributes%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_ruleset_id%5D=7a1c339b-e7b9-4655-9d88-01d8746417ca&data%5Battributes%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Btill%5D=2021-12-25T13%3A42%3A16.607Z&data%5Battributes%5D%5Bvalue%5D=25&data%5Btype%5D=price_rules&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -180,11 +180,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/c8d25cd0-0cca-4508-8f57-104301110f91' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/3818ff2d-a555-496e-9af0-2482ce801c8a' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c8d25cd0-0cca-4508-8f57-104301110f91",
+        "id": "3818ff2d-a555-496e-9af0-2482ce801c8a",
         "type": "price_rules",
         "attributes": {
           "value": 10
@@ -198,11 +198,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c8d25cd0-0cca-4508-8f57-104301110f91",
+    "id": "3818ff2d-a555-496e-9af0-2482ce801c8a",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2021-11-23T12:49:04+00:00",
-      "updated_at": "2021-11-23T12:49:04+00:00",
+      "created_at": "2021-11-25T13:42:17+00:00",
+      "updated_at": "2021-11-25T13:42:17+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -217,7 +217,7 @@ This request does not accept any includes
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "f90e9a3c-b17a-4a15-b4a5-d05a216ff11e"
+      "price_ruleset_id": "7aed474c-c2b9-4027-9534-2e2de9d2a8f3"
     },
     "relationships": {
       "price_ruleset": {
@@ -236,14 +236,14 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/0b5e1a0d-fde6-4f00-8760-e95ba1b5f1c2' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/01b0ee62-44ff-48d6-827b-79a070c9218f' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0b5e1a0d-fde6-4f00-8760-e95ba1b5f1c2",
+        "id": "01b0ee62-44ff-48d6-827b-79a070c9218f",
         "type": "price_rules",
         "attributes": {
-          "id": "0b5e1a0d-fde6-4f00-8760-e95ba1b5f1c2",
+          "id": "01b0ee62-44ff-48d6-827b-79a070c9218f",
           "name": "Off season"
         }
       }
@@ -255,11 +255,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0b5e1a0d-fde6-4f00-8760-e95ba1b5f1c2",
+    "id": "01b0ee62-44ff-48d6-827b-79a070c9218f",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2021-11-23T12:49:04+00:00",
-      "updated_at": "2021-11-23T12:49:04+00:00",
+      "created_at": "2021-11-25T13:42:17+00:00",
+      "updated_at": "2021-11-25T13:42:17+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -274,7 +274,7 @@ This request does not accept any includes
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "9240303b-7da4-4239-a650-d8f0cb13e36a"
+      "price_ruleset_id": "1f32fed2-4921-469b-b475-d898c6648a30"
     },
     "relationships": {
       "price_ruleset": {
@@ -336,7 +336,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/34b3fc2f-0a2e-4f57-86e2-6934d454f979' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/725a193d-6748-4cf3-a23a-752d39513157' \
     --header 'content-type: application/json' \
 ```
 
