@@ -34,6 +34,7 @@ includes:
   - items
   - lines
   - locations
+  - login_activities
   - merges
   - notes
   - operating_rules
@@ -65,6 +66,11 @@ includes:
   - transactions
   - transfers
   - users
+
+  - internal
+  - billing_invoices
+  - currencies
+  - login_activities
 
 search: true
 

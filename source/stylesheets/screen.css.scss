@@ -195,10 +195,27 @@ ul#toc {
     transition-duration: 200ms;
   }
 
+  span.beta {
+    background: #000;
+    color: #fff;
+    font-size: 8px;
+    height: 8px;
+    line-height: 8px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
   // This is the currently selected ToC entry
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+
+    span.beta {
+      background: #fff;
+      color: #000;
+    }
   }
 
   // this is parent links of the currently selected ToC entry
@@ -411,6 +428,18 @@ ul#toc {
   h1:first-child, div:first-child + h1 {
     border-top-width: 0;
     margin-top: 0;
+  }
+
+  span.beta {
+    background: #000;
+    color: #fff;
+    font-size: 10px;
+    height: 10px;
+    line-height: 10px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   h2 {

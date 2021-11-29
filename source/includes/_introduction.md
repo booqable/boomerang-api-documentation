@@ -6,6 +6,9 @@ The Booqable API is a RESTful [JSON API](https://jsonapi.org/) as such is design
   <b>WARNING:</b> Booqable's API is still in Beta we might introduce non-backwards compatible changes in the future!
 </aside>
 
+<aside class="notice">
+  Are you looking for V1 documentation? This can be found <a href="/v1.html" title="V1 API documentation">over here</a>.
+</aside>
 
 ## Endpoint
 
