@@ -324,7 +324,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="internal" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -868,6 +868,20 @@
                   </li>
                   <li>
                     <a href="#locations-archiving-a-location" class="toc-h2 toc-link" data-title="Archiving a location" title="Archiving a location">Archiving a location</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#login-activities" class="toc-h1 toc-link" data-title="Login activities" title="Login activities">Login activities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login-activities-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#login-activities-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#login-activities-listing-login-activities" class="toc-h2 toc-link" data-title="Listing login activities" title="Listing login activities">Listing login activities</a>
                   </li>
               </ul>
           </li>
@@ -1482,6 +1496,54 @@
                   </li>
                   <li>
                     <a href="#users-disabling-a-user" class="toc-h2 toc-link" data-title="Disabling a user" title="Disabling a user">Disabling a user</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#internal" class="toc-h1 toc-link" data-title="Internal" title="Internal"><strong>Internal</strong></a>
+          </li>
+          <li>
+            <a href="#billing-invoices" class="toc-h1 toc-link" data-title="Billing invoices" title="Billing invoices">Billing invoices</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#billing-invoices-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#billing-invoices-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#billing-invoices-listing-billing-invoices" class="toc-h2 toc-link" data-title="Listing billing invoices" title="Listing billing invoices">Listing billing invoices</a>
+                  </li>
+                  <li>
+                    <a href="#billing-invoices-fetching-billing-invoice" class="toc-h2 toc-link" data-title="Fetching billing invoice" title="Fetching billing invoice">Fetching billing invoice</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#currencies" class="toc-h1 toc-link" data-title="Currencies" title="Currencies">Currencies</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#currencies-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#currencies-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#currencies-fetching-a-currency" class="toc-h2 toc-link" data-title="Fetching a currency" title="Fetching a currency">Fetching a currency</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#login-activities" class="toc-h1 toc-link" data-title="Login activities" title="Login activities">Login activities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login-activities-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#login-activities-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#login-activities-listing-login-activities" class="toc-h2 toc-link" data-title="Listing login activities" title="Listing login activities">Listing login activities</a>
                   </li>
               </ul>
           </li>
@@ -12832,6 +12894,190 @@ Note that you can also update other fields.</p>
 </tr>
 </tbody></table>
 <h3 id='locations-archiving-a-location-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='login-activities'>Login activities</h1>
+<p>A list of all login attempts for the current employee.</p>
+<h2 id='login-activities-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/login_activities</code></p>
+<h2 id='login-activities-fields'>Fields</h2>
+<p>Every login activity has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td><strong>String</strong> <code>readonly</code><br>IP address of the login attempt</td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong> <code>readonly</code><br>One of <code>saml</code>, <code>token</code>, <code>single_use</code>, <code>database_authenticatable</code>, <code>rememberable</code>, <code>BooqableApp-iOS</code></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>Whether attempt was succesful</td>
+</tr>
+<tr>
+<td><code>failure_reason</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Why the login failed, One of <code>not_found_in_database</code>, <code>inactive</code>, <code>unconfirmed</code>, <code>invalid</code>, <code>session_limited</code>, <code>invited</code></td>
+</tr>
+<tr>
+<td><code>user_agent</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Client application identifier</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>City where login attempt was performed</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Region where login attempt was performed</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Country where login attempt was performed</td>
+</tr>
+</tbody></table>
+<h2 id='login-activities-listing-login-activities'>Listing login activities</h2>
+<blockquote>
+<p>How to fetch a list of login activities</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/login_activities'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ac356d07-1dab-4982-be07-010d239e3ad1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login_activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-25T13:41:36+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saml"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"failure_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almere"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flevoland"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='login-activities-listing-login-activities-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/login_activities</code></p>
+<h3 id='login-activities-listing-login-activities-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[login_activities]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-11-25T13:40:19Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><strong>Boolean</strong><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='merges'>Merges</h1>
 <p>Merging enables you to merge the data of two records. The following types are supported: <code>customers</code>.</p>
@@ -28367,6 +28613,630 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p><code>disabled_by</code></p>
 
 <p><code>notes</code></p>
+<h1 id='internal'><strong>Internal</strong></h1><h1 id='billing-invoices'>Billing invoices</h1>
+<p>Invoices received from Booqable</p>
+<h2 id='billing-invoices-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/billing_invoices</code></p>
+
+<p><code>GET /api/boomerang/billing_invoices/{id}</code></p>
+<h2 id='billing-invoices-fields'>Fields</h2>
+<p>Every billing invoice has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Unique number</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>String</strong> <code>readonly</code><br>One of <code>refunded</code>, <code>credit</code>, <code>paid</code>, <code>forgiven</code>, <code>voided</code>, <code>overdue</code>, <code>open</code></td>
+</tr>
+<tr>
+<td><code>billing_reason</code></td>
+<td><strong>String</strong> <code>readonly</code><br>One of <code>subscription</code>, <code>manual</code>, <code>subscription_cycle</code>, <code>refund</code>, <code>uncollectible</code>, <code>subscription_update</code>, <code>subscription_create</code></td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong> <code>readonly</code><br>One of <code>send_invoice</code>, <code>charge_automatically</code></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><strong>Date</strong> <code>readonly</code><br>Invoice date</td>
+</tr>
+<tr>
+<td><code>period_start_at</code></td>
+<td><strong>Date</strong> <code>readonly</code><br>Period start date</td>
+</tr>
+<tr>
+<td><code>period_end_at</code></td>
+<td><strong>Date</strong> <code>readonly</code><br>Period end date</td>
+</tr>
+<tr>
+<td><code>subtotal_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Subtotal in cents (without discount and taxes)</td>
+</tr>
+<tr>
+<td><code>total_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Total in cents</td>
+</tr>
+<tr>
+<td><code>vat_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Tax in cents</td>
+</tr>
+<tr>
+<td><code>amount_due_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Amount that still needs to be paid</td>
+</tr>
+<tr>
+<td><code>attempted</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>Whether automatic collection was attempted</td>
+</tr>
+<tr>
+<td><code>attempt_count</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Amount of attempts for auto collection</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Currency</td>
+</tr>
+<tr>
+<td><code>starting_balance_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Starting balance in cents (if credit was used)</td>
+</tr>
+<tr>
+<td><code>ending_balance_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Ending balance in cents (if credit was used)</td>
+</tr>
+<tr>
+<td><code>next_payment_attempt_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the next charge will be attempted to charge</td>
+</tr>
+<tr>
+<td><code>coupon</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Applied coupon</td>
+</tr>
+</tbody></table>
+<h2 id='billing-invoices-listing-billing-invoices'>Listing billing invoices</h2>
+<blockquote>
+<p>How to fetch a list of billing invoices:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/billing_invoices'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b84c7977-f3e3-4574-bae9-18cf784ff48d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing_invoices"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-25T13:40:35+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-25T13:40:35+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">10001</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"billing_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscription_create"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge_automatically"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"period_start_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"period_end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"subtotal_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vat_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount_due_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attempted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attempt_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starting_balance_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ending_balance_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"next_payment_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coupon"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/billing_invoices?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/billing_invoices?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/billing_invoices?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='billing-invoices-listing-billing-invoices-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/billing_invoices</code></p>
+<h3 id='billing-invoices-listing-billing-invoices-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[billing_invoices]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-11-25T13:40:19Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='billing-invoices-listing-billing-invoices-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>billing_reason</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><strong>Date</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+</tbody></table>
+<h3 id='billing-invoices-listing-billing-invoices-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>count</code></td>
+</tr>
+<tr>
+<td><code>total_in_cents</code></td>
+<td><strong>Array</strong><br><code>sum</code></td>
+</tr>
+<tr>
+<td><code>vat_in_cents</code></td>
+<td><strong>Array</strong><br><code>sum</code></td>
+</tr>
+<tr>
+<td><code>amount_due_in_cents</code></td>
+<td><strong>Array</strong><br><code>sum</code></td>
+</tr>
+</tbody></table>
+<h3 id='billing-invoices-listing-billing-invoices-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='billing-invoices-fetching-billing-invoice'>Fetching billing invoice</h2>
+<blockquote>
+<p>How to fetch a billing invoice:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/billing_invoices/81ffd8bf-e5fe-4f8c-8e47-6f94efbb541a'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"81ffd8bf-e5fe-4f8c-8e47-6f94efbb541a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billing_invoices"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-25T13:40:35+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-25T13:40:35+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">10001</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"billing_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscription_create"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge_automatically"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"period_start_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"period_end_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subtotal_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vat_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount_due_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attempted"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attempt_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"starting_balance_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ending_balance_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"next_payment_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coupon"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='billing-invoices-fetching-billing-invoice-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/billing_invoices/{id}</code></p>
+<h3 id='billing-invoices-fetching-billing-invoice-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[billing_invoices]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='billing-invoices-fetching-billing-invoice-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='currencies'>Currencies</h1>
+<p>The currency object encapsulates all information about a monetary unit.</p>
+<h2 id='currencies-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/currencies/{id}</code></p>
+<h2 id='currencies-fields'>Fields</h2>
+<p>Every currency has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The ISO code of the currency you want to fetch</td>
+</tr>
+<tr>
+<td><code>decimal_mark</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Character between the whole and fraction amounts</td>
+</tr>
+<tr>
+<td><code>disambiguate_symbol</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Alternative currency used if symbol is ambiguous</td>
+</tr>
+<tr>
+<td><code>html_entity</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The html entity for the currency symbol</td>
+</tr>
+<tr>
+<td><code>iso_code</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The international 3-letter code as defined by the ISO 4217 standard</td>
+</tr>
+<tr>
+<td><code>iso_numeric</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The international 3-digit code as defined by the ISO 4217 standard</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The currency name</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>A numerical value you can use to sort/group the currency list</td>
+</tr>
+<tr>
+<td><code>smallest_denomination</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Smallest amount of cash possible (in the subunit of this currency)</td>
+</tr>
+<tr>
+<td><code>subunit</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The name of the fractional monetary unit</td>
+</tr>
+<tr>
+<td><code>subunit_to_unit</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>The proportion between the unit and the subunit</td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The currency symbol (UTF-8 encoded)</td>
+</tr>
+<tr>
+<td><code>symbol_first</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>States if the currency symbol should be shown before or after the moneyary value</td>
+</tr>
+<tr>
+<td><code>thousands_separator</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Character between each thousands place</td>
+</tr>
+</tbody></table>
+<h2 id='currencies-fetching-a-currency'>Fetching a currency</h2>
+<blockquote>
+<p>How to fetch a currency:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/currencies/eur'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eur"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"currencies"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"decimal_mark"</span><span class="p">:</span><span class="w"> </span><span class="s2">","</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"disambiguate_symbol"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"html_entity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&amp;#x20AC;"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iso_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"iso_numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"978"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Euro"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"smallest_denomination"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subunit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cent"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subunit_to_unit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol_first"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"thousands_separator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='currencies-fetching-a-currency-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/currencies/{id}</code></p>
+<h3 id='currencies-fetching-a-currency-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[currencies]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='currencies-fetching-a-currency-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='login-activities'>Login activities</h1>
+<p>A list of all login attempts for the current employee.</p>
+<h2 id='login-activities-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/login_activities</code></p>
+<h2 id='login-activities-fields'>Fields</h2>
+<p>Every login activity has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td><strong>String</strong> <code>readonly</code><br>IP address of the login attempt</td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong> <code>readonly</code><br>One of <code>saml</code>, <code>token</code>, <code>single_use</code>, <code>database_authenticatable</code>, <code>rememberable</code>, <code>BooqableApp-iOS</code></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>Whether attempt was succesful</td>
+</tr>
+<tr>
+<td><code>failure_reason</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Why the login failed, One of <code>not_found_in_database</code>, <code>inactive</code>, <code>unconfirmed</code>, <code>invalid</code>, <code>session_limited</code>, <code>invited</code></td>
+</tr>
+<tr>
+<td><code>user_agent</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Client application identifier</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>City where login attempt was performed</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Region where login attempt was performed</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Country where login attempt was performed</td>
+</tr>
+</tbody></table>
+<h2 id='login-activities-listing-login-activities'>Listing login activities</h2>
+<blockquote>
+<p>How to fetch a list of login activities</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/login_activities'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ac356d07-1dab-4982-be07-010d239e3ad1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login_activities"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-25T13:41:36+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saml"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"failure_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almere"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flevoland"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/login_activities?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='login-activities-listing-login-activities-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/login_activities</code></p>
+<h3 id='login-activities-listing-login-activities-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[login_activities]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-11-25T13:40:19Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>strategy</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><strong>Boolean</strong><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='login-activities-listing-login-activities-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 
       </div>
       <div class="dark-box">
