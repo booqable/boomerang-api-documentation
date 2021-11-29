@@ -58,9 +58,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "4646907a-a122-4d95-864f-6aee4fe6d6bc",
-      "created_at": "2021-11-25T13:42:43+00:00",
-      "updated_at": "2021-11-25T13:42:43+00:00",
+      "id": "b12b5af7-e145-4c81-8af3-d865334ccf27",
+      "created_at": "2021-11-29T09:04:33+00:00",
+      "updated_at": "2021-11-29T09:04:33+00:00",
       "name": "Sales Tax",
       "strategy": "add_to",
       "default": false
@@ -81,7 +81,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-25T13:40:19Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-29T09:02:06Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -129,7 +129,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/bade6571-debc-4c79-8d1f-5ed3f1fc8fd0?include=tax_rates' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/0ae895ed-9ca0-4fca-ae44-839ef83c46ce?include=tax_rates' \
     --header 'content-type: application/json' \
 ```
 
@@ -138,21 +138,21 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "bade6571-debc-4c79-8d1f-5ed3f1fc8fd0",
-    "created_at": "2021-11-25T13:42:44+00:00",
-    "updated_at": "2021-11-25T13:42:44+00:00",
+    "id": "0ae895ed-9ca0-4fca-ae44-839ef83c46ce",
+    "created_at": "2021-11-29T09:04:33+00:00",
+    "updated_at": "2021-11-29T09:04:33+00:00",
     "name": "Sales Tax",
     "strategy": "add_to",
     "default": false,
     "tax_rates": [
       {
-        "id": "fc4f9db7-f0e2-4881-b2a7-b67573e446b6",
-        "created_at": "2021-11-25T13:42:44+00:00",
-        "updated_at": "2021-11-25T13:42:44+00:00",
+        "id": "f3b69eac-764e-4074-a004-7be17b77c57f",
+        "created_at": "2021-11-29T09:04:33+00:00",
+        "updated_at": "2021-11-29T09:04:33+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "bade6571-debc-4c79-8d1f-5ed3f1fc8fd0",
+        "owner_id": "0ae895ed-9ca0-4fca-ae44-839ef83c46ce",
         "owner_type": "tax_regions"
       }
     ]
@@ -218,11 +218,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e017694d-1738-4392-a593-045d9e9beb79",
+    "id": "4cf1e13b-9864-47f9-9aac-f7b51b58de6d",
     "type": "tax_regions",
     "attributes": {
-      "created_at": "2021-11-25T13:42:44+00:00",
-      "updated_at": "2021-11-25T13:42:44+00:00",
+      "created_at": "2021-11-29T09:04:33+00:00",
+      "updated_at": "2021-11-29T09:04:33+00:00",
       "name": "Sales Tax",
       "strategy": "compound",
       "default": false
@@ -232,7 +232,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "2f26568b-365a-4dd4-b6ee-a7878cdeeb21"
+            "id": "4afa73da-85e3-4946-9a01-4301b83e0e45"
           }
         ]
       }
@@ -240,15 +240,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "2f26568b-365a-4dd4-b6ee-a7878cdeeb21",
+      "id": "4afa73da-85e3-4946-9a01-4301b83e0e45",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2021-11-25T13:42:44+00:00",
-        "updated_at": "2021-11-25T13:42:44+00:00",
+        "created_at": "2021-11-29T09:04:33+00:00",
+        "updated_at": "2021-11-29T09:04:33+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "e017694d-1738-4392-a593-045d9e9beb79",
+        "owner_id": "4cf1e13b-9864-47f9-9aac-f7b51b58de6d",
         "owner_type": "tax_regions"
       },
       "relationships": {
@@ -314,11 +314,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/124f46b9-1499-466b-8270-5a6bfb6539f1' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/97539e9d-9f7a-45bb-9f57-02e147addb04' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "124f46b9-1499-466b-8270-5a6bfb6539f1",
+        "id": "97539e9d-9f7a-45bb-9f57-02e147addb04",
         "type": "tax_regions",
         "attributes": {
           "name": "State Tax",
@@ -328,7 +328,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "36fb8820-956f-495b-904f-290c66eaf027",
+              "id": "bd61f9a3-e784-4009-8ff9-5aef17064173",
               "_destroy": true
             }
           ]
@@ -343,11 +343,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "124f46b9-1499-466b-8270-5a6bfb6539f1",
+    "id": "97539e9d-9f7a-45bb-9f57-02e147addb04",
     "type": "tax_regions",
     "attributes": {
-      "created_at": "2021-11-25T13:42:44+00:00",
-      "updated_at": "2021-11-25T13:42:44+00:00",
+      "created_at": "2021-11-29T09:04:33+00:00",
+      "updated_at": "2021-11-29T09:04:33+00:00",
       "name": "State Tax",
       "strategy": "add_to",
       "default": false
@@ -357,7 +357,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "111f5b31-b6c9-47e5-94a2-99da2009f78a"
+            "id": "a3801217-18f3-4c2f-ba45-009d7c1a0fec"
           }
         ]
       }
@@ -365,15 +365,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "111f5b31-b6c9-47e5-94a2-99da2009f78a",
+      "id": "a3801217-18f3-4c2f-ba45-009d7c1a0fec",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2021-11-25T13:42:44+00:00",
-        "updated_at": "2021-11-25T13:42:44+00:00",
+        "created_at": "2021-11-29T09:04:33+00:00",
+        "updated_at": "2021-11-29T09:04:33+00:00",
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "124f46b9-1499-466b-8270-5a6bfb6539f1",
+        "owner_id": "97539e9d-9f7a-45bb-9f57-02e147addb04",
         "owner_type": "tax_regions"
       },
       "relationships": {
@@ -434,7 +434,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/f0a6d718-21bc-4b37-a430-f6e0ad8941c7' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/ee47e1f7-9ded-4c90-85c8-42d48feb3e70' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

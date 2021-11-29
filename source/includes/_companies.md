@@ -72,24 +72,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "6c7d0851-1af4-4da3-b56a-fa47f32a7526",
+    "id": "da88105d-0d49-41b7-a30a-990ab1496e1b",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-25T13:40:55+00:00",
-      "updated_at": "2021-11-25T13:40:55+00:00",
+      "created_at": "2021-11-29T09:02:39+00:00",
+      "updated_at": "2021-11-29T09:02:39+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail46@company.com",
       "billing_email": null,
-      "phone": "501.168.1772 x53551",
-      "website": "http://schowalter-gottlieb.biz/gary",
-      "address": "Frederick Junction\n1258 Schmidt Fort\n65243 North Mandy\nUzbekistan",
-      "address_line_1": "Frederick Junction",
-      "address_line_2": "1258 Schmidt Fort",
-      "zipcode": "65243",
-      "city": "North Mandy",
+      "phone": "(156) 933-3602 x28736",
+      "website": "http://conroy.info/wm_mertz",
+      "address": "Yasmin Meadow\n437 Trantow Row\n38903-2573 Trinidadburgh\nMoldova",
+      "address_line_1": "Yasmin Meadow",
+      "address_line_2": "437 Trantow Row",
+      "zipcode": "38903-2573",
+      "city": "Trinidadburgh",
       "region": null,
-      "country": "Uzbekistan",
+      "country": "Moldova",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -100,10 +100,10 @@ Name | Description
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "56959 Jaunita Manor",
-      "financial_line_2": "87211-6092 Lake Marieton",
+      "financial_line_1": "52080 Jenkins Radial",
+      "financial_line_2": "70794 South Dariofurt",
       "vat_number": null,
-      "continent": "Asia",
+      "continent": "Europe",
       "custom_domain": null,
       "development": false
     }
@@ -141,7 +141,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ed0f8554-fd7c-48cb-9d92-3b9419a14bb2",
+        "id": "fd48f814-2bba-4b66-a7f7-35edb2d6c131",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -155,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ed0f8554-fd7c-48cb-9d92-3b9419a14bb2",
+    "id": "fd48f814-2bba-4b66-a7f7-35edb2d6c131",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-25T13:40:55+00:00",
-      "updated_at": "2021-11-25T13:40:56+00:00",
+      "created_at": "2021-11-29T09:02:39+00:00",
+      "updated_at": "2021-11-29T09:02:39+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail47@company.com",
       "billing_email": null,
-      "phone": "806.981.5877",
-      "website": "http://altenwerth-lebsack.info/zack",
-      "address": "Hettie Field\n3348 Hessel Viaduct\n64998 Jonieshire\nSaint Lucia",
-      "address_line_1": "Hettie Field",
-      "address_line_2": "3348 Hessel Viaduct",
-      "zipcode": "64998",
-      "city": "Jonieshire",
+      "phone": "976.193.9579",
+      "website": "http://stanton.io/joshua_kuhic",
+      "address": "Buffy Dam\n73287 Shin Flats\n68036 Port Stefan\nSao Tome and Principe",
+      "address_line_1": "Buffy Dam",
+      "address_line_2": "73287 Shin Flats",
+      "zipcode": "68036",
+      "city": "Port Stefan",
       "region": null,
-      "country": "Saint Lucia",
+      "country": "Sao Tome and Principe",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -183,10 +183,10 @@ This request does not accept any includes
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "90876 Tenisha Parkways",
-      "financial_line_2": "30747-2785 West Maziemouth",
+      "financial_line_1": "77606 Adams Station",
+      "financial_line_2": "61254-1721 Bergnaummouth",
       "vat_number": null,
-      "continent": "Americas",
+      "continent": "Africa",
       "custom_domain": null,
       "development": false
     }

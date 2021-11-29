@@ -2,11 +2,11 @@
 
 Tags are designed to find specific resources faster. They can be added to the following resources by supplying a `tag_list`.
 
-- `[Order](#order)
-- `[Customer](#customer)
-- `[Product group](#product_group)
-- `[Bundle](#bundle)
-- `[Document](#document)
+- [Order](#orders)
+- [Customer](#customers)
+- [Product group](#product_groups)
+- [Bundle](#bundles)
+- [Document](#documents)
 
 ## Endpoints
 `GET /api/boomerang/tags`
@@ -40,7 +40,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "6d372d2b-74f6-4d80-b8c2-ef2358bce4f0",
+      "id": "f2cb7234-00c6-4d18-b8a4-52aea2983f12",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -48,7 +48,7 @@ Name | Description
       }
     },
     {
-      "id": "1d3ae445-e07d-450c-b76e-4ea7b35a7294",
+      "id": "0013d642-945a-470b-93de-55b64d1d2686",
       "type": "tags",
       "attributes": {
         "name": "webshop",
@@ -78,7 +78,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-25T13:40:19Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-29T09:02:06Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

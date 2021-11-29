@@ -16,7 +16,7 @@ The operation type determines what kind of operation is initiated. The nested da
 
 The following types & data params are supported:
 
-### Archive
+#### Archive
 
 Only orders that are have the status `stopped` can be archived. The target_ids with an invalid status will be ignored.
 
@@ -45,7 +45,7 @@ Only orders that are have the status `stopped` can be archived. The target_ids w
 
 *None*
 
-### Consumable Tracking Migration
+#### Consumable Tracking Migration
 
 A one-off migration that converts untracked consumables to bulk tracked ones.
 
@@ -74,7 +74,7 @@ A one-off migration that converts untracked consumables to bulk tracked ones.
 
 *None*
 
-### Generate Barcode
+#### Generate Barcode
 
 Generates a barcode for all entities that are still missing one. Entities with existing barcodes are not modified and skipped.
 
@@ -105,7 +105,7 @@ Generates a barcode for all entities that are still missing one. Entities with e
 
 *None*
 
-### Generate Document
+#### Generate Document
 
 Generates documents in bulk, either by a list of documents or all documents for specific orders.
 
@@ -138,7 +138,7 @@ Generates documents in bulk, either by a list of documents or all documents for 
 
 A zip file with the generated documents of type <document_extension>.
 
-### Update Category
+#### Update Category
 
 Updates the categories associated to the entities by mutating them with the action. Other categories already associated to the entity are not modified.
 
@@ -174,7 +174,7 @@ Updates the categories associated to the entities by mutating them with the acti
 
 *None*
 
-### Update Tag
+#### Update Tag
 
 Updates the tags associated to the entities by mutating them with the action.
 
@@ -210,7 +210,7 @@ Updates the tags associated to the entities by mutating them with the action.
 
 *None*
 
-### Update
+#### Update
 
 Updates the attribute of all the entities with the new value(s).
 
@@ -321,11 +321,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "7dc5988b-9a00-4ac6-9ac0-5011d4049102",
+      "id": "7a457964-7659-4881-b4ce-b2dc4023f0c0",
       "type": "operations",
       "attributes": {
-        "created_at": "2021-11-25T13:41:41+00:00",
-        "updated_at": "2021-11-25T13:41:41+00:00",
+        "created_at": "2021-11-29T09:03:25+00:00",
+        "updated_at": "2021-11-29T09:03:25+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -335,12 +335,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "146a5685-9a87-47b4-a6f5-a0e9b43c1746"
+        "employee_id": "cef03980-8a84-4060-a295-87806f6f8425"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/146a5685-9a87-47b4-a6f5-a0e9b43c1746"
+            "related": "api/boomerang/employees/cef03980-8a84-4060-a295-87806f6f8425"
           }
         }
       }
@@ -367,7 +367,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-25T13:40:19Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-11-29T09:02:05Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -416,7 +416,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/fb2c60c0-8dcd-494c-be82-069ba4094510' \
+    --url 'https://example.booqable.com/api/boomerang/operations/e8be8c13-9e5a-44a5-87a6-3b6eb806880d' \
     --header 'content-type: application/json' \
 ```
 
@@ -425,11 +425,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fb2c60c0-8dcd-494c-be82-069ba4094510",
+    "id": "e8be8c13-9e5a-44a5-87a6-3b6eb806880d",
     "type": "operations",
     "attributes": {
-      "created_at": "2021-11-25T13:41:41+00:00",
-      "updated_at": "2021-11-25T13:41:41+00:00",
+      "created_at": "2021-11-29T09:03:25+00:00",
+      "updated_at": "2021-11-29T09:03:25+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -439,12 +439,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "22475493-810f-4bc5-8540-9abb45b98edf"
+      "employee_id": "4ae5a594-bf7d-4bcb-bb58-da93f9ad685b"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/22475493-810f-4bc5-8540-9abb45b98edf"
+          "related": "api/boomerang/employees/4ae5a594-bf7d-4bcb-bb58-da93f9ad685b"
         }
       }
     }
@@ -512,11 +512,11 @@ When creating an operation, it will start running in the background. With the `i
 ```json
   {
   "data": {
-    "id": "b6607ee1-b5dc-4ac2-b5fc-4a9112aaaddc",
+    "id": "6b310801-d8a3-43f4-a8dc-b03a41992a29",
     "type": "operations",
     "attributes": {
-      "created_at": "2021-11-25T13:41:41+00:00",
-      "updated_at": "2021-11-25T13:41:41+00:00",
+      "created_at": "2021-11-29T09:03:25+00:00",
+      "updated_at": "2021-11-29T09:03:25+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -526,7 +526,7 @@ When creating an operation, it will start running in the background. With the `i
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "a1a0bed1-04cd-4cae-971d-57aefe75457a"
+      "employee_id": "53183beb-d15b-4b0b-8fbe-85109ec051c0"
     },
     "relationships": {
       "employee": {
