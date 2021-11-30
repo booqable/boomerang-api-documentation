@@ -72,24 +72,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "da88105d-0d49-41b7-a30a-990ab1496e1b",
+    "id": "d1221743-54a5-45dd-8451-16901a0405cc",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-29T09:02:39+00:00",
-      "updated_at": "2021-11-29T09:02:39+00:00",
+      "created_at": "2021-11-30T12:55:23+00:00",
+      "updated_at": "2021-11-30T12:55:23+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail46@company.com",
       "billing_email": null,
-      "phone": "(156) 933-3602 x28736",
-      "website": "http://conroy.info/wm_mertz",
-      "address": "Yasmin Meadow\n437 Trantow Row\n38903-2573 Trinidadburgh\nMoldova",
-      "address_line_1": "Yasmin Meadow",
-      "address_line_2": "437 Trantow Row",
-      "zipcode": "38903-2573",
-      "city": "Trinidadburgh",
+      "phone": "374-122-6947 x1188",
+      "website": "http://welch.co/trina",
+      "address": "Stanton Crescent\n8335 Major Stravenue\n15537 South Delmafort\nNepal",
+      "address_line_1": "Stanton Crescent",
+      "address_line_2": "8335 Major Stravenue",
+      "zipcode": "15537",
+      "city": "South Delmafort",
       "region": null,
-      "country": "Moldova",
+      "country": "Nepal",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -100,10 +100,10 @@ Name | Description
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "52080 Jenkins Radial",
-      "financial_line_2": "70794 South Dariofurt",
+      "financial_line_1": "814 Man Divide",
+      "financial_line_2": "03894 Stevenburgh",
       "vat_number": null,
-      "continent": "Europe",
+      "continent": "Asia",
       "custom_domain": null,
       "development": false
     }
@@ -141,7 +141,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "fd48f814-2bba-4b66-a7f7-35edb2d6c131",
+        "id": "56827100-d09c-4308-a482-bfc1d7dac25a",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -155,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "fd48f814-2bba-4b66-a7f7-35edb2d6c131",
+    "id": "56827100-d09c-4308-a482-bfc1d7dac25a",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-29T09:02:39+00:00",
-      "updated_at": "2021-11-29T09:02:39+00:00",
+      "created_at": "2021-11-30T12:55:23+00:00",
+      "updated_at": "2021-11-30T12:55:23+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail47@company.com",
       "billing_email": null,
-      "phone": "976.193.9579",
-      "website": "http://stanton.io/joshua_kuhic",
-      "address": "Buffy Dam\n73287 Shin Flats\n68036 Port Stefan\nSao Tome and Principe",
-      "address_line_1": "Buffy Dam",
-      "address_line_2": "73287 Shin Flats",
-      "zipcode": "68036",
-      "city": "Port Stefan",
+      "phone": "892-665-5865 x1616",
+      "website": "http://purdy-labadie.io/reanna",
+      "address": "Heller Crossroad\n896 Dee Road\n11989-8172 Hobertton\nLatvia",
+      "address_line_1": "Heller Crossroad",
+      "address_line_2": "896 Dee Road",
+      "zipcode": "11989-8172",
+      "city": "Hobertton",
       "region": null,
-      "country": "Sao Tome and Principe",
+      "country": "Latvia",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -183,10 +183,10 @@ This request does not accept any includes
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "77606 Adams Station",
-      "financial_line_2": "61254-1721 Bergnaummouth",
+      "financial_line_1": "5133 Kennith Brooks",
+      "financial_line_2": "23119 New Monique",
       "vat_number": null,
-      "continent": "Africa",
+      "continent": "Europe",
       "custom_domain": null,
       "development": false
     }
