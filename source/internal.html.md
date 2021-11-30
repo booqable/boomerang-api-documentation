@@ -20,6 +20,7 @@ includes:
   - bundles
   - categories
   - category_items
+  - checkout_fields
   - clusters
   - companies
   - coupons
