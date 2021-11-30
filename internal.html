@@ -561,6 +561,35 @@
               </ul>
           </li>
           <li>
+            <a href="#checkout-fields" class="toc-h1 toc-link" data-title="Checkout fields" title="Checkout fields">Checkout fields</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#checkout-fields-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-fields-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-fields-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-fields-listing-checkout-fields" class="toc-h2 toc-link" data-title="Listing checkout fields" title="Listing checkout fields">Listing checkout fields</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-fields-fetching-a-checkout-field" class="toc-h2 toc-link" data-title="Fetching a checkout field" title="Fetching a checkout field">Fetching a checkout field</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-fields-creating-a-checkout-field" class="toc-h2 toc-link" data-title="Creating a checkout field" title="Creating a checkout field">Creating a checkout field</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-fields-updating-a-checkout-field" class="toc-h2 toc-link" data-title="Updating a checkout field" title="Updating a checkout field">Updating a checkout field</a>
+                  </li>
+                  <li>
+                    <a href="#checkout-fields-destroying-a-checkout-field" class="toc-h2 toc-link" data-title="Destroying a checkout field" title="Destroying a checkout field">Destroying a checkout field</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#clusters" class="toc-h1 toc-link" data-title="Clusters" title="Clusters">Clusters</a>
               <ul class="toc-list-h2">
                   <li>
@@ -6061,6 +6090,496 @@ You can have multiple authentication methods active at one time.</p>
 </tr>
 </tbody></table>
 <h3 id='category-items-removing-an-item-from-a-category-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='checkout-fields'>Checkout fields</h1>
+<p>Checkout fields allow collecting additional information from the checkout.</p>
+<h2 id='checkout-fields-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/checkout_fields</code></p>
+
+<p><code>GET /api/boomerang/checkout_fields/{id}</code></p>
+
+<p><code>POST /api/boomerang/checkout_fields</code></p>
+
+<p><code>PUT /api/boomerang/checkout_fields/{id}</code></p>
+
+<p><code>DELETE /api/boomerang/checkout_fields/{id}</code></p>
+<h2 id='checkout-fields-fields'>Fields</h2>
+<p>Every checkout field has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong><br>Name of the field, will be shown as a field label in the checkout</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td><strong>Boolean</strong><br>Whether the field required to complete checkout</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><strong>Integer</strong><br>Used to determine sorting relative to other checkout fields</td>
+</tr>
+<tr>
+<td><code>default_property_id</code></td>
+<td><strong>Uuid</strong><br>The associated Default property</td>
+</tr>
+</tbody></table>
+<h2 id='checkout-fields-relationships'>Relationships</h2>
+<p>Checkout fields have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>default_property</code></td>
+<td><strong>Default properties</strong> <code>readonly</code><br>Associated Default property</td>
+</tr>
+</tbody></table>
+<h2 id='checkout-fields-listing-checkout-fields'>Listing checkout fields</h2>
+<blockquote>
+<p>How to fetch a list of checkout fields:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/checkout_fields'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24461d02-956e-48db-86d2-fd2b8ebf6267"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checkout_fields"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:20+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:20+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Special requests"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default_property_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad324b41-a2e5-457b-9b02-9e78eb1c6654"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"default_property"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/default_properties/ad324b41-a2e5-457b-9b02-9e78eb1c6654"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/checkout_fields?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/checkout_fields?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/checkout_fields?page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='checkout-fields-listing-checkout-fields-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/checkout_fields</code></p>
+<h3 id='checkout-fields-listing-checkout-fields-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=default_property</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[checkout_fields]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2021-11-30T12:54:59Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-listing-checkout-fields-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td><strong>Boolean</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>default_property_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-listing-checkout-fields-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-listing-checkout-fields-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='checkout-fields-fetching-a-checkout-field'>Fetching a checkout field</h2>
+<blockquote>
+<p>How to fetch a checkout field:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/checkout_fields/7cbcf14c-43ab-480a-ace9-f53d3120f4c3?include=default_property'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7cbcf14c-43ab-480a-ace9-f53d3120f4c3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checkout_fields"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Special requests"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default_property_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f7b51de6-7f14-42b7-8758-82ff73e72e0d"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"default_property"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/default_properties/f7b51de6-7f14-42b7-8758-82ff73e72e0d"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_properties"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f7b51de6-7f14-42b7-8758-82ff73e72e0d"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f7b51de6-7f14-42b7-8758-82ff73e72e0d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_properties"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Property 2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default_property_2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"property_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text_field"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_on"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"select_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"editable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='checkout-fields-fetching-a-checkout-field-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/checkout_fields/{id}</code></p>
+<h3 id='checkout-fields-fetching-a-checkout-field-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=default_property</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[checkout_fields]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-fetching-a-checkout-field-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>default_property</code></p>
+<h2 id='checkout-fields-creating-a-checkout-field'>Creating a checkout field</h2>
+<blockquote>
+<p>How to create a checkout field:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/checkout_fields'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "checkout_fields",
+        "attributes": {
+          "name": "Special requests",
+          "default_property_id": "3f8723fa-5f59-4eb7-9614-bda304627d9e"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efc3f578-ed75-4da0-b516-b293d1050800"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checkout_fields"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Special requests"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default_property_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3f8723fa-5f59-4eb7-9614-bda304627d9e"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"default_property"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/checkout_fields?checkout_field%5Bdata%5D%5Battributes%5D%5Bdefault_property_id%5D=3f8723fa-5f59-4eb7-9614-bda304627d9e&amp;checkout_field%5Bdata%5D%5Battributes%5D%5Bname%5D=Special+requests&amp;checkout_field%5Bdata%5D%5Btype%5D=checkout_fields&amp;data%5Battributes%5D%5Bdefault_property_id%5D=3f8723fa-5f59-4eb7-9614-bda304627d9e&amp;data%5Battributes%5D%5Bname%5D=Special+requests&amp;data%5Btype%5D=checkout_fields&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/checkout_fields?checkout_field%5Bdata%5D%5Battributes%5D%5Bdefault_property_id%5D=3f8723fa-5f59-4eb7-9614-bda304627d9e&amp;checkout_field%5Bdata%5D%5Battributes%5D%5Bname%5D=Special+requests&amp;checkout_field%5Bdata%5D%5Btype%5D=checkout_fields&amp;data%5Battributes%5D%5Bdefault_property_id%5D=3f8723fa-5f59-4eb7-9614-bda304627d9e&amp;data%5Battributes%5D%5Bname%5D=Special+requests&amp;data%5Btype%5D=checkout_fields&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/checkout_fields?checkout_field%5Bdata%5D%5Battributes%5D%5Bdefault_property_id%5D=3f8723fa-5f59-4eb7-9614-bda304627d9e&amp;checkout_field%5Bdata%5D%5Battributes%5D%5Bname%5D=Special+requests&amp;checkout_field%5Bdata%5D%5Btype%5D=checkout_fields&amp;data%5Battributes%5D%5Bdefault_property_id%5D=3f8723fa-5f59-4eb7-9614-bda304627d9e&amp;data%5Battributes%5D%5Bname%5D=Special+requests&amp;data%5Btype%5D=checkout_fields&amp;page%5Bnumber%5D=1&amp;page%5Bsize%5D=25"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='checkout-fields-creating-a-checkout-field-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/checkout_fields</code></p>
+<h3 id='checkout-fields-creating-a-checkout-field-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=default_property</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[checkout_fields]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-creating-a-checkout-field-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][name]</code></td>
+<td><strong>String</strong><br>Name of the field, will be shown as a field label in the checkout</td>
+</tr>
+<tr>
+<td><code>data[attributes][position]</code></td>
+<td><strong>Integer</strong><br>Used to determine sorting relative to other checkout fields</td>
+</tr>
+<tr>
+<td><code>data[attributes][default_property_id]</code></td>
+<td><strong>Uuid</strong><br>The associated Default property</td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-creating-a-checkout-field-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>default_property</code></p>
+<h2 id='checkout-fields-updating-a-checkout-field'>Updating a checkout field</h2>
+<blockquote>
+<p>How to update a custom field:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> PUT <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/checkout_fields/79c856af-9306-4b42-beee-240d861ea10e'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "id": "79c856af-9306-4b42-beee-240d861ea10e",
+        "type": "checkout_fields",
+        "attributes": {
+          "name": "Additional information"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79c856af-9306-4b42-beee-240d861ea10e"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checkout_fields"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-30T12:55:21+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Additional information"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"default_property_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"298e8a3f-b5b2-4407-ae39-bb883ded2e3f"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"default_property"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='checkout-fields-updating-a-checkout-field-http-request'>HTTP Request</h3>
+<p><code>PUT /api/boomerang/checkout_fields/{id}</code></p>
+<h3 id='checkout-fields-updating-a-checkout-field-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=default_property</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[checkout_fields]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-updating-a-checkout-field-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][name]</code></td>
+<td><strong>String</strong><br>Name of the field, will be shown as a field label in the checkout</td>
+</tr>
+<tr>
+<td><code>data[attributes][position]</code></td>
+<td><strong>Integer</strong><br>Used to determine sorting relative to other checkout fields</td>
+</tr>
+<tr>
+<td><code>data[attributes][default_property_id]</code></td>
+<td><strong>Uuid</strong><br>The associated Default property</td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-updating-a-checkout-field-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>default_property</code></p>
+<h2 id='checkout-fields-destroying-a-checkout-field'>Destroying a checkout field</h2>
+<blockquote>
+<p>How to delete a checkout field:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> DELETE <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/checkout_fields/d80544c8-b322-4234-a45d-275406eb36eb'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='checkout-fields-destroying-a-checkout-field-http-request'>HTTP Request</h3>
+<p><code>DELETE /api/boomerang/checkout_fields/{id}</code></p>
+<h3 id='checkout-fields-destroying-a-checkout-field-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=default_property</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[checkout_fields]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='checkout-fields-destroying-a-checkout-field-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='clusters'>Clusters</h1>
 <p>A cluster is a group of locations that share their inventory (and availability). Stock can move between locations within the same cluster, meaning they can be picked up at one location and returned to another.</p>
