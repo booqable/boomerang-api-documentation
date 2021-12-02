@@ -72,24 +72,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d1221743-54a5-45dd-8451-16901a0405cc",
+    "id": "fb82b082-c0cc-4d31-86b5-71ef23d68e76",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-30T12:55:23+00:00",
-      "updated_at": "2021-11-30T12:55:23+00:00",
+      "created_at": "2021-12-02T11:34:37+00:00",
+      "updated_at": "2021-12-02T11:34:37+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail46@company.com",
+      "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "374-122-6947 x1188",
-      "website": "http://welch.co/trina",
-      "address": "Stanton Crescent\n8335 Major Stravenue\n15537 South Delmafort\nNepal",
-      "address_line_1": "Stanton Crescent",
-      "address_line_2": "8335 Major Stravenue",
-      "zipcode": "15537",
-      "city": "South Delmafort",
+      "phone": "1-961-330-8809 x95149",
+      "website": "http://collins.com/larry_bruen",
+      "address": "Hyatt Trafficway\n98221 Roob Summit\n69466-3067 Ankundingfort\nChristmas Island",
+      "address_line_1": "Hyatt Trafficway",
+      "address_line_2": "98221 Roob Summit",
+      "zipcode": "69466-3067",
+      "city": "Ankundingfort",
       "region": null,
-      "country": "Nepal",
+      "country": "Christmas Island",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -100,10 +100,10 @@ Name | Description
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "814 Man Divide",
-      "financial_line_2": "03894 Stevenburgh",
+      "financial_line_1": "684 Reichert Key",
+      "financial_line_2": "42668 Stehrton",
       "vat_number": null,
-      "continent": "Asia",
+      "continent": "Oceania",
       "custom_domain": null,
       "development": false
     }
@@ -141,7 +141,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "56827100-d09c-4308-a482-bfc1d7dac25a",
+        "id": "d752faa5-0fb1-45aa-9f06-7dbb2e8d6850",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -155,24 +155,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "56827100-d09c-4308-a482-bfc1d7dac25a",
+    "id": "d752faa5-0fb1-45aa-9f06-7dbb2e8d6850",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-11-30T12:55:23+00:00",
-      "updated_at": "2021-11-30T12:55:23+00:00",
+      "created_at": "2021-12-02T11:34:37+00:00",
+      "updated_at": "2021-12-02T11:34:37+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail47@company.com",
+      "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "892-665-5865 x1616",
-      "website": "http://purdy-labadie.io/reanna",
-      "address": "Heller Crossroad\n896 Dee Road\n11989-8172 Hobertton\nLatvia",
-      "address_line_1": "Heller Crossroad",
-      "address_line_2": "896 Dee Road",
-      "zipcode": "11989-8172",
-      "city": "Hobertton",
+      "phone": "856.519.6667 x0313",
+      "website": "http://cole.biz/stefany",
+      "address": "Camellia Lodge\n756 Erminia Way\n41377 Port Paulina\nMyanmar",
+      "address_line_1": "Camellia Lodge",
+      "address_line_2": "756 Erminia Way",
+      "zipcode": "41377",
+      "city": "Port Paulina",
       "region": null,
-      "country": "Latvia",
+      "country": "Myanmar",
       "billing_company": null,
       "billing_address_line_1": null,
       "billing_address_line_2": null,
@@ -183,10 +183,10 @@ This request does not accept any includes
       "logo_url": null,
       "timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "5133 Kennith Brooks",
-      "financial_line_2": "23119 New Monique",
+      "financial_line_1": "25544 Lorraine View",
+      "financial_line_2": "33564 Franklinstad",
       "vat_number": null,
-      "continent": "Europe",
+      "continent": "Asia",
       "custom_domain": null,
       "development": false
     }
