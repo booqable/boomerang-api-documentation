@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1b07bc6f-67ab-4f9c-b0a9-06b7a97c7972",
+    "id": "6f893353-6c86-4979-8cfd-3a257f5bd864",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:45+00:00",
-      "updated_at": "2021-12-02T16:47:45+00:00",
+      "created_at": "2021-12-02T23:48:46+00:00",
+      "updated_at": "2021-12-02T23:48:46+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "389.420.9425 x680",
-      "website": "http://zemlak.name/peter_bernier",
-      "address": "Alex Point\n52657 Leuschke Extension\n40958 Ortizmouth\nDenmark",
-      "address_line_1": "Alex Point",
-      "address_line_2": "52657 Leuschke Extension",
-      "zipcode": "40958",
-      "city": "Ortizmouth",
+      "phone": "(353) 239-1260 x227",
+      "website": "http://conn-gorczany.io/jessie",
+      "address": "Lavada Courts\n202 Veum Road\n99651 New Kraig\nNorfolk Island",
+      "address_line_1": "Lavada Courts",
+      "address_line_2": "202 Veum Road",
+      "zipcode": "99651",
+      "city": "New Kraig",
       "region": null,
-      "country": "Denmark",
+      "country": "Norfolk Island",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "199 Hoeger Turnpike",
-      "financial_line_2": "13834-9881 North Elliott",
+      "financial_line_1": "2407 Dicki Crossroad",
+      "financial_line_2": "63784-0415 Rexside",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fb01aa72-5c62-4bc5-a0f3-4d41f039b854",
+    "id": "8ad291b3-c7ea-4c0c-b69b-60a60aac0abf",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2021-12-16T16:47:45.978Z",
+        "trial_ends_at": "2021-12-16T23:48:46.487Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+        "id": "b0ec5828-fb2c-4051-b277-680e4f9bdcf0",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+    "id": "b0ec5828-fb2c-4051-b277-680e4f9bdcf0",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:46+00:00",
-      "updated_at": "2021-12-02T16:47:46+00:00",
+      "created_at": "2021-12-02T23:48:46+00:00",
+      "updated_at": "2021-12-02T23:48:46+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "213-623-6841",
-      "website": "http://bergnaum.io/maximo_reilly",
-      "address": "Hermann Parks\n200 Sheldon Haven\n51773-8425 New Aubreyburgh\nIran",
-      "address_line_1": "Hermann Parks",
-      "address_line_2": "200 Sheldon Haven",
-      "zipcode": "51773-8425",
-      "city": "New Aubreyburgh",
+      "phone": "328-683-6720 x74370",
+      "website": "http://huel.biz/elmer",
+      "address": "Langosh Plains\n48311 Karmen Branch\n55231-4707 Carlosstad\nChile",
+      "address_line_1": "Langosh Plains",
+      "address_line_2": "48311 Karmen Branch",
+      "zipcode": "55231-4707",
+      "city": "Carlosstad",
       "region": null,
-      "country": "Iran",
+      "country": "Chile",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "223 Bruen Pines",
-      "financial_line_2": "07242-0992 Haagbury",
+      "financial_line_1": "1886 Botsford Land",
+      "financial_line_2": "19261 Huelsville",
       "vat_number": null,
       "custom_domain": null,
       "development": false

@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "8725c423-b178-4236-9cf5-4f5e702575cc",
-          "target_id": "9bb914b1-7338-4121-9cad-c7474466ff93"
+          "source_id": "1135f211-ea8b-4844-8c35-ceca6eafb693",
+          "target_id": "bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1ae40439-7bd0-530b-aeb8-0f79a9709793",
+    "id": "68e2e7ee-de1b-5a5e-aa1f-97911acca455",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "8725c423-b178-4236-9cf5-4f5e702575cc",
-      "target_id": "9bb914b1-7338-4121-9cad-c7474466ff93"
+      "source_id": "1135f211-ea8b-4844-8c35-ceca6eafb693",
+      "target_id": "bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "9bb914b1-7338-4121-9cad-c7474466ff93"
+          "id": "bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f"
         }
       }
     }
   },
   "included": [
     {
-      "id": "9bb914b1-7338-4121-9cad-c7474466ff93",
+      "id": "bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f",
       "type": "customers",
       "attributes": {
-        "created_at": "2021-12-02T16:48:39+00:00",
-        "updated_at": "2021-12-02T16:48:40+00:00",
+        "created_at": "2021-12-02T23:49:28+00:00",
+        "updated_at": "2021-12-02T23:49:28+00:00",
         "number": 1,
         "name": "John Doe",
         "email": "johndoe@company.test",
@@ -115,10 +115,10 @@ Name | Description
     }
   ],
   "links": {
-    "self": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&data%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&data%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&data%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&data%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=8725c423-b178-4236-9cf5-4f5e702575cc&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=9bb914b1-7338-4121-9cad-c7474466ff93&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&data%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&data%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&data%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&data%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=1135f211-ea8b-4844-8c35-ceca6eafb693&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=bf8d4754-ff5f-442b-8ce2-1bddd6c60b1f&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }

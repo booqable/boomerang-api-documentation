@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "5dd5d8d1-10e3-5fad-a3d2-fa3d9e7b969d",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "ba7f9d37-d40d-490f-9548-072da7164446",
-      "employee_id": "730d0e73-94a2-4467-8ca1-0a99b0fcc487",
-      "locations_updated_at": "2021-12-02T16:49:44+00:00",
-      "clusters_updated_at": "2021-12-02T16:49:44+00:00",
-      "default_properties_updated_at": "2021-12-02T16:49:44+00:00"
+      "updated_at": "2021-12-02T23:50:15+00:00",
+      "company_id": "f4bbc1e7-7441-4384-9d83-6b18f412c4dc",
+      "employee_id": "4d16b118-53b9-4db7-bf2f-e6c4f8007c98",
+      "locations_updated_at": "2021-12-02T23:50:15+00:00",
+      "clusters_updated_at": "2021-12-02T23:50:15+00:00",
+      "default_properties_updated_at": "2021-12-02T23:50:15+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "948bb0d5-cd34-54a7-92aa-2ca2805c6593",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
-      "employee_id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "updated_at": "2021-12-02T23:50:16+00:00",
+      "company_id": "c35c8751-8626-4ad0-9ad8-f6aead65f73a",
+      "employee_id": "c72acf88-88b8-456d-8dde-0d44ee91a176",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223"
+          "id": "c35c8751-8626-4ad0-9ad8-f6aead65f73a"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "c50a506f-f2f2-4d31-8a80-10e0075af447"
+          "id": "c72acf88-88b8-456d-8dde-0d44ee91a176"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
+      "id": "c35c8751-8626-4ad0-9ad8-f6aead65f73a",
       "type": "companies",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-02T23:50:16+00:00",
+        "updated_at": "2021-12-02T23:50:16+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "164.848.1359 x598",
-        "website": "http://lindgren-smitham.co/kasi",
-        "address": "Reichel Manor\n881 Yuette Lodge\n11548 Fredricview\nTurkmenistan",
-        "address_line_1": "Reichel Manor",
-        "address_line_2": "881 Yuette Lodge",
-        "zipcode": "11548",
-        "city": "Fredricview",
+        "phone": "358-206-5011 x510",
+        "website": "http://goldner-marks.org/masako",
+        "address": "Leffler Plains\n39099 Ondricka Flat\n17225-3502 Asiaville\nAruba",
+        "address_line_1": "Leffler Plains",
+        "address_line_2": "39099 Ondricka Flat",
+        "zipcode": "17225-3502",
+        "city": "Asiaville",
         "region": null,
-        "country": "Turkmenistan",
+        "country": "Aruba",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "316 Denny Mall",
-        "financial_line_2": "41251 East Nidaton",
+        "financial_line_1": "319 Batz Locks",
+        "financial_line_2": "19199 Laurafort",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2021-12-16T16:49:44.776Z",
+          "trial_ends_at": "2021-12-16T23:50:16.108Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "id": "c72acf88-88b8-456d-8dde-0d44ee91a176",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-02T23:50:16+00:00",
+        "updated_at": "2021-12-02T23:50:16+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
