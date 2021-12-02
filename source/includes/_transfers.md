@@ -2,9 +2,6 @@
 
 When an order causes a shortage for a location and that shortage can be solved by the inventory in the cluster, one or multiple transfers are created.
 
-## Endpoints
-`GET /api/boomerang/transfers`
-
 ## Fields
 Every transfer has the following fields:
 
@@ -51,38 +48,38 @@ Name | Description
   {
   "data": [
     {
-      "id": "40391254-504c-428f-98e9-e11eb54e4fde",
+      "id": "17a4cb59-beaf-4e4a-bf51-3adee520b814",
       "type": "transfers",
       "attributes": {
-        "created_at": "2021-12-02T11:36:52+00:00",
-        "updated_at": "2021-12-02T11:36:52+00:00",
+        "created_at": "2021-12-02T15:13:08+00:00",
+        "updated_at": "2021-12-02T15:13:08+00:00",
         "quantity": 1,
-        "available_at": "2021-11-30T11:30:00+00:00",
+        "available_at": "2021-11-30T15:00:00+00:00",
         "finalized": false,
-        "item_id": "af6aba2b-50e0-4b4c-82a7-a662e0dc480a",
-        "order_id": "e7ede6f7-f621-422f-9185-0109c5a590a6",
-        "source_location_id": "24167e77-7cf3-4ae4-b4e1-c04d172996f5",
-        "destination_location_id": "24167e77-7cf3-4ae4-b4e1-c04d172996f5"
+        "item_id": "ec7ef6ff-89ae-421c-99f4-5a5fc22bfbb7",
+        "order_id": "1a9ce81c-9116-4e06-999b-ab91449944c2",
+        "source_location_id": "78cd17e2-8a75-4cc4-84be-0cfae61bcb4a",
+        "destination_location_id": "78cd17e2-8a75-4cc4-84be-0cfae61bcb4a"
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/af6aba2b-50e0-4b4c-82a7-a662e0dc480a"
+            "related": "api/boomerang/items/ec7ef6ff-89ae-421c-99f4-5a5fc22bfbb7"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/e7ede6f7-f621-422f-9185-0109c5a590a6"
+            "related": "api/boomerang/orders/1a9ce81c-9116-4e06-999b-ab91449944c2"
           }
         },
         "source_location": {
           "links": {
-            "related": "api/boomerang/locations/24167e77-7cf3-4ae4-b4e1-c04d172996f5"
+            "related": "api/boomerang/locations/78cd17e2-8a75-4cc4-84be-0cfae61bcb4a"
           }
         },
         "destination_location": {
           "links": {
-            "related": "api/boomerang/locations/24167e77-7cf3-4ae4-b4e1-c04d172996f5"
+            "related": "api/boomerang/locations/78cd17e2-8a75-4cc4-84be-0cfae61bcb4a"
           }
         }
       }
@@ -109,7 +106,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=item,order,source_location`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[transfers]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T11:34:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T15:10:57Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

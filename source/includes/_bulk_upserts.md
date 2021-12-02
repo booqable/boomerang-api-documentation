@@ -2,9 +2,6 @@
 
 Bulk upserts are for creating one or more entries of a model with one request, supports these types: `coupons`, `operating_rules`, `checkout_fields`
 
-## Endpoints
-`POST /api/boomerang/bulk_upserts`
-
 ## Fields
 Every bulk upsert has the following fields:
 
@@ -69,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b963e50c-f407-5605-91b5-2ce91afb648e",
+    "id": "ff766b11-d94d-5fdd-b7d8-8f98990892b6",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "9481cae3-9962-4d1e-b332-dc6fa1e90768"
+            "id": "6c0d2190-1d47-4109-b413-db719c41ce32"
           },
           {
             "type": "operating_rules",
-            "id": "a04ef33e-d32a-494a-82f0-441d2a5a7f64"
+            "id": "5e7a4c23-f0cd-40b1-9bfb-a3221bc91850"
           }
         ]
       }
@@ -88,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "9481cae3-9962-4d1e-b332-dc6fa1e90768",
+      "id": "6c0d2190-1d47-4109-b413-db719c41ce32",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2021-12-02T11:34:19+00:00",
-        "updated_at": "2021-12-02T11:34:19+00:00",
+        "created_at": "2021-12-02T15:11:10+00:00",
+        "updated_at": "2021-12-02T15:11:10+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -103,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "a04ef33e-d32a-494a-82f0-441d2a5a7f64",
+      "id": "5e7a4c23-f0cd-40b1-9bfb-a3221bc91850",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2021-12-02T11:34:19+00:00",
-        "updated_at": "2021-12-02T11:34:19+00:00",
+        "created_at": "2021-12-02T15:11:10+00:00",
+        "updated_at": "2021-12-02T15:11:10+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -142,11 +139,11 @@ Name | Description
           "type": "checkout_fields",
           "data": [
             {
-              "default_property_id": "56186c59-68f6-4689-aecc-c1c756a5125b"
+              "default_property_id": "f057576f-34ac-4e70-a7ed-641188feafa1"
             },
             {
               "name": "Delivery address",
-              "default_property_id": "031c902f-e0df-4a52-96f7-dad2f820f1d5"
+              "default_property_id": "518ca5e9-ea65-4cbc-9a8a-68d078d7f53b"
             }
           ]
         },
@@ -160,7 +157,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b963e50c-f407-5605-91b5-2ce91afb648e",
+    "id": "55fe4d4f-51b4-5c88-b4ea-c5234793b7c8",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -171,10 +168,10 @@ Name | Description
     }
   },
   "links": {
-    "self": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=56186c59-68f6-4689-aecc-c1c756a5125b&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=031c902f-e0df-4a52-96f7-dad2f820f1d5&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/bulk_upserts?bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&bulk_upsert%5Bdata%5D%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&bulk_upsert%5Bdata%5D%5Battributes%5D%5Btype%5D=checkout_fields&bulk_upsert%5Bdata%5D%5Binclude%5D=results&bulk_upsert%5Bdata%5D%5Btype%5D=bulk_upserts&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=f057576f-34ac-4e70-a7ed-641188feafa1&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bname%5D=Delivery+address&data%5Battributes%5D%5Bdata%5D%5B%5D%5Bdefault_property_id%5D=518ca5e9-ea65-4cbc-9a8a-68d078d7f53b&data%5Battributes%5D%5Btype%5D=checkout_fields&data%5Binclude%5D=results&data%5Btype%5D=bulk_upserts&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -216,7 +213,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b963e50c-f407-5605-91b5-2ce91afb648e",
+    "id": "55fe4d4f-51b4-5c88-b4ea-c5234793b7c8",
     "type": "bulk_upserts",
     "relationships": {
       "results": {

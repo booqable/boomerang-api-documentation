@@ -2,9 +2,6 @@
 
 The currency object encapsulates all information about a monetary unit.
 
-## Endpoints
-`GET /api/boomerang/currencies/{id}`
-
 ## Fields
 Every currency has the following fields:
 

@@ -8,9 +8,6 @@ Tags are designed to find specific resources faster. They can be added to the fo
 - [Bundle](#bundles)
 - [Document](#documents)
 
-## Endpoints
-`GET /api/boomerang/tags`
-
 ## Fields
 Every tag has the following fields:
 
@@ -40,7 +37,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "4366f4eb-4301-471c-85e1-1d1eb5da133e",
+      "id": "da723285-ffe7-4790-b6cb-0d66cd16b7ea",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -48,7 +45,7 @@ Name | Description
       }
     },
     {
-      "id": "41403c3d-d842-4ac9-bfac-7b8a9fe7fea3",
+      "id": "4a9355d4-d733-4264-b5d0-4bbac43dcd96",
       "type": "tags",
       "attributes": {
         "name": "webshop",
@@ -78,7 +75,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T11:34:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T15:10:57Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

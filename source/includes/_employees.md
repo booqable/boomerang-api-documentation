@@ -40,6 +40,7 @@ Name | Description
 `remove_avatar` | **Boolean** `writeonly`<br>Remove current avatar
 `avatar_url` | **String** `readonly`<br>Url to avatar
 `large_avatar_url` | **String** `readonly`<br>Url to avatar (Large)
+`third_party_id` | **String** `extra` `readonly`<br>ID used for third party tools
 
 
 ## Listing employees
@@ -60,11 +61,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "d989372a-4e0c-4055-b838-29c1485fa127",
+      "id": "deb17782-193a-4b79-b0be-b4fb07f3df36",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T11:35:06+00:00",
-        "updated_at": "2021-12-02T11:35:06+00:00",
+        "created_at": "2021-12-02T15:11:46+00:00",
+        "updated_at": "2021-12-02T15:11:46+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -110,7 +111,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[employees]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T11:34:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T15:10:57Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -152,7 +153,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/2ee7e8c2-1ba7-43c2-9b01-14b28f681e99' \
+    --url 'https://example.booqable.com/api/boomerang/employees/b656beb8-a42d-4fcb-a9eb-d7ef40e61dd3' \
     --header 'content-type: application/json' \
 ```
 
@@ -161,11 +162,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2ee7e8c2-1ba7-43c2-9b01-14b28f681e99",
+    "id": "b656beb8-a42d-4fcb-a9eb-d7ef40e61dd3",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T11:35:07+00:00",
-      "updated_at": "2021-12-02T11:35:07+00:00",
+      "created_at": "2021-12-02T15:11:46+00:00",
+      "updated_at": "2021-12-02T15:11:46+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -218,11 +219,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/71e095f4-f4e1-4865-90ed-923674535870' \
+    --url 'https://example.booqable.com/api/boomerang/employees/a2c551ff-8f18-4200-bd1d-83e2ba7ba790' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "71e095f4-f4e1-4865-90ed-923674535870",
+        "id": "a2c551ff-8f18-4200-bd1d-83e2ba7ba790",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -236,15 +237,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "71e095f4-f4e1-4865-90ed-923674535870",
+    "id": "a2c551ff-8f18-4200-bd1d-83e2ba7ba790",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T11:35:07+00:00",
-      "updated_at": "2021-12-02T11:35:07+00:00",
+      "created_at": "2021-12-02T15:11:46+00:00",
+      "updated_at": "2021-12-02T15:11:46+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
-      "email": "john@doe.com",
+      "email": "jane@doe.com",
       "unconfirmed_email": null,
       "active": true,
       "owner": false,
@@ -260,8 +261,8 @@ This request does not accept any includes
         "delete_invoices",
         "make_invoice_revisions"
       ],
-      "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
-      "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
+      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
     }
   },
   "meta": {}
@@ -273,11 +274,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/9753d128-83bc-4ab1-818d-f9da84284734' \
+    --url 'https://example.booqable.com/api/boomerang/employees/2ab6a97b-8cb7-4471-adb4-3c08a212eae5' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9753d128-83bc-4ab1-818d-f9da84284734",
+        "id": "2ab6a97b-8cb7-4471-adb4-3c08a212eae5",
         "type": "employees",
         "attributes": {
           "active": false
@@ -291,15 +292,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9753d128-83bc-4ab1-818d-f9da84284734",
+    "id": "2ab6a97b-8cb7-4471-adb4-3c08a212eae5",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T11:35:08+00:00",
-      "updated_at": "2021-12-02T11:35:08+00:00",
+      "created_at": "2021-12-02T15:11:47+00:00",
+      "updated_at": "2021-12-02T15:11:47+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
-      "email": "john@doe.com",
+      "email": "jane@doe.com",
       "unconfirmed_email": null,
       "active": false,
       "owner": false,
@@ -315,8 +316,8 @@ This request does not accept any includes
         "delete_invoices",
         "make_invoice_revisions"
       ],
-      "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
-      "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
+      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
     }
   },
   "meta": {}
@@ -328,11 +329,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/c2130981-4af7-4523-800c-c03b6e950d58' \
+    --url 'https://example.booqable.com/api/boomerang/employees/2c7ab97b-1507-4f25-b804-76d2383fd955' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c2130981-4af7-4523-800c-c03b6e950d58",
+        "id": "2c7ab97b-1507-4f25-b804-76d2383fd955",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -349,15 +350,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c2130981-4af7-4523-800c-c03b6e950d58",
+    "id": "2c7ab97b-1507-4f25-b804-76d2383fd955",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T11:35:08+00:00",
-      "updated_at": "2021-12-02T11:35:09+00:00",
+      "created_at": "2021-12-02T15:11:47+00:00",
+      "updated_at": "2021-12-02T15:11:47+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
-      "email": "john@doe.com",
+      "email": "jane@doe.com",
       "unconfirmed_email": null,
       "active": true,
       "owner": false,
@@ -367,8 +368,8 @@ This request does not accept any includes
         "reports",
         "settings"
       ],
-      "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
-      "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
+      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
     }
   },
   "meta": {}
