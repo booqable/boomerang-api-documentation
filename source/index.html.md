@@ -33,6 +33,7 @@ includes:
   - employees
   - ip_addresses
   - items
+  - item_prices
   - lines
   - locations
   - merges
