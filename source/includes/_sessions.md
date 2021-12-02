@@ -10,6 +10,11 @@ The session tells you whether settings are changed since the last time they were
 
 When there's an ID mismatch, it's advised to fetch the session again and include `employee`, `company`, and `settings`. Default properties, clusters, and locations should be requested separately as they can be paginated.
 
+## Endpoints
+`GET /api/boomerang/sessions/{id}`
+
+`GET /api/boomerang/sessions/current`
+
 ## Fields
 Every session has the following fields:
 
@@ -33,6 +38,86 @@ Name | Description
 `settings` | **Settings** `readonly`<br>Associated Settings
 
 
+## Retreiving the session
+
+
+
+> How to retreive the session:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/sessions/current' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "type": "sessions",
+    "attributes": {
+      "updated_at": "2021-12-02T16:49:44+00:00",
+      "company_id": "ba7f9d37-d40d-490f-9548-072da7164446",
+      "employee_id": "730d0e73-94a2-4467-8ca1-0a99b0fcc487",
+      "locations_updated_at": "2021-12-02T16:49:44+00:00",
+      "clusters_updated_at": "2021-12-02T16:49:44+00:00",
+      "default_properties_updated_at": "2021-12-02T16:49:44+00:00"
+    },
+    "relationships": {
+      "company": {
+        "links": {
+          "related": "/api/boomerang/companies/current"
+        }
+      },
+      "employee": {
+        "links": {
+          "related": "/api/boomerang/employees/current"
+        }
+      },
+      "settings": {
+        "links": {
+          "related": "/api/boomerang/settings/current"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/sessions/{id}`
+
+### Request params
+
+This request accepts the following paramaters:
+
+Name | Description
+- | -
+`include` | **String**<br>List of comma seperated relationships `?include=company,employee,settings`
+`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`employee`
+
+
+`company`
+
+
+`settings`
+
+
+
+
+
+
 ## Fetching the session
 
 
@@ -50,12 +135,12 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "0161b4bb-576a-5661-9546-f0401b2b92b7",
+    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-11-24T23:38:52+00:00",
-      "company_id": "71047f56-b667-4092-9ff5-1a573333bcc0",
-      "employee_id": "47498134-ebc8-4f31-b179-2f232c00b108",
+      "updated_at": "2021-12-02T16:49:44+00:00",
+      "company_id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
+      "employee_id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -67,7 +152,7 @@ Name | Description
         },
         "data": {
           "type": "companies",
-          "id": "71047f56-b667-4092-9ff5-1a573333bcc0"
+          "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223"
         }
       },
       "employee": {
@@ -76,7 +161,7 @@ Name | Description
         },
         "data": {
           "type": "employees",
-          "id": "47498134-ebc8-4f31-b179-2f232c00b108"
+          "id": "c50a506f-f2f2-4d31-8a80-10e0075af447"
         }
       },
       "settings": {
@@ -92,24 +177,25 @@ Name | Description
   },
   "included": [
     {
-      "id": "71047f56-b667-4092-9ff5-1a573333bcc0",
+      "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
       "type": "companies",
       "attributes": {
-        "created_at": "2021-11-24T23:38:52+00:00",
-        "updated_at": "2021-11-24T23:38:52+00:00",
-        "name": "Company name 1",
-        "slug": "company-name-1",
-        "email": "mail1@company.com",
+        "created_at": "2021-12-02T16:49:44+00:00",
+        "updated_at": "2021-12-02T16:49:44+00:00",
+        "name": "Company name 184",
+        "slug": "company-name-184",
+        "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "423.566.7823 x320",
-        "website": "http://hauck.biz/ramiro",
-        "address": "Heidenreich Road\n795 Carroll Trail\n75957 South Joey\nFiji",
-        "address_line_1": "Heidenreich Road",
-        "address_line_2": "795 Carroll Trail",
-        "zipcode": "75957",
-        "city": "South Joey",
+        "phone": "164.848.1359 x598",
+        "website": "http://lindgren-smitham.co/kasi",
+        "address": "Reichel Manor\n881 Yuette Lodge\n11548 Fredricview\nTurkmenistan",
+        "address_line_1": "Reichel Manor",
+        "address_line_2": "881 Yuette Lodge",
+        "zipcode": "11548",
+        "city": "Fredricview",
         "region": null,
-        "country": "Fiji",
+        "country": "Turkmenistan",
+        "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
         "billing_address_line_2": null,
@@ -120,13 +206,13 @@ Name | Description
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "510 Kristofer Glen",
-        "financial_line_2": "48162 Claudeview",
+        "financial_line_1": "316 Denny Mall",
+        "financial_line_2": "41251 East Nidaton",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2021-12-08T23:38:51.986Z",
+          "trial_ends_at": "2021-12-16T16:49:44.776Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -177,11 +263,11 @@ Name | Description
       }
     },
     {
-      "id": "47498134-ebc8-4f31-b179-2f232c00b108",
+      "id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-11-24T23:38:52+00:00",
-        "updated_at": "2021-11-24T23:38:52+00:00",
+        "created_at": "2021-12-02T16:49:44+00:00",
+        "updated_at": "2021-12-02T16:49:44+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -245,11 +331,10 @@ Name | Description
           "stop_fixed_at": "15:00"
         },
         "security": {
-          "secuity.sso_forced": false,
-          "secuity.iprestrictions_enabled": false
+          "sso_forced": false,
+          "iprestrictions_enabled": false
         },
         "address": {
-          "use_billing_address": false,
           "fields_order": [
             "zipcode",
             "city",
@@ -281,14 +366,12 @@ Name | Description
           "period_type": "freely",
           "use_times": true,
           "use_coupons_in_checkout": true,
-          "default_sorting": null,
-          "default_filtering": null,
           "time_increment": 60,
           "show_product_availability": true,
           "hide_product_availability_quantities": false,
           "show_cart_availability": true,
           "website": null,
-          "custom_scripts": null,
+          "custom_scripts": "",
           "google_analytics_id": null,
           "facebook_pixel_id": null
         },
@@ -300,13 +383,13 @@ Name | Description
         },
         "documents": {
           "show_tax_column": true,
-          "css": null,
-          "scss": null,
+          "css": "",
+          "scss": "",
           "scope_numbering_to_prefix": false,
           "page_size": "a4"
         },
         "invoices": {
-          "footer": null,
+          "footer": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "show_free_lines": true,
@@ -314,16 +397,16 @@ Name | Description
           "prefix": null
         },
         "quotes": {
-          "footer": null,
-          "body": null,
+          "footer": "",
+          "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "hide_section_lines": false,
           "prefix": null
         },
         "contracts": {
-          "footer": null,
-          "body": null,
+          "footer": "",
+          "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "hide_section_lines": false,
