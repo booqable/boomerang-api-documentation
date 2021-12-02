@@ -1,6 +1,6 @@
 # Settings
 
-Settings can be configured globally for a company account. They are divided in the following sections:
+Settings are configured globally for a company account. They are divided in the following sections:
 
 #### Currency
 
@@ -32,7 +32,7 @@ Configuration on how to handle and display pricing
 Name | Description
 - | -
 `enabled` | **Boolean**<br>Whether pricing is enabled
-`tax_strategy` | **Uuid**<br>How taxes should be calcualted, one of `exclusive`, `inclusive`
+`tax_strategy` | **Uuid**<br>How taxes should be calculated, one of `exclusive`, `inclusive`
 `deposit_type` | **String**<br>Default deposit type (applied to orders if customer deposit type is `default`, one of `none`, `percentage_total`, `percentage`, `fixed`)
 `deposit_value` | **Integer**<br>Default deposit value (applied to orders if customer deposit type is `default`)
 `currency_format` | **String**<br>Currency format
@@ -104,7 +104,6 @@ Name | Description
 `use_toc` | **Boolean**<br>Wheter the agreement should be accepted during checkout
 `toc_label` | **String**<br>The label of the agreement checkbox
 `toc_content` | **String**<br>The contents of the actual agreement
-`toc_content` | **String**<br>The contents of the actual agreement
 `use_business_hours` | **Boolean**<br>Whether to take opening hours into account while selecting a period (see [operating rules](#operating-rules) for more information)
 `use_away_mode` | **Boolean**<br>Whether away mode is enabled (see [operating rules](#operating-rules) for more information)
 `period_type` | **String**<br>How the period picker is setup, one of `freely` (free selection), `timeslot_duration` (select a day, time and duration), `timeslot_fixed` (fixed timeslots for days). See [operating rules](#operating-rules) for more information
@@ -151,7 +150,7 @@ Name | Description
 `footer` | **String**<br>HTML formatted footer to display on invoices
 `show_product_photos` | **Boolean**<br>Whether to show product photos
 `show_stock_identifiers` | **Boolean**<br>Whether to show identifiers of the stock items that are booked
-`show_free_lines` | **Boolean**<br>Whether to lines that don't have price
+`show_free_lines` | **Boolean**<br>Whether to display lines that don't have price
 `hide_section_lines` | **Boolean**<br>Whether to hide lines within a section, if enabled to total price of all lines in a section is summed and displayed next to the section
 `prefix` | **String**<br>Prefix to use for document numbering, e.g. `{{year}}` or `{{customer_number}}`, combinations are also possible `{{year}}-{{order_number}}`
 
@@ -165,7 +164,7 @@ Name | Description
 `body` | **String**<br>HTML formatted body to display on quotes
 `show_product_photos` | **Boolean**<br>Whether to show product photos
 `show_stock_identifiers` | **Boolean**<br>Whether to show identifiers of the stock items that are booked
-`show_free_lines` | **Boolean**<br>Whether to lines that don't have price
+`show_free_lines` | **Boolean**<br>Whether to display lines that don't have price
 `hide_section_lines` | **Boolean**<br>Whether to hide lines within a section, if enabled to total price of all lines in a section is summed and displayed next to the section
 `prefix` | **String**<br>Prefix to use for document numbering, e.g. `{{year}}` or `{{customer_number}}`, combinations are also possible `{{year}}-{{order_number}}`
 
@@ -179,7 +178,7 @@ Name | Description
 `body` | **String**<br>HTML formatted body to display on contracts
 `show_product_photos` | **Boolean**<br>Whether to show product photos
 `show_stock_identifiers` | **Boolean**<br>Whether to show identifiers of the stock items that are booked
-`show_free_lines` | **Boolean**<br>Whether to lines that don't have price
+`show_free_lines` | **Boolean**<br>Whether to display lines that don't have price
 `hide_section_lines` | **Boolean**<br>Whether to hide lines within a section, if enabled to total price of all lines in a section is summed and displayed next to the section
 `prefix` | **String**<br>Prefix to use for document numbering, e.g. `{{year}}` or `{{customer_number}}`, combinations are also possible `{{year}}-{{order_number}}`
 
@@ -224,9 +223,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4ebd0208-8328-5d69-8c44-ec50939c0967",
+    "id": "c2f5ae5f-9bc0-58a3-b3a6-21162eb07403",
     "type": "settings",
     "attributes": {
+      "updated_at": "2021-12-02T14:39:24+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -237,8 +237,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": null,
-        "tax_region_id": null
+        "tax_category_id": "6b9512ff-2d5f-4e5f-96c0-343c6a97d38d",
+        "tax_region_id": "c3e13fa3-6dd3-4bf2-8aed-c174935302b0"
       },
       "pricing": {
         "enabled": true,
@@ -267,7 +267,6 @@ Name | Description
         "iprestrictions_enabled": false
       },
       "address": {
-        "use_billing_address": false,
         "fields_order": [
           "zipcode",
           "city",
@@ -304,7 +303,7 @@ Name | Description
         "hide_product_availability_quantities": false,
         "show_cart_availability": true,
         "website": null,
-        "custom_scripts": null,
+        "custom_scripts": "",
         "google_analytics_id": null,
         "facebook_pixel_id": null
       },
@@ -316,30 +315,30 @@ Name | Description
       },
       "documents": {
         "show_tax_column": true,
-        "css": null,
-        "scss": null,
+        "css": "",
+        "scss": "",
         "scope_numbering_to_prefix": false,
         "page_size": "a4"
       },
       "invoices": {
-        "footer": null,
+        "footer": "",
         "show_product_photos": true,
         "show_stock_identifiers": false,
         "show_free_lines": true,
         "hide_section_lines": false,
-        "prefix": null
+        "prefix": "{{year}}-{{order_number}}"
       },
       "quotes": {
-        "footer": null,
-        "body": null,
+        "footer": "",
+        "body": "",
         "show_product_photos": true,
         "show_stock_identifiers": false,
         "hide_section_lines": false,
-        "prefix": null
+        "prefix": "{{year}}-{{customer_number}}"
       },
       "contracts": {
-        "footer": null,
-        "body": null,
+        "footer": "",
+        "body": "",
         "show_product_photos": true,
         "show_stock_identifiers": false,
         "hide_section_lines": false,

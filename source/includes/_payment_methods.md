@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "412b6316-8d55-4666-aa61-c5721ca70318",
+      "id": "90bda6d5-2ea4-4c0d-af2b-60ba57956177",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2021-12-02T11:36:10+00:00",
-        "updated_at": "2021-12-02T11:36:10+00:00",
+        "created_at": "2021-12-02T14:38:50+00:00",
+        "updated_at": "2021-12-02T14:38:50+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -91,7 +91,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=customer`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T11:34:03Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T14:36:39Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -131,7 +131,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/8f3fb0a2-3cfe-4307-a3bd-f638cc154df8' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/a48ee0b9-c461-4ac9-bfac-2bf00a697f4f' \
     --header 'content-type: application/json' \
 ```
 
