@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "d322f3a2-8535-54c3-9766-393daea28a7d",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "ba7f9d37-d40d-490f-9548-072da7164446",
-      "employee_id": "730d0e73-94a2-4467-8ca1-0a99b0fcc487",
-      "locations_updated_at": "2021-12-02T16:49:44+00:00",
-      "clusters_updated_at": "2021-12-02T16:49:44+00:00",
-      "default_properties_updated_at": "2021-12-02T16:49:44+00:00"
+      "updated_at": "2021-12-07T11:02:44+00:00",
+      "company_id": "0ab948b3-d258-463d-8e45-f50e3d402f41",
+      "employee_id": "f10e5bd4-1e0f-4ff1-8bf5-1d5619531c9f",
+      "locations_updated_at": "2021-12-07T11:02:44+00:00",
+      "clusters_updated_at": "2021-12-07T11:02:44+00:00",
+      "default_properties_updated_at": "2021-12-07T11:02:44+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "d322f3a2-8535-54c3-9766-393daea28a7d",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
-      "employee_id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "updated_at": "2021-12-07T11:02:44+00:00",
+      "company_id": "01433d2b-8b67-4de9-9c96-35d6e9bbad36",
+      "employee_id": "b97230dd-7da3-4459-bd95-ecc8c45a4142",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223"
+          "id": "01433d2b-8b67-4de9-9c96-35d6e9bbad36"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "c50a506f-f2f2-4d31-8a80-10e0075af447"
+          "id": "b97230dd-7da3-4459-bd95-ecc8c45a4142"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
+      "id": "01433d2b-8b67-4de9-9c96-35d6e9bbad36",
       "type": "companies",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-07T11:02:44+00:00",
+        "updated_at": "2021-12-07T11:02:44+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "164.848.1359 x598",
-        "website": "http://lindgren-smitham.co/kasi",
-        "address": "Reichel Manor\n881 Yuette Lodge\n11548 Fredricview\nTurkmenistan",
-        "address_line_1": "Reichel Manor",
-        "address_line_2": "881 Yuette Lodge",
-        "zipcode": "11548",
-        "city": "Fredricview",
+        "phone": "958-599-2493 x3033",
+        "website": "http://breitenberg-turner.org/edris.boehm",
+        "address": "Ratke Station\n6815 Hertha Shore\n83045-2123 North Taren\nIndonesia",
+        "address_line_1": "Ratke Station",
+        "address_line_2": "6815 Hertha Shore",
+        "zipcode": "83045-2123",
+        "city": "North Taren",
         "region": null,
-        "country": "Turkmenistan",
+        "country": "Indonesia",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "316 Denny Mall",
-        "financial_line_2": "41251 East Nidaton",
+        "financial_line_1": "96701 Macejkovic Skyway",
+        "financial_line_2": "29135-2231 New Sharolyn",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2021-12-16T16:49:44.776Z",
+          "trial_ends_at": "2021-12-21T11:02:44.726Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "id": "b97230dd-7da3-4459-bd95-ecc8c45a4142",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-07T11:02:44+00:00",
+        "updated_at": "2021-12-07T11:02:44+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
