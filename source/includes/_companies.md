@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1b07bc6f-67ab-4f9c-b0a9-06b7a97c7972",
+    "id": "ce90f6c9-0dbf-4fbb-bf42-115cb7e97fc4",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:45+00:00",
-      "updated_at": "2021-12-02T16:47:45+00:00",
+      "created_at": "2021-12-08T11:24:47+00:00",
+      "updated_at": "2021-12-08T11:24:47+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "389.420.9425 x680",
-      "website": "http://zemlak.name/peter_bernier",
-      "address": "Alex Point\n52657 Leuschke Extension\n40958 Ortizmouth\nDenmark",
-      "address_line_1": "Alex Point",
-      "address_line_2": "52657 Leuschke Extension",
-      "zipcode": "40958",
-      "city": "Ortizmouth",
+      "phone": "1-636-845-6464",
+      "website": "http://moen.info/kaylene",
+      "address": "Detra Harbor\n51491 Serafina Parks\n14524 New Elsy\nNew Zealand",
+      "address_line_1": "Detra Harbor",
+      "address_line_2": "51491 Serafina Parks",
+      "zipcode": "14524",
+      "city": "New Elsy",
       "region": null,
-      "country": "Denmark",
+      "country": "New Zealand",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "199 Hoeger Turnpike",
-      "financial_line_2": "13834-9881 North Elliott",
+      "financial_line_1": "8953 Artie Estates",
+      "financial_line_2": "53152 Trudyfurt",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fb01aa72-5c62-4bc5-a0f3-4d41f039b854",
+    "id": "b178a75a-d9ae-459d-860d-c7dc5034534c",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2021-12-16T16:47:45.978Z",
+        "trial_ends_at": "2021-12-22T11:24:47.354Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+        "id": "78049c6c-6070-4123-a3ff-945d75d88259",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+    "id": "78049c6c-6070-4123-a3ff-945d75d88259",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:46+00:00",
-      "updated_at": "2021-12-02T16:47:46+00:00",
+      "created_at": "2021-12-08T11:24:47+00:00",
+      "updated_at": "2021-12-08T11:24:47+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "213-623-6841",
-      "website": "http://bergnaum.io/maximo_reilly",
-      "address": "Hermann Parks\n200 Sheldon Haven\n51773-8425 New Aubreyburgh\nIran",
-      "address_line_1": "Hermann Parks",
-      "address_line_2": "200 Sheldon Haven",
-      "zipcode": "51773-8425",
-      "city": "New Aubreyburgh",
+      "phone": "546.847.4730 x6771",
+      "website": "http://ferry.info/bryan.effertz",
+      "address": "Kutch Roads\n9827 Bryant Key\n40925-8599 New Hong\nBarbados",
+      "address_line_1": "Kutch Roads",
+      "address_line_2": "9827 Bryant Key",
+      "zipcode": "40925-8599",
+      "city": "New Hong",
       "region": null,
-      "country": "Iran",
+      "country": "Barbados",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "223 Bruen Pines",
-      "financial_line_2": "07242-0992 Haagbury",
+      "financial_line_1": "2500 Ernser Roads",
+      "financial_line_2": "98645-9242 Philchester",
       "vat_number": null,
       "custom_domain": null,
       "development": false

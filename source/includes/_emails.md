@@ -54,17 +54,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "61844a39-4240-4bc2-856d-a8d741832ec5",
+      "id": "c0e218ae-e12a-410d-9da3-daf5f9af6702",
       "type": "emails",
       "attributes": {
-        "created_at": "2021-12-02T16:48:11+00:00",
-        "updated_at": "2021-12-02T16:48:11+00:00",
+        "created_at": "2021-12-08T11:25:11+00:00",
+        "updated_at": "2021-12-08T11:25:11+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "document_ids": [],
         "order_id": null,
-        "customer_id": "e75b0b08-862d-4f0f-8560-52144b7d466f",
+        "customer_id": "61af8bea-fc11-4ab5-8694-ac6fe3fe5c63",
         "email_template_id": null,
         "employee_id": null
       },
@@ -76,7 +76,7 @@ Name | Description
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/e75b0b08-862d-4f0f-8560-52144b7d466f"
+            "related": "api/boomerang/customers/61af8bea-fc11-4ab5-8694-ac6fe3fe5c63"
           }
         },
         "email_template": {
@@ -106,7 +106,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=4ae03473-3218-46e4-b024-8b5d39ddc9e6' \
+    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=9494d013-cc4c-448c-acb0-2e38854bf9dd' \
     --header 'content-type: application/json' \
 ```
 
@@ -116,29 +116,29 @@ Name | Description
   {
   "data": [
     {
-      "id": "38e8e278-7d19-490e-ad12-3a6b480eb803",
+      "id": "3dd6c715-4ca2-45ec-8c94-f0bfb9f158dd",
       "type": "emails",
       "attributes": {
-        "created_at": "2021-12-02T16:48:11+00:00",
-        "updated_at": "2021-12-02T16:48:11+00:00",
+        "created_at": "2021-12-08T11:25:11+00:00",
+        "updated_at": "2021-12-08T11:25:12+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "document_ids": [],
-        "order_id": "4ae03473-3218-46e4-b024-8b5d39ddc9e6",
-        "customer_id": "3f94e165-b9a7-4e1d-99ea-61029d46c199",
+        "order_id": "9494d013-cc4c-448c-acb0-2e38854bf9dd",
+        "customer_id": "9f0b1d80-cc77-4121-ada9-ed00b8d898a8",
         "email_template_id": null,
         "employee_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/4ae03473-3218-46e4-b024-8b5d39ddc9e6"
+            "related": "api/boomerang/orders/9494d013-cc4c-448c-acb0-2e38854bf9dd"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/3f94e165-b9a7-4e1d-99ea-61029d46c199"
+            "related": "api/boomerang/customers/9f0b1d80-cc77-4121-ada9-ed00b8d898a8"
           }
         },
         "email_template": {
@@ -155,9 +155,9 @@ Name | Description
     }
   ],
   "links": {
-    "self": "api/boomerang/emails?filter%5Border_id%5D=4ae03473-3218-46e4-b024-8b5d39ddc9e6&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/emails?filter%5Border_id%5D=4ae03473-3218-46e4-b024-8b5d39ddc9e6&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/emails?filter%5Border_id%5D=4ae03473-3218-46e4-b024-8b5d39ddc9e6&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/emails?filter%5Border_id%5D=9494d013-cc4c-448c-acb0-2e38854bf9dd&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/emails?filter%5Border_id%5D=9494d013-cc4c-448c-acb0-2e38854bf9dd&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/emails?filter%5Border_id%5D=9494d013-cc4c-448c-acb0-2e38854bf9dd&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -175,7 +175,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=order,customer,email_template`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[emails]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T16:47:09Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-08T11:24:18Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -237,11 +237,11 @@ This request accepts the following includes:
           "recipients": "customer1@example.com,customer2@example.com",
           "subject": "Order confirmation",
           "body": "Hi {{customer.name}}",
-          "email_template_id": "bf4dc64b-fe5b-4972-bc94-bffb5063f69f",
-          "order_id": "6cd98ee1-56e6-4313-b759-958cd1c3195f",
-          "customer_id": "2e7b0581-f38f-4529-b01b-aa463b4a9c43",
+          "email_template_id": "5d6ec077-fcb1-4326-9926-a88f8e2ff5bc",
+          "order_id": "f367738e-039b-4ece-82d6-6ec99f25bd36",
+          "customer_id": "cdf6d7f0-542c-4ce5-9115-8c0b6d4f5318",
           "document_ids": [
-            "229acfd7-07f3-4683-b662-7e0493e23abe"
+            "7512cdf6-73ee-47ef-8296-16c6ca0c90cd"
           ]
         }
       }
@@ -253,21 +253,21 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f5293036-e034-44b9-9278-c65128cdc6c5",
+    "id": "944ae617-0821-43f7-8758-2c7eb677b372",
     "type": "emails",
     "attributes": {
-      "created_at": "2021-12-02T16:48:12+00:00",
-      "updated_at": "2021-12-02T16:48:12+00:00",
+      "created_at": "2021-12-08T11:25:12+00:00",
+      "updated_at": "2021-12-08T11:25:12+00:00",
       "subject": "Order confirmation",
       "body": "Hi {{customer.name}}",
       "recipients": "customer1@example.com,customer2@example.com",
       "document_ids": [
-        "229acfd7-07f3-4683-b662-7e0493e23abe"
+        "7512cdf6-73ee-47ef-8296-16c6ca0c90cd"
       ],
-      "order_id": "6cd98ee1-56e6-4313-b759-958cd1c3195f",
-      "customer_id": "2e7b0581-f38f-4529-b01b-aa463b4a9c43",
-      "email_template_id": "bf4dc64b-fe5b-4972-bc94-bffb5063f69f",
-      "employee_id": "fd862f0e-fa88-46cc-9402-2c36a8125f3c"
+      "order_id": "f367738e-039b-4ece-82d6-6ec99f25bd36",
+      "customer_id": "cdf6d7f0-542c-4ce5-9115-8c0b6d4f5318",
+      "email_template_id": "5d6ec077-fcb1-4326-9926-a88f8e2ff5bc",
+      "employee_id": "57a50642-c72c-4018-88d7-9c929fff4120"
     },
     "relationships": {
       "order": {
@@ -293,9 +293,9 @@ This request accepts the following includes:
     }
   },
   "links": {
-    "self": "api/boomerang/emails?data%5Battributes%5D%5Bbody%5D=Hi+%7B%7Bcustomer.name%7D%7D&data%5Battributes%5D%5Bcustomer_id%5D=2e7b0581-f38f-4529-b01b-aa463b4a9c43&data%5Battributes%5D%5Bdocument_ids%5D%5B%5D=229acfd7-07f3-4683-b662-7e0493e23abe&data%5Battributes%5D%5Bemail_template_id%5D=bf4dc64b-fe5b-4972-bc94-bffb5063f69f&data%5Battributes%5D%5Border_id%5D=6cd98ee1-56e6-4313-b759-958cd1c3195f&data%5Battributes%5D%5Brecipients%5D=customer1%40example.com%2Ccustomer2%40example.com&data%5Battributes%5D%5Bsubject%5D=Order+confirmation&data%5Btype%5D=emails&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/emails?data%5Battributes%5D%5Bbody%5D=Hi+%7B%7Bcustomer.name%7D%7D&data%5Battributes%5D%5Bcustomer_id%5D=2e7b0581-f38f-4529-b01b-aa463b4a9c43&data%5Battributes%5D%5Bdocument_ids%5D%5B%5D=229acfd7-07f3-4683-b662-7e0493e23abe&data%5Battributes%5D%5Bemail_template_id%5D=bf4dc64b-fe5b-4972-bc94-bffb5063f69f&data%5Battributes%5D%5Border_id%5D=6cd98ee1-56e6-4313-b759-958cd1c3195f&data%5Battributes%5D%5Brecipients%5D=customer1%40example.com%2Ccustomer2%40example.com&data%5Battributes%5D%5Bsubject%5D=Order+confirmation&data%5Btype%5D=emails&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/emails?data%5Battributes%5D%5Bbody%5D=Hi+%7B%7Bcustomer.name%7D%7D&data%5Battributes%5D%5Bcustomer_id%5D=2e7b0581-f38f-4529-b01b-aa463b4a9c43&data%5Battributes%5D%5Bdocument_ids%5D%5B%5D=229acfd7-07f3-4683-b662-7e0493e23abe&data%5Battributes%5D%5Bemail_template_id%5D=bf4dc64b-fe5b-4972-bc94-bffb5063f69f&data%5Battributes%5D%5Border_id%5D=6cd98ee1-56e6-4313-b759-958cd1c3195f&data%5Battributes%5D%5Brecipients%5D=customer1%40example.com%2Ccustomer2%40example.com&data%5Battributes%5D%5Bsubject%5D=Order+confirmation&data%5Btype%5D=emails&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/emails?data%5Battributes%5D%5Bbody%5D=Hi+%7B%7Bcustomer.name%7D%7D&data%5Battributes%5D%5Bcustomer_id%5D=cdf6d7f0-542c-4ce5-9115-8c0b6d4f5318&data%5Battributes%5D%5Bdocument_ids%5D%5B%5D=7512cdf6-73ee-47ef-8296-16c6ca0c90cd&data%5Battributes%5D%5Bemail_template_id%5D=5d6ec077-fcb1-4326-9926-a88f8e2ff5bc&data%5Battributes%5D%5Border_id%5D=f367738e-039b-4ece-82d6-6ec99f25bd36&data%5Battributes%5D%5Brecipients%5D=customer1%40example.com%2Ccustomer2%40example.com&data%5Battributes%5D%5Bsubject%5D=Order+confirmation&data%5Btype%5D=emails&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/emails?data%5Battributes%5D%5Bbody%5D=Hi+%7B%7Bcustomer.name%7D%7D&data%5Battributes%5D%5Bcustomer_id%5D=cdf6d7f0-542c-4ce5-9115-8c0b6d4f5318&data%5Battributes%5D%5Bdocument_ids%5D%5B%5D=7512cdf6-73ee-47ef-8296-16c6ca0c90cd&data%5Battributes%5D%5Bemail_template_id%5D=5d6ec077-fcb1-4326-9926-a88f8e2ff5bc&data%5Battributes%5D%5Border_id%5D=f367738e-039b-4ece-82d6-6ec99f25bd36&data%5Battributes%5D%5Brecipients%5D=customer1%40example.com%2Ccustomer2%40example.com&data%5Battributes%5D%5Bsubject%5D=Order+confirmation&data%5Btype%5D=emails&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/emails?data%5Battributes%5D%5Bbody%5D=Hi+%7B%7Bcustomer.name%7D%7D&data%5Battributes%5D%5Bcustomer_id%5D=cdf6d7f0-542c-4ce5-9115-8c0b6d4f5318&data%5Battributes%5D%5Bdocument_ids%5D%5B%5D=7512cdf6-73ee-47ef-8296-16c6ca0c90cd&data%5Battributes%5D%5Bemail_template_id%5D=5d6ec077-fcb1-4326-9926-a88f8e2ff5bc&data%5Battributes%5D%5Border_id%5D=f367738e-039b-4ece-82d6-6ec99f25bd36&data%5Battributes%5D%5Brecipients%5D=customer1%40example.com%2Ccustomer2%40example.com&data%5Battributes%5D%5Bsubject%5D=Order+confirmation&data%5Btype%5D=emails&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
