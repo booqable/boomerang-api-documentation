@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1b07bc6f-67ab-4f9c-b0a9-06b7a97c7972",
+    "id": "5bf7eea2-13cc-4dd3-ba7d-b6e850ad215f",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:45+00:00",
-      "updated_at": "2021-12-02T16:47:45+00:00",
+      "created_at": "2021-12-08T12:34:11+00:00",
+      "updated_at": "2021-12-08T12:34:11+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "389.420.9425 x680",
-      "website": "http://zemlak.name/peter_bernier",
-      "address": "Alex Point\n52657 Leuschke Extension\n40958 Ortizmouth\nDenmark",
-      "address_line_1": "Alex Point",
-      "address_line_2": "52657 Leuschke Extension",
-      "zipcode": "40958",
-      "city": "Ortizmouth",
+      "phone": "1-381-634-5165",
+      "website": "http://grant.co/morton",
+      "address": "Les Port\n40336 Gorczany Squares\n55191 Humbertobury\nGuam",
+      "address_line_1": "Les Port",
+      "address_line_2": "40336 Gorczany Squares",
+      "zipcode": "55191",
+      "city": "Humbertobury",
       "region": null,
-      "country": "Denmark",
+      "country": "Guam",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "199 Hoeger Turnpike",
-      "financial_line_2": "13834-9881 North Elliott",
+      "financial_line_1": "544 Hodkiewicz Ramp",
+      "financial_line_2": "58849 Jastchester",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fb01aa72-5c62-4bc5-a0f3-4d41f039b854",
+    "id": "d54471fc-d1ae-4866-a601-288fbd422bbb",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2021-12-16T16:47:45.978Z",
+        "trial_ends_at": "2021-12-22T12:34:11.667Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+        "id": "8db089b6-2482-4d72-8f79-d4cf0a5fa4b6",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+    "id": "8db089b6-2482-4d72-8f79-d4cf0a5fa4b6",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:46+00:00",
-      "updated_at": "2021-12-02T16:47:46+00:00",
+      "created_at": "2021-12-08T12:34:11+00:00",
+      "updated_at": "2021-12-08T12:34:11+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "213-623-6841",
-      "website": "http://bergnaum.io/maximo_reilly",
-      "address": "Hermann Parks\n200 Sheldon Haven\n51773-8425 New Aubreyburgh\nIran",
-      "address_line_1": "Hermann Parks",
-      "address_line_2": "200 Sheldon Haven",
-      "zipcode": "51773-8425",
-      "city": "New Aubreyburgh",
+      "phone": "202-147-9308 x022",
+      "website": "http://borer.co/kory.baumbach",
+      "address": "Lubowitz Flats\n808 Schuster Neck\n58652-2265 Cassinmouth\nFiji",
+      "address_line_1": "Lubowitz Flats",
+      "address_line_2": "808 Schuster Neck",
+      "zipcode": "58652-2265",
+      "city": "Cassinmouth",
       "region": null,
-      "country": "Iran",
+      "country": "Fiji",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "223 Bruen Pines",
-      "financial_line_2": "07242-0992 Haagbury",
+      "financial_line_1": "643 Hector Spring",
+      "financial_line_2": "67147 Whiteton",
       "vat_number": null,
       "custom_domain": null,
       "development": false

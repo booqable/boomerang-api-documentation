@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "f0bfd528-9431-5f64-97cd-eabc7148043a",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "ba7f9d37-d40d-490f-9548-072da7164446",
-      "employee_id": "730d0e73-94a2-4467-8ca1-0a99b0fcc487",
-      "locations_updated_at": "2021-12-02T16:49:44+00:00",
-      "clusters_updated_at": "2021-12-02T16:49:44+00:00",
-      "default_properties_updated_at": "2021-12-02T16:49:44+00:00"
+      "updated_at": "2021-12-08T12:35:32+00:00",
+      "company_id": "b1e89c59-bc8b-4a9c-9281-125c0ef0e079",
+      "employee_id": "98043c14-d950-497c-99d4-e30d363178d9",
+      "locations_updated_at": "2021-12-08T12:35:32+00:00",
+      "clusters_updated_at": "2021-12-08T12:35:32+00:00",
+      "default_properties_updated_at": "2021-12-08T12:35:32+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "e8c4683c-714a-5719-8ce0-0c9f35710640",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
-      "employee_id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "updated_at": "2021-12-08T12:35:33+00:00",
+      "company_id": "6ca4e444-d859-45f8-a0a1-8a3cdd409a1c",
+      "employee_id": "580cef4d-15d7-4408-bc51-8293568c3d45",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223"
+          "id": "6ca4e444-d859-45f8-a0a1-8a3cdd409a1c"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "c50a506f-f2f2-4d31-8a80-10e0075af447"
+          "id": "580cef4d-15d7-4408-bc51-8293568c3d45"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
+      "id": "6ca4e444-d859-45f8-a0a1-8a3cdd409a1c",
       "type": "companies",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-08T12:35:33+00:00",
+        "updated_at": "2021-12-08T12:35:33+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "164.848.1359 x598",
-        "website": "http://lindgren-smitham.co/kasi",
-        "address": "Reichel Manor\n881 Yuette Lodge\n11548 Fredricview\nTurkmenistan",
-        "address_line_1": "Reichel Manor",
-        "address_line_2": "881 Yuette Lodge",
-        "zipcode": "11548",
-        "city": "Fredricview",
+        "phone": "116-589-5060 x917",
+        "website": "http://morissette-schaden.co/lauren",
+        "address": "Stokes Estate\n43520 Edmond Passage\n35485 Warrenborough\nMoldova",
+        "address_line_1": "Stokes Estate",
+        "address_line_2": "43520 Edmond Passage",
+        "zipcode": "35485",
+        "city": "Warrenborough",
         "region": null,
-        "country": "Turkmenistan",
+        "country": "Moldova",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "316 Denny Mall",
-        "financial_line_2": "41251 East Nidaton",
+        "financial_line_1": "9222 Prosacco Keys",
+        "financial_line_2": "43180-1530 New Karlborough",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2021-12-16T16:49:44.776Z",
+          "trial_ends_at": "2021-12-22T12:35:33.108Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "id": "580cef4d-15d7-4408-bc51-8293568c3d45",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-08T12:35:33+00:00",
+        "updated_at": "2021-12-08T12:35:33+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
