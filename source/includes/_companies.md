@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1b07bc6f-67ab-4f9c-b0a9-06b7a97c7972",
+    "id": "27c353cf-9614-4539-825b-dec367eb86bc",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:45+00:00",
-      "updated_at": "2021-12-02T16:47:45+00:00",
+      "created_at": "2021-12-13T08:13:51+00:00",
+      "updated_at": "2021-12-13T08:13:51+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "389.420.9425 x680",
-      "website": "http://zemlak.name/peter_bernier",
-      "address": "Alex Point\n52657 Leuschke Extension\n40958 Ortizmouth\nDenmark",
-      "address_line_1": "Alex Point",
-      "address_line_2": "52657 Leuschke Extension",
-      "zipcode": "40958",
-      "city": "Ortizmouth",
+      "phone": "1-686-610-9857 x7696",
+      "website": "http://crooks-homenick.name/raguel",
+      "address": "Deon Dam\n68103 Gaston Views\n23437-3162 Satterfieldport\nVirgin Islands, British",
+      "address_line_1": "Deon Dam",
+      "address_line_2": "68103 Gaston Views",
+      "zipcode": "23437-3162",
+      "city": "Satterfieldport",
       "region": null,
-      "country": "Denmark",
+      "country": "Virgin Islands, British",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "199 Hoeger Turnpike",
-      "financial_line_2": "13834-9881 North Elliott",
+      "financial_line_1": "8063 Dicki Circle",
+      "financial_line_2": "27779-9449 Valliestad",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fb01aa72-5c62-4bc5-a0f3-4d41f039b854",
+    "id": "8ba774ac-6537-4b35-bf85-dd5415f74cd3",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2021-12-16T16:47:45.978Z",
+        "trial_ends_at": "2021-12-27T08:13:51.366Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+        "id": "ee5d970e-f41f-4703-bea1-e6f79e05a5ce",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+    "id": "ee5d970e-f41f-4703-bea1-e6f79e05a5ce",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:46+00:00",
-      "updated_at": "2021-12-02T16:47:46+00:00",
+      "created_at": "2021-12-13T08:13:51+00:00",
+      "updated_at": "2021-12-13T08:13:51+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "213-623-6841",
-      "website": "http://bergnaum.io/maximo_reilly",
-      "address": "Hermann Parks\n200 Sheldon Haven\n51773-8425 New Aubreyburgh\nIran",
-      "address_line_1": "Hermann Parks",
-      "address_line_2": "200 Sheldon Haven",
-      "zipcode": "51773-8425",
-      "city": "New Aubreyburgh",
+      "phone": "113.605.3540 x88212",
+      "website": "http://carroll-mosciski.name/hiram_brown",
+      "address": "Jerde Avenue\n6749 Miller Court\n95512 East Mauritaburgh\nEritrea",
+      "address_line_1": "Jerde Avenue",
+      "address_line_2": "6749 Miller Court",
+      "zipcode": "95512",
+      "city": "East Mauritaburgh",
       "region": null,
-      "country": "Iran",
+      "country": "Eritrea",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "223 Bruen Pines",
-      "financial_line_2": "07242-0992 Haagbury",
+      "financial_line_1": "51628 Schmeler Mountains",
+      "financial_line_2": "52820-7433 East Leighside",
       "vat_number": null,
       "custom_domain": null,
       "development": false
