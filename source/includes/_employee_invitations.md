@@ -55,27 +55,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "eff940a5-0549-5e11-b35d-3749bbad4a00",
+    "id": "5c4e768c-f246-5629-a2da-c7397a67d75c",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "dac1f26e-a1d0-4cb9-8456-1e10eaed7365"
+      "employee_id": "627feace-2e62-4554-a0c4-25e7e6d6bfba"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "dac1f26e-a1d0-4cb9-8456-1e10eaed7365"
+          "id": "627feace-2e62-4554-a0c4-25e7e6d6bfba"
         }
       }
     }
   },
   "included": [
     {
-      "id": "dac1f26e-a1d0-4cb9-8456-1e10eaed7365",
+      "id": "627feace-2e62-4554-a0c4-25e7e6d6bfba",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T16:48:15+00:00",
-        "updated_at": "2021-12-02T16:48:15+00:00",
+        "created_at": "2021-12-15T11:44:17+00:00",
+        "updated_at": "2021-12-15T11:44:17+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -113,7 +113,7 @@ Note that you can also update other fields.
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "5c69f922-c6a5-4875-98be-e8698c0ee441",
+          "id": "19671ced-abf8-41fc-979c-1298a90a6d2c",
           "email": "jane@doe.com"
         }
       },
@@ -126,27 +126,27 @@ Note that you can also update other fields.
 ```json
   {
   "data": {
-    "id": "5c69f922-c6a5-4875-98be-e8698c0ee441",
+    "id": "19671ced-abf8-41fc-979c-1298a90a6d2c",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "5c69f922-c6a5-4875-98be-e8698c0ee441"
+      "employee_id": "19671ced-abf8-41fc-979c-1298a90a6d2c"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "5c69f922-c6a5-4875-98be-e8698c0ee441"
+          "id": "19671ced-abf8-41fc-979c-1298a90a6d2c"
         }
       }
     }
   },
   "included": [
     {
-      "id": "5c69f922-c6a5-4875-98be-e8698c0ee441",
+      "id": "19671ced-abf8-41fc-979c-1298a90a6d2c",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T16:48:15+00:00",
-        "updated_at": "2021-12-02T16:48:15+00:00",
+        "created_at": "2021-12-15T11:44:17+00:00",
+        "updated_at": "2021-12-15T11:44:17+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -172,10 +172,10 @@ Note that you can also update other fields.
     }
   ],
   "links": {
-    "self": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=5c69f922-c6a5-4875-98be-e8698c0ee441&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/employee_invitations?data%5Battributes%5D%5Bemail%5D=jane%40doe.com&data%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&data%5Btype%5D=employee_invitations&employee_invitation%5Bdata%5D%5Battributes%5D%5Bemail%5D=jane%40doe.com&employee_invitation%5Bdata%5D%5Battributes%5D%5Bid%5D=19671ced-abf8-41fc-979c-1298a90a6d2c&employee_invitation%5Bdata%5D%5Btype%5D=employee_invitations&employee_invitation%5Binclude%5D=employee&include=employee&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }

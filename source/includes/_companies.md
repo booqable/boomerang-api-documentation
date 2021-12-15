@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1b07bc6f-67ab-4f9c-b0a9-06b7a97c7972",
+    "id": "fdba8d22-639d-4dd6-9421-9e6764ed5ded",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:45+00:00",
-      "updated_at": "2021-12-02T16:47:45+00:00",
+      "created_at": "2021-12-15T11:43:47+00:00",
+      "updated_at": "2021-12-15T11:43:47+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "389.420.9425 x680",
-      "website": "http://zemlak.name/peter_bernier",
-      "address": "Alex Point\n52657 Leuschke Extension\n40958 Ortizmouth\nDenmark",
-      "address_line_1": "Alex Point",
-      "address_line_2": "52657 Leuschke Extension",
-      "zipcode": "40958",
-      "city": "Ortizmouth",
+      "phone": "405.028.0840 x7754",
+      "website": "http://wunsch-sporer.com/tracy.brekke",
+      "address": "Lakiesha Walks\n11595 Streich Crest\n60801 Willmschester\nGuinea",
+      "address_line_1": "Lakiesha Walks",
+      "address_line_2": "11595 Streich Crest",
+      "zipcode": "60801",
+      "city": "Willmschester",
       "region": null,
-      "country": "Denmark",
+      "country": "Guinea",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "199 Hoeger Turnpike",
-      "financial_line_2": "13834-9881 North Elliott",
+      "financial_line_1": "97676 Troy Port",
+      "financial_line_2": "28624 West Kris",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fb01aa72-5c62-4bc5-a0f3-4d41f039b854",
+    "id": "360f223b-836c-47b0-8939-a1a268ad9fe3",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2021-12-16T16:47:45.978Z",
+        "trial_ends_at": "2021-12-29T11:43:47.673Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+        "id": "c8318116-a70d-4e06-bdee-827eeb24ee23",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+    "id": "c8318116-a70d-4e06-bdee-827eeb24ee23",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:46+00:00",
-      "updated_at": "2021-12-02T16:47:46+00:00",
+      "created_at": "2021-12-15T11:43:47+00:00",
+      "updated_at": "2021-12-15T11:43:48+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "213-623-6841",
-      "website": "http://bergnaum.io/maximo_reilly",
-      "address": "Hermann Parks\n200 Sheldon Haven\n51773-8425 New Aubreyburgh\nIran",
-      "address_line_1": "Hermann Parks",
-      "address_line_2": "200 Sheldon Haven",
-      "zipcode": "51773-8425",
-      "city": "New Aubreyburgh",
+      "phone": "641-332-9207",
+      "website": "http://renner.org/morton",
+      "address": "Barton Inlet\n12581 Prohaska Lane\n86026-8888 South Alene\nUzbekistan",
+      "address_line_1": "Barton Inlet",
+      "address_line_2": "12581 Prohaska Lane",
+      "zipcode": "86026-8888",
+      "city": "South Alene",
       "region": null,
-      "country": "Iran",
+      "country": "Uzbekistan",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "223 Bruen Pines",
-      "financial_line_2": "07242-0992 Haagbury",
+      "financial_line_1": "1614 Enrique Prairie",
+      "financial_line_2": "14082-9061 Jeanicechester",
       "vat_number": null,
       "custom_domain": null,
       "development": false
