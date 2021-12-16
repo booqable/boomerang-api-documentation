@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1b07bc6f-67ab-4f9c-b0a9-06b7a97c7972",
+    "id": "03fc8bdd-9f38-4c1a-84d3-1e36fc4a4485",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:45+00:00",
-      "updated_at": "2021-12-02T16:47:45+00:00",
+      "created_at": "2021-12-16T09:38:08+00:00",
+      "updated_at": "2021-12-16T09:38:08+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "389.420.9425 x680",
-      "website": "http://zemlak.name/peter_bernier",
-      "address": "Alex Point\n52657 Leuschke Extension\n40958 Ortizmouth\nDenmark",
-      "address_line_1": "Alex Point",
-      "address_line_2": "52657 Leuschke Extension",
-      "zipcode": "40958",
-      "city": "Ortizmouth",
+      "phone": "995-611-0125 x259",
+      "website": "http://mueller.com/tamera",
+      "address": "Shenita Stravenue\n4461 Turcotte Plain\n24076-3033 Goodwinchester\nHungary",
+      "address_line_1": "Shenita Stravenue",
+      "address_line_2": "4461 Turcotte Plain",
+      "zipcode": "24076-3033",
+      "city": "Goodwinchester",
       "region": null,
-      "country": "Denmark",
+      "country": "Hungary",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "199 Hoeger Turnpike",
-      "financial_line_2": "13834-9881 North Elliott",
+      "financial_line_1": "414 Jarrod Parkway",
+      "financial_line_2": "69594-6115 West Willside",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fb01aa72-5c62-4bc5-a0f3-4d41f039b854",
+    "id": "725447e9-73ab-46e0-a447-db488a666855",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2021-12-16T16:47:45.978Z",
+        "trial_ends_at": "2021-12-30T09:38:09.156Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+        "id": "8c3daf36-efa2-47ca-9fec-7883a5255585",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+    "id": "8c3daf36-efa2-47ca-9fec-7883a5255585",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:46+00:00",
-      "updated_at": "2021-12-02T16:47:46+00:00",
+      "created_at": "2021-12-16T09:38:09+00:00",
+      "updated_at": "2021-12-16T09:38:09+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "213-623-6841",
-      "website": "http://bergnaum.io/maximo_reilly",
-      "address": "Hermann Parks\n200 Sheldon Haven\n51773-8425 New Aubreyburgh\nIran",
-      "address_line_1": "Hermann Parks",
-      "address_line_2": "200 Sheldon Haven",
-      "zipcode": "51773-8425",
-      "city": "New Aubreyburgh",
+      "phone": "1-788-318-0351",
+      "website": "http://koch.name/fermin",
+      "address": "Steuber Way\n28134 McLaughlin Via\n66384-5991 Kamborough\nBangladesh",
+      "address_line_1": "Steuber Way",
+      "address_line_2": "28134 McLaughlin Via",
+      "zipcode": "66384-5991",
+      "city": "Kamborough",
       "region": null,
-      "country": "Iran",
+      "country": "Bangladesh",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "223 Bruen Pines",
-      "financial_line_2": "07242-0992 Haagbury",
+      "financial_line_1": "91392 Bashirian Knolls",
+      "financial_line_2": "76377 South Denver",
       "vat_number": null,
       "custom_domain": null,
       "development": false
