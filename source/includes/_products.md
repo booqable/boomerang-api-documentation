@@ -91,11 +91,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "c2b983e5-2e64-4757-b1c9-f3e0be2f2664",
+      "id": "68173964-b28b-4863-b584-966cb6a84e73",
       "type": "products",
       "attributes": {
-        "created_at": "2021-12-02T16:49:35+00:00",
-        "updated_at": "2021-12-02T16:49:35+00:00",
+        "created_at": "2021-12-27T12:59:13+00:00",
+        "updated_at": "2021-12-27T12:59:13+00:00",
         "type": "products",
         "name": "iPad Pro - blue",
         "slug": "ipad-pro-blue",
@@ -126,7 +126,7 @@ Name | Description
         ],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "893016d1-2187-4acb-acf6-2a20d3c09b1b",
+        "product_group_id": "49041735-0e88-4443-a95f-c1023a2155e3",
         "tax_category_id": null,
         "price_structure_id": null
       },
@@ -138,7 +138,7 @@ Name | Description
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/893016d1-2187-4acb-acf6-2a20d3c09b1b"
+            "related": "api/boomerang/product_groups/49041735-0e88-4443-a95f-c1023a2155e3"
           }
         },
         "tax_category": {
@@ -148,7 +148,7 @@ Name | Description
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=c2b983e5-2e64-4757-b1c9-f3e0be2f2664&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=68173964-b28b-4863-b584-966cb6a84e73&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -158,22 +158,22 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=893016d1-2187-4acb-acf6-2a20d3c09b1b&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=49041735-0e88-4443-a95f-c1023a2155e3&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=893016d1-2187-4acb-acf6-2a20d3c09b1b"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=49041735-0e88-4443-a95f-c1023a2155e3"
           }
         }
       }
     },
     {
-      "id": "47ad325a-5fed-41b9-afe8-45bd0d97ceb1",
+      "id": "dca1e1db-9fbd-48c1-a8e2-624456968e26",
       "type": "products",
       "attributes": {
-        "created_at": "2021-12-02T16:49:34+00:00",
-        "updated_at": "2021-12-02T16:49:35+00:00",
+        "created_at": "2021-12-27T12:59:12+00:00",
+        "updated_at": "2021-12-27T12:59:13+00:00",
         "type": "products",
         "name": "iPad Pro - green",
         "slug": "ipad-pro",
@@ -204,7 +204,7 @@ Name | Description
         ],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "893016d1-2187-4acb-acf6-2a20d3c09b1b",
+        "product_group_id": "49041735-0e88-4443-a95f-c1023a2155e3",
         "tax_category_id": null,
         "price_structure_id": null
       },
@@ -216,7 +216,7 @@ Name | Description
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/893016d1-2187-4acb-acf6-2a20d3c09b1b"
+            "related": "api/boomerang/product_groups/49041735-0e88-4443-a95f-c1023a2155e3"
           }
         },
         "tax_category": {
@@ -226,7 +226,7 @@ Name | Description
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=47ad325a-5fed-41b9-afe8-45bd0d97ceb1&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=dca1e1db-9fbd-48c1-a8e2-624456968e26&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -236,12 +236,12 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=893016d1-2187-4acb-acf6-2a20d3c09b1b&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=49041735-0e88-4443-a95f-c1023a2155e3&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=893016d1-2187-4acb-acf6-2a20d3c09b1b"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=49041735-0e88-4443-a95f-c1023a2155e3"
           }
         }
       }
@@ -268,7 +268,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,product_group,tax_category`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[products]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T16:47:09Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-27T12:57:04Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -343,7 +343,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/products/50f0f403-2212-4b26-afda-e460153c554d' \
+    --url 'https://example.booqable.com/api/boomerang/products/8c5d06b3-24be-4aea-9a57-e51cd4d5cea8' \
     --header 'content-type: application/json' \
 ```
 
@@ -352,11 +352,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "50f0f403-2212-4b26-afda-e460153c554d",
+    "id": "8c5d06b3-24be-4aea-9a57-e51cd4d5cea8",
     "type": "products",
     "attributes": {
-      "created_at": "2021-12-02T16:49:36+00:00",
-      "updated_at": "2021-12-02T16:49:36+00:00",
+      "created_at": "2021-12-27T12:59:14+00:00",
+      "updated_at": "2021-12-27T12:59:14+00:00",
       "type": "products",
       "name": "iPad Pro - green",
       "slug": "ipad-pro",
@@ -387,7 +387,7 @@ This request accepts the following includes:
       ],
       "allow_shortage": false,
       "shortage_limit": 0,
-      "product_group_id": "dbed212c-6f58-4657-ba29-d962d5b437d4",
+      "product_group_id": "17422b8e-08a5-4cde-b140-706d329eac40",
       "tax_category_id": null,
       "price_structure_id": null
     },
@@ -399,7 +399,7 @@ This request accepts the following includes:
       },
       "product_group": {
         "links": {
-          "related": "api/boomerang/product_groups/dbed212c-6f58-4657-ba29-d962d5b437d4"
+          "related": "api/boomerang/product_groups/17422b8e-08a5-4cde-b140-706d329eac40"
         }
       },
       "tax_category": {
@@ -409,7 +409,7 @@ This request accepts the following includes:
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=50f0f403-2212-4b26-afda-e460153c554d&filter[owner_type]=products"
+          "related": "api/boomerang/barcodes?filter[owner_id]=8c5d06b3-24be-4aea-9a57-e51cd4d5cea8&filter[owner_type]=products"
         }
       },
       "price_structure": {
@@ -419,12 +419,12 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=dbed212c-6f58-4657-ba29-d962d5b437d4&filter[owner_type]=products"
+          "related": "api/boomerang/properties?filter[owner_id]=17422b8e-08a5-4cde-b140-706d329eac40&filter[owner_type]=products"
         }
       },
       "categories": {
         "links": {
-          "related": "/api/boomerang/categories?filter%5Bitem_id%5D=dbed212c-6f58-4657-ba29-d962d5b437d4"
+          "related": "/api/boomerang/categories?filter%5Bitem_id%5D=17422b8e-08a5-4cde-b140-706d329eac40"
         }
       }
     }
@@ -484,7 +484,7 @@ This request accepts the following includes:
       "data": {
         "type": "products",
         "attributes": {
-          "product_group_id": "c9b5a60c-2737-452c-ad84-b4778bccef13",
+          "product_group_id": "005311b6-d435-459b-9565-5d3ad698ad21",
           "variation_values": [
             "red"
           ]
@@ -498,11 +498,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e4508ab9-889f-4c5a-9720-37f64a9ca303",
+    "id": "26b8b4e0-33f5-4d19-907f-3699ff1316f8",
     "type": "products",
     "attributes": {
-      "created_at": "2021-12-02T16:49:38+00:00",
-      "updated_at": "2021-12-02T16:49:38+00:00",
+      "created_at": "2021-12-27T12:59:15+00:00",
+      "updated_at": "2021-12-27T12:59:15+00:00",
       "type": "products",
       "name": "iPad Pro - red",
       "slug": "ipad-pro-red",
@@ -533,7 +533,7 @@ This request accepts the following includes:
       ],
       "allow_shortage": false,
       "shortage_limit": 0,
-      "product_group_id": "c9b5a60c-2737-452c-ad84-b4778bccef13",
+      "product_group_id": "005311b6-d435-459b-9565-5d3ad698ad21",
       "tax_category_id": null,
       "price_structure_id": null
     },
@@ -576,9 +576,9 @@ This request accepts the following includes:
     }
   },
   "links": {
-    "self": "api/boomerang/products?data%5Battributes%5D%5Bproduct_group_id%5D=c9b5a60c-2737-452c-ad84-b4778bccef13&data%5Battributes%5D%5Bvariation_values%5D%5B%5D=red&data%5Btype%5D=products&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/products?data%5Battributes%5D%5Bproduct_group_id%5D=c9b5a60c-2737-452c-ad84-b4778bccef13&data%5Battributes%5D%5Bvariation_values%5D%5B%5D=red&data%5Btype%5D=products&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/products?data%5Battributes%5D%5Bproduct_group_id%5D=c9b5a60c-2737-452c-ad84-b4778bccef13&data%5Battributes%5D%5Bvariation_values%5D%5B%5D=red&data%5Btype%5D=products&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/products?data%5Battributes%5D%5Bproduct_group_id%5D=005311b6-d435-459b-9565-5d3ad698ad21&data%5Battributes%5D%5Bvariation_values%5D%5B%5D=red&data%5Btype%5D=products&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/products?data%5Battributes%5D%5Bproduct_group_id%5D=005311b6-d435-459b-9565-5d3ad698ad21&data%5Battributes%5D%5Bvariation_values%5D%5B%5D=red&data%5Btype%5D=products&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/products?data%5Battributes%5D%5Bproduct_group_id%5D=005311b6-d435-459b-9565-5d3ad698ad21&data%5Battributes%5D%5Bvariation_values%5D%5B%5D=red&data%5Btype%5D=products&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -647,11 +647,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/products/74e841a8-2d94-4737-9ba8-983c83c972f4' \
+    --url 'https://example.booqable.com/api/boomerang/products/46439928-e786-4bf7-be40-65e9f9306c44' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "74e841a8-2d94-4737-9ba8-983c83c972f4",
+        "id": "46439928-e786-4bf7-be40-65e9f9306c44",
         "type": "products",
         "attributes": {
           "variation_values": [
@@ -667,11 +667,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "74e841a8-2d94-4737-9ba8-983c83c972f4",
+    "id": "46439928-e786-4bf7-be40-65e9f9306c44",
     "type": "products",
     "attributes": {
-      "created_at": "2021-12-02T16:49:38+00:00",
-      "updated_at": "2021-12-02T16:49:39+00:00",
+      "created_at": "2021-12-27T12:59:16+00:00",
+      "updated_at": "2021-12-27T12:59:16+00:00",
       "type": "products",
       "name": "iPad Pro - red",
       "slug": "ipad-pro",
@@ -702,7 +702,7 @@ This request accepts the following includes:
       ],
       "allow_shortage": false,
       "shortage_limit": 0,
-      "product_group_id": "1855ecba-c242-4a14-994b-339d6f0a6732",
+      "product_group_id": "506b78c1-41dd-470f-b928-e1f3d3542c5d",
       "tax_category_id": null,
       "price_structure_id": null
     },
@@ -811,7 +811,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/products/4e6bd576-c5fb-4090-8a8b-40dfca51e5ef' \
+    --url 'https://example.booqable.com/api/boomerang/products/48df98bf-34ee-49f2-a142-a75c87120544' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

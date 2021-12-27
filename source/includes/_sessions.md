@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "92e877b9-5a91-5573-85de-596534c7abbe",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "ba7f9d37-d40d-490f-9548-072da7164446",
-      "employee_id": "730d0e73-94a2-4467-8ca1-0a99b0fcc487",
-      "locations_updated_at": "2021-12-02T16:49:44+00:00",
-      "clusters_updated_at": "2021-12-02T16:49:44+00:00",
-      "default_properties_updated_at": "2021-12-02T16:49:44+00:00"
+      "updated_at": "2021-12-27T12:59:21+00:00",
+      "company_id": "b8091e59-35b0-4101-843d-8d8b143aeb7a",
+      "employee_id": "ec29aca8-0d87-4848-98e1-4cb4e651d491",
+      "locations_updated_at": "2021-12-27T12:59:21+00:00",
+      "clusters_updated_at": "2021-12-27T12:59:21+00:00",
+      "default_properties_updated_at": "2021-12-27T12:59:21+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a436d5d4-f39c-5787-ba02-657743bdae4c",
+    "id": "92e877b9-5a91-5573-85de-596534c7abbe",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-02T16:49:44+00:00",
-      "company_id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
-      "employee_id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "updated_at": "2021-12-27T12:59:21+00:00",
+      "company_id": "96091e63-056c-4944-b743-44d8475d20ea",
+      "employee_id": "6bc42743-f6fc-4faf-a842-0dbdebf02f76",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223"
+          "id": "96091e63-056c-4944-b743-44d8475d20ea"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "c50a506f-f2f2-4d31-8a80-10e0075af447"
+          "id": "6bc42743-f6fc-4faf-a842-0dbdebf02f76"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "219c70b4-ba0b-4271-a6e6-ded52ef6d223",
+      "id": "96091e63-056c-4944-b743-44d8475d20ea",
       "type": "companies",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-27T12:59:21+00:00",
+        "updated_at": "2021-12-27T12:59:21+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "164.848.1359 x598",
-        "website": "http://lindgren-smitham.co/kasi",
-        "address": "Reichel Manor\n881 Yuette Lodge\n11548 Fredricview\nTurkmenistan",
-        "address_line_1": "Reichel Manor",
-        "address_line_2": "881 Yuette Lodge",
-        "zipcode": "11548",
-        "city": "Fredricview",
+        "phone": "786-773-5906",
+        "website": "http://mertz.net/eldora",
+        "address": "Glenn Forks\n428 Beer Roads\n83190-8868 North Opalborough\nBurkina Faso",
+        "address_line_1": "Glenn Forks",
+        "address_line_2": "428 Beer Roads",
+        "zipcode": "83190-8868",
+        "city": "North Opalborough",
         "region": null,
-        "country": "Turkmenistan",
+        "country": "Burkina Faso",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "316 Denny Mall",
-        "financial_line_2": "41251 East Nidaton",
+        "financial_line_1": "877 Torphy Plain",
+        "financial_line_2": "79403 South Marciemouth",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2021-12-16T16:49:44.776Z",
+          "trial_ends_at": "2022-01-10T12:59:21.912Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "c50a506f-f2f2-4d31-8a80-10e0075af447",
+      "id": "6bc42743-f6fc-4faf-a842-0dbdebf02f76",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T16:49:44+00:00",
-        "updated_at": "2021-12-02T16:49:44+00:00",
+        "created_at": "2021-12-27T12:59:21+00:00",
+        "updated_at": "2021-12-27T12:59:21+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
