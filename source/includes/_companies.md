@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1b07bc6f-67ab-4f9c-b0a9-06b7a97c7972",
+    "id": "1ac66d92-5985-416d-be4d-028c8c1ce85f",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:45+00:00",
-      "updated_at": "2021-12-02T16:47:45+00:00",
+      "created_at": "2021-12-27T12:57:33+00:00",
+      "updated_at": "2021-12-27T12:57:33+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "389.420.9425 x680",
-      "website": "http://zemlak.name/peter_bernier",
-      "address": "Alex Point\n52657 Leuschke Extension\n40958 Ortizmouth\nDenmark",
-      "address_line_1": "Alex Point",
-      "address_line_2": "52657 Leuschke Extension",
-      "zipcode": "40958",
-      "city": "Ortizmouth",
+      "phone": "505.013.9116 x6562",
+      "website": "http://lang.com/allan_howell",
+      "address": "Classie Valley\n748 Cyrus Estates\n72406 New Rosendoborough\nIsrael",
+      "address_line_1": "Classie Valley",
+      "address_line_2": "748 Cyrus Estates",
+      "zipcode": "72406",
+      "city": "New Rosendoborough",
       "region": null,
-      "country": "Denmark",
+      "country": "Israel",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "199 Hoeger Turnpike",
-      "financial_line_2": "13834-9881 North Elliott",
+      "financial_line_1": "7447 Mauricio Station",
+      "financial_line_2": "46074 Schuppechester",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fb01aa72-5c62-4bc5-a0f3-4d41f039b854",
+    "id": "92e7051f-778b-4619-9b44-e4cec52693c1",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2021-12-16T16:47:45.978Z",
+        "trial_ends_at": "2022-01-10T12:57:33.652Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+        "id": "940c3f0a-55b3-4ce6-a21d-4f1e1a14ef3c",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4df1a296-06d8-402e-a789-807414cacbd4",
+    "id": "940c3f0a-55b3-4ce6-a21d-4f1e1a14ef3c",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-02T16:47:46+00:00",
-      "updated_at": "2021-12-02T16:47:46+00:00",
+      "created_at": "2021-12-27T12:57:33+00:00",
+      "updated_at": "2021-12-27T12:57:34+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "213-623-6841",
-      "website": "http://bergnaum.io/maximo_reilly",
-      "address": "Hermann Parks\n200 Sheldon Haven\n51773-8425 New Aubreyburgh\nIran",
-      "address_line_1": "Hermann Parks",
-      "address_line_2": "200 Sheldon Haven",
-      "zipcode": "51773-8425",
-      "city": "New Aubreyburgh",
+      "phone": "1-285-188-2325",
+      "website": "http://morissette.com/dorsey_turner",
+      "address": "Goodwin Drives\n56388 Dietrich Heights\n89621 Mantetown\nCape Verde",
+      "address_line_1": "Goodwin Drives",
+      "address_line_2": "56388 Dietrich Heights",
+      "zipcode": "89621",
+      "city": "Mantetown",
       "region": null,
-      "country": "Iran",
+      "country": "Cape Verde",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "223 Bruen Pines",
-      "financial_line_2": "07242-0992 Haagbury",
+      "financial_line_1": "86440 Jeramy Rapids",
+      "financial_line_2": "15753-3037 Lake Charisland",
       "vat_number": null,
       "custom_domain": null,
       "development": false

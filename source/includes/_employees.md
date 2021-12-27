@@ -32,6 +32,7 @@ Name | Description
 `password` | **String** `writeonly`<br>Set a new password
 `password_confirmation` | **String** `writeonly`<br>Confirm new password
 `active` | **Boolean**<br>Whether this employee is active (counts towards billing)
+`deactivated_at` | **Datetime** `writeonly`<br>Employee deactivation date
 `owner` | **Boolean** `readonly`<br>Whether this employee is the account owner
 `confirmed` | **Boolean** `readonly`<br>Wheter this employee confirmed it's email address
 `time_to_confirm` | **Integer** `readonly`<br>Time in days left to confirm
@@ -61,11 +62,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "1cb771e6-449f-471f-8b80-d83855173aff",
+      "id": "3031de96-d31b-4a78-ad3c-ce39699115ff",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-02T16:48:16+00:00",
-        "updated_at": "2021-12-02T16:48:16+00:00",
+        "created_at": "2021-12-27T12:58:02+00:00",
+        "updated_at": "2021-12-27T12:58:02+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -111,7 +112,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[employees]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-02T16:47:09Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-27T12:57:04Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -129,6 +130,7 @@ Name | Description
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `email` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `active` | **Boolean**<br>`eq`
+`deactivated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `owner` | **Boolean**<br>`eq`
 `confirmed` | **Boolean**<br>`eq`
 
@@ -153,7 +155,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/8a54bcae-8427-4e2d-a369-9d8942978bb0' \
+    --url 'https://example.booqable.com/api/boomerang/employees/84f77aba-3005-4900-8ccb-e3c6993def53' \
     --header 'content-type: application/json' \
 ```
 
@@ -162,11 +164,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8a54bcae-8427-4e2d-a369-9d8942978bb0",
+    "id": "84f77aba-3005-4900-8ccb-e3c6993def53",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T16:48:16+00:00",
-      "updated_at": "2021-12-02T16:48:16+00:00",
+      "created_at": "2021-12-27T12:58:02+00:00",
+      "updated_at": "2021-12-27T12:58:02+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -219,11 +221,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/416ed540-e175-4694-be1a-3bb7034c8c76' \
+    --url 'https://example.booqable.com/api/boomerang/employees/7a555274-88fa-4904-a1d2-6caf5cc9c9b8' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "416ed540-e175-4694-be1a-3bb7034c8c76",
+        "id": "7a555274-88fa-4904-a1d2-6caf5cc9c9b8",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -237,11 +239,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "416ed540-e175-4694-be1a-3bb7034c8c76",
+    "id": "7a555274-88fa-4904-a1d2-6caf5cc9c9b8",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T16:48:16+00:00",
-      "updated_at": "2021-12-02T16:48:16+00:00",
+      "created_at": "2021-12-27T12:58:03+00:00",
+      "updated_at": "2021-12-27T12:58:03+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -274,11 +276,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/6e3f7b1f-bcfc-4f3d-b4f7-35cae8519f83' \
+    --url 'https://example.booqable.com/api/boomerang/employees/b42bd5ba-e527-41f1-a12b-12216785e206' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "6e3f7b1f-bcfc-4f3d-b4f7-35cae8519f83",
+        "id": "b42bd5ba-e527-41f1-a12b-12216785e206",
         "type": "employees",
         "attributes": {
           "active": false
@@ -292,11 +294,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "6e3f7b1f-bcfc-4f3d-b4f7-35cae8519f83",
+    "id": "b42bd5ba-e527-41f1-a12b-12216785e206",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T16:48:17+00:00",
-      "updated_at": "2021-12-02T16:48:17+00:00",
+      "created_at": "2021-12-27T12:58:03+00:00",
+      "updated_at": "2021-12-27T12:58:03+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -329,11 +331,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/f5adfa55-5c73-422f-8bd0-b3783b5ab5f6' \
+    --url 'https://example.booqable.com/api/boomerang/employees/69cfc171-0a18-4bce-8c64-ba6242b2ac24' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f5adfa55-5c73-422f-8bd0-b3783b5ab5f6",
+        "id": "69cfc171-0a18-4bce-8c64-ba6242b2ac24",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -350,11 +352,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f5adfa55-5c73-422f-8bd0-b3783b5ab5f6",
+    "id": "69cfc171-0a18-4bce-8c64-ba6242b2ac24",
     "type": "employees",
     "attributes": {
-      "created_at": "2021-12-02T16:48:17+00:00",
-      "updated_at": "2021-12-02T16:48:17+00:00",
+      "created_at": "2021-12-27T12:58:03+00:00",
+      "updated_at": "2021-12-27T12:58:03+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -403,6 +405,7 @@ Name | Description
 `data[attributes][password]` | **String**<br>Set a new password
 `data[attributes][password_confirmation]` | **String**<br>Confirm new password
 `data[attributes][active]` | **Boolean**<br>Whether this employee is active (counts towards billing)
+`data[attributes][deactivated_at]` | **Datetime**<br>Employee deactivation date
 `data[attributes][permissions][]` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `data[attributes][avatar_base64]` | **String**<br>Base64 encoded avatar
 `data[attributes][remove_avatar]` | **Boolean**<br>Remove current avatar
