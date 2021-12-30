@@ -40,11 +40,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "0a7dbc48-209c-40cf-826d-82e318647025",
+      "id": "124fc349-43ba-4f9b-833e-0b647cd8adf2",
       "type": "bundles",
       "attributes": {
-        "created_at": "2021-12-27T12:58:07+00:00",
-        "updated_at": "2021-12-27T12:58:07+00:00",
+        "created_at": "2021-12-30T11:21:45+00:00",
+        "updated_at": "2021-12-30T11:21:45+00:00",
         "type": "bundles",
         "name": "iPad Bundle",
         "slug": "ipad-bundle",
@@ -78,22 +78,22 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=0a7dbc48-209c-40cf-826d-82e318647025"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=124fc349-43ba-4f9b-833e-0b647cd8adf2"
           }
         },
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=0a7dbc48-209c-40cf-826d-82e318647025"
+            "related": "api/boomerang/categories?filter[item_id]=124fc349-43ba-4f9b-833e-0b647cd8adf2"
           }
         }
       }
     },
     {
-      "id": "3593a996-06e9-47fe-90ac-40943b8702fb",
+      "id": "717d2ead-6139-4541-b0aa-74227a34e45f",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2021-12-27T12:58:07+00:00",
-        "updated_at": "2021-12-27T12:58:07+00:00",
+        "created_at": "2021-12-30T11:21:45+00:00",
+        "updated_at": "2021-12-30T11:21:45+00:00",
         "type": "product_groups",
         "name": "iPad Pro",
         "slug": "ipad-pro",
@@ -127,13 +127,13 @@ For this resource relationships are described in the following resources:
         "variation_fields": [],
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
-        "tax_category_id": "61bd4be3-3498-49f8-a8eb-be76c2bb1b58",
+        "tax_category_id": "0a7cc433-0236-4477-bc5c-6b4738834831",
         "price_structure_id": null
       },
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=3593a996-06e9-47fe-90ac-40943b8702fb"
+            "related": "api/boomerang/categories?filter[item_id]=717d2ead-6139-4541-b0aa-74227a34e45f"
           }
         },
         "photo": {
@@ -143,12 +143,12 @@ For this resource relationships are described in the following resources:
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=3593a996-06e9-47fe-90ac-40943b8702fb"
+            "related": "api/boomerang/products?filter[product_group_id]=717d2ead-6139-4541-b0aa-74227a34e45f"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/61bd4be3-3498-49f8-a8eb-be76c2bb1b58"
+            "related": "api/boomerang/tax_categories/0a7cc433-0236-4477-bc5c-6b4738834831"
           }
         },
         "price_structure": {
@@ -158,17 +158,17 @@ For this resource relationships are described in the following resources:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=3593a996-06e9-47fe-90ac-40943b8702fb&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=717d2ead-6139-4541-b0aa-74227a34e45f&filter[owner_type]=product_groups"
           }
         }
       }
     },
     {
-      "id": "3f85e6e2-d329-499f-a8b6-3a252a554310",
+      "id": "0c4b2336-3cb0-40cb-956f-e919e4423a93",
       "type": "products",
       "attributes": {
-        "created_at": "2021-12-27T12:58:07+00:00",
-        "updated_at": "2021-12-27T12:58:07+00:00",
+        "created_at": "2021-12-30T11:21:45+00:00",
+        "updated_at": "2021-12-30T11:21:45+00:00",
         "type": "products",
         "name": "iPad Pro",
         "slug": "ipad-pro",
@@ -200,8 +200,8 @@ For this resource relationships are described in the following resources:
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "3593a996-06e9-47fe-90ac-40943b8702fb",
-        "tax_category_id": "61bd4be3-3498-49f8-a8eb-be76c2bb1b58",
+        "product_group_id": "717d2ead-6139-4541-b0aa-74227a34e45f",
+        "tax_category_id": "0a7cc433-0236-4477-bc5c-6b4738834831",
         "price_structure_id": null
       },
       "relationships": {
@@ -212,17 +212,17 @@ For this resource relationships are described in the following resources:
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/3593a996-06e9-47fe-90ac-40943b8702fb"
+            "related": "api/boomerang/product_groups/717d2ead-6139-4541-b0aa-74227a34e45f"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/61bd4be3-3498-49f8-a8eb-be76c2bb1b58"
+            "related": "api/boomerang/tax_categories/0a7cc433-0236-4477-bc5c-6b4738834831"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=3f85e6e2-d329-499f-a8b6-3a252a554310&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=0c4b2336-3cb0-40cb-956f-e919e4423a93&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -232,12 +232,12 @@ For this resource relationships are described in the following resources:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=3593a996-06e9-47fe-90ac-40943b8702fb&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=717d2ead-6139-4541-b0aa-74227a34e45f&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=3593a996-06e9-47fe-90ac-40943b8702fb"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=717d2ead-6139-4541-b0aa-74227a34e45f"
           }
         }
       }
@@ -264,7 +264,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-27T12:57:04Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-30T11:20:24Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

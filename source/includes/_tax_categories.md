@@ -52,18 +52,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "6b8deda0-13a3-4327-9315-4fe50a03098d",
+      "id": "4e184c22-50a4-4c3d-b896-bf191206fbb6",
       "type": "tax_categories",
       "attributes": {
-        "created_at": "2021-12-27T12:59:28+00:00",
-        "updated_at": "2021-12-27T12:59:28+00:00",
+        "created_at": "2021-12-30T11:23:06+00:00",
+        "updated_at": "2021-12-30T11:23:06+00:00",
         "name": "Sales Tax",
         "default": false
       },
       "relationships": {
         "tax_rates": {
           "links": {
-            "related": "api/boomerang/tax_rates?filter[owner_id]=6b8deda0-13a3-4327-9315-4fe50a03098d&filter[owner_type]=tax_categories"
+            "related": "api/boomerang/tax_rates?filter[owner_id]=4e184c22-50a4-4c3d-b896-bf191206fbb6&filter[owner_type]=tax_categories"
           }
         }
       }
@@ -90,7 +90,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_categories]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-27T12:57:04Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-30T11:20:25Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -137,7 +137,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/6c1f3339-0848-409d-9305-47f503246675?include=tax_rates' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/43b23a37-92df-4464-bdc2-26eac963823d?include=tax_rates' \
     --header 'content-type: application/json' \
 ```
 
@@ -146,23 +146,23 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6c1f3339-0848-409d-9305-47f503246675",
+    "id": "43b23a37-92df-4464-bdc2-26eac963823d",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2021-12-27T12:59:28+00:00",
-      "updated_at": "2021-12-27T12:59:28+00:00",
+      "created_at": "2021-12-30T11:23:06+00:00",
+      "updated_at": "2021-12-30T11:23:06+00:00",
       "name": "Sales Tax",
       "default": false
     },
     "relationships": {
       "tax_rates": {
         "links": {
-          "related": "api/boomerang/tax_rates?filter[owner_id]=6c1f3339-0848-409d-9305-47f503246675&filter[owner_type]=tax_categories"
+          "related": "api/boomerang/tax_rates?filter[owner_id]=43b23a37-92df-4464-bdc2-26eac963823d&filter[owner_type]=tax_categories"
         },
         "data": [
           {
             "type": "tax_rates",
-            "id": "1ec95d04-07a5-4039-84d3-e92b8460ca6d"
+            "id": "87c610a1-59d7-4666-b889-33b0b5e4172b"
           }
         ]
       }
@@ -170,21 +170,21 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "1ec95d04-07a5-4039-84d3-e92b8460ca6d",
+      "id": "87c610a1-59d7-4666-b889-33b0b5e4172b",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2021-12-27T12:59:28+00:00",
-        "updated_at": "2021-12-27T12:59:28+00:00",
+        "created_at": "2021-12-30T11:23:06+00:00",
+        "updated_at": "2021-12-30T11:23:06+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "6c1f3339-0848-409d-9305-47f503246675",
+        "owner_id": "43b23a37-92df-4464-bdc2-26eac963823d",
         "owner_type": "tax_categories"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/tax_categories/6c1f3339-0848-409d-9305-47f503246675"
+            "related": "api/boomerang/tax_categories/43b23a37-92df-4464-bdc2-26eac963823d"
           }
         }
       }
@@ -251,11 +251,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "931fffb3-2c18-4b04-a115-9de4908fd5b5",
+    "id": "0fecbfb6-23c3-4afc-90df-b394ef6bc6c8",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2021-12-27T12:59:28+00:00",
-      "updated_at": "2021-12-27T12:59:28+00:00",
+      "created_at": "2021-12-30T11:23:07+00:00",
+      "updated_at": "2021-12-30T11:23:07+00:00",
       "name": "Sales Tax",
       "default": false
     },
@@ -264,7 +264,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "4e511ec8-4d4b-4328-bc60-3e021fd35883"
+            "id": "0cb3fb7e-31fd-4006-ade2-b032dcd8bb82"
           }
         ]
       }
@@ -272,15 +272,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "4e511ec8-4d4b-4328-bc60-3e021fd35883",
+      "id": "0cb3fb7e-31fd-4006-ade2-b032dcd8bb82",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2021-12-27T12:59:28+00:00",
-        "updated_at": "2021-12-27T12:59:28+00:00",
+        "created_at": "2021-12-30T11:23:07+00:00",
+        "updated_at": "2021-12-30T11:23:07+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "931fffb3-2c18-4b04-a115-9de4908fd5b5",
+        "owner_id": "0fecbfb6-23c3-4afc-90df-b394ef6bc6c8",
         "owner_type": "tax_categories"
       },
       "relationships": {
@@ -345,11 +345,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/ed9ea473-6dd1-44c4-bcdc-cdb46e19e544' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/43eeeea4-552b-4b93-a519-f657bf2c0561' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ed9ea473-6dd1-44c4-bcdc-cdb46e19e544",
+        "id": "43eeeea4-552b-4b93-a519-f657bf2c0561",
         "type": "tax_categories",
         "attributes": {
           "name": "State Tax",
@@ -359,7 +359,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "6d5ef99b-b72a-473d-8067-06d8d1bfcb46",
+              "id": "fb861c7e-9134-4655-a1a5-f09a8bcf2cdb",
               "_destroy": true
             }
           ]
@@ -374,11 +374,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ed9ea473-6dd1-44c4-bcdc-cdb46e19e544",
+    "id": "43eeeea4-552b-4b93-a519-f657bf2c0561",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2021-12-27T12:59:28+00:00",
-      "updated_at": "2021-12-27T12:59:28+00:00",
+      "created_at": "2021-12-30T11:23:07+00:00",
+      "updated_at": "2021-12-30T11:23:07+00:00",
       "name": "State Tax",
       "default": false
     },
@@ -387,7 +387,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "63b11c45-8da3-403c-a6b9-b53c28a375c5"
+            "id": "1921296f-e165-4fc8-8b2b-5aa16ec006ac"
           }
         ]
       }
@@ -395,15 +395,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "63b11c45-8da3-403c-a6b9-b53c28a375c5",
+      "id": "1921296f-e165-4fc8-8b2b-5aa16ec006ac",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2021-12-27T12:59:28+00:00",
-        "updated_at": "2021-12-27T12:59:28+00:00",
+        "created_at": "2021-12-30T11:23:07+00:00",
+        "updated_at": "2021-12-30T11:23:07+00:00",
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "ed9ea473-6dd1-44c4-bcdc-cdb46e19e544",
+        "owner_id": "43eeeea4-552b-4b93-a519-f657bf2c0561",
         "owner_type": "tax_categories"
       },
       "relationships": {
@@ -463,7 +463,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/21f3a4a1-46c9-4655-8405-d08268c5ba7c' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/372035db-387c-42e4-bc52-b958ee167c0b' \
     --header 'content-type: application/json' \
 ```
 
