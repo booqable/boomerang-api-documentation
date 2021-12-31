@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "92e877b9-5a91-5573-85de-596534c7abbe",
+    "id": "c9eacc91-ba7b-55dd-87c1-3ed67b96eeee",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-27T12:59:21+00:00",
-      "company_id": "b8091e59-35b0-4101-843d-8d8b143aeb7a",
-      "employee_id": "ec29aca8-0d87-4848-98e1-4cb4e651d491",
-      "locations_updated_at": "2021-12-27T12:59:21+00:00",
-      "clusters_updated_at": "2021-12-27T12:59:21+00:00",
-      "default_properties_updated_at": "2021-12-27T12:59:21+00:00"
+      "updated_at": "2021-12-30T11:22:59+00:00",
+      "company_id": "e2c70c67-c546-418b-a272-e2a2949bd0b3",
+      "employee_id": "ad6a593d-3b33-4486-9056-fa9c940a55a7",
+      "locations_updated_at": "2021-12-30T11:22:59+00:00",
+      "clusters_updated_at": "2021-12-30T11:22:59+00:00",
+      "default_properties_updated_at": "2021-12-30T11:22:59+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "92e877b9-5a91-5573-85de-596534c7abbe",
+    "id": "c9eacc91-ba7b-55dd-87c1-3ed67b96eeee",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-27T12:59:21+00:00",
-      "company_id": "96091e63-056c-4944-b743-44d8475d20ea",
-      "employee_id": "6bc42743-f6fc-4faf-a842-0dbdebf02f76",
+      "updated_at": "2021-12-30T11:22:59+00:00",
+      "company_id": "bd80f4e7-0b34-42ed-a34e-f32ca5cbfc7a",
+      "employee_id": "997b3d87-1daa-4c23-83e5-f4dedc22cd7d",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "96091e63-056c-4944-b743-44d8475d20ea"
+          "id": "bd80f4e7-0b34-42ed-a34e-f32ca5cbfc7a"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "6bc42743-f6fc-4faf-a842-0dbdebf02f76"
+          "id": "997b3d87-1daa-4c23-83e5-f4dedc22cd7d"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "96091e63-056c-4944-b743-44d8475d20ea",
+      "id": "bd80f4e7-0b34-42ed-a34e-f32ca5cbfc7a",
       "type": "companies",
       "attributes": {
-        "created_at": "2021-12-27T12:59:21+00:00",
-        "updated_at": "2021-12-27T12:59:21+00:00",
+        "created_at": "2021-12-30T11:22:59+00:00",
+        "updated_at": "2021-12-30T11:22:59+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "786-773-5906",
-        "website": "http://mertz.net/eldora",
-        "address": "Glenn Forks\n428 Beer Roads\n83190-8868 North Opalborough\nBurkina Faso",
-        "address_line_1": "Glenn Forks",
-        "address_line_2": "428 Beer Roads",
-        "zipcode": "83190-8868",
-        "city": "North Opalborough",
+        "phone": "1-441-998-3504",
+        "website": "http://beier-altenwerth.org/deann",
+        "address": "Gleichner River\n825 Leannon Road\n94217-2477 New Justinberg\nVirgin Islands, U.S.",
+        "address_line_1": "Gleichner River",
+        "address_line_2": "825 Leannon Road",
+        "zipcode": "94217-2477",
+        "city": "New Justinberg",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "Virgin Islands, U.S.",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "877 Torphy Plain",
-        "financial_line_2": "79403 South Marciemouth",
+        "financial_line_1": "466 Lin Lodge",
+        "financial_line_2": "92373 Walshfurt",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-01-10T12:59:21.912Z",
+          "trial_ends_at": "2022-01-13T11:22:59.677Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "6bc42743-f6fc-4faf-a842-0dbdebf02f76",
+      "id": "997b3d87-1daa-4c23-83e5-f4dedc22cd7d",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-27T12:59:21+00:00",
-        "updated_at": "2021-12-27T12:59:21+00:00",
+        "created_at": "2021-12-30T11:22:59+00:00",
+        "updated_at": "2021-12-30T11:22:59+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

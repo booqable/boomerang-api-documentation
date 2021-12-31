@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1ac66d92-5985-416d-be4d-028c8c1ce85f",
+    "id": "95e6b0f9-51ed-497e-bdeb-c99abf471a1b",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-27T12:57:33+00:00",
-      "updated_at": "2021-12-27T12:57:33+00:00",
+      "created_at": "2021-12-30T11:21:04+00:00",
+      "updated_at": "2021-12-30T11:21:04+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "505.013.9116 x6562",
-      "website": "http://lang.com/allan_howell",
-      "address": "Classie Valley\n748 Cyrus Estates\n72406 New Rosendoborough\nIsrael",
-      "address_line_1": "Classie Valley",
-      "address_line_2": "748 Cyrus Estates",
-      "zipcode": "72406",
-      "city": "New Rosendoborough",
+      "phone": "1-740-866-9212 x07793",
+      "website": "http://anderson.co/ferdinand",
+      "address": "Dickens Dam\n2240 Batz Branch\n38717 Denishaberg\nCape Verde",
+      "address_line_1": "Dickens Dam",
+      "address_line_2": "2240 Batz Branch",
+      "zipcode": "38717",
+      "city": "Denishaberg",
       "region": null,
-      "country": "Israel",
+      "country": "Cape Verde",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7447 Mauricio Station",
-      "financial_line_2": "46074 Schuppechester",
+      "financial_line_1": "46366 Zulauf Mountains",
+      "financial_line_2": "26800-2590 Port Laureshire",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "92e7051f-778b-4619-9b44-e4cec52693c1",
+    "id": "4e7db262-de8f-4f2f-934f-3482d6e07847",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-10T12:57:33.652Z",
+        "trial_ends_at": "2022-01-13T11:21:05.277Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "940c3f0a-55b3-4ce6-a21d-4f1e1a14ef3c",
+        "id": "d49c9217-9f85-414f-b002-73dc5c176f8c",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "940c3f0a-55b3-4ce6-a21d-4f1e1a14ef3c",
+    "id": "d49c9217-9f85-414f-b002-73dc5c176f8c",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-27T12:57:33+00:00",
-      "updated_at": "2021-12-27T12:57:34+00:00",
+      "created_at": "2021-12-30T11:21:05+00:00",
+      "updated_at": "2021-12-30T11:21:05+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "1-285-188-2325",
-      "website": "http://morissette.com/dorsey_turner",
-      "address": "Goodwin Drives\n56388 Dietrich Heights\n89621 Mantetown\nCape Verde",
-      "address_line_1": "Goodwin Drives",
-      "address_line_2": "56388 Dietrich Heights",
-      "zipcode": "89621",
-      "city": "Mantetown",
+      "phone": "1-997-484-4084 x4426",
+      "website": "http://johnson.net/julian",
+      "address": "Wintheiser Avenue\n8310 Kunze Union\n65283 Bechtelarport\nBurundi",
+      "address_line_1": "Wintheiser Avenue",
+      "address_line_2": "8310 Kunze Union",
+      "zipcode": "65283",
+      "city": "Bechtelarport",
       "region": null,
-      "country": "Cape Verde",
+      "country": "Burundi",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "86440 Jeramy Rapids",
-      "financial_line_2": "15753-3037 Lake Charisland",
+      "financial_line_1": "739 DuBuque Loaf",
+      "financial_line_2": "93337-5840 New Blanca",
       "vat_number": null,
       "custom_domain": null,
       "development": false
