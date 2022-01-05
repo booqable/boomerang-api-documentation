@@ -51,18 +51,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "e9353fda-d70c-4656-a7d5-351a1cb72119",
+      "id": "e6964e7f-120d-4bcb-883e-7ea3eaf74465",
       "type": "clusters",
       "attributes": {
-        "created_at": "2021-12-30T11:21:02+00:00",
-        "updated_at": "2021-12-30T11:21:02+00:00",
+        "created_at": "2022-01-05T12:39:18+00:00",
+        "updated_at": "2022-01-05T12:39:18+00:00",
         "name": "Main",
         "location_ids": []
       },
       "relationships": {
         "locations": {
           "links": {
-            "related": "api/boomerang/locations?filter[cluster_id]=e9353fda-d70c-4656-a7d5-351a1cb72119"
+            "related": "api/boomerang/locations?filter[cluster_id]=e6964e7f-120d-4bcb-883e-7ea3eaf74465"
           }
         }
       }
@@ -89,7 +89,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=locations`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-30T11:20:24Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-05T12:38:51Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -137,7 +137,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/clusters/714f120d-8842-4173-be63-7d8282052654' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/7839e46b-e034-4b79-86e5-b170db39f424' \
     --header 'content-type: application/json' \
 ```
 
@@ -146,18 +146,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "714f120d-8842-4173-be63-7d8282052654",
+    "id": "7839e46b-e034-4b79-86e5-b170db39f424",
     "type": "clusters",
     "attributes": {
-      "created_at": "2021-12-30T11:21:03+00:00",
-      "updated_at": "2021-12-30T11:21:03+00:00",
+      "created_at": "2022-01-05T12:39:18+00:00",
+      "updated_at": "2022-01-05T12:39:18+00:00",
       "name": "Main",
       "location_ids": []
     },
     "relationships": {
       "locations": {
         "links": {
-          "related": "api/boomerang/locations?filter[cluster_id]=714f120d-8842-4173-be63-7d8282052654"
+          "related": "api/boomerang/locations?filter[cluster_id]=7839e46b-e034-4b79-86e5-b170db39f424"
         }
       }
     }
@@ -216,11 +216,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a67de005-70c3-45c1-81ad-d6adbf9ce929",
+    "id": "7b68794e-16e0-489c-9e0e-008a9e7da83c",
     "type": "clusters",
     "attributes": {
-      "created_at": "2021-12-30T11:21:03+00:00",
-      "updated_at": "2021-12-30T11:21:03+00:00",
+      "created_at": "2022-01-05T12:39:18+00:00",
+      "updated_at": "2022-01-05T12:39:18+00:00",
       "name": "Amsterdam",
       "location_ids": []
     },
@@ -284,11 +284,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/clusters/1efdce2c-f69e-4e6c-a7be-9ff930a2b100' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/9b26da90-b42c-451b-b8df-e07ddd70fa52' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "1efdce2c-f69e-4e6c-a7be-9ff930a2b100",
+        "id": "9b26da90-b42c-451b-b8df-e07ddd70fa52",
         "type": "clusters",
         "attributes": {
           "name": "Rotterdam"
@@ -302,11 +302,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1efdce2c-f69e-4e6c-a7be-9ff930a2b100",
+    "id": "9b26da90-b42c-451b-b8df-e07ddd70fa52",
     "type": "clusters",
     "attributes": {
-      "created_at": "2021-12-30T11:21:03+00:00",
-      "updated_at": "2021-12-30T11:21:03+00:00",
+      "created_at": "2022-01-05T12:39:18+00:00",
+      "updated_at": "2022-01-05T12:39:18+00:00",
       "name": "Rotterdam",
       "location_ids": []
     },
@@ -366,7 +366,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/07575931-b311-4c0b-8486-326c6d5643b0' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/07cfbef6-5dfb-47c5-a7a4-b52a5933d933' \
     --header 'content-type: application/json' \
 ```
 
@@ -383,7 +383,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/add11f16-f1ac-46e0-9d44-c01a275d85c6' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/cd5c336f-f275-49b0-a382-abbbde78b04c' \
     --header 'content-type: application/json' \
 ```
 
@@ -399,7 +399,7 @@ To delete a cluster make sure no active locations are associated with it anymore
       "detail": "This cluster has 1 or more active locations",
       "meta": {
         "location_ids": [
-          "43b3fea7-1c49-4427-b298-bf425868bcdc"
+          "593278bb-0ed6-47be-85c1-209f0cd72dfe"
         ]
       }
     }

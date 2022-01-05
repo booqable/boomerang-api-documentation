@@ -20,7 +20,7 @@ Name | Description
 `charge_label` | **String** `readonly`<br>Label for the charge period
 `original_price_each_in_cents` | **Integer** `readonly`<br>Price per item before charge rules are applied
 `price_each_in_cents` | **Integer** `readonly`<br>Final price per item
-`price_rule_values` | **Array** `readonly`<br>What price rules were applied
+`price_rule_values` | **Hash** `readonly`<br>What price rules were applied
 `price_structure_id` | **Uuid**<br>The associated Price structure
 `price_tile_id` | **Uuid** `readonly`<br>The associated Price tile
 
@@ -43,7 +43,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=fd21d09b-f91c-430e-86c3-96617c691737&filter%5Bitem_id%5D%5B%5D=b175688f-af4d-4ab5-aae1-12363d3a0132&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item' \
+    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=7004d6b2-f5fa-4c5e-90be-d8cce2563dba&filter%5Bitem_id%5D%5B%5D=f94c034d-4e56-40cb-b2f8-cf1e16f024b6&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item' \
     --header 'content-type: application/json' \
 ```
 
@@ -53,10 +53,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "",
+      "id": "virtual-d8f84121-31c6-5546-a0f2-ce3ecc8dc987",
       "type": "item_prices",
       "attributes": {
-        "item_id": "fd21d09b-f91c-430e-86c3-96617c691737",
+        "item_id": "7004d6b2-f5fa-4c5e-90be-d8cce2563dba",
         "from": "2030-01-01T12:00:00+00:00",
         "till": "2030-01-14T12:00:00+00:00",
         "charge_length": null,
@@ -70,11 +70,48 @@ Name | Description
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/fd21d09b-f91c-430e-86c3-96617c691737"
+            "related": "api/boomerang/items/7004d6b2-f5fa-4c5e-90be-d8cce2563dba"
           },
           "data": {
             "type": "products",
-            "id": "fd21d09b-f91c-430e-86c3-96617c691737"
+            "id": "7004d6b2-f5fa-4c5e-90be-d8cce2563dba"
+          }
+        },
+        "price_structure": {
+          "links": {
+            "related": null
+          }
+        },
+        "price_tile": {
+          "links": {
+            "related": null
+          }
+        }
+      }
+    },
+    {
+      "id": "virtual-43769860-a686-56dd-90af-26cd667601bc",
+      "type": "item_prices",
+      "attributes": {
+        "item_id": "f94c034d-4e56-40cb-b2f8-cf1e16f024b6",
+        "from": "2030-01-01T12:00:00+00:00",
+        "till": "2030-01-14T12:00:00+00:00",
+        "charge_length": null,
+        "charge_label": "13 days",
+        "original_price_each_in_cents": 74100,
+        "price_each_in_cents": 74100,
+        "price_rule_values": null,
+        "price_structure_id": null,
+        "price_tile_id": null
+      },
+      "relationships": {
+        "item": {
+          "links": {
+            "related": "api/boomerang/items/f94c034d-4e56-40cb-b2f8-cf1e16f024b6"
+          },
+          "data": {
+            "type": "products",
+            "id": "f94c034d-4e56-40cb-b2f8-cf1e16f024b6"
           }
         },
         "price_structure": {
@@ -92,11 +129,11 @@ Name | Description
   ],
   "included": [
     {
-      "id": "fd21d09b-f91c-430e-86c3-96617c691737",
+      "id": "7004d6b2-f5fa-4c5e-90be-d8cce2563dba",
       "type": "products",
       "attributes": {
-        "created_at": "2021-12-30T11:21:42+00:00",
-        "updated_at": "2021-12-30T11:21:42+00:00",
+        "created_at": "2022-01-05T12:39:51+00:00",
+        "updated_at": "2022-01-05T12:39:51+00:00",
         "type": "products",
         "name": "Product 1",
         "slug": "product-1",
@@ -125,7 +162,7 @@ Name | Description
         "variation_values": [],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "46cdbd60-b9e9-49e7-9751-467ae506e106",
+        "product_group_id": "900258ee-1a91-44d9-b3e1-c331e1159637",
         "tax_category_id": null,
         "price_structure_id": null
       },
@@ -137,7 +174,7 @@ Name | Description
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/46cdbd60-b9e9-49e7-9751-467ae506e106"
+            "related": "api/boomerang/product_groups/900258ee-1a91-44d9-b3e1-c331e1159637"
           }
         },
         "tax_category": {
@@ -147,7 +184,7 @@ Name | Description
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=fd21d09b-f91c-430e-86c3-96617c691737&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=7004d6b2-f5fa-4c5e-90be-d8cce2563dba&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -157,22 +194,22 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=46cdbd60-b9e9-49e7-9751-467ae506e106&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=900258ee-1a91-44d9-b3e1-c331e1159637&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=46cdbd60-b9e9-49e7-9751-467ae506e106"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=900258ee-1a91-44d9-b3e1-c331e1159637"
           }
         }
       }
     },
     {
-      "id": "b175688f-af4d-4ab5-aae1-12363d3a0132",
+      "id": "f94c034d-4e56-40cb-b2f8-cf1e16f024b6",
       "type": "products",
       "attributes": {
-        "created_at": "2021-12-30T11:21:42+00:00",
-        "updated_at": "2021-12-30T11:21:42+00:00",
+        "created_at": "2022-01-05T12:39:51+00:00",
+        "updated_at": "2022-01-05T12:39:51+00:00",
         "type": "products",
         "name": "Product 2",
         "slug": "product-2",
@@ -201,7 +238,7 @@ Name | Description
         "variation_values": [],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "e7a93854-e867-478a-bfb7-a52a8500dec4",
+        "product_group_id": "4b22ffc0-ad06-4b32-ab3a-57d945c7f3a0",
         "tax_category_id": null,
         "price_structure_id": null
       },
@@ -213,7 +250,7 @@ Name | Description
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/e7a93854-e867-478a-bfb7-a52a8500dec4"
+            "related": "api/boomerang/product_groups/4b22ffc0-ad06-4b32-ab3a-57d945c7f3a0"
           }
         },
         "tax_category": {
@@ -223,7 +260,7 @@ Name | Description
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=b175688f-af4d-4ab5-aae1-12363d3a0132&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=f94c034d-4e56-40cb-b2f8-cf1e16f024b6&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -233,22 +270,22 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=e7a93854-e867-478a-bfb7-a52a8500dec4&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=4b22ffc0-ad06-4b32-ab3a-57d945c7f3a0&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=e7a93854-e867-478a-bfb7-a52a8500dec4"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=4b22ffc0-ad06-4b32-ab3a-57d945c7f3a0"
           }
         }
       }
     }
   ],
   "links": {
-    "self": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=fd21d09b-f91c-430e-86c3-96617c691737&filter%5Bitem_id%5D%5B%5D=b175688f-af4d-4ab5-aae1-12363d3a0132&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=fd21d09b-f91c-430e-86c3-96617c691737&filter%5Bitem_id%5D%5B%5D=b175688f-af4d-4ab5-aae1-12363d3a0132&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=fd21d09b-f91c-430e-86c3-96617c691737&filter%5Bitem_id%5D%5B%5D=b175688f-af4d-4ab5-aae1-12363d3a0132&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=fd21d09b-f91c-430e-86c3-96617c691737&filter%5Bitem_id%5D%5B%5D=b175688f-af4d-4ab5-aae1-12363d3a0132&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=7004d6b2-f5fa-4c5e-90be-d8cce2563dba&filter%5Bitem_id%5D%5B%5D=f94c034d-4e56-40cb-b2f8-cf1e16f024b6&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=7004d6b2-f5fa-4c5e-90be-d8cce2563dba&filter%5Bitem_id%5D%5B%5D=f94c034d-4e56-40cb-b2f8-cf1e16f024b6&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=7004d6b2-f5fa-4c5e-90be-d8cce2563dba&filter%5Bitem_id%5D%5B%5D=f94c034d-4e56-40cb-b2f8-cf1e16f024b6&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=7004d6b2-f5fa-4c5e-90be-d8cce2563dba&filter%5Bitem_id%5D%5B%5D=f94c034d-4e56-40cb-b2f8-cf1e16f024b6&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -259,7 +296,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=b368ae79-d489-4f23-aee8-c7f93fae4aa4&include=item' \
+    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=868156b3-cc28-48d9-bf07-340d009693d4&include=item' \
     --header 'content-type: application/json' \
 ```
 
@@ -269,10 +306,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "",
+      "id": "virtual-dc7bc085-391e-53d7-bd5b-652984ead45a",
       "type": "item_prices",
       "attributes": {
-        "item_id": "b368ae79-d489-4f23-aee8-c7f93fae4aa4",
+        "item_id": "868156b3-cc28-48d9-bf07-340d009693d4",
         "from": null,
         "till": null,
         "charge_length": 36000,
@@ -286,11 +323,11 @@ Name | Description
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/b368ae79-d489-4f23-aee8-c7f93fae4aa4"
+            "related": "api/boomerang/items/868156b3-cc28-48d9-bf07-340d009693d4"
           },
           "data": {
             "type": "products",
-            "id": "b368ae79-d489-4f23-aee8-c7f93fae4aa4"
+            "id": "868156b3-cc28-48d9-bf07-340d009693d4"
           }
         },
         "price_structure": {
@@ -308,11 +345,11 @@ Name | Description
   ],
   "included": [
     {
-      "id": "b368ae79-d489-4f23-aee8-c7f93fae4aa4",
+      "id": "868156b3-cc28-48d9-bf07-340d009693d4",
       "type": "products",
       "attributes": {
-        "created_at": "2021-12-30T11:21:43+00:00",
-        "updated_at": "2021-12-30T11:21:43+00:00",
+        "created_at": "2022-01-05T12:39:52+00:00",
+        "updated_at": "2022-01-05T12:39:52+00:00",
         "type": "products",
         "name": "Product 3",
         "slug": "product-3",
@@ -341,7 +378,7 @@ Name | Description
         "variation_values": [],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "27b13352-ef45-4bb9-9ed3-01fec3d40315",
+        "product_group_id": "d25953f0-8f85-4ee5-b1fc-97b019a125ec",
         "tax_category_id": null,
         "price_structure_id": null
       },
@@ -353,7 +390,7 @@ Name | Description
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/27b13352-ef45-4bb9-9ed3-01fec3d40315"
+            "related": "api/boomerang/product_groups/d25953f0-8f85-4ee5-b1fc-97b019a125ec"
           }
         },
         "tax_category": {
@@ -363,7 +400,7 @@ Name | Description
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=b368ae79-d489-4f23-aee8-c7f93fae4aa4&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=868156b3-cc28-48d9-bf07-340d009693d4&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -373,22 +410,22 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=27b13352-ef45-4bb9-9ed3-01fec3d40315&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=d25953f0-8f85-4ee5-b1fc-97b019a125ec&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=27b13352-ef45-4bb9-9ed3-01fec3d40315"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=d25953f0-8f85-4ee5-b1fc-97b019a125ec"
           }
         }
       }
     }
   ],
   "links": {
-    "self": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=b368ae79-d489-4f23-aee8-c7f93fae4aa4&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=b368ae79-d489-4f23-aee8-c7f93fae4aa4&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=b368ae79-d489-4f23-aee8-c7f93fae4aa4&include=item&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=b368ae79-d489-4f23-aee8-c7f93fae4aa4&include=item&page%5Bnumber%5D=2&page%5Bsize%5D=25"
+    "self": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=868156b3-cc28-48d9-bf07-340d009693d4&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=868156b3-cc28-48d9-bf07-340d009693d4&include=item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=868156b3-cc28-48d9-bf07-340d009693d4&include=item&page%5Bnumber%5D=&page%5Bsize%5D=25",
+    "next": "api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=868156b3-cc28-48d9-bf07-340d009693d4&include=item&page%5Bnumber%5D=2&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -406,7 +443,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=item,price_structure,price_tile`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[item_prices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2021-12-30T11:20:24Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-05T12:38:51Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

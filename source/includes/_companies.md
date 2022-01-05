@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "95e6b0f9-51ed-497e-bdeb-c99abf471a1b",
+    "id": "f56e907d-1749-4ba8-a203-ac9064d15edd",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-30T11:21:04+00:00",
-      "updated_at": "2021-12-30T11:21:04+00:00",
+      "created_at": "2022-01-05T12:39:19+00:00",
+      "updated_at": "2022-01-05T12:39:19+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-740-866-9212 x07793",
-      "website": "http://anderson.co/ferdinand",
-      "address": "Dickens Dam\n2240 Batz Branch\n38717 Denishaberg\nCape Verde",
-      "address_line_1": "Dickens Dam",
-      "address_line_2": "2240 Batz Branch",
-      "zipcode": "38717",
-      "city": "Denishaberg",
+      "phone": "1-608-017-3306 x8047",
+      "website": "http://ullrich-klocko.net/angelena",
+      "address": "Senger Fall\n4981 Johnson Wells\n62783-8429 New Martin\nTurkmenistan",
+      "address_line_1": "Senger Fall",
+      "address_line_2": "4981 Johnson Wells",
+      "zipcode": "62783-8429",
+      "city": "New Martin",
       "region": null,
-      "country": "Cape Verde",
+      "country": "Turkmenistan",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "46366 Zulauf Mountains",
-      "financial_line_2": "26800-2590 Port Laureshire",
+      "financial_line_1": "7621 Tyrone Ways",
+      "financial_line_2": "93784-6192 East Madelainestad",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4e7db262-de8f-4f2f-934f-3482d6e07847",
+    "id": "57a00ab6-aaed-4c2b-b845-840d4468c054",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-13T11:21:05.277Z",
+        "trial_ends_at": "2022-01-19T12:39:20.004Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d49c9217-9f85-414f-b002-73dc5c176f8c",
+        "id": "9a2a429e-5872-450c-a8b3-a834f7fcfe3b",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d49c9217-9f85-414f-b002-73dc5c176f8c",
+    "id": "9a2a429e-5872-450c-a8b3-a834f7fcfe3b",
     "type": "companies",
     "attributes": {
-      "created_at": "2021-12-30T11:21:05+00:00",
-      "updated_at": "2021-12-30T11:21:05+00:00",
+      "created_at": "2022-01-05T12:39:20+00:00",
+      "updated_at": "2022-01-05T12:39:20+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "1-997-484-4084 x4426",
-      "website": "http://johnson.net/julian",
-      "address": "Wintheiser Avenue\n8310 Kunze Union\n65283 Bechtelarport\nBurundi",
-      "address_line_1": "Wintheiser Avenue",
-      "address_line_2": "8310 Kunze Union",
-      "zipcode": "65283",
-      "city": "Bechtelarport",
+      "phone": "(795) 344-5495 x77905",
+      "website": "http://walker-conroy.info/walker_wisoky",
+      "address": "Verla Plaza\n385 Carmelita Court\n86131 Lake Colemanville\nEritrea",
+      "address_line_1": "Verla Plaza",
+      "address_line_2": "385 Carmelita Court",
+      "zipcode": "86131",
+      "city": "Lake Colemanville",
       "region": null,
-      "country": "Burundi",
+      "country": "Eritrea",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "739 DuBuque Loaf",
-      "financial_line_2": "93337-5840 New Blanca",
+      "financial_line_1": "988 Ankunding Isle",
+      "financial_line_2": "43351-3048 South Merrill",
       "vat_number": null,
       "custom_domain": null,
       "development": false
