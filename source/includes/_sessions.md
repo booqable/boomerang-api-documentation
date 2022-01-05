@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c9eacc91-ba7b-55dd-87c1-3ed67b96eeee",
+    "id": "2df7e145-0ef8-5616-b1f0-e5619d1124e6",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-30T11:22:59+00:00",
-      "company_id": "e2c70c67-c546-418b-a272-e2a2949bd0b3",
-      "employee_id": "ad6a593d-3b33-4486-9056-fa9c940a55a7",
-      "locations_updated_at": "2021-12-30T11:22:59+00:00",
-      "clusters_updated_at": "2021-12-30T11:22:59+00:00",
-      "default_properties_updated_at": "2021-12-30T11:22:59+00:00"
+      "updated_at": "2022-01-05T12:41:08+00:00",
+      "company_id": "1e5ea6b3-da35-4735-b726-6ec006baaef1",
+      "employee_id": "811ef908-5877-4f9c-85c3-d7b2956fca8d",
+      "locations_updated_at": "2022-01-05T12:41:08+00:00",
+      "clusters_updated_at": "2022-01-05T12:41:08+00:00",
+      "default_properties_updated_at": "2022-01-05T12:41:08+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c9eacc91-ba7b-55dd-87c1-3ed67b96eeee",
+    "id": "2df7e145-0ef8-5616-b1f0-e5619d1124e6",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2021-12-30T11:22:59+00:00",
-      "company_id": "bd80f4e7-0b34-42ed-a34e-f32ca5cbfc7a",
-      "employee_id": "997b3d87-1daa-4c23-83e5-f4dedc22cd7d",
+      "updated_at": "2022-01-05T12:41:08+00:00",
+      "company_id": "1e1bf28f-6e07-461b-b229-a1e9e5633c8d",
+      "employee_id": "7bf2f068-89b0-49c5-b8f2-01bc54b6c669",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "bd80f4e7-0b34-42ed-a34e-f32ca5cbfc7a"
+          "id": "1e1bf28f-6e07-461b-b229-a1e9e5633c8d"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "997b3d87-1daa-4c23-83e5-f4dedc22cd7d"
+          "id": "7bf2f068-89b0-49c5-b8f2-01bc54b6c669"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "bd80f4e7-0b34-42ed-a34e-f32ca5cbfc7a",
+      "id": "1e1bf28f-6e07-461b-b229-a1e9e5633c8d",
       "type": "companies",
       "attributes": {
-        "created_at": "2021-12-30T11:22:59+00:00",
-        "updated_at": "2021-12-30T11:22:59+00:00",
+        "created_at": "2022-01-05T12:41:08+00:00",
+        "updated_at": "2022-01-05T12:41:08+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "1-441-998-3504",
-        "website": "http://beier-altenwerth.org/deann",
-        "address": "Gleichner River\n825 Leannon Road\n94217-2477 New Justinberg\nVirgin Islands, U.S.",
-        "address_line_1": "Gleichner River",
-        "address_line_2": "825 Leannon Road",
-        "zipcode": "94217-2477",
-        "city": "New Justinberg",
+        "phone": "183-452-4723 x02262",
+        "website": "http://marks.io/phil",
+        "address": "Rickie Plaza\n348 Frami Stream\n18626 Effertztown\nAmerican Samoa",
+        "address_line_1": "Rickie Plaza",
+        "address_line_2": "348 Frami Stream",
+        "zipcode": "18626",
+        "city": "Effertztown",
         "region": null,
-        "country": "Virgin Islands, U.S.",
+        "country": "American Samoa",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "466 Lin Lodge",
-        "financial_line_2": "92373 Walshfurt",
+        "financial_line_1": "718 Hilll Squares",
+        "financial_line_2": "39180 Lake Noahmouth",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-01-13T11:22:59.677Z",
+          "trial_ends_at": "2022-01-19T12:41:08.329Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "997b3d87-1daa-4c23-83e5-f4dedc22cd7d",
+      "id": "7bf2f068-89b0-49c5-b8f2-01bc54b6c669",
       "type": "employees",
       "attributes": {
-        "created_at": "2021-12-30T11:22:59+00:00",
-        "updated_at": "2021-12-30T11:22:59+00:00",
+        "created_at": "2022-01-05T12:41:08+00:00",
+        "updated_at": "2022-01-05T12:41:08+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
