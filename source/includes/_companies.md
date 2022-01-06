@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f56e907d-1749-4ba8-a203-ac9064d15edd",
+    "id": "06a673f8-8c42-4c3a-a1f0-2f85f105652a",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-05T12:39:19+00:00",
-      "updated_at": "2022-01-05T12:39:19+00:00",
+      "created_at": "2022-01-06T14:32:24+00:00",
+      "updated_at": "2022-01-06T14:32:24+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-608-017-3306 x8047",
-      "website": "http://ullrich-klocko.net/angelena",
-      "address": "Senger Fall\n4981 Johnson Wells\n62783-8429 New Martin\nTurkmenistan",
-      "address_line_1": "Senger Fall",
-      "address_line_2": "4981 Johnson Wells",
-      "zipcode": "62783-8429",
-      "city": "New Martin",
+      "phone": "(398) 014-9680 x63310",
+      "website": "http://herzog-mertz.io/adrianne",
+      "address": "Cecille Ridge\n65299 John Unions\n00814-1332 West Delisa\nHungary",
+      "address_line_1": "Cecille Ridge",
+      "address_line_2": "65299 John Unions",
+      "zipcode": "00814-1332",
+      "city": "West Delisa",
       "region": null,
-      "country": "Turkmenistan",
+      "country": "Hungary",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7621 Tyrone Ways",
-      "financial_line_2": "93784-6192 East Madelainestad",
+      "financial_line_1": "70087 Nader Mountain",
+      "financial_line_2": "53569 Port Roy",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "57a00ab6-aaed-4c2b-b845-840d4468c054",
+    "id": "0f45ae43-cefb-4eec-999b-007134194121",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-19T12:39:20.004Z",
+        "trial_ends_at": "2022-01-20T14:32:24.818Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9a2a429e-5872-450c-a8b3-a834f7fcfe3b",
+        "id": "4155eeda-1295-4187-97df-999d788a3c60",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9a2a429e-5872-450c-a8b3-a834f7fcfe3b",
+    "id": "4155eeda-1295-4187-97df-999d788a3c60",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-05T12:39:20+00:00",
-      "updated_at": "2022-01-05T12:39:20+00:00",
+      "created_at": "2022-01-06T14:32:25+00:00",
+      "updated_at": "2022-01-06T14:32:25+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(795) 344-5495 x77905",
-      "website": "http://walker-conroy.info/walker_wisoky",
-      "address": "Verla Plaza\n385 Carmelita Court\n86131 Lake Colemanville\nEritrea",
-      "address_line_1": "Verla Plaza",
-      "address_line_2": "385 Carmelita Court",
-      "zipcode": "86131",
-      "city": "Lake Colemanville",
+      "phone": "1-724-348-6035 x1542",
+      "website": "http://green.co/brian.hermiston",
+      "address": "Homenick Well\n77718 Abernathy Villages\n68525 New Eldon\nTokelau",
+      "address_line_1": "Homenick Well",
+      "address_line_2": "77718 Abernathy Villages",
+      "zipcode": "68525",
+      "city": "New Eldon",
       "region": null,
-      "country": "Eritrea",
+      "country": "Tokelau",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "988 Ankunding Isle",
-      "financial_line_2": "43351-3048 South Merrill",
+      "financial_line_1": "124 Bauch Fords",
+      "financial_line_2": "58420-2312 Port Charleenmouth",
       "vat_number": null,
       "custom_domain": null,
       "development": false
