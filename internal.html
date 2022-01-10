@@ -1625,20 +1625,6 @@
             <a href="#internal" class="toc-h1 toc-link" data-title="Internal" title="Internal"><strong>Internal</strong></a>
           </li>
           <li>
-            <a href="#inventory-breakdowns" class="toc-h1 toc-link" data-title="Inventory breakdowns" title="Inventory breakdowns">Inventory breakdowns</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#inventory-breakdowns-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
-                  </li>
-                  <li>
-                    <a href="#inventory-breakdowns-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
-                  </li>
-                  <li>
-                    <a href="#inventory-breakdowns-listing-inventory-breakdowns" class="toc-h2 toc-link" data-title="Listing inventory breakdowns" title="Listing inventory breakdowns">Listing inventory breakdowns</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#billing-invoices" class="toc-h1 toc-link" data-title="Billing invoices" title="Billing invoices">Billing invoices</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1663,6 +1649,20 @@
                   </li>
                   <li>
                     <a href="#currencies-fetching-a-currency" class="toc-h2 toc-link" data-title="Fetching a currency" title="Fetching a currency">Fetching a currency</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#inventory-breakdowns" class="toc-h1 toc-link" data-title="Inventory breakdowns" title="Inventory breakdowns">Inventory breakdowns</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#inventory-breakdowns-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#inventory-breakdowns-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#inventory-breakdowns-listing-inventory-breakdowns" class="toc-h2 toc-link" data-title="Listing inventory breakdowns" title="Listing inventory breakdowns">Listing inventory breakdowns</a>
                   </li>
               </ul>
           </li>
@@ -33044,486 +33044,7 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p><code>disabled_by</code></p>
 
 <p><code>notes</code></p>
-<h1 id='internal'><strong>Internal</strong></h1><h1 id='inventory-breakdowns'>Inventory breakdowns</h1>
-<p>Inventory breakdowns</p>
-<h2 id='inventory-breakdowns-fields'>Fields</h2>
-<p>Every inventory breakdown has the following fields:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>from</code></td>
-<td><strong>Datetime</strong><br>When the amount of items will be available (only for status <code>expected</code>)</td>
-</tr>
-<tr>
-<td><code>till</code></td>
-<td><strong>Datetime</strong><br>When the amount of items will become unavailable (only for type <code>temporary</code>)</td>
-</tr>
-<tr>
-<td><code>total</code></td>
-<td><strong>Integer</strong><br>The total amount of stock for product and location</td>
-</tr>
-<tr>
-<td><code>started</code></td>
-<td><strong>Integer</strong><br>The amount if items that are started for product and location</td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><strong>String</strong><br>One of <code>expected</code>, <code>in_stock</code>, <code>expired</code></td>
-</tr>
-<tr>
-<td><code>inventory_breakdown_type</code></td>
-<td><strong>String</strong><br>One of <code>regular</code>, <code>temporary</code></td>
-</tr>
-<tr>
-<td><code>location_id</code></td>
-<td><strong>Uuid</strong><br>The associated Location</td>
-</tr>
-<tr>
-<td><code>product_id</code></td>
-<td><strong>Uuid</strong><br>The associated Product</td>
-</tr>
-</tbody></table>
-<h2 id='inventory-breakdowns-relationships'>Relationships</h2>
-<p>Inventory breakdowns have the following relationships:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>location</code></td>
-<td><strong>Locations</strong> <code>readonly</code><br>Associated Location</td>
-</tr>
-<tr>
-<td><code>product</code></td>
-<td><strong>Products</strong> <code>readonly</code><br>Associated Product</td>
-</tr>
-</tbody></table>
-<h2 id='inventory-breakdowns-listing-inventory-breakdowns'>Listing inventory breakdowns</h2>
-<blockquote>
-<p>How to fetch a breakdown of all items in stock:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=7ecdc8f6-01a9-441e-bbff-0cdcef28f1c6&amp;filter%5Bstatus%5D=in_stock&amp;stats%5Binventory_breakdown_type%5D%5B%5D=sum&amp;stats%5Bstarted%5D%5B%5D=sum&amp;stats%5Bstatus%5D%5B%5D=sum&amp;stats%5Btotal%5D%5B%5D=sum'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>A 200 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-1ca0f2d1-87b0-590e-aad0-9c96b5f65f9c"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_stock"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regular"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6206af73-5025-42d6-b328-7ddefcb0d725"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"769cf473-5352-4080-a9ed-7e0eedf62b32"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/6206af73-5025-42d6-b328-7ddefcb0d725"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/769cf473-5352-4080-a9ed-7e0eedf62b32"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-3798ac8f-83c2-58cb-b103-93d2d752c307"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-07T11:08:45+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_stock"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporary"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6206af73-5025-42d6-b328-7ddefcb0d725"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"769cf473-5352-4080-a9ed-7e0eedf62b32"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/6206af73-5025-42d6-b328-7ddefcb0d725"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/769cf473-5352-4080-a9ed-7e0eedf62b32"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"regular"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"in_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>How to fetch a breakdown of all regular items in stock:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Binventory_breakdown_type%5D=regular&amp;filter%5Bproduct_group_id%5D=b4f72b66-ac43-464e-aacf-aeb075461dae&amp;filter%5Bstatus%5D=in_stock&amp;stats%5Binventory_breakdown_type%5D%5B%5D=sum&amp;stats%5Bstarted%5D%5B%5D=sum&amp;stats%5Bstatus%5D%5B%5D=sum&amp;stats%5Btotal%5D%5B%5D=sum'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>A 200 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-1ed09a6c-2a24-5a11-b8b3-ec677d904db6"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_stock"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regular"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58a24e18-e5df-4852-8c57-55fd2bf0dc5c"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5354166e-6dd3-499a-93cd-1182749fece5"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/58a24e18-e5df-4852-8c57-55fd2bf0dc5c"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/5354166e-6dd3-499a-93cd-1182749fece5"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-545c14e3-8e75-5b91-8dca-61e56e30ac4e"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-07T11:08:47+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_stock"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporary"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58a24e18-e5df-4852-8c57-55fd2bf0dc5c"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5354166e-6dd3-499a-93cd-1182749fece5"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/58a24e18-e5df-4852-8c57-55fd2bf0dc5c"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/5354166e-6dd3-499a-93cd-1182749fece5"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"regular"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"in_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>How to fetch a breakdown of all expected items:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=cfa63809-ab14-4682-ab6b-25aae6bc3096&amp;filter%5Bstatus%5D=expected&amp;stats%5Binventory_breakdown_type%5D%5B%5D=sum&amp;stats%5Bstarted%5D%5B%5D=sum&amp;stats%5Bstatus%5D%5B%5D=sum&amp;stats%5Btotal%5D%5B%5D=sum'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>A 200 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-34451e9e-4622-53d1-a42a-d1bb2aa1505c"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-07T11:08:49+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expected"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regular"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64304e2d-39dd-43fc-a0a7-eae47421749d"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c65be23-2eb0-4f40-9177-c7446b643048"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/64304e2d-39dd-43fc-a0a7-eae47421749d"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/2c65be23-2eb0-4f40-9177-c7446b643048"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-e7031b5a-957f-5b6a-ac6c-273772ca9537"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-01-07T11:08:49+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-02-07T11:08:49+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expected"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporary"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64304e2d-39dd-43fc-a0a7-eae47421749d"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c65be23-2eb0-4f40-9177-c7446b643048"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/64304e2d-39dd-43fc-a0a7-eae47421749d"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/2c65be23-2eb0-4f40-9177-c7446b643048"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"regular"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"in_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>How to fetch a breakdown of all expired items:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=03af2c24-d484-4f06-a218-fe8767293050&amp;filter%5Bstatus%5D=expired&amp;stats%5Binventory_breakdown_type%5D%5B%5D=sum&amp;stats%5Bstarted%5D%5B%5D=sum&amp;stats%5Bstatus%5D%5B%5D=sum&amp;stats%5Btotal%5D%5B%5D=sum'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>A 200 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-c3ed91d7-0a20-5316-a320-97f467dfa59b"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-07T11:08:51+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expired"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporary"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9d05bdd-67bc-4d2d-9cff-3deb43e05c67"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a8a75ed7-469b-4d65-b201-743f5fcabecc"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/a9d05bdd-67bc-4d2d-9cff-3deb43e05c67"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/a8a75ed7-469b-4d65-b201-743f5fcabecc"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"regular"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"in_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='inventory-breakdowns-listing-inventory-breakdowns-http-request'>HTTP Request</h3>
-<p><code>GET /api/boomerang/inventory_breakdowns</code></p>
-<h3 id='inventory-breakdowns-listing-inventory-breakdowns-request-params'>Request params</h3>
-<p>This request accepts the following paramaters:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>include</code></td>
-<td><strong>String</strong><br>List of comma seperated relationships <code>?include=location,product</code></td>
-</tr>
-<tr>
-<td><code>fields[]</code></td>
-<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[inventory_breakdowns]=id,created_at,updated_at</code></td>
-</tr>
-<tr>
-<td><code>filter</code></td>
-<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2022-01-07T11:08:42Z</code></td>
-</tr>
-<tr>
-<td><code>sort</code></td>
-<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
-</tr>
-<tr>
-<td><code>meta</code></td>
-<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
-</tr>
-<tr>
-<td><code>page[number]</code></td>
-<td><strong>String</strong><br>The page to request</td>
-</tr>
-<tr>
-<td><code>page[size]</code></td>
-<td><strong>String</strong><br>The amount of items per page (max 100)</td>
-</tr>
-</tbody></table>
-<h3 id='inventory-breakdowns-listing-inventory-breakdowns-filters'>Filters</h3>
-<p>This request can be filtered on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>location_id</code></td>
-<td><strong>Uuid</strong><br><code>eq</code></td>
-</tr>
-<tr>
-<td><code>product_id</code></td>
-<td><strong>Uuid</strong><br><code>eq</code></td>
-</tr>
-<tr>
-<td><code>product_group_id</code></td>
-<td><strong>Uuid</strong><br><code>eq</code></td>
-</tr>
-</tbody></table>
-<h3 id='inventory-breakdowns-listing-inventory-breakdowns-meta'>Meta</h3>
-<p>Results can be aggregated on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>status</code></td>
-<td><strong>Array</strong><br><code>sum</code></td>
-</tr>
-<tr>
-<td><code>inventory_breakdown_type</code></td>
-<td><strong>Array</strong><br><code>sum</code></td>
-</tr>
-<tr>
-<td><code>total</code></td>
-<td><strong>Array</strong><br><code>sum</code></td>
-</tr>
-<tr>
-<td><code>started</code></td>
-<td><strong>Array</strong><br><code>sum</code></td>
-</tr>
-</tbody></table>
-<h3 id='inventory-breakdowns-listing-inventory-breakdowns-includes'>Includes</h3>
-<p>All includes are allowed on this request</p>
-<h1 id='billing-invoices'>Billing invoices</h1>
+<h1 id='internal'><strong>Internal</strong></h1><h1 id='billing-invoices'>Billing invoices</h1>
 <p>Invoices received from Booqable</p>
 <h2 id='billing-invoices-endpoints'>Endpoints</h2>
 <p><code>GET /api/boomerang/billing_invoices</code></p>
@@ -33961,6 +33482,417 @@ Because of this, a user should always be an actual person, not a legal person.</
 </tbody></table>
 <h3 id='currencies-fetching-a-currency-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
+<h1 id='inventory-breakdowns'>Inventory breakdowns</h1>
+<p>Fetch quantitive information about product inventory compared to the now, broken down by:</p>
+
+<ul>
+<li>Location</li>
+<li>Product</li>
+<li>Type</li>
+<li>Mutation date(s)</li>
+</ul>
+
+<p><strong>Useful for:</strong></p>
+
+<ul>
+<li>Examining what the current inventory looks, and will look, like for products</li>
+<li>Performing an inventory count (total in stock vs. out with a customer)</li>
+</ul>
+<h2 id='inventory-breakdowns-fields'>Fields</h2>
+<p>Every inventory breakdown has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>Datetime</strong><br>When the amount of items will be available (only for status <code>expected</code>)</td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>Datetime</strong><br>When the amount of items will become unavailable (only for type <code>temporary</code> and/or status <code>expired</code>)</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><strong>Integer</strong><br>The total amount of stock for product and location</td>
+</tr>
+<tr>
+<td><code>started</code></td>
+<td><strong>Integer</strong><br>The amount if items that are started for product and location. Only rendered when applicable</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>String</strong><br>One of <code>expected</code>, <code>in_stock</code>, <code>expired</code></td>
+</tr>
+<tr>
+<td><code>inventory_breakdown_type</code></td>
+<td><strong>String</strong><br>One of <code>regular</code>, <code>temporary</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>Uuid</strong><br>The associated Location</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong><br>The associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='inventory-breakdowns-relationships'>Relationships</h2>
+<p>Inventory breakdowns have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>location</code></td>
+<td><strong>Locations</strong> <code>readonly</code><br>Associated Location</td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td><strong>Products</strong> <code>readonly</code><br>Associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='inventory-breakdowns-listing-inventory-breakdowns'>Listing inventory breakdowns</h2>
+<blockquote>
+<p>How to fetch a breakdown of all items in stock:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=7f495550-ba8a-487e-b332-702d9bc38ba3&amp;filter%5Bstatus%5D=in_stock&amp;stats%5Binventory_breakdown_type%5D%5B%5D=sum&amp;stats%5Bstarted%5D%5B%5D=sum&amp;stats%5Bstatus%5D%5B%5D=sum&amp;stats%5Btotal%5D%5B%5D=sum'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-f8c543b9-38c5-5039-b97c-c131db7e6b40"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_stock"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regular"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4e577f5-ec6c-45ac-bb01-48b2e8aedbbd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5e5aba-f891-46e7-a4a3-65b0ce744d8e"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/f4e577f5-ec6c-45ac-bb01-48b2e8aedbbd"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/5d5e5aba-f891-46e7-a4a3-65b0ce744d8e"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-88ccf45a-fc35-5bc1-91ac-feef23a6d5e6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1988-09-11T20:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_stock"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporary"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f4e577f5-ec6c-45ac-bb01-48b2e8aedbbd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d5e5aba-f891-46e7-a4a3-65b0ce744d8e"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/f4e577f5-ec6c-45ac-bb01-48b2e8aedbbd"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/5d5e5aba-f891-46e7-a4a3-65b0ce744d8e"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"regular"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"in_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>How to fetch a breakdown of all expected items:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=cd133d29-5c66-43b3-a68f-365402c63c17&amp;filter%5Bstatus%5D=expected&amp;stats%5Binventory_breakdown_type%5D%5B%5D=sum&amp;stats%5Bstarted%5D%5B%5D=sum&amp;stats%5Bstatus%5D%5B%5D=sum&amp;stats%5Btotal%5D%5B%5D=sum'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-f8c543b9-38c5-5039-b97c-c131db7e6b40"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-03-11T20:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expected"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"regular"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8f608b5-860e-46cb-b580-286b0316b699"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"584bd50f-3807-4923-93b4-49c275933e26"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/c8f608b5-860e-46cb-b580-286b0316b699"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/584bd50f-3807-4923-93b4-49c275933e26"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-88ccf45a-fc35-5bc1-91ac-feef23a6d5e6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-03-11T20:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-04-11T20:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expected"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporary"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c8f608b5-860e-46cb-b580-286b0316b699"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"584bd50f-3807-4923-93b4-49c275933e26"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/c8f608b5-860e-46cb-b580-286b0316b699"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/584bd50f-3807-4923-93b4-49c275933e26"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"regular"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"in_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>How to fetch a breakdown of all expired items:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=d7c15537-7221-4733-a28b-832ed67adb7f&amp;filter%5Bstatus%5D=expired&amp;stats%5Binventory_breakdown_type%5D%5B%5D=sum&amp;stats%5Bstarted%5D%5B%5D=sum&amp;stats%5Bstatus%5D%5B%5D=sum&amp;stats%5Btotal%5D%5B%5D=sum'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-f8c543b9-38c5-5039-b97c-c131db7e6b40"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_breakdowns"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1988-02-11T20:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expired"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temporary"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0bfff2b-eb15-4acc-a6d6-45729c685e50"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0fa04f1b-d0b9-4c27-9c35-d28990b38011"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/locations/e0bfff2b-eb15-4acc-a6d6-45729c685e50"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/0fa04f1b-d0b9-4c27-9c35-d28990b38011"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inventory_breakdown_type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"regular"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"in_stock"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='inventory-breakdowns-listing-inventory-breakdowns-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/inventory_breakdowns</code></p>
+<h3 id='inventory-breakdowns-listing-inventory-breakdowns-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=location,product</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[inventory_breakdowns]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2022-01-10T23:44:40Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='inventory-breakdowns-listing-inventory-breakdowns-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>product_group_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-breakdowns-listing-inventory-breakdowns-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>status</code></td>
+<td><strong>Array</strong><br><code>sum</code></td>
+</tr>
+<tr>
+<td><code>inventory_breakdown_type</code></td>
+<td><strong>Array</strong><br><code>sum</code></td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>sum</code>, <code>count</code></td>
+</tr>
+<tr>
+<td><code>started</code></td>
+<td><strong>Array</strong><br><code>sum</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-breakdowns-listing-inventory-breakdowns-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>location</code></p>
+
+<p><code>product</code> =&gt; 
+<code>photo</code></p>
 <h1 id='login-activities'>Login activities</h1>
 <p>A list of all login attempts for the current employee.</p>
 <h2 id='login-activities-fields'>Fields</h2>
