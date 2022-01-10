@@ -72,9 +72,9 @@ includes:
   - users
 
   - internal
-  - inventory_breakdowns
   - billing_invoices
   - currencies
+  - inventory_breakdowns
   - login_activities
 
 search: true
