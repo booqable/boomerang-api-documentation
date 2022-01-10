@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f56e907d-1749-4ba8-a203-ac9064d15edd",
+    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-05T12:39:19+00:00",
-      "updated_at": "2022-01-05T12:39:19+00:00",
+      "created_at": "2022-01-10T13:50:29+00:00",
+      "updated_at": "2022-01-10T13:50:29+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-608-017-3306 x8047",
-      "website": "http://ullrich-klocko.net/angelena",
-      "address": "Senger Fall\n4981 Johnson Wells\n62783-8429 New Martin\nTurkmenistan",
-      "address_line_1": "Senger Fall",
-      "address_line_2": "4981 Johnson Wells",
-      "zipcode": "62783-8429",
-      "city": "New Martin",
+      "phone": "1-782-498-1935",
+      "website": "http://casper.co/michael",
+      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
+      "address_line_1": "Fawn Manors",
+      "address_line_2": "25489 Brice Port",
+      "zipcode": "49299-0811",
+      "city": "Port Soledadborough",
       "region": null,
-      "country": "Turkmenistan",
+      "country": "Cook Islands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7621 Tyrone Ways",
-      "financial_line_2": "93784-6192 East Madelainestad",
+      "financial_line_1": "8502 Torp Oval",
+      "financial_line_2": "72456-8130 West Lachelle",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "57a00ab6-aaed-4c2b-b845-840d4468c054",
+    "id": "069affe2-7def-4915-84b9-4f042f34883c",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-19T12:39:20.004Z",
+        "trial_ends_at": "2022-01-24T13:50:30.054Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9a2a429e-5872-450c-a8b3-a834f7fcfe3b",
+        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9a2a429e-5872-450c-a8b3-a834f7fcfe3b",
+    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-05T12:39:20+00:00",
-      "updated_at": "2022-01-05T12:39:20+00:00",
+      "created_at": "2022-01-10T13:50:30+00:00",
+      "updated_at": "2022-01-10T13:50:30+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(795) 344-5495 x77905",
-      "website": "http://walker-conroy.info/walker_wisoky",
-      "address": "Verla Plaza\n385 Carmelita Court\n86131 Lake Colemanville\nEritrea",
-      "address_line_1": "Verla Plaza",
-      "address_line_2": "385 Carmelita Court",
-      "zipcode": "86131",
-      "city": "Lake Colemanville",
+      "phone": "(393) 123-2894",
+      "website": "http://schroeder-hammes.org/gaylene.donnelly",
+      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
+      "address_line_1": "Pacocha Meadow",
+      "address_line_2": "168 Reilly Place",
+      "zipcode": "90484",
+      "city": "Berniefurt",
       "region": null,
-      "country": "Eritrea",
+      "country": "Fiji",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "988 Ankunding Isle",
-      "financial_line_2": "43351-3048 South Merrill",
+      "financial_line_1": "360 Howe Parkway",
+      "financial_line_2": "54641 Runolfsdottirport",
       "vat_number": null,
       "custom_domain": null,
       "development": false

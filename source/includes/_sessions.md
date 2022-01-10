@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2df7e145-0ef8-5616-b1f0-e5619d1124e6",
+    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-05T12:41:08+00:00",
-      "company_id": "1e5ea6b3-da35-4735-b726-6ec006baaef1",
-      "employee_id": "811ef908-5877-4f9c-85c3-d7b2956fca8d",
-      "locations_updated_at": "2022-01-05T12:41:08+00:00",
-      "clusters_updated_at": "2022-01-05T12:41:08+00:00",
-      "default_properties_updated_at": "2022-01-05T12:41:08+00:00"
+      "updated_at": "2022-01-10T13:52:56+00:00",
+      "company_id": "8a6f9629-07e7-4c41-b4df-1e0478453c31",
+      "employee_id": "66182659-c6c2-44a0-8475-f069188493d2",
+      "locations_updated_at": "2022-01-10T13:52:56+00:00",
+      "clusters_updated_at": "2022-01-10T13:52:56+00:00",
+      "default_properties_updated_at": "2022-01-10T13:52:56+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2df7e145-0ef8-5616-b1f0-e5619d1124e6",
+    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-05T12:41:08+00:00",
-      "company_id": "1e1bf28f-6e07-461b-b229-a1e9e5633c8d",
-      "employee_id": "7bf2f068-89b0-49c5-b8f2-01bc54b6c669",
+      "updated_at": "2022-01-10T13:52:56+00:00",
+      "company_id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
+      "employee_id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "1e1bf28f-6e07-461b-b229-a1e9e5633c8d"
+          "id": "4945e18c-5218-4d91-8238-18aaa775ca6b"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "7bf2f068-89b0-49c5-b8f2-01bc54b6c669"
+          "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "1e1bf28f-6e07-461b-b229-a1e9e5633c8d",
+      "id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-01-05T12:41:08+00:00",
-        "updated_at": "2022-01-05T12:41:08+00:00",
+        "created_at": "2022-01-10T13:52:56+00:00",
+        "updated_at": "2022-01-10T13:52:56+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "183-452-4723 x02262",
-        "website": "http://marks.io/phil",
-        "address": "Rickie Plaza\n348 Frami Stream\n18626 Effertztown\nAmerican Samoa",
-        "address_line_1": "Rickie Plaza",
-        "address_line_2": "348 Frami Stream",
-        "zipcode": "18626",
-        "city": "Effertztown",
+        "phone": "1-875-807-7038 x62745",
+        "website": "http://west.com/patrick",
+        "address": "Block Club\n1936 Bartell Garden\n60941 Port Dion\nRwanda",
+        "address_line_1": "Block Club",
+        "address_line_2": "1936 Bartell Garden",
+        "zipcode": "60941",
+        "city": "Port Dion",
         "region": null,
-        "country": "American Samoa",
+        "country": "Rwanda",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "718 Hilll Squares",
-        "financial_line_2": "39180 Lake Noahmouth",
+        "financial_line_1": "709 Hamill Plains",
+        "financial_line_2": "20732 South Fletaborough",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-01-19T12:41:08.329Z",
+          "trial_ends_at": "2022-01-24T13:52:56.617Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "7bf2f068-89b0-49c5-b8f2-01bc54b6c669",
+      "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-05T12:41:08+00:00",
-        "updated_at": "2022-01-05T12:41:08+00:00",
+        "created_at": "2022-01-10T13:52:56+00:00",
+        "updated_at": "2022-01-10T13:52:56+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

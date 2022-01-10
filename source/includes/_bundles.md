@@ -71,11 +71,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "cf330b0a-b7c9-416d-9b35-61cecb2ae809",
+      "id": "60350668-f6c8-4645-b7f5-00ab5ef1a84b",
       "type": "bundles",
       "attributes": {
-        "created_at": "2022-01-05T12:39:09+00:00",
-        "updated_at": "2022-01-05T12:39:09+00:00",
+        "created_at": "2022-01-10T13:50:16+00:00",
+        "updated_at": "2022-01-10T13:50:16+00:00",
         "type": "bundles",
         "name": "iPad Bundle",
         "slug": "ipad-bundle",
@@ -106,12 +106,12 @@ Name | Description
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=cf330b0a-b7c9-416d-9b35-61cecb2ae809"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=60350668-f6c8-4645-b7f5-00ab5ef1a84b"
           }
         },
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=cf330b0a-b7c9-416d-9b35-61cecb2ae809"
+            "related": "api/boomerang/categories?filter[item_id]=60350668-f6c8-4645-b7f5-00ab5ef1a84b"
           }
         }
       }
@@ -138,7 +138,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-05T12:38:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -193,7 +193,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundles/d5183d48-4954-4de0-b965-0b848d8e8342' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/0de8020f-ed3d-4bf4-a3b3-10444b051520' \
     --header 'content-type: application/json' \
 ```
 
@@ -202,11 +202,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d5183d48-4954-4de0-b965-0b848d8e8342",
+    "id": "0de8020f-ed3d-4bf4-a3b3-10444b051520",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-01-05T12:39:09+00:00",
-      "updated_at": "2022-01-05T12:39:09+00:00",
+      "created_at": "2022-01-10T13:50:17+00:00",
+      "updated_at": "2022-01-10T13:50:17+00:00",
       "type": "bundles",
       "name": "iPad Bundle",
       "slug": "ipad-bundle",
@@ -237,12 +237,12 @@ This request does not accept any includes
       },
       "bundle_items": {
         "links": {
-          "related": "api/boomerang/bundle_items?filter[bundle_id]=d5183d48-4954-4de0-b965-0b848d8e8342"
+          "related": "api/boomerang/bundle_items?filter[bundle_id]=0de8020f-ed3d-4bf4-a3b3-10444b051520"
         }
       },
       "categories": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=d5183d48-4954-4de0-b965-0b848d8e8342"
+          "related": "api/boomerang/categories?filter[item_id]=0de8020f-ed3d-4bf4-a3b3-10444b051520"
         }
       }
     }
@@ -314,14 +314,14 @@ This request accepts the following includes:
             {
               "quantity": 2,
               "discount_percentage": 10,
-              "product_group_id": "bde94f9e-43bc-49ba-9a18-890e69b77705",
-              "product_id": "cc1d12be-12aa-47f0-8d09-206b681f446e"
+              "product_group_id": "bfaf27cb-2c37-4b83-a1d0-7544ef9d05c6",
+              "product_id": "f7e887d1-a987-42d6-b413-394c6b4dbf2f"
             },
             {
               "quantity": 2,
               "discount_percentage": 15,
-              "product_group_id": "52180e76-58fa-45a0-b83a-5aeb5e0a92e5",
-              "product_id": "79b6bfaf-486c-4ae6-91e4-9197445c2163"
+              "product_group_id": "075f19e0-3be8-4310-9d22-405440fc3a64",
+              "product_id": "fa988ae1-4754-4c84-b981-f9f7d66cd8b4"
             }
           ]
         }
@@ -334,11 +334,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1c080a0b-da21-432d-aa07-210e88811aac",
+    "id": "1650654a-ec16-4fc4-8ecd-e89b896371e1",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-01-05T12:39:10+00:00",
-      "updated_at": "2022-01-05T12:39:10+00:00",
+      "created_at": "2022-01-10T13:50:18+00:00",
+      "updated_at": "2022-01-10T13:50:18+00:00",
       "type": "bundles",
       "name": "iPad Pro Bundle",
       "slug": "ipad-pro-bundle",
@@ -371,11 +371,11 @@ This request accepts the following includes:
         "data": [
           {
             "type": "bundle_items",
-            "id": "750ff95b-6291-4165-ad3c-f017aa8b881e"
+            "id": "bf4ea82f-dd35-4d99-9082-bbb02a7e23c5"
           },
           {
             "type": "bundle_items",
-            "id": "21e723a2-e088-4299-9384-997694757567"
+            "id": "d42332ba-8935-4938-8bf7-45f5d6fa2aa3"
           }
         ]
       },
@@ -388,17 +388,17 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "750ff95b-6291-4165-ad3c-f017aa8b881e",
+      "id": "bf4ea82f-dd35-4d99-9082-bbb02a7e23c5",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-01-05T12:39:10+00:00",
-        "updated_at": "2022-01-05T12:39:10+00:00",
+        "created_at": "2022-01-10T13:50:18+00:00",
+        "updated_at": "2022-01-10T13:50:18+00:00",
         "quantity": "2",
         "discount_percentage": 10,
         "position": 1,
-        "bundle_id": "1c080a0b-da21-432d-aa07-210e88811aac",
-        "product_group_id": "bde94f9e-43bc-49ba-9a18-890e69b77705",
-        "product_id": "cc1d12be-12aa-47f0-8d09-206b681f446e"
+        "bundle_id": "1650654a-ec16-4fc4-8ecd-e89b896371e1",
+        "product_group_id": "bfaf27cb-2c37-4b83-a1d0-7544ef9d05c6",
+        "product_id": "f7e887d1-a987-42d6-b413-394c6b4dbf2f"
       },
       "relationships": {
         "bundle": {
@@ -419,17 +419,17 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "21e723a2-e088-4299-9384-997694757567",
+      "id": "d42332ba-8935-4938-8bf7-45f5d6fa2aa3",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-01-05T12:39:10+00:00",
-        "updated_at": "2022-01-05T12:39:10+00:00",
+        "created_at": "2022-01-10T13:50:18+00:00",
+        "updated_at": "2022-01-10T13:50:18+00:00",
         "quantity": "2",
         "discount_percentage": 15,
         "position": 2,
-        "bundle_id": "1c080a0b-da21-432d-aa07-210e88811aac",
-        "product_group_id": "52180e76-58fa-45a0-b83a-5aeb5e0a92e5",
-        "product_id": "79b6bfaf-486c-4ae6-91e4-9197445c2163"
+        "bundle_id": "1650654a-ec16-4fc4-8ecd-e89b896371e1",
+        "product_group_id": "075f19e0-3be8-4310-9d22-405440fc3a64",
+        "product_id": "fa988ae1-4754-4c84-b981-f9f7d66cd8b4"
       },
       "relationships": {
         "bundle": {
@@ -451,9 +451,9 @@ This request accepts the following includes:
     }
   ],
   "links": {
-    "self": "api/boomerang/bundles?data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=10&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=bde94f9e-43bc-49ba-9a18-890e69b77705&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=cc1d12be-12aa-47f0-8d09-206b681f446e&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=52180e76-58fa-45a0-b83a-5aeb5e0a92e5&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=79b6bfaf-486c-4ae6-91e4-9197445c2163&data%5Battributes%5D%5Bname%5D=iPad+Pro+Bundle&data%5Btype%5D=bundles&include=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/bundles?data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=10&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=bde94f9e-43bc-49ba-9a18-890e69b77705&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=cc1d12be-12aa-47f0-8d09-206b681f446e&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=52180e76-58fa-45a0-b83a-5aeb5e0a92e5&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=79b6bfaf-486c-4ae6-91e4-9197445c2163&data%5Battributes%5D%5Bname%5D=iPad+Pro+Bundle&data%5Btype%5D=bundles&include=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/bundles?data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=10&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=bde94f9e-43bc-49ba-9a18-890e69b77705&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=cc1d12be-12aa-47f0-8d09-206b681f446e&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=52180e76-58fa-45a0-b83a-5aeb5e0a92e5&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=79b6bfaf-486c-4ae6-91e4-9197445c2163&data%5Battributes%5D%5Bname%5D=iPad+Pro+Bundle&data%5Btype%5D=bundles&include=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/boomerang/bundles?data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=10&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=bfaf27cb-2c37-4b83-a1d0-7544ef9d05c6&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=f7e887d1-a987-42d6-b413-394c6b4dbf2f&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=075f19e0-3be8-4310-9d22-405440fc3a64&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=fa988ae1-4754-4c84-b981-f9f7d66cd8b4&data%5Battributes%5D%5Bname%5D=iPad+Pro+Bundle&data%5Btype%5D=bundles&include=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/boomerang/bundles?data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=10&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=bfaf27cb-2c37-4b83-a1d0-7544ef9d05c6&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=f7e887d1-a987-42d6-b413-394c6b4dbf2f&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=075f19e0-3be8-4310-9d22-405440fc3a64&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=fa988ae1-4754-4c84-b981-f9f7d66cd8b4&data%5Battributes%5D%5Bname%5D=iPad+Pro+Bundle&data%5Btype%5D=bundles&include=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/boomerang/bundles?data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=10&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=bfaf27cb-2c37-4b83-a1d0-7544ef9d05c6&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=f7e887d1-a987-42d6-b413-394c6b4dbf2f&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bquantity%5D=2&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bdiscount_percentage%5D=15&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_group_id%5D=075f19e0-3be8-4310-9d22-405440fc3a64&data%5Battributes%5D%5Bbundle_items_attributes%5D%5B%5D%5Bproduct_id%5D=fa988ae1-4754-4c84-b981-f9f7d66cd8b4&data%5Battributes%5D%5Bname%5D=iPad+Pro+Bundle&data%5Btype%5D=bundles&include=bundle_items&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -530,25 +530,25 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/bundles/90abba8a-52e1-48ee-83f1-664bd181e11d' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/f678449b-9f78-47f4-8e8d-4c86753a6e92' \
     --header 'content-type: application/json' \
     --data '{
       "include": "bundle_items",
       "data": {
-        "id": "90abba8a-52e1-48ee-83f1-664bd181e11d",
+        "id": "f678449b-9f78-47f4-8e8d-4c86753a6e92",
         "type": "bundles",
         "attributes": {
           "name": "iPad Pro Bundle",
           "bundle_items_attributes": [
             {
-              "id": "07da685d-b4e6-4171-8b1b-ac0a31a8f20a",
+              "id": "ff7bd8ed-e0c7-4154-afe7-0d3b984de36e",
               "_destroy": true
             },
             {
               "quantity": 2,
               "discount_percentage": 15,
-              "product_group_id": "cb1bdd20-ca87-424c-b450-c69426dd1be8",
-              "product_id": "c30c160b-174d-4615-8372-c6257c958422"
+              "product_group_id": "2b02dd1d-7046-4a4e-ba13-732212002a32",
+              "product_id": "05577a6d-11fc-4a09-9085-1a7b9d4dacc1"
             }
           ]
         }
@@ -561,11 +561,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "90abba8a-52e1-48ee-83f1-664bd181e11d",
+    "id": "f678449b-9f78-47f4-8e8d-4c86753a6e92",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-01-05T12:39:11+00:00",
-      "updated_at": "2022-01-05T12:39:11+00:00",
+      "created_at": "2022-01-10T13:50:18+00:00",
+      "updated_at": "2022-01-10T13:50:19+00:00",
       "type": "bundles",
       "name": "iPad Pro Bundle",
       "slug": "ipad-bundle",
@@ -598,7 +598,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "bundle_items",
-            "id": "66eae047-8ea7-42eb-a9a0-153824c59378"
+            "id": "5f97e74b-c250-45e4-8c2c-7a5c539620c8"
           }
         ]
       },
@@ -611,17 +611,17 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "66eae047-8ea7-42eb-a9a0-153824c59378",
+      "id": "5f97e74b-c250-45e4-8c2c-7a5c539620c8",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-01-05T12:39:11+00:00",
-        "updated_at": "2022-01-05T12:39:11+00:00",
+        "created_at": "2022-01-10T13:50:19+00:00",
+        "updated_at": "2022-01-10T13:50:19+00:00",
         "quantity": "2",
         "discount_percentage": 15,
         "position": 2,
-        "bundle_id": "90abba8a-52e1-48ee-83f1-664bd181e11d",
-        "product_group_id": "cb1bdd20-ca87-424c-b450-c69426dd1be8",
-        "product_id": "c30c160b-174d-4615-8372-c6257c958422"
+        "bundle_id": "f678449b-9f78-47f4-8e8d-4c86753a6e92",
+        "product_group_id": "2b02dd1d-7046-4a4e-ba13-732212002a32",
+        "product_id": "05577a6d-11fc-4a09-9085-1a7b9d4dacc1"
       },
       "relationships": {
         "bundle": {
@@ -717,7 +717,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/bundles/ee1d02eb-ba1f-49b1-9dbe-1cb9d0887e65' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/5e229ffb-8a90-476d-b46e-cfa0b6f31f1f' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
