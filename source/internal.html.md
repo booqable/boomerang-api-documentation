@@ -31,6 +31,7 @@ includes:
   - emails
   - employee_invitations
   - employees
+  - inventory_levels
   - ip_addresses
   - items
   - item_prices
@@ -71,6 +72,7 @@ includes:
   - users
 
   - internal
+  - inventory_breakdowns
   - billing_invoices
   - currencies
   - login_activities

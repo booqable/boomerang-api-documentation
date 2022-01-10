@@ -31,6 +31,7 @@ includes:
   - emails
   - employee_invitations
   - employees
+  - inventory_levels
   - ip_addresses
   - items
   - item_prices
