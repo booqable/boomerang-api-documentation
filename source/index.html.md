@@ -15,7 +15,6 @@ includes:
   - resources
   - authentication_methods
   - barcodes
-  - bulk_upserts
   - bundle_items
   - bundles
   - categories

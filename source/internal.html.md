@@ -73,6 +73,7 @@ includes:
 
   - internal
   - billing_invoices
+  - bulk_upserts
   - currencies
   - inventory_breakdowns
   - login_activities
