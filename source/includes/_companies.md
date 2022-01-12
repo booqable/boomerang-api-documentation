@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
+    "id": "dfa5cca7-a2bd-49c9-9e88-41bf6fff169b",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:29+00:00",
-      "updated_at": "2022-01-10T13:50:29+00:00",
+      "created_at": "2022-01-12T10:12:54+00:00",
+      "updated_at": "2022-01-12T10:12:54+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-782-498-1935",
-      "website": "http://casper.co/michael",
-      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
-      "address_line_1": "Fawn Manors",
-      "address_line_2": "25489 Brice Port",
-      "zipcode": "49299-0811",
-      "city": "Port Soledadborough",
+      "phone": "1-998-497-2510 x7516",
+      "website": "http://ryan.biz/teena_pacocha",
+      "address": "Regena Ferry\n6922 Romaguera Pike\n03005 North Russchester\nNicaragua",
+      "address_line_1": "Regena Ferry",
+      "address_line_2": "6922 Romaguera Pike",
+      "zipcode": "03005",
+      "city": "North Russchester",
       "region": null,
-      "country": "Cook Islands",
+      "country": "Nicaragua",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8502 Torp Oval",
-      "financial_line_2": "72456-8130 West Lachelle",
+      "financial_line_1": "60006 Kenneth Brook",
+      "financial_line_2": "81493-9978 East Patrickberg",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "069affe2-7def-4915-84b9-4f042f34883c",
+    "id": "24eaca99-76d8-44fb-af92-1bfbbdce7b17",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-24T13:50:30.054Z",
+        "trial_ends_at": "2022-01-26T10:12:54.751Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+        "id": "69420e01-5ff0-4164-8ebf-bc36c4a4b6c4",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+    "id": "69420e01-5ff0-4164-8ebf-bc36c4a4b6c4",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:30+00:00",
-      "updated_at": "2022-01-10T13:50:30+00:00",
+      "created_at": "2022-01-12T10:12:55+00:00",
+      "updated_at": "2022-01-12T10:12:55+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(393) 123-2894",
-      "website": "http://schroeder-hammes.org/gaylene.donnelly",
-      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
-      "address_line_1": "Pacocha Meadow",
-      "address_line_2": "168 Reilly Place",
-      "zipcode": "90484",
-      "city": "Berniefurt",
+      "phone": "551.636.8045 x80361",
+      "website": "http://nicolas.org/carolyne_stehr",
+      "address": "Cummings Forge\n740 Harber Forest\n87792 Effertzfort\nKyrgyz Republic",
+      "address_line_1": "Cummings Forge",
+      "address_line_2": "740 Harber Forest",
+      "zipcode": "87792",
+      "city": "Effertzfort",
       "region": null,
-      "country": "Fiji",
+      "country": "Kyrgyz Republic",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "360 Howe Parkway",
-      "financial_line_2": "54641 Runolfsdottirport",
+      "financial_line_1": "300 Renner Fields",
+      "financial_line_2": "41589 Claudeborough",
       "vat_number": null,
       "custom_domain": null,
       "development": false

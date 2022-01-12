@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "0cd513c6-1623-53d4-9cc9-cbd781bc8173",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "8a6f9629-07e7-4c41-b4df-1e0478453c31",
-      "employee_id": "66182659-c6c2-44a0-8475-f069188493d2",
-      "locations_updated_at": "2022-01-10T13:52:56+00:00",
-      "clusters_updated_at": "2022-01-10T13:52:56+00:00",
-      "default_properties_updated_at": "2022-01-10T13:52:56+00:00"
+      "updated_at": "2022-01-12T10:15:05+00:00",
+      "company_id": "9e1e5e67-a27e-4615-bf21-dae9877e1d16",
+      "employee_id": "df18e467-37ff-4500-8816-fe7c2521fde0",
+      "locations_updated_at": "2022-01-12T10:15:05+00:00",
+      "clusters_updated_at": "2022-01-12T10:15:05+00:00",
+      "default_properties_updated_at": "2022-01-12T10:15:05+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "0cd513c6-1623-53d4-9cc9-cbd781bc8173",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
-      "employee_id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "updated_at": "2022-01-12T10:15:05+00:00",
+      "company_id": "3e764f0d-7ae2-4369-90f6-00692928dee8",
+      "employee_id": "cdbb4853-8821-410c-84b5-46d14c8d0a4f",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "4945e18c-5218-4d91-8238-18aaa775ca6b"
+          "id": "3e764f0d-7ae2-4369-90f6-00692928dee8"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735"
+          "id": "cdbb4853-8821-410c-84b5-46d14c8d0a4f"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
+      "id": "3e764f0d-7ae2-4369-90f6-00692928dee8",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
+        "created_at": "2022-01-12T10:15:05+00:00",
+        "updated_at": "2022-01-12T10:15:05+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "1-875-807-7038 x62745",
-        "website": "http://west.com/patrick",
-        "address": "Block Club\n1936 Bartell Garden\n60941 Port Dion\nRwanda",
-        "address_line_1": "Block Club",
-        "address_line_2": "1936 Bartell Garden",
-        "zipcode": "60941",
-        "city": "Port Dion",
+        "phone": "397.514.2070 x2872",
+        "website": "http://muller-boehm.biz/sung.mante",
+        "address": "Pfannerstill Spring\n10487 Altenwerth Walks\n89931-5079 Runolfssonport\nBritish Indian Ocean Territory (Chagos Archipelago)",
+        "address_line_1": "Pfannerstill Spring",
+        "address_line_2": "10487 Altenwerth Walks",
+        "zipcode": "89931-5079",
+        "city": "Runolfssonport",
         "region": null,
-        "country": "Rwanda",
+        "country": "British Indian Ocean Territory (Chagos Archipelago)",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "709 Hamill Plains",
-        "financial_line_2": "20732 South Fletaborough",
+        "financial_line_1": "8814 Bauch Courts",
+        "financial_line_2": "05703 East Scotttown",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-01-24T13:52:56.617Z",
+          "trial_ends_at": "2022-01-26T10:15:05.934Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "id": "cdbb4853-8821-410c-84b5-46d14c8d0a4f",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
+        "created_at": "2022-01-12T10:15:05+00:00",
+        "updated_at": "2022-01-12T10:15:05+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
