@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
+    "id": "cf0dfa7b-f3b4-49ed-a7a5-223b67525711",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:29+00:00",
-      "updated_at": "2022-01-10T13:50:29+00:00",
+      "created_at": "2022-01-12T10:55:13+00:00",
+      "updated_at": "2022-01-12T10:55:13+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-782-498-1935",
-      "website": "http://casper.co/michael",
-      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
-      "address_line_1": "Fawn Manors",
-      "address_line_2": "25489 Brice Port",
-      "zipcode": "49299-0811",
-      "city": "Port Soledadborough",
+      "phone": "659.110.0863",
+      "website": "http://gottlieb.com/carroll.stark",
+      "address": "Brakus Inlet\n3420 Filiberto Pike\n07444-2264 Port Willodeanside\nKuwait",
+      "address_line_1": "Brakus Inlet",
+      "address_line_2": "3420 Filiberto Pike",
+      "zipcode": "07444-2264",
+      "city": "Port Willodeanside",
       "region": null,
-      "country": "Cook Islands",
+      "country": "Kuwait",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8502 Torp Oval",
-      "financial_line_2": "72456-8130 West Lachelle",
+      "financial_line_1": "287 Heidenreich Mill",
+      "financial_line_2": "40743 New Krissyton",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "069affe2-7def-4915-84b9-4f042f34883c",
+    "id": "2dadc6ad-f349-4b4e-877c-697a77e38a21",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-24T13:50:30.054Z",
+        "trial_ends_at": "2022-01-26T10:55:14.035Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+        "id": "8bc6bc7b-afd6-45ae-9a3c-ebc3c628c5e0",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+    "id": "8bc6bc7b-afd6-45ae-9a3c-ebc3c628c5e0",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:30+00:00",
-      "updated_at": "2022-01-10T13:50:30+00:00",
+      "created_at": "2022-01-12T10:55:14+00:00",
+      "updated_at": "2022-01-12T10:55:14+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(393) 123-2894",
-      "website": "http://schroeder-hammes.org/gaylene.donnelly",
-      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
-      "address_line_1": "Pacocha Meadow",
-      "address_line_2": "168 Reilly Place",
-      "zipcode": "90484",
-      "city": "Berniefurt",
+      "phone": "974.330.0064",
+      "website": "http://schaefer-jakubowski.org/na_marquardt",
+      "address": "Cremin Orchard\n527 Ortiz Trail\n33812 Jeaneton\nSvalbard & Jan Mayen Islands",
+      "address_line_1": "Cremin Orchard",
+      "address_line_2": "527 Ortiz Trail",
+      "zipcode": "33812",
+      "city": "Jeaneton",
       "region": null,
-      "country": "Fiji",
+      "country": "Svalbard & Jan Mayen Islands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "360 Howe Parkway",
-      "financial_line_2": "54641 Runolfsdottirport",
+      "financial_line_1": "32769 Pfannerstill Ways",
+      "financial_line_2": "60555-1479 Erinmouth",
       "vat_number": null,
       "custom_domain": null,
       "development": false
