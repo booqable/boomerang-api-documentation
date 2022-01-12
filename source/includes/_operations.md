@@ -321,11 +321,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "cca65f5e-2cef-4f99-9058-b7a782e0dff6",
+      "id": "147d3dbf-c037-45da-b99e-d6303553249f",
       "type": "operations",
       "attributes": {
-        "created_at": "2022-01-10T13:51:44+00:00",
-        "updated_at": "2022-01-10T13:51:44+00:00",
+        "created_at": "2022-01-12T14:03:22+00:00",
+        "updated_at": "2022-01-12T14:03:22+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -335,12 +335,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "0e6c7843-fde5-41e0-ad28-a4707238aeb0"
+        "employee_id": "f181330a-5f23-422d-96bb-0bc9bcb0ae1c"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/0e6c7843-fde5-41e0-ad28-a4707238aeb0"
+            "related": "api/boomerang/employees/f181330a-5f23-422d-96bb-0bc9bcb0ae1c"
           }
         }
       }
@@ -367,7 +367,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-12T14:02:08Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -416,7 +416,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/72a8a2d9-2167-445e-a1ff-52447aafd809' \
+    --url 'https://example.booqable.com/api/boomerang/operations/0050fc15-93b4-45f2-9a5d-5782c874deca' \
     --header 'content-type: application/json' \
 ```
 
@@ -425,11 +425,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "72a8a2d9-2167-445e-a1ff-52447aafd809",
+    "id": "0050fc15-93b4-45f2-9a5d-5782c874deca",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-01-10T13:51:44+00:00",
-      "updated_at": "2022-01-10T13:51:44+00:00",
+      "created_at": "2022-01-12T14:03:23+00:00",
+      "updated_at": "2022-01-12T14:03:23+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -439,12 +439,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "51a310a1-9400-4884-befc-6c1c116be14b"
+      "employee_id": "188173cc-1632-4014-9240-ebfedde70dd2"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/51a310a1-9400-4884-befc-6c1c116be14b"
+          "related": "api/boomerang/employees/188173cc-1632-4014-9240-ebfedde70dd2"
         }
       }
     }
@@ -512,11 +512,11 @@ When creating an operation, it will start running in the background. With the `i
 ```json
   {
   "data": {
-    "id": "f0ebd36e-3d9a-4f50-b849-55bb0f641d95",
+    "id": "99d1cef9-6873-47e1-8779-1f188d324999",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-01-10T13:51:45+00:00",
-      "updated_at": "2022-01-10T13:51:45+00:00",
+      "created_at": "2022-01-12T14:03:23+00:00",
+      "updated_at": "2022-01-12T14:03:23+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -526,7 +526,7 @@ When creating an operation, it will start running in the background. With the `i
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "e9a8967f-bda1-4a91-9f83-e4a4f45d6a30"
+      "employee_id": "34854478-da65-404c-97ca-f2c85e76e087"
     },
     "relationships": {
       "employee": {
