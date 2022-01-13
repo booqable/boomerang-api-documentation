@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "ef7895ed-35bf-4529-826c-a9f80ada1c6b",
-          "target_id": "189b0d11-aeae-4c50-b4c0-83b25580d2dd"
+          "source_id": "0614e974-82d4-4bd9-87c0-000d174c9438",
+          "target_id": "1c08761b-0d7f-4884-b5f2-36ebf788a922"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "aa157764-5f1d-5699-86f0-d2b40ffe0a6c",
+    "id": "8afd96a9-b9bd-5053-961d-5bd735ca13d1",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "ef7895ed-35bf-4529-826c-a9f80ada1c6b",
-      "target_id": "189b0d11-aeae-4c50-b4c0-83b25580d2dd"
+      "source_id": "0614e974-82d4-4bd9-87c0-000d174c9438",
+      "target_id": "1c08761b-0d7f-4884-b5f2-36ebf788a922"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "189b0d11-aeae-4c50-b4c0-83b25580d2dd"
+          "id": "1c08761b-0d7f-4884-b5f2-36ebf788a922"
         }
       }
     }
   },
   "included": [
     {
-      "id": "189b0d11-aeae-4c50-b4c0-83b25580d2dd",
+      "id": "1c08761b-0d7f-4884-b5f2-36ebf788a922",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-01-10T13:51:38+00:00",
-        "updated_at": "2022-01-10T13:51:38+00:00",
+        "created_at": "2022-01-13T18:50:49+00:00",
+        "updated_at": "2022-01-13T18:50:49+00:00",
         "number": 1,
         "name": "John Doe",
         "email": "johndoe@company.test",
@@ -114,12 +114,6 @@ Name | Description
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&data%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&data%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&data%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/merges?data%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&data%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&data%5Battributes%5D%5Btype%5D=customers&data%5Btype%5D=merges&include=target&merge%5Bdata%5D%5Battributes%5D%5Bsource_id%5D=ef7895ed-35bf-4529-826c-a9f80ada1c6b&merge%5Bdata%5D%5Battributes%5D%5Btarget_id%5D=189b0d11-aeae-4c50-b4c0-83b25580d2dd&merge%5Bdata%5D%5Battributes%5D%5Btype%5D=customers&merge%5Bdata%5D%5Btype%5D=merges&merge%5Binclude%5D=target&page%5Bnumber%5D=2&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```

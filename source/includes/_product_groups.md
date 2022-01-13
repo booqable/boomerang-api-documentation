@@ -76,7 +76,6 @@ Name | Description
 `quantity` | **Integer** `writeonly`<br>When creating a product group you can specify the quantity of items you have in stock. Note that for a trackable product group, stock items are generated automatically based on this quantity
 `confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm the shortage (over limit by changing `shortage_limit`)
 `tax_category_id` | **Uuid**<br>The associated Tax category
-`price_structure_id` | **Uuid**<br>The associated Price structure
 
 
 ## Relationships
@@ -88,7 +87,6 @@ Name | Description
 `categories` | **Categories** `readonly`<br>Associated Categories
 `products` | **Products** `readonly`<br>Associated Products
 `tax_category` | **Tax categories** `readonly`<br>Associated Tax category
-`price_structure` | **Price structures** `readonly`<br>Associated Price structure
 `properties` | **Properties** `readonly`<br>Associated Properties
 
 
@@ -110,11 +108,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "23f0ac5c-a148-43f9-a685-f71b065bd8ef",
+      "id": "b08abd51-d0f5-4d32-b6e6-e1a0dc14f4ef",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-01-10T13:52:38+00:00",
-        "updated_at": "2022-01-10T13:52:38+00:00",
+        "created_at": "2022-01-13T18:51:24+00:00",
+        "updated_at": "2022-01-13T18:51:24+00:00",
         "type": "product_groups",
         "name": "iPad Pro",
         "slug": "ipad-pro",
@@ -145,13 +143,12 @@ Name | Description
         "variation_fields": [],
         "flat_fee_price_in_cents": 0,
         "structure_price_in_cents": 0,
-        "tax_category_id": null,
-        "price_structure_id": null
+        "tax_category_id": null
       },
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=23f0ac5c-a148-43f9-a685-f71b065bd8ef"
+            "related": "api/boomerang/categories?filter[item_id]=b08abd51-d0f5-4d32-b6e6-e1a0dc14f4ef"
           }
         },
         "photo": {
@@ -161,7 +158,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=23f0ac5c-a148-43f9-a685-f71b065bd8ef"
+            "related": "api/boomerang/products?filter[product_group_id]=b08abd51-d0f5-4d32-b6e6-e1a0dc14f4ef"
           }
         },
         "tax_category": {
@@ -169,24 +166,14 @@ Name | Description
             "related": null
           }
         },
-        "price_structure": {
-          "links": {
-            "related": null
-          }
-        },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=23f0ac5c-a148-43f9-a685-f71b065bd8ef&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=b08abd51-d0f5-4d32-b6e6-e1a0dc14f4ef&filter[owner_type]=product_groups"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -203,7 +190,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,categories,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T18:49:49Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -225,18 +212,30 @@ Name | Description
 `sku` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `lead_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `lag_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`product_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tracking_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `trackable` | **Boolean**<br>`eq`
+`archived` | **Boolean**<br>`eq`
 `archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`show_in_store` | **Boolean**<br>`eq`
 `sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`photo_id` | **Uuid**<br>`eq`, `not_eq`
+`base_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`price_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`price_period` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean**<br>`eq`
+`taxable` | **Boolean**<br>`eq`
+`tag_list` | **Array**<br>`eq`
 `q` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `allow_shortage` | **Boolean**<br>`eq`
 `shortage_limit` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `flat_fee_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `structure_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`price_structure_id` | **Uuid**<br>`eq`, `not_eq`
+`photo_id` | **Uuid**<br>`eq`, `not_eq`
+`tax_category_id` | **Uuid**<br>`eq`, `not_eq`
+`category_id` | **Uuid**<br>`eq`
 
 
 ### Meta
@@ -245,19 +244,19 @@ Results can be aggregated on:
 
 Name | Description
 - | -
+`total` | **Array**<br>`count`
+`archived` | **Array**<br>`count`
+`tag_list` | **Array**<br>`count`
+`taxable` | **Array**<br>`count`
+`discountable` | **Array**<br>`count`
 `product_type` | **Array**<br>`count`
 `tracking_type` | **Array**<br>`count`
-`archived` | **Array**<br>`count`
 `show_in_store` | **Array**<br>`count`
-`base_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
 `price_type` | **Array**<br>`count`
 `price_period` | **Array**<br>`count`
-`deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`discountable` | **Array**<br>`count`
-`taxable` | **Array**<br>`count`
-`tag_list` | **Array**<br>`count`
 `tax_category_id` | **Array**<br>`count`
-`total` | **Array**<br>`count`
+`deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
+`base_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -282,7 +281,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/d002a6f9-2486-4df0-9dbc-7cbf4413b494' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/e4979fe2-b0ff-4497-8bdb-a1e79370b7b7' \
     --header 'content-type: application/json' \
 ```
 
@@ -291,11 +290,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d002a6f9-2486-4df0-9dbc-7cbf4413b494",
+    "id": "e4979fe2-b0ff-4497-8bdb-a1e79370b7b7",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-01-10T13:52:39+00:00",
-      "updated_at": "2022-01-10T13:52:39+00:00",
+      "created_at": "2022-01-13T18:51:25+00:00",
+      "updated_at": "2022-01-13T18:51:25+00:00",
       "type": "product_groups",
       "name": "iPad Pro",
       "slug": "ipad-pro",
@@ -326,13 +325,12 @@ This request accepts the following includes:
       "variation_fields": [],
       "flat_fee_price_in_cents": 0,
       "structure_price_in_cents": 0,
-      "tax_category_id": null,
-      "price_structure_id": null
+      "tax_category_id": null
     },
     "relationships": {
       "categories": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=d002a6f9-2486-4df0-9dbc-7cbf4413b494"
+          "related": "api/boomerang/categories?filter[item_id]=e4979fe2-b0ff-4497-8bdb-a1e79370b7b7"
         }
       },
       "photo": {
@@ -342,7 +340,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=d002a6f9-2486-4df0-9dbc-7cbf4413b494"
+          "related": "api/boomerang/products?filter[product_group_id]=e4979fe2-b0ff-4497-8bdb-a1e79370b7b7"
         }
       },
       "tax_category": {
@@ -350,14 +348,9 @@ This request accepts the following includes:
           "related": null
         }
       },
-      "price_structure": {
-        "links": {
-          "related": null
-        }
-      },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=d002a6f9-2486-4df0-9dbc-7cbf4413b494&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=e4979fe2-b0ff-4497-8bdb-a1e79370b7b7&filter[owner_type]=product_groups"
         }
       }
     }
@@ -442,11 +435,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cad40a5-d817-4a21-b719-ae3216f2ff6c",
+    "id": "cd08c618-5a69-4c0f-84fa-60ebd13924a2",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-01-10T13:52:41+00:00",
-      "updated_at": "2022-01-10T13:52:41+00:00",
+      "created_at": "2022-01-13T18:51:25+00:00",
+      "updated_at": "2022-01-13T18:51:25+00:00",
       "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-mini",
@@ -480,8 +473,7 @@ This request accepts the following includes:
       "variation_fields": [],
       "flat_fee_price_in_cents": 0,
       "structure_price_in_cents": 0,
-      "tax_category_id": null,
-      "price_structure_id": null
+      "tax_category_id": null
     },
     "relationships": {
       "categories": {
@@ -504,22 +496,12 @@ This request accepts the following includes:
           "included": false
         }
       },
-      "price_structure": {
-        "meta": {
-          "included": false
-        }
-      },
       "properties": {
         "meta": {
           "included": false
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -572,7 +554,6 @@ Name | Description
 `data[attributes][quantity]` | **Integer**<br>When creating a product group you can specify the quantity of items you have in stock. Note that for a trackable product group, stock items are generated automatically based on this quantity
 `data[attributes][confirm_shortage]` | **Boolean**<br>Whether to confirm the shortage (over limit by changing `shortage_limit`)
 `data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
-`data[attributes][price_structure_id]` | **Uuid**<br>The associated Price structure
 
 
 ### Includes
@@ -612,11 +593,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/f14bc110-07ff-4932-b492-aa05501aae13' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/8d775b4f-c4ad-45b8-8116-6d416eb66aca' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f14bc110-07ff-4932-b492-aa05501aae13",
+        "id": "8d775b4f-c4ad-45b8-8116-6d416eb66aca",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -630,11 +611,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f14bc110-07ff-4932-b492-aa05501aae13",
+    "id": "8d775b4f-c4ad-45b8-8116-6d416eb66aca",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-01-10T13:52:42+00:00",
-      "updated_at": "2022-01-10T13:52:42+00:00",
+      "created_at": "2022-01-13T18:51:26+00:00",
+      "updated_at": "2022-01-13T18:51:26+00:00",
       "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-pro",
@@ -665,8 +646,7 @@ This request accepts the following includes:
       "variation_fields": [],
       "flat_fee_price_in_cents": 0,
       "structure_price_in_cents": 0,
-      "tax_category_id": null,
-      "price_structure_id": null
+      "tax_category_id": null
     },
     "relationships": {
       "categories": {
@@ -685,11 +665,6 @@ This request accepts the following includes:
         }
       },
       "tax_category": {
-        "meta": {
-          "included": false
-        }
-      },
-      "price_structure": {
         "meta": {
           "included": false
         }
@@ -752,7 +727,6 @@ Name | Description
 `data[attributes][quantity]` | **Integer**<br>When creating a product group you can specify the quantity of items you have in stock. Note that for a trackable product group, stock items are generated automatically based on this quantity
 `data[attributes][confirm_shortage]` | **Boolean**<br>Whether to confirm the shortage (over limit by changing `shortage_limit`)
 `data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
-`data[attributes][price_structure_id]` | **Uuid**<br>The associated Price structure
 
 
 ### Includes
@@ -792,7 +766,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/b5ed501f-82c1-4f0b-bec9-573129fae8df' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/d9285a9e-239a-4960-a297-61b7cda9d815' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "categories",
           "ids": [
-            "356d677d-44f1-4382-a773-b8ad562da7c2",
-            "b38f3bda-09f2-4128-877c-2768d71a29ad",
-            "4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c",
-            "908658fa-e05f-4fde-9ffa-ff7de86b9d3b",
-            "e4317b53-643b-450e-a40e-383f9c280f43"
+            "a7b35aec-98a8-424e-82d9-2f5208103b41",
+            "667261b6-c4d2-49e8-92df-37cb99e80777",
+            "af4dd130-c1f8-4f4b-b92c-7a16320a0eb7",
+            "3ea869fb-360b-4e7e-a974-3f1114c9a7bf",
+            "d3572116-dffb-4892-a229-3394b897284b"
           ]
         }
       }
@@ -44,14 +44,8 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7c01b5e6-a164-5c10-b52f-f18aa35d79da",
+    "id": "d19cad7e-d0b5-5e09-ab23-2ed39bd803e9",
     "type": "sortings"
-  },
-  "links": {
-    "self": "api/boomerang/sortings?data%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&data%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&data%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&data%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&data%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&data%5Battributes%5D%5Btype%5D=categories&data%5Btype%5D=sorting&page%5Bnumber%5D=1&page%5Bsize%5D=25&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&sorting%5Bdata%5D%5Battributes%5D%5Btype%5D=categories&sorting%5Bdata%5D%5Btype%5D=sorting",
-    "first": "api/boomerang/sortings?data%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&data%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&data%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&data%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&data%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&data%5Battributes%5D%5Btype%5D=categories&data%5Btype%5D=sorting&page%5Bnumber%5D=1&page%5Bsize%5D=25&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&sorting%5Bdata%5D%5Battributes%5D%5Btype%5D=categories&sorting%5Bdata%5D%5Btype%5D=sorting",
-    "last": "api/boomerang/sortings?data%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&data%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&data%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&data%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&data%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&data%5Battributes%5D%5Btype%5D=categories&data%5Btype%5D=sorting&page%5Bnumber%5D=&page%5Bsize%5D=25&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&sorting%5Bdata%5D%5Battributes%5D%5Btype%5D=categories&sorting%5Bdata%5D%5Btype%5D=sorting",
-    "next": "api/boomerang/sortings?data%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&data%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&data%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&data%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&data%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&data%5Battributes%5D%5Btype%5D=categories&data%5Btype%5D=sorting&page%5Bnumber%5D=2&page%5Bsize%5D=25&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=356d677d-44f1-4382-a773-b8ad562da7c2&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=b38f3bda-09f2-4128-877c-2768d71a29ad&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=4d51e8a0-d813-4e5d-a9eb-9fb47bb0590c&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=908658fa-e05f-4fde-9ffa-ff7de86b9d3b&sorting%5Bdata%5D%5Battributes%5D%5Bids%5D%5B%5D=e4317b53-643b-450e-a40e-383f9c280f43&sorting%5Bdata%5D%5Battributes%5D%5Btype%5D=categories&sorting%5Bdata%5D%5Btype%5D=sorting"
   },
   "meta": {}
 }

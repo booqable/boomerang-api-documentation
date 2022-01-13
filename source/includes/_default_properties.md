@@ -55,11 +55,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "858ee85d-57a2-44b0-ac67-8174850732a4",
+      "id": "4812ea57-bdd2-44bf-b878-93666c8b9ee0",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2022-01-10T13:50:39+00:00",
-        "updated_at": "2022-01-10T13:50:39+00:00",
+        "created_at": "2022-01-13T18:50:18+00:00",
+        "updated_at": "2022-01-13T18:50:18+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
@@ -71,11 +71,6 @@ Name | Description
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/default_properties?include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/default_properties?include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/default_properties?include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -92,7 +87,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T18:49:49Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -134,7 +129,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/e91e9bc7-ac64-4a87-8567-8ff3d6f8c7be?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/fea9589b-44cc-4eec-9264-b75b4ea97575?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -143,11 +138,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e91e9bc7-ac64-4a87-8567-8ff3d6f8c7be",
+    "id": "fea9589b-44cc-4eec-9264-b75b4ea97575",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-01-10T13:50:40+00:00",
-      "updated_at": "2022-01-10T13:50:40+00:00",
+      "created_at": "2022-01-13T18:50:18+00:00",
+      "updated_at": "2022-01-13T18:50:18+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -206,11 +201,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "270682c5-4d98-4fb4-a5e5-cd967cef8ba3",
+    "id": "14ec8ddd-eb76-4aab-846b-21d7815dea7d",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-01-10T13:50:40+00:00",
-      "updated_at": "2022-01-10T13:50:40+00:00",
+      "created_at": "2022-01-13T18:50:18+00:00",
+      "updated_at": "2022-01-13T18:50:18+00:00",
       "name": "Mobile phone",
       "identifier": "mobile_phone",
       "position": 2,
@@ -220,11 +215,6 @@ This request does not accept any includes
       "select_options": [],
       "editable": true
     }
-  },
-  "links": {
-    "self": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/default_properties?data%5Battributes%5D%5Bname%5D=Mobile+phone&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Battributes%5D%5Bproperty_type%5D=phone&data%5Btype%5D=default_properties&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -270,11 +260,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/be240499-5a7f-4650-ab7d-b62e69bdb51b' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/990a2829-d88f-49b6-aa00-18a1a1cd4137' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "be240499-5a7f-4650-ab7d-b62e69bdb51b",
+        "id": "990a2829-d88f-49b6-aa00-18a1a1cd4137",
         "type": "default_properties",
         "attributes": {
           "property_type": "text_field"
@@ -288,11 +278,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "be240499-5a7f-4650-ab7d-b62e69bdb51b",
+    "id": "990a2829-d88f-49b6-aa00-18a1a1cd4137",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-01-10T13:50:40+00:00",
-      "updated_at": "2022-01-10T13:50:40+00:00",
+      "created_at": "2022-01-13T18:50:19+00:00",
+      "updated_at": "2022-01-13T18:50:19+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -347,7 +337,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/1f617f91-2bce-438d-b30d-ee5389187d2f' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/bb13e540-b06d-41e1-8f25-b8373fd21a85' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

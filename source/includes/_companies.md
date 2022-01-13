@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
+    "id": "ea3b5d6d-3e3d-4df2-aaeb-897b8bfc04e7",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:29+00:00",
-      "updated_at": "2022-01-10T13:50:29+00:00",
+      "created_at": "2022-01-13T18:50:11+00:00",
+      "updated_at": "2022-01-13T18:50:11+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-782-498-1935",
-      "website": "http://casper.co/michael",
-      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
-      "address_line_1": "Fawn Manors",
-      "address_line_2": "25489 Brice Port",
-      "zipcode": "49299-0811",
-      "city": "Port Soledadborough",
+      "phone": "796-406-7288 x2268",
+      "website": "http://adams.com/ralph",
+      "address": "Hegmann Lake\n787 Rhiannon Walk\n18243 Okunevaberg\nMarshall Islands",
+      "address_line_1": "Hegmann Lake",
+      "address_line_2": "787 Rhiannon Walk",
+      "zipcode": "18243",
+      "city": "Okunevaberg",
       "region": null,
-      "country": "Cook Islands",
+      "country": "Marshall Islands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8502 Torp Oval",
-      "financial_line_2": "72456-8130 West Lachelle",
+      "financial_line_1": "4748 Zemlak Terrace",
+      "financial_line_2": "54527-1690 New Seymour",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "069affe2-7def-4915-84b9-4f042f34883c",
+    "id": "60682fea-d03c-4c9d-96e6-3e7719589b03",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-24T13:50:30.054Z",
+        "trial_ends_at": "2022-01-27T18:50:12.091Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+        "id": "4086bea4-b052-4c2d-8d5c-d2fbc5833fcb",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+    "id": "4086bea4-b052-4c2d-8d5c-d2fbc5833fcb",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:30+00:00",
-      "updated_at": "2022-01-10T13:50:30+00:00",
+      "created_at": "2022-01-13T18:50:12+00:00",
+      "updated_at": "2022-01-13T18:50:12+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(393) 123-2894",
-      "website": "http://schroeder-hammes.org/gaylene.donnelly",
-      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
-      "address_line_1": "Pacocha Meadow",
-      "address_line_2": "168 Reilly Place",
-      "zipcode": "90484",
-      "city": "Berniefurt",
+      "phone": "(278) 839-3896 x1879",
+      "website": "http://bruen-connelly.info/jefferson",
+      "address": "Anderson Trafficway\n44316 Nicholas Vista\n19086-7935 North Josefina\nChristmas Island",
+      "address_line_1": "Anderson Trafficway",
+      "address_line_2": "44316 Nicholas Vista",
+      "zipcode": "19086-7935",
+      "city": "North Josefina",
       "region": null,
-      "country": "Fiji",
+      "country": "Christmas Island",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "360 Howe Parkway",
-      "financial_line_2": "54641 Runolfsdottirport",
+      "financial_line_1": "15033 Maurita Lake",
+      "financial_line_2": "53268-6564 West Norman",
       "vat_number": null,
       "custom_domain": null,
       "development": false

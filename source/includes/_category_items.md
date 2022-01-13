@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/category_items?filter%5Bcategory_id%5D=e3fca845-6805-46e8-bffd-51437313c9c1&includes=item' \
+    --url 'https://example.booqable.com/api/boomerang/category_items?filter%5Bcategory_id%5D=e0df8814-1673-48f2-b663-7de929957065&includes=item' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,12 +49,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "97afa8d4-7761-4b7e-b3e5-84cdd9259ba2",
-      "created_at": "2022-01-10T13:50:23+00:00",
-      "updated_at": "2022-01-10T13:50:23+00:00",
+      "id": "737b80c7-0e42-44f1-bbb4-c8a350716464",
+      "created_at": "2022-01-13T18:50:08+00:00",
+      "updated_at": "2022-01-13T18:50:08+00:00",
       "position": null,
-      "item_id": "9dc00e2f-d980-4f1d-a5d6-45250b7d283c",
-      "category_id": "e3fca845-6805-46e8-bffd-51437313c9c1"
+      "item_id": "8738e7db-1b84-4491-998f-eeeba92f580e",
+      "category_id": "e0df8814-1673-48f2-b663-7de929957065"
     }
   ]
 }
@@ -72,7 +72,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=item,category`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[category_items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T18:49:49Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -130,8 +130,8 @@ This request accepts the following includes:
       "data": {
         "type": "category_item",
         "attributes": {
-          "category_id": "6970ae70-8af1-41d2-9527-92cbc60de6ab",
-          "item_id": "4a21dc5d-3005-4b58-b78a-9d9f825a613e"
+          "category_id": "6472c1b1-c3ea-4c75-9c7f-eb4df175e1d8",
+          "item_id": "f968c3b5-53d1-402f-8d7c-78c5dc5173d9"
         }
       }
     }'
@@ -142,14 +142,14 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f4526e54-15ea-4fe8-a97a-3a61865fb08a",
+    "id": "c438b10f-06cf-424f-8a1f-3361f6356cff",
     "type": "category_items",
     "attributes": {
-      "created_at": "2022-01-10T13:50:24+00:00",
-      "updated_at": "2022-01-10T13:50:24+00:00",
+      "created_at": "2022-01-13T18:50:08+00:00",
+      "updated_at": "2022-01-13T18:50:08+00:00",
       "position": null,
-      "item_id": "4a21dc5d-3005-4b58-b78a-9d9f825a613e",
-      "category_id": "6970ae70-8af1-41d2-9527-92cbc60de6ab"
+      "item_id": "f968c3b5-53d1-402f-8d7c-78c5dc5173d9",
+      "category_id": "6472c1b1-c3ea-4c75-9c7f-eb4df175e1d8"
     },
     "relationships": {
       "item": {
@@ -163,11 +163,6 @@ This request accepts the following includes:
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/category_items?data%5Battributes%5D%5Bcategory_id%5D=6970ae70-8af1-41d2-9527-92cbc60de6ab&data%5Battributes%5D%5Bitem_id%5D=4a21dc5d-3005-4b58-b78a-9d9f825a613e&data%5Btype%5D=category_item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/category_items?data%5Battributes%5D%5Bcategory_id%5D=6970ae70-8af1-41d2-9527-92cbc60de6ab&data%5Battributes%5D%5Bitem_id%5D=4a21dc5d-3005-4b58-b78a-9d9f825a613e&data%5Btype%5D=category_item&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/category_items?data%5Battributes%5D%5Bcategory_id%5D=6970ae70-8af1-41d2-9527-92cbc60de6ab&data%5Battributes%5D%5Bitem_id%5D=4a21dc5d-3005-4b58-b78a-9d9f825a613e&data%5Btype%5D=category_item&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -223,7 +218,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/category_items/0a40d8b6-24e9-4e4e-91c5-e9c7e55ea4cb' \
+    --url 'https://example.booqable.com/api/boomerang/category_items/58289e55-56f1-4660-b397-f28d41048972' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

@@ -48,11 +48,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "46c3193c-f076-441b-b827-8730ed81abb4",
+      "id": "4e0e7bb1-1f0e-47af-8622-8fc6fc7bf5a2",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2022-01-10T13:51:41+00:00",
-        "updated_at": "2022-01-10T13:51:41+00:00",
+        "created_at": "2022-01-13T18:50:51+00:00",
+        "updated_at": "2022-01-13T18:50:51+00:00",
         "data_type": "away",
         "data": {
           "away": {
@@ -63,11 +63,6 @@ Name | Description
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/operating_rules?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/operating_rules?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/operating_rules?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -84,7 +79,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T18:49:49Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -146,11 +141,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e3a91795-630d-486d-836c-a02b76c6dcbb",
+    "id": "37d18612-2097-4f9d-965a-1eec54f9788e",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-01-10T13:51:41+00:00",
-      "updated_at": "2022-01-10T13:51:41+00:00",
+      "created_at": "2022-01-13T18:50:51+00:00",
+      "updated_at": "2022-01-13T18:50:51+00:00",
       "data_type": "hours",
       "data": {
         "mon": {
@@ -159,11 +154,6 @@ This request does not accept any includes
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Btill%5D=17%3A00&data%5Battributes%5D%5Bdata_type%5D=hours&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Btill%5D=17%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=hours&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Btill%5D=17%3A00&data%5Battributes%5D%5Bdata_type%5D=hours&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Btill%5D=17%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=hours&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Btill%5D=17%3A00&data%5Battributes%5D%5Bdata_type%5D=hours&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bmon%5D%5Btill%5D=17%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=hours&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -197,11 +187,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2da59433-d3d1-474e-975a-51e61d4ea608",
+    "id": "97d4573f-b475-49a0-8d03-67fcfadf0fe2",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-01-10T13:51:41+00:00",
-      "updated_at": "2022-01-10T13:51:41+00:00",
+      "created_at": "2022-01-13T18:50:52+00:00",
+      "updated_at": "2022-01-13T18:50:52+00:00",
       "data_type": "hours",
       "data": {
         "weekday": {
@@ -210,11 +200,6 @@ This request does not accept any includes
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Btill%5D=17%3A00&data%5Battributes%5D%5Bdata_type%5D=hours&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Btill%5D=17%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=hours&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Btill%5D=17%3A00&data%5Battributes%5D%5Bdata_type%5D=hours&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Btill%5D=17%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=hours&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Btill%5D=17%3A00&data%5Battributes%5D%5Bdata_type%5D=hours&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekday%5D%5Btill%5D=17%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=hours&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -248,11 +233,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "de02cb31-e1de-4d77-bfe3-df73a72a999a",
+    "id": "4d6a193a-b6f9-4640-ad86-3aa4cc62d557",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-01-10T13:51:42+00:00",
-      "updated_at": "2022-01-10T13:51:42+00:00",
+      "created_at": "2022-01-13T18:50:52+00:00",
+      "updated_at": "2022-01-13T18:50:52+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -261,11 +246,6 @@ This request does not accept any includes
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Baway%5D%5Bfrom%5D=2030-01-01&data%5Battributes%5D%5Bdata%5D%5Baway%5D%5Btill%5D=2040-01-01&data%5Battributes%5D%5Bdata_type%5D=away&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Baway%5D%5Bfrom%5D=2030-01-01&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Baway%5D%5Btill%5D=2040-01-01&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=away&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Baway%5D%5Bfrom%5D=2030-01-01&data%5Battributes%5D%5Bdata%5D%5Baway%5D%5Btill%5D=2040-01-01&data%5Battributes%5D%5Bdata_type%5D=away&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Baway%5D%5Bfrom%5D=2030-01-01&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Baway%5D%5Btill%5D=2040-01-01&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=away&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Baway%5D%5Bfrom%5D=2030-01-01&data%5Battributes%5D%5Bdata%5D%5Baway%5D%5Btill%5D=2040-01-01&data%5Battributes%5D%5Bdata_type%5D=away&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Baway%5D%5Bfrom%5D=2030-01-01&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Baway%5D%5Btill%5D=2040-01-01&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=away&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -299,11 +279,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f0090ea5-b11a-4ce7-88ed-515ae989e1b6",
+    "id": "5e826712-a586-4a80-8a80-b779b12b8e6b",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-01-10T13:51:42+00:00",
-      "updated_at": "2022-01-10T13:51:42+00:00",
+      "created_at": "2022-01-13T18:50:53+00:00",
+      "updated_at": "2022-01-13T18:50:53+00:00",
       "data_type": "timeslot_fixed",
       "data": {
         "weekend": {
@@ -312,11 +292,6 @@ This request does not accept any includes
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Btill%5D=12%3A00&data%5Battributes%5D%5Bdata_type%5D=timeslot_fixed&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Btill%5D=12%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=timeslot_fixed&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Btill%5D=12%3A00&data%5Battributes%5D%5Bdata_type%5D=timeslot_fixed&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Btill%5D=12%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=timeslot_fixed&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Bfrom%5D=09%3A00&data%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Btill%5D=12%3A00&data%5Battributes%5D%5Bdata_type%5D=timeslot_fixed&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Bfrom%5D=09%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Bweekend%5D%5Btill%5D=12%3A00&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=timeslot_fixed&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -347,21 +322,16 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3dbc602e-ecab-4de1-a512-4f96b4489f4a",
+    "id": "50e75def-dde6-4663-b84a-0e7e575631d1",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-01-10T13:51:43+00:00",
-      "updated_at": "2022-01-10T13:51:43+00:00",
+      "created_at": "2022-01-13T18:50:53+00:00",
+      "updated_at": "2022-01-13T18:50:53+00:00",
       "data_type": "timeslot_duration",
       "data": {
         "length": 86000
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Blength%5D=86000&data%5Battributes%5D%5Bdata_type%5D=timeslot_duration&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Blength%5D=86000&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=timeslot_duration&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Blength%5D=86000&data%5Battributes%5D%5Bdata_type%5D=timeslot_duration&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Blength%5D=86000&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=timeslot_duration&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/operating_rules?data%5Battributes%5D%5Bdata%5D%5Blength%5D=86000&data%5Battributes%5D%5Bdata_type%5D=timeslot_duration&data%5Btype%5D=operating_rules&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata%5D%5Blength%5D=86000&operating_rule%5Bdata%5D%5Battributes%5D%5Bdata_type%5D=timeslot_duration&operating_rule%5Bdata%5D%5Btype%5D=operating_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -402,11 +372,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/0b61a4a5-02a6-4688-adf6-11b7eb7c744c' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/1cac3c28-a57d-49cd-9b7d-983dc650f56f' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0b61a4a5-02a6-4688-adf6-11b7eb7c744c",
+        "id": "1cac3c28-a57d-49cd-9b7d-983dc650f56f",
         "type": "operating_rules",
         "attributes": {
           "data": {
@@ -425,11 +395,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0b61a4a5-02a6-4688-adf6-11b7eb7c744c",
+    "id": "1cac3c28-a57d-49cd-9b7d-983dc650f56f",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-01-10T13:51:43+00:00",
-      "updated_at": "2022-01-10T13:51:43+00:00",
+      "created_at": "2022-01-13T18:50:53+00:00",
+      "updated_at": "2022-01-13T18:50:53+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -478,7 +448,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/16a059e9-e4e5-4db2-b9fb-5a9a006a18d7' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/57fc925a-a2bd-4bb5-866e-dbc94864f1cc' \
     --header 'content-type: application/json' \
 ```
 
