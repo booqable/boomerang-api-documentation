@@ -37,10 +37,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "f20b7612-8f0b-41e2-bbde-00a9c32a4e90",
+      "id": "7ad67f85-5215-4f0c-9943-7e6290a43c3d",
       "type": "login_activities",
       "attributes": {
-        "created_at": "2022-01-10T13:51:38+00:00",
+        "created_at": "2022-01-13T13:10:02+00:00",
         "ip": "192.168.1.28",
         "strategy": "saml",
         "success": false,
@@ -52,11 +52,6 @@ Name | Description
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/login_activities?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/login_activities?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/login_activities?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -73,7 +68,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[login_activities]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T13:08:20Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

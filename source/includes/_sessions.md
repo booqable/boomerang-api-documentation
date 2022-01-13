@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "3a706f55-e6f3-558c-8d6c-27f6028f6e23",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "8a6f9629-07e7-4c41-b4df-1e0478453c31",
-      "employee_id": "66182659-c6c2-44a0-8475-f069188493d2",
-      "locations_updated_at": "2022-01-10T13:52:56+00:00",
-      "clusters_updated_at": "2022-01-10T13:52:56+00:00",
-      "default_properties_updated_at": "2022-01-10T13:52:56+00:00"
+      "updated_at": "2022-01-13T13:11:13+00:00",
+      "company_id": "f58b2b8e-e7bf-4dce-a00c-77d225f817ec",
+      "employee_id": "3f6612ce-7519-4262-8f82-aa9a0356ffb4",
+      "locations_updated_at": "2022-01-13T13:11:13+00:00",
+      "clusters_updated_at": "2022-01-13T13:11:13+00:00",
+      "default_properties_updated_at": "2022-01-13T13:11:13+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "59a90cd3-0cf1-5829-a925-aa4ba0736b7b",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
-      "employee_id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "updated_at": "2022-01-13T13:11:14+00:00",
+      "company_id": "4adc457c-735c-4945-857e-fe37d76a75c7",
+      "employee_id": "f3953740-eafc-4f8a-a234-05da522c569c",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "4945e18c-5218-4d91-8238-18aaa775ca6b"
+          "id": "4adc457c-735c-4945-857e-fe37d76a75c7"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735"
+          "id": "f3953740-eafc-4f8a-a234-05da522c569c"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
+      "id": "4adc457c-735c-4945-857e-fe37d76a75c7",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
+        "created_at": "2022-01-13T13:11:14+00:00",
+        "updated_at": "2022-01-13T13:11:14+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "1-875-807-7038 x62745",
-        "website": "http://west.com/patrick",
-        "address": "Block Club\n1936 Bartell Garden\n60941 Port Dion\nRwanda",
-        "address_line_1": "Block Club",
-        "address_line_2": "1936 Bartell Garden",
-        "zipcode": "60941",
-        "city": "Port Dion",
+        "phone": "674.101.5945",
+        "website": "http://kunze-connelly.name/lacy",
+        "address": "Jaskolski Road\n92362 Bergnaum Summit\n04120 South Krissyshire\nPitcairn Islands",
+        "address_line_1": "Jaskolski Road",
+        "address_line_2": "92362 Bergnaum Summit",
+        "zipcode": "04120",
+        "city": "South Krissyshire",
         "region": null,
-        "country": "Rwanda",
+        "country": "Pitcairn Islands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "709 Hamill Plains",
-        "financial_line_2": "20732 South Fletaborough",
+        "financial_line_1": "1515 Lesch Canyon",
+        "financial_line_2": "66550-6380 Robelport",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-01-24T13:52:56.617Z",
+          "trial_ends_at": "2022-01-27T13:11:14.250Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "id": "f3953740-eafc-4f8a-a234-05da522c569c",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
+        "created_at": "2022-01-13T13:11:14+00:00",
+        "updated_at": "2022-01-13T13:11:14+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

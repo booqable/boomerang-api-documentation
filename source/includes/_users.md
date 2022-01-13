@@ -60,37 +60,32 @@ Name | Description
   {
   "data": [
     {
-      "id": "63635f20-a875-464e-baa7-c5bcb9ae10b8",
+      "id": "20ab8f18-fc71-4dbb-b6ef-9723e978ae66",
       "type": "users",
       "attributes": {
-        "created_at": "2022-01-10T13:53:15+00:00",
-        "updated_at": "2022-01-10T13:53:15+00:00",
-        "first_name": "Vickey",
-        "last_name": "Connelly",
-        "name": "Vickey Connelly",
-        "email": "connelly_vickey@raynor.io",
+        "created_at": "2022-01-13T13:11:32+00:00",
+        "updated_at": "2022-01-13T13:11:32+00:00",
+        "first_name": "Curtis",
+        "last_name": "Kessler",
+        "name": "Curtis Kessler",
+        "email": "kessler.curtis@mayert.com",
         "status": "active",
-        "customer_id": "ed8d14e8-bd95-4d0f-82a7-9a1a08c4ccb5"
+        "customer_id": "4d342491-6ded-4851-b1ff-86c4c69f581b"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/ed8d14e8-bd95-4d0f-82a7-9a1a08c4ccb5"
+            "related": "api/boomerang/customers/4d342491-6ded-4851-b1ff-86c4c69f581b"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=63635f20-a875-464e-baa7-c5bcb9ae10b8&filter[owner_type]=users"
+            "related": "api/boomerang/notes?filter[owner_id]=20ab8f18-fc71-4dbb-b6ef-9723e978ae66&filter[owner_type]=users"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/users?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/users?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/users?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -100,7 +95,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=76e48a9a-ffc6-457b-b439-61912dae7080&include=customer' \
+    --url 'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=755a6c56-cf9a-47a2-8810-0152d3136b43&include=customer' \
     --header 'content-type: application/json' \
 ```
 
@@ -110,37 +105,32 @@ Name | Description
   {
   "data": [
     {
-      "id": "c3f9838d-6bc3-4916-b52a-20eb55d5c20a",
+      "id": "36dc0674-6021-4114-ae9f-11e70440ab6a",
       "type": "users",
       "attributes": {
-        "created_at": "2022-01-10T13:53:16+00:00",
-        "updated_at": "2022-01-10T13:53:16+00:00",
-        "first_name": "Jacalyn",
-        "last_name": "Terry",
-        "name": "Jacalyn Terry",
-        "email": "jacalyn.terry@brakus.com",
+        "created_at": "2022-01-13T13:11:32+00:00",
+        "updated_at": "2022-01-13T13:11:32+00:00",
+        "first_name": "Donovan",
+        "last_name": "Jast",
+        "name": "Donovan Jast",
+        "email": "donovan_jast@torp.net",
         "status": "active",
-        "customer_id": "76e48a9a-ffc6-457b-b439-61912dae7080"
+        "customer_id": "755a6c56-cf9a-47a2-8810-0152d3136b43"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/76e48a9a-ffc6-457b-b439-61912dae7080"
+            "related": "api/boomerang/customers/755a6c56-cf9a-47a2-8810-0152d3136b43"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=c3f9838d-6bc3-4916-b52a-20eb55d5c20a&filter[owner_type]=users"
+            "related": "api/boomerang/notes?filter[owner_id]=36dc0674-6021-4114-ae9f-11e70440ab6a&filter[owner_type]=users"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/users?filter%5Bcustomer_id%5D=76e48a9a-ffc6-457b-b439-61912dae7080&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/users?filter%5Bcustomer_id%5D=76e48a9a-ffc6-457b-b439-61912dae7080&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/users?filter%5Bcustomer_id%5D=76e48a9a-ffc6-457b-b439-61912dae7080&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -157,7 +147,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=customer,notes`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[users]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T13:08:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -201,7 +191,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/users/04a19fd6-c9cd-4ffe-aaae-5d4d4ffc7ca2' \
+    --url 'https://example.booqable.com/api/boomerang/users/90e7e61a-5a22-46d0-a333-8a35a2da54be' \
     --header 'content-type: application/json' \
 ```
 
@@ -210,27 +200,27 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "04a19fd6-c9cd-4ffe-aaae-5d4d4ffc7ca2",
+    "id": "90e7e61a-5a22-46d0-a333-8a35a2da54be",
     "type": "users",
     "attributes": {
-      "created_at": "2022-01-10T13:53:16+00:00",
-      "updated_at": "2022-01-10T13:53:16+00:00",
-      "first_name": "Lupe",
-      "last_name": "Boyer",
-      "name": "Lupe Boyer",
-      "email": "lupe.boyer@heidenreich.org",
+      "created_at": "2022-01-13T13:11:33+00:00",
+      "updated_at": "2022-01-13T13:11:33+00:00",
+      "first_name": "Sid",
+      "last_name": "Bauch",
+      "name": "Sid Bauch",
+      "email": "bauch.sid@kertzmann.net",
       "status": "active",
-      "customer_id": "ae2c6bff-a2f5-4727-a079-2f2885e44fed"
+      "customer_id": "997698b4-fb6d-494d-81dd-1e8930b5c6f4"
     },
     "relationships": {
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/ae2c6bff-a2f5-4727-a079-2f2885e44fed"
+          "related": "api/boomerang/customers/997698b4-fb6d-494d-81dd-1e8930b5c6f4"
         }
       },
       "notes": {
         "links": {
-          "related": "api/boomerang/notes?filter[owner_id]=04a19fd6-c9cd-4ffe-aaae-5d4d4ffc7ca2&filter[owner_type]=users"
+          "related": "api/boomerang/notes?filter[owner_id]=90e7e61a-5a22-46d0-a333-8a35a2da54be&filter[owner_type]=users"
         }
       }
     }
@@ -287,7 +277,7 @@ This request accepts the following includes:
           "first_name": "Bob",
           "last_name": "Bobsen",
           "email": "bob@booqable.com",
-          "customer_id": "d5dae547-2b44-476d-a81c-dd180b73a2ae"
+          "customer_id": "a6388192-0a3f-4097-ae74-f7f5a5a11137"
         }
       }
     }'
@@ -298,17 +288,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f582e0cc-6fc1-427d-a4de-08d3ef4cd09e",
+    "id": "ad0ddbf7-da7b-47c4-b555-0660722848be",
     "type": "users",
     "attributes": {
-      "created_at": "2022-01-10T13:53:17+00:00",
-      "updated_at": "2022-01-10T13:53:17+00:00",
+      "created_at": "2022-01-13T13:11:33+00:00",
+      "updated_at": "2022-01-13T13:11:33+00:00",
       "first_name": "Bob",
       "last_name": "Bobsen",
       "name": "Bob Bobsen",
       "email": "bob@booqable.com",
       "status": "invited",
-      "customer_id": "d5dae547-2b44-476d-a81c-dd180b73a2ae"
+      "customer_id": "a6388192-0a3f-4097-ae74-f7f5a5a11137"
     },
     "relationships": {
       "customer": {
@@ -322,11 +312,6 @@ This request accepts the following includes:
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/users?data%5Battributes%5D%5Bcustomer_id%5D=d5dae547-2b44-476d-a81c-dd180b73a2ae&data%5Battributes%5D%5Bemail%5D=bob%40booqable.com&data%5Battributes%5D%5Bfirst_name%5D=Bob&data%5Battributes%5D%5Blast_name%5D=Bobsen&data%5Btype%5D=users&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/users?data%5Battributes%5D%5Bcustomer_id%5D=d5dae547-2b44-476d-a81c-dd180b73a2ae&data%5Battributes%5D%5Bemail%5D=bob%40booqable.com&data%5Battributes%5D%5Bfirst_name%5D=Bob&data%5Battributes%5D%5Blast_name%5D=Bobsen&data%5Btype%5D=users&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/users?data%5Battributes%5D%5Bcustomer_id%5D=d5dae547-2b44-476d-a81c-dd180b73a2ae&data%5Battributes%5D%5Bemail%5D=bob%40booqable.com&data%5Battributes%5D%5Bfirst_name%5D=Bob&data%5Battributes%5D%5Blast_name%5D=Bobsen&data%5Btype%5D=users&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -385,11 +370,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/9d3d7f89-8a36-4b7e-8870-f1aa908a2925' \
+    --url 'https://example.booqable.com/api/boomerang/users/dacae7ec-ea36-4471-8de7-0b4521354aaf' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9d3d7f89-8a36-4b7e-8870-f1aa908a2925",
+        "id": "dacae7ec-ea36-4471-8de7-0b4521354aaf",
         "type": "users",
         "attributes": {
           "first_name": "Bobba"
@@ -403,17 +388,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9d3d7f89-8a36-4b7e-8870-f1aa908a2925",
+    "id": "dacae7ec-ea36-4471-8de7-0b4521354aaf",
     "type": "users",
     "attributes": {
-      "created_at": "2022-01-10T13:53:17+00:00",
-      "updated_at": "2022-01-10T13:53:17+00:00",
+      "created_at": "2022-01-13T13:11:34+00:00",
+      "updated_at": "2022-01-13T13:11:34+00:00",
       "first_name": "Bobba",
-      "last_name": "Vandervort",
-      "name": "Bobba Vandervort",
-      "email": "vandervort.erasmo@barrows-pollich.info",
+      "last_name": "Murazik",
+      "name": "Bobba Murazik",
+      "email": "murazik_clotilde@ortiz-purdy.info",
       "status": "active",
-      "customer_id": "266c6bf5-b263-489a-aeaf-4ea8eaaf68f3"
+      "customer_id": "09cbaaf5-7e47-45c6-9a34-3504851b59e9"
     },
     "relationships": {
       "customer": {
@@ -485,11 +470,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/7555aa67-9e6e-4560-9e1e-7036963315eb' \
+    --url 'https://example.booqable.com/api/boomerang/users/49fde5f2-86d5-4c17-9c06-5f6b97e53fbb' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "7555aa67-9e6e-4560-9e1e-7036963315eb",
+        "id": "49fde5f2-86d5-4c17-9c06-5f6b97e53fbb",
         "type": "users",
         "attributes": {
           "disabled": false
@@ -503,17 +488,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7555aa67-9e6e-4560-9e1e-7036963315eb",
+    "id": "49fde5f2-86d5-4c17-9c06-5f6b97e53fbb",
     "type": "users",
     "attributes": {
-      "created_at": "2022-01-10T13:53:18+00:00",
-      "updated_at": "2022-01-10T13:53:18+00:00",
-      "first_name": "Aleta",
-      "last_name": "Kulas",
-      "name": "Aleta Kulas",
-      "email": "kulas_aleta@kemmer.com",
+      "created_at": "2022-01-13T13:11:34+00:00",
+      "updated_at": "2022-01-13T13:11:34+00:00",
+      "first_name": "Jim",
+      "last_name": "Deckow",
+      "name": "Jim Deckow",
+      "email": "deckow_jim@waelchi-ruecker.biz",
       "status": "active",
-      "customer_id": "ab73acb1-e034-4c20-87a9-4c98801c9616"
+      "customer_id": "9d64b9ee-d44a-4bb2-8e60-a38b8c77db13"
     },
     "relationships": {
       "customer": {
@@ -585,11 +570,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/d75be716-63a3-4dab-a139-535950a730aa' \
+    --url 'https://example.booqable.com/api/boomerang/users/b8457ba0-0316-4312-8ee8-a93157be23ee' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d75be716-63a3-4dab-a139-535950a730aa",
+        "id": "b8457ba0-0316-4312-8ee8-a93157be23ee",
         "type": "users",
         "attributes": {
           "disabled": true
@@ -603,17 +588,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d75be716-63a3-4dab-a139-535950a730aa",
+    "id": "b8457ba0-0316-4312-8ee8-a93157be23ee",
     "type": "users",
     "attributes": {
-      "created_at": "2022-01-10T13:53:18+00:00",
-      "updated_at": "2022-01-10T13:53:18+00:00",
-      "first_name": "Otha",
-      "last_name": "Grady",
-      "name": "Otha Grady",
-      "email": "grady_otha@rodriguez.org",
+      "created_at": "2022-01-13T13:11:34+00:00",
+      "updated_at": "2022-01-13T13:11:34+00:00",
+      "first_name": "Mohammad",
+      "last_name": "Smitham",
+      "name": "Mohammad Smitham",
+      "email": "smitham_mohammad@heller-mayer.org",
       "status": "disabled",
-      "customer_id": "4aa28826-83b7-4350-b940-49256a0764b8"
+      "customer_id": "45dc78ce-d927-4311-9aae-8a591d67c46b"
     },
     "relationships": {
       "customer": {

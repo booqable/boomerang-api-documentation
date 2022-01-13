@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
+    "id": "bf5b4863-9109-4a9a-959f-8830aad2b196",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:29+00:00",
-      "updated_at": "2022-01-10T13:50:29+00:00",
+      "created_at": "2022-01-13T13:09:01+00:00",
+      "updated_at": "2022-01-13T13:09:01+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-782-498-1935",
-      "website": "http://casper.co/michael",
-      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
-      "address_line_1": "Fawn Manors",
-      "address_line_2": "25489 Brice Port",
-      "zipcode": "49299-0811",
-      "city": "Port Soledadborough",
+      "phone": "1-115-179-5066 x370",
+      "website": "http://ankunding.biz/freida",
+      "address": "Cornell Prairie\n81292 Bergnaum Plaza\n09547-4302 North Vannessa\nGreece",
+      "address_line_1": "Cornell Prairie",
+      "address_line_2": "81292 Bergnaum Plaza",
+      "zipcode": "09547-4302",
+      "city": "North Vannessa",
       "region": null,
-      "country": "Cook Islands",
+      "country": "Greece",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8502 Torp Oval",
-      "financial_line_2": "72456-8130 West Lachelle",
+      "financial_line_1": "9843 Donn Drives",
+      "financial_line_2": "72683 Barbaraport",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "069affe2-7def-4915-84b9-4f042f34883c",
+    "id": "fda574b7-9f13-4c9a-8649-c76d992efbe5",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-24T13:50:30.054Z",
+        "trial_ends_at": "2022-01-27T13:09:01.572Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+        "id": "affe02bc-74fd-4005-9fa4-437b4e47135b",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+    "id": "affe02bc-74fd-4005-9fa4-437b4e47135b",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:30+00:00",
-      "updated_at": "2022-01-10T13:50:30+00:00",
+      "created_at": "2022-01-13T13:09:02+00:00",
+      "updated_at": "2022-01-13T13:09:02+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(393) 123-2894",
-      "website": "http://schroeder-hammes.org/gaylene.donnelly",
-      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
-      "address_line_1": "Pacocha Meadow",
-      "address_line_2": "168 Reilly Place",
-      "zipcode": "90484",
-      "city": "Berniefurt",
+      "phone": "(817) 904-9628 x64121",
+      "website": "http://mclaughlin-franecki.info/virgilio",
+      "address": "Lita Mission\n814 Hessel Court\n16017-5443 Port Shelli\nUkraine",
+      "address_line_1": "Lita Mission",
+      "address_line_2": "814 Hessel Court",
+      "zipcode": "16017-5443",
+      "city": "Port Shelli",
       "region": null,
-      "country": "Fiji",
+      "country": "Ukraine",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "360 Howe Parkway",
-      "financial_line_2": "54641 Runolfsdottirport",
+      "financial_line_1": "537 Orville Spring",
+      "financial_line_2": "95465 East Wiltonhaven",
       "vat_number": null,
       "custom_domain": null,
       "development": false
