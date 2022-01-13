@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
+    "id": "934fc1e2-d213-4999-a5f5-68b43e693e80",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:29+00:00",
-      "updated_at": "2022-01-10T13:50:29+00:00",
+      "created_at": "2022-01-13T11:41:42+00:00",
+      "updated_at": "2022-01-13T11:41:42+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-782-498-1935",
-      "website": "http://casper.co/michael",
-      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
-      "address_line_1": "Fawn Manors",
-      "address_line_2": "25489 Brice Port",
-      "zipcode": "49299-0811",
-      "city": "Port Soledadborough",
+      "phone": "165-535-0543",
+      "website": "http://rau.net/noella",
+      "address": "McDermott Freeway\n406 Cremin Track\n30648-0143 Edwardville\nNorfolk Island",
+      "address_line_1": "McDermott Freeway",
+      "address_line_2": "406 Cremin Track",
+      "zipcode": "30648-0143",
+      "city": "Edwardville",
       "region": null,
-      "country": "Cook Islands",
+      "country": "Norfolk Island",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8502 Torp Oval",
-      "financial_line_2": "72456-8130 West Lachelle",
+      "financial_line_1": "362 Nathan Lakes",
+      "financial_line_2": "40140-7641 Port Jay",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "069affe2-7def-4915-84b9-4f042f34883c",
+    "id": "9a003b66-9dca-4f2e-8f87-314009c7b801",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-24T13:50:30.054Z",
+        "trial_ends_at": "2022-01-27T11:41:42.430Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+        "id": "003f6310-aa05-4c41-979e-e8666f283fef",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+    "id": "003f6310-aa05-4c41-979e-e8666f283fef",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:30+00:00",
-      "updated_at": "2022-01-10T13:50:30+00:00",
+      "created_at": "2022-01-13T11:41:42+00:00",
+      "updated_at": "2022-01-13T11:41:42+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(393) 123-2894",
-      "website": "http://schroeder-hammes.org/gaylene.donnelly",
-      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
-      "address_line_1": "Pacocha Meadow",
-      "address_line_2": "168 Reilly Place",
-      "zipcode": "90484",
-      "city": "Berniefurt",
+      "phone": "610-663-0809 x66155",
+      "website": "http://windler-reinger.com/seth.vonrueden",
+      "address": "Dickens Shoal\n122 Roger Ford\n40877 North Santa\nLatvia",
+      "address_line_1": "Dickens Shoal",
+      "address_line_2": "122 Roger Ford",
+      "zipcode": "40877",
+      "city": "North Santa",
       "region": null,
-      "country": "Fiji",
+      "country": "Latvia",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "360 Howe Parkway",
-      "financial_line_2": "54641 Runolfsdottirport",
+      "financial_line_1": "29438 Dotty Trail",
+      "financial_line_2": "87747 Port Carloside",
       "vat_number": null,
       "custom_domain": null,
       "development": false

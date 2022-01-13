@@ -110,11 +110,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "23f0ac5c-a148-43f9-a685-f71b065bd8ef",
+      "id": "422f99a9-3062-4dcb-8877-0514292f00bc",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-01-10T13:52:38+00:00",
-        "updated_at": "2022-01-10T13:52:38+00:00",
+        "created_at": "2022-01-13T11:43:04+00:00",
+        "updated_at": "2022-01-13T11:43:04+00:00",
         "type": "product_groups",
         "name": "iPad Pro",
         "slug": "ipad-pro",
@@ -151,7 +151,7 @@ Name | Description
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=23f0ac5c-a148-43f9-a685-f71b065bd8ef"
+            "related": "api/boomerang/categories?filter[item_id]=422f99a9-3062-4dcb-8877-0514292f00bc"
           }
         },
         "photo": {
@@ -161,7 +161,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=23f0ac5c-a148-43f9-a685-f71b065bd8ef"
+            "related": "api/boomerang/products?filter[product_group_id]=422f99a9-3062-4dcb-8877-0514292f00bc"
           }
         },
         "tax_category": {
@@ -176,17 +176,12 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=23f0ac5c-a148-43f9-a685-f71b065bd8ef&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=422f99a9-3062-4dcb-8877-0514292f00bc&filter[owner_type]=product_groups"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/search/items?filter%5Btype%5D=product_group&page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -203,7 +198,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,categories,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T11:41:16Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -225,17 +220,29 @@ Name | Description
 `sku` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `lead_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `lag_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`product_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tracking_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `trackable` | **Boolean**<br>`eq`
+`archived` | **Boolean**<br>`eq`
 `archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`show_in_store` | **Boolean**<br>`eq`
 `sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`base_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`price_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`price_period` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean**<br>`eq`
+`taxable` | **Boolean**<br>`eq`
+`tag_list` | **Array**<br>`eq`
 `photo_id` | **Uuid**<br>`eq`, `not_eq`
 `q` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `allow_shortage` | **Boolean**<br>`eq`
 `shortage_limit` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `flat_fee_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `structure_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tax_category_id` | **Uuid**<br>`eq`, `not_eq`
 `price_structure_id` | **Uuid**<br>`eq`, `not_eq`
 
 
@@ -245,19 +252,19 @@ Results can be aggregated on:
 
 Name | Description
 - | -
+`total` | **Array**<br>`count`
+`archived` | **Array**<br>`count`
+`tag_list` | **Array**<br>`count`
+`taxable` | **Array**<br>`count`
+`discountable` | **Array**<br>`count`
 `product_type` | **Array**<br>`count`
 `tracking_type` | **Array**<br>`count`
-`archived` | **Array**<br>`count`
 `show_in_store` | **Array**<br>`count`
-`base_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
 `price_type` | **Array**<br>`count`
 `price_period` | **Array**<br>`count`
-`deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`discountable` | **Array**<br>`count`
-`taxable` | **Array**<br>`count`
-`tag_list` | **Array**<br>`count`
 `tax_category_id` | **Array**<br>`count`
-`total` | **Array**<br>`count`
+`deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
+`base_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -282,7 +289,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/d002a6f9-2486-4df0-9dbc-7cbf4413b494' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/c59b60cb-ddea-4e77-96c4-d98c22de4bb8' \
     --header 'content-type: application/json' \
 ```
 
@@ -291,11 +298,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d002a6f9-2486-4df0-9dbc-7cbf4413b494",
+    "id": "c59b60cb-ddea-4e77-96c4-d98c22de4bb8",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-01-10T13:52:39+00:00",
-      "updated_at": "2022-01-10T13:52:39+00:00",
+      "created_at": "2022-01-13T11:43:05+00:00",
+      "updated_at": "2022-01-13T11:43:05+00:00",
       "type": "product_groups",
       "name": "iPad Pro",
       "slug": "ipad-pro",
@@ -332,7 +339,7 @@ This request accepts the following includes:
     "relationships": {
       "categories": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=d002a6f9-2486-4df0-9dbc-7cbf4413b494"
+          "related": "api/boomerang/categories?filter[item_id]=c59b60cb-ddea-4e77-96c4-d98c22de4bb8"
         }
       },
       "photo": {
@@ -342,7 +349,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=d002a6f9-2486-4df0-9dbc-7cbf4413b494"
+          "related": "api/boomerang/products?filter[product_group_id]=c59b60cb-ddea-4e77-96c4-d98c22de4bb8"
         }
       },
       "tax_category": {
@@ -357,7 +364,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=d002a6f9-2486-4df0-9dbc-7cbf4413b494&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=c59b60cb-ddea-4e77-96c4-d98c22de4bb8&filter[owner_type]=product_groups"
         }
       }
     }
@@ -442,11 +449,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cad40a5-d817-4a21-b719-ae3216f2ff6c",
+    "id": "7bf96487-9579-4544-97cd-c0cf23b9436d",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-01-10T13:52:41+00:00",
-      "updated_at": "2022-01-10T13:52:41+00:00",
+      "created_at": "2022-01-13T11:43:05+00:00",
+      "updated_at": "2022-01-13T11:43:05+00:00",
       "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-mini",
@@ -515,11 +522,6 @@ This request accepts the following includes:
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/product_groups?data%5Battributes%5D%5Bname%5D=iPad+mini&data%5Battributes%5D%5Bprice_period%5D=day&data%5Battributes%5D%5Bprice_type%5D=simple&data%5Battributes%5D%5Btag_list%5D%5B%5D=tablets&data%5Battributes%5D%5Btag_list%5D%5B%5D=apple&data%5Battributes%5D%5Btrackable%5D=true&data%5Battributes%5D%5Btracking_type%5D=trackable&data%5Btype%5D=product_groups&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -612,11 +614,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/f14bc110-07ff-4932-b492-aa05501aae13' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/9ed192ff-4835-4e88-a800-7bf72251c0ca' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f14bc110-07ff-4932-b492-aa05501aae13",
+        "id": "9ed192ff-4835-4e88-a800-7bf72251c0ca",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -630,11 +632,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f14bc110-07ff-4932-b492-aa05501aae13",
+    "id": "9ed192ff-4835-4e88-a800-7bf72251c0ca",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-01-10T13:52:42+00:00",
-      "updated_at": "2022-01-10T13:52:42+00:00",
+      "created_at": "2022-01-13T11:43:06+00:00",
+      "updated_at": "2022-01-13T11:43:06+00:00",
       "type": "product_groups",
       "name": "iPad mini",
       "slug": "ipad-pro",
@@ -792,7 +794,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/b5ed501f-82c1-4f0b-bec9-573129fae8df' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/c9be978b-3abd-48c4-9e24-b4858db9b33f' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

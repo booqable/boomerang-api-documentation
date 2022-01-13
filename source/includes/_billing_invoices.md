@@ -53,11 +53,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0d30e925-9785-4f71-80dc-cf948e55d2ee",
+      "id": "59279be6-99b4-45b8-a06f-cdeb2bbe9121",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2022-01-10T13:50:10+00:00",
-        "updated_at": "2022-01-10T13:50:10+00:00",
+        "created_at": "2022-01-13T11:41:28+00:00",
+        "updated_at": "2022-01-13T11:41:28+00:00",
         "number": 10001,
         "status": "open",
         "billing_reason": "subscription_create",
@@ -79,11 +79,6 @@ Name | Description
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/billing_invoices?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/billing_invoices?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/billing_invoices?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -100,7 +95,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T11:41:16Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -145,7 +140,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/76bf4eb8-aa70-4fec-812e-eac754e85b2c' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/454e6a8e-ba5e-4ef5-9a04-342063b0438c' \
     --header 'content-type: application/json' \
 ```
 
@@ -154,11 +149,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "76bf4eb8-aa70-4fec-812e-eac754e85b2c",
+    "id": "454e6a8e-ba5e-4ef5-9a04-342063b0438c",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2022-01-10T13:50:10+00:00",
-      "updated_at": "2022-01-10T13:50:10+00:00",
+      "created_at": "2022-01-13T11:41:28+00:00",
+      "updated_at": "2022-01-13T11:41:28+00:00",
       "number": 10001,
       "status": "open",
       "billing_reason": "subscription_create",

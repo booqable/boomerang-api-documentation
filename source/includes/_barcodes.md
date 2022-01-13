@@ -63,31 +63,26 @@ Name | Description
   {
   "data": [
     {
-      "id": "a4410805-763a-4230-aa47-6edbb88a1c55",
+      "id": "dd181072-fc1d-4a37-9465-f56a89c9ea24",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2022-01-10T13:50:05+00:00",
-        "updated_at": "2022-01-10T13:50:05+00:00",
-        "number": "http://bqbl.it/a4410805-763a-4230-aa47-6edbb88a1c55",
+        "created_at": "2022-01-13T11:41:25+00:00",
+        "updated_at": "2022-01-13T11:41:25+00:00",
+        "number": "http://bqbl.it/dd181072-fc1d-4a37-9465-f56a89c9ea24",
         "barcode_type": "qr_code",
-        "image_url": "/uploads/ecf327449dee41ab75a65b49d594531b/barcode/image/a4410805-763a-4230-aa47-6edbb88a1c55/e92ef1e7-83ec-401b-8f75-5fe0c11817f1.svg",
-        "owner_id": "d0b4abb9-e481-4dcc-94cc-bec19ea7ec6f",
+        "image_url": "/uploads/943bbecfd57afd7323a6771986d60cb0/barcode/image/dd181072-fc1d-4a37-9465-f56a89c9ea24/9e48bdcd-71ed-4368-bce1-b9e88289e5d8.svg",
+        "owner_id": "ad20d9e6-c454-40cc-ba8d-cbae1de57ebd",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/d0b4abb9-e481-4dcc-94cc-bec19ea7ec6f"
+            "related": "api/boomerang/customers/ad20d9e6-c454-40cc-ba8d-cbae1de57ebd"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/barcodes?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/barcodes?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/barcodes?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -97,7 +92,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Fa258f324-e210-455d-a8b8-59070a4a6825&include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2F46871426-bde7-4f82-ad4b-098e5f1bbd89&include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -107,25 +102,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "a258f324-e210-455d-a8b8-59070a4a6825",
+      "id": "46871426-bde7-4f82-ad4b-098e5f1bbd89",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2022-01-10T13:50:06+00:00",
-        "updated_at": "2022-01-10T13:50:06+00:00",
-        "number": "http://bqbl.it/a258f324-e210-455d-a8b8-59070a4a6825",
+        "created_at": "2022-01-13T11:41:26+00:00",
+        "updated_at": "2022-01-13T11:41:26+00:00",
+        "number": "http://bqbl.it/46871426-bde7-4f82-ad4b-098e5f1bbd89",
         "barcode_type": "qr_code",
-        "image_url": "/uploads/43257f9c7361c0571d88ab95d81b35f5/barcode/image/a258f324-e210-455d-a8b8-59070a4a6825/90486155-9888-4f76-b4cf-b980851f609c.svg",
-        "owner_id": "906bbde2-7476-490b-b4b1-9690d81255f5",
+        "image_url": "/uploads/d26929aaff3ce63b5e738ccdbef17367/barcode/image/46871426-bde7-4f82-ad4b-098e5f1bbd89/778d6a9a-4da5-45a2-a80d-e13844d4de37.svg",
+        "owner_id": "7fdf75ef-87cf-41bd-94f1-b074ade1125d",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/906bbde2-7476-490b-b4b1-9690d81255f5"
+            "related": "api/boomerang/customers/7fdf75ef-87cf-41bd-94f1-b074ade1125d"
           },
           "data": {
             "type": "customers",
-            "id": "906bbde2-7476-490b-b4b1-9690d81255f5"
+            "id": "7fdf75ef-87cf-41bd-94f1-b074ade1125d"
           }
         }
       }
@@ -133,14 +128,14 @@ Name | Description
   ],
   "included": [
     {
-      "id": "906bbde2-7476-490b-b4b1-9690d81255f5",
+      "id": "7fdf75ef-87cf-41bd-94f1-b074ade1125d",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-01-10T13:50:06+00:00",
-        "updated_at": "2022-01-10T13:50:06+00:00",
+        "created_at": "2022-01-13T11:41:26+00:00",
+        "updated_at": "2022-01-13T11:41:26+00:00",
         "number": 1,
-        "name": "Quitzon, Gusikowski and Auer",
-        "email": "and.gusikowski.auer.quitzon@rippin.info",
+        "name": "Quigley, Dach and Sporer",
+        "email": "and.sporer.quigley.dach@kirlin.co",
         "archived": false,
         "deposit_type": "default",
         "deposit_value": 0.0,
@@ -164,27 +159,22 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=906bbde2-7476-490b-b4b1-9690d81255f5&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=7fdf75ef-87cf-41bd-94f1-b074ade1125d&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=906bbde2-7476-490b-b4b1-9690d81255f5&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=7fdf75ef-87cf-41bd-94f1-b074ade1125d&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=906bbde2-7476-490b-b4b1-9690d81255f5&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=7fdf75ef-87cf-41bd-94f1-b074ade1125d&filter[owner_type]=customers"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Fa258f324-e210-455d-a8b8-59070a4a6825&include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Fa258f324-e210-455d-a8b8-59070a4a6825&include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Fa258f324-e210-455d-a8b8-59070a4a6825&include=owner&page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -201,7 +191,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=owner`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[barcodes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T11:41:16Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -251,7 +241,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/37a36a80-06ac-4e56-b45c-44ebbabc996a?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/dabfe3e1-5ab0-48b1-99f4-640540a6e64a?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -260,39 +250,39 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "37a36a80-06ac-4e56-b45c-44ebbabc996a",
+    "id": "dabfe3e1-5ab0-48b1-99f4-640540a6e64a",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2022-01-10T13:50:07+00:00",
-      "updated_at": "2022-01-10T13:50:07+00:00",
-      "number": "http://bqbl.it/37a36a80-06ac-4e56-b45c-44ebbabc996a",
+      "created_at": "2022-01-13T11:41:26+00:00",
+      "updated_at": "2022-01-13T11:41:26+00:00",
+      "number": "http://bqbl.it/dabfe3e1-5ab0-48b1-99f4-640540a6e64a",
       "barcode_type": "qr_code",
-      "image_url": "/uploads/e53280d0d9cd078b658744ac3f7ec3be/barcode/image/37a36a80-06ac-4e56-b45c-44ebbabc996a/73138aa6-31fc-4350-8a8f-65403e338650.svg",
-      "owner_id": "6df2005e-6f81-4883-a0a1-7b8a38301fa9",
+      "image_url": "/uploads/030da612e19d909ce2d2ed45ec8c290d/barcode/image/dabfe3e1-5ab0-48b1-99f4-640540a6e64a/2ea3c76d-f9e2-4bf5-9f77-1be9171108d9.svg",
+      "owner_id": "f48758d8-5475-469f-8f83-f7163d4ef4a3",
       "owner_type": "customers"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/6df2005e-6f81-4883-a0a1-7b8a38301fa9"
+          "related": "api/boomerang/customers/f48758d8-5475-469f-8f83-f7163d4ef4a3"
         },
         "data": {
           "type": "customers",
-          "id": "6df2005e-6f81-4883-a0a1-7b8a38301fa9"
+          "id": "f48758d8-5475-469f-8f83-f7163d4ef4a3"
         }
       }
     }
   },
   "included": [
     {
-      "id": "6df2005e-6f81-4883-a0a1-7b8a38301fa9",
+      "id": "f48758d8-5475-469f-8f83-f7163d4ef4a3",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-01-10T13:50:07+00:00",
-        "updated_at": "2022-01-10T13:50:07+00:00",
+        "created_at": "2022-01-13T11:41:26+00:00",
+        "updated_at": "2022-01-13T11:41:26+00:00",
         "number": 1,
-        "name": "Gibson, Conroy and Emard",
-        "email": "and.emard.gibson.conroy@mclaughlin.biz",
+        "name": "Hane-Nienow",
+        "email": "hane_nienow@adams.name",
         "archived": false,
         "deposit_type": "default",
         "deposit_value": 0.0,
@@ -316,17 +306,17 @@ This request accepts the following includes:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=6df2005e-6f81-4883-a0a1-7b8a38301fa9&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=f48758d8-5475-469f-8f83-f7163d4ef4a3&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=6df2005e-6f81-4883-a0a1-7b8a38301fa9&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=f48758d8-5475-469f-8f83-f7163d4ef4a3&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=6df2005e-6f81-4883-a0a1-7b8a38301fa9&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=f48758d8-5475-469f-8f83-f7163d4ef4a3&filter[owner_type]=customers"
           }
         }
       }
@@ -376,7 +366,7 @@ This request accepts the following includes:
         "type": "barcodes",
         "attributes": {
           "barcode_type": "qr_code",
-          "owner_id": "1a058d6a-908b-47ea-b353-937bba20d9ef",
+          "owner_id": "4b3fb0a4-0941-4190-b461-e17b7f33003b",
           "owner_type": "customers"
         }
       }
@@ -388,15 +378,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d683cbea-a878-4797-8172-4d588395b9d3",
+    "id": "7424169c-b409-40af-9d04-1d237020fceb",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2022-01-10T13:50:08+00:00",
-      "updated_at": "2022-01-10T13:50:08+00:00",
-      "number": "http://bqbl.it/d683cbea-a878-4797-8172-4d588395b9d3",
+      "created_at": "2022-01-13T11:41:27+00:00",
+      "updated_at": "2022-01-13T11:41:27+00:00",
+      "number": "http://bqbl.it/7424169c-b409-40af-9d04-1d237020fceb",
       "barcode_type": "qr_code",
-      "image_url": "/uploads/38ecc5a37d411a217a8a9fff445d0ec0/barcode/image/d683cbea-a878-4797-8172-4d588395b9d3/19048c23-39ce-4cdb-a868-da0cba853e57.svg",
-      "owner_id": "1a058d6a-908b-47ea-b353-937bba20d9ef",
+      "image_url": "/uploads/56e09ebc9d1e508c14c77150823e22f6/barcode/image/7424169c-b409-40af-9d04-1d237020fceb/3b9b4562-992a-4fb8-ae0a-0a5fc4ec256d.svg",
+      "owner_id": "4b3fb0a4-0941-4190-b461-e17b7f33003b",
       "owner_type": "customers"
     },
     "relationships": {
@@ -406,11 +396,6 @@ This request accepts the following includes:
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/barcodes?data%5Battributes%5D%5Bbarcode_type%5D=qr_code&data%5Battributes%5D%5Bowner_id%5D=1a058d6a-908b-47ea-b353-937bba20d9ef&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Btype%5D=barcodes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/barcodes?data%5Battributes%5D%5Bbarcode_type%5D=qr_code&data%5Battributes%5D%5Bowner_id%5D=1a058d6a-908b-47ea-b353-937bba20d9ef&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Btype%5D=barcodes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/barcodes?data%5Battributes%5D%5Bbarcode_type%5D=qr_code&data%5Battributes%5D%5Bowner_id%5D=1a058d6a-908b-47ea-b353-937bba20d9ef&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Btype%5D=barcodes&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -461,11 +446,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/82fac7cf-131b-452c-9063-e12970cf9663' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/b54a3c7c-f7e4-4b80-922b-8d436c20b2de' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "82fac7cf-131b-452c-9063-e12970cf9663",
+        "id": "b54a3c7c-f7e4-4b80-922b-8d436c20b2de",
         "type": "barcodes",
         "attributes": {
           "number": "https://myfancysite.com"
@@ -479,15 +464,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "82fac7cf-131b-452c-9063-e12970cf9663",
+    "id": "b54a3c7c-f7e4-4b80-922b-8d436c20b2de",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2022-01-10T13:50:08+00:00",
-      "updated_at": "2022-01-10T13:50:09+00:00",
+      "created_at": "2022-01-13T11:41:27+00:00",
+      "updated_at": "2022-01-13T11:41:27+00:00",
       "number": "https://myfancysite.com",
       "barcode_type": "qr_code",
-      "image_url": "/uploads/6c5250c65551d53265fac8bfdd51bd76/barcode/image/82fac7cf-131b-452c-9063-e12970cf9663/0b5ce2b9-24a6-4be8-9b3a-2b44cca0d353.svg",
-      "owner_id": "db90b7fa-7868-4e0d-81cb-0efa46c47daa",
+      "image_url": "/uploads/554763e5d393878695dfbc25e0f92501/barcode/image/b54a3c7c-f7e4-4b80-922b-8d436c20b2de/f1cdc03f-254d-4d61-9e5e-8cc4e3ac3d3e.svg",
+      "owner_id": "54cd607d-7c84-4c1d-b673-0d1bd02acb73",
       "owner_type": "customers"
     },
     "relationships": {
@@ -547,7 +532,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/33b8da65-7eb9-445f-9dc2-c91fab9022ad' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/c57cfec9-bd0d-4beb-a6ff-9309ae69f306' \
     --header 'content-type: application/json' \
 ```
 

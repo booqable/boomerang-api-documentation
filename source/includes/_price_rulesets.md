@@ -56,28 +56,23 @@ Name | Description
   {
   "data": [
     {
-      "id": "97204271-34b2-48e2-9c01-deaeffe27ba2",
+      "id": "0ef80cd7-1e42-486b-a6f7-760a43ef891f",
       "type": "price_rulesets",
       "attributes": {
-        "created_at": "2022-01-10T13:52:31+00:00",
-        "updated_at": "2022-01-10T13:52:31+00:00",
+        "created_at": "2022-01-13T11:42:58+00:00",
+        "updated_at": "2022-01-13T11:42:58+00:00",
         "name": "Ruleset",
         "archived_at": null
       },
       "relationships": {
         "price_rules": {
           "links": {
-            "related": "api/boomerang/price_rules?filter[price_ruleset_id]=97204271-34b2-48e2-9c01-deaeffe27ba2"
+            "related": "api/boomerang/price_rules?filter[price_ruleset_id]=0ef80cd7-1e42-486b-a6f7-760a43ef891f"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/price_rulesets?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/price_rulesets?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/price_rulesets?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -94,7 +89,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=price_rules`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[price_rulesets]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T11:41:16Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -135,7 +130,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/a0e151e2-7179-4992-b0dc-5a0c854d0e22?include=price_rules' \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/59ee4fc3-725b-4d05-a8c6-1f64307e93a2?include=price_rules' \
     --header 'content-type: application/json' \
 ```
 
@@ -144,23 +139,23 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "a0e151e2-7179-4992-b0dc-5a0c854d0e22",
+    "id": "59ee4fc3-725b-4d05-a8c6-1f64307e93a2",
     "type": "price_rulesets",
     "attributes": {
-      "created_at": "2022-01-10T13:52:31+00:00",
-      "updated_at": "2022-01-10T13:52:31+00:00",
+      "created_at": "2022-01-13T11:42:58+00:00",
+      "updated_at": "2022-01-13T11:42:58+00:00",
       "name": "Ruleset",
       "archived_at": null
     },
     "relationships": {
       "price_rules": {
         "links": {
-          "related": "api/boomerang/price_rules?filter[price_ruleset_id]=a0e151e2-7179-4992-b0dc-5a0c854d0e22"
+          "related": "api/boomerang/price_rules?filter[price_ruleset_id]=59ee4fc3-725b-4d05-a8c6-1f64307e93a2"
         },
         "data": [
           {
             "type": "price_rules",
-            "id": "c78df71c-eaf1-4587-afff-bade7477fc4d"
+            "id": "19c6ba9b-65d9-4f62-8e0d-aea40ffdc2e4"
           }
         ]
       }
@@ -168,11 +163,11 @@ This request does not accept any includes
   },
   "included": [
     {
-      "id": "c78df71c-eaf1-4587-afff-bade7477fc4d",
+      "id": "19c6ba9b-65d9-4f62-8e0d-aea40ffdc2e4",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2022-01-10T13:52:31+00:00",
-        "updated_at": "2022-01-10T13:52:31+00:00",
+        "created_at": "2022-01-13T11:42:58+00:00",
+        "updated_at": "2022-01-13T11:42:58+00:00",
         "name": "Price rule",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
@@ -187,12 +182,12 @@ This request does not accept any includes
         "charge": null,
         "stacked": false,
         "time": null,
-        "price_ruleset_id": "a0e151e2-7179-4992-b0dc-5a0c854d0e22"
+        "price_ruleset_id": "59ee4fc3-725b-4d05-a8c6-1f64307e93a2"
       },
       "relationships": {
         "price_ruleset": {
           "links": {
-            "related": "api/boomerang/price_rulesets/a0e151e2-7179-4992-b0dc-5a0c854d0e22"
+            "related": "api/boomerang/price_rulesets/59ee4fc3-725b-4d05-a8c6-1f64307e93a2"
           }
         }
       }
@@ -248,8 +243,8 @@ This request accepts the following includes:
               "rule_type": "range_of_dates",
               "match_strategy": "span",
               "value": 25,
-              "from": "2021-12-10T13:52:32.312Z",
-              "till": "2022-02-10T13:52:32.313Z"
+              "from": "2021-12-13T11:43:00.284Z",
+              "till": "2022-02-13T11:43:00.284Z"
             }
           ]
         }
@@ -263,11 +258,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5d3d0c2f-11cf-462a-8cf1-91ee838b4603",
+    "id": "52e222a0-8896-4a48-9155-aa3a58ead07d",
     "type": "price_rulesets",
     "attributes": {
-      "created_at": "2022-01-10T13:52:32+00:00",
-      "updated_at": "2022-01-10T13:52:32+00:00",
+      "created_at": "2022-01-13T11:43:00+00:00",
+      "updated_at": "2022-01-13T11:43:00+00:00",
       "name": "Seasonal ruleset",
       "archived_at": null
     },
@@ -276,7 +271,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "price_rules",
-            "id": "c9fb6a68-1bc6-4516-9e97-f3d4e7b14264"
+            "id": "46183cdf-e66b-46be-802c-401c7908548d"
           }
         ]
       }
@@ -284,18 +279,18 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "c9fb6a68-1bc6-4516-9e97-f3d4e7b14264",
+      "id": "46183cdf-e66b-46be-802c-401c7908548d",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2022-01-10T13:52:32+00:00",
-        "updated_at": "2022-01-10T13:52:32+00:00",
+        "created_at": "2022-01-13T11:43:00+00:00",
+        "updated_at": "2022-01-13T11:43:00+00:00",
         "name": "Off season",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 25.0,
-        "from": "2021-12-10T13:52:32+00:00",
-        "till": "2022-02-10T13:52:32+00:00",
+        "from": "2021-12-13T11:43:00+00:00",
+        "till": "2022-02-13T11:43:00+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -303,7 +298,7 @@ This request accepts the following includes:
         "charge": null,
         "stacked": false,
         "time": null,
-        "price_ruleset_id": "5d3d0c2f-11cf-462a-8cf1-91ee838b4603"
+        "price_ruleset_id": "52e222a0-8896-4a48-9155-aa3a58ead07d"
       },
       "relationships": {
         "price_ruleset": {
@@ -314,11 +309,6 @@ This request accepts the following includes:
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/price_rulesets?data%5Battributes%5D%5Bname%5D=Seasonal+ruleset&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bvalue%5D=25&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bfrom%5D=2021-12-10T13%3A52%3A32.312Z&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Btill%5D=2022-02-10T13%3A52%3A32.313Z&data%5Btype%5D=price_rulesets&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/price_rulesets?data%5Battributes%5D%5Bname%5D=Seasonal+ruleset&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bvalue%5D=25&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bfrom%5D=2021-12-10T13%3A52%3A32.312Z&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Btill%5D=2022-02-10T13%3A52%3A32.313Z&data%5Btype%5D=price_rulesets&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/price_rulesets?data%5Battributes%5D%5Bname%5D=Seasonal+ruleset&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bname%5D=Off+season&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Brule_type%5D=range_of_dates&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bmatch_strategy%5D=span&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bvalue%5D=25&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Bfrom%5D=2021-12-10T13%3A52%3A32.312Z&data%5Battributes%5D%5Bprice_rules_attributes%5D%5B%5D%5Btill%5D=2022-02-10T13%3A52%3A32.313Z&data%5Btype%5D=price_rulesets&include=price_rules&page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -366,11 +356,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/25b1893a-a22f-4b5b-880e-c0b795f3295d' \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/8486bf50-5da4-49ef-bc0e-ba25d118feb3' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "25b1893a-a22f-4b5b-880e-c0b795f3295d",
+        "id": "8486bf50-5da4-49ef-bc0e-ba25d118feb3",
         "type": "price_rulesets",
         "attributes": {
           "name": "Seasonal ruleset (old)"
@@ -384,11 +374,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "25b1893a-a22f-4b5b-880e-c0b795f3295d",
+    "id": "8486bf50-5da4-49ef-bc0e-ba25d118feb3",
     "type": "price_rulesets",
     "attributes": {
-      "created_at": "2022-01-10T13:52:32+00:00",
-      "updated_at": "2022-01-10T13:52:32+00:00",
+      "created_at": "2022-01-13T11:43:00+00:00",
+      "updated_at": "2022-01-13T11:43:00+00:00",
       "name": "Seasonal ruleset (old)",
       "archived_at": null
     },
@@ -409,16 +399,16 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/a6f7840b-7f2d-4dc8-b435-a38e12c6e8b7' \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/d86aa7e1-986f-409f-8a98-ba6ea33d5127' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "a6f7840b-7f2d-4dc8-b435-a38e12c6e8b7",
+        "id": "d86aa7e1-986f-409f-8a98-ba6ea33d5127",
         "type": "price_rulesets",
         "attributes": {
           "price_rules_attributes": [
             {
-              "id": "bb0feb20-9687-4fde-a183-9d723631a7e2",
+              "id": "4a018997-d5c0-4367-ba20-e17e633088a8",
               "name": "Off season"
             }
           ]
@@ -433,11 +423,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a6f7840b-7f2d-4dc8-b435-a38e12c6e8b7",
+    "id": "d86aa7e1-986f-409f-8a98-ba6ea33d5127",
     "type": "price_rulesets",
     "attributes": {
-      "created_at": "2022-01-10T13:52:33+00:00",
-      "updated_at": "2022-01-10T13:52:33+00:00",
+      "created_at": "2022-01-13T11:43:00+00:00",
+      "updated_at": "2022-01-13T11:43:00+00:00",
       "name": "Ruleset",
       "archived_at": null
     },
@@ -446,7 +436,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "price_rules",
-            "id": "bb0feb20-9687-4fde-a183-9d723631a7e2"
+            "id": "4a018997-d5c0-4367-ba20-e17e633088a8"
           }
         ]
       }
@@ -454,11 +444,11 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "bb0feb20-9687-4fde-a183-9d723631a7e2",
+      "id": "4a018997-d5c0-4367-ba20-e17e633088a8",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2022-01-10T13:52:33+00:00",
-        "updated_at": "2022-01-10T13:52:33+00:00",
+        "created_at": "2022-01-13T11:43:00+00:00",
+        "updated_at": "2022-01-13T11:43:00+00:00",
         "name": "Off season",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
@@ -473,7 +463,7 @@ This request accepts the following includes:
         "charge": null,
         "stacked": false,
         "time": null,
-        "price_ruleset_id": "a6f7840b-7f2d-4dc8-b435-a38e12c6e8b7"
+        "price_ruleset_id": "d86aa7e1-986f-409f-8a98-ba6ea33d5127"
       },
       "relationships": {
         "price_ruleset": {
@@ -531,7 +521,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/f1313a47-2e13-4fcd-a277-79e082e4c965' \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/476adee4-441d-4668-b137-4ba57866f4c9' \
     --header 'content-type: application/json' \
 ```
 

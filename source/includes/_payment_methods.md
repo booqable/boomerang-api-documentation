@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "4b90746a-1056-4c8a-9458-26dbb41de538",
+      "id": "05450af5-140f-46f1-9603-d3e1cce1f830",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2022-01-10T13:52:19+00:00",
-        "updated_at": "2022-01-10T13:52:19+00:00",
+        "created_at": "2022-01-13T11:42:50+00:00",
+        "updated_at": "2022-01-13T11:42:50+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -70,11 +70,6 @@ Name | Description
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/payment_methods?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/payment_methods?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/payment_methods?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -91,7 +86,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=customer`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T11:41:16Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -131,7 +126,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/28ddc3f8-1055-48f9-b249-959a803e0bee' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/deef9a78-458d-40a0-8896-b50a82dcb2d9' \
     --header 'content-type: application/json' \
 ```
 

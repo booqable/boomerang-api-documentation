@@ -52,35 +52,30 @@ Name | Description
   {
   "data": [
     {
-      "id": "c39d3fd3-511f-408a-933b-72e80ec85e92",
+      "id": "d400b610-0692-4323-ad06-1d8ff524e570",
       "type": "notes",
       "attributes": {
-        "created_at": "2022-01-10T13:51:39+00:00",
-        "updated_at": "2022-01-10T13:51:39+00:00",
+        "created_at": "2022-01-13T11:42:28+00:00",
+        "updated_at": "2022-01-13T11:42:28+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "f0b908ff-8ada-4f1d-ac3d-e435fba5eca3",
+        "owner_id": "769f1b6a-a51c-411e-bb0d-7892b7f74bf0",
         "owner_type": "customers",
-        "employee_id": "befa7342-d2c1-4643-bae4-9d099266bc79"
+        "employee_id": "e0d91e1d-633c-420b-8dca-9415e940b5fc"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/f0b908ff-8ada-4f1d-ac3d-e435fba5eca3"
+            "related": "api/boomerang/customers/769f1b6a-a51c-411e-bb0d-7892b7f74bf0"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/befa7342-d2c1-4643-bae4-9d099266bc79"
+            "related": "api/boomerang/employees/e0d91e1d-633c-420b-8dca-9415e940b5fc"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/notes?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/notes?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/notes?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -97,7 +92,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-13T11:41:16Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -149,7 +144,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/3b572ef3-da82-43ac-95e8-0d85e1e38d57' \
+    --url 'https://example.booqable.com/api/boomerang/notes/5eb32096-c25d-427e-aa62-fd5626331e40' \
     --header 'content-type: application/json' \
 ```
 
@@ -158,25 +153,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3b572ef3-da82-43ac-95e8-0d85e1e38d57",
+    "id": "5eb32096-c25d-427e-aa62-fd5626331e40",
     "type": "notes",
     "attributes": {
-      "created_at": "2022-01-10T13:51:39+00:00",
-      "updated_at": "2022-01-10T13:51:39+00:00",
+      "created_at": "2022-01-13T11:42:28+00:00",
+      "updated_at": "2022-01-13T11:42:28+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "a1501838-40d2-4104-817b-862ed8facd35",
+      "owner_id": "5caf4b2e-9d4b-4557-ab60-5745ff375a05",
       "owner_type": "customers",
-      "employee_id": "3e163432-22b2-4298-8d6c-73e6c626ed30"
+      "employee_id": "8ffe6e0e-93e4-45ca-9246-4248e1642897"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/a1501838-40d2-4104-817b-862ed8facd35"
+          "related": "api/boomerang/customers/5caf4b2e-9d4b-4557-ab60-5745ff375a05"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/3e163432-22b2-4298-8d6c-73e6c626ed30"
+          "related": "api/boomerang/employees/8ffe6e0e-93e4-45ca-9246-4248e1642897"
         }
       }
     }
@@ -225,7 +220,7 @@ This request accepts the following includes:
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "0d440b4a-94f6-47da-8366-53cfa492fcb7",
+          "owner_id": "7ab4275e-932c-4f3f-9455-7f8bccd3eb65",
           "owner_type": "customers"
         }
       }
@@ -237,15 +232,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "30a1866e-549e-4abc-bd2e-12a87d4ffe3c",
+    "id": "fb4d58b0-bd0f-422b-ab68-5b70740f0792",
     "type": "notes",
     "attributes": {
-      "created_at": "2022-01-10T13:51:40+00:00",
-      "updated_at": "2022-01-10T13:51:40+00:00",
+      "created_at": "2022-01-13T11:42:29+00:00",
+      "updated_at": "2022-01-13T11:42:29+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "0d440b4a-94f6-47da-8366-53cfa492fcb7",
+      "owner_id": "7ab4275e-932c-4f3f-9455-7f8bccd3eb65",
       "owner_type": "customers",
-      "employee_id": "5350ed5d-8fbe-49f8-a27c-916a14c1e765"
+      "employee_id": "e4c0441d-fab7-48dc-9c95-e4ce25e82fe3"
     },
     "relationships": {
       "owner": {
@@ -259,11 +254,6 @@ This request accepts the following includes:
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=0d440b4a-94f6-47da-8366-53cfa492fcb7&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=0d440b4a-94f6-47da-8366-53cfa492fcb7&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/notes?data%5Battributes%5D%5Bbody%5D=Agreed+to+give+this+customer+a+20%25+discount+on+the+next+order&data%5Battributes%5D%5Bowner_id%5D=0d440b4a-94f6-47da-8366-53cfa492fcb7&data%5Battributes%5D%5Bowner_type%5D=customers&data%5Btype%5D=notes&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -313,7 +303,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/ab2f3b9b-f13a-42c4-aadb-aa98c2af08e5' \
+    --url 'https://example.booqable.com/api/boomerang/notes/de0b00f4-a49b-460c-8e23-f085bef9b288' \
     --header 'content-type: application/json' \
 ```
 
