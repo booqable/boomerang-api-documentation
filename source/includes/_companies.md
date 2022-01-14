@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
+    "id": "26884540-e5e1-4391-bd25-357157753cd0",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:29+00:00",
-      "updated_at": "2022-01-10T13:50:29+00:00",
+      "created_at": "2022-01-14T18:53:17+00:00",
+      "updated_at": "2022-01-14T18:53:17+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-782-498-1935",
-      "website": "http://casper.co/michael",
-      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
-      "address_line_1": "Fawn Manors",
-      "address_line_2": "25489 Brice Port",
-      "zipcode": "49299-0811",
-      "city": "Port Soledadborough",
+      "phone": "809.372.0701 x4209",
+      "website": "http://labadie.org/adrianne_gulgowski",
+      "address": "Micheal Loaf\n618 Sang Village\n88604-1157 East Jeffery\nNorfolk Island",
+      "address_line_1": "Micheal Loaf",
+      "address_line_2": "618 Sang Village",
+      "zipcode": "88604-1157",
+      "city": "East Jeffery",
       "region": null,
-      "country": "Cook Islands",
+      "country": "Norfolk Island",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8502 Torp Oval",
-      "financial_line_2": "72456-8130 West Lachelle",
+      "financial_line_1": "195 Hank Valley",
+      "financial_line_2": "32571 Kendallhaven",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "069affe2-7def-4915-84b9-4f042f34883c",
+    "id": "1f2aa99b-465b-4dbc-bb60-3893d7dc0b7c",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-24T13:50:30.054Z",
+        "trial_ends_at": "2022-01-28T18:53:17.578Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+        "id": "ac2ac282-880e-4054-85dd-3c575e7f4b72",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+    "id": "ac2ac282-880e-4054-85dd-3c575e7f4b72",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:30+00:00",
-      "updated_at": "2022-01-10T13:50:30+00:00",
+      "created_at": "2022-01-14T18:53:17+00:00",
+      "updated_at": "2022-01-14T18:53:17+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(393) 123-2894",
-      "website": "http://schroeder-hammes.org/gaylene.donnelly",
-      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
-      "address_line_1": "Pacocha Meadow",
-      "address_line_2": "168 Reilly Place",
-      "zipcode": "90484",
-      "city": "Berniefurt",
+      "phone": "646-986-8809 x497",
+      "website": "http://haley.name/cletus.hermiston",
+      "address": "Bode Walks\n764 Nolan Mountain\n89112-4445 Schoenbury\nSyrian Arab Republic",
+      "address_line_1": "Bode Walks",
+      "address_line_2": "764 Nolan Mountain",
+      "zipcode": "89112-4445",
+      "city": "Schoenbury",
       "region": null,
-      "country": "Fiji",
+      "country": "Syrian Arab Republic",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "360 Howe Parkway",
-      "financial_line_2": "54641 Runolfsdottirport",
+      "financial_line_1": "5963 Prohaska Tunnel",
+      "financial_line_2": "77867 West Norris",
       "vat_number": null,
       "custom_domain": null,
       "development": false
