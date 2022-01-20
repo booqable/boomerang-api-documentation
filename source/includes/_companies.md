@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e50987b6-ad63-439a-a67d-57968f0607ce",
+    "id": "b748a592-4044-4ff6-a7db-270619a74a0b",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:29+00:00",
-      "updated_at": "2022-01-10T13:50:29+00:00",
+      "created_at": "2022-01-20T12:33:25+00:00",
+      "updated_at": "2022-01-20T12:33:25+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "1-782-498-1935",
-      "website": "http://casper.co/michael",
-      "address": "Fawn Manors\n25489 Brice Port\n49299-0811 Port Soledadborough\nCook Islands",
-      "address_line_1": "Fawn Manors",
-      "address_line_2": "25489 Brice Port",
-      "zipcode": "49299-0811",
-      "city": "Port Soledadborough",
+      "phone": "1-643-061-5670 x1459",
+      "website": "http://mante.org/ty.gleason",
+      "address": "Hamill Point\n83062 Randal Light\n11014-1733 Wymanborough\nTurks and Caicos Islands",
+      "address_line_1": "Hamill Point",
+      "address_line_2": "83062 Randal Light",
+      "zipcode": "11014-1733",
+      "city": "Wymanborough",
       "region": null,
-      "country": "Cook Islands",
+      "country": "Turks and Caicos Islands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8502 Torp Oval",
-      "financial_line_2": "72456-8130 West Lachelle",
+      "financial_line_1": "275 Elvis Mews",
+      "financial_line_2": "19694-1422 New Hobertmouth",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "069affe2-7def-4915-84b9-4f042f34883c",
+    "id": "3bd4a6a0-8b3e-43ca-80bc-4ae2379a89d9",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-01-24T13:50:30.054Z",
+        "trial_ends_at": "2022-02-03T12:33:26.051Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+        "id": "cb41851d-5e3c-4ce3-aab3-958caa88c539",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "afb7081e-49d6-4b50-b909-602b5bf124df",
+    "id": "cb41851d-5e3c-4ce3-aab3-958caa88c539",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-10T13:50:30+00:00",
-      "updated_at": "2022-01-10T13:50:30+00:00",
+      "created_at": "2022-01-20T12:33:26+00:00",
+      "updated_at": "2022-01-20T12:33:26+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "(393) 123-2894",
-      "website": "http://schroeder-hammes.org/gaylene.donnelly",
-      "address": "Pacocha Meadow\n168 Reilly Place\n90484 Berniefurt\nFiji",
-      "address_line_1": "Pacocha Meadow",
-      "address_line_2": "168 Reilly Place",
-      "zipcode": "90484",
-      "city": "Berniefurt",
+      "phone": "(122) 858-5804 x361",
+      "website": "http://torp-cremin.io/chadwick",
+      "address": "Bernier Trace\n59356 Maricruz Skyway\n35081-8474 West Bessie\nArgentina",
+      "address_line_1": "Bernier Trace",
+      "address_line_2": "59356 Maricruz Skyway",
+      "zipcode": "35081-8474",
+      "city": "West Bessie",
       "region": null,
-      "country": "Fiji",
+      "country": "Argentina",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "360 Howe Parkway",
-      "financial_line_2": "54641 Runolfsdottirport",
+      "financial_line_1": "2722 Minda Ports",
+      "financial_line_2": "37598 Christoperfort",
       "vat_number": null,
       "custom_domain": null,
       "development": false

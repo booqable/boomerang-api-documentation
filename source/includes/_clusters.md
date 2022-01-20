@@ -51,28 +51,23 @@ Name | Description
   {
   "data": [
     {
-      "id": "108860e6-5d5f-4095-b2ac-a95f6ceabf54",
+      "id": "057aec09-c228-4186-8c36-6232296102dd",
       "type": "clusters",
       "attributes": {
-        "created_at": "2022-01-10T13:50:27+00:00",
-        "updated_at": "2022-01-10T13:50:27+00:00",
+        "created_at": "2022-01-20T12:33:23+00:00",
+        "updated_at": "2022-01-20T12:33:23+00:00",
         "name": "Main",
         "location_ids": []
       },
       "relationships": {
         "locations": {
           "links": {
-            "related": "api/boomerang/locations?filter[cluster_id]=108860e6-5d5f-4095-b2ac-a95f6ceabf54"
+            "related": "api/boomerang/locations?filter[cluster_id]=057aec09-c228-4186-8c36-6232296102dd"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/clusters?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/clusters?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/clusters?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -89,7 +84,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=locations`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-20T12:32:57Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -137,7 +132,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/clusters/baf7c120-e63a-442f-90f7-76e2e271f864' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/b206a971-79ae-40ec-923b-8ebb9f5d2fff' \
     --header 'content-type: application/json' \
 ```
 
@@ -146,18 +141,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "baf7c120-e63a-442f-90f7-76e2e271f864",
+    "id": "b206a971-79ae-40ec-923b-8ebb9f5d2fff",
     "type": "clusters",
     "attributes": {
-      "created_at": "2022-01-10T13:50:27+00:00",
-      "updated_at": "2022-01-10T13:50:27+00:00",
+      "created_at": "2022-01-20T12:33:24+00:00",
+      "updated_at": "2022-01-20T12:33:24+00:00",
       "name": "Main",
       "location_ids": []
     },
     "relationships": {
       "locations": {
         "links": {
-          "related": "api/boomerang/locations?filter[cluster_id]=baf7c120-e63a-442f-90f7-76e2e271f864"
+          "related": "api/boomerang/locations?filter[cluster_id]=b206a971-79ae-40ec-923b-8ebb9f5d2fff"
         }
       }
     }
@@ -216,11 +211,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "36da32a3-c31e-43c7-8cd4-2b20912971c1",
+    "id": "becda6fe-4bfc-4f11-aecf-2f6f96db0dd4",
     "type": "clusters",
     "attributes": {
-      "created_at": "2022-01-10T13:50:28+00:00",
-      "updated_at": "2022-01-10T13:50:28+00:00",
+      "created_at": "2022-01-20T12:33:24+00:00",
+      "updated_at": "2022-01-20T12:33:24+00:00",
       "name": "Amsterdam",
       "location_ids": []
     },
@@ -231,11 +226,6 @@ This request accepts the following includes:
         }
       }
     }
-  },
-  "links": {
-    "self": "api/boomerang/clusters?data%5Battributes%5D%5Bname%5D=Amsterdam&data%5Btype%5D=clusters&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/clusters?data%5Battributes%5D%5Bname%5D=Amsterdam&data%5Btype%5D=clusters&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/clusters?data%5Battributes%5D%5Bname%5D=Amsterdam&data%5Btype%5D=clusters&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -284,11 +274,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/clusters/53e0f186-8480-4d7a-b620-6e47b70ee625' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/e5a80f58-3f73-4e35-b041-f1f64b506b0c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "53e0f186-8480-4d7a-b620-6e47b70ee625",
+        "id": "e5a80f58-3f73-4e35-b041-f1f64b506b0c",
         "type": "clusters",
         "attributes": {
           "name": "Rotterdam"
@@ -302,11 +292,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "53e0f186-8480-4d7a-b620-6e47b70ee625",
+    "id": "e5a80f58-3f73-4e35-b041-f1f64b506b0c",
     "type": "clusters",
     "attributes": {
-      "created_at": "2022-01-10T13:50:28+00:00",
-      "updated_at": "2022-01-10T13:50:28+00:00",
+      "created_at": "2022-01-20T12:33:25+00:00",
+      "updated_at": "2022-01-20T12:33:25+00:00",
       "name": "Rotterdam",
       "location_ids": []
     },
@@ -366,7 +356,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/ff52e7f5-19f7-4e5c-8721-47b79671ae0d' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/3a30747d-07ec-4250-bc60-5f8ce7177b41' \
     --header 'content-type: application/json' \
 ```
 
@@ -383,7 +373,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/5ff53ddd-dfea-4e07-a36c-fdd16b407e69' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/597dc57a-89fa-4a23-9e12-87052013bad1' \
     --header 'content-type: application/json' \
 ```
 
@@ -399,7 +389,7 @@ To delete a cluster make sure no active locations are associated with it anymore
       "detail": "This cluster has 1 or more active locations",
       "meta": {
         "location_ids": [
-          "54f62d9f-9df4-48a9-894b-48a2f6a70974"
+          "6cf309b2-c52e-4af8-89e1-27163558ed62"
         ]
       }
     }

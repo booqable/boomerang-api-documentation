@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "3bdf7fba-6639-570d-b8a1-251f8e364afc",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "8a6f9629-07e7-4c41-b4df-1e0478453c31",
-      "employee_id": "66182659-c6c2-44a0-8475-f069188493d2",
-      "locations_updated_at": "2022-01-10T13:52:56+00:00",
-      "clusters_updated_at": "2022-01-10T13:52:56+00:00",
-      "default_properties_updated_at": "2022-01-10T13:52:56+00:00"
+      "updated_at": "2022-01-20T12:34:55+00:00",
+      "company_id": "31b1a774-cafd-4b89-912c-3c6b72ea3dba",
+      "employee_id": "7a47dca6-e6de-4779-9930-609e87eacffb",
+      "locations_updated_at": "2022-01-20T12:34:55+00:00",
+      "clusters_updated_at": "2022-01-20T12:34:55+00:00",
+      "default_properties_updated_at": "2022-01-20T12:34:55+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "3bdf7fba-6639-570d-b8a1-251f8e364afc",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
-      "employee_id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "updated_at": "2022-01-20T12:34:55+00:00",
+      "company_id": "7942625e-202f-42ec-8b5b-6c332c156205",
+      "employee_id": "1ca9e1f2-93e1-46cb-9f5e-74e4136198d6",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "4945e18c-5218-4d91-8238-18aaa775ca6b"
+          "id": "7942625e-202f-42ec-8b5b-6c332c156205"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735"
+          "id": "1ca9e1f2-93e1-46cb-9f5e-74e4136198d6"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
+      "id": "7942625e-202f-42ec-8b5b-6c332c156205",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
+        "created_at": "2022-01-20T12:34:55+00:00",
+        "updated_at": "2022-01-20T12:34:55+00:00",
         "name": "Company name 184",
         "slug": "company-name-184",
         "email": "mail187@company.com",
         "billing_email": null,
-        "phone": "1-875-807-7038 x62745",
-        "website": "http://west.com/patrick",
-        "address": "Block Club\n1936 Bartell Garden\n60941 Port Dion\nRwanda",
-        "address_line_1": "Block Club",
-        "address_line_2": "1936 Bartell Garden",
-        "zipcode": "60941",
-        "city": "Port Dion",
+        "phone": "312.189.5718",
+        "website": "http://reinger.com/jere_flatley",
+        "address": "Bednar Plain\n58926 Kerluke Avenue\n92501-3887 North Edgardo\nSaudi Arabia",
+        "address_line_1": "Bednar Plain",
+        "address_line_2": "58926 Kerluke Avenue",
+        "zipcode": "92501-3887",
+        "city": "North Edgardo",
         "region": null,
-        "country": "Rwanda",
+        "country": "Saudi Arabia",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "709 Hamill Plains",
-        "financial_line_2": "20732 South Fletaborough",
+        "financial_line_1": "83200 Rodney Inlet",
+        "financial_line_2": "17857 Gulgowskiview",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-01-24T13:52:56.617Z",
+          "trial_ends_at": "2022-02-03T12:34:55.869Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "id": "1ca9e1f2-93e1-46cb-9f5e-74e4136198d6",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
+        "created_at": "2022-01-20T12:34:55+00:00",
+        "updated_at": "2022-01-20T12:34:55+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -373,7 +373,8 @@ This request accepts the following includes:
           "website": null,
           "custom_scripts": "",
           "google_analytics_id": null,
-          "facebook_pixel_id": null
+          "facebook_pixel_id": null,
+          "facebook_domain_verification": null
         },
         "user": {
           "auth_enabled": false,
