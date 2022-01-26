@@ -37,7 +37,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "cc0942ea-80b6-4109-b4df-e763ddff57ef",
+      "id": "3dd00bb7-3fe1-42b8-acb4-d07ce8b23bcb",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -45,7 +45,7 @@ Name | Description
       }
     },
     {
-      "id": "5caebeb4-a417-4f54-a4a0-79c7b320c7e9",
+      "id": "809015af-5e56-4af0-af60-35f4a82fcd02",
       "type": "tags",
       "attributes": {
         "name": "webshop",
@@ -53,12 +53,6 @@ Name | Description
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/tags?filter%5Bfor%5D=Order&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/tags?filter%5Bfor%5D=Order&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/tags?filter%5Bfor%5D=Order&page%5Bnumber%5D=&page%5Bsize%5D=25",
-    "next": "api/boomerang/tags?filter%5Bfor%5D=Order&page%5Bnumber%5D=2&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -75,7 +69,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-26T14:23:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
