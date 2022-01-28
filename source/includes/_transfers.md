@@ -48,48 +48,43 @@ Name | Description
   {
   "data": [
     {
-      "id": "0511898e-4a47-42e5-940e-09813cce15a2",
+      "id": "28aa8c37-5002-4780-8ce9-9b491c4a4519",
       "type": "transfers",
       "attributes": {
-        "created_at": "2022-01-10T13:53:15+00:00",
-        "updated_at": "2022-01-10T13:53:15+00:00",
+        "created_at": "2022-01-26T14:25:54+00:00",
+        "updated_at": "2022-01-26T14:25:54+00:00",
         "quantity": 1,
-        "available_at": "2022-01-08T13:45:00+00:00",
+        "available_at": "2022-01-24T14:15:00+00:00",
         "finalized": false,
-        "item_id": "aae95236-37fe-4dd5-8a77-03c8b0c79382",
-        "order_id": "65a1e0cc-1707-44eb-8d88-e48330b947b1",
-        "source_location_id": "ca669d6f-5f04-47ce-bb6f-1a0059f9ed30",
-        "destination_location_id": "ca669d6f-5f04-47ce-bb6f-1a0059f9ed30"
+        "item_id": "803a03ee-e7e2-48d6-b6ff-d20bee99e5ff",
+        "order_id": "d3895f11-0693-4b75-8071-8b4cf4004cdd",
+        "source_location_id": "c0adb8c9-8fab-4e67-aa65-eb519e74a01c",
+        "destination_location_id": "c0adb8c9-8fab-4e67-aa65-eb519e74a01c"
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/aae95236-37fe-4dd5-8a77-03c8b0c79382"
+            "related": "api/boomerang/items/803a03ee-e7e2-48d6-b6ff-d20bee99e5ff"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/65a1e0cc-1707-44eb-8d88-e48330b947b1"
+            "related": "api/boomerang/orders/d3895f11-0693-4b75-8071-8b4cf4004cdd"
           }
         },
         "source_location": {
           "links": {
-            "related": "api/boomerang/locations/ca669d6f-5f04-47ce-bb6f-1a0059f9ed30"
+            "related": "api/boomerang/locations/c0adb8c9-8fab-4e67-aa65-eb519e74a01c"
           }
         },
         "destination_location": {
           "links": {
-            "related": "api/boomerang/locations/ca669d6f-5f04-47ce-bb6f-1a0059f9ed30"
+            "related": "api/boomerang/locations/c0adb8c9-8fab-4e67-aa65-eb519e74a01c"
           }
         }
       }
     }
   ],
-  "links": {
-    "self": "api/boomerang/transfers?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/transfers?page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/transfers?page%5Bnumber%5D=1&page%5Bsize%5D=25"
-  },
   "meta": {}
 }
 ```
@@ -106,7 +101,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=item,order,source_location`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[transfers]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-10T13:49:51Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-26T14:23:27Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

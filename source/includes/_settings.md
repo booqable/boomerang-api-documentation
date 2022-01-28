@@ -117,6 +117,7 @@ Name | Description
 `custom_scripts` | **String**<br>Custom scripts to execute during checkout
 `google_analytics_id` | **String**<br>Google analytics ID to use for tracking
 `facebook_pixel_id` | **String**<br>Facebook pixel ID to use for tracking
+`facebook_domain_verification` | **String**<br>Content for the `facebook-domain-verification` meta tag
 
 #### User
 
@@ -223,10 +224,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7c01b5e6-a164-5c10-b52f-f18aa35d79da",
+    "id": "048badb1-a6c3-507d-bd4c-e3e687058af0",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:57+00:00",
+      "updated_at": "2022-01-26T14:25:38+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -237,8 +238,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "21a4290b-64dd-4b5a-ab58-0f6ab1e23240",
-        "tax_region_id": "3daec418-9234-4be4-8ead-eb805e4d43ce"
+        "tax_category_id": "5edc3b55-1c38-4d5c-a138-ca695182a33d",
+        "tax_region_id": "2747d494-ca3d-4ab6-ac4c-f690568a5c8b"
       },
       "pricing": {
         "enabled": true,
@@ -305,7 +306,8 @@ Name | Description
         "website": null,
         "custom_scripts": "",
         "google_analytics_id": null,
-        "facebook_pixel_id": null
+        "facebook_pixel_id": null,
+        "facebook_domain_verification": null
       },
       "user": {
         "auth_enabled": false,

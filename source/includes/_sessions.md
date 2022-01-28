@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "048badb1-a6c3-507d-bd4c-e3e687058af0",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "8a6f9629-07e7-4c41-b4df-1e0478453c31",
-      "employee_id": "66182659-c6c2-44a0-8475-f069188493d2",
-      "locations_updated_at": "2022-01-10T13:52:56+00:00",
-      "clusters_updated_at": "2022-01-10T13:52:56+00:00",
-      "default_properties_updated_at": "2022-01-10T13:52:56+00:00"
+      "updated_at": "2022-01-26T14:25:38+00:00",
+      "company_id": "2ee55c7f-46a9-462b-b939-8c1792c9213d",
+      "employee_id": "739b5d85-5e5a-4fee-bdd5-d001b1b6f9d0",
+      "locations_updated_at": "2022-01-26T14:25:38+00:00",
+      "clusters_updated_at": "2022-01-26T14:25:38+00:00",
+      "default_properties_updated_at": "2022-01-26T14:25:38+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "88ac67c4-689d-5ab5-bbab-e9e74861bf13",
+    "id": "048badb1-a6c3-507d-bd4c-e3e687058af0",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-10T13:52:56+00:00",
-      "company_id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
-      "employee_id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "updated_at": "2022-01-26T14:25:38+00:00",
+      "company_id": "48e29c99-d778-402a-94df-2bbe322e32d8",
+      "employee_id": "32a01168-412b-409e-bb1e-3dd9b70a8bb3",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "4945e18c-5218-4d91-8238-18aaa775ca6b"
+          "id": "48e29c99-d778-402a-94df-2bbe322e32d8"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735"
+          "id": "32a01168-412b-409e-bb1e-3dd9b70a8bb3"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "4945e18c-5218-4d91-8238-18aaa775ca6b",
+      "id": "48e29c99-d778-402a-94df-2bbe322e32d8",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
-        "name": "Company name 184",
-        "slug": "company-name-184",
-        "email": "mail187@company.com",
+        "created_at": "2022-01-26T14:25:38+00:00",
+        "updated_at": "2022-01-26T14:25:38+00:00",
+        "name": "Company name 186",
+        "slug": "company-name-186",
+        "email": "mail189@company.com",
         "billing_email": null,
-        "phone": "1-875-807-7038 x62745",
-        "website": "http://west.com/patrick",
-        "address": "Block Club\n1936 Bartell Garden\n60941 Port Dion\nRwanda",
-        "address_line_1": "Block Club",
-        "address_line_2": "1936 Bartell Garden",
-        "zipcode": "60941",
-        "city": "Port Dion",
+        "phone": "1-693-305-9460",
+        "website": "http://heathcote.co/jan.paucek",
+        "address": "Arnulfo Cliffs\n155 Karie Mews\n53783 North Carole\nBarbados",
+        "address_line_1": "Arnulfo Cliffs",
+        "address_line_2": "155 Karie Mews",
+        "zipcode": "53783",
+        "city": "North Carole",
         "region": null,
-        "country": "Rwanda",
+        "country": "Barbados",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "709 Hamill Plains",
-        "financial_line_2": "20732 South Fletaborough",
+        "financial_line_1": "477 Yost Locks",
+        "financial_line_2": "89955 Port Cedricport",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-01-24T13:52:56.617Z",
+          "trial_ends_at": "2022-02-09T14:25:38.475Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "3f487aa9-60d3-4cd3-8ecb-ec34d1eaa735",
+      "id": "32a01168-412b-409e-bb1e-3dd9b70a8bb3",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-10T13:52:56+00:00",
-        "updated_at": "2022-01-10T13:52:56+00:00",
+        "created_at": "2022-01-26T14:25:38+00:00",
+        "updated_at": "2022-01-26T14:25:38+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -373,7 +373,8 @@ This request accepts the following includes:
           "website": null,
           "custom_scripts": "",
           "google_analytics_id": null,
-          "facebook_pixel_id": null
+          "facebook_pixel_id": null,
+          "facebook_domain_verification": null
         },
         "user": {
           "auth_enabled": false,
