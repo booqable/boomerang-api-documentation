@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "048badb1-a6c3-507d-bd4c-e3e687058af0",
+    "id": "5e849eb8-94fb-5b20-8352-9b2dc224903e",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-26T14:25:38+00:00",
-      "company_id": "2ee55c7f-46a9-462b-b939-8c1792c9213d",
-      "employee_id": "739b5d85-5e5a-4fee-bdd5-d001b1b6f9d0",
-      "locations_updated_at": "2022-01-26T14:25:38+00:00",
-      "clusters_updated_at": "2022-01-26T14:25:38+00:00",
-      "default_properties_updated_at": "2022-01-26T14:25:38+00:00"
+      "updated_at": "2022-01-29T11:16:45+00:00",
+      "company_id": "2abbc350-1a72-492b-9bac-71ddf8b11a09",
+      "employee_id": "6daf4b39-5899-4766-a97b-f7b5f6b7391d",
+      "locations_updated_at": "2022-01-29T11:16:45+00:00",
+      "clusters_updated_at": "2022-01-29T11:16:45+00:00",
+      "default_properties_updated_at": "2022-01-29T11:16:45+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "048badb1-a6c3-507d-bd4c-e3e687058af0",
+    "id": "5e849eb8-94fb-5b20-8352-9b2dc224903e",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-26T14:25:38+00:00",
-      "company_id": "48e29c99-d778-402a-94df-2bbe322e32d8",
-      "employee_id": "32a01168-412b-409e-bb1e-3dd9b70a8bb3",
+      "updated_at": "2022-01-29T11:16:45+00:00",
+      "company_id": "c0f2e006-6d16-4f68-ac4a-04790a71afff",
+      "employee_id": "0742979e-a0b2-4768-856d-3a36c2be6670",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "48e29c99-d778-402a-94df-2bbe322e32d8"
+          "id": "c0f2e006-6d16-4f68-ac4a-04790a71afff"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "32a01168-412b-409e-bb1e-3dd9b70a8bb3"
+          "id": "0742979e-a0b2-4768-856d-3a36c2be6670"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "48e29c99-d778-402a-94df-2bbe322e32d8",
+      "id": "c0f2e006-6d16-4f68-ac4a-04790a71afff",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-01-26T14:25:38+00:00",
-        "updated_at": "2022-01-26T14:25:38+00:00",
-        "name": "Company name 186",
-        "slug": "company-name-186",
-        "email": "mail189@company.com",
+        "created_at": "2022-01-29T11:16:45+00:00",
+        "updated_at": "2022-01-29T11:16:45+00:00",
+        "name": "Company name 189",
+        "slug": "company-name-189",
+        "email": "mail192@company.com",
         "billing_email": null,
-        "phone": "1-693-305-9460",
-        "website": "http://heathcote.co/jan.paucek",
-        "address": "Arnulfo Cliffs\n155 Karie Mews\n53783 North Carole\nBarbados",
-        "address_line_1": "Arnulfo Cliffs",
-        "address_line_2": "155 Karie Mews",
-        "zipcode": "53783",
-        "city": "North Carole",
+        "phone": "(892) 171-0901",
+        "website": "http://crist.io/amira",
+        "address": "Cole Via\n30099 Doyle Lights\n99541 East Danniefort\nMartinique",
+        "address_line_1": "Cole Via",
+        "address_line_2": "30099 Doyle Lights",
+        "zipcode": "99541",
+        "city": "East Danniefort",
         "region": null,
-        "country": "Barbados",
+        "country": "Martinique",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "477 Yost Locks",
-        "financial_line_2": "89955 Port Cedricport",
+        "financial_line_1": "3727 Brice Ville",
+        "financial_line_2": "20347-0175 North Davisville",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-02-09T14:25:38.475Z",
+          "trial_ends_at": "2022-02-12T11:16:45.842Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -263,11 +263,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "32a01168-412b-409e-bb1e-3dd9b70a8bb3",
+      "id": "0742979e-a0b2-4768-856d-3a36c2be6670",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-26T14:25:38+00:00",
-        "updated_at": "2022-01-26T14:25:38+00:00",
+        "created_at": "2022-01-29T11:16:45+00:00",
+        "updated_at": "2022-01-29T11:16:45+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

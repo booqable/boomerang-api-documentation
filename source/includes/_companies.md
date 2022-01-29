@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e25bf244-39af-48e6-b880-0dfcafa701e9",
+    "id": "2652a47a-c455-491b-86c0-89e8da48fb55",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-26T14:23:51+00:00",
-      "updated_at": "2022-01-26T14:23:51+00:00",
+      "created_at": "2022-01-29T11:15:06+00:00",
+      "updated_at": "2022-01-29T11:15:06+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail49@company.com",
       "billing_email": null,
-      "phone": "(787) 515-9703 x88964",
-      "website": "http://deckow.name/florentino",
-      "address": "Balistreri Drive\n3551 Dickinson Estates\n03868-9108 Port Bookerbury\nSierra Leone",
-      "address_line_1": "Balistreri Drive",
-      "address_line_2": "3551 Dickinson Estates",
-      "zipcode": "03868-9108",
-      "city": "Port Bookerbury",
+      "phone": "(561) 535-8934 x598",
+      "website": "http://deckow-rippin.name/joanie",
+      "address": "Alejandra Rapid\n37014 Mabel Common\n13485 North Gregfort\nVirgin Islands, British",
+      "address_line_1": "Alejandra Rapid",
+      "address_line_2": "37014 Mabel Common",
+      "zipcode": "13485",
+      "city": "North Gregfort",
       "region": null,
-      "country": "Sierra Leone",
+      "country": "Virgin Islands, British",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "628 Zieme Turnpike",
-      "financial_line_2": "21924-8075 Thanhstad",
+      "financial_line_1": "5213 Schultz Park",
+      "financial_line_2": "32210 Larkinville",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "37975344-32ce-4218-beee-64460d5f53e9",
+    "id": "8b31195e-ba5d-46d9-aa96-9b0e30a1a899",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-02-09T14:23:51.951Z",
+        "trial_ends_at": "2022-02-12T11:15:07.208Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -257,7 +257,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e87e9ee3-a87c-49cb-bce7-d19452e2cd3c",
+        "id": "0c0bdc12-2655-47c1-8c80-6bc2bd3d7e23",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +271,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e87e9ee3-a87c-49cb-bce7-d19452e2cd3c",
+    "id": "0c0bdc12-2655-47c1-8c80-6bc2bd3d7e23",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-26T14:23:52+00:00",
-      "updated_at": "2022-01-26T14:23:52+00:00",
+      "created_at": "2022-01-29T11:15:07+00:00",
+      "updated_at": "2022-01-29T11:15:07+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail51@company.com",
       "billing_email": null,
-      "phone": "1-900-702-7932 x62838",
-      "website": "http://powlowski-walter.org/lenora_bode",
-      "address": "Dalton Shoal\n204 Gerlach Rapids\n16291-1882 Kevinfurt\nComoros",
-      "address_line_1": "Dalton Shoal",
-      "address_line_2": "204 Gerlach Rapids",
-      "zipcode": "16291-1882",
-      "city": "Kevinfurt",
+      "phone": "841.517.3270",
+      "website": "http://prosacco.io/monroe.aufderhar",
+      "address": "Nell Valley\n8637 Dewitt Mountains\n95809 Scothaven\nVirgin Islands, British",
+      "address_line_1": "Nell Valley",
+      "address_line_2": "8637 Dewitt Mountains",
+      "zipcode": "95809",
+      "city": "Scothaven",
       "region": null,
-      "country": "Comoros",
+      "country": "Virgin Islands, British",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +300,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "562 Tillman Fall",
-      "financial_line_2": "88447-8912 Port Aleshiaton",
+      "financial_line_1": "8148 Ralph Park",
+      "financial_line_2": "87384 Lake Alaina",
       "vat_number": null,
       "custom_domain": null,
       "development": false
