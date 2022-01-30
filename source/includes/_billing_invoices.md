@@ -53,11 +53,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0531b2c1-5c79-472f-8668-8c0c82703ea2",
+      "id": "afbcb4ed-1042-4156-b6fa-1318bdad0623",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2022-01-26T14:23:39+00:00",
-        "updated_at": "2022-01-26T14:23:39+00:00",
+        "created_at": "2022-01-29T11:14:52+00:00",
+        "updated_at": "2022-01-29T11:14:52+00:00",
         "number": 10001,
         "status": "open",
         "billing_reason": "subscription_create",
@@ -95,7 +95,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-26T14:23:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-29T11:14:42Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -140,7 +140,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/ad71ddd9-7c64-4c94-883a-35b040a1eaaa' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/91a6a46b-3f23-4bec-90b7-f1341c9d801f' \
     --header 'content-type: application/json' \
 ```
 
@@ -149,11 +149,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ad71ddd9-7c64-4c94-883a-35b040a1eaaa",
+    "id": "91a6a46b-3f23-4bec-90b7-f1341c9d801f",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2022-01-26T14:23:40+00:00",
-      "updated_at": "2022-01-26T14:23:40+00:00",
+      "created_at": "2022-01-29T11:14:53+00:00",
+      "updated_at": "2022-01-29T11:14:53+00:00",
       "number": 10001,
       "status": "open",
       "billing_reason": "subscription_create",
