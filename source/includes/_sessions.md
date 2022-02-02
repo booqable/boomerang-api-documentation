@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5e849eb8-94fb-5b20-8352-9b2dc224903e",
+    "id": "bff9e9f4-552c-5d04-8379-bb2aca7c8463",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-29T11:16:45+00:00",
-      "company_id": "2abbc350-1a72-492b-9bac-71ddf8b11a09",
-      "employee_id": "6daf4b39-5899-4766-a97b-f7b5f6b7391d",
-      "locations_updated_at": "2022-01-29T11:16:45+00:00",
-      "clusters_updated_at": "2022-01-29T11:16:45+00:00",
-      "default_properties_updated_at": "2022-01-29T11:16:45+00:00"
+      "updated_at": "2022-02-02T08:04:46+00:00",
+      "company_id": "faa47907-4ca8-43ac-945d-3bd467d58c65",
+      "employee_id": "059ee138-8a4b-4ad0-a569-bea0720b96b9",
+      "locations_updated_at": "2022-02-02T08:04:46+00:00",
+      "clusters_updated_at": "2022-02-02T08:04:46+00:00",
+      "default_properties_updated_at": "2022-02-02T08:04:46+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5e849eb8-94fb-5b20-8352-9b2dc224903e",
+    "id": "bff9e9f4-552c-5d04-8379-bb2aca7c8463",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-01-29T11:16:45+00:00",
-      "company_id": "c0f2e006-6d16-4f68-ac4a-04790a71afff",
-      "employee_id": "0742979e-a0b2-4768-856d-3a36c2be6670",
+      "updated_at": "2022-02-02T08:04:46+00:00",
+      "company_id": "f5ace544-9acf-4f35-850d-e318ce46913b",
+      "employee_id": "c99ed206-1de7-43cb-add4-ee0068a443b7",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "c0f2e006-6d16-4f68-ac4a-04790a71afff"
+          "id": "f5ace544-9acf-4f35-850d-e318ce46913b"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "0742979e-a0b2-4768-856d-3a36c2be6670"
+          "id": "c99ed206-1de7-43cb-add4-ee0068a443b7"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "c0f2e006-6d16-4f68-ac4a-04790a71afff",
+      "id": "f5ace544-9acf-4f35-850d-e318ce46913b",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-01-29T11:16:45+00:00",
-        "updated_at": "2022-01-29T11:16:45+00:00",
-        "name": "Company name 189",
-        "slug": "company-name-189",
-        "email": "mail192@company.com",
+        "created_at": "2022-02-02T08:04:46+00:00",
+        "updated_at": "2022-02-02T08:04:46+00:00",
+        "name": "Company name 190",
+        "slug": "company-name-190",
+        "email": "mail193@company.com",
         "billing_email": null,
-        "phone": "(892) 171-0901",
-        "website": "http://crist.io/amira",
-        "address": "Cole Via\n30099 Doyle Lights\n99541 East Danniefort\nMartinique",
-        "address_line_1": "Cole Via",
-        "address_line_2": "30099 Doyle Lights",
-        "zipcode": "99541",
-        "city": "East Danniefort",
+        "phone": "689.036.2532 x167",
+        "website": "http://strosin.net/elliott",
+        "address": "Blick Place\n533 Maria Lock\n81480-8698 Franciscoborough\nIraq",
+        "address_line_1": "Blick Place",
+        "address_line_2": "533 Maria Lock",
+        "zipcode": "81480-8698",
+        "city": "Franciscoborough",
         "region": null,
-        "country": "Martinique",
+        "country": "Iraq",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "3727 Brice Ville",
-        "financial_line_2": "20347-0175 North Davisville",
+        "financial_line_1": "84680 Scottie Forge",
+        "financial_line_2": "72173-6399 Lilichester",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-02-12T11:16:45.842Z",
+          "trial_ends_at": "2022-02-16T08:04:46.882Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -251,7 +251,8 @@ This request accepts the following includes:
             "shop_tracking",
             "custom_domain",
             "sso",
-            "iprestrictions"
+            "iprestrictions",
+            "2fa_enforcing"
           ],
           "restrictions": {
             "employees": 15,
@@ -263,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "0742979e-a0b2-4768-856d-3a36c2be6670",
+      "id": "c99ed206-1de7-43cb-add4-ee0068a443b7",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-29T11:16:45+00:00",
-        "updated_at": "2022-01-29T11:16:45+00:00",
+        "created_at": "2022-02-02T08:04:46+00:00",
+        "updated_at": "2022-02-02T08:04:46+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -287,6 +288,7 @@ This request accepts the following includes:
           "delete_invoices",
           "make_invoice_revisions"
         ],
+        "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
         "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
       }
@@ -332,6 +334,7 @@ This request accepts the following includes:
         },
         "security": {
           "sso_forced": false,
+          "2fa_forced": false,
           "iprestrictions_enabled": false
         },
         "address": {
@@ -403,7 +406,8 @@ This request accepts the following includes:
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "hide_section_lines": false,
-          "prefix": null
+          "prefix": null,
+          "show_free_lines": true
         },
         "contracts": {
           "footer": "",
@@ -411,7 +415,8 @@ This request accepts the following includes:
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "hide_section_lines": false,
-          "prefix": null
+          "prefix": null,
+          "show_free_lines": true
         }
       }
     }

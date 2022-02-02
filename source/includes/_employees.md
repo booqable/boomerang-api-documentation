@@ -39,6 +39,7 @@ Name | Description
 `permissions` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `avatar_base64` | **String** `writeonly`<br>Base64 encoded avatar
 `remove_avatar` | **Boolean** `writeonly`<br>Remove current avatar
+`has_two_factor_autentication` | **Boolean** `readonly`<br>Wheter two factor authentication is enabled
 `avatar_url` | **String** `readonly`<br>Url to avatar
 `large_avatar_url` | **String** `readonly`<br>Url to avatar (Large)
 `third_party_id` | **String** `extra` `readonly`<br>ID used for third party tools
@@ -62,11 +63,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "1667ab21-3dfe-4aae-8946-4286c3605110",
+      "id": "99a8700e-9848-4f11-856c-c4e0ca0c4dc8",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-29T11:15:33+00:00",
-        "updated_at": "2022-01-29T11:15:33+00:00",
+        "created_at": "2022-02-02T08:03:18+00:00",
+        "updated_at": "2022-02-02T08:03:18+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -86,6 +87,7 @@ Name | Description
           "delete_invoices",
           "make_invoice_revisions"
         ],
+        "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
         "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
       }
@@ -107,7 +109,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[employees]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-29T11:14:42Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-02T08:02:15Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -150,7 +152,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/5fe71aa6-d6f9-4546-84c4-8d64e968cd1b' \
+    --url 'https://example.booqable.com/api/boomerang/employees/94272a6c-1699-49f7-869e-c68d1ef873fc' \
     --header 'content-type: application/json' \
 ```
 
@@ -159,11 +161,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5fe71aa6-d6f9-4546-84c4-8d64e968cd1b",
+    "id": "94272a6c-1699-49f7-869e-c68d1ef873fc",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-01-29T11:15:33+00:00",
-      "updated_at": "2022-01-29T11:15:33+00:00",
+      "created_at": "2022-02-02T08:03:18+00:00",
+      "updated_at": "2022-02-02T08:03:18+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -183,6 +185,7 @@ This request does not accept any includes
         "delete_invoices",
         "make_invoice_revisions"
       ],
+      "has_two_factor_autentication": false,
       "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
       "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
     }
@@ -216,11 +219,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/d2acfb0d-5e36-42a5-a76f-b03cd36335ab' \
+    --url 'https://example.booqable.com/api/boomerang/employees/10cdbc5c-d51a-41b8-9c1c-a18620d5c790' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d2acfb0d-5e36-42a5-a76f-b03cd36335ab",
+        "id": "10cdbc5c-d51a-41b8-9c1c-a18620d5c790",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -234,11 +237,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d2acfb0d-5e36-42a5-a76f-b03cd36335ab",
+    "id": "10cdbc5c-d51a-41b8-9c1c-a18620d5c790",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-01-29T11:15:33+00:00",
-      "updated_at": "2022-01-29T11:15:33+00:00",
+      "created_at": "2022-02-02T08:03:18+00:00",
+      "updated_at": "2022-02-02T08:03:18+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -258,6 +261,7 @@ This request does not accept any includes
         "delete_invoices",
         "make_invoice_revisions"
       ],
+      "has_two_factor_autentication": false,
       "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
       "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
     }
@@ -271,11 +275,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/511690dd-b755-4d5e-8c6a-c0110263b39a' \
+    --url 'https://example.booqable.com/api/boomerang/employees/e9e5eada-3fd9-4c2f-b4d7-6295bd920dc4' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "511690dd-b755-4d5e-8c6a-c0110263b39a",
+        "id": "e9e5eada-3fd9-4c2f-b4d7-6295bd920dc4",
         "type": "employees",
         "attributes": {
           "active": false
@@ -289,11 +293,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "511690dd-b755-4d5e-8c6a-c0110263b39a",
+    "id": "e9e5eada-3fd9-4c2f-b4d7-6295bd920dc4",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-01-29T11:15:34+00:00",
-      "updated_at": "2022-01-29T11:15:34+00:00",
+      "created_at": "2022-02-02T08:03:18+00:00",
+      "updated_at": "2022-02-02T08:03:18+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -313,6 +317,7 @@ This request does not accept any includes
         "delete_invoices",
         "make_invoice_revisions"
       ],
+      "has_two_factor_autentication": false,
       "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
       "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
     }
@@ -326,11 +331,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/b6a37c8e-902e-458a-b093-0541e9ab6d3b' \
+    --url 'https://example.booqable.com/api/boomerang/employees/efa86921-e4c9-4c71-ac53-0c7d19fcc377' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "b6a37c8e-902e-458a-b093-0541e9ab6d3b",
+        "id": "efa86921-e4c9-4c71-ac53-0c7d19fcc377",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -347,11 +352,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b6a37c8e-902e-458a-b093-0541e9ab6d3b",
+    "id": "efa86921-e4c9-4c71-ac53-0c7d19fcc377",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-01-29T11:15:34+00:00",
-      "updated_at": "2022-01-29T11:15:34+00:00",
+      "created_at": "2022-02-02T08:03:19+00:00",
+      "updated_at": "2022-02-02T08:03:19+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -365,6 +370,7 @@ This request does not accept any includes
         "reports",
         "settings"
       ],
+      "has_two_factor_autentication": false,
       "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
       "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
     }

@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2652a47a-c455-491b-86c0-89e8da48fb55",
+    "id": "2d00842e-ede9-4372-9041-72bec22c3dd7",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-29T11:15:06+00:00",
-      "updated_at": "2022-01-29T11:15:06+00:00",
+      "created_at": "2022-02-02T08:02:49+00:00",
+      "updated_at": "2022-02-02T08:02:49+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail49@company.com",
+      "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "(561) 535-8934 x598",
-      "website": "http://deckow-rippin.name/joanie",
-      "address": "Alejandra Rapid\n37014 Mabel Common\n13485 North Gregfort\nVirgin Islands, British",
-      "address_line_1": "Alejandra Rapid",
-      "address_line_2": "37014 Mabel Common",
-      "zipcode": "13485",
-      "city": "North Gregfort",
+      "phone": "215.336.9777",
+      "website": "http://kilback-macgyver.com/rozanne_koepp",
+      "address": "Kevin Square\n864 Jarred Club\n25061-1561 East Agueda\nKyrgyz Republic",
+      "address_line_1": "Kevin Square",
+      "address_line_2": "864 Jarred Club",
+      "zipcode": "25061-1561",
+      "city": "East Agueda",
       "region": null,
-      "country": "Virgin Islands, British",
+      "country": "Kyrgyz Republic",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "5213 Schultz Park",
-      "financial_line_2": "32210 Larkinville",
+      "financial_line_1": "183 Shelton Ford",
+      "financial_line_2": "91203-0916 Lake Claudeborough",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "8b31195e-ba5d-46d9-aa96-9b0e30a1a899",
+    "id": "7b2cd593-3943-4bb5-9452-ffc25726359a",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-02-12T11:15:07.208Z",
+        "trial_ends_at": "2022-02-16T08:02:49.920Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -213,7 +213,8 @@ Name | Description
           "shop_tracking",
           "custom_domain",
           "sso",
-          "iprestrictions"
+          "iprestrictions",
+          "2fa_enforcing"
         ],
         "restrictions": {
           "employees": 15,
@@ -257,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0c0bdc12-2655-47c1-8c80-6bc2bd3d7e23",
+        "id": "de39060e-1d78-4ab4-a36e-a3d531c88305",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -271,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0c0bdc12-2655-47c1-8c80-6bc2bd3d7e23",
+    "id": "de39060e-1d78-4ab4-a36e-a3d531c88305",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-01-29T11:15:07+00:00",
-      "updated_at": "2022-01-29T11:15:07+00:00",
+      "created_at": "2022-02-02T08:02:50+00:00",
+      "updated_at": "2022-02-02T08:02:50+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail51@company.com",
+      "email": "mail52@company.com",
       "billing_email": null,
-      "phone": "841.517.3270",
-      "website": "http://prosacco.io/monroe.aufderhar",
-      "address": "Nell Valley\n8637 Dewitt Mountains\n95809 Scothaven\nVirgin Islands, British",
-      "address_line_1": "Nell Valley",
-      "address_line_2": "8637 Dewitt Mountains",
-      "zipcode": "95809",
-      "city": "Scothaven",
+      "phone": "695-297-3249 x533",
+      "website": "http://schmeler.com/sharmaine",
+      "address": "Bailey Mill\n189 Bo Crescent\n14787 Lake Wileyshire\nEritrea",
+      "address_line_1": "Bailey Mill",
+      "address_line_2": "189 Bo Crescent",
+      "zipcode": "14787",
+      "city": "Lake Wileyshire",
       "region": null,
-      "country": "Virgin Islands, British",
+      "country": "Eritrea",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -300,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "8148 Ralph Park",
-      "financial_line_2": "87384 Lake Alaina",
+      "financial_line_1": "55800 O'Connell Lakes",
+      "financial_line_2": "60042 Port Scottfurt",
       "vat_number": null,
       "custom_domain": null,
       "development": false

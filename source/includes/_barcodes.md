@@ -11,6 +11,8 @@ Booqable supports the following barcode formats:
 - **Code 93**: A more compact alternative to Code 39 (about 25% shorter).
 - **Code 128**: A high-density barcode that can store any character of the ASCII 128 character set.
 
+Note that when using URLs as numbers, it's advised to base64 encode the number before filtering.
+
 ## Endpoints
 `GET /api/boomerang/barcodes`
 
@@ -30,7 +32,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`number` | **String**<br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one.
+`number` | **String**<br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one. When using a URL, it's advised to base64 encode the number before filtering.
 `barcode_type` | **String**<br>One of `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`
 `image_url` | **String** `readonly`<br>The barcode as an image
 `owner_id` | **Uuid**<br>ID of its owner
@@ -63,21 +65,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "5f94ee96-1d4e-47dc-8f5a-da7f78bcaca2",
+      "id": "f37807be-c767-4857-8d17-5e1fc846a59b",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2022-01-29T11:14:50+00:00",
-        "updated_at": "2022-01-29T11:14:50+00:00",
-        "number": "http://bqbl.it/5f94ee96-1d4e-47dc-8f5a-da7f78bcaca2",
+        "created_at": "2022-02-02T08:02:29+00:00",
+        "updated_at": "2022-02-02T08:02:29+00:00",
+        "number": "http://bqbl.it/f37807be-c767-4857-8d17-5e1fc846a59b",
         "barcode_type": "qr_code",
-        "image_url": "/uploads/76c2953536856ec9f589ad53ae76b333/barcode/image/5f94ee96-1d4e-47dc-8f5a-da7f78bcaca2/4fc6e70d-154c-40b3-ba16-d43203c773dd.svg",
-        "owner_id": "a71663a4-44db-4117-9059-7576ac13f36e",
+        "image_url": "/uploads/ac1f4818ab7e150f6a91b00ad78b8c4e/barcode/image/f37807be-c767-4857-8d17-5e1fc846a59b/9d27491c-8132-403c-b61a-b306f2b0de32.svg",
+        "owner_id": "aa79cfa4-d8fd-41f0-b2e7-e5fc8fff9daf",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/a71663a4-44db-4117-9059-7576ac13f36e"
+            "related": "api/boomerang/customers/aa79cfa4-d8fd-41f0-b2e7-e5fc8fff9daf"
           }
         }
       }
@@ -92,7 +94,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2F1ca35433-275c-4c86-8cc9-74acc20dd1c3&include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Fb7b5f4b5-a14c-41eb-9a20-1149a0480afc&include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -102,25 +104,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "1ca35433-275c-4c86-8cc9-74acc20dd1c3",
+      "id": "b7b5f4b5-a14c-41eb-9a20-1149a0480afc",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2022-01-29T11:14:50+00:00",
-        "updated_at": "2022-01-29T11:14:50+00:00",
-        "number": "http://bqbl.it/1ca35433-275c-4c86-8cc9-74acc20dd1c3",
+        "created_at": "2022-02-02T08:02:30+00:00",
+        "updated_at": "2022-02-02T08:02:30+00:00",
+        "number": "http://bqbl.it/b7b5f4b5-a14c-41eb-9a20-1149a0480afc",
         "barcode_type": "qr_code",
-        "image_url": "/uploads/e1f478424ce999acfc2ba65767268a8f/barcode/image/1ca35433-275c-4c86-8cc9-74acc20dd1c3/39ccc541-10b6-4c90-8456-8084054b8d95.svg",
-        "owner_id": "6fca494e-9c68-4878-8e43-2c2362b32536",
+        "image_url": "/uploads/1fc7bee68616133883b7bfd2fb6e16cf/barcode/image/b7b5f4b5-a14c-41eb-9a20-1149a0480afc/b22afe39-cecb-408b-8170-c66f2e823bf2.svg",
+        "owner_id": "361e9660-0af0-4533-b03c-b7cbb3ea8a00",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/6fca494e-9c68-4878-8e43-2c2362b32536"
+            "related": "api/boomerang/customers/361e9660-0af0-4533-b03c-b7cbb3ea8a00"
           },
           "data": {
             "type": "customers",
-            "id": "6fca494e-9c68-4878-8e43-2c2362b32536"
+            "id": "361e9660-0af0-4533-b03c-b7cbb3ea8a00"
           }
         }
       }
@@ -128,16 +130,16 @@ Name | Description
   ],
   "included": [
     {
-      "id": "6fca494e-9c68-4878-8e43-2c2362b32536",
+      "id": "361e9660-0af0-4533-b03c-b7cbb3ea8a00",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-01-29T11:14:50+00:00",
-        "updated_at": "2022-01-29T11:14:50+00:00",
+        "created_at": "2022-02-02T08:02:30+00:00",
+        "updated_at": "2022-02-02T08:02:30+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
-        "name": "Doyle Inc",
-        "email": "doyle_inc@kiehn.io",
+        "name": "Corkery Group",
+        "email": "group.corkery@hoeger-russel.net",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -160,17 +162,110 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=6fca494e-9c68-4878-8e43-2c2362b32536&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=361e9660-0af0-4533-b03c-b7cbb3ea8a00&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=6fca494e-9c68-4878-8e43-2c2362b32536&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=361e9660-0af0-4533-b03c-b7cbb3ea8a00&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=6fca494e-9c68-4878-8e43-2c2362b32536&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=361e9660-0af0-4533-b03c-b7cbb3ea8a00&filter[owner_type]=customers"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+
+> How to find an owner by a barcode number containing a url:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=aHR0cDovL2JxYmwuaXQvNjQyYjQ5NjItN2FmOS00YmQyLTkzYzYtYmY3NzgwZjYxOTg4&include=owner' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "642b4962-7af9-4bd2-93c6-bf7780f61988",
+      "type": "barcodes",
+      "attributes": {
+        "created_at": "2022-02-02T08:02:30+00:00",
+        "updated_at": "2022-02-02T08:02:30+00:00",
+        "number": "http://bqbl.it/642b4962-7af9-4bd2-93c6-bf7780f61988",
+        "barcode_type": "qr_code",
+        "image_url": "/uploads/16cc2318405472a22fa052063e2a98f4/barcode/image/642b4962-7af9-4bd2-93c6-bf7780f61988/7fbdee72-b9a8-4197-859b-7b049aedcf2c.svg",
+        "owner_id": "3cc24310-26b3-4e64-b3e6-7694bcf55f80",
+        "owner_type": "customers"
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": "api/boomerang/customers/3cc24310-26b3-4e64-b3e6-7694bcf55f80"
+          },
+          "data": {
+            "type": "customers",
+            "id": "3cc24310-26b3-4e64-b3e6-7694bcf55f80"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "3cc24310-26b3-4e64-b3e6-7694bcf55f80",
+      "type": "customers",
+      "attributes": {
+        "created_at": "2022-02-02T08:02:30+00:00",
+        "updated_at": "2022-02-02T08:02:31+00:00",
+        "archived": false,
+        "archived_at": null,
+        "number": 2,
+        "name": "Lehner-Bashirian",
+        "email": "lehner.bashirian@dickinson-shields.name",
+        "deposit_type": "default",
+        "deposit_value": 0.0,
+        "discount_percentage": 0.0,
+        "legal_type": "person",
+        "properties": {},
+        "tag_list": [],
+        "merge_suggestion_customer_id": null,
+        "tax_region_id": null
+      },
+      "relationships": {
+        "merge_suggestion_customer": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_region": {
+          "links": {
+            "related": null
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=3cc24310-26b3-4e64-b3e6-7694bcf55f80&filter[owner_type]=customers"
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=3cc24310-26b3-4e64-b3e6-7694bcf55f80&filter[owner_type]=customers"
+          }
+        },
+        "notes": {
+          "links": {
+            "related": "api/boomerang/notes?filter[owner_id]=3cc24310-26b3-4e64-b3e6-7694bcf55f80&filter[owner_type]=customers"
           }
         }
       }
@@ -192,7 +287,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=owner`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[barcodes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-01-29T11:14:42Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-02T08:02:14Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -208,7 +303,7 @@ Name | Description
 `id` | **Uuid**<br>`eq`, `not_eq`
 `created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`number` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`number` | **String**<br>`eq`
 `barcode_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `owner_id` | **Uuid**<br>`eq`, `not_eq`
 `owner_type` | **String**<br>`eq`, `not_eq`
@@ -242,7 +337,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/35ddd709-324d-4631-94e7-5a93921fff10?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/0f90ea94-5966-4f05-87cd-b7ad183d610a?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -251,41 +346,41 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "35ddd709-324d-4631-94e7-5a93921fff10",
+    "id": "0f90ea94-5966-4f05-87cd-b7ad183d610a",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2022-01-29T11:14:51+00:00",
-      "updated_at": "2022-01-29T11:14:51+00:00",
-      "number": "http://bqbl.it/35ddd709-324d-4631-94e7-5a93921fff10",
+      "created_at": "2022-02-02T08:02:31+00:00",
+      "updated_at": "2022-02-02T08:02:31+00:00",
+      "number": "http://bqbl.it/0f90ea94-5966-4f05-87cd-b7ad183d610a",
       "barcode_type": "qr_code",
-      "image_url": "/uploads/8d28d715a068648dde83ed7b7b2e60b4/barcode/image/35ddd709-324d-4631-94e7-5a93921fff10/de67455f-5b3f-4781-a724-630be0515315.svg",
-      "owner_id": "3d5bb66f-3a7c-4d91-8517-a68b6b5389b5",
+      "image_url": "/uploads/6aafaba8c9e512ac0fc74635ab39fd07/barcode/image/0f90ea94-5966-4f05-87cd-b7ad183d610a/8eb4e953-a829-4f92-a5c8-aebb9409f202.svg",
+      "owner_id": "9dee431c-c47d-4193-aabc-adc423f0b4ca",
       "owner_type": "customers"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/3d5bb66f-3a7c-4d91-8517-a68b6b5389b5"
+          "related": "api/boomerang/customers/9dee431c-c47d-4193-aabc-adc423f0b4ca"
         },
         "data": {
           "type": "customers",
-          "id": "3d5bb66f-3a7c-4d91-8517-a68b6b5389b5"
+          "id": "9dee431c-c47d-4193-aabc-adc423f0b4ca"
         }
       }
     }
   },
   "included": [
     {
-      "id": "3d5bb66f-3a7c-4d91-8517-a68b6b5389b5",
+      "id": "9dee431c-c47d-4193-aabc-adc423f0b4ca",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-01-29T11:14:51+00:00",
-        "updated_at": "2022-01-29T11:14:51+00:00",
+        "created_at": "2022-02-02T08:02:31+00:00",
+        "updated_at": "2022-02-02T08:02:31+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
-        "name": "Connelly, Torp and Windler",
-        "email": "connelly.and.windler.torp@ortiz-koelpin.co",
+        "name": "Schuppe, D'Amore and Maggio",
+        "email": "maggio_amore_and_d_schuppe@effertz.io",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -308,17 +403,17 @@ This request accepts the following includes:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=3d5bb66f-3a7c-4d91-8517-a68b6b5389b5&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=9dee431c-c47d-4193-aabc-adc423f0b4ca&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=3d5bb66f-3a7c-4d91-8517-a68b6b5389b5&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=9dee431c-c47d-4193-aabc-adc423f0b4ca&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=3d5bb66f-3a7c-4d91-8517-a68b6b5389b5&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=9dee431c-c47d-4193-aabc-adc423f0b4ca&filter[owner_type]=customers"
           }
         }
       }
@@ -368,7 +463,7 @@ This request accepts the following includes:
         "type": "barcodes",
         "attributes": {
           "barcode_type": "qr_code",
-          "owner_id": "0e0b3cde-cd16-4c93-9849-2c12ef0e9ef0",
+          "owner_id": "03f120f9-750f-4c05-88f3-f778537c20a4",
           "owner_type": "customers"
         }
       }
@@ -380,15 +475,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2a88c21a-cffa-4a7a-a682-8304ceaea5c3",
+    "id": "73d699c9-2bd3-487f-9eb6-0699269f114e",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2022-01-29T11:14:51+00:00",
-      "updated_at": "2022-01-29T11:14:51+00:00",
-      "number": "http://bqbl.it/2a88c21a-cffa-4a7a-a682-8304ceaea5c3",
+      "created_at": "2022-02-02T08:02:32+00:00",
+      "updated_at": "2022-02-02T08:02:32+00:00",
+      "number": "http://bqbl.it/73d699c9-2bd3-487f-9eb6-0699269f114e",
       "barcode_type": "qr_code",
-      "image_url": "/uploads/a36c8eabba1e40d761532763ed9ea833/barcode/image/2a88c21a-cffa-4a7a-a682-8304ceaea5c3/f5054b6b-b6b0-4bf7-8e0b-e3a177fa51a6.svg",
-      "owner_id": "0e0b3cde-cd16-4c93-9849-2c12ef0e9ef0",
+      "image_url": "/uploads/ecf4513e69e649241beb29c238fe70ba/barcode/image/73d699c9-2bd3-487f-9eb6-0699269f114e/a46fff36-5504-4cd4-bfcc-163581dad26a.svg",
+      "owner_id": "03f120f9-750f-4c05-88f3-f778537c20a4",
       "owner_type": "customers"
     },
     "relationships": {
@@ -423,7 +518,7 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][number]` | **String**<br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one.
+`data[attributes][number]` | **String**<br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one. When using a URL, it's advised to base64 encode the number before filtering.
 `data[attributes][barcode_type]` | **String**<br>One of `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`
 `data[attributes][owner_id]` | **Uuid**<br>ID of its owner
 `data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `products`, `customers`, `stock_items`
@@ -448,11 +543,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/6c281b97-dfee-44f8-b705-ce58e5feeb48' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/96c89f74-822c-4168-9733-9432602acb5b' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "6c281b97-dfee-44f8-b705-ce58e5feeb48",
+        "id": "96c89f74-822c-4168-9733-9432602acb5b",
         "type": "barcodes",
         "attributes": {
           "number": "https://myfancysite.com"
@@ -466,15 +561,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6c281b97-dfee-44f8-b705-ce58e5feeb48",
+    "id": "96c89f74-822c-4168-9733-9432602acb5b",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2022-01-29T11:14:52+00:00",
-      "updated_at": "2022-01-29T11:14:52+00:00",
+      "created_at": "2022-02-02T08:02:32+00:00",
+      "updated_at": "2022-02-02T08:02:32+00:00",
       "number": "https://myfancysite.com",
       "barcode_type": "qr_code",
-      "image_url": "/uploads/110017293ede6ecb14e8cb2dce34d8ca/barcode/image/6c281b97-dfee-44f8-b705-ce58e5feeb48/59c06d80-76d0-400b-97cf-f57f2de6d7a2.svg",
-      "owner_id": "7111fdbb-b4e3-4a70-b54a-740d34839a85",
+      "image_url": "/uploads/f8834380a5f1a86e351937c469f7351f/barcode/image/96c89f74-822c-4168-9733-9432602acb5b/78b2bc86-5c3b-40da-b648-5c3b10d9c4f9.svg",
+      "owner_id": "ef71817f-f38c-4b5b-9c6c-5d931afd8d6a",
       "owner_type": "customers"
     },
     "relationships": {
@@ -509,7 +604,7 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][number]` | **String**<br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one.
+`data[attributes][number]` | **String**<br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one. When using a URL, it's advised to base64 encode the number before filtering.
 `data[attributes][barcode_type]` | **String**<br>One of `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`
 `data[attributes][owner_id]` | **Uuid**<br>ID of its owner
 `data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `products`, `customers`, `stock_items`
@@ -534,7 +629,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/e5efa3ba-7cff-4ddf-9d28-19e462f2b153' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/2fcee84f-e72e-4744-9e90-17142c9212b0' \
     --header 'content-type: application/json' \
 ```
 
