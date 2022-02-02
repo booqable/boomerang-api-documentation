@@ -55,27 +55,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "83725742-6d8c-5a6e-8ade-797e85713b83",
+    "id": "24345680-36f6-5505-a965-57ff6265b655",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "3b8d03f2-774e-4504-af66-f3925847e73b"
+      "employee_id": "32bd03db-2233-469c-874b-c53497ec06fa"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "3b8d03f2-774e-4504-af66-f3925847e73b"
+          "id": "32bd03db-2233-469c-874b-c53497ec06fa"
         }
       }
     }
   },
   "included": [
     {
-      "id": "3b8d03f2-774e-4504-af66-f3925847e73b",
+      "id": "32bd03db-2233-469c-874b-c53497ec06fa",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-29T11:15:32+00:00",
-        "updated_at": "2022-01-29T11:15:32+00:00",
+        "created_at": "2022-02-02T08:03:17+00:00",
+        "updated_at": "2022-02-02T08:03:17+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -86,6 +86,7 @@ Name | Description
         "confirmed": false,
         "time_to_confirm": 0,
         "permissions": [],
+        "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
         "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
       }
@@ -107,7 +108,7 @@ Note that you can also update other fields.
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "d168958e-58a6-4a6d-80ca-1d60b829d32e",
+          "id": "9d8e4942-2f63-4690-bfcd-09a5a59ac855",
           "email": "jane@doe.com"
         }
       },
@@ -120,27 +121,27 @@ Note that you can also update other fields.
 ```json
   {
   "data": {
-    "id": "d168958e-58a6-4a6d-80ca-1d60b829d32e",
+    "id": "9d8e4942-2f63-4690-bfcd-09a5a59ac855",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "d168958e-58a6-4a6d-80ca-1d60b829d32e"
+      "employee_id": "9d8e4942-2f63-4690-bfcd-09a5a59ac855"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "d168958e-58a6-4a6d-80ca-1d60b829d32e"
+          "id": "9d8e4942-2f63-4690-bfcd-09a5a59ac855"
         }
       }
     }
   },
   "included": [
     {
-      "id": "d168958e-58a6-4a6d-80ca-1d60b829d32e",
+      "id": "9d8e4942-2f63-4690-bfcd-09a5a59ac855",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-01-29T11:15:32+00:00",
-        "updated_at": "2022-01-29T11:15:32+00:00",
+        "created_at": "2022-02-02T08:03:17+00:00",
+        "updated_at": "2022-02-02T08:03:17+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -160,6 +161,7 @@ Note that you can also update other fields.
           "delete_invoices",
           "make_invoice_revisions"
         ],
+        "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
         "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
       }
