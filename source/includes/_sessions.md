@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bff9e9f4-552c-5d04-8379-bb2aca7c8463",
+    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-02T08:04:46+00:00",
-      "company_id": "faa47907-4ca8-43ac-945d-3bd467d58c65",
-      "employee_id": "059ee138-8a4b-4ad0-a569-bea0720b96b9",
-      "locations_updated_at": "2022-02-02T08:04:46+00:00",
-      "clusters_updated_at": "2022-02-02T08:04:46+00:00",
-      "default_properties_updated_at": "2022-02-02T08:04:46+00:00"
+      "updated_at": "2022-02-03T09:20:27+00:00",
+      "company_id": "dd920d15-e703-438d-a2f8-f7915593b26d",
+      "employee_id": "e2291c5b-d5af-41cd-b227-786b28638dc3",
+      "locations_updated_at": "2022-02-03T09:20:27+00:00",
+      "clusters_updated_at": "2022-02-03T09:20:27+00:00",
+      "default_properties_updated_at": "2022-02-03T09:20:27+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "bff9e9f4-552c-5d04-8379-bb2aca7c8463",
+    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-02T08:04:46+00:00",
-      "company_id": "f5ace544-9acf-4f35-850d-e318ce46913b",
-      "employee_id": "c99ed206-1de7-43cb-add4-ee0068a443b7",
+      "updated_at": "2022-02-03T09:20:27+00:00",
+      "company_id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
+      "employee_id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "f5ace544-9acf-4f35-850d-e318ce46913b"
+          "id": "f94d93e2-5150-48b9-b096-a8964ec7452d"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "c99ed206-1de7-43cb-add4-ee0068a443b7"
+          "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "f5ace544-9acf-4f35-850d-e318ce46913b",
+      "id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-02-02T08:04:46+00:00",
-        "updated_at": "2022-02-02T08:04:46+00:00",
+        "created_at": "2022-02-03T09:20:27+00:00",
+        "updated_at": "2022-02-03T09:20:27+00:00",
         "name": "Company name 190",
         "slug": "company-name-190",
         "email": "mail193@company.com",
         "billing_email": null,
-        "phone": "689.036.2532 x167",
-        "website": "http://strosin.net/elliott",
-        "address": "Blick Place\n533 Maria Lock\n81480-8698 Franciscoborough\nIraq",
-        "address_line_1": "Blick Place",
-        "address_line_2": "533 Maria Lock",
-        "zipcode": "81480-8698",
-        "city": "Franciscoborough",
+        "phone": "727-299-2385",
+        "website": "http://friesen-senger.info/carmen.cummerata",
+        "address": "Schultz Road\n21220 Flatley Rapids\n23720 Virgiltown\nNauru",
+        "address_line_1": "Schultz Road",
+        "address_line_2": "21220 Flatley Rapids",
+        "zipcode": "23720",
+        "city": "Virgiltown",
         "region": null,
-        "country": "Iraq",
+        "country": "Nauru",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "84680 Scottie Forge",
-        "financial_line_2": "72173-6399 Lilichester",
+        "financial_line_1": "6491 Rodney Ford",
+        "financial_line_2": "45804 New Jacinta",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-02-16T08:04:46.882Z",
+          "trial_ends_at": "2022-02-17T09:20:27.380Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "c99ed206-1de7-43cb-add4-ee0068a443b7",
+      "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-02-02T08:04:46+00:00",
-        "updated_at": "2022-02-02T08:04:46+00:00",
+        "created_at": "2022-02-03T09:20:27+00:00",
+        "updated_at": "2022-02-03T09:20:27+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
