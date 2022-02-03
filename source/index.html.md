@@ -60,6 +60,7 @@ includes:
   - stock_counts
   - stock_item_plannings
   - stock_items
+  - stock_item_suggestions
   - tags
   - tax_categories
   - tax_rates
