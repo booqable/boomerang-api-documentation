@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2d00842e-ede9-4372-9041-72bec22c3dd7",
+    "id": "31c305d6-6f97-4527-b645-e3bf0bad2a41",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-02T08:02:49+00:00",
-      "updated_at": "2022-02-02T08:02:49+00:00",
+      "created_at": "2022-02-03T09:18:14+00:00",
+      "updated_at": "2022-02-03T09:18:14+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "215.336.9777",
-      "website": "http://kilback-macgyver.com/rozanne_koepp",
-      "address": "Kevin Square\n864 Jarred Club\n25061-1561 East Agueda\nKyrgyz Republic",
-      "address_line_1": "Kevin Square",
-      "address_line_2": "864 Jarred Club",
-      "zipcode": "25061-1561",
-      "city": "East Agueda",
+      "phone": "464-857-8314 x14361",
+      "website": "http://schowalter-paucek.io/billie",
+      "address": "Ozie Neck\n92048 Kiehn Land\n75129 Fishertown\nCote d'Ivoire",
+      "address_line_1": "Ozie Neck",
+      "address_line_2": "92048 Kiehn Land",
+      "zipcode": "75129",
+      "city": "Fishertown",
       "region": null,
-      "country": "Kyrgyz Republic",
+      "country": "Cote d'Ivoire",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "183 Shelton Ford",
-      "financial_line_2": "91203-0916 Lake Claudeborough",
+      "financial_line_1": "358 Ken Ways",
+      "financial_line_2": "50466 East Asiaton",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7b2cd593-3943-4bb5-9452-ffc25726359a",
+    "id": "ac79a213-f7df-4154-ad1c-098f09b59280",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-02-16T08:02:49.920Z",
+        "trial_ends_at": "2022-02-17T09:18:15.035Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "de39060e-1d78-4ab4-a36e-a3d531c88305",
+        "id": "1071001b-1dc9-48b1-8984-60acd861b40b",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "de39060e-1d78-4ab4-a36e-a3d531c88305",
+    "id": "1071001b-1dc9-48b1-8984-60acd861b40b",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-02T08:02:50+00:00",
-      "updated_at": "2022-02-02T08:02:50+00:00",
+      "created_at": "2022-02-03T09:18:15+00:00",
+      "updated_at": "2022-02-03T09:18:15+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail52@company.com",
       "billing_email": null,
-      "phone": "695-297-3249 x533",
-      "website": "http://schmeler.com/sharmaine",
-      "address": "Bailey Mill\n189 Bo Crescent\n14787 Lake Wileyshire\nEritrea",
-      "address_line_1": "Bailey Mill",
-      "address_line_2": "189 Bo Crescent",
-      "zipcode": "14787",
-      "city": "Lake Wileyshire",
+      "phone": "573-939-3874 x1197",
+      "website": "http://fay.info/korey.hegmann",
+      "address": "Herman Courts\n525 Kendall Greens\n34202 Lockmanburgh\nArgentina",
+      "address_line_1": "Herman Courts",
+      "address_line_2": "525 Kendall Greens",
+      "zipcode": "34202",
+      "city": "Lockmanburgh",
       "region": null,
-      "country": "Eritrea",
+      "country": "Argentina",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "55800 O'Connell Lakes",
-      "financial_line_2": "60042 Port Scottfurt",
+      "financial_line_1": "3581 Amiee Center",
+      "financial_line_2": "36011 Peteberg",
       "vat_number": null,
       "custom_domain": null,
       "development": false
