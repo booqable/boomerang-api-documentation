@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
+    "id": "a4018395-61fa-5c8b-8f7b-a971f57ae608",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-03T09:20:27+00:00",
-      "company_id": "dd920d15-e703-438d-a2f8-f7915593b26d",
-      "employee_id": "e2291c5b-d5af-41cd-b227-786b28638dc3",
-      "locations_updated_at": "2022-02-03T09:20:27+00:00",
-      "clusters_updated_at": "2022-02-03T09:20:27+00:00",
-      "default_properties_updated_at": "2022-02-03T09:20:27+00:00"
+      "updated_at": "2022-02-08T09:14:41+00:00",
+      "company_id": "e26bbb84-ca12-491c-bea9-a30ca55b16d1",
+      "employee_id": "bc3d4c23-76fe-4ac4-b46e-3b672e609f0a",
+      "locations_updated_at": "2022-02-08T09:14:41+00:00",
+      "clusters_updated_at": "2022-02-08T09:14:41+00:00",
+      "default_properties_updated_at": "2022-02-08T09:14:41+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
+    "id": "bfb03625-97d6-5993-9b04-691ff1a0bcb7",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-03T09:20:27+00:00",
-      "company_id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
-      "employee_id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
+      "updated_at": "2022-02-08T09:14:42+00:00",
+      "company_id": "39ca643d-c536-4bf3-97bd-1c93e58fbfab",
+      "employee_id": "65eb8222-cb3a-4290-8fea-d7e276234a3c",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "f94d93e2-5150-48b9-b096-a8964ec7452d"
+          "id": "39ca643d-c536-4bf3-97bd-1c93e58fbfab"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576"
+          "id": "65eb8222-cb3a-4290-8fea-d7e276234a3c"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
+      "id": "39ca643d-c536-4bf3-97bd-1c93e58fbfab",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-02-03T09:20:27+00:00",
-        "updated_at": "2022-02-03T09:20:27+00:00",
-        "name": "Company name 190",
-        "slug": "company-name-190",
-        "email": "mail193@company.com",
+        "created_at": "2022-02-08T09:14:42+00:00",
+        "updated_at": "2022-02-08T09:14:42+00:00",
+        "name": "Company name 191",
+        "slug": "company-name-191",
+        "email": "mail194@company.com",
         "billing_email": null,
-        "phone": "727-299-2385",
-        "website": "http://friesen-senger.info/carmen.cummerata",
-        "address": "Schultz Road\n21220 Flatley Rapids\n23720 Virgiltown\nNauru",
-        "address_line_1": "Schultz Road",
-        "address_line_2": "21220 Flatley Rapids",
-        "zipcode": "23720",
-        "city": "Virgiltown",
+        "phone": "1-996-764-8972 x06794",
+        "website": "http://schuster-bergstrom.io/alexis",
+        "address": "Romaguera Isle\n50480 Farah Cliffs\n56414 North Mercedes\nChad",
+        "address_line_1": "Romaguera Isle",
+        "address_line_2": "50480 Farah Cliffs",
+        "zipcode": "56414",
+        "city": "North Mercedes",
         "region": null,
-        "country": "Nauru",
+        "country": "Chad",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "6491 Rodney Ford",
-        "financial_line_2": "45804 New Jacinta",
+        "financial_line_1": "6368 Joanne Shoal",
+        "financial_line_2": "85227 New Ellenaview",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-02-17T09:20:27.380Z",
+          "trial_ends_at": "2022-02-22T09:14:42.227Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
+      "id": "65eb8222-cb3a-4290-8fea-d7e276234a3c",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-02-03T09:20:27+00:00",
-        "updated_at": "2022-02-03T09:20:27+00:00",
+        "created_at": "2022-02-08T09:14:42+00:00",
+        "updated_at": "2022-02-08T09:14:42+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
