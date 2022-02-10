@@ -55,9 +55,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "b9071621-287a-4b69-a8a5-3c433c10997c",
-      "created_at": "2022-02-03T09:18:06+00:00",
-      "updated_at": "2022-02-03T09:18:06+00:00",
+      "id": "19ff08b5-6d84-4e30-90ac-b8ce18ba235f",
+      "created_at": "2022-02-10T10:31:10+00:00",
+      "updated_at": "2022-02-10T10:31:10+00:00",
       "name": "Cameras",
       "slug": "cameras",
       "position": 1,
@@ -69,7 +69,7 @@ Name | Description
     "stats": {
       "children": {
         "count_each": {
-          "b9071621-287a-4b69-a8a5-3c433c10997c": 1
+          "19ff08b5-6d84-4e30-90ac-b8ce18ba235f": 1
         }
       }
     }
@@ -89,7 +89,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=items,parent,children`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[categories]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-03T09:17:38Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-10T10:30:50Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -163,11 +163,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "41098873-270c-47b3-97e2-f5c6872e9243",
+    "id": "049e326d-6527-4819-92cd-94a250ba2b9a",
     "type": "categories",
     "attributes": {
-      "created_at": "2022-02-03T09:18:06+00:00",
-      "updated_at": "2022-02-03T09:18:06+00:00",
+      "created_at": "2022-02-10T10:31:10+00:00",
+      "updated_at": "2022-02-10T10:31:10+00:00",
       "name": "Accesories",
       "slug": "accesories",
       "position": null,
@@ -208,7 +208,7 @@ This request accepts the following includes:
         "type": "categories",
         "attributes": {
           "name": "Nikon",
-          "parent_id": "24bdb42f-8e6f-4bde-b867-5115b8fca62f"
+          "parent_id": "d889a1b5-e2f4-45b8-92eb-57d844e9a80c"
         }
       }
     }'
@@ -219,16 +219,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0628a760-5e46-441b-8eec-6d900de17223",
+    "id": "8da0e04f-701a-41fb-b2a0-cab5dc2c6e8d",
     "type": "categories",
     "attributes": {
-      "created_at": "2022-02-03T09:18:07+00:00",
-      "updated_at": "2022-02-03T09:18:07+00:00",
+      "created_at": "2022-02-10T10:31:10+00:00",
+      "updated_at": "2022-02-10T10:31:10+00:00",
       "name": "Nikon",
       "slug": "nikon",
       "position": null,
       "show_in_store": true,
-      "parent_id": "24bdb42f-8e6f-4bde-b867-5115b8fca62f"
+      "parent_id": "d889a1b5-e2f4-45b8-92eb-57d844e9a80c"
     },
     "relationships": {
       "items": {
@@ -302,11 +302,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/categories/66fb8619-bbdb-479d-8a31-d1ac6529c919' \
+    --url 'https://example.booqable.com/api/boomerang/categories/91d1f5be-3461-4fe0-a5e1-3e8302bc1310' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "66fb8619-bbdb-479d-8a31-d1ac6529c919",
+        "id": "91d1f5be-3461-4fe0-a5e1-3e8302bc1310",
         "type": "categories",
         "attributes": {
           "name": "Photo cameras"
@@ -320,11 +320,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "66fb8619-bbdb-479d-8a31-d1ac6529c919",
+    "id": "91d1f5be-3461-4fe0-a5e1-3e8302bc1310",
     "type": "categories",
     "attributes": {
-      "created_at": "2022-02-03T09:18:07+00:00",
-      "updated_at": "2022-02-03T09:18:07+00:00",
+      "created_at": "2022-02-10T10:31:11+00:00",
+      "updated_at": "2022-02-10T10:31:11+00:00",
       "name": "Photo cameras",
       "slug": "cameras",
       "position": 1,
@@ -358,17 +358,17 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/categories/50f19a43-976b-4c65-a077-7bb6ff5f56b1' \
+    --url 'https://example.booqable.com/api/boomerang/categories/e1c86380-31eb-44aa-a07b-1f2fd8b7ae16' \
     --header 'content-type: application/json' \
     --data '{
       "includes": "items",
       "data": {
-        "id": "50f19a43-976b-4c65-a077-7bb6ff5f56b1",
+        "id": "e1c86380-31eb-44aa-a07b-1f2fd8b7ae16",
         "type": "categories",
         "attributes": {
           "item_ids": [
-            "0775c764-ecd8-4928-a685-c53d5067dd9a",
-            "980eff09-8b9c-427e-8937-60b0c1f0db88"
+            "05a3d7d2-05a1-40ef-92d9-fbff3d401108",
+            "6d32ce3a-e5be-4c84-9fe0-e7d2e6ef41ea"
           ]
         }
       }
@@ -380,11 +380,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "50f19a43-976b-4c65-a077-7bb6ff5f56b1",
+    "id": "e1c86380-31eb-44aa-a07b-1f2fd8b7ae16",
     "type": "categories",
     "attributes": {
-      "created_at": "2022-02-03T09:18:07+00:00",
-      "updated_at": "2022-02-03T09:18:07+00:00",
+      "created_at": "2022-02-10T10:31:11+00:00",
+      "updated_at": "2022-02-10T10:31:11+00:00",
       "name": "Cameras",
       "slug": "cameras",
       "position": 1,
@@ -463,7 +463,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/categories/02b6b1c4-033d-4b6d-b744-abb3b10db03e' \
+    --url 'https://example.booqable.com/api/boomerang/categories/a7478dba-12b7-468d-94f4-cd8e8fcc7ea2' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

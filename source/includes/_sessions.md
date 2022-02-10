@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
+    "id": "d7d435d8-7daf-578c-ad4d-186067129959",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-03T09:20:27+00:00",
-      "company_id": "dd920d15-e703-438d-a2f8-f7915593b26d",
-      "employee_id": "e2291c5b-d5af-41cd-b227-786b28638dc3",
-      "locations_updated_at": "2022-02-03T09:20:27+00:00",
-      "clusters_updated_at": "2022-02-03T09:20:27+00:00",
-      "default_properties_updated_at": "2022-02-03T09:20:27+00:00"
+      "updated_at": "2022-02-10T10:33:11+00:00",
+      "company_id": "52fce524-9128-48b3-a283-58302aaade44",
+      "employee_id": "d90a3a05-feb4-4793-b273-aaf6139a3e4e",
+      "locations_updated_at": "2022-02-10T10:33:11+00:00",
+      "clusters_updated_at": "2022-02-10T10:33:11+00:00",
+      "default_properties_updated_at": "2022-02-10T10:33:11+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
+    "id": "d7d435d8-7daf-578c-ad4d-186067129959",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-03T09:20:27+00:00",
-      "company_id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
-      "employee_id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
+      "updated_at": "2022-02-10T10:33:11+00:00",
+      "company_id": "983424ea-0c9f-443c-b677-e4e224edfd26",
+      "employee_id": "b6a61065-1d91-4ae0-82b8-a6ed925ee6da",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "f94d93e2-5150-48b9-b096-a8964ec7452d"
+          "id": "983424ea-0c9f-443c-b677-e4e224edfd26"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576"
+          "id": "b6a61065-1d91-4ae0-82b8-a6ed925ee6da"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
+      "id": "983424ea-0c9f-443c-b677-e4e224edfd26",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-02-03T09:20:27+00:00",
-        "updated_at": "2022-02-03T09:20:27+00:00",
-        "name": "Company name 190",
-        "slug": "company-name-190",
-        "email": "mail193@company.com",
+        "created_at": "2022-02-10T10:33:11+00:00",
+        "updated_at": "2022-02-10T10:33:11+00:00",
+        "name": "Company name 191",
+        "slug": "company-name-191",
+        "email": "mail194@company.com",
         "billing_email": null,
-        "phone": "727-299-2385",
-        "website": "http://friesen-senger.info/carmen.cummerata",
-        "address": "Schultz Road\n21220 Flatley Rapids\n23720 Virgiltown\nNauru",
-        "address_line_1": "Schultz Road",
-        "address_line_2": "21220 Flatley Rapids",
-        "zipcode": "23720",
-        "city": "Virgiltown",
+        "phone": "1-178-267-0106 x20883",
+        "website": "http://macgyver.name/irwin",
+        "address": "Erdman Points\n31349 Thompson Haven\n27790-1007 Lubowitzbury\nTajikistan",
+        "address_line_1": "Erdman Points",
+        "address_line_2": "31349 Thompson Haven",
+        "zipcode": "27790-1007",
+        "city": "Lubowitzbury",
         "region": null,
-        "country": "Nauru",
+        "country": "Tajikistan",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "6491 Rodney Ford",
-        "financial_line_2": "45804 New Jacinta",
+        "financial_line_1": "1427 Glover Island",
+        "financial_line_2": "67304-9204 Lake Mara",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-02-17T09:20:27.380Z",
+          "trial_ends_at": "2022-02-24T10:33:11.428Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
+      "id": "b6a61065-1d91-4ae0-82b8-a6ed925ee6da",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-02-03T09:20:27+00:00",
-        "updated_at": "2022-02-03T09:20:27+00:00",
+        "created_at": "2022-02-10T10:33:11+00:00",
+        "updated_at": "2022-02-10T10:33:11+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
