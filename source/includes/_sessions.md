@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
+    "id": "cec3b559-4737-586a-828f-d1f43858ad7e",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-03T09:20:27+00:00",
-      "company_id": "dd920d15-e703-438d-a2f8-f7915593b26d",
-      "employee_id": "e2291c5b-d5af-41cd-b227-786b28638dc3",
-      "locations_updated_at": "2022-02-03T09:20:27+00:00",
-      "clusters_updated_at": "2022-02-03T09:20:27+00:00",
-      "default_properties_updated_at": "2022-02-03T09:20:27+00:00"
+      "updated_at": "2022-02-14T09:24:56+00:00",
+      "company_id": "f457d808-235a-4382-a2ab-0c2e41e94751",
+      "employee_id": "3aa7f406-9bd3-4d99-9423-76b88ec42b90",
+      "locations_updated_at": "2022-02-14T09:24:56+00:00",
+      "clusters_updated_at": "2022-02-14T09:24:56+00:00",
+      "default_properties_updated_at": "2022-02-14T09:24:56+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1ada9b5c-e6bb-52d5-a97b-fc87b142fec2",
+    "id": "a18a5f94-a790-5ecc-bcc2-704d7a8bdd80",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-03T09:20:27+00:00",
-      "company_id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
-      "employee_id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
+      "updated_at": "2022-02-14T09:24:57+00:00",
+      "company_id": "a9678807-3353-4e6d-83cd-d27b2443d591",
+      "employee_id": "f70e61f7-3820-4788-8f85-98ea2853f8ec",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "f94d93e2-5150-48b9-b096-a8964ec7452d"
+          "id": "a9678807-3353-4e6d-83cd-d27b2443d591"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576"
+          "id": "f70e61f7-3820-4788-8f85-98ea2853f8ec"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "f94d93e2-5150-48b9-b096-a8964ec7452d",
+      "id": "a9678807-3353-4e6d-83cd-d27b2443d591",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-02-03T09:20:27+00:00",
-        "updated_at": "2022-02-03T09:20:27+00:00",
-        "name": "Company name 190",
-        "slug": "company-name-190",
-        "email": "mail193@company.com",
+        "created_at": "2022-02-14T09:24:57+00:00",
+        "updated_at": "2022-02-14T09:24:57+00:00",
+        "name": "Company name 191",
+        "slug": "company-name-191",
+        "email": "mail194@company.com",
         "billing_email": null,
-        "phone": "727-299-2385",
-        "website": "http://friesen-senger.info/carmen.cummerata",
-        "address": "Schultz Road\n21220 Flatley Rapids\n23720 Virgiltown\nNauru",
-        "address_line_1": "Schultz Road",
-        "address_line_2": "21220 Flatley Rapids",
-        "zipcode": "23720",
-        "city": "Virgiltown",
+        "phone": "997-929-1548",
+        "website": "http://langworth.io/rey",
+        "address": "Batz Falls\n5605 Welch Lane\n71545 West Cruzbury\nCongo",
+        "address_line_1": "Batz Falls",
+        "address_line_2": "5605 Welch Lane",
+        "zipcode": "71545",
+        "city": "West Cruzbury",
         "region": null,
-        "country": "Nauru",
+        "country": "Congo",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "6491 Rodney Ford",
-        "financial_line_2": "45804 New Jacinta",
+        "financial_line_1": "301 Stehr Fords",
+        "financial_line_2": "09226 Josetown",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-02-17T09:20:27.380Z",
+          "trial_ends_at": "2022-02-28T09:24:57.013Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "90c980b2-eb2b-4747-a221-bc6b6db8a576",
+      "id": "f70e61f7-3820-4788-8f85-98ea2853f8ec",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-02-03T09:20:27+00:00",
-        "updated_at": "2022-02-03T09:20:27+00:00",
+        "created_at": "2022-02-14T09:24:57+00:00",
+        "updated_at": "2022-02-14T09:24:57+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

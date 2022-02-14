@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "31c305d6-6f97-4527-b645-e3bf0bad2a41",
+    "id": "a0558434-e79f-4934-baaa-1a6d710af399",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-03T09:18:14+00:00",
-      "updated_at": "2022-02-03T09:18:14+00:00",
+      "created_at": "2022-02-14T09:23:15+00:00",
+      "updated_at": "2022-02-14T09:23:15+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "464-857-8314 x14361",
-      "website": "http://schowalter-paucek.io/billie",
-      "address": "Ozie Neck\n92048 Kiehn Land\n75129 Fishertown\nCote d'Ivoire",
-      "address_line_1": "Ozie Neck",
-      "address_line_2": "92048 Kiehn Land",
-      "zipcode": "75129",
-      "city": "Fishertown",
+      "phone": "638.581.4304 x9631",
+      "website": "http://jenkins-steuber.co/theressa",
+      "address": "Damien Cove\n59735 Hoppe Dale\n01046-0863 Wehnerstad\nGabon",
+      "address_line_1": "Damien Cove",
+      "address_line_2": "59735 Hoppe Dale",
+      "zipcode": "01046-0863",
+      "city": "Wehnerstad",
       "region": null,
-      "country": "Cote d'Ivoire",
+      "country": "Gabon",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "358 Ken Ways",
-      "financial_line_2": "50466 East Asiaton",
+      "financial_line_1": "2745 Tomas Row",
+      "financial_line_2": "79911 Hintzfurt",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ac79a213-f7df-4154-ad1c-098f09b59280",
+    "id": "146d8743-63e1-46f6-8dd1-3cfb315c5aa2",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-02-17T09:18:15.035Z",
+        "trial_ends_at": "2022-02-28T09:23:15.723Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "1071001b-1dc9-48b1-8984-60acd861b40b",
+        "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "1071001b-1dc9-48b1-8984-60acd861b40b",
+    "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-03T09:18:15+00:00",
-      "updated_at": "2022-02-03T09:18:15+00:00",
+      "created_at": "2022-02-14T09:23:15+00:00",
+      "updated_at": "2022-02-14T09:23:16+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail52@company.com",
       "billing_email": null,
-      "phone": "573-939-3874 x1197",
-      "website": "http://fay.info/korey.hegmann",
-      "address": "Herman Courts\n525 Kendall Greens\n34202 Lockmanburgh\nArgentina",
-      "address_line_1": "Herman Courts",
-      "address_line_2": "525 Kendall Greens",
-      "zipcode": "34202",
-      "city": "Lockmanburgh",
+      "phone": "(486) 401-5308",
+      "website": "http://dibbert-osinski.org/mitzi.bechtelar",
+      "address": "DuBuque Street\n71734 Hershel Parkway\n87023 North Maxfort\nHonduras",
+      "address_line_1": "DuBuque Street",
+      "address_line_2": "71734 Hershel Parkway",
+      "zipcode": "87023",
+      "city": "North Maxfort",
       "region": null,
-      "country": "Argentina",
+      "country": "Honduras",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "3581 Amiee Center",
-      "financial_line_2": "36011 Peteberg",
+      "financial_line_1": "813 Shields Land",
+      "financial_line_2": "03914-6271 South Rayna",
       "vat_number": null,
       "custom_domain": null,
       "development": false

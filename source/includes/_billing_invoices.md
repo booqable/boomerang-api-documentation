@@ -33,6 +33,7 @@ Name | Description
 `ending_balance_in_cents` | **Integer** `readonly`<br>Ending balance in cents (if credit was used)
 `next_payment_attempt_at` | **Datetime** `readonly`<br>When the next charge will be attempted to charge
 `coupon` | **String** `readonly`<br>Applied coupon
+`url` | **String** `readonly`<br>Url to view the invoice
 
 
 ## Listing billing invoices
@@ -53,14 +54,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "9ee62d59-0e79-4997-ac08-ed40c4d62cc9",
+      "id": "fbcef3dd-c1d8-4fdf-882e-ad9f07c5727b",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2022-02-03T09:17:58+00:00",
-        "updated_at": "2022-02-03T09:17:58+00:00",
+        "created_at": "2022-02-14T09:23:02+00:00",
+        "updated_at": "2022-02-14T09:23:02+00:00",
         "number": 10001,
         "status": "open",
-        "billing_reason": "subscription_create",
+        "billing_reason": "subscription_cycle",
         "strategy": "charge_automatically",
         "date": null,
         "period_start_at": null,
@@ -75,7 +76,8 @@ Name | Description
         "starting_balance_in_cents": null,
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
-        "coupon": null
+        "coupon": null,
+        "url": "http://billing.lvh.me:/invoices/880b88462c3fb9dcf1f74f27aa3f3bd4/707c080bcba6cd71394ade228c441c18"
       }
     }
   ],
@@ -95,7 +97,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-03T09:17:38Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-14T09:22:49Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -111,7 +113,7 @@ Name | Description
 `id` | **Uuid**<br>`eq`, `not_eq`
 `created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`status` | **String**<br>`eq`
 `billing_reason` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `strategy` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `date` | **Date**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -140,7 +142,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/64d06f32-013f-4d51-a021-4d2c45979f21' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/a8d6750f-6ddb-46c4-bb87-838df7ff3242' \
     --header 'content-type: application/json' \
 ```
 
@@ -149,14 +151,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "64d06f32-013f-4d51-a021-4d2c45979f21",
+    "id": "a8d6750f-6ddb-46c4-bb87-838df7ff3242",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2022-02-03T09:17:58+00:00",
-      "updated_at": "2022-02-03T09:17:58+00:00",
+      "created_at": "2022-02-14T09:23:02+00:00",
+      "updated_at": "2022-02-14T09:23:02+00:00",
       "number": 10001,
       "status": "open",
-      "billing_reason": "subscription_create",
+      "billing_reason": "subscription_cycle",
       "strategy": "charge_automatically",
       "date": null,
       "period_start_at": null,
@@ -171,7 +173,8 @@ This request does not accept any includes
       "starting_balance_in_cents": null,
       "ending_balance_in_cents": null,
       "next_payment_attempt_at": null,
-      "coupon": null
+      "coupon": null,
+      "url": "http://billing.lvh.me:/invoices/84c9a30c52d4dc00cf8a35081406ffa7/018580726e67231f90400bd49c33cb2c"
     }
   },
   "meta": {}
