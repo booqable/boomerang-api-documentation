@@ -40,11 +40,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "9e84cc88-9702-4ed1-a25f-c796a8fb57b8",
+      "id": "4854ae3c-1c86-4253-91a1-e131e50ada4c",
       "type": "bundles",
       "attributes": {
-        "created_at": "2022-02-14T09:23:56+00:00",
-        "updated_at": "2022-02-14T09:23:56+00:00",
+        "created_at": "2022-02-16T10:50:19+00:00",
+        "updated_at": "2022-02-16T10:50:19+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -78,22 +78,22 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=9e84cc88-9702-4ed1-a25f-c796a8fb57b8"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=4854ae3c-1c86-4253-91a1-e131e50ada4c"
           }
         },
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=9e84cc88-9702-4ed1-a25f-c796a8fb57b8"
+            "related": "api/boomerang/categories?filter[item_id]=4854ae3c-1c86-4253-91a1-e131e50ada4c"
           }
         }
       }
     },
     {
-      "id": "88d05445-4a4a-41c0-809a-277ee6e36924",
+      "id": "a60cf75a-d93b-4a9e-b647-bca44ec64f5c",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-02-14T09:23:56+00:00",
-        "updated_at": "2022-02-14T09:23:56+00:00",
+        "created_at": "2022-02-16T10:50:19+00:00",
+        "updated_at": "2022-02-16T10:50:19+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -127,12 +127,12 @@ For this resource relationships are described in the following resources:
         "variation_fields": [],
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
-        "tax_category_id": "9408eeda-0470-4c96-9842-4a7fa28c5c9f"
+        "tax_category_id": "0991195c-281f-4177-a7e7-fc135d3555f9"
       },
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=88d05445-4a4a-41c0-809a-277ee6e36924"
+            "related": "api/boomerang/categories?filter[item_id]=a60cf75a-d93b-4a9e-b647-bca44ec64f5c"
           }
         },
         "photo": {
@@ -142,27 +142,27 @@ For this resource relationships are described in the following resources:
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=88d05445-4a4a-41c0-809a-277ee6e36924"
+            "related": "api/boomerang/products?filter[product_group_id]=a60cf75a-d93b-4a9e-b647-bca44ec64f5c"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/9408eeda-0470-4c96-9842-4a7fa28c5c9f"
+            "related": "api/boomerang/tax_categories/0991195c-281f-4177-a7e7-fc135d3555f9"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=88d05445-4a4a-41c0-809a-277ee6e36924&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=a60cf75a-d93b-4a9e-b647-bca44ec64f5c&filter[owner_type]=product_groups"
           }
         }
       }
     },
     {
-      "id": "36df5a2e-81aa-479b-923d-2cdc117b58fc",
+      "id": "068b0bf5-ad52-478b-b934-f812ad20a054",
       "type": "products",
       "attributes": {
-        "created_at": "2022-02-14T09:23:56+00:00",
-        "updated_at": "2022-02-14T09:23:56+00:00",
+        "created_at": "2022-02-16T10:50:19+00:00",
+        "updated_at": "2022-02-16T10:50:19+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -194,8 +194,8 @@ For this resource relationships are described in the following resources:
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "88d05445-4a4a-41c0-809a-277ee6e36924",
-        "tax_category_id": "9408eeda-0470-4c96-9842-4a7fa28c5c9f",
+        "product_group_id": "a60cf75a-d93b-4a9e-b647-bca44ec64f5c",
+        "tax_category_id": "0991195c-281f-4177-a7e7-fc135d3555f9",
         "price_structure_id": null
       },
       "relationships": {
@@ -206,17 +206,17 @@ For this resource relationships are described in the following resources:
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/88d05445-4a4a-41c0-809a-277ee6e36924"
+            "related": "api/boomerang/product_groups/a60cf75a-d93b-4a9e-b647-bca44ec64f5c"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/9408eeda-0470-4c96-9842-4a7fa28c5c9f"
+            "related": "api/boomerang/tax_categories/0991195c-281f-4177-a7e7-fc135d3555f9"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=36df5a2e-81aa-479b-923d-2cdc117b58fc&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=068b0bf5-ad52-478b-b934-f812ad20a054&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -226,12 +226,12 @@ For this resource relationships are described in the following resources:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=88d05445-4a4a-41c0-809a-277ee6e36924&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=a60cf75a-d93b-4a9e-b647-bca44ec64f5c&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=88d05445-4a4a-41c0-809a-277ee6e36924"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=a60cf75a-d93b-4a9e-b647-bca44ec64f5c"
           }
         }
       }
@@ -253,7 +253,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,price_structure`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-14T09:22:49Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-16T10:48:53Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request

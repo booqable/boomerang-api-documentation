@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a0558434-e79f-4934-baaa-1a6d710af399",
+    "id": "c4b9b339-4dd1-4691-8820-845bd0f35a69",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-14T09:23:15+00:00",
-      "updated_at": "2022-02-14T09:23:15+00:00",
+      "created_at": "2022-02-16T10:49:26+00:00",
+      "updated_at": "2022-02-16T10:49:26+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "638.581.4304 x9631",
-      "website": "http://jenkins-steuber.co/theressa",
-      "address": "Damien Cove\n59735 Hoppe Dale\n01046-0863 Wehnerstad\nGabon",
-      "address_line_1": "Damien Cove",
-      "address_line_2": "59735 Hoppe Dale",
-      "zipcode": "01046-0863",
-      "city": "Wehnerstad",
+      "phone": "663-811-8451 x6242",
+      "website": "http://kilback-rath.net/darron_gutkowski",
+      "address": "Lucas Track\n41636 Laurena Port\n89057-0249 Wildermanview\nMalawi",
+      "address_line_1": "Lucas Track",
+      "address_line_2": "41636 Laurena Port",
+      "zipcode": "89057-0249",
+      "city": "Wildermanview",
       "region": null,
-      "country": "Gabon",
+      "country": "Malawi",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "2745 Tomas Row",
-      "financial_line_2": "79911 Hintzfurt",
+      "financial_line_1": "315 Walter Street",
+      "financial_line_2": "08420-3474 Stehrmouth",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "146d8743-63e1-46f6-8dd1-3cfb315c5aa2",
+    "id": "403c15aa-03f3-4021-a62c-5692afb71568",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-02-28T09:23:15.723Z",
+        "trial_ends_at": "2022-03-02T10:49:26.828Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
+        "id": "17119592-e579-4d64-bd47-3c994ca16b9f",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
+    "id": "17119592-e579-4d64-bd47-3c994ca16b9f",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-14T09:23:15+00:00",
-      "updated_at": "2022-02-14T09:23:16+00:00",
+      "created_at": "2022-02-16T10:49:27+00:00",
+      "updated_at": "2022-02-16T10:49:27+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail52@company.com",
       "billing_email": null,
-      "phone": "(486) 401-5308",
-      "website": "http://dibbert-osinski.org/mitzi.bechtelar",
-      "address": "DuBuque Street\n71734 Hershel Parkway\n87023 North Maxfort\nHonduras",
-      "address_line_1": "DuBuque Street",
-      "address_line_2": "71734 Hershel Parkway",
-      "zipcode": "87023",
-      "city": "North Maxfort",
+      "phone": "(668) 969-1886",
+      "website": "http://franecki.info/milton_johnston",
+      "address": "Huels Mills\n97696 Graham Underpass\n96612-2061 Jameton\nTajikistan",
+      "address_line_1": "Huels Mills",
+      "address_line_2": "97696 Graham Underpass",
+      "zipcode": "96612-2061",
+      "city": "Jameton",
       "region": null,
-      "country": "Honduras",
+      "country": "Tajikistan",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "813 Shields Land",
-      "financial_line_2": "03914-6271 South Rayna",
+      "financial_line_1": "539 Daniel Branch",
+      "financial_line_2": "62164-3833 Lefflermouth",
       "vat_number": null,
       "custom_domain": null,
       "development": false
