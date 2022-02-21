@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a0558434-e79f-4934-baaa-1a6d710af399",
+    "id": "a44b5367-a644-4f07-95fc-c7a181cf06fc",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-14T09:23:15+00:00",
-      "updated_at": "2022-02-14T09:23:15+00:00",
+      "created_at": "2022-02-21T07:52:20+00:00",
+      "updated_at": "2022-02-21T07:52:20+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "638.581.4304 x9631",
-      "website": "http://jenkins-steuber.co/theressa",
-      "address": "Damien Cove\n59735 Hoppe Dale\n01046-0863 Wehnerstad\nGabon",
-      "address_line_1": "Damien Cove",
-      "address_line_2": "59735 Hoppe Dale",
-      "zipcode": "01046-0863",
-      "city": "Wehnerstad",
+      "phone": "967-918-9045",
+      "website": "http://halvorson.net/ninfa",
+      "address": "Nakia Inlet\n80440 Brown Hill\n43444 Preciousview\nHoly See (Vatican City State)",
+      "address_line_1": "Nakia Inlet",
+      "address_line_2": "80440 Brown Hill",
+      "zipcode": "43444",
+      "city": "Preciousview",
       "region": null,
-      "country": "Gabon",
+      "country": "Holy See (Vatican City State)",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "2745 Tomas Row",
-      "financial_line_2": "79911 Hintzfurt",
+      "financial_line_1": "24941 Walsh Summit",
+      "financial_line_2": "47791 Reynoldsview",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "146d8743-63e1-46f6-8dd1-3cfb315c5aa2",
+    "id": "d872f1e6-5148-4c38-9931-edf8fcaeefcd",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-02-28T09:23:15.723Z",
+        "trial_ends_at": "2022-03-07T07:52:20.730Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
+        "id": "c1c0e503-1214-4bfd-93d0-8b3070372b0e",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
+    "id": "c1c0e503-1214-4bfd-93d0-8b3070372b0e",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-14T09:23:15+00:00",
-      "updated_at": "2022-02-14T09:23:16+00:00",
+      "created_at": "2022-02-21T07:52:20+00:00",
+      "updated_at": "2022-02-21T07:52:21+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail52@company.com",
       "billing_email": null,
-      "phone": "(486) 401-5308",
-      "website": "http://dibbert-osinski.org/mitzi.bechtelar",
-      "address": "DuBuque Street\n71734 Hershel Parkway\n87023 North Maxfort\nHonduras",
-      "address_line_1": "DuBuque Street",
-      "address_line_2": "71734 Hershel Parkway",
-      "zipcode": "87023",
-      "city": "North Maxfort",
+      "phone": "(348) 784-1096 x084",
+      "website": "http://hilpert.co/ulysses",
+      "address": "Braun Haven\n142 Nyla Streets\n37006 Lake Dongfort\nMadagascar",
+      "address_line_1": "Braun Haven",
+      "address_line_2": "142 Nyla Streets",
+      "zipcode": "37006",
+      "city": "Lake Dongfort",
       "region": null,
-      "country": "Honduras",
+      "country": "Madagascar",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "813 Shields Land",
-      "financial_line_2": "03914-6271 South Rayna",
+      "financial_line_1": "97117 Arianna Common",
+      "financial_line_2": "93856 West Randal",
       "vat_number": null,
       "custom_domain": null,
       "development": false

@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cec3b559-4737-586a-828f-d1f43858ad7e",
+    "id": "6bf209dd-dd6c-5ba4-ad7c-28fe821450e3",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-14T09:24:56+00:00",
-      "company_id": "f457d808-235a-4382-a2ab-0c2e41e94751",
-      "employee_id": "3aa7f406-9bd3-4d99-9423-76b88ec42b90",
-      "locations_updated_at": "2022-02-14T09:24:56+00:00",
-      "clusters_updated_at": "2022-02-14T09:24:56+00:00",
-      "default_properties_updated_at": "2022-02-14T09:24:56+00:00"
+      "updated_at": "2022-02-21T07:54:00+00:00",
+      "company_id": "d6c2a59b-ee6b-4881-b21c-14d6560dfc00",
+      "employee_id": "dde266ce-e349-437b-9a9a-e707194334bc",
+      "locations_updated_at": "2022-02-21T07:54:00+00:00",
+      "clusters_updated_at": "2022-02-21T07:54:00+00:00",
+      "default_properties_updated_at": "2022-02-21T07:54:00+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a18a5f94-a790-5ecc-bcc2-704d7a8bdd80",
+    "id": "cdb64065-b48e-5e27-9783-1e8e7f3216ff",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-02-14T09:24:57+00:00",
-      "company_id": "a9678807-3353-4e6d-83cd-d27b2443d591",
-      "employee_id": "f70e61f7-3820-4788-8f85-98ea2853f8ec",
+      "updated_at": "2022-02-21T07:54:01+00:00",
+      "company_id": "7038a508-2ac4-4955-a912-c492f413296b",
+      "employee_id": "60d3a916-8910-4cbd-913f-14c1a97d957d",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "a9678807-3353-4e6d-83cd-d27b2443d591"
+          "id": "7038a508-2ac4-4955-a912-c492f413296b"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "f70e61f7-3820-4788-8f85-98ea2853f8ec"
+          "id": "60d3a916-8910-4cbd-913f-14c1a97d957d"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "a9678807-3353-4e6d-83cd-d27b2443d591",
+      "id": "7038a508-2ac4-4955-a912-c492f413296b",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-02-14T09:24:57+00:00",
-        "updated_at": "2022-02-14T09:24:57+00:00",
+        "created_at": "2022-02-21T07:54:01+00:00",
+        "updated_at": "2022-02-21T07:54:01+00:00",
         "name": "Company name 191",
         "slug": "company-name-191",
         "email": "mail194@company.com",
         "billing_email": null,
-        "phone": "997-929-1548",
-        "website": "http://langworth.io/rey",
-        "address": "Batz Falls\n5605 Welch Lane\n71545 West Cruzbury\nCongo",
-        "address_line_1": "Batz Falls",
-        "address_line_2": "5605 Welch Lane",
-        "zipcode": "71545",
-        "city": "West Cruzbury",
+        "phone": "264.100.7017",
+        "website": "http://wolff.io/houston_rippin",
+        "address": "Brice Place\n79557 Mayer Flat\n79664 North Ethelport\nAnguilla",
+        "address_line_1": "Brice Place",
+        "address_line_2": "79557 Mayer Flat",
+        "zipcode": "79664",
+        "city": "North Ethelport",
         "region": null,
-        "country": "Congo",
+        "country": "Anguilla",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "301 Stehr Fords",
-        "financial_line_2": "09226 Josetown",
+        "financial_line_1": "49078 Halvorson Camp",
+        "financial_line_2": "96677 Port Divinaville",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-02-28T09:24:57.013Z",
+          "trial_ends_at": "2022-03-07T07:54:01.147Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "f70e61f7-3820-4788-8f85-98ea2853f8ec",
+      "id": "60d3a916-8910-4cbd-913f-14c1a97d957d",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-02-14T09:24:57+00:00",
-        "updated_at": "2022-02-14T09:24:57+00:00",
+        "created_at": "2022-02-21T07:54:01+00:00",
+        "updated_at": "2022-02-21T07:54:01+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

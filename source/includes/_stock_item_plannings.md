@@ -17,6 +17,8 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
+`archived` | **Boolean** `readonly`<br>Whether stock item planning is archived
+`archived_at` | **Datetime** `nullable` `readonly`<br>When the stock item planning was archived
 `reserved` | **Boolean** `readonly`<br>Wheter stock item is reserved, meaning it's unavailable for other orders
 `started` | **Boolean** `readonly`<br>Wheter stock item is started
 `stopped` | **Boolean** `readonly`<br>Wheter stock item is stopped. Meaning it's available again
@@ -53,32 +55,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "cc6cf3be-ac66-4ef6-880d-d5b69a742966",
+      "id": "6b696e04-9f4d-41de-ae97-93ebbbde6901",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-02-14T09:24:58+00:00",
-        "updated_at": "2022-02-14T09:24:58+00:00",
+        "created_at": "2022-02-21T07:54:02+00:00",
+        "updated_at": "2022-02-21T07:54:02+00:00",
+        "archived": false,
+        "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "6cc67f42-68fb-40ec-bd78-c2cb7d9a50c3",
-        "planning_id": "efd8e7ea-6cb4-467a-b5d7-becc83606b9d",
-        "order_id": "2c74777a-612b-467c-a142-97c3ed86a1cc"
+        "stock_item_id": "12cb39fa-1dcb-4642-83a4-4214f9352cf1",
+        "planning_id": "7fc245ba-968f-4098-a46c-30e73156bb2e",
+        "order_id": "890bab64-fb81-4f8a-b733-5a4eb0e72893"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/6cc67f42-68fb-40ec-bd78-c2cb7d9a50c3"
+            "related": "api/boomerang/stock_items/12cb39fa-1dcb-4642-83a4-4214f9352cf1"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/efd8e7ea-6cb4-467a-b5d7-becc83606b9d"
+            "related": "api/boomerang/plannings/7fc245ba-968f-4098-a46c-30e73156bb2e"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/2c74777a-612b-467c-a142-97c3ed86a1cc"
+            "related": "api/boomerang/orders/890bab64-fb81-4f8a-b733-5a4eb0e72893"
           }
         }
       }
@@ -100,7 +104,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=stock_item,planning,order`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-14T09:22:50Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-02-21T07:51:57Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -116,6 +120,8 @@ Name | Description
 `id` | **Uuid**<br>`eq`, `not_eq`
 `created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean**<br>`eq`
+`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `reserved` | **Boolean**<br>`eq`
 `started` | **Boolean**<br>`eq`
 `stopped` | **Boolean**<br>`eq`
@@ -164,7 +170,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/f7ecb266-7b74-4f47-b2d4-42c625fb9cfc' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/cf501903-b220-40c1-995e-7cf3364b9da5' \
     --header 'content-type: application/json' \
 ```
 
