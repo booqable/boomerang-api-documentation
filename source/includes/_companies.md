@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a0558434-e79f-4934-baaa-1a6d710af399",
+    "id": "618d3ae3-64cd-4c08-be54-1b602a7e6835",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-14T09:23:15+00:00",
-      "updated_at": "2022-02-14T09:23:15+00:00",
+      "created_at": "2022-03-01T09:34:57+00:00",
+      "updated_at": "2022-03-01T09:34:57+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "638.581.4304 x9631",
-      "website": "http://jenkins-steuber.co/theressa",
-      "address": "Damien Cove\n59735 Hoppe Dale\n01046-0863 Wehnerstad\nGabon",
-      "address_line_1": "Damien Cove",
-      "address_line_2": "59735 Hoppe Dale",
-      "zipcode": "01046-0863",
-      "city": "Wehnerstad",
+      "phone": "1-610-396-6617 x1462",
+      "website": "http://russel.co/milo",
+      "address": "Mirta Skyway\n2474 Stamm Drive\n40015-3240 New Septembershire\nUruguay",
+      "address_line_1": "Mirta Skyway",
+      "address_line_2": "2474 Stamm Drive",
+      "zipcode": "40015-3240",
+      "city": "New Septembershire",
       "region": null,
-      "country": "Gabon",
+      "country": "Uruguay",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "2745 Tomas Row",
-      "financial_line_2": "79911 Hintzfurt",
+      "financial_line_1": "7512 Gutkowski Glen",
+      "financial_line_2": "21132 Port Ervin",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "146d8743-63e1-46f6-8dd1-3cfb315c5aa2",
+    "id": "52b9812f-1170-4f23-9b73-e7c76fd92116",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-02-28T09:23:15.723Z",
+        "trial_ends_at": "2022-03-15T09:34:57.371Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
+        "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "32265bd4-1f51-4f05-8ed0-67f1a1f8619f",
+    "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-02-14T09:23:15+00:00",
-      "updated_at": "2022-02-14T09:23:16+00:00",
+      "created_at": "2022-03-01T09:34:57+00:00",
+      "updated_at": "2022-03-01T09:34:57+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail52@company.com",
       "billing_email": null,
-      "phone": "(486) 401-5308",
-      "website": "http://dibbert-osinski.org/mitzi.bechtelar",
-      "address": "DuBuque Street\n71734 Hershel Parkway\n87023 North Maxfort\nHonduras",
-      "address_line_1": "DuBuque Street",
-      "address_line_2": "71734 Hershel Parkway",
-      "zipcode": "87023",
-      "city": "North Maxfort",
+      "phone": "1-894-476-5199",
+      "website": "http://walsh.net/dick_deckow",
+      "address": "Pfannerstill Crossing\n2534 Quintin Ferry\n58910 Lake Sadye\nPortugal",
+      "address_line_1": "Pfannerstill Crossing",
+      "address_line_2": "2534 Quintin Ferry",
+      "zipcode": "58910",
+      "city": "Lake Sadye",
       "region": null,
-      "country": "Honduras",
+      "country": "Portugal",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "813 Shields Land",
-      "financial_line_2": "03914-6271 South Rayna",
+      "financial_line_1": "552 White Stream",
+      "financial_line_2": "00900 Kohlerport",
       "vat_number": null,
       "custom_domain": null,
       "development": false
