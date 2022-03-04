@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "618d3ae3-64cd-4c08-be54-1b602a7e6835",
+    "id": "22cbc937-b2af-4bad-9457-a84c252678c0",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-01T09:34:57+00:00",
-      "updated_at": "2022-03-01T09:34:57+00:00",
+      "created_at": "2022-03-04T10:57:35+00:00",
+      "updated_at": "2022-03-04T10:57:35+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail50@company.com",
       "billing_email": null,
-      "phone": "1-610-396-6617 x1462",
-      "website": "http://russel.co/milo",
-      "address": "Mirta Skyway\n2474 Stamm Drive\n40015-3240 New Septembershire\nUruguay",
-      "address_line_1": "Mirta Skyway",
-      "address_line_2": "2474 Stamm Drive",
-      "zipcode": "40015-3240",
-      "city": "New Septembershire",
+      "phone": "1-755-532-3279",
+      "website": "http://nitzsche.info/galen",
+      "address": "Hoppe Ferry\n5356 Verdell Lodge\n71174 Lachellemouth\nMoldova",
+      "address_line_1": "Hoppe Ferry",
+      "address_line_2": "5356 Verdell Lodge",
+      "zipcode": "71174",
+      "city": "Lachellemouth",
       "region": null,
-      "country": "Uruguay",
+      "country": "Moldova",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7512 Gutkowski Glen",
-      "financial_line_2": "21132 Port Ervin",
+      "financial_line_1": "8395 Stark Grove",
+      "financial_line_2": "65080 South Abigailberg",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "52b9812f-1170-4f23-9b73-e7c76fd92116",
+    "id": "166a407c-7c82-4c96-b29c-a71f36173a50",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-03-15T09:34:57.371Z",
+        "trial_ends_at": "2022-03-18T10:57:35.593Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
+        "id": "f9610e12-1830-4cce-9401-396c5b741cc5",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
+    "id": "f9610e12-1830-4cce-9401-396c5b741cc5",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-01T09:34:57+00:00",
-      "updated_at": "2022-03-01T09:34:57+00:00",
+      "created_at": "2022-03-04T10:57:35+00:00",
+      "updated_at": "2022-03-04T10:57:35+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail52@company.com",
       "billing_email": null,
-      "phone": "1-894-476-5199",
-      "website": "http://walsh.net/dick_deckow",
-      "address": "Pfannerstill Crossing\n2534 Quintin Ferry\n58910 Lake Sadye\nPortugal",
-      "address_line_1": "Pfannerstill Crossing",
-      "address_line_2": "2534 Quintin Ferry",
-      "zipcode": "58910",
-      "city": "Lake Sadye",
+      "phone": "(164) 168-3442",
+      "website": "http://waelchi-stiedemann.io/dewitt",
+      "address": "Ora Cliff\n104 Ivory Trail\n24436-9093 Yuriville\nSingapore",
+      "address_line_1": "Ora Cliff",
+      "address_line_2": "104 Ivory Trail",
+      "zipcode": "24436-9093",
+      "city": "Yuriville",
       "region": null,
-      "country": "Portugal",
+      "country": "Singapore",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "552 White Stream",
-      "financial_line_2": "00900 Kohlerport",
+      "financial_line_1": "357 Herschel Bypass",
+      "financial_line_2": "46265-1561 Lake Rickie",
       "vat_number": null,
       "custom_domain": null,
       "development": false
