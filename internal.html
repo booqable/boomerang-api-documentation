@@ -437,20 +437,6 @@
               </ul>
           </li>
           <li>
-            <a href="#bulk-upserts" class="toc-h1 toc-link" data-title="Bulk upserts" title="Bulk upserts">Bulk upserts</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#bulk-upserts-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
-                  </li>
-                  <li>
-                    <a href="#bulk-upserts-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
-                  </li>
-                  <li>
-                    <a href="#bulk-upserts-creating-a-bulk-upsert" class="toc-h2 toc-link" data-title="Creating a bulk upsert" title="Creating a bulk upsert">Creating a bulk upsert</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#bundle-items" class="toc-h1 toc-link" data-title="Bundle items" title="Bundle items">Bundle items</a>
               <ul class="toc-list-h2">
                   <li>
@@ -954,17 +940,6 @@
                   </li>
                   <li>
                     <a href="#locations-archiving-a-location" class="toc-h2 toc-link" data-title="Archiving a location" title="Archiving a location">Archiving a location</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#login-activities" class="toc-h1 toc-link" data-title="Login activities" title="Login activities">Login activities</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#login-activities-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
-                  </li>
-                  <li>
-                    <a href="#login-activities-listing-login-activities" class="toc-h2 toc-link" data-title="Listing login activities" title="Listing login activities">Listing login activities</a>
                   </li>
               </ul>
           </li>
@@ -1478,6 +1453,20 @@
               </ul>
           </li>
           <li>
+            <a href="#stock-item-suggestions" class="toc-h1 toc-link" data-title="Stock item suggestions" title="Stock item suggestions">Stock item suggestions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#stock-item-suggestions-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#stock-item-suggestions-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#stock-item-suggestions-listing-stock-item-suggestions" class="toc-h2 toc-link" data-title="Listing stock item suggestions" title="Listing stock item suggestions">Listing stock item suggestions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#tags" class="toc-h1 toc-link" data-title="Tags" title="Tags">Tags</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1683,6 +1672,23 @@
                   </li>
                   <li>
                     <a href="#currencies-fetching-a-currency" class="toc-h2 toc-link" data-title="Fetching a currency" title="Fetching a currency">Fetching a currency</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#device-tokens" class="toc-h1 toc-link" data-title="Device tokens" title="Device tokens">Device tokens</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#device-tokens-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#device-tokens-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#device-tokens-creating-a-device_token" class="toc-h2 toc-link" data-title="Creating a device_token" title="Creating a device_token">Creating a device_token</a>
+                  </li>
+                  <li>
+                    <a href="#device-tokens-deleting-a-device_token" class="toc-h2 toc-link" data-title="Deleting a device_token" title="Deleting a device_token">Deleting a device_token</a>
                   </li>
               </ul>
           </li>
@@ -3487,269 +3493,6 @@ You can have multiple authentication methods active at one time.</p>
 </tbody></table>
 <h3 id='barcodes-destroying-a-barcode-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
-<h1 id='bulk-upserts'>Bulk upserts</h1>
-<p>Bulk upserts are for creating one or more entries of a model with one request, supports these types: <code>coupons</code>, <code>operating_rules</code>, <code>checkout_fields</code></p>
-<h2 id='bulk-upserts-fields'>Fields</h2>
-<p>Every bulk upsert has the following fields:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br></td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><strong>String</strong> <code>writeonly</code><br>Type of data being submitted. One of <code>coupons</code>, <code>operating_rules</code>, <code>checkout_fields</code></td>
-</tr>
-<tr>
-<td><code>data</code></td>
-<td><strong>Array</strong> <code>writeonly</code><br>Array of objects, all objects must contain valid data for the specified type, see documentation for relevant type endpoint for more details.</td>
-</tr>
-</tbody></table>
-<h2 id='bulk-upserts-relationships'>Relationships</h2>
-<p>Bulk upserts have the following relationships:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>results</code></td>
-<td><strong>Virtuals</strong> <code>readonly</code><br>Associated Results</td>
-</tr>
-</tbody></table>
-<h2 id='bulk-upserts-creating-a-bulk-upsert'>Creating a bulk upsert</h2>
-<blockquote>
-<p>How to create operating rules in bulk:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/bulk_upserts'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-    <span class="nt">--data</span> <span class="s1">'{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "operating_rules",
-          "data": [
-            {
-              "data": {
-                "mon": {
-                  "from": "09:00",
-                  "till": "13:00"
-                }
-              },
-              "data_type": "hours"
-            },
-            {
-              "data": {
-                "mon": {
-                  "from": "15:00",
-                  "till": "17:00"
-                }
-              },
-              "data_type": "hours"
-            }
-          ]
-        }
-      },
-      "include": "results"
-    }'</span>
-</code></pre></div>
-<blockquote>
-<p>A 201 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a5da3047-2bda-52f8-b3c0-47875d916aa3"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bulk_upserts"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operating_rules"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"db01892b-41fb-44c1-9d3e-f98374a5d0c9"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operating_rules"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0507b44-b6df-4816-81db-1c1aa8c2baba"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"db01892b-41fb-44c1-9d3e-f98374a5d0c9"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operating_rules"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-01T09:34:41+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-01T09:34:41+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hours"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"mon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13:00"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a0507b44-b6df-4816-81db-1c1aa8c2baba"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"operating_rules"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-01T09:34:41+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-01T09:34:41+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hours"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"mon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17:00"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>How to create checkout fields in bulk:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/bulk_upserts'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-    <span class="nt">--data</span> <span class="s1">'{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "checkout_fields",
-          "data": [
-            {
-              "default_property_id": "6aa254ad-1675-4273-8d42-9954b1e4cd96"
-            },
-            {
-              "name": "Delivery address",
-              "default_property_id": "1c8b6614-3906-40cb-9ffb-fcc539563288"
-            }
-          ]
-        },
-        "include": "results"
-      }
-    }'</span>
-</code></pre></div>
-<blockquote>
-<p>A 201 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1111717-10bf-5901-afda-8d6e08c4a72b"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bulk_upserts"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>How to create coupons in bulk:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/bulk_upserts'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-    <span class="nt">--data</span> <span class="s1">'{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "coupons",
-          "data": [
-            {
-              "identifier": "off",
-              "coupon_type": "percentage",
-              "value": 25,
-              "active": true
-            },
-            {
-              "identifier": "summer-22",
-              "coupon_type": "cents",
-              "value": 2200
-            }
-          ]
-        },
-        "include": "results"
-      }
-    }'</span>
-</code></pre></div>
-<blockquote>
-<p>A 201 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1111717-10bf-5901-afda-8d6e08c4a72b"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bulk_upserts"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='bulk-upserts-creating-a-bulk-upsert-http-request'>HTTP Request</h3>
-<p><code>POST /api/boomerang/bulk_upserts</code></p>
-<h3 id='bulk-upserts-creating-a-bulk-upsert-request-params'>Request params</h3>
-<p>This request accepts the following paramaters:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>include</code></td>
-<td><strong>String</strong><br>List of comma seperated relationships <code>?include=results</code></td>
-</tr>
-<tr>
-<td><code>fields[]</code></td>
-<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[bulk_upserts]=id,created_at,updated_at</code></td>
-</tr>
-</tbody></table>
-<h3 id='bulk-upserts-creating-a-bulk-upsert-request-body'>Request body</h3>
-<p>This request accepts the following body:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>data[attributes][type]</code></td>
-<td><strong>String</strong><br>Type of data being submitted. One of <code>coupons</code>, <code>operating_rules</code>, <code>checkout_fields</code></td>
-</tr>
-<tr>
-<td><code>data[attributes][data][]</code></td>
-<td><strong>Array</strong><br>Array of objects, all objects must contain valid data for the specified type, see documentation for relevant type endpoint for more details.</td>
-</tr>
-</tbody></table>
-<h3 id='bulk-upserts-creating-a-bulk-upsert-includes'>Includes</h3>
-<p>This request accepts the following includes:</p>
-
-<p><code>results</code></p>
 <h1 id='bundle-items'>Bundle items</h1>
 <p>Bundle items define which products and product groups are associated with a bundle. When bundles are planned on an order the quantity and discount percentage defined in a bundle item will apply.</p>
 
@@ -16027,183 +15770,6 @@ Note that you can also update other fields.</p>
 </tr>
 </tbody></table>
 <h3 id='locations-archiving-a-location-includes'>Includes</h3>
-<p>This request does not accept any includes</p>
-<h1 id='login-activities'>Login activities</h1>
-<p>A list of all login attempts for the current employee.</p>
-<h2 id='login-activities-fields'>Fields</h2>
-<p>Every login activity has the following fields:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
-</tr>
-<tr>
-<td><code>ip</code></td>
-<td><strong>String</strong> <code>readonly</code><br>IP address of the login attempt</td>
-</tr>
-<tr>
-<td><code>strategy</code></td>
-<td><strong>String</strong> <code>readonly</code><br>One of <code>saml</code>, <code>token</code>, <code>single_use</code>, <code>database_authenticatable</code>, <code>rememberable</code>, <code>BooqableApp-iOS</code></td>
-</tr>
-<tr>
-<td><code>success</code></td>
-<td><strong>Boolean</strong> <code>readonly</code><br>Whether attempt was succesful</td>
-</tr>
-<tr>
-<td><code>failure_reason</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Why the login failed, One of <code>not_found_in_database</code>, <code>inactive</code>, <code>unconfirmed</code>, <code>invalid</code>, <code>session_limited</code>, <code>invited</code></td>
-</tr>
-<tr>
-<td><code>user_agent</code></td>
-<td><strong>String</strong> <code>readonly</code><br>Client application identifier</td>
-</tr>
-<tr>
-<td><code>city</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>City where login attempt was performed</td>
-</tr>
-<tr>
-<td><code>region</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Region where login attempt was performed</td>
-</tr>
-<tr>
-<td><code>country</code></td>
-<td><strong>String</strong> <code>nullable</code> <code>readonly</code><br>Country where login attempt was performed</td>
-</tr>
-</tbody></table>
-<h2 id='login-activities-listing-login-activities'>Listing login activities</h2>
-<blockquote>
-<p>How to fetch a list of login activities</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
-    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/login_activities'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>A 200 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"290c5cdc-2296-4787-8806-5364fd1179a8"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"login_activities"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-01T09:36:21+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.28"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"saml"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"failure_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"user_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Almere"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flevoland"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='login-activities-listing-login-activities-http-request'>HTTP Request</h3>
-<p><code>GET /api/boomerang/login_activities</code></p>
-<h3 id='login-activities-listing-login-activities-request-params'>Request params</h3>
-<p>This request accepts the following paramaters:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>include</code></td>
-<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
-</tr>
-<tr>
-<td><code>fields[]</code></td>
-<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[login_activities]=id,created_at,updated_at</code></td>
-</tr>
-<tr>
-<td><code>filter</code></td>
-<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2022-03-01T09:34:21Z</code></td>
-</tr>
-<tr>
-<td><code>sort</code></td>
-<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
-</tr>
-<tr>
-<td><code>meta</code></td>
-<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
-</tr>
-<tr>
-<td><code>page[number]</code></td>
-<td><strong>String</strong><br>The page to request</td>
-</tr>
-<tr>
-<td><code>page[size]</code></td>
-<td><strong>String</strong><br>The amount of items per page (max 100)</td>
-</tr>
-</tbody></table>
-<h3 id='login-activities-listing-login-activities-filters'>Filters</h3>
-<p>This request can be filtered on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td><strong>Uuid</strong><br><code>eq</code>, <code>not_eq</code></td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
-</tr>
-<tr>
-<td><code>updated_at</code></td>
-<td><strong>Datetime</strong><br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
-</tr>
-<tr>
-<td><code>ip</code></td>
-<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
-</tr>
-<tr>
-<td><code>strategy</code></td>
-<td><strong>String</strong><br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
-</tr>
-<tr>
-<td><code>success</code></td>
-<td><strong>Boolean</strong><br><code>eq</code></td>
-</tr>
-</tbody></table>
-<h3 id='login-activities-listing-login-activities-meta'>Meta</h3>
-<p>Results can be aggregated on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>total</code></td>
-<td><strong>Array</strong><br><code>count</code></td>
-</tr>
-</tbody></table>
-<h3 id='login-activities-listing-login-activities-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='merges'>Merges</h1>
 <p>Merging enables you to merge the data of two records. The following types are supported: <code>customers</code>.</p>
@@ -30324,6 +29890,232 @@ Once an operation has been started, it cannot be paused or cancelled. It&#39;s s
 </tbody></table>
 <h3 id='stock-items-archiving-a-stock_item-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
+<h1 id='stock-item-suggestions'>Stock item suggestions</h1>
+<p>Use stock item suggestions to figure out which stock item can be booked, started, or stopped. These suggestions are sorted by relevancy. Available and temporary stock items first.</p>
+<h2 id='stock-item-suggestions-fields'>Fields</h2>
+<p>Every stock item suggestion has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>stock_item_id</code></td>
+<td><strong>Uuid</strong><br>The associated Stock item</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>ID of the item belonging to the suggested stock item</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>String_enum</strong> <code>readonly</code><br>Status of the suggestion. One of <code>available_in_location</code>, <code>available_in_cluster</code>, <code>overdue</code>, <code>unavailable</code></td>
+</tr>
+</tbody></table>
+<h2 id='stock-item-suggestions-relationships'>Relationships</h2>
+<p>Stock item suggestions have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>stock_item</code></td>
+<td><strong>Stock items</strong> <code>readonly</code><br>Associated Stock item</td>
+</tr>
+</tbody></table>
+<h2 id='stock-item-suggestions-listing-stock-item-suggestions'>Listing stock item suggestions</h2>
+<blockquote>
+<p>How to fetch a list of stock item suggestions:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Bfrom%5D=2022-01-01&amp;filter%5Bitem_id%5D=62b4d8d3-c221-49ab-9ac1-b70a09719027&amp;filter%5Blocation_id%5D=35d7a9b6-59da-46e1-8822-c3f3a22890c8&amp;filter%5Btill%5D=2022-01-07'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67e37aff-1c07-5f2a-9825-cd159e5636f9"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_suggestions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23c4d3a2-7f00-47e2-baa9-a99e073174c4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62b4d8d3-c221-49ab-9ac1-b70a09719027"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"available_in_location"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/stock_items/23c4d3a2-7f00-47e2-baa9-a99e073174c4"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a2fa1c0-f341-5f60-a2cb-8d477325c7eb"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_suggestions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd3e5b66-cd92-415b-aea6-aa9ef1113220"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62b4d8d3-c221-49ab-9ac1-b70a09719027"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"available_in_location"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/stock_items/fd3e5b66-cd92-415b-aea6-aa9ef1113220"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94087a35-2385-5fe9-8fd2-82b9a49b67af"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_suggestions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3bff4da2-119b-46bb-a109-bf1e3649bb2a"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62b4d8d3-c221-49ab-9ac1-b70a09719027"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"available_in_location"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/stock_items/3bff4da2-119b-46bb-a109-bf1e3649bb2a"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d02c5cd0-d7c6-551a-8dc8-211ecddcc437"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock_item_suggestions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"185eaef3-f640-46f6-b640-ef670329e17b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62b4d8d3-c221-49ab-9ac1-b70a09719027"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"available_in_location"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/stock_items/185eaef3-f640-46f6-b640-ef670329e17b"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='stock-item-suggestions-listing-stock-item-suggestions-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/stock_item_suggestions</code></p>
+<h3 id='stock-item-suggestions-listing-stock-item-suggestions-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=stock_item</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[stock_item_suggestions]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong><br>The filters to apply <code>?filter[created_at][gte]=2022-03-01T09:34:21Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong><br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong><br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong><br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong><br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='stock-item-suggestions-listing-stock-item-suggestions-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>Uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>String_enum</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>Datetime</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>Datetime</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td><strong>String_enum</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><strong>String</strong><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>stock_item_id</code></td>
+<td><strong>Uuid</strong><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='stock-item-suggestions-listing-stock-item-suggestions-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong><br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='stock-item-suggestions-listing-stock-item-suggestions-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>stock_item</code></p>
 <h1 id='tags'>Tags</h1>
 <p>Tags are designed to find specific resources faster. They can be added to the following resources by supplying a <code>tag_list</code>.</p>
 
@@ -34238,6 +34030,160 @@ Because of this, a user should always be an actual person, not a legal person.</
 </tr>
 </tbody></table>
 <h3 id='currencies-fetching-a-currency-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='device-tokens'>Device tokens</h1>
+<p>Use device tokens to register devices to receive push notifications.</p>
+<h2 id='device-tokens-endpoints'>Endpoints</h2>
+<p><code>POST /api/boomerang/device_tokens</code></p>
+
+<p><code>DELETE /api/boomerang/device_tokens/{id}</code></p>
+<h2 id='device-tokens-fields'>Fields</h2>
+<p>Every device token has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td><strong>String</strong> <code>writeonly</code><br>The token to register</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td><strong>String</strong><br>Kind of token. One of <code>apn</code>, <code>fcm</code></td>
+</tr>
+<tr>
+<td><code>environment</code></td>
+<td><strong>String</strong><br>The enviroment to use. One of <code>development</code>, <code>production</code></td>
+</tr>
+</tbody></table>
+<h2 id='device-tokens-creating-a-device_token'>Creating a device_token</h2>
+<blockquote>
+<p>How to create a device_token:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/device_tokens'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "device_tokens",
+        "attributes": {
+          "token": "1234",
+          "kind": "apn",
+          "environment": "production"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b66aad07-6848-4db0-8493-15fb053f1973"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"device_tokens"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-07T23:02:30+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-07T23:02:30+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apn"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"production"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='device-tokens-creating-a-device_token-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/device_tokens</code></p>
+<h3 id='device-tokens-creating-a-device_token-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[device_tokens]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='device-tokens-creating-a-device_token-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][token]</code></td>
+<td><strong>String</strong><br>The token to register</td>
+</tr>
+<tr>
+<td><code>data[attributes][kind]</code></td>
+<td><strong>String</strong><br>Kind of token. One of <code>apn</code>, <code>fcm</code></td>
+</tr>
+<tr>
+<td><code>data[attributes][environment]</code></td>
+<td><strong>String</strong><br>The enviroment to use. One of <code>development</code>, <code>production</code></td>
+</tr>
+</tbody></table>
+<h3 id='device-tokens-creating-a-device_token-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='device-tokens-deleting-a-device_token'>Deleting a device_token</h2>
+<blockquote>
+<p>How to delete a device_token:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> DELETE <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/device_tokens/7b8187b2-3d95-427f-88c6-81801f817df3'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='device-tokens-deleting-a-device_token-http-request'>HTTP Request</h3>
+<p><code>DELETE /api/boomerang/device_tokens/{id}</code></p>
+<h3 id='device-tokens-deleting-a-device_token-request-params'>Request params</h3>
+<p>This request accepts the following paramaters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong><br>List of comma seperated relationships <code>?include=</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong><br>List of comma seperated fields to include <code>?fields[device_tokens]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='device-tokens-deleting-a-device_token-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='inventory-breakdowns'>Inventory breakdowns</h1>
 <p>Fetch quantitive information about product inventory compared to the current time, broken down by:</p>
