@@ -15,7 +15,6 @@ includes:
   - resources
   - authentication_methods
   - barcodes
-  - bulk_upserts
   - bundle_items
   - bundles
   - categories
@@ -37,7 +36,6 @@ includes:
   - item_prices
   - lines
   - locations
-  - login_activities
   - merges
   - notes
   - operating_rules
@@ -62,6 +60,7 @@ includes:
   - stock_counts
   - stock_item_plannings
   - stock_items
+  - stock_item_suggestions
   - tags
   - tax_categories
   - tax_rates
@@ -75,6 +74,7 @@ includes:
   - billing_invoices
   - bulk_upserts
   - currencies
+  - device_tokens
   - inventory_breakdowns
   - login_activities
 
