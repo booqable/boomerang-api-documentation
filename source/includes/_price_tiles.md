@@ -55,22 +55,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "85902d4b-28ae-4e0e-b152-d8559552afb5",
+      "id": "a9332e97-8b56-4c5a-b772-cbc73def5fb7",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2022-03-01T09:37:11+00:00",
-        "updated_at": "2022-03-01T09:37:11+00:00",
+        "created_at": "2022-03-09T10:03:45+00:00",
+        "updated_at": "2022-03-09T10:03:45+00:00",
         "name": "3 hours",
         "quantity": 3,
         "length": 10800,
         "multiplier": 3.0,
         "period": "hours",
-        "price_structure_id": "add55264-01c8-44bd-a832-3b99c894d27b"
+        "price_structure_id": "3ebdd83a-cbc6-43ce-ba64-b86326049866"
       },
       "relationships": {
         "price_structure": {
           "links": {
-            "related": "api/boomerang/price_structures/add55264-01c8-44bd-a832-3b99c894d27b"
+            "related": "api/boomerang/price_structures/3ebdd83a-cbc6-43ce-ba64-b86326049866"
           }
         }
       }
@@ -92,7 +92,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=price_structure`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[price_tiles]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-01T09:34:21Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-09T10:01:28Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -131,7 +131,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/621c8c01-3a4f-45e3-9c14-84e19b732321?include=price_tiles' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/27862327-328b-4ffc-b1d9-37ab8d1e67dd?include=price_tiles' \
     --header 'content-type: application/json' \
 ```
 
@@ -140,22 +140,22 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "621c8c01-3a4f-45e3-9c14-84e19b732321",
+    "id": "27862327-328b-4ffc-b1d9-37ab8d1e67dd",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2022-03-01T09:37:12+00:00",
-      "updated_at": "2022-03-01T09:37:12+00:00",
+      "created_at": "2022-03-09T10:03:46+00:00",
+      "updated_at": "2022-03-09T10:03:46+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "5ef9645d-a7a5-40f3-965a-76dbd580c68f"
+      "price_structure_id": "2b59b350-bd66-4239-ad0d-48faaaa1cbc3"
     },
     "relationships": {
       "price_structure": {
         "links": {
-          "related": "api/boomerang/price_structures/5ef9645d-a7a5-40f3-965a-76dbd580c68f"
+          "related": "api/boomerang/price_structures/2b59b350-bd66-4239-ad0d-48faaaa1cbc3"
         }
       }
     }
@@ -203,7 +203,7 @@ This request accepts the following includes:
       "data": {
         "type": "price_tiles",
         "attributes": {
-          "price_structure_id": "f0402627-abd6-447d-af05-cb7d8b2c447d",
+          "price_structure_id": "7a8b6637-b9a6-4dcc-9201-c4bbd0886756",
           "name": "3 hours",
           "quantity": 3,
           "period": "hours",
@@ -218,17 +218,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d4831bda-d943-4501-aad7-577eb5ed3a75",
+    "id": "9548546a-ec1f-41d3-80b1-b3e2dee4c55e",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2022-03-01T09:37:12+00:00",
-      "updated_at": "2022-03-01T09:37:12+00:00",
+      "created_at": "2022-03-09T10:03:46+00:00",
+      "updated_at": "2022-03-09T10:03:46+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "f0402627-abd6-447d-af05-cb7d8b2c447d"
+      "price_structure_id": "7a8b6637-b9a6-4dcc-9201-c4bbd0886756"
     },
     "relationships": {
       "price_structure": {
@@ -288,11 +288,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/e6b45b26-abe5-4eb9-84f5-712819bb5d54' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/1a0eec90-ae04-4522-8add-396902b22d0e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e6b45b26-abe5-4eb9-84f5-712819bb5d54",
+        "id": "1a0eec90-ae04-4522-8add-396902b22d0e",
         "type": "price_tiles",
         "attributes": {
           "name": "4 days",
@@ -309,17 +309,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e6b45b26-abe5-4eb9-84f5-712819bb5d54",
+    "id": "1a0eec90-ae04-4522-8add-396902b22d0e",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2022-03-01T09:37:13+00:00",
-      "updated_at": "2022-03-01T09:37:13+00:00",
+      "created_at": "2022-03-09T10:03:46+00:00",
+      "updated_at": "2022-03-09T10:03:46+00:00",
       "name": "4 days",
       "quantity": 4,
       "length": 345600,
       "multiplier": 4.0,
       "period": "days",
-      "price_structure_id": "70817567-44f0-4e2c-ba06-534212b9532e"
+      "price_structure_id": "368ae48f-5b95-4155-98e5-6b069966a2b7"
     },
     "relationships": {
       "price_structure": {
@@ -379,7 +379,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/23d04392-48b1-4b90-a8b2-32de3690268c' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/371ae07a-3e8f-4e23-a36f-02ce5a761ef4' \
     --header 'content-type: application/json' \
 ```
 
