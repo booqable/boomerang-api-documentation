@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ebf74b90-cec4-5630-9194-c16ae7033994",
+    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-01T09:37:27+00:00",
-      "company_id": "f42f6019-0344-4dbc-9d9a-640de52ee9cf",
-      "employee_id": "021418dd-f829-499f-a113-676c12f50724",
-      "locations_updated_at": "2022-03-01T09:37:27+00:00",
-      "clusters_updated_at": "2022-03-01T09:37:27+00:00",
-      "default_properties_updated_at": "2022-03-01T09:37:27+00:00"
+      "updated_at": "2022-03-09T10:04:00+00:00",
+      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
+      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
+      "locations_updated_at": "2022-03-09T10:04:00+00:00",
+      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
+      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "52c3459f-8a61-5127-8c1a-3d12d6d37375",
+    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-01T09:37:28+00:00",
-      "company_id": "15c82236-c61d-4ed9-ad90-6739afb3b35d",
-      "employee_id": "9d6715d2-1c52-48e6-8eb7-22528d2da5d0",
+      "updated_at": "2022-03-09T10:04:00+00:00",
+      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "15c82236-c61d-4ed9-ad90-6739afb3b35d"
+          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "9d6715d2-1c52-48e6-8eb7-22528d2da5d0"
+          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "15c82236-c61d-4ed9-ad90-6739afb3b35d",
+      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-01T09:37:28+00:00",
-        "updated_at": "2022-03-01T09:37:28+00:00",
-        "name": "Company name 191",
-        "slug": "company-name-191",
-        "email": "mail194@company.com",
+        "created_at": "2022-03-09T10:04:00+00:00",
+        "updated_at": "2022-03-09T10:04:00+00:00",
+        "name": "Company name 198",
+        "slug": "company-name-198",
+        "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "(940) 807-0367 x1509",
-        "website": "http://gutmann-vandervort.info/arnulfo",
-        "address": "Donnelly Valley\n60295 Gertrudis Burgs\n04699 Tasiahaven\nBrazil",
-        "address_line_1": "Donnelly Valley",
-        "address_line_2": "60295 Gertrudis Burgs",
-        "zipcode": "04699",
-        "city": "Tasiahaven",
+        "phone": "1-848-042-0249 x77725",
+        "website": "http://heaney-bauch.info/maida",
+        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
+        "address_line_1": "Ezequiel Cliff",
+        "address_line_2": "35238 Alisia Course",
+        "zipcode": "79220-3985",
+        "city": "Port Aurelio",
         "region": null,
-        "country": "Brazil",
+        "country": "Burkina Faso",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "580 Samira Mount",
-        "financial_line_2": "68827 Lake Russell",
+        "financial_line_1": "7608 Schaden Gateway",
+        "financial_line_2": "86782-2917 West Connie",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-15T09:37:28.129Z",
+          "trial_ends_at": "2022-03-23T10:04:00.689Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "9d6715d2-1c52-48e6-8eb7-22528d2da5d0",
+      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-01T09:37:28+00:00",
-        "updated_at": "2022-03-01T09:37:28+00:00",
+        "created_at": "2022-03-09T10:04:00+00:00",
+        "updated_at": "2022-03-09T10:04:00+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -308,7 +308,9 @@ This request accepts the following includes:
         "defaults": {
           "timezone": "UTC",
           "tax_category_id": null,
-          "tax_region_id": null
+          "tax_region_id": null,
+          "shop_start_location_id": null,
+          "shop_stop_location_id": null
         },
         "pricing": {
           "enabled": true,
@@ -357,6 +359,8 @@ This request accepts the following includes:
           "use_order_lag_time": false,
           "order_lag_time_value": null,
           "order_lag_time_interval": null,
+          "behaviors.add_button": "show_cart",
+          "behaviors.location_picker": "start_stop",
           "payment_strategy": "none",
           "payment_strategy_value": 30,
           "payment_deposit": false,
@@ -376,6 +380,7 @@ This request accepts the following includes:
           "website": null,
           "custom_scripts": "",
           "google_analytics_id": null,
+          "google_anlaytics_options": "{}",
           "facebook_pixel_id": null,
           "facebook_domain_verification": null
         },

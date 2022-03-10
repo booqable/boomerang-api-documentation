@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "618d3ae3-64cd-4c08-be54-1b602a7e6835",
+    "id": "42310cad-1b7e-4393-9b87-14cd7d1887df",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-01T09:34:57+00:00",
-      "updated_at": "2022-03-01T09:34:57+00:00",
+      "created_at": "2022-03-09T10:01:56+00:00",
+      "updated_at": "2022-03-09T10:01:56+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail50@company.com",
+      "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "1-610-396-6617 x1462",
-      "website": "http://russel.co/milo",
-      "address": "Mirta Skyway\n2474 Stamm Drive\n40015-3240 New Septembershire\nUruguay",
-      "address_line_1": "Mirta Skyway",
-      "address_line_2": "2474 Stamm Drive",
-      "zipcode": "40015-3240",
-      "city": "New Septembershire",
+      "phone": "1-766-846-9294 x47774",
+      "website": "http://kuhic-doyle.co/austin.buckridge",
+      "address": "Jarod Street\n6566 Lily Brook\n08455 Shilohfurt\nVirgin Islands, U.S.",
+      "address_line_1": "Jarod Street",
+      "address_line_2": "6566 Lily Brook",
+      "zipcode": "08455",
+      "city": "Shilohfurt",
       "region": null,
-      "country": "Uruguay",
+      "country": "Virgin Islands, U.S.",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7512 Gutkowski Glen",
-      "financial_line_2": "21132 Port Ervin",
+      "financial_line_1": "6310 Clair Views",
+      "financial_line_2": "33900-1900 West Rosalina",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "52b9812f-1170-4f23-9b73-e7c76fd92116",
+    "id": "f5782057-030f-461b-9aa0-27aa47a09738",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-03-15T09:34:57.371Z",
+        "trial_ends_at": "2022-03-23T10:01:57.167Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
+        "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
+    "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-01T09:34:57+00:00",
-      "updated_at": "2022-03-01T09:34:57+00:00",
+      "created_at": "2022-03-09T10:01:57+00:00",
+      "updated_at": "2022-03-09T10:01:57+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail52@company.com",
+      "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "1-894-476-5199",
-      "website": "http://walsh.net/dick_deckow",
-      "address": "Pfannerstill Crossing\n2534 Quintin Ferry\n58910 Lake Sadye\nPortugal",
-      "address_line_1": "Pfannerstill Crossing",
-      "address_line_2": "2534 Quintin Ferry",
-      "zipcode": "58910",
-      "city": "Lake Sadye",
+      "phone": "1-193-563-5137 x43978",
+      "website": "http://grady-wisozk.name/valeria",
+      "address": "Ute Trail\n4497 Predovic Plaza\n39158-9117 Tamaville\nYemen",
+      "address_line_1": "Ute Trail",
+      "address_line_2": "4497 Predovic Plaza",
+      "zipcode": "39158-9117",
+      "city": "Tamaville",
       "region": null,
-      "country": "Portugal",
+      "country": "Yemen",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "552 White Stream",
-      "financial_line_2": "00900 Kohlerport",
+      "financial_line_1": "72107 Silas Loop",
+      "financial_line_2": "62162-8096 Stephaniestad",
       "vat_number": null,
       "custom_domain": null,
       "development": false
