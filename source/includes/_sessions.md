@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "68c584ab-c3bb-5b09-aeeb-be1418d9615d",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
-      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
-      "locations_updated_at": "2022-03-09T10:04:00+00:00",
-      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
-      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
+      "updated_at": "2022-03-11T12:50:40+00:00",
+      "company_id": "3c9ba49e-c20e-4698-a31b-84e7507206fe",
+      "employee_id": "91210f9b-a40f-4f90-b6e7-4d42faa7fe9c",
+      "locations_updated_at": "2022-03-11T12:50:40+00:00",
+      "clusters_updated_at": "2022-03-11T12:50:40+00:00",
+      "default_properties_updated_at": "2022-03-11T12:50:40+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "68c584ab-c3bb-5b09-aeeb-be1418d9615d",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
-      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "updated_at": "2022-03-11T12:50:40+00:00",
+      "company_id": "b76c853b-5cce-461a-843d-2d2c483a88d5",
+      "employee_id": "b1f39bc5-8f53-42bb-b3e5-9167518a1ed7",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
+          "id": "b76c853b-5cce-461a-843d-2d2c483a88d5"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
+          "id": "b1f39bc5-8f53-42bb-b3e5-9167518a1ed7"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "id": "b76c853b-5cce-461a-843d-2d2c483a88d5",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-11T12:50:40+00:00",
+        "updated_at": "2022-03-11T12:50:40+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-848-042-0249 x77725",
-        "website": "http://heaney-bauch.info/maida",
-        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
-        "address_line_1": "Ezequiel Cliff",
-        "address_line_2": "35238 Alisia Course",
-        "zipcode": "79220-3985",
-        "city": "Port Aurelio",
+        "phone": "(805) 788-5593",
+        "website": "http://will.com/calvin.franecki",
+        "address": "Carroll Freeway\n34156 Bashirian Stream\n84674 Lake Georgeannastad\nSao Tome and Principe",
+        "address_line_1": "Carroll Freeway",
+        "address_line_2": "34156 Bashirian Stream",
+        "zipcode": "84674",
+        "city": "Lake Georgeannastad",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "Sao Tome and Principe",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7608 Schaden Gateway",
-        "financial_line_2": "86782-2917 West Connie",
+        "financial_line_1": "2205 Marvin Springs",
+        "financial_line_2": "45239-7937 West Arturo",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-23T10:04:00.689Z",
+          "trial_ends_at": "2022-03-25T12:50:40.382Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "id": "b1f39bc5-8f53-42bb-b3e5-9167518a1ed7",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-11T12:50:40+00:00",
+        "updated_at": "2022-03-11T12:50:40+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

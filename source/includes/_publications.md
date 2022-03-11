@@ -37,13 +37,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "b4d82c98-11cf-492f-9c21-0a0021a55658",
+      "id": "7dc83a02-79f8-42be-83c0-1a88aeff88f1",
       "type": "publications",
       "attributes": {
-        "created_at": "2022-03-09T10:03:59+00:00",
-        "updated_at": "2022-03-09T10:03:59+00:00",
-        "published_at": "2022-03-04T10:03:59+00:00",
-        "theme_id": "14c3ed0d-fc0e-490e-a054-e75ff3310391"
+        "created_at": "2022-03-11T12:50:39+00:00",
+        "updated_at": "2022-03-11T12:50:39+00:00",
+        "published_at": "2022-03-06T12:50:39+00:00",
+        "theme_id": "0ad1c17b-27f9-4d15-bb87-ad01a857af76"
       }
     }
   ],
@@ -63,7 +63,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-09T10:01:28Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-11T12:48:34Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -117,7 +117,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "5c3a2967-0493-4519-b1b9-e106caaa2159"
+          "theme_id": "ca70fdbd-6684-497f-981e-7e738101b065"
         }
       }
     }'
@@ -128,13 +128,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "54ba2b38-b9bf-45f0-8773-56e8156bbe5b",
+    "id": "6ea68bba-3d6a-47c2-b71c-9c984483e66d",
     "type": "publications",
     "attributes": {
-      "created_at": "2022-03-04T10:04:00+00:00",
-      "updated_at": "2022-03-04T10:04:00+00:00",
-      "published_at": "2022-03-04T10:04:00+00:00",
-      "theme_id": "5c3a2967-0493-4519-b1b9-e106caaa2159"
+      "created_at": "2022-03-06T12:50:39+00:00",
+      "updated_at": "2022-03-06T12:50:39+00:00",
+      "published_at": "2022-03-06T12:50:39+00:00",
+      "theme_id": "ca70fdbd-6684-497f-981e-7e738101b065"
     }
   },
   "meta": {}
