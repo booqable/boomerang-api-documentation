@@ -61,11 +61,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "07dd3406-8279-43f6-a439-74a5562d107a",
+      "id": "b084a059-122e-4af3-b9d8-bf60462b8902",
       "type": "locations",
       "attributes": {
-        "created_at": "2022-03-09T10:02:53+00:00",
-        "updated_at": "2022-03-09T10:02:53+00:00",
+        "created_at": "2022-03-15T10:35:31+00:00",
+        "updated_at": "2022-03-15T10:35:31+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Warehouse",
@@ -82,7 +82,7 @@ Name | Description
       "relationships": {
         "clusters": {
           "links": {
-            "related": "api/boomerang/clusters?filter[location_id]=07dd3406-8279-43f6-a439-74a5562d107a"
+            "related": "api/boomerang/clusters?filter[location_id]=b084a059-122e-4af3-b9d8-bf60462b8902"
           }
         }
       }
@@ -104,7 +104,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=clusters`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[locations]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-09T10:01:28Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-15T10:34:06Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -156,7 +156,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/locations/1ca0e286-51f3-4b08-aa1d-d8b0c67e97d3' \
+    --url 'https://example.booqable.com/api/boomerang/locations/e5e64008-06ec-418f-b0c4-71e68526dc7c' \
     --header 'content-type: application/json' \
 ```
 
@@ -165,11 +165,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1ca0e286-51f3-4b08-aa1d-d8b0c67e97d3",
+    "id": "e5e64008-06ec-418f-b0c4-71e68526dc7c",
     "type": "locations",
     "attributes": {
-      "created_at": "2022-03-09T10:02:54+00:00",
-      "updated_at": "2022-03-09T10:02:54+00:00",
+      "created_at": "2022-03-15T10:35:31+00:00",
+      "updated_at": "2022-03-15T10:35:31+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Warehouse",
@@ -186,7 +186,7 @@ This request accepts the following includes:
     "relationships": {
       "clusters": {
         "links": {
-          "related": "api/boomerang/clusters?filter[location_id]=1ca0e286-51f3-4b08-aa1d-d8b0c67e97d3"
+          "related": "api/boomerang/clusters?filter[location_id]=e5e64008-06ec-418f-b0c4-71e68526dc7c"
         }
       }
     }
@@ -244,7 +244,7 @@ This request accepts the following includes:
           "region": "Friesland",
           "country": "Netherlands",
           "cluster_ids": [
-            "afd613d9-d7cd-490a-9401-bd709bce1f55"
+            "1ba45e8d-b862-436c-b8ab-3f05176b4d8e"
           ]
         }
       },
@@ -257,11 +257,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9a4140d3-f462-41be-b158-728016a4fcab",
+    "id": "a11cd94a-538f-410d-a209-11af5d96abe1",
     "type": "locations",
     "attributes": {
-      "created_at": "2022-03-09T10:02:54+00:00",
-      "updated_at": "2022-03-09T10:02:54+00:00",
+      "created_at": "2022-03-15T10:35:31+00:00",
+      "updated_at": "2022-03-15T10:35:31+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Store",
@@ -274,7 +274,7 @@ This request accepts the following includes:
       "region": "Friesland",
       "country": "Netherlands",
       "cluster_ids": [
-        "afd613d9-d7cd-490a-9401-bd709bce1f55"
+        "1ba45e8d-b862-436c-b8ab-3f05176b4d8e"
       ]
     },
     "relationships": {
@@ -282,7 +282,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "clusters",
-            "id": "afd613d9-d7cd-490a-9401-bd709bce1f55"
+            "id": "1ba45e8d-b862-436c-b8ab-3f05176b4d8e"
           }
         ]
       }
@@ -290,14 +290,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "afd613d9-d7cd-490a-9401-bd709bce1f55",
+      "id": "1ba45e8d-b862-436c-b8ab-3f05176b4d8e",
       "type": "clusters",
       "attributes": {
-        "created_at": "2022-03-09T10:02:54+00:00",
-        "updated_at": "2022-03-09T10:02:54+00:00",
+        "created_at": "2022-03-15T10:35:31+00:00",
+        "updated_at": "2022-03-15T10:35:31+00:00",
         "name": "North",
         "location_ids": [
-          "9a4140d3-f462-41be-b158-728016a4fcab"
+          "a11cd94a-538f-410d-a209-11af5d96abe1"
         ]
       },
       "relationships": {
@@ -365,17 +365,17 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/locations/5ca25636-0e7c-4460-8a0f-18bd70e18c98' \
+    --url 'https://example.booqable.com/api/boomerang/locations/21a9e5ca-c6df-4f8b-afda-f132227e5861' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5ca25636-0e7c-4460-8a0f-18bd70e18c98",
+        "id": "21a9e5ca-c6df-4f8b-afda-f132227e5861",
         "type": "locations",
         "attributes": {
           "name": "Old warehouse",
           "cluster_ids": [
-            "fe581794-2fa6-4e6b-9500-0b2131e9bc2b",
-            "150ae709-37b2-4d4d-bd1b-a48e2703bd79"
+            "d05e7bdb-40ee-4ca7-801e-d67b66d8674d",
+            "257678f3-0225-4694-a635-7600506470c6"
           ]
         }
       },
@@ -388,11 +388,11 @@ Note that disassociating clusters may result in a shortage error.
 ```json
   {
   "data": {
-    "id": "5ca25636-0e7c-4460-8a0f-18bd70e18c98",
+    "id": "21a9e5ca-c6df-4f8b-afda-f132227e5861",
     "type": "locations",
     "attributes": {
-      "created_at": "2022-03-09T10:02:54+00:00",
-      "updated_at": "2022-03-09T10:02:54+00:00",
+      "created_at": "2022-03-15T10:35:32+00:00",
+      "updated_at": "2022-03-15T10:35:32+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Old warehouse",
@@ -405,8 +405,8 @@ Note that disassociating clusters may result in a shortage error.
       "region": "Friesland",
       "country": "Netherlands",
       "cluster_ids": [
-        "fe581794-2fa6-4e6b-9500-0b2131e9bc2b",
-        "150ae709-37b2-4d4d-bd1b-a48e2703bd79"
+        "d05e7bdb-40ee-4ca7-801e-d67b66d8674d",
+        "257678f3-0225-4694-a635-7600506470c6"
       ]
     },
     "relationships": {
@@ -414,11 +414,11 @@ Note that disassociating clusters may result in a shortage error.
         "data": [
           {
             "type": "clusters",
-            "id": "fe581794-2fa6-4e6b-9500-0b2131e9bc2b"
+            "id": "d05e7bdb-40ee-4ca7-801e-d67b66d8674d"
           },
           {
             "type": "clusters",
-            "id": "150ae709-37b2-4d4d-bd1b-a48e2703bd79"
+            "id": "257678f3-0225-4694-a635-7600506470c6"
           }
         ]
       }
@@ -426,14 +426,14 @@ Note that disassociating clusters may result in a shortage error.
   },
   "included": [
     {
-      "id": "fe581794-2fa6-4e6b-9500-0b2131e9bc2b",
+      "id": "d05e7bdb-40ee-4ca7-801e-d67b66d8674d",
       "type": "clusters",
       "attributes": {
-        "created_at": "2022-03-09T10:02:54+00:00",
-        "updated_at": "2022-03-09T10:02:54+00:00",
+        "created_at": "2022-03-15T10:35:32+00:00",
+        "updated_at": "2022-03-15T10:35:32+00:00",
         "name": "North",
         "location_ids": [
-          "5ca25636-0e7c-4460-8a0f-18bd70e18c98"
+          "21a9e5ca-c6df-4f8b-afda-f132227e5861"
         ]
       },
       "relationships": {
@@ -445,14 +445,14 @@ Note that disassociating clusters may result in a shortage error.
       }
     },
     {
-      "id": "150ae709-37b2-4d4d-bd1b-a48e2703bd79",
+      "id": "257678f3-0225-4694-a635-7600506470c6",
       "type": "clusters",
       "attributes": {
-        "created_at": "2022-03-09T10:02:54+00:00",
-        "updated_at": "2022-03-09T10:02:54+00:00",
+        "created_at": "2022-03-15T10:35:32+00:00",
+        "updated_at": "2022-03-15T10:35:32+00:00",
         "name": "Central",
         "location_ids": [
-          "5ca25636-0e7c-4460-8a0f-18bd70e18c98"
+          "21a9e5ca-c6df-4f8b-afda-f132227e5861"
         ]
       },
       "relationships": {
@@ -473,11 +473,11 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/locations/e98aff81-3eed-4fd4-a8b1-b330138d38b3' \
+    --url 'https://example.booqable.com/api/boomerang/locations/a09b2410-556b-4968-af02-770b28ad975e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e98aff81-3eed-4fd4-a8b1-b330138d38b3",
+        "id": "a09b2410-556b-4968-af02-770b28ad975e",
         "type": "locations",
         "attributes": {
           "name": "Old warehouse",
@@ -504,12 +504,12 @@ Note that disassociating clusters may result in a shortage error.
           {
             "reason": "shortage",
             "shortage": 2,
-            "item_id": "71d8760e-5398-4486-a13b-fecb5ea1ffbb",
+            "item_id": "b5150406-9974-4f3c-a261-40c5601167f9",
             "mutation": 0,
             "order_ids": [
-              "82a0ae14-3878-49c6-9f46-48c5853f7ca8"
+              "cf95a021-2b40-4e73-bd6b-7422c4262128"
             ],
-            "location_id": "e98aff81-3eed-4fd4-a8b1-b330138d38b3",
+            "location_id": "a09b2410-556b-4968-af02-770b28ad975e",
             "available": -2,
             "plannable": -2,
             "stock_count": 0,
@@ -583,7 +583,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/670a7af4-a7ac-4832-bcfc-cce7fa7ae497' \
+    --url 'https://example.booqable.com/api/boomerang/locations/857e6a9f-5cdf-484f-844e-eaee25920baa' \
     --header 'content-type: application/json' \
 ```
 
@@ -600,7 +600,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/5b83a108-06e1-4907-8a2d-63838a04e83c' \
+    --url 'https://example.booqable.com/api/boomerang/locations/566aee9f-8e8b-43d0-aa73-e41612d2d604' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -617,7 +617,7 @@ To archive a location make sure that:
       "detail": "This location has running or future orders",
       "meta": {
         "order_ids": [
-          "61ded99b-141f-48ca-8e9c-ab3fd3c1ae9c"
+          "379317ed-6428-4987-905f-75e96376c11c"
         ]
       }
     }
@@ -630,7 +630,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/cae88f02-bd45-405e-ad62-2690e1c54774' \
+    --url 'https://example.booqable.com/api/boomerang/locations/2e6d4979-cb7b-41fa-b9e0-26480388a2c8' \
     --header 'content-type: application/json' \
 ```
 
@@ -646,7 +646,7 @@ To archive a location make sure that:
       "detail": "This location has active stock",
       "meta": {
         "item_ids": [
-          "333bd058-9347-4471-88ea-08bbbd85e2c2"
+          "333cd024-e05f-4d40-9a3d-26cf1cde5540"
         ]
       }
     }
