@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "ebdda8b5-45ed-5e56-a485-98acd2d35d02",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
-      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
-      "locations_updated_at": "2022-03-09T10:04:00+00:00",
-      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
-      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
+      "updated_at": "2022-03-15T16:25:24+00:00",
+      "company_id": "e105d810-9293-4d39-8e55-11f580110064",
+      "employee_id": "16e013bc-e2ea-4168-afe1-68ccb3c88e29",
+      "locations_updated_at": "2022-03-15T16:25:24+00:00",
+      "clusters_updated_at": "2022-03-15T16:25:24+00:00",
+      "default_properties_updated_at": "2022-03-15T16:25:24+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "975c2820-1934-520b-b3ed-d269c55358fa",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
-      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "updated_at": "2022-03-15T16:25:25+00:00",
+      "company_id": "9dfeaaa8-0113-47b9-8df4-1b66aca102c7",
+      "employee_id": "eda4a103-5660-4e5d-91a3-b82c72194a6d",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
+          "id": "9dfeaaa8-0113-47b9-8df4-1b66aca102c7"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
+          "id": "eda4a103-5660-4e5d-91a3-b82c72194a6d"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "id": "9dfeaaa8-0113-47b9-8df4-1b66aca102c7",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-15T16:25:25+00:00",
+        "updated_at": "2022-03-15T16:25:25+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-848-042-0249 x77725",
-        "website": "http://heaney-bauch.info/maida",
-        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
-        "address_line_1": "Ezequiel Cliff",
-        "address_line_2": "35238 Alisia Course",
-        "zipcode": "79220-3985",
-        "city": "Port Aurelio",
+        "phone": "945.159.5140 x919",
+        "website": "http://hettinger.info/ai",
+        "address": "Ward Meadow\n7625 Jesenia Forest\n09680-7263 East Chistad\nMaldives",
+        "address_line_1": "Ward Meadow",
+        "address_line_2": "7625 Jesenia Forest",
+        "zipcode": "09680-7263",
+        "city": "East Chistad",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "Maldives",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7608 Schaden Gateway",
-        "financial_line_2": "86782-2917 West Connie",
+        "financial_line_1": "362 Mraz Parkways",
+        "financial_line_2": "71900 North Nildaborough",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-23T10:04:00.689Z",
+          "trial_ends_at": "2022-03-29T16:25:25.009Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "id": "eda4a103-5660-4e5d-91a3-b82c72194a6d",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-15T16:25:25+00:00",
+        "updated_at": "2022-03-15T16:25:25+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

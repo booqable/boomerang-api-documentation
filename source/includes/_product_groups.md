@@ -108,11 +108,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "40cd7ccd-c49d-4ec6-bf0b-dbd4f22e9537",
+      "id": "2c608183-da44-42f1-9f7d-a0e7dc758101",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-03-09T10:03:47+00:00",
-        "updated_at": "2022-03-09T10:03:47+00:00",
+        "created_at": "2022-03-15T16:25:13+00:00",
+        "updated_at": "2022-03-15T16:25:13+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -148,7 +148,7 @@ Name | Description
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=40cd7ccd-c49d-4ec6-bf0b-dbd4f22e9537"
+            "related": "api/boomerang/categories?filter[item_id]=2c608183-da44-42f1-9f7d-a0e7dc758101"
           }
         },
         "photo": {
@@ -158,7 +158,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=40cd7ccd-c49d-4ec6-bf0b-dbd4f22e9537"
+            "related": "api/boomerang/products?filter[product_group_id]=2c608183-da44-42f1-9f7d-a0e7dc758101"
           }
         },
         "tax_category": {
@@ -168,7 +168,7 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=40cd7ccd-c49d-4ec6-bf0b-dbd4f22e9537&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=2c608183-da44-42f1-9f7d-a0e7dc758101&filter[owner_type]=product_groups"
           }
         }
       }
@@ -190,7 +190,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,categories,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-09T10:01:28Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-15T16:22:59Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -281,7 +281,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/4ad356ba-1a1c-4a28-8129-c5f5ae3fbf02' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/34b10bd3-f2e4-4f2a-b2d8-d63039fedaa1' \
     --header 'content-type: application/json' \
 ```
 
@@ -290,11 +290,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4ad356ba-1a1c-4a28-8129-c5f5ae3fbf02",
+    "id": "34b10bd3-f2e4-4f2a-b2d8-d63039fedaa1",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-03-09T10:03:47+00:00",
-      "updated_at": "2022-03-09T10:03:47+00:00",
+      "created_at": "2022-03-15T16:25:14+00:00",
+      "updated_at": "2022-03-15T16:25:14+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -330,7 +330,7 @@ This request accepts the following includes:
     "relationships": {
       "categories": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=4ad356ba-1a1c-4a28-8129-c5f5ae3fbf02"
+          "related": "api/boomerang/categories?filter[item_id]=34b10bd3-f2e4-4f2a-b2d8-d63039fedaa1"
         }
       },
       "photo": {
@@ -340,7 +340,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=4ad356ba-1a1c-4a28-8129-c5f5ae3fbf02"
+          "related": "api/boomerang/products?filter[product_group_id]=34b10bd3-f2e4-4f2a-b2d8-d63039fedaa1"
         }
       },
       "tax_category": {
@@ -350,7 +350,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=4ad356ba-1a1c-4a28-8129-c5f5ae3fbf02&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=34b10bd3-f2e4-4f2a-b2d8-d63039fedaa1&filter[owner_type]=product_groups"
         }
       }
     }
@@ -435,11 +435,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9041934e-dece-4d1c-bb3a-c8e0a04dbd49",
+    "id": "86bc5ab2-33bf-43f0-8b83-be317900aa44",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-03-09T10:03:48+00:00",
-      "updated_at": "2022-03-09T10:03:48+00:00",
+      "created_at": "2022-03-15T16:25:14+00:00",
+      "updated_at": "2022-03-15T16:25:14+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -593,11 +593,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/31c4b963-d3dd-4111-8a3e-0ee2d6d805c7' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/84647949-65da-49f6-9b31-45319afadf5d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "31c4b963-d3dd-4111-8a3e-0ee2d6d805c7",
+        "id": "84647949-65da-49f6-9b31-45319afadf5d",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -611,11 +611,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "31c4b963-d3dd-4111-8a3e-0ee2d6d805c7",
+    "id": "84647949-65da-49f6-9b31-45319afadf5d",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-03-09T10:03:49+00:00",
-      "updated_at": "2022-03-09T10:03:49+00:00",
+      "created_at": "2022-03-15T16:25:15+00:00",
+      "updated_at": "2022-03-15T16:25:15+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -766,7 +766,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/bc9a150d-3691-4a6a-a1f8-fa740e7d9301' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/f8e7c580-95de-40e8-956f-d7307ac61b76' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

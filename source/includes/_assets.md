@@ -44,18 +44,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "93fb1e18-9e83-4a07-b022-a68d560b41d7",
+      "id": "ce83eb4a-5b96-42f6-9066-5ad07cfb4907",
       "type": "assets",
       "attributes": {
-        "created_at": "2022-03-09T10:01:31+00:00",
-        "updated_at": "2022-03-09T10:01:31+00:00",
+        "created_at": "2022-03-15T16:23:03+00:00",
+        "updated_at": "2022-03-15T16:23:03+00:00",
         "key": "templates/index.json",
         "checksum": "584f28d8181faf694dfc2aef58b542add1c5d99262de7bca9d043c3da82fbadd",
         "content_type": "application/json",
         "value": "{ name: 'index' }",
-        "published_at": "2022-03-02T10:01:31+00:00",
+        "published_at": "2022-03-08T16:23:03+00:00",
         "file_url": null,
-        "theme_id": "0af9caf0-7bed-4ca2-bff6-63c62ab2d883"
+        "theme_id": "1a75418d-6592-4f01-92f5-02ef6d4b6a0c"
       }
     }
   ],
@@ -75,7 +75,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[assets]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-09T10:01:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-15T16:22:59Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -135,7 +135,7 @@ This request accepts the following includes:
         "attributes": {
           "key": "templates/index.json",
           "value": "{ name: 'index' }",
-          "theme_id": "36314e6b-8fed-4c43-bdcf-8773dedc529f"
+          "theme_id": "7d328c6f-360b-4ad3-a2be-9e865f2b6b3b"
         }
       }
     }'
@@ -146,18 +146,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5ae8bbd5-ba74-4f49-8f22-9805c08937f1",
+    "id": "41d32e90-8825-45f0-91ff-8ad97782c880",
     "type": "assets",
     "attributes": {
-      "created_at": "2022-03-09T10:01:32+00:00",
-      "updated_at": "2022-03-09T10:01:32+00:00",
+      "created_at": "2022-03-15T16:23:04+00:00",
+      "updated_at": "2022-03-15T16:23:04+00:00",
       "key": "templates/index.json",
       "checksum": "584f28d8181faf694dfc2aef58b542add1c5d99262de7bca9d043c3da82fbadd",
       "content_type": "application/json",
       "value": "{ name: 'index' }",
       "published_at": null,
       "file_url": null,
-      "theme_id": "36314e6b-8fed-4c43-bdcf-8773dedc529f"
+      "theme_id": "7d328c6f-360b-4ad3-a2be-9e865f2b6b3b"
     }
   },
   "meta": {}
@@ -208,7 +208,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/assets/38253931-d96b-4578-8f04-d9d45893f2d4' \
+    --url 'https://example.booqable.com/api/boomerang/assets/19021910-d82a-4d6c-b06c-cabfdb0db3c6' \
     --header 'content-type: application/json' \
 ```
 
