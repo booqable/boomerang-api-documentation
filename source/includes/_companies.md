@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42310cad-1b7e-4393-9b87-14cd7d1887df",
+    "id": "264d9d38-bb10-470e-bb20-281237f595f8",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:56+00:00",
-      "updated_at": "2022-03-09T10:01:56+00:00",
+      "created_at": "2022-03-17T10:02:35+00:00",
+      "updated_at": "2022-03-17T10:02:35+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "1-766-846-9294 x47774",
-      "website": "http://kuhic-doyle.co/austin.buckridge",
-      "address": "Jarod Street\n6566 Lily Brook\n08455 Shilohfurt\nVirgin Islands, U.S.",
-      "address_line_1": "Jarod Street",
-      "address_line_2": "6566 Lily Brook",
-      "zipcode": "08455",
-      "city": "Shilohfurt",
+      "phone": "569.841.9897 x0071",
+      "website": "http://fisher.info/isiah",
+      "address": "Stracke Points\n5762 Gennie Isle\n04343 Schaeferfurt\nGermany",
+      "address_line_1": "Stracke Points",
+      "address_line_2": "5762 Gennie Isle",
+      "zipcode": "04343",
+      "city": "Schaeferfurt",
       "region": null,
-      "country": "Virgin Islands, U.S.",
+      "country": "Germany",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "6310 Clair Views",
-      "financial_line_2": "33900-1900 West Rosalina",
+      "financial_line_1": "785 Glover Rest",
+      "financial_line_2": "43171-6826 Sonburgh",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f5782057-030f-461b-9aa0-27aa47a09738",
+    "id": "a0612a4e-4368-4c97-9282-5c2f913340df",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-03-23T10:01:57.167Z",
+        "trial_ends_at": "2022-03-31T10:02:35.652Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+        "id": "59fad81c-daca-426b-9d6d-4c24cffb345f",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+    "id": "59fad81c-daca-426b-9d6d-4c24cffb345f",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:57+00:00",
-      "updated_at": "2022-03-09T10:01:57+00:00",
+      "created_at": "2022-03-17T10:02:35+00:00",
+      "updated_at": "2022-03-17T10:02:35+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "1-193-563-5137 x43978",
-      "website": "http://grady-wisozk.name/valeria",
-      "address": "Ute Trail\n4497 Predovic Plaza\n39158-9117 Tamaville\nYemen",
-      "address_line_1": "Ute Trail",
-      "address_line_2": "4497 Predovic Plaza",
-      "zipcode": "39158-9117",
-      "city": "Tamaville",
+      "phone": "495-623-0217 x2255",
+      "website": "http://bogisich.info/emelina",
+      "address": "West Circle\n684 Tarra Mews\n11850-6932 Port Junkoport\nBolivia",
+      "address_line_1": "West Circle",
+      "address_line_2": "684 Tarra Mews",
+      "zipcode": "11850-6932",
+      "city": "Port Junkoport",
       "region": null,
-      "country": "Yemen",
+      "country": "Bolivia",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "72107 Silas Loop",
-      "financial_line_2": "62162-8096 Stephaniestad",
+      "financial_line_1": "601 Maricruz Harbors",
+      "financial_line_2": "45427 Port Graig",
       "vat_number": null,
       "custom_domain": null,
       "development": false
