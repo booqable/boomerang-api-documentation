@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42310cad-1b7e-4393-9b87-14cd7d1887df",
+    "id": "14ecec50-6681-478f-92c1-9fa20dbb0706",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:56+00:00",
-      "updated_at": "2022-03-09T10:01:56+00:00",
+      "created_at": "2022-03-24T12:36:19+00:00",
+      "updated_at": "2022-03-24T12:36:19+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "1-766-846-9294 x47774",
-      "website": "http://kuhic-doyle.co/austin.buckridge",
-      "address": "Jarod Street\n6566 Lily Brook\n08455 Shilohfurt\nVirgin Islands, U.S.",
-      "address_line_1": "Jarod Street",
-      "address_line_2": "6566 Lily Brook",
-      "zipcode": "08455",
-      "city": "Shilohfurt",
+      "phone": "167-041-0638 x53502",
+      "website": "http://koss.net/agnus.morissette",
+      "address": "Fisher Villages\n819 Douglas Unions\n34323 Frankshire\nFiji",
+      "address_line_1": "Fisher Villages",
+      "address_line_2": "819 Douglas Unions",
+      "zipcode": "34323",
+      "city": "Frankshire",
       "region": null,
-      "country": "Virgin Islands, U.S.",
+      "country": "Fiji",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "6310 Clair Views",
-      "financial_line_2": "33900-1900 West Rosalina",
+      "financial_line_1": "5118 Wuckert Course",
+      "financial_line_2": "48720 Lake Darrickbury",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f5782057-030f-461b-9aa0-27aa47a09738",
+    "id": "4c1bfab2-5f94-4767-8c1c-16255b77a18f",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-03-23T10:01:57.167Z",
+        "trial_ends_at": "2022-04-07T12:36:19.648Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+        "id": "20c49b7a-7c6b-4a68-8d44-5b7bbee5f0d7",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+    "id": "20c49b7a-7c6b-4a68-8d44-5b7bbee5f0d7",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:57+00:00",
-      "updated_at": "2022-03-09T10:01:57+00:00",
+      "created_at": "2022-03-24T12:36:19+00:00",
+      "updated_at": "2022-03-24T12:36:20+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "1-193-563-5137 x43978",
-      "website": "http://grady-wisozk.name/valeria",
-      "address": "Ute Trail\n4497 Predovic Plaza\n39158-9117 Tamaville\nYemen",
-      "address_line_1": "Ute Trail",
-      "address_line_2": "4497 Predovic Plaza",
-      "zipcode": "39158-9117",
-      "city": "Tamaville",
+      "phone": "455-963-8523 x8540",
+      "website": "http://kutch-swaniawski.org/jaime",
+      "address": "Schmeler Village\n79454 Strosin Circles\n18367-3097 New Rhodaside\nVietnam",
+      "address_line_1": "Schmeler Village",
+      "address_line_2": "79454 Strosin Circles",
+      "zipcode": "18367-3097",
+      "city": "New Rhodaside",
       "region": null,
-      "country": "Yemen",
+      "country": "Vietnam",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "72107 Silas Loop",
-      "financial_line_2": "62162-8096 Stephaniestad",
+      "financial_line_1": "9215 Funk Station",
+      "financial_line_2": "91485 Lucillaborough",
       "vat_number": null,
       "custom_domain": null,
       "development": false
