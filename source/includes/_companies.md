@@ -69,24 +69,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42310cad-1b7e-4393-9b87-14cd7d1887df",
+    "id": "cc918101-b9cc-4f51-bea2-5d3a4b9777b2",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:56+00:00",
-      "updated_at": "2022-03-09T10:01:56+00:00",
+      "created_at": "2022-03-25T08:52:47+00:00",
+      "updated_at": "2022-03-25T08:52:47+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "1-766-846-9294 x47774",
-      "website": "http://kuhic-doyle.co/austin.buckridge",
-      "address": "Jarod Street\n6566 Lily Brook\n08455 Shilohfurt\nVirgin Islands, U.S.",
-      "address_line_1": "Jarod Street",
-      "address_line_2": "6566 Lily Brook",
-      "zipcode": "08455",
-      "city": "Shilohfurt",
+      "phone": "1-356-672-3366",
+      "website": "http://reichel.com/danilo",
+      "address": "Juan Fort\n75112 Jakubowski Mission\n91169-2964 North Devorahborough\nSaint Kitts and Nevis",
+      "address_line_1": "Juan Fort",
+      "address_line_2": "75112 Jakubowski Mission",
+      "zipcode": "91169-2964",
+      "city": "North Devorahborough",
       "region": null,
-      "country": "Virgin Islands, U.S.",
+      "country": "Saint Kitts and Nevis",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,8 +98,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "6310 Clair Views",
-      "financial_line_2": "33900-1900 West Rosalina",
+      "financial_line_1": "82259 Edmond Mission",
+      "financial_line_2": "28858-8114 Jasonchester",
       "vat_number": null,
       "custom_domain": null,
       "development": false
@@ -170,11 +170,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f5782057-030f-461b-9aa0-27aa47a09738",
+    "id": "bc32da0a-550f-4ba2-8909-0ccee200ef33",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-03-23T10:01:57.167Z",
+        "trial_ends_at": "2022-04-08T08:52:47.337Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +258,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+        "id": "9932a774-49e4-4e04-969b-a5a3c5f843bc",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +272,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+    "id": "9932a774-49e4-4e04-969b-a5a3c5f843bc",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:57+00:00",
-      "updated_at": "2022-03-09T10:01:57+00:00",
+      "created_at": "2022-03-25T08:52:47+00:00",
+      "updated_at": "2022-03-25T08:52:47+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "1-193-563-5137 x43978",
-      "website": "http://grady-wisozk.name/valeria",
-      "address": "Ute Trail\n4497 Predovic Plaza\n39158-9117 Tamaville\nYemen",
-      "address_line_1": "Ute Trail",
-      "address_line_2": "4497 Predovic Plaza",
-      "zipcode": "39158-9117",
-      "city": "Tamaville",
+      "phone": "556-553-3651 x7313",
+      "website": "http://kautzer.com/thomas",
+      "address": "Leannon Mountain\n2839 Rempel Valley\n90474 West Jacquelineport\nAlgeria",
+      "address_line_1": "Leannon Mountain",
+      "address_line_2": "2839 Rempel Valley",
+      "zipcode": "90474",
+      "city": "West Jacquelineport",
       "region": null,
-      "country": "Yemen",
+      "country": "Algeria",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,8 +301,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "72107 Silas Loop",
-      "financial_line_2": "62162-8096 Stephaniestad",
+      "financial_line_1": "16311 Cartwright Loop",
+      "financial_line_2": "89554 Elmofort",
       "vat_number": null,
       "custom_domain": null,
       "development": false

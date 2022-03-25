@@ -67,16 +67,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "26ce5985-5417-42d7-a74b-f7f03697cf0e",
+      "id": "3f220401-f9dc-4914-aee7-3aa1932bdb60",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-03-09T10:02:00+00:00",
-        "updated_at": "2022-03-09T10:02:00+00:00",
+        "created_at": "2022-03-25T08:52:50+00:00",
+        "updated_at": "2022-03-25T08:52:50+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john.doe@bogisich.io",
+        "email": "doe.john@kovacek-armstrong.io",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -99,17 +99,17 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=26ce5985-5417-42d7-a74b-f7f03697cf0e&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=3f220401-f9dc-4914-aee7-3aa1932bdb60&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=26ce5985-5417-42d7-a74b-f7f03697cf0e&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=3f220401-f9dc-4914-aee7-3aa1932bdb60&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=26ce5985-5417-42d7-a74b-f7f03697cf0e&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=3f220401-f9dc-4914-aee7-3aa1932bdb60&filter[owner_type]=customers"
           }
         }
       }
@@ -131,7 +131,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-09T10:01:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-25T08:52:17Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -185,7 +185,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/46194c3b-7879-4539-913f-dc341c88c695?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/b3c3262d-5094-4c89-8f28-606e244df509?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -194,16 +194,16 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "46194c3b-7879-4539-913f-dc341c88c695",
+    "id": "b3c3262d-5094-4c89-8f28-606e244df509",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-03-09T10:02:01+00:00",
-      "updated_at": "2022-03-09T10:02:01+00:00",
+      "created_at": "2022-03-25T08:52:51+00:00",
+      "updated_at": "2022-03-25T08:52:51+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "John Doe",
-      "email": "doe_john@hilll-harber.biz",
+      "email": "doe_john@smith.io",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -226,19 +226,19 @@ This request does not accept any includes
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=46194c3b-7879-4539-913f-dc341c88c695&filter[owner_type]=customers"
+          "related": "api/boomerang/properties?filter[owner_id]=b3c3262d-5094-4c89-8f28-606e244df509&filter[owner_type]=customers"
         },
         "data": []
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=46194c3b-7879-4539-913f-dc341c88c695&filter[owner_type]=customers"
+          "related": "api/boomerang/barcodes?filter[owner_id]=b3c3262d-5094-4c89-8f28-606e244df509&filter[owner_type]=customers"
         },
         "data": null
       },
       "notes": {
         "links": {
-          "related": "api/boomerang/notes?filter[owner_id]=46194c3b-7879-4539-913f-dc341c88c695&filter[owner_type]=customers"
+          "related": "api/boomerang/notes?filter[owner_id]=b3c3262d-5094-4c89-8f28-606e244df509&filter[owner_type]=customers"
         }
       }
     }
@@ -304,11 +304,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a79929e4-98fc-423d-9de1-e36145c44129",
+    "id": "9cf0e661-cd48-4805-b4a4-6a63e93681b9",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-03-09T10:02:02+00:00",
-      "updated_at": "2022-03-09T10:02:02+00:00",
+      "created_at": "2022-03-25T08:52:52+00:00",
+      "updated_at": "2022-03-25T08:52:52+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -412,11 +412,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/948083c5-4e98-4caa-8818-b9d7b7577dde' \
+    --url 'https://example.booqable.com/api/boomerang/customers/78b18a0f-24a9-408a-be0d-381541a0ab1e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "948083c5-4e98-4caa-8818-b9d7b7577dde",
+        "id": "78b18a0f-24a9-408a-be0d-381541a0ab1e",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -430,16 +430,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "948083c5-4e98-4caa-8818-b9d7b7577dde",
+    "id": "78b18a0f-24a9-408a-be0d-381541a0ab1e",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-03-09T10:02:02+00:00",
-      "updated_at": "2022-03-09T10:02:03+00:00",
+      "created_at": "2022-03-25T08:52:53+00:00",
+      "updated_at": "2022-03-25T08:52:53+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "Jane Doe",
-      "email": "john.doe@crooks.biz",
+      "email": "john.doe@romaguera.name",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -538,7 +538,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/fcc3ac75-ba0f-4dc4-bf00-551f4ad74737' \
+    --url 'https://example.booqable.com/api/boomerang/customers/dd8bf489-74b4-4851-89a8-f66eeb6dbc89' \
     --header 'content-type: application/json' \
 ```
 

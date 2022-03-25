@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "609072a7-6939-506d-888f-91c9736d8149",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
-      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
-      "locations_updated_at": "2022-03-09T10:04:00+00:00",
-      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
-      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
+      "updated_at": "2022-03-25T08:54:26+00:00",
+      "company_id": "69ac9d69-168c-4b8d-ab48-17dcfe904ca7",
+      "employee_id": "1f59f429-e262-4f5b-ba41-b8a02bc7bae3",
+      "locations_updated_at": "2022-03-25T08:54:26+00:00",
+      "clusters_updated_at": "2022-03-25T08:54:26+00:00",
+      "default_properties_updated_at": "2022-03-25T08:54:26+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "609072a7-6939-506d-888f-91c9736d8149",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
-      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "updated_at": "2022-03-25T08:54:26+00:00",
+      "company_id": "132c2dab-5297-4b80-af3c-de28b239b5fe",
+      "employee_id": "3de0a73d-bcbe-40d1-8574-89a1fc4f6e3c",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
+          "id": "132c2dab-5297-4b80-af3c-de28b239b5fe"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
+          "id": "3de0a73d-bcbe-40d1-8574-89a1fc4f6e3c"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "id": "132c2dab-5297-4b80-af3c-de28b239b5fe",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-25T08:54:26+00:00",
+        "updated_at": "2022-03-25T08:54:26+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-848-042-0249 x77725",
-        "website": "http://heaney-bauch.info/maida",
-        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
-        "address_line_1": "Ezequiel Cliff",
-        "address_line_2": "35238 Alisia Course",
-        "zipcode": "79220-3985",
-        "city": "Port Aurelio",
+        "phone": "1-665-556-6465 x601",
+        "website": "http://kuvalis.biz/hellen",
+        "address": "Wilbur Streets\n887 Hauck Points\n14475 North Shawnda\nFrench Polynesia",
+        "address_line_1": "Wilbur Streets",
+        "address_line_2": "887 Hauck Points",
+        "zipcode": "14475",
+        "city": "North Shawnda",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "French Polynesia",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7608 Schaden Gateway",
-        "financial_line_2": "86782-2917 West Connie",
+        "financial_line_1": "87555 Lucius Highway",
+        "financial_line_2": "81282 Edmondmouth",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-23T10:04:00.689Z",
+          "trial_ends_at": "2022-04-08T08:54:26.963Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "id": "3de0a73d-bcbe-40d1-8574-89a1fc4f6e3c",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-25T08:54:26+00:00",
+        "updated_at": "2022-03-25T08:54:26+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
