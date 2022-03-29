@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/category_items?filter%5Bcategory_id%5D=8f757995-800c-41d8-97ab-1a7a7143b04c&includes=item' \
+    --url 'https://example.booqable.com/api/boomerang/category_items?filter%5Bcategory_id%5D=caf1533b-4f97-48a7-b561-525d4a9831e2&includes=item' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,12 +49,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "0f0da63d-5589-4e6e-9ec4-5106bc5a56d2",
-      "created_at": "2022-03-09T10:01:52+00:00",
-      "updated_at": "2022-03-09T10:01:52+00:00",
+      "id": "47a91d71-b982-4dbb-a9f0-5593b3ab56bf",
+      "created_at": "2022-03-29T09:19:40+00:00",
+      "updated_at": "2022-03-29T09:19:40+00:00",
       "position": null,
-      "item_id": "bd68cb08-1d85-4b0a-a91b-9e79561f9d77",
-      "category_id": "8f757995-800c-41d8-97ab-1a7a7143b04c"
+      "item_id": "5b58abac-08e8-4e49-b067-b60181de7ccc",
+      "category_id": "caf1533b-4f97-48a7-b561-525d4a9831e2"
     }
   ]
 }
@@ -72,7 +72,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=item,category`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[category_items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-09T10:01:27Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-03-29T09:19:15Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -130,8 +130,8 @@ This request accepts the following includes:
       "data": {
         "type": "category_item",
         "attributes": {
-          "category_id": "25eae886-7a4c-4f92-b72b-832f6bac3810",
-          "item_id": "c1b3a699-462a-4fd7-bc51-35925a7c1bad"
+          "category_id": "32fdd904-99c1-4959-b14e-e27f2e1477d3",
+          "item_id": "4bbda01b-112e-42c2-b9fa-5c1e4ca77268"
         }
       }
     }'
@@ -142,14 +142,14 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6c5c0bf3-8b0b-4f2f-8be8-1c5b5c2effab",
+    "id": "79407607-929f-498e-9a9b-1a1b1bef40f8",
     "type": "category_items",
     "attributes": {
-      "created_at": "2022-03-09T10:01:53+00:00",
-      "updated_at": "2022-03-09T10:01:53+00:00",
+      "created_at": "2022-03-29T09:19:40+00:00",
+      "updated_at": "2022-03-29T09:19:40+00:00",
       "position": null,
-      "item_id": "c1b3a699-462a-4fd7-bc51-35925a7c1bad",
-      "category_id": "25eae886-7a4c-4f92-b72b-832f6bac3810"
+      "item_id": "4bbda01b-112e-42c2-b9fa-5c1e4ca77268",
+      "category_id": "32fdd904-99c1-4959-b14e-e27f2e1477d3"
     },
     "relationships": {
       "item": {
@@ -218,7 +218,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/category_items/c1ec9abf-02fc-489a-b3e3-d5db89c64cc4' \
+    --url 'https://example.booqable.com/api/boomerang/category_items/52c9f41b-80ff-4b1a-9679-d5b90cbbc702' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

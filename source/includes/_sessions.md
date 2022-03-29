@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "25968f6c-32be-58cb-9c8e-f072ed8e905e",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
-      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
-      "locations_updated_at": "2022-03-09T10:04:00+00:00",
-      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
-      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
+      "updated_at": "2022-03-29T09:21:39+00:00",
+      "company_id": "a874f955-236d-4ca1-9a83-0b01528cc048",
+      "employee_id": "72b74eb8-cb5e-42ad-8a51-f31b81ab94e8",
+      "locations_updated_at": "2022-03-29T09:21:39+00:00",
+      "clusters_updated_at": "2022-03-29T09:21:39+00:00",
+      "default_properties_updated_at": "2022-03-29T09:21:39+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "5c029afb-9294-5b5c-8efd-b83985e1b6ee",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
-      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "updated_at": "2022-03-29T09:21:40+00:00",
+      "company_id": "be2ff24c-f101-4804-a13c-2e661b925e5b",
+      "employee_id": "6db539f3-bd5d-4f66-8183-7af8848442b4",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
+          "id": "be2ff24c-f101-4804-a13c-2e661b925e5b"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
+          "id": "6db539f3-bd5d-4f66-8183-7af8848442b4"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "id": "be2ff24c-f101-4804-a13c-2e661b925e5b",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-29T09:21:40+00:00",
+        "updated_at": "2022-03-29T09:21:40+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-848-042-0249 x77725",
-        "website": "http://heaney-bauch.info/maida",
-        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
-        "address_line_1": "Ezequiel Cliff",
-        "address_line_2": "35238 Alisia Course",
-        "zipcode": "79220-3985",
-        "city": "Port Aurelio",
+        "phone": "(586) 577-2807 x957",
+        "website": "http://becker.name/lowell",
+        "address": "Xenia Harbors\n298 Dooley Harbor\n94115 North Daniellaville\nCook Islands",
+        "address_line_1": "Xenia Harbors",
+        "address_line_2": "298 Dooley Harbor",
+        "zipcode": "94115",
+        "city": "North Daniellaville",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "Cook Islands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7608 Schaden Gateway",
-        "financial_line_2": "86782-2917 West Connie",
+        "financial_line_1": "223 Wilderman Gardens",
+        "financial_line_2": "61576 Kohlertown",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-23T10:04:00.689Z",
+          "trial_ends_at": "2022-04-12T09:21:40.793Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "id": "6db539f3-bd5d-4f66-8183-7af8848442b4",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-29T09:21:40+00:00",
+        "updated_at": "2022-03-29T09:21:40+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
