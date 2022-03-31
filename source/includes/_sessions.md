@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "b4e88b83-c801-59b5-b83b-412a84234b23",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
-      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
-      "locations_updated_at": "2022-03-09T10:04:00+00:00",
-      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
-      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
+      "updated_at": "2022-03-31T14:16:53+00:00",
+      "company_id": "4f040c41-f1a3-47d2-af25-67e1592765c2",
+      "employee_id": "c5ff7af4-97db-47db-9c3d-dff30f7bcfa3",
+      "locations_updated_at": "2022-03-31T14:16:53+00:00",
+      "clusters_updated_at": "2022-03-31T14:16:53+00:00",
+      "default_properties_updated_at": "2022-03-31T14:16:53+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "5920f620-2227-5108-9271-599f8901797f",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
-      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "updated_at": "2022-03-31T14:16:54+00:00",
+      "company_id": "0b0c4d13-7617-4973-86b6-e0c5d49ddb69",
+      "employee_id": "eed94a23-3023-4c6d-a7b3-3814f2f0ed29",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
+          "id": "0b0c4d13-7617-4973-86b6-e0c5d49ddb69"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
+          "id": "eed94a23-3023-4c6d-a7b3-3814f2f0ed29"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "id": "0b0c4d13-7617-4973-86b6-e0c5d49ddb69",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-31T14:16:54+00:00",
+        "updated_at": "2022-03-31T14:16:54+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-848-042-0249 x77725",
-        "website": "http://heaney-bauch.info/maida",
-        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
-        "address_line_1": "Ezequiel Cliff",
-        "address_line_2": "35238 Alisia Course",
-        "zipcode": "79220-3985",
-        "city": "Port Aurelio",
+        "phone": "396.625.5186 x222",
+        "website": "http://brown-greenholt.org/venetta",
+        "address": "Rodney Trail\n22044 Steuber Shore\n07038-1145 Hoegerborough\nTogo",
+        "address_line_1": "Rodney Trail",
+        "address_line_2": "22044 Steuber Shore",
+        "zipcode": "07038-1145",
+        "city": "Hoegerborough",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "Togo",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7608 Schaden Gateway",
-        "financial_line_2": "86782-2917 West Connie",
+        "financial_line_1": "26270 Tim Flat",
+        "financial_line_2": "18559 Cecilmouth",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-23T10:04:00.689Z",
+          "trial_ends_at": "2022-04-14T14:16:53.978Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "id": "eed94a23-3023-4c6d-a7b3-3814f2f0ed29",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-03-31T14:16:54+00:00",
+        "updated_at": "2022-03-31T14:16:54+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
