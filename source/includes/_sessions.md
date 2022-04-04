@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "4b255a15-6eef-597c-b4b4-b9b92d25c170",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
-      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
-      "locations_updated_at": "2022-03-09T10:04:00+00:00",
-      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
-      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
+      "updated_at": "2022-04-04T13:23:16+00:00",
+      "company_id": "d270ea3b-60c1-48c1-9b05-57383ac067b7",
+      "employee_id": "99213eb9-46e3-41c5-997c-b422e86a7396",
+      "locations_updated_at": "2022-04-04T13:23:16+00:00",
+      "clusters_updated_at": "2022-04-04T13:23:16+00:00",
+      "default_properties_updated_at": "2022-04-04T13:23:16+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "9678150f-cecc-534b-ba77-85ba05b0a27f",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
-      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "updated_at": "2022-04-04T13:23:17+00:00",
+      "company_id": "50838a40-f4c9-49e2-935b-c57a307865ed",
+      "employee_id": "0637cffb-d92b-48ee-be03-80c0dce2d0d2",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
+          "id": "50838a40-f4c9-49e2-935b-c57a307865ed"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
+          "id": "0637cffb-d92b-48ee-be03-80c0dce2d0d2"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "id": "50838a40-f4c9-49e2-935b-c57a307865ed",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-04-04T13:23:17+00:00",
+        "updated_at": "2022-04-04T13:23:17+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-848-042-0249 x77725",
-        "website": "http://heaney-bauch.info/maida",
-        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
-        "address_line_1": "Ezequiel Cliff",
-        "address_line_2": "35238 Alisia Course",
-        "zipcode": "79220-3985",
-        "city": "Port Aurelio",
+        "phone": "343-686-2958 x6625",
+        "website": "http://reynolds.info/tyron_hirthe",
+        "address": "Tabatha Lodge\n954 Hickle Port\n66393-8851 Jaskolskishire\nMauritania",
+        "address_line_1": "Tabatha Lodge",
+        "address_line_2": "954 Hickle Port",
+        "zipcode": "66393-8851",
+        "city": "Jaskolskishire",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "Mauritania",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7608 Schaden Gateway",
-        "financial_line_2": "86782-2917 West Connie",
+        "financial_line_1": "380 Hane Row",
+        "financial_line_2": "67460-9701 South Jayne",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-23T10:04:00.689Z",
+          "trial_ends_at": "2022-04-18T13:23:17.100Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "id": "0637cffb-d92b-48ee-be03-80c0dce2d0d2",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-04-04T13:23:17+00:00",
+        "updated_at": "2022-04-04T13:23:17+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
