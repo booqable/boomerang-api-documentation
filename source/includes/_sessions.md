@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "4754ef56-7ab1-5e6f-b6ef-c2028f89d4d3",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "c1eb4132-5a02-4ed5-a275-28bf317a49e4",
-      "employee_id": "f7541086-6c73-4cd2-98de-483cb6cc20cc",
-      "locations_updated_at": "2022-03-09T10:04:00+00:00",
-      "clusters_updated_at": "2022-03-09T10:04:00+00:00",
-      "default_properties_updated_at": "2022-03-09T10:04:00+00:00"
+      "updated_at": "2022-04-07T10:06:21+00:00",
+      "company_id": "6d92af7a-db51-4bca-9615-a1ab229a891d",
+      "employee_id": "78c27c6a-2e3c-422b-8f2c-b17fca71e974",
+      "locations_updated_at": "2022-04-07T10:06:21+00:00",
+      "clusters_updated_at": "2022-04-07T10:06:21+00:00",
+      "default_properties_updated_at": "2022-04-07T10:06:21+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2cbb05af-efae-5338-8701-72edf6b62204",
+    "id": "4754ef56-7ab1-5e6f-b6ef-c2028f89d4d3",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-03-09T10:04:00+00:00",
-      "company_id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
-      "employee_id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "updated_at": "2022-04-07T10:06:21+00:00",
+      "company_id": "c85d101f-0594-4056-8d89-e574dfcdcdbe",
+      "employee_id": "5106b57b-8915-41af-8905-9f0a232d52dd",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc"
+          "id": "c85d101f-0594-4056-8d89-e574dfcdcdbe"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "221d6b13-ddd5-49c1-baee-39df40367841"
+          "id": "5106b57b-8915-41af-8905-9f0a232d52dd"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "b33395ea-bb93-4fb9-b2b6-3a3f20f314fc",
+      "id": "c85d101f-0594-4056-8d89-e574dfcdcdbe",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-04-07T10:06:21+00:00",
+        "updated_at": "2022-04-07T10:06:21+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-848-042-0249 x77725",
-        "website": "http://heaney-bauch.info/maida",
-        "address": "Ezequiel Cliff\n35238 Alisia Course\n79220-3985 Port Aurelio\nBurkina Faso",
-        "address_line_1": "Ezequiel Cliff",
-        "address_line_2": "35238 Alisia Course",
-        "zipcode": "79220-3985",
-        "city": "Port Aurelio",
+        "phone": "1-230-625-1845 x21046",
+        "website": "http://reichert.biz/erminia_waelchi",
+        "address": "Rebbeca Roads\n2968 Stehr Ports\n18454-6131 West Gillian\nBhutan",
+        "address_line_1": "Rebbeca Roads",
+        "address_line_2": "2968 Stehr Ports",
+        "zipcode": "18454-6131",
+        "city": "West Gillian",
         "region": null,
-        "country": "Burkina Faso",
+        "country": "Bhutan",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,13 +206,13 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7608 Schaden Gateway",
-        "financial_line_2": "86782-2917 West Connie",
+        "financial_line_1": "606 Ward Lodge",
+        "financial_line_2": "24874 Friesenfurt",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "subscription": {
-          "trial_ends_at": "2022-03-23T10:04:00.689Z",
+          "trial_ends_at": "2022-04-21T10:06:21.761Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -264,11 +264,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "221d6b13-ddd5-49c1-baee-39df40367841",
+      "id": "5106b57b-8915-41af-8905-9f0a232d52dd",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-03-09T10:04:00+00:00",
-        "updated_at": "2022-03-09T10:04:00+00:00",
+        "created_at": "2022-04-07T10:06:21+00:00",
+        "updated_at": "2022-04-07T10:06:21+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
