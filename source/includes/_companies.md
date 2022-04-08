@@ -46,6 +46,7 @@ Name | Description
 `vat_number` | **String**<br>Company's vat number, used in customer communication and to define tax exempts
 `custom_domain` | **String**<br>Custom domain to use for hosted store and checkout
 `development` | **Boolean** `readonly`<br>Wheter this is a development account
+`shop_theme_id` | **Uuid**<br>ID of installed shop theme
 `in_europe` | **Boolean** `extra` `readonly`<br>Whether company is situated in europe
 `continent` | **String** `extra` `readonly`<br>Continent the company is situated
 `subscription` | **Hash** `extra` `readonly`<br>Details about the subscription
@@ -69,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42310cad-1b7e-4393-9b87-14cd7d1887df",
+    "id": "7357eb4d-238d-40cc-b26a-d2271a573daf",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:56+00:00",
-      "updated_at": "2022-03-09T10:01:56+00:00",
+      "created_at": "2022-04-07T10:16:28+00:00",
+      "updated_at": "2022-04-07T10:16:28+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "1-766-846-9294 x47774",
-      "website": "http://kuhic-doyle.co/austin.buckridge",
-      "address": "Jarod Street\n6566 Lily Brook\n08455 Shilohfurt\nVirgin Islands, U.S.",
-      "address_line_1": "Jarod Street",
-      "address_line_2": "6566 Lily Brook",
-      "zipcode": "08455",
-      "city": "Shilohfurt",
+      "phone": "(926) 976-8703 x364",
+      "website": "http://abernathy-grimes.biz/johnie_beer",
+      "address": "Rico Coves\n20840 Meagan Ramp\n77400 West Rosenaport\nBrunei Darussalam",
+      "address_line_1": "Rico Coves",
+      "address_line_2": "20840 Meagan Ramp",
+      "zipcode": "77400",
+      "city": "West Rosenaport",
       "region": null,
-      "country": "Virgin Islands, U.S.",
+      "country": "Brunei Darussalam",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,11 +99,12 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "6310 Clair Views",
-      "financial_line_2": "33900-1900 West Rosalina",
+      "financial_line_1": "428 Medhurst Fall",
+      "financial_line_2": "00878 North Eddaton",
       "vat_number": null,
       "custom_domain": null,
-      "development": false
+      "development": false,
+      "shop_theme_id": null
     }
   },
   "meta": {}
@@ -170,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f5782057-030f-461b-9aa0-27aa47a09738",
+    "id": "aa9a0985-b229-4396-a8d5-f312be9a6fc4",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-03-23T10:01:57.167Z",
+        "trial_ends_at": "2022-04-21T10:16:28.291Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+        "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9e5a58dd-1521-41f3-b6d2-d6b41f0ddd96",
+    "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-09T10:01:57+00:00",
-      "updated_at": "2022-03-09T10:01:57+00:00",
+      "created_at": "2022-04-07T10:16:28+00:00",
+      "updated_at": "2022-04-07T10:16:28+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "1-193-563-5137 x43978",
-      "website": "http://grady-wisozk.name/valeria",
-      "address": "Ute Trail\n4497 Predovic Plaza\n39158-9117 Tamaville\nYemen",
-      "address_line_1": "Ute Trail",
-      "address_line_2": "4497 Predovic Plaza",
-      "zipcode": "39158-9117",
-      "city": "Tamaville",
+      "phone": "598-316-5939 x8820",
+      "website": "http://kertzmann-kuhic.net/darius.collier",
+      "address": "Zackary Roads\n28779 Portia Spring\n94926 Port Providencia\nWestern Sahara",
+      "address_line_1": "Zackary Roads",
+      "address_line_2": "28779 Portia Spring",
+      "zipcode": "94926",
+      "city": "Port Providencia",
       "region": null,
-      "country": "Yemen",
+      "country": "Western Sahara",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,11 +303,12 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "72107 Silas Loop",
-      "financial_line_2": "62162-8096 Stephaniestad",
+      "financial_line_1": "3359 McDermott Square",
+      "financial_line_2": "30068 Namburgh",
       "vat_number": null,
       "custom_domain": null,
-      "development": false
+      "development": false,
+      "shop_theme_id": null
     }
   },
   "meta": {}
@@ -360,6 +363,7 @@ Name | Description
 `data[attributes][financial_line_2]` | **String**<br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
 `data[attributes][vat_number]` | **String**<br>Company's vat number, used in customer communication and to define tax exempts
 `data[attributes][custom_domain]` | **String**<br>Custom domain to use for hosted store and checkout
+`data[attributes][shop_theme_id]` | **Uuid**<br>ID of installed shop theme
 
 
 ### Includes
