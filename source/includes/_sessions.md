@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "0982747e-39fa-5b94-894e-879e7a5609e7",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "37a2ba3b-dba2-4771-aabc-b30a692c3254",
-      "employee_id": "434dfd11-965c-4123-828b-cd99deb2787a",
-      "locations_updated_at": "2022-04-07T10:18:07+00:00",
-      "clusters_updated_at": "2022-04-07T10:18:07+00:00",
-      "default_properties_updated_at": "2022-04-07T10:18:07+00:00"
+      "updated_at": "2022-04-08T17:53:27+00:00",
+      "company_id": "dc548860-aefc-443d-98af-5c10d62d8d29",
+      "employee_id": "d30b9b0e-b393-483f-94cf-f205b09252fd",
+      "locations_updated_at": "2022-04-08T17:53:27+00:00",
+      "clusters_updated_at": "2022-04-08T17:53:27+00:00",
+      "default_properties_updated_at": "2022-04-08T17:53:27+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "56977d40-dce4-5ce4-9541-4deea054e2f5",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
-      "employee_id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "updated_at": "2022-04-08T17:53:28+00:00",
+      "company_id": "e2d73606-3e6b-468f-a5c8-652705d22332",
+      "employee_id": "fe38d501-ecae-4420-9f4c-0319e6933b70",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "aab5a606-815e-4b6a-82ea-11d049e649fb"
+          "id": "e2d73606-3e6b-468f-a5c8-652705d22332"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "325c3cab-26f2-4c94-8f08-37fc348836e2"
+          "id": "fe38d501-ecae-4420-9f4c-0319e6933b70"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
+      "id": "e2d73606-3e6b-468f-a5c8-652705d22332",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2022-04-08T17:53:28+00:00",
+        "updated_at": "2022-04-08T17:53:28+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-472-394-4502",
-        "website": "http://tillman.biz/olive_hirthe",
-        "address": "Eli Divide\n271 Schroeder Trace\n32597 North Booker\nCroatia",
-        "address_line_1": "Eli Divide",
-        "address_line_2": "271 Schroeder Trace",
-        "zipcode": "32597",
-        "city": "North Booker",
+        "phone": "974.081.4354 x481",
+        "website": "http://hauck.name/sheilah",
+        "address": "Hui Hills\n17554 Claretha Rue\n17932-9493 West Lessie\nNetherlands Antilles",
+        "address_line_1": "Hui Hills",
+        "address_line_2": "17554 Claretha Rue",
+        "zipcode": "17932-9493",
+        "city": "West Lessie",
         "region": null,
-        "country": "Croatia",
+        "country": "Netherlands Antilles",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "817 Elisha Plain",
-        "financial_line_2": "57874 Bookerport",
+        "financial_line_1": "745 Kub Parkways",
+        "financial_line_2": "02839-3932 West Ernest",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-21T10:18:07.380Z",
+          "trial_ends_at": "2022-04-22T17:53:28.007Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "id": "fe38d501-ecae-4420-9f4c-0319e6933b70",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2022-04-08T17:53:28+00:00",
+        "updated_at": "2022-04-08T17:53:28+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

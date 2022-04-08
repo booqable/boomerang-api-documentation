@@ -70,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7357eb4d-238d-40cc-b26a-d2271a573daf",
+    "id": "5f9d4671-61bb-4067-a68c-2e70d922973c",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-07T10:16:28+00:00",
-      "updated_at": "2022-04-07T10:16:28+00:00",
+      "created_at": "2022-04-08T17:51:40+00:00",
+      "updated_at": "2022-04-08T17:51:40+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "(926) 976-8703 x364",
-      "website": "http://abernathy-grimes.biz/johnie_beer",
-      "address": "Rico Coves\n20840 Meagan Ramp\n77400 West Rosenaport\nBrunei Darussalam",
-      "address_line_1": "Rico Coves",
-      "address_line_2": "20840 Meagan Ramp",
-      "zipcode": "77400",
-      "city": "West Rosenaport",
+      "phone": "237.296.3020 x608",
+      "website": "http://mayert.info/shelba",
+      "address": "Mistie Springs\n779 Powlowski Flats\n67441-7497 Florriemouth\nMauritania",
+      "address_line_1": "Mistie Springs",
+      "address_line_2": "779 Powlowski Flats",
+      "zipcode": "67441-7497",
+      "city": "Florriemouth",
       "region": null,
-      "country": "Brunei Darussalam",
+      "country": "Mauritania",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -99,8 +99,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "428 Medhurst Fall",
-      "financial_line_2": "00878 North Eddaton",
+      "financial_line_1": "39472 Trantow Crescent",
+      "financial_line_2": "71583 Sherriehaven",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
@@ -172,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "aa9a0985-b229-4396-a8d5-f312be9a6fc4",
+    "id": "c65583c2-cf12-45d9-a164-50f7ead882da",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-04-21T10:16:28.291Z",
+        "trial_ends_at": "2022-04-22T17:51:40.569Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -260,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
+        "id": "f5cbd958-202e-4755-a91c-a409bafa8408",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
+    "id": "f5cbd958-202e-4755-a91c-a409bafa8408",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-07T10:16:28+00:00",
-      "updated_at": "2022-04-07T10:16:28+00:00",
+      "created_at": "2022-04-08T17:51:40+00:00",
+      "updated_at": "2022-04-08T17:51:40+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "598-316-5939 x8820",
-      "website": "http://kertzmann-kuhic.net/darius.collier",
-      "address": "Zackary Roads\n28779 Portia Spring\n94926 Port Providencia\nWestern Sahara",
-      "address_line_1": "Zackary Roads",
-      "address_line_2": "28779 Portia Spring",
-      "zipcode": "94926",
-      "city": "Port Providencia",
+      "phone": "244-456-1681",
+      "website": "http://oconnell-hermiston.info/lucienne",
+      "address": "Emile Square\n367 Robert Ridges\n68730 Sipesburgh\nTurkey",
+      "address_line_1": "Emile Square",
+      "address_line_2": "367 Robert Ridges",
+      "zipcode": "68730",
+      "city": "Sipesburgh",
       "region": null,
-      "country": "Western Sahara",
+      "country": "Turkey",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -303,8 +303,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "3359 McDermott Square",
-      "financial_line_2": "30068 Namburgh",
+      "financial_line_1": "4431 Angelia Cove",
+      "financial_line_2": "83739-1820 Port Mosesfort",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
