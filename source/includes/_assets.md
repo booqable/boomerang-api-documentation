@@ -52,17 +52,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "bba649cd-5b59-4676-8a10-2762ccf3097f",
+      "id": "03df8998-d4e5-49c4-93d3-7ca87cc3080d",
       "type": "assets",
       "attributes": {
-        "created_at": "2022-04-07T10:16:04+00:00",
-        "updated_at": "2022-04-07T10:16:04+00:00",
+        "created_at": "2022-04-13T07:09:36+00:00",
+        "updated_at": "2022-04-13T07:09:36+00:00",
         "key": "templates/index.json",
         "checksum": "584f28d8181faf694dfc2aef58b542add1c5d99262de7bca9d043c3da82fbadd",
         "content_type": "application/json",
         "value": "{ name: 'index' }",
-        "published_at": "2022-03-31T10:16:04+00:00",
-        "theme_id": "77347ec4-1be0-41c8-9c50-3fa6aadd8ae8",
+        "published_at": "2022-04-06T07:09:36+00:00",
+        "theme_id": "f603aef3-9f86-4e7f-a82f-415e9e473bad",
         "file": {
           "url": null
         }
@@ -70,7 +70,7 @@ Name | Description
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/77347ec4-1be0-41c8-9c50-3fa6aadd8ae8"
+            "related": "api/boomerang/themes/f603aef3-9f86-4e7f-a82f-415e9e473bad"
           }
         }
       }
@@ -92,7 +92,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[assets]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-13T07:09:32Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -151,7 +151,7 @@ This request accepts the following includes:
         "attributes": {
           "key": "templates/index.json",
           "value": "{ name: 'index' }",
-          "theme_id": "fe580799-7219-4d55-856c-91a9edb4b92c"
+          "theme_id": "ea5878cb-6873-4b83-ba58-aa9364d5fa49"
         }
       }
     }'
@@ -162,17 +162,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5a13bdb8-71d2-4546-b8ac-8de383d4a063",
+    "id": "e2b41e47-9471-4001-b265-16a52655b341",
     "type": "assets",
     "attributes": {
-      "created_at": "2022-04-07T10:16:05+00:00",
-      "updated_at": "2022-04-07T10:16:05+00:00",
+      "created_at": "2022-04-13T07:09:37+00:00",
+      "updated_at": "2022-04-13T07:09:37+00:00",
       "key": "templates/index.json",
       "checksum": "584f28d8181faf694dfc2aef58b542add1c5d99262de7bca9d043c3da82fbadd",
       "content_type": "application/json",
       "value": "{ name: 'index' }",
       "published_at": null,
-      "theme_id": "fe580799-7219-4d55-856c-91a9edb4b92c",
+      "theme_id": "ea5878cb-6873-4b83-ba58-aa9364d5fa49",
       "file": {
         "url": null
       }
@@ -234,7 +234,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/assets/0ef78503-80be-4e6c-a6f3-ea406c721dfe' \
+    --url 'https://example.booqable.com/api/boomerang/assets/9cc78175-967c-4fa1-a25c-def8764b6637' \
     --header 'content-type: application/json' \
 ```
 

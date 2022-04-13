@@ -54,11 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "a0b25748-5257-4192-a0f7-0f2d4e6f79b8",
+      "id": "84a078c9-207a-45f3-9c43-07b8d1d10754",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2022-04-07T10:16:15+00:00",
-        "updated_at": "2022-04-07T10:16:15+00:00",
+        "created_at": "2022-04-13T07:09:48+00:00",
+        "updated_at": "2022-04-13T07:09:48+00:00",
         "number": 10001,
         "status": "open",
         "billing_reason": "subscription_cycle",
@@ -77,7 +77,7 @@ Name | Description
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/64927ad35520ee557aaf98dd968239ef/8bf6cf381ed1f1a332db619468892125"
+        "url": "http://billing.lvh.me:/invoices/2ed192bc97f0da5c68c30edcc8652420/6110be4fc020409f3f853a5eadeaa485"
       }
     }
   ],
@@ -97,7 +97,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-13T07:09:33Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -142,7 +142,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/8d2b6344-dfff-4496-a36b-aaf01629bd1f' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/bf323b44-6d6e-4437-80e9-9b8593d193d5' \
     --header 'content-type: application/json' \
 ```
 
@@ -151,11 +151,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8d2b6344-dfff-4496-a36b-aaf01629bd1f",
+    "id": "bf323b44-6d6e-4437-80e9-9b8593d193d5",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2022-04-07T10:16:15+00:00",
-      "updated_at": "2022-04-07T10:16:15+00:00",
+      "created_at": "2022-04-13T07:09:48+00:00",
+      "updated_at": "2022-04-13T07:09:48+00:00",
       "number": 10001,
       "status": "open",
       "billing_reason": "subscription_cycle",
@@ -174,7 +174,7 @@ This request does not accept any includes
       "ending_balance_in_cents": null,
       "next_payment_attempt_at": null,
       "coupon": null,
-      "url": "http://billing.lvh.me:/invoices/5e6dab6a11662e54f187cc91eef4d1a9/60463129b52f8090451a01a05fe485d3"
+      "url": "http://billing.lvh.me:/invoices/aa6ae257ac1afe2e55649c5c5e52ab3c/2c000154a010fd17b6def15f636927e2"
     }
   },
   "meta": {}
