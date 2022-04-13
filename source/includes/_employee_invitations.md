@@ -15,7 +15,7 @@ Name | Description
 `firstname` | **String** `writeonly`<br>First name of the employee
 `lastname` | **String** `writeonly`<br>Last name of the employee
 `email` | **String** `writeonly`<br>Employee's e-mail address
-`permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
+`permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
 `employee_id` | **Uuid**<br>The associated Employee
 
 
@@ -55,27 +55,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cdbbf32b-e536-5301-b6cc-d7176aefe642",
+    "id": "cd4aaff5-c97a-5de8-b271-a3718d1107f9",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "5d6b35cd-f77f-4c6f-a116-4dfa3109d475"
+      "employee_id": "1daaa5ae-5495-48f4-8c7a-3153c6264d06"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "5d6b35cd-f77f-4c6f-a116-4dfa3109d475"
+          "id": "1daaa5ae-5495-48f4-8c7a-3153c6264d06"
         }
       }
     }
   },
   "included": [
     {
-      "id": "5d6b35cd-f77f-4c6f-a116-4dfa3109d475",
+      "id": "1daaa5ae-5495-48f4-8c7a-3153c6264d06",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:16:54+00:00",
-        "updated_at": "2022-04-07T10:16:54+00:00",
+        "created_at": "2022-04-13T09:08:52+00:00",
+        "updated_at": "2022-04-13T09:08:52+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -108,7 +108,7 @@ Note that you can also update other fields.
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "21381550-9bb2-43a5-a30f-365a6d180b79",
+          "id": "7db480c3-3146-4851-866a-93f87c246231",
           "email": "jane@doe.com"
         }
       },
@@ -121,27 +121,27 @@ Note that you can also update other fields.
 ```json
   {
   "data": {
-    "id": "21381550-9bb2-43a5-a30f-365a6d180b79",
+    "id": "7db480c3-3146-4851-866a-93f87c246231",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "21381550-9bb2-43a5-a30f-365a6d180b79"
+      "employee_id": "7db480c3-3146-4851-866a-93f87c246231"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "21381550-9bb2-43a5-a30f-365a6d180b79"
+          "id": "7db480c3-3146-4851-866a-93f87c246231"
         }
       }
     }
   },
   "included": [
     {
-      "id": "21381550-9bb2-43a5-a30f-365a6d180b79",
+      "id": "7db480c3-3146-4851-866a-93f87c246231",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:16:54+00:00",
-        "updated_at": "2022-04-07T10:16:54+00:00",
+        "created_at": "2022-04-13T09:08:53+00:00",
+        "updated_at": "2022-04-13T09:08:53+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -155,7 +155,9 @@ Note that you can also update other fields.
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
@@ -195,7 +197,7 @@ Name | Description
 `data[attributes][firstname]` | **String**<br>First name of the employee
 `data[attributes][lastname]` | **String**<br>Last name of the employee
 `data[attributes][email]` | **String**<br>Employee's e-mail address
-`data[attributes][permissions][]` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
+`data[attributes][permissions][]` | **Array**<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
 `data[attributes][employee_id]` | **Uuid**<br>The associated Employee
 
 
