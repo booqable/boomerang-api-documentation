@@ -279,3 +279,61 @@ There are a few exceptions though, in these cases, resources can be created or a
 
 When side posting is supported, it will be mentioned in the resource-specific documentation.
 
+## Advanced search
+
+The following resources support advanced searching with POST requests:
+
+- Order
+- Item
+- Bundle
+- ProductGroup
+- Product
+- Document
+- Planning
+- Customer
+
+With advanced search you can make logical filter groups with and/or operators. The example on the right yields:
+
+`(starts_at >= date AND starts_at <= date) OR (stops_at >= date AND stops_at <= date)`
+
+```json
+{
+  "filter": {
+    "conditions": {
+      "operator": "or",
+      "attributes": [
+        {
+          "operator": "and",
+          "attributes": [
+            {
+              "starts_at": {
+                "gte": "2022-04-27T12:54:37Z"
+              }
+            },
+            {
+              "starts_at": {
+                "lte": "2022-04-30T12:54:37Z"
+              }
+            }
+          ]
+        },
+        {
+          "operator": "and",
+          "attributes": [
+            {
+              "stops_at": {
+                "gte": "2022-04-27T12:54:37Z"
+              }
+            },
+            {
+              "stops_at": {
+                "lte": "2022-04-30T12:54:37Z"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
