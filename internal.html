@@ -362,6 +362,9 @@
                   <li>
                     <a href="#introduction-sideposting" class="toc-h2 toc-link" data-title="Sideposting" title="Sideposting">Sideposting</a>
                   </li>
+                  <li>
+                    <a href="#introduction-advanced-search" class="toc-h2 toc-link" data-title="Advanced search" title="Advanced search">Advanced search</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2007,7 +2010,63 @@ The format is as follows:</p>
 </ul>
 
 <p>When side posting is supported, it will be mentioned in the resource-specific documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<h2 id='introduction-advanced-search'>Advanced search</h2>
+<p>The following resources support advanced searching with POST requests:</p>
+
+<ul>
+<li>Order</li>
+<li>Item</li>
+<li>Bundle</li>
+<li>ProductGroup</li>
+<li>Product</li>
+<li>Document</li>
+<li>Planning</li>
+<li>Customer</li>
+</ul>
+
+<p>With advanced search you can make logical filter groups with and/or operators. The example on the right yields:</p>
+
+<p><code>(starts_at &gt;= date AND starts_at &lt;= date) OR (stops_at &gt;= date AND stops_at &lt;= date)</code></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"filter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"or"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"and"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"gte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T12:54:37Z"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"lte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-30T12:54:37Z"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"and"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"gte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T12:54:37Z"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"lte"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-30T12:54:37Z"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='authentication'>Authentication</h1>
 <p>To interact with the Booqable API, first, you have to have a means of authentification, here&#39;s how to setup authentication.</p>
 
 <aside class="notice">
