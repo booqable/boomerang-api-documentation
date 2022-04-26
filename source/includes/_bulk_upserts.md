@@ -66,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a5da3047-2bda-52f8-b3c0-47875d916aa3",
+    "id": "5c74bf19-f981-503e-ba60-e52aa772fc8b",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "db01892b-41fb-44c1-9d3e-f98374a5d0c9"
+            "id": "4748ff62-aaae-4cbf-a51a-29fedd01a1c3"
           },
           {
             "type": "operating_rules",
-            "id": "a0507b44-b6df-4816-81db-1c1aa8c2baba"
+            "id": "0b8e0e3b-7e42-45ec-b181-56fbad6663cb"
           }
         ]
       }
@@ -85,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "db01892b-41fb-44c1-9d3e-f98374a5d0c9",
+      "id": "4748ff62-aaae-4cbf-a51a-29fedd01a1c3",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2022-03-01T09:34:41+00:00",
-        "updated_at": "2022-03-01T09:34:41+00:00",
+        "created_at": "2022-04-07T10:16:15+00:00",
+        "updated_at": "2022-04-07T10:16:15+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -100,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "a0507b44-b6df-4816-81db-1c1aa8c2baba",
+      "id": "0b8e0e3b-7e42-45ec-b181-56fbad6663cb",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2022-03-01T09:34:41+00:00",
-        "updated_at": "2022-03-01T09:34:41+00:00",
+        "created_at": "2022-04-07T10:16:15+00:00",
+        "updated_at": "2022-04-07T10:16:15+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -133,11 +133,11 @@ Name | Description
           "type": "checkout_fields",
           "data": [
             {
-              "default_property_id": "6aa254ad-1675-4273-8d42-9954b1e4cd96"
+              "default_property_id": "661a4e9c-4b26-48a0-b361-8a3c271a836b"
             },
             {
               "name": "Delivery address",
-              "default_property_id": "1c8b6614-3906-40cb-9ffb-fcc539563288"
+              "default_property_id": "2eb3a4e5-32d7-4b3f-9127-8462b8e9744f"
             }
           ]
         },
@@ -151,7 +151,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a1111717-10bf-5901-afda-8d6e08c4a72b",
+    "id": "c2bc7b26-2966-5682-8ad3-8ec2b19008d6",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -201,7 +201,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a1111717-10bf-5901-afda-8d6e08c4a72b",
+    "id": "c2bc7b26-2966-5682-8ad3-8ec2b19008d6",
     "type": "bulk_upserts",
     "relationships": {
       "results": {

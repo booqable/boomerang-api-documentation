@@ -46,6 +46,7 @@ Name | Description
 `vat_number` | **String**<br>Company's vat number, used in customer communication and to define tax exempts
 `custom_domain` | **String**<br>Custom domain to use for hosted store and checkout
 `development` | **Boolean** `readonly`<br>Wheter this is a development account
+`shop_theme_id` | **Uuid**<br>ID of installed shop theme
 `in_europe` | **Boolean** `extra` `readonly`<br>Whether company is situated in europe
 `continent` | **String** `extra` `readonly`<br>Continent the company is situated
 `subscription` | **Hash** `extra` `readonly`<br>Details about the subscription
@@ -69,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "618d3ae3-64cd-4c08-be54-1b602a7e6835",
+    "id": "7357eb4d-238d-40cc-b26a-d2271a573daf",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-01T09:34:57+00:00",
-      "updated_at": "2022-03-01T09:34:57+00:00",
+      "created_at": "2022-04-07T10:16:28+00:00",
+      "updated_at": "2022-04-07T10:16:28+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail50@company.com",
+      "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "1-610-396-6617 x1462",
-      "website": "http://russel.co/milo",
-      "address": "Mirta Skyway\n2474 Stamm Drive\n40015-3240 New Septembershire\nUruguay",
-      "address_line_1": "Mirta Skyway",
-      "address_line_2": "2474 Stamm Drive",
-      "zipcode": "40015-3240",
-      "city": "New Septembershire",
+      "phone": "(926) 976-8703 x364",
+      "website": "http://abernathy-grimes.biz/johnie_beer",
+      "address": "Rico Coves\n20840 Meagan Ramp\n77400 West Rosenaport\nBrunei Darussalam",
+      "address_line_1": "Rico Coves",
+      "address_line_2": "20840 Meagan Ramp",
+      "zipcode": "77400",
+      "city": "West Rosenaport",
       "region": null,
-      "country": "Uruguay",
+      "country": "Brunei Darussalam",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -98,11 +99,12 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7512 Gutkowski Glen",
-      "financial_line_2": "21132 Port Ervin",
+      "financial_line_1": "428 Medhurst Fall",
+      "financial_line_2": "00878 North Eddaton",
       "vat_number": null,
       "custom_domain": null,
-      "development": false
+      "development": false,
+      "shop_theme_id": null
     }
   },
   "meta": {}
@@ -170,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "52b9812f-1170-4f23-9b73-e7c76fd92116",
+    "id": "aa9a0985-b229-4396-a8d5-f312be9a6fc4",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-03-15T09:34:57.371Z",
+        "trial_ends_at": "2022-04-21T10:16:28.291Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -258,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
+        "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -272,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "42a2bc3a-be73-4669-af4e-ed3f3f0119b4",
+    "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-03-01T09:34:57+00:00",
-      "updated_at": "2022-03-01T09:34:57+00:00",
+      "created_at": "2022-04-07T10:16:28+00:00",
+      "updated_at": "2022-04-07T10:16:28+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail52@company.com",
+      "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "1-894-476-5199",
-      "website": "http://walsh.net/dick_deckow",
-      "address": "Pfannerstill Crossing\n2534 Quintin Ferry\n58910 Lake Sadye\nPortugal",
-      "address_line_1": "Pfannerstill Crossing",
-      "address_line_2": "2534 Quintin Ferry",
-      "zipcode": "58910",
-      "city": "Lake Sadye",
+      "phone": "598-316-5939 x8820",
+      "website": "http://kertzmann-kuhic.net/darius.collier",
+      "address": "Zackary Roads\n28779 Portia Spring\n94926 Port Providencia\nWestern Sahara",
+      "address_line_1": "Zackary Roads",
+      "address_line_2": "28779 Portia Spring",
+      "zipcode": "94926",
+      "city": "Port Providencia",
       "region": null,
-      "country": "Portugal",
+      "country": "Western Sahara",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -301,11 +303,12 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "552 White Stream",
-      "financial_line_2": "00900 Kohlerport",
+      "financial_line_1": "3359 McDermott Square",
+      "financial_line_2": "30068 Namburgh",
       "vat_number": null,
       "custom_domain": null,
-      "development": false
+      "development": false,
+      "shop_theme_id": null
     }
   },
   "meta": {}
@@ -360,6 +363,7 @@ Name | Description
 `data[attributes][financial_line_2]` | **String**<br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
 `data[attributes][vat_number]` | **String**<br>Company's vat number, used in customer communication and to define tax exempts
 `data[attributes][custom_domain]` | **String**<br>Custom domain to use for hosted store and checkout
+`data[attributes][shop_theme_id]` | **Uuid**<br>ID of installed shop theme
 
 
 ### Includes

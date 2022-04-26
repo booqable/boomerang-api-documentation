@@ -223,10 +223,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "52c3459f-8a61-5127-8c1a-3d12d6d37375",
+    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-03-01T09:37:28+00:00",
+      "updated_at": "2022-04-07T10:18:07+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -237,8 +237,10 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "a80c404e-536f-4416-9c76-a5c004cf8bf2",
-        "tax_region_id": "b927b980-55ec-4ea9-b162-731e11d04afc"
+        "tax_category_id": "e97513ea-6a3e-43d5-9df2-1b439b66aea7",
+        "tax_region_id": "1c5700d9-cc2c-42cf-9158-e6dbe9c802cb",
+        "shop_start_location_id": null,
+        "shop_stop_location_id": null
       },
       "pricing": {
         "enabled": true,
@@ -287,6 +289,8 @@ Name | Description
         "use_order_lag_time": false,
         "order_lag_time_value": null,
         "order_lag_time_interval": null,
+        "behaviors.add_button": "show_cart",
+        "behaviors.location_picker": "start_stop",
         "payment_strategy": "none",
         "payment_strategy_value": 30,
         "payment_deposit": false,
@@ -306,6 +310,7 @@ Name | Description
         "website": null,
         "custom_scripts": "",
         "google_analytics_id": null,
+        "google_anlaytics_options": "{}",
         "facebook_pixel_id": null,
         "facebook_domain_verification": null
       },
