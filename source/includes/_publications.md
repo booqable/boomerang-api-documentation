@@ -16,7 +16,15 @@ Name | Description
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `published_at` | **Datetime** `readonly`<br>The date and time (ISO 8601 format) the Publication uses to filter all released Assets by.
-`theme_id` | **String**<br>The ID of the Theme that the Publication belongs to.
+`theme_id` | **Uuid**<br>The associated Theme
+
+
+## Relationships
+Publications have the following relationships:
+
+Name | Description
+- | -
+`theme` | **Themes** `readonly`<br>Associated Theme
 
 
 ## Listing publications
@@ -37,13 +45,20 @@ Name | Description
   {
   "data": [
     {
-      "id": "3995f9eb-0eff-4013-816f-d9d6ee10a0aa",
+      "id": "83065bf0-81ef-4002-9965-355c259bec8b",
       "type": "publications",
       "attributes": {
-        "created_at": "2022-04-07T10:18:06+00:00",
-        "updated_at": "2022-04-07T10:18:06+00:00",
-        "published_at": "2022-04-02T10:18:06+00:00",
-        "theme_id": "164d8e50-3d7a-4fbd-b59e-5e89eab323c1"
+        "created_at": "2022-05-03T10:20:23+00:00",
+        "updated_at": "2022-05-03T10:20:23+00:00",
+        "published_at": "2022-04-28T10:20:23+00:00",
+        "theme_id": "d12215c7-060a-4bb4-a7a3-73c80905c220"
+      },
+      "relationships": {
+        "theme": {
+          "links": {
+            "related": "api/boomerang/themes/d12215c7-060a-4bb4-a7a3-73c80905c220"
+          }
+        }
       }
     }
   ],
@@ -61,9 +76,9 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
+`include` | **String**<br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:02Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-05-03T10:17:52Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -80,7 +95,7 @@ Name | Description
 `created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `published_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`theme_id` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`theme_id` | **Uuid**<br>`eq`, `not_eq`
 
 
 ### Meta
@@ -117,7 +132,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "46ee44e1-a5f5-4996-8281-d79324200567"
+          "theme_id": "fd4361c3-23de-4d6e-9a6c-8a72548d4158"
         }
       }
     }'
@@ -128,13 +143,20 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3a9e212c-c683-4e80-acdf-72f6d0bef4b5",
+    "id": "d259d9bd-7e52-462e-90fd-e371358181b0",
     "type": "publications",
     "attributes": {
-      "created_at": "2022-04-02T10:18:06+00:00",
-      "updated_at": "2022-04-02T10:18:06+00:00",
-      "published_at": "2022-04-02T10:18:06+00:00",
-      "theme_id": "46ee44e1-a5f5-4996-8281-d79324200567"
+      "created_at": "2022-04-28T10:20:23+00:00",
+      "updated_at": "2022-04-28T10:20:23+00:00",
+      "published_at": "2022-04-28T10:20:23+00:00",
+      "theme_id": "fd4361c3-23de-4d6e-9a6c-8a72548d4158"
+    },
+    "relationships": {
+      "theme": {
+        "meta": {
+          "included": false
+        }
+      }
     }
   },
   "meta": {}
@@ -151,7 +173,7 @@ This request accepts the following paramaters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
+`include` | **String**<br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
 
 
@@ -161,7 +183,7 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][theme_id]` | **String**<br>The ID of the Theme that the Publication belongs to.
+`data[attributes][theme_id]` | **Uuid**<br>The associated Theme
 
 
 ### Includes

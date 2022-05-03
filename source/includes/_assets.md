@@ -31,7 +31,7 @@ Assets have the following relationships:
 
 Name | Description
 - | -
-`theme` | **Themes** `readonly`<br>Associated Theme
+`theme` | **Themes**<br>Associated Theme
 
 
 ## Listing assets
@@ -52,17 +52,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "bba649cd-5b59-4676-8a10-2762ccf3097f",
+      "id": "3b7e9192-da2a-4df0-9f01-8f0c0075936d",
       "type": "assets",
       "attributes": {
-        "created_at": "2022-04-07T10:16:04+00:00",
-        "updated_at": "2022-04-07T10:16:04+00:00",
+        "created_at": "2022-05-03T10:17:55+00:00",
+        "updated_at": "2022-05-03T10:17:55+00:00",
         "key": "templates/index.json",
         "checksum": "584f28d8181faf694dfc2aef58b542add1c5d99262de7bca9d043c3da82fbadd",
         "content_type": "application/json",
         "value": "{ name: 'index' }",
-        "published_at": "2022-03-31T10:16:04+00:00",
-        "theme_id": "77347ec4-1be0-41c8-9c50-3fa6aadd8ae8",
+        "published_at": "2022-04-26T10:17:55+00:00",
+        "theme_id": "04279420-e994-492c-8421-f12526419eff",
         "file": {
           "url": null
         }
@@ -70,7 +70,7 @@ Name | Description
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/77347ec4-1be0-41c8-9c50-3fa6aadd8ae8"
+            "related": "api/boomerang/themes/04279420-e994-492c-8421-f12526419eff"
           }
         }
       }
@@ -92,7 +92,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[assets]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-05-03T10:17:51Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -122,6 +122,8 @@ Results can be aggregated on:
 Name | Description
 - | -
 `total` | **Array**<br>`count`
+`published` | **Array**<br>`count`
+`unpublished` | **Array**<br>`count`
 
 
 ### Includes
@@ -151,7 +153,7 @@ This request accepts the following includes:
         "attributes": {
           "key": "templates/index.json",
           "value": "{ name: 'index' }",
-          "theme_id": "fe580799-7219-4d55-856c-91a9edb4b92c"
+          "theme_id": "fbd9e299-aec1-4380-ab24-65fa5bd61326"
         }
       }
     }'
@@ -162,17 +164,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5a13bdb8-71d2-4546-b8ac-8de383d4a063",
+    "id": "e6e24c84-1bb5-4ffd-92c3-b52109ffc73f",
     "type": "assets",
     "attributes": {
-      "created_at": "2022-04-07T10:16:05+00:00",
-      "updated_at": "2022-04-07T10:16:05+00:00",
+      "created_at": "2022-05-03T10:17:56+00:00",
+      "updated_at": "2022-05-03T10:17:56+00:00",
       "key": "templates/index.json",
       "checksum": "584f28d8181faf694dfc2aef58b542add1c5d99262de7bca9d043c3da82fbadd",
       "content_type": "application/json",
       "value": "{ name: 'index' }",
       "published_at": null,
-      "theme_id": "fe580799-7219-4d55-856c-91a9edb4b92c",
+      "theme_id": "fbd9e299-aec1-4380-ab24-65fa5bd61326",
       "file": {
         "url": null
       }
@@ -234,7 +236,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/assets/0ef78503-80be-4e6c-a6f3-ea406c721dfe' \
+    --url 'https://example.booqable.com/api/boomerang/assets/0c254fe5-98df-47dc-bf77-9c6c8bfdb49e' \
     --header 'content-type: application/json' \
 ```
 
