@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "1c9edccd-06ef-5427-934a-cbd195b8456b",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "37a2ba3b-dba2-4771-aabc-b30a692c3254",
-      "employee_id": "434dfd11-965c-4123-828b-cd99deb2787a",
-      "locations_updated_at": "2022-04-07T10:18:07+00:00",
-      "clusters_updated_at": "2022-04-07T10:18:07+00:00",
-      "default_properties_updated_at": "2022-04-07T10:18:07+00:00"
+      "updated_at": "2022-05-04T10:06:46+00:00",
+      "company_id": "4953a719-df07-483f-bc6e-6a0e80b04d9f",
+      "employee_id": "478363d0-ae27-41aa-bd2e-19d405e9c1ec",
+      "locations_updated_at": "2022-05-04T10:06:46+00:00",
+      "clusters_updated_at": "2022-05-04T10:06:46+00:00",
+      "default_properties_updated_at": "2022-05-04T10:06:46+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "1c9edccd-06ef-5427-934a-cbd195b8456b",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
-      "employee_id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "updated_at": "2022-05-04T10:06:46+00:00",
+      "company_id": "e150280d-c007-4585-9ef4-0ef969c3cae8",
+      "employee_id": "912b7bc2-5003-4e92-bc70-92e40275b0b7",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "aab5a606-815e-4b6a-82ea-11d049e649fb"
+          "id": "e150280d-c007-4585-9ef4-0ef969c3cae8"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "325c3cab-26f2-4c94-8f08-37fc348836e2"
+          "id": "912b7bc2-5003-4e92-bc70-92e40275b0b7"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
+      "id": "e150280d-c007-4585-9ef4-0ef969c3cae8",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2022-05-04T10:06:46+00:00",
+        "updated_at": "2022-05-04T10:06:46+00:00",
+        "name": "Company name 206",
+        "slug": "company-name-206",
+        "email": "mail209@company.com",
         "billing_email": null,
-        "phone": "1-472-394-4502",
-        "website": "http://tillman.biz/olive_hirthe",
-        "address": "Eli Divide\n271 Schroeder Trace\n32597 North Booker\nCroatia",
-        "address_line_1": "Eli Divide",
-        "address_line_2": "271 Schroeder Trace",
-        "zipcode": "32597",
-        "city": "North Booker",
+        "phone": "(723) 659-6013 x2554",
+        "website": "http://gerlach.org/wendi_medhurst",
+        "address": "Reuben Turnpike\n33441 Witting Road\n02315-7759 Lake Yer\nthe Netherlands",
+        "address_line_1": "Reuben Turnpike",
+        "address_line_2": "33441 Witting Road",
+        "zipcode": "02315-7759",
+        "city": "Lake Yer",
         "region": null,
-        "country": "Croatia",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "817 Elisha Plain",
-        "financial_line_2": "57874 Bookerport",
+        "financial_line_1": "51362 Ferry Ranch",
+        "financial_line_2": "83783-5264 South Phyllis",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-21T10:18:07.380Z",
+          "trial_ends_at": "2022-05-18T10:06:46.669Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "id": "912b7bc2-5003-4e92-bc70-92e40275b0b7",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2022-05-04T10:06:46+00:00",
+        "updated_at": "2022-05-04T10:06:46+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -283,7 +283,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
