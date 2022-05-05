@@ -8,6 +8,11 @@ The Item resource gives the ability to fetch the following resources:
 
 The description of the behavior for these resources can be found in their respective sections
 
+## Endpoints
+`GET /api/boomerang/items`
+
+`POST api/boomerang/items/search`
+
 ## Fields
 For this resource fields are described in the following resources:
 
@@ -40,11 +45,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "79dc2bc0-5383-4a9e-8cd0-7fb14095a3f2",
+      "id": "07af3052-b6be-48b7-9946-8dc683249b9d",
       "type": "bundles",
       "attributes": {
-        "created_at": "2022-04-07T10:17:09+00:00",
-        "updated_at": "2022-04-07T10:17:09+00:00",
+        "created_at": "2022-05-05T09:13:34+00:00",
+        "updated_at": "2022-05-05T09:13:34+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -78,22 +83,22 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=79dc2bc0-5383-4a9e-8cd0-7fb14095a3f2"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=07af3052-b6be-48b7-9946-8dc683249b9d"
           }
         },
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=79dc2bc0-5383-4a9e-8cd0-7fb14095a3f2"
+            "related": "api/boomerang/categories?filter[item_id]=07af3052-b6be-48b7-9946-8dc683249b9d"
           }
         }
       }
     },
     {
-      "id": "ffedc278-6473-45c5-ada6-947ad78b5943",
+      "id": "d2d4fe1f-42e7-459f-9211-bba5a0c49dc9",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-04-07T10:17:09+00:00",
-        "updated_at": "2022-04-07T10:17:09+00:00",
+        "created_at": "2022-05-05T09:13:34+00:00",
+        "updated_at": "2022-05-05T09:13:34+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -127,12 +132,12 @@ For this resource relationships are described in the following resources:
         "variation_fields": [],
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
-        "tax_category_id": "7a4c0252-0580-4c58-879d-4edfc15d88ff"
+        "tax_category_id": "86caf292-d999-43dd-826f-4af5eec81c0a"
       },
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=ffedc278-6473-45c5-ada6-947ad78b5943"
+            "related": "api/boomerang/categories?filter[item_id]=d2d4fe1f-42e7-459f-9211-bba5a0c49dc9"
           }
         },
         "photo": {
@@ -142,27 +147,27 @@ For this resource relationships are described in the following resources:
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=ffedc278-6473-45c5-ada6-947ad78b5943"
+            "related": "api/boomerang/products?filter[product_group_id]=d2d4fe1f-42e7-459f-9211-bba5a0c49dc9"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/7a4c0252-0580-4c58-879d-4edfc15d88ff"
+            "related": "api/boomerang/tax_categories/86caf292-d999-43dd-826f-4af5eec81c0a"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=ffedc278-6473-45c5-ada6-947ad78b5943&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=d2d4fe1f-42e7-459f-9211-bba5a0c49dc9&filter[owner_type]=product_groups"
           }
         }
       }
     },
     {
-      "id": "b717402e-a178-43e5-9823-86687b1580c2",
+      "id": "774eb935-442a-4939-8a95-d1964382492d",
       "type": "products",
       "attributes": {
-        "created_at": "2022-04-07T10:17:09+00:00",
-        "updated_at": "2022-04-07T10:17:09+00:00",
+        "created_at": "2022-05-05T09:13:34+00:00",
+        "updated_at": "2022-05-05T09:13:34+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -194,8 +199,8 @@ For this resource relationships are described in the following resources:
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "ffedc278-6473-45c5-ada6-947ad78b5943",
-        "tax_category_id": "7a4c0252-0580-4c58-879d-4edfc15d88ff",
+        "product_group_id": "d2d4fe1f-42e7-459f-9211-bba5a0c49dc9",
+        "tax_category_id": "86caf292-d999-43dd-826f-4af5eec81c0a",
         "price_structure_id": null
       },
       "relationships": {
@@ -206,17 +211,17 @@ For this resource relationships are described in the following resources:
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/ffedc278-6473-45c5-ada6-947ad78b5943"
+            "related": "api/boomerang/product_groups/d2d4fe1f-42e7-459f-9211-bba5a0c49dc9"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/7a4c0252-0580-4c58-879d-4edfc15d88ff"
+            "related": "api/boomerang/tax_categories/86caf292-d999-43dd-826f-4af5eec81c0a"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=b717402e-a178-43e5-9823-86687b1580c2&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=774eb935-442a-4939-8a95-d1964382492d&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -226,12 +231,12 @@ For this resource relationships are described in the following resources:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=ffedc278-6473-45c5-ada6-947ad78b5943&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=d2d4fe1f-42e7-459f-9211-bba5a0c49dc9&filter[owner_type]=products"
           }
         },
         "categories": {
           "links": {
-            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=ffedc278-6473-45c5-ada6-947ad78b5943"
+            "related": "/api/boomerang/categories?filter%5Bitem_id%5D=d2d4fe1f-42e7-459f-9211-bba5a0c49dc9"
           }
         }
       }
@@ -253,7 +258,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,price_structure`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-05-05T09:12:14Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -296,6 +301,160 @@ Name | Description
 `price_structure_id` | **Uuid**<br>`eq`, `not_eq`
 `q` | **String**<br>`eq`
 `product_group_id` | **Uuid**<br>`eq`
+`conditions` | **Hash**<br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+- | -
+`total` | **Array**<br>`count`
+`archived` | **Array**<br>`count`
+`tag_list` | **Array**<br>`count`
+`taxable` | **Array**<br>`count`
+`discountable` | **Array**<br>`count`
+`product_type` | **Array**<br>`count`
+`tracking_type` | **Array**<br>`count`
+`show_in_store` | **Array**<br>`count`
+`price_type` | **Array**<br>`count`
+`price_period` | **Array**<br>`count`
+`tax_category_id` | **Array**<br>`count`
+`deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
+`base_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
+
+
+### Includes
+
+This request does not accept any includes
+## Searching items
+
+Use advanced search to make logical filter groups with and/or operators.
+
+
+> How to search for items:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/items/search' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "items": "id"
+      },
+      "filter": {
+        "conditions": {
+          "operator": "or",
+          "attributes": [
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "discountable": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "show_in_store": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "ab0ec813-06ee-4081-b63d-9300bfa13df9"
+    },
+    {
+      "id": "714edf5d-a852-4c00-88dd-3ac28fb68acd"
+    },
+    {
+      "id": "58e30e82-131c-488f-8f84-2cd678671d79"
+    },
+    {
+      "id": "83428a22-578e-4617-9065-18f5143e4f16"
+    },
+    {
+      "id": "c230cbe7-4b5e-4ffa-83f9-f03e2fbc9f89"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST api/boomerang/items/search`
+
+### Request params
+
+This request accepts the following paramaters:
+
+Name | Description
+- | -
+`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,price_structure`
+`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-05-05T09:12:14Z`
+`sort` | **String**<br>How to sort the data `?sort=-created_at`
+`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String**<br>The page to request
+`page[size]` | **String**<br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+- | -
+`id` | **Uuid**<br>`eq`, `not_eq`
+`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean**<br>`eq`
+`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`type` | **String**<br>`eq`, `not_eq`
+`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`slug` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`sku` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`lead_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`lag_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`product_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tracking_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`trackable` | **Boolean**<br>`eq`
+`extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`show_in_store` | **Boolean**<br>`eq`
+`sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`base_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`price_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`price_period` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean**<br>`eq`
+`taxable` | **Boolean**<br>`eq`
+`tag_list` | **String**<br>`eq`
+`category_id` | **Uuid**<br>`eq`
+`tax_category_id` | **Uuid**<br>`eq`, `not_eq`
+`price_structure_id` | **Uuid**<br>`eq`, `not_eq`
+`q` | **String**<br>`eq`
+`product_group_id` | **Uuid**<br>`eq`
+`conditions` | **Hash**<br>`eq`
 
 
 ### Meta
