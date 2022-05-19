@@ -55,34 +55,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "1fdd947e-9fed-4c2a-832e-448c6ba4129b",
+      "id": "514ecff9-d209-4a6d-9a7c-43fd95b57a6f",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-07T10:18:08+00:00",
-        "updated_at": "2022-04-07T10:18:08+00:00",
+        "created_at": "2022-05-19T11:11:14+00:00",
+        "updated_at": "2022-05-19T11:11:14+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "44e1df37-3eee-4f9e-bcf1-672eb2077aef",
-        "planning_id": "69a4b245-2fb1-47ce-995c-ca6ecd81904e",
-        "order_id": "51e6a972-6368-4528-b1c1-4b436b297105"
+        "stock_item_id": "f0973936-1bec-407e-81e1-b63bca4b6905",
+        "planning_id": "19e53b27-2fa8-48c1-bda2-54614c8ef072",
+        "order_id": "0ed8b3bd-b33e-4a1f-8c1f-58a70ee5821c"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/44e1df37-3eee-4f9e-bcf1-672eb2077aef"
+            "related": "api/boomerang/stock_items/f0973936-1bec-407e-81e1-b63bca4b6905"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/69a4b245-2fb1-47ce-995c-ca6ecd81904e"
+            "related": "api/boomerang/plannings/19e53b27-2fa8-48c1-bda2-54614c8ef072"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/51e6a972-6368-4528-b1c1-4b436b297105"
+            "related": "api/boomerang/orders/0ed8b3bd-b33e-4a1f-8c1f-58a70ee5821c"
           }
         }
       }
@@ -104,7 +104,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=stock_item,planning,order`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:02Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-05-19T11:08:19Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -170,7 +170,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/0b0184f5-322f-4077-9544-551e9041ca64' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/7fdacaa7-cf0b-4299-a302-36c38479f05f' \
     --header 'content-type: application/json' \
 ```
 
