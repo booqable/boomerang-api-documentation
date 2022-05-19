@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "23aacc3b-2556-5384-888b-65127142f37c",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "37a2ba3b-dba2-4771-aabc-b30a692c3254",
-      "employee_id": "434dfd11-965c-4123-828b-cd99deb2787a",
-      "locations_updated_at": "2022-04-07T10:18:07+00:00",
-      "clusters_updated_at": "2022-04-07T10:18:07+00:00",
-      "default_properties_updated_at": "2022-04-07T10:18:07+00:00"
+      "updated_at": "2022-05-19T14:24:29+00:00",
+      "company_id": "f13f16d1-2317-4855-bd1f-08593b29db90",
+      "employee_id": "18804078-d98e-4f13-ad5f-df17a009541a",
+      "locations_updated_at": "2022-05-19T14:24:29+00:00",
+      "clusters_updated_at": "2022-05-19T14:24:29+00:00",
+      "default_properties_updated_at": "2022-05-19T14:24:29+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "90316c1c-0ba2-5ac0-87a9-4e064e28e1aa",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
-      "employee_id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "updated_at": "2022-05-19T14:24:30+00:00",
+      "company_id": "9c6183ad-1f10-4c73-8203-7bf9b023ccdd",
+      "employee_id": "edac156d-1327-49b4-b59f-15640498c9f5",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "aab5a606-815e-4b6a-82ea-11d049e649fb"
+          "id": "9c6183ad-1f10-4c73-8203-7bf9b023ccdd"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "325c3cab-26f2-4c94-8f08-37fc348836e2"
+          "id": "edac156d-1327-49b4-b59f-15640498c9f5"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
+      "id": "9c6183ad-1f10-4c73-8203-7bf9b023ccdd",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2022-05-19T14:24:30+00:00",
+        "updated_at": "2022-05-19T14:24:30+00:00",
+        "name": "Company name 207",
+        "slug": "company-name-207",
+        "email": "mail210@company.com",
         "billing_email": null,
-        "phone": "1-472-394-4502",
-        "website": "http://tillman.biz/olive_hirthe",
-        "address": "Eli Divide\n271 Schroeder Trace\n32597 North Booker\nCroatia",
-        "address_line_1": "Eli Divide",
-        "address_line_2": "271 Schroeder Trace",
-        "zipcode": "32597",
-        "city": "North Booker",
+        "phone": "1-583-243-1441 x71249",
+        "website": "http://howe-aufderhar.info/scott",
+        "address": "Parker Stream\n498 Emmerich Rapids\n52085 East Soberg\nthe Netherlands",
+        "address_line_1": "Parker Stream",
+        "address_line_2": "498 Emmerich Rapids",
+        "zipcode": "52085",
+        "city": "East Soberg",
         "region": null,
-        "country": "Croatia",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "817 Elisha Plain",
-        "financial_line_2": "57874 Bookerport",
+        "financial_line_1": "2320 Braun Plains",
+        "financial_line_2": "56939-7707 West Doug",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-21T10:18:07.380Z",
+          "trial_ends_at": "2022-06-02T14:24:30.101Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "id": "edac156d-1327-49b4-b59f-15640498c9f5",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2022-05-19T14:24:30+00:00",
+        "updated_at": "2022-05-19T14:24:30+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -283,7 +283,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
