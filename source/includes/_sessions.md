@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "ed7a490d-ef08-5f3d-a94d-ab946f7bbb2b",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "37a2ba3b-dba2-4771-aabc-b30a692c3254",
-      "employee_id": "434dfd11-965c-4123-828b-cd99deb2787a",
-      "locations_updated_at": "2022-04-07T10:18:07+00:00",
-      "clusters_updated_at": "2022-04-07T10:18:07+00:00",
-      "default_properties_updated_at": "2022-04-07T10:18:07+00:00"
+      "updated_at": "2022-05-24T07:25:46+00:00",
+      "company_id": "67611cfa-46bf-44f5-9e8f-2c629e747b5d",
+      "employee_id": "baa381dd-9d70-40dc-a4ae-0b45c6825055",
+      "locations_updated_at": "2022-05-24T07:25:46+00:00",
+      "clusters_updated_at": "2022-05-24T07:25:46+00:00",
+      "default_properties_updated_at": "2022-05-24T07:25:46+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "ed7a490d-ef08-5f3d-a94d-ab946f7bbb2b",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
-      "employee_id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "updated_at": "2022-05-24T07:25:46+00:00",
+      "company_id": "2fde9fc7-05b8-4ea2-a7c2-126678402ed9",
+      "employee_id": "bd9cece3-6d8d-442e-be56-07439d86ed7e",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "aab5a606-815e-4b6a-82ea-11d049e649fb"
+          "id": "2fde9fc7-05b8-4ea2-a7c2-126678402ed9"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "325c3cab-26f2-4c94-8f08-37fc348836e2"
+          "id": "bd9cece3-6d8d-442e-be56-07439d86ed7e"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
+      "id": "2fde9fc7-05b8-4ea2-a7c2-126678402ed9",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2022-05-24T07:25:46+00:00",
+        "updated_at": "2022-05-24T07:25:46+00:00",
+        "name": "Company name 207",
+        "slug": "company-name-207",
+        "email": "mail210@company.com",
         "billing_email": null,
-        "phone": "1-472-394-4502",
-        "website": "http://tillman.biz/olive_hirthe",
-        "address": "Eli Divide\n271 Schroeder Trace\n32597 North Booker\nCroatia",
-        "address_line_1": "Eli Divide",
-        "address_line_2": "271 Schroeder Trace",
-        "zipcode": "32597",
-        "city": "North Booker",
+        "phone": "160.600.0634 x62902",
+        "website": "http://kling.org/loreta",
+        "address": "Haley Well\n35985 Hegmann Squares\n42722-7613 Solside\nthe Netherlands",
+        "address_line_1": "Haley Well",
+        "address_line_2": "35985 Hegmann Squares",
+        "zipcode": "42722-7613",
+        "city": "Solside",
         "region": null,
-        "country": "Croatia",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "817 Elisha Plain",
-        "financial_line_2": "57874 Bookerport",
+        "financial_line_1": "684 Welch Drive",
+        "financial_line_2": "86724 Emmerichton",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-21T10:18:07.380Z",
+          "trial_ends_at": "2022-06-07T07:25:46.385Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "id": "bd9cece3-6d8d-442e-be56-07439d86ed7e",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2022-05-24T07:25:46+00:00",
+        "updated_at": "2022-05-24T07:25:46+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -283,7 +283,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",

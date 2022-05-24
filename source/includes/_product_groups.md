@@ -25,6 +25,8 @@ Product groups hold general information and configuration about products. A prod
 ## Endpoints
 `GET /api/boomerang/product_groups`
 
+`POST api/boomerang/product_groups/search`
+
 `GET /api/boomerang/product_groups/{id}`
 
 `POST /api/boomerang/product_groups`
@@ -108,11 +110,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0384b582-d33b-4462-9243-de09952757ef",
+      "id": "350629b2-f164-4125-9407-289dc0f0eccf",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-04-07T10:17:57+00:00",
-        "updated_at": "2022-04-07T10:17:57+00:00",
+        "created_at": "2022-05-24T07:25:31+00:00",
+        "updated_at": "2022-05-24T07:25:31+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -148,7 +150,7 @@ Name | Description
       "relationships": {
         "categories": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=0384b582-d33b-4462-9243-de09952757ef"
+            "related": "api/boomerang/categories?filter[item_id]=350629b2-f164-4125-9407-289dc0f0eccf"
           }
         },
         "photo": {
@@ -158,7 +160,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=0384b582-d33b-4462-9243-de09952757ef"
+            "related": "api/boomerang/products?filter[product_group_id]=350629b2-f164-4125-9407-289dc0f0eccf"
           }
         },
         "tax_category": {
@@ -168,7 +170,7 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=0384b582-d33b-4462-9243-de09952757ef&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=350629b2-f164-4125-9407-289dc0f0eccf&filter[owner_type]=product_groups"
           }
         }
       }
@@ -190,7 +192,167 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=photo,categories,products`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-05-24T07:23:31Z`
+`sort` | **String**<br>How to sort the data `?sort=-created_at`
+`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String**<br>The page to request
+`page[size]` | **String**<br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+- | -
+`id` | **Uuid**<br>`eq`, `not_eq`
+`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean**<br>`eq`
+`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`type` | **String**<br>`eq`, `not_eq`
+`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`slug` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`sku` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`lead_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`lag_time` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`product_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tracking_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`trackable` | **Boolean**<br>`eq`
+`extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`show_in_store` | **Boolean**<br>`eq`
+`sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`base_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`price_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`price_period` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean**<br>`eq`
+`taxable` | **Boolean**<br>`eq`
+`tag_list` | **Array**<br>`eq`
+`q` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`allow_shortage` | **Boolean**<br>`eq`
+`shortage_limit` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`flat_fee_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`structure_price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`photo_id` | **Uuid**<br>`eq`, `not_eq`
+`tax_category_id` | **Uuid**<br>`eq`, `not_eq`
+`category_id` | **Uuid**<br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+- | -
+`total` | **Array**<br>`count`
+`archived` | **Array**<br>`count`
+`tag_list` | **Array**<br>`count`
+`taxable` | **Array**<br>`count`
+`discountable` | **Array**<br>`count`
+`product_type` | **Array**<br>`count`
+`tracking_type` | **Array**<br>`count`
+`show_in_store` | **Array**<br>`count`
+`price_type` | **Array**<br>`count`
+`price_period` | **Array**<br>`count`
+`tax_category_id` | **Array**<br>`count`
+`deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
+`base_price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`photo`
+
+
+`properties`
+
+
+
+
+
+
+## Searching product groups
+
+Use advanced search to make logical filter groups with and/or operators.
+
+
+> How to search for product groups:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/search' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "product_groups": "id"
+      },
+      "filter": {
+        "conditions": {
+          "operator": "or",
+          "attributes": [
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "discountable": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "show_in_store": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "816ec6d2-a72e-4406-a688-a17843c7cb85"
+    },
+    {
+      "id": "209c7c4b-9d20-4a84-81e7-b065bc2c2b51"
+    },
+    {
+      "id": "d0b74978-ad40-4a65-9b1a-d6ca2fcfd9bc"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST api/boomerang/product_groups/search`
+
+### Request params
+
+This request accepts the following paramaters:
+
+Name | Description
+- | -
+`include` | **String**<br>List of comma seperated relationships `?include=photo,categories,products`
+`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-05-24T07:23:31Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -281,7 +443,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/ecaa2679-c9ae-43c1-93d6-e229095b2c3c' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/cd131897-1152-46f8-a482-a1d0d66e6b62' \
     --header 'content-type: application/json' \
 ```
 
@@ -290,11 +452,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ecaa2679-c9ae-43c1-93d6-e229095b2c3c",
+    "id": "cd131897-1152-46f8-a482-a1d0d66e6b62",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-04-07T10:17:57+00:00",
-      "updated_at": "2022-04-07T10:17:57+00:00",
+      "created_at": "2022-05-24T07:25:33+00:00",
+      "updated_at": "2022-05-24T07:25:33+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -330,7 +492,7 @@ This request accepts the following includes:
     "relationships": {
       "categories": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=ecaa2679-c9ae-43c1-93d6-e229095b2c3c"
+          "related": "api/boomerang/categories?filter[item_id]=cd131897-1152-46f8-a482-a1d0d66e6b62"
         }
       },
       "photo": {
@@ -340,7 +502,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=ecaa2679-c9ae-43c1-93d6-e229095b2c3c"
+          "related": "api/boomerang/products?filter[product_group_id]=cd131897-1152-46f8-a482-a1d0d66e6b62"
         }
       },
       "tax_category": {
@@ -350,7 +512,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=ecaa2679-c9ae-43c1-93d6-e229095b2c3c&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=cd131897-1152-46f8-a482-a1d0d66e6b62&filter[owner_type]=product_groups"
         }
       }
     }
@@ -435,11 +597,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7fe0d9b8-e94c-48ae-bb7b-cc13bf99197c",
+    "id": "7ed745c4-445d-4f01-a2f6-2e85c22341e6",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-04-07T10:17:57+00:00",
-      "updated_at": "2022-04-07T10:17:57+00:00",
+      "created_at": "2022-05-24T07:25:34+00:00",
+      "updated_at": "2022-05-24T07:25:34+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -593,11 +755,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/742d2d88-f4b9-40e6-a6ab-ed6a7bb06fc0' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/71a1a53e-09e1-48e2-a093-1fbfe1741815' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "742d2d88-f4b9-40e6-a6ab-ed6a7bb06fc0",
+        "id": "71a1a53e-09e1-48e2-a093-1fbfe1741815",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -611,11 +773,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "742d2d88-f4b9-40e6-a6ab-ed6a7bb06fc0",
+    "id": "71a1a53e-09e1-48e2-a093-1fbfe1741815",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-04-07T10:17:58+00:00",
-      "updated_at": "2022-04-07T10:17:58+00:00",
+      "created_at": "2022-05-24T07:25:34+00:00",
+      "updated_at": "2022-05-24T07:25:34+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -766,7 +928,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/4f535ad7-9077-4878-b998-f3cedf061895' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/4af8d24c-64f4-494f-be11-bf0af94e8427' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
