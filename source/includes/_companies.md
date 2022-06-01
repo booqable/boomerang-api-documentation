@@ -70,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7357eb4d-238d-40cc-b26a-d2271a573daf",
+    "id": "a207eba5-7a0b-47f8-95b3-70cc4dc73127",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-07T10:16:28+00:00",
-      "updated_at": "2022-04-07T10:16:28+00:00",
+      "created_at": "2022-06-01T08:55:46+00:00",
+      "updated_at": "2022-06-01T08:55:46+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail53@company.com",
+      "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "(926) 976-8703 x364",
-      "website": "http://abernathy-grimes.biz/johnie_beer",
-      "address": "Rico Coves\n20840 Meagan Ramp\n77400 West Rosenaport\nBrunei Darussalam",
-      "address_line_1": "Rico Coves",
-      "address_line_2": "20840 Meagan Ramp",
-      "zipcode": "77400",
-      "city": "West Rosenaport",
+      "phone": "919-117-7185",
+      "website": "http://krajcik.org/huey",
+      "address": "Romaguera Loop\n2958 Block Loaf\n59570-6559 South Newton\nthe Netherlands",
+      "address_line_1": "Romaguera Loop",
+      "address_line_2": "2958 Block Loaf",
+      "zipcode": "59570-6559",
+      "city": "South Newton",
       "region": null,
-      "country": "Brunei Darussalam",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -99,8 +99,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "428 Medhurst Fall",
-      "financial_line_2": "00878 North Eddaton",
+      "financial_line_1": "18902 Emmerich Bypass",
+      "financial_line_2": "40695 Mayerstad",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
@@ -172,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "aa9a0985-b229-4396-a8d5-f312be9a6fc4",
+    "id": "e089d772-12ac-4fdd-ac1d-999876f8f222",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-04-21T10:16:28.291Z",
+        "trial_ends_at": "2022-06-15T08:55:47.148Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -260,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
+        "id": "8e73778b-a101-471d-bc5d-5c63eab2f48a",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
+    "id": "8e73778b-a101-471d-bc5d-5c63eab2f48a",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-07T10:16:28+00:00",
-      "updated_at": "2022-04-07T10:16:28+00:00",
+      "created_at": "2022-06-01T08:55:47+00:00",
+      "updated_at": "2022-06-01T08:55:47+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail55@company.com",
+      "email": "mail57@company.com",
       "billing_email": null,
-      "phone": "598-316-5939 x8820",
-      "website": "http://kertzmann-kuhic.net/darius.collier",
-      "address": "Zackary Roads\n28779 Portia Spring\n94926 Port Providencia\nWestern Sahara",
-      "address_line_1": "Zackary Roads",
-      "address_line_2": "28779 Portia Spring",
-      "zipcode": "94926",
-      "city": "Port Providencia",
+      "phone": "(477) 687-6767 x0748",
+      "website": "http://bosco-herzog.co/lisabeth_runolfsdottir",
+      "address": "Bauch Fords\n81047 Victor Hill\n78987-8240 Reystad\nthe Netherlands",
+      "address_line_1": "Bauch Fords",
+      "address_line_2": "81047 Victor Hill",
+      "zipcode": "78987-8240",
+      "city": "Reystad",
       "region": null,
-      "country": "Western Sahara",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -303,8 +303,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "3359 McDermott Square",
-      "financial_line_2": "30068 Namburgh",
+      "financial_line_1": "63348 Murphy Bypass",
+      "financial_line_2": "18849 Wardborough",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
