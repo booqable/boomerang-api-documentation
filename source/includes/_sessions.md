@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "bb71f844-9d83-594b-ab20-3d1c1ce60974",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "37a2ba3b-dba2-4771-aabc-b30a692c3254",
-      "employee_id": "434dfd11-965c-4123-828b-cd99deb2787a",
-      "locations_updated_at": "2022-04-07T10:18:07+00:00",
-      "clusters_updated_at": "2022-04-07T10:18:07+00:00",
-      "default_properties_updated_at": "2022-04-07T10:18:07+00:00"
+      "updated_at": "2022-04-08T18:21:25+00:00",
+      "company_id": "60a95771-fc61-4de0-8d3e-2a6bb9fa5cc9",
+      "employee_id": "129525e6-bd85-4857-ac9b-97cba6e9cf56",
+      "locations_updated_at": "2022-04-08T18:21:25+00:00",
+      "clusters_updated_at": "2022-04-08T18:21:25+00:00",
+      "default_properties_updated_at": "2022-04-08T18:21:25+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
-      "employee_id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "updated_at": "2022-04-08T18:21:26+00:00",
+      "company_id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
+      "employee_id": "982df113-a39c-496e-b536-58c33695c47a",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "aab5a606-815e-4b6a-82ea-11d049e649fb"
+          "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "325c3cab-26f2-4c94-8f08-37fc348836e2"
+          "id": "982df113-a39c-496e-b536-58c33695c47a"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
+      "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2022-04-08T18:21:26+00:00",
+        "updated_at": "2022-04-08T18:21:26+00:00",
         "name": "Company name 198",
         "slug": "company-name-198",
         "email": "mail201@company.com",
         "billing_email": null,
-        "phone": "1-472-394-4502",
-        "website": "http://tillman.biz/olive_hirthe",
-        "address": "Eli Divide\n271 Schroeder Trace\n32597 North Booker\nCroatia",
-        "address_line_1": "Eli Divide",
-        "address_line_2": "271 Schroeder Trace",
-        "zipcode": "32597",
-        "city": "North Booker",
+        "phone": "460-044-2750 x405",
+        "website": "http://cassin.biz/yessenia_tillman",
+        "address": "Azalee Points\n8739 Herta Highway\n59145-3453 Jeromyville\nCuba",
+        "address_line_1": "Azalee Points",
+        "address_line_2": "8739 Herta Highway",
+        "zipcode": "59145-3453",
+        "city": "Jeromyville",
         "region": null,
-        "country": "Croatia",
+        "country": "Cuba",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "817 Elisha Plain",
-        "financial_line_2": "57874 Bookerport",
+        "financial_line_1": "7073 Emil Creek",
+        "financial_line_2": "95893-6083 East Ollie",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-21T10:18:07.380Z",
+          "trial_ends_at": "2022-04-22T18:21:26.070Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "id": "982df113-a39c-496e-b536-58c33695c47a",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2022-04-08T18:21:26+00:00",
+        "updated_at": "2022-04-08T18:21:26+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

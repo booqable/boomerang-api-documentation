@@ -70,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7357eb4d-238d-40cc-b26a-d2271a573daf",
+    "id": "afe82ebc-046c-4f4a-9593-bf148be32d10",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-07T10:16:28+00:00",
-      "updated_at": "2022-04-07T10:16:28+00:00",
+      "created_at": "2022-04-08T18:19:38+00:00",
+      "updated_at": "2022-04-08T18:19:38+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail53@company.com",
       "billing_email": null,
-      "phone": "(926) 976-8703 x364",
-      "website": "http://abernathy-grimes.biz/johnie_beer",
-      "address": "Rico Coves\n20840 Meagan Ramp\n77400 West Rosenaport\nBrunei Darussalam",
-      "address_line_1": "Rico Coves",
-      "address_line_2": "20840 Meagan Ramp",
-      "zipcode": "77400",
-      "city": "West Rosenaport",
+      "phone": "(203) 597-2188 x971",
+      "website": "http://fahey-waters.name/caroyln",
+      "address": "Bailey Dam\n989 Charity Lodge\n95685-5308 West Tristan\nVenezuela",
+      "address_line_1": "Bailey Dam",
+      "address_line_2": "989 Charity Lodge",
+      "zipcode": "95685-5308",
+      "city": "West Tristan",
       "region": null,
-      "country": "Brunei Darussalam",
+      "country": "Venezuela",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -99,8 +99,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "428 Medhurst Fall",
-      "financial_line_2": "00878 North Eddaton",
+      "financial_line_1": "5165 Ron Lock",
+      "financial_line_2": "01827-0452 North Ebonymouth",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
@@ -172,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "aa9a0985-b229-4396-a8d5-f312be9a6fc4",
+    "id": "cc7b55bb-dc6e-4711-a3d3-756f38e54b38",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-04-21T10:16:28.291Z",
+        "trial_ends_at": "2022-04-22T18:19:38.924Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -260,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
+        "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "20d1ca93-6571-45f6-846c-4fff25819e2f",
+    "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-07T10:16:28+00:00",
-      "updated_at": "2022-04-07T10:16:28+00:00",
+      "created_at": "2022-04-08T18:19:39+00:00",
+      "updated_at": "2022-04-08T18:19:39+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "598-316-5939 x8820",
-      "website": "http://kertzmann-kuhic.net/darius.collier",
-      "address": "Zackary Roads\n28779 Portia Spring\n94926 Port Providencia\nWestern Sahara",
-      "address_line_1": "Zackary Roads",
-      "address_line_2": "28779 Portia Spring",
-      "zipcode": "94926",
-      "city": "Port Providencia",
+      "phone": "810-897-9123 x644",
+      "website": "http://howe.info/royal.grimes",
+      "address": "Rohan Land\n74058 Bradtke Course\n26329-6842 Lake Annettaland\nMauritius",
+      "address_line_1": "Rohan Land",
+      "address_line_2": "74058 Bradtke Course",
+      "zipcode": "26329-6842",
+      "city": "Lake Annettaland",
       "region": null,
-      "country": "Western Sahara",
+      "country": "Mauritius",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -303,8 +303,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "3359 McDermott Square",
-      "financial_line_2": "30068 Namburgh",
+      "financial_line_1": "7068 Keebler Trafficway",
+      "financial_line_2": "59064-3493 Port Toby",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
