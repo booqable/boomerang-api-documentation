@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bb71f844-9d83-594b-ab20-3d1c1ce60974",
+    "id": "3497b45c-9a78-5d34-ae74-02dc6a45c264",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:25+00:00",
-      "company_id": "60a95771-fc61-4de0-8d3e-2a6bb9fa5cc9",
-      "employee_id": "129525e6-bd85-4857-ac9b-97cba6e9cf56",
-      "locations_updated_at": "2022-04-08T18:21:25+00:00",
-      "clusters_updated_at": "2022-04-08T18:21:25+00:00",
-      "default_properties_updated_at": "2022-04-08T18:21:25+00:00"
+      "updated_at": "2022-06-23T12:53:24+00:00",
+      "company_id": "89bbda8d-cdcb-4883-9059-e9d3ac6f9ae2",
+      "employee_id": "1421f0d7-c0df-43d4-93a1-e9f8f4905fa2",
+      "locations_updated_at": "2022-06-23T12:53:24+00:00",
+      "clusters_updated_at": "2022-06-23T12:53:24+00:00",
+      "default_properties_updated_at": "2022-06-23T12:53:24+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
+    "id": "3497b45c-9a78-5d34-ae74-02dc6a45c264",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:26+00:00",
-      "company_id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
-      "employee_id": "982df113-a39c-496e-b536-58c33695c47a",
+      "updated_at": "2022-06-23T12:53:24+00:00",
+      "company_id": "60a22adb-8ed6-4d77-99d7-07530a7c3199",
+      "employee_id": "f26fc3e6-3b4e-432b-8a42-f00dd0557faa",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf"
+          "id": "60a22adb-8ed6-4d77-99d7-07530a7c3199"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "982df113-a39c-496e-b536-58c33695c47a"
+          "id": "f26fc3e6-3b4e-432b-8a42-f00dd0557faa"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
+      "id": "60a22adb-8ed6-4d77-99d7-07530a7c3199",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2022-06-23T12:53:24+00:00",
+        "updated_at": "2022-06-23T12:53:24+00:00",
+        "name": "Company name 207",
+        "slug": "company-name-207",
+        "email": "mail210@company.com",
         "billing_email": null,
-        "phone": "460-044-2750 x405",
-        "website": "http://cassin.biz/yessenia_tillman",
-        "address": "Azalee Points\n8739 Herta Highway\n59145-3453 Jeromyville\nCuba",
-        "address_line_1": "Azalee Points",
-        "address_line_2": "8739 Herta Highway",
-        "zipcode": "59145-3453",
-        "city": "Jeromyville",
+        "phone": "1-654-906-7071",
+        "website": "http://pouros.name/conchita.jacobi",
+        "address": "Beatty Camp\n251 Cameron Mews\n08591 West Cecilytown\nthe Netherlands",
+        "address_line_1": "Beatty Camp",
+        "address_line_2": "251 Cameron Mews",
+        "zipcode": "08591",
+        "city": "West Cecilytown",
         "region": null,
-        "country": "Cuba",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7073 Emil Creek",
-        "financial_line_2": "95893-6083 East Ollie",
+        "financial_line_1": "5273 Hilpert Lodge",
+        "financial_line_2": "47877-8552 Lake Marcelinaton",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-22T18:21:26.070Z",
+          "trial_ends_at": "2022-07-07T12:53:24.513Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "982df113-a39c-496e-b536-58c33695c47a",
+      "id": "f26fc3e6-3b4e-432b-8a42-f00dd0557faa",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
+        "created_at": "2022-06-23T12:53:24+00:00",
+        "updated_at": "2022-06-23T12:53:24+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -283,7 +283,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
