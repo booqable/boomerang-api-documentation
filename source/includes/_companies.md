@@ -70,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "afe82ebc-046c-4f4a-9593-bf148be32d10",
+    "id": "b76800c6-2527-4c03-9a39-494e07991412",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-08T18:19:38+00:00",
-      "updated_at": "2022-04-08T18:19:38+00:00",
+      "created_at": "2022-07-07T12:16:55+00:00",
+      "updated_at": "2022-07-07T12:16:55+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail53@company.com",
+      "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "(203) 597-2188 x971",
-      "website": "http://fahey-waters.name/caroyln",
-      "address": "Bailey Dam\n989 Charity Lodge\n95685-5308 West Tristan\nVenezuela",
-      "address_line_1": "Bailey Dam",
-      "address_line_2": "989 Charity Lodge",
-      "zipcode": "95685-5308",
-      "city": "West Tristan",
+      "phone": "(764) 104-3507",
+      "website": "http://haley.name/hal.fahey",
+      "address": "Nitzsche Island\n862 Ora Ports\n24629-0383 East Rolando\nthe Netherlands",
+      "address_line_1": "Nitzsche Island",
+      "address_line_2": "862 Ora Ports",
+      "zipcode": "24629-0383",
+      "city": "East Rolando",
       "region": null,
-      "country": "Venezuela",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -99,8 +99,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "5165 Ron Lock",
-      "financial_line_2": "01827-0452 North Ebonymouth",
+      "financial_line_1": "39053 Renate Bypass",
+      "financial_line_2": "91821 Weissnatfort",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
@@ -172,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cc7b55bb-dc6e-4711-a3d3-756f38e54b38",
+    "id": "b4c6b163-7204-4270-9d04-d182ce310e46",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-04-22T18:19:38.924Z",
+        "trial_ends_at": "2022-07-21T12:16:56.415Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -260,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
+        "id": "42fe7ca4-fd90-4352-b0f5-ecbb9ef42fe1",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
+    "id": "42fe7ca4-fd90-4352-b0f5-ecbb9ef42fe1",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-08T18:19:39+00:00",
-      "updated_at": "2022-04-08T18:19:39+00:00",
+      "created_at": "2022-07-07T12:16:56+00:00",
+      "updated_at": "2022-07-07T12:16:57+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail55@company.com",
+      "email": "mail57@company.com",
       "billing_email": null,
-      "phone": "810-897-9123 x644",
-      "website": "http://howe.info/royal.grimes",
-      "address": "Rohan Land\n74058 Bradtke Course\n26329-6842 Lake Annettaland\nMauritius",
-      "address_line_1": "Rohan Land",
-      "address_line_2": "74058 Bradtke Course",
-      "zipcode": "26329-6842",
-      "city": "Lake Annettaland",
+      "phone": "864.265.4327 x163",
+      "website": "http://bashirian.org/nathaniel",
+      "address": "Dessie Mountain\n853 Johnson Rapids\n35404-0611 Duanefort\nthe Netherlands",
+      "address_line_1": "Dessie Mountain",
+      "address_line_2": "853 Johnson Rapids",
+      "zipcode": "35404-0611",
+      "city": "Duanefort",
       "region": null,
-      "country": "Mauritius",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -303,8 +303,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7068 Keebler Trafficway",
-      "financial_line_2": "59064-3493 Port Toby",
+      "financial_line_1": "3199 Jerrod Wall",
+      "financial_line_2": "33098 Erichfort",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
