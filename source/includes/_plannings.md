@@ -7,6 +7,8 @@ Nested plannings contain information about individual items in a bundle. Note th
 ## Endpoints
 `GET /api/boomerang/plannings`
 
+`POST api/boomerang/plannings/search`
+
 `GET /api/boomerang/plannings/{id}`
 
 ## Fields
@@ -69,11 +71,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0962787b-ced6-460a-9af7-51e0dd696edd",
+      "id": "5b43291b-0955-497f-beec-242177570f79",
       "type": "plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:21:06+00:00",
-        "updated_at": "2022-04-08T18:21:06+00:00",
+        "created_at": "2022-07-13T11:20:25+00:00",
+        "updated_at": "2022-07-13T11:20:26+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
@@ -86,36 +88,36 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "da5bf33a-8ff5-40fc-8c77-4f932dd80c06",
-        "order_id": "d8f80be0-87b8-4799-a8a7-47157535978e",
-        "start_location_id": "f07ec53e-60e8-40a8-9a88-7368d958f8c1",
-        "stop_location_id": "f07ec53e-60e8-40a8-9a88-7368d958f8c1",
+        "item_id": "f90dc622-ca20-473d-b0a8-19309a44a3f0",
+        "order_id": "55ce0306-0c9d-4b96-acfc-10e336374523",
+        "start_location_id": "bfe91a76-2d07-46cb-a6b4-dd2377d7cda3",
+        "stop_location_id": "bfe91a76-2d07-46cb-a6b4-dd2377d7cda3",
         "parent_planning_id": null
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/da5bf33a-8ff5-40fc-8c77-4f932dd80c06"
+            "related": "api/boomerang/items/f90dc622-ca20-473d-b0a8-19309a44a3f0"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/d8f80be0-87b8-4799-a8a7-47157535978e"
+            "related": "api/boomerang/orders/55ce0306-0c9d-4b96-acfc-10e336374523"
           }
         },
         "order_line": {
           "links": {
-            "related": "api/boomerang/lines?filter[planning_id]=0962787b-ced6-460a-9af7-51e0dd696edd"
+            "related": "api/boomerang/lines?filter[planning_id]=5b43291b-0955-497f-beec-242177570f79"
           }
         },
         "start_location": {
           "links": {
-            "related": "api/boomerang/locations/f07ec53e-60e8-40a8-9a88-7368d958f8c1"
+            "related": "api/boomerang/locations/bfe91a76-2d07-46cb-a6b4-dd2377d7cda3"
           }
         },
         "stop_location": {
           "links": {
-            "related": "api/boomerang/locations/f07ec53e-60e8-40a8-9a88-7368d958f8c1"
+            "related": "api/boomerang/locations/bfe91a76-2d07-46cb-a6b4-dd2377d7cda3"
           }
         },
         "parent_planning": {
@@ -125,12 +127,12 @@ Name | Description
         },
         "nested_plannings": {
           "links": {
-            "related": "api/boomerang/plannings?filter[planning_id]=0962787b-ced6-460a-9af7-51e0dd696edd"
+            "related": "api/boomerang/plannings?filter[planning_id]=5b43291b-0955-497f-beec-242177570f79"
           }
         },
         "stock_item_plannings": {
           "links": {
-            "related": "api/boomerang/stock_item_plannings?filter[planning_id]=0962787b-ced6-460a-9af7-51e0dd696edd"
+            "related": "api/boomerang/stock_item_plannings?filter[planning_id]=5b43291b-0955-497f-beec-242177570f79"
           }
         }
       }
@@ -152,7 +154,160 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=item,order,order_line`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[plannings]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-07-13T11:17:18Z`
+`sort` | **String**<br>How to sort the data `?sort=-created_at`
+`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String**<br>The page to request
+`page[size]` | **String**<br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+- | -
+`id` | **Uuid**<br>`eq`, `not_eq`
+`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean**<br>`eq`
+`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`quantity` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`starts_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`stops_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reserved_from` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reserved_till` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reserved` | **Boolean**<br>`eq`
+`started` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`stopped` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`location_shortage_amount` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`shortage_amount` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`item_id` | **Uuid**<br>`eq`, `not_eq`
+`order_id` | **Uuid**<br>`eq`, `not_eq`
+`start_location_id` | **Uuid**<br>`eq`, `not_eq`
+`stop_location_id` | **Uuid**<br>`eq`, `not_eq`
+`parent_planning_id` | **Uuid**<br>`eq`, `not_eq`
+`q` | **String**<br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+- | -
+`total` | **Array**<br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`order`
+
+
+`item` => 
+`photo`
+
+
+
+
+`order_line`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+
+
+
+
+## Searching plannings
+
+Use advanced search to make logical filter groups with and/or operators.
+
+
+> How to search for plannings:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/plannings/search' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "plannings": "id"
+      },
+      "filter": {
+        "conditions": {
+          "operator": "or",
+          "attributes": [
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "starts_at": {
+                    "gte": "2022-07-14T11:20:31Z"
+                  }
+                },
+                {
+                  "starts_at": {
+                    "lte": "2022-07-17T11:20:31Z"
+                  }
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "stops_at": {
+                    "gte": "2022-07-14T11:20:31Z"
+                  }
+                },
+                {
+                  "stops_at": {
+                    "lte": "2022-07-17T11:20:31Z"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "3cd4d8e5-a9de-4da9-81e5-b7ce4a63db67"
+    },
+    {
+      "id": "d5e008e0-8b46-44bd-9d15-d2f4ba77bdb9"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST api/boomerang/plannings/search`
+
+### Request params
+
+This request accepts the following paramaters:
+
+Name | Description
+- | -
+`include` | **String**<br>List of comma seperated relationships `?include=item,order,order_line`
+`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[plannings]=id,created_at,updated_at`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-07-13T11:17:18Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -231,7 +386,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings/61b143cc-a70d-4e90-8c8c-f3d41c1674b9' \
+    --url 'https://example.booqable.com/api/boomerang/plannings/619a77b7-7bf9-4837-b54a-5eb0cd9fd42b' \
     --header 'content-type: application/json' \
 ```
 
@@ -240,11 +395,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "61b143cc-a70d-4e90-8c8c-f3d41c1674b9",
+    "id": "619a77b7-7bf9-4837-b54a-5eb0cd9fd42b",
     "type": "plannings",
     "attributes": {
-      "created_at": "2022-04-08T18:21:08+00:00",
-      "updated_at": "2022-04-08T18:21:08+00:00",
+      "created_at": "2022-07-13T11:20:32+00:00",
+      "updated_at": "2022-07-13T11:20:33+00:00",
       "archived": false,
       "archived_at": null,
       "quantity": 1,
@@ -257,36 +412,36 @@ This request accepts the following includes:
       "stopped": 0,
       "location_shortage_amount": 0,
       "shortage_amount": 0,
-      "item_id": "5db29569-1721-4744-b943-5b84e7e53825",
-      "order_id": "7c3276cf-0cbe-41aa-83f4-27e752df2f53",
-      "start_location_id": "83c88892-c66f-4760-b397-807531fa46b2",
-      "stop_location_id": "83c88892-c66f-4760-b397-807531fa46b2",
+      "item_id": "3d3a95f1-6bf4-42ab-bd73-a97ae189728a",
+      "order_id": "069338cf-5c90-45ff-81c5-dbc69474f337",
+      "start_location_id": "17810e81-fdf3-436f-a3e3-4dc432626405",
+      "stop_location_id": "17810e81-fdf3-436f-a3e3-4dc432626405",
       "parent_planning_id": null
     },
     "relationships": {
       "item": {
         "links": {
-          "related": "api/boomerang/items/5db29569-1721-4744-b943-5b84e7e53825"
+          "related": "api/boomerang/items/3d3a95f1-6bf4-42ab-bd73-a97ae189728a"
         }
       },
       "order": {
         "links": {
-          "related": "api/boomerang/orders/7c3276cf-0cbe-41aa-83f4-27e752df2f53"
+          "related": "api/boomerang/orders/069338cf-5c90-45ff-81c5-dbc69474f337"
         }
       },
       "order_line": {
         "links": {
-          "related": "api/boomerang/lines?filter[planning_id]=61b143cc-a70d-4e90-8c8c-f3d41c1674b9"
+          "related": "api/boomerang/lines?filter[planning_id]=619a77b7-7bf9-4837-b54a-5eb0cd9fd42b"
         }
       },
       "start_location": {
         "links": {
-          "related": "api/boomerang/locations/83c88892-c66f-4760-b397-807531fa46b2"
+          "related": "api/boomerang/locations/17810e81-fdf3-436f-a3e3-4dc432626405"
         }
       },
       "stop_location": {
         "links": {
-          "related": "api/boomerang/locations/83c88892-c66f-4760-b397-807531fa46b2"
+          "related": "api/boomerang/locations/17810e81-fdf3-436f-a3e3-4dc432626405"
         }
       },
       "parent_planning": {
@@ -296,12 +451,12 @@ This request accepts the following includes:
       },
       "nested_plannings": {
         "links": {
-          "related": "api/boomerang/plannings?filter[planning_id]=61b143cc-a70d-4e90-8c8c-f3d41c1674b9"
+          "related": "api/boomerang/plannings?filter[planning_id]=619a77b7-7bf9-4837-b54a-5eb0cd9fd42b"
         }
       },
       "stock_item_plannings": {
         "links": {
-          "related": "api/boomerang/stock_item_plannings?filter[planning_id]=61b143cc-a70d-4e90-8c8c-f3d41c1674b9"
+          "related": "api/boomerang/stock_item_plannings?filter[planning_id]=619a77b7-7bf9-4837-b54a-5eb0cd9fd42b"
         }
       }
     }
