@@ -112,19 +112,19 @@ Name | Description
       "data": {
         "type": "order_bookings",
         "attributes": {
-          "order_id": "e869da96-cabe-4c6d-b46d-901e9153511a",
+          "order_id": "0eb97b57-a1fb-44bd-843d-010ea5373dd5",
           "items": [
             {
               "type": "products",
-              "id": "92210f34-c81a-4a28-867a-a4ea7d015efe",
+              "id": "725139ec-8f3e-4fd9-95b7-2f92241eb825",
               "quantity": 10
             },
             {
               "type": "products",
-              "id": "0592b3d8-5850-4e2d-8e1b-07df970ad123",
+              "id": "c29b5f32-691a-4103-9904-36441a961dbc",
               "stock_item_ids": [
-                "f1e4988f-82db-4b4b-ad22-f549ba0c0267",
-                "8946630b-ccbf-4866-a1ee-8738ddf7b4d5"
+                "49b64ee7-8fb1-403c-a81f-91f4c39060cc",
+                "62ca3ece-af48-4d5d-93a4-079ccba5c92f"
               ]
             }
           ]
@@ -148,7 +148,7 @@ Name | Description
         "blocking": [
           {
             "reason": "shortage",
-            "item_id": "92210f34-c81a-4a28-867a-a4ea7d015efe",
+            "item_id": "725139ec-8f3e-4fd9-95b7-2f92241eb825",
             "stock_count": 4,
             "reserved": 0,
             "needed": 10,
@@ -172,20 +172,20 @@ Name | Description
       "data": {
         "type": "order_bookings",
         "attributes": {
-          "order_id": "c0ea7042-4142-475c-8922-21dffdc558ba",
+          "order_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d",
           "items": [
             {
               "type": "products",
-              "id": "05c5551d-5c73-45fa-84ee-b7fca3854877",
+              "id": "2c853e1f-ab87-41b8-98ef-65eabb948993",
               "stock_item_ids": [
-                "d74c9cba-90dc-4d6b-b196-71e77ae85ec3",
-                "3fa7d8a0-69d9-4c1e-850a-cf36374fef39",
-                "ddd51caa-6002-4ff6-b0c9-09b3874a4c49"
+                "1c2e8b9a-e4ba-4c6a-9423-612e1801bde5",
+                "a4bfe798-abea-4989-85f8-93d49ea0e838",
+                "dc4c4dde-7704-442c-bb8f-6ead9bed4428"
               ]
             },
             {
               "type": "products",
-              "id": "c29e3511-65a5-429d-aca6-83f3c7ef1351",
+              "id": "59145b5f-4e72-4de8-b1c3-53bd9f1bf7e5",
               "quantity": 1
             }
           ]
@@ -200,27 +200,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "dc8d8f2d-ef70-5482-81f6-7796c1492132",
+    "id": "f5106aca-2c9c-5df9-95c1-3466c68f7d4b",
     "type": "order_bookings",
     "attributes": {
-      "order_id": "c0ea7042-4142-475c-8922-21dffdc558ba"
+      "order_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d"
     },
     "relationships": {
       "order": {
         "data": {
           "type": "orders",
-          "id": "c0ea7042-4142-475c-8922-21dffdc558ba"
+          "id": "a714de43-2f83-4a3a-a4a4-c8172509f67d"
         }
       },
       "lines": {
         "data": [
           {
             "type": "lines",
-            "id": "472dd130-913f-4b02-9038-0a71d03c3e04"
+            "id": "6e595d7f-664c-4059-b057-cbbaad0b219b"
           },
           {
             "type": "lines",
-            "id": "9df553dd-7354-4c97-a437-2943b20e1722"
+            "id": "be48c74e-8e68-4951-9473-c3d06491f6a2"
           }
         ]
       },
@@ -228,11 +228,11 @@ Name | Description
         "data": [
           {
             "type": "plannings",
-            "id": "26650ab6-4e74-4d7c-a9f0-434f481c5bd3"
+            "id": "592f0bb5-dd13-4eac-a5cf-ef85435da19b"
           },
           {
             "type": "plannings",
-            "id": "c92e08f6-1cd2-461a-ada3-2d3895ddfe8d"
+            "id": "61d94f93-16e2-4958-9b64-8cf5cf76d881"
           }
         ]
       },
@@ -240,15 +240,15 @@ Name | Description
         "data": [
           {
             "type": "stock_item_plannings",
-            "id": "5b8c9c41-28e2-40bb-8347-82ac372a192d"
+            "id": "73805784-f700-456d-bcc1-e667f9b4d0a7"
           },
           {
             "type": "stock_item_plannings",
-            "id": "a594fcf7-2a43-45a5-a4c2-1f40547c1402"
+            "id": "7cfddc40-f7b2-4154-aebe-8daadb9ff76d"
           },
           {
             "type": "stock_item_plannings",
-            "id": "ec2ac3b1-a12b-48df-88e2-75c44a24820e"
+            "id": "f548be7d-247c-40af-aeb0-34fc89dd52e3"
           }
         ]
       }
@@ -256,11 +256,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "c0ea7042-4142-475c-8922-21dffdc558ba",
+      "id": "a714de43-2f83-4a3a-a4a4-c8172509f67d",
       "type": "orders",
       "attributes": {
-        "created_at": "2022-04-08T18:20:39+00:00",
-        "updated_at": "2022-04-08T18:20:42+00:00",
+        "created_at": "2022-07-14T10:50:33+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -301,11 +301,11 @@ Name | Description
         "to_be_paid_in_cents": 314655,
         "paid_in_cents": 0,
         "discount_percentage": 10.0,
-        "customer_id": "cca79d91-566b-478b-a689-55e3ccaea64e",
+        "customer_id": "dd83a90d-e524-4e79-8dd9-9dfeb9e8a057",
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "51c826f4-3334-41e7-9cde-f5fc0e8e269c",
-        "stop_location_id": "51c826f4-3334-41e7-9cde-f5fc0e8e269c"
+        "start_location_id": "002fc615-3aee-43fc-91a4-6281cad6e3db",
+        "stop_location_id": "002fc615-3aee-43fc-91a4-6281cad6e3db"
       },
       "relationships": {
         "customer": {
@@ -361,11 +361,11 @@ Name | Description
       }
     },
     {
-      "id": "472dd130-913f-4b02-9038-0a71d03c3e04",
+      "id": "6e595d7f-664c-4059-b057-cbbaad0b219b",
       "type": "lines",
       "attributes": {
-        "created_at": "2022-04-08T18:20:40+00:00",
-        "updated_at": "2022-04-08T18:20:41+00:00",
+        "created_at": "2022-07-14T10:50:34+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "archived": false,
         "archived_at": null,
         "title": "Macbook Pro",
@@ -396,11 +396,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "item_id": "c29e3511-65a5-429d-aca6-83f3c7ef1351",
-        "tax_category_id": "83cbaded-8300-479c-be18-3aa9c6088b16",
-        "planning_id": "26650ab6-4e74-4d7c-a9f0-434f481c5bd3",
+        "item_id": "59145b5f-4e72-4de8-b1c3-53bd9f1bf7e5",
+        "tax_category_id": "5946552d-b2ec-4d40-a87c-9f61522fafda",
+        "planning_id": "592f0bb5-dd13-4eac-a5cf-ef85435da19b",
         "parent_line_id": null,
-        "owner_id": "c0ea7042-4142-475c-8922-21dffdc558ba",
+        "owner_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d",
         "owner_type": "orders"
       },
       "relationships": {
@@ -437,11 +437,11 @@ Name | Description
       }
     },
     {
-      "id": "9df553dd-7354-4c97-a437-2943b20e1722",
+      "id": "be48c74e-8e68-4951-9473-c3d06491f6a2",
       "type": "lines",
       "attributes": {
-        "created_at": "2022-04-08T18:20:41+00:00",
-        "updated_at": "2022-04-08T18:20:41+00:00",
+        "created_at": "2022-07-14T10:50:36+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "archived": false,
         "archived_at": null,
         "title": "iPad Pro",
@@ -472,11 +472,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "item_id": "05c5551d-5c73-45fa-84ee-b7fca3854877",
-        "tax_category_id": "83cbaded-8300-479c-be18-3aa9c6088b16",
-        "planning_id": "c92e08f6-1cd2-461a-ada3-2d3895ddfe8d",
+        "item_id": "2c853e1f-ab87-41b8-98ef-65eabb948993",
+        "tax_category_id": "5946552d-b2ec-4d40-a87c-9f61522fafda",
+        "planning_id": "61d94f93-16e2-4958-9b64-8cf5cf76d881",
         "parent_line_id": null,
-        "owner_id": "c0ea7042-4142-475c-8922-21dffdc558ba",
+        "owner_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d",
         "owner_type": "orders"
       },
       "relationships": {
@@ -513,11 +513,11 @@ Name | Description
       }
     },
     {
-      "id": "26650ab6-4e74-4d7c-a9f0-434f481c5bd3",
+      "id": "592f0bb5-dd13-4eac-a5cf-ef85435da19b",
       "type": "plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:20:40+00:00",
-        "updated_at": "2022-04-08T18:20:41+00:00",
+        "created_at": "2022-07-14T10:50:34+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 2,
@@ -530,10 +530,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "c29e3511-65a5-429d-aca6-83f3c7ef1351",
-        "order_id": "c0ea7042-4142-475c-8922-21dffdc558ba",
-        "start_location_id": "51c826f4-3334-41e7-9cde-f5fc0e8e269c",
-        "stop_location_id": "51c826f4-3334-41e7-9cde-f5fc0e8e269c",
+        "item_id": "59145b5f-4e72-4de8-b1c3-53bd9f1bf7e5",
+        "order_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d",
+        "start_location_id": "002fc615-3aee-43fc-91a4-6281cad6e3db",
+        "stop_location_id": "002fc615-3aee-43fc-91a4-6281cad6e3db",
         "parent_planning_id": null
       },
       "relationships": {
@@ -580,11 +580,11 @@ Name | Description
       }
     },
     {
-      "id": "c92e08f6-1cd2-461a-ada3-2d3895ddfe8d",
+      "id": "61d94f93-16e2-4958-9b64-8cf5cf76d881",
       "type": "plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:20:41+00:00",
-        "updated_at": "2022-04-08T18:20:41+00:00",
+        "created_at": "2022-07-14T10:50:35+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 3,
@@ -597,10 +597,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "05c5551d-5c73-45fa-84ee-b7fca3854877",
-        "order_id": "c0ea7042-4142-475c-8922-21dffdc558ba",
-        "start_location_id": "51c826f4-3334-41e7-9cde-f5fc0e8e269c",
-        "stop_location_id": "51c826f4-3334-41e7-9cde-f5fc0e8e269c",
+        "item_id": "2c853e1f-ab87-41b8-98ef-65eabb948993",
+        "order_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d",
+        "start_location_id": "002fc615-3aee-43fc-91a4-6281cad6e3db",
+        "stop_location_id": "002fc615-3aee-43fc-91a4-6281cad6e3db",
         "parent_planning_id": null
       },
       "relationships": {
@@ -647,19 +647,19 @@ Name | Description
       }
     },
     {
-      "id": "5b8c9c41-28e2-40bb-8347-82ac372a192d",
+      "id": "73805784-f700-456d-bcc1-e667f9b4d0a7",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:20:41+00:00",
-        "updated_at": "2022-04-08T18:20:41+00:00",
+        "created_at": "2022-07-14T10:50:35+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "d74c9cba-90dc-4d6b-b196-71e77ae85ec3",
-        "planning_id": "c92e08f6-1cd2-461a-ada3-2d3895ddfe8d",
-        "order_id": "c0ea7042-4142-475c-8922-21dffdc558ba"
+        "stock_item_id": "1c2e8b9a-e4ba-4c6a-9423-612e1801bde5",
+        "planning_id": "61d94f93-16e2-4958-9b64-8cf5cf76d881",
+        "order_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d"
       },
       "relationships": {
         "stock_item": {
@@ -680,19 +680,19 @@ Name | Description
       }
     },
     {
-      "id": "a594fcf7-2a43-45a5-a4c2-1f40547c1402",
+      "id": "7cfddc40-f7b2-4154-aebe-8daadb9ff76d",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:20:41+00:00",
-        "updated_at": "2022-04-08T18:20:41+00:00",
+        "created_at": "2022-07-14T10:50:35+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "3fa7d8a0-69d9-4c1e-850a-cf36374fef39",
-        "planning_id": "c92e08f6-1cd2-461a-ada3-2d3895ddfe8d",
-        "order_id": "c0ea7042-4142-475c-8922-21dffdc558ba"
+        "stock_item_id": "a4bfe798-abea-4989-85f8-93d49ea0e838",
+        "planning_id": "61d94f93-16e2-4958-9b64-8cf5cf76d881",
+        "order_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d"
       },
       "relationships": {
         "stock_item": {
@@ -713,19 +713,19 @@ Name | Description
       }
     },
     {
-      "id": "ec2ac3b1-a12b-48df-88e2-75c44a24820e",
+      "id": "f548be7d-247c-40af-aeb0-34fc89dd52e3",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:20:41+00:00",
-        "updated_at": "2022-04-08T18:20:41+00:00",
+        "created_at": "2022-07-14T10:50:35+00:00",
+        "updated_at": "2022-07-14T10:50:36+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "ddd51caa-6002-4ff6-b0c9-09b3874a4c49",
-        "planning_id": "c92e08f6-1cd2-461a-ada3-2d3895ddfe8d",
-        "order_id": "c0ea7042-4142-475c-8922-21dffdc558ba"
+        "stock_item_id": "dc4c4dde-7704-442c-bb8f-6ead9bed4428",
+        "planning_id": "61d94f93-16e2-4958-9b64-8cf5cf76d881",
+        "order_id": "a714de43-2f83-4a3a-a4a4-c8172509f67d"
       },
       "relationships": {
         "stock_item": {
@@ -761,16 +761,16 @@ Name | Description
       "data": {
         "type": "order_bookings",
         "attributes": {
-          "order_id": "50cd6365-453f-4ed6-a0df-9483ee577623",
+          "order_id": "ad06a90e-7317-4325-94bb-5815662f483f",
           "items": [
             {
               "type": "bundles",
-              "id": "645bde50-5b18-463e-a640-8e29374e7fb8",
+              "id": "e53c6386-ec86-4518-84c5-b04eec44423c",
               "products": [
                 {
                   "type": "products",
-                  "bundle_item_id": "6cd0560c-1fd1-4d0b-925a-ee0e5fff4b26",
-                  "id": "a5411195-0b09-46c2-8757-4710b8e9d5a6"
+                  "bundle_item_id": "08c5717c-fe5c-46d4-a5f3-46f35830df14",
+                  "id": "e53ae17f-b638-43cb-901e-1e2337f3892d"
                 }
               ]
             }
@@ -786,23 +786,23 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a2890016-8264-5691-92bb-a0444631e1c1",
+    "id": "f53dff2a-745b-5494-a219-d60793efd123",
     "type": "order_bookings",
     "attributes": {
-      "order_id": "50cd6365-453f-4ed6-a0df-9483ee577623"
+      "order_id": "ad06a90e-7317-4325-94bb-5815662f483f"
     },
     "relationships": {
       "order": {
         "data": {
           "type": "orders",
-          "id": "50cd6365-453f-4ed6-a0df-9483ee577623"
+          "id": "ad06a90e-7317-4325-94bb-5815662f483f"
         }
       },
       "lines": {
         "data": [
           {
             "type": "lines",
-            "id": "8932e2e2-09f0-45c0-a1fa-8981e184781f"
+            "id": "dba094de-3a6a-497a-845f-39a2b4de13a6"
           }
         ]
       },
@@ -810,7 +810,7 @@ Name | Description
         "data": [
           {
             "type": "plannings",
-            "id": "f46f4d61-2fe7-4e5c-8a4e-2c44d6f40254"
+            "id": "64b3f3a6-99e3-4296-b3a9-51cc16acf217"
           }
         ]
       },
@@ -821,11 +821,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "50cd6365-453f-4ed6-a0df-9483ee577623",
+      "id": "ad06a90e-7317-4325-94bb-5815662f483f",
       "type": "orders",
       "attributes": {
-        "created_at": "2022-04-08T18:20:44+00:00",
-        "updated_at": "2022-04-08T18:20:45+00:00",
+        "created_at": "2022-07-14T10:50:39+00:00",
+        "updated_at": "2022-07-14T10:50:40+00:00",
         "number": null,
         "status": "new",
         "statuses": [
@@ -838,8 +838,8 @@ Name | Description
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2022-04-06T18:15:00+00:00",
-        "stops_at": "2022-04-10T18:15:00+00:00",
+        "starts_at": "2022-07-12T10:45:00+00:00",
+        "stops_at": "2022-07-16T10:45:00+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100,
         "entirely_started": false,
@@ -867,8 +867,8 @@ Name | Description
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "97dd7e52-6cda-4222-8895-908a8718426d",
-        "stop_location_id": "97dd7e52-6cda-4222-8895-908a8718426d"
+        "start_location_id": "bd9281a4-aee2-49de-a220-4effdd6777c4",
+        "stop_location_id": "bd9281a4-aee2-49de-a220-4effdd6777c4"
       },
       "relationships": {
         "customer": {
@@ -924,14 +924,14 @@ Name | Description
       }
     },
     {
-      "id": "8932e2e2-09f0-45c0-a1fa-8981e184781f",
+      "id": "dba094de-3a6a-497a-845f-39a2b4de13a6",
       "type": "lines",
       "attributes": {
-        "created_at": "2022-04-08T18:20:45+00:00",
-        "updated_at": "2022-04-08T18:20:45+00:00",
+        "created_at": "2022-07-14T10:50:40+00:00",
+        "updated_at": "2022-07-14T10:50:40+00:00",
         "archived": false,
         "archived_at": null,
-        "title": "Bundle item 1",
+        "title": "Bundle item 7",
         "extra_information": null,
         "quantity": 1,
         "original_price_each_in_cents": 0,
@@ -945,11 +945,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "item_id": "645bde50-5b18-463e-a640-8e29374e7fb8",
+        "item_id": "e53c6386-ec86-4518-84c5-b04eec44423c",
         "tax_category_id": null,
-        "planning_id": "f46f4d61-2fe7-4e5c-8a4e-2c44d6f40254",
+        "planning_id": "64b3f3a6-99e3-4296-b3a9-51cc16acf217",
         "parent_line_id": null,
-        "owner_id": "50cd6365-453f-4ed6-a0df-9483ee577623",
+        "owner_id": "ad06a90e-7317-4325-94bb-5815662f483f",
         "owner_type": "orders"
       },
       "relationships": {
@@ -986,27 +986,27 @@ Name | Description
       }
     },
     {
-      "id": "f46f4d61-2fe7-4e5c-8a4e-2c44d6f40254",
+      "id": "64b3f3a6-99e3-4296-b3a9-51cc16acf217",
       "type": "plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:20:45+00:00",
-        "updated_at": "2022-04-08T18:20:45+00:00",
+        "created_at": "2022-07-14T10:50:40+00:00",
+        "updated_at": "2022-07-14T10:50:40+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "2022-04-06T18:15:00+00:00",
-        "stops_at": "2022-04-10T18:15:00+00:00",
-        "reserved_from": "2022-04-06T18:15:00+00:00",
-        "reserved_till": "2022-04-10T18:15:00+00:00",
+        "starts_at": "2022-07-12T10:45:00+00:00",
+        "stops_at": "2022-07-16T10:45:00+00:00",
+        "reserved_from": "2022-07-12T10:45:00+00:00",
+        "reserved_till": "2022-07-16T10:45:00+00:00",
         "reserved": false,
         "started": 0,
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "645bde50-5b18-463e-a640-8e29374e7fb8",
-        "order_id": "50cd6365-453f-4ed6-a0df-9483ee577623",
-        "start_location_id": "97dd7e52-6cda-4222-8895-908a8718426d",
-        "stop_location_id": "97dd7e52-6cda-4222-8895-908a8718426d",
+        "item_id": "e53c6386-ec86-4518-84c5-b04eec44423c",
+        "order_id": "ad06a90e-7317-4325-94bb-5815662f483f",
+        "start_location_id": "bd9281a4-aee2-49de-a220-4effdd6777c4",
+        "stop_location_id": "bd9281a4-aee2-49de-a220-4effdd6777c4",
         "parent_planning_id": null
       },
       "relationships": {

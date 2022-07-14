@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bb71f844-9d83-594b-ab20-3d1c1ce60974",
+    "id": "53c327f1-d8a0-5f07-88c4-a993482fbba4",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:25+00:00",
-      "company_id": "60a95771-fc61-4de0-8d3e-2a6bb9fa5cc9",
-      "employee_id": "129525e6-bd85-4857-ac9b-97cba6e9cf56",
-      "locations_updated_at": "2022-04-08T18:21:25+00:00",
-      "clusters_updated_at": "2022-04-08T18:21:25+00:00",
-      "default_properties_updated_at": "2022-04-08T18:21:25+00:00"
+      "updated_at": "2022-07-14T10:52:20+00:00",
+      "company_id": "fbff86cf-ebee-40bf-ad8b-ab9b48bce4c8",
+      "employee_id": "6b54cbd6-de7a-4bb3-af9f-ba0c316e80c6",
+      "locations_updated_at": "2022-07-14T10:52:20+00:00",
+      "clusters_updated_at": "2022-07-14T10:52:20+00:00",
+      "default_properties_updated_at": "2022-07-14T10:52:20+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
+    "id": "161f0e54-ef64-5f22-84e8-8b4ee864d802",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:26+00:00",
-      "company_id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
-      "employee_id": "982df113-a39c-496e-b536-58c33695c47a",
+      "updated_at": "2022-07-14T10:52:21+00:00",
+      "company_id": "74551165-3927-4ef2-a0c0-f360394aea04",
+      "employee_id": "0816e77c-6d41-409a-953f-e9e9e2cb0512",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf"
+          "id": "74551165-3927-4ef2-a0c0-f360394aea04"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "982df113-a39c-496e-b536-58c33695c47a"
+          "id": "0816e77c-6d41-409a-953f-e9e9e2cb0512"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
+      "id": "74551165-3927-4ef2-a0c0-f360394aea04",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2022-07-14T10:52:21+00:00",
+        "updated_at": "2022-07-14T10:52:21+00:00",
+        "name": "Company name 216",
+        "slug": "company-name-216",
+        "email": "mail219@company.com",
         "billing_email": null,
-        "phone": "460-044-2750 x405",
-        "website": "http://cassin.biz/yessenia_tillman",
-        "address": "Azalee Points\n8739 Herta Highway\n59145-3453 Jeromyville\nCuba",
-        "address_line_1": "Azalee Points",
-        "address_line_2": "8739 Herta Highway",
-        "zipcode": "59145-3453",
-        "city": "Jeromyville",
+        "phone": "(936) 910-8441 x887",
+        "website": "http://hegmann-cummings.biz/raymundo.dicki",
+        "address": "Kiara Plains\n628 Kling Fork\n48961-0852 Port Eleonore\nthe Netherlands",
+        "address_line_1": "Kiara Plains",
+        "address_line_2": "628 Kling Fork",
+        "zipcode": "48961-0852",
+        "city": "Port Eleonore",
         "region": null,
-        "country": "Cuba",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7073 Emil Creek",
-        "financial_line_2": "95893-6083 East Ollie",
+        "financial_line_1": "34614 Cormier Glen",
+        "financial_line_2": "52706 Port Shiraside",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-22T18:21:26.070Z",
+          "trial_ends_at": "2022-07-28T10:52:21.464Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "982df113-a39c-496e-b536-58c33695c47a",
+      "id": "0816e77c-6d41-409a-953f-e9e9e2cb0512",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
+        "created_at": "2022-07-14T10:52:21+00:00",
+        "updated_at": "2022-07-14T10:52:21+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -283,7 +283,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",

@@ -55,11 +55,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0fef9ab3-0df3-49cd-b22c-9156a1705ce8",
+      "id": "ae540dc7-97a5-48d6-afa2-6879293e3cd7",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2022-04-08T18:19:45+00:00",
-        "updated_at": "2022-04-08T18:19:45+00:00",
+        "created_at": "2022-07-14T10:49:08+00:00",
+        "updated_at": "2022-07-14T10:49:08+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
@@ -87,7 +87,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-07-14T10:48:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -129,7 +129,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/f6dd4d31-b4f7-434c-a7b6-568eeef60169?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/7cb23974-f590-4666-be02-f5feac4a4da5?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -138,11 +138,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f6dd4d31-b4f7-434c-a7b6-568eeef60169",
+    "id": "7cb23974-f590-4666-be02-f5feac4a4da5",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-04-08T18:19:45+00:00",
-      "updated_at": "2022-04-08T18:19:45+00:00",
+      "created_at": "2022-07-14T10:49:08+00:00",
+      "updated_at": "2022-07-14T10:49:08+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -201,11 +201,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8f30bea9-6eaa-49c6-b59d-a12cf42724db",
+    "id": "c2e4a4c8-b41d-46ef-9c2a-231eae313b38",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-04-08T18:19:45+00:00",
-      "updated_at": "2022-04-08T18:19:45+00:00",
+      "created_at": "2022-07-14T10:49:08+00:00",
+      "updated_at": "2022-07-14T10:49:08+00:00",
       "name": "Mobile phone",
       "identifier": "mobile_phone",
       "position": 2,
@@ -260,11 +260,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/e59f2c36-31bf-488e-a59e-15855fa9ecb2' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/31c2b266-9478-4eda-ad41-df2770b97826' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e59f2c36-31bf-488e-a59e-15855fa9ecb2",
+        "id": "31c2b266-9478-4eda-ad41-df2770b97826",
         "type": "default_properties",
         "attributes": {
           "property_type": "text_field"
@@ -278,11 +278,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e59f2c36-31bf-488e-a59e-15855fa9ecb2",
+    "id": "31c2b266-9478-4eda-ad41-df2770b97826",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-04-08T18:19:46+00:00",
-      "updated_at": "2022-04-08T18:19:46+00:00",
+      "created_at": "2022-07-14T10:49:09+00:00",
+      "updated_at": "2022-07-14T10:49:09+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -337,7 +337,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/f645eaf8-bff4-4faa-956f-58e1d0fa9436' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/778a8bed-1775-4995-a8fd-8cff3b3a4069' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
