@@ -8,7 +8,7 @@ Every sorting has the following fields:
 Name | Description
 - | -
 `id` | **Uuid** `readonly`<br>
-`type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `categories`, `category_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`
+`type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `categories`, `category_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`
 `ids` | **Array_of_strings** `writeonly`<br>Array of ids, positions are determined by the order of the array
 
 
@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "categories",
           "ids": [
-            "a35a4fb1-06de-40b6-8c3c-af2628251720",
-            "f1ed36dc-7a8b-4893-bcb8-6b35b8bade7b",
-            "0d55f8f7-4ba7-49ee-877c-0c8b34e748c6",
-            "b7dd441f-477a-49ae-8dc8-141e9c4102dd",
-            "e5929867-99d8-42e0-811f-448785515b21"
+            "e5d996ce-8a83-4a2f-8667-c53991c8d220",
+            "f7904639-2bc6-45db-9020-34ef1bd87e14",
+            "1b8f984c-6fc7-4c72-b553-a42b2dcb1fe1",
+            "85144fe5-d027-4712-866c-b25eb0eb1cc0",
+            "1b884b44-446f-4922-a330-af7f02d895d3"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
+    "id": "f5dd0083-10d4-5be5-b127-07b93bbe311f",
     "type": "sortings"
   },
   "meta": {}
@@ -71,7 +71,7 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][type]` | **String_enum**<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `categories`, `category_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`
+`data[attributes][type]` | **String_enum**<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `categories`, `category_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`
 `data[attributes][ids]` | **Array_of_strings**<br>Array of ids, positions are determined by the order of the array
 
 

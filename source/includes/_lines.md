@@ -53,6 +53,7 @@ Name | Description
 `taxable` | **Boolean**<br>Whether line is taxable
 `line_type` | **String**<br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
 `relevant` | **Boolean** `readonly`<br>Whether line is relevant. If not, line has no visible change, it's only used for reporting
+`confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm a shortage when updating quantity on a line
 `item_id` | **Uuid** `nullable` `readonly`<br>The associated Item
 `tax_category_id` | **Uuid** `nullable`<br>The associated Tax category
 `planning_id` | **Uuid** `readonly`<br>The associated Planning
@@ -92,11 +93,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "21fbd405-fb12-460f-82fa-2605f411f16b",
+      "id": "b6932833-8c28-4943-a9a3-38b47da92982",
       "type": "lines",
       "attributes": {
-        "created_at": "2022-04-08T18:20:19+00:00",
-        "updated_at": "2022-04-08T18:20:19+00:00",
+        "created_at": "2022-07-14T10:34:40+00:00",
+        "updated_at": "2022-07-14T10:34:40+00:00",
         "archived": false,
         "archived_at": null,
         "title": "Macbook Pro",
@@ -127,27 +128,27 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "item_id": "163d91e7-fdcb-48ae-be0b-3fa744567389",
-        "tax_category_id": "565cd820-b9fa-47aa-ac73-7c551bbb7e78",
-        "planning_id": "c52ddb3e-6082-4320-a733-238432884a8f",
+        "item_id": "b7fa2f8a-a689-46f6-b601-3fb9c2a7052b",
+        "tax_category_id": "9ded5161-2536-499c-8c58-c4647915348b",
+        "planning_id": "8929a9f2-ab61-4d47-8a0d-8a5f4b1120d2",
         "parent_line_id": null,
-        "owner_id": "e4617096-8ddd-457f-a661-d9f055f31bf3",
+        "owner_id": "4b5b15fe-7b41-4ad6-90b8-f5f2cbbff88b",
         "owner_type": "orders"
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/163d91e7-fdcb-48ae-be0b-3fa744567389"
+            "related": "api/boomerang/items/b7fa2f8a-a689-46f6-b601-3fb9c2a7052b"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/565cd820-b9fa-47aa-ac73-7c551bbb7e78"
+            "related": "api/boomerang/tax_categories/9ded5161-2536-499c-8c58-c4647915348b"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/c52ddb3e-6082-4320-a733-238432884a8f"
+            "related": "api/boomerang/plannings/8929a9f2-ab61-4d47-8a0d-8a5f4b1120d2"
           }
         },
         "parent_line": {
@@ -157,12 +158,12 @@ Name | Description
         },
         "nested_lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[parent_line_id]=21fbd405-fb12-460f-82fa-2605f411f16b"
+            "related": "api/boomerang/lines?filter[parent_line_id]=b6932833-8c28-4943-a9a3-38b47da92982"
           }
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/e4617096-8ddd-457f-a661-d9f055f31bf3"
+            "related": "api/boomerang/orders/4b5b15fe-7b41-4ad6-90b8-f5f2cbbff88b"
           }
         }
       }
@@ -184,7 +185,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=item,tax_category,planning`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-07-14T10:33:21Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -256,7 +257,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/lines/0e4918c0-f087-434b-ba22-1bbb3acbd6d2' \
+    --url 'https://example.booqable.com/api/boomerang/lines/b262b5e2-b5b6-4165-b289-51c79bd785b1' \
     --header 'content-type: application/json' \
 ```
 
@@ -265,11 +266,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0e4918c0-f087-434b-ba22-1bbb3acbd6d2",
+    "id": "b262b5e2-b5b6-4165-b289-51c79bd785b1",
     "type": "lines",
     "attributes": {
-      "created_at": "2022-04-08T18:20:22+00:00",
-      "updated_at": "2022-04-08T18:20:22+00:00",
+      "created_at": "2022-07-14T10:34:43+00:00",
+      "updated_at": "2022-07-14T10:34:43+00:00",
       "archived": false,
       "archived_at": null,
       "title": "Macbook Pro",
@@ -300,27 +301,27 @@ This request accepts the following includes:
       "taxable": true,
       "line_type": "charge",
       "relevant": true,
-      "item_id": "11518a50-ff42-424b-a0d6-3e7c7f137bc8",
-      "tax_category_id": "033cec72-3ef3-436b-b46c-e3e4f115bdab",
-      "planning_id": "527b9a9c-c41e-4d12-bbe3-d530dd42489b",
+      "item_id": "061ad8b7-70d1-451d-837d-bfb93cee2fcf",
+      "tax_category_id": "bf745430-9e2c-41dc-badd-33461c773b9b",
+      "planning_id": "de10dc15-0f91-4d87-a02c-6775bfd87dc8",
       "parent_line_id": null,
-      "owner_id": "19991ba2-81ee-461d-a919-c60c2d86c274",
+      "owner_id": "600c89a4-d7ea-4fc3-a1de-1d1722d7ffa5",
       "owner_type": "orders"
     },
     "relationships": {
       "item": {
         "links": {
-          "related": "api/boomerang/items/11518a50-ff42-424b-a0d6-3e7c7f137bc8"
+          "related": "api/boomerang/items/061ad8b7-70d1-451d-837d-bfb93cee2fcf"
         }
       },
       "tax_category": {
         "links": {
-          "related": "api/boomerang/tax_categories/033cec72-3ef3-436b-b46c-e3e4f115bdab"
+          "related": "api/boomerang/tax_categories/bf745430-9e2c-41dc-badd-33461c773b9b"
         }
       },
       "planning": {
         "links": {
-          "related": "api/boomerang/plannings/527b9a9c-c41e-4d12-bbe3-d530dd42489b"
+          "related": "api/boomerang/plannings/de10dc15-0f91-4d87-a02c-6775bfd87dc8"
         }
       },
       "parent_line": {
@@ -330,12 +331,12 @@ This request accepts the following includes:
       },
       "nested_lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[parent_line_id]=0e4918c0-f087-434b-ba22-1bbb3acbd6d2"
+          "related": "api/boomerang/lines?filter[parent_line_id]=b262b5e2-b5b6-4165-b289-51c79bd785b1"
         }
       },
       "owner": {
         "links": {
-          "related": "api/boomerang/orders/19991ba2-81ee-461d-a919-c60c2d86c274"
+          "related": "api/boomerang/orders/600c89a4-d7ea-4fc3-a1de-1d1722d7ffa5"
         }
       }
     }
@@ -404,7 +405,7 @@ Order totals are automatically re-calculated after the creation of a new line an
       "data": {
         "type": "lines",
         "attributes": {
-          "owner_id": "dca7fd70-de5f-46be-a3cd-cd0dd3069d19",
+          "owner_id": "df61c9fa-bff2-4cd2-b8ac-7a9ec4723738",
           "owner_type": "orders",
           "price_each_in_cents": 1000
         }
@@ -417,11 +418,11 @@ Order totals are automatically re-calculated after the creation of a new line an
 ```json
   {
   "data": {
-    "id": "24597a39-7598-4995-a9ef-7521cb174ad5",
+    "id": "f7e280c8-d0a0-4b30-8813-7c9f4445c959",
     "type": "lines",
     "attributes": {
-      "created_at": "2022-04-08T18:20:24+00:00",
-      "updated_at": "2022-04-08T18:20:24+00:00",
+      "created_at": "2022-07-14T10:34:46+00:00",
+      "updated_at": "2022-07-14T10:34:46+00:00",
       "archived": false,
       "archived_at": null,
       "title": null,
@@ -442,7 +443,7 @@ Order totals are automatically re-calculated after the creation of a new line an
       "tax_category_id": null,
       "planning_id": null,
       "parent_line_id": null,
-      "owner_id": "dca7fd70-de5f-46be-a3cd-cd0dd3069d19",
+      "owner_id": "df61c9fa-bff2-4cd2-b8ac-7a9ec4723738",
       "owner_type": "orders"
     },
     "relationships": {
@@ -512,6 +513,7 @@ Name | Description
 `data[attributes][discountable]` | **Boolean**<br>Whether line is discountable
 `data[attributes][taxable]` | **Boolean**<br>Whether line is taxable
 `data[attributes][line_type]` | **String**<br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
+`data[attributes][confirm_shortage]` | **Boolean**<br>Whether to confirm a shortage when updating quantity on a line
 `data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
 `data[attributes][owner_id]` | **Uuid**<br>ID of its owner
 `data[attributes][owner_type]` | **String**<br>One of `orders`, `documents`, `carts`
@@ -551,11 +553,11 @@ Order totals are automatically re-calculated after updating a line and an invoic
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/lines/846b8cc7-7141-4475-ad5a-a852741db4a1' \
+    --url 'https://example.booqable.com/api/boomerang/lines/28dad02e-1f57-45b5-bba3-b4a2f8636d64' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "846b8cc7-7141-4475-ad5a-a852741db4a1",
+        "id": "28dad02e-1f57-45b5-bba3-b4a2f8636d64",
         "type": "lines",
         "attributes": {
           "price_each_in_cents": 1000
@@ -569,11 +571,11 @@ Order totals are automatically re-calculated after updating a line and an invoic
 ```json
   {
   "data": {
-    "id": "846b8cc7-7141-4475-ad5a-a852741db4a1",
+    "id": "28dad02e-1f57-45b5-bba3-b4a2f8636d64",
     "type": "lines",
     "attributes": {
-      "created_at": "2022-04-08T18:20:26+00:00",
-      "updated_at": "2022-04-08T18:20:26+00:00",
+      "created_at": "2022-07-14T10:34:47+00:00",
+      "updated_at": "2022-07-14T10:34:47+00:00",
       "archived": false,
       "archived_at": null,
       "title": "Macbook Pro",
@@ -590,11 +592,11 @@ Order totals are automatically re-calculated after updating a line and an invoic
       "taxable": true,
       "line_type": "charge",
       "relevant": true,
-      "item_id": "b0167a9b-fc94-4b86-9798-b7e17bc58dfb",
-      "tax_category_id": "61c32363-ae2d-47e3-9cb0-b1e4f301e1c3",
-      "planning_id": "aae7fae6-4ead-4785-a6ca-7735e9b36072",
+      "item_id": "4c8909c8-709e-4c4a-9bc8-ec3ec9ffc954",
+      "tax_category_id": "cfcfa3b8-b0f3-48d3-a50b-e91eabe2b117",
+      "planning_id": "0ee535f5-3b66-4048-ad08-3414c5481729",
       "parent_line_id": null,
-      "owner_id": "b6e72f47-6c93-4f75-9b56-d7af8dab15f3",
+      "owner_id": "7e134e51-4732-45b3-bdfc-576eb7b30341",
       "owner_type": "orders"
     },
     "relationships": {
@@ -664,6 +666,7 @@ Name | Description
 `data[attributes][discountable]` | **Boolean**<br>Whether line is discountable
 `data[attributes][taxable]` | **Boolean**<br>Whether line is taxable
 `data[attributes][line_type]` | **String**<br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
+`data[attributes][confirm_shortage]` | **Boolean**<br>Whether to confirm a shortage when updating quantity on a line
 `data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
 `data[attributes][owner_id]` | **Uuid**<br>ID of its owner
 `data[attributes][owner_type]` | **String**<br>One of `orders`, `documents`, `carts`
@@ -700,7 +703,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/lines/b91b6e8b-4927-404c-8f12-4c3271941fff' \
+    --url 'https://example.booqable.com/api/boomerang/lines/2e0a0df1-06fc-4c96-9f4c-89094efc077d' \
     --header 'content-type: application/json' \
 ```
 
