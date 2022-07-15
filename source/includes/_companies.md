@@ -70,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "afe82ebc-046c-4f4a-9593-bf148be32d10",
+    "id": "d128a6b4-4eb4-4680-a345-8a1b37f30142",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-08T18:19:38+00:00",
-      "updated_at": "2022-04-08T18:19:38+00:00",
+      "created_at": "2022-07-15T11:20:49+00:00",
+      "updated_at": "2022-07-15T11:20:49+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail53@company.com",
+      "email": "mail55@company.com",
       "billing_email": null,
-      "phone": "(203) 597-2188 x971",
-      "website": "http://fahey-waters.name/caroyln",
-      "address": "Bailey Dam\n989 Charity Lodge\n95685-5308 West Tristan\nVenezuela",
-      "address_line_1": "Bailey Dam",
-      "address_line_2": "989 Charity Lodge",
-      "zipcode": "95685-5308",
-      "city": "West Tristan",
+      "phone": "(553) 989-3613 x176",
+      "website": "http://halvorson-balistreri.biz/lu.nitzsche",
+      "address": "Domingo Prairie\n8098 Lamonica Dam\n08763-2055 Lake Judimouth\nthe Netherlands",
+      "address_line_1": "Domingo Prairie",
+      "address_line_2": "8098 Lamonica Dam",
+      "zipcode": "08763-2055",
+      "city": "Lake Judimouth",
       "region": null,
-      "country": "Venezuela",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -99,8 +99,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "5165 Ron Lock",
-      "financial_line_2": "01827-0452 North Ebonymouth",
+      "financial_line_1": "964 Troy Road",
+      "financial_line_2": "82942-0795 Renebury",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
@@ -172,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cc7b55bb-dc6e-4711-a3d3-756f38e54b38",
+    "id": "13380923-656f-402f-ab57-bc043ede5bf4",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-04-22T18:19:38.924Z",
+        "trial_ends_at": "2022-07-29T11:20:50.004Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -260,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
+        "id": "4bbff8b3-6396-4e11-b033-29aae6782c6a",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
+    "id": "4bbff8b3-6396-4e11-b033-29aae6782c6a",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-08T18:19:39+00:00",
-      "updated_at": "2022-04-08T18:19:39+00:00",
+      "created_at": "2022-07-15T11:20:50+00:00",
+      "updated_at": "2022-07-15T11:20:50+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail55@company.com",
+      "email": "mail57@company.com",
       "billing_email": null,
-      "phone": "810-897-9123 x644",
-      "website": "http://howe.info/royal.grimes",
-      "address": "Rohan Land\n74058 Bradtke Course\n26329-6842 Lake Annettaland\nMauritius",
-      "address_line_1": "Rohan Land",
-      "address_line_2": "74058 Bradtke Course",
-      "zipcode": "26329-6842",
-      "city": "Lake Annettaland",
+      "phone": "1-532-128-0440 x383",
+      "website": "http://prohaska-mcclure.co/clelia",
+      "address": "Charolette Mews\n349 Glinda Drives\n34993 Pedroview\nthe Netherlands",
+      "address_line_1": "Charolette Mews",
+      "address_line_2": "349 Glinda Drives",
+      "zipcode": "34993",
+      "city": "Pedroview",
       "region": null,
-      "country": "Mauritius",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -303,8 +303,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7068 Keebler Trafficway",
-      "financial_line_2": "59064-3493 Port Toby",
+      "financial_line_1": "7310 Chong Flats",
+      "financial_line_2": "86275 East Leslie",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
