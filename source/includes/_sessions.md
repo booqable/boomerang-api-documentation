@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bb71f844-9d83-594b-ab20-3d1c1ce60974",
+    "id": "3496958b-f89c-58ae-9bbf-6a007143c9cc",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:25+00:00",
-      "company_id": "60a95771-fc61-4de0-8d3e-2a6bb9fa5cc9",
-      "employee_id": "129525e6-bd85-4857-ac9b-97cba6e9cf56",
-      "locations_updated_at": "2022-04-08T18:21:25+00:00",
-      "clusters_updated_at": "2022-04-08T18:21:25+00:00",
-      "default_properties_updated_at": "2022-04-08T18:21:25+00:00"
+      "updated_at": "2022-07-19T12:38:35+00:00",
+      "company_id": "53c445d2-ee9b-4b9c-9c84-5351454c5c77",
+      "employee_id": "2fa5f0bd-92d1-4c76-be5e-64aba343830e",
+      "locations_updated_at": "2022-07-19T12:38:35+00:00",
+      "clusters_updated_at": "2022-07-19T12:38:35+00:00",
+      "default_properties_updated_at": "2022-07-19T12:38:35+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
+    "id": "a4e01fb9-c824-5021-849b-56f07bbefd10",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:26+00:00",
-      "company_id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
-      "employee_id": "982df113-a39c-496e-b536-58c33695c47a",
+      "updated_at": "2022-07-19T12:38:36+00:00",
+      "company_id": "6aadb9db-86b9-4688-b54c-e229c0e656fb",
+      "employee_id": "414e77c8-3322-42b8-81b3-789154e6f5ee",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf"
+          "id": "6aadb9db-86b9-4688-b54c-e229c0e656fb"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "982df113-a39c-496e-b536-58c33695c47a"
+          "id": "414e77c8-3322-42b8-81b3-789154e6f5ee"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
+      "id": "6aadb9db-86b9-4688-b54c-e229c0e656fb",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2022-07-19T12:38:36+00:00",
+        "updated_at": "2022-07-19T12:38:36+00:00",
+        "name": "Company name 219",
+        "slug": "company-name-219",
+        "email": "mail222@company.com",
         "billing_email": null,
-        "phone": "460-044-2750 x405",
-        "website": "http://cassin.biz/yessenia_tillman",
-        "address": "Azalee Points\n8739 Herta Highway\n59145-3453 Jeromyville\nCuba",
-        "address_line_1": "Azalee Points",
-        "address_line_2": "8739 Herta Highway",
-        "zipcode": "59145-3453",
-        "city": "Jeromyville",
+        "phone": "1-299-360-3268 x369",
+        "website": "http://reilly.co/aletha",
+        "address": "Ankunding View\n27627 Stroman Union\n26136-9704 Beahanshire\nthe Netherlands",
+        "address_line_1": "Ankunding View",
+        "address_line_2": "27627 Stroman Union",
+        "zipcode": "26136-9704",
+        "city": "Beahanshire",
         "region": null,
-        "country": "Cuba",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7073 Emil Creek",
-        "financial_line_2": "95893-6083 East Ollie",
+        "financial_line_1": "5569 Magnolia Stravenue",
+        "financial_line_2": "69972-4497 South Miki",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-22T18:21:26.070Z",
+          "trial_ends_at": "2022-08-02T12:38:35.994Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "982df113-a39c-496e-b536-58c33695c47a",
+      "id": "414e77c8-3322-42b8-81b3-789154e6f5ee",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
+        "created_at": "2022-07-19T12:38:36+00:00",
+        "updated_at": "2022-07-19T12:38:36+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -283,7 +283,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
