@@ -36,7 +36,7 @@ Name | Description
 `owner` | **Boolean** `readonly`<br>Whether this employee is the account owner
 `confirmed` | **Boolean** `readonly`<br>Wheter this employee confirmed it's email address
 `time_to_confirm` | **Integer** `readonly`<br>Time in days left to confirm
-`permissions` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
+`permissions` | **Array**<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `avatar_base64` | **String** `writeonly`<br>Base64 encoded avatar
 `remove_avatar` | **Boolean** `writeonly`<br>Remove current avatar
 `has_two_factor_autentication` | **Boolean** `readonly`<br>Wheter two factor authentication is enabled
@@ -63,11 +63,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "c72fb404-ed9c-4ad8-9dcf-82fa4124394b",
+      "id": "7d5f52ce-e7c3-43d1-b387-be727071d915",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-08T18:20:03+00:00",
-        "updated_at": "2022-04-08T18:20:03+00:00",
+        "created_at": "2022-08-19T07:56:36+00:00",
+        "updated_at": "2022-08-19T07:56:36+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -81,7 +81,9 @@ Name | Description
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
@@ -109,7 +111,7 @@ Name | Description
 - | -
 `include` | **String**<br>List of comma seperated relationships `?include=`
 `fields[]` | **Array**<br>List of comma seperated fields to include `?fields[employees]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
+`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-08-19T07:55:05Z`
 `sort` | **String**<br>How to sort the data `?sort=-created_at`
 `meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String**<br>The page to request
@@ -152,7 +154,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/3c82e83f-136c-410e-8533-b8d407cdc613' \
+    --url 'https://example.booqable.com/api/boomerang/employees/bc0f4954-be4d-49f8-b510-72b4269fab19' \
     --header 'content-type: application/json' \
 ```
 
@@ -161,11 +163,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3c82e83f-136c-410e-8533-b8d407cdc613",
+    "id": "bc0f4954-be4d-49f8-b510-72b4269fab19",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-04-08T18:20:03+00:00",
-      "updated_at": "2022-04-08T18:20:03+00:00",
+      "created_at": "2022-08-19T07:56:36+00:00",
+      "updated_at": "2022-08-19T07:56:36+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -179,7 +181,9 @@ This request does not accept any includes
         "reports",
         "products",
         "settings",
+        "security_settings",
         "account",
+        "exports",
         "cancel_orders",
         "revert_orders",
         "delete_invoices",
@@ -219,11 +223,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/907881f7-5d5b-4490-a0a1-b017cdb57018' \
+    --url 'https://example.booqable.com/api/boomerang/employees/05eac8c6-6bad-4b26-984e-4b5888577b8c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "907881f7-5d5b-4490-a0a1-b017cdb57018",
+        "id": "05eac8c6-6bad-4b26-984e-4b5888577b8c",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -237,11 +241,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "907881f7-5d5b-4490-a0a1-b017cdb57018",
+    "id": "05eac8c6-6bad-4b26-984e-4b5888577b8c",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-04-08T18:20:03+00:00",
-      "updated_at": "2022-04-08T18:20:03+00:00",
+      "created_at": "2022-08-19T07:56:37+00:00",
+      "updated_at": "2022-08-19T07:56:37+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -255,7 +259,9 @@ This request does not accept any includes
         "reports",
         "products",
         "settings",
+        "security_settings",
         "account",
+        "exports",
         "cancel_orders",
         "revert_orders",
         "delete_invoices",
@@ -275,11 +281,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/c0f03d4e-4ce5-4077-89aa-568aa2ff15e0' \
+    --url 'https://example.booqable.com/api/boomerang/employees/530dff18-26b8-4b61-b6d4-dc2347470581' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c0f03d4e-4ce5-4077-89aa-568aa2ff15e0",
+        "id": "530dff18-26b8-4b61-b6d4-dc2347470581",
         "type": "employees",
         "attributes": {
           "active": false
@@ -293,11 +299,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c0f03d4e-4ce5-4077-89aa-568aa2ff15e0",
+    "id": "530dff18-26b8-4b61-b6d4-dc2347470581",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-04-08T18:20:03+00:00",
-      "updated_at": "2022-04-08T18:20:03+00:00",
+      "created_at": "2022-08-19T07:56:38+00:00",
+      "updated_at": "2022-08-19T07:56:38+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -311,7 +317,9 @@ This request does not accept any includes
         "reports",
         "products",
         "settings",
+        "security_settings",
         "account",
+        "exports",
         "cancel_orders",
         "revert_orders",
         "delete_invoices",
@@ -331,11 +339,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/d1d66b2d-b266-49da-9867-a9a49e5b8966' \
+    --url 'https://example.booqable.com/api/boomerang/employees/07c39e17-1653-4a03-9275-4724cd317523' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d1d66b2d-b266-49da-9867-a9a49e5b8966",
+        "id": "07c39e17-1653-4a03-9275-4724cd317523",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -352,11 +360,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d1d66b2d-b266-49da-9867-a9a49e5b8966",
+    "id": "07c39e17-1653-4a03-9275-4724cd317523",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-04-08T18:20:04+00:00",
-      "updated_at": "2022-04-08T18:20:04+00:00",
+      "created_at": "2022-08-19T07:56:38+00:00",
+      "updated_at": "2022-08-19T07:56:38+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -407,7 +415,7 @@ Name | Description
 `data[attributes][password_confirmation]` | **String**<br>Confirm new password
 `data[attributes][active]` | **Boolean**<br>Whether this employee is active (counts towards billing)
 `data[attributes][deactivated_at]` | **Datetime**<br>Employee deactivation date
-`data[attributes][permissions][]` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
+`data[attributes][permissions][]` | **Array**<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `data[attributes][avatar_base64]` | **String**<br>Base64 encoded avatar
 `data[attributes][remove_avatar]` | **Boolean**<br>Remove current avatar
 
