@@ -223,10 +223,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
+    "id": "9ab3ab1a-97f7-5838-9e33-9e966f8a852f",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:26+00:00",
+      "updated_at": "2022-08-22T15:53:52+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -237,8 +237,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "e179304d-2d4e-4d33-8536-481e3cd0f79f",
-        "tax_region_id": "b0255990-7e4d-4e95-82df-2b8b506d3bfa",
+        "tax_category_id": "3ac6ea7b-8c28-4a7c-8edc-4656fb16b9db",
+        "tax_region_id": "3f2493fb-6331-4a8c-8f65-42e6f4c0c879",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -340,18 +340,18 @@ Name | Description
         "body": "",
         "show_product_photos": true,
         "show_stock_identifiers": false,
+        "show_free_lines": true,
         "hide_section_lines": false,
-        "prefix": "{{year}}-{{customer_number}}",
-        "show_free_lines": true
+        "prefix": "{{year}}-{{customer_number}}"
       },
       "contracts": {
         "footer": "",
         "body": "",
         "show_product_photos": true,
         "show_stock_identifiers": false,
+        "show_free_lines": true,
         "hide_section_lines": false,
-        "prefix": null,
-        "show_free_lines": true
+        "prefix": null
       }
     }
   },
