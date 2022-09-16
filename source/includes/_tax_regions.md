@@ -28,9 +28,9 @@ Name | Description
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `archived` | **Boolean** `readonly`<br>Whether tax region is archived
 `archived_at` | **Datetime** `nullable` `readonly`<br>When the tax region was archived
-`name` | **String**<br>Name of the tax region
-`strategy` | **String**<br>The strategy to apply. One of `add_to`, `replace`, `compound`
-`default` | **Boolean**<br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
+`name` | **String** <br>Name of the tax region
+`strategy` | **String** <br>The strategy to apply. One of `add_to`, `replace`, `compound`
+`default` | **Boolean** <br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
 `tax_rates_attributes` | **Array** `writeonly`<br>The tax rates to associate
 
 
@@ -60,9 +60,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "2de00485-a2e4-4079-9855-668a0bed281f",
-      "created_at": "2022-04-08T18:21:38+00:00",
-      "updated_at": "2022-04-08T18:21:38+00:00",
+      "id": "c5237e82-6523-47b1-8ce8-9cc49648e9ce",
+      "created_at": "2022-09-16T09:05:22+00:00",
+      "updated_at": "2022-09-16T09:05:22+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Sales Tax",
@@ -79,17 +79,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:13Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T09:00:39Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -98,13 +98,13 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean**<br>`eq`
-`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`strategy` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`default` | **Boolean**<br>`eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`strategy` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`default` | **Boolean** <br>`eq`
 
 
 ### Meta
@@ -113,7 +113,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -135,7 +135,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/64686149-d359-4f70-81fe-e778c5d1e9fa?include=tax_rates' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/19938c3e-ec93-4089-bece-32d02271bc80?include=tax_rates' \
     --header 'content-type: application/json' \
 ```
 
@@ -144,9 +144,9 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "64686149-d359-4f70-81fe-e778c5d1e9fa",
-    "created_at": "2022-04-08T18:21:39+00:00",
-    "updated_at": "2022-04-08T18:21:39+00:00",
+    "id": "19938c3e-ec93-4089-bece-32d02271bc80",
+    "created_at": "2022-09-16T09:05:22+00:00",
+    "updated_at": "2022-09-16T09:05:22+00:00",
     "archived": false,
     "archived_at": null,
     "name": "Sales Tax",
@@ -154,13 +154,13 @@ This request accepts the following includes:
     "default": false,
     "tax_rates": [
       {
-        "id": "ed9d4b9a-0a9c-4480-9855-321174d19bfb",
-        "created_at": "2022-04-08T18:21:39+00:00",
-        "updated_at": "2022-04-08T18:21:39+00:00",
+        "id": "ad566807-1239-41ec-8859-de5bf2d49dab",
+        "created_at": "2022-09-16T09:05:22+00:00",
+        "updated_at": "2022-09-16T09:05:22+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "64686149-d359-4f70-81fe-e778c5d1e9fa",
+        "owner_id": "19938c3e-ec93-4089-bece-32d02271bc80",
         "owner_type": "tax_regions"
       }
     ]
@@ -174,12 +174,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 
 
 ### Includes
@@ -226,11 +226,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6d0aae57-d72d-4e33-9f9b-6aaf6c59e51b",
+    "id": "e62bbb51-51a4-429f-9568-0257a2e5b6ee",
     "type": "tax_regions",
     "attributes": {
-      "created_at": "2022-04-08T18:21:39+00:00",
-      "updated_at": "2022-04-08T18:21:39+00:00",
+      "created_at": "2022-09-16T09:05:23+00:00",
+      "updated_at": "2022-09-16T09:05:23+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Sales Tax",
@@ -242,7 +242,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "0410e829-3a7d-4d12-9535-8fbf13ffe213"
+            "id": "d528bc27-fc0f-49ec-a627-5ec1cd5c648b"
           }
         ]
       }
@@ -250,15 +250,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "0410e829-3a7d-4d12-9535-8fbf13ffe213",
+      "id": "d528bc27-fc0f-49ec-a627-5ec1cd5c648b",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2022-04-08T18:21:39+00:00",
-        "updated_at": "2022-04-08T18:21:39+00:00",
+        "created_at": "2022-09-16T09:05:23+00:00",
+        "updated_at": "2022-09-16T09:05:23+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "6d0aae57-d72d-4e33-9f9b-6aaf6c59e51b",
+        "owner_id": "e62bbb51-51a4-429f-9568-0257a2e5b6ee",
         "owner_type": "tax_regions"
       },
       "relationships": {
@@ -280,12 +280,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 
 
 ### Request body
@@ -294,10 +294,10 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the tax region
-`data[attributes][strategy]` | **String**<br>The strategy to apply. One of `add_to`, `replace`, `compound`
-`data[attributes][default]` | **Boolean**<br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
-`data[attributes][tax_rates_attributes][]` | **Array**<br>The tax rates to associate
+`data[attributes][name]` | **String** <br>Name of the tax region
+`data[attributes][strategy]` | **String** <br>The strategy to apply. One of `add_to`, `replace`, `compound`
+`data[attributes][default]` | **Boolean** <br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
+`data[attributes][tax_rates_attributes][]` | **Array** <br>The tax rates to associate
 
 
 ### Includes
@@ -319,11 +319,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/dc5bb5d4-f8eb-4e91-8c0f-2f5fd4884919' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/62db6575-0d15-44f2-b9f8-cc2b5b832f0d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "dc5bb5d4-f8eb-4e91-8c0f-2f5fd4884919",
+        "id": "62db6575-0d15-44f2-b9f8-cc2b5b832f0d",
         "type": "tax_regions",
         "attributes": {
           "name": "State Tax",
@@ -333,7 +333,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "9ca8647c-01ae-4512-9212-7f2030d543d1",
+              "id": "0d6d532b-1bb2-4b55-8148-d8a91f37fa9f",
               "_destroy": true
             }
           ]
@@ -348,11 +348,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dc5bb5d4-f8eb-4e91-8c0f-2f5fd4884919",
+    "id": "62db6575-0d15-44f2-b9f8-cc2b5b832f0d",
     "type": "tax_regions",
     "attributes": {
-      "created_at": "2022-04-08T18:21:39+00:00",
-      "updated_at": "2022-04-08T18:21:39+00:00",
+      "created_at": "2022-09-16T09:05:23+00:00",
+      "updated_at": "2022-09-16T09:05:23+00:00",
       "archived": false,
       "archived_at": null,
       "name": "State Tax",
@@ -364,7 +364,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "459aba7a-17cc-4505-b1bf-7ad45d28cd24"
+            "id": "2f5e6fe7-5daf-4740-8b07-438e35cb882b"
           }
         ]
       }
@@ -372,15 +372,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "459aba7a-17cc-4505-b1bf-7ad45d28cd24",
+      "id": "2f5e6fe7-5daf-4740-8b07-438e35cb882b",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2022-04-08T18:21:39+00:00",
-        "updated_at": "2022-04-08T18:21:39+00:00",
+        "created_at": "2022-09-16T09:05:23+00:00",
+        "updated_at": "2022-09-16T09:05:23+00:00",
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "dc5bb5d4-f8eb-4e91-8c0f-2f5fd4884919",
+        "owner_id": "62db6575-0d15-44f2-b9f8-cc2b5b832f0d",
         "owner_type": "tax_regions"
       },
       "relationships": {
@@ -402,12 +402,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 
 
 ### Request body
@@ -416,10 +416,10 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the tax region
-`data[attributes][strategy]` | **String**<br>The strategy to apply. One of `add_to`, `replace`, `compound`
-`data[attributes][default]` | **Boolean**<br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
-`data[attributes][tax_rates_attributes][]` | **Array**<br>The tax rates to associate
+`data[attributes][name]` | **String** <br>Name of the tax region
+`data[attributes][strategy]` | **String** <br>The strategy to apply. One of `add_to`, `replace`, `compound`
+`data[attributes][default]` | **Boolean** <br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
+`data[attributes][tax_rates_attributes][]` | **Array** <br>The tax rates to associate
 
 
 ### Includes
@@ -441,7 +441,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/846b0a58-a414-4f51-9b6e-0e01d37865e0' \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/b976c41d-a250-4088-a816-d9b05460a2b8' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -460,12 +460,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=tax_rates`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 
 
 ### Includes

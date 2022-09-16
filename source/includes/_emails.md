@@ -15,13 +15,13 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`subject` | **String**<br>Email subject
-`body` | **String**<br>Email body
-`recipients` | **String**<br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
-`document_ids` | **Array**<br>Documents to send as attachments to the email
-`order_id` | **Uuid**<br>The associated Order
-`customer_id` | **Uuid**<br>The associated Customer
-`email_template_id` | **Uuid**<br>The associated Email template
+`subject` | **String** <br>Email subject
+`body` | **String** <br>Email body
+`recipients` | **String** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
+`document_ids` | **Array** <br>Documents to send as attachments to the email
+`order_id` | **Uuid** <br>The associated Order
+`customer_id` | **Uuid** <br>The associated Customer
+`email_template_id` | **Uuid** <br>The associated Email template
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
 
 
@@ -54,17 +54,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "af51bfcc-dd67-4ece-80f8-ee9a4d39b972",
+      "id": "b8ad49a6-d4aa-433b-a6f0-f4e1980dd9a4",
       "type": "emails",
       "attributes": {
-        "created_at": "2022-04-08T18:19:58+00:00",
-        "updated_at": "2022-04-08T18:19:58+00:00",
+        "created_at": "2022-09-16T09:02:01+00:00",
+        "updated_at": "2022-09-16T09:02:01+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "document_ids": [],
         "order_id": null,
-        "customer_id": "7f3a6f25-f7ab-4c18-a2d5-e5b38abaf343",
+        "customer_id": "447bd603-6f9d-4847-8f4b-6249354e9d02",
         "email_template_id": null,
         "employee_id": null
       },
@@ -76,7 +76,7 @@ Name | Description
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/7f3a6f25-f7ab-4c18-a2d5-e5b38abaf343"
+            "related": "api/boomerang/customers/447bd603-6f9d-4847-8f4b-6249354e9d02"
           }
         },
         "email_template": {
@@ -101,7 +101,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=3085746f-ae52-41e1-bb13-20a81285e9f1' \
+    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=0b09ad41-89dc-40e2-8e0c-9f5bacae925a' \
     --header 'content-type: application/json' \
 ```
 
@@ -111,29 +111,29 @@ Name | Description
   {
   "data": [
     {
-      "id": "5fea4b9d-de41-4f4a-a9c0-5bbbbd651702",
+      "id": "4aa34e10-fece-47e1-964e-717b015470c2",
       "type": "emails",
       "attributes": {
-        "created_at": "2022-04-08T18:19:58+00:00",
-        "updated_at": "2022-04-08T18:19:58+00:00",
+        "created_at": "2022-09-16T09:02:02+00:00",
+        "updated_at": "2022-09-16T09:02:02+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "document_ids": [],
-        "order_id": "3085746f-ae52-41e1-bb13-20a81285e9f1",
-        "customer_id": "16efd1f0-f3bd-43c4-86eb-80dea4c06ae7",
+        "order_id": "0b09ad41-89dc-40e2-8e0c-9f5bacae925a",
+        "customer_id": "99be0874-1fbd-4eec-90e6-867a9c9ef403",
         "email_template_id": null,
         "employee_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/3085746f-ae52-41e1-bb13-20a81285e9f1"
+            "related": "api/boomerang/orders/0b09ad41-89dc-40e2-8e0c-9f5bacae925a"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/16efd1f0-f3bd-43c4-86eb-80dea4c06ae7"
+            "related": "api/boomerang/customers/99be0874-1fbd-4eec-90e6-867a9c9ef403"
           }
         },
         "email_template": {
@@ -159,17 +159,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,customer,email_template`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[emails]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,email_template`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[emails]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T09:00:38Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -178,13 +178,13 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`order_id` | **Uuid**<br>`eq`, `not_eq`
-`customer_id` | **Uuid**<br>`eq`, `not_eq`
-`email_template_id` | **Uuid**<br>`eq`, `not_eq`
-`employee_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
+`customer_id` | **Uuid** <br>`eq`, `not_eq`
+`email_template_id` | **Uuid** <br>`eq`, `not_eq`
+`employee_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -193,7 +193,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -227,11 +227,11 @@ This request accepts the following includes:
           "recipients": "customer1@example.com,customer2@example.com",
           "subject": "Order confirmation",
           "body": "Hi {{customer.name}}",
-          "email_template_id": "8b532189-b57c-4490-ba67-131784f97137",
-          "order_id": "371c459f-178b-4244-8c19-800ec4006941",
-          "customer_id": "c8d376c2-41f0-4753-adbd-fb3582c771e4",
+          "email_template_id": "a12bd574-c7c6-4f1d-9f7e-e73c3b1a8fe1",
+          "order_id": "96b667fe-d31e-4695-aeb0-24cea870066a",
+          "customer_id": "08f40d0a-0440-4e9c-b729-cff10559d5c8",
           "document_ids": [
-            "c09bf5fc-cebb-4ff8-8589-4744d7a8554c"
+            "91c5703f-98f2-4be9-80fa-35dc309c1355"
           ]
         }
       }
@@ -243,21 +243,21 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ec7dbe93-196a-4d58-9921-d32287e34658",
+    "id": "abbc1bc3-a63b-4631-a812-342cfc3c8394",
     "type": "emails",
     "attributes": {
-      "created_at": "2022-04-08T18:19:59+00:00",
-      "updated_at": "2022-04-08T18:19:59+00:00",
+      "created_at": "2022-09-16T09:02:03+00:00",
+      "updated_at": "2022-09-16T09:02:03+00:00",
       "subject": "Order confirmation",
       "body": "Hi {{customer.name}}",
       "recipients": "customer1@example.com,customer2@example.com",
       "document_ids": [
-        "c09bf5fc-cebb-4ff8-8589-4744d7a8554c"
+        "91c5703f-98f2-4be9-80fa-35dc309c1355"
       ],
-      "order_id": "371c459f-178b-4244-8c19-800ec4006941",
-      "customer_id": "c8d376c2-41f0-4753-adbd-fb3582c771e4",
-      "email_template_id": "8b532189-b57c-4490-ba67-131784f97137",
-      "employee_id": "8079e8a3-4ba9-4479-a040-bda146631437"
+      "order_id": "96b667fe-d31e-4695-aeb0-24cea870066a",
+      "customer_id": "08f40d0a-0440-4e9c-b729-cff10559d5c8",
+      "email_template_id": "a12bd574-c7c6-4f1d-9f7e-e73c3b1a8fe1",
+      "employee_id": "5dc60e9f-3806-450a-bbe1-9470721518b6"
     },
     "relationships": {
       "order": {
@@ -292,12 +292,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,customer,email_template`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[emails]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,email_template`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[emails]=id,created_at,updated_at`
 
 
 ### Request body
@@ -306,13 +306,13 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][subject]` | **String**<br>Email subject
-`data[attributes][body]` | **String**<br>Email body
-`data[attributes][recipients]` | **String**<br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
-`data[attributes][document_ids][]` | **Array**<br>Documents to send as attachments to the email
-`data[attributes][order_id]` | **Uuid**<br>The associated Order
-`data[attributes][customer_id]` | **Uuid**<br>The associated Customer
-`data[attributes][email_template_id]` | **Uuid**<br>The associated Email template
+`data[attributes][subject]` | **String** <br>Email subject
+`data[attributes][body]` | **String** <br>Email body
+`data[attributes][recipients]` | **String** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
+`data[attributes][document_ids][]` | **Array** <br>Documents to send as attachments to the email
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][email_template_id]` | **Uuid** <br>The associated Email template
 
 
 ### Includes
