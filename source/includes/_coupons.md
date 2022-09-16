@@ -21,10 +21,10 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`identifier` | **String**<br>The code that customers need to type in
-`coupon_type` | **String**<br>One of `percentage`, `cents`
-`value` | **Integer**<br>A percentage for type `percentage` or a value in cents for `cents`
-`active` | **Boolean**<br>Whether coupon can be redeemed at the moment
+`identifier` | **String** <br>The code that customers need to type in
+`coupon_type` | **String** <br>One of `percentage`, `cents`
+`value` | **Integer** <br>A percentage for type `percentage` or a value in cents for `cents`
+`active` | **Boolean** <br>Whether coupon can be redeemed at the moment
 `archived` | **Boolean** `readonly`<br>Whether coupon is archived
 
 
@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "b5991b57-3200-4684-86a0-5c5dda0f3a33",
+      "id": "de22275d-0907-471e-8730-d608cac81bd2",
       "type": "coupons",
       "attributes": {
-        "created_at": "2022-04-08T18:19:39+00:00",
-        "updated_at": "2022-04-08T18:19:39+00:00",
+        "created_at": "2022-09-16T11:48:35+00:00",
+        "updated_at": "2022-09-16T11:48:35+00:00",
         "identifier": "SUMMER20OFF",
         "coupon_type": "percentage",
         "value": 20,
@@ -69,17 +69,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T11:48:01Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -88,14 +88,14 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`identifier` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`coupon_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`value` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`active` | **Boolean**<br>`eq`
-`archived` | **Boolean**<br>`eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`coupon_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`value` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`active` | **Boolean** <br>`eq`
+`archived` | **Boolean** <br>`eq`
 
 
 ### Meta
@@ -104,7 +104,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -118,7 +118,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/coupons/1bbc8b6c-9c13-4c33-982c-cd3a9263a814' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/d65bf4db-e3b9-4ccc-8010-a60d2ccab37d' \
     --header 'content-type: application/json' \
 ```
 
@@ -127,11 +127,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "1bbc8b6c-9c13-4c33-982c-cd3a9263a814",
+    "id": "d65bf4db-e3b9-4ccc-8010-a60d2ccab37d",
     "type": "coupons",
     "attributes": {
-      "created_at": "2022-04-08T18:19:39+00:00",
-      "updated_at": "2022-04-08T18:19:39+00:00",
+      "created_at": "2022-09-16T11:48:36+00:00",
+      "updated_at": "2022-09-16T11:48:36+00:00",
       "identifier": "SUMMER20OFF",
       "coupon_type": "percentage",
       "value": 20,
@@ -149,12 +149,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
 
 
 ### Includes
@@ -188,11 +188,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e4be4f15-2250-4eb8-84ef-967f2cfb965b",
+    "id": "bdd3b634-995b-42d3-8b79-7491e7610dc7",
     "type": "coupons",
     "attributes": {
-      "created_at": "2022-04-08T18:19:40+00:00",
-      "updated_at": "2022-04-08T18:19:40+00:00",
+      "created_at": "2022-09-16T11:48:36+00:00",
+      "updated_at": "2022-09-16T11:48:36+00:00",
       "identifier": "WINTERDISCOUNT",
       "coupon_type": "cents",
       "value": 2000,
@@ -210,12 +210,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
 
 
 ### Request body
@@ -224,10 +224,10 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][identifier]` | **String**<br>The code that customers need to type in
-`data[attributes][coupon_type]` | **String**<br>One of `percentage`, `cents`
-`data[attributes][value]` | **Integer**<br>A percentage for type `percentage` or a value in cents for `cents`
-`data[attributes][active]` | **Boolean**<br>Whether coupon can be redeemed at the moment
+`data[attributes][identifier]` | **String** <br>The code that customers need to type in
+`data[attributes][coupon_type]` | **String** <br>One of `percentage`, `cents`
+`data[attributes][value]` | **Integer** <br>A percentage for type `percentage` or a value in cents for `cents`
+`data[attributes][active]` | **Boolean** <br>Whether coupon can be redeemed at the moment
 
 
 ### Includes
@@ -242,11 +242,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/0d556011-6d9e-471b-bee0-3a66f2769980' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/3af7119e-7df5-4a77-9068-086312b782c8' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0d556011-6d9e-471b-bee0-3a66f2769980",
+        "id": "3af7119e-7df5-4a77-9068-086312b782c8",
         "type": "coupons",
         "attributes": {
           "identifier": "SUMMER30OFF",
@@ -262,11 +262,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "43cf3a1d-b9c5-4188-8bbb-2a2405753e1a",
+    "id": "3660c7ef-73f0-445d-b340-fdd3827c6237",
     "type": "coupons",
     "attributes": {
-      "created_at": "2022-04-08T18:19:40+00:00",
-      "updated_at": "2022-04-08T18:19:40+00:00",
+      "created_at": "2022-09-16T11:48:36+00:00",
+      "updated_at": "2022-09-16T11:48:36+00:00",
       "identifier": "SUMMER30OFF",
       "coupon_type": "percentage",
       "value": 30,
@@ -283,11 +283,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/d53d63de-6d82-41e4-b65c-dcdb4dedf1a8' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/94b3711a-d924-486c-9a95-0225c2fa72de' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d53d63de-6d82-41e4-b65c-dcdb4dedf1a8",
+        "id": "94b3711a-d924-486c-9a95-0225c2fa72de",
         "type": "coupons",
         "attributes": {
           "active": false
@@ -301,11 +301,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "9cd20836-1a2e-4a76-a36a-f47021fcc8af",
+    "id": "f10844dc-3e2e-4002-80a8-2f120af64305",
     "type": "coupons",
     "attributes": {
-      "created_at": "2022-04-08T18:19:40+00:00",
-      "updated_at": "2022-04-08T18:19:40+00:00",
+      "created_at": "2022-09-16T11:48:37+00:00",
+      "updated_at": "2022-09-16T11:48:37+00:00",
       "identifier": "SUMMER20OFF",
       "coupon_type": "percentage",
       "value": 20,
@@ -323,12 +323,12 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
 
 
 ### Request body
@@ -337,10 +337,10 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][identifier]` | **String**<br>The code that customers need to type in
-`data[attributes][coupon_type]` | **String**<br>One of `percentage`, `cents`
-`data[attributes][value]` | **Integer**<br>A percentage for type `percentage` or a value in cents for `cents`
-`data[attributes][active]` | **Boolean**<br>Whether coupon can be redeemed at the moment
+`data[attributes][identifier]` | **String** <br>The code that customers need to type in
+`data[attributes][coupon_type]` | **String** <br>One of `percentage`, `cents`
+`data[attributes][value]` | **Integer** <br>A percentage for type `percentage` or a value in cents for `cents`
+`data[attributes][active]` | **Boolean** <br>Whether coupon can be redeemed at the moment
 
 
 ### Includes
@@ -354,7 +354,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/coupons/10b0b4b4-ff54-4f91-b3c0-19e3bbc096cd' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/9717634b-c422-4205-a8de-8e16df3e0e69' \
     --header 'content-type: application/json' \
 ```
 
@@ -372,12 +372,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[coupons]=id,created_at,updated_at`
 
 
 ### Includes

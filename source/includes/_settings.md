@@ -183,25 +183,38 @@ Name | Description
 `hide_section_lines` | **Boolean**<br>Whether to hide lines within a section, if enabled to total price of all lines in a section is summed and displayed next to the section
 `prefix` | **String**<br>Prefix to use for document numbering, e.g. `{{year}}` or `{{customer_number}}`, combinations are also possible `{{year}}-{{order_number}}`
 
+#### Labels
+
+Customization settings for labels
+
+Name | Description
+- | -
+`customer` | **String**<br>What to call a customer (one of `customer`, `client`, `student``)
+`order` | **String**<br>What to call an order (one of `order`, `booking`, `project``)
+`quote` | **String**<br>What to call a quote (one of `quote`, `proposal`)
+`contract` | **String**<br>What to call a contract (one of `contract`, `waiver`)
+`packing_slip` | **String**<br>What to call a packing slip (one of `packing_slip`, `pull_sheet`)
+
 ## Fields
 Every setting has the following fields:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>
+`id` | **Uuid** <br>
 `currency` | **Hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource)
 `defaults` | **Hash** `readonly`<br>Defaults derived from other resources
-`pricing` | **Hash**<br>Configuration on how to handle and display pricing
-`dates` | **Hash**<br>Information on how to display dates
-`orders` | **Hash**<br>Configuration for [orders](#orders) (these settings also apply to the online store)
-`security` | **Hash**<br>Global security settings
-`address` | **Hash**<br>Settings on how to display addresses
-`store` | **Hash**<br>Settings for the online store
-`user` | **Hash**<br>Settings that apply to [user](#users) accounts
-`documents` | **Hash**<br>Settings that apply to all [document](#documents) types
-`invoices` | **Hash**<br>Settings that apply to invoices
-`quotes` | **Hash**<br>Settings that apply to quotes
-`contracts` | **Hash**<br>Settings that apply to contracts
+`pricing` | **Hash** <br>Configuration on how to handle and display pricing
+`dates` | **Hash** <br>Information on how to display dates
+`orders` | **Hash** <br>Configuration for [orders](#orders) (these settings also apply to the online store)
+`security` | **Hash** <br>Global security settings
+`address` | **Hash** <br>Settings on how to display addresses
+`store` | **Hash** <br>Settings for the online store
+`user` | **Hash** <br>Settings that apply to [user](#users) accounts
+`documents` | **Hash** <br>Settings that apply to all [document](#documents) types
+`invoices` | **Hash** <br>Settings that apply to invoices
+`quotes` | **Hash** <br>Settings that apply to quotes
+`contracts` | **Hash** <br>Settings that apply to contracts
+`labels` | **Hash** <br>Customization settings for labels
 `dashboard` | **Hash** `extra`<br>Dashboard settings (Used internally by Booqable)
 `setup` | **Hash** `extra`<br>Setup settings (Used internally by Booqable)
 
@@ -223,10 +236,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
+    "id": "46d3f132-2b25-5eb3-ac73-d36ce8820649",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:26+00:00",
+      "updated_at": "2022-09-16T11:52:30+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -237,8 +250,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "e179304d-2d4e-4d33-8536-481e3cd0f79f",
-        "tax_region_id": "b0255990-7e4d-4e95-82df-2b8b506d3bfa",
+        "tax_category_id": "3b7456a7-81ad-401a-9ee1-0038a19bbc9d",
+        "tax_region_id": "d3790dec-e28d-4e7f-9a69-952c55b8e129",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -340,18 +353,25 @@ Name | Description
         "body": "",
         "show_product_photos": true,
         "show_stock_identifiers": false,
+        "show_free_lines": true,
         "hide_section_lines": false,
-        "prefix": "{{year}}-{{customer_number}}",
-        "show_free_lines": true
+        "prefix": "{{year}}-{{customer_number}}"
       },
       "contracts": {
         "footer": "",
         "body": "",
         "show_product_photos": true,
         "show_stock_identifiers": false,
+        "show_free_lines": true,
         "hide_section_lines": false,
-        "prefix": null,
-        "show_free_lines": true
+        "prefix": null
+      },
+      "labels": {
+        "customer": "customer",
+        "order": "order",
+        "quote": "quote",
+        "contract": "contract",
+        "packing_slip": "packing_slip"
       }
     }
   },
@@ -365,12 +385,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[settings]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[settings]=id,created_at,updated_at`
 
 
 ### Includes

@@ -27,13 +27,13 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the property (used as label and to compute identifier if left blank)
-`identifier` | **String**<br>Key that will be used in exports, responses and custom field variables in templates
-`position` | **Integer**<br>Which position the property has
-`property_type` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
-`show_on` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`owner_type` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
-`select_options` | **Array**<br>For type `select`. The select options as array.
+`name` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`identifier` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`position` | **Integer** <br>Which position the property has
+`property_type` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
+`show_on` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
+`owner_type` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
+`select_options` | **Array** <br>For type `select`. The select options as array.
 `editable` | **Boolean** `readonly`<br>Whether this property is editable
 
 
@@ -55,11 +55,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0fef9ab3-0df3-49cd-b22c-9156a1705ce8",
+      "id": "a5831743-4307-49e5-9b32-45c4858a188a",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2022-04-08T18:19:45+00:00",
-        "updated_at": "2022-04-08T18:19:45+00:00",
+        "created_at": "2022-09-16T11:48:44+00:00",
+        "updated_at": "2022-09-16T11:48:44+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
@@ -81,17 +81,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T11:48:01Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -100,13 +100,13 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`identifier` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`owner_type` | **String**<br>`eq`, `not_eq`
-`editable` | **Boolean**<br>`eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`owner_type` | **String** <br>`eq`, `not_eq`
+`editable` | **Boolean** <br>`eq`
 
 
 ### Meta
@@ -115,7 +115,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -129,7 +129,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/f6dd4d31-b4f7-434c-a7b6-568eeef60169?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/e36a1c78-189f-4256-a69b-5036dd967914?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -138,11 +138,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f6dd4d31-b4f7-434c-a7b6-568eeef60169",
+    "id": "e36a1c78-189f-4256-a69b-5036dd967914",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-04-08T18:19:45+00:00",
-      "updated_at": "2022-04-08T18:19:45+00:00",
+      "created_at": "2022-09-16T11:48:44+00:00",
+      "updated_at": "2022-09-16T11:48:44+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -163,12 +163,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
 
 
 ### Includes
@@ -201,11 +201,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8f30bea9-6eaa-49c6-b59d-a12cf42724db",
+    "id": "d0c8509a-7eeb-45d8-a592-80f383264ce9",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-04-08T18:19:45+00:00",
-      "updated_at": "2022-04-08T18:19:45+00:00",
+      "created_at": "2022-09-16T11:48:45+00:00",
+      "updated_at": "2022-09-16T11:48:45+00:00",
       "name": "Mobile phone",
       "identifier": "mobile_phone",
       "position": 2,
@@ -226,12 +226,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
 
 
 ### Request body
@@ -240,13 +240,13 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the property (used as label and to compute identifier if left blank)
-`data[attributes][identifier]` | **String**<br>Key that will be used in exports, responses and custom field variables in templates
-`data[attributes][position]` | **Integer**<br>Which position the property has
-`data[attributes][property_type]` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
-`data[attributes][show_on][]` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
-`data[attributes][select_options][]` | **Array**<br>For type `select`. The select options as array.
+`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`data[attributes][position]` | **Integer** <br>Which position the property has
+`data[attributes][property_type]` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
+`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
+`data[attributes][select_options][]` | **Array** <br>For type `select`. The select options as array.
 
 
 ### Includes
@@ -260,11 +260,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/e59f2c36-31bf-488e-a59e-15855fa9ecb2' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/d73c57f2-925f-4047-ba8c-2215bb6250df' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e59f2c36-31bf-488e-a59e-15855fa9ecb2",
+        "id": "d73c57f2-925f-4047-ba8c-2215bb6250df",
         "type": "default_properties",
         "attributes": {
           "property_type": "text_field"
@@ -278,11 +278,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e59f2c36-31bf-488e-a59e-15855fa9ecb2",
+    "id": "d73c57f2-925f-4047-ba8c-2215bb6250df",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2022-04-08T18:19:46+00:00",
-      "updated_at": "2022-04-08T18:19:46+00:00",
+      "created_at": "2022-09-16T11:48:45+00:00",
+      "updated_at": "2022-09-16T11:48:45+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -303,12 +303,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
 
 
 ### Request body
@@ -317,13 +317,13 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the property (used as label and to compute identifier if left blank)
-`data[attributes][identifier]` | **String**<br>Key that will be used in exports, responses and custom field variables in templates
-`data[attributes][position]` | **Integer**<br>Which position the property has
-`data[attributes][property_type]` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
-`data[attributes][show_on][]` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
-`data[attributes][select_options][]` | **Array**<br>For type `select`. The select options as array.
+`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`data[attributes][position]` | **Integer** <br>Which position the property has
+`data[attributes][property_type]` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
+`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
+`data[attributes][select_options][]` | **Array** <br>For type `select`. The select options as array.
 
 
 ### Includes
@@ -337,7 +337,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/f645eaf8-bff4-4faa-956f-58e1d0fa9436' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/b1c01be9-7d44-4e19-9330-3d0c489971ec' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -356,12 +356,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=id,created_at,updated_at`
 
 
 ### Includes

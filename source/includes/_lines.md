@@ -41,24 +41,25 @@ Name | Description
 `archived_at` | **Datetime** `nullable` `readonly`<br>When the line was archived
 `title` | **String** `nullable`<br>Title of the line
 `extra_information` | **String** `nullable`<br>Extra information about the line
-`quantity` | **Integer**<br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
+`quantity` | **Integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
 `original_price_each_in_cents` | **Integer** `readonly`<br>The original price of the product (without price rule adjustments)
-`price_each_in_cents` | **Integer**<br>Price of each line
+`price_each_in_cents` | **Integer** <br>Price of each line
 `price_in_cents` | **Integer** `readonly`<br>Price of each line x quantity
-`position` | **Integer**<br>Which position the line has
+`position` | **Integer** <br>Which position the line has
 `charge_label` | **String** `nullable`<br>Charge label
 `charge_length` | **Integer** `nullable`<br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
 `price_rule_values` | **Hash** `nullable` `readonly`<br>Breakdown of applied price rules
-`discountable` | **Boolean**<br>Whether line is discountable
-`taxable` | **Boolean**<br>Whether line is taxable
-`line_type` | **String**<br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
+`discountable` | **Boolean** <br>Whether line is discountable
+`taxable` | **Boolean** <br>Whether line is taxable
+`line_type` | **String** <br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
 `relevant` | **Boolean** `readonly`<br>Whether line is relevant. If not, line has no visible change, it's only used for reporting
+`confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm a shortage when updating quantity on a line
 `item_id` | **Uuid** `nullable` `readonly`<br>The associated Item
 `tax_category_id` | **Uuid** `nullable`<br>The associated Tax category
 `planning_id` | **Uuid** `readonly`<br>The associated Planning
 `parent_line_id` | **Uuid** `readonly`<br>The associated Parent line
-`owner_id` | **Uuid**<br>ID of its owner
-`owner_type` | **String**<br>One of `orders`, `documents`, `carts`
+`owner_id` | **Uuid** <br>ID of its owner
+`owner_type` | **String** <br>One of `orders`, `documents`, `carts`
 
 
 ## Relationships
@@ -92,11 +93,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "21fbd405-fb12-460f-82fa-2605f411f16b",
+      "id": "cf8c8f00-41e5-4fbb-ae35-7559f40556e8",
       "type": "lines",
       "attributes": {
-        "created_at": "2022-04-08T18:20:19+00:00",
-        "updated_at": "2022-04-08T18:20:19+00:00",
+        "created_at": "2022-09-16T11:49:49+00:00",
+        "updated_at": "2022-09-16T11:49:49+00:00",
         "archived": false,
         "archived_at": null,
         "title": "Macbook Pro",
@@ -127,27 +128,27 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "item_id": "163d91e7-fdcb-48ae-be0b-3fa744567389",
-        "tax_category_id": "565cd820-b9fa-47aa-ac73-7c551bbb7e78",
-        "planning_id": "c52ddb3e-6082-4320-a733-238432884a8f",
+        "item_id": "b58e5305-f2b9-4a11-8f8d-2eaf1a8afe20",
+        "tax_category_id": "eb39a4e5-5456-4428-a1d9-42f9aa2f90ba",
+        "planning_id": "9936b9a4-4c77-4122-af74-8ee8e2323bca",
         "parent_line_id": null,
-        "owner_id": "e4617096-8ddd-457f-a661-d9f055f31bf3",
+        "owner_id": "68808d25-2d1e-4c7e-9914-3d837bece5f1",
         "owner_type": "orders"
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/163d91e7-fdcb-48ae-be0b-3fa744567389"
+            "related": "api/boomerang/items/b58e5305-f2b9-4a11-8f8d-2eaf1a8afe20"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/565cd820-b9fa-47aa-ac73-7c551bbb7e78"
+            "related": "api/boomerang/tax_categories/eb39a4e5-5456-4428-a1d9-42f9aa2f90ba"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/c52ddb3e-6082-4320-a733-238432884a8f"
+            "related": "api/boomerang/plannings/9936b9a4-4c77-4122-af74-8ee8e2323bca"
           }
         },
         "parent_line": {
@@ -157,12 +158,12 @@ Name | Description
         },
         "nested_lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[parent_line_id]=21fbd405-fb12-460f-82fa-2605f411f16b"
+            "related": "api/boomerang/lines?filter[parent_line_id]=cf8c8f00-41e5-4fbb-ae35-7559f40556e8"
           }
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/e4617096-8ddd-457f-a661-d9f055f31bf3"
+            "related": "api/boomerang/orders/68808d25-2d1e-4c7e-9914-3d837bece5f1"
           }
         }
       }
@@ -178,17 +179,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=item,tax_category,planning`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=item,tax_category,planning`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T11:48:01Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -197,23 +198,23 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean**<br>`eq`
-`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`title` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`quantity` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discountable` | **Boolean**<br>`eq`
-`taxable` | **Boolean**<br>`eq`
-`line_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`relevant` | **Boolean**<br>`eq`
-`item_id` | **Uuid**<br>`eq`, `not_eq`
-`tax_category_id` | **Uuid**<br>`eq`, `not_eq`
-`planning_id` | **Uuid**<br>`eq`, `not_eq`
-`parent_line_id` | **Uuid**<br>`eq`, `not_eq`
-`owner_id` | **Uuid**<br>`eq`, `not_eq`
-`owner_type` | **String**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean** <br>`eq`
+`taxable` | **Boolean** <br>`eq`
+`line_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`relevant` | **Boolean** <br>`eq`
+`item_id` | **Uuid** <br>`eq`, `not_eq`
+`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+`planning_id` | **Uuid** <br>`eq`, `not_eq`
+`parent_line_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_type` | **String** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -222,7 +223,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -256,7 +257,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/lines/0e4918c0-f087-434b-ba22-1bbb3acbd6d2' \
+    --url 'https://example.booqable.com/api/boomerang/lines/af176dd0-7040-4801-94ee-c46b48d8c1e4' \
     --header 'content-type: application/json' \
 ```
 
@@ -265,11 +266,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0e4918c0-f087-434b-ba22-1bbb3acbd6d2",
+    "id": "af176dd0-7040-4801-94ee-c46b48d8c1e4",
     "type": "lines",
     "attributes": {
-      "created_at": "2022-04-08T18:20:22+00:00",
-      "updated_at": "2022-04-08T18:20:22+00:00",
+      "created_at": "2022-09-16T11:49:53+00:00",
+      "updated_at": "2022-09-16T11:49:53+00:00",
       "archived": false,
       "archived_at": null,
       "title": "Macbook Pro",
@@ -300,27 +301,27 @@ This request accepts the following includes:
       "taxable": true,
       "line_type": "charge",
       "relevant": true,
-      "item_id": "11518a50-ff42-424b-a0d6-3e7c7f137bc8",
-      "tax_category_id": "033cec72-3ef3-436b-b46c-e3e4f115bdab",
-      "planning_id": "527b9a9c-c41e-4d12-bbe3-d530dd42489b",
+      "item_id": "dfa836d2-9fd2-468a-a10c-d0a4999c3b28",
+      "tax_category_id": "75187d3c-6774-460d-8001-bce0d0fa7ba2",
+      "planning_id": "7d352a82-b58d-48a1-a8ff-56ec9c200a9a",
       "parent_line_id": null,
-      "owner_id": "19991ba2-81ee-461d-a919-c60c2d86c274",
+      "owner_id": "edeaa0de-b385-48d1-8c47-7e50746163e6",
       "owner_type": "orders"
     },
     "relationships": {
       "item": {
         "links": {
-          "related": "api/boomerang/items/11518a50-ff42-424b-a0d6-3e7c7f137bc8"
+          "related": "api/boomerang/items/dfa836d2-9fd2-468a-a10c-d0a4999c3b28"
         }
       },
       "tax_category": {
         "links": {
-          "related": "api/boomerang/tax_categories/033cec72-3ef3-436b-b46c-e3e4f115bdab"
+          "related": "api/boomerang/tax_categories/75187d3c-6774-460d-8001-bce0d0fa7ba2"
         }
       },
       "planning": {
         "links": {
-          "related": "api/boomerang/plannings/527b9a9c-c41e-4d12-bbe3-d530dd42489b"
+          "related": "api/boomerang/plannings/7d352a82-b58d-48a1-a8ff-56ec9c200a9a"
         }
       },
       "parent_line": {
@@ -330,12 +331,12 @@ This request accepts the following includes:
       },
       "nested_lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[parent_line_id]=0e4918c0-f087-434b-ba22-1bbb3acbd6d2"
+          "related": "api/boomerang/lines?filter[parent_line_id]=af176dd0-7040-4801-94ee-c46b48d8c1e4"
         }
       },
       "owner": {
         "links": {
-          "related": "api/boomerang/orders/19991ba2-81ee-461d-a919-c60c2d86c274"
+          "related": "api/boomerang/orders/edeaa0de-b385-48d1-8c47-7e50746163e6"
         }
       }
     }
@@ -350,12 +351,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=item,tax_category,planning`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=item,tax_category,planning`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
 
 
 ### Includes
@@ -404,7 +405,7 @@ Order totals are automatically re-calculated after the creation of a new line an
       "data": {
         "type": "lines",
         "attributes": {
-          "owner_id": "dca7fd70-de5f-46be-a3cd-cd0dd3069d19",
+          "owner_id": "fbb305de-ac48-4064-b544-07ea92e0231e",
           "owner_type": "orders",
           "price_each_in_cents": 1000
         }
@@ -417,11 +418,11 @@ Order totals are automatically re-calculated after the creation of a new line an
 ```json
   {
   "data": {
-    "id": "24597a39-7598-4995-a9ef-7521cb174ad5",
+    "id": "940574cf-ba7f-4b19-a208-29868944dda5",
     "type": "lines",
     "attributes": {
-      "created_at": "2022-04-08T18:20:24+00:00",
-      "updated_at": "2022-04-08T18:20:24+00:00",
+      "created_at": "2022-09-16T11:49:56+00:00",
+      "updated_at": "2022-09-16T11:49:56+00:00",
       "archived": false,
       "archived_at": null,
       "title": null,
@@ -442,7 +443,7 @@ Order totals are automatically re-calculated after the creation of a new line an
       "tax_category_id": null,
       "planning_id": null,
       "parent_line_id": null,
-      "owner_id": "dca7fd70-de5f-46be-a3cd-cd0dd3069d19",
+      "owner_id": "fbb305de-ac48-4064-b544-07ea92e0231e",
       "owner_type": "orders"
     },
     "relationships": {
@@ -488,12 +489,12 @@ Order totals are automatically re-calculated after the creation of a new line an
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=item,tax_category,planning`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=item,tax_category,planning`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
 
 
 ### Request body
@@ -502,19 +503,20 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][title]` | **String**<br>Title of the line
-`data[attributes][extra_information]` | **String**<br>Extra information about the line
-`data[attributes][quantity]` | **Integer**<br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
-`data[attributes][price_each_in_cents]` | **Integer**<br>Price of each line
-`data[attributes][position]` | **Integer**<br>Which position the line has
-`data[attributes][charge_label]` | **String**<br>Charge label
-`data[attributes][charge_length]` | **Integer**<br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
-`data[attributes][discountable]` | **Boolean**<br>Whether line is discountable
-`data[attributes][taxable]` | **Boolean**<br>Whether line is taxable
-`data[attributes][line_type]` | **String**<br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
-`data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
-`data[attributes][owner_id]` | **Uuid**<br>ID of its owner
-`data[attributes][owner_type]` | **String**<br>One of `orders`, `documents`, `carts`
+`data[attributes][title]` | **String** <br>Title of the line
+`data[attributes][extra_information]` | **String** <br>Extra information about the line
+`data[attributes][quantity]` | **Integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
+`data[attributes][price_each_in_cents]` | **Integer** <br>Price of each line
+`data[attributes][position]` | **Integer** <br>Which position the line has
+`data[attributes][charge_label]` | **String** <br>Charge label
+`data[attributes][charge_length]` | **Integer** <br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
+`data[attributes][discountable]` | **Boolean** <br>Whether line is discountable
+`data[attributes][taxable]` | **Boolean** <br>Whether line is taxable
+`data[attributes][line_type]` | **String** <br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
+`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating quantity on a line
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
+`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
+`data[attributes][owner_type]` | **String** <br>One of `orders`, `documents`, `carts`
 
 
 ### Includes
@@ -551,11 +553,11 @@ Order totals are automatically re-calculated after updating a line and an invoic
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/lines/846b8cc7-7141-4475-ad5a-a852741db4a1' \
+    --url 'https://example.booqable.com/api/boomerang/lines/3aed33cf-b84b-4a5e-9b3a-c6c03422ac14' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "846b8cc7-7141-4475-ad5a-a852741db4a1",
+        "id": "3aed33cf-b84b-4a5e-9b3a-c6c03422ac14",
         "type": "lines",
         "attributes": {
           "price_each_in_cents": 1000
@@ -569,11 +571,11 @@ Order totals are automatically re-calculated after updating a line and an invoic
 ```json
   {
   "data": {
-    "id": "846b8cc7-7141-4475-ad5a-a852741db4a1",
+    "id": "3aed33cf-b84b-4a5e-9b3a-c6c03422ac14",
     "type": "lines",
     "attributes": {
-      "created_at": "2022-04-08T18:20:26+00:00",
-      "updated_at": "2022-04-08T18:20:26+00:00",
+      "created_at": "2022-09-16T11:49:59+00:00",
+      "updated_at": "2022-09-16T11:49:59+00:00",
       "archived": false,
       "archived_at": null,
       "title": "Macbook Pro",
@@ -590,11 +592,11 @@ Order totals are automatically re-calculated after updating a line and an invoic
       "taxable": true,
       "line_type": "charge",
       "relevant": true,
-      "item_id": "b0167a9b-fc94-4b86-9798-b7e17bc58dfb",
-      "tax_category_id": "61c32363-ae2d-47e3-9cb0-b1e4f301e1c3",
-      "planning_id": "aae7fae6-4ead-4785-a6ca-7735e9b36072",
+      "item_id": "ce9e7b00-54d8-40e8-b454-0ad907007250",
+      "tax_category_id": "ea49df84-2a4e-43b7-9ac2-d06dd89b5cd2",
+      "planning_id": "cf8f302a-b624-409a-aebf-02747da4b4ba",
       "parent_line_id": null,
-      "owner_id": "b6e72f47-6c93-4f75-9b56-d7af8dab15f3",
+      "owner_id": "d0341303-7d0a-4285-b22a-9feed90ab675",
       "owner_type": "orders"
     },
     "relationships": {
@@ -640,12 +642,12 @@ Order totals are automatically re-calculated after updating a line and an invoic
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=item,tax_category,planning`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=item,tax_category,planning`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
 
 
 ### Request body
@@ -654,19 +656,20 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][title]` | **String**<br>Title of the line
-`data[attributes][extra_information]` | **String**<br>Extra information about the line
-`data[attributes][quantity]` | **Integer**<br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
-`data[attributes][price_each_in_cents]` | **Integer**<br>Price of each line
-`data[attributes][position]` | **Integer**<br>Which position the line has
-`data[attributes][charge_label]` | **String**<br>Charge label
-`data[attributes][charge_length]` | **Integer**<br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
-`data[attributes][discountable]` | **Boolean**<br>Whether line is discountable
-`data[attributes][taxable]` | **Boolean**<br>Whether line is taxable
-`data[attributes][line_type]` | **String**<br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
-`data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
-`data[attributes][owner_id]` | **Uuid**<br>ID of its owner
-`data[attributes][owner_type]` | **String**<br>One of `orders`, `documents`, `carts`
+`data[attributes][title]` | **String** <br>Title of the line
+`data[attributes][extra_information]` | **String** <br>Extra information about the line
+`data[attributes][quantity]` | **Integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
+`data[attributes][price_each_in_cents]` | **Integer** <br>Price of each line
+`data[attributes][position]` | **Integer** <br>Which position the line has
+`data[attributes][charge_label]` | **String** <br>Charge label
+`data[attributes][charge_length]` | **Integer** <br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
+`data[attributes][discountable]` | **Boolean** <br>Whether line is discountable
+`data[attributes][taxable]` | **Boolean** <br>Whether line is taxable
+`data[attributes][line_type]` | **String** <br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
+`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating quantity on a line
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
+`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
+`data[attributes][owner_type]` | **String** <br>One of `orders`, `documents`, `carts`
 
 
 ### Includes
@@ -700,7 +703,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/lines/b91b6e8b-4927-404c-8f12-4c3271941fff' \
+    --url 'https://example.booqable.com/api/boomerang/lines/5f8ae5d1-5d71-457e-947b-5b13627e540c' \
     --header 'content-type: application/json' \
 ```
 
@@ -718,12 +721,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=item,tax_category,planning`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=item,tax_category,planning`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=id,created_at,updated_at`
 
 
 ### Includes

@@ -66,23 +66,23 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the property (used as label and to compute identifier if left blank)
-`identifier` | **String**<br>Key that will be used in exports, responses and custom field variables in templates
-`position` | **Integer**<br>Which position the property has
-`property_type` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
-`show_on` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`first_name` | **String**<br>For type `address`
-`last_name` | **String**<br>For type `address`
-`address1` | **String**<br>For type `address`
-`address2` | **String**<br>For type `address`
-`city` | **String**<br>For type `address`
-`region` | **String**<br>For type `address`
-`zipcode` | **String**<br>For type `address`
-`country` | **String**<br>For type `address`
-`value` | **String**<br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
-`default_property_id` | **Uuid**<br>The associated Default property
-`owner_id` | **Uuid**<br>ID of its owner
-`owner_type` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`, `stock_items`
+`name` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`identifier` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`position` | **Integer** <br>Which position the property has
+`property_type` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
+`show_on` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
+`first_name` | **String** <br>For type `address`
+`last_name` | **String** <br>For type `address`
+`address1` | **String** <br>For type `address`
+`address2` | **String** <br>For type `address`
+`city` | **String** <br>For type `address`
+`region` | **String** <br>For type `address`
+`zipcode` | **String** <br>For type `address`
+`country` | **String** <br>For type `address`
+`value` | **String** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
+`default_property_id` | **Uuid** <br>The associated Default property
+`owner_id` | **Uuid** <br>ID of its owner
+`owner_type` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`, `stock_items`
 
 
 ## Relationships
@@ -112,11 +112,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "a6337e05-3131-41e5-91dc-df37ad668e1c",
+      "id": "ef4abf54-4736-4530-be75-c785dacf7f3f",
       "type": "properties",
       "attributes": {
-        "created_at": "2022-04-08T18:21:22+00:00",
-        "updated_at": "2022-04-08T18:21:22+00:00",
+        "created_at": "2022-09-16T11:51:59+00:00",
+        "updated_at": "2022-09-16T11:51:59+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": null,
@@ -124,7 +124,7 @@ Name | Description
         "show_on": [],
         "value": "+316000000",
         "default_property_id": null,
-        "owner_id": "3c5495e5-97bf-4c94-89f3-35464c68a199",
+        "owner_id": "ceb28b9f-b2b6-4b10-9835-b03383e965d9",
         "owner_type": "customers"
       },
       "relationships": {
@@ -135,11 +135,11 @@ Name | Description
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/3c5495e5-97bf-4c94-89f3-35464c68a199"
+            "related": "api/boomerang/customers/ceb28b9f-b2b6-4b10-9835-b03383e965d9"
           },
           "data": {
             "type": "customers",
-            "id": "3c5495e5-97bf-4c94-89f3-35464c68a199"
+            "id": "ceb28b9f-b2b6-4b10-9835-b03383e965d9"
           }
         }
       }
@@ -147,16 +147,16 @@ Name | Description
   ],
   "included": [
     {
-      "id": "3c5495e5-97bf-4c94-89f3-35464c68a199",
+      "id": "ceb28b9f-b2b6-4b10-9835-b03383e965d9",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-04-08T18:21:22+00:00",
-        "updated_at": "2022-04-08T18:21:22+00:00",
+        "created_at": "2022-09-16T11:51:59+00:00",
+        "updated_at": "2022-09-16T11:51:59+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
-        "name": "Spencer LLC",
-        "email": "spencer_llc@conroy-roob.name",
+        "name": "John Doe",
+        "email": "john-68@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -181,17 +181,17 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=3c5495e5-97bf-4c94-89f3-35464c68a199&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=ceb28b9f-b2b6-4b10-9835-b03383e965d9&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=3c5495e5-97bf-4c94-89f3-35464c68a199&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=ceb28b9f-b2b6-4b10-9835-b03383e965d9&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=3c5495e5-97bf-4c94-89f3-35464c68a199&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=ceb28b9f-b2b6-4b10-9835-b03383e965d9&filter[owner_type]=customers"
           }
         }
       }
@@ -207,17 +207,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property,owner`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:13Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T11:48:02Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -226,14 +226,14 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`identifier` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`default_property_id` | **Uuid**<br>`eq`, `not_eq`
-`owner_id` | **Uuid**<br>`eq`, `not_eq`
-`owner_type` | **String**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`default_property_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_type` | **String** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -242,7 +242,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -264,7 +264,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/properties/0caab485-41f7-452a-9c82-252e645f64c3?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/properties/c7d30611-5783-4813-b238-fd3dc911c9ec?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -273,11 +273,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0caab485-41f7-452a-9c82-252e645f64c3",
+    "id": "c7d30611-5783-4813-b238-fd3dc911c9ec",
     "type": "properties",
     "attributes": {
-      "created_at": "2022-04-08T18:21:22+00:00",
-      "updated_at": "2022-04-08T18:21:22+00:00",
+      "created_at": "2022-09-16T11:51:59+00:00",
+      "updated_at": "2022-09-16T11:51:59+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": null,
@@ -285,7 +285,7 @@ This request accepts the following includes:
       "show_on": [],
       "value": "+316000000",
       "default_property_id": null,
-      "owner_id": "94f7d27d-e1ab-472a-80b6-facf60e3db79",
+      "owner_id": "f00e8da7-be42-4638-ae64-0aa3a3bceefc",
       "owner_type": "customers"
     },
     "relationships": {
@@ -296,27 +296,27 @@ This request accepts the following includes:
       },
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/94f7d27d-e1ab-472a-80b6-facf60e3db79"
+          "related": "api/boomerang/customers/f00e8da7-be42-4638-ae64-0aa3a3bceefc"
         },
         "data": {
           "type": "customers",
-          "id": "94f7d27d-e1ab-472a-80b6-facf60e3db79"
+          "id": "f00e8da7-be42-4638-ae64-0aa3a3bceefc"
         }
       }
     }
   },
   "included": [
     {
-      "id": "94f7d27d-e1ab-472a-80b6-facf60e3db79",
+      "id": "f00e8da7-be42-4638-ae64-0aa3a3bceefc",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-04-08T18:21:22+00:00",
-        "updated_at": "2022-04-08T18:21:22+00:00",
+        "created_at": "2022-09-16T11:51:59+00:00",
+        "updated_at": "2022-09-16T11:51:59+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
-        "name": "Romaguera-Aufderhar",
-        "email": "romaguera_aufderhar@mante.biz",
+        "name": "John Doe",
+        "email": "john-69@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -341,17 +341,17 @@ This request accepts the following includes:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=94f7d27d-e1ab-472a-80b6-facf60e3db79&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=f00e8da7-be42-4638-ae64-0aa3a3bceefc&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=94f7d27d-e1ab-472a-80b6-facf60e3db79&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=f00e8da7-be42-4638-ae64-0aa3a3bceefc&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=94f7d27d-e1ab-472a-80b6-facf60e3db79&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=f00e8da7-be42-4638-ae64-0aa3a3bceefc&filter[owner_type]=customers"
           }
         }
       }
@@ -367,12 +367,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property,owner`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
 ### Includes
@@ -403,7 +403,7 @@ This request accepts the following includes:
           "name": "Phone",
           "property_type": "phone",
           "value": "+316000000",
-          "owner_id": "816aae94-7544-4c80-be93-30be1f3954ce",
+          "owner_id": "fae3140f-700d-4071-85f4-e357778804cd",
           "owner_type": "customers"
         }
       },
@@ -416,11 +416,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "75190e33-af19-4307-9d01-d7f0646cf009",
+    "id": "62a64cd6-1f4a-4335-8856-78323fb37234",
     "type": "properties",
     "attributes": {
-      "created_at": "2022-04-08T18:21:23+00:00",
-      "updated_at": "2022-04-08T18:21:23+00:00",
+      "created_at": "2022-09-16T11:52:00+00:00",
+      "updated_at": "2022-09-16T11:52:00+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": null,
@@ -428,7 +428,7 @@ This request accepts the following includes:
       "show_on": [],
       "value": "+316000000",
       "default_property_id": null,
-      "owner_id": "816aae94-7544-4c80-be93-30be1f3954ce",
+      "owner_id": "fae3140f-700d-4071-85f4-e357778804cd",
       "owner_type": "customers"
     },
     "relationships": {
@@ -440,23 +440,23 @@ This request accepts the following includes:
       "owner": {
         "data": {
           "type": "customers",
-          "id": "816aae94-7544-4c80-be93-30be1f3954ce"
+          "id": "fae3140f-700d-4071-85f4-e357778804cd"
         }
       }
     }
   },
   "included": [
     {
-      "id": "816aae94-7544-4c80-be93-30be1f3954ce",
+      "id": "fae3140f-700d-4071-85f4-e357778804cd",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-04-08T18:21:23+00:00",
-        "updated_at": "2022-04-08T18:21:23+00:00",
+        "created_at": "2022-09-16T11:52:00+00:00",
+        "updated_at": "2022-09-16T11:52:00+00:00",
         "archived": false,
         "archived_at": null,
         "number": 2,
         "name": "Jane Doe",
-        "email": "jane.doe@romaguera.name",
+        "email": "john-71@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -507,12 +507,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property,owner`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
 ### Request body
@@ -521,23 +521,23 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the property (used as label and to compute identifier if left blank)
-`data[attributes][identifier]` | **String**<br>Key that will be used in exports, responses and custom field variables in templates
-`data[attributes][position]` | **Integer**<br>Which position the property has
-`data[attributes][property_type]` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
-`data[attributes][show_on][]` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`data[attributes][first_name]` | **String**<br>For type `address`
-`data[attributes][last_name]` | **String**<br>For type `address`
-`data[attributes][address1]` | **String**<br>For type `address`
-`data[attributes][address2]` | **String**<br>For type `address`
-`data[attributes][city]` | **String**<br>For type `address`
-`data[attributes][region]` | **String**<br>For type `address`
-`data[attributes][zipcode]` | **String**<br>For type `address`
-`data[attributes][country]` | **String**<br>For type `address`
-`data[attributes][value]` | **String**<br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
-`data[attributes][default_property_id]` | **Uuid**<br>The associated Default property
-`data[attributes][owner_id]` | **Uuid**<br>ID of its owner
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`, `stock_items`
+`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`data[attributes][position]` | **Integer** <br>Which position the property has
+`data[attributes][property_type]` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
+`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
+`data[attributes][first_name]` | **String** <br>For type `address`
+`data[attributes][last_name]` | **String** <br>For type `address`
+`data[attributes][address1]` | **String** <br>For type `address`
+`data[attributes][address2]` | **String** <br>For type `address`
+`data[attributes][city]` | **String** <br>For type `address`
+`data[attributes][region]` | **String** <br>For type `address`
+`data[attributes][zipcode]` | **String** <br>For type `address`
+`data[attributes][country]` | **String** <br>For type `address`
+`data[attributes][value]` | **String** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
+`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`, `stock_items`
 
 
 ### Includes
@@ -559,11 +559,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/properties/625584ad-2ab8-49e3-ae01-fa7a44440b67' \
+    --url 'https://example.booqable.com/api/boomerang/properties/cb1d8e8d-7a97-49a4-b8ee-a1f6855fa98b' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "625584ad-2ab8-49e3-ae01-fa7a44440b67",
+        "id": "cb1d8e8d-7a97-49a4-b8ee-a1f6855fa98b",
         "type": "properties",
         "attributes": {
           "value": "+316000001"
@@ -577,11 +577,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "625584ad-2ab8-49e3-ae01-fa7a44440b67",
+    "id": "cb1d8e8d-7a97-49a4-b8ee-a1f6855fa98b",
     "type": "properties",
     "attributes": {
-      "created_at": "2022-04-08T18:21:23+00:00",
-      "updated_at": "2022-04-08T18:21:23+00:00",
+      "created_at": "2022-09-16T11:52:00+00:00",
+      "updated_at": "2022-09-16T11:52:00+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": null,
@@ -589,7 +589,7 @@ This request accepts the following includes:
       "show_on": [],
       "value": "+316000001",
       "default_property_id": null,
-      "owner_id": "f08dc23a-131c-4346-a9cd-71651869f222",
+      "owner_id": "6579842d-67e7-443f-9737-7ddad6b9c9c4",
       "owner_type": "customers"
     },
     "relationships": {
@@ -615,12 +615,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property,owner`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
 ### Request body
@@ -629,23 +629,23 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the property (used as label and to compute identifier if left blank)
-`data[attributes][identifier]` | **String**<br>Key that will be used in exports, responses and custom field variables in templates
-`data[attributes][position]` | **Integer**<br>Which position the property has
-`data[attributes][property_type]` | **String**<br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
-`data[attributes][show_on][]` | **Array**<br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`data[attributes][first_name]` | **String**<br>For type `address`
-`data[attributes][last_name]` | **String**<br>For type `address`
-`data[attributes][address1]` | **String**<br>For type `address`
-`data[attributes][address2]` | **String**<br>For type `address`
-`data[attributes][city]` | **String**<br>For type `address`
-`data[attributes][region]` | **String**<br>For type `address`
-`data[attributes][zipcode]` | **String**<br>For type `address`
-`data[attributes][country]` | **String**<br>For type `address`
-`data[attributes][value]` | **String**<br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
-`data[attributes][default_property_id]` | **Uuid**<br>The associated Default property
-`data[attributes][owner_id]` | **Uuid**<br>ID of its owner
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`, `stock_items`
+`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`data[attributes][position]` | **Integer** <br>Which position the property has
+`data[attributes][property_type]` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
+`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
+`data[attributes][first_name]` | **String** <br>For type `address`
+`data[attributes][last_name]` | **String** <br>For type `address`
+`data[attributes][address1]` | **String** <br>For type `address`
+`data[attributes][address2]` | **String** <br>For type `address`
+`data[attributes][city]` | **String** <br>For type `address`
+`data[attributes][region]` | **String** <br>For type `address`
+`data[attributes][zipcode]` | **String** <br>For type `address`
+`data[attributes][country]` | **String** <br>For type `address`
+`data[attributes][value]` | **String** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
+`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`, `stock_items`
 
 
 ### Includes
@@ -667,7 +667,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/properties/cd06b0b5-e79f-4f6d-93d7-8a39c8fcd867' \
+    --url 'https://example.booqable.com/api/boomerang/properties/64eb6290-daff-4742-b93f-e3283634d2ad' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -686,12 +686,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property,owner`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
 ### Includes
@@ -734,11 +734,11 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "d7435654-5be2-4eee-b667-9901e3154dbc",
+    "id": "85dbc754-33f2-424c-bfd1-c42780f2ed42",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-04-08T18:21:24+00:00",
-      "updated_at": "2022-04-08T18:21:24+00:00",
+      "created_at": "2022-09-16T11:52:01+00:00",
+      "updated_at": "2022-09-16T11:52:01+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -816,11 +816,11 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "3f02b76e-379f-4dd8-b8dd-39a2449b2616",
+    "id": "8fbb95ea-8dcf-4140-86ac-67fe20c2e80a",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-04-08T18:21:24+00:00",
-      "updated_at": "2022-04-08T18:21:24+00:00",
+      "created_at": "2022-09-16T11:52:02+00:00",
+      "updated_at": "2022-09-16T11:52:02+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -874,12 +874,12 @@ On the following resources you can manage multiple properties at once:
 
 ```shell
   curl --request  \
-    --url 'https://example.booqable.com/api/boomerang/customers/7b44587a-8f9c-4f58-bd6a-c60da858d6bd' \
+    --url 'https://example.booqable.com/api/boomerang/customers/8fa7c1fc-ca9f-41f9-8738-ae4a0fe41944' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "customers",
-        "id": "7b44587a-8f9c-4f58-bd6a-c60da858d6bd",
+        "id": "8fa7c1fc-ca9f-41f9-8738-ae4a0fe41944",
         "attributes": {
           "name": "John Doe",
           "properties_attributes": [
@@ -902,16 +902,16 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "7b44587a-8f9c-4f58-bd6a-c60da858d6bd",
+    "id": "8fa7c1fc-ca9f-41f9-8738-ae4a0fe41944",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-04-08T18:21:24+00:00",
-      "updated_at": "2022-04-08T18:21:24+00:00",
+      "created_at": "2022-09-16T11:52:03+00:00",
+      "updated_at": "2022-09-16T11:52:03+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
       "name": "John Doe",
-      "email": "amore_metz_d@willms-von.net",
+      "email": "john-77@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,

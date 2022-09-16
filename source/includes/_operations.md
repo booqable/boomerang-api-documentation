@@ -18,7 +18,7 @@ The following types & data params are supported:
 
 #### Archive
 
-Only orders that are have the status `stopped` can be archived. The target_ids with an invalid status will be ignored.
+Only orders that have the status `stopped` can be archived. The target_ids with an invalid status will be ignored.
 
 **Params**
 
@@ -26,7 +26,7 @@ Only orders that are have the status `stopped` can be archived. The target_ids w
 {
   "type": "archive",
   "data": {
-    "target_type": "customer",
+    "target_type": "customers",
     "target_ids": [
       "123",
       "456"
@@ -38,37 +38,8 @@ Only orders that are have the status `stopped` can be archived. The target_ids w
 | Key                | Type          | Possible values         | Description                                                                                 |
 |--------------------|---------------|-------------------------|---------------------------------------------------------------------------------------------|
 | `type`             | String        | `archive`               | Required to start this specific operation.                                                  |
-| `data.target_type` | String        | `customer`, `order`     | The type of resource that should be archived. Only one resource per operation is supported. |
+| `data.target_type` | String        | `customers`, `orders`   | The type of resource that should be archived. Only one resource per operation is supported. |
 | `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`          | An array of primary keys for the entities that should be archived.                          |
-
-**Artifact**
-
-*None*
-
-#### Consumable Tracking Migration
-
-A one-off migration that converts untracked consumables to bulk tracked ones.
-
-**Params**
-
-```json
-{
-  "type": "consumable_tracking_migration",
-  "data": {
-    "target_type": "product_group",
-    "target_ids": [
-      "123",
-      "456"
-    ]
-  }
-}
-```
-
-| Key                | Type          | Possible values                   | Description                                                         |
-|--------------------|---------------|-----------------------------------|---------------------------------------------------------------------|
-| `type`             | String        | `consumable_tracking_migration`   | Required to start this specific operation.                          |
-| `data.target_type` | String        | `product_group`                   | The type of resource that should be converted.                      |
-| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`                    | An array of primary keys for the entities that should be converted. |
 
 **Artifact**
 
@@ -84,22 +55,24 @@ Generates a barcode for all entities that are still missing one. Entities with e
 {
   "type": "generate_barcode",
   "data": {
-    "target_type": "customer",
+    "target_type": "customers",
     "target_ids": [
       "123",
       "456"
     ],
+    "target_resource": "customers",
     "barcode_type": "code128"
   }
 }
 ```
 
-| Key                 | Type          | Possible values                                                | Description                                                                                                                 |
-|---------------------|---------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| `type`              | String        | `generate_barcode`                                             | Required to start this specific operation.                                                                                  |
-| `data.target_type`  | String        | `product`, `stock_item`, `customer`                            | The type of resource that should have its barcodes generated. Only one resource per operation is supported. |
-| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                                          |
-| `data.barcode_type` | String        | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                          |
+| Key                    | Type          | Possible values                                                | Description                                                                                                                              |
+|------------------------|---------------|----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `type`                 | String        | `generate_barcode`                                             | Required to start this specific operation.                                                                                               |
+| `data.target_type`     | String        | `customers`, 'product_groups'                                  | The type of resource that should be fitlered on. Note that for product groups barcodes are generated for either products or stock items. |
+| `data.for`             | String        | `stock_items`, 'products'                                      | The type of resource that should have its barcodes generated. Only one resource per operation is supported.                              |
+| `data.target_ids`      | Array\<Uuid\> | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                                                       |
+| `data.barcode_type`    | String        | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                                                                              |
 
 **Artifact**
 
@@ -115,7 +88,7 @@ Generates documents in bulk, either by a list of documents or all documents for 
 {
   "type": "generate_document",
   "data": {
-    "target_type": "document",
+    "target_type": "documents",
     "target_ids": [
       "123",
       "456"
@@ -129,7 +102,7 @@ Generates documents in bulk, either by a list of documents or all documents for 
 | Key                       | Type          | Possible values                                    | Description                                                                                                     |
 |---------------------------|---------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
 | `type`                    | String        | `generate_document`                                | Required to start this specific operation.                                                                      |
-| `data.target_type`        | String        | `order`, `document`                                | The type of resource that should have its documents generated. Only one resource per operation is supported.    |
+| `data.target_type`        | String        | `orders`, `documents`                              | The type of resource that should have its documents generated. Only one resource per operation is supported.    |
 | `data.target_ids`         | Array\<Uuid\> | `[{id}, {id}]`                                     | An array of primary keys for the entities that should have its documents generated.                             |
 | `data.document_type`      | String        | `packing_slip`, `invoice`, `quote`, `contract`     | The document type that should be generated for all entities. Only one document type per operation is supported. |
 | `data.document_extension` | String        | `"pdf"`                                            | The filetype for the generated document.                                                                        |
@@ -148,7 +121,7 @@ Updates the categories associated to the entities by mutating them with the acti
 {
   "type": "update_category",
   "data": {
-    "target_type": "product_group",
+    "target_type": "product_groups",
     "target_ids": [
       "123",
       "456"
@@ -165,7 +138,7 @@ Updates the categories associated to the entities by mutating them with the acti
 | Key                 | Type          | Possible values                       | Description                                                                                                            |
 |---------------------|---------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | `type`              | String        | `update_category`                     | Required to start this specific operation.                                                                             |
-| `data.target_type`  | String        | `product_group`                       | The type of resource that should have the associated categories updated. Only one resource per operation is supported. |
+| `data.target_type`  | String        | `product_groups`                      | The type of resource that should have the associated categories updated. Only one resource per operation is supported. |
 | `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                        | An array of primary keys for the entities that should have the associated categories updated.                          |
 | `data.action`       | String        | `add_entities`, `remove_entities`     | The action that should be executed on the categories of the entities.                                                  |
 | `data.category_ids` | Array\<Uuid\> | `[{id}, {id}]`                        | The primary keys of the categories that should be used with the action.                                                |
@@ -184,7 +157,7 @@ Updates the tags associated to the entities by mutating them with the action.
 {
   "type": "update_tag",
   "data": {
-    "target_type": "customer",
+    "target_type": "customers",
     "target_ids": [
       "123",
       "456"
@@ -201,7 +174,7 @@ Updates the tags associated to the entities by mutating them with the action.
 | Key                 | Type          | Possible values                              | Description                                                                                                      |
 |---------------------|---------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `type`              | String        | `update_tag`                                 | Required to start this specific operation.                                                                       |
-| `data.target_type`  | String        | `product_group`, `customer`, `order`         | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
+| `data.target_type`  | String        | `product_groups`, `customers`, `orders`      | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
 | `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                               | An array of primary keys for the entities that should have the associated tags updated.                          |
 | `data.action`       | String        | `add`, `replace`, `remove`, `remove_all`     | The action that should be executed on the tags of the entities.                                                  |
 | `data.tags`         | Array<String> | `[{tag}, {tag}]`                             | The tags that should be used with the action.                                                                    |
@@ -209,6 +182,35 @@ Updates the tags associated to the entities by mutating them with the action.
 **Artifact**
 
 *None*
+
+#### Export
+
+Exports data as csv
+
+**Params**
+
+```json
+{
+  "type": "export",
+  "data": {
+    "target_type": "customers",
+    "target_ids": [
+      "123",
+      "456"
+    ]
+  }
+}
+```
+
+| Key                 | Type          | Possible values                                                                                                               | Description                                                                                                      |
+|---------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `type`              | String        | `update_tag`                                                                                                                  | Required to start this specific operation.                                                                       |
+| `data.target_type`  | String        | `product_groups`, `bundles`, `customers`, `orders`, `documents`, `report_rentals`, `report_consumables`, 'report_stock_items' | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
+| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                                                                                                                | An array of primary keys for the entities that should have the associated tags updated.                          |
+
+**Artifact**
+
+A csv file containing the exported data
 
 #### Update
 
@@ -220,7 +222,7 @@ Updates the attribute of all the entities with the new value(s).
 {
   "type": "update",
   "data": {
-    "target_type": "customer",
+    "target_type": "customers",
     "target_ids": [
       "123",
       "456"
@@ -236,9 +238,9 @@ Updates the attribute of all the entities with the new value(s).
 | Key                | Type          | Possible values                 | Description                                                                                 |
 |--------------------|---------------|---------------------------------|---------------------------------------------------------------------------------------------|
 | `type`             | String        | `update`                        | Required to start this specific operation.                                                  |
-| `data.target_type` | String        | `product_group`, `customer`     | The type of resource that should be updated. Only one resource per operation is supported. |
-| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`                  | An array of primary keys for the entities that should be updated.                          |
-| `data.attributes`  | Object        | `{}`                            | The allowed keys for the attributes are listed below. |
+| `data.target_type` | String        | `product_groups`, `customers`   | The type of resource that should be updated. Only one resource per operation is supported.  |
+| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`                  | An array of primary keys for the entities that should be updated.                           |
+| `data.attributes`  | Object        | `{}`                            | The allowed keys for the attributes are listed below.                                       |
 
 Allowed attribute keys:
 
@@ -321,11 +323,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "57e688a3-0daf-4b44-bbb2-04a8e1f9594b",
+      "id": "103022ec-56d0-42be-a91f-71bfb5a68e32",
       "type": "operations",
       "attributes": {
-        "created_at": "2022-04-08T18:20:37+00:00",
-        "updated_at": "2022-04-08T18:20:37+00:00",
+        "created_at": "2022-09-16T11:50:19+00:00",
+        "updated_at": "2022-09-16T11:50:19+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -335,12 +337,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "24f4a8a4-adfa-48c3-9d00-122bf524920d"
+        "employee_id": "ade53385-5288-44db-a12d-dd462da4bf2e"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/24f4a8a4-adfa-48c3-9d00-122bf524920d"
+            "related": "api/boomerang/employees/ade53385-5288-44db-a12d-dd462da4bf2e"
           }
         }
       }
@@ -356,17 +358,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T11:48:01Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -375,12 +377,12 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`finished_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`employee_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`finished_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`employee_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -389,7 +391,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -411,7 +413,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/614a7767-96f4-4f1d-b4a0-16339635aed5' \
+    --url 'https://example.booqable.com/api/boomerang/operations/ab059acf-c058-40eb-aa69-4f913130520e' \
     --header 'content-type: application/json' \
 ```
 
@@ -420,11 +422,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "614a7767-96f4-4f1d-b4a0-16339635aed5",
+    "id": "ab059acf-c058-40eb-aa69-4f913130520e",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-04-08T18:20:37+00:00",
-      "updated_at": "2022-04-08T18:20:37+00:00",
+      "created_at": "2022-09-16T11:50:19+00:00",
+      "updated_at": "2022-09-16T11:50:19+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -434,12 +436,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "b75bfa7a-893d-4cc3-86c6-9e46fc96ec74"
+      "employee_id": "f926943a-b708-4eda-a2f5-1df643074893"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/b75bfa7a-893d-4cc3-86c6-9e46fc96ec74"
+          "related": "api/boomerang/employees/f926943a-b708-4eda-a2f5-1df643074893"
         }
       }
     }
@@ -454,12 +456,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
 
 
 ### Includes
@@ -491,7 +493,7 @@ When creating an operation, it will start running in the background. With the `i
           "operation_data": {
             "type": "archive",
             "data": {
-              "target_type": "customer",
+              "target_type": "customers",
               "target_ids": [
                 "123"
               ]
@@ -507,21 +509,21 @@ When creating an operation, it will start running in the background. With the `i
 ```json
   {
   "data": {
-    "id": "a7b4881f-c3aa-4a13-a71b-33d129683e6f",
+    "id": "68fa2dd7-ddde-44c0-a8de-8cfd1b5f70fb",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-04-08T18:20:37+00:00",
-      "updated_at": "2022-04-08T18:20:37+00:00",
+      "created_at": "2022-09-16T11:50:20+00:00",
+      "updated_at": "2022-09-16T11:50:20+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
-      "description": "Archiving 0 customers",
+      "description": "Archiving customers",
       "artifact": {
         "url": null
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "5bf21b23-7c08-420d-a827-fa63b7a7a53d"
+      "employee_id": "2d124456-06a9-4e5f-9cff-ef4cd3544bac"
     },
     "relationships": {
       "employee": {
@@ -541,12 +543,12 @@ When creating an operation, it will start running in the background. With the `i
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
 
 
 ### Request body
@@ -555,7 +557,7 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][operation_data]` | **Hash**<br>An object with the params used to initiate the operation. See the description of the operation.
+`data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
 
 
 ### Includes
