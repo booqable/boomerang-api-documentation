@@ -15,38 +15,38 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the company
+`name` | **String** <br>Name of the company
 `slug` | **String** `readonly`<br>Company's slug, used in urls
-`email` | **String**<br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
-`billing_email` | **String**<br>Used to send billing emails to
-`phone` | **String**<br>Phone number
-`website` | **String**<br>Website
-`address` | **String**<br>The full address
-`address_line_1` | **String**<br>First address line
-`address_line_2` | **String**<br>Second address line
-`zipcode` | **String**<br>Zipcode
-`city` | **String**<br>City
-`region` | **String**<br>Region
-`country` | **String**<br>Country
-`use_billing_address` | **Boolean**<br>Whether to use billing address on invoices received from Booqable
-`billing_company` | **String**<br>Company name (used for invoices received from Booqable)
-`billing_address_line_1` | **String**<br>First address line (used for invoices received from Booqable)
-`billing_address_line_2` | **String**<br>Second address line (used for invoices received from Booqable)
-`billing_address_zipcode` | **String**<br>Zipcode (used for invoices received from Booqable)
-`billing_address_city` | **String**<br>City (used for invoices received from Booqable)
-`billing_address_region` | **String**<br>Region (used for invoices received from Booqable)
-`billing_address_country` | **String**<br>Country (used for invoices received from Booqable)
+`email` | **String** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
+`billing_email` | **String** <br>Used to send billing emails to
+`phone` | **String** <br>Phone number
+`website` | **String** <br>Website
+`address` | **String** <br>The full address
+`address_line_1` | **String** <br>First address line
+`address_line_2` | **String** <br>Second address line
+`zipcode` | **String** <br>Zipcode
+`city` | **String** <br>City
+`region` | **String** <br>Region
+`country` | **String** <br>Country
+`use_billing_address` | **Boolean** <br>Whether to use billing address on invoices received from Booqable
+`billing_company` | **String** <br>Company name (used for invoices received from Booqable)
+`billing_address_line_1` | **String** <br>First address line (used for invoices received from Booqable)
+`billing_address_line_2` | **String** <br>Second address line (used for invoices received from Booqable)
+`billing_address_zipcode` | **String** <br>Zipcode (used for invoices received from Booqable)
+`billing_address_city` | **String** <br>City (used for invoices received from Booqable)
+`billing_address_region` | **String** <br>Region (used for invoices received from Booqable)
+`billing_address_country` | **String** <br>Country (used for invoices received from Booqable)
 `logo_url` | **String** `readonly`<br>Url of the uploaded logo
 `logo_base64` | **String** `writeonly`<br>To update a logo send it as base64 encoded string
 `remove_logo` | **Boolean** `writeonly`<br>Remove current logo
-`default_timezone` | **String**<br>Company's default timezone
-`currency` | **String**<br>Currency of the company
-`financial_line_1` | **String**<br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
-`financial_line_2` | **String**<br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
-`vat_number` | **String**<br>Company's vat number, used in customer communication and to define tax exempts
-`custom_domain` | **String**<br>Custom domain to use for hosted store and checkout
+`default_timezone` | **String** <br>Company's default timezone
+`currency` | **String** <br>Currency of the company
+`financial_line_1` | **String** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
+`financial_line_2` | **String** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
+`vat_number` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
+`custom_domain` | **String** <br>Custom domain to use for hosted store and checkout
 `development` | **Boolean** `readonly`<br>Wheter this is a development account
-`shop_theme_id` | **Uuid**<br>ID of installed shop theme
+`shop_theme_id` | **Uuid** <br>ID of installed shop theme
 `in_europe` | **Boolean** `extra` `readonly`<br>Whether company is situated in europe
 `continent` | **String** `extra` `readonly`<br>Continent the company is situated
 `subscription` | **Hash** `extra` `readonly`<br>Details about the subscription
@@ -70,24 +70,24 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "afe82ebc-046c-4f4a-9593-bf148be32d10",
+    "id": "50bf802c-8f28-4a17-ae66-9292ae36e9fd",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-08T18:19:38+00:00",
-      "updated_at": "2022-04-08T18:19:38+00:00",
+      "created_at": "2022-09-16T12:11:52+00:00",
+      "updated_at": "2022-09-16T12:11:52+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail53@company.com",
+      "email": "mail46@company.com",
       "billing_email": null,
-      "phone": "(203) 597-2188 x971",
-      "website": "http://fahey-waters.name/caroyln",
-      "address": "Bailey Dam\n989 Charity Lodge\n95685-5308 West Tristan\nVenezuela",
-      "address_line_1": "Bailey Dam",
-      "address_line_2": "989 Charity Lodge",
-      "zipcode": "95685-5308",
-      "city": "West Tristan",
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
       "region": null,
-      "country": "Venezuela",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -99,8 +99,8 @@ Name | Description
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "5165 Ron Lock",
-      "financial_line_2": "01827-0452 North Ebonymouth",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
@@ -117,12 +117,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
 
 
 ### Includes
@@ -172,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cc7b55bb-dc6e-4711-a3d3-756f38e54b38",
+    "id": "2096514f-0bd6-4303-ac74-16b9f72f1a6e",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-04-22T18:19:38.924Z",
+        "trial_ends_at": "2022-09-30T12:11:53.203Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -206,6 +206,7 @@ Name | Description
           "overbookings",
           "categories",
           "customer_auth",
+          "custom_domain",
           "barcodes",
           "reports",
           "permissions",
@@ -213,7 +214,6 @@ Name | Description
           "coupons",
           "remove_powered_by",
           "shop_tracking",
-          "custom_domain",
           "sso",
           "iprestrictions",
           "2fa_enforcing"
@@ -237,12 +237,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
 
 
 ### Includes
@@ -260,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
+        "id": "eed2bdb1-b013-4a69-b38c-ba18ee1ae99d",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,24 +274,24 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5ce7d376-855e-4a7d-847b-1f91a07d01bd",
+    "id": "eed2bdb1-b013-4a69-b38c-ba18ee1ae99d",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-04-08T18:19:39+00:00",
-      "updated_at": "2022-04-08T18:19:39+00:00",
+      "created_at": "2022-09-16T12:11:53+00:00",
+      "updated_at": "2022-09-16T12:11:53+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail55@company.com",
+      "email": "mail48@company.com",
       "billing_email": null,
-      "phone": "810-897-9123 x644",
-      "website": "http://howe.info/royal.grimes",
-      "address": "Rohan Land\n74058 Bradtke Course\n26329-6842 Lake Annettaland\nMauritius",
-      "address_line_1": "Rohan Land",
-      "address_line_2": "74058 Bradtke Course",
-      "zipcode": "26329-6842",
-      "city": "Lake Annettaland",
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
       "region": null,
-      "country": "Mauritius",
+      "country": "the Netherlands",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -303,8 +303,8 @@ This request does not accept any includes
       "logo_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
-      "financial_line_1": "7068 Keebler Trafficway",
-      "financial_line_2": "59064-3493 Port Toby",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
       "vat_number": null,
       "custom_domain": null,
       "development": false,
@@ -321,12 +321,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
 
 
 ### Request body
@@ -335,35 +335,35 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the company
-`data[attributes][email]` | **String**<br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
-`data[attributes][billing_email]` | **String**<br>Used to send billing emails to
-`data[attributes][phone]` | **String**<br>Phone number
-`data[attributes][website]` | **String**<br>Website
-`data[attributes][address]` | **String**<br>The full address
-`data[attributes][address_line_1]` | **String**<br>First address line
-`data[attributes][address_line_2]` | **String**<br>Second address line
-`data[attributes][zipcode]` | **String**<br>Zipcode
-`data[attributes][city]` | **String**<br>City
-`data[attributes][region]` | **String**<br>Region
-`data[attributes][country]` | **String**<br>Country
-`data[attributes][use_billing_address]` | **Boolean**<br>Whether to use billing address on invoices received from Booqable
-`data[attributes][billing_company]` | **String**<br>Company name (used for invoices received from Booqable)
-`data[attributes][billing_address_line_1]` | **String**<br>First address line (used for invoices received from Booqable)
-`data[attributes][billing_address_line_2]` | **String**<br>Second address line (used for invoices received from Booqable)
-`data[attributes][billing_address_zipcode]` | **String**<br>Zipcode (used for invoices received from Booqable)
-`data[attributes][billing_address_city]` | **String**<br>City (used for invoices received from Booqable)
-`data[attributes][billing_address_region]` | **String**<br>Region (used for invoices received from Booqable)
-`data[attributes][billing_address_country]` | **String**<br>Country (used for invoices received from Booqable)
-`data[attributes][logo_base64]` | **String**<br>To update a logo send it as base64 encoded string
-`data[attributes][remove_logo]` | **Boolean**<br>Remove current logo
-`data[attributes][default_timezone]` | **String**<br>Company's default timezone
-`data[attributes][currency]` | **String**<br>Currency of the company
-`data[attributes][financial_line_1]` | **String**<br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
-`data[attributes][financial_line_2]` | **String**<br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
-`data[attributes][vat_number]` | **String**<br>Company's vat number, used in customer communication and to define tax exempts
-`data[attributes][custom_domain]` | **String**<br>Custom domain to use for hosted store and checkout
-`data[attributes][shop_theme_id]` | **Uuid**<br>ID of installed shop theme
+`data[attributes][name]` | **String** <br>Name of the company
+`data[attributes][email]` | **String** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
+`data[attributes][billing_email]` | **String** <br>Used to send billing emails to
+`data[attributes][phone]` | **String** <br>Phone number
+`data[attributes][website]` | **String** <br>Website
+`data[attributes][address]` | **String** <br>The full address
+`data[attributes][address_line_1]` | **String** <br>First address line
+`data[attributes][address_line_2]` | **String** <br>Second address line
+`data[attributes][zipcode]` | **String** <br>Zipcode
+`data[attributes][city]` | **String** <br>City
+`data[attributes][region]` | **String** <br>Region
+`data[attributes][country]` | **String** <br>Country
+`data[attributes][use_billing_address]` | **Boolean** <br>Whether to use billing address on invoices received from Booqable
+`data[attributes][billing_company]` | **String** <br>Company name (used for invoices received from Booqable)
+`data[attributes][billing_address_line_1]` | **String** <br>First address line (used for invoices received from Booqable)
+`data[attributes][billing_address_line_2]` | **String** <br>Second address line (used for invoices received from Booqable)
+`data[attributes][billing_address_zipcode]` | **String** <br>Zipcode (used for invoices received from Booqable)
+`data[attributes][billing_address_city]` | **String** <br>City (used for invoices received from Booqable)
+`data[attributes][billing_address_region]` | **String** <br>Region (used for invoices received from Booqable)
+`data[attributes][billing_address_country]` | **String** <br>Country (used for invoices received from Booqable)
+`data[attributes][logo_base64]` | **String** <br>To update a logo send it as base64 encoded string
+`data[attributes][remove_logo]` | **Boolean** <br>Remove current logo
+`data[attributes][default_timezone]` | **String** <br>Company's default timezone
+`data[attributes][currency]` | **String** <br>Currency of the company
+`data[attributes][financial_line_1]` | **String** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
+`data[attributes][financial_line_2]` | **String** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
+`data[attributes][vat_number]` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
+`data[attributes][custom_domain]` | **String** <br>Custom domain to use for hosted store and checkout
+`data[attributes][shop_theme_id]` | **Uuid** <br>ID of installed shop theme
 
 
 ### Includes

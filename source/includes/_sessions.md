@@ -20,12 +20,12 @@ Every session has the following fields:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>
-`company_id` | **Uuid**<br>The associated Company
-`employee_id` | **Uuid**<br>The associated Employee
-`locations_updated_at` | **Datetime**<br>When locations were last updated
-`clusters_updated_at` | **Datetime**<br>When the clusters were last updated
-`default_properties_updated_at` | **Datetime**<br>When the default properties were last updated
+`id` | **Uuid** <br>
+`company_id` | **Uuid** <br>The associated Company
+`employee_id` | **Uuid** <br>The associated Employee
+`locations_updated_at` | **Datetime** <br>When locations were last updated
+`clusters_updated_at` | **Datetime** <br>When the clusters were last updated
+`default_properties_updated_at` | **Datetime** <br>When the default properties were last updated
 
 
 ## Relationships
@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bb71f844-9d83-594b-ab20-3d1c1ce60974",
+    "id": "4cc0a6bc-b0f9-5e4f-a0e1-188b25446b02",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:25+00:00",
-      "company_id": "60a95771-fc61-4de0-8d3e-2a6bb9fa5cc9",
-      "employee_id": "129525e6-bd85-4857-ac9b-97cba6e9cf56",
-      "locations_updated_at": "2022-04-08T18:21:25+00:00",
-      "clusters_updated_at": "2022-04-08T18:21:25+00:00",
-      "default_properties_updated_at": "2022-04-08T18:21:25+00:00"
+      "updated_at": "2022-09-16T12:15:31+00:00",
+      "company_id": "87d6d55f-7812-4d1a-9f9a-54a593f87420",
+      "employee_id": "d5fe2756-0bc0-41cf-a005-97e8fc0a084d",
+      "locations_updated_at": "2022-09-16T12:15:31+00:00",
+      "clusters_updated_at": "2022-09-16T12:15:31+00:00",
+      "default_properties_updated_at": "2022-09-16T12:15:31+00:00"
     },
     "relationships": {
       "company": {
@@ -93,12 +93,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 
 
 ### Includes
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ad483ff8-cbd7-55b5-8995-81ff0566718f",
+    "id": "91dfa808-97eb-52aa-b561-c097c5e5b3c4",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-08T18:21:26+00:00",
-      "company_id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
-      "employee_id": "982df113-a39c-496e-b536-58c33695c47a",
+      "updated_at": "2022-09-16T12:15:32+00:00",
+      "company_id": "247a8d5f-7952-4c08-82fc-02ae8c20684f",
+      "employee_id": "7c6827ad-a56f-4dac-89ac-c43120db26c4",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf"
+          "id": "247a8d5f-7952-4c08-82fc-02ae8c20684f"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "982df113-a39c-496e-b536-58c33695c47a"
+          "id": "7c6827ad-a56f-4dac-89ac-c43120db26c4"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "07a48d87-0348-4aae-8f1f-bf705d64eeaf",
+      "id": "247a8d5f-7952-4c08-82fc-02ae8c20684f",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2022-09-16T12:15:32+00:00",
+        "updated_at": "2022-09-16T12:15:32+00:00",
+        "name": "Company name 221",
+        "slug": "company-name-221",
+        "email": "mail224@company.com",
         "billing_email": null,
-        "phone": "460-044-2750 x405",
-        "website": "http://cassin.biz/yessenia_tillman",
-        "address": "Azalee Points\n8739 Herta Highway\n59145-3453 Jeromyville\nCuba",
-        "address_line_1": "Azalee Points",
-        "address_line_2": "8739 Herta Highway",
-        "zipcode": "59145-3453",
-        "city": "Jeromyville",
+        "phone": "0581234567",
+        "website": "www.booqable.com",
+        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+        "address_line_1": "Blokhuispoort",
+        "address_line_2": "Leeuwarden",
+        "zipcode": "8900AB",
+        "city": "Leeuwarden",
         "region": null,
-        "country": "Cuba",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "7073 Emil Creek",
-        "financial_line_2": "95893-6083 East Ollie",
+        "financial_line_1": "Blokhuispoort",
+        "financial_line_2": "Leeuwarden",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-22T18:21:26.070Z",
+          "trial_ends_at": "2022-09-30T12:15:32.239Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -243,6 +243,7 @@ This request accepts the following includes:
             "overbookings",
             "categories",
             "customer_auth",
+            "custom_domain",
             "barcodes",
             "reports",
             "permissions",
@@ -250,7 +251,6 @@ This request accepts the following includes:
             "coupons",
             "remove_powered_by",
             "shop_tracking",
-            "custom_domain",
             "sso",
             "iprestrictions",
             "2fa_enforcing"
@@ -265,11 +265,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "982df113-a39c-496e-b536-58c33695c47a",
+      "id": "7c6827ad-a56f-4dac-89ac-c43120db26c4",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-08T18:21:26+00:00",
-        "updated_at": "2022-04-08T18:21:26+00:00",
+        "created_at": "2022-09-16T12:15:32+00:00",
+        "updated_at": "2022-09-16T12:15:32+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -283,7 +283,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
@@ -411,18 +413,25 @@ This request accepts the following includes:
           "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
+          "show_free_lines": true,
           "hide_section_lines": false,
-          "prefix": null,
-          "show_free_lines": true
+          "prefix": null
         },
         "contracts": {
           "footer": "",
           "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
+          "show_free_lines": true,
           "hide_section_lines": false,
-          "prefix": null,
-          "show_free_lines": true
+          "prefix": null
+        },
+        "labels": {
+          "customer": "customer",
+          "order": "order",
+          "quote": "quote",
+          "contract": "contract",
+          "packing_slip": "packing_slip"
         }
       }
     }
@@ -437,12 +446,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 
 
 ### Includes
