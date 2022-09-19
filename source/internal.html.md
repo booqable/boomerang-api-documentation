@@ -79,7 +79,7 @@ includes:
   - assets
   - billing_invoices
   - bulk_upserts
-  - cancellation_requests
+  # - cancellation_requests
   - counts
   - currencies
   - device_tokens
