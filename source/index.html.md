@@ -19,8 +19,8 @@ includes:
   - bundles
   - checkout_fields
   - clusters
-  - collections
-  - collection_items
+  # - collections
+  # - collection_items
   - companies
   - coupons
   - customers
