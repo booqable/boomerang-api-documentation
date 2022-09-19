@@ -1866,6 +1866,62 @@
               </ul>
           </li>
           <li>
+            <a href="#report-consumables" class="toc-h1 toc-link" data-title="Report consumables" title="Report consumables">Report consumables</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#report-consumables-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#report-consumables-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#report-consumables-listing-performance-for-consumables-products" class="toc-h2 toc-link" data-title="Listing performance for consumables products" title="Listing performance for consumables products">Listing performance for consumables products</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#report-rental-intervals" class="toc-h1 toc-link" data-title="Report rental intervals" title="Report rental intervals">Report rental intervals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#report-rental-intervals-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#report-rental-intervals-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#report-rental-intervals-listing-performance-for-a-rental-product-per-interval" class="toc-h2 toc-link" data-title="Listing performance for a rental product per interval" title="Listing performance for a rental product per interval">Listing performance for a rental product per interval</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#report-rentals" class="toc-h1 toc-link" data-title="Report rentals" title="Report rentals">Report rentals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#report-rentals-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#report-rentals-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#report-rentals-listing-performance-for-rental-products" class="toc-h2 toc-link" data-title="Listing performance for rental products" title="Listing performance for rental products">Listing performance for rental products</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#report-stock-items" class="toc-h1 toc-link" data-title="Report stock items" title="Report stock items">Report stock items</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#report-stock-items-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#report-stock-items-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#report-stock-items-listing-performance-for-stock-items" class="toc-h2 toc-link" data-title="Listing performance for stock items" title="Listing performance for stock items">Listing performance for stock items</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#themes" class="toc-h1 toc-link" data-title="Themes" title="Themes">Themes</a>
               <ul class="toc-list-h2">
                   <li>
@@ -39899,6 +39955,989 @@ Because of this, a user should always be an actual person, not a legal person.</
 <p><code>theme</code></p>
 
 <p><code>assets</code></p>
+<h1 id='report-consumables'>Report consumables</h1>
+<p>Report on how consumable products are performing. The report is filterable by date and can be requested by one of the following turnover types: <code>invoices</code>, <code>orders</code>.</p>
+<h2 id='report-consumables-fields'>Fields</h2>
+<p>Every report consumable has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><strong>String</strong> <code>writeonly</code><br>Query for a specific product</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <br>Product name</td>
+</tr>
+<tr>
+<td><code>sold</code></td>
+<td><strong>Integer</strong> <br>Amount of times the product was sold</td>
+</tr>
+<tr>
+<td><code>returned</code></td>
+<td><strong>Integer</strong> <br>Amount of times the product got sent back</td>
+</tr>
+<tr>
+<td><code>turnover_in_cents</code></td>
+<td><strong>Integer</strong> <br>Turnover during period</td>
+</tr>
+<tr>
+<td><code>returned_in_cents</code></td>
+<td><strong>Integer</strong> <br>Refunds during period</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <br>The associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='report-consumables-relationships'>Relationships</h2>
+<p>Report consumables have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>product</code></td>
+<td><strong>Products</strong> <code>readonly</code><br>Associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='report-consumables-listing-performance-for-consumables-products'>Listing performance for consumables products</h2>
+<blockquote>
+<p>How to fetch performance for consumables:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2022-09-11+00%3A00%3A00+UTC&amp;filter%5Btill%5D=2022-09-16+23%3A59%3A59+UTC'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c91be0c3-786e-4043-9711-70b1ef007af2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_consumables"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-16T14:16:06+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 38"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"returned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnover_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"returned_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c91be0c3-786e-4043-9711-70b1ef007af2"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/c91be0c3-786e-4043-9711-70b1ef007af2"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='report-consumables-listing-performance-for-consumables-products-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/report_consumables</code></p>
+<h3 id='report-consumables-listing-performance-for-consumables-products-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=product</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[report_consumables]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[created_at][gte]=2022-09-16T14:12:38Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='report-consumables-listing-performance-for-consumables-products-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>q</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>turnover_type</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>tag_list</code></td>
+<td><strong>Array</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-consumables-listing-performance-for-consumables-products-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>tag_list</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-consumables-listing-performance-for-consumables-products-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>product</code> =&gt; 
+<code>photo</code></p>
+<h1 id='report-rental-intervals'>Report rental intervals</h1>
+<p>Breakdown of how many times a product was rented during a specific period.</p>
+<h2 id='report-rental-intervals-fields'>Fields</h2>
+<p>Every report rental interval has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><strong>Date</strong> <br>Interval date</td>
+</tr>
+<tr>
+<td><code>rented_count</code></td>
+<td><strong>Integer</strong> <br>Times the product was rented</td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td><strong>String</strong> <br>The interval of the breakdown</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <br>The associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='report-rental-intervals-relationships'>Relationships</h2>
+<p>Report rental intervals have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>product</code></td>
+<td><strong>Products</strong> <code>readonly</code><br>Associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='report-rental-intervals-listing-performance-for-a-rental-product-per-interval'>Listing performance for a rental product per interval</h2>
+<blockquote>
+<p>How to fetch performance per interval for a product:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/report_rental_intervals?filter%5Bfrom%5D=2022-09-06+00%3A00%3A00+UTC&amp;filter%5Bproduct_id%5D=4faf7d11-46e1-44a6-a7d8-e8e22c750c61&amp;filter%5Btill%5D=2022-09-15+23%3A59%3A59+UTC'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-57ce3404-b8a9-554b-8ef0-bc0a5250eef2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-06"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-863e5762-ad83-5088-9d53-04f657f39298"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-07"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-1e5909c2-dc3b-53f6-ad4f-cd2e69b1c7da"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-08"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-97c28fde-0eda-58e3-8a87-36f797f811a5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-09"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-7e467ea1-521b-53e3-a88d-608eaf412057"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-b7596b93-71a6-5cb4-a788-21ccf70bcc42"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-c0366dad-38a5-513c-831a-078f9c08f025"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-12"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-05350538-1236-5465-b87a-09c40d197d02"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-13"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-5a650b53-4c4e-51c2-a451-51ff19404921"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-14"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-fd6348ea-3c85-58ed-ad0b-d16d198b7697"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rental_intervals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-15"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/4faf7d11-46e1-44a6-a7d8-e8e22c750c61"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='report-rental-intervals-listing-performance-for-a-rental-product-per-interval-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/report_rental_intervals</code></p>
+<h3 id='report-rental-intervals-listing-performance-for-a-rental-product-per-interval-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=product</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[report_rental_intervals]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[created_at][gte]=2022-09-16T14:12:38Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='report-rental-intervals-listing-performance-for-a-rental-product-per-interval-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-rental-intervals-listing-performance-for-a-rental-product-per-interval-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-rental-intervals-listing-performance-for-a-rental-product-per-interval-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>product</code> =&gt; 
+<code>photo</code></p>
+<h1 id='report-rentals'>Report rentals</h1>
+<p>Report on how rental products are performing. The report is filterable by date and can be requested by one of the following turnover types: <code>invoices</code>, <code>orders</code>.</p>
+<h2 id='report-rentals-fields'>Fields</h2>
+<p>Every report rental has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Product name</td>
+</tr>
+<tr>
+<td><code>charge_duration_in_seconds</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>How many seconds were charged</td>
+</tr>
+<tr>
+<td><code>planned_duration_in_seconds</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>How many seconds the product was planned</td>
+</tr>
+<tr>
+<td><code>rented_count</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>How many times the product was rented out</td>
+</tr>
+<tr>
+<td><code>turnover_in_cents</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Turnover during period</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>Quantity in stock during period</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <br>The associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='report-rentals-relationships'>Relationships</h2>
+<p>Report rentals have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>product</code></td>
+<td><strong>Products</strong> <code>readonly</code><br>Associated Product</td>
+</tr>
+</tbody></table>
+<h2 id='report-rentals-listing-performance-for-rental-products'>Listing performance for rental products</h2>
+<blockquote>
+<p>How to fetch performance for products:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-09-11+00%3A00%3A00+UTC&amp;filter%5Btill%5D=2022-09-16+23%3A59%3A59+UTC'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-088f81e3-0b36-5b6d-9b44-af22e31b33e0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_rentals"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-16T14:16:18+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 40"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_duration_in_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">14400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planned_duration_in_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">14400</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnover_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">4000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"88269fd2-2c18-457f-9ced-b3af9b12cb53"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/88269fd2-2c18-457f-9ced-b3af9b12cb53"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='report-rentals-listing-performance-for-rental-products-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/report_rentals</code></p>
+<h3 id='report-rentals-listing-performance-for-rental-products-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=product</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[report_rentals]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[created_at][gte]=2022-09-16T14:12:38Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='report-rentals-listing-performance-for-rental-products-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>q</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>turnover_type</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>tag_list</code></td>
+<td><strong>Array</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><strong>Boolean</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>tracking_type</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-rentals-listing-performance-for-rental-products-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>tag_list</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>tracking_type</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-rentals-listing-performance-for-rental-products-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>product</code> =&gt; 
+<code>photo</code></p>
+<h1 id='report-stock-items'>Report stock items</h1>
+<p>Report on how stock items are performing. The report is filterable by date and can be requested by one of the following turnover types: <code>invoices</code>, <code>orders</code>.</p>
+<h2 id='report-stock-items-fields'>Fields</h2>
+<p>Every report stock item has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><strong>String</strong> <code>writeonly</code><br>Query for a specific stock item</td>
+</tr>
+<tr>
+<td><code>product_name</code></td>
+<td><strong>String</strong> <br>Product name</td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td><strong>String</strong> <br>Stock item identifier</td>
+</tr>
+<tr>
+<td><code>charge_duration_in_seconds</code></td>
+<td><strong>Integer</strong> <br>How many seconds were charged</td>
+</tr>
+<tr>
+<td><code>planned_duration_in_seconds</code></td>
+<td><strong>Integer</strong> <br>How many seconds the product was planned</td>
+</tr>
+<tr>
+<td><code>rented_count</code></td>
+<td><strong>Integer</strong> <br>How many times the product was rented out</td>
+</tr>
+<tr>
+<td><code>turnover_in_cents</code></td>
+<td><strong>Integer</strong> <br>Turnover during period</td>
+</tr>
+<tr>
+<td><code>stock_item_id</code></td>
+<td><strong>Uuid</strong> <br>The associated Stock item</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <br>The associated Product</td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>Uuid</strong> <br>The associated Location</td>
+</tr>
+</tbody></table>
+<h2 id='report-stock-items-relationships'>Relationships</h2>
+<p>Report stock items have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>stock_item</code></td>
+<td><strong>Report stock items</strong> <code>readonly</code><br>Associated Stock item</td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td><strong>Products</strong> <code>readonly</code><br>Associated Product</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td><strong>Locations</strong> <code>readonly</code><br>Associated Location</td>
+</tr>
+</tbody></table>
+<h2 id='report-stock-items-listing-performance-for-stock-items'>Listing performance for stock items</h2>
+<blockquote>
+<p>How to fetch performance for stock items:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2022-09-11+00%3A00%3A00+UTC&amp;filter%5Btill%5D=2022-09-16+23%3A59%3A59+UTC'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-f81d768d-6926-5e51-abe6-502b556e76d0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_stock_items"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-16T14:16:24+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 41"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id185"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_duration_in_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planned_duration_in_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnover_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c169735c-2d6c-45ee-826c-359e8dc6a2d6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14256c64-ff50-4f45-b1e9-361db0d6d3fc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/14256c64-ff50-4f45-b1e9-361db0d6d3fc"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"virtual-fe1b353b-2e69-5bc1-b7e7-0d82a0ac4da2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_stock_items"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-16T14:16:24+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 41"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id186"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_duration_in_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"planned_duration_in_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rented_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"turnover_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd930879-836e-4f47-b835-86bd6918a913"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14256c64-ff50-4f45-b1e9-361db0d6d3fc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"stock_item"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/products/14256c64-ff50-4f45-b1e9-361db0d6d3fc"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='report-stock-items-listing-performance-for-stock-items-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/report_stock_items</code></p>
+<h3 id='report-stock-items-listing-performance-for-stock-items-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=stock_item,product,location</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[report_stock_items]=id,created_at,updated_at</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[created_at][gte]=2022-09-16T14:12:39Z</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=-created_at</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='report-stock-items-listing-performance-for-stock-items-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>q</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>stock_item_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>turnover_type</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-stock-items-listing-performance-for-stock-items-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-stock-items-listing-performance-for-stock-items-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>stock_item</code></p>
+
+<p><code>product</code> =&gt; 
+<code>photo</code></p>
 <h1 id='themes'>Themes</h1>
 <p>Themes are the basis for creating advanced custom online stores.
 They organise custom assets and enable quick switching between different designs and content.
