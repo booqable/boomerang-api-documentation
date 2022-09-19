@@ -17,10 +17,10 @@ includes:
   - barcodes
   - bundle_items
   - bundles
-  - categories
-  - category_items
   - checkout_fields
   - clusters
+  - collections
+  - collection_items
   - companies
   - coupons
   - customers
@@ -31,6 +31,8 @@ includes:
   - employee_invitations
   - employees
   - inventory_levels
+  - invoice_finalizations
+  - invoice_revisions
   - ip_addresses
   - items
   - item_prices
@@ -42,7 +44,9 @@ includes:
   - operations
   - orders
   - order_bookings
-  - order_transitions
+  - order_duplications
+  - order_price_recalculations
+  - order_status_transitions
   - payment_methods
   - payments
   - photos
@@ -60,6 +64,7 @@ includes:
   - stock_counts
   - stock_item_plannings
   - stock_items
+  - stock_item_archivations
   - stock_item_suggestions
   - tags
   - tax_categories
