@@ -55,34 +55,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "baaee522-fd4a-4ad3-9be2-c387ca34a29e",
+      "id": "6ba4be3a-c3e2-488a-9cef-7f9f01050b9c",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-08T18:21:27+00:00",
-        "updated_at": "2022-04-08T18:21:27+00:00",
+        "created_at": "2022-09-16T14:16:40+00:00",
+        "updated_at": "2022-09-16T14:16:40+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "942ed723-d250-48f8-9efc-f9b066667db5",
-        "planning_id": "9a0d145b-25ae-4eec-9cd0-0b8a6846faf6",
-        "order_id": "05f0f88e-ac9e-4c27-ab3d-98fdb903b24f"
+        "stock_item_id": "cef5ffbe-5c99-4445-8986-529a8afa8309",
+        "planning_id": "c48c03e2-9574-4127-bdf4-2f859c1f4cf6",
+        "order_id": "0758e9b0-9a43-43ff-988d-fdb7548f5948"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/942ed723-d250-48f8-9efc-f9b066667db5"
+            "related": "api/boomerang/stock_items/cef5ffbe-5c99-4445-8986-529a8afa8309"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/9a0d145b-25ae-4eec-9cd0-0b8a6846faf6"
+            "related": "api/boomerang/plannings/c48c03e2-9574-4127-bdf4-2f859c1f4cf6"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/05f0f88e-ac9e-4c27-ab3d-98fdb903b24f"
+            "related": "api/boomerang/orders/0758e9b0-9a43-43ff-988d-fdb7548f5948"
           }
         }
       }
@@ -98,17 +98,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=stock_item,planning,order`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:13Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=stock_item,planning,order`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:39Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -117,17 +117,17 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean**<br>`eq`
-`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`reserved` | **Boolean**<br>`eq`
-`started` | **Boolean**<br>`eq`
-`stopped` | **Boolean**<br>`eq`
-`stock_item_id` | **Uuid**<br>`eq`, `not_eq`
-`planning_id` | **Uuid**<br>`eq`, `not_eq`
-`order_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reserved` | **Boolean** <br>`eq`
+`started` | **Boolean** <br>`eq`
+`stopped` | **Boolean** <br>`eq`
+`stock_item_id` | **Uuid** <br>`eq`, `not_eq`
+`planning_id` | **Uuid** <br>`eq`, `not_eq`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -136,7 +136,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -170,7 +170,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/fb3dc3dc-ef5a-4548-a896-8a02229e3f5d' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/573b9675-b1d0-4681-b567-77996b2b6105' \
     --header 'content-type: application/json' \
 ```
 
@@ -188,12 +188,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=stock_item,planning,order`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=stock_item,planning,order`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
 
 
 ### Includes

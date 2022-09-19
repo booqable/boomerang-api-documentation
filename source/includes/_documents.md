@@ -15,6 +15,8 @@ Invoices are automatically generated and updated based on changes made to an ord
 ## Endpoints
 `GET /api/boomerang/documents`
 
+`POST api/boomerang/documents/search`
+
 `GET /api/boomerang/documents/{id}`
 
 `POST /api/boomerang/documents`
@@ -33,26 +35,26 @@ Name | Description
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `archived` | **Boolean** `readonly`<br>Whether document is archived
 `archived_at` | **Datetime** `nullable` `readonly`<br>When the document was archived
-`document_type` | **String**<br>One of `invoice`, `contract`, `quote`
-`number` | **Integer**<br>The document number, must be unique per type. Automatically generated if left blank.
-`prefix` | **String**<br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
+`document_type` | **String** <br>One of `invoice`, `contract`, `quote`
+`number` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
+`prefix` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
 `prefix_with_number` | **String** `readonly`<br>Rendered prefix with document number
 `title` | **String** `readonly`<br>Translated title of the document
 `subtitle` | **String** `readonly`<br>Translated subtitle of the document
-`date` | **Date**<br>Date the document was finalized
-`name` | **String**<br>Customer name. If left blank, automatically populated with the customer name of the associated order
-`address` | **String**<br>Customer Address. If left blank, automatically populated with the customer address of the associated order
-`reference` | **String**<br>A project number or other reference
-`revised` | **Boolean**<br>Whether document is revised (applies only to `invoice`)
-`finalized` | **Boolean**<br>Whether document is finalized (`quote` and `contract` are always finalized)
-`sent` | **Boolean**<br>Whether document is sent (with Booqable)
-`confirmed` | **Boolean**<br>Whether document is confirmed, applies to `quote` and `contract`
-`status` | **String**<br>One of `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
+`date` | **Date** <br>Date the document was finalized
+`name` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
+`address` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
+`reference` | **String** <br>A project number or other reference
+`revised` | **Boolean** <br>Whether document is revised (applies only to `invoice`)
+`finalized` | **Boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized)
+`sent` | **Boolean** <br>Whether document is sent (with Booqable)
+`confirmed` | **Boolean** <br>Whether document is confirmed, applies to `quote` and `contract`
+`status` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
 `signature_base64` | **String** `writeonly`<br>Base64 encoded signate, use this field to store a a signature
 `signature_url` | **String** `readonly`<br>Url where the signature is stored
 `deposit_type` | **String** `nullable`<br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`deposit_value` | **Integer**<br>The value to use for `deposit_type`
-`tag_list` | **Array** `readonly`<br>Case insensitive tag list
+`deposit_value` | **Integer** <br>The value to use for `deposit_type`
+`tag_list` | **Array** <br>Case insensitive tag list
 `price_in_cents` | **Integer** `readonly`<br>Subtotal excl. taxes (excl. deposit)
 `grand_total_in_cents` | **Integer** `readonly`<br>Total excl. taxes (excl. deposit)
 `grand_total_with_tax_in_cents` | **Integer** `readonly`<br>Amount incl. taxes (excl. deposit)
@@ -67,8 +69,8 @@ Name | Description
 `to_be_paid_in_cents` | **Integer** `readonly`<br>Amount that (still) has to be paid
 `paid_in_cents` | **Integer** `readonly`<br>How much was paid
 `tax_in_cents` | **Integer** `readonly`<br>Total tax
-`discount_percentage` | **Float**<br>The discount percentage applied to this order
-`order_id` | **Uuid**<br>The associated Order
+`discount_percentage` | **Float** <br>The discount percentage applied to this order
+`order_id` | **Uuid** <br>The associated Order
 `customer_id` | **Uuid** `nullable`<br>The associated Customer
 `tax_region_id` | **Uuid** `nullable`<br>The associated Tax region
 `coupon_id` | **Uuid** `nullable`<br>The associated Coupon
@@ -107,11 +109,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "96c54813-9b18-414f-a839-c3b01e08b8e8",
+      "id": "a702d806-ff42-4729-9053-91c5be07d450",
       "type": "documents",
       "attributes": {
-        "created_at": "2022-04-08T18:19:48+00:00",
-        "updated_at": "2022-04-08T18:19:48+00:00",
+        "created_at": "2022-09-16T14:13:28+00:00",
+        "updated_at": "2022-09-16T14:13:28+00:00",
         "archived": false,
         "archived_at": null,
         "document_type": "invoice",
@@ -148,20 +150,20 @@ Name | Description
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
-        "order_id": "58be713c-d84f-486a-b8c2-fa51fbd5ac50",
-        "customer_id": "6756378c-0da9-44d3-9e75-de429f7e3151",
+        "order_id": "e53002d9-2182-41a1-b0dc-075f234827b2",
+        "customer_id": "b41e8d8c-afe8-4efc-9025-300a6bcacd2f",
         "tax_region_id": null,
         "coupon_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/58be713c-d84f-486a-b8c2-fa51fbd5ac50"
+            "related": "api/boomerang/orders/e53002d9-2182-41a1-b0dc-075f234827b2"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/6756378c-0da9-44d3-9e75-de429f7e3151"
+            "related": "api/boomerang/customers/b41e8d8c-afe8-4efc-9025-300a6bcacd2f"
           }
         },
         "tax_region": {
@@ -176,12 +178,12 @@ Name | Description
         },
         "lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=96c54813-9b18-414f-a839-c3b01e08b8e8&filter[owner_type]=documents"
+            "related": "api/boomerang/lines?filter[owner_id]=a702d806-ff42-4729-9053-91c5be07d450&filter[owner_type]=documents"
           }
         },
         "tax_values": {
           "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=96c54813-9b18-414f-a839-c3b01e08b8e8&filter[owner_type]=documents"
+            "related": "api/boomerang/tax_values?filter[owner_id]=a702d806-ff42-4729-9053-91c5be07d450&filter[owner_type]=documents"
           }
         }
       }
@@ -197,17 +199,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -216,47 +218,48 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean**<br>`eq`
-`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`document_type` | **String**<br>`eq`, `not_eq`
-`number` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`prefix` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`prefix_with_number` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`title` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`subtitle` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`date` | **Date**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`address` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`revised` | **Boolean**<br>`eq`
-`finalized` | **Boolean**<br>`eq`
-`sent` | **Boolean**<br>`eq`
-`confirmed` | **Boolean**<br>`eq`
-`status` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`deposit_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`tag_list` | **String**<br>`eq`
-`price_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_with_tax_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`coupon_discount_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`total_discount_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_paid_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_refunded_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_held_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_to_refund_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`to_be_paid_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`paid_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`tax_in_cents` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_percentage` | **Float**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`order_id` | **Uuid**<br>`eq`, `not_eq`
-`customer_id` | **Uuid**<br>`eq`, `not_eq`
-`tax_region_id` | **Uuid**<br>`eq`, `not_eq`
-`coupon_id` | **Uuid**<br>`eq`, `not_eq`
-`q` | **String**<br>`eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`document_type` | **String** <br>`eq`, `not_eq`
+`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`subtitle` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`revised` | **Boolean** <br>`eq`
+`finalized` | **Boolean** <br>`eq`
+`sent` | **Boolean** <br>`eq`
+`confirmed` | **Boolean** <br>`eq`
+`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tag_list` | **String** <br>`eq`
+`price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_with_tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`coupon_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_held_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_to_refund_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`to_be_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
+`customer_id` | **Uuid** <br>`eq`, `not_eq`
+`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
+`coupon_id` | **Uuid** <br>`eq`, `not_eq`
+`q` | **String** <br>`eq`
+`conditions` | **Hash** <br>`eq`
 
 
 ### Meta
@@ -265,27 +268,205 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
-`status` | **Array**<br>`count`
-`tag_list` | **Array**<br>`count`
-`tax_strategy` | **Array**<br>`count`
-`currency` | **Array**<br>`count`
-`deposit_type` | **Array**<br>`count`
-`price_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_with_tax_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`discount_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`coupon_discount_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`total_discount_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`deposit_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`deposit_paid_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`deposit_refunded_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`deposit_held_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`deposit_to_refund_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`to_be_paid_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`paid_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`tax_in_cents` | **Array**<br>`sum`, `maximum`, `minimum`, `average`
-`discount_percentage` | **Array**<br>`maximum`, `minimum`, `average`
+`total` | **Array** <br>`count`
+`status` | **Array** <br>`count`
+`tag_list` | **Array** <br>`count`
+`tax_strategy` | **Array** <br>`count`
+`currency` | **Array** <br>`count`
+`deposit_type` | **Array** <br>`count`
+`price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_with_tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`coupon_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_refunded_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_held_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_to_refund_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`to_be_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`order`
+
+
+
+
+
+
+## Searching documents
+
+Use advanced search to make logical filter groups with and/or operators.
+
+
+> How to search for documents:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/documents/search' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "documents": "id"
+      },
+      "filter": {
+        "conditions": {
+          "operator": "and",
+          "attributes": [
+            {
+              "operator": "or",
+              "attributes": [
+                {
+                  "status": "paid"
+                },
+                {
+                  "deposit_type": "none"
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "date": {
+                    "gte": "2022-09-13T14:13:33.355Z"
+                  }
+                },
+                {
+                  "date": {
+                    "lte": "2022-09-19T14:13:33.355Z"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "ad7213a4-e8d8-4759-998a-0c0de3036885"
+    },
+    {
+      "id": "f3e71555-00db-42f9-b47c-4d4ca08e0fcc"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST api/boomerang/documents/search`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+- | -
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+- | -
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`document_type` | **String** <br>`eq`, `not_eq`
+`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`subtitle` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`revised` | **Boolean** <br>`eq`
+`finalized` | **Boolean** <br>`eq`
+`sent` | **Boolean** <br>`eq`
+`confirmed` | **Boolean** <br>`eq`
+`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tag_list` | **String** <br>`eq`
+`price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_with_tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`coupon_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_held_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_to_refund_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`to_be_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
+`customer_id` | **Uuid** <br>`eq`, `not_eq`
+`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
+`coupon_id` | **Uuid** <br>`eq`, `not_eq`
+`q` | **String** <br>`eq`
+`conditions` | **Hash** <br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+- | -
+`total` | **Array** <br>`count`
+`status` | **Array** <br>`count`
+`tag_list` | **Array** <br>`count`
+`tax_strategy` | **Array** <br>`count`
+`currency` | **Array** <br>`count`
+`deposit_type` | **Array** <br>`count`
+`price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_with_tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`coupon_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_refunded_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_held_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_to_refund_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`to_be_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -310,7 +491,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/documents/925373ac-282d-47b0-b628-99a66558adb9' \
+    --url 'https://example.booqable.com/api/boomerang/documents/b844321c-6ead-4d70-b50e-3816f8abf59f' \
     --header 'content-type: application/json' \
 ```
 
@@ -319,11 +500,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "925373ac-282d-47b0-b628-99a66558adb9",
+    "id": "b844321c-6ead-4d70-b50e-3816f8abf59f",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-04-08T18:19:49+00:00",
-      "updated_at": "2022-04-08T18:19:50+00:00",
+      "created_at": "2022-09-16T14:13:34+00:00",
+      "updated_at": "2022-09-16T14:13:34+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -360,20 +541,20 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "adae716f-6524-4ed8-872c-56b7e977c6d3",
-      "customer_id": "7967089a-cfa8-412f-b519-ce965b667022",
+      "order_id": "c245db5e-cd46-4110-8e0e-72e13f83b87e",
+      "customer_id": "e155fd00-ec03-4e17-a823-5167020953b6",
       "tax_region_id": null,
       "coupon_id": null
     },
     "relationships": {
       "order": {
         "links": {
-          "related": "api/boomerang/orders/adae716f-6524-4ed8-872c-56b7e977c6d3"
+          "related": "api/boomerang/orders/c245db5e-cd46-4110-8e0e-72e13f83b87e"
         }
       },
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/7967089a-cfa8-412f-b519-ce965b667022"
+          "related": "api/boomerang/customers/e155fd00-ec03-4e17-a823-5167020953b6"
         }
       },
       "tax_region": {
@@ -388,12 +569,12 @@ This request accepts the following includes:
       },
       "lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=925373ac-282d-47b0-b628-99a66558adb9&filter[owner_type]=documents"
+          "related": "api/boomerang/lines?filter[owner_id]=b844321c-6ead-4d70-b50e-3816f8abf59f&filter[owner_type]=documents"
         }
       },
       "tax_values": {
         "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=925373ac-282d-47b0-b628-99a66558adb9&filter[owner_type]=documents"
+          "related": "api/boomerang/tax_values?filter[owner_id]=b844321c-6ead-4d70-b50e-3816f8abf59f&filter[owner_type]=documents"
         }
       }
     }
@@ -408,12 +589,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 
 
 ### Includes
@@ -463,7 +644,7 @@ This request accepts the following includes:
         "type": "documents",
         "attributes": {
           "document_type": "contract",
-          "order_id": "5c536179-ca1b-468f-8a7c-489662df735c"
+          "order_id": "6c564dc4-257d-4d6c-b5ee-0054e6958cb6"
         }
       }
     }'
@@ -474,11 +655,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3af4ae3c-17ed-4443-9f9d-1acc1e29ce21",
+    "id": "7d3a87f7-d4b4-4305-8276-b6a9756917b4",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-04-08T18:19:52+00:00",
-      "updated_at": "2022-04-08T18:19:52+00:00",
+      "created_at": "2022-09-16T14:13:37+00:00",
+      "updated_at": "2022-09-16T14:13:37+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "contract",
@@ -487,7 +668,7 @@ This request accepts the following includes:
       "prefix_with_number": "1",
       "title": "Contract #1",
       "subtitle": "1",
-      "date": "2022-04-08",
+      "date": "2022-09-16",
       "name": "John Doe",
       "address": "",
       "reference": null,
@@ -495,7 +676,7 @@ This request accepts the following includes:
       "finalized": true,
       "sent": false,
       "confirmed": false,
-      "status": null,
+      "status": "unconfirmed",
       "signature_url": null,
       "deposit_type": "percentage",
       "deposit_value": 10,
@@ -515,8 +696,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "5c536179-ca1b-468f-8a7c-489662df735c",
-      "customer_id": "702dfa48-1f95-4ede-8a39-cf430fc3d716",
+      "order_id": "6c564dc4-257d-4d6c-b5ee-0054e6958cb6",
+      "customer_id": "bd156088-d4fa-4b19-93d1-bc0f4c68d837",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -563,12 +744,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 
 
 ### Request body
@@ -577,26 +758,27 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][document_type]` | **String**<br>One of `invoice`, `contract`, `quote`
-`data[attributes][number]` | **Integer**<br>The document number, must be unique per type. Automatically generated if left blank.
-`data[attributes][prefix]` | **String**<br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
-`data[attributes][date]` | **Date**<br>Date the document was finalized
-`data[attributes][name]` | **String**<br>Customer name. If left blank, automatically populated with the customer name of the associated order
-`data[attributes][address]` | **String**<br>Customer Address. If left blank, automatically populated with the customer address of the associated order
-`data[attributes][reference]` | **String**<br>A project number or other reference
-`data[attributes][revised]` | **Boolean**<br>Whether document is revised (applies only to `invoice`)
-`data[attributes][finalized]` | **Boolean**<br>Whether document is finalized (`quote` and `contract` are always finalized)
-`data[attributes][sent]` | **Boolean**<br>Whether document is sent (with Booqable)
-`data[attributes][confirmed]` | **Boolean**<br>Whether document is confirmed, applies to `quote` and `contract`
-`data[attributes][status]` | **String**<br>One of `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
-`data[attributes][signature_base64]` | **String**<br>Base64 encoded signate, use this field to store a a signature
-`data[attributes][deposit_type]` | **String**<br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Integer**<br>The value to use for `deposit_type`
-`data[attributes][discount_percentage]` | **Float**<br>The discount percentage applied to this order
-`data[attributes][order_id]` | **Uuid**<br>The associated Order
-`data[attributes][customer_id]` | **Uuid**<br>The associated Customer
-`data[attributes][tax_region_id]` | **Uuid**<br>The associated Tax region
-`data[attributes][coupon_id]` | **Uuid**<br>The associated Coupon
+`data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
+`data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
+`data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
+`data[attributes][date]` | **Date** <br>Date the document was finalized
+`data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
+`data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
+`data[attributes][reference]` | **String** <br>A project number or other reference
+`data[attributes][revised]` | **Boolean** <br>Whether document is revised (applies only to `invoice`)
+`data[attributes][finalized]` | **Boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized)
+`data[attributes][sent]` | **Boolean** <br>Whether document is sent (with Booqable)
+`data[attributes][confirmed]` | **Boolean** <br>Whether document is confirmed, applies to `quote` and `contract`
+`data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
+`data[attributes][signature_base64]` | **String** <br>Base64 encoded signate, use this field to store a a signature
+`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
+`data[attributes][deposit_value]` | **Integer** <br>The value to use for `deposit_type`
+`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
+`data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
 
 
 ### Includes
@@ -639,11 +821,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/documents/0ac361b1-227d-417d-b11f-9fc30e516bf8' \
+    --url 'https://example.booqable.com/api/boomerang/documents/12f2c0fa-455e-47b1-8a1e-91d296b31c06' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0ac361b1-227d-417d-b11f-9fc30e516bf8",
+        "id": "12f2c0fa-455e-47b1-8a1e-91d296b31c06",
         "type": "documents",
         "attributes": {
           "name": "Jane Doe"
@@ -657,11 +839,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0ac361b1-227d-417d-b11f-9fc30e516bf8",
+    "id": "12f2c0fa-455e-47b1-8a1e-91d296b31c06",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-04-08T18:19:53+00:00",
-      "updated_at": "2022-04-08T18:19:53+00:00",
+      "created_at": "2022-09-16T14:13:39+00:00",
+      "updated_at": "2022-09-16T14:13:40+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -698,8 +880,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "a95e6ee4-af93-4ddb-b108-5cd3bdb73b35",
-      "customer_id": "706f209e-acf3-4997-8913-1c130f78c0de",
+      "order_id": "52c9296b-19a3-4569-bc13-f7c594a7e135",
+      "customer_id": "f79de977-f9ac-4268-a108-d4310f713c5f",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -746,12 +928,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 
 
 ### Request body
@@ -760,26 +942,27 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][document_type]` | **String**<br>One of `invoice`, `contract`, `quote`
-`data[attributes][number]` | **Integer**<br>The document number, must be unique per type. Automatically generated if left blank.
-`data[attributes][prefix]` | **String**<br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
-`data[attributes][date]` | **Date**<br>Date the document was finalized
-`data[attributes][name]` | **String**<br>Customer name. If left blank, automatically populated with the customer name of the associated order
-`data[attributes][address]` | **String**<br>Customer Address. If left blank, automatically populated with the customer address of the associated order
-`data[attributes][reference]` | **String**<br>A project number or other reference
-`data[attributes][revised]` | **Boolean**<br>Whether document is revised (applies only to `invoice`)
-`data[attributes][finalized]` | **Boolean**<br>Whether document is finalized (`quote` and `contract` are always finalized)
-`data[attributes][sent]` | **Boolean**<br>Whether document is sent (with Booqable)
-`data[attributes][confirmed]` | **Boolean**<br>Whether document is confirmed, applies to `quote` and `contract`
-`data[attributes][status]` | **String**<br>One of `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
-`data[attributes][signature_base64]` | **String**<br>Base64 encoded signate, use this field to store a a signature
-`data[attributes][deposit_type]` | **String**<br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Integer**<br>The value to use for `deposit_type`
-`data[attributes][discount_percentage]` | **Float**<br>The discount percentage applied to this order
-`data[attributes][order_id]` | **Uuid**<br>The associated Order
-`data[attributes][customer_id]` | **Uuid**<br>The associated Customer
-`data[attributes][tax_region_id]` | **Uuid**<br>The associated Tax region
-`data[attributes][coupon_id]` | **Uuid**<br>The associated Coupon
+`data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
+`data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
+`data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
+`data[attributes][date]` | **Date** <br>Date the document was finalized
+`data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
+`data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
+`data[attributes][reference]` | **String** <br>A project number or other reference
+`data[attributes][revised]` | **Boolean** <br>Whether document is revised (applies only to `invoice`)
+`data[attributes][finalized]` | **Boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized)
+`data[attributes][sent]` | **Boolean** <br>Whether document is sent (with Booqable)
+`data[attributes][confirmed]` | **Boolean** <br>Whether document is confirmed, applies to `quote` and `contract`
+`data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
+`data[attributes][signature_base64]` | **String** <br>Base64 encoded signate, use this field to store a a signature
+`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
+`data[attributes][deposit_value]` | **Integer** <br>The value to use for `deposit_type`
+`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
+`data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
 
 
 ### Includes
@@ -823,7 +1006,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/documents/3131d4e8-d6a9-476a-a764-d4f800096a4f' \
+    --url 'https://example.booqable.com/api/boomerang/documents/6d559e1f-ddb4-4598-b80c-4ae67baa4e05' \
     --header 'content-type: application/json' \
 ```
 
@@ -841,12 +1024,12 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 
 
 ### Includes

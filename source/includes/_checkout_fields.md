@@ -21,10 +21,10 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the field, will be shown as a field label in the checkout
-`required` | **Boolean**<br>Whether the field required to complete checkout
-`position` | **Integer**<br>Used to determine sorting relative to other checkout fields
-`default_property_id` | **Uuid**<br>The associated Default property
+`name` | **String** <br>Name of the field, will be shown as a field label in the checkout
+`required` | **Boolean** <br>Whether the field required to complete checkout
+`position` | **Integer** <br>Used to determine sorting relative to other checkout fields
+`default_property_id` | **Uuid** <br>The associated Default property
 
 
 ## Relationships
@@ -53,20 +53,20 @@ Name | Description
   {
   "data": [
     {
-      "id": "9a2262f9-8353-4cdf-8ac5-1cf48b09d90b",
+      "id": "d4c66659-bd3b-4828-9d86-60bd2b4c1124",
       "type": "checkout_fields",
       "attributes": {
-        "created_at": "2022-04-08T18:19:36+00:00",
-        "updated_at": "2022-04-08T18:19:36+00:00",
+        "created_at": "2022-09-16T14:13:08+00:00",
+        "updated_at": "2022-09-16T14:13:08+00:00",
         "name": "Special requests",
         "required": false,
         "position": null,
-        "default_property_id": "0a15cd75-73f3-48ed-a01d-2ae0b861bf89"
+        "default_property_id": "f32c9fdb-9a1d-4e1d-896f-01e45f9ee521"
       },
       "relationships": {
         "default_property": {
           "links": {
-            "related": "api/boomerang/default_properties/0a15cd75-73f3-48ed-a01d-2ae0b861bf89"
+            "related": "api/boomerang/default_properties/f32c9fdb-9a1d-4e1d-896f-01e45f9ee521"
           }
         }
       }
@@ -82,17 +82,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-08T18:19:12Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=default_property`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -101,12 +101,12 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`required` | **Boolean**<br>`eq`
-`default_property_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`required` | **Boolean** <br>`eq`
+`default_property_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -115,7 +115,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -129,7 +129,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/fdd900a8-f61a-413b-9172-5d3812f465a4?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/0407da20-a285-4fe1-b937-a5ed58083406?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -138,35 +138,35 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "fdd900a8-f61a-413b-9172-5d3812f465a4",
+    "id": "0407da20-a285-4fe1-b937-a5ed58083406",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2022-04-08T18:19:36+00:00",
-      "updated_at": "2022-04-08T18:19:36+00:00",
+      "created_at": "2022-09-16T14:13:09+00:00",
+      "updated_at": "2022-09-16T14:13:09+00:00",
       "name": "Special requests",
       "required": false,
       "position": null,
-      "default_property_id": "106e459b-1f02-415a-a7f2-51947371cece"
+      "default_property_id": "099df41c-08bc-4c5e-8bcb-5603faa81ecd"
     },
     "relationships": {
       "default_property": {
         "links": {
-          "related": "api/boomerang/default_properties/106e459b-1f02-415a-a7f2-51947371cece"
+          "related": "api/boomerang/default_properties/099df41c-08bc-4c5e-8bcb-5603faa81ecd"
         },
         "data": {
           "type": "default_properties",
-          "id": "106e459b-1f02-415a-a7f2-51947371cece"
+          "id": "099df41c-08bc-4c5e-8bcb-5603faa81ecd"
         }
       }
     }
   },
   "included": [
     {
-      "id": "106e459b-1f02-415a-a7f2-51947371cece",
+      "id": "099df41c-08bc-4c5e-8bcb-5603faa81ecd",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2022-04-08T18:19:36+00:00",
-        "updated_at": "2022-04-08T18:19:36+00:00",
+        "created_at": "2022-09-16T14:13:09+00:00",
+        "updated_at": "2022-09-16T14:13:09+00:00",
         "name": "Default Property 4",
         "identifier": "default_property_4",
         "position": 1,
@@ -188,12 +188,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
 
 
 ### Includes
@@ -222,7 +222,7 @@ This request accepts the following includes:
         "type": "checkout_fields",
         "attributes": {
           "name": "Special requests",
-          "default_property_id": "73e88fbf-354b-4f84-a03e-b8e89a879cf6"
+          "default_property_id": "2c0033e4-50d4-4e2b-9812-4dab028332d9"
         }
       }
     }'
@@ -233,15 +233,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2e1922ad-e5f6-4b3a-b154-5039a5007537",
+    "id": "442cf53c-e84e-42f8-bc83-8ceb52f360a9",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2022-04-08T18:19:36+00:00",
-      "updated_at": "2022-04-08T18:19:36+00:00",
+      "created_at": "2022-09-16T14:13:09+00:00",
+      "updated_at": "2022-09-16T14:13:09+00:00",
       "name": "Special requests",
       "required": false,
       "position": null,
-      "default_property_id": "73e88fbf-354b-4f84-a03e-b8e89a879cf6"
+      "default_property_id": "2c0033e4-50d4-4e2b-9812-4dab028332d9"
     },
     "relationships": {
       "default_property": {
@@ -261,12 +261,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
 
 
 ### Request body
@@ -275,9 +275,9 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the field, will be shown as a field label in the checkout
-`data[attributes][position]` | **Integer**<br>Used to determine sorting relative to other checkout fields
-`data[attributes][default_property_id]` | **Uuid**<br>The associated Default property
+`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
+`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout fields
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
 
 
 ### Includes
@@ -299,11 +299,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/486d9e21-eef3-4b27-aea5-18e6524763b4' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/e268ee36-005f-4017-a4fe-e0da7cbb7ddc' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "486d9e21-eef3-4b27-aea5-18e6524763b4",
+        "id": "e268ee36-005f-4017-a4fe-e0da7cbb7ddc",
         "type": "checkout_fields",
         "attributes": {
           "name": "Additional information"
@@ -317,15 +317,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "486d9e21-eef3-4b27-aea5-18e6524763b4",
+    "id": "e268ee36-005f-4017-a4fe-e0da7cbb7ddc",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2022-04-08T18:19:36+00:00",
-      "updated_at": "2022-04-08T18:19:36+00:00",
+      "created_at": "2022-09-16T14:13:10+00:00",
+      "updated_at": "2022-09-16T14:13:10+00:00",
       "name": "Additional information",
       "required": false,
       "position": null,
-      "default_property_id": "b039b627-6007-486b-a2b2-e865a62b59b3"
+      "default_property_id": "8f762d78-236c-4e28-a3be-b010e3dcb1fd"
     },
     "relationships": {
       "default_property": {
@@ -345,12 +345,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
 
 
 ### Request body
@@ -359,9 +359,9 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the field, will be shown as a field label in the checkout
-`data[attributes][position]` | **Integer**<br>Used to determine sorting relative to other checkout fields
-`data[attributes][default_property_id]` | **Uuid**<br>The associated Default property
+`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
+`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout fields
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
 
 
 ### Includes
@@ -383,7 +383,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/79ffd5d3-ac1b-4958-ad19-7de72982f8f4' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/fdc73ac5-2f6e-45f3-9191-d826bf6afe99' \
     --header 'content-type: application/json' \
 ```
 
@@ -401,12 +401,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=default_property`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=default_property`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
 
 
 ### Includes
