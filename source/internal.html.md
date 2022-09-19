@@ -88,6 +88,10 @@ includes:
   - menus
   - login_activities
   - publications
+  - report_consumables
+  - report_rental_intervals
+  - report_rentals
+  - report_stock_items
   - themes
 
 search: true
