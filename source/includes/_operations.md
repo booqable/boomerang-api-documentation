@@ -255,7 +255,7 @@ Allowed attribute keys:
 - `flat_fee_price_in_cents`
 - `structure_price_in_cents`
 - `base_price_in_cents`
-- `price_wrapper_id`
+- `price_structure_id`
 - `show_in_store`
 - `discountable`
 - `price_ruleset_id`
@@ -323,11 +323,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "643113b9-c8d3-4c18-ad79-290107ae4761",
+      "id": "215cb390-0d2b-4e51-ae66-6c3ba445f77b",
       "type": "operations",
       "attributes": {
-        "created_at": "2022-09-16T14:14:36+00:00",
-        "updated_at": "2022-09-16T14:14:36+00:00",
+        "created_at": "2022-09-21T09:07:27+00:00",
+        "updated_at": "2022-09-21T09:07:27+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -337,12 +337,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "16348271-eea5-4509-81fd-f821a2111d45"
+        "employee_id": "55bbc497-c62d-4ec7-830c-6485a27fccd3"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/16348271-eea5-4509-81fd-f821a2111d45"
+            "related": "api/boomerang/employees/55bbc497-c62d-4ec7-830c-6485a27fccd3"
           }
         }
       }
@@ -364,7 +364,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-21T09:04:21Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -413,7 +413,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/f555addf-5d31-4f42-94ee-563552671d19' \
+    --url 'https://example.booqable.com/api/boomerang/operations/b526e26a-780b-4a52-a026-244235cf6fbf' \
     --header 'content-type: application/json' \
 ```
 
@@ -422,11 +422,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f555addf-5d31-4f42-94ee-563552671d19",
+    "id": "b526e26a-780b-4a52-a026-244235cf6fbf",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-09-16T14:14:36+00:00",
-      "updated_at": "2022-09-16T14:14:36+00:00",
+      "created_at": "2022-09-21T09:07:28+00:00",
+      "updated_at": "2022-09-21T09:07:28+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -436,12 +436,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "e6cd16ab-cf77-4cf5-b73e-babf3281ba5f"
+      "employee_id": "c627523c-57a5-4c5c-b473-623d914486fd"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/e6cd16ab-cf77-4cf5-b73e-babf3281ba5f"
+          "related": "api/boomerang/employees/c627523c-57a5-4c5c-b473-623d914486fd"
         }
       }
     }
@@ -509,11 +509,11 @@ When creating an operation, it will start running in the background. With the `i
 ```json
   {
   "data": {
-    "id": "2849ac5d-1996-462a-9302-ac65b37f3b30",
+    "id": "bf63ad37-7423-4afe-9baf-96901ad5de79",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-09-16T14:14:36+00:00",
-      "updated_at": "2022-09-16T14:14:36+00:00",
+      "created_at": "2022-09-21T09:07:29+00:00",
+      "updated_at": "2022-09-21T09:07:29+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -523,7 +523,7 @@ When creating an operation, it will start running in the background. With the `i
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "99e1c9e6-a811-4905-aede-b73cbf94aa73"
+      "employee_id": "d1ba8b36-d0be-43a2-b452-2ecddac65a68"
     },
     "relationships": {
       "employee": {

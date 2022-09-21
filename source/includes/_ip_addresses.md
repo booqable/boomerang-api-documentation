@@ -43,11 +43,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "8c8ca250-1918-412c-8e9d-46638a20080e",
+      "id": "07bcceb1-c4b8-4709-90b8-f07a9e6c6367",
       "type": "ip_addresses",
       "attributes": {
-        "created_at": "2022-09-16T14:14:07+00:00",
-        "updated_at": "2022-09-16T14:14:07+00:00",
+        "created_at": "2022-09-21T09:06:38+00:00",
+        "updated_at": "2022-09-21T09:06:38+00:00",
         "label": "John's home office",
         "address": "192.168.0.1"
       }
@@ -69,7 +69,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-21T09:04:21Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -109,7 +109,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/0d90646b-a115-4ce8-9201-13b158a07fad' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/3b017a7f-9a8a-408e-81c4-974e47e6f65f' \
     --header 'content-type: application/json' \
 ```
 
@@ -118,11 +118,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0d90646b-a115-4ce8-9201-13b158a07fad",
+    "id": "3b017a7f-9a8a-408e-81c4-974e47e6f65f",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2022-09-16T14:14:08+00:00",
-      "updated_at": "2022-09-16T14:14:08+00:00",
+      "created_at": "2022-09-21T09:06:38+00:00",
+      "updated_at": "2022-09-21T09:06:38+00:00",
       "label": "John's home office",
       "address": "192.168.0.1"
     }
@@ -174,11 +174,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "70e6d4fd-73a2-4430-aa43-5c7f5933dd17",
+    "id": "7ac1b023-d27c-42b1-81cd-3794e519fab2",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2022-09-16T14:14:08+00:00",
-      "updated_at": "2022-09-16T14:14:08+00:00",
+      "created_at": "2022-09-21T09:06:39+00:00",
+      "updated_at": "2022-09-21T09:06:39+00:00",
       "label": "Leeuwarden office",
       "address": "192.168.0.2"
     }
@@ -222,11 +222,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/5ec949f2-c7ca-40de-a51e-654aa8e1a9c0' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/e2d5ea5a-710c-423b-ac3e-78ec4bf932a6' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5ec949f2-c7ca-40de-a51e-654aa8e1a9c0",
+        "id": "e2d5ea5a-710c-423b-ac3e-78ec4bf932a6",
         "type": "ip_addresses",
         "attributes": {
           "label": "Palo Alto office",
@@ -241,11 +241,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5ec949f2-c7ca-40de-a51e-654aa8e1a9c0",
+    "id": "e2d5ea5a-710c-423b-ac3e-78ec4bf932a6",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2022-09-16T14:14:08+00:00",
-      "updated_at": "2022-09-16T14:14:08+00:00",
+      "created_at": "2022-09-21T09:06:40+00:00",
+      "updated_at": "2022-09-21T09:06:40+00:00",
       "label": "Palo Alto office",
       "address": "192.168.0.3"
     }
@@ -289,7 +289,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/b38468ce-be26-4744-aca3-3137a0758c03' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/770ffbf3-5404-4e72-a003-a422f877b282' \
     --header 'content-type: application/json' \
 ```
 

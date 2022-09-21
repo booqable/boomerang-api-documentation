@@ -57,7 +57,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "7193819c-2734-4318-b775-c7b0a0c7aaea"
+          "stock_item_id": "244cc39c-95de-49e7-805d-e6304c1930dd"
         }
       }
     }'
@@ -68,10 +68,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "dfc021bd-6f71-5ddf-bcf0-453d1af1adab",
+    "id": "e53d5bed-7644-578d-96d2-6f97210fa4c8",
     "type": "stock_item_archivations",
     "attributes": {
-      "stock_item_id": "7193819c-2734-4318-b775-c7b0a0c7aaea"
+      "stock_item_id": "244cc39c-95de-49e7-805d-e6304c1930dd"
     },
     "relationships": {
       "stock_item": {
@@ -96,7 +96,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "b7b6a5b5-70cf-4807-8630-4a1c6bd366d6"
+          "stock_item_id": "197282a2-ba91-4d39-b7ae-3f7e63db54f6"
         }
       }
     }'
@@ -129,7 +129,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "3954756f-a0cd-4dba-a4c8-b59adf37019e"
+          "stock_item_id": "df1f1cda-8e1a-4f63-84a3-806f885d9568"
         }
       }
     }'
@@ -149,7 +149,7 @@ Name | Description
         "blocking": [
           {
             "order_ids": [
-              "e896d91a-b607-4d30-b255-5a26922a9751"
+              "a02062da-99ee-4d4c-b06f-2c1b11ba7864"
             ]
           }
         ]
@@ -170,7 +170,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "899e124c-b586-4874-bd46-ac9df087c638"
+          "stock_item_id": "1d7f9a0b-1c55-4868-8983-aa02cfefc25d"
         }
       }
     }'
@@ -192,12 +192,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "4cf0f90e-22d0-4fbb-8db0-b9047d232c25",
+            "item_id": "36a7907a-dfda-4f57-aeb7-fabee7404ae0",
             "mutation": -1,
             "order_ids": [
-              "dd950549-d96c-43d3-b76c-e5cd8b3aa370"
+              "298c7be0-c5fa-4f57-acb2-214a2cd9b55d"
             ],
-            "location_id": "c54bd74c-fd26-4f00-bc06-aa9137129bf4",
+            "location_id": "145f868d-0aea-4826-bad6-fbe77ba3e843",
             "available": 0,
             "plannable": 0,
             "stock_count": 1,
@@ -227,7 +227,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "0e66db52-86a3-4fd2-a17d-74f7acc6f3e3"
+          "stock_item_id": "a7602e25-6434-4a9a-aca4-bb914611db55"
         }
       }
     }'
@@ -248,12 +248,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "1754299b-7432-4a1d-868d-c7eb83e58102",
+            "item_id": "71209453-fd25-465d-8a70-ef9085c5971f",
             "mutation": -1,
             "order_ids": [
-              "9dda126c-cb9e-4771-9504-d93828a29fbf"
+              "70162b75-0dd7-4fb8-be9b-476b16c8310c"
             ],
-            "location_id": "3cd43641-5083-48f9-9d99-cd6f1e781a9e",
+            "location_id": "8ee91477-3d4a-4605-b718-27bbb8765e21",
             "available": 0,
             "plannable": 1,
             "stock_count": 1,
@@ -284,7 +284,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "b504893d-a35f-4822-af9b-a13c5b8a7d07",
+          "stock_item_id": "7eec92f7-78bd-4990-b3df-3a1c258addce",
           "confirm_shortage": true
         }
       }
@@ -296,10 +296,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "10b8b1ec-cf0e-5dfa-9100-d61ffe156018",
+    "id": "1756509b-0bb9-53c1-831d-69b19ccbd565",
     "type": "stock_item_archivations",
     "attributes": {
-      "stock_item_id": "b504893d-a35f-4822-af9b-a13c5b8a7d07"
+      "stock_item_id": "7eec92f7-78bd-4990-b3df-3a1c258addce"
     },
     "relationships": {
       "stock_item": {

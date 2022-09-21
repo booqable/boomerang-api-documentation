@@ -31,6 +31,7 @@ Name | Description
 `product_type` | **String** `readonly`<br>One of `rental`, `consumable`, `service`
 `extra_information` | **String** `nullable`<br>Extra information about the item, shown on orders and documents
 `photo_url` | **String** `readonly`<br>Main photo url
+`remote_photo_url` | **String** `writeonly`<br>Url to an image on the web
 `photo_base64` | **String** `writeonly`<br>Base64 encoded photo, use this field to store a main photo
 `description` | **String** `nullable`<br>Description used in the online store
 `show_in_store` | **Boolean** <br>Whether to show this item in the online
@@ -72,11 +73,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "94bc8e84-9b48-48bd-87ea-157d2f79f634",
+      "id": "7c619aa4-07a1-4d60-bbf3-f0ab849f1872",
       "type": "bundles",
       "attributes": {
-        "created_at": "2022-09-16T14:13:04+00:00",
-        "updated_at": "2022-09-16T14:13:04+00:00",
+        "created_at": "2022-09-21T09:05:00+00:00",
+        "updated_at": "2022-09-21T09:05:00+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -107,12 +108,12 @@ Name | Description
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=94bc8e84-9b48-48bd-87ea-157d2f79f634"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=7c619aa4-07a1-4d60-bbf3-f0ab849f1872"
           }
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=94bc8e84-9b48-48bd-87ea-157d2f79f634"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=7c619aa4-07a1-4d60-bbf3-f0ab849f1872"
           }
         }
       }
@@ -134,7 +135,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-21T09:04:20Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -250,13 +251,13 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "3f3c57da-558f-48e0-a676-f53fcce33e58"
+      "id": "f30ed61e-fe1a-459a-8f05-98985f1bcbca"
     },
     {
-      "id": "c86d0f73-5848-485d-a39a-af25ef318756"
+      "id": "78dcbe1e-b13e-4e55-93ba-f7e9598b627a"
     },
     {
-      "id": "f0096ad3-b62c-47de-b5e9-c81e8221cc65"
+      "id": "059b636c-99bc-4117-aaed-3b1dce96264a"
     }
   ]
 }
@@ -274,7 +275,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-21T09:04:20Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -345,7 +346,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundles/6e63942c-f77a-4cb8-918c-745a007bbdc8' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/84a947a4-f94c-47cf-92aa-3d212b230abe' \
     --header 'content-type: application/json' \
 ```
 
@@ -354,11 +355,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6e63942c-f77a-4cb8-918c-745a007bbdc8",
+    "id": "84a947a4-f94c-47cf-92aa-3d212b230abe",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-09-16T14:13:06+00:00",
-      "updated_at": "2022-09-16T14:13:06+00:00",
+      "created_at": "2022-09-21T09:05:02+00:00",
+      "updated_at": "2022-09-21T09:05:02+00:00",
       "archived": false,
       "archived_at": null,
       "type": "bundles",
@@ -389,12 +390,12 @@ This request accepts the following includes:
       },
       "bundle_items": {
         "links": {
-          "related": "api/boomerang/bundle_items?filter[bundle_id]=6e63942c-f77a-4cb8-918c-745a007bbdc8"
+          "related": "api/boomerang/bundle_items?filter[bundle_id]=84a947a4-f94c-47cf-92aa-3d212b230abe"
         }
       },
       "inventory_levels": {
         "links": {
-          "related": "api/boomerang/inventory_levels?filter[item_id]=6e63942c-f77a-4cb8-918c-745a007bbdc8"
+          "related": "api/boomerang/inventory_levels?filter[item_id]=84a947a4-f94c-47cf-92aa-3d212b230abe"
         }
       }
     }
@@ -420,6 +421,9 @@ Name | Description
 ### Includes
 
 This request accepts the following includes:
+
+`photo`
+
 
 `bundle_items` => 
 `product_group` => 
@@ -463,14 +467,14 @@ This request accepts the following includes:
             {
               "quantity": 2,
               "discount_percentage": 10,
-              "product_group_id": "b22c8bf2-c2af-452a-ab0c-7b9762d560cc",
-              "product_id": "1f992529-f851-4e34-9350-a2480a4124ad"
+              "product_group_id": "18b414cb-fee2-4305-9385-bd934f1126f5",
+              "product_id": "526d523b-4a28-47b9-aa1b-37315c6eda92"
             },
             {
               "quantity": 2,
               "discount_percentage": 15,
-              "product_group_id": "584335a6-f9a5-4fc6-a43b-1acad0bbf008",
-              "product_id": "add3308b-97a7-41f3-bd96-a0688fa4fbe4"
+              "product_group_id": "3d060ffb-7e3a-44c9-97d8-6e338b8b6e14",
+              "product_id": "b3b111e7-a2c5-4d55-8dcb-1c40a8f15776"
             }
           ]
         }
@@ -483,11 +487,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "897d8a40-503a-4db4-9224-deb1c43b8fc5",
+    "id": "290970be-43f0-4508-b2ca-9c43646f1c84",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-09-16T14:13:07+00:00",
-      "updated_at": "2022-09-16T14:13:07+00:00",
+      "created_at": "2022-09-21T09:05:03+00:00",
+      "updated_at": "2022-09-21T09:05:03+00:00",
       "archived": false,
       "archived_at": null,
       "type": "bundles",
@@ -520,11 +524,11 @@ This request accepts the following includes:
         "data": [
           {
             "type": "bundle_items",
-            "id": "ad1d1945-eb44-494e-9d68-6c2423edbe36"
+            "id": "088b92cb-982f-4720-862f-66737c71fcc8"
           },
           {
             "type": "bundle_items",
-            "id": "9a6fdf03-dbf1-488c-9beb-ea1733f0af41"
+            "id": "81d446eb-aeff-41b7-9abc-f25c578b56df"
           }
         ]
       },
@@ -537,17 +541,17 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "ad1d1945-eb44-494e-9d68-6c2423edbe36",
+      "id": "088b92cb-982f-4720-862f-66737c71fcc8",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-09-16T14:13:07+00:00",
-        "updated_at": "2022-09-16T14:13:07+00:00",
+        "created_at": "2022-09-21T09:05:03+00:00",
+        "updated_at": "2022-09-21T09:05:03+00:00",
         "quantity": "2",
         "discount_percentage": 10,
         "position": 1,
-        "bundle_id": "897d8a40-503a-4db4-9224-deb1c43b8fc5",
-        "product_group_id": "b22c8bf2-c2af-452a-ab0c-7b9762d560cc",
-        "product_id": "1f992529-f851-4e34-9350-a2480a4124ad"
+        "bundle_id": "290970be-43f0-4508-b2ca-9c43646f1c84",
+        "product_group_id": "18b414cb-fee2-4305-9385-bd934f1126f5",
+        "product_id": "526d523b-4a28-47b9-aa1b-37315c6eda92"
       },
       "relationships": {
         "bundle": {
@@ -568,17 +572,17 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "9a6fdf03-dbf1-488c-9beb-ea1733f0af41",
+      "id": "81d446eb-aeff-41b7-9abc-f25c578b56df",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-09-16T14:13:07+00:00",
-        "updated_at": "2022-09-16T14:13:07+00:00",
+        "created_at": "2022-09-21T09:05:03+00:00",
+        "updated_at": "2022-09-21T09:05:03+00:00",
         "quantity": "2",
         "discount_percentage": 15,
         "position": 2,
-        "bundle_id": "897d8a40-503a-4db4-9224-deb1c43b8fc5",
-        "product_group_id": "584335a6-f9a5-4fc6-a43b-1acad0bbf008",
-        "product_id": "add3308b-97a7-41f3-bd96-a0688fa4fbe4"
+        "bundle_id": "290970be-43f0-4508-b2ca-9c43646f1c84",
+        "product_group_id": "3d060ffb-7e3a-44c9-97d8-6e338b8b6e14",
+        "product_id": "b3b111e7-a2c5-4d55-8dcb-1c40a8f15776"
       },
       "relationships": {
         "bundle": {
@@ -625,6 +629,7 @@ Name | Description
 - | -
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
+`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
 `data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
 `data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
@@ -639,6 +644,9 @@ Name | Description
 ### Includes
 
 This request accepts the following includes:
+
+`photo`
+
 
 `bundle_items` => 
 `product_group` => 
@@ -670,25 +678,25 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/bundles/b859ec18-58cb-496f-b316-636353f742da' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/f74b0d02-2e5c-4d1e-b8d6-fdefcc3375ce' \
     --header 'content-type: application/json' \
     --data '{
       "include": "bundle_items",
       "data": {
-        "id": "b859ec18-58cb-496f-b316-636353f742da",
+        "id": "f74b0d02-2e5c-4d1e-b8d6-fdefcc3375ce",
         "type": "bundles",
         "attributes": {
           "name": "iPad Pro Bundle",
           "bundle_items_attributes": [
             {
-              "id": "7eb21d2a-0d68-4cca-8982-01f289f6e2ce",
+              "id": "26c62c70-dc7a-4a4a-91a2-549e449cb304",
               "_destroy": true
             },
             {
               "quantity": 2,
               "discount_percentage": 15,
-              "product_group_id": "f4b019be-dc49-44ef-8c6b-39213d4a77bb",
-              "product_id": "54cd8a01-4fb1-42bd-8ee0-211c7b54374d"
+              "product_group_id": "3d1a5e97-32b3-4cda-87f6-93c33e4d54e3",
+              "product_id": "5eb2e613-6a5b-4ab7-82c3-4c02df43968e"
             }
           ]
         }
@@ -701,11 +709,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b859ec18-58cb-496f-b316-636353f742da",
+    "id": "f74b0d02-2e5c-4d1e-b8d6-fdefcc3375ce",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-09-16T14:13:07+00:00",
-      "updated_at": "2022-09-16T14:13:08+00:00",
+      "created_at": "2022-09-21T09:05:04+00:00",
+      "updated_at": "2022-09-21T09:05:04+00:00",
       "archived": false,
       "archived_at": null,
       "type": "bundles",
@@ -738,7 +746,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "bundle_items",
-            "id": "373883fa-0b94-4c2b-9f2e-3b28ae18e7d1"
+            "id": "9c562344-a29b-49ca-a0ad-a1ddb5a2d0ef"
           }
         ]
       },
@@ -751,17 +759,17 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "373883fa-0b94-4c2b-9f2e-3b28ae18e7d1",
+      "id": "9c562344-a29b-49ca-a0ad-a1ddb5a2d0ef",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-09-16T14:13:08+00:00",
-        "updated_at": "2022-09-16T14:13:08+00:00",
+        "created_at": "2022-09-21T09:05:04+00:00",
+        "updated_at": "2022-09-21T09:05:04+00:00",
         "quantity": "2",
         "discount_percentage": 15,
         "position": 2,
-        "bundle_id": "b859ec18-58cb-496f-b316-636353f742da",
-        "product_group_id": "f4b019be-dc49-44ef-8c6b-39213d4a77bb",
-        "product_id": "54cd8a01-4fb1-42bd-8ee0-211c7b54374d"
+        "bundle_id": "f74b0d02-2e5c-4d1e-b8d6-fdefcc3375ce",
+        "product_group_id": "3d1a5e97-32b3-4cda-87f6-93c33e4d54e3",
+        "product_id": "5eb2e613-6a5b-4ab7-82c3-4c02df43968e"
       },
       "relationships": {
         "bundle": {
@@ -808,6 +816,7 @@ Name | Description
 - | -
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
+`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
 `data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
 `data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
@@ -822,6 +831,9 @@ Name | Description
 ### Includes
 
 This request accepts the following includes:
+
+`photo`
+
 
 `bundle_items` => 
 `product_group` => 
@@ -853,7 +865,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/bundles/858b9c38-8ca0-40cd-9222-14de83bfd054' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/a690c619-2f0a-4724-8bae-5bf9b681e499' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

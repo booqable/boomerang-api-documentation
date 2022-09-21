@@ -48,11 +48,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "dda8bdd4-ecb4-41d3-a776-1d45599f17c9",
+      "id": "3cb553e2-9d0b-4cbd-9525-8fbdd463f352",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2022-09-16T14:14:33+00:00",
-        "updated_at": "2022-09-16T14:14:33+00:00",
+        "created_at": "2022-09-21T09:07:23+00:00",
+        "updated_at": "2022-09-21T09:07:23+00:00",
         "data_type": "away",
         "data": {
           "away": {
@@ -79,7 +79,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-21T09:04:21Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -141,11 +141,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7176077a-f6f1-4c09-82d6-529e051d7f67",
+    "id": "06c761f2-fe98-4b52-b4f4-27b709e1ebd4",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-09-16T14:14:33+00:00",
-      "updated_at": "2022-09-16T14:14:33+00:00",
+      "created_at": "2022-09-21T09:07:23+00:00",
+      "updated_at": "2022-09-21T09:07:23+00:00",
       "data_type": "hours",
       "data": {
         "mon": {
@@ -187,11 +187,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3c2b73d9-07ed-4e17-a45a-b845ca33c8f5",
+    "id": "7b0ecd93-c895-4ad6-ac1d-2e994946313d",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-09-16T14:14:34+00:00",
-      "updated_at": "2022-09-16T14:14:34+00:00",
+      "created_at": "2022-09-21T09:07:24+00:00",
+      "updated_at": "2022-09-21T09:07:24+00:00",
       "data_type": "hours",
       "data": {
         "weekday": {
@@ -233,11 +233,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "00ac345a-e3bd-4dd1-8d9e-dbed4b2ea8e6",
+    "id": "ef4df046-c099-4df9-b4fc-c7df68c66e2c",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-09-16T14:14:34+00:00",
-      "updated_at": "2022-09-16T14:14:34+00:00",
+      "created_at": "2022-09-21T09:07:24+00:00",
+      "updated_at": "2022-09-21T09:07:24+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -279,11 +279,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0e0c815f-33aa-44d8-9012-8101c0ba299b",
+    "id": "3b16de2b-1d37-4f74-9649-62791df43b5a",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-09-16T14:14:34+00:00",
-      "updated_at": "2022-09-16T14:14:34+00:00",
+      "created_at": "2022-09-21T09:07:25+00:00",
+      "updated_at": "2022-09-21T09:07:25+00:00",
       "data_type": "timeslot_fixed",
       "data": {
         "weekend": {
@@ -322,11 +322,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b4dea6cb-d756-4d3c-b56a-293d1eedc350",
+    "id": "cb31fa58-74f4-42e5-9a9f-a2b052f14594",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-09-16T14:14:35+00:00",
-      "updated_at": "2022-09-16T14:14:35+00:00",
+      "created_at": "2022-09-21T09:07:26+00:00",
+      "updated_at": "2022-09-21T09:07:26+00:00",
       "data_type": "timeslot_duration",
       "data": {
         "length": 86000
@@ -372,11 +372,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/a8fd8e9c-9ef2-4635-b0b4-66689b46a8e3' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/66d34a8f-ca29-4097-affc-2708f0950250' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "a8fd8e9c-9ef2-4635-b0b4-66689b46a8e3",
+        "id": "66d34a8f-ca29-4097-affc-2708f0950250",
         "type": "operating_rules",
         "attributes": {
           "data": {
@@ -395,11 +395,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "a8fd8e9c-9ef2-4635-b0b4-66689b46a8e3",
+    "id": "66d34a8f-ca29-4097-affc-2708f0950250",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-09-16T14:14:35+00:00",
-      "updated_at": "2022-09-16T14:14:35+00:00",
+      "created_at": "2022-09-21T09:07:26+00:00",
+      "updated_at": "2022-09-21T09:07:26+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -448,7 +448,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/39eb1dc2-b4a2-4b67-9704-d5f590f09a8a' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/1414937d-2dd8-4d89-acce-d32df50d2df5' \
     --header 'content-type: application/json' \
 ```
 

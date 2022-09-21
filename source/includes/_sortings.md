@@ -8,7 +8,7 @@ Every sorting has the following fields:
 Name | Description
 - | -
 `id` | **Uuid** `readonly`<br>
-`type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`
+`type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `ids` | **Array_of_strings** `writeonly`<br>Array of ids, positions are determined by the order of the array
 
 
@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "default_properties",
           "ids": [
-            "b26093b9-28f6-4ca7-be15-dd1477d3e5ad",
-            "ee40469e-335b-4801-9dbe-ec304b5da128",
-            "1ea98889-5d28-4b9b-86f7-de89204b4de6",
-            "65ed43c0-0b66-4f9c-ada7-0ff4c6965663",
-            "2c761c3a-d6db-4308-99e0-ff43e5770bb8"
+            "02ef9ea1-5c93-4ebf-b725-2218ccd28cb5",
+            "43893ce7-b25d-4c6c-a822-ed8cac2b2ea8",
+            "f085de7b-5eb9-423d-98f6-00870091aaf6",
+            "a6a0be5a-8e29-41bd-ab68-899c3fa2e3f0",
+            "87c0200b-dd28-49eb-b604-064403947a08"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a53f9a32-0574-5ecd-ac6f-60e5d17909c5",
+    "id": "841f5a59-f6e7-595c-afd2-85eb666e9818",
     "type": "sortings"
   },
   "meta": {}
@@ -71,7 +71,7 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][type]` | **String_enum** <br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`
+`data[attributes][type]` | **String_enum** <br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `data[attributes][ids]` | **Array_of_strings** <br>Array of ids, positions are determined by the order of the array
 
 
