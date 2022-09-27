@@ -45,11 +45,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "a9e08e94-a446-4a49-b701-5e7269cdbd7d",
+      "id": "da06e5e1-8501-4dd0-b1da-f0ba7e3ed830",
       "type": "bundles",
       "attributes": {
-        "created_at": "2022-09-16T14:14:11+00:00",
-        "updated_at": "2022-09-16T14:14:11+00:00",
+        "created_at": "2022-09-27T06:43:19+00:00",
+        "updated_at": "2022-09-27T06:43:19+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -83,22 +83,22 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=a9e08e94-a446-4a49-b701-5e7269cdbd7d"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=da06e5e1-8501-4dd0-b1da-f0ba7e3ed830"
           }
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=a9e08e94-a446-4a49-b701-5e7269cdbd7d"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=da06e5e1-8501-4dd0-b1da-f0ba7e3ed830"
           }
         }
       }
     },
     {
-      "id": "5962b120-48cf-443f-ad3a-fdb00a0c1167",
+      "id": "f149c49b-09c9-4e3f-b6a8-9325aa9140ef",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-09-16T14:14:11+00:00",
-        "updated_at": "2022-09-16T14:14:11+00:00",
+        "created_at": "2022-09-27T06:43:19+00:00",
+        "updated_at": "2022-09-27T06:43:19+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -110,6 +110,7 @@ For this resource relationships are described in the following resources:
         "product_type": "rental",
         "tracking_type": "trackable",
         "trackable": true,
+        "has_variations": false,
         "extra_information": "Charging cable and case included",
         "photo_url": null,
         "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
@@ -132,7 +133,10 @@ For this resource relationships are described in the following resources:
         "variation_fields": [],
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
-        "tax_category_id": "e1121d46-dc09-4068-bc70-4d738a4d013b"
+        "stock_item_properties": [],
+        "tax_category_id": "9a12c0f9-fbb5-4b4d-901d-046f59216ed3",
+        "price_ruleset_id": null,
+        "price_structure_id": null
       },
       "relationships": {
         "photo": {
@@ -142,27 +146,37 @@ For this resource relationships are described in the following resources:
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=5962b120-48cf-443f-ad3a-fdb00a0c1167"
+            "related": "api/boomerang/products?filter[product_group_id]=f149c49b-09c9-4e3f-b6a8-9325aa9140ef"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/e1121d46-dc09-4068-bc70-4d738a4d013b"
+            "related": "api/boomerang/tax_categories/9a12c0f9-fbb5-4b4d-901d-046f59216ed3"
+          }
+        },
+        "price_ruleset": {
+          "links": {
+            "related": null
+          }
+        },
+        "price_structure": {
+          "links": {
+            "related": null
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=5962b120-48cf-443f-ad3a-fdb00a0c1167&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=f149c49b-09c9-4e3f-b6a8-9325aa9140ef&filter[owner_type]=product_groups"
           }
         }
       }
     },
     {
-      "id": "4a9deb07-619c-45bd-9a16-18563ce7ad55",
+      "id": "acec341d-97e0-4c6b-8c3b-bdee7862b62a",
       "type": "products",
       "attributes": {
-        "created_at": "2022-09-16T14:14:11+00:00",
-        "updated_at": "2022-09-16T14:14:11+00:00",
+        "created_at": "2022-09-27T06:43:19+00:00",
+        "updated_at": "2022-09-27T06:43:19+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -174,6 +188,7 @@ For this resource relationships are described in the following resources:
         "product_type": "rental",
         "tracking_type": "trackable",
         "trackable": true,
+        "has_variations": false,
         "extra_information": "Charging cable and case included",
         "photo_url": null,
         "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
@@ -194,9 +209,10 @@ For this resource relationships are described in the following resources:
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "5962b120-48cf-443f-ad3a-fdb00a0c1167",
-        "tax_category_id": "e1121d46-dc09-4068-bc70-4d738a4d013b",
-        "price_structure_id": null
+        "product_group_id": "f149c49b-09c9-4e3f-b6a8-9325aa9140ef",
+        "tax_category_id": "9a12c0f9-fbb5-4b4d-901d-046f59216ed3",
+        "price_structure_id": null,
+        "price_ruleset_id": null
       },
       "relationships": {
         "photo": {
@@ -206,17 +222,17 @@ For this resource relationships are described in the following resources:
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/5962b120-48cf-443f-ad3a-fdb00a0c1167"
+            "related": "api/boomerang/product_groups/f149c49b-09c9-4e3f-b6a8-9325aa9140ef"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/e1121d46-dc09-4068-bc70-4d738a4d013b"
+            "related": "api/boomerang/tax_categories/9a12c0f9-fbb5-4b4d-901d-046f59216ed3"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=4a9deb07-619c-45bd-9a16-18563ce7ad55&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=acec341d-97e0-4c6b-8c3b-bdee7862b62a&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -226,12 +242,17 @@ For this resource relationships are described in the following resources:
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=4a9deb07-619c-45bd-9a16-18563ce7ad55"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=acec341d-97e0-4c6b-8c3b-bdee7862b62a"
+          }
+        },
+        "price_ruleset": {
+          "links": {
+            "related": null
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=5962b120-48cf-443f-ad3a-fdb00a0c1167&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=f149c49b-09c9-4e3f-b6a8-9325aa9140ef&filter[owner_type]=products"
           }
         }
       }
@@ -251,9 +272,9 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,price_structure`
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-27T06:41:47Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -280,6 +301,7 @@ Name | Description
 `product_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tracking_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `trackable` | **Boolean** <br>`eq`
+`has_variations` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
@@ -292,6 +314,7 @@ Name | Description
 `taxable` | **Boolean** <br>`eq`
 `tag_list` | **String** <br>`eq`
 `tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 `q` | **String** <br>`eq`
 `collection_id` | **Uuid** <br>`eq`
@@ -387,19 +410,19 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "d5b22f29-9f2d-4528-9b83-7232f4206c93"
+      "id": "d3a2c3a9-2814-4c82-a7c7-82e99f933b45"
     },
     {
-      "id": "a0bb0039-28b0-4bd1-be3f-03a7c1efed02"
+      "id": "f38e5946-6392-4801-ae1d-b9458ad51a98"
     },
     {
-      "id": "23911193-084c-4ae4-87e6-7c5a40a4269f"
+      "id": "8dd9558b-ad71-4ea4-9a29-2868c7cf6608"
     },
     {
-      "id": "bbfef54c-7b38-4d05-867f-f2e28ff9a217"
+      "id": "920260a0-eaf6-4d25-8452-07d2f707cbdb"
     },
     {
-      "id": "a5dc6651-a6b2-49ec-b3c0-4c0db10430a7"
+      "id": "3249d346-70d4-4496-990e-4e5e7f8497e6"
     }
   ]
 }
@@ -415,9 +438,9 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,price_structure`
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-16T14:12:38Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-27T06:41:47Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -444,6 +467,7 @@ Name | Description
 `product_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tracking_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `trackable` | **Boolean** <br>`eq`
+`has_variations` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
@@ -456,6 +480,7 @@ Name | Description
 `taxable` | **Boolean** <br>`eq`
 `tag_list` | **String** <br>`eq`
 `tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 `q` | **String** <br>`eq`
 `collection_id` | **Uuid** <br>`eq`
