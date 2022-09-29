@@ -55,27 +55,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e7d3ad7f-d97c-56ed-b9eb-34f80403b4b0",
+    "id": "5e52543e-0705-5970-9796-c09912e9fe39",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "e591e454-8bc3-48e4-ae08-cfc6d801f637"
+      "employee_id": "77debe8f-1c07-46c7-b334-d8902e974d65"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "e591e454-8bc3-48e4-ae08-cfc6d801f637"
+          "id": "77debe8f-1c07-46c7-b334-d8902e974d65"
         }
       }
     }
   },
   "included": [
     {
-      "id": "e591e454-8bc3-48e4-ae08-cfc6d801f637",
+      "id": "77debe8f-1c07-46c7-b334-d8902e974d65",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-09-16T14:13:48+00:00",
-        "updated_at": "2022-09-16T14:13:48+00:00",
+        "created_at": "2022-09-27T06:42:54+00:00",
+        "updated_at": "2022-09-27T06:42:54+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -108,7 +108,7 @@ Note that you can also update other fields.:
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "606072f5-bcd2-4d61-a90e-be85c2bef325",
+          "id": "a64973c7-5638-4332-bf18-f0d8ee166c51",
           "email": "jane@doe.com"
         }
       },
@@ -121,27 +121,27 @@ Note that you can also update other fields.:
 ```json
   {
   "data": {
-    "id": "606072f5-bcd2-4d61-a90e-be85c2bef325",
+    "id": "a64973c7-5638-4332-bf18-f0d8ee166c51",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "606072f5-bcd2-4d61-a90e-be85c2bef325"
+      "employee_id": "a64973c7-5638-4332-bf18-f0d8ee166c51"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "606072f5-bcd2-4d61-a90e-be85c2bef325"
+          "id": "a64973c7-5638-4332-bf18-f0d8ee166c51"
         }
       }
     }
   },
   "included": [
     {
-      "id": "606072f5-bcd2-4d61-a90e-be85c2bef325",
+      "id": "a64973c7-5638-4332-bf18-f0d8ee166c51",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-09-16T14:13:49+00:00",
-        "updated_at": "2022-09-16T14:13:49+00:00",
+        "created_at": "2022-09-27T06:42:55+00:00",
+        "updated_at": "2022-09-27T06:42:55+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
