@@ -54,7 +54,7 @@ Name | Description
 `product_type` | **String** <br>One of `rental`, `consumable`, `service`
 `tracking_type` | **String** <br>Tracking type (One of `none`, `bulk`, `trackable`, can only be set on creating ProductGroups)
 `trackable` | **Boolean** <br>Wheter stock items are tracked
-`has_variations` | **Boolean** <br>Whether variations are enabled
+`has_variations` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
 `extra_information` | **String** `nullable`<br>Extra information about the item, shown on orders and documents
 `photo_url` | **String** `readonly`<br>Main photo url
 `remote_photo_url` | **String** `writeonly`<br>Url to an image on the web
@@ -116,11 +116,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "5969e60c-00ac-4244-b464-d47ee4af8103",
+      "id": "3b19be13-617b-43bf-aca7-df529f05fdfe",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-09-27T06:44:55+00:00",
-        "updated_at": "2022-09-27T06:44:55+00:00",
+        "created_at": "2022-09-30T12:00:35+00:00",
+        "updated_at": "2022-09-30T12:00:35+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -165,7 +165,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=5969e60c-00ac-4244-b464-d47ee4af8103"
+            "related": "api/boomerang/products?filter[product_group_id]=3b19be13-617b-43bf-aca7-df529f05fdfe"
           }
         },
         "tax_category": {
@@ -185,7 +185,7 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=5969e60c-00ac-4244-b464-d47ee4af8103&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=3b19be13-617b-43bf-aca7-df529f05fdfe&filter[owner_type]=product_groups"
           }
         }
       }
@@ -207,7 +207,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-27T06:41:48Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -345,13 +345,13 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "d0c81886-c041-47de-a212-709db2a8bb6f"
+      "id": "567d6841-cc4c-4e56-9411-225a0fd416fd"
     },
     {
-      "id": "b12e1a99-0541-4b96-a8f9-eb2a6e277a89"
+      "id": "461c8f10-d110-41ec-8a75-e5c8a9096672"
     },
     {
-      "id": "da423978-37d0-4d4f-8997-5f8d09076e43"
+      "id": "cf416c60-41d5-4af5-b7f9-eec2d0ea7e0c"
     }
   ]
 }
@@ -369,7 +369,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-27T06:41:48Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -462,7 +462,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/d155658c-aa10-4561-9067-f7f2c62bb16e' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/daf823fd-b4b3-45b3-824e-5652f9d1a0ba' \
     --header 'content-type: application/json' \
 ```
 
@@ -471,11 +471,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d155658c-aa10-4561-9067-f7f2c62bb16e",
+    "id": "daf823fd-b4b3-45b3-824e-5652f9d1a0ba",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-09-27T06:44:59+00:00",
-      "updated_at": "2022-09-27T06:44:59+00:00",
+      "created_at": "2022-09-30T12:00:38+00:00",
+      "updated_at": "2022-09-30T12:00:38+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -520,7 +520,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=d155658c-aa10-4561-9067-f7f2c62bb16e"
+          "related": "api/boomerang/products?filter[product_group_id]=daf823fd-b4b3-45b3-824e-5652f9d1a0ba"
         }
       },
       "tax_category": {
@@ -540,7 +540,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=d155658c-aa10-4561-9067-f7f2c62bb16e&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=daf823fd-b4b3-45b3-824e-5652f9d1a0ba&filter[owner_type]=product_groups"
         }
       }
     }
@@ -625,11 +625,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6c0ce18e-c859-489a-9279-b12caecd3d03",
+    "id": "d658c79b-f967-4a12-a666-3bba3afb20b7",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-09-27T06:45:00+00:00",
-      "updated_at": "2022-09-27T06:45:00+00:00",
+      "created_at": "2022-09-30T12:00:39+00:00",
+      "updated_at": "2022-09-30T12:00:39+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -733,7 +733,7 @@ Name | Description
 `data[attributes][product_type]` | **String** <br>One of `rental`, `consumable`, `service`
 `data[attributes][tracking_type]` | **String** <br>Tracking type (One of `none`, `bulk`, `trackable`, can only be set on creating ProductGroups)
 `data[attributes][trackable]` | **Boolean** <br>Wheter stock items are tracked
-`data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled
+`data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
 `data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
 `data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
@@ -794,11 +794,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/dbb19745-d177-4e52-a0fa-a5d5a5b07c79' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/5425f742-fb72-4318-b581-54930ef8497c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "dbb19745-d177-4e52-a0fa-a5d5a5b07c79",
+        "id": "5425f742-fb72-4318-b581-54930ef8497c",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -812,11 +812,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dbb19745-d177-4e52-a0fa-a5d5a5b07c79",
+    "id": "5425f742-fb72-4318-b581-54930ef8497c",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-09-27T06:45:00+00:00",
-      "updated_at": "2022-09-27T06:45:01+00:00",
+      "created_at": "2022-09-30T12:00:40+00:00",
+      "updated_at": "2022-09-30T12:00:41+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -917,7 +917,7 @@ Name | Description
 `data[attributes][product_type]` | **String** <br>One of `rental`, `consumable`, `service`
 `data[attributes][tracking_type]` | **String** <br>Tracking type (One of `none`, `bulk`, `trackable`, can only be set on creating ProductGroups)
 `data[attributes][trackable]` | **Boolean** <br>Wheter stock items are tracked
-`data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled
+`data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
 `data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
 `data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
@@ -978,7 +978,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/df4c7068-6f9f-4bc9-bdaa-9d739e4a4a50' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/944aa492-ed07-47c4-9070-78e06a02f125' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

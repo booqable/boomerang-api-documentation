@@ -37,10 +37,10 @@ Name | Description
 - | -
 `id` | **Uuid** `readonly`<br>
 `order_id` | **Uuid** <br>The associated Order
-`transition_from` | **String** <br>The current status of the Order. One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`. 
-`transition_to` | **String** <br>The new status of the Order. One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.<br>It is only possible to transition to `started` or `stopped` in combination with `revert: true`. 
+`transition_from` | **String_enum** <br>The current status of the Order. One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`. 
+`transition_to` | **String_enum** <br>The new status of the Order. One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.<br>It is only possible to transition to `started` or `stopped` in combination with `revert: true`. 
 `revert` | **Boolean** <br>Indicates if this transition reverts the Order back to an earlier status. "Earlier status" does not require this specific Order to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of Orders in general. 
-`confirm_shortage` | **Boolean** `writeonly`<br>When creating a `OrderStatusTransition`, a value of `true` overrides shortage warnings. 
+`confirm_shortage` | **Boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an Order. 
 
 
 ## Relationships
@@ -65,7 +65,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "854b32e0-9265-4ccd-a883-b44c5bb32b2e",
+          "order_id": "ed8bc9e3-fceb-4d7f-ac41-bd6f45148f9e",
           "transition_from": "new",
           "transition_to": "concept",
           "confirm_shortage": null,
@@ -80,13 +80,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "31ff5114-3649-52f6-bfa8-e4fac6baa07b",
+    "id": "65637913-b5b2-56fa-a472-f9970a3f231b",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "854b32e0-9265-4ccd-a883-b44c5bb32b2e",
+      "order_id": "ed8bc9e3-fceb-4d7f-ac41-bd6f45148f9e",
       "transition_from": "new",
       "transition_to": "concept",
-      "revert": null
+      "revert": null,
+      "confirm_shortage": null
     },
     "relationships": {
       "order": {
@@ -111,7 +112,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "e86c345d-1880-42c9-9c30-bba937eee630",
+          "order_id": "d08e0771-5da7-4251-882a-8164dd63a12e",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -126,13 +127,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1505e0e0-8355-580a-9647-4a838012ee76",
+    "id": "34f2bf24-3980-50e0-8cee-8dd69ea812f6",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "e86c345d-1880-42c9-9c30-bba937eee630",
+      "order_id": "d08e0771-5da7-4251-882a-8164dd63a12e",
       "transition_from": "concept",
       "transition_to": "reserved",
-      "revert": null
+      "revert": null,
+      "confirm_shortage": null
     },
     "relationships": {
       "order": {
@@ -157,7 +159,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "325b6e05-e14a-4938-b719-1c9a1c90a675",
+          "order_id": "8047b6e7-4abe-46b4-a4cf-545b263bf130",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -182,7 +184,7 @@ Name | Description
         "blocking": [
           {
             "reason": "shortage",
-            "item_id": "f37ba8ec-066e-4482-af2c-631d8d3401fa",
+            "item_id": "09343d1c-7b27-4d9d-9072-3625e72b7e3f",
             "stock_count": 1,
             "reserved": 0,
             "needed": 2,
@@ -206,7 +208,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "785494f1-2b04-4b6f-ae33-91899653127d",
+          "order_id": "8d8f960a-eb9c-47a6-9283-ced4b33d63fd",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -230,7 +232,7 @@ Name | Description
         "warning": [
           {
             "reason": "shortage",
-            "item_id": "60cc8fae-6f93-403e-838b-ba6c92be484d",
+            "item_id": "3c72c280-abc4-4baf-b067-7d6eefc4fb00",
             "stock_count": 1,
             "reserved": 0,
             "needed": 2,
@@ -255,7 +257,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "28fb12c9-7170-4f9d-9a12-013f0e6d4e4e",
+          "order_id": "d1028179-addf-40cf-8594-e10abbf791b1",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": true,
@@ -270,13 +272,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b46f9373-4a42-5528-aa03-5aba31bc9e0a",
+    "id": "dd37783b-5b2c-5874-9d24-7ceb52c523ed",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "28fb12c9-7170-4f9d-9a12-013f0e6d4e4e",
+      "order_id": "d1028179-addf-40cf-8594-e10abbf791b1",
       "transition_from": "concept",
       "transition_to": "reserved",
-      "revert": null
+      "revert": null,
+      "confirm_shortage": true
     },
     "relationships": {
       "order": {
@@ -301,7 +304,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "4d5df3a3-5d39-40e3-b0a9-d6d020bb867d",
+          "order_id": "a27f72d8-ec95-4fff-8b3c-30c004ebdc60",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -326,12 +329,12 @@ Name | Description
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "c7be6efb-2a04-473c-b0f1-a3daef73fc25",
+            "item_id": "383e388f-de5e-49a5-9d80-3c60bb90c7fd",
             "unavailable": [
-              "a9d89137-8ee4-4b7d-909c-0a504b1099bf"
+              "e3df1cb3-5163-4aac-87e3-bfd09db3d729"
             ],
             "available": [
-              "7cc95d9a-f0f7-444d-9227-d2a64685645b"
+              "b3c0b7b7-8cd8-418f-9437-f09700416876"
             ]
           }
         ]
@@ -352,7 +355,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "22386966-122f-4b31-9af2-2279c30315ee",
+          "order_id": "f1bffbae-c5d4-4c80-8e07-20947c53510e",
           "transition_from": "reserved",
           "transition_to": "archived",
           "confirm_shortage": null,
@@ -389,7 +392,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "2d48b12e-ee83-4af0-87d5-613423badaed",
+          "order_id": "1c35daf8-3a32-4f24-b0bc-2d72033134e5",
           "transition_from": "stopped",
           "transition_to": "archived",
           "confirm_shortage": null,
@@ -404,13 +407,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a7073c94-2a52-5aa3-851a-678e13d152e0",
+    "id": "8ee75092-424b-5646-aa19-ccf8c18bf670",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "2d48b12e-ee83-4af0-87d5-613423badaed",
+      "order_id": "1c35daf8-3a32-4f24-b0bc-2d72033134e5",
       "transition_from": "stopped",
       "transition_to": "archived",
-      "revert": null
+      "revert": null,
+      "confirm_shortage": null
     },
     "relationships": {
       "order": {
@@ -435,7 +439,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "47543ac4-a16e-47c0-ac86-d646d44cfb11",
+          "order_id": "0695efcf-43fe-42eb-a5cb-0a82d0652edc",
           "transition_from": "reserved",
           "transition_to": "concept",
           "confirm_shortage": null,
@@ -450,13 +454,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "571aa4b7-9446-5519-9681-514b42db5e4e",
+    "id": "3a7bab10-527a-5279-aca2-cc264f1d7eb4",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "47543ac4-a16e-47c0-ac86-d646d44cfb11",
+      "order_id": "0695efcf-43fe-42eb-a5cb-0a82d0652edc",
       "transition_from": "reserved",
       "transition_to": "concept",
-      "revert": true
+      "revert": true,
+      "confirm_shortage": null
     },
     "relationships": {
       "order": {
@@ -491,10 +496,10 @@ This request accepts the following body:
 Name | Description
 - | -
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][transition_from]` | **String** <br>The current status of the Order. One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`. 
-`data[attributes][transition_to]` | **String** <br>The new status of the Order. One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.<br>It is only possible to transition to `started` or `stopped` in combination with `revert: true`. 
+`data[attributes][transition_from]` | **String_enum** <br>The current status of the Order. One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`. 
+`data[attributes][transition_to]` | **String_enum** <br>The new status of the Order. One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.<br>It is only possible to transition to `started` or `stopped` in combination with `revert: true`. 
 `data[attributes][revert]` | **Boolean** <br>Indicates if this transition reverts the Order back to an earlier status. "Earlier status" does not require this specific Order to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of Orders in general. 
-`data[attributes][confirm_shortage]` | **Boolean** <br>When creating a `OrderStatusTransition`, a value of `true` overrides shortage warnings. 
+`data[attributes][confirm_shortage]` | **Boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an Order. 
 
 
 ### Includes
