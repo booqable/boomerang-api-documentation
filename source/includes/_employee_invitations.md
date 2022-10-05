@@ -55,30 +55,31 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d9b9f485-58ee-5940-90d1-a92f0dd4db96",
+    "id": "02f6e698-eb86-5944-b506-2df7c084baf4",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "b408b6cf-efd1-4b31-b93b-6e536ef4e37c"
+      "employee_id": "1876ac89-496c-4c81-b990-ee6df28c1542"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "b408b6cf-efd1-4b31-b93b-6e536ef4e37c"
+          "id": "1876ac89-496c-4c81-b990-ee6df28c1542"
         }
       }
     }
   },
   "included": [
     {
-      "id": "b408b6cf-efd1-4b31-b93b-6e536ef4e37c",
+      "id": "1876ac89-496c-4c81-b990-ee6df28c1542",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-09-30T11:58:12+00:00",
-        "updated_at": "2022-09-30T11:58:12+00:00",
+        "created_at": "2022-10-05T11:35:48+00:00",
+        "updated_at": "2022-10-05T11:35:48+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
         "active": true,
@@ -108,7 +109,7 @@ Note that you can also update other fields.:
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "2947c7b8-ca02-47e2-8acd-216d98396107",
+          "id": "a09e98f9-077d-481f-aacf-b269e82ad476",
           "email": "jane@doe.com"
         }
       },
@@ -121,30 +122,31 @@ Note that you can also update other fields.:
 ```json
   {
   "data": {
-    "id": "2947c7b8-ca02-47e2-8acd-216d98396107",
+    "id": "a09e98f9-077d-481f-aacf-b269e82ad476",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "2947c7b8-ca02-47e2-8acd-216d98396107"
+      "employee_id": "a09e98f9-077d-481f-aacf-b269e82ad476"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "2947c7b8-ca02-47e2-8acd-216d98396107"
+          "id": "a09e98f9-077d-481f-aacf-b269e82ad476"
         }
       }
     }
   },
   "included": [
     {
-      "id": "2947c7b8-ca02-47e2-8acd-216d98396107",
+      "id": "a09e98f9-077d-481f-aacf-b269e82ad476",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-09-30T11:58:13+00:00",
-        "updated_at": "2022-09-30T11:58:13+00:00",
+        "created_at": "2022-10-05T11:35:49+00:00",
+        "updated_at": "2022-10-05T11:35:49+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "jane@doe.com",
         "unconfirmed_email": null,
         "active": true,

@@ -116,11 +116,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "3b19be13-617b-43bf-aca7-df529f05fdfe",
+      "id": "172bf84a-9e20-4901-9e41-ec77c0eb6867",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-09-30T12:00:35+00:00",
-        "updated_at": "2022-09-30T12:00:35+00:00",
+        "created_at": "2022-10-05T11:37:38+00:00",
+        "updated_at": "2022-10-05T11:37:38+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -165,7 +165,7 @@ Name | Description
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=3b19be13-617b-43bf-aca7-df529f05fdfe"
+            "related": "api/boomerang/products?filter[product_group_id]=172bf84a-9e20-4901-9e41-ec77c0eb6867"
           }
         },
         "tax_category": {
@@ -185,7 +185,7 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=3b19be13-617b-43bf-aca7-df529f05fdfe&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=172bf84a-9e20-4901-9e41-ec77c0eb6867&filter[owner_type]=product_groups"
           }
         }
       }
@@ -207,7 +207,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-10-05T11:34:45Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -345,13 +345,13 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "567d6841-cc4c-4e56-9411-225a0fd416fd"
+      "id": "a6893c3a-8f53-41a1-bd58-669f3fbddc7e"
     },
     {
-      "id": "461c8f10-d110-41ec-8a75-e5c8a9096672"
+      "id": "79057369-6f95-406b-a3bf-324ada2292eb"
     },
     {
-      "id": "cf416c60-41d5-4af5-b7f9-eec2d0ea7e0c"
+      "id": "6b40fad0-e6f6-4d58-88d3-14469574b20c"
     }
   ]
 }
@@ -369,7 +369,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-10-05T11:34:45Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -462,7 +462,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/daf823fd-b4b3-45b3-824e-5652f9d1a0ba' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/a674b73c-951f-479e-a4a9-aebc92119f5d' \
     --header 'content-type: application/json' \
 ```
 
@@ -471,11 +471,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "daf823fd-b4b3-45b3-824e-5652f9d1a0ba",
+    "id": "a674b73c-951f-479e-a4a9-aebc92119f5d",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-09-30T12:00:38+00:00",
-      "updated_at": "2022-09-30T12:00:38+00:00",
+      "created_at": "2022-10-05T11:37:41+00:00",
+      "updated_at": "2022-10-05T11:37:41+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -520,7 +520,7 @@ This request accepts the following includes:
       },
       "products": {
         "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=daf823fd-b4b3-45b3-824e-5652f9d1a0ba"
+          "related": "api/boomerang/products?filter[product_group_id]=a674b73c-951f-479e-a4a9-aebc92119f5d"
         }
       },
       "tax_category": {
@@ -540,7 +540,7 @@ This request accepts the following includes:
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=daf823fd-b4b3-45b3-824e-5652f9d1a0ba&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=a674b73c-951f-479e-a4a9-aebc92119f5d&filter[owner_type]=product_groups"
         }
       }
     }
@@ -625,11 +625,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d658c79b-f967-4a12-a666-3bba3afb20b7",
+    "id": "7f045c99-4605-46a1-bde2-2bc6f313bfc9",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-09-30T12:00:39+00:00",
-      "updated_at": "2022-09-30T12:00:39+00:00",
+      "created_at": "2022-10-05T11:37:42+00:00",
+      "updated_at": "2022-10-05T11:37:42+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -794,11 +794,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/5425f742-fb72-4318-b581-54930ef8497c' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/391ab2ad-7076-4054-902c-3b3bf91fc773' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5425f742-fb72-4318-b581-54930ef8497c",
+        "id": "391ab2ad-7076-4054-902c-3b3bf91fc773",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -812,11 +812,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5425f742-fb72-4318-b581-54930ef8497c",
+    "id": "391ab2ad-7076-4054-902c-3b3bf91fc773",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-09-30T12:00:40+00:00",
-      "updated_at": "2022-09-30T12:00:41+00:00",
+      "created_at": "2022-10-05T11:37:42+00:00",
+      "updated_at": "2022-10-05T11:37:42+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -978,7 +978,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/944aa492-ed07-47c4-9070-78e06a02f125' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/a289cc2d-cb68-4992-aabf-09a720035611' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
