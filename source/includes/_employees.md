@@ -26,6 +26,7 @@ Name | Description
 `name` | **String** `readonly`<br>Full name of the employee
 `firstname` | **String** <br>First name of the employee
 `lastname` | **String** <br>Last name of the employee
+`locale` | **String** <br>Locale of the employee, used as application locale
 `email` | **String** <br>Employee's e-mail address
 `unconfirmed_email` | **String** `readonly`<br>Unconfirmed e-mail address if present
 `current_password` | **String** `writeonly`<br>Current password, needed to update password or email address
@@ -63,14 +64,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "09cb332f-9df5-4057-9e26-de8aa50cedf5",
+      "id": "32441bff-94b9-4e31-b8a4-b1a216a6195c",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-09-30T11:58:13+00:00",
-        "updated_at": "2022-09-30T11:58:13+00:00",
+        "created_at": "2022-10-07T11:56:38+00:00",
+        "updated_at": "2022-10-07T11:56:38+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
         "active": true,
@@ -111,7 +113,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-10-07T11:55:30Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -127,6 +129,7 @@ Name | Description
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`locale` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `email` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `active` | **Boolean** <br>`eq`
 `deactivated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -154,7 +157,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/39df290e-6f4c-4dd5-ad23-ef11f5ff2bb9' \
+    --url 'https://example.booqable.com/api/boomerang/employees/82d3c7d1-fdaa-4c51-a14c-fcc34773b9d4' \
     --header 'content-type: application/json' \
 ```
 
@@ -163,14 +166,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "39df290e-6f4c-4dd5-ad23-ef11f5ff2bb9",
+    "id": "82d3c7d1-fdaa-4c51-a14c-fcc34773b9d4",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-09-30T11:58:13+00:00",
-      "updated_at": "2022-09-30T11:58:13+00:00",
+      "created_at": "2022-10-07T11:56:38+00:00",
+      "updated_at": "2022-10-07T11:56:38+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
+      "locale": null,
       "email": "john@doe.com",
       "unconfirmed_email": null,
       "active": true,
@@ -223,11 +227,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/90bbbf00-76d4-4c00-b5df-05987e292c26' \
+    --url 'https://example.booqable.com/api/boomerang/employees/13daa571-86c8-45b1-bf4e-ec550ac5eae0' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "90bbbf00-76d4-4c00-b5df-05987e292c26",
+        "id": "13daa571-86c8-45b1-bf4e-ec550ac5eae0",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -241,14 +245,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "90bbbf00-76d4-4c00-b5df-05987e292c26",
+    "id": "13daa571-86c8-45b1-bf4e-ec550ac5eae0",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-09-30T11:58:14+00:00",
-      "updated_at": "2022-09-30T11:58:14+00:00",
+      "created_at": "2022-10-07T11:56:38+00:00",
+      "updated_at": "2022-10-07T11:56:38+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
+      "locale": null,
       "email": "jane@doe.com",
       "unconfirmed_email": null,
       "active": true,
@@ -281,11 +286,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/3bfdc8a4-ad4d-41d6-aa01-60eed86e86d8' \
+    --url 'https://example.booqable.com/api/boomerang/employees/e83d4150-a1f4-4b6a-95c5-9fe7a4933b8c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "3bfdc8a4-ad4d-41d6-aa01-60eed86e86d8",
+        "id": "e83d4150-a1f4-4b6a-95c5-9fe7a4933b8c",
         "type": "employees",
         "attributes": {
           "active": false
@@ -299,14 +304,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3bfdc8a4-ad4d-41d6-aa01-60eed86e86d8",
+    "id": "e83d4150-a1f4-4b6a-95c5-9fe7a4933b8c",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-09-30T11:58:14+00:00",
-      "updated_at": "2022-09-30T11:58:14+00:00",
+      "created_at": "2022-10-07T11:56:39+00:00",
+      "updated_at": "2022-10-07T11:56:39+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
+      "locale": null,
       "email": "jane@doe.com",
       "unconfirmed_email": null,
       "active": false,
@@ -339,11 +345,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/f514f7d0-bbe4-41c9-b7c5-52ecab95d2ae' \
+    --url 'https://example.booqable.com/api/boomerang/employees/a2a7b0ac-15e9-42d5-a9d4-b0ee9df256fb' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f514f7d0-bbe4-41c9-b7c5-52ecab95d2ae",
+        "id": "a2a7b0ac-15e9-42d5-a9d4-b0ee9df256fb",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -360,14 +366,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f514f7d0-bbe4-41c9-b7c5-52ecab95d2ae",
+    "id": "a2a7b0ac-15e9-42d5-a9d4-b0ee9df256fb",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-09-30T11:58:15+00:00",
-      "updated_at": "2022-09-30T11:58:15+00:00",
+      "created_at": "2022-10-07T11:56:39+00:00",
+      "updated_at": "2022-10-07T11:56:39+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
+      "locale": null,
       "email": "jane@doe.com",
       "unconfirmed_email": null,
       "active": true,
@@ -409,6 +416,7 @@ Name | Description
 - | -
 `data[attributes][firstname]` | **String** <br>First name of the employee
 `data[attributes][lastname]` | **String** <br>Last name of the employee
+`data[attributes][locale]` | **String** <br>Locale of the employee, used as application locale
 `data[attributes][email]` | **String** <br>Employee's e-mail address
 `data[attributes][current_password]` | **String** <br>Current password, needed to update password or email address
 `data[attributes][password]` | **String** <br>Set a new password
