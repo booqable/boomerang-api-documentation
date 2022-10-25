@@ -53,20 +53,20 @@ Name | Description
   {
   "data": [
     {
-      "id": "79dfbe44-8514-4135-aa70-70cfb16525ce",
+      "id": "996a68c8-20e4-41b7-9d39-7e12f4818888",
       "type": "checkout_fields",
       "attributes": {
-        "created_at": "2022-09-30T11:57:36+00:00",
-        "updated_at": "2022-09-30T11:57:36+00:00",
+        "created_at": "2022-10-25T18:48:51+00:00",
+        "updated_at": "2022-10-25T18:48:51+00:00",
         "name": "Special requests",
         "required": false,
         "position": null,
-        "default_property_id": "cf1a580f-82ba-4373-b399-b40a4a41ed51"
+        "default_property_id": "05791523-e06d-4cc9-bb84-07e44a1420fa"
       },
       "relationships": {
         "default_property": {
           "links": {
-            "related": "api/boomerang/default_properties/cf1a580f-82ba-4373-b399-b40a4a41ed51"
+            "related": "api/boomerang/default_properties/05791523-e06d-4cc9-bb84-07e44a1420fa"
           }
         }
       }
@@ -88,7 +88,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=default_property`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-10-25T18:48:24Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -129,7 +129,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/ee8fcea5-9cd2-436e-89b0-3f117e9fcbbe?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/4f0916d2-5753-4550-b93f-92194c75e37f?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -138,35 +138,35 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ee8fcea5-9cd2-436e-89b0-3f117e9fcbbe",
+    "id": "4f0916d2-5753-4550-b93f-92194c75e37f",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2022-09-30T11:57:36+00:00",
-      "updated_at": "2022-09-30T11:57:36+00:00",
+      "created_at": "2022-10-25T18:48:51+00:00",
+      "updated_at": "2022-10-25T18:48:51+00:00",
       "name": "Special requests",
       "required": false,
       "position": null,
-      "default_property_id": "14cca6a3-0a53-43ff-a256-825377dd755f"
+      "default_property_id": "65143d28-f389-487b-9ddf-94ba18566225"
     },
     "relationships": {
       "default_property": {
         "links": {
-          "related": "api/boomerang/default_properties/14cca6a3-0a53-43ff-a256-825377dd755f"
+          "related": "api/boomerang/default_properties/65143d28-f389-487b-9ddf-94ba18566225"
         },
         "data": {
           "type": "default_properties",
-          "id": "14cca6a3-0a53-43ff-a256-825377dd755f"
+          "id": "65143d28-f389-487b-9ddf-94ba18566225"
         }
       }
     }
   },
   "included": [
     {
-      "id": "14cca6a3-0a53-43ff-a256-825377dd755f",
+      "id": "65143d28-f389-487b-9ddf-94ba18566225",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2022-09-30T11:57:36+00:00",
-        "updated_at": "2022-09-30T11:57:36+00:00",
+        "created_at": "2022-10-25T18:48:51+00:00",
+        "updated_at": "2022-10-25T18:48:51+00:00",
         "name": "Default Property 4",
         "identifier": "default_property_4",
         "position": 1,
@@ -222,7 +222,7 @@ This request accepts the following includes:
         "type": "checkout_fields",
         "attributes": {
           "name": "Special requests",
-          "default_property_id": "3e5f7007-207a-4edf-a275-7361f54fd94d"
+          "default_property_id": "d188bcf8-a0a7-45ce-a5e9-beaf8fb0516a"
         }
       }
     }'
@@ -233,15 +233,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0803264b-0966-4e31-9e14-1f73d43b42d6",
+    "id": "7865fa2d-bee7-4163-9d1a-2fcdc8d0d852",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2022-09-30T11:57:36+00:00",
-      "updated_at": "2022-09-30T11:57:36+00:00",
+      "created_at": "2022-10-25T18:48:52+00:00",
+      "updated_at": "2022-10-25T18:48:52+00:00",
       "name": "Special requests",
       "required": false,
       "position": null,
-      "default_property_id": "3e5f7007-207a-4edf-a275-7361f54fd94d"
+      "default_property_id": "d188bcf8-a0a7-45ce-a5e9-beaf8fb0516a"
     },
     "relationships": {
       "default_property": {
@@ -299,11 +299,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/ec8f04ab-b49b-4c78-a521-b00e37f69dc5' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/d8d7d02a-ca3b-4675-aa04-927c6c81f9fc' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ec8f04ab-b49b-4c78-a521-b00e37f69dc5",
+        "id": "d8d7d02a-ca3b-4675-aa04-927c6c81f9fc",
         "type": "checkout_fields",
         "attributes": {
           "name": "Additional information"
@@ -317,15 +317,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ec8f04ab-b49b-4c78-a521-b00e37f69dc5",
+    "id": "d8d7d02a-ca3b-4675-aa04-927c6c81f9fc",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2022-09-30T11:57:37+00:00",
-      "updated_at": "2022-09-30T11:57:37+00:00",
+      "created_at": "2022-10-25T18:48:52+00:00",
+      "updated_at": "2022-10-25T18:48:52+00:00",
       "name": "Additional information",
       "required": false,
       "position": null,
-      "default_property_id": "82dc77c4-a7df-40f3-90d2-b1bc8a0304e1"
+      "default_property_id": "aa1aa6c8-86e0-40f4-9874-dbd67b8fd36d"
     },
     "relationships": {
       "default_property": {
@@ -383,7 +383,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/7d2d968d-da3f-47ab-a9d4-48bc36475792' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/5c2b7b81-7a23-488c-9920-0e3ba1203232' \
     --header 'content-type: application/json' \
 ```
 
