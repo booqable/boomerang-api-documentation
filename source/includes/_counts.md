@@ -31,7 +31,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "virtual-b40c3756-f964-5dbd-bbbc-3748bdf477f0",
+    "id": "virtual-806ac2c7-b946-5ca5-b86d-c73145610c6c",
     "type": "counts",
     "attributes": {
       "product_group_count": 1,
