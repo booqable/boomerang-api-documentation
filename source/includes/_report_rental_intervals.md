@@ -30,7 +30,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rental_intervals?filter%5Bfrom%5D=2022-09-20+00%3A00%3A00+UTC&filter%5Bproduct_id%5D=6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb&filter%5Btill%5D=2022-09-29+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rental_intervals?filter%5Bfrom%5D=2022-10-15+00%3A00%3A00+UTC&filter%5Bproduct_id%5D=3a8f20db-31c2-40c0-85ed-79b3d1da4644&filter%5Btill%5D=2022-10-24+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -40,171 +40,171 @@ Name | Description
   {
   "data": [
     {
-      "id": "virtual-3ce471a8-9bd6-57cf-9338-295c9b05ecb0",
+      "id": "virtual-adc2ff59-178d-5f83-8d62-83200e2e423a",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-20",
+        "date": "2022-10-15",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-d5e3c881-b862-5570-b1a7-47c8f3a0ff23",
+      "id": "virtual-0d93b622-3bee-5432-a12a-f8021ff901af",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-21",
+        "date": "2022-10-16",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-322578ad-85b9-5a9c-aaf2-8ded4d447f24",
+      "id": "virtual-8baac62b-2a96-5008-b955-55a38d3731dc",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-22",
+        "date": "2022-10-17",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-9eb7e68e-cad7-5132-a6dc-6dd5393d3c75",
+      "id": "virtual-b143863a-d3d0-5a78-ba3f-2ad64b560efa",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-23",
+        "date": "2022-10-18",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-64cdc385-cde4-5042-9706-703a938731f8",
+      "id": "virtual-6a002fea-bc29-5691-87c5-dc7c438984dd",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-24",
+        "date": "2022-10-19",
         "rented_count": 1,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-1f65960f-756d-51c6-9c1e-87c516729d73",
+      "id": "virtual-cc603fb9-da88-530a-b6d4-7be73e983f47",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-25",
+        "date": "2022-10-20",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-2a41bcfd-f2cb-5be4-a514-c68ede0ab2a6",
+      "id": "virtual-da281c9c-33f8-5a8d-9ff5-406fb8a4a01e",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-26",
+        "date": "2022-10-21",
         "rented_count": 1,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-f71eaa9c-af00-51c8-be0f-17204da30ccf",
+      "id": "virtual-5b969a9f-40d9-593d-a00a-b45018d6d54f",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-27",
+        "date": "2022-10-22",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-1e1f43e5-6fff-5156-9b1b-5cf7bee23788",
+      "id": "virtual-ba793ffd-417b-54bb-8b04-11d17fdad629",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-28",
+        "date": "2022-10-23",
         "rented_count": 1,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
     },
     {
-      "id": "virtual-6bedc65a-435b-5c13-bc05-eafa2e01a4b0",
+      "id": "virtual-5f45cefa-ab05-58a7-8a21-c5442594441c",
       "type": "report_rental_intervals",
       "attributes": {
-        "date": "2022-09-29",
+        "date": "2022-10-24",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+        "product_id": "3a8f20db-31c2-40c0-85ed-79b3d1da4644"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/6f97bd6d-48bf-49bc-8ce2-5bb5dc25c7cb"
+            "related": "api/boomerang/products/3a8f20db-31c2-40c0-85ed-79b3d1da4644"
           }
         }
       }
@@ -226,7 +226,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rental_intervals]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-10-25T14:57:41Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
