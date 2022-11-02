@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fa71a16d-29fa-57cc-9ab9-f2f9c96093d4",
+    "id": "97e3e488-e455-5a54-b2cd-03fb6433a215",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-09-30T12:01:24+00:00",
-      "company_id": "bac0b7c4-436b-4e20-9ff7-25475d30902e",
-      "employee_id": "1b6dc035-5af4-4dd8-b41e-40b71ed3abf0",
-      "locations_updated_at": "2022-09-30T12:01:24+00:00",
-      "clusters_updated_at": "2022-09-30T12:01:24+00:00",
-      "default_properties_updated_at": "2022-09-30T12:01:24+00:00"
+      "updated_at": "2022-11-02T10:22:16+00:00",
+      "company_id": "13f84f83-ad0e-4e5c-a415-a5cf57e43a51",
+      "employee_id": "1bd15f0e-20a8-4cf4-9971-5ee1bd760c32",
+      "locations_updated_at": "2022-11-02T10:22:16+00:00",
+      "clusters_updated_at": "2022-11-02T10:22:16+00:00",
+      "default_properties_updated_at": "2022-11-02T10:22:16+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fa71a16d-29fa-57cc-9ab9-f2f9c96093d4",
+    "id": "97e3e488-e455-5a54-b2cd-03fb6433a215",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-09-30T12:01:24+00:00",
-      "company_id": "d82f119b-1008-4e53-adaa-444c641abf35",
-      "employee_id": "d88e4b47-9a16-48e5-8743-cd7af2d595d1",
+      "updated_at": "2022-11-02T10:22:16+00:00",
+      "company_id": "aa2d8cf0-a92f-4b1e-94a9-dd7dd04738af",
+      "employee_id": "b18f5f2e-9bae-474b-ac38-eb5bbb17b79f",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "d82f119b-1008-4e53-adaa-444c641abf35"
+          "id": "aa2d8cf0-a92f-4b1e-94a9-dd7dd04738af"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "d88e4b47-9a16-48e5-8743-cd7af2d595d1"
+          "id": "b18f5f2e-9bae-474b-ac38-eb5bbb17b79f"
         }
       },
       "settings": {
@@ -177,14 +177,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "d82f119b-1008-4e53-adaa-444c641abf35",
+      "id": "aa2d8cf0-a92f-4b1e-94a9-dd7dd04738af",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-09-30T12:01:24+00:00",
-        "updated_at": "2022-09-30T12:01:24+00:00",
-        "name": "Company name 221",
-        "slug": "company-name-221",
-        "email": "mail224@company.com",
+        "created_at": "2022-11-02T10:22:16+00:00",
+        "updated_at": "2022-11-02T10:22:16+00:00",
+        "name": "Company name 227",
+        "slug": "company-name-227",
+        "email": "mail230@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -213,7 +213,7 @@ This request accepts the following includes:
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-10-14T12:01:24.511Z",
+          "trial_ends_at": "2022-11-16T10:22:16.705Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -236,8 +236,8 @@ This request accepts the following includes:
           "enabled_features": [],
           "allowed_features": [
             "bundles",
-            "advanced_pricing",
             "multiple_locations",
+            "advanced_pricing",
             "api",
             "custom_fields",
             "overbookings",
@@ -265,14 +265,15 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "d88e4b47-9a16-48e5-8743-cd7af2d595d1",
+      "id": "b18f5f2e-9bae-474b-ac38-eb5bbb17b79f",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-09-30T12:01:24+00:00",
-        "updated_at": "2022-09-30T12:01:24+00:00",
+        "created_at": "2022-11-02T10:22:16+00:00",
+        "updated_at": "2022-11-02T10:22:16+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
         "active": true,

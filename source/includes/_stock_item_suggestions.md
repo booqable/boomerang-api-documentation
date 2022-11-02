@@ -29,7 +29,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Bfrom%5D=2022-01-01&filter%5Bitem_id%5D=298716a5-5357-4dd1-ba16-cc442c913f72&filter%5Blocation_id%5D=28877f82-56aa-458a-b00b-dc00cc2ae269&filter%5Btill%5D=2022-01-07' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Bfrom%5D=2022-01-01&filter%5Bitem_id%5D=1d164370-c169-4cd5-a810-144841fe6a1a&filter%5Blocation_id%5D=7a47cdf7-ccf8-43e4-b87e-5cad0aaca3bf&filter%5Btill%5D=2022-01-07' \
     --header 'content-type: application/json' \
 ```
 
@@ -39,65 +39,65 @@ Name | Description
   {
   "data": [
     {
-      "id": "95b6b879-ac32-5897-810d-4dc17879628f",
+      "id": "8c5d9efb-d784-5463-b44f-d3cab26f99e8",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "1a0ce221-7638-40fa-a66f-3af2fdfd4bb7",
-        "item_id": "298716a5-5357-4dd1-ba16-cc442c913f72",
+        "stock_item_id": "4e5e72f5-4f2d-452c-8625-36009c8a035c",
+        "item_id": "1d164370-c169-4cd5-a810-144841fe6a1a",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/1a0ce221-7638-40fa-a66f-3af2fdfd4bb7"
+            "related": "api/boomerang/stock_items/4e5e72f5-4f2d-452c-8625-36009c8a035c"
           }
         }
       }
     },
     {
-      "id": "a57ae436-d7dc-57a7-b922-75fdd9bc0443",
+      "id": "aa1d97b8-2369-5eb8-b661-64eefcbdc535",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "92eafc2b-062b-459d-8e4f-adbc0dbec9b5",
-        "item_id": "298716a5-5357-4dd1-ba16-cc442c913f72",
+        "stock_item_id": "02c40927-5e0e-4b64-9284-4e6d8c4fd481",
+        "item_id": "1d164370-c169-4cd5-a810-144841fe6a1a",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/92eafc2b-062b-459d-8e4f-adbc0dbec9b5"
+            "related": "api/boomerang/stock_items/02c40927-5e0e-4b64-9284-4e6d8c4fd481"
           }
         }
       }
     },
     {
-      "id": "f189caa9-d64a-5451-918d-cf782dadc1e6",
+      "id": "c95d7382-e40a-5ed9-907e-193a8d7cb6e1",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "89e9454d-aa45-44f0-aa40-4335762e474b",
-        "item_id": "298716a5-5357-4dd1-ba16-cc442c913f72",
+        "stock_item_id": "91c83eef-e6f9-4448-ab3a-96280f390cab",
+        "item_id": "1d164370-c169-4cd5-a810-144841fe6a1a",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/89e9454d-aa45-44f0-aa40-4335762e474b"
+            "related": "api/boomerang/stock_items/91c83eef-e6f9-4448-ab3a-96280f390cab"
           }
         }
       }
     },
     {
-      "id": "b187f727-3f1c-5af6-af6a-cc6c489e1ac3",
+      "id": "2b653dc0-6faf-5a10-8173-0aace7e44b42",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "07359daf-1ab9-4a78-bbef-bb0c8253e718",
-        "item_id": "298716a5-5357-4dd1-ba16-cc442c913f72",
+        "stock_item_id": "78240a4d-6a79-4bea-94a8-546da47026a3",
+        "item_id": "1d164370-c169-4cd5-a810-144841fe6a1a",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/07359daf-1ab9-4a78-bbef-bb0c8253e718"
+            "related": "api/boomerang/stock_items/78240a4d-6a79-4bea-94a8-546da47026a3"
           }
         }
       }
@@ -119,7 +119,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=stock_item`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_suggestions]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-02T10:18:14Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
