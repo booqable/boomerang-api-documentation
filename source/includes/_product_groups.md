@@ -39,7 +39,7 @@ Product groups hold general information and configuration about products. A prod
 Every product group has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -89,7 +89,7 @@ Name | Description
 Product groups have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `photo` | **Photos** `readonly`<br>Associated Photo
 `products` | **Products** `readonly`<br>Associated Products
 `tax_category` | **Tax categories** `readonly`<br>Associated Tax category
@@ -204,7 +204,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -219,7 +219,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -262,7 +262,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -366,7 +366,7 @@ Use advanced search to make logical filter groups with and/or operators.
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -381,7 +381,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -424,7 +424,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -715,7 +715,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
 
@@ -725,7 +725,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][sku]` | **String** <br>Stock keeping unit
 `data[attributes][lead_time]` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
@@ -899,7 +899,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
 
@@ -909,7 +909,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][sku]` | **String** <br>Stock keeping unit
 `data[attributes][lead_time]` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
@@ -1000,7 +1000,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
 
