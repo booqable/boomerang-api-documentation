@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-09-25+00%3A00%3A00+UTC&filter%5Btill%5D=2022-09-30+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-10-29+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-03+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,22 +44,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "virtual-0fbad755-2d8a-5eaa-852a-8b5e49c218c5",
+      "id": "virtual-10ec13b0-1974-546c-8dbd-7988324f17cf",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2022-09-30T12:01:12+00:00",
-        "name": "Product 40",
+        "created_at": "2022-11-03T11:10:03+00:00",
+        "name": "Product 48",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
         "turnover_in_cents": 4000,
         "quantity": 10,
-        "product_id": "8a4edb9b-373b-413d-a025-96039231da61"
+        "product_id": "a626baf4-6fd3-4ede-8e1d-7c09afd86800"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/8a4edb9b-373b-413d-a025-96039231da61"
+            "related": "api/boomerang/products/a626baf4-6fd3-4ede-8e1d-7c09afd86800"
           }
         }
       }
@@ -81,7 +81,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rentals]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-03T11:05:12Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
