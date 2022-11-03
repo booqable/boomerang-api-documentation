@@ -34,7 +34,7 @@ types at the same time.
 Every order status transition has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `order_id` | **Uuid** <br>The associated Order
 `transition_from` | **String_enum** <br>The current status of the Order. One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`. 
@@ -47,7 +47,7 @@ Name | Description
 Order status transitions have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders** `readonly`<br>Associated Order
 
 
@@ -484,7 +484,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_status_transitions]=id,created_at,updated_at`
 
@@ -494,7 +494,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
 `data[attributes][transition_from]` | **String_enum** <br>The current status of the Order. One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`. 
 `data[attributes][transition_to]` | **String_enum** <br>The new status of the Order. One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.<br>It is only possible to transition to `started` or `stopped` in combination with `revert: true`. 

@@ -19,7 +19,7 @@ Bundles allow for a single product to be made up of multiple other products. Thi
 Every bundle has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -48,7 +48,7 @@ Name | Description
 Bundles have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `photo` | **Photos** `readonly`<br>Associated Photo
 `tax_category` | **Tax categories** `readonly`<br>Associated Tax category
 `bundle_items` | **Bundle items** `readonly`<br>Associated Bundle items
@@ -132,7 +132,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -147,7 +147,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -173,7 +173,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -272,7 +272,7 @@ Use advanced search to make logical filter groups with and/or operators.
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -287,7 +287,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -313,7 +313,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -413,7 +413,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 
@@ -616,7 +616,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 
@@ -626,7 +626,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
 `data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
@@ -803,7 +803,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 
@@ -813,7 +813,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
 `data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
@@ -887,7 +887,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 

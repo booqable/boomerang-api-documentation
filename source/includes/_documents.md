@@ -29,7 +29,7 @@ Invoices are automatically generated and updated based on changes made to an ord
 Every document has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -82,7 +82,7 @@ Name | Description
 Documents have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders**<br>Associated Order
 `customer` | **Customers**<br>Associated Customer
 `tax_region` | **Tax regions**<br>Associated Tax region
@@ -202,7 +202,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -217,7 +217,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -267,7 +267,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `status` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -380,7 +380,7 @@ Use advanced search to make logical filter groups with and/or operators.
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -395,7 +395,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -445,7 +445,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `status` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -592,7 +592,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 
@@ -747,7 +747,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 
@@ -757,7 +757,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
 `data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
 `data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
@@ -931,7 +931,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 
@@ -941,7 +941,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
 `data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
 `data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
@@ -1027,7 +1027,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
 

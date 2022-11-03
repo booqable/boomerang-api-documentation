@@ -22,7 +22,7 @@ A tax region can have one of the following strategies:
 Every tax region has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -38,7 +38,7 @@ Name | Description
 Tax regions have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `tax_rates` | **Tax rates** `readonly`<br>Associated Tax rates
 
 
@@ -82,7 +82,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
@@ -97,7 +97,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -112,7 +112,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -177,7 +177,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 
@@ -283,7 +283,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 
@@ -293,7 +293,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the tax region
 `data[attributes][strategy]` | **String** <br>The strategy to apply. One of `add_to`, `replace`, `compound`
 `data[attributes][default]` | **Boolean** <br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
@@ -405,7 +405,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 
@@ -415,7 +415,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the tax region
 `data[attributes][strategy]` | **String** <br>The strategy to apply. One of `add_to`, `replace`, `compound`
 `data[attributes][default]` | **Boolean** <br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
@@ -463,7 +463,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=id,created_at,updated_at`
 

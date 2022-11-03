@@ -15,7 +15,7 @@ A company can 'install' a theme from the available themes, this creates a local 
 Every theme has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -33,7 +33,7 @@ Name | Description
 Themes have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `assets` | **Assets** `readonly`<br>Associated Assets
 `original_theme` | **Themes** `readonly`<br>Associated Original theme
 
@@ -144,7 +144,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=assets,original_theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
@@ -159,7 +159,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -176,7 +176,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -249,7 +249,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=assets,original_theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
 
@@ -259,7 +259,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the theme
 `data[attributes][identifier]` | **String** <br>UUID used to link this theme
 `data[attributes][version]` | **String** <br>Theme version
@@ -308,7 +308,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=assets,original_theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
 

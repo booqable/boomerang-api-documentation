@@ -6,7 +6,7 @@ Get the counts for resources in an account.
 Every count has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `product_group_count` | **Integer** <br>Amount of product groups in an account
 `tax_rate_count` | **Integer** <br>Amount of tax rates in an account
@@ -53,7 +53,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[counts]=id,created_at,updated_at`
 

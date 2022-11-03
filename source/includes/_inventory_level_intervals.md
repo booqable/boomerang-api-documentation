@@ -6,7 +6,7 @@ Inventory level intervals provide a breakdown of stock quantity information by a
 Every inventory level interval has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `item_id` | **Uuid** <br>The associated Item
 `location_id` | **Uuid** <br>The associated Location
@@ -34,7 +34,7 @@ Name | Description
 Inventory level intervals have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `item` | **Items** `readonly`<br>Associated Item
 `location` | **Locations** `readonly`<br>Associated Location
 
@@ -336,7 +336,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=item,location`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[inventory_level_intervals]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -351,7 +351,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `item_id` | **Uuid** <br>`eq`
 `location_id` | **Uuid** <br>`eq`
 `from` | **Datetime** `required`<br>`eq`
@@ -364,7 +364,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 

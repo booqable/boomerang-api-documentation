@@ -10,7 +10,7 @@ generated with prorated changes.
 Every invoice finalization has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `document_id` | **Uuid** <br>The associated Document
 
@@ -19,7 +19,7 @@ Name | Description
 Invoice finalizations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `document` | **Documents**<br>Associated Document
 
 
@@ -74,7 +74,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=document`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[invoice_finalizations]=id,created_at,updated_at`
 
@@ -84,7 +84,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][document_id]` | **Uuid** <br>The associated Document
 
 

@@ -29,7 +29,7 @@ following values:**
 Every stock item archivation has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `confirm_shortage` | **Boolean** `writeonly`<br>A value of `true` overrides shortage warnings.
 `stock_item_id` | **Uuid** <br>The associated Stock item
@@ -39,7 +39,7 @@ Name | Description
 Stock item archivations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `stock_item` | **Stock items**<br>Associated Stock item
 
 
@@ -322,7 +322,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=stock_item`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_archivations]=id,created_at,updated_at`
 
@@ -332,7 +332,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][confirm_shortage]` | **Boolean** <br>A value of `true` overrides shortage warnings.
 `data[attributes][stock_item_id]` | **Uuid** <br>The associated Stock item
 

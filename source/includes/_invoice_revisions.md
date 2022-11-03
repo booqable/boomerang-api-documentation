@@ -12,7 +12,7 @@ made to the order since the last finalized invoice).
 Every invoice revision has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `order_id` | **Uuid** <br>The associated Order
 `revised_invoice_id` | **Uuid** `readonly`<br>The associated Revised invoice
@@ -23,7 +23,7 @@ Name | Description
 Invoice revisions have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders**<br>Associated Order
 `revised_invoice` | **Documents** `readonly`<br>Associated Revised invoice
 `revision_invoice` | **Documents** `readonly`<br>Associated Revision invoice
@@ -92,7 +92,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,revised_invoice,revision_invoice`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[invoice_revisions]=id,created_at,updated_at`
 
@@ -102,7 +102,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
 
 

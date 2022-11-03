@@ -33,7 +33,7 @@ as well as these adjustment strategies:
 Every price rule has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -58,7 +58,7 @@ Name | Description
 Price rules have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `price_ruleset` | **Price rulesets** `readonly`<br>Associated Price ruleset
 
 
@@ -136,7 +136,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
 
@@ -146,7 +146,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the rule
 `data[attributes][rule_type]` | **String** <br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
 `data[attributes][match_strategy]` | **String** <br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
@@ -292,7 +292,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
 
@@ -302,7 +302,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the rule
 `data[attributes][rule_type]` | **String** <br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
 `data[attributes][match_strategy]` | **String** <br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
@@ -352,7 +352,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
 

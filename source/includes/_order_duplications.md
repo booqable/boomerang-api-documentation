@@ -6,7 +6,7 @@ Duplicates an `Order` with a selectable subset of fields and associations.
 Every order duplication has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `custom_lines` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
 `customer` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
@@ -24,7 +24,7 @@ Name | Description
 Order duplications have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `original_order` | **Orders**<br>Associated Original order
 `new_order` | **Orders** `readonly`<br>Associated New order
 
@@ -102,7 +102,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=original_order,new_order`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_duplications]=id,created_at,updated_at`
 
@@ -112,7 +112,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][custom_lines]` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
 `data[attributes][customer]` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
 `data[attributes][dates]` | **Boolean** <br>Indicates if the rental dates should be copied from the original Order.

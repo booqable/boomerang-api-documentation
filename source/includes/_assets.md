@@ -13,7 +13,7 @@ Theme assets are the individual files that make up a shop's theme.
 Every asset has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -33,7 +33,7 @@ Name | Description
 Assets have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `theme` | **Themes**<br>Associated Theme
 
 
@@ -93,7 +93,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[assets]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -108,7 +108,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -125,7 +125,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `published` | **Array** <br>`count`
 `unpublished` | **Array** <br>`count`
@@ -206,7 +206,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[assets]=id,created_at,updated_at`
 
@@ -216,7 +216,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][key]` | **String** <br>The path of the asset within a theme. It consists of the file's directory and filename. For example, the asset `layout/index.liquid` is in the layout directory, so its key is `layout/index.liquid`.
 `data[attributes][value]` | **String** <br>The text content of the asset, such as the HTML and Liquid markup of a template file.
 `data[attributes][theme_id]` | **Uuid** <br>The associated Theme
@@ -300,7 +300,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[assets]=id,created_at,updated_at`
 
@@ -310,7 +310,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][key]` | **String** <br>The path of the asset within a theme. It consists of the file's directory and filename. For example, the asset `layout/index.liquid` is in the layout directory, so its key is `layout/index.liquid`.
 `data[attributes][value]` | **String** <br>The text content of the asset, such as the HTML and Liquid markup of a template file.
 `data[attributes][theme_id]` | **Uuid** <br>The associated Theme
@@ -359,7 +359,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[assets]=id,created_at,updated_at`
 

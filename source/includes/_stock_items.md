@@ -23,7 +23,7 @@ For trackable products, each stock item is tracked and managed individually. Eac
 Every stock item has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -45,7 +45,7 @@ Name | Description
 Stock items have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `product` | **Products**<br>Associated Product
 `location` | **Locations** `readonly`<br>Associated Location
 `barcode` | **Barcodes**<br>Associated Barcode
@@ -123,7 +123,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product,location,barcode`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
@@ -138,7 +138,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -160,7 +160,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `stock_item_type` | **Array** <br>`count`
 `status` | **Array** <br>`count`
@@ -255,7 +255,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product,location,barcode`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
 
@@ -361,7 +361,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product,location,barcode`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
 
@@ -371,7 +371,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
 `data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
 `data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
@@ -482,7 +482,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product,location,barcode`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
 
@@ -492,7 +492,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
 `data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
 `data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
@@ -554,7 +554,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product,location,barcode`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
 

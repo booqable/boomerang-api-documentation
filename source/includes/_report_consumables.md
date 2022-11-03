@@ -6,7 +6,7 @@ Report on how consumable products are performing. The report is filterable by da
 Every report consumable has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `created_at` | **Datetime** <br>
 `q` | **String** `writeonly`<br>Query for a specific product
@@ -22,7 +22,7 @@ Name | Description
 Report consumables have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `product` | **Products** `readonly`<br>Associated Product
 
 
@@ -77,7 +77,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_consumables]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -92,7 +92,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `q` | **String** <br>`eq`
 `product_id` | **Uuid** <br>`eq`
 `from` | **Datetime** <br>`eq`
@@ -106,7 +106,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
 

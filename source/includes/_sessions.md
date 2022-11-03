@@ -19,7 +19,7 @@ When there's an ID mismatch, it's advised to fetch the session again and include
 Every session has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>
 `company_id` | **Uuid** <br>The associated Company
 `employee_id` | **Uuid** <br>The associated Employee
@@ -32,7 +32,7 @@ Name | Description
 Sessions have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `company` | **Companies** `readonly`<br>Associated Company
 `employee` | **Employees** `readonly`<br>Associated Employee
 `settings` | **Settings** `readonly`<br>Associated Settings
@@ -96,7 +96,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 
@@ -449,7 +449,7 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 

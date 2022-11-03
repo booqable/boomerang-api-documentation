@@ -80,7 +80,7 @@ Note that these newly created or updated resources can be included in the respon
 Every order booking has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>
 `items` | **Array** `writeonly`<br>Array with details about the items (and stock item) to add to the order
 `confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm the shortage if they are non-blocking
@@ -91,7 +91,7 @@ Name | Description
 Order bookings have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders** `readonly`<br>Associated Order
 `lines` | **Lines** `readonly`<br>Associated Lines
 `plannings` | **Plannings** `readonly`<br>Associated Plannings
@@ -1066,7 +1066,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,lines,plannings`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_bookings]=id,created_at,updated_at`
 
@@ -1076,7 +1076,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][id]` | **Uuid** <br>
 `data[attributes][items][]` | **Array** <br>Array with details about the items (and stock item) to add to the order
 `data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm the shortage if they are non-blocking

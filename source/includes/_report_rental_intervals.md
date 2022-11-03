@@ -6,7 +6,7 @@ Breakdown of how many times a product was rented during a specific period.
 Every report rental interval has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `date` | **Date** <br>Interval date
 `rented_count` | **Integer** <br>Times the product was rented
@@ -18,7 +18,7 @@ Name | Description
 Report rental intervals have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `product` | **Products** `readonly`<br>Associated Product
 
 
@@ -223,7 +223,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rental_intervals]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
@@ -238,7 +238,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `product_id` | **Uuid** `required`<br>`eq`
 `from` | **Datetime** <br>`eq`
 `till` | **Datetime** <br>`eq`
@@ -249,7 +249,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 

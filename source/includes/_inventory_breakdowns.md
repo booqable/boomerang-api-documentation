@@ -16,7 +16,7 @@ Fetch quantitive information about product inventory compared to the current tim
 Every inventory breakdown has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `from` | **Datetime** <br>When the amount of items will be available (only for status `expected`)
 `till` | **Datetime** <br>When the amount of items will become unavailable (only for type `temporary` and/or status `expired`)
@@ -32,7 +32,7 @@ Name | Description
 Inventory breakdowns have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `location` | **Locations** `readonly`<br>Associated Location
 `product` | **Products** `readonly`<br>Associated Product
 
@@ -294,7 +294,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=location,product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[inventory_breakdowns]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -309,7 +309,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `status` | **String** `required`<br>`eq`
 `inventory_breakdown_type` | **String** <br>`eq`
 `location_id` | **Uuid** <br>`eq`
@@ -322,7 +322,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `status` | **Array** <br>`sum`
 `inventory_breakdown_type` | **Array** <br>`sum`

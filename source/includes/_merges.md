@@ -6,7 +6,7 @@ Merging enables you to merge the data of two records. The following types are su
 Every merge has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `type` | **Uuid** <br>Type of resource to merge. One of `customers`
 `source_id` | **Uuid** <br>Resource from which data is taken, this resource gets archived or destroyed
@@ -17,7 +17,7 @@ Name | Description
 Merges have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `target` | **Customers**<br>Associated Target
 
 
@@ -128,7 +128,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=target`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[merges]=id,created_at,updated_at`
 
@@ -138,7 +138,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][type]` | **Uuid** <br>Type of resource to merge. One of `customers`
 `data[attributes][source_id]` | **Uuid** <br>Resource from which data is taken, this resource gets archived or destroyed
 `data[attributes][target_id]` | **Uuid** <br>Resource to which data is saved, this resource is returned if `target` is specified in includes

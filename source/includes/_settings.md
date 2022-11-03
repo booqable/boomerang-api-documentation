@@ -7,7 +7,7 @@ Settings are configured globally for a company account. They are divided in the 
 Information on how to display and handle the currency.
 
 Name | Description
-- | -
+-- | --
 `name` | **String** `readonly`<br>Currency code
 `decimal` | **String** `readonly`<br>Decimal seperator
 `thousand` | **String** `readonly`<br>Thousand seperator
@@ -20,7 +20,7 @@ Name | Description
 Defaults derived from other resources.
 
 Name | Description
-- | -
+-- | --
 `timezone` | **String** `readonly`<br>The default timezone (managed on the company resource)
 `tax_category_id` | **Uuid** `readonly`<br>ID the default tax category
 `tax_region_id` | **Uuid** `readonly`<br>ID the default tax region
@@ -30,7 +30,7 @@ Name | Description
 Configuration on how to handle and display pricing
 
 Name | Description
-- | -
+-- | --
 `enabled` | **Boolean**<br>Whether pricing is enabled
 `tax_strategy` | **Uuid**<br>How taxes should be calculated, one of `exclusive`, `inclusive`
 `deposit_type` | **String**<br>Default deposit type (applied to orders if customer deposit type is `default`, one of `none`, `percentage_total`, `percentage`, `fixed`)
@@ -43,7 +43,7 @@ Name | Description
 Information on how to display dates
 
 Name | Description
-- | -
+-- | --
 `format` | **String**<br>How dates should be formatted, e.g. `DD-MM-YYYY`
 `use_am_pm` | **Boolean**<br>Whether to use 24h clock or AM/PM
 `first_day_of_week` | **Integer**<br>Which day to display as first day of the week (`0` for Sunday)
@@ -53,7 +53,7 @@ Name | Description
 Configuration for [orders](#orders) (these settings also apply to the online store)
 
 Name | Description
-- | -
+-- | --
 `use_times` | **Boolean**<br>Whether time selection is enabled, if not, full days are always planned and calculated
 `start_type` | **String**<br>Behavior of default start time, one of `fixed`, `relative`
 `start_relative_offset` | **Integer**<br>Offset in seconds from now, used when `start_type` is `relative`
@@ -67,7 +67,7 @@ Name | Description
 Global security settings
 
 Name | Description
-- | -
+-- | --
 `sso_forced` | **Boolean**<br>Whether to force SSO
 `iprestrictions_enabled` | **Boolean**<br>Whether IP restrictions are enabled
 
@@ -76,7 +76,7 @@ Name | Description
 Settings on how to display addresses
 
 Name | Description
-- | -
+-- | --
 `fields_order` | **Array**<br>Order of how the fields are displayed, e.g. `["zipcode", "city", "region"]`
 
 #### Store
@@ -84,7 +84,7 @@ Name | Description
 Settings for the online store
 
 Name | Description
-- | -
+-- | --
 `enabled` | **Boolean**<br>Whether to accept online reservations
 `public` | **Boolean**<br>Whether to hosted online store is public
 `send_order_confirmation` | **Boolean**<br>Whether to send order confirmations automatically after checkout
@@ -124,7 +124,7 @@ Name | Description
 Settings that apply to [user](#users) accounts
 
 Name | Description
-- | -
+-- | --
 `auth_enabled` | **Boolean**<br>Whether user accounts are enabled
 `allow_signup` | **Boolean**<br>Whether signup during checkout is allowed
 `allow_guest_checkout` | **Boolean**<br>Whether to allow guest checkouts
@@ -135,7 +135,7 @@ Name | Description
 Settings that apply to all [document](#documents) types
 
 Name | Description
-- | -
+-- | --
 `show_tax_column` | **Boolean**<br>Whether to show the tax column on lines
 `css` | **String**<br>Custom css used for documents
 `scss` | **String**<br>Custom scss used for documents
@@ -147,7 +147,7 @@ Name | Description
 Settings that apply to invoices
 
 Name | Description
-- | -
+-- | --
 `footer` | **String**<br>HTML formatted footer to display on invoices
 `show_product_photos` | **Boolean**<br>Whether to show product photos
 `show_stock_identifiers` | **Boolean**<br>Whether to show identifiers of the stock items that are booked
@@ -160,7 +160,7 @@ Name | Description
 Settings that apply to quotes
 
 Name | Description
-- | -
+-- | --
 `footer` | **String**<br>HTML formatted footer to display on quotes
 `body` | **String**<br>HTML formatted body to display on quotes
 `show_product_photos` | **Boolean**<br>Whether to show product photos
@@ -174,7 +174,7 @@ Name | Description
 Settings that apply to contracts
 
 Name | Description
-- | -
+-- | --
 `footer` | **String**<br>HTML formatted footer to display on contracts
 `body` | **String**<br>HTML formatted body to display on contracts
 `show_product_photos` | **Boolean**<br>Whether to show product photos
@@ -188,7 +188,7 @@ Name | Description
 Customization settings for labels
 
 Name | Description
-- | -
+-- | --
 `customer` | **String**<br>What to call a customer (one of `customer`, `client`, `student``)
 `order` | **String**<br>What to call an order (one of `order`, `booking`, `project``)
 `quote` | **String**<br>What to call a quote (one of `quote`, `proposal`)
@@ -199,7 +199,7 @@ Name | Description
 Every setting has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>
 `currency` | **Hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource)
 `defaults` | **Hash** `readonly`<br>Defaults derived from other resources
@@ -388,7 +388,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[settings]=id,created_at,updated_at`
 

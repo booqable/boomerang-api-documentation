@@ -11,7 +11,7 @@ Every action performed in a Booqable account is scoped to a company; A company h
 Every company has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -120,7 +120,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
 
@@ -133,7 +133,7 @@ This request does not accept any includes
 The subscription has the following fields:
 
 Name | Description
-- | -
+-- | --
 `trial_ends_at` | **Datetime** `readonly`<br>When the trial ends
 `activated` | **Boolean** `readonly`<br>Whether subscription is active
 `suspended` | **Boolean** `readonly`<br>Whether account is suspended
@@ -240,7 +240,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
 
@@ -324,7 +324,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
 
@@ -334,7 +334,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the company
 `data[attributes][email]` | **String** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
 `data[attributes][billing_email]` | **String** <br>Used to send billing emails to

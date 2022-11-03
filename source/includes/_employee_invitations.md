@@ -10,7 +10,7 @@ Employees give access to a Booqable account. You can invite employees by sending
 Every employee invitation has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>Specify employee ID to re-send invitation
 `firstname` | **String** `writeonly`<br>First name of the employee
 `lastname` | **String** `writeonly`<br>Last name of the employee
@@ -23,7 +23,7 @@ Name | Description
 Employee invitations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
@@ -182,7 +182,7 @@ Note that you can also update other fields.:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employee_invitations]=id,created_at,updated_at`
 
@@ -192,7 +192,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][id]` | **Uuid** <br>Specify employee ID to re-send invitation
 `data[attributes][firstname]` | **String** <br>First name of the employee
 `data[attributes][lastname]` | **String** <br>Last name of the employee

@@ -11,7 +11,7 @@ Use device tokens to register devices to receive push notifications.
 Every device token has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -69,7 +69,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[device_tokens]=id,created_at,updated_at`
 
@@ -79,7 +79,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][token]` | **String** <br>The token to register
 `data[attributes][kind]` | **String** <br>Kind of token. One of `apn`, `fcm`
 `data[attributes][environment]` | **String** <br>The enviroment to use. One of `development`, `production`
@@ -117,7 +117,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[device_tokens]=id,created_at,updated_at`
 

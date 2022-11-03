@@ -6,7 +6,7 @@ Report on how stock items are performing. The report is filterable by date and c
 Every report stock item has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `created_at` | **Datetime** `readonly`<br>
 `q` | **String** `writeonly`<br>Query for a specific stock item
@@ -25,7 +25,7 @@ Name | Description
 Report stock items have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `stock_item` | **Report stock items** `readonly`<br>Associated Stock item
 `product` | **Products** `readonly`<br>Associated Product
 `location` | **Locations** `readonly`<br>Associated Location
@@ -128,7 +128,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=stock_item,product,location`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_stock_items]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
@@ -143,7 +143,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `q` | **String** <br>`eq`
 `stock_item_id` | **Uuid** <br>`eq`
 `product_id` | **Uuid** <br>`eq`
@@ -158,7 +158,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 

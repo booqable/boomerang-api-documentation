@@ -6,7 +6,7 @@ Use stock item suggestions to figure out which stock item can be booked, started
 Every stock item suggestion has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `stock_item_id` | **Uuid** <br>The associated Stock item
 `item_id` | **Uuid** `readonly`<br>ID of the item belonging to the suggested stock item
@@ -17,7 +17,7 @@ Name | Description
 Stock item suggestions have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `stock_item` | **Stock items** `readonly`<br>Associated Stock item
 
 
@@ -116,7 +116,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=stock_item`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_suggestions]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
@@ -131,7 +131,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `item_id` | **Uuid** `required`<br>`eq`
 `status` | **String_enum** <br>`eq`
 `order_id` | **Uuid** <br>`eq`
@@ -148,7 +148,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 

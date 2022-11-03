@@ -14,7 +14,7 @@ line to `null` as described [here](#lines-fields).
 Every order price recalculation has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `order_id` | **Uuid** <br>The associated Order
 
@@ -23,7 +23,7 @@ Name | Description
 Order price recalculations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders**<br>Associated Order
 
 
@@ -78,7 +78,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_price_recalculations]=id,created_at,updated_at`
 
@@ -88,7 +88,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
 
 

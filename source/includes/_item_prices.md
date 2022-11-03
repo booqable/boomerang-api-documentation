@@ -11,7 +11,7 @@ You can calculate a price in a couple ways:
 Every item price has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `item_id` | **Uuid** <br>The associated Item
 `from` | **Datetime** <br>Start of charge period
@@ -30,7 +30,7 @@ Name | Description
 Item prices have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `item` | **Items** `readonly`<br>Associated Item
 `price_structure` | **Price structures** `readonly`<br>Associated Price structure
 `price_ruleset` | **Price rulesets** `readonly`<br>Associated Price ruleset
@@ -469,7 +469,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=item,price_structure,price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[item_prices]=id,created_at,updated_at`
 `filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:10Z`
@@ -484,7 +484,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `item_id` | **Uuid** <br>`eq`
 `from` | **Datetime** <br>`eq`
 `till` | **Datetime** <br>`eq`
@@ -498,7 +498,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
