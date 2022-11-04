@@ -70,11 +70,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "07c06100-aac4-49ed-a155-c81c10e2067f",
+    "id": "a955dad3-2edc-48eb-be5c-00aec476e31b",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-09-30T11:57:40+00:00",
-      "updated_at": "2022-09-30T11:57:40+00:00",
+      "created_at": "2022-11-04T15:23:19+00:00",
+      "updated_at": "2022-11-04T15:23:19+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail46@company.com",
@@ -172,11 +172,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "3d6b8299-7700-4233-98fc-8ad550637baa",
+    "id": "8c7c0ac4-1d63-4ff0-9e1d-ae184e97d60c",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-10-14T11:57:40.318Z",
+        "trial_ends_at": "2022-11-18T15:23:19.540Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -199,8 +199,8 @@ Name | Description
         "enabled_features": [],
         "allowed_features": [
           "bundles",
-          "advanced_pricing",
           "multiple_locations",
+          "advanced_pricing",
           "api",
           "custom_fields",
           "overbookings",
@@ -260,7 +260,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "a248a74f-b43a-4caf-a13f-ab107e748cbe",
+        "id": "bdec092c-6962-4944-982c-bf09ca7632a1",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,11 +274,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "a248a74f-b43a-4caf-a13f-ab107e748cbe",
+    "id": "bdec092c-6962-4944-982c-bf09ca7632a1",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-09-30T11:57:40+00:00",
-      "updated_at": "2022-09-30T11:57:40+00:00",
+      "created_at": "2022-11-04T15:23:19+00:00",
+      "updated_at": "2022-11-04T15:23:19+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail48@company.com",

@@ -40,11 +40,12 @@ Name | Description
 
 #### Dates
 
-Information on how to display dates
+Information on how to display dates. The settings below should be used (and combined)
+to select the format string for the date library being used.
 
 Name | Description
 - | -
-`format` | **String**<br>How dates should be formatted, e.g. `DD-MM-YYYY`
+`format` | **String**<br>How dates should be formatted. Supported formats are `DD-MM-YYYY`, `MM-DD-YYYY` and `YYYY-MM-DD`.
 `use_am_pm` | **Boolean**<br>Whether to use 24h clock or AM/PM
 `first_day_of_week` | **Integer**<br>Which day to display as first day of the week (`0` for Sunday)
 
@@ -236,10 +237,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fa71a16d-29fa-57cc-9ab9-f2f9c96093d4",
+    "id": "9c81908f-c955-57b1-a59f-57720ebb02d8",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-09-30T12:01:24+00:00",
+      "updated_at": "2022-11-04T15:26:37+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -250,8 +251,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "c07ec697-fc54-46f4-95cd-714a6b57d8b6",
-        "tax_region_id": "2093dacb-97d4-4621-b968-92a59b2b597b",
+        "tax_category_id": "03820bf0-c863-4278-9ae6-02477030691c",
+        "tax_region_id": "c3f97bf3-bef8-40bd-a804-93472da55ea6",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
