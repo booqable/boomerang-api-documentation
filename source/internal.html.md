@@ -45,6 +45,7 @@ includes:
   - orders
   - order_bookings
   - order_duplications
+  - order_fulfilments
   - order_price_recalculations
   - order_status_transitions
   - payment_methods
