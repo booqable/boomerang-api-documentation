@@ -56,29 +56,29 @@ Name | Description
   {
   "data": [
     {
-      "id": "aea4bea9-77bf-4f21-9a4d-cbf3dbec062e",
+      "id": "e3b08418-53b4-4a1f-a07b-7b97100c7210",
       "type": "themes",
       "attributes": {
-        "created_at": "2022-09-30T12:02:04+00:00",
-        "updated_at": "2022-09-30T12:02:04+00:00",
+        "created_at": "2022-11-04T15:41:32+00:00",
+        "updated_at": "2022-11-04T15:41:32+00:00",
         "name": "Theme 1",
-        "identifier": "a5ac0440-d063-44e6-ba7a-78e659add34e",
+        "identifier": "d915c097-147c-475e-8600-3fc488b8730d",
         "version": "1.0",
         "theme_type": "official",
         "description": "A simple theme for setting up your shop",
         "preview_image": "",
-        "theme_id": "06355d23-308f-48b0-9987-64d0df9dbe83",
+        "theme_id": "2ad35084-45cd-4459-891b-c583a091aeea",
         "installed": true
       },
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=aea4bea9-77bf-4f21-9a4d-cbf3dbec062e"
+            "related": "api/boomerang/assets?filter[theme_id]=e3b08418-53b4-4a1f-a07b-7b97100c7210"
           }
         },
         "original_theme": {
           "links": {
-            "related": "api/boomerang/themes/06355d23-308f-48b0-9987-64d0df9dbe83"
+            "related": "api/boomerang/themes/2ad35084-45cd-4459-891b-c583a091aeea"
           }
         }
       }
@@ -103,13 +103,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "7f84520d-90a8-4b49-905a-8bf4ceceb1fb",
+      "id": "7c02d3fa-c2ea-4cdf-bfe9-c49210775ceb",
       "type": "themes",
       "attributes": {
-        "created_at": "2022-09-30T12:02:05+00:00",
-        "updated_at": "2022-09-30T12:02:05+00:00",
+        "created_at": "2022-11-04T15:41:32+00:00",
+        "updated_at": "2022-11-04T15:41:32+00:00",
         "name": "Official theme",
-        "identifier": "97a0ba4a-881a-4f5d-8312-6f5f9b99f664",
+        "identifier": "41d9719a-5cc8-4294-82b5-1d1f714949de",
         "version": "1.0",
         "theme_type": "official",
         "description": null,
@@ -120,7 +120,7 @@ Name | Description
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=7f84520d-90a8-4b49-905a-8bf4ceceb1fb"
+            "related": "api/boomerang/assets?filter[theme_id]=7c02d3fa-c2ea-4cdf-bfe9-c49210775ceb"
           }
         },
         "original_theme": {
@@ -147,7 +147,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=assets,original_theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-09-30T11:57:11Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:26Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -198,7 +198,7 @@ This request does not accept any includes
         "type": "themes",
         "attributes": {
           "name": "New theme",
-          "theme_id": "fce83f07-d921-4930-9e75-70cfda024ed1"
+          "theme_id": "a667564a-4e62-4616-b523-3f37fc912228"
         }
       }
     }'
@@ -209,18 +209,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d3a52655-cc1c-4abc-8cab-a4b8d7c2ce47",
+    "id": "470a1661-4923-4392-a48e-f9127bf91e33",
     "type": "themes",
     "attributes": {
-      "created_at": "2022-09-30T12:02:06+00:00",
-      "updated_at": "2022-09-30T12:02:06+00:00",
+      "created_at": "2022-11-04T15:41:32+00:00",
+      "updated_at": "2022-11-04T15:41:32+00:00",
       "name": "Official theme",
-      "identifier": "882b6e4f-d283-4e50-bb4b-8d92f3278f04",
+      "identifier": "8f95cbfb-602a-49ad-a737-1bd230c415ff",
       "version": null,
       "theme_type": "official",
       "description": null,
       "preview_image": "",
-      "theme_id": "fce83f07-d921-4930-9e75-70cfda024ed1",
+      "theme_id": "a667564a-4e62-4616-b523-3f37fc912228",
       "installed": true
     },
     "relationships": {
@@ -287,7 +287,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/9ebc6fc1-61ac-499b-8f72-198a667699bf' \
+    --url 'https://example.booqable.com/api/boomerang/themes/cee96b82-e015-4947-a80e-3e8444f7bca2' \
     --header 'content-type: application/json' \
 ```
 
