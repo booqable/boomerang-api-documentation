@@ -70,11 +70,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "0ac83618-0253-4258-a31b-a72770ed7907",
+    "id": "e4a726a6-1587-49a0-a228-4eaab35c69bf",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-04T15:37:56+00:00",
-      "updated_at": "2022-11-04T15:37:56+00:00",
+      "created_at": "2022-11-16T14:22:29+00:00",
+      "updated_at": "2022-11-16T14:22:29+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail46@company.com",
@@ -152,6 +152,9 @@ Name | Description
 `discount_in_cents` | **Integer** `readonly`<br>Discount in cents
 `balance_in_cents` | **Integer** `readonly`<br>Balance in cents, will be deducted from the next invoice(s)
 `coupon` | **String** `readonly`<br>Coupon that's currently active
+`coupon_percent_off` | **String*** readonly <br/>Percentage of discount on the current active coupon
+`coupon_duration` | **String*** readonly <br/>Duration type of the current active coupon, one of `forever`, `once`, `repeating`
+`coupon_duration_in_months` | **String*** readonly <br/>Amount of months the coupon is active. Only present when coupon duration is `repeating`.
 `strategy` | **String** `readonly`<br>Billing strategy, one of `send_invoice`, `charge_automatically`
 `source` | **Hash** `readonly`<br>Information about the payment source
 `enabled_features` | **Hash** `readonly`<br>Beta features that are currently enabled
@@ -172,11 +175,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "8943437e-d141-40e5-9f79-0a5b6a34966c",
+    "id": "c203837f-f027-420c-951a-aaae1ae7903f",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-11-18T15:37:56.939Z",
+        "trial_ends_at": "2022-11-30T14:22:29.899Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -194,6 +197,9 @@ Name | Description
         "discount_in_cents": 0,
         "balance_in_cents": 0,
         "coupon": null,
+        "coupon_percent_off": null,
+        "coupon_duration": null,
+        "coupon_duration_in_months": null,
         "strategy": "charge_automatically",
         "source": null,
         "enabled_features": [],
@@ -260,7 +266,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e8e68622-faf2-4999-ac88-40a2ff804b76",
+        "id": "7593908d-69d1-453d-9802-b6808874bdc5",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,11 +280,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e8e68622-faf2-4999-ac88-40a2ff804b76",
+    "id": "7593908d-69d1-453d-9802-b6808874bdc5",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-04T15:37:57+00:00",
-      "updated_at": "2022-11-04T15:37:57+00:00",
+      "created_at": "2022-11-16T14:22:30+00:00",
+      "updated_at": "2022-11-16T14:22:30+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail48@company.com",

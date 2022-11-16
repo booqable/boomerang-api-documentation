@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2022-10-30+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-04+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2022-11-11+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-16+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,18 +49,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "virtual-64cdf102-f335-5566-aaff-8646f4051c95",
+      "id": "virtual-4cf9036d-b116-5b8d-a141-e7865dc96881",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2022-11-04T15:41:01+00:00",
+        "created_at": "2022-11-16T14:25:50+00:00",
         "product_name": "Product 49",
         "identifier": "id189",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
         "turnover_in_cents": 2000,
-        "stock_item_id": "bab59314-e066-4572-a32e-bb64e53a6d93",
-        "product_id": "0337c870-cdbe-41e9-82e5-9611b00c7e41",
+        "stock_item_id": "22ea5b57-787d-4541-a084-54c61443c135",
+        "product_id": "955fffd0-dee3-42dc-9771-ec6d7ae27463",
         "location_id": null
       },
       "relationships": {
@@ -71,7 +71,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/0337c870-cdbe-41e9-82e5-9611b00c7e41"
+            "related": "api/boomerang/products/955fffd0-dee3-42dc-9771-ec6d7ae27463"
           }
         },
         "location": {
@@ -82,18 +82,18 @@ Name | Description
       }
     },
     {
-      "id": "virtual-919e01ac-4e20-5dd0-badd-b745c18a7217",
+      "id": "virtual-c542e8a4-76f7-53a5-9989-13e10ad45bf8",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2022-11-04T15:41:01+00:00",
+        "created_at": "2022-11-16T14:25:50+00:00",
         "product_name": "Product 49",
         "identifier": "id190",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
         "turnover_in_cents": 2000,
-        "stock_item_id": "5114d8e7-954e-4f64-9d25-42d643b4e5e3",
-        "product_id": "0337c870-cdbe-41e9-82e5-9611b00c7e41",
+        "stock_item_id": "e9232547-17d8-486a-ae8c-361e30126dde",
+        "product_id": "955fffd0-dee3-42dc-9771-ec6d7ae27463",
         "location_id": null
       },
       "relationships": {
@@ -104,7 +104,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/0337c870-cdbe-41e9-82e5-9611b00c7e41"
+            "related": "api/boomerang/products/955fffd0-dee3-42dc-9771-ec6d7ae27463"
           }
         },
         "location": {
@@ -131,7 +131,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=stock_item,product,location`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_stock_items]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-16T14:21:49Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
