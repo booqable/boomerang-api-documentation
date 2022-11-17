@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e979a075-2867-5a15-96cb-05a3c10d0148",
+    "id": "a501f5bf-f0e7-5fa8-8300-caf5183b27c5",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-04T15:41:06+00:00",
-      "company_id": "1a0a18e2-94d6-4756-ae7c-97e55b0e23c3",
-      "employee_id": "0f66e7e9-10c6-4cc1-866e-631f0838837f",
-      "locations_updated_at": "2022-11-04T15:41:06+00:00",
-      "clusters_updated_at": "2022-11-04T15:41:06+00:00",
-      "default_properties_updated_at": "2022-11-04T15:41:06+00:00"
+      "updated_at": "2022-11-17T11:36:20+00:00",
+      "company_id": "c4168aeb-2681-4512-85fe-0a48112026ef",
+      "employee_id": "dea69ceb-a122-4f7f-85c5-2a05d7065669",
+      "locations_updated_at": "2022-11-17T11:36:20+00:00",
+      "clusters_updated_at": "2022-11-17T11:36:20+00:00",
+      "default_properties_updated_at": "2022-11-17T11:36:20+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e979a075-2867-5a15-96cb-05a3c10d0148",
+    "id": "a501f5bf-f0e7-5fa8-8300-caf5183b27c5",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-04T15:41:06+00:00",
-      "company_id": "414a7de3-dd47-44c1-9a6d-fb37e803a548",
-      "employee_id": "55ac8712-4634-4f75-b6f5-454fd8f19f7e",
+      "updated_at": "2022-11-17T11:36:20+00:00",
+      "company_id": "39e5d03a-f6c2-45d2-ad94-66c3c7f93104",
+      "employee_id": "2f319905-ca4d-488a-a3dc-d6cada772654",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "414a7de3-dd47-44c1-9a6d-fb37e803a548"
+          "id": "39e5d03a-f6c2-45d2-ad94-66c3c7f93104"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "55ac8712-4634-4f75-b6f5-454fd8f19f7e"
+          "id": "2f319905-ca4d-488a-a3dc-d6cada772654"
         }
       },
       "settings": {
@@ -177,11 +177,11 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "414a7de3-dd47-44c1-9a6d-fb37e803a548",
+      "id": "39e5d03a-f6c2-45d2-ad94-66c3c7f93104",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-11-04T15:41:06+00:00",
-        "updated_at": "2022-11-04T15:41:06+00:00",
+        "created_at": "2022-11-17T11:36:20+00:00",
+        "updated_at": "2022-11-17T11:36:20+00:00",
         "name": "Company name 227",
         "slug": "company-name-227",
         "email": "mail230@company.com",
@@ -213,7 +213,7 @@ This request accepts the following includes:
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-11-18T15:41:06.685Z",
+          "trial_ends_at": "2022-12-01T11:36:20.717Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -231,6 +231,9 @@ This request accepts the following includes:
           "discount_in_cents": 0,
           "balance_in_cents": 0,
           "coupon": null,
+          "coupon_percent_off": null,
+          "coupon_duration": null,
+          "coupon_duration_in_months": null,
           "strategy": "charge_automatically",
           "source": null,
           "enabled_features": [],
@@ -265,11 +268,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "55ac8712-4634-4f75-b6f5-454fd8f19f7e",
+      "id": "2f319905-ca4d-488a-a3dc-d6cada772654",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-04T15:41:06+00:00",
-        "updated_at": "2022-11-04T15:41:06+00:00",
+        "created_at": "2022-11-17T11:36:20+00:00",
+        "updated_at": "2022-11-17T11:36:20+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
