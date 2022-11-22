@@ -217,7 +217,7 @@ Name | Description
 `contracts` | **Hash** <br>Settings that apply to contracts
 `labels` | **Hash** <br>Customization settings for labels
 `dashboard` | **Hash** `extra`<br>Dashboard settings (Used internally by Booqable)
-`setup` | **Hash** `extra`<br>Setup settings (Used internally by Booqable)
+`setup_checklist` | **Hash** `extra`<br>Setup checklist settings (Used internally by Booqable)
 
 
 ## Fetching settings
@@ -237,10 +237,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42c111c9-54a8-5344-93c6-04f01f5611a7",
+    "id": "f57c6b83-5dee-5457-8d3a-92d14da37e78",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-11-04T15:41:07+00:00",
+      "updated_at": "2022-11-22T17:46:01+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -251,8 +251,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "65a46b77-200b-4f80-8a35-e2ecc5cd15e2",
-        "tax_region_id": "759f2305-e302-4913-9b3a-553fc9561f26",
+        "tax_category_id": "8cd8b5dd-f9d4-4fb1-9e21-5df675d87789",
+        "tax_region_id": "7f8505e6-8fb1-4bbb-8642-d165bb6c80d3",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
