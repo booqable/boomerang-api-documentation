@@ -65,26 +65,26 @@ Name | Description
   {
   "data": [
     {
-      "id": "77b901c7-da2b-4c0b-8868-ff6d62494e1a",
+      "id": "24c20b87-7063-433f-b7dc-b53925aee365",
       "type": "authentication_methods",
       "attributes": {
-        "created_at": "2022-11-04T15:37:33+00:00",
-        "updated_at": "2022-11-04T15:37:33+00:00",
+        "created_at": "2022-11-22T15:31:43+00:00",
+        "updated_at": "2022-11-22T15:31:43+00:00",
         "name": "Segment integration",
         "kind": "token",
         "algorithm": null,
-        "employee_id": "cc621806-654d-488b-8a30-6f38e3cb285c",
-        "company_id": "d5086ddc-1903-462b-bc8c-683fc78001aa"
+        "employee_id": "d58ddb42-ab12-433c-bf34-29811da2222a",
+        "company_id": "fa9805a1-41ce-431e-be75-c79203527416"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/cc621806-654d-488b-8a30-6f38e3cb285c"
+            "related": "api/boomerang/employees/d58ddb42-ab12-433c-bf34-29811da2222a"
           }
         },
         "company": {
           "links": {
-            "related": "api/boomerang/companies/d5086ddc-1903-462b-bc8c-683fc78001aa"
+            "related": "api/boomerang/companies/fa9805a1-41ce-431e-be75-c79203527416"
           }
         }
       }
@@ -106,7 +106,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=employee,company`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-22T15:31:33Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -149,7 +149,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/1046db21-4c49-4e0c-b320-c62614f3a02b' \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/d7f85baf-572c-4de0-8c14-444d995cfee4' \
     --header 'content-type: application/json' \
 ```
 
@@ -158,27 +158,27 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "1046db21-4c49-4e0c-b320-c62614f3a02b",
+    "id": "d7f85baf-572c-4de0-8c14-444d995cfee4",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-11-04T15:37:34+00:00",
-      "updated_at": "2022-11-04T15:37:34+00:00",
+      "created_at": "2022-11-22T15:31:44+00:00",
+      "updated_at": "2022-11-22T15:31:44+00:00",
       "name": "Segment integration",
-      "key": "03615329b42865161db76127a5715fb2dc4871af9860bd96744656b19cbedcbc",
+      "key": "087dc79ebcfada78fccade4f8bb07a5b7029f54960824c89372e9fea755c50f3",
       "kind": "token",
       "algorithm": null,
-      "employee_id": "604fcfcf-80e5-4151-9976-3a0ba7390d2b",
-      "company_id": "62e8ac0d-92c3-48bc-8f66-8b11cb786638"
+      "employee_id": "37b59342-3235-4b7b-995a-ab1a77fca8d8",
+      "company_id": "bdde3339-6858-4dfc-aa0e-3ad3fa1d2597"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/604fcfcf-80e5-4151-9976-3a0ba7390d2b"
+          "related": "api/boomerang/employees/37b59342-3235-4b7b-995a-ab1a77fca8d8"
         }
       },
       "company": {
         "links": {
-          "related": "api/boomerang/companies/62e8ac0d-92c3-48bc-8f66-8b11cb786638"
+          "related": "api/boomerang/companies/bdde3339-6858-4dfc-aa0e-3ad3fa1d2597"
         }
       }
     }
@@ -229,17 +229,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "838cc90b-5847-4dfe-a9ad-6a82db7e549e",
+    "id": "5ed8cf65-1b67-4bf4-bfa2-44bd9fc1142b",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-11-04T15:37:36+00:00",
-      "updated_at": "2022-11-04T15:37:36+00:00",
+      "created_at": "2022-11-22T15:31:46+00:00",
+      "updated_at": "2022-11-22T15:31:46+00:00",
       "name": "Segment integration",
-      "key": "53f6003841f75662b8dc4c60f8d101695b95bc4c459ff33fdd6bfc7d073c7fad",
+      "key": "a153a82ecfab3f0cf44bc55fd5034656f0125f934542f912c77b64980c32d793",
       "kind": "token",
       "algorithm": null,
-      "employee_id": "233d0613-5e9b-407b-bfed-269155b3d1c0",
-      "company_id": "c8605129-a5dc-4f6e-a0e1-33f4b056a19b"
+      "employee_id": "babaf1dc-9927-403b-9456-dafcb35102dd",
+      "company_id": "aa77798e-b3aa-4f75-9eaa-e154e651bdae"
     },
     "relationships": {
       "employee": {
@@ -283,17 +283,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "6a138322-c622-404f-8598-fa3f4447bf49",
+    "id": "27ecb861-7321-49bb-8be9-b840aa81de1d",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-11-04T15:37:37+00:00",
-      "updated_at": "2022-11-04T15:37:37+00:00",
+      "created_at": "2022-11-22T15:31:47+00:00",
+      "updated_at": "2022-11-22T15:31:47+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
       "algorithm": "ES256",
-      "employee_id": "85bdfb8f-1c88-4ecb-be3e-128696bac087",
-      "company_id": "2f7a1d93-6011-435d-8976-4829df630f48"
+      "employee_id": "92c6fe8a-dbd1-405a-a978-f5d238c6c940",
+      "company_id": "0b4394ec-a816-466e-a325-9c75af7c4996"
     },
     "relationships": {
       "employee": {
@@ -337,17 +337,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "96b272db-233d-4ddd-8086-f6d5acb6c343",
+    "id": "a024b6f8-5d7f-4197-addf-4bd83d62c8b1",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-11-04T15:37:38+00:00",
-      "updated_at": "2022-11-04T15:37:38+00:00",
+      "created_at": "2022-11-22T15:31:48+00:00",
+      "updated_at": "2022-11-22T15:31:48+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtRuZD4X3MhIz1ntbxpkp\njVFUTdH7mspUNXmE0bcQ3bJrgWYZmtPm64+lpo7KWqQIL28dhtNAjImJmzcr04ve\nRAxxyQT0f0uwe3zUBEqaxKim1aCJV60c71cPKJVfhXElnjhMkBW6ftIEgf7J4bwe\n7kPCK/NfdiOuFlMjfaY+5WmaA1lAZ/SSetwglSaHPPQKaix3LW4ocHtHUd7OBKNC\nIU/DO3baUDAkymF7ZCnMaf3F9Le9sGSpgUA8Fof69rH1EdagQFmIkftflj/IlJiC\nPDEoc1x7b4opEuGp287S+DsRRgr6vzVZi4CPQcJJsG+07jZQN5K3wboBlx8LW2jT\nfQIDAQAB\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
       "algorithm": "RS256",
-      "employee_id": "6b8042c5-c94f-4871-8089-d4221b766918",
-      "company_id": "ac22e03e-3bd1-43ed-9318-21f9d92d2999"
+      "employee_id": "130136fc-7e6b-4a49-b543-d3befe8c8f71",
+      "company_id": "4b25cdd9-d10b-4b5e-aa25-14fd823092ce"
     },
     "relationships": {
       "employee": {
@@ -390,17 +390,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "dd0a25ed-e5b8-4006-b91f-bbd4e4bc588f",
+    "id": "9ab99279-f69d-4cb8-82ea-6a3751b3e3c4",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-11-04T15:37:38+00:00",
-      "updated_at": "2022-11-04T15:37:38+00:00",
+      "created_at": "2022-11-22T15:31:49+00:00",
+      "updated_at": "2022-11-22T15:31:49+00:00",
       "name": "Segment integration",
-      "key": "82c2adbbf3e2845c5595eeb3bb00c82ce771520209ad16b282ef589417f0472c",
+      "key": "7dda49301a51c6f58fc588142b1629d7f4f640b9c95e6681ff6ed28593a23911",
       "kind": "single_use",
       "algorithm": "HS256",
-      "employee_id": "827242e9-5b74-4c9b-9a69-a5e33e9f63ce",
-      "company_id": "7b8c32f0-474e-4a98-8059-10682d366ff3"
+      "employee_id": "5ef591bb-8d5c-4a55-b8a8-31e9148e2b1c",
+      "company_id": "4a05909d-f05b-4b6e-8bc6-ed831642dc91"
     },
     "relationships": {
       "employee": {
@@ -467,7 +467,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/28439834-df74-4fb1-b435-dbb03de31faf' \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/99d56593-bd0a-4e6e-99d2-70495fd0ed3f' \
     --header 'content-type: application/json' \
 ```
 
