@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-10-30+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-04+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-11-17+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-22+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,22 +44,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "virtual-88f6e42e-0ebc-5e5d-a0ba-805c97b5d01b",
+      "id": "virtual-5c858dff-eb2a-58c8-acb5-6f5029af2f9e",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2022-11-04T15:40:55+00:00",
+        "created_at": "2022-11-22T16:36:23+00:00",
         "name": "Product 48",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
         "turnover_in_cents": 4000,
         "quantity": 10,
-        "product_id": "757305d2-6108-40b1-a371-5d40e0552426"
+        "product_id": "09cd5f0e-741f-4a91-b61f-29c1ce877663"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/757305d2-6108-40b1-a371-5d40e0552426"
+            "related": "api/boomerang/products/09cd5f0e-741f-4a91-b61f-29c1ce877663"
           }
         }
       }
@@ -81,7 +81,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rentals]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-22T16:33:13Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request

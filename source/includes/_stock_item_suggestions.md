@@ -1,6 +1,12 @@
 # Stock item suggestions
 
-Use stock item suggestions to figure out which stock item can be booked, started, or stopped. These suggestions are sorted by relevancy. Available and temporary stock items first.
+Use stock item suggestions to figure out which stock item can be booked,
+started, or stopped.
+
+The suggestions are sorted:
+  1. Temporary stock items are sorted before permanent stock items.
+  2. Available stock items are sorted before unavailable and overdue stock items.
+  3. Equally relevant stock items are sorted by the identifier.
 
 ## Fields
 Every stock item suggestion has the following fields:
@@ -9,8 +15,8 @@ Name | Description
 - | -
 `id` | **Uuid** `readonly`<br>
 `stock_item_id` | **Uuid** <br>The associated Stock item
-`item_id` | **Uuid** `readonly`<br>ID of the item belonging to the suggested stock item
-`status` | **String_enum** `readonly`<br>Status of the suggestion. One of `available_in_location`, `available_in_cluster`, `overdue`, `unavailable`
+`item_id` | **Uuid** `readonly`<br>ID of the Product the suggested stock item belongs to.
+`status` | **String_enum** `readonly`<br>Status of the suggested stock item. One of `available_in_location`, `available_in_cluster`, `overdue`, `unavailable` 
 
 
 ## Relationships
@@ -29,7 +35,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Bfrom%5D=2022-01-01&filter%5Bitem_id%5D=16913e3d-a76c-48b4-aae0-ecb3be9e6518&filter%5Blocation_id%5D=ef401558-123e-45d8-8878-17985c995f08&filter%5Btill%5D=2022-01-07' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Bfrom%5D=2022-01-01&filter%5Bitem_id%5D=99021ae8-19b6-4e00-bd56-a328f5e174d0&filter%5Blocation_id%5D=af9a7d17-e6bd-4ca5-92c7-f6b788d9cac6&filter%5Btill%5D=2022-01-07' \
     --header 'content-type: application/json' \
 ```
 
@@ -39,65 +45,65 @@ Name | Description
   {
   "data": [
     {
-      "id": "26aa6b0d-d9a2-51bf-91a9-54095c7d1c28",
+      "id": "fb127388-f005-588a-b197-fb9c5e045d60",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "c3173d92-672b-4ac3-87e7-2ae234bed297",
-        "item_id": "16913e3d-a76c-48b4-aae0-ecb3be9e6518",
+        "stock_item_id": "0a17591f-a9d8-4299-96f1-d8034fda22ac",
+        "item_id": "99021ae8-19b6-4e00-bd56-a328f5e174d0",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/c3173d92-672b-4ac3-87e7-2ae234bed297"
+            "related": "api/boomerang/stock_items/0a17591f-a9d8-4299-96f1-d8034fda22ac"
           }
         }
       }
     },
     {
-      "id": "c51a5af4-6afa-52e9-a6cb-feb11abac994",
+      "id": "f2fcf053-621f-58bc-995d-0eb5b85cdb3a",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "7a0ce848-6c7b-4fdf-81fd-ab056beaf4ba",
-        "item_id": "16913e3d-a76c-48b4-aae0-ecb3be9e6518",
+        "stock_item_id": "24a0f73f-28b8-41d3-bbac-e598d9923927",
+        "item_id": "99021ae8-19b6-4e00-bd56-a328f5e174d0",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/7a0ce848-6c7b-4fdf-81fd-ab056beaf4ba"
+            "related": "api/boomerang/stock_items/24a0f73f-28b8-41d3-bbac-e598d9923927"
           }
         }
       }
     },
     {
-      "id": "e1ea4fc0-2c36-539e-80e9-188e10ee5210",
+      "id": "5cfbb85b-5244-55bb-8c57-3125b9020f0c",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "8416671f-8304-4bcf-bc29-33d83189a490",
-        "item_id": "16913e3d-a76c-48b4-aae0-ecb3be9e6518",
+        "stock_item_id": "f4552847-ab6c-4da6-948e-ce001534b4c9",
+        "item_id": "99021ae8-19b6-4e00-bd56-a328f5e174d0",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/8416671f-8304-4bcf-bc29-33d83189a490"
+            "related": "api/boomerang/stock_items/f4552847-ab6c-4da6-948e-ce001534b4c9"
           }
         }
       }
     },
     {
-      "id": "ea5e4477-9a3b-5e62-b9ca-6548623d4aa4",
+      "id": "1bf9bd1d-fbb9-5818-8563-4bf487cd38c8",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "75154dfe-559c-47de-9ac3-01b24f571740",
-        "item_id": "16913e3d-a76c-48b4-aae0-ecb3be9e6518",
+        "stock_item_id": "e58f0406-1852-4807-8e5d-08d35243de04",
+        "item_id": "99021ae8-19b6-4e00-bd56-a328f5e174d0",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/75154dfe-559c-47de-9ac3-01b24f571740"
+            "related": "api/boomerang/stock_items/e58f0406-1852-4807-8e5d-08d35243de04"
           }
         }
       }
@@ -119,7 +125,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=stock_item`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_suggestions]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:26Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-22T16:33:13Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
