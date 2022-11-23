@@ -13,14 +13,12 @@ includes:
   - errors
 
   - resources
-  - authentication_methods
   - barcodes
   - bundle_items
   - bundles
-  - checkout_fields
   - clusters
-  # - collections
-  # - collection_items
+  - collections
+  - collection_items
   - companies
   - coupons
   - customers
@@ -28,19 +26,15 @@ includes:
   - documents
   - email_templates
   - emails
-  - employee_invitations
   - employees
   - inventory_levels
   - invoice_finalizations
   - invoice_revisions
-  - ip_addresses
   - items
   - item_prices
   - lines
   - locations
-  - merges
   - notes
-  - operating_rules
   - operations
   - orders
   - order_bookings
@@ -77,17 +71,23 @@ includes:
   - users
 
   - internal
+  - authentication_methods
   - assets
   - billing_invoices
   - bulk_upserts
   # - cancellation_requests
+  - checkout_fields
   - counts
   - currencies
   - device_tokens
+  - employee_invitations
   - inventory_breakdowns
   - inventory_level_intervals
+  - ip_addresses
   - menus
+  - merges
   - login_activities
+  - operating_rules
   - publications
   - report_consumables
   - report_rental_intervals
