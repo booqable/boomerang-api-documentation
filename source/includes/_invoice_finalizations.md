@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "invoice_finalization",
         "attributes": {
-          "document_id": "f1938644-0d86-4244-8ba2-952933cfd471"
+          "document_id": "2c6b3aea-9e81-4153-818a-8a48e4ad845f"
         }
       }
     }'
@@ -48,10 +48,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bb04b980-e6a4-5ad4-b63d-3ad5afc7f870",
+    "id": "e840df91-a7df-53b1-a247-b761be8cbdeb",
     "type": "invoice_finalizations",
     "attributes": {
-      "document_id": "f1938644-0d86-4244-8ba2-952933cfd471"
+      "document_id": "2c6b3aea-9e81-4153-818a-8a48e4ad845f"
     },
     "relationships": {
       "document": {

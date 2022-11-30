@@ -37,10 +37,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "6a833b67-436b-4973-a7d4-6ba67d5410c1",
+      "id": "5a9add95-0ea1-44e2-94c7-e70552e1f957",
       "type": "login_activities",
       "attributes": {
-        "created_at": "2022-11-23T11:35:15+00:00",
+        "created_at": "2022-11-30T08:58:40+00:00",
         "ip": "192.168.1.28",
         "strategy": "saml",
         "success": false,
@@ -68,7 +68,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[login_activities]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-30T08:56:44Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request

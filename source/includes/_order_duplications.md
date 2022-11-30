@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_order_id": "3f7f0e55-fc3d-48f6-a228-14aab0021266",
+          "original_order_id": "4865e5cc-89df-4aef-9c19-4cfc4bcf66b6",
           "custom_lines": true,
           "customer": true,
           "dates": true,
@@ -62,7 +62,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "eb0f2103-0f7c-520b-8113-7411519479ba",
+    "id": "1fa4bcce-24e0-5969-acdc-551c0c00c20d",
     "type": "order_duplications",
     "attributes": {
       "custom_lines": true,
@@ -73,8 +73,8 @@ Name | Description
       "stock_item_plannings": true,
       "tags": true,
       "deposit": "current",
-      "original_order_id": "3f7f0e55-fc3d-48f6-a228-14aab0021266",
-      "new_order_id": "da6cfd90-a643-42c3-9e0c-a7c493d5596a"
+      "original_order_id": "4865e5cc-89df-4aef-9c19-4cfc4bcf66b6",
+      "new_order_id": "4473d7c9-d0c4-4753-93d2-f1963fdbbefc"
     },
     "relationships": {
       "original_order": {
