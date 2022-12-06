@@ -70,11 +70,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fc4b610b-a501-4f29-b1c5-87e43a922eb0",
+    "id": "b0e8869f-5661-40e4-a4bd-b3c6fd1bcb95",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-23T11:33:43+00:00",
-      "updated_at": "2022-11-23T11:33:43+00:00",
+      "created_at": "2022-12-06T11:17:23+00:00",
+      "updated_at": "2022-12-06T11:17:23+00:00",
       "name": "iRent",
       "slug": "irent",
       "email": "mail46@company.com",
@@ -175,11 +175,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1de0236a-d219-4697-bf39-bd71a5f35414",
+    "id": "f6bb01e7-48ec-453e-b5a9-7051e4fff96b",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-12-07T11:33:44.302Z",
+        "trial_ends_at": "2022-12-20T11:17:24.421Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -266,7 +266,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c2beb52d-c9cd-459c-adaf-e054819584eb",
+        "id": "1d407171-718c-4754-851a-0b1fd22b8cbe",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -280,11 +280,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c2beb52d-c9cd-459c-adaf-e054819584eb",
+    "id": "1d407171-718c-4754-851a-0b1fd22b8cbe",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-23T11:33:44+00:00",
-      "updated_at": "2022-11-23T11:33:44+00:00",
+      "created_at": "2022-12-06T11:17:25+00:00",
+      "updated_at": "2022-12-06T11:17:25+00:00",
       "name": "iRent LLC",
       "slug": "irent",
       "email": "mail48@company.com",

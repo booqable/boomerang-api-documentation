@@ -45,11 +45,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "04853713-efcd-48c9-891d-1b029f5d8ef5",
+      "id": "ef188c84-7214-4e7d-8217-b9589bc4a95a",
       "type": "bundles",
       "attributes": {
-        "created_at": "2022-11-23T11:34:57+00:00",
-        "updated_at": "2022-11-23T11:34:57+00:00",
+        "created_at": "2022-12-06T11:18:42+00:00",
+        "updated_at": "2022-12-06T11:18:42+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -83,22 +83,22 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=04853713-efcd-48c9-891d-1b029f5d8ef5"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=ef188c84-7214-4e7d-8217-b9589bc4a95a"
           }
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=04853713-efcd-48c9-891d-1b029f5d8ef5"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=ef188c84-7214-4e7d-8217-b9589bc4a95a"
           }
         }
       }
     },
     {
-      "id": "bc19f399-a489-4c68-8e82-1836a297bf29",
+      "id": "0bf3e48f-ed4b-4384-90d3-5ec02d399dba",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-11-23T11:34:57+00:00",
-        "updated_at": "2022-11-23T11:34:57+00:00",
+        "created_at": "2022-12-06T11:18:42+00:00",
+        "updated_at": "2022-12-06T11:18:42+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -122,6 +122,8 @@ For this resource relationships are described in the following resources:
         "deposit_in_cents": 10000,
         "discountable": true,
         "taxable": true,
+        "seo_title": null,
+        "seo_description": null,
         "tag_list": [
           "tablets",
           "apple"
@@ -134,7 +136,7 @@ For this resource relationships are described in the following resources:
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
         "stock_item_properties": [],
-        "tax_category_id": "c4dbdf90-761c-41cf-96bf-b89b825937cc",
+        "tax_category_id": "86ec545f-acab-4dc3-a044-35526f32b7b6",
         "price_ruleset_id": null,
         "price_structure_id": null
       },
@@ -146,12 +148,12 @@ For this resource relationships are described in the following resources:
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=bc19f399-a489-4c68-8e82-1836a297bf29"
+            "related": "api/boomerang/products?filter[product_group_id]=0bf3e48f-ed4b-4384-90d3-5ec02d399dba"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/c4dbdf90-761c-41cf-96bf-b89b825937cc"
+            "related": "api/boomerang/tax_categories/86ec545f-acab-4dc3-a044-35526f32b7b6"
           }
         },
         "price_ruleset": {
@@ -166,17 +168,17 @@ For this resource relationships are described in the following resources:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=bc19f399-a489-4c68-8e82-1836a297bf29&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=0bf3e48f-ed4b-4384-90d3-5ec02d399dba&filter[owner_type]=product_groups"
           }
         }
       }
     },
     {
-      "id": "d41eee2f-7b34-47bf-9597-139cba9e8d0e",
+      "id": "45230cd4-38d3-4051-b5f7-c09a279b76d0",
       "type": "products",
       "attributes": {
-        "created_at": "2022-11-23T11:34:57+00:00",
-        "updated_at": "2022-11-23T11:34:57+00:00",
+        "created_at": "2022-12-06T11:18:42+00:00",
+        "updated_at": "2022-12-06T11:18:42+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -200,6 +202,8 @@ For this resource relationships are described in the following resources:
         "deposit_in_cents": 10000,
         "discountable": true,
         "taxable": true,
+        "seo_title": null,
+        "seo_description": null,
         "tag_list": [
           "tablets",
           "apple"
@@ -209,8 +213,8 @@ For this resource relationships are described in the following resources:
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "bc19f399-a489-4c68-8e82-1836a297bf29",
-        "tax_category_id": "c4dbdf90-761c-41cf-96bf-b89b825937cc",
+        "product_group_id": "0bf3e48f-ed4b-4384-90d3-5ec02d399dba",
+        "tax_category_id": "86ec545f-acab-4dc3-a044-35526f32b7b6",
         "price_structure_id": null,
         "price_ruleset_id": null
       },
@@ -222,17 +226,17 @@ For this resource relationships are described in the following resources:
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/bc19f399-a489-4c68-8e82-1836a297bf29"
+            "related": "api/boomerang/product_groups/0bf3e48f-ed4b-4384-90d3-5ec02d399dba"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/c4dbdf90-761c-41cf-96bf-b89b825937cc"
+            "related": "api/boomerang/tax_categories/86ec545f-acab-4dc3-a044-35526f32b7b6"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=d41eee2f-7b34-47bf-9597-139cba9e8d0e&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=45230cd4-38d3-4051-b5f7-c09a279b76d0&filter[owner_type]=products"
           }
         },
         "price_structure": {
@@ -242,7 +246,7 @@ For this resource relationships are described in the following resources:
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=d41eee2f-7b34-47bf-9597-139cba9e8d0e"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=45230cd4-38d3-4051-b5f7-c09a279b76d0"
           }
         },
         "price_ruleset": {
@@ -252,7 +256,7 @@ For this resource relationships are described in the following resources:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=bc19f399-a489-4c68-8e82-1836a297bf29&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=0bf3e48f-ed4b-4384-90d3-5ec02d399dba&filter[owner_type]=products"
           }
         }
       }
@@ -274,7 +278,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-12-06T11:16:36Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -312,6 +316,8 @@ Name | Description
 `deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discountable` | **Boolean** <br>`eq`
 `taxable` | **Boolean** <br>`eq`
+`seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **String** <br>`eq`
 `tax_category_id` | **Uuid** <br>`eq`, `not_eq`
 `price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
@@ -410,19 +416,19 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "a373cbb5-d1dd-40fb-ac87-4da9b0883f9b"
+      "id": "d374def5-e337-4f13-8b71-8faa7a6d1ed9"
     },
     {
-      "id": "662ad420-6dcd-4fce-a0d1-854a3c86c746"
+      "id": "a4b791df-9bc3-4d38-911b-c11525ad1007"
     },
     {
-      "id": "0d4abbe0-504c-4e66-b132-cc33dfb0d51f"
+      "id": "35a24612-0f7b-4eb8-9aff-2e749f1a78b3"
     },
     {
-      "id": "350a526e-a541-4dd4-9407-943074a53484"
+      "id": "66177293-977b-45e2-adb0-6ce5c47afb82"
     },
     {
-      "id": "dd198580-e5db-4831-8e13-b6134a82f43e"
+      "id": "2edbd588-b737-4754-8550-97f8ea66e04e"
     }
   ]
 }
@@ -440,7 +446,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,price_ruleset`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-12-06T11:16:36Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -478,6 +484,8 @@ Name | Description
 `deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discountable` | **Boolean** <br>`eq`
 `taxable` | **Boolean** <br>`eq`
+`seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **String** <br>`eq`
 `tax_category_id` | **Uuid** <br>`eq`, `not_eq`
 `price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
