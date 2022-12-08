@@ -133,11 +133,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "ac6e1842-c1a5-44ca-93a9-e9cf2bacd9f6",
+      "id": "7474c7ba-e8f1-445a-a21a-fbb05078b8df",
       "type": "orders",
       "attributes": {
-        "created_at": "2022-11-23T11:36:11+00:00",
-        "updated_at": "2022-11-23T11:36:12+00:00",
+        "created_at": "2022-12-08T11:05:08+00:00",
+        "updated_at": "2022-12-08T11:05:09+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -178,16 +178,16 @@ Name | Description
         "to_be_paid_in_cents": 97392,
         "paid_in_cents": 0,
         "discount_percentage": 10.0,
-        "customer_id": "d3ffd291-78e6-41fc-9681-9e4f5e0f739a",
+        "customer_id": "b9e72b4a-9228-42b1-9456-bbb09fd507f1",
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "867561bf-2ae3-403b-8f11-d189888fd888",
-        "stop_location_id": "867561bf-2ae3-403b-8f11-d189888fd888"
+        "start_location_id": "6ebaa3b3-ab07-4986-a2b7-312b51a8b5fd",
+        "stop_location_id": "6ebaa3b3-ab07-4986-a2b7-312b51a8b5fd"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/d3ffd291-78e6-41fc-9681-9e4f5e0f739a"
+            "related": "api/boomerang/customers/b9e72b4a-9228-42b1-9456-bbb09fd507f1"
           }
         },
         "tax_region": {
@@ -202,37 +202,37 @@ Name | Description
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=ac6e1842-c1a5-44ca-93a9-e9cf2bacd9f6&filter[owner_type]=orders"
+            "related": "api/boomerang/barcodes?filter[owner_id]=7474c7ba-e8f1-445a-a21a-fbb05078b8df&filter[owner_type]=orders"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=ac6e1842-c1a5-44ca-93a9-e9cf2bacd9f6&filter[owner_type]=orders"
+            "related": "api/boomerang/properties?filter[owner_id]=7474c7ba-e8f1-445a-a21a-fbb05078b8df&filter[owner_type]=orders"
           }
         },
         "start_location": {
           "links": {
-            "related": "api/boomerang/locations/867561bf-2ae3-403b-8f11-d189888fd888"
+            "related": "api/boomerang/locations/6ebaa3b3-ab07-4986-a2b7-312b51a8b5fd"
           }
         },
         "stop_location": {
           "links": {
-            "related": "api/boomerang/locations/867561bf-2ae3-403b-8f11-d189888fd888"
+            "related": "api/boomerang/locations/6ebaa3b3-ab07-4986-a2b7-312b51a8b5fd"
           }
         },
         "tax_values": {
           "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=ac6e1842-c1a5-44ca-93a9-e9cf2bacd9f6"
+            "related": "api/boomerang/tax_values?filter[owner_id]=7474c7ba-e8f1-445a-a21a-fbb05078b8df"
           }
         },
         "lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=ac6e1842-c1a5-44ca-93a9-e9cf2bacd9f6&filter[owner_type]=orders"
+            "related": "api/boomerang/lines?filter[owner_id]=7474c7ba-e8f1-445a-a21a-fbb05078b8df&filter[owner_type]=orders"
           }
         },
         "stock_item_plannings": {
           "links": {
-            "related": "api/boomerang/stock_item_plannings?filter[order_id]=ac6e1842-c1a5-44ca-93a9-e9cf2bacd9f6"
+            "related": "api/boomerang/stock_item_plannings?filter[order_id]=7474c7ba-e8f1-445a-a21a-fbb05078b8df"
           }
         }
       }
@@ -254,7 +254,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=customer,tax_region,coupon`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-12-08T11:02:06Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -352,6 +352,9 @@ This request accepts the following includes:
 
 
 `properties`
+
+
+`coupon`
 
 
 
@@ -382,14 +385,14 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2022-11-24T11:36:17Z",
-                    "lte": "2022-11-27T11:36:17Z"
+                    "gte": "2022-12-09T11:05:13Z",
+                    "lte": "2022-12-12T11:05:13Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "gte": "2022-11-24T11:36:17Z",
-                    "lte": "2022-11-27T11:36:17Z"
+                    "gte": "2022-12-09T11:05:13Z",
+                    "lte": "2022-12-12T11:05:13Z"
                   }
                 }
               ]
@@ -417,10 +420,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "ff5d33d2-bb05-410b-bc3b-c32376764cd7"
+      "id": "fe631c25-6d6d-4c98-921e-07ddfe7fe2fc"
     },
     {
-      "id": "da5ad571-f165-404e-a180-e3fe064f4676"
+      "id": "12a79972-3ad0-4157-b122-e898b852fa36"
     }
   ]
 }
@@ -438,7 +441,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=customer,tax_region,coupon`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-12-08T11:02:06Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -538,6 +541,9 @@ This request accepts the following includes:
 `properties`
 
 
+`coupon`
+
+
 
 
 
@@ -560,11 +566,11 @@ Returns an existing or new order for the current employee.
 ```json
   {
   "data": {
-    "id": "5a50551e-bfae-413d-8231-c79cee6caa91",
+    "id": "4c3a771b-bf28-4647-bd79-39f1d6f6725b",
     "type": "orders",
     "attributes": {
-      "created_at": "2022-11-23T11:36:19+00:00",
-      "updated_at": "2022-11-23T11:36:19+00:00",
+      "created_at": "2022-12-08T11:05:15+00:00",
+      "updated_at": "2022-12-08T11:05:15+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -600,8 +606,8 @@ Returns an existing or new order for the current employee.
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "e6a27446-bb2c-4281-983a-c3e892e36f04",
-      "stop_location_id": "e6a27446-bb2c-4281-983a-c3e892e36f04"
+      "start_location_id": "0999a799-0257-48f2-957f-038a5a739d1f",
+      "stop_location_id": "0999a799-0257-48f2-957f-038a5a739d1f"
     },
     "relationships": {
       "customer": {
@@ -621,37 +627,37 @@ Returns an existing or new order for the current employee.
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=5a50551e-bfae-413d-8231-c79cee6caa91&filter[owner_type]=orders"
+          "related": "api/boomerang/barcodes?filter[owner_id]=4c3a771b-bf28-4647-bd79-39f1d6f6725b&filter[owner_type]=orders"
         }
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=5a50551e-bfae-413d-8231-c79cee6caa91&filter[owner_type]=orders"
+          "related": "api/boomerang/properties?filter[owner_id]=4c3a771b-bf28-4647-bd79-39f1d6f6725b&filter[owner_type]=orders"
         }
       },
       "start_location": {
         "links": {
-          "related": "api/boomerang/locations/e6a27446-bb2c-4281-983a-c3e892e36f04"
+          "related": "api/boomerang/locations/0999a799-0257-48f2-957f-038a5a739d1f"
         }
       },
       "stop_location": {
         "links": {
-          "related": "api/boomerang/locations/e6a27446-bb2c-4281-983a-c3e892e36f04"
+          "related": "api/boomerang/locations/0999a799-0257-48f2-957f-038a5a739d1f"
         }
       },
       "tax_values": {
         "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=5a50551e-bfae-413d-8231-c79cee6caa91"
+          "related": "api/boomerang/tax_values?filter[owner_id]=4c3a771b-bf28-4647-bd79-39f1d6f6725b"
         }
       },
       "lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=5a50551e-bfae-413d-8231-c79cee6caa91&filter[owner_type]=orders"
+          "related": "api/boomerang/lines?filter[owner_id]=4c3a771b-bf28-4647-bd79-39f1d6f6725b&filter[owner_type]=orders"
         }
       },
       "stock_item_plannings": {
         "links": {
-          "related": "api/boomerang/stock_item_plannings?filter[order_id]=5a50551e-bfae-413d-8231-c79cee6caa91"
+          "related": "api/boomerang/stock_item_plannings?filter[order_id]=4c3a771b-bf28-4647-bd79-39f1d6f6725b"
         }
       }
     }
@@ -723,7 +729,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders/c647cea4-a76f-4f1f-bb04-5905c264cb86' \
+    --url 'https://example.booqable.com/api/boomerang/orders/75abbd26-f4d3-486a-b9d1-12d6e2c02a0f' \
     --header 'content-type: application/json' \
 ```
 
@@ -732,11 +738,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c647cea4-a76f-4f1f-bb04-5905c264cb86",
+    "id": "75abbd26-f4d3-486a-b9d1-12d6e2c02a0f",
     "type": "orders",
     "attributes": {
-      "created_at": "2022-11-23T11:36:20+00:00",
-      "updated_at": "2022-11-23T11:36:21+00:00",
+      "created_at": "2022-12-08T11:05:16+00:00",
+      "updated_at": "2022-12-08T11:05:17+00:00",
       "number": 1,
       "status": "reserved",
       "statuses": [
@@ -777,16 +783,16 @@ This request accepts the following includes:
       "to_be_paid_in_cents": 97392,
       "paid_in_cents": 0,
       "discount_percentage": 10.0,
-      "customer_id": "0018bc19-ffb0-44fc-8b70-2c82d1ab7212",
+      "customer_id": "5047983b-64d9-46e5-a262-ea83da2618b9",
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "ff629e67-a309-43f1-8056-60cc8f0ff23f",
-      "stop_location_id": "ff629e67-a309-43f1-8056-60cc8f0ff23f"
+      "start_location_id": "673783d8-70dc-4055-939c-9c634cbe63bc",
+      "stop_location_id": "673783d8-70dc-4055-939c-9c634cbe63bc"
     },
     "relationships": {
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/0018bc19-ffb0-44fc-8b70-2c82d1ab7212"
+          "related": "api/boomerang/customers/5047983b-64d9-46e5-a262-ea83da2618b9"
         }
       },
       "tax_region": {
@@ -801,37 +807,37 @@ This request accepts the following includes:
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=c647cea4-a76f-4f1f-bb04-5905c264cb86&filter[owner_type]=orders"
+          "related": "api/boomerang/barcodes?filter[owner_id]=75abbd26-f4d3-486a-b9d1-12d6e2c02a0f&filter[owner_type]=orders"
         }
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=c647cea4-a76f-4f1f-bb04-5905c264cb86&filter[owner_type]=orders"
+          "related": "api/boomerang/properties?filter[owner_id]=75abbd26-f4d3-486a-b9d1-12d6e2c02a0f&filter[owner_type]=orders"
         }
       },
       "start_location": {
         "links": {
-          "related": "api/boomerang/locations/ff629e67-a309-43f1-8056-60cc8f0ff23f"
+          "related": "api/boomerang/locations/673783d8-70dc-4055-939c-9c634cbe63bc"
         }
       },
       "stop_location": {
         "links": {
-          "related": "api/boomerang/locations/ff629e67-a309-43f1-8056-60cc8f0ff23f"
+          "related": "api/boomerang/locations/673783d8-70dc-4055-939c-9c634cbe63bc"
         }
       },
       "tax_values": {
         "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=c647cea4-a76f-4f1f-bb04-5905c264cb86"
+          "related": "api/boomerang/tax_values?filter[owner_id]=75abbd26-f4d3-486a-b9d1-12d6e2c02a0f"
         }
       },
       "lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=c647cea4-a76f-4f1f-bb04-5905c264cb86&filter[owner_type]=orders"
+          "related": "api/boomerang/lines?filter[owner_id]=75abbd26-f4d3-486a-b9d1-12d6e2c02a0f&filter[owner_type]=orders"
         }
       },
       "stock_item_plannings": {
         "links": {
-          "related": "api/boomerang/stock_item_plannings?filter[order_id]=c647cea4-a76f-4f1f-bb04-5905c264cb86"
+          "related": "api/boomerang/stock_item_plannings?filter[order_id]=75abbd26-f4d3-486a-b9d1-12d6e2c02a0f"
         }
       }
     }
@@ -915,8 +921,8 @@ When creating an order, and the following fields are left blank, a sensible defa
       "data": {
         "type": "customers",
         "attributes": {
-          "starts_at": "2022-11-26T11:36:23.870Z",
-          "stops_at": "2023-01-04T11:36:23.870Z"
+          "starts_at": "2022-12-11T11:05:19.448Z",
+          "stops_at": "2023-01-19T11:05:19.448Z"
         }
       }
     }'
@@ -927,19 +933,19 @@ When creating an order, and the following fields are left blank, a sensible defa
 ```json
   {
   "data": {
-    "id": "14335a3a-0d0f-4fb9-8f36-5e50b0117a70",
+    "id": "08b5855c-0ad2-4147-b978-10fd3668baf5",
     "type": "orders",
     "attributes": {
-      "created_at": "2022-11-23T11:36:23+00:00",
-      "updated_at": "2022-11-23T11:36:23+00:00",
+      "created_at": "2022-12-08T11:05:19+00:00",
+      "updated_at": "2022-12-08T11:05:19+00:00",
       "number": null,
       "status": "new",
       "statuses": [
         "new"
       ],
       "status_counts": {},
-      "starts_at": "2022-11-26T11:30:00+00:00",
-      "stops_at": "2023-01-04T11:30:00+00:00",
+      "starts_at": "2022-12-11T11:00:00+00:00",
+      "stops_at": "2023-01-19T11:00:00+00:00",
       "deposit_type": "percentage",
       "deposit_value": 100,
       "entirely_started": false,
@@ -967,8 +973,8 @@ When creating an order, and the following fields are left blank, a sensible defa
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "2f5eb696-6296-4c2d-a53b-0372e29d606d",
-      "stop_location_id": "2f5eb696-6296-4c2d-a53b-0372e29d606d"
+      "start_location_id": "30d2f6de-d66f-43e1-9633-26b16f370dfd",
+      "stop_location_id": "30d2f6de-d66f-43e1-9633-26b16f370dfd"
     },
     "relationships": {
       "customer": {
@@ -1110,17 +1116,17 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/76c0fc84-78d6-4748-a351-c785f8070779' \
+    --url 'https://example.booqable.com/api/boomerang/orders/ccb0ad3a-a464-4465-9f2f-cd446835fc4d' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
       },
       "data": {
-        "id": "76c0fc84-78d6-4748-a351-c785f8070779",
+        "id": "ccb0ad3a-a464-4465-9f2f-cd446835fc4d",
         "type": "orders",
         "attributes": {
-          "customer_id": "57220960-4abd-4098-8d40-5f51e49dac0e"
+          "customer_id": "665aa12d-dd24-4775-b564-05d18ca5beff"
         }
       }
     }'
@@ -1131,13 +1137,13 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "76c0fc84-78d6-4748-a351-c785f8070779",
+    "id": "ccb0ad3a-a464-4465-9f2f-cd446835fc4d",
     "type": "orders",
     "attributes": {
       "price_in_cents": 80250,
       "grand_total_with_tax_in_cents": 97103,
       "to_be_paid_in_cents": 197103,
-      "customer_id": "57220960-4abd-4098-8d40-5f51e49dac0e",
+      "customer_id": "665aa12d-dd24-4775-b564-05d18ca5beff",
       "tax_region_id": null
     },
     "relationships": {
@@ -1202,14 +1208,14 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/01ae0e37-0788-4d7f-b033-1cd79588b8e8' \
+    --url 'https://example.booqable.com/api/boomerang/orders/70e6cabd-bdd3-469f-b026-1670b31d373a' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
       },
       "data": {
-        "id": "01ae0e37-0788-4d7f-b033-1cd79588b8e8",
+        "id": "70e6cabd-bdd3-469f-b026-1670b31d373a",
         "type": "orders",
         "attributes": {
           "deposit_type": "percentage"
@@ -1223,7 +1229,7 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "01ae0e37-0788-4d7f-b033-1cd79588b8e8",
+    "id": "70e6cabd-bdd3-469f-b026-1670b31d373a",
     "type": "orders",
     "attributes": {
       "deposit_type": "percentage",
@@ -1293,11 +1299,11 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/29b364f1-ebf8-469c-a5e0-c22a91d864c1' \
+    --url 'https://example.booqable.com/api/boomerang/orders/23c4dbff-115f-48aa-bb6c-c65d21dd863c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "29b364f1-ebf8-469c-a5e0-c22a91d864c1",
+        "id": "23c4dbff-115f-48aa-bb6c-c65d21dd863c",
         "type": "orders",
         "attributes": {
           "stops_at": "1980-05-04T12:00:00.000Z"
@@ -1321,12 +1327,12 @@ When updating a customer on an order the following settings will be applied and 
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "d2cf579a-7866-44a5-b4e8-f3f2b5b04ad9",
+            "item_id": "8d184415-e39a-4f2a-a3c4-ff8f9fdaceaf",
             "unavailable": [
-              "f97590d0-1a79-44e7-98ba-dfbbeb1b07ba"
+              "4634298c-00cc-452c-b867-784bcaa4c16b"
             ],
             "available": [
-              "1d9b99f3-aa05-46e8-ade2-6cca8cc4d4cc"
+              "0c284633-dee6-480a-a6b2-815641452be3"
             ]
           }
         ]
