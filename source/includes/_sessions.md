@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cccd9282-a512-57b6-8d40-473d75ce879d",
+    "id": "f8c1d5e9-3475-5f0b-be2e-c27fd526ad46",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-23T11:37:44+00:00",
-      "company_id": "96557113-38c3-4c1e-a0fb-3d57f6c25be6",
-      "employee_id": "1ebc8284-045b-4636-a2de-1d6a9a97f133",
-      "locations_updated_at": "2022-11-23T11:37:44+00:00",
-      "clusters_updated_at": "2022-11-23T11:37:44+00:00",
-      "default_properties_updated_at": "2022-11-23T11:37:44+00:00"
+      "updated_at": "2022-12-19T08:49:26+00:00",
+      "company_id": "5aac7bbd-fafb-4aea-b5d9-bfdfe6bf5f0d",
+      "employee_id": "f097fd9c-e107-47dd-a2c0-8c2df9c39d9c",
+      "locations_updated_at": "2022-12-19T08:49:26+00:00",
+      "clusters_updated_at": "2022-12-19T08:49:26+00:00",
+      "default_properties_updated_at": "2022-12-19T08:49:26+00:00"
     },
     "relationships": {
       "company": {
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2c243f6a-f469-5e26-b324-c12c48bee560",
+    "id": "c69a9469-b48c-587b-8295-f5fe1d7c8175",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-23T11:37:45+00:00",
-      "company_id": "31cc344c-05b2-4afc-8341-ae5eff7f1c8c",
-      "employee_id": "39d2493f-c3be-472b-8a9d-77c2efa1eb70",
+      "updated_at": "2022-12-19T08:49:27+00:00",
+      "company_id": "e4447f85-17fe-4d2d-8b3f-d467a03a47ed",
+      "employee_id": "0ed80559-338e-4f3f-afbd-37552048dc72",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "31cc344c-05b2-4afc-8341-ae5eff7f1c8c"
+          "id": "e4447f85-17fe-4d2d-8b3f-d467a03a47ed"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "39d2493f-c3be-472b-8a9d-77c2efa1eb70"
+          "id": "0ed80559-338e-4f3f-afbd-37552048dc72"
         }
       },
       "settings": {
@@ -177,11 +177,11 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "31cc344c-05b2-4afc-8341-ae5eff7f1c8c",
+      "id": "e4447f85-17fe-4d2d-8b3f-d467a03a47ed",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-11-23T11:37:45+00:00",
-        "updated_at": "2022-11-23T11:37:45+00:00",
+        "created_at": "2022-12-19T08:49:27+00:00",
+        "updated_at": "2022-12-19T08:49:27+00:00",
         "name": "Company name 227",
         "slug": "company-name-227",
         "email": "mail230@company.com",
@@ -213,7 +213,7 @@ This request accepts the following includes:
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-12-07T11:37:45.614Z",
+          "trial_ends_at": "2023-01-02T08:49:27.383Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -268,11 +268,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "39d2493f-c3be-472b-8a9d-77c2efa1eb70",
+      "id": "0ed80559-338e-4f3f-afbd-37552048dc72",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-23T11:37:45+00:00",
-        "updated_at": "2022-11-23T11:37:45+00:00",
+        "created_at": "2022-12-19T08:49:27+00:00",
+        "updated_at": "2022-12-19T08:49:27+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
