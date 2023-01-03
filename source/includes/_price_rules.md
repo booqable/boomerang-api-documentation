@@ -76,13 +76,13 @@ Name | Description
       "data": {
         "type": "price_rules",
         "attributes": {
-          "price_ruleset_id": "092ecd10-7c11-434e-89e8-716ecbedae18",
+          "price_ruleset_id": "aae0934b-3406-47f6-8447-b7bd08810b2b",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "value": 25,
-          "from": "2022-10-23T11:36:49.549Z",
-          "till": "2022-12-23T11:36:49.550Z"
+          "from": "2022-12-03T12:14:27.222Z",
+          "till": "2023-02-03T12:14:27.222Z"
         }
       },
       "include": "price_rules"
@@ -94,18 +94,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2ce80b85-9e01-4178-bf7d-f9668cf55238",
+    "id": "a4ace1d5-853e-4b36-9aca-f187833bc295",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2022-11-23T11:36:49+00:00",
-      "updated_at": "2022-11-23T11:36:49+00:00",
+      "created_at": "2023-01-03T12:14:27+00:00",
+      "updated_at": "2023-01-03T12:14:27+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
       "adjustment_strategy": "percentage",
       "value": 25.0,
-      "from": "2022-10-23T11:36:49+00:00",
-      "till": "2022-12-23T11:36:49+00:00",
+      "from": "2022-12-03T12:14:27+00:00",
+      "till": "2023-02-03T12:14:27+00:00",
       "from_day": null,
       "till_day": null,
       "from_time": null,
@@ -113,7 +113,7 @@ Name | Description
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "092ecd10-7c11-434e-89e8-716ecbedae18"
+      "price_ruleset_id": "aae0934b-3406-47f6-8447-b7bd08810b2b"
     },
     "relationships": {
       "price_ruleset": {
@@ -175,11 +175,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/08d6b8bd-6ecc-4c8b-98e9-40b35d206021' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/9894a260-16d1-446a-a2b0-e9790047f84b' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "08d6b8bd-6ecc-4c8b-98e9-40b35d206021",
+        "id": "9894a260-16d1-446a-a2b0-e9790047f84b",
         "type": "price_rules",
         "attributes": {
           "value": 10
@@ -193,11 +193,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "08d6b8bd-6ecc-4c8b-98e9-40b35d206021",
+    "id": "9894a260-16d1-446a-a2b0-e9790047f84b",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2022-11-23T11:36:50+00:00",
-      "updated_at": "2022-11-23T11:36:50+00:00",
+      "created_at": "2023-01-03T12:14:27+00:00",
+      "updated_at": "2023-01-03T12:14:27+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -212,7 +212,7 @@ This request does not accept any includes
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "ed5e4d7d-0c3a-43f7-8d85-fa9f877f3ac9"
+      "price_ruleset_id": "b7e6ddcd-1244-4f51-aebf-32c0e1ac52a0"
     },
     "relationships": {
       "price_ruleset": {
@@ -231,14 +231,14 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/94d71cac-182f-4a97-a73a-d2b843dc56ad' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/33d8c43c-f43c-49e9-a4c2-e12235ac920b' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "94d71cac-182f-4a97-a73a-d2b843dc56ad",
+        "id": "33d8c43c-f43c-49e9-a4c2-e12235ac920b",
         "type": "price_rules",
         "attributes": {
-          "id": "94d71cac-182f-4a97-a73a-d2b843dc56ad",
+          "id": "33d8c43c-f43c-49e9-a4c2-e12235ac920b",
           "name": "Off season"
         }
       }
@@ -250,11 +250,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "94d71cac-182f-4a97-a73a-d2b843dc56ad",
+    "id": "33d8c43c-f43c-49e9-a4c2-e12235ac920b",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2022-11-23T11:36:51+00:00",
-      "updated_at": "2022-11-23T11:36:51+00:00",
+      "created_at": "2023-01-03T12:14:27+00:00",
+      "updated_at": "2023-01-03T12:14:27+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -269,7 +269,7 @@ This request does not accept any includes
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "5a597310-4e8e-4063-9de8-caaccca9079f"
+      "price_ruleset_id": "fca5903d-2ab2-4261-b9ab-951a0586edfa"
     },
     "relationships": {
       "price_ruleset": {
@@ -331,7 +331,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/366fe637-9b5d-41ee-831f-49281e7e6f71' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/e3695573-a4d0-4d36-9ae1-6a2a411fb47d' \
     --header 'content-type: application/json' \
 ```
 

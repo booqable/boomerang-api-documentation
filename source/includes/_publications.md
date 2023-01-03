@@ -45,18 +45,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "166c071b-d8c5-461c-abdf-052a7eabc374",
+      "id": "6a402c0c-b1da-4440-877d-6620d5004f30",
       "type": "publications",
       "attributes": {
-        "created_at": "2022-11-23T11:37:20+00:00",
-        "updated_at": "2022-11-23T11:37:20+00:00",
-        "published_at": "2022-11-18T11:37:20+00:00",
-        "theme_id": "3b7a7c8b-3398-4d9d-ba01-3a897580983d"
+        "created_at": "2023-01-03T12:14:51+00:00",
+        "updated_at": "2023-01-03T12:14:51+00:00",
+        "published_at": "2022-12-29T12:14:51+00:00",
+        "theme_id": "af777099-47ad-4b34-b187-4a2a55a367d5"
       },
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/3b7a7c8b-3398-4d9d-ba01-3a897580983d"
+            "related": "api/boomerang/themes/af777099-47ad-4b34-b187-4a2a55a367d5"
           }
         }
       }
@@ -78,7 +78,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-03T12:11:08Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -132,7 +132,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "bc58e176-e8c8-4ae6-b2da-f0d788fec965"
+          "theme_id": "945e7b14-c37b-4d6a-b008-1a76852f37d7"
         }
       }
     }'
@@ -143,13 +143,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cfababb2-194d-48ed-a03f-8093b45aa889",
+    "id": "1e57f34b-a327-415a-bee4-7f2987b3f8a0",
     "type": "publications",
     "attributes": {
-      "created_at": "2022-11-18T11:37:20+00:00",
-      "updated_at": "2022-11-18T11:37:20+00:00",
-      "published_at": "2022-11-18T11:37:20+00:00",
-      "theme_id": "bc58e176-e8c8-4ae6-b2da-f0d788fec965"
+      "created_at": "2022-12-29T12:14:51+00:00",
+      "updated_at": "2022-12-29T12:14:51+00:00",
+      "published_at": "2022-12-29T12:14:51+00:00",
+      "theme_id": "945e7b14-c37b-4d6a-b008-1a76852f37d7"
     },
     "relationships": {
       "theme": {
