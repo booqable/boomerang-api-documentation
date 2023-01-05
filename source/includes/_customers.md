@@ -69,11 +69,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0f2f45a1-8a00-45eb-88ac-473128ece451",
+      "id": "5f516d76-7f2f-4e7f-888a-98d3b7b991d7",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-11-23T11:33:49+00:00",
-        "updated_at": "2022-11-23T11:33:49+00:00",
+        "created_at": "2023-01-05T09:55:16+00:00",
+        "updated_at": "2023-01-05T09:55:16+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
@@ -101,17 +101,17 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=0f2f45a1-8a00-45eb-88ac-473128ece451&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=5f516d76-7f2f-4e7f-888a-98d3b7b991d7&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=0f2f45a1-8a00-45eb-88ac-473128ece451&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=5f516d76-7f2f-4e7f-888a-98d3b7b991d7&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=0f2f45a1-8a00-45eb-88ac-473128ece451&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=5f516d76-7f2f-4e7f-888a-98d3b7b991d7&filter[owner_type]=customers"
           }
         }
       }
@@ -133,7 +133,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-05T09:54:40Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -236,10 +236,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "eefe2fc0-988b-4f71-8590-20e40a3cb139"
+      "id": "821cf6cf-2dde-4c87-b342-829b01780b5b"
     },
     {
-      "id": "c0063d17-1707-498d-a84c-73540424b139"
+      "id": "7a35cb4e-9d52-447c-92d4-85bc9e023c15"
     }
   ]
 }
@@ -257,7 +257,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-05T09:54:40Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -313,7 +313,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/080aad52-91cd-45e1-b7b9-3b8e6ddc2505?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/82aa1a19-5e5b-4a45-87f4-0364e0c6d4c4?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -322,11 +322,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "080aad52-91cd-45e1-b7b9-3b8e6ddc2505",
+    "id": "82aa1a19-5e5b-4a45-87f4-0364e0c6d4c4",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-23T11:33:52+00:00",
-      "updated_at": "2022-11-23T11:33:52+00:00",
+      "created_at": "2023-01-05T09:55:19+00:00",
+      "updated_at": "2023-01-05T09:55:19+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
@@ -354,19 +354,19 @@ This request does not accept any includes
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=080aad52-91cd-45e1-b7b9-3b8e6ddc2505&filter[owner_type]=customers"
+          "related": "api/boomerang/properties?filter[owner_id]=82aa1a19-5e5b-4a45-87f4-0364e0c6d4c4&filter[owner_type]=customers"
         },
         "data": []
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=080aad52-91cd-45e1-b7b9-3b8e6ddc2505&filter[owner_type]=customers"
+          "related": "api/boomerang/barcodes?filter[owner_id]=82aa1a19-5e5b-4a45-87f4-0364e0c6d4c4&filter[owner_type]=customers"
         },
         "data": null
       },
       "notes": {
         "links": {
-          "related": "api/boomerang/notes?filter[owner_id]=080aad52-91cd-45e1-b7b9-3b8e6ddc2505&filter[owner_type]=customers"
+          "related": "api/boomerang/notes?filter[owner_id]=82aa1a19-5e5b-4a45-87f4-0364e0c6d4c4&filter[owner_type]=customers"
         }
       }
     }
@@ -432,11 +432,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4216f233-a6fd-4a29-855c-37ae3b6084c7",
+    "id": "11cce55a-9f99-4756-b12b-9dcb61f9fa13",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-23T11:33:54+00:00",
-      "updated_at": "2022-11-23T11:33:54+00:00",
+      "created_at": "2023-01-05T09:55:20+00:00",
+      "updated_at": "2023-01-05T09:55:20+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -540,11 +540,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/851ba29b-c789-4110-af3b-cef17a2ca427' \
+    --url 'https://example.booqable.com/api/boomerang/customers/ca7a77d3-0679-45dd-a4de-c588951cc369' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "851ba29b-c789-4110-af3b-cef17a2ca427",
+        "id": "ca7a77d3-0679-45dd-a4de-c588951cc369",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -558,11 +558,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "851ba29b-c789-4110-af3b-cef17a2ca427",
+    "id": "ca7a77d3-0679-45dd-a4de-c588951cc369",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-23T11:33:56+00:00",
-      "updated_at": "2022-11-23T11:33:56+00:00",
+      "created_at": "2023-01-05T09:55:21+00:00",
+      "updated_at": "2023-01-05T09:55:21+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
@@ -666,7 +666,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/6911f9dd-d7ea-4139-ab2e-6bda6ddb6e3c' \
+    --url 'https://example.booqable.com/api/boomerang/customers/7b45ef35-97e0-4e08-a5fe-1a8e3ac207b5' \
     --header 'content-type: application/json' \
 ```
 
