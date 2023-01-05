@@ -70,14 +70,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fc4b610b-a501-4f29-b1c5-87e43a922eb0",
+    "id": "223aa800-e375-432d-b8b6-9bef16f4244f",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-23T11:33:43+00:00",
-      "updated_at": "2022-11-23T11:33:43+00:00",
+      "created_at": "2023-01-05T16:26:47+00:00",
+      "updated_at": "2023-01-05T16:26:47+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail46@company.com",
+      "email": "mail48@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -175,11 +175,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1de0236a-d219-4697-bf39-bd71a5f35414",
+    "id": "fc0207e1-23f2-4880-9c89-70e72d75e21d",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-12-07T11:33:44.302Z",
+        "trial_ends_at": "2023-01-19T16:26:47.638Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -266,7 +266,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c2beb52d-c9cd-459c-adaf-e054819584eb",
+        "id": "3497b30a-eb63-4ea8-b002-b0c2ab51acc5",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -280,14 +280,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c2beb52d-c9cd-459c-adaf-e054819584eb",
+    "id": "3497b30a-eb63-4ea8-b002-b0c2ab51acc5",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-23T11:33:44+00:00",
-      "updated_at": "2022-11-23T11:33:44+00:00",
+      "created_at": "2023-01-05T16:26:48+00:00",
+      "updated_at": "2023-01-05T16:26:48+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail48@company.com",
+      "email": "mail50@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
