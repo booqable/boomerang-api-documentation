@@ -42,7 +42,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=1f581341-0ea7-49de-9548-63fdeed2249a&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=7d2e5560-58ed-4ce3-81db-944cf804753d&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -52,12 +52,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "27e009be-e72d-5965-814f-07d4ad9c22e9",
+      "id": "418095cf-9dbe-53ca-9337-291f50f57566",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "1f581341-0ea7-49de-9548-63fdeed2249a",
+        "item_id": "7d2e5560-58ed-4ce3-81db-944cf804753d",
         "order_id": null,
-        "location_id": "a4bea88e-140f-40d7-af4c-cf1f6ce31d06",
+        "location_id": "7b76614c-a5b1-4ef4-ac6d-198d86299add",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -72,12 +72,12 @@ Name | Description
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/1f581341-0ea7-49de-9548-63fdeed2249a"
+            "related": "api/boomerang/items/7d2e5560-58ed-4ce3-81db-944cf804753d"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/a4bea88e-140f-40d7-af4c-cf1f6ce31d06"
+            "related": "api/boomerang/locations/7b76614c-a5b1-4ef4-ac6d-198d86299add"
           }
         }
       }
@@ -99,7 +99,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=item,location`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[inventory_levels]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-05T13:01:30Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -150,7 +150,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=47c38007-9238-4a31-928a-f6a087ee90d0&filter%5Blocation_id%5D=72ddf3f9-12eb-43a1-976c-b816371609b8&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=165d75f8-91fe-4b5e-8ab9-739b69060c5e&filter%5Blocation_id%5D=1efcb131-4dc3-4fbe-bc63-9e8af2ab379c&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -160,12 +160,12 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "9b7e6763-2714-5ac7-aecd-17e78333952e",
+      "id": "cea039c3-7a33-57db-80c4-885abf522d12",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "47c38007-9238-4a31-928a-f6a087ee90d0",
+        "item_id": "165d75f8-91fe-4b5e-8ab9-739b69060c5e",
         "order_id": null,
-        "location_id": "72ddf3f9-12eb-43a1-976c-b816371609b8",
+        "location_id": "1efcb131-4dc3-4fbe-bc63-9e8af2ab379c",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -180,12 +180,12 @@ This request accepts the following includes:
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/47c38007-9238-4a31-928a-f6a087ee90d0"
+            "related": "api/boomerang/items/165d75f8-91fe-4b5e-8ab9-739b69060c5e"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/72ddf3f9-12eb-43a1-976c-b816371609b8"
+            "related": "api/boomerang/locations/1efcb131-4dc3-4fbe-bc63-9e8af2ab379c"
           }
         }
       }
@@ -207,7 +207,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=item,location`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[inventory_levels]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-05T13:01:30Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request

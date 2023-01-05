@@ -1,0 +1,295 @@
+# Activity logs
+
+Activity logs describe an event where changes took place in our database. Examples of such events can be an order that was created or placed, a product name that changed, a custoemr that was added or an e-mail that got sent. 
+
+Activity logs contain `action_key` and `action_args`, which determine the summary line, and `data` which contains a copy of or details about the subject that the event is about, such as a order, product, customer or e-mail.
+
+## Endpoints
+`GET /api/boomerang/activity_logs`
+
+`GET /api/boomerang/activity_logs/{id}`
+
+## Fields
+Every activity log has the following fields:
+
+Name | Description
+- | -
+`id` | **Uuid** `readonly`<br>Primary key
+`created_at` | **Datetime** `readonly`<br>When the resource was created
+`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
+`employee_id` | **Uuid** <br>The associated Employee
+`action_key` | **String** <br>The name of the event that the activity log describes. This determines which translated summary line will be displayed in the web client. Examples are "product.created" or "order.updated".
+`action_args` | **Hash** <br>Arguments that can be passed to enrich the summary line of the web client with details, such as a product name.
+`has_data` | **Boolean** `readonly`<br>Boolean value flag indicating whether this activity log contains additional data describing the subject of the event.
+`owner_id` | **Uuid** <br>ID of the subject the event is about.
+`owner_type` | **String** <br>Class of the subject the event is about
+`data` | **Hash** `extra` `readonly`<br>Hash containing (details on) the subject(s) of the event this activity log describes. The subject(s) are contained in individual arrays grouped by their type. For example: { products: [{ id: 1, name: 'Product 1'}] } 
+
+
+## Relationships
+Activity logs have the following relationships:
+
+Name | Description
+- | -
+`owner` | **Customer, Product, Product group, Stock item, Bundle, Order, Document**<br>Associated Owner
+`employee` | **Employees** `readonly`<br>Associated Employee
+
+
+## Listing activity logs
+
+
+
+> How to fetch a list of activity logs:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/activity_logs' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "a7452756-0027-444a-aa78-31857bfb6721",
+      "type": "activity_logs",
+      "attributes": {
+        "created_at": "2023-01-05T13:01:34+00:00",
+        "employee_id": "6c43ac0c-ae7b-43e4-a638-bc346484ca84",
+        "action_key": "product.created",
+        "action_args": {},
+        "has_data": true,
+        "owner_id": "522c20f2-072b-4e8c-bc03-7bad569186f3",
+        "owner_type": "orders"
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": "api/boomerang/orders/522c20f2-072b-4e8c-bc03-7bad569186f3"
+          }
+        },
+        "employee": {
+          "links": {
+            "related": "api/boomerang/employees/6c43ac0c-ae7b-43e4-a638-bc346484ca84"
+          }
+        }
+      }
+    },
+    {
+      "id": "60e09a56-0797-41a5-8492-f619f9caf2bb",
+      "type": "activity_logs",
+      "attributes": {
+        "created_at": "2023-01-05T13:01:34+00:00",
+        "employee_id": "c67a1da9-c78c-42aa-8c02-e51497f79227",
+        "action_key": "product.created",
+        "action_args": {},
+        "has_data": true,
+        "owner_id": "0c6908f0-9208-4051-9a01-6cd18fc1ddb5",
+        "owner_type": "orders"
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": "api/boomerang/orders/0c6908f0-9208-4051-9a01-6cd18fc1ddb5"
+          }
+        },
+        "employee": {
+          "links": {
+            "related": "api/boomerang/employees/c67a1da9-c78c-42aa-8c02-e51497f79227"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/activity_logs`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+- | -
+`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[activity_logs]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-05T13:01:30Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+- | -
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`employee_id` | **Uuid** <br>`eq`, `not_eq`
+`action_key` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`owner_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_type` | **String** <br>`eq`, `not_eq`
+`relation_id` | **Uuid** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+- | -
+`total` | **Array** <br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+`employee`
+
+
+
+
+
+
+## Fetching an activity log
+
+
+
+> How to fetch an activity log:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/activity_logs/7e2722ac-4c49-4b62-a009-8e1d034b55c5' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "7e2722ac-4c49-4b62-a009-8e1d034b55c5",
+    "type": "activity_logs",
+    "attributes": {
+      "created_at": "2023-01-05T13:01:36+00:00",
+      "employee_id": "253d2495-0f5c-414e-b88a-085759ae8413",
+      "action_key": "product.created",
+      "action_args": {},
+      "has_data": true,
+      "data": {
+        "products": [
+          {
+            "id": "3f9507c6-3184-4913-a7ab-5741a6d8f86a",
+            "legacy_id": null,
+            "name": "Product 3",
+            "quantity": 0,
+            "created_at": "2023-01-05T13:01:36.642Z",
+            "updated_at": "2023-01-05T13:01:36.642Z",
+            "lag_time": 0,
+            "lead_time": 0,
+            "always_available": false,
+            "trackable": false,
+            "sku": "PRODUCT 3",
+            "type": "Product",
+            "base_price_in_cents": 0,
+            "group_name": "Product 3",
+            "has_variations": false,
+            "variation": false,
+            "variation_name": null,
+            "variation_values": [],
+            "variation_fields": null,
+            "price_type": "simple",
+            "price_period": "hour",
+            "stock_item_properties": null,
+            "archived_at": null,
+            "stock_count": 0,
+            "extra_information": null,
+            "photo": null,
+            "photo_url": null,
+            "flat_fee_price_in_cents": 0,
+            "structure_price_in_cents": 0,
+            "deposit_in_cents": 0,
+            "company_id": "d39eafe3-d026-4c81-af9c-09860889164a",
+            "item_group_id": "3fac0a47-8488-47b2-8647-e321c72a4371",
+            "price_wrapper_id": null,
+            "tax_category_id": null,
+            "slug": "product-3",
+            "description": null,
+            "show_in_store": true,
+            "product_type": "rental",
+            "tracking_type": "bulk",
+            "discountable": true,
+            "taxable": true,
+            "allow_shortage": false,
+            "shortage_limit": 0,
+            "photo_id": null,
+            "price_ruleset_id": null,
+            "sorting_weight": 1,
+            "price_structure_id": null,
+            "seo_title": null,
+            "seo_description": null,
+            "tag_list": null
+          }
+        ]
+      },
+      "owner_id": "28178427-940d-4958-a83f-2153d464ec44",
+      "owner_type": "orders"
+    },
+    "relationships": {
+      "owner": {
+        "links": {
+          "related": "api/boomerang/orders/28178427-940d-4958-a83f-2153d464ec44"
+        }
+      },
+      "employee": {
+        "links": {
+          "related": "api/boomerang/employees/253d2495-0f5c-414e-b88a-085759ae8413"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/activity_logs/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+- | -
+`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[activity_logs]=id,created_at,updated_at`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+`employee`
+
+
+
+
+
