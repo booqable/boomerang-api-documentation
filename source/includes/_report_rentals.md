@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-11-18+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-23+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-12-31+00%3A00%3A00+UTC&filter%5Btill%5D=2023-01-05+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,22 +44,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "virtual-23a9a198-4cbf-5a1b-9c78-bb7a818df043",
+      "id": "virtual-36379ba8-7f6c-50b7-94c5-4a1b1389bb14",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2022-11-23T11:37:33+00:00",
-        "name": "Product 48",
+        "created_at": "2023-01-05T11:05:25+00:00",
+        "name": "Product 49",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
-        "turnover_in_cents": 4000,
+        "turnover_in_cents": 0,
         "quantity": 10,
-        "product_id": "f1b85602-8393-4400-858b-ec77551e75bd"
+        "product_id": "1b0a78f5-735e-45c6-af7e-6c0be97efc0c"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/f1b85602-8393-4400-858b-ec77551e75bd"
+            "related": "api/boomerang/products/1b0a78f5-735e-45c6-af7e-6c0be97efc0c"
           }
         }
       }
@@ -81,7 +81,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rentals]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-05T11:02:34Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request

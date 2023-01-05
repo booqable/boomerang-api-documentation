@@ -64,11 +64,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "85135452-adc3-45d1-961f-797780498ae9",
+      "id": "4f07e3b1-7634-45af-b35c-f3b3ee3c25a9",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-23T11:34:30+00:00",
-        "updated_at": "2022-11-23T11:34:30+00:00",
+        "created_at": "2023-01-05T11:03:28+00:00",
+        "updated_at": "2023-01-05T11:03:28+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -113,7 +113,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-05T11:02:34Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -157,7 +157,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/d7fd93cb-a479-4b48-8b50-eaa4b8d4d707' \
+    --url 'https://example.booqable.com/api/boomerang/employees/ca40c894-41da-48cc-ac09-b98dc15525cf' \
     --header 'content-type: application/json' \
 ```
 
@@ -166,11 +166,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d7fd93cb-a479-4b48-8b50-eaa4b8d4d707",
+    "id": "ca40c894-41da-48cc-ac09-b98dc15525cf",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-11-23T11:34:30+00:00",
-      "updated_at": "2022-11-23T11:34:30+00:00",
+      "created_at": "2023-01-05T11:03:28+00:00",
+      "updated_at": "2023-01-05T11:03:28+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -227,11 +227,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/32e6f047-1bba-4d93-89aa-63acc9f7d1c2' \
+    --url 'https://example.booqable.com/api/boomerang/employees/6325ed78-7c44-4278-8fa1-18a522bd26ff' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "32e6f047-1bba-4d93-89aa-63acc9f7d1c2",
+        "id": "6325ed78-7c44-4278-8fa1-18a522bd26ff",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -245,11 +245,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "32e6f047-1bba-4d93-89aa-63acc9f7d1c2",
+    "id": "6325ed78-7c44-4278-8fa1-18a522bd26ff",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-11-23T11:34:31+00:00",
-      "updated_at": "2022-11-23T11:34:31+00:00",
+      "created_at": "2023-01-05T11:03:29+00:00",
+      "updated_at": "2023-01-05T11:03:29+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -286,11 +286,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/ee15b47d-5353-428a-ae8c-437288a01b02' \
+    --url 'https://example.booqable.com/api/boomerang/employees/d7b82233-5880-4611-ae7c-45563d6bd848' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ee15b47d-5353-428a-ae8c-437288a01b02",
+        "id": "d7b82233-5880-4611-ae7c-45563d6bd848",
         "type": "employees",
         "attributes": {
           "active": false
@@ -304,11 +304,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ee15b47d-5353-428a-ae8c-437288a01b02",
+    "id": "d7b82233-5880-4611-ae7c-45563d6bd848",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-11-23T11:34:31+00:00",
-      "updated_at": "2022-11-23T11:34:31+00:00",
+      "created_at": "2023-01-05T11:03:29+00:00",
+      "updated_at": "2023-01-05T11:03:29+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -345,11 +345,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/f9ee5155-7fd7-400d-b416-560ced6bfb91' \
+    --url 'https://example.booqable.com/api/boomerang/employees/203d25e9-f477-4284-bbbc-81976688bf20' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f9ee5155-7fd7-400d-b416-560ced6bfb91",
+        "id": "203d25e9-f477-4284-bbbc-81976688bf20",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -366,11 +366,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f9ee5155-7fd7-400d-b416-560ced6bfb91",
+    "id": "203d25e9-f477-4284-bbbc-81976688bf20",
     "type": "employees",
     "attributes": {
-      "created_at": "2022-11-23T11:34:32+00:00",
-      "updated_at": "2022-11-23T11:34:32+00:00",
+      "created_at": "2023-01-05T11:03:29+00:00",
+      "updated_at": "2023-01-05T11:03:29+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
