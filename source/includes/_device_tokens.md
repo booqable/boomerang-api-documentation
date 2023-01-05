@@ -47,11 +47,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c75c405f-2058-40b2-90f0-16d74cfea291",
+    "id": "fe04ed3c-4c2a-44b9-ba28-426ffcf8a890",
     "type": "device_tokens",
     "attributes": {
-      "created_at": "2022-11-23T11:34:02+00:00",
-      "updated_at": "2022-11-23T11:34:02+00:00",
+      "created_at": "2023-01-05T13:08:49+00:00",
+      "updated_at": "2023-01-05T13:08:49+00:00",
       "kind": "apn",
       "environment": "production"
     }
@@ -96,7 +96,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/device_tokens/ee76b21e-ef52-4a8c-85f3-a058350909da' \
+    --url 'https://example.booqable.com/api/boomerang/device_tokens/ff26c8f2-5a16-4a86-879e-c161246fc4f4' \
     --header 'content-type: application/json' \
 ```
 
