@@ -5,6 +5,8 @@ Bundles allow for a single product to be made up of multiple other products. Thi
 ## Endpoints
 `GET /api/boomerang/bundles`
 
+`POST api/boomerang/bundles/search`
+
 `GET /api/boomerang/bundles/{id}`
 
 `POST /api/boomerang/bundles`
@@ -24,22 +26,22 @@ Name | Description
 `archived` | **Boolean** `readonly`<br>Whether item is archived
 `archived_at` | **Datetime** `nullable` `readonly`<br>When the item was archived
 `type` | **String** `readonly`<br>One of `product_groups`, `products`, `bundles`
-`name` | **String**<br>Name of the item
+`name` | **String** <br>Name of the item
 `slug` | **String** `readonly`<br>Slug of the item
 `product_type` | **String** `readonly`<br>One of `rental`, `consumable`, `service`
 `extra_information` | **String** `nullable`<br>Extra information about the item, shown on orders and documents
 `photo_url` | **String** `readonly`<br>Main photo url
+`remote_photo_url` | **String** `writeonly`<br>Url to an image on the web
 `photo_base64` | **String** `writeonly`<br>Base64 encoded photo, use this field to store a main photo
 `description` | **String** `nullable`<br>Description used in the online store
-`show_in_store` | **Boolean**<br>Whether to show this item in the online
-`sorting_weight` | **Integer**<br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
-`discountable` | **Boolean**<br>Whether discounts should be applied to items in this bundle
-`taxable` | **Boolean**<br>Whether item is taxable
+`show_in_store` | **Boolean** <br>Whether to show this item in the online
+`sorting_weight` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
+`discountable` | **Boolean** <br>Whether discounts should be applied to items in this bundle
+`taxable` | **Boolean** <br>Whether item is taxable
 `bundle_items_attributes` | **Array** `writeonly`<br>The bundle items to associate
-`tag_list` | **Array**<br>List of tags
-`category_ids` | **Array** `writeonly`<br>Categories to associate
-`photo_id` | **Uuid**<br>The associated Photo
-`tax_category_id` | **Uuid**<br>The associated Tax category
+`tag_list` | **Array** <br>List of tags
+`photo_id` | **Uuid** <br>The associated Photo
+`tax_category_id` | **Uuid** <br>The associated Tax category
 
 
 ## Relationships
@@ -50,7 +52,7 @@ Name | Description
 `photo` | **Photos** `readonly`<br>Associated Photo
 `tax_category` | **Tax categories** `readonly`<br>Associated Tax category
 `bundle_items` | **Bundle items** `readonly`<br>Associated Bundle items
-`categories` | **Categories** `readonly`<br>Associated Categories
+`inventory_levels` | **Inventory levels** `readonly`<br>Associated Inventory levels
 
 
 ## Listing bundles
@@ -71,11 +73,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "4e656ddb-599a-4b36-b8b3-9a69a6457384",
+      "id": "3fd7faa3-faea-4110-ad36-805dad9e3fc9",
       "type": "bundles",
       "attributes": {
-        "created_at": "2022-04-07T10:16:19+00:00",
-        "updated_at": "2022-04-07T10:16:19+00:00",
+        "created_at": "2023-01-18T13:34:52+00:00",
+        "updated_at": "2023-01-18T13:34:52+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -106,12 +108,12 @@ Name | Description
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=4e656ddb-599a-4b36-b8b3-9a69a6457384"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=3fd7faa3-faea-4110-ad36-805dad9e3fc9"
           }
         },
-        "categories": {
+        "inventory_levels": {
           "links": {
-            "related": "api/boomerang/categories?filter[item_id]=4e656ddb-599a-4b36-b8b3-9a69a6457384"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=3fd7faa3-faea-4110-ad36-805dad9e3fc9"
           }
         }
       }
@@ -127,17 +129,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-18T13:34:27Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -146,25 +148,24 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean**<br>`eq`
-`archived_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`q` | **String**<br>`eq`
-`type` | **String**<br>`eq`, `not_eq`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`slug` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`product_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`extra_information` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`description` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`show_in_store` | **Boolean**<br>`eq`
-`sorting_weight` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discountable` | **Boolean**<br>`eq`
-`taxable` | **Boolean**<br>`eq`
-`tag_list` | **String**<br>`eq`
-`tax_category_id` | **Uuid**<br>`eq`, `not_eq`
-`category_id` | **Uuid**<br>`eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`q` | **String** <br>`eq`
+`type` | **String** <br>`eq`, `not_eq`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`slug` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`product_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`show_in_store` | **Boolean** <br>`eq`
+`sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean** <br>`eq`
+`taxable` | **Boolean** <br>`eq`
+`tag_list` | **String** <br>`eq`
+`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -173,19 +174,170 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
-`archived` | **Array**<br>`count`
-`tag_list` | **Array**<br>`count`
-`taxable` | **Array**<br>`count`
-`discountable` | **Array**<br>`count`
-`product_type` | **Array**<br>`count`
-`show_in_store` | **Array**<br>`count`
-`tax_category_id` | **Array**<br>`count`
+`total` | **Array** <br>`count`
+`archived` | **Array** <br>`count`
+`tag_list` | **Array** <br>`count`
+`taxable` | **Array** <br>`count`
+`discountable` | **Array** <br>`count`
+`product_type` | **Array** <br>`count`
+`show_in_store` | **Array** <br>`count`
+`tax_category_id` | **Array** <br>`count`
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+`photo`
+
+
+`inventory_levels`
+
+
+
+
+
+
+## Searching bundles
+
+Use advanced search to make logical filter groups with and/or operators.
+
+
+> How to search for bundles:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/bundles/search' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "bundles": "id"
+      },
+      "filter": {
+        "conditions": {
+          "operator": "or",
+          "attributes": [
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "discountable": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "show_in_store": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "8aa15796-d305-4044-9526-2e1f6d3151c9"
+    },
+    {
+      "id": "51669cb9-b75f-4b48-a6ac-e98777ebc1dd"
+    },
+    {
+      "id": "04b3c92e-22a7-4d97-85b3-94c9df47937d"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST api/boomerang/bundles/search`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+- | -
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-18T13:34:27Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+- | -
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`q` | **String** <br>`eq`
+`type` | **String** <br>`eq`, `not_eq`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`slug` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`product_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`show_in_store` | **Boolean** <br>`eq`
+`sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean** <br>`eq`
+`taxable` | **Boolean** <br>`eq`
+`tag_list` | **String** <br>`eq`
+`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+- | -
+`total` | **Array** <br>`count`
+`archived` | **Array** <br>`count`
+`tag_list` | **Array** <br>`count`
+`taxable` | **Array** <br>`count`
+`discountable` | **Array** <br>`count`
+`product_type` | **Array** <br>`count`
+`show_in_store` | **Array** <br>`count`
+`tax_category_id` | **Array** <br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`photo`
+
+
+`inventory_levels`
+
+
+
+
+
+
 ## Fetching a bundle
 
 
@@ -194,7 +346,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundles/87b25fd9-4091-495d-b87c-c98d98c6cbac' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/e8334d8b-be2b-4aea-bea3-1323a98dc9cf' \
     --header 'content-type: application/json' \
 ```
 
@@ -203,11 +355,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "87b25fd9-4091-495d-b87c-c98d98c6cbac",
+    "id": "e8334d8b-be2b-4aea-bea3-1323a98dc9cf",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-04-07T10:16:19+00:00",
-      "updated_at": "2022-04-07T10:16:19+00:00",
+      "created_at": "2023-01-18T13:34:54+00:00",
+      "updated_at": "2023-01-18T13:34:54+00:00",
       "archived": false,
       "archived_at": null,
       "type": "bundles",
@@ -238,12 +390,12 @@ This request does not accept any includes
       },
       "bundle_items": {
         "links": {
-          "related": "api/boomerang/bundle_items?filter[bundle_id]=87b25fd9-4091-495d-b87c-c98d98c6cbac"
+          "related": "api/boomerang/bundle_items?filter[bundle_id]=e8334d8b-be2b-4aea-bea3-1323a98dc9cf"
         }
       },
-      "categories": {
+      "inventory_levels": {
         "links": {
-          "related": "api/boomerang/categories?filter[item_id]=87b25fd9-4091-495d-b87c-c98d98c6cbac"
+          "related": "api/boomerang/inventory_levels?filter[item_id]=e8334d8b-be2b-4aea-bea3-1323a98dc9cf"
         }
       }
     }
@@ -258,17 +410,20 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 
 
 ### Includes
 
 This request accepts the following includes:
+
+`photo`
+
 
 `bundle_items` => 
 `product_group` => 
@@ -286,9 +441,6 @@ This request accepts the following includes:
 
 
 `tax_category`
-
-
-`categories`
 
 
 
@@ -315,14 +467,14 @@ This request accepts the following includes:
             {
               "quantity": 2,
               "discount_percentage": 10,
-              "product_group_id": "d910525e-51a1-4197-a6c0-f5180e68ef80",
-              "product_id": "6e909933-233a-481f-999e-8f490dc26a4d"
+              "product_group_id": "36884d67-868e-4846-b9d6-e02a2f43c48a",
+              "product_id": "f639c7fd-efa4-44f8-a110-08d906e88b3d"
             },
             {
               "quantity": 2,
               "discount_percentage": 15,
-              "product_group_id": "735bf9fe-bc1d-4fa0-890f-87ca39c1afd8",
-              "product_id": "a9fd9199-bf10-4fec-9c88-d8e5f0d5d78d"
+              "product_group_id": "244df996-6c05-4236-a646-d7044e26e39f",
+              "product_id": "f6ff171a-14c0-4936-84a6-1b99e2237349"
             }
           ]
         }
@@ -335,11 +487,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "acbf7b38-2211-40b4-8c24-6fb52180559f",
+    "id": "7266142e-f454-498c-bada-3285d0ce5921",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-04-07T10:16:20+00:00",
-      "updated_at": "2022-04-07T10:16:20+00:00",
+      "created_at": "2023-01-18T13:34:54+00:00",
+      "updated_at": "2023-01-18T13:34:55+00:00",
       "archived": false,
       "archived_at": null,
       "type": "bundles",
@@ -372,15 +524,23 @@ This request accepts the following includes:
         "data": [
           {
             "type": "bundle_items",
-            "id": "6b4e7c3a-6417-494f-8f6c-a3ba34f0a3a2"
+            "id": "41b1004a-fe4f-49e4-8aa8-f705f908a2d1"
           },
           {
             "type": "bundle_items",
-            "id": "1b812f6c-58ec-4f88-a70a-dace7c05a691"
+            "id": "2a4839fb-bad3-4b22-9f62-91fa01bdb2f1"
+          },
+          {
+            "type": "bundle_items",
+            "id": "67b080fd-a086-47d3-8074-a1bca653182e"
+          },
+          {
+            "type": "bundle_items",
+            "id": "47b4a00f-ea15-430b-9476-c2099a409a6d"
           }
         ]
       },
-      "categories": {
+      "inventory_levels": {
         "meta": {
           "included": false
         }
@@ -389,17 +549,17 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "6b4e7c3a-6417-494f-8f6c-a3ba34f0a3a2",
+      "id": "41b1004a-fe4f-49e4-8aa8-f705f908a2d1",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-04-07T10:16:20+00:00",
-        "updated_at": "2022-04-07T10:16:20+00:00",
-        "quantity": "2",
-        "discount_percentage": 10,
+        "created_at": "2023-01-18T13:34:54+00:00",
+        "updated_at": "2023-01-18T13:34:54+00:00",
+        "quantity": 2,
+        "discount_percentage": 10.0,
         "position": 1,
-        "bundle_id": "acbf7b38-2211-40b4-8c24-6fb52180559f",
-        "product_group_id": "d910525e-51a1-4197-a6c0-f5180e68ef80",
-        "product_id": "6e909933-233a-481f-999e-8f490dc26a4d"
+        "bundle_id": "7266142e-f454-498c-bada-3285d0ce5921",
+        "product_group_id": "36884d67-868e-4846-b9d6-e02a2f43c48a",
+        "product_id": "f639c7fd-efa4-44f8-a110-08d906e88b3d"
       },
       "relationships": {
         "bundle": {
@@ -420,17 +580,79 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "1b812f6c-58ec-4f88-a70a-dace7c05a691",
+      "id": "2a4839fb-bad3-4b22-9f62-91fa01bdb2f1",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-04-07T10:16:20+00:00",
-        "updated_at": "2022-04-07T10:16:20+00:00",
-        "quantity": "2",
-        "discount_percentage": 15,
+        "created_at": "2023-01-18T13:34:54+00:00",
+        "updated_at": "2023-01-18T13:34:54+00:00",
+        "quantity": 2,
+        "discount_percentage": 15.0,
         "position": 2,
-        "bundle_id": "acbf7b38-2211-40b4-8c24-6fb52180559f",
-        "product_group_id": "735bf9fe-bc1d-4fa0-890f-87ca39c1afd8",
-        "product_id": "a9fd9199-bf10-4fec-9c88-d8e5f0d5d78d"
+        "bundle_id": "7266142e-f454-498c-bada-3285d0ce5921",
+        "product_group_id": "244df996-6c05-4236-a646-d7044e26e39f",
+        "product_id": "f6ff171a-14c0-4936-84a6-1b99e2237349"
+      },
+      "relationships": {
+        "bundle": {
+          "meta": {
+            "included": false
+          }
+        },
+        "product_group": {
+          "meta": {
+            "included": false
+          }
+        },
+        "product": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    },
+    {
+      "id": "67b080fd-a086-47d3-8074-a1bca653182e",
+      "type": "bundle_items",
+      "attributes": {
+        "created_at": "2023-01-18T13:34:54+00:00",
+        "updated_at": "2023-01-18T13:34:54+00:00",
+        "quantity": 2,
+        "discount_percentage": 10.0,
+        "position": 3,
+        "bundle_id": "7266142e-f454-498c-bada-3285d0ce5921",
+        "product_group_id": "36884d67-868e-4846-b9d6-e02a2f43c48a",
+        "product_id": "f639c7fd-efa4-44f8-a110-08d906e88b3d"
+      },
+      "relationships": {
+        "bundle": {
+          "meta": {
+            "included": false
+          }
+        },
+        "product_group": {
+          "meta": {
+            "included": false
+          }
+        },
+        "product": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    },
+    {
+      "id": "47b4a00f-ea15-430b-9476-c2099a409a6d",
+      "type": "bundle_items",
+      "attributes": {
+        "created_at": "2023-01-18T13:34:54+00:00",
+        "updated_at": "2023-01-18T13:34:54+00:00",
+        "quantity": 2,
+        "discount_percentage": 15.0,
+        "position": 4,
+        "bundle_id": "7266142e-f454-498c-bada-3285d0ce5921",
+        "product_group_id": "244df996-6c05-4236-a646-d7044e26e39f",
+        "product_id": "f6ff171a-14c0-4936-84a6-1b99e2237349"
       },
       "relationships": {
         "bundle": {
@@ -461,12 +683,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 
 
 ### Request body
@@ -475,23 +697,26 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the item
-`data[attributes][extra_information]` | **String**<br>Extra information about the item, shown on orders and documents
-`data[attributes][photo_base64]` | **String**<br>Base64 encoded photo, use this field to store a main photo
-`data[attributes][show_in_store]` | **Boolean**<br>Whether to show this item in the online
-`data[attributes][sorting_weight]` | **Integer**<br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
-`data[attributes][discountable]` | **Boolean**<br>Whether discounts should be applied to items in this bundle
-`data[attributes][taxable]` | **Boolean**<br>Whether item is taxable
-`data[attributes][bundle_items_attributes][]` | **Array**<br>The bundle items to associate
-`data[attributes][tag_list][]` | **Array**<br>List of tags
-`data[attributes][category_ids][]` | **Array**<br>Categories to associate
-`data[attributes][photo_id]` | **Uuid**<br>The associated Photo
-`data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
+`data[attributes][name]` | **String** <br>Name of the item
+`data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
+`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
+`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
+`data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
+`data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
+`data[attributes][discountable]` | **Boolean** <br>Whether discounts should be applied to items in this bundle
+`data[attributes][taxable]` | **Boolean** <br>Whether item is taxable
+`data[attributes][bundle_items_attributes][]` | **Array** <br>The bundle items to associate
+`data[attributes][tag_list][]` | **Array** <br>List of tags
+`data[attributes][photo_id]` | **Uuid** <br>The associated Photo
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
 
 
 ### Includes
 
 This request accepts the following includes:
+
+`photo`
+
 
 `bundle_items` => 
 `product_group` => 
@@ -511,9 +736,6 @@ This request accepts the following includes:
 `tax_category`
 
 
-`categories`
-
-
 
 
 
@@ -526,25 +748,25 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/bundles/c6124050-6620-44e5-bc9b-7135fc9ba2ff' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/691e0e94-d0ad-445f-99a8-d06580feaaec' \
     --header 'content-type: application/json' \
     --data '{
       "include": "bundle_items",
       "data": {
-        "id": "c6124050-6620-44e5-bc9b-7135fc9ba2ff",
+        "id": "691e0e94-d0ad-445f-99a8-d06580feaaec",
         "type": "bundles",
         "attributes": {
           "name": "iPad Pro Bundle",
           "bundle_items_attributes": [
             {
-              "id": "3667ed40-df16-4157-88f3-2f001c785154",
+              "id": "c4127a24-2a97-4022-b020-99c235c5c519",
               "_destroy": true
             },
             {
               "quantity": 2,
               "discount_percentage": 15,
-              "product_group_id": "a1eac04b-12a2-424d-9a31-8a35f516db51",
-              "product_id": "cc8e1b80-9bbf-47d8-90dc-6ef93d83146e"
+              "product_group_id": "699e733b-ca1f-4005-8135-6f8e5e5635ec",
+              "product_id": "781d97af-2231-42ae-b215-cbf7ac11fbde"
             }
           ]
         }
@@ -557,11 +779,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c6124050-6620-44e5-bc9b-7135fc9ba2ff",
+    "id": "691e0e94-d0ad-445f-99a8-d06580feaaec",
     "type": "bundles",
     "attributes": {
-      "created_at": "2022-04-07T10:16:20+00:00",
-      "updated_at": "2022-04-07T10:16:20+00:00",
+      "created_at": "2023-01-18T13:34:55+00:00",
+      "updated_at": "2023-01-18T13:34:55+00:00",
       "archived": false,
       "archived_at": null,
       "type": "bundles",
@@ -594,11 +816,15 @@ This request accepts the following includes:
         "data": [
           {
             "type": "bundle_items",
-            "id": "ea6f1a12-85f8-4fca-b55b-9322d0166452"
+            "id": "0816bab4-0703-4666-8a3e-9b446e22fa6f"
+          },
+          {
+            "type": "bundle_items",
+            "id": "eef95b62-595f-4841-add9-5c0bcebf14dd"
           }
         ]
       },
-      "categories": {
+      "inventory_levels": {
         "meta": {
           "included": false
         }
@@ -607,17 +833,48 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "ea6f1a12-85f8-4fca-b55b-9322d0166452",
+      "id": "0816bab4-0703-4666-8a3e-9b446e22fa6f",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-04-07T10:16:20+00:00",
-        "updated_at": "2022-04-07T10:16:20+00:00",
-        "quantity": "2",
-        "discount_percentage": 15,
+        "created_at": "2023-01-18T13:34:55+00:00",
+        "updated_at": "2023-01-18T13:34:55+00:00",
+        "quantity": 2,
+        "discount_percentage": 15.0,
         "position": 2,
-        "bundle_id": "c6124050-6620-44e5-bc9b-7135fc9ba2ff",
-        "product_group_id": "a1eac04b-12a2-424d-9a31-8a35f516db51",
-        "product_id": "cc8e1b80-9bbf-47d8-90dc-6ef93d83146e"
+        "bundle_id": "691e0e94-d0ad-445f-99a8-d06580feaaec",
+        "product_group_id": "699e733b-ca1f-4005-8135-6f8e5e5635ec",
+        "product_id": "781d97af-2231-42ae-b215-cbf7ac11fbde"
+      },
+      "relationships": {
+        "bundle": {
+          "meta": {
+            "included": false
+          }
+        },
+        "product_group": {
+          "meta": {
+            "included": false
+          }
+        },
+        "product": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    },
+    {
+      "id": "eef95b62-595f-4841-add9-5c0bcebf14dd",
+      "type": "bundle_items",
+      "attributes": {
+        "created_at": "2023-01-18T13:34:55+00:00",
+        "updated_at": "2023-01-18T13:34:55+00:00",
+        "quantity": 2,
+        "discount_percentage": 15.0,
+        "position": 3,
+        "bundle_id": "691e0e94-d0ad-445f-99a8-d06580feaaec",
+        "product_group_id": "699e733b-ca1f-4005-8135-6f8e5e5635ec",
+        "product_id": "781d97af-2231-42ae-b215-cbf7ac11fbde"
       },
       "relationships": {
         "bundle": {
@@ -648,12 +905,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 
 
 ### Request body
@@ -662,23 +919,26 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the item
-`data[attributes][extra_information]` | **String**<br>Extra information about the item, shown on orders and documents
-`data[attributes][photo_base64]` | **String**<br>Base64 encoded photo, use this field to store a main photo
-`data[attributes][show_in_store]` | **Boolean**<br>Whether to show this item in the online
-`data[attributes][sorting_weight]` | **Integer**<br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
-`data[attributes][discountable]` | **Boolean**<br>Whether discounts should be applied to items in this bundle
-`data[attributes][taxable]` | **Boolean**<br>Whether item is taxable
-`data[attributes][bundle_items_attributes][]` | **Array**<br>The bundle items to associate
-`data[attributes][tag_list][]` | **Array**<br>List of tags
-`data[attributes][category_ids][]` | **Array**<br>Categories to associate
-`data[attributes][photo_id]` | **Uuid**<br>The associated Photo
-`data[attributes][tax_category_id]` | **Uuid**<br>The associated Tax category
+`data[attributes][name]` | **String** <br>Name of the item
+`data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
+`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
+`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
+`data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
+`data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
+`data[attributes][discountable]` | **Boolean** <br>Whether discounts should be applied to items in this bundle
+`data[attributes][taxable]` | **Boolean** <br>Whether item is taxable
+`data[attributes][bundle_items_attributes][]` | **Array** <br>The bundle items to associate
+`data[attributes][tag_list][]` | **Array** <br>List of tags
+`data[attributes][photo_id]` | **Uuid** <br>The associated Photo
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
 
 
 ### Includes
 
 This request accepts the following includes:
+
+`photo`
+
 
 `bundle_items` => 
 `product_group` => 
@@ -698,9 +958,6 @@ This request accepts the following includes:
 `tax_category`
 
 
-`categories`
-
-
 
 
 
@@ -713,7 +970,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/bundles/d366a041-42af-4f0a-8d26-5aa715ae7286' \
+    --url 'https://example.booqable.com/api/boomerang/bundles/a87b5cd8-b8b8-44b0-82d3-050d85e73b1d' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -732,12 +989,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=photo,tax_category,bundle_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundles]=id,created_at,updated_at`
 
 
 ### Includes
