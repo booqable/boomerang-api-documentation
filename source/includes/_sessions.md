@@ -20,12 +20,12 @@ Every session has the following fields:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>
-`company_id` | **Uuid**<br>The associated Company
-`employee_id` | **Uuid**<br>The associated Employee
-`locations_updated_at` | **Datetime**<br>When locations were last updated
-`clusters_updated_at` | **Datetime**<br>When the clusters were last updated
-`default_properties_updated_at` | **Datetime**<br>When the default properties were last updated
+`id` | **Uuid** <br>
+`company_id` | **Uuid** <br>The associated Company
+`employee_id` | **Uuid** <br>The associated Employee
+`locations_updated_at` | **Datetime** <br>When locations were last updated
+`clusters_updated_at` | **Datetime** <br>When the clusters were last updated
+`default_properties_updated_at` | **Datetime** <br>When the default properties were last updated
 
 
 ## Relationships
@@ -55,15 +55,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "565225c2-41a2-59c7-9e12-997b02070ed6",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "37a2ba3b-dba2-4771-aabc-b30a692c3254",
-      "employee_id": "434dfd11-965c-4123-828b-cd99deb2787a",
-      "locations_updated_at": "2022-04-07T10:18:07+00:00",
-      "clusters_updated_at": "2022-04-07T10:18:07+00:00",
-      "default_properties_updated_at": "2022-04-07T10:18:07+00:00"
+      "updated_at": "2023-01-24T16:34:32+00:00",
+      "company_id": "e1901659-895b-416a-b8eb-55c9174913a5",
+      "employee_id": "71dca4c2-eb30-4c9e-9f51-fec5114e1c4c",
+      "locations_updated_at": "2023-01-24T16:34:32+00:00",
+      "clusters_updated_at": "2023-01-24T16:34:32+00:00",
+      "default_properties_updated_at": "2023-01-24T16:34:32+00:00"
     },
     "relationships": {
       "company": {
@@ -93,12 +93,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 
 
 ### Includes
@@ -135,12 +135,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "44c24577-5f45-5d61-80c2-f2c030a0d215",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
-      "employee_id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "updated_at": "2023-01-24T16:34:33+00:00",
+      "company_id": "99032aec-f57c-45b2-b26d-99d83cdf1a75",
+      "employee_id": "e64d9716-50f0-45ad-a5a6-468c18ba3a22",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null
@@ -152,7 +152,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "aab5a606-815e-4b6a-82ea-11d049e649fb"
+          "id": "99032aec-f57c-45b2-b26d-99d83cdf1a75"
         }
       },
       "employee": {
@@ -161,7 +161,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "325c3cab-26f2-4c94-8f08-37fc348836e2"
+          "id": "e64d9716-50f0-45ad-a5a6-468c18ba3a22"
         }
       },
       "settings": {
@@ -177,24 +177,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
+      "id": "99032aec-f57c-45b2-b26d-99d83cdf1a75",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2023-01-24T16:34:33+00:00",
+        "updated_at": "2023-01-24T16:34:33+00:00",
+        "name": "Company name 231",
+        "slug": "company-name-231",
+        "email": "mail234@company.com",
         "billing_email": null,
-        "phone": "1-472-394-4502",
-        "website": "http://tillman.biz/olive_hirthe",
-        "address": "Eli Divide\n271 Schroeder Trace\n32597 North Booker\nCroatia",
-        "address_line_1": "Eli Divide",
-        "address_line_2": "271 Schroeder Trace",
-        "zipcode": "32597",
-        "city": "North Booker",
+        "phone": "0581234567",
+        "website": "www.booqable.com",
+        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+        "address_line_1": "Blokhuispoort",
+        "address_line_2": "Leeuwarden",
+        "zipcode": "8900AB",
+        "city": "Leeuwarden",
         "region": null,
-        "country": "Croatia",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,14 +206,14 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "817 Elisha Plain",
-        "financial_line_2": "57874 Bookerport",
+        "financial_line_1": "Blokhuispoort",
+        "financial_line_2": "Leeuwarden",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-21T10:18:07.380Z",
+          "trial_ends_at": "2023-02-07T16:34:33.231Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -231,18 +231,22 @@ This request accepts the following includes:
           "discount_in_cents": 0,
           "balance_in_cents": 0,
           "coupon": null,
+          "coupon_percent_off": null,
+          "coupon_duration": null,
+          "coupon_duration_in_months": null,
           "strategy": "charge_automatically",
           "source": null,
           "enabled_features": [],
           "allowed_features": [
             "bundles",
-            "advanced_pricing",
             "multiple_locations",
+            "advanced_pricing",
             "api",
             "custom_fields",
             "overbookings",
             "categories",
             "customer_auth",
+            "custom_domain",
             "barcodes",
             "reports",
             "permissions",
@@ -250,7 +254,6 @@ This request accepts the following includes:
             "coupons",
             "remove_powered_by",
             "shop_tracking",
-            "custom_domain",
             "sso",
             "iprestrictions",
             "2fa_enforcing"
@@ -265,14 +268,15 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "id": "e64d9716-50f0-45ad-a5a6-468c18ba3a22",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2023-01-24T16:34:33+00:00",
+        "updated_at": "2023-01-24T16:34:33+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
         "active": true,
@@ -283,7 +287,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
@@ -411,18 +417,25 @@ This request accepts the following includes:
           "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
+          "show_free_lines": true,
           "hide_section_lines": false,
-          "prefix": null,
-          "show_free_lines": true
+          "prefix": null
         },
         "contracts": {
           "footer": "",
           "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
+          "show_free_lines": true,
           "hide_section_lines": false,
-          "prefix": null,
-          "show_free_lines": true
+          "prefix": null
+        },
+        "labels": {
+          "customer": "customer",
+          "order": "order",
+          "quote": "quote",
+          "contract": "contract",
+          "packing_slip": "packing_slip"
         }
       }
     }
@@ -437,12 +450,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 
 
 ### Includes
