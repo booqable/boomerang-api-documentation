@@ -30,9 +30,9 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the key (for identification)
-`kind` | **String**<br>One of `token`, `single_use`
-`algorithm` | **String**<br>One of `ES256`, `RS256`, `HS256`
+`name` | **String** <br>Name of the key (for identification)
+`kind` | **String** <br>One of `token`, `single_use`
+`algorithm` | **String** <br>One of `ES256`, `RS256`, `HS256`
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
 `company_id` | **Uuid** `readonly`<br>The associated Company
 `key` | **String** `extra`<br>Key that is being used for authentication strategy
@@ -65,26 +65,26 @@ Name | Description
   {
   "data": [
     {
-      "id": "37eeebb1-7fbf-4699-8b98-24659176a699",
+      "id": "a9559271-9d35-4ef8-8cd7-8fb200925947",
       "type": "authentication_methods",
       "attributes": {
-        "created_at": "2022-04-07T10:16:06+00:00",
-        "updated_at": "2022-04-07T10:16:06+00:00",
+        "created_at": "2023-01-24T14:00:12+00:00",
+        "updated_at": "2023-01-24T14:00:12+00:00",
         "name": "Segment integration",
         "kind": "token",
         "algorithm": null,
-        "employee_id": "abd1a862-c8bc-4a04-9246-eb4004aa6426",
-        "company_id": "d75815b9-61ac-42d2-9db9-7b64b7c3c21d"
+        "employee_id": "ef5619a8-5fcb-4319-94f8-0b5aee88b317",
+        "company_id": "2f6483a2-34c7-45a0-bdbf-c3a77b042b9c"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/abd1a862-c8bc-4a04-9246-eb4004aa6426"
+            "related": "api/boomerang/employees/ef5619a8-5fcb-4319-94f8-0b5aee88b317"
           }
         },
         "company": {
           "links": {
-            "related": "api/boomerang/companies/d75815b9-61ac-42d2-9db9-7b64b7c3c21d"
+            "related": "api/boomerang/companies/2f6483a2-34c7-45a0-bdbf-c3a77b042b9c"
           }
         }
       }
@@ -100,17 +100,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee,company`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=employee,company`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-24T14:00:04Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -119,14 +119,14 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`kind` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`algorithm` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`employee_id` | **Uuid**<br>`eq`, `not_eq`
-`company_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`kind` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`algorithm` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`employee_id` | **Uuid** <br>`eq`, `not_eq`
+`company_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -135,7 +135,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -149,7 +149,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/31dd34b7-8a56-4891-8449-ea77cc7b1bb6' \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/7dd0ed43-5f50-4d48-b1c2-dd0c1eca82ba' \
     --header 'content-type: application/json' \
 ```
 
@@ -158,27 +158,27 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "31dd34b7-8a56-4891-8449-ea77cc7b1bb6",
+    "id": "7dd0ed43-5f50-4d48-b1c2-dd0c1eca82ba",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-04-07T10:16:07+00:00",
-      "updated_at": "2022-04-07T10:16:07+00:00",
+      "created_at": "2023-01-24T14:00:13+00:00",
+      "updated_at": "2023-01-24T14:00:13+00:00",
       "name": "Segment integration",
-      "key": "ae8b1c5d4c550e8d555ac7877720de5b9ad90c6f18718a2238649fbc4bfbccd4",
+      "key": "9299c332ef21db5567275c234a954197cb1be7c67f3935a42d4e926c3c95aa3c",
       "kind": "token",
       "algorithm": null,
-      "employee_id": "d686530d-ce57-4967-b0f8-377e61076d3c",
-      "company_id": "660fcbb9-8a28-4973-9f78-43800ce09716"
+      "employee_id": "a5b1bdb3-91a6-4818-a1b1-2231001b2ef8",
+      "company_id": "b802dc29-f6ee-4320-938c-92ec1478b6e3"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/d686530d-ce57-4967-b0f8-377e61076d3c"
+          "related": "api/boomerang/employees/a5b1bdb3-91a6-4818-a1b1-2231001b2ef8"
         }
       },
       "company": {
         "links": {
-          "related": "api/boomerang/companies/660fcbb9-8a28-4973-9f78-43800ce09716"
+          "related": "api/boomerang/companies/b802dc29-f6ee-4320-938c-92ec1478b6e3"
         }
       }
     }
@@ -193,12 +193,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee,company`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=employee,company`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
 
 
 ### Includes
@@ -229,17 +229,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "95c9f68d-0b06-47e6-a94a-8684c9d04467",
+    "id": "4d6fe7f2-9f8a-4022-b6a0-ad19e620207d",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-04-07T10:16:08+00:00",
-      "updated_at": "2022-04-07T10:16:08+00:00",
+      "created_at": "2023-01-24T14:00:14+00:00",
+      "updated_at": "2023-01-24T14:00:14+00:00",
       "name": "Segment integration",
-      "key": "efecc84612a9c06d0f2d3c81cdc7556089e691ba3bdd0ec7a8cd9959c0c0d6cc",
+      "key": "33483cf69d89338c8f331b07d39229a7e864bc1d4d768724a381b659ed8cc9f9",
       "kind": "token",
       "algorithm": null,
-      "employee_id": "70e4839d-28a0-4b79-be82-666b31927474",
-      "company_id": "54713964-3c2a-4a72-a758-a9cc9189c52e"
+      "employee_id": "9122886d-2667-4f3c-a7fa-f6738e5b8a65",
+      "company_id": "b3848570-5805-48c3-87b8-2f22eb7932b2"
     },
     "relationships": {
       "employee": {
@@ -283,17 +283,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f31fb966-2a60-49aa-be9a-7b109759862e",
+    "id": "3abf25cd-eced-4b2d-b29c-154338cadff1",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-04-07T10:16:08+00:00",
-      "updated_at": "2022-04-07T10:16:08+00:00",
+      "created_at": "2023-01-24T14:00:15+00:00",
+      "updated_at": "2023-01-24T14:00:15+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
       "algorithm": "ES256",
-      "employee_id": "0efe836a-5060-4b50-aeed-1d9612b47fde",
-      "company_id": "fa5a4283-5197-4e95-afb0-20e99318118d"
+      "employee_id": "e085211d-33e6-4672-9d50-9ec3cee517a1",
+      "company_id": "0e6bef6d-e934-4ad4-99c6-63e1ced96973"
     },
     "relationships": {
       "employee": {
@@ -337,17 +337,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f54665a5-6b28-4f15-b3e0-79882f5916c5",
+    "id": "34d034a5-cba4-4c65-8ae3-ab569d2ebf13",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-04-07T10:16:09+00:00",
-      "updated_at": "2022-04-07T10:16:09+00:00",
+      "created_at": "2023-01-24T14:00:16+00:00",
+      "updated_at": "2023-01-24T14:00:16+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtRuZD4X3MhIz1ntbxpkp\njVFUTdH7mspUNXmE0bcQ3bJrgWYZmtPm64+lpo7KWqQIL28dhtNAjImJmzcr04ve\nRAxxyQT0f0uwe3zUBEqaxKim1aCJV60c71cPKJVfhXElnjhMkBW6ftIEgf7J4bwe\n7kPCK/NfdiOuFlMjfaY+5WmaA1lAZ/SSetwglSaHPPQKaix3LW4ocHtHUd7OBKNC\nIU/DO3baUDAkymF7ZCnMaf3F9Le9sGSpgUA8Fof69rH1EdagQFmIkftflj/IlJiC\nPDEoc1x7b4opEuGp287S+DsRRgr6vzVZi4CPQcJJsG+07jZQN5K3wboBlx8LW2jT\nfQIDAQAB\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
       "algorithm": "RS256",
-      "employee_id": "a773b79a-8315-4f7e-a001-cec92c60839f",
-      "company_id": "f6d74624-a315-46b2-9c64-5f606976ffe5"
+      "employee_id": "f8f5af1e-335b-4654-970f-bd77e7f5da01",
+      "company_id": "3b5c4d8d-d4b3-48a7-a46e-b4401d80ae39"
     },
     "relationships": {
       "employee": {
@@ -390,17 +390,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "05677ea7-9872-4681-be25-653b4835cb68",
+    "id": "eca72c06-05f4-41ac-8f5f-048a1ea58dd2",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2022-04-07T10:16:10+00:00",
-      "updated_at": "2022-04-07T10:16:10+00:00",
+      "created_at": "2023-01-24T14:00:17+00:00",
+      "updated_at": "2023-01-24T14:00:17+00:00",
       "name": "Segment integration",
-      "key": "d506b9223c2278fa4d191f79e48836df2bd03b7fb8c509a1241756a31cf71848",
+      "key": "95ee625c0489ece5d6bde6150d47c127a17210488e773e69b3cc5cde057c3e9b",
       "kind": "single_use",
       "algorithm": "HS256",
-      "employee_id": "a0ec2933-d51a-4ab7-8486-e7d7e7720a71",
-      "company_id": "38c78102-da04-4100-ab8d-92f1fd7ab2a4"
+      "employee_id": "fc3a55e7-15c7-4d24-b6c9-2940e4036369",
+      "company_id": "cd10ed75-edf8-430f-a7cf-4f5da5adbfd6"
     },
     "relationships": {
       "employee": {
@@ -425,12 +425,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee,company`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=employee,company`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
 
 
 ### Request body
@@ -439,10 +439,10 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the key (for identification)
-`data[attributes][kind]` | **String**<br>One of `token`, `single_use`
-`data[attributes][algorithm]` | **String**<br>One of `ES256`, `RS256`, `HS256`
-`data[attributes][key]` | **String**<br>Key that is being used for authentication strategy
+`data[attributes][name]` | **String** <br>Name of the key (for identification)
+`data[attributes][kind]` | **String** <br>One of `token`, `single_use`
+`data[attributes][algorithm]` | **String** <br>One of `ES256`, `RS256`, `HS256`
+`data[attributes][key]` | **String** <br>Key that is being used for authentication strategy
 
 
 ### Includes
@@ -467,7 +467,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/66413f09-ab1d-4cc7-a972-e32366ed5ff7' \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/0b354d5b-cc3e-44af-98fc-d7495a347b1c' \
     --header 'content-type: application/json' \
 ```
 
@@ -485,12 +485,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee,company`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=employee,company`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=id,created_at,updated_at`
 
 
 ### Includes

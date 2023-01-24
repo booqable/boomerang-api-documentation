@@ -23,11 +23,11 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`quantity` | **String**<br>The quantity of the item
-`discount_percentage` | **Integer**<br>The discount percentage for this product when rented out in a bundle
-`position` | **Integer**<br>Position of the product in bundle list
-`bundle_id` | **Uuid**<br>The associated Bundle
-`product_group_id` | **Uuid**<br>The associated Product group
+`quantity` | **Integer** <br>The quantity of the item
+`discount_percentage` | **Float** <br>The discount percentage for this product when rented out in a bundle
+`position` | **Integer** <br>Position of the product in bundle list
+`bundle_id` | **Uuid** <br>The associated Bundle
+`product_group_id` | **Uuid** <br>The associated Product group
 `product_id` | **Uuid** `nullable`<br>The associated Product
 
 
@@ -49,7 +49,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=4fb48965-7c19-40a7-bcc8-38e7668f73f6' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=29d164ad-886c-4c53-8e31-bd69fd82ba5a' \
     --header 'content-type: application/json' \
 ```
 
@@ -59,32 +59,32 @@ Name | Description
   {
   "data": [
     {
-      "id": "6ad2d492-abfd-40d2-96b6-3c6b065c249a",
+      "id": "f8569605-d9fc-4e3c-a935-dab4cffc9a39",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2022-04-07T10:16:17+00:00",
-        "updated_at": "2022-04-07T10:16:17+00:00",
-        "quantity": "2",
-        "discount_percentage": 15,
+        "created_at": "2023-01-24T14:00:23+00:00",
+        "updated_at": "2023-01-24T14:00:23+00:00",
+        "quantity": 2,
+        "discount_percentage": 15.0,
         "position": 1,
-        "bundle_id": "4fb48965-7c19-40a7-bcc8-38e7668f73f6",
-        "product_group_id": "22ba6091-5bc5-469e-8972-3a3bc1d5973c",
-        "product_id": "fe0ead26-c7f0-4f02-ba61-53fb59ecc917"
+        "bundle_id": "29d164ad-886c-4c53-8e31-bd69fd82ba5a",
+        "product_group_id": "35465633-bf2d-4ed7-961c-89f3e0d9f0e7",
+        "product_id": "46aabd3d-b145-4419-986b-2df76011621b"
       },
       "relationships": {
         "bundle": {
           "links": {
-            "related": "api/boomerang/bundles/4fb48965-7c19-40a7-bcc8-38e7668f73f6"
+            "related": "api/boomerang/bundles/29d164ad-886c-4c53-8e31-bd69fd82ba5a"
           }
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/22ba6091-5bc5-469e-8972-3a3bc1d5973c"
+            "related": "api/boomerang/product_groups/35465633-bf2d-4ed7-961c-89f3e0d9f0e7"
           }
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/fe0ead26-c7f0-4f02-ba61-53fb59ecc917"
+            "related": "api/boomerang/products/46aabd3d-b145-4419-986b-2df76011621b"
           }
         }
       }
@@ -100,17 +100,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=bundle,product_group,product`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=bundle,product_group,product`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-01-24T14:00:04Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -119,15 +119,15 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`quantity` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`discount_percentage` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`position` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`bundle_id` | **Uuid**<br>`eq`, `not_eq`
-`product_group_id` | **Uuid**<br>`eq`, `not_eq`
-`product_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`position` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`bundle_id` | **Uuid** <br>`eq`, `not_eq`
+`product_group_id` | **Uuid** <br>`eq`, `not_eq`
+`product_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -136,7 +136,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -146,10 +146,16 @@ This request accepts the following includes:
 `bundle`
 
 
-`product`
+`product` => 
+`photo`
 
 
-`product_group`
+
+
+`product_group` => 
+`photo`
+
+
 
 
 
@@ -164,7 +170,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/355d0eb7-ac57-46ce-b2c4-cf8dd5c4ec6e' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/835a4f06-2986-4568-8ce0-4e9f88a050ab' \
     --header 'content-type: application/json' \
 ```
 
@@ -173,32 +179,32 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "355d0eb7-ac57-46ce-b2c4-cf8dd5c4ec6e",
+    "id": "835a4f06-2986-4568-8ce0-4e9f88a050ab",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2022-04-07T10:16:17+00:00",
-      "updated_at": "2022-04-07T10:16:17+00:00",
-      "quantity": "2",
-      "discount_percentage": 15,
+      "created_at": "2023-01-24T14:00:23+00:00",
+      "updated_at": "2023-01-24T14:00:23+00:00",
+      "quantity": 2,
+      "discount_percentage": 15.0,
       "position": 1,
-      "bundle_id": "8f007298-2dc1-48d5-acdc-f2afd222bd72",
-      "product_group_id": "4fc274e9-a8ca-4b4a-b91d-da1a6cfabfe7",
-      "product_id": "fcc942ad-1eaa-4a05-95a6-cc9437b337f3"
+      "bundle_id": "1920b92b-993d-44ba-aa1f-fe66b533539b",
+      "product_group_id": "115514d6-4fe0-46c5-802a-75593934ad42",
+      "product_id": "6814ef77-519d-4853-9d41-06e7a965c781"
     },
     "relationships": {
       "bundle": {
         "links": {
-          "related": "api/boomerang/bundles/8f007298-2dc1-48d5-acdc-f2afd222bd72"
+          "related": "api/boomerang/bundles/1920b92b-993d-44ba-aa1f-fe66b533539b"
         }
       },
       "product_group": {
         "links": {
-          "related": "api/boomerang/product_groups/4fc274e9-a8ca-4b4a-b91d-da1a6cfabfe7"
+          "related": "api/boomerang/product_groups/115514d6-4fe0-46c5-802a-75593934ad42"
         }
       },
       "product": {
         "links": {
-          "related": "api/boomerang/products/fcc942ad-1eaa-4a05-95a6-cc9437b337f3"
+          "related": "api/boomerang/products/6814ef77-519d-4853-9d41-06e7a965c781"
         }
       }
     }
@@ -213,12 +219,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=bundle,product_group,product`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=bundle,product_group,product`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
 
 
 ### Includes
@@ -228,10 +234,16 @@ This request accepts the following includes:
 `bundle`
 
 
-`product`
+`product` => 
+`photo`
 
 
-`product_group`
+
+
+`product_group` => 
+`photo`
+
+
 
 
 
@@ -252,9 +264,9 @@ This request accepts the following includes:
       "data": {
         "type": "bundle_items",
         "attributes": {
-          "bundle_id": "1ef33f6c-4b61-4cd1-af13-20573fe0a4af",
-          "product_group_id": "b14b6d1c-f7fa-4eb3-a113-80faeb2a1724",
-          "product_id": "022fd483-bd12-449c-8691-357d20f46741",
+          "bundle_id": "0f40d7e2-9499-4c4d-90bd-7982008caf29",
+          "product_group_id": "9ab3c1d2-a850-47fe-a18e-2bd68741d383",
+          "product_id": "67a17d8c-892e-44e3-8108-e5c095bd0c19",
           "quantity": 2,
           "discount_percentage": 15
         }
@@ -267,17 +279,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6adf5ecb-517f-4f72-8461-cf093b945cfc",
+    "id": "ae216c5a-8c56-40d6-9f04-03e9e7bb8094",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2022-04-07T10:16:18+00:00",
-      "updated_at": "2022-04-07T10:16:18+00:00",
-      "quantity": "2",
-      "discount_percentage": 15,
+      "created_at": "2023-01-24T14:00:24+00:00",
+      "updated_at": "2023-01-24T14:00:24+00:00",
+      "quantity": 2,
+      "discount_percentage": 15.0,
       "position": 2,
-      "bundle_id": "1ef33f6c-4b61-4cd1-af13-20573fe0a4af",
-      "product_group_id": "b14b6d1c-f7fa-4eb3-a113-80faeb2a1724",
-      "product_id": "022fd483-bd12-449c-8691-357d20f46741"
+      "bundle_id": "0f40d7e2-9499-4c4d-90bd-7982008caf29",
+      "product_group_id": "9ab3c1d2-a850-47fe-a18e-2bd68741d383",
+      "product_id": "67a17d8c-892e-44e3-8108-e5c095bd0c19"
     },
     "relationships": {
       "bundle": {
@@ -307,12 +319,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=bundle,product_group,product`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=bundle,product_group,product`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
 
 
 ### Request body
@@ -321,12 +333,12 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][quantity]` | **String**<br>The quantity of the item
-`data[attributes][discount_percentage]` | **Integer**<br>The discount percentage for this product when rented out in a bundle
-`data[attributes][position]` | **Integer**<br>Position of the product in bundle list
-`data[attributes][bundle_id]` | **Uuid**<br>The associated Bundle
-`data[attributes][product_group_id]` | **Uuid**<br>The associated Product group
-`data[attributes][product_id]` | **Uuid**<br>The associated Product
+`data[attributes][quantity]` | **Integer** <br>The quantity of the item
+`data[attributes][discount_percentage]` | **Float** <br>The discount percentage for this product when rented out in a bundle
+`data[attributes][position]` | **Integer** <br>Position of the product in bundle list
+`data[attributes][bundle_id]` | **Uuid** <br>The associated Bundle
+`data[attributes][product_group_id]` | **Uuid** <br>The associated Product group
+`data[attributes][product_id]` | **Uuid** <br>The associated Product
 
 
 ### Includes
@@ -336,10 +348,16 @@ This request accepts the following includes:
 `bundle`
 
 
-`product`
+`product` => 
+`photo`
 
 
-`product_group`
+
+
+`product_group` => 
+`photo`
+
+
 
 
 
@@ -354,11 +372,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/3eed43d6-2f40-4e5d-b543-62306cd7971a' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/e05406f7-ad16-453b-a884-2680cb6798f6' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "3eed43d6-2f40-4e5d-b543-62306cd7971a",
+        "id": "e05406f7-ad16-453b-a884-2680cb6798f6",
         "type": "bundle_items",
         "attributes": {
           "quantity": 3,
@@ -373,17 +391,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3eed43d6-2f40-4e5d-b543-62306cd7971a",
+    "id": "e05406f7-ad16-453b-a884-2680cb6798f6",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2022-04-07T10:16:18+00:00",
-      "updated_at": "2022-04-07T10:16:18+00:00",
-      "quantity": "3",
-      "discount_percentage": 20,
+      "created_at": "2023-01-24T14:00:24+00:00",
+      "updated_at": "2023-01-24T14:00:24+00:00",
+      "quantity": 3,
+      "discount_percentage": 20.0,
       "position": 1,
-      "bundle_id": "69037efb-487d-4567-a424-18784de1eacf",
-      "product_group_id": "6dad6fca-a11e-49cb-bb8f-4e706e67aae1",
-      "product_id": "a43418b8-9b4d-48e0-8caa-5d79daaaa88c"
+      "bundle_id": "2ec2022c-1d9f-40d8-a7a7-f639fc8f96c3",
+      "product_group_id": "ed9e9881-eba5-4014-8030-a340b11a802e",
+      "product_id": "37d3d304-8b8f-4feb-8065-518339eeb174"
     },
     "relationships": {
       "bundle": {
@@ -413,12 +431,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=bundle,product_group,product`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=bundle,product_group,product`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
 
 
 ### Request body
@@ -427,12 +445,12 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][quantity]` | **String**<br>The quantity of the item
-`data[attributes][discount_percentage]` | **Integer**<br>The discount percentage for this product when rented out in a bundle
-`data[attributes][position]` | **Integer**<br>Position of the product in bundle list
-`data[attributes][bundle_id]` | **Uuid**<br>The associated Bundle
-`data[attributes][product_group_id]` | **Uuid**<br>The associated Product group
-`data[attributes][product_id]` | **Uuid**<br>The associated Product
+`data[attributes][quantity]` | **Integer** <br>The quantity of the item
+`data[attributes][discount_percentage]` | **Float** <br>The discount percentage for this product when rented out in a bundle
+`data[attributes][position]` | **Integer** <br>Position of the product in bundle list
+`data[attributes][bundle_id]` | **Uuid** <br>The associated Bundle
+`data[attributes][product_group_id]` | **Uuid** <br>The associated Product group
+`data[attributes][product_id]` | **Uuid** <br>The associated Product
 
 
 ### Includes
@@ -442,10 +460,16 @@ This request accepts the following includes:
 `bundle`
 
 
-`product`
+`product` => 
+`photo`
 
 
-`product_group`
+
+
+`product_group` => 
+`photo`
+
+
 
 
 
@@ -460,7 +484,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/72a60d2f-e00d-48e4-b8c7-20b09c594e0c' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/8f150d32-3ca5-4fb5-b7ec-e3aa7e41ef58' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -479,12 +503,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=bundle,product_group,product`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=bundle,product_group,product`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=id,created_at,updated_at`
 
 
 ### Includes
