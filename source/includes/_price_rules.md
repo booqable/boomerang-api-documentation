@@ -37,21 +37,21 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the rule
-`rule_type` | **String**<br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
-`match_strategy` | **String**<br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
-`adjustment_strategy` | **String**<br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
-`value` | **Float**<br>Adjustment value in percent
-`from` | **Datetime**<br>Defines start of period, used by `range_of_dates` rule type
-`till` | **Datetime**<br>Defines end of period, used by `range_of_dates` rule type
-`from_day` | **Integer**<br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`till_day` | **Integer**<br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`from_time` | **String**<br>Defines start of period time, `HH:mm` format, used by `range_of_days` rule type
-`till_time` | **String**<br>Defines end of period time, `HH:mm` format, used by `range_of_days` rule type
-`charge` | **Boolean**<br>Determines effect of rules using charge attribute
-`stacked` | **Boolean**<br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
-`time` | **String**<br>Defines time for adjustment, `HH:mm` format, used by `pickup_day`, `return_day` rule types
-`price_ruleset_id` | **Uuid**<br>The associated Price ruleset
+`name` | **String** <br>Name of the rule
+`rule_type` | **String** <br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
+`match_strategy` | **String** <br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
+`adjustment_strategy` | **String** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
+`value` | **Float** <br>Adjustment value in percent
+`from` | **Datetime** <br>Defines start of period, used by `range_of_dates` rule type
+`till` | **Datetime** <br>Defines end of period, used by `range_of_dates` rule type
+`from_day` | **Integer** <br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`till_day` | **Integer** <br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`from_time` | **String** <br>Defines start of period time, `HH:mm` format, used by `range_of_days` rule type
+`till_time` | **String** <br>Defines end of period time, `HH:mm` format, used by `range_of_days` rule type
+`charge` | **Boolean** <br>Determines effect of rules using charge attribute
+`stacked` | **Boolean** <br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
+`time` | **String** <br>Defines time for adjustment, `HH:mm` format, used by `pickup_day`, `return_day` rule types
+`price_ruleset_id` | **Uuid** <br>The associated Price ruleset
 
 
 ## Relationships
@@ -76,13 +76,13 @@ Name | Description
       "data": {
         "type": "price_rules",
         "attributes": {
-          "price_ruleset_id": "1294e91b-a848-460b-8dc9-d081ec54fda4",
+          "price_ruleset_id": "bc724e4f-c954-4d5b-8fc0-facee7f5e539",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "value": 25,
-          "from": "2022-03-07T10:17:51.878Z",
-          "till": "2022-05-07T10:17:51.878Z"
+          "from": "2022-12-25T12:37:08.607Z",
+          "till": "2023-02-25T12:37:08.607Z"
         }
       },
       "include": "price_rules"
@@ -94,18 +94,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f5a5a572-9a8b-496f-b1a2-2e92603c2036",
+    "id": "fc2fc3a8-ed02-4429-86cf-2f5ee78180cd",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2022-04-07T10:17:51+00:00",
-      "updated_at": "2022-04-07T10:17:51+00:00",
+      "created_at": "2023-01-25T12:37:08+00:00",
+      "updated_at": "2023-01-25T12:37:08+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
       "adjustment_strategy": "percentage",
       "value": 25.0,
-      "from": "2022-03-07T10:17:51+00:00",
-      "till": "2022-05-07T10:17:51+00:00",
+      "from": "2022-12-25T12:37:08+00:00",
+      "till": "2023-02-25T12:37:08+00:00",
       "from_day": null,
       "till_day": null,
       "from_time": null,
@@ -113,7 +113,7 @@ Name | Description
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "1294e91b-a848-460b-8dc9-d081ec54fda4"
+      "price_ruleset_id": "bc724e4f-c954-4d5b-8fc0-facee7f5e539"
     },
     "relationships": {
       "price_ruleset": {
@@ -133,12 +133,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=price_ruleset`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=price_ruleset`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
 
 
 ### Request body
@@ -147,21 +147,21 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the rule
-`data[attributes][rule_type]` | **String**<br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
-`data[attributes][match_strategy]` | **String**<br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
-`data[attributes][adjustment_strategy]` | **String**<br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
-`data[attributes][value]` | **Float**<br>Adjustment value in percent
-`data[attributes][from]` | **Datetime**<br>Defines start of period, used by `range_of_dates` rule type
-`data[attributes][till]` | **Datetime**<br>Defines end of period, used by `range_of_dates` rule type
-`data[attributes][from_day]` | **Integer**<br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`data[attributes][till_day]` | **Integer**<br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`data[attributes][from_time]` | **String**<br>Defines start of period time, `HH:mm` format, used by `range_of_days` rule type
-`data[attributes][till_time]` | **String**<br>Defines end of period time, `HH:mm` format, used by `range_of_days` rule type
-`data[attributes][charge]` | **Boolean**<br>Determines effect of rules using charge attribute
-`data[attributes][stacked]` | **Boolean**<br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
-`data[attributes][time]` | **String**<br>Defines time for adjustment, `HH:mm` format, used by `pickup_day`, `return_day` rule types
-`data[attributes][price_ruleset_id]` | **Uuid**<br>The associated Price ruleset
+`data[attributes][name]` | **String** <br>Name of the rule
+`data[attributes][rule_type]` | **String** <br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
+`data[attributes][match_strategy]` | **String** <br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
+`data[attributes][adjustment_strategy]` | **String** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
+`data[attributes][value]` | **Float** <br>Adjustment value in percent
+`data[attributes][from]` | **Datetime** <br>Defines start of period, used by `range_of_dates` rule type
+`data[attributes][till]` | **Datetime** <br>Defines end of period, used by `range_of_dates` rule type
+`data[attributes][from_day]` | **Integer** <br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`data[attributes][till_day]` | **Integer** <br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`data[attributes][from_time]` | **String** <br>Defines start of period time, `HH:mm` format, used by `range_of_days` rule type
+`data[attributes][till_time]` | **String** <br>Defines end of period time, `HH:mm` format, used by `range_of_days` rule type
+`data[attributes][charge]` | **Boolean** <br>Determines effect of rules using charge attribute
+`data[attributes][stacked]` | **Boolean** <br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
+`data[attributes][time]` | **String** <br>Defines time for adjustment, `HH:mm` format, used by `pickup_day`, `return_day` rule types
+`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
 
 
 ### Includes
@@ -175,11 +175,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/a45b1ef1-d8d9-469e-bb9e-f7daf767895a' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/dc93efab-ef07-4520-951e-1ca4e7155284' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "a45b1ef1-d8d9-469e-bb9e-f7daf767895a",
+        "id": "dc93efab-ef07-4520-951e-1ca4e7155284",
         "type": "price_rules",
         "attributes": {
           "value": 10
@@ -193,11 +193,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "a45b1ef1-d8d9-469e-bb9e-f7daf767895a",
+    "id": "dc93efab-ef07-4520-951e-1ca4e7155284",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2022-04-07T10:17:52+00:00",
-      "updated_at": "2022-04-07T10:17:52+00:00",
+      "created_at": "2023-01-25T12:37:08+00:00",
+      "updated_at": "2023-01-25T12:37:09+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -212,7 +212,7 @@ This request does not accept any includes
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "2cf88716-4404-4131-9c74-071333f55dd1"
+      "price_ruleset_id": "c24178e8-ca01-4f63-983d-3b89e99c22ac"
     },
     "relationships": {
       "price_ruleset": {
@@ -231,14 +231,14 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/929b22ff-060e-413e-8035-6f2d76d69b64' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/a72032ab-7f16-4ebe-9a92-7ae10b5a889f' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "929b22ff-060e-413e-8035-6f2d76d69b64",
+        "id": "a72032ab-7f16-4ebe-9a92-7ae10b5a889f",
         "type": "price_rules",
         "attributes": {
-          "id": "929b22ff-060e-413e-8035-6f2d76d69b64",
+          "id": "a72032ab-7f16-4ebe-9a92-7ae10b5a889f",
           "name": "Off season"
         }
       }
@@ -250,11 +250,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "929b22ff-060e-413e-8035-6f2d76d69b64",
+    "id": "a72032ab-7f16-4ebe-9a92-7ae10b5a889f",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2022-04-07T10:17:52+00:00",
-      "updated_at": "2022-04-07T10:17:52+00:00",
+      "created_at": "2023-01-25T12:37:09+00:00",
+      "updated_at": "2023-01-25T12:37:09+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -269,7 +269,7 @@ This request does not accept any includes
       "charge": null,
       "stacked": false,
       "time": null,
-      "price_ruleset_id": "4b35cd3e-d7e5-43a0-a17b-da88bd42cdf7"
+      "price_ruleset_id": "373ad26c-2bc4-4fdc-b90f-1a696177efc8"
     },
     "relationships": {
       "price_ruleset": {
@@ -289,12 +289,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=price_ruleset`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=price_ruleset`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
 
 
 ### Request body
@@ -303,21 +303,21 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the rule
-`data[attributes][rule_type]` | **String**<br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
-`data[attributes][match_strategy]` | **String**<br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
-`data[attributes][adjustment_strategy]` | **String**<br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
-`data[attributes][value]` | **Float**<br>Adjustment value in percent
-`data[attributes][from]` | **Datetime**<br>Defines start of period, used by `range_of_dates` rule type
-`data[attributes][till]` | **Datetime**<br>Defines end of period, used by `range_of_dates` rule type
-`data[attributes][from_day]` | **Integer**<br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`data[attributes][till_day]` | **Integer**<br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`data[attributes][from_time]` | **String**<br>Defines start of period time, `HH:mm` format, used by `range_of_days` rule type
-`data[attributes][till_time]` | **String**<br>Defines end of period time, `HH:mm` format, used by `range_of_days` rule type
-`data[attributes][charge]` | **Boolean**<br>Determines effect of rules using charge attribute
-`data[attributes][stacked]` | **Boolean**<br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
-`data[attributes][time]` | **String**<br>Defines time for adjustment, `HH:mm` format, used by `pickup_day`, `return_day` rule types
-`data[attributes][price_ruleset_id]` | **Uuid**<br>The associated Price ruleset
+`data[attributes][name]` | **String** <br>Name of the rule
+`data[attributes][rule_type]` | **String** <br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `pickup_day`, `return_day`
+`data[attributes][match_strategy]` | **String** <br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
+`data[attributes][adjustment_strategy]` | **String** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
+`data[attributes][value]` | **Float** <br>Adjustment value in percent
+`data[attributes][from]` | **Datetime** <br>Defines start of period, used by `range_of_dates` rule type
+`data[attributes][till]` | **Datetime** <br>Defines end of period, used by `range_of_dates` rule type
+`data[attributes][from_day]` | **Integer** <br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`data[attributes][till_day]` | **Integer** <br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`data[attributes][from_time]` | **String** <br>Defines start of period time, `HH:mm` format, used by `range_of_days` rule type
+`data[attributes][till_time]` | **String** <br>Defines end of period time, `HH:mm` format, used by `range_of_days` rule type
+`data[attributes][charge]` | **Boolean** <br>Determines effect of rules using charge attribute
+`data[attributes][stacked]` | **Boolean** <br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
+`data[attributes][time]` | **String** <br>Defines time for adjustment, `HH:mm` format, used by `pickup_day`, `return_day` rule types
+`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
 
 
 ### Includes
@@ -331,7 +331,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/1d49cc94-d34e-4253-ab45-756066226e5f' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/c4054657-50c6-4846-879a-5e2ba225ee95' \
     --header 'content-type: application/json' \
 ```
 
@@ -349,12 +349,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=price_ruleset`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=price_ruleset`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=id,created_at,updated_at`
 
 
 ### Includes
