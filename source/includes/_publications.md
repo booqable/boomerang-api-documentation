@@ -16,7 +16,15 @@ Name | Description
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `published_at` | **Datetime** `readonly`<br>The date and time (ISO 8601 format) the Publication uses to filter all released Assets by.
-`theme_id` | **String**<br>The ID of the Theme that the Publication belongs to.
+`theme_id` | **Uuid** <br>The associated Theme
+
+
+## Relationships
+Publications have the following relationships:
+
+Name | Description
+- | -
+`theme` | **Themes** `readonly`<br>Associated Theme
 
 
 ## Listing publications
@@ -37,13 +45,20 @@ Name | Description
   {
   "data": [
     {
-      "id": "3995f9eb-0eff-4013-816f-d9d6ee10a0aa",
+      "id": "e39731ba-1e31-4894-a601-137371f70103",
       "type": "publications",
       "attributes": {
-        "created_at": "2022-04-07T10:18:06+00:00",
-        "updated_at": "2022-04-07T10:18:06+00:00",
-        "published_at": "2022-04-02T10:18:06+00:00",
-        "theme_id": "164d8e50-3d7a-4fbd-b59e-5e89eab323c1"
+        "created_at": "2023-02-02T15:28:02+00:00",
+        "updated_at": "2023-02-02T15:28:02+00:00",
+        "published_at": "2023-01-28T15:28:02+00:00",
+        "theme_id": "e3c627d1-e089-4770-8fec-65a054a7d866"
+      },
+      "relationships": {
+        "theme": {
+          "links": {
+            "related": "api/boomerang/themes/e3c627d1-e089-4770-8fec-65a054a7d866"
+          }
+        }
       }
     }
   ],
@@ -57,17 +72,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:02Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=theme`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-02T15:24:28Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -76,11 +91,11 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`published_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`theme_id` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`published_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`theme_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -89,7 +104,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -117,7 +132,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "46ee44e1-a5f5-4996-8281-d79324200567"
+          "theme_id": "6020b9d4-cb59-4437-931c-31f5fa6cbea9"
         }
       }
     }'
@@ -128,13 +143,20 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3a9e212c-c683-4e80-acdf-72f6d0bef4b5",
+    "id": "ccf5643e-075e-4ed1-8043-c3fd9fd2bf30",
     "type": "publications",
     "attributes": {
-      "created_at": "2022-04-02T10:18:06+00:00",
-      "updated_at": "2022-04-02T10:18:06+00:00",
-      "published_at": "2022-04-02T10:18:06+00:00",
-      "theme_id": "46ee44e1-a5f5-4996-8281-d79324200567"
+      "created_at": "2023-01-28T15:28:02+00:00",
+      "updated_at": "2023-01-28T15:28:02+00:00",
+      "published_at": "2023-01-28T15:28:02+00:00",
+      "theme_id": "6020b9d4-cb59-4437-931c-31f5fa6cbea9"
+    },
+    "relationships": {
+      "theme": {
+        "meta": {
+          "included": false
+        }
+      }
     }
   },
   "meta": {}
@@ -147,12 +169,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=theme`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
 
 
 ### Request body
@@ -161,7 +183,7 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][theme_id]` | **String**<br>The ID of the Theme that the Publication belongs to.
+`data[attributes][theme_id]` | **Uuid** <br>The associated Theme
 
 
 ### Includes
