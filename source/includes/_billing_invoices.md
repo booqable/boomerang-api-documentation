@@ -54,11 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "a0b25748-5257-4192-a0f7-0f2d4e6f79b8",
+      "id": "8dc17de6-769a-4a2d-8435-c5dbdee07ab4",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2022-04-07T10:16:15+00:00",
-        "updated_at": "2022-04-07T10:16:15+00:00",
+        "created_at": "2023-02-03T11:09:08+00:00",
+        "updated_at": "2023-02-03T11:09:08+00:00",
         "number": 10001,
         "status": "open",
         "billing_reason": "subscription_cycle",
@@ -77,7 +77,7 @@ Name | Description
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/64927ad35520ee557aaf98dd968239ef/8bf6cf381ed1f1a332db619468892125"
+        "url": "http://billing.lvh.me:/invoices/73ae57479af45d3f2e8309792f4e27b0/a6a04f6048864ad40a33acb2968b90e3"
       }
     }
   ],
@@ -91,17 +91,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-03T11:08:36Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -110,13 +110,13 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **String**<br>`eq`
-`billing_reason` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`strategy` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`date` | **Date**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`status` | **String** <br>`eq`
+`billing_reason` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`strategy` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -125,10 +125,10 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
-`total_in_cents` | **Array**<br>`sum`
-`vat_in_cents` | **Array**<br>`sum`
-`amount_due_in_cents` | **Array**<br>`sum`
+`total` | **Array** <br>`count`
+`total_in_cents` | **Array** <br>`sum`
+`vat_in_cents` | **Array** <br>`sum`
+`amount_due_in_cents` | **Array** <br>`sum`
 
 
 ### Includes
@@ -142,7 +142,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/8d2b6344-dfff-4496-a36b-aaf01629bd1f' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/070678be-0db3-4cc6-9e86-8ae1827ae53a' \
     --header 'content-type: application/json' \
 ```
 
@@ -151,11 +151,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8d2b6344-dfff-4496-a36b-aaf01629bd1f",
+    "id": "070678be-0db3-4cc6-9e86-8ae1827ae53a",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2022-04-07T10:16:15+00:00",
-      "updated_at": "2022-04-07T10:16:15+00:00",
+      "created_at": "2023-02-03T11:09:09+00:00",
+      "updated_at": "2023-02-03T11:09:09+00:00",
       "number": 10001,
       "status": "open",
       "billing_reason": "subscription_cycle",
@@ -174,7 +174,7 @@ This request does not accept any includes
       "ending_balance_in_cents": null,
       "next_payment_attempt_at": null,
       "coupon": null,
-      "url": "http://billing.lvh.me:/invoices/5e6dab6a11662e54f187cc91eef4d1a9/60463129b52f8090451a01a05fe485d3"
+      "url": "http://billing.lvh.me:/invoices/eb6da947028d6f77dbc4e90dfcf93d30/92a7819333dfcc452a36beb9d33582b2"
     }
   },
   "meta": {}
@@ -187,12 +187,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[billing_invoices]=id,created_at,updated_at`
 
 
 ### Includes
