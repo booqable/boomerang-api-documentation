@@ -8,7 +8,7 @@ Every sorting has the following fields:
 Name | Description
 - | -
 `id` | **Uuid** `readonly`<br>
-`type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `categories`, `category_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`
+`type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `ids` | **Array_of_strings** `writeonly`<br>Array of ids, positions are determined by the order of the array
 
 
@@ -26,13 +26,13 @@ Name | Description
       "data": {
         "type": "sorting",
         "attributes": {
-          "type": "categories",
+          "type": "default_properties",
           "ids": [
-            "dbee5bda-e063-4b63-839e-0e4e4aed18fe",
-            "b1cf17f1-6464-4a95-bf1c-877101f7785c",
-            "71f36135-6b47-4702-a90b-76f2c7093bf7",
-            "5bd7f47b-9cb7-4f26-94ee-a83eca6c5783",
-            "0c7c605b-7f56-483f-8479-762467e48483"
+            "67272856-adc8-4ae2-8a6b-4825e3e3b2cd",
+            "3c901b62-98ed-4fd7-8340-218ad2e40d3c",
+            "ee90e163-5436-48e6-84cd-28926de76709",
+            "ec136883-7dc0-48dd-881c-5cb3b7161942",
+            "4306c189-9c0b-433b-996d-64ecff353f15"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "0b05e801-0a42-5550-b731-920505b62ffe",
+    "id": "9866345c-b04d-5cf2-9161-fbc85c92246c",
     "type": "sortings"
   },
   "meta": {}
@@ -57,12 +57,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sortings]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sortings]=id,created_at,updated_at`
 
 
 ### Request body
@@ -71,8 +71,8 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][type]` | **String_enum**<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `categories`, `category_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`
-`data[attributes][ids]` | **Array_of_strings**<br>Array of ids, positions are determined by the order of the array
+`data[attributes][type]` | **String_enum** <br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
+`data[attributes][ids]` | **Array_of_strings** <br>Array of ids, positions are determined by the order of the array
 
 
 ### Includes

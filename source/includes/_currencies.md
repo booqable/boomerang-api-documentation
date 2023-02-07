@@ -68,12 +68,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[currencies]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[currencies]=id,created_at,updated_at`
 
 
 ### Includes
