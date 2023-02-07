@@ -21,8 +21,8 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the cluster
-`location_ids` | **Array**<br>The locations that belong to this cluster
+`name` | **String** <br>Name of the cluster
+`location_ids` | **Array** <br>The locations that belong to this cluster
 
 
 ## Relationships
@@ -37,7 +37,7 @@ Name | Description
 
 
 
-> How to fetch clusters
+> How to fetch clusters:
 
 ```shell
   curl --request GET \
@@ -51,18 +51,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "6403faaf-9bb2-432d-bd96-0348fe976e08",
+      "id": "bd77aad6-245b-45b4-ab5c-778004325e18",
       "type": "clusters",
       "attributes": {
-        "created_at": "2022-04-07T10:16:26+00:00",
-        "updated_at": "2022-04-07T10:16:26+00:00",
+        "created_at": "2023-02-07T16:04:52+00:00",
+        "updated_at": "2023-02-07T16:04:52+00:00",
         "name": "Main",
         "location_ids": []
       },
       "relationships": {
         "locations": {
           "links": {
-            "related": "api/boomerang/locations?filter[cluster_id]=6403faaf-9bb2-432d-bd96-0348fe976e08"
+            "related": "api/boomerang/locations?filter[cluster_id]=bd77aad6-245b-45b4-ab5c-778004325e18"
           }
         }
       }
@@ -78,17 +78,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=locations`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-07T16:04:23Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -97,11 +97,11 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`location_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`location_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -110,7 +110,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -132,7 +132,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/clusters/ebc14182-7eff-4b89-a531-92ac3710cc21' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/a3a4ce6d-ca8d-4d32-bced-3176e13db0f5' \
     --header 'content-type: application/json' \
 ```
 
@@ -141,18 +141,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ebc14182-7eff-4b89-a531-92ac3710cc21",
+    "id": "a3a4ce6d-ca8d-4d32-bced-3176e13db0f5",
     "type": "clusters",
     "attributes": {
-      "created_at": "2022-04-07T10:16:26+00:00",
-      "updated_at": "2022-04-07T10:16:26+00:00",
+      "created_at": "2023-02-07T16:04:52+00:00",
+      "updated_at": "2023-02-07T16:04:52+00:00",
       "name": "Main",
       "location_ids": []
     },
     "relationships": {
       "locations": {
         "links": {
-          "related": "api/boomerang/locations?filter[cluster_id]=ebc14182-7eff-4b89-a531-92ac3710cc21"
+          "related": "api/boomerang/locations?filter[cluster_id]=a3a4ce6d-ca8d-4d32-bced-3176e13db0f5"
         }
       }
     }
@@ -167,12 +167,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=locations`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
 
 
 ### Includes
@@ -211,11 +211,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7f39cc92-e5f7-4e4b-b5e7-8c7840cb3e14",
+    "id": "40568e2f-b44c-4478-81fb-8dc460c34fb9",
     "type": "clusters",
     "attributes": {
-      "created_at": "2022-04-07T10:16:27+00:00",
-      "updated_at": "2022-04-07T10:16:27+00:00",
+      "created_at": "2023-02-07T16:04:52+00:00",
+      "updated_at": "2023-02-07T16:04:52+00:00",
       "name": "Amsterdam",
       "location_ids": []
     },
@@ -237,12 +237,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=locations`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
 
 
 ### Request body
@@ -251,8 +251,8 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the cluster
-`data[attributes][location_ids][]` | **Array**<br>The locations that belong to this cluster
+`data[attributes][name]` | **String** <br>Name of the cluster
+`data[attributes][location_ids][]` | **Array** <br>The locations that belong to this cluster
 
 
 ### Includes
@@ -274,11 +274,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/clusters/0e8a4e66-e76b-441c-91d8-cc75adb9b5c2' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/d8760ab7-af4b-498e-a84c-a58ab2fc88c4' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0e8a4e66-e76b-441c-91d8-cc75adb9b5c2",
+        "id": "d8760ab7-af4b-498e-a84c-a58ab2fc88c4",
         "type": "clusters",
         "attributes": {
           "name": "Rotterdam"
@@ -292,11 +292,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0e8a4e66-e76b-441c-91d8-cc75adb9b5c2",
+    "id": "d8760ab7-af4b-498e-a84c-a58ab2fc88c4",
     "type": "clusters",
     "attributes": {
-      "created_at": "2022-04-07T10:16:27+00:00",
-      "updated_at": "2022-04-07T10:16:27+00:00",
+      "created_at": "2023-02-07T16:04:53+00:00",
+      "updated_at": "2023-02-07T16:04:53+00:00",
       "name": "Rotterdam",
       "location_ids": []
     },
@@ -318,12 +318,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=locations`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
 
 
 ### Request body
@@ -332,8 +332,8 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the cluster
-`data[attributes][location_ids][]` | **Array**<br>The locations that belong to this cluster
+`data[attributes][name]` | **String** <br>Name of the cluster
+`data[attributes][location_ids][]` | **Array** <br>The locations that belong to this cluster
 
 
 ### Includes
@@ -356,7 +356,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/7e27a5a2-ecab-4568-8f15-474b7dac4cfc' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/1d1f16fc-5c3a-4d0b-8203-79bb3de2b53d' \
     --header 'content-type: application/json' \
 ```
 
@@ -373,7 +373,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/20e694a1-dcb8-420b-b0d6-b58698c15a74' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/4444b054-b778-44a3-ac54-e7876c69e008' \
     --header 'content-type: application/json' \
 ```
 
@@ -389,7 +389,7 @@ To delete a cluster make sure no active locations are associated with it anymore
       "detail": "This cluster has 1 or more active locations",
       "meta": {
         "location_ids": [
-          "bb475924-93da-45a5-a745-7d42b04d10a2"
+          "ed267526-5c33-4dea-877b-19ba8958ea7b"
         ]
       }
     }
@@ -403,12 +403,12 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=locations`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=id,created_at,updated_at`
 
 
 ### Includes
