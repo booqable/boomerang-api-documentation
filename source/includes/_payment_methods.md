@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "29043413-ab5e-4081-b6e5-d0118547a39e",
+      "id": "4a98e643-ee1c-4865-835b-81fa56bfa23a",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2022-04-07T10:17:45+00:00",
-        "updated_at": "2022-04-07T10:17:45+00:00",
+        "created_at": "2023-02-07T11:00:24+00:00",
+        "updated_at": "2023-02-07T11:00:24+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -80,17 +80,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=customer`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=customer`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-07T10:56:31Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -99,11 +99,11 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`data` | **Hash**<br>`eq`
-`customer_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`data` | **Hash** <br>`eq`
+`customer_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -112,7 +112,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -126,7 +126,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/9deba614-64e7-45ff-b752-16452af08a30' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/0f3f3f6d-a540-419e-aebb-c0fb3d321caf' \
     --header 'content-type: application/json' \
 ```
 
@@ -144,12 +144,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=customer`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=customer`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
 
 
 ### Includes
