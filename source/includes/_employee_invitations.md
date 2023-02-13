@@ -11,12 +11,12 @@ Every employee invitation has the following fields:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>Specify employee ID to re-send invitation
+`id` | **Uuid** <br>Specify employee ID to re-send invitation
 `firstname` | **String** `writeonly`<br>First name of the employee
 `lastname` | **String** `writeonly`<br>Last name of the employee
 `email` | **String** `writeonly`<br>Employee's e-mail address
-`permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
-`employee_id` | **Uuid**<br>The associated Employee
+`permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
+`employee_id` | **Uuid** <br>The associated Employee
 
 
 ## Relationships
@@ -55,30 +55,31 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cdbbf32b-e536-5301-b6cc-d7176aefe642",
+    "id": "6e6ef792-ed3c-576f-886e-4b0082a5c387",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "5d6b35cd-f77f-4c6f-a116-4dfa3109d475"
+      "employee_id": "9bd032bf-1b3b-4f3e-8968-900a247c6520"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "5d6b35cd-f77f-4c6f-a116-4dfa3109d475"
+          "id": "9bd032bf-1b3b-4f3e-8968-900a247c6520"
         }
       }
     }
   },
   "included": [
     {
-      "id": "5d6b35cd-f77f-4c6f-a116-4dfa3109d475",
+      "id": "9bd032bf-1b3b-4f3e-8968-900a247c6520",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:16:54+00:00",
-        "updated_at": "2022-04-07T10:16:54+00:00",
+        "created_at": "2023-02-13T09:08:54+00:00",
+        "updated_at": "2023-02-13T09:08:54+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
         "active": true,
@@ -98,7 +99,7 @@ Name | Description
 
 
 > To re-send an invitation we supply the ID the employee for which the invitation was sent.
-Note that you can also update other fields.
+Note that you can also update other fields.:
 
 ```shell
   curl --request POST \
@@ -108,7 +109,7 @@ Note that you can also update other fields.
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "21381550-9bb2-43a5-a30f-365a6d180b79",
+          "id": "7fbc37ba-7454-4958-ad0b-6293b179b30f",
           "email": "jane@doe.com"
         }
       },
@@ -121,30 +122,31 @@ Note that you can also update other fields.
 ```json
   {
   "data": {
-    "id": "21381550-9bb2-43a5-a30f-365a6d180b79",
+    "id": "7fbc37ba-7454-4958-ad0b-6293b179b30f",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "21381550-9bb2-43a5-a30f-365a6d180b79"
+      "employee_id": "7fbc37ba-7454-4958-ad0b-6293b179b30f"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "21381550-9bb2-43a5-a30f-365a6d180b79"
+          "id": "7fbc37ba-7454-4958-ad0b-6293b179b30f"
         }
       }
     }
   },
   "included": [
     {
-      "id": "21381550-9bb2-43a5-a30f-365a6d180b79",
+      "id": "7fbc37ba-7454-4958-ad0b-6293b179b30f",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:16:54+00:00",
-        "updated_at": "2022-04-07T10:16:54+00:00",
+        "created_at": "2023-02-13T09:08:55+00:00",
+        "updated_at": "2023-02-13T09:08:55+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "jane@doe.com",
         "unconfirmed_email": null,
         "active": true,
@@ -155,7 +157,9 @@ Note that you can also update other fields.
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
@@ -177,12 +181,12 @@ Note that you can also update other fields.
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[employee_invitations]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employee_invitations]=id,created_at,updated_at`
 
 
 ### Request body
@@ -191,12 +195,12 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][id]` | **Uuid**<br>Specify employee ID to re-send invitation
-`data[attributes][firstname]` | **String**<br>First name of the employee
-`data[attributes][lastname]` | **String**<br>Last name of the employee
-`data[attributes][email]` | **String**<br>Employee's e-mail address
-`data[attributes][permissions][]` | **Array**<br>Any of: `reports`, `products`, `settings`, `account`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
-`data[attributes][employee_id]` | **Uuid**<br>The associated Employee
+`data[attributes][id]` | **Uuid** <br>Specify employee ID to re-send invitation
+`data[attributes][firstname]` | **String** <br>First name of the employee
+`data[attributes][lastname]` | **String** <br>Last name of the employee
+`data[attributes][email]` | **String** <br>Employee's e-mail address
+`data[attributes][permissions][]` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
+`data[attributes][employee_id]` | **Uuid** <br>The associated Employee
 
 
 ### Includes
