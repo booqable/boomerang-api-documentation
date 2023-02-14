@@ -19,9 +19,9 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`body` | **String**<br>The content of the note
-`owner_id` | **Uuid**<br>ID of the resource the note is attached to
-`owner_type` | **String**<br>The resource type of the owner. One of `orders`, `documents`, `product_groups`, `bundles`, `products`, `customers`, `stock_items`
+`body` | **String** <br>The content of the note
+`owner_id` | **Uuid** <br>ID of the resource the note is attached to
+`owner_type` | **String** <br>The resource type of the owner. One of `orders`, `documents`, `product_groups`, `bundles`, `products`, `customers`, `stock_items`, `users`
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
 
 
@@ -52,25 +52,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "c8a3f13d-67c6-4d49-a252-e20bf9553900",
+      "id": "f6ee8ab6-78cc-49d2-af9c-43665f7ad1fb",
       "type": "notes",
       "attributes": {
-        "created_at": "2022-04-07T10:17:23+00:00",
-        "updated_at": "2022-04-07T10:17:23+00:00",
+        "created_at": "2023-02-14T11:05:33+00:00",
+        "updated_at": "2023-02-14T11:05:33+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "31b8b933-cc8f-4ebb-9e83-98cc0dcfdd52",
+        "owner_id": "0e931300-210b-48b1-b631-41c9139402fe",
         "owner_type": "customers",
-        "employee_id": "bd59f179-6ac0-4b68-bab0-c04b1e52e981"
+        "employee_id": "95ea7191-e956-43de-a2f8-43adeb2cc924"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/31b8b933-cc8f-4ebb-9e83-98cc0dcfdd52"
+            "related": "api/boomerang/customers/0e931300-210b-48b1-b631-41c9139402fe"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/bd59f179-6ac0-4b68-bab0-c04b1e52e981"
+            "related": "api/boomerang/employees/95ea7191-e956-43de-a2f8-43adeb2cc924"
           }
         }
       }
@@ -86,17 +86,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:01Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-14T11:03:18Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -105,12 +105,12 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`owner_id` | **Uuid**<br>`eq`, `not_eq`
-`owner_type` | **String**<br>`eq`, `not_eq`
-`employee_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`owner_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_type` | **String** <br>`eq`, `not_eq`
+`employee_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -119,7 +119,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -144,7 +144,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/0e013806-709c-41ab-84e3-e6f417fe3964' \
+    --url 'https://example.booqable.com/api/boomerang/notes/e3f3c502-8828-4978-a11a-7562b7f7d321' \
     --header 'content-type: application/json' \
 ```
 
@@ -153,25 +153,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0e013806-709c-41ab-84e3-e6f417fe3964",
+    "id": "e3f3c502-8828-4978-a11a-7562b7f7d321",
     "type": "notes",
     "attributes": {
-      "created_at": "2022-04-07T10:17:23+00:00",
-      "updated_at": "2022-04-07T10:17:23+00:00",
+      "created_at": "2023-02-14T11:05:34+00:00",
+      "updated_at": "2023-02-14T11:05:34+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "b4963c60-8904-416a-91d5-bf1059053d98",
+      "owner_id": "e4d022e1-3556-4ae2-a606-cbbf42ba146a",
       "owner_type": "customers",
-      "employee_id": "e70af9d3-e915-493c-9f06-25f50cb85695"
+      "employee_id": "3a25d518-8480-4148-accf-15f75412d14b"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/b4963c60-8904-416a-91d5-bf1059053d98"
+          "related": "api/boomerang/customers/e4d022e1-3556-4ae2-a606-cbbf42ba146a"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/e70af9d3-e915-493c-9f06-25f50cb85695"
+          "related": "api/boomerang/employees/3a25d518-8480-4148-accf-15f75412d14b"
         }
       }
     }
@@ -186,12 +186,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
 
 
 ### Includes
@@ -220,7 +220,7 @@ This request accepts the following includes:
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "469164b3-ca29-4128-858d-6f5829acf720",
+          "owner_id": "08e441d6-d0c4-4a70-b589-8dc12a19fd71",
           "owner_type": "customers"
         }
       }
@@ -232,15 +232,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "462b7502-a0cf-44c2-921f-7b52a4ce7e73",
+    "id": "f9c0b38e-b3d7-4d61-bed3-2e3987bb01d4",
     "type": "notes",
     "attributes": {
-      "created_at": "2022-04-07T10:17:23+00:00",
-      "updated_at": "2022-04-07T10:17:23+00:00",
+      "created_at": "2023-02-14T11:05:34+00:00",
+      "updated_at": "2023-02-14T11:05:34+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "469164b3-ca29-4128-858d-6f5829acf720",
+      "owner_id": "08e441d6-d0c4-4a70-b589-8dc12a19fd71",
       "owner_type": "customers",
-      "employee_id": "4ea4072b-6ec0-4eae-b47c-83f6ba921fb0"
+      "employee_id": "f6765da6-b0d2-402e-a0db-29f5292b6a98"
     },
     "relationships": {
       "owner": {
@@ -265,12 +265,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
 
 
 ### Request body
@@ -279,9 +279,9 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][body]` | **String**<br>The content of the note
-`data[attributes][owner_id]` | **Uuid**<br>ID of the resource the note is attached to
-`data[attributes][owner_type]` | **String**<br>The resource type of the owner. One of `orders`, `documents`, `product_groups`, `bundles`, `products`, `customers`, `stock_items`
+`data[attributes][body]` | **String** <br>The content of the note
+`data[attributes][owner_id]` | **Uuid** <br>ID of the resource the note is attached to
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `documents`, `product_groups`, `bundles`, `products`, `customers`, `stock_items`, `users`
 
 
 ### Includes
@@ -303,7 +303,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/0be47400-abb5-4a3d-bf67-f9237f0ff836' \
+    --url 'https://example.booqable.com/api/boomerang/notes/01fb192d-c727-4454-be76-76d5fff6e309' \
     --header 'content-type: application/json' \
 ```
 
@@ -321,12 +321,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
 
 
 ### Includes
