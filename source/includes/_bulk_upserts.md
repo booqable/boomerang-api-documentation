@@ -66,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5c74bf19-f981-503e-ba60-e52aa772fc8b",
+    "id": "e1d429f5-32de-5184-9c2f-1902e04c5184",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "4748ff62-aaae-4cbf-a51a-29fedd01a1c3"
+            "id": "19833f6a-7f3d-4e12-ac5f-54e7b33e9258"
           },
           {
             "type": "operating_rules",
-            "id": "0b8e0e3b-7e42-45ec-b181-56fbad6663cb"
+            "id": "75249f02-ae04-44c5-acf9-c4597189fad9"
           }
         ]
       }
@@ -85,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "4748ff62-aaae-4cbf-a51a-29fedd01a1c3",
+      "id": "19833f6a-7f3d-4e12-ac5f-54e7b33e9258",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2022-04-07T10:16:15+00:00",
-        "updated_at": "2022-04-07T10:16:15+00:00",
+        "created_at": "2023-02-15T13:21:28+00:00",
+        "updated_at": "2023-02-15T13:21:28+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -100,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "0b8e0e3b-7e42-45ec-b181-56fbad6663cb",
+      "id": "75249f02-ae04-44c5-acf9-c4597189fad9",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2022-04-07T10:16:15+00:00",
-        "updated_at": "2022-04-07T10:16:15+00:00",
+        "created_at": "2023-02-15T13:21:28+00:00",
+        "updated_at": "2023-02-15T13:21:28+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -133,11 +133,11 @@ Name | Description
           "type": "checkout_fields",
           "data": [
             {
-              "default_property_id": "661a4e9c-4b26-48a0-b361-8a3c271a836b"
+              "default_property_id": "eb760703-cfc8-405c-bcb7-4452d8400144"
             },
             {
               "name": "Delivery address",
-              "default_property_id": "2eb3a4e5-32d7-4b3f-9127-8462b8e9744f"
+              "default_property_id": "e418ab19-fc04-4179-89e5-b5885362e067"
             }
           ]
         },
@@ -151,7 +151,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c2bc7b26-2966-5682-8ad3-8ec2b19008d6",
+    "id": "e1d429f5-32de-5184-9c2f-1902e04c5184",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -201,7 +201,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c2bc7b26-2966-5682-8ad3-8ec2b19008d6",
+    "id": "8834e772-32a7-5f32-bb55-b19e8d71b73b",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -221,12 +221,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=results`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[bulk_upserts]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=results`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bulk_upserts]=id,created_at,updated_at`
 
 
 ### Request body
@@ -235,8 +235,8 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][type]` | **String**<br>Type of data being submitted. One of `coupons`, `operating_rules`, `checkout_fields`
-`data[attributes][data][]` | **Array**<br>Array of objects, all objects must contain valid data for the specified type, see documentation for relevant type endpoint for more details.
+`data[attributes][type]` | **String** <br>Type of data being submitted. One of `coupons`, `operating_rules`, `checkout_fields`
+`data[attributes][data][]` | **Array** <br>Array of objects, all objects must contain valid data for the specified type, see documentation for relevant type endpoint for more details.
 
 
 ### Includes

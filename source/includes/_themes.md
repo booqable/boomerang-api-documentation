@@ -19,13 +19,13 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String**<br>Name of the theme
-`identifier` | **String**<br>UUID used to link this theme
-`version` | **String**<br>Theme version
-`theme_type` | **String**<br>Theme type, determines where the theme can be found. Custom themes are private. One of `marketplace`, `official`, `custom`
-`description` | **String**<br>Theme description
-`preview_image` | **String**<br>Theme preview image
-`theme_id` | **Uuid**<br>Present for installed themes, Original ID of installed theme
+`name` | **String** <br>Name of the theme
+`identifier` | **String** <br>UUID used to link this theme
+`version` | **String** <br>Theme version
+`theme_type` | **String** <br>Theme type, determines where the theme can be found. Custom themes are private. One of `marketplace`, `official`, `custom`
+`description` | **String** <br>Theme description
+`preview_image` | **String** <br>Theme preview image
+`theme_id` | **Uuid** <br>Present for installed themes, Original ID of installed theme
 `installed` | **Boolean** `readonly`<br>Whether or not this theme is installed
 
 
@@ -56,29 +56,29 @@ Name | Description
   {
   "data": [
     {
-      "id": "421f6697-0324-4155-8e22-ee72294e4f23",
+      "id": "6fa272d3-7b87-494b-8be4-00d8e3e7fb8e",
       "type": "themes",
       "attributes": {
-        "created_at": "2022-04-07T10:18:19+00:00",
-        "updated_at": "2022-04-07T10:18:19+00:00",
+        "created_at": "2023-02-15T13:25:39+00:00",
+        "updated_at": "2023-02-15T13:25:39+00:00",
         "name": "Theme 1",
-        "identifier": "90e56a00-4245-4205-a14d-796e20eda111",
+        "identifier": "4660eccc-f948-41c2-93b2-1215aba80b07",
         "version": "1.0",
         "theme_type": "official",
         "description": "A simple theme for setting up your shop",
         "preview_image": "",
-        "theme_id": "4abc945f-bb14-4b57-957a-e72d5ddace22",
+        "theme_id": "de2b0f57-5fff-48a9-811a-6b9d246c5673",
         "installed": true
       },
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=421f6697-0324-4155-8e22-ee72294e4f23"
+            "related": "api/boomerang/assets?filter[theme_id]=6fa272d3-7b87-494b-8be4-00d8e3e7fb8e"
           }
         },
         "original_theme": {
           "links": {
-            "related": "api/boomerang/themes/4abc945f-bb14-4b57-957a-e72d5ddace22"
+            "related": "api/boomerang/themes/de2b0f57-5fff-48a9-811a-6b9d246c5673"
           }
         }
       }
@@ -103,13 +103,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "9ae7f178-7df1-4783-8ea6-1d8ab035ac81",
+      "id": "57876567-ff83-40c9-91a9-fd4ac3bf8c99",
       "type": "themes",
       "attributes": {
-        "created_at": "2022-04-07T10:18:19+00:00",
-        "updated_at": "2022-04-07T10:18:19+00:00",
+        "created_at": "2023-02-15T13:25:39+00:00",
+        "updated_at": "2023-02-15T13:25:39+00:00",
         "name": "Official theme",
-        "identifier": "355a6686-c739-4e33-8356-436a620c85e1",
+        "identifier": "50acfee5-bb1e-44b4-bee8-92b9f87a2076",
         "version": "1.0",
         "theme_type": "official",
         "description": null,
@@ -120,7 +120,7 @@ Name | Description
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=9ae7f178-7df1-4783-8ea6-1d8ab035ac81"
+            "related": "api/boomerang/assets?filter[theme_id]=57876567-ff83-40c9-91a9-fd4ac3bf8c99"
           }
         },
         "original_theme": {
@@ -141,17 +141,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=assets,original_theme`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:02Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=assets,original_theme`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-15T13:21:01Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -160,15 +160,15 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`identifier` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`version` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`theme_type` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`installed` | **Boolean**<br>`eq`
-`available` | **Boolean**<br>`eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`version` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`theme_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`installed` | **Boolean** <br>`eq`
+`available` | **Boolean** <br>`eq`
 
 
 ### Meta
@@ -177,7 +177,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -198,7 +198,7 @@ This request does not accept any includes
         "type": "themes",
         "attributes": {
           "name": "New theme",
-          "theme_id": "b3bf7cbb-c4e2-480c-814f-3f46fa6af19d"
+          "theme_id": "c244e305-230b-4147-9750-66920dbb21d0"
         }
       }
     }'
@@ -209,18 +209,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2790951c-4325-46c0-8e21-594b375c5650",
+    "id": "33a003d3-746a-4a8d-a17f-01466cc04a7a",
     "type": "themes",
     "attributes": {
-      "created_at": "2022-04-07T10:18:20+00:00",
-      "updated_at": "2022-04-07T10:18:20+00:00",
+      "created_at": "2023-02-15T13:25:40+00:00",
+      "updated_at": "2023-02-15T13:25:40+00:00",
       "name": "Official theme",
-      "identifier": "f2a81ee4-c2ba-4a6c-985d-b8b5d434ee0b",
+      "identifier": "b9fc1bb1-178b-49bb-bcdc-33fa5c68b2c1",
       "version": null,
       "theme_type": "official",
       "description": null,
       "preview_image": "",
-      "theme_id": "b3bf7cbb-c4e2-480c-814f-3f46fa6af19d",
+      "theme_id": "c244e305-230b-4147-9750-66920dbb21d0",
       "installed": true
     },
     "relationships": {
@@ -246,12 +246,12 @@ This request does not accept any includes
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=assets,original_theme`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=assets,original_theme`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
 
 
 ### Request body
@@ -260,12 +260,12 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][name]` | **String**<br>Name of the theme
-`data[attributes][identifier]` | **String**<br>UUID used to link this theme
-`data[attributes][version]` | **String**<br>Theme version
-`data[attributes][theme_type]` | **String**<br>Theme type, determines where the theme can be found. Custom themes are private. One of `marketplace`, `official`, `custom`
-`data[attributes][preview_image]` | **String**<br>Theme preview image
-`data[attributes][theme_id]` | **Uuid**<br>Present for installed themes, Original ID of installed theme
+`data[attributes][name]` | **String** <br>Name of the theme
+`data[attributes][identifier]` | **String** <br>UUID used to link this theme
+`data[attributes][version]` | **String** <br>Theme version
+`data[attributes][theme_type]` | **String** <br>Theme type, determines where the theme can be found. Custom themes are private. One of `marketplace`, `official`, `custom`
+`data[attributes][preview_image]` | **String** <br>Theme preview image
+`data[attributes][theme_id]` | **Uuid** <br>Present for installed themes, Original ID of installed theme
 
 
 ### Includes
@@ -287,7 +287,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/eb51d316-ed6c-40c6-a932-3e4a1bf41ad9' \
+    --url 'https://example.booqable.com/api/boomerang/themes/60cae52b-d4b6-4eef-8fd5-6b9613cde140' \
     --header 'content-type: application/json' \
 ```
 
@@ -305,12 +305,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=assets,original_theme`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=assets,original_theme`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=id,created_at,updated_at`
 
 
 ### Includes
