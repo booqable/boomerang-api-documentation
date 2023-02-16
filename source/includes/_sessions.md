@@ -7,6 +7,7 @@ The session tells you whether settings are changed since the last time they were
 - Settings
 - Default properties
 - Clusters and Locations
+- Employee's notification subscriptions
 
 When there's an ID mismatch, it's advised to fetch the session again and include `employee`, `company`, and `settings`. Default properties, clusters, and locations should be requested separately as they can be paginated.
 
@@ -20,12 +21,13 @@ Every session has the following fields:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>
-`company_id` | **Uuid**<br>The associated Company
-`employee_id` | **Uuid**<br>The associated Employee
-`locations_updated_at` | **Datetime**<br>When locations were last updated
-`clusters_updated_at` | **Datetime**<br>When the clusters were last updated
-`default_properties_updated_at` | **Datetime**<br>When the default properties were last updated
+`id` | **Uuid** <br>
+`company_id` | **Uuid** <br>The associated Company
+`employee_id` | **Uuid** <br>The associated Employee
+`locations_updated_at` | **Datetime** <br>When locations were last updated
+`clusters_updated_at` | **Datetime** <br>When the clusters were last updated
+`default_properties_updated_at` | **Datetime** <br>When the default properties were last updated
+`notification_subscriptions_update_at` | **Datetime** <br>When the employee last made a change to their notification subscriptions
 
 
 ## Relationships
@@ -55,15 +57,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "ec300105-5736-5140-8663-d1f913136937",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "37a2ba3b-dba2-4771-aabc-b30a692c3254",
-      "employee_id": "434dfd11-965c-4123-828b-cd99deb2787a",
-      "locations_updated_at": "2022-04-07T10:18:07+00:00",
-      "clusters_updated_at": "2022-04-07T10:18:07+00:00",
-      "default_properties_updated_at": "2022-04-07T10:18:07+00:00"
+      "updated_at": "2023-02-16T23:15:42+00:00",
+      "company_id": "c8393f8b-7864-4d0d-9fd2-9e1a62e3a550",
+      "employee_id": "d805adeb-467c-4b51-a605-461b1ceaaa55",
+      "locations_updated_at": "2023-02-16T23:15:42+00:00",
+      "clusters_updated_at": "2023-02-16T23:15:42+00:00",
+      "default_properties_updated_at": "2023-02-16T23:15:42+00:00",
+      "notification_subscriptions_update_at": "2023-02-16T23:15:42+00:00"
     },
     "relationships": {
       "company": {
@@ -93,12 +96,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 
 
 ### Includes
@@ -135,15 +138,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cad8a4d1-c2d3-5748-a077-7ad05d61287f",
+    "id": "7b6b06bd-4faf-5963-abd5-d02978d3aadd",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-04-07T10:18:07+00:00",
-      "company_id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
-      "employee_id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "updated_at": "2023-02-16T23:15:43+00:00",
+      "company_id": "5a188299-0e8b-42b4-894d-32a16a1a65cf",
+      "employee_id": "412dd3f6-a589-46fe-88bb-ece7410006e5",
       "locations_updated_at": null,
       "clusters_updated_at": null,
-      "default_properties_updated_at": null
+      "default_properties_updated_at": null,
+      "notification_subscriptions_update_at": "2023-02-16T23:15:43+00:00"
     },
     "relationships": {
       "company": {
@@ -152,7 +156,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "aab5a606-815e-4b6a-82ea-11d049e649fb"
+          "id": "5a188299-0e8b-42b4-894d-32a16a1a65cf"
         }
       },
       "employee": {
@@ -161,7 +165,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "325c3cab-26f2-4c94-8f08-37fc348836e2"
+          "id": "412dd3f6-a589-46fe-88bb-ece7410006e5"
         }
       },
       "settings": {
@@ -177,24 +181,24 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "aab5a606-815e-4b6a-82ea-11d049e649fb",
+      "id": "5a188299-0e8b-42b4-894d-32a16a1a65cf",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
-        "name": "Company name 198",
-        "slug": "company-name-198",
-        "email": "mail201@company.com",
+        "created_at": "2023-02-16T23:15:43+00:00",
+        "updated_at": "2023-02-16T23:15:43+00:00",
+        "name": "Company name 238",
+        "slug": "company-name-238",
+        "email": "mail241@company.com",
         "billing_email": null,
-        "phone": "1-472-394-4502",
-        "website": "http://tillman.biz/olive_hirthe",
-        "address": "Eli Divide\n271 Schroeder Trace\n32597 North Booker\nCroatia",
-        "address_line_1": "Eli Divide",
-        "address_line_2": "271 Schroeder Trace",
-        "zipcode": "32597",
-        "city": "North Booker",
+        "phone": "0581234567",
+        "website": "www.booqable.com",
+        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+        "address_line_1": "Blokhuispoort",
+        "address_line_2": "Leeuwarden",
+        "zipcode": "8900AB",
+        "city": "Leeuwarden",
         "region": null,
-        "country": "Croatia",
+        "country": "the Netherlands",
         "use_billing_address": false,
         "billing_company": null,
         "billing_address_line_1": null,
@@ -206,43 +210,45 @@ This request accepts the following includes:
         "logo_url": null,
         "default_timezone": "UTC",
         "currency": "usd",
-        "financial_line_1": "817 Elisha Plain",
-        "financial_line_2": "57874 Bookerport",
+        "financial_line_1": "Blokhuispoort",
+        "financial_line_2": "Leeuwarden",
         "vat_number": null,
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
         "subscription": {
-          "trial_ends_at": "2022-04-21T10:18:07.380Z",
+          "trial_ends_at": "2023-03-02T23:15:43.814Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
           "canceled_at": null,
           "on_hold": false,
           "needs_activation": false,
-          "legacy": false,
           "product": "Premium",
           "plan_id": "pro_monthly",
           "interval": "month",
           "current_period_end": null,
-          "quantity": 1,
           "extra_employees": 0,
           "amount_in_cents": 29900,
           "discount_in_cents": 0,
           "balance_in_cents": 0,
           "coupon": null,
+          "coupon_percent_off": null,
+          "coupon_duration": null,
+          "coupon_duration_in_months": null,
           "strategy": "charge_automatically",
           "source": null,
           "enabled_features": [],
           "allowed_features": [
             "bundles",
-            "advanced_pricing",
             "multiple_locations",
+            "advanced_pricing",
             "api",
             "custom_fields",
             "overbookings",
             "categories",
             "customer_auth",
+            "custom_domain",
             "barcodes",
             "reports",
             "permissions",
@@ -250,7 +256,6 @@ This request accepts the following includes:
             "coupons",
             "remove_powered_by",
             "shop_tracking",
-            "custom_domain",
             "sso",
             "iprestrictions",
             "2fa_enforcing"
@@ -265,14 +270,15 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "325c3cab-26f2-4c94-8f08-37fc348836e2",
+      "id": "412dd3f6-a589-46fe-88bb-ece7410006e5",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-04-07T10:18:07+00:00",
-        "updated_at": "2022-04-07T10:18:07+00:00",
+        "created_at": "2023-02-16T23:15:43+00:00",
+        "updated_at": "2023-02-16T23:15:43+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
+        "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
         "active": true,
@@ -283,7 +289,9 @@ This request accepts the following includes:
           "reports",
           "products",
           "settings",
+          "security_settings",
           "account",
+          "exports",
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
@@ -411,18 +419,25 @@ This request accepts the following includes:
           "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
+          "show_free_lines": true,
           "hide_section_lines": false,
-          "prefix": null,
-          "show_free_lines": true
+          "prefix": null
         },
         "contracts": {
           "footer": "",
           "body": "",
           "show_product_photos": true,
           "show_stock_identifiers": false,
+          "show_free_lines": true,
           "hide_section_lines": false,
-          "prefix": null,
-          "show_free_lines": true
+          "prefix": null
+        },
+        "labels": {
+          "customer": "customer",
+          "order": "order",
+          "quote": "quote",
+          "contract": "contract",
+          "packing_slip": "packing_slip"
         }
       }
     }
@@ -437,12 +452,12 @@ This request accepts the following includes:
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
 
 
 ### Includes
