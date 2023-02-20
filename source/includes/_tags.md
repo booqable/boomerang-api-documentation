@@ -15,8 +15,8 @@ Name | Description
 - | -
 `id` | **Uuid** `readonly`<br>
 `for` | **String** `writeonly`<br>The resource to show the tag counts for. One of `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`
-`name` | **String**<br>Name of the tag
-`count` | **Integer**<br>Total count
+`name` | **String** <br>Name of the tag
+`count` | **Integer** <br>Total count
 
 
 ## Listing tags
@@ -37,7 +37,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "3f30b77a-cc5e-4d0c-bded-f1bb8c5f74c2",
+      "id": "0da3cb05-b2ae-4543-8817-741afe478094",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -45,7 +45,7 @@ Name | Description
       }
     },
     {
-      "id": "e2969497-e025-4929-839a-ac452d1b7654",
+      "id": "db9a97c6-95ac-4d4a-a4cb-ec86f36e45a1",
       "type": "tags",
       "attributes": {
         "name": "webshop",
@@ -63,17 +63,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:02Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-20T11:45:20Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -82,7 +82,7 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`for` | **String**<br>`eq`
+`for` | **String** <br>`eq`
 
 
 ### Meta
@@ -91,7 +91,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes

@@ -81,10 +81,10 @@ Every order booking has the following fields:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>
+`id` | **Uuid** <br>
 `items` | **Array** `writeonly`<br>Array with details about the items (and stock item) to add to the order
 `confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm the shortage if they are non-blocking
-`order_id` | **Uuid**<br>The associated Order
+`order_id` | **Uuid** <br>The associated Order
 
 
 ## Relationships
@@ -112,19 +112,19 @@ Name | Description
       "data": {
         "type": "order_bookings",
         "attributes": {
-          "order_id": "32d632e2-7c4d-4a1e-9390-ac676f774424",
+          "order_id": "58e9aafb-e6d4-4aab-8213-536eae34faf9",
           "items": [
             {
               "type": "products",
-              "id": "48b8854f-47de-497e-9f9b-9c2b9822f4a8",
+              "id": "b015c72b-85c4-4d70-ab00-82222df3a666",
               "quantity": 10
             },
             {
               "type": "products",
-              "id": "b9db66e0-67c0-4187-8f68-d238352193b3",
+              "id": "1fc836f4-c613-46aa-a54e-f17dee904b71",
               "stock_item_ids": [
-                "fc784950-bf98-4412-b34d-031762171af3",
-                "6a5f56d2-5d54-4cfc-a166-6f1b12c0c89c"
+                "0f75ff2b-2ee0-4665-b23a-efaa12684846",
+                "92f86594-c16b-43a0-978f-a54babb0fcb7"
               ]
             }
           ]
@@ -139,21 +139,13 @@ Name | Description
   {
   "errors": [
     {
-      "code": "items_not_available",
+      "code": 422,
       "status": "422",
-      "title": "Items not available",
-      "detail": "One or more items are not available",
+      "title": "422",
+      "detail": "invalid request",
       "meta": {
-        "warning": [],
-        "blocking": [
-          {
-            "reason": "shortage",
-            "item_id": "48b8854f-47de-497e-9f9b-9c2b9822f4a8",
-            "stock_count": 4,
-            "reserved": 0,
-            "needed": 10,
-            "shortage": 6
-          }
+        "messages": [
+          "stock_item_id 0f75ff2b-2ee0-4665-b23a-efaa12684846 has already been booked on this order"
         ]
       }
     }
@@ -172,20 +164,20 @@ Name | Description
       "data": {
         "type": "order_bookings",
         "attributes": {
-          "order_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7",
+          "order_id": "bd940903-787d-4ce9-b99d-f1972b445efd",
           "items": [
             {
               "type": "products",
-              "id": "3294ccd1-b600-4c56-a441-d6ad58ea5167",
+              "id": "8ddc9544-29cd-4e82-a838-16b3e871c1c6",
               "stock_item_ids": [
-                "1b25d611-840d-4409-9617-d3310e220fac",
-                "d93b9ef7-d1b5-4682-b55d-a16b3822300f",
-                "cf02aebd-b1cc-41b2-ac32-81595ab60de0"
+                "c07a8714-aeb0-4322-bbec-3c3c5c7276a9",
+                "7fa7d362-85c6-4565-8220-e0fe713e0861",
+                "078c25e6-1f72-455a-a4e0-ef8e5263caf4"
               ]
             },
             {
               "type": "products",
-              "id": "e935992e-bb29-4509-b4d4-2fdd2120cb76",
+              "id": "5309dccf-3110-490f-857e-a795d3d54790",
               "quantity": 1
             }
           ]
@@ -200,27 +192,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "79b97306-e003-5858-925d-0bdf021f5845",
+    "id": "9758ad82-b35f-5e7f-b048-985a46384aaf",
     "type": "order_bookings",
     "attributes": {
-      "order_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7"
+      "order_id": "bd940903-787d-4ce9-b99d-f1972b445efd"
     },
     "relationships": {
       "order": {
         "data": {
           "type": "orders",
-          "id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7"
+          "id": "bd940903-787d-4ce9-b99d-f1972b445efd"
         }
       },
       "lines": {
         "data": [
           {
             "type": "lines",
-            "id": "70fd4a5f-64b9-4341-a666-14b8820499b8"
+            "id": "dfe0c7a9-fbf0-435e-884c-34d4d2454b5d"
           },
           {
             "type": "lines",
-            "id": "75cfa253-b2db-45a1-a319-8fdef8b71fc6"
+            "id": "500577d9-e148-42b1-a9f2-13eaac571066"
           }
         ]
       },
@@ -228,11 +220,11 @@ Name | Description
         "data": [
           {
             "type": "plannings",
-            "id": "2b24bd4f-16f8-4bb7-8e9c-44b0ec8eef77"
+            "id": "6133a56b-d214-42cc-9017-cdffc14ca2ee"
           },
           {
             "type": "plannings",
-            "id": "3c6d03e5-c501-4453-86bd-99dd1d95eb12"
+            "id": "773931cd-c0a8-4853-a8f0-47426344fc70"
           }
         ]
       },
@@ -240,15 +232,15 @@ Name | Description
         "data": [
           {
             "type": "stock_item_plannings",
-            "id": "133f2c8a-7e1d-4be8-bea6-5e680e0d4d8b"
+            "id": "78820d77-9292-40f5-a45d-57f0a9120b84"
           },
           {
             "type": "stock_item_plannings",
-            "id": "73ee4fc9-94b9-44dc-81b5-35bc0e42cea8"
+            "id": "4bfe382f-b1be-4689-9d7b-7accbdfe6672"
           },
           {
             "type": "stock_item_plannings",
-            "id": "c90983b8-d927-453e-ba20-19429d0f734a"
+            "id": "dce068c9-15a4-4ca1-a6ae-3be1e4bc66bd"
           }
         ]
       }
@@ -256,11 +248,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7",
+      "id": "bd940903-787d-4ce9-b99d-f1972b445efd",
       "type": "orders",
       "attributes": {
-        "created_at": "2022-04-07T10:17:28+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
+        "created_at": "2023-02-20T11:47:51+00:00",
+        "updated_at": "2023-02-20T11:47:53+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -301,11 +293,11 @@ Name | Description
         "to_be_paid_in_cents": 314655,
         "paid_in_cents": 0,
         "discount_percentage": 10.0,
-        "customer_id": "ded8e433-3da4-4058-8992-aa782fc04b9b",
+        "customer_id": "3fb76e9e-4d9a-4b80-9010-575540bcc52c",
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "73978a15-8e28-4a19-9bff-adac2d2b4ac3",
-        "stop_location_id": "73978a15-8e28-4a19-9bff-adac2d2b4ac3"
+        "start_location_id": "5eef4e86-64cd-487e-8cae-b20a6ba07bfb",
+        "stop_location_id": "5eef4e86-64cd-487e-8cae-b20a6ba07bfb"
       },
       "relationships": {
         "customer": {
@@ -361,87 +353,11 @@ Name | Description
       }
     },
     {
-      "id": "70fd4a5f-64b9-4341-a666-14b8820499b8",
+      "id": "dfe0c7a9-fbf0-435e-884c-34d4d2454b5d",
       "type": "lines",
       "attributes": {
-        "created_at": "2022-04-07T10:17:29+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
-        "archived": false,
-        "archived_at": null,
-        "title": "Macbook Pro",
-        "extra_information": "Comes with a mouse",
-        "quantity": 2,
-        "original_price_each_in_cents": 72500,
-        "price_each_in_cents": 80250,
-        "price_in_cents": 160500,
-        "position": 1,
-        "charge_label": "29 days",
-        "charge_length": 2505600,
-        "price_rule_values": {
-          "charge": {
-            "from": "1980-04-02T00:00:00.000Z",
-            "till": "1980-05-01T00:00:00.000Z"
-          },
-          "price": [
-            {
-              "name": "High-Season",
-              "charge_length": 1339200,
-              "multiplier": "0.2",
-              "price_in_cents": "7750.0",
-              "stacked": false
-            }
-          ]
-        },
-        "discountable": true,
-        "taxable": true,
-        "line_type": "charge",
-        "relevant": true,
-        "item_id": "e935992e-bb29-4509-b4d4-2fdd2120cb76",
-        "tax_category_id": "cf423093-cb5c-4063-8ca3-310436d1e3d7",
-        "planning_id": "2b24bd4f-16f8-4bb7-8e9c-44b0ec8eef77",
-        "parent_line_id": null,
-        "owner_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7",
-        "owner_type": "orders"
-      },
-      "relationships": {
-        "item": {
-          "meta": {
-            "included": false
-          }
-        },
-        "tax_category": {
-          "meta": {
-            "included": false
-          }
-        },
-        "planning": {
-          "meta": {
-            "included": false
-          }
-        },
-        "parent_line": {
-          "meta": {
-            "included": false
-          }
-        },
-        "nested_lines": {
-          "meta": {
-            "included": false
-          }
-        },
-        "owner": {
-          "meta": {
-            "included": false
-          }
-        }
-      }
-    },
-    {
-      "id": "75cfa253-b2db-45a1-a319-8fdef8b71fc6",
-      "type": "lines",
-      "attributes": {
-        "created_at": "2022-04-07T10:17:30+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
+        "created_at": "2023-02-20T11:47:52+00:00",
+        "updated_at": "2023-02-20T11:47:53+00:00",
         "archived": false,
         "archived_at": null,
         "title": "iPad Pro",
@@ -463,7 +379,7 @@ Name | Description
               "name": "High-Season",
               "charge_length": 1339200,
               "multiplier": "0.2",
-              "price_in_cents": "3100.0",
+              "price_in_cents": 3100,
               "stacked": false
             }
           ]
@@ -472,11 +388,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "item_id": "3294ccd1-b600-4c56-a441-d6ad58ea5167",
-        "tax_category_id": "cf423093-cb5c-4063-8ca3-310436d1e3d7",
-        "planning_id": "3c6d03e5-c501-4453-86bd-99dd1d95eb12",
+        "item_id": "8ddc9544-29cd-4e82-a838-16b3e871c1c6",
+        "tax_category_id": "dde069f0-eb6e-43c2-87c4-6e9f759b303e",
+        "planning_id": "6133a56b-d214-42cc-9017-cdffc14ca2ee",
         "parent_line_id": null,
-        "owner_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7",
+        "owner_id": "bd940903-787d-4ce9-b99d-f1972b445efd",
         "owner_type": "orders"
       },
       "relationships": {
@@ -513,28 +429,47 @@ Name | Description
       }
     },
     {
-      "id": "2b24bd4f-16f8-4bb7-8e9c-44b0ec8eef77",
-      "type": "plannings",
+      "id": "500577d9-e148-42b1-a9f2-13eaac571066",
+      "type": "lines",
       "attributes": {
-        "created_at": "2022-04-07T10:17:29+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
+        "created_at": "2023-02-20T11:47:52+00:00",
+        "updated_at": "2023-02-20T11:47:53+00:00",
         "archived": false,
         "archived_at": null,
-        "quantity": 2,
-        "starts_at": "1980-04-01T12:00:00+00:00",
-        "stops_at": "1980-05-01T12:00:00+00:00",
-        "reserved_from": "1980-04-01T12:00:00+00:00",
-        "reserved_till": "1980-05-01T12:00:00+00:00",
-        "reserved": true,
-        "started": 0,
-        "stopped": 0,
-        "location_shortage_amount": 0,
-        "shortage_amount": 0,
-        "item_id": "e935992e-bb29-4509-b4d4-2fdd2120cb76",
-        "order_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7",
-        "start_location_id": "73978a15-8e28-4a19-9bff-adac2d2b4ac3",
-        "stop_location_id": "73978a15-8e28-4a19-9bff-adac2d2b4ac3",
-        "parent_planning_id": null
+        "title": "Macbook Pro",
+        "extra_information": "Comes with a mouse",
+        "quantity": 1,
+        "original_price_each_in_cents": 72500,
+        "price_each_in_cents": 80250,
+        "price_in_cents": 80250,
+        "position": 3,
+        "charge_label": "29 days",
+        "charge_length": 2505600,
+        "price_rule_values": {
+          "charge": {
+            "from": "1980-04-02T00:00:00.000Z",
+            "till": "1980-05-01T00:00:00.000Z"
+          },
+          "price": [
+            {
+              "name": "High-Season",
+              "charge_length": 1339200,
+              "multiplier": "0.2",
+              "price_in_cents": 7750,
+              "stacked": false
+            }
+          ]
+        },
+        "discountable": true,
+        "taxable": true,
+        "line_type": "charge",
+        "relevant": true,
+        "item_id": "5309dccf-3110-490f-857e-a795d3d54790",
+        "tax_category_id": "dde069f0-eb6e-43c2-87c4-6e9f759b303e",
+        "planning_id": "773931cd-c0a8-4853-a8f0-47426344fc70",
+        "parent_line_id": null,
+        "owner_id": "bd940903-787d-4ce9-b99d-f1972b445efd",
+        "owner_type": "orders"
       },
       "relationships": {
         "item": {
@@ -542,37 +477,27 @@ Name | Description
             "included": false
           }
         },
-        "order": {
+        "tax_category": {
           "meta": {
             "included": false
           }
         },
-        "order_line": {
+        "planning": {
           "meta": {
             "included": false
           }
         },
-        "start_location": {
+        "parent_line": {
           "meta": {
             "included": false
           }
         },
-        "stop_location": {
+        "nested_lines": {
           "meta": {
             "included": false
           }
         },
-        "parent_planning": {
-          "meta": {
-            "included": false
-          }
-        },
-        "nested_plannings": {
-          "meta": {
-            "included": false
-          }
-        },
-        "stock_item_plannings": {
+        "owner": {
           "meta": {
             "included": false
           }
@@ -580,11 +505,11 @@ Name | Description
       }
     },
     {
-      "id": "3c6d03e5-c501-4453-86bd-99dd1d95eb12",
+      "id": "6133a56b-d214-42cc-9017-cdffc14ca2ee",
       "type": "plannings",
       "attributes": {
-        "created_at": "2022-04-07T10:17:30+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
+        "created_at": "2023-02-20T11:47:52+00:00",
+        "updated_at": "2023-02-20T11:47:52+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 3,
@@ -597,10 +522,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "3294ccd1-b600-4c56-a441-d6ad58ea5167",
-        "order_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7",
-        "start_location_id": "73978a15-8e28-4a19-9bff-adac2d2b4ac3",
-        "stop_location_id": "73978a15-8e28-4a19-9bff-adac2d2b4ac3",
+        "item_id": "8ddc9544-29cd-4e82-a838-16b3e871c1c6",
+        "order_id": "bd940903-787d-4ce9-b99d-f1972b445efd",
+        "start_location_id": "5eef4e86-64cd-487e-8cae-b20a6ba07bfb",
+        "stop_location_id": "5eef4e86-64cd-487e-8cae-b20a6ba07bfb",
         "parent_planning_id": null
       },
       "relationships": {
@@ -647,19 +572,86 @@ Name | Description
       }
     },
     {
-      "id": "133f2c8a-7e1d-4be8-bea6-5e680e0d4d8b",
+      "id": "773931cd-c0a8-4853-a8f0-47426344fc70",
+      "type": "plannings",
+      "attributes": {
+        "created_at": "2023-02-20T11:47:52+00:00",
+        "updated_at": "2023-02-20T11:47:52+00:00",
+        "archived": false,
+        "archived_at": null,
+        "quantity": 1,
+        "starts_at": "1980-04-01T12:00:00+00:00",
+        "stops_at": "1980-05-01T12:00:00+00:00",
+        "reserved_from": "1980-04-01T12:00:00+00:00",
+        "reserved_till": "1980-05-01T12:00:00+00:00",
+        "reserved": true,
+        "started": 0,
+        "stopped": 0,
+        "location_shortage_amount": 0,
+        "shortage_amount": 0,
+        "item_id": "5309dccf-3110-490f-857e-a795d3d54790",
+        "order_id": "bd940903-787d-4ce9-b99d-f1972b445efd",
+        "start_location_id": "5eef4e86-64cd-487e-8cae-b20a6ba07bfb",
+        "stop_location_id": "5eef4e86-64cd-487e-8cae-b20a6ba07bfb",
+        "parent_planning_id": null
+      },
+      "relationships": {
+        "item": {
+          "meta": {
+            "included": false
+          }
+        },
+        "order": {
+          "meta": {
+            "included": false
+          }
+        },
+        "order_line": {
+          "meta": {
+            "included": false
+          }
+        },
+        "start_location": {
+          "meta": {
+            "included": false
+          }
+        },
+        "stop_location": {
+          "meta": {
+            "included": false
+          }
+        },
+        "parent_planning": {
+          "meta": {
+            "included": false
+          }
+        },
+        "nested_plannings": {
+          "meta": {
+            "included": false
+          }
+        },
+        "stock_item_plannings": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    },
+    {
+      "id": "78820d77-9292-40f5-a45d-57f0a9120b84",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-07T10:17:30+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
+        "created_at": "2023-02-20T11:47:52+00:00",
+        "updated_at": "2023-02-20T11:47:52+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "1b25d611-840d-4409-9617-d3310e220fac",
-        "planning_id": "3c6d03e5-c501-4453-86bd-99dd1d95eb12",
-        "order_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7"
+        "stock_item_id": "c07a8714-aeb0-4322-bbec-3c3c5c7276a9",
+        "planning_id": "6133a56b-d214-42cc-9017-cdffc14ca2ee",
+        "order_id": "bd940903-787d-4ce9-b99d-f1972b445efd"
       },
       "relationships": {
         "stock_item": {
@@ -680,19 +672,19 @@ Name | Description
       }
     },
     {
-      "id": "73ee4fc9-94b9-44dc-81b5-35bc0e42cea8",
+      "id": "4bfe382f-b1be-4689-9d7b-7accbdfe6672",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-07T10:17:30+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
+        "created_at": "2023-02-20T11:47:52+00:00",
+        "updated_at": "2023-02-20T11:47:52+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "d93b9ef7-d1b5-4682-b55d-a16b3822300f",
-        "planning_id": "3c6d03e5-c501-4453-86bd-99dd1d95eb12",
-        "order_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7"
+        "stock_item_id": "7fa7d362-85c6-4565-8220-e0fe713e0861",
+        "planning_id": "6133a56b-d214-42cc-9017-cdffc14ca2ee",
+        "order_id": "bd940903-787d-4ce9-b99d-f1972b445efd"
       },
       "relationships": {
         "stock_item": {
@@ -713,19 +705,19 @@ Name | Description
       }
     },
     {
-      "id": "c90983b8-d927-453e-ba20-19429d0f734a",
+      "id": "dce068c9-15a4-4ca1-a6ae-3be1e4bc66bd",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-04-07T10:17:30+00:00",
-        "updated_at": "2022-04-07T10:17:30+00:00",
+        "created_at": "2023-02-20T11:47:52+00:00",
+        "updated_at": "2023-02-20T11:47:52+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": true,
         "started": false,
         "stopped": false,
-        "stock_item_id": "cf02aebd-b1cc-41b2-ac32-81595ab60de0",
-        "planning_id": "3c6d03e5-c501-4453-86bd-99dd1d95eb12",
-        "order_id": "d5bf529a-034c-4db5-aa5c-e803d27d2ba7"
+        "stock_item_id": "078c25e6-1f72-455a-a4e0-ef8e5263caf4",
+        "planning_id": "6133a56b-d214-42cc-9017-cdffc14ca2ee",
+        "order_id": "bd940903-787d-4ce9-b99d-f1972b445efd"
       },
       "relationships": {
         "stock_item": {
@@ -761,16 +753,16 @@ Name | Description
       "data": {
         "type": "order_bookings",
         "attributes": {
-          "order_id": "8abb185e-8910-4f70-ad11-d1a15a5b0c1c",
+          "order_id": "ec2b1922-bebf-4468-8093-407810c688fd",
           "items": [
             {
               "type": "bundles",
-              "id": "8161aa5d-8607-4dac-bd2c-ad6d5590db37",
+              "id": "f94dff4d-fa75-4837-815c-0756517f925e",
               "products": [
                 {
                   "type": "products",
-                  "bundle_item_id": "c1c1da62-aa58-4e75-8a2b-8c4800af17ba",
-                  "id": "4c31edb1-0ccb-4a5f-bf59-f5e3fe39e144"
+                  "bundle_item_id": "255ac1d1-8a69-4d55-9120-1d1f3ea5abde",
+                  "id": "b2d596f9-9935-4210-8f46-0c6722a58b8e"
                 }
               ]
             }
@@ -786,23 +778,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "15a00c19-521d-5ea8-90bf-7251e24f9fc7",
+    "id": "685f4d83-8eac-503d-ae6b-8be9b88ceef5",
     "type": "order_bookings",
     "attributes": {
-      "order_id": "8abb185e-8910-4f70-ad11-d1a15a5b0c1c"
+      "order_id": "ec2b1922-bebf-4468-8093-407810c688fd"
     },
     "relationships": {
       "order": {
         "data": {
           "type": "orders",
-          "id": "8abb185e-8910-4f70-ad11-d1a15a5b0c1c"
+          "id": "ec2b1922-bebf-4468-8093-407810c688fd"
         }
       },
       "lines": {
         "data": [
           {
             "type": "lines",
-            "id": "091ed2a4-1f7f-42e8-b2a7-15dd4e94edf1"
+            "id": "16d9fb64-60d4-4521-8a50-84c2e2e9043f"
+          },
+          {
+            "type": "lines",
+            "id": "0d50cde1-5d08-455c-9e55-277b54a2d53e"
           }
         ]
       },
@@ -810,7 +806,7 @@ Name | Description
         "data": [
           {
             "type": "plannings",
-            "id": "d2e56db7-ad86-4ca6-af06-ed6e264aa894"
+            "id": "f5e252aa-8e6d-48c7-97eb-2fa4d227866f"
           }
         ]
       },
@@ -821,11 +817,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "8abb185e-8910-4f70-ad11-d1a15a5b0c1c",
+      "id": "ec2b1922-bebf-4468-8093-407810c688fd",
       "type": "orders",
       "attributes": {
-        "created_at": "2022-04-07T10:17:32+00:00",
-        "updated_at": "2022-04-07T10:17:33+00:00",
+        "created_at": "2023-02-20T11:47:55+00:00",
+        "updated_at": "2023-02-20T11:47:56+00:00",
         "number": null,
         "status": "new",
         "statuses": [
@@ -838,8 +834,8 @@ Name | Description
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2022-04-05T10:15:00+00:00",
-        "stops_at": "2022-04-09T10:15:00+00:00",
+        "starts_at": "2023-02-18T11:45:00+00:00",
+        "stops_at": "2023-02-22T11:45:00+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100,
         "entirely_started": false,
@@ -867,8 +863,8 @@ Name | Description
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "39bc8851-a392-46e4-92bf-470aa36ef2c7",
-        "stop_location_id": "39bc8851-a392-46e4-92bf-470aa36ef2c7"
+        "start_location_id": "acad62f2-c2ba-495a-9c94-bf5ba6536cbd",
+        "stop_location_id": "acad62f2-c2ba-495a-9c94-bf5ba6536cbd"
       },
       "relationships": {
         "customer": {
@@ -924,14 +920,14 @@ Name | Description
       }
     },
     {
-      "id": "091ed2a4-1f7f-42e8-b2a7-15dd4e94edf1",
+      "id": "16d9fb64-60d4-4521-8a50-84c2e2e9043f",
       "type": "lines",
       "attributes": {
-        "created_at": "2022-04-07T10:17:33+00:00",
-        "updated_at": "2022-04-07T10:17:33+00:00",
+        "created_at": "2023-02-20T11:47:55+00:00",
+        "updated_at": "2023-02-20T11:47:55+00:00",
         "archived": false,
         "archived_at": null,
-        "title": "Bundle item 1",
+        "title": "Product 13 - red",
         "extra_information": null,
         "quantity": 1,
         "original_price_each_in_cents": 0,
@@ -945,11 +941,11 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "item_id": "8161aa5d-8607-4dac-bd2c-ad6d5590db37",
+        "item_id": "b2d596f9-9935-4210-8f46-0c6722a58b8e",
         "tax_category_id": null,
-        "planning_id": "d2e56db7-ad86-4ca6-af06-ed6e264aa894",
-        "parent_line_id": null,
-        "owner_id": "8abb185e-8910-4f70-ad11-d1a15a5b0c1c",
+        "planning_id": "eb65b32a-ffad-4470-88f8-b75cee30519b",
+        "parent_line_id": "0d50cde1-5d08-455c-9e55-277b54a2d53e",
+        "owner_id": "ec2b1922-bebf-4468-8093-407810c688fd",
         "owner_type": "orders"
       },
       "relationships": {
@@ -986,27 +982,89 @@ Name | Description
       }
     },
     {
-      "id": "d2e56db7-ad86-4ca6-af06-ed6e264aa894",
+      "id": "0d50cde1-5d08-455c-9e55-277b54a2d53e",
+      "type": "lines",
+      "attributes": {
+        "created_at": "2023-02-20T11:47:55+00:00",
+        "updated_at": "2023-02-20T11:47:55+00:00",
+        "archived": false,
+        "archived_at": null,
+        "title": "Bundle 7",
+        "extra_information": null,
+        "quantity": 1,
+        "original_price_each_in_cents": 0,
+        "price_each_in_cents": 0,
+        "price_in_cents": 0,
+        "position": 1,
+        "charge_label": "4 days",
+        "charge_length": 345600,
+        "price_rule_values": null,
+        "discountable": true,
+        "taxable": true,
+        "line_type": "charge",
+        "relevant": true,
+        "item_id": "f94dff4d-fa75-4837-815c-0756517f925e",
+        "tax_category_id": null,
+        "planning_id": "f5e252aa-8e6d-48c7-97eb-2fa4d227866f",
+        "parent_line_id": null,
+        "owner_id": "ec2b1922-bebf-4468-8093-407810c688fd",
+        "owner_type": "orders"
+      },
+      "relationships": {
+        "item": {
+          "meta": {
+            "included": false
+          }
+        },
+        "tax_category": {
+          "meta": {
+            "included": false
+          }
+        },
+        "planning": {
+          "meta": {
+            "included": false
+          }
+        },
+        "parent_line": {
+          "meta": {
+            "included": false
+          }
+        },
+        "nested_lines": {
+          "meta": {
+            "included": false
+          }
+        },
+        "owner": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    },
+    {
+      "id": "f5e252aa-8e6d-48c7-97eb-2fa4d227866f",
       "type": "plannings",
       "attributes": {
-        "created_at": "2022-04-07T10:17:33+00:00",
-        "updated_at": "2022-04-07T10:17:33+00:00",
+        "created_at": "2023-02-20T11:47:55+00:00",
+        "updated_at": "2023-02-20T11:47:55+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "2022-04-05T10:15:00+00:00",
-        "stops_at": "2022-04-09T10:15:00+00:00",
-        "reserved_from": "2022-04-05T10:15:00+00:00",
-        "reserved_till": "2022-04-09T10:15:00+00:00",
+        "starts_at": "2023-02-18T11:45:00+00:00",
+        "stops_at": "2023-02-22T11:45:00+00:00",
+        "reserved_from": "2023-02-18T11:45:00+00:00",
+        "reserved_till": "2023-02-22T11:45:00+00:00",
         "reserved": false,
         "started": 0,
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "item_id": "8161aa5d-8607-4dac-bd2c-ad6d5590db37",
-        "order_id": "8abb185e-8910-4f70-ad11-d1a15a5b0c1c",
-        "start_location_id": "39bc8851-a392-46e4-92bf-470aa36ef2c7",
-        "stop_location_id": "39bc8851-a392-46e4-92bf-470aa36ef2c7",
+        "item_id": "f94dff4d-fa75-4837-815c-0756517f925e",
+        "order_id": "ec2b1922-bebf-4468-8093-407810c688fd",
+        "start_location_id": "acad62f2-c2ba-495a-9c94-bf5ba6536cbd",
+        "stop_location_id": "acad62f2-c2ba-495a-9c94-bf5ba6536cbd",
         "parent_planning_id": null
       },
       "relationships": {
@@ -1063,12 +1121,12 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=order,lines,plannings`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[order_bookings]=id,created_at,updated_at`
+`include` | **String** <br>List of comma seperated relationships `?include=order,lines,plannings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_bookings]=id,created_at,updated_at`
 
 
 ### Request body
@@ -1077,10 +1135,10 @@ This request accepts the following body:
 
 Name | Description
 - | -
-`data[attributes][id]` | **Uuid**<br>
-`data[attributes][items][]` | **Array**<br>Array with details about the items (and stock item) to add to the order
-`data[attributes][confirm_shortage]` | **Boolean**<br>Whether to confirm the shortage if they are non-blocking
-`data[attributes][order_id]` | **Uuid**<br>The associated Order
+`data[attributes][id]` | **Uuid** <br>
+`data[attributes][items][]` | **Array** <br>Array with details about the items (and stock item) to add to the order
+`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm the shortage if they are non-blocking
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
 
 
 ### Includes
