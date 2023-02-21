@@ -48,38 +48,38 @@ Name | Description
   {
   "data": [
     {
-      "id": "a7ed0a34-449b-451a-9906-964f99cd7796",
+      "id": "74832706-9578-4a14-a3b1-6b775ed1d326",
       "type": "transfers",
       "attributes": {
-        "created_at": "2022-04-07T10:18:20+00:00",
-        "updated_at": "2022-04-07T10:18:20+00:00",
+        "created_at": "2023-02-21T08:22:14+00:00",
+        "updated_at": "2023-02-21T08:22:14+00:00",
         "quantity": 1,
-        "available_at": "2022-04-05T10:15:00+00:00",
+        "available_at": "2023-02-19T08:15:00+00:00",
         "finalized": false,
-        "item_id": "9fc23471-15ac-4a7e-80c3-5509a72853d1",
-        "order_id": "a643c9c6-b8e3-49f9-b3db-44eed744b12f",
-        "source_location_id": "60330264-c3b7-4628-81cf-d7bffb204f9e",
-        "destination_location_id": "60330264-c3b7-4628-81cf-d7bffb204f9e"
+        "item_id": "f6bd8fb1-ae51-43e3-b1ed-964fd5cd4654",
+        "order_id": "f627ccc6-e698-432a-a0f1-24f347edf3f2",
+        "source_location_id": "22d39266-30e8-419f-a2cb-d2da3d9ffc68",
+        "destination_location_id": "22d39266-30e8-419f-a2cb-d2da3d9ffc68"
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/9fc23471-15ac-4a7e-80c3-5509a72853d1"
+            "related": "api/boomerang/items/f6bd8fb1-ae51-43e3-b1ed-964fd5cd4654"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/a643c9c6-b8e3-49f9-b3db-44eed744b12f"
+            "related": "api/boomerang/orders/f627ccc6-e698-432a-a0f1-24f347edf3f2"
           }
         },
         "source_location": {
           "links": {
-            "related": "api/boomerang/locations/60330264-c3b7-4628-81cf-d7bffb204f9e"
+            "related": "api/boomerang/locations/22d39266-30e8-419f-a2cb-d2da3d9ffc68"
           }
         },
         "destination_location": {
           "links": {
-            "related": "api/boomerang/locations/60330264-c3b7-4628-81cf-d7bffb204f9e"
+            "related": "api/boomerang/locations/22d39266-30e8-419f-a2cb-d2da3d9ffc68"
           }
         }
       }
@@ -95,17 +95,17 @@ Name | Description
 
 ### Request params
 
-This request accepts the following paramaters:
+This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String**<br>List of comma seperated relationships `?include=item,order,source_location`
-`fields[]` | **Array**<br>List of comma seperated fields to include `?fields[transfers]=id,created_at,updated_at`
-`filter` | **Hash**<br>The filters to apply `?filter[created_at][gte]=2022-04-07T10:16:02Z`
-`sort` | **String**<br>How to sort the data `?sort=-created_at`
-`meta` | **Hash**<br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String**<br>The page to request
-`page[size]` | **String**<br>The amount of items per page (max 100)
+`include` | **String** <br>List of comma seperated relationships `?include=item,order,source_location`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[transfers]=id,created_at,updated_at`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-21T08:18:43Z`
+`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
 
 
 ### Filters
@@ -114,17 +114,17 @@ This request can be filtered on:
 
 Name | Description
 - | -
-`id` | **Uuid**<br>`eq`, `not_eq`
-`created_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`q` | **String**<br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`quantity` | **Integer**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`available_at` | **Datetime**<br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`finalized` | **Boolean**<br>`eq`
-`item_id` | **Uuid**<br>`eq`, `not_eq`
-`order_id` | **Uuid**<br>`eq`, `not_eq`
-`source_location_id` | **Uuid**<br>`eq`, `not_eq`
-`destination_location_id` | **Uuid**<br>`eq`, `not_eq`
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`q` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`available_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`finalized` | **Boolean** <br>`eq`
+`item_id` | **Uuid** <br>`eq`, `not_eq`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
+`source_location_id` | **Uuid** <br>`eq`, `not_eq`
+`destination_location_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -133,7 +133,7 @@ Results can be aggregated on:
 
 Name | Description
 - | -
-`total` | **Array**<br>`count`
+`total` | **Array** <br>`count`
 
 
 ### Includes
