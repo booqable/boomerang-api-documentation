@@ -12,7 +12,7 @@ Name | Description
 `ip` | **String** `readonly`<br>IP address of the login attempt
 `strategy` | **String** `readonly`<br>One of `saml`, `token`, `single_use`, `database_authenticatable`, `rememberable`, `BooqableApp-iOS`
 `success` | **Boolean** `readonly`<br>Whether attempt was succesful
-`failure_reason` | **String** `nullable` `readonly`<br>Why the login failed, One of `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `session_limited`, `invited`
+`failure_reason` | **String** `nullable` `readonly`<br>Why the login failed, One of `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`
 `user_agent` | **String** `readonly`<br>Client application identifier
 `city` | **String** `nullable` `readonly`<br>City where login attempt was performed
 `region` | **String** `nullable` `readonly`<br>Region where login attempt was performed
@@ -37,10 +37,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "d6768b22-7936-42ec-8b2c-e276ee6e02c8",
+      "id": "d56fd624-3982-4001-a01d-0944c36ac4b6",
       "type": "login_activities",
       "attributes": {
-        "created_at": "2022-11-04T15:39:03+00:00",
+        "created_at": "2023-02-23T08:20:51+00:00",
         "ip": "192.168.1.28",
         "strategy": "saml",
         "success": false,
@@ -68,7 +68,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[login_activities]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-23T08:18:42Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
