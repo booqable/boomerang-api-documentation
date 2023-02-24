@@ -47,10 +47,12 @@ Name | Description
 `custom_domain` | **String** <br>Custom domain to use for hosted store and checkout
 `development` | **Boolean** `readonly`<br>Wheter this is a development account
 `shop_theme_id` | **Uuid** <br>ID of installed shop theme
-`in_europe` | **Boolean** `extra` `readonly`<br>Whether company is situated in europe
-`continent` | **String** `extra` `readonly`<br>Continent the company is situated
-`subscription` | **Hash** `extra` `readonly`<br>Details about the subscription
-`third_party_id` | **String** `extra` `readonly`<br>ID used for third party tools
+`source` | **String** `readonly`<br>UTM source present during signup
+`medium` | **String** `readonly`<br>UTM medium present during signup
+`in_europe` | **Boolean** `readonly`<br>Whether company is situated in europe
+`continent` | **String** `readonly`<br>Continent the company is situated
+`subscription` | **Hash** `readonly`<br>Details about the subscription
+`third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
 ## Fetching a company
@@ -70,14 +72,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "0ac83618-0253-4258-a31b-a72770ed7907",
+    "id": "3f7fb107-94f9-4cf1-a178-92d391a9ed8f",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-04T15:37:56+00:00",
-      "updated_at": "2022-11-04T15:37:56+00:00",
+      "created_at": "2023-02-24T08:52:51+00:00",
+      "updated_at": "2023-02-24T08:52:51+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail46@company.com",
+      "email": "mail48@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -104,7 +106,9 @@ Name | Description
       "vat_number": null,
       "custom_domain": null,
       "development": false,
-      "shop_theme_id": null
+      "shop_theme_id": null,
+      "source": null,
+      "medium": null
     }
   },
   "meta": {}
@@ -152,6 +156,9 @@ Name | Description
 `discount_in_cents` | **Integer** `readonly`<br>Discount in cents
 `balance_in_cents` | **Integer** `readonly`<br>Balance in cents, will be deducted from the next invoice(s)
 `coupon` | **String** `readonly`<br>Coupon that's currently active
+`coupon_percent_off` | **String*** readonly <br/>Percentage of discount on the current active coupon
+`coupon_duration` | **String*** readonly <br/>Duration type of the current active coupon, one of `forever`, `once`, `repeating`
+`coupon_duration_in_months` | **String*** readonly <br/>Amount of months the coupon is active. Only present when coupon duration is `repeating`.
 `strategy` | **String** `readonly`<br>Billing strategy, one of `send_invoice`, `charge_automatically`
 `source` | **Hash** `readonly`<br>Information about the payment source
 `enabled_features` | **Hash** `readonly`<br>Beta features that are currently enabled
@@ -172,28 +179,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "8943437e-d141-40e5-9f79-0a5b6a34966c",
+    "id": "ed543750-ad08-48a7-abf0-70bd624d0883",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-11-18T15:37:56.939Z",
+        "trial_ends_at": "2023-03-10T08:52:51.931Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
         "canceled_at": null,
         "on_hold": false,
         "needs_activation": false,
-        "legacy": false,
         "product": "Premium",
         "plan_id": "pro_monthly",
         "interval": "month",
         "current_period_end": null,
-        "quantity": 1,
         "extra_employees": 0,
         "amount_in_cents": 29900,
         "discount_in_cents": 0,
         "balance_in_cents": 0,
         "coupon": null,
+        "coupon_percent_off": null,
+        "coupon_duration": null,
+        "coupon_duration_in_months": null,
         "strategy": "charge_automatically",
         "source": null,
         "enabled_features": [],
@@ -260,7 +268,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e8e68622-faf2-4999-ac88-40a2ff804b76",
+        "id": "f1f8f7ec-453d-496a-89db-539104277e0d",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -274,14 +282,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e8e68622-faf2-4999-ac88-40a2ff804b76",
+    "id": "f1f8f7ec-453d-496a-89db-539104277e0d",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-04T15:37:57+00:00",
-      "updated_at": "2022-11-04T15:37:57+00:00",
+      "created_at": "2023-02-24T08:52:52+00:00",
+      "updated_at": "2023-02-24T08:52:52+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail48@company.com",
+      "email": "mail50@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -308,7 +316,9 @@ This request does not accept any includes
       "vat_number": null,
       "custom_domain": null,
       "development": false,
-      "shop_theme_id": null
+      "shop_theme_id": null,
+      "source": null,
+      "medium": null
     }
   },
   "meta": {}

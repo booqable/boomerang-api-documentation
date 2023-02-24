@@ -17,8 +17,6 @@ For trackable products, each stock item is tracked and managed individually. Eac
 
 `PUT /api/boomerang/stock_items/{id}`
 
-`DELETE /api/boomerang/stock_items/{id}`
-
 ## Fields
 Every stock item has the following fields:
 
@@ -70,41 +68,41 @@ Name | Description
   {
   "data": [
     {
-      "id": "ede07615-3588-4063-aaba-1fae1ecd3de5",
+      "id": "86bf224f-cb43-491a-80c4-92fdc8e60d1c",
       "type": "stock_items",
       "attributes": {
-        "created_at": "2022-11-04T15:41:20+00:00",
-        "updated_at": "2022-11-04T15:41:20+00:00",
+        "created_at": "2023-02-24T08:56:16+00:00",
+        "updated_at": "2023-02-24T08:56:16+00:00",
         "archived": false,
         "archived_at": null,
-        "identifier": "id205",
+        "identifier": "id201",
         "status": "in_stock",
         "from": null,
         "till": null,
         "stock_item_type": "regular",
         "properties": {},
-        "product_id": "89fdd3db-761a-415d-be08-54c383efccad",
-        "location_id": "5627625f-5838-4766-a7de-e0e2c4e0c79a"
+        "product_id": "e27a7bcc-be6b-4ea2-b870-73735285a1ec",
+        "location_id": "986ed8d6-2797-46aa-88d7-d367bac53d3a"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/89fdd3db-761a-415d-be08-54c383efccad"
+            "related": "api/boomerang/products/e27a7bcc-be6b-4ea2-b870-73735285a1ec"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/5627625f-5838-4766-a7de-e0e2c4e0c79a"
+            "related": "api/boomerang/locations/986ed8d6-2797-46aa-88d7-d367bac53d3a"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=ede07615-3588-4063-aaba-1fae1ecd3de5&filter[owner_type]=stock_items"
+            "related": "api/boomerang/barcodes?filter[owner_id]=86bf224f-cb43-491a-80c4-92fdc8e60d1c&filter[owner_type]=stock_items"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=ede07615-3588-4063-aaba-1fae1ecd3de5&filter[owner_type]=stock_items"
+            "related": "api/boomerang/properties?filter[owner_id]=86bf224f-cb43-491a-80c4-92fdc8e60d1c&filter[owner_type]=stock_items"
           }
         }
       }
@@ -126,7 +124,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=product,location,barcode`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:26Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-24T08:52:15Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -194,7 +192,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/e4c9c0c9-4dbd-4566-a6c3-0f44ae778b3b' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/9b26a8c8-308c-444b-894c-48e403be2995' \
     --header 'content-type: application/json' \
 ```
 
@@ -203,41 +201,41 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e4c9c0c9-4dbd-4566-a6c3-0f44ae778b3b",
+    "id": "9b26a8c8-308c-444b-894c-48e403be2995",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2022-11-04T15:41:21+00:00",
-      "updated_at": "2022-11-04T15:41:21+00:00",
+      "created_at": "2023-02-24T08:56:16+00:00",
+      "updated_at": "2023-02-24T08:56:16+00:00",
       "archived": false,
       "archived_at": null,
-      "identifier": "id206",
+      "identifier": "id202",
       "status": "in_stock",
       "from": null,
       "till": null,
       "stock_item_type": "regular",
       "properties": {},
-      "product_id": "01949cb7-912a-4b80-9cda-5708fe3b001b",
-      "location_id": "146e749f-337e-4833-8d76-2ee286f88f2a"
+      "product_id": "188b07bb-157e-4d9c-bcac-033c23afb99b",
+      "location_id": "9e58fd78-b3c2-4316-b346-52ee1c48f8b0"
     },
     "relationships": {
       "product": {
         "links": {
-          "related": "api/boomerang/products/01949cb7-912a-4b80-9cda-5708fe3b001b"
+          "related": "api/boomerang/products/188b07bb-157e-4d9c-bcac-033c23afb99b"
         }
       },
       "location": {
         "links": {
-          "related": "api/boomerang/locations/146e749f-337e-4833-8d76-2ee286f88f2a"
+          "related": "api/boomerang/locations/9e58fd78-b3c2-4316-b346-52ee1c48f8b0"
         }
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=e4c9c0c9-4dbd-4566-a6c3-0f44ae778b3b&filter[owner_type]=stock_items"
+          "related": "api/boomerang/barcodes?filter[owner_id]=9b26a8c8-308c-444b-894c-48e403be2995&filter[owner_type]=stock_items"
         }
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=e4c9c0c9-4dbd-4566-a6c3-0f44ae778b3b&filter[owner_type]=stock_items"
+          "related": "api/boomerang/properties?filter[owner_id]=9b26a8c8-308c-444b-894c-48e403be2995&filter[owner_type]=stock_items"
         }
       }
     }
@@ -298,7 +296,7 @@ This request accepts the following includes:
         "type": "stock_items",
         "attributes": {
           "identifier": "12345",
-          "product_id": "ad742fc5-2ac3-471f-b1a5-7ea8ddb2316d"
+          "product_id": "da3141c9-588a-4bca-a03f-781ac531cd56"
         }
       }
     }'
@@ -309,11 +307,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ae6f0bb5-8c6e-40ca-bb9f-16af59e44855",
+    "id": "c283e007-918f-4342-859d-da920b8eba59",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2022-11-04T15:41:21+00:00",
-      "updated_at": "2022-11-04T15:41:21+00:00",
+      "created_at": "2023-02-24T08:56:17+00:00",
+      "updated_at": "2023-02-24T08:56:17+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "12345",
@@ -322,8 +320,8 @@ This request accepts the following includes:
       "till": null,
       "stock_item_type": "regular",
       "properties": {},
-      "product_id": "ad742fc5-2ac3-471f-b1a5-7ea8ddb2316d",
-      "location_id": "e62d4eb8-078d-496f-ad2a-5769e237a9e6"
+      "product_id": "da3141c9-588a-4bca-a03f-781ac531cd56",
+      "location_id": "703580a5-bf22-4146-9c4f-7471fbf051a0"
     },
     "relationships": {
       "product": {
@@ -412,11 +410,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/50873b09-191f-4443-9bc6-be6b4f85e943' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/618e1c61-7ecb-4b36-b053-a1d978001c3e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "50873b09-191f-4443-9bc6-be6b4f85e943",
+        "id": "618e1c61-7ecb-4b36-b053-a1d978001c3e",
         "type": "stock_items",
         "attributes": {
           "identifier": "12346"
@@ -430,11 +428,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "50873b09-191f-4443-9bc6-be6b4f85e943",
+    "id": "618e1c61-7ecb-4b36-b053-a1d978001c3e",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2022-11-04T15:41:22+00:00",
-      "updated_at": "2022-11-04T15:41:22+00:00",
+      "created_at": "2023-02-24T08:56:17+00:00",
+      "updated_at": "2023-02-24T08:56:17+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "12346",
@@ -443,8 +441,8 @@ This request accepts the following includes:
       "till": null,
       "stock_item_type": "regular",
       "properties": {},
-      "product_id": "35ef49d7-e76b-4c20-958e-e8067d64d71f",
-      "location_id": "be567057-20b0-4f78-ba78-e3672c72b225"
+      "product_id": "c3c9f5e7-9522-4b01-90fe-d0ed000c92a4",
+      "location_id": "c94de5a0-177c-47ed-b5a6-e9568d07a530"
     },
     "relationships": {
       "product": {
@@ -524,41 +522,3 @@ This request accepts the following includes:
 
 
 
-
-## Archiving a stock_item
-
-
-
-> How to archive a stock item:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/048a7862-8283-4832-b993-aacd53bb01b5' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/stock_items/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=product,location,barcode`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=id,created_at,updated_at`
-
-
-### Includes
-
-This request does not accept any includes
