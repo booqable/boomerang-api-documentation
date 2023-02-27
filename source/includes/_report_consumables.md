@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2022-10-30+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-04+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2023-02-22+00%3A00%3A00+UTC&filter%5Btill%5D=2023-02-27+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,21 +44,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "4000e83f-297c-45bb-8956-dfebcd48cc55",
+      "id": "ec7ff4bd-10fd-4678-ab54-b1470e67c53a",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2022-11-04T15:40:45+00:00",
-        "name": "Product 46",
+        "created_at": "2023-02-27T10:49:35+00:00",
+        "name": "Product 58",
         "sold": 2,
         "returned": 0,
-        "turnover_in_cents": 10000,
+        "turnover_in_cents": 0,
         "returned_in_cents": 0,
-        "product_id": "4000e83f-297c-45bb-8956-dfebcd48cc55"
+        "product_id": "ec7ff4bd-10fd-4678-ab54-b1470e67c53a"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/4000e83f-297c-45bb-8956-dfebcd48cc55"
+            "related": "api/boomerang/products/ec7ff4bd-10fd-4678-ab54-b1470e67c53a"
           }
         }
       }
@@ -80,7 +80,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=product`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_consumables]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-02-27T10:45:15Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
