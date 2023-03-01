@@ -18,6 +18,7 @@ Name | Description
 `token` | **String** `writeonly`<br>The token to register
 `kind` | **String** <br>Kind of token. One of `apn`, `fcm`
 `environment` | **String** <br>The enviroment to use. One of `development`, `production`
+`version` | **Integer** <br>The API version to use
 
 
 ## Creating a device_token
@@ -47,13 +48,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "0cc38dac-6868-4e76-9048-db01578f3796",
+    "id": "5b868c9c-63b7-4f84-959b-0cd62bf17c11",
     "type": "device_tokens",
     "attributes": {
-      "created_at": "2022-11-04T15:38:08+00:00",
-      "updated_at": "2022-11-04T15:38:08+00:00",
+      "created_at": "2023-03-01T14:48:40+00:00",
+      "updated_at": "2023-03-01T14:48:40+00:00",
       "kind": "apn",
-      "environment": "production"
+      "environment": "production",
+      "version": 3
     }
   },
   "meta": {}
@@ -83,6 +85,7 @@ Name | Description
 `data[attributes][token]` | **String** <br>The token to register
 `data[attributes][kind]` | **String** <br>Kind of token. One of `apn`, `fcm`
 `data[attributes][environment]` | **String** <br>The enviroment to use. One of `development`, `production`
+`data[attributes][version]` | **Integer** <br>The API version to use
 
 
 ### Includes
@@ -96,7 +99,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/device_tokens/4420c5e7-9f71-485b-bbe6-b4f1272ad5f1' \
+    --url 'https://example.booqable.com/api/boomerang/device_tokens/1a545cd9-cf0d-42a6-9349-d1604f124e80' \
     --header 'content-type: application/json' \
 ```
 
