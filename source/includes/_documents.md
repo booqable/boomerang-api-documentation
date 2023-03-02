@@ -39,8 +39,6 @@ Name | Description
 `number` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
 `prefix` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
 `prefix_with_number` | **String** `readonly`<br>Rendered prefix with document number
-`title` | **String** `readonly`<br>Translated title of the document
-`subtitle` | **String** `readonly`<br>Translated subtitle of the document
 `date` | **Date** <br>Date the document was finalized
 `name` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
 `address` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
@@ -74,8 +72,8 @@ Name | Description
 `customer_id` | **Uuid** `nullable`<br>The associated Customer
 `tax_region_id` | **Uuid** `nullable`<br>The associated Tax region
 `coupon_id` | **Uuid** `nullable`<br>The associated Coupon
-`body` | **String** `extra` `readonly`<br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document
-`footer` | **String** `extra` `readonly`<br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document
+`body` | **String** `readonly`<br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document
+`footer` | **String** `readonly`<br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document
 
 
 ## Relationships
@@ -109,19 +107,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "c44c51f1-a137-4f2a-8e4c-df63b7c7ba03",
+      "id": "39f339ba-94df-4121-9e3e-24eb517ce062",
       "type": "documents",
       "attributes": {
-        "created_at": "2022-11-04T15:38:10+00:00",
-        "updated_at": "2022-11-04T15:38:11+00:00",
+        "created_at": "2023-03-02T12:39:47+00:00",
+        "updated_at": "2023-03-02T12:39:47+00:00",
         "archived": false,
         "archived_at": null,
         "document_type": "invoice",
         "number": null,
         "prefix": null,
         "prefix_with_number": null,
-        "title": "Invoice (pro forma)",
-        "subtitle": "Pro forma",
         "date": null,
         "name": "John Doe",
         "address": null,
@@ -150,20 +146,20 @@ Name | Description
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
-        "order_id": "be46f645-96bd-4ca1-a4da-c48d48f0aa49",
-        "customer_id": "211bd2f4-a1f8-4bd8-8f21-6ccc85e40af3",
+        "order_id": "ed9ec646-ea25-42d1-a537-fe57c5ac0677",
+        "customer_id": "957f2c86-2903-427d-a479-9d8d76369a6b",
         "tax_region_id": null,
         "coupon_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/be46f645-96bd-4ca1-a4da-c48d48f0aa49"
+            "related": "api/boomerang/orders/ed9ec646-ea25-42d1-a537-fe57c5ac0677"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/211bd2f4-a1f8-4bd8-8f21-6ccc85e40af3"
+            "related": "api/boomerang/customers/957f2c86-2903-427d-a479-9d8d76369a6b"
           }
         },
         "tax_region": {
@@ -178,12 +174,12 @@ Name | Description
         },
         "lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=c44c51f1-a137-4f2a-8e4c-df63b7c7ba03&filter[owner_type]=documents"
+            "related": "api/boomerang/lines?filter[owner_id]=39f339ba-94df-4121-9e3e-24eb517ce062&filter[owner_type]=documents"
           }
         },
         "tax_values": {
           "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=c44c51f1-a137-4f2a-8e4c-df63b7c7ba03&filter[owner_type]=documents"
+            "related": "api/boomerang/tax_values?filter[owner_id]=39f339ba-94df-4121-9e3e-24eb517ce062&filter[owner_type]=documents"
           }
         }
       }
@@ -205,7 +201,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-02T12:39:03Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -227,8 +223,6 @@ Name | Description
 `number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`subtitle` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -340,12 +334,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "date": {
-                    "gte": "2022-11-01T15:38:15.570Z"
+                    "gte": "2023-02-27T12:39:51.262Z"
                   }
                 },
                 {
                   "date": {
-                    "lte": "2022-11-07T15:38:15.570Z"
+                    "lte": "2023-03-05T12:39:51.262Z"
                   }
                 }
               ]
@@ -362,10 +356,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "4289dbb9-a81b-4f9e-af1c-97709b2421f1"
+      "id": "1904a241-1a69-4e97-bc2c-23f79d3e22dc"
     },
     {
-      "id": "05f55439-8922-4b88-bdfc-64b6d32a7f0e"
+      "id": "ad7e1913-05be-476c-ab83-edafd7422b35"
     }
   ]
 }
@@ -383,7 +377,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-02T12:39:03Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -405,8 +399,6 @@ Name | Description
 `number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`subtitle` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -491,7 +483,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/documents/e63e293a-4699-47e1-bda3-8f6fdbfcd584' \
+    --url 'https://example.booqable.com/api/boomerang/documents/3cae8b75-7540-4c5e-8f90-2e0fa13d8ba0' \
     --header 'content-type: application/json' \
 ```
 
@@ -500,19 +492,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e63e293a-4699-47e1-bda3-8f6fdbfcd584",
+    "id": "3cae8b75-7540-4c5e-8f90-2e0fa13d8ba0",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-11-04T15:38:16+00:00",
-      "updated_at": "2022-11-04T15:38:16+00:00",
+      "created_at": "2023-03-02T12:39:52+00:00",
+      "updated_at": "2023-03-02T12:39:52+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
       "number": null,
       "prefix": null,
       "prefix_with_number": null,
-      "title": "Invoice (pro forma)",
-      "subtitle": "Pro forma",
       "date": null,
       "name": "John Doe",
       "address": null,
@@ -541,20 +531,20 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "fe0d9080-d977-4de8-8672-ee5a9bdb8c04",
-      "customer_id": "1054f3f7-11d3-471c-a1a8-61d1d85c92b9",
+      "order_id": "b06b60f6-9448-4ec4-ad1a-fd52dda5652f",
+      "customer_id": "77d5bf5c-072e-4a2e-87e1-8d3b8b504c7c",
       "tax_region_id": null,
       "coupon_id": null
     },
     "relationships": {
       "order": {
         "links": {
-          "related": "api/boomerang/orders/fe0d9080-d977-4de8-8672-ee5a9bdb8c04"
+          "related": "api/boomerang/orders/b06b60f6-9448-4ec4-ad1a-fd52dda5652f"
         }
       },
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/1054f3f7-11d3-471c-a1a8-61d1d85c92b9"
+          "related": "api/boomerang/customers/77d5bf5c-072e-4a2e-87e1-8d3b8b504c7c"
         }
       },
       "tax_region": {
@@ -569,12 +559,12 @@ This request accepts the following includes:
       },
       "lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=e63e293a-4699-47e1-bda3-8f6fdbfcd584&filter[owner_type]=documents"
+          "related": "api/boomerang/lines?filter[owner_id]=3cae8b75-7540-4c5e-8f90-2e0fa13d8ba0&filter[owner_type]=documents"
         }
       },
       "tax_values": {
         "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=e63e293a-4699-47e1-bda3-8f6fdbfcd584&filter[owner_type]=documents"
+          "related": "api/boomerang/tax_values?filter[owner_id]=3cae8b75-7540-4c5e-8f90-2e0fa13d8ba0&filter[owner_type]=documents"
         }
       }
     }
@@ -644,7 +634,7 @@ This request accepts the following includes:
         "type": "documents",
         "attributes": {
           "document_type": "contract",
-          "order_id": "1ddb774c-3418-46a0-8cb8-802fa91335e8"
+          "order_id": "4247d401-0cd7-4f28-b18f-21b6332d4963"
         }
       }
     }'
@@ -655,20 +645,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d6b11502-a2da-47e2-8068-f02dd64b270a",
+    "id": "b19c889c-5f76-41b5-8900-b961eafeb0af",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-11-04T15:38:19+00:00",
-      "updated_at": "2022-11-04T15:38:19+00:00",
+      "created_at": "2023-03-02T12:39:54+00:00",
+      "updated_at": "2023-03-02T12:39:54+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "contract",
       "number": 1,
       "prefix": null,
       "prefix_with_number": "1",
-      "title": "Contract #1",
-      "subtitle": "1",
-      "date": "2022-11-04",
+      "date": "2023-03-02",
       "name": "John Doe",
       "address": "",
       "reference": null,
@@ -696,8 +684,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "1ddb774c-3418-46a0-8cb8-802fa91335e8",
-      "customer_id": "1b732ce2-8ccc-4e5f-b278-831d13ceeeb3",
+      "order_id": "4247d401-0cd7-4f28-b18f-21b6332d4963",
+      "customer_id": "3f2c4d00-fe37-483d-a9d0-980a7d6fc996",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -821,11 +809,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/documents/f39421eb-b78d-41c3-a0e8-75a0c3c09e26' \
+    --url 'https://example.booqable.com/api/boomerang/documents/fed0a464-5d94-4845-a620-fe97acb7f590' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f39421eb-b78d-41c3-a0e8-75a0c3c09e26",
+        "id": "fed0a464-5d94-4845-a620-fe97acb7f590",
         "type": "documents",
         "attributes": {
           "name": "Jane Doe"
@@ -839,19 +827,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f39421eb-b78d-41c3-a0e8-75a0c3c09e26",
+    "id": "fed0a464-5d94-4845-a620-fe97acb7f590",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-11-04T15:38:20+00:00",
-      "updated_at": "2022-11-04T15:38:20+00:00",
+      "created_at": "2023-03-02T12:39:55+00:00",
+      "updated_at": "2023-03-02T12:39:55+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
       "number": null,
       "prefix": null,
       "prefix_with_number": null,
-      "title": "Invoice (pro forma)",
-      "subtitle": "Pro forma",
       "date": null,
       "name": "Jane Doe",
       "address": null,
@@ -880,8 +866,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "b474cfee-42ed-48a4-b175-424c61d575cc",
-      "customer_id": "eccd8012-c508-4605-9c65-f76e08a2a8b7",
+      "order_id": "f779ccb6-4250-4a46-9807-c9ce73224215",
+      "customer_id": "4559ddda-a879-481d-b8ce-972ef9216d18",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -1006,7 +992,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/documents/388be8c8-2169-4155-8003-d8e98ce6860b' \
+    --url 'https://example.booqable.com/api/boomerang/documents/56739dc1-7db4-4e8f-9f2a-e84fbccb8d3f' \
     --header 'content-type: application/json' \
 ```
 
