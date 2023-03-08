@@ -294,7 +294,7 @@ Name | Description
 `error_data` | **Array** `readonly`<br>An array of strings with errors that happened during execution of the operation.
 `error_count` | **Integer** `readonly`<br>The number of errors that happened during the execution. See `error_data`.
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
-`operation_data` | **Hash** `extra`<br>An object with the params used to initiate the operation. See the description of the operation.
+`operation_data` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
 
 
 ## Relationships
@@ -323,11 +323,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "f0d6e8e4-5d0b-4fd6-85cf-7ac26a1bac45",
+      "id": "862e0b87-1a15-4d01-873e-058bb82535c9",
       "type": "operations",
       "attributes": {
-        "created_at": "2022-11-04T15:39:09+00:00",
-        "updated_at": "2022-11-04T15:39:09+00:00",
+        "created_at": "2023-03-08T15:24:32+00:00",
+        "updated_at": "2023-03-08T15:24:32+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -337,12 +337,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "ec838018-c991-4fb9-b170-eaa654e9bc61"
+        "employee_id": "b5cb385d-a817-49ad-aec0-e351b91b8801"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/ec838018-c991-4fb9-b170-eaa654e9bc61"
+            "related": "api/boomerang/employees/b5cb385d-a817-49ad-aec0-e351b91b8801"
           }
         }
       }
@@ -364,7 +364,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-08T15:21:50Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -413,7 +413,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/ac877f6e-4c30-4306-ba66-d3757725fef0' \
+    --url 'https://example.booqable.com/api/boomerang/operations/e3cda6cc-3611-4ed9-8636-e663f9f3af17' \
     --header 'content-type: application/json' \
 ```
 
@@ -422,11 +422,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ac877f6e-4c30-4306-ba66-d3757725fef0",
+    "id": "e3cda6cc-3611-4ed9-8636-e663f9f3af17",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-11-04T15:39:10+00:00",
-      "updated_at": "2022-11-04T15:39:10+00:00",
+      "created_at": "2023-03-08T15:24:33+00:00",
+      "updated_at": "2023-03-08T15:24:33+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -436,12 +436,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "222b8a30-a619-443e-9c66-61f12597c671"
+      "employee_id": "76faf5b2-6f1c-468d-9120-20b2de8a0bd5"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/222b8a30-a619-443e-9c66-61f12597c671"
+          "related": "api/boomerang/employees/76faf5b2-6f1c-468d-9120-20b2de8a0bd5"
         }
       }
     }
@@ -509,11 +509,11 @@ When creating an operation, it will start running in the background. With the `i
 ```json
   {
   "data": {
-    "id": "11bac259-fe13-429e-bd98-5c9906f90c55",
+    "id": "1a67d5eb-28a5-434c-b536-33f7f80e20ad",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-11-04T15:39:10+00:00",
-      "updated_at": "2022-11-04T15:39:10+00:00",
+      "created_at": "2023-03-08T15:24:34+00:00",
+      "updated_at": "2023-03-08T15:24:34+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -523,7 +523,7 @@ When creating an operation, it will start running in the background. With the `i
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "62e2d4dd-f0ec-4c3b-9c89-4f3a79bd7a8b"
+      "employee_id": "6cdac0da-2871-4a66-8690-96a74c7ca5b8"
     },
     "relationships": {
       "employee": {
