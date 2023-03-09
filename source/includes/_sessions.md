@@ -7,6 +7,7 @@ The session tells you whether settings are changed since the last time they were
 - Settings
 - Default properties
 - Clusters and Locations
+- Employee's notification subscriptions
 
 When there's an ID mismatch, it's advised to fetch the session again and include `employee`, `company`, and `settings`. Default properties, clusters, and locations should be requested separately as they can be paginated.
 
@@ -26,6 +27,7 @@ Name | Description
 `locations_updated_at` | **Datetime** <br>When locations were last updated
 `clusters_updated_at` | **Datetime** <br>When the clusters were last updated
 `default_properties_updated_at` | **Datetime** <br>When the default properties were last updated
+`notification_subscriptions_update_at` | **Datetime** <br>When the employee last made a change to their notification subscriptions
 
 
 ## Relationships
@@ -55,15 +57,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e979a075-2867-5a15-96cb-05a3c10d0148",
+    "id": "c642f759-7102-523f-b987-0e3b8feefd0a",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-04T15:41:06+00:00",
-      "company_id": "1a0a18e2-94d6-4756-ae7c-97e55b0e23c3",
-      "employee_id": "0f66e7e9-10c6-4cc1-866e-631f0838837f",
-      "locations_updated_at": "2022-11-04T15:41:06+00:00",
-      "clusters_updated_at": "2022-11-04T15:41:06+00:00",
-      "default_properties_updated_at": "2022-11-04T15:41:06+00:00"
+      "updated_at": "2023-03-09T10:30:57+00:00",
+      "company_id": "b7e90103-55f8-4f42-9ade-42dca8446987",
+      "employee_id": "b4aebe47-086b-4533-9fb1-3dcd5e740452",
+      "locations_updated_at": "2023-03-09T10:30:57+00:00",
+      "clusters_updated_at": "2023-03-09T10:30:57+00:00",
+      "default_properties_updated_at": "2023-03-09T10:30:57+00:00",
+      "notification_subscriptions_update_at": "2023-03-09T10:30:57+00:00"
     },
     "relationships": {
       "company": {
@@ -135,15 +138,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e979a075-2867-5a15-96cb-05a3c10d0148",
+    "id": "7424a1c5-1c90-51ab-b6d4-65ddbb02364a",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-04T15:41:06+00:00",
-      "company_id": "414a7de3-dd47-44c1-9a6d-fb37e803a548",
-      "employee_id": "55ac8712-4634-4f75-b6f5-454fd8f19f7e",
+      "updated_at": "2023-03-09T10:30:58+00:00",
+      "company_id": "5b1788e9-ca73-41bb-aee3-1c4410f14705",
+      "employee_id": "0011147c-f576-45c1-8088-72d3ef1ade5e",
       "locations_updated_at": null,
       "clusters_updated_at": null,
-      "default_properties_updated_at": null
+      "default_properties_updated_at": null,
+      "notification_subscriptions_update_at": "2023-03-09T10:30:58+00:00"
     },
     "relationships": {
       "company": {
@@ -152,7 +156,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "414a7de3-dd47-44c1-9a6d-fb37e803a548"
+          "id": "5b1788e9-ca73-41bb-aee3-1c4410f14705"
         }
       },
       "employee": {
@@ -161,7 +165,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "55ac8712-4634-4f75-b6f5-454fd8f19f7e"
+          "id": "0011147c-f576-45c1-8088-72d3ef1ade5e"
         }
       },
       "settings": {
@@ -177,14 +181,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "414a7de3-dd47-44c1-9a6d-fb37e803a548",
+      "id": "5b1788e9-ca73-41bb-aee3-1c4410f14705",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-11-04T15:41:06+00:00",
-        "updated_at": "2022-11-04T15:41:06+00:00",
-        "name": "Company name 227",
-        "slug": "company-name-227",
-        "email": "mail230@company.com",
+        "created_at": "2023-03-09T10:30:58+00:00",
+        "updated_at": "2023-03-09T10:30:58+00:00",
+        "name": "Company name 240",
+        "slug": "company-name-240",
+        "email": "mail243@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -212,25 +216,28 @@ This request accepts the following includes:
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
+        "source": null,
+        "medium": null,
         "subscription": {
-          "trial_ends_at": "2022-11-18T15:41:06.685Z",
+          "trial_ends_at": "2023-03-23T10:30:58.106Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
           "canceled_at": null,
           "on_hold": false,
           "needs_activation": false,
-          "legacy": false,
           "product": "Premium",
           "plan_id": "pro_monthly",
           "interval": "month",
           "current_period_end": null,
-          "quantity": 1,
           "extra_employees": 0,
           "amount_in_cents": 29900,
           "discount_in_cents": 0,
           "balance_in_cents": 0,
           "coupon": null,
+          "coupon_percent_off": null,
+          "coupon_duration": null,
+          "coupon_duration_in_months": null,
           "strategy": "charge_automatically",
           "source": null,
           "enabled_features": [],
@@ -265,11 +272,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "55ac8712-4634-4f75-b6f5-454fd8f19f7e",
+      "id": "0011147c-f576-45c1-8088-72d3ef1ade5e",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-04T15:41:06+00:00",
-        "updated_at": "2022-11-04T15:41:06+00:00",
+        "created_at": "2023-03-09T10:30:58+00:00",
+        "updated_at": "2023-03-09T10:30:58+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

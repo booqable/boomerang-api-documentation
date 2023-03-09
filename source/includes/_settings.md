@@ -216,8 +216,10 @@ Name | Description
 `quotes` | **Hash** <br>Settings that apply to quotes
 `contracts` | **Hash** <br>Settings that apply to contracts
 `labels` | **Hash** <br>Customization settings for labels
-`dashboard` | **Hash** `extra`<br>Dashboard settings (Used internally by Booqable)
-`setup` | **Hash** `extra`<br>Setup settings (Used internally by Booqable)
+`dashboard` | **Hash** <br>Dashboard settings (Used internally by Booqable)
+`setup_checklist` | **Hash** <br>Setup checklist settings (Used internally by Booqable)
+`onboarding` | **Hash** <br>Onboarding settings (Used internally by Booqable)
+`instructions` | **Hash** <br>Settings for in app instructions (Used internally by Booqable)
 
 
 ## Fetching settings
@@ -237,10 +239,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42c111c9-54a8-5344-93c6-04f01f5611a7",
+    "id": "7424a1c5-1c90-51ab-b6d4-65ddbb02364a",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-11-04T15:41:07+00:00",
+      "updated_at": "2023-03-09T10:30:58+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -251,8 +253,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "65a46b77-200b-4f80-8a35-e2ecc5cd15e2",
-        "tax_region_id": "759f2305-e302-4913-9b3a-553fc9561f26",
+        "tax_category_id": "54bf1c1b-bfb4-4e4d-a43b-7bb8a52ed540",
+        "tax_region_id": "40b0197b-b80d-4ae8-b75b-2703a1b966d8",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
