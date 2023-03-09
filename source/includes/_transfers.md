@@ -48,38 +48,38 @@ Name | Description
   {
   "data": [
     {
-      "id": "a590f135-992b-47a7-ab21-c7735afd5788",
+      "id": "aef344ce-60c0-44f4-978a-90f82e3c2493",
       "type": "transfers",
       "attributes": {
-        "created_at": "2022-11-04T15:41:33+00:00",
-        "updated_at": "2022-11-04T15:41:33+00:00",
+        "created_at": "2023-03-09T09:01:22+00:00",
+        "updated_at": "2023-03-09T09:01:22+00:00",
         "quantity": 1,
-        "available_at": "2022-11-02T15:30:00+00:00",
+        "available_at": "2023-03-07T09:00:00+00:00",
         "finalized": false,
-        "item_id": "5137a211-47da-4a5e-a1f5-af830f1b6297",
-        "order_id": "be73e44d-5815-467d-9483-d083b8dc61b0",
-        "source_location_id": "3e1124fc-f882-4d89-b524-b9daf093d1f8",
-        "destination_location_id": "3e1124fc-f882-4d89-b524-b9daf093d1f8"
+        "item_id": "b84d7a54-4a2f-4a43-8999-b23e46533048",
+        "order_id": "117d75d4-b295-4aaf-8f45-7ed1afab1f72",
+        "source_location_id": "b01ac3fc-f965-4863-9ff0-726b84dbc837",
+        "destination_location_id": "b01ac3fc-f965-4863-9ff0-726b84dbc837"
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/5137a211-47da-4a5e-a1f5-af830f1b6297"
+            "related": "api/boomerang/items/b84d7a54-4a2f-4a43-8999-b23e46533048"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/be73e44d-5815-467d-9483-d083b8dc61b0"
+            "related": "api/boomerang/orders/117d75d4-b295-4aaf-8f45-7ed1afab1f72"
           }
         },
         "source_location": {
           "links": {
-            "related": "api/boomerang/locations/3e1124fc-f882-4d89-b524-b9daf093d1f8"
+            "related": "api/boomerang/locations/b01ac3fc-f965-4863-9ff0-726b84dbc837"
           }
         },
         "destination_location": {
           "links": {
-            "related": "api/boomerang/locations/3e1124fc-f882-4d89-b524-b9daf093d1f8"
+            "related": "api/boomerang/locations/b01ac3fc-f965-4863-9ff0-726b84dbc837"
           }
         }
       }
@@ -101,7 +101,7 @@ Name | Description
 - | -
 `include` | **String** <br>List of comma seperated relationships `?include=item,order,source_location`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[transfers]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:26Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-09T08:56:25Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
