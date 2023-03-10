@@ -112,19 +112,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "c4b8fc2f-2e63-4706-a3c9-774de33de456",
+      "id": "81c53d88-aa56-4e6c-9fbe-63dfeed53b92",
       "type": "properties",
       "attributes": {
-        "created_at": "2022-11-04T15:40:39+00:00",
-        "updated_at": "2022-11-04T15:40:39+00:00",
+        "created_at": "2023-03-10T08:40:53+00:00",
+        "updated_at": "2023-03-10T08:40:53+00:00",
         "name": "Phone",
         "identifier": "phone",
-        "position": null,
+        "position": 0,
         "property_type": "phone",
         "show_on": [],
         "value": "+316000000",
         "default_property_id": null,
-        "owner_id": "ab2181ed-aacc-4f22-8cad-e31233f90155",
+        "owner_id": "7f27ee81-a0e7-48ba-889c-ce7117a8aa67",
         "owner_type": "customers"
       },
       "relationships": {
@@ -135,11 +135,11 @@ Name | Description
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/ab2181ed-aacc-4f22-8cad-e31233f90155"
+            "related": "api/boomerang/customers/7f27ee81-a0e7-48ba-889c-ce7117a8aa67"
           },
           "data": {
             "type": "customers",
-            "id": "ab2181ed-aacc-4f22-8cad-e31233f90155"
+            "id": "7f27ee81-a0e7-48ba-889c-ce7117a8aa67"
           }
         }
       }
@@ -147,11 +147,11 @@ Name | Description
   ],
   "included": [
     {
-      "id": "ab2181ed-aacc-4f22-8cad-e31233f90155",
+      "id": "7f27ee81-a0e7-48ba-889c-ce7117a8aa67",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-11-04T15:40:39+00:00",
-        "updated_at": "2022-11-04T15:40:39+00:00",
+        "created_at": "2023-03-10T08:40:53+00:00",
+        "updated_at": "2023-03-10T08:40:53+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
@@ -181,17 +181,17 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=ab2181ed-aacc-4f22-8cad-e31233f90155&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=7f27ee81-a0e7-48ba-889c-ce7117a8aa67&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=ab2181ed-aacc-4f22-8cad-e31233f90155&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=7f27ee81-a0e7-48ba-889c-ce7117a8aa67&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=ab2181ed-aacc-4f22-8cad-e31233f90155&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=7f27ee81-a0e7-48ba-889c-ce7117a8aa67&filter[owner_type]=customers"
           }
         }
       }
@@ -211,9 +211,9 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-10T08:36:23Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -264,7 +264,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/properties/2e36be08-baa0-49e8-b779-bef4d4614cc0?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/properties/7789ca5e-a086-4378-bd18-11aeaf42f198?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -273,19 +273,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2e36be08-baa0-49e8-b779-bef4d4614cc0",
+    "id": "7789ca5e-a086-4378-bd18-11aeaf42f198",
     "type": "properties",
     "attributes": {
-      "created_at": "2022-11-04T15:40:40+00:00",
-      "updated_at": "2022-11-04T15:40:40+00:00",
+      "created_at": "2023-03-10T08:40:53+00:00",
+      "updated_at": "2023-03-10T08:40:53+00:00",
       "name": "Phone",
       "identifier": "phone",
-      "position": null,
+      "position": 0,
       "property_type": "phone",
       "show_on": [],
       "value": "+316000000",
       "default_property_id": null,
-      "owner_id": "d91863a6-7851-4e60-b4b5-77c04e629993",
+      "owner_id": "00070c27-759b-4dd8-bd47-cdc7b51acfe2",
       "owner_type": "customers"
     },
     "relationships": {
@@ -296,22 +296,22 @@ This request accepts the following includes:
       },
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/d91863a6-7851-4e60-b4b5-77c04e629993"
+          "related": "api/boomerang/customers/00070c27-759b-4dd8-bd47-cdc7b51acfe2"
         },
         "data": {
           "type": "customers",
-          "id": "d91863a6-7851-4e60-b4b5-77c04e629993"
+          "id": "00070c27-759b-4dd8-bd47-cdc7b51acfe2"
         }
       }
     }
   },
   "included": [
     {
-      "id": "d91863a6-7851-4e60-b4b5-77c04e629993",
+      "id": "00070c27-759b-4dd8-bd47-cdc7b51acfe2",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-11-04T15:40:40+00:00",
-        "updated_at": "2022-11-04T15:40:40+00:00",
+        "created_at": "2023-03-10T08:40:53+00:00",
+        "updated_at": "2023-03-10T08:40:53+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
@@ -341,17 +341,17 @@ This request accepts the following includes:
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=d91863a6-7851-4e60-b4b5-77c04e629993&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=00070c27-759b-4dd8-bd47-cdc7b51acfe2&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=d91863a6-7851-4e60-b4b5-77c04e629993&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=00070c27-759b-4dd8-bd47-cdc7b51acfe2&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=d91863a6-7851-4e60-b4b5-77c04e629993&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=00070c27-759b-4dd8-bd47-cdc7b51acfe2&filter[owner_type]=customers"
           }
         }
       }
@@ -371,7 +371,7 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
@@ -403,7 +403,7 @@ This request accepts the following includes:
           "name": "Phone",
           "property_type": "phone",
           "value": "+316000000",
-          "owner_id": "88d15ec0-334e-4654-a795-81dceb03e3d7",
+          "owner_id": "a9b2bb3a-d49d-4f74-98db-55467b9243ee",
           "owner_type": "customers"
         }
       },
@@ -416,19 +416,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b696dd68-7db3-4a5a-b21e-58223c273f98",
+    "id": "75dd42ee-7bdd-4181-ac80-63fa307373d7",
     "type": "properties",
     "attributes": {
-      "created_at": "2022-11-04T15:40:40+00:00",
-      "updated_at": "2022-11-04T15:40:40+00:00",
+      "created_at": "2023-03-10T08:40:54+00:00",
+      "updated_at": "2023-03-10T08:40:54+00:00",
       "name": "Phone",
       "identifier": "phone",
-      "position": null,
+      "position": 0,
       "property_type": "phone",
       "show_on": [],
       "value": "+316000000",
       "default_property_id": null,
-      "owner_id": "88d15ec0-334e-4654-a795-81dceb03e3d7",
+      "owner_id": "a9b2bb3a-d49d-4f74-98db-55467b9243ee",
       "owner_type": "customers"
     },
     "relationships": {
@@ -440,18 +440,18 @@ This request accepts the following includes:
       "owner": {
         "data": {
           "type": "customers",
-          "id": "88d15ec0-334e-4654-a795-81dceb03e3d7"
+          "id": "a9b2bb3a-d49d-4f74-98db-55467b9243ee"
         }
       }
     }
   },
   "included": [
     {
-      "id": "88d15ec0-334e-4654-a795-81dceb03e3d7",
+      "id": "a9b2bb3a-d49d-4f74-98db-55467b9243ee",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-11-04T15:40:40+00:00",
-        "updated_at": "2022-11-04T15:40:40+00:00",
+        "created_at": "2023-03-10T08:40:54+00:00",
+        "updated_at": "2023-03-10T08:40:54+00:00",
         "archived": false,
         "archived_at": null,
         "number": 2,
@@ -511,7 +511,7 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
@@ -559,11 +559,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/properties/0268e93d-ca49-4430-b965-d07a5b57c6ee' \
+    --url 'https://example.booqable.com/api/boomerang/properties/867fd6cf-0e01-4f04-ba50-84ca7ae56d98' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0268e93d-ca49-4430-b965-d07a5b57c6ee",
+        "id": "867fd6cf-0e01-4f04-ba50-84ca7ae56d98",
         "type": "properties",
         "attributes": {
           "value": "+316000001"
@@ -577,19 +577,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0268e93d-ca49-4430-b965-d07a5b57c6ee",
+    "id": "867fd6cf-0e01-4f04-ba50-84ca7ae56d98",
     "type": "properties",
     "attributes": {
-      "created_at": "2022-11-04T15:40:40+00:00",
-      "updated_at": "2022-11-04T15:40:40+00:00",
+      "created_at": "2023-03-10T08:40:54+00:00",
+      "updated_at": "2023-03-10T08:40:54+00:00",
       "name": "Phone",
       "identifier": "phone",
-      "position": null,
+      "position": 0,
       "property_type": "phone",
       "show_on": [],
       "value": "+316000001",
       "default_property_id": null,
-      "owner_id": "8e0bbe4d-2aee-47b8-a15f-153bbd2d57a4",
+      "owner_id": "4e6b8b5d-2c65-4568-8ede-e1175e442d2d",
       "owner_type": "customers"
     },
     "relationships": {
@@ -619,7 +619,7 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
@@ -667,7 +667,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/properties/39f21de8-eb76-4dd5-ac67-2db334a53cdd' \
+    --url 'https://example.booqable.com/api/boomerang/properties/d89e4525-4f9e-4acf-b10e-9f30a4f894a4' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -690,7 +690,6 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=default_property,owner`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=id,created_at,updated_at`
 
 
@@ -734,11 +733,11 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "036f3ff6-c2dd-40c7-8588-9366c249cdaf",
+    "id": "1ffdf885-8c94-4696-997d-95186f246535",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-04T15:40:41+00:00",
-      "updated_at": "2022-11-04T15:40:41+00:00",
+      "created_at": "2023-03-10T08:40:55+00:00",
+      "updated_at": "2023-03-10T08:40:55+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -816,11 +815,11 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "7844c67c-be6f-44ea-b462-cf5b25f5acd6",
+    "id": "4acf78bf-0b7f-47e5-8922-c21294346530",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-04T15:40:42+00:00",
-      "updated_at": "2022-11-04T15:40:42+00:00",
+      "created_at": "2023-03-10T08:40:56+00:00",
+      "updated_at": "2023-03-10T08:40:56+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -874,12 +873,12 @@ On the following resources you can manage multiple properties at once:
 
 ```shell
   curl --request  \
-    --url 'https://example.booqable.com/api/boomerang/customers/33f18d0b-629a-4b91-a625-12b34adb7050' \
+    --url 'https://example.booqable.com/api/boomerang/customers/840a4699-efe5-46b1-851c-5c928ae3f3df' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "customers",
-        "id": "33f18d0b-629a-4b91-a625-12b34adb7050",
+        "id": "840a4699-efe5-46b1-851c-5c928ae3f3df",
         "attributes": {
           "name": "John Doe",
           "properties_attributes": [
@@ -902,11 +901,11 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "33f18d0b-629a-4b91-a625-12b34adb7050",
+    "id": "840a4699-efe5-46b1-851c-5c928ae3f3df",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-04T15:40:43+00:00",
-      "updated_at": "2022-11-04T15:40:43+00:00",
+      "created_at": "2023-03-10T08:40:56+00:00",
+      "updated_at": "2023-03-10T08:40:56+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,

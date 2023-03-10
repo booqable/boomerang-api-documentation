@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "default_properties",
           "ids": [
-            "e5f39a76-692e-4f0d-97af-2d775205a56a",
-            "5e10beaf-ee02-4740-9342-811117fd784e",
-            "3cf18645-d7fc-412a-98f1-0d78841b03bd",
-            "a1349571-e3a3-4d53-a001-2de52ac1182d",
-            "2698aee6-4b82-4b79-a8f2-c3211c0c6f50"
+            "c36bd758-c8eb-4bb6-b459-179972fe5617",
+            "b31f1616-859c-47c3-a5f9-1f9776f6abe8",
+            "a188b754-ab68-4177-a497-f59d9e96b7a7",
+            "d87225c4-981d-4739-ae6d-a5815f829d5a",
+            "bce1b9a3-1faf-452c-a1ad-7b966961db08"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42c111c9-54a8-5344-93c6-04f01f5611a7",
+    "id": "93f3bb87-ac66-5bb9-a34c-93cdd4204447",
     "type": "sortings"
   },
   "meta": {}
@@ -61,7 +61,6 @@ This request accepts the following parameters:
 
 Name | Description
 - | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sortings]=id,created_at,updated_at`
 
 
