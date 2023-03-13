@@ -11,7 +11,7 @@ A publication marks a moment from which all previously persisted Asstes in a The
 Every publication has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -23,7 +23,7 @@ Name | Description
 Publications have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `theme` | **Themes** `readonly`<br>Associated Theme
 
 
@@ -45,18 +45,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "ac8a8c1f-a974-4cdf-b4ef-fc5819bfb12d",
+      "id": "aebcfd2b-b89f-418a-9e2c-9fd074d49d57",
       "type": "publications",
       "attributes": {
-        "created_at": "2022-11-04T15:40:43+00:00",
-        "updated_at": "2022-11-04T15:40:43+00:00",
-        "published_at": "2022-10-30T15:40:43+00:00",
-        "theme_id": "43c1346f-bec5-4f2a-915a-094c72e106ce"
+        "created_at": "2023-03-13T07:54:15+00:00",
+        "updated_at": "2023-03-13T07:54:15+00:00",
+        "published_at": "2023-03-08T07:54:15+00:00",
+        "theme_id": "ba458c95-d134-4d6b-8b2b-c9528597e701"
       },
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/43c1346f-bec5-4f2a-915a-094c72e106ce"
+            "related": "api/boomerang/themes/ba458c95-d134-4d6b-8b2b-c9528597e701"
           }
         }
       }
@@ -75,10 +75,10 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=theme`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-13T07:49:20Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -90,7 +90,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -103,7 +103,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -132,7 +132,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "a82ff2c9-8a5d-40b8-8109-7271a3aaae2e"
+          "theme_id": "d2840a35-307e-413d-8d4a-eb1bdca32c44"
         }
       }
     }'
@@ -143,13 +143,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3224c0a1-ed14-43a3-8e36-f76ed88e2ff5",
+    "id": "072ebb60-e37b-4dc4-8b02-3398b645d12d",
     "type": "publications",
     "attributes": {
-      "created_at": "2022-10-30T15:40:44+00:00",
-      "updated_at": "2022-10-30T15:40:44+00:00",
-      "published_at": "2022-10-30T15:40:44+00:00",
-      "theme_id": "a82ff2c9-8a5d-40b8-8109-7271a3aaae2e"
+      "created_at": "2023-03-08T07:54:16+00:00",
+      "updated_at": "2023-03-08T07:54:16+00:00",
+      "published_at": "2023-03-08T07:54:16+00:00",
+      "theme_id": "d2840a35-307e-413d-8d4a-eb1bdca32c44"
     },
     "relationships": {
       "theme": {
@@ -172,8 +172,8 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=theme`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=theme,assets`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[publications]=id,created_at,updated_at`
 
 
@@ -182,7 +182,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][theme_id]` | **Uuid** <br>The associated Theme
 
 

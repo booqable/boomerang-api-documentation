@@ -22,7 +22,7 @@ Operating rules allow creating various rules for changing how a user can select 
 Every operating rule has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -48,11 +48,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0ada5540-695d-4782-9e59-6117236fecd4",
+      "id": "fb69b89a-0673-4e2c-b46c-14797361c63a",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2022-11-04T15:39:07+00:00",
-        "updated_at": "2022-11-04T15:39:07+00:00",
+        "created_at": "2023-03-13T07:51:44+00:00",
+        "updated_at": "2023-03-13T07:51:44+00:00",
         "data_type": "away",
         "data": {
           "away": {
@@ -76,10 +76,9 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-13T07:49:20Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -91,7 +90,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -103,7 +102,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -141,11 +140,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0e39b1f0-39cd-456e-be1a-17f493b69fbd",
+    "id": "a564cc92-4eef-4dbe-8206-e580bd2c1200",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-11-04T15:39:07+00:00",
-      "updated_at": "2022-11-04T15:39:07+00:00",
+      "created_at": "2023-03-13T07:51:44+00:00",
+      "updated_at": "2023-03-13T07:51:44+00:00",
       "data_type": "hours",
       "data": {
         "mon": {
@@ -187,11 +186,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "63212c98-4375-469a-b9b8-a2adc72f7d4e",
+    "id": "61344f43-6b2c-4a28-8f19-866eb61a06ea",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-11-04T15:39:07+00:00",
-      "updated_at": "2022-11-04T15:39:07+00:00",
+      "created_at": "2023-03-13T07:51:45+00:00",
+      "updated_at": "2023-03-13T07:51:45+00:00",
       "data_type": "hours",
       "data": {
         "weekday": {
@@ -233,11 +232,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5d096341-1149-4632-8488-c20c791318b8",
+    "id": "8ab6a5dc-6a0e-4300-b9bc-050458071ccb",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-11-04T15:39:08+00:00",
-      "updated_at": "2022-11-04T15:39:08+00:00",
+      "created_at": "2023-03-13T07:51:45+00:00",
+      "updated_at": "2023-03-13T07:51:45+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -279,11 +278,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "968c65f6-1156-4c97-b3a7-47eef174088a",
+    "id": "6d8ef198-8d7a-44e6-8719-a65d66482951",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-11-04T15:39:08+00:00",
-      "updated_at": "2022-11-04T15:39:08+00:00",
+      "created_at": "2023-03-13T07:51:46+00:00",
+      "updated_at": "2023-03-13T07:51:46+00:00",
       "data_type": "timeslot_fixed",
       "data": {
         "weekend": {
@@ -322,11 +321,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f35c3082-bf43-4abc-9a9d-af17e3452302",
+    "id": "cbb95491-bd2b-4e8b-9c14-ee354a3859f3",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-11-04T15:39:08+00:00",
-      "updated_at": "2022-11-04T15:39:08+00:00",
+      "created_at": "2023-03-13T07:51:46+00:00",
+      "updated_at": "2023-03-13T07:51:46+00:00",
       "data_type": "timeslot_duration",
       "data": {
         "length": 86000
@@ -346,8 +345,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
 
 
@@ -356,7 +354,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][data_type]` | **String_enum** <br>Determines where the rule is applied. One of `hours`, `away`, `timeslot_fixed`, `timeslot_duration` 
 `data[attributes][data]` | **Hash** <br>Content of the rule, can have keys `weekday`, `weekend`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`, `all` when `data_type` is `timeslot_fixed` or `hours` or `away` when `data_type` is `away` and `length` (for duration in seconds) when `data_type` is `timeslot_duration`' 
 
@@ -372,11 +370,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/1a434b40-8436-4b54-934f-5c88f075df1c' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/ff479500-afb0-4ffa-af4d-ac3bfe61f039' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "1a434b40-8436-4b54-934f-5c88f075df1c",
+        "id": "ff479500-afb0-4ffa-af4d-ac3bfe61f039",
         "type": "operating_rules",
         "attributes": {
           "data": {
@@ -395,11 +393,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "1a434b40-8436-4b54-934f-5c88f075df1c",
+    "id": "ff479500-afb0-4ffa-af4d-ac3bfe61f039",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2022-11-04T15:39:09+00:00",
-      "updated_at": "2022-11-04T15:39:09+00:00",
+      "created_at": "2023-03-13T07:51:47+00:00",
+      "updated_at": "2023-03-13T07:51:47+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -422,8 +420,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
 
 
@@ -432,7 +429,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][data_type]` | **String_enum** <br>Determines where the rule is applied. One of `hours`, `away`, `timeslot_fixed`, `timeslot_duration` 
 `data[attributes][data]` | **Hash** <br>Content of the rule, can have keys `weekday`, `weekend`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`, `all` when `data_type` is `timeslot_fixed` or `hours` or `away` when `data_type` is `away` and `length` (for duration in seconds) when `data_type` is `timeslot_duration`' 
 
@@ -448,7 +445,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/9f65f605-e4f4-4eee-bfb4-bc9ce677f3f5' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/28540d77-4cff-463e-a545-25824207e554' \
     --header 'content-type: application/json' \
 ```
 
@@ -469,8 +466,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=id,created_at,updated_at`
 
 

@@ -6,7 +6,7 @@ A convienient way to bulk update positions for supported models.
 Every sorting has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `ids` | **Array_of_strings** `writeonly`<br>Array of ids, positions are determined by the order of the array
@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "default_properties",
           "ids": [
-            "e5f39a76-692e-4f0d-97af-2d775205a56a",
-            "5e10beaf-ee02-4740-9342-811117fd784e",
-            "3cf18645-d7fc-412a-98f1-0d78841b03bd",
-            "a1349571-e3a3-4d53-a001-2de52ac1182d",
-            "2698aee6-4b82-4b79-a8f2-c3211c0c6f50"
+            "33d8fcc3-61a2-4fa9-9b25-84f3d2815393",
+            "fdddc88e-85dd-48fd-9df5-5b5f594d31fc",
+            "341377d7-4171-44e1-b00a-aaade3ac0ee6",
+            "7d94d59a-f680-48cc-bf7b-12df28e0ab5d",
+            "96c0f23b-0038-4366-88ae-820d4dfe566b"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42c111c9-54a8-5344-93c6-04f01f5611a7",
+    "id": "8955fea4-0448-55a9-a62b-8dd7eb853c8b",
     "type": "sortings"
   },
   "meta": {}
@@ -60,8 +60,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sortings]=id,created_at,updated_at`
 
 
@@ -70,7 +69,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][type]` | **String_enum** <br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `data[attributes][ids]` | **Array_of_strings** <br>Array of ids, positions are determined by the order of the array
 

@@ -11,7 +11,7 @@ Re-usable payment methods stored on file.
 Every payment method has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -24,7 +24,7 @@ Name | Description
 Payment methods have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `customer` | **Customers** `readonly`<br>Associated Customer
 
 
@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "b396f194-0a53-4907-a204-df8e94181b69",
+      "id": "b641fdd2-27c2-474f-a48d-476a02b1abff",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2022-11-04T15:40:05+00:00",
-        "updated_at": "2022-11-04T15:40:05+00:00",
+        "created_at": "2023-03-13T07:53:16+00:00",
+        "updated_at": "2023-03-13T07:53:16+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -83,10 +83,9 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=customer`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-04T15:37:25Z`
+`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2023-03-13T07:49:20Z`
 `sort` | **String** <br>How to sort the data `?sort=-created_at`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
@@ -98,7 +97,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -111,7 +110,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -126,7 +125,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/e5850483-f7e0-487a-a640-7f734b935528' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/050d7491-1b61-4e4c-b621-9a6a80fada37' \
     --header 'content-type: application/json' \
 ```
 
@@ -147,8 +146,7 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=customer`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=id,created_at,updated_at`
 
 

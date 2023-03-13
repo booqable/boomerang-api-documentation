@@ -14,7 +14,7 @@ line to `null` as described [here](#lines-fields).
 Every order price recalculation has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `order_id` | **Uuid** <br>The associated Order
 
@@ -23,7 +23,7 @@ Name | Description
 Order price recalculations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders**<br>Associated Order
 
 
@@ -41,7 +41,7 @@ Name | Description
       "data": {
         "type": "order_price_recalculations",
         "attributes": {
-          "order_id": "e2ad01cd-9db2-466d-8d7a-87e16a0a78d4"
+          "order_id": "4d358def-7d51-4096-8c58-79ddd2f509fb"
         }
       }
     }'
@@ -52,10 +52,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2d6eb863-b95c-5ee4-bc1e-87327b2afca0",
+    "id": "ea1f923f-102b-5ca7-8f4c-d4fd887c19fd",
     "type": "order_price_recalculations",
     "attributes": {
-      "order_id": "e2ad01cd-9db2-466d-8d7a-87e16a0a78d4"
+      "order_id": "4d358def-7d51-4096-8c58-79ddd2f509fb"
     },
     "relationships": {
       "order": {
@@ -78,7 +78,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_price_recalculations]=id,created_at,updated_at`
 
@@ -88,7 +88,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
 
 

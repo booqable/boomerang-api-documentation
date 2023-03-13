@@ -7,7 +7,7 @@ Settings are configured globally for a company account. They are divided in the 
 Information on how to display and handle the currency.
 
 Name | Description
-- | -
+-- | --
 `name` | **String** `readonly`<br>Currency code
 `decimal` | **String** `readonly`<br>Decimal seperator
 `thousand` | **String** `readonly`<br>Thousand seperator
@@ -20,7 +20,7 @@ Name | Description
 Defaults derived from other resources.
 
 Name | Description
-- | -
+-- | --
 `timezone` | **String** `readonly`<br>The default timezone (managed on the company resource)
 `tax_category_id` | **Uuid** `readonly`<br>ID the default tax category
 `tax_region_id` | **Uuid** `readonly`<br>ID the default tax region
@@ -30,7 +30,7 @@ Name | Description
 Configuration on how to handle and display pricing
 
 Name | Description
-- | -
+-- | --
 `enabled` | **Boolean**<br>Whether pricing is enabled
 `tax_strategy` | **Uuid**<br>How taxes should be calculated, one of `exclusive`, `inclusive`
 `deposit_type` | **String**<br>Default deposit type (applied to orders if customer deposit type is `default`, one of `none`, `percentage_total`, `percentage`, `fixed`)
@@ -44,7 +44,7 @@ Information on how to display dates. The settings below should be used (and comb
 to select the format string for the date library being used.
 
 Name | Description
-- | -
+-- | --
 `format` | **String**<br>How dates should be formatted. Supported formats are `DD-MM-YYYY`, `MM-DD-YYYY` and `YYYY-MM-DD`.
 `use_am_pm` | **Boolean**<br>Whether to use 24h clock or AM/PM
 `first_day_of_week` | **Integer**<br>Which day to display as first day of the week (`0` for Sunday)
@@ -54,7 +54,7 @@ Name | Description
 Configuration for [orders](#orders) (these settings also apply to the online store)
 
 Name | Description
-- | -
+-- | --
 `use_times` | **Boolean**<br>Whether time selection is enabled, if not, full days are always planned and calculated
 `start_type` | **String**<br>Behavior of default start time, one of `fixed`, `relative`
 `start_relative_offset` | **Integer**<br>Offset in seconds from now, used when `start_type` is `relative`
@@ -68,7 +68,7 @@ Name | Description
 Global security settings
 
 Name | Description
-- | -
+-- | --
 `sso_forced` | **Boolean**<br>Whether to force SSO
 `iprestrictions_enabled` | **Boolean**<br>Whether IP restrictions are enabled
 
@@ -77,7 +77,7 @@ Name | Description
 Settings on how to display addresses
 
 Name | Description
-- | -
+-- | --
 `fields_order` | **Array**<br>Order of how the fields are displayed, e.g. `["zipcode", "city", "region"]`
 
 #### Store
@@ -85,7 +85,7 @@ Name | Description
 Settings for the online store
 
 Name | Description
-- | -
+-- | --
 `enabled` | **Boolean**<br>Whether to accept online reservations
 `public` | **Boolean**<br>Whether to hosted online store is public
 `send_order_confirmation` | **Boolean**<br>Whether to send order confirmations automatically after checkout
@@ -125,7 +125,7 @@ Name | Description
 Settings that apply to [user](#users) accounts
 
 Name | Description
-- | -
+-- | --
 `auth_enabled` | **Boolean**<br>Whether user accounts are enabled
 `allow_signup` | **Boolean**<br>Whether signup during checkout is allowed
 `allow_guest_checkout` | **Boolean**<br>Whether to allow guest checkouts
@@ -136,7 +136,7 @@ Name | Description
 Settings that apply to all [document](#documents) types
 
 Name | Description
-- | -
+-- | --
 `show_tax_column` | **Boolean**<br>Whether to show the tax column on lines
 `css` | **String**<br>Custom css used for documents
 `scss` | **String**<br>Custom scss used for documents
@@ -148,7 +148,7 @@ Name | Description
 Settings that apply to invoices
 
 Name | Description
-- | -
+-- | --
 `footer` | **String**<br>HTML formatted footer to display on invoices
 `show_product_photos` | **Boolean**<br>Whether to show product photos
 `show_stock_identifiers` | **Boolean**<br>Whether to show identifiers of the stock items that are booked
@@ -161,7 +161,7 @@ Name | Description
 Settings that apply to quotes
 
 Name | Description
-- | -
+-- | --
 `footer` | **String**<br>HTML formatted footer to display on quotes
 `body` | **String**<br>HTML formatted body to display on quotes
 `show_product_photos` | **Boolean**<br>Whether to show product photos
@@ -175,7 +175,7 @@ Name | Description
 Settings that apply to contracts
 
 Name | Description
-- | -
+-- | --
 `footer` | **String**<br>HTML formatted footer to display on contracts
 `body` | **String**<br>HTML formatted body to display on contracts
 `show_product_photos` | **Boolean**<br>Whether to show product photos
@@ -189,7 +189,7 @@ Name | Description
 Customization settings for labels
 
 Name | Description
-- | -
+-- | --
 `customer` | **String**<br>What to call a customer (one of `customer`, `client`, `student``)
 `order` | **String**<br>What to call an order (one of `order`, `booking`, `project``)
 `quote` | **String**<br>What to call a quote (one of `quote`, `proposal`)
@@ -200,7 +200,7 @@ Name | Description
 Every setting has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>
 `currency` | **Hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource)
 `defaults` | **Hash** `readonly`<br>Defaults derived from other resources
@@ -216,8 +216,10 @@ Name | Description
 `quotes` | **Hash** <br>Settings that apply to quotes
 `contracts` | **Hash** <br>Settings that apply to contracts
 `labels` | **Hash** <br>Customization settings for labels
-`dashboard` | **Hash** `extra`<br>Dashboard settings (Used internally by Booqable)
-`setup` | **Hash** `extra`<br>Setup settings (Used internally by Booqable)
+`dashboard` | **Hash** <br>Dashboard settings (Used internally by Booqable)
+`setup_checklist` | **Hash** <br>Setup checklist settings (Used internally by Booqable)
+`onboarding` | **Hash** <br>Onboarding settings (Used internally by Booqable)
+`instructions` | **Hash** <br>Settings for in app instructions (Used internally by Booqable)
 
 
 ## Fetching settings
@@ -237,10 +239,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "42c111c9-54a8-5344-93c6-04f01f5611a7",
+    "id": "305477f7-46a6-5a82-ad1d-9b6a7a937d74",
     "type": "settings",
     "attributes": {
-      "updated_at": "2022-11-04T15:41:07+00:00",
+      "updated_at": "2023-03-13T07:54:40+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -251,8 +253,8 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "65a46b77-200b-4f80-8a35-e2ecc5cd15e2",
-        "tax_region_id": "759f2305-e302-4913-9b3a-553fc9561f26",
+        "tax_category_id": "846908b0-570b-4d28-8ce6-b86db405b136",
+        "tax_region_id": "9b49c275-9769-4228-864a-865eafc5b9ac",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -389,8 +391,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[settings]=id,created_at,updated_at`
 
 

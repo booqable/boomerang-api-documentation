@@ -6,7 +6,7 @@ Merging enables you to merge the data of two records. The following types are su
 Every merge has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `type` | **Uuid** <br>Type of resource to merge. One of `customers`
 `source_id` | **Uuid** <br>Resource from which data is taken, this resource gets archived or destroyed
@@ -17,7 +17,7 @@ Name | Description
 Merges have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `target` | **Customers**<br>Associated Target
 
 
@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "ea161c43-3e35-4b22-bcbb-78fe629b28ef",
-          "target_id": "a19c2634-0b1f-4a45-8f40-eb6aba116cc9"
+          "source_id": "49e00f73-936a-4687-b987-dbe38372493e",
+          "target_id": "b1ea11a4-dcdc-42e4-8b82-6c9e16dd1cdd"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "8cf0f230-e836-537a-981a-e8f96adcd017",
+    "id": "b037e21a-2d6a-5064-80c6-56678c167722",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "ea161c43-3e35-4b22-bcbb-78fe629b28ef",
-      "target_id": "a19c2634-0b1f-4a45-8f40-eb6aba116cc9"
+      "source_id": "49e00f73-936a-4687-b987-dbe38372493e",
+      "target_id": "b1ea11a4-dcdc-42e4-8b82-6c9e16dd1cdd"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "a19c2634-0b1f-4a45-8f40-eb6aba116cc9"
+          "id": "b1ea11a4-dcdc-42e4-8b82-6c9e16dd1cdd"
         }
       }
     }
   },
   "included": [
     {
-      "id": "a19c2634-0b1f-4a45-8f40-eb6aba116cc9",
+      "id": "b1ea11a4-dcdc-42e4-8b82-6c9e16dd1cdd",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-11-04T15:39:05+00:00",
-        "updated_at": "2022-11-04T15:39:05+00:00",
+        "created_at": "2023-03-13T07:51:36+00:00",
+        "updated_at": "2023-03-13T07:51:37+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
@@ -128,7 +128,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=target`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[merges]=id,created_at,updated_at`
 
@@ -138,7 +138,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][type]` | **Uuid** <br>Type of resource to merge. One of `customers`
 `data[attributes][source_id]` | **Uuid** <br>Resource from which data is taken, this resource gets archived or destroyed
 `data[attributes][target_id]` | **Uuid** <br>Resource to which data is saved, this resource is returned if `target` is specified in includes

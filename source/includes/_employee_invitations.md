@@ -10,7 +10,7 @@ Employees give access to a Booqable account. You can invite employees by sending
 Every employee invitation has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>Specify employee ID to re-send invitation
 `firstname` | **String** `writeonly`<br>First name of the employee
 `lastname` | **String** `writeonly`<br>Last name of the employee
@@ -23,7 +23,7 @@ Name | Description
 Employee invitations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
@@ -55,27 +55,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e9b5b5fb-64fe-5a9c-8512-62dd56ec78b1",
+    "id": "eaf5398a-932b-5629-b30d-d55c98fc8942",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "cc5320c1-74a2-4337-a2fd-99068c3c1890"
+      "employee_id": "48444bc9-9b1e-46c2-bdbe-f771262e9c19"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "cc5320c1-74a2-4337-a2fd-99068c3c1890"
+          "id": "48444bc9-9b1e-46c2-bdbe-f771262e9c19"
         }
       }
     }
   },
   "included": [
     {
-      "id": "cc5320c1-74a2-4337-a2fd-99068c3c1890",
+      "id": "48444bc9-9b1e-46c2-bdbe-f771262e9c19",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-04T15:38:28+00:00",
-        "updated_at": "2022-11-04T15:38:28+00:00",
+        "created_at": "2023-03-13T07:50:37+00:00",
+        "updated_at": "2023-03-13T07:50:37+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -109,7 +109,7 @@ Note that you can also update other fields.:
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "90554659-dab5-4542-9c94-9dd13ee23a80",
+          "id": "7cb088fb-8e2b-4495-a7ae-3d439098ff13",
           "email": "jane@doe.com"
         }
       },
@@ -122,27 +122,27 @@ Note that you can also update other fields.:
 ```json
   {
   "data": {
-    "id": "90554659-dab5-4542-9c94-9dd13ee23a80",
+    "id": "7cb088fb-8e2b-4495-a7ae-3d439098ff13",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "90554659-dab5-4542-9c94-9dd13ee23a80"
+      "employee_id": "7cb088fb-8e2b-4495-a7ae-3d439098ff13"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "90554659-dab5-4542-9c94-9dd13ee23a80"
+          "id": "7cb088fb-8e2b-4495-a7ae-3d439098ff13"
         }
       }
     }
   },
   "included": [
     {
-      "id": "90554659-dab5-4542-9c94-9dd13ee23a80",
+      "id": "7cb088fb-8e2b-4495-a7ae-3d439098ff13",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-04T15:38:28+00:00",
-        "updated_at": "2022-11-04T15:38:28+00:00",
+        "created_at": "2023-03-13T07:50:38+00:00",
+        "updated_at": "2023-03-13T07:50:38+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -184,7 +184,7 @@ Note that you can also update other fields.:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employee_invitations]=id,created_at,updated_at`
 
@@ -194,7 +194,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][id]` | **Uuid** <br>Specify employee ID to re-send invitation
 `data[attributes][firstname]` | **String** <br>First name of the employee
 `data[attributes][lastname]` | **String** <br>Last name of the employee

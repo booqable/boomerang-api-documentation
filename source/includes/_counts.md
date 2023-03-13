@@ -6,7 +6,7 @@ Get the counts for resources in an account.
 Every count has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `product_group_count` | **Integer** <br>Amount of product groups in an account
 `tax_rate_count` | **Integer** <br>Amount of tax rates in an account
@@ -31,7 +31,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "virtual-335bf145-d7d5-5d75-8e18-d2497fb766ea",
+    "id": "virtual-b968d28b-b143-57da-b67f-d7de76375867",
     "type": "counts",
     "attributes": {
       "product_group_count": 1,
@@ -53,8 +53,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
+-- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[counts]=id,created_at,updated_at`
 
 

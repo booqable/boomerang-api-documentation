@@ -6,7 +6,7 @@ Duplicates an `Order` with a selectable subset of fields and associations.
 Every order duplication has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `custom_lines` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
 `customer` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
@@ -24,7 +24,7 @@ Name | Description
 Order duplications have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `original_order` | **Orders**<br>Associated Original order
 `new_order` | **Orders** `readonly`<br>Associated New order
 
@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_order_id": "e62d6905-20d3-4d96-8d13-3d262e439b80",
+          "original_order_id": "dc7fdaf8-2990-42c4-9940-c3f6afe90c6e",
           "custom_lines": true,
           "customer": true,
           "dates": true,
@@ -62,7 +62,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c0fec5ec-6e22-509d-b66b-b6906c9064bc",
+    "id": "892a92e9-132a-531d-8769-4f6a0a2602da",
     "type": "order_duplications",
     "attributes": {
       "custom_lines": true,
@@ -73,8 +73,8 @@ Name | Description
       "stock_item_plannings": true,
       "tags": true,
       "deposit": "current",
-      "original_order_id": "e62d6905-20d3-4d96-8d13-3d262e439b80",
-      "new_order_id": "4a892c9e-a3c9-4117-ae0b-ce95e0ad7a86"
+      "original_order_id": "dc7fdaf8-2990-42c4-9940-c3f6afe90c6e",
+      "new_order_id": "326e1c87-d007-426f-bf1e-c0105e64b4b5"
     },
     "relationships": {
       "original_order": {
@@ -102,7 +102,7 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=original_order,new_order`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_duplications]=id,created_at,updated_at`
 
@@ -112,7 +112,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][custom_lines]` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
 `data[attributes][customer]` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
 `data[attributes][dates]` | **Boolean** <br>Indicates if the rental dates should be copied from the original Order.
