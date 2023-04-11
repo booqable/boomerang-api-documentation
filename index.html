@@ -987,6 +987,38 @@
               </ul>
           </li>
           <li>
+            <a href="#order-fulfilments" class="toc-h1 toc-link" data-title="Order fulfilments" title="Order fulfilments">Order fulfilments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-fulfilments-limitations" class="toc-h2 toc-link" data-title="Limitations" title="Limitations">Limitations</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-actions" class="toc-h2 toc-link" data-title="Actions" title="Actions">Actions</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-errors" class="toc-h2 toc-link" data-title="Errors" title="Errors">Errors</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-book" class="toc-h2 toc-link" data-title="Book" title="Book">Book</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-start" class="toc-h2 toc-link" data-title="Start" title="Start">Start</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilments-stop" class="toc-h2 toc-link" data-title="Stop" title="Stop">Stop</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#order-price-recalculations" class="toc-h1 toc-link" data-title="Order price recalculations" title="Order price recalculations">Order price recalculations</a>
               <ul class="toc-list-h2">
                   <li>
@@ -19830,6 +19862,726 @@ errors and other kinds of inventory errors.</p>
 
 <p><code>changed_lines</code> =&gt; 
 <code>item</code> =&gt; 
+<code>photo</code></p>
+
+<p><code>changed_plannings</code></p>
+
+<p><code>changed_stock_item_plannings</code></p>
+<h1 id='order-fulfilments'>Order fulfilments</h1>
+<p>Takes an Order through the fulfilment process.</p>
+<h2 id='order-fulfilments-limitations'>Limitations</h2>
+<p>Not all types of actions can be combined in the
+same request.</p>
+<h2 id='order-fulfilments-actions'>Actions</h2><h4 id='order-fulfilments-actions-includes-book-a-bundle'>Book a Bundle</h4>
+<p>Books a Bundle on an Order. For each unspecified
+BundleItem a Product variation needs to be selected.
+Specified BundleItems are automatically booked. These
+should not be included in the request.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book_bundle"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bundle_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_variations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"bundle_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"bundle_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='order-fulfilments-actions-includes-book-a-product'>Book a Product</h4>
+<p>Books a quantity of a Product on an Order. This can be any
+type of Product, including trackable Products.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book_product"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="err">N</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='order-fulfilments-actions-includes-book-stockitems'>Book StockItems</h4>
+<p>Books one or more StockItems of a trackable Product on an Order.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"book_stock_items"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"stock_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;id&gt;"</span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='order-fulfilments-actions-includes-start-a-product'>Start a Product</h4>
+<p>A quantity of a product is started. The quantity can
+be the same as the booked quantity, or less when
+a subset of items is started.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start_product"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="err">N</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='order-fulfilments-actions-includes-start-stockitems'>Start StockItems</h4>
+<p>One or more stock items of a trackable product are started.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"start_stock_items"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"stock_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='order-fulfilments-actions-includes-stop-a-product'>Stop a Product</h4>
+<p>A quantity of a product is returned. The
+product needs to have started. The quantity can
+be the same as the started quantity, or less when
+a subset of items is returned.</p>
+
+<p>Consumables and services can not be stopped.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stop_product"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="err">N</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='order-fulfilments-actions-includes-stop-stockitems'>Stop StockItems</h4>
+<p>One or more stock items of a trackable product are returned.
+Only stock items that have been started can be stopped.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stop_stock_items"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"planning_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"stock_item_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;id&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"&lt;id&gt;"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='order-fulfilments-errors'>Errors</h2>
+<p>Booking and starting items can be blocked by shortage
+errors and other kinds of inventory errors.</p>
+<h2 id='order-fulfilments-endpoints'>Endpoints</h2>
+<p><code>POST /api/boomerang/order_fulfilments</code></p>
+<h2 id='order-fulfilments-fields'>Fields</h2>
+<p>Every order fulfilment has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br></td>
+</tr>
+<tr>
+<td><code>actions</code></td>
+<td><strong>Array</strong> <code>writeonly</code><br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole.</td>
+</tr>
+<tr>
+<td><code>confirm_shortage</code></td>
+<td><strong>Boolean</strong> <code>writeonly</code><br>A value of <code>true</code> overrides shortage warnings when booking products on a reserved or started Order.</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>Uuid</strong> <br>The associated Order</td>
+</tr>
+</tbody></table>
+<h2 id='order-fulfilments-relationships'>Relationships</h2>
+<p>Order fulfilments have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order</code></td>
+<td><strong>Orders</strong> <code>readonly</code><br>Associated Order</td>
+</tr>
+<tr>
+<td><code>changed_lines</code></td>
+<td><strong>Lines</strong> <code>readonly</code><br>Associated Changed lines</td>
+</tr>
+<tr>
+<td><code>changed_plannings</code></td>
+<td><strong>Plannings</strong> <code>readonly</code><br>Associated Changed plannings</td>
+</tr>
+<tr>
+<td><code>changed_stock_item_plannings</code></td>
+<td><strong>Stock item plannings</strong> <code>readonly</code><br>Associated Changed stock item plannings</td>
+</tr>
+</tbody></table>
+<h2 id='order-fulfilments-book'>Book</h2>
+<blockquote>
+<p>Book a Bundle:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_fulfilments'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_fulfilments",
+        "attributes": {
+          "order_id": "eeafd18b-3f35-439c-a6a8-cb578874d7e9",
+          "actions": [
+            {
+              "action": "book_bundle",
+              "bundle_id": "5b71ec92-885a-4698-b645-c0efb140c463",
+              "product_variations": [
+                {
+                  "bundle_item_id": "a9855c58-1049-4b6a-b68e-9de5951a1751",
+                  "product_id": "30b8a48b-8a46-45e0-9449-c58c49e133fd"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9dd8fe03-fe5b-5099-8ebb-beb3f346f423"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_fulfilments"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eeafd18b-3f35-439c-a6a8-cb578874d7e9"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Book a Product:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_fulfilments'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_fulfilments",
+        "attributes": {
+          "order_id": "c292ea71-792d-4ad5-b349-bca9665102d0",
+          "actions": [
+            {
+              "action": "book_product",
+              "product_id": "80dcaa83-4ba0-45a5-8250-c861756a935f",
+              "quantity": 3
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12f962a0-50d4-55c5-8817-dd859aa5aa58"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_fulfilments"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c292ea71-792d-4ad5-b349-bca9665102d0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Book StockItems:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_fulfilments'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_fulfilments",
+        "attributes": {
+          "order_id": "16a885aa-c962-42bd-ba16-417debf8499f",
+          "actions": [
+            {
+              "action": "book_stock_items",
+              "product_id": "97dbc91d-bee8-455f-bcda-9c0f2cc94eca",
+              "stock_item_ids": [
+                "24711986-2a1b-4280-b1b0-daa8dea80e45",
+                "efc349fe-f0b8-4998-a6f6-9a96db319ac1"
+              ]
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d292a5b6-71ab-53e3-908a-292a962e2669"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_fulfilments"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16a885aa-c962-42bd-ba16-417debf8499f"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-fulfilments-book-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/order_fulfilments</code></p>
+<h3 id='order-fulfilments-book-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=order,changed_lines,changed_plannings</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_fulfilments]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-fulfilments-book-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][actions][]</code></td>
+<td><strong>Array</strong> <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole.</td>
+</tr>
+<tr>
+<td><code>data[attributes][confirm_shortage]</code></td>
+<td><strong>Boolean</strong> <br>A value of <code>true</code> overrides shortage warnings when booking products on a reserved or started Order.</td>
+</tr>
+<tr>
+<td><code>data[attributes][order_id]</code></td>
+<td><strong>Uuid</strong> <br>The associated Order</td>
+</tr>
+</tbody></table>
+<h3 id='order-fulfilments-book-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>order</code></p>
+
+<p><code>changed_lines</code> =&gt;
+<code>item</code> =&gt;
+<code>photo</code></p>
+
+<p><code>changed_plannings</code></p>
+
+<p><code>changed_stock_item_plannings</code></p>
+<h2 id='order-fulfilments-start'>Start</h2>
+<blockquote>
+<p>Start a Product:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_fulfilments'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_fulfilments",
+        "attributes": {
+          "order_id": "d39c53ce-f6bf-4dd1-a40c-737d2d62b9cf",
+          "actions": [
+            {
+              "action": "start_product",
+              "product_id": "f9789f97-0628-403d-838d-93d1533e6041",
+              "planning_id": "e4798f15-6433-458e-95cc-e841cd3c67b1",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eca2299d-a369-52e5-b5b4-1b2bd30f5f91"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_fulfilments"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d39c53ce-f6bf-4dd1-a40c-737d2d62b9cf"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Start StockItems:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_fulfilments'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_fulfilments",
+        "attributes": {
+          "order_id": "8c995050-d79f-48e6-810b-2cdbab5e2aeb",
+          "actions": [
+            {
+              "action": "start_stock_items",
+              "product_id": "3203d329-ed3f-48d7-bd36-570c0b4a6de8",
+              "planning_id": "87a1d0ec-13ac-481d-8b48-d1e64e9347a9",
+              "stock_item_ids": [
+                "a67992f9-5451-4080-b012-6b24567448ab"
+              ]
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23e4756e-3f4e-5b97-af36-51669c0ad2ca"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_fulfilments"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8c995050-d79f-48e6-810b-2cdbab5e2aeb"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-fulfilments-start-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/order_fulfilments</code></p>
+<h3 id='order-fulfilments-start-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=order,changed_lines,changed_plannings</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_fulfilments]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-fulfilments-start-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][actions][]</code></td>
+<td><strong>Array</strong> <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole.</td>
+</tr>
+<tr>
+<td><code>data[attributes][confirm_shortage]</code></td>
+<td><strong>Boolean</strong> <br>A value of <code>true</code> overrides shortage warnings when booking products on a reserved or started Order.</td>
+</tr>
+<tr>
+<td><code>data[attributes][order_id]</code></td>
+<td><strong>Uuid</strong> <br>The associated Order</td>
+</tr>
+</tbody></table>
+<h3 id='order-fulfilments-start-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>order</code></p>
+
+<p><code>changed_lines</code> =&gt;
+<code>item</code> =&gt;
+<code>photo</code></p>
+
+<p><code>changed_plannings</code></p>
+
+<p><code>changed_stock_item_plannings</code></p>
+<h2 id='order-fulfilments-stop'>Stop</h2>
+<blockquote>
+<p>Stop a Product:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_fulfilments'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_fulfilments",
+        "attributes": {
+          "order_id": "b88220b0-56b6-48bd-ae0f-f37aec8f34a6",
+          "actions": [
+            {
+              "action": "stop_product",
+              "product_id": "1649d1ed-425e-4005-bb76-4c82ee82b180",
+              "planning_id": "65877e25-f620-49a1-8e1b-e138036d83f3",
+              "quantity": 1
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d80a71d-4ee3-5e1c-b079-d84ed3f0c68b"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_fulfilments"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b88220b0-56b6-48bd-ae0f-f37aec8f34a6"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Stop StockItems:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_fulfilments'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_fulfilments",
+        "attributes": {
+          "order_id": "9d72807b-0981-4823-8a62-b9209108ca39",
+          "actions": [
+            {
+              "action": "stop_stock_items",
+              "product_id": "63a4c8ad-e990-4fd3-810d-d52c380df948",
+              "planning_id": "bddd07bd-0916-46b8-af47-2994846a255c",
+              "stock_item_ids": [
+                "148bae85-d054-4d3a-b34e-6fd386dfad12"
+              ]
+            }
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"693adffc-554d-5c61-bb7d-c1ef8600c363"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_fulfilments"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d72807b-0981-4823-8a62-b9209108ca39"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_lines"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"changed_stock_item_plannings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-fulfilments-stop-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/order_fulfilments</code></p>
+<h3 id='order-fulfilments-stop-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=order,changed_lines,changed_plannings</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_fulfilments]=id,created_at,updated_at</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-fulfilments-stop-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][actions][]</code></td>
+<td><strong>Array</strong> <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole.</td>
+</tr>
+<tr>
+<td><code>data[attributes][confirm_shortage]</code></td>
+<td><strong>Boolean</strong> <br>A value of <code>true</code> overrides shortage warnings when booking products on a reserved or started Order.</td>
+</tr>
+<tr>
+<td><code>data[attributes][order_id]</code></td>
+<td><strong>Uuid</strong> <br>The associated Order</td>
+</tr>
+</tbody></table>
+<h3 id='order-fulfilments-stop-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>order</code></p>
+
+<p><code>changed_lines</code> =&gt;
+<code>item</code> =&gt;
 <code>photo</code></p>
 
 <p><code>changed_plannings</code></p>
