@@ -5,7 +5,7 @@ Product groups hold general information and configuration about products. A prod
 **A product group supports the following product types:**
 
 - **Rental:** Rental products are your main products that you rent out. Even if your main product is officially a service, in Booqable you will want to add it as a rental product.
-- **Conusmable:** Consumable products are products that you do not plan on getting back. These are meant to be small items that you plan on selling along with a rental but do not expect to be returned with the rest of the order.
+- **Consumable:** Consumable products are products that you do not plan on getting back. These are meant to be small items that you plan on selling along with a rental but do not expect to be returned with the rest of the order.
 - **Service:** Service Item or Service Products are the optional extra services (or items) your want to offer to your products. These are not trackable, therefore they do not have an instock number.
 
 **The following tracking types can be defined:**
@@ -39,7 +39,7 @@ Product groups hold general information and configuration about products. A prod
 Every product group has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -47,18 +47,18 @@ Name | Description
 `archived_at` | **Datetime** `nullable` `readonly`<br>When the item was archived
 `type` | **String** `readonly`<br>One of `product_groups`, `products`, `bundles`
 `name` | **String** <br>Name of the item
+`group_name` | **String** `readonly`<br>The name of the ProductGroup, if this is a Product that is one of the variations in the group.
 `slug` | **String** `readonly`<br>Slug of the item
 `sku` | **String** <br>Stock keeping unit
 `lead_time` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
 `lag_time` | **Integer** <br>The amount of seconds the item should be unavailable after a reservation
 `product_type` | **String** <br>One of `rental`, `consumable`, `service`
 `tracking_type` | **String** <br>Tracking type (One of `none`, `bulk`, `trackable`, can only be set on creating ProductGroups)
-`trackable` | **Boolean** <br>Wheter stock items are tracked
+`trackable` | **Boolean** <br>Whether stock items are tracked
 `has_variations` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
+`variation` | **Boolean** <br>Whether this Item is a variation in a ProductGroup.
 `extra_information` | **String** `nullable`<br>Extra information about the item, shown on orders and documents
 `photo_url` | **String** `readonly`<br>Main photo url
-`remote_photo_url` | **String** `writeonly`<br>Url to an image on the web
-`photo_base64` | **String** `writeonly`<br>Base64 encoded photo, use this field to store a main photo
 `description` | **String** `nullable`<br>Description used in the online store
 `show_in_store` | **Boolean** <br>Whether to show this item in the online
 `sorting_weight` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
@@ -68,9 +68,14 @@ Name | Description
 `deposit_in_cents` | **Integer** <br>The value to use for deposit calculations
 `discountable` | **Boolean** <br>Whether discounts should be applied to this item (note that price rules will still apply)
 `taxable` | **Boolean** <br>Whether item is taxable
+`seo_title` | **String** <br>SEO title tag
+`seo_description` | **String** <br>SEO meta description tag
 `tag_list` | **Array** <br>List of tags
 `properties` | **Hash** `readonly`<br>Key value pairs of associated properties
-`photo_id` | **Uuid** <br>The associated Photo
+`photo_id` | **Uuid** `readonly`<br>The associated Photo
+`tax_category_id` | **Uuid** <br>The associated Tax category
+`price_ruleset_id` | **Uuid** <br>The associated Price ruleset
+`price_structure_id` | **Uuid** <br>The associated Price structure
 `allow_shortage` | **Boolean** <br>Whether shortages are allowed
 `shortage_limit` | **Integer** <br>The maximum allowed shortage for any date range
 `variation_fields` | **Array** <br>Array of fields that distinguish variations (e.g. color or size)
@@ -78,24 +83,23 @@ Name | Description
 `structure_price_in_cents` | **Integer** <br>Use this value when price type is `structure` or `private_structure`
 `properties_attributes` | **Array** `writeonly`<br>Create or update multiple properties associated with this product group
 `stock_item_properties` | **Array** <br>Available properties for stock items
-`quantity` | **Integer** `writeonly`<br>When creating a product group you can specify the quantity of items you have in stock. Note that for a trackable product group, stock items are generated automatically based on this quantity
 `confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm the shortage (over limit by changing `shortage_limit`)
-`tax_category_id` | **Uuid** <br>The associated Tax category
-`price_ruleset_id` | **Uuid** <br>The associated Price ruleset
-`price_structure_id` | **Uuid** <br>The associated Price structure
+`remote_photo_url` | **String** `writeonly`<br>Url to an image on the web
+`photo_base64` | **String** `writeonly`<br>Base64 encoded photo, use this field to store a main photo
 
 
 ## Relationships
 Product groups have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `photo` | **Photos** `readonly`<br>Associated Photo
-`products` | **Products** `readonly`<br>Associated Products
 `tax_category` | **Tax categories** `readonly`<br>Associated Tax category
 `price_ruleset` | **Price rulesets** `readonly`<br>Associated Price ruleset
 `price_structure` | **Price structures** `readonly`<br>Associated Price structure
+`inventory_levels` | **Inventory levels** `readonly`<br>Associated Inventory levels
 `properties` | **Properties** `readonly`<br>Associated Properties
+`products` | **Products** `readonly`<br>Associated Products
 
 
 ## Listing product groups
@@ -116,15 +120,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "a64ca6b3-b39a-4b30-9737-ae95ddd13e14",
+      "id": "f9cc494c-1f8b-4c0d-9c01-d2dec36c6bf2",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2022-11-23T11:37:04+00:00",
-        "updated_at": "2022-11-23T11:37:04+00:00",
+        "created_at": "2023-05-15T13:51:13+00:00",
+        "updated_at": "2023-05-15T13:51:13+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
         "name": "iPad Pro",
+        "group_name": null,
         "slug": "ipad-pro",
         "sku": "SKU",
         "lead_time": 0,
@@ -133,6 +138,7 @@ Name | Description
         "tracking_type": "bulk",
         "trackable": false,
         "has_variations": false,
+        "variation": false,
         "extra_information": null,
         "photo_url": null,
         "description": null,
@@ -144,28 +150,25 @@ Name | Description
         "deposit_in_cents": 0,
         "discountable": true,
         "taxable": true,
+        "seo_title": null,
+        "seo_description": null,
         "tag_list": [],
         "properties": {},
         "photo_id": null,
+        "tax_category_id": null,
+        "price_ruleset_id": null,
+        "price_structure_id": null,
         "allow_shortage": false,
         "shortage_limit": 0,
         "variation_fields": [],
         "flat_fee_price_in_cents": 0,
         "structure_price_in_cents": 0,
-        "stock_item_properties": [],
-        "tax_category_id": null,
-        "price_ruleset_id": null,
-        "price_structure_id": null
+        "stock_item_properties": []
       },
       "relationships": {
         "photo": {
           "links": {
             "related": null
-          }
-        },
-        "products": {
-          "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=a64ca6b3-b39a-4b30-9737-ae95ddd13e14"
           }
         },
         "tax_category": {
@@ -183,9 +186,19 @@ Name | Description
             "related": null
           }
         },
+        "inventory_levels": {
+          "links": {
+            "related": "api/boomerang/inventory_levels?filter[item_id]=f9cc494c-1f8b-4c0d-9c01-d2dec36c6bf2"
+          }
+        },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=a64ca6b3-b39a-4b30-9737-ae95ddd13e14&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=f9cc494c-1f8b-4c0d-9c01-d2dec36c6bf2&filter[owner_type]=product_groups"
+          }
+        },
+        "products": {
+          "links": {
+            "related": "api/boomerang/products?filter[product_group_id]=f9cc494c-1f8b-4c0d-9c01-d2dec36c6bf2"
           }
         }
       }
@@ -204,11 +217,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=photo,properties`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -219,7 +232,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -227,6 +240,7 @@ Name | Description
 `archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `type` | **String** <br>`eq`, `not_eq`
 `name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`group_name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `slug` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sku` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `lead_time` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -235,6 +249,7 @@ Name | Description
 `tracking_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `trackable` | **Boolean** <br>`eq`
 `has_variations` | **Boolean** <br>`eq`
+`variation` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
@@ -245,16 +260,20 @@ Name | Description
 `deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discountable` | **Boolean** <br>`eq`
 `taxable` | **Boolean** <br>`eq`
-`tag_list` | **Array** <br>`eq`
+`seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tag_list` | **String** <br>`eq`
+`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
+`price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 `q` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`collection_id` | **Uuid** <br>`eq`
+`product_group_id` | **Uuid** <br>`eq`
 `allow_shortage` | **Boolean** <br>`eq`
 `shortage_limit` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `flat_fee_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `structure_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `photo_id` | **Uuid** <br>`eq`, `not_eq`
-`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
-`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
-`price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -262,7 +281,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -345,13 +364,13 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "34e0b5f9-0786-4f56-946c-a56434b20975"
+      "id": "673490f2-87ff-49c8-b8a4-69285644f03c"
     },
     {
-      "id": "ffc890e1-abb5-4d90-a84d-17e351c12b2c"
+      "id": "f6948baa-ec53-45da-b7a0-79ae9d82f0b6"
     },
     {
-      "id": "bfd7403a-77c4-4bc4-919b-5c14b450b23e"
+      "id": "e3e471a9-dd99-4027-8fb4-b5d4f6616d4a"
     }
   ]
 }
@@ -366,11 +385,11 @@ Use advanced search to make logical filter groups with and/or operators.
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=photo,properties`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -381,7 +400,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -389,6 +408,7 @@ Name | Description
 `archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `type` | **String** <br>`eq`, `not_eq`
 `name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`group_name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `slug` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sku` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `lead_time` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -397,6 +417,7 @@ Name | Description
 `tracking_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `trackable` | **Boolean** <br>`eq`
 `has_variations` | **Boolean** <br>`eq`
+`variation` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
@@ -407,16 +428,20 @@ Name | Description
 `deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discountable` | **Boolean** <br>`eq`
 `taxable` | **Boolean** <br>`eq`
-`tag_list` | **Array** <br>`eq`
+`seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tag_list` | **String** <br>`eq`
+`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
+`price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 `q` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`collection_id` | **Uuid** <br>`eq`
+`product_group_id` | **Uuid** <br>`eq`
 `allow_shortage` | **Boolean** <br>`eq`
 `shortage_limit` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `flat_fee_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `structure_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `photo_id` | **Uuid** <br>`eq`, `not_eq`
-`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
-`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
-`price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -424,7 +449,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -462,7 +487,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/ff9904fb-a500-4d71-9d9f-cb74cc9c2fa5' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/1cba2a3e-970b-4a61-9b8d-847d261c93bc' \
     --header 'content-type: application/json' \
 ```
 
@@ -471,15 +496,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ff9904fb-a500-4d71-9d9f-cb74cc9c2fa5",
+    "id": "1cba2a3e-970b-4a61-9b8d-847d261c93bc",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-11-23T11:37:07+00:00",
-      "updated_at": "2022-11-23T11:37:07+00:00",
+      "created_at": "2023-05-15T13:51:17+00:00",
+      "updated_at": "2023-05-15T13:51:17+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
       "name": "iPad Pro",
+      "group_name": null,
       "slug": "ipad-pro",
       "sku": "SKU",
       "lead_time": 0,
@@ -488,6 +514,7 @@ This request accepts the following includes:
       "tracking_type": "bulk",
       "trackable": false,
       "has_variations": false,
+      "variation": false,
       "extra_information": null,
       "photo_url": null,
       "description": null,
@@ -499,28 +526,25 @@ This request accepts the following includes:
       "deposit_in_cents": 0,
       "discountable": true,
       "taxable": true,
+      "seo_title": null,
+      "seo_description": null,
       "tag_list": [],
       "properties": {},
       "photo_id": null,
+      "tax_category_id": null,
+      "price_ruleset_id": null,
+      "price_structure_id": null,
       "allow_shortage": false,
       "shortage_limit": 0,
       "variation_fields": [],
       "flat_fee_price_in_cents": 0,
       "structure_price_in_cents": 0,
-      "stock_item_properties": [],
-      "tax_category_id": null,
-      "price_ruleset_id": null,
-      "price_structure_id": null
+      "stock_item_properties": []
     },
     "relationships": {
       "photo": {
         "links": {
           "related": null
-        }
-      },
-      "products": {
-        "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=ff9904fb-a500-4d71-9d9f-cb74cc9c2fa5"
         }
       },
       "tax_category": {
@@ -538,9 +562,19 @@ This request accepts the following includes:
           "related": null
         }
       },
+      "inventory_levels": {
+        "links": {
+          "related": "api/boomerang/inventory_levels?filter[item_id]=1cba2a3e-970b-4a61-9b8d-847d261c93bc"
+        }
+      },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=ff9904fb-a500-4d71-9d9f-cb74cc9c2fa5&filter[owner_type]=product_groups"
+          "related": "api/boomerang/properties?filter[owner_id]=1cba2a3e-970b-4a61-9b8d-847d261c93bc&filter[owner_type]=product_groups"
+        }
+      },
+      "products": {
+        "links": {
+          "related": "api/boomerang/products?filter[product_group_id]=1cba2a3e-970b-4a61-9b8d-847d261c93bc"
         }
       }
     }
@@ -558,9 +592,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
 
 
 ### Includes
@@ -625,15 +659,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "39e5309d-490d-49cf-bca4-4b6cdc9bf9fb",
+    "id": "5d4905c6-a876-4f4e-9eb5-24ebce10ef51",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-11-23T11:37:08+00:00",
-      "updated_at": "2022-11-23T11:37:08+00:00",
+      "created_at": "2023-05-15T13:51:18+00:00",
+      "updated_at": "2023-05-15T13:51:18+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
       "name": "iPad mini",
+      "group_name": null,
       "slug": "ipad-mini",
       "sku": "IPAD_MINI",
       "lead_time": 0,
@@ -642,6 +677,7 @@ This request accepts the following includes:
       "tracking_type": "trackable",
       "trackable": true,
       "has_variations": false,
+      "variation": false,
       "extra_information": null,
       "photo_url": null,
       "description": null,
@@ -653,29 +689,26 @@ This request accepts the following includes:
       "deposit_in_cents": 0,
       "discountable": true,
       "taxable": true,
+      "seo_title": null,
+      "seo_description": null,
       "tag_list": [
         "tablets",
         "apple"
       ],
       "properties": {},
       "photo_id": null,
+      "tax_category_id": null,
+      "price_ruleset_id": null,
+      "price_structure_id": null,
       "allow_shortage": false,
       "shortage_limit": 0,
       "variation_fields": [],
       "flat_fee_price_in_cents": 0,
       "structure_price_in_cents": 0,
-      "stock_item_properties": [],
-      "tax_category_id": null,
-      "price_ruleset_id": null,
-      "price_structure_id": null
+      "stock_item_properties": []
     },
     "relationships": {
       "photo": {
-        "meta": {
-          "included": false
-        }
-      },
-      "products": {
         "meta": {
           "included": false
         }
@@ -695,7 +728,17 @@ This request accepts the following includes:
           "included": false
         }
       },
+      "inventory_levels": {
+        "meta": {
+          "included": false
+        }
+      },
       "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "products": {
         "meta": {
           "included": false
         }
@@ -715,9 +758,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -725,18 +768,17 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][sku]` | **String** <br>Stock keeping unit
 `data[attributes][lead_time]` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
 `data[attributes][lag_time]` | **Integer** <br>The amount of seconds the item should be unavailable after a reservation
 `data[attributes][product_type]` | **String** <br>One of `rental`, `consumable`, `service`
 `data[attributes][tracking_type]` | **String** <br>Tracking type (One of `none`, `bulk`, `trackable`, can only be set on creating ProductGroups)
-`data[attributes][trackable]` | **Boolean** <br>Wheter stock items are tracked
+`data[attributes][trackable]` | **Boolean** <br>Whether stock items are tracked
 `data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
+`data[attributes][variation]` | **Boolean** <br>Whether this Item is a variation in a ProductGroup.
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
-`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
-`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
 `data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
 `data[attributes][price_type]` | **String** <br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
@@ -744,8 +786,12 @@ Name | Description
 `data[attributes][deposit_in_cents]` | **Integer** <br>The value to use for deposit calculations
 `data[attributes][discountable]` | **Boolean** <br>Whether discounts should be applied to this item (note that price rules will still apply)
 `data[attributes][taxable]` | **Boolean** <br>Whether item is taxable
+`data[attributes][seo_title]` | **String** <br>SEO title tag
+`data[attributes][seo_description]` | **String** <br>SEO meta description tag
 `data[attributes][tag_list][]` | **Array** <br>List of tags
-`data[attributes][photo_id]` | **Uuid** <br>The associated Photo
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
+`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
+`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
 `data[attributes][allow_shortage]` | **Boolean** <br>Whether shortages are allowed
 `data[attributes][shortage_limit]` | **Integer** <br>The maximum allowed shortage for any date range
 `data[attributes][variation_fields][]` | **Array** <br>Array of fields that distinguish variations (e.g. color or size)
@@ -753,11 +799,9 @@ Name | Description
 `data[attributes][structure_price_in_cents]` | **Integer** <br>Use this value when price type is `structure` or `private_structure`
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this product group
 `data[attributes][stock_item_properties][]` | **Array** <br>Available properties for stock items
-`data[attributes][quantity]` | **Integer** <br>When creating a product group you can specify the quantity of items you have in stock. Note that for a trackable product group, stock items are generated automatically based on this quantity
 `data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm the shortage (over limit by changing `shortage_limit`)
-`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
-`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
+`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
 
 
 ### Includes
@@ -794,11 +838,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/198cd368-d86e-443d-9585-9f64b29dce28' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/17c0bf48-f905-4ded-8cb1-999c51c037e2' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "198cd368-d86e-443d-9585-9f64b29dce28",
+        "id": "17c0bf48-f905-4ded-8cb1-999c51c037e2",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -812,15 +856,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "198cd368-d86e-443d-9585-9f64b29dce28",
+    "id": "17c0bf48-f905-4ded-8cb1-999c51c037e2",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2022-11-23T11:37:08+00:00",
-      "updated_at": "2022-11-23T11:37:08+00:00",
+      "created_at": "2023-05-15T13:51:18+00:00",
+      "updated_at": "2023-05-15T13:51:19+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
       "name": "iPad mini",
+      "group_name": null,
       "slug": "ipad-pro",
       "sku": "SKU",
       "lead_time": 0,
@@ -829,6 +874,7 @@ This request accepts the following includes:
       "tracking_type": "bulk",
       "trackable": false,
       "has_variations": false,
+      "variation": false,
       "extra_information": null,
       "photo_url": null,
       "description": null,
@@ -840,26 +886,23 @@ This request accepts the following includes:
       "deposit_in_cents": 0,
       "discountable": true,
       "taxable": true,
+      "seo_title": null,
+      "seo_description": null,
       "tag_list": [],
       "properties": {},
       "photo_id": null,
+      "tax_category_id": null,
+      "price_ruleset_id": null,
+      "price_structure_id": null,
       "allow_shortage": false,
       "shortage_limit": 0,
       "variation_fields": [],
       "flat_fee_price_in_cents": 0,
       "structure_price_in_cents": 0,
-      "stock_item_properties": [],
-      "tax_category_id": null,
-      "price_ruleset_id": null,
-      "price_structure_id": null
+      "stock_item_properties": []
     },
     "relationships": {
       "photo": {
-        "meta": {
-          "included": false
-        }
-      },
-      "products": {
         "meta": {
           "included": false
         }
@@ -879,7 +922,17 @@ This request accepts the following includes:
           "included": false
         }
       },
+      "inventory_levels": {
+        "meta": {
+          "included": false
+        }
+      },
       "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "products": {
         "meta": {
           "included": false
         }
@@ -899,9 +952,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -909,18 +962,17 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the item
 `data[attributes][sku]` | **String** <br>Stock keeping unit
 `data[attributes][lead_time]` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
 `data[attributes][lag_time]` | **Integer** <br>The amount of seconds the item should be unavailable after a reservation
 `data[attributes][product_type]` | **String** <br>One of `rental`, `consumable`, `service`
 `data[attributes][tracking_type]` | **String** <br>Tracking type (One of `none`, `bulk`, `trackable`, can only be set on creating ProductGroups)
-`data[attributes][trackable]` | **Boolean** <br>Wheter stock items are tracked
+`data[attributes][trackable]` | **Boolean** <br>Whether stock items are tracked
 `data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
+`data[attributes][variation]` | **Boolean** <br>Whether this Item is a variation in a ProductGroup.
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
-`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
-`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
 `data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
 `data[attributes][price_type]` | **String** <br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
@@ -928,8 +980,12 @@ Name | Description
 `data[attributes][deposit_in_cents]` | **Integer** <br>The value to use for deposit calculations
 `data[attributes][discountable]` | **Boolean** <br>Whether discounts should be applied to this item (note that price rules will still apply)
 `data[attributes][taxable]` | **Boolean** <br>Whether item is taxable
+`data[attributes][seo_title]` | **String** <br>SEO title tag
+`data[attributes][seo_description]` | **String** <br>SEO meta description tag
 `data[attributes][tag_list][]` | **Array** <br>List of tags
-`data[attributes][photo_id]` | **Uuid** <br>The associated Photo
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
+`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
+`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
 `data[attributes][allow_shortage]` | **Boolean** <br>Whether shortages are allowed
 `data[attributes][shortage_limit]` | **Integer** <br>The maximum allowed shortage for any date range
 `data[attributes][variation_fields][]` | **Array** <br>Array of fields that distinguish variations (e.g. color or size)
@@ -937,11 +993,9 @@ Name | Description
 `data[attributes][structure_price_in_cents]` | **Integer** <br>Use this value when price type is `structure` or `private_structure`
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this product group
 `data[attributes][stock_item_properties][]` | **Array** <br>Available properties for stock items
-`data[attributes][quantity]` | **Integer** <br>When creating a product group you can specify the quantity of items you have in stock. Note that for a trackable product group, stock items are generated automatically based on this quantity
 `data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm the shortage (over limit by changing `shortage_limit`)
-`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
-`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
+`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
 
 
 ### Includes
@@ -978,7 +1032,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/108e3de3-bd02-4856-b345-b42aa5953a92' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/f2b47216-1fe7-47a7-b335-6577818b4b03' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -1000,9 +1054,8 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=photo,products,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
 
 
 ### Includes

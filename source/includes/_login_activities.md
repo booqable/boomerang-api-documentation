@@ -5,14 +5,14 @@ A list of all login attempts for the current employee.
 Every login activity has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `ip` | **String** `readonly`<br>IP address of the login attempt
 `strategy` | **String** `readonly`<br>One of `saml`, `token`, `single_use`, `database_authenticatable`, `rememberable`, `BooqableApp-iOS`
 `success` | **Boolean** `readonly`<br>Whether attempt was succesful
-`failure_reason` | **String** `nullable` `readonly`<br>Why the login failed, One of `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `session_limited`, `invited`
+`failure_reason` | **String** `nullable` `readonly`<br>Why the login failed, One of `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`
 `user_agent` | **String** `readonly`<br>Client application identifier
 `city` | **String** `nullable` `readonly`<br>City where login attempt was performed
 `region` | **String** `nullable` `readonly`<br>Region where login attempt was performed
@@ -37,10 +37,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "6a833b67-436b-4973-a7d4-6ba67d5410c1",
+      "id": "109e297a-ee58-401d-bbad-0a0fc46ecd45",
       "type": "login_activities",
       "attributes": {
-        "created_at": "2022-11-23T11:35:15+00:00",
+        "created_at": "2023-05-15T13:49:15+00:00",
         "ip": "192.168.1.28",
         "strategy": "saml",
         "success": false,
@@ -65,11 +65,10 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[login_activities]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[login_activities]=created_at,updated_at,ip`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -80,7 +79,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -94,7 +93,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 

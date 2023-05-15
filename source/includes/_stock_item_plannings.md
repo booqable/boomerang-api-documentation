@@ -13,7 +13,7 @@ Stock item plannings are never directly created or updated through their resourc
 Every stock item planning has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -31,7 +31,7 @@ Name | Description
 Stock item plannings have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `stock_item` | **Stock items** `readonly`<br>Associated Stock item
 `planning` | **Plannings** `readonly`<br>Associated Planning
 `order` | **Orders** `readonly`<br>Associated Order
@@ -55,34 +55,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "737ed51d-d841-4080-a7ab-e02654ef29cc",
+      "id": "20cdc8dd-33d5-4c7e-a60a-e3dfdd3d3446",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2022-11-23T11:37:57+00:00",
-        "updated_at": "2022-11-23T11:37:57+00:00",
+        "created_at": "2023-05-15T13:52:08+00:00",
+        "updated_at": "2023-05-15T13:52:08+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "077e3e4a-c27a-4419-b8ae-a683991f58ab",
-        "planning_id": "d2b72bb5-ef79-4f23-beaf-046368ca2ed0",
-        "order_id": "90eb1439-da54-4199-bb4a-bd215d17ed65"
+        "stock_item_id": "fb358946-e53e-42ff-8e47-2de43688a3eb",
+        "planning_id": "b0c1600b-5e21-4666-a1bb-369b3568e076",
+        "order_id": "014aa077-c71e-4bc4-a24b-208de2d71536"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/077e3e4a-c27a-4419-b8ae-a683991f58ab"
+            "related": "api/boomerang/stock_items/fb358946-e53e-42ff-8e47-2de43688a3eb"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/d2b72bb5-ef79-4f23-beaf-046368ca2ed0"
+            "related": "api/boomerang/plannings/b0c1600b-5e21-4666-a1bb-369b3568e076"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/90eb1439-da54-4199-bb4a-bd215d17ed65"
+            "related": "api/boomerang/orders/014aa077-c71e-4bc4-a24b-208de2d71536"
           }
         }
       }
@@ -101,11 +101,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=stock_item,planning,order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -116,7 +116,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -135,7 +135,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -170,7 +170,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/35a06b0f-d13f-47bb-b153-5780144e28f4' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/3bb96fe6-5ffe-4aab-8619-0c13d6af2b93' \
     --header 'content-type: application/json' \
 ```
 
@@ -191,9 +191,8 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=stock_item,planning,order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
 
 
 ### Includes

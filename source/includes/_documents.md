@@ -29,7 +29,7 @@ Invoices are automatically generated and updated based on changes made to an ord
 Every document has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -40,6 +40,7 @@ Name | Description
 `prefix` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
 `prefix_with_number` | **String** `readonly`<br>Rendered prefix with document number
 `date` | **Date** <br>Date the document was finalized
+`due_date` | **Date** <br>The latest date by which the invoice must be fully paid
 `name` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
 `address` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
 `reference` | **String** <br>A project number or other reference
@@ -51,7 +52,7 @@ Name | Description
 `signature_base64` | **String** `writeonly`<br>Base64 encoded signate, use this field to store a a signature
 `signature_url` | **String** `readonly`<br>Url where the signature is stored
 `deposit_type` | **String** `nullable`<br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`deposit_value` | **Integer** <br>The value to use for `deposit_type`
+`deposit_value` | **Float** <br>The value to use for `deposit_type`
 `tag_list` | **Array** <br>Case insensitive tag list
 `price_in_cents` | **Integer** `readonly`<br>Subtotal excl. taxes (excl. deposit)
 `grand_total_in_cents` | **Integer** `readonly`<br>Total excl. taxes (excl. deposit)
@@ -72,15 +73,15 @@ Name | Description
 `customer_id` | **Uuid** `nullable`<br>The associated Customer
 `tax_region_id` | **Uuid** `nullable`<br>The associated Tax region
 `coupon_id` | **Uuid** `nullable`<br>The associated Coupon
-`body` | **String** `extra` `readonly`<br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document
-`footer` | **String** `extra` `readonly`<br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document
+`body` | **String** `readonly`<br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document
+`footer` | **String** `readonly`<br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document
 
 
 ## Relationships
 Documents have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders**<br>Associated Order
 `customer` | **Customers**<br>Associated Customer
 `tax_region` | **Tax regions**<br>Associated Tax region
@@ -107,11 +108,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "dc6c712e-dff1-4e61-a61c-2d6bdbc497a6",
+      "id": "e518f835-8e8e-4797-9239-3ebf44d766b2",
       "type": "documents",
       "attributes": {
-        "created_at": "2022-11-23T11:34:05+00:00",
-        "updated_at": "2022-11-23T11:34:05+00:00",
+        "created_at": "2023-05-15T13:47:57+00:00",
+        "updated_at": "2023-05-15T13:47:57+00:00",
         "archived": false,
         "archived_at": null,
         "document_type": "invoice",
@@ -119,6 +120,7 @@ Name | Description
         "prefix": null,
         "prefix_with_number": null,
         "date": null,
+        "due_date": null,
         "name": "John Doe",
         "address": null,
         "reference": null,
@@ -129,7 +131,7 @@ Name | Description
         "status": "payment_due",
         "signature_url": null,
         "deposit_type": "percentage",
-        "deposit_value": 10,
+        "deposit_value": 10.0,
         "tag_list": [],
         "price_in_cents": 80250,
         "grand_total_in_cents": 72225,
@@ -146,20 +148,20 @@ Name | Description
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
-        "order_id": "0c2dbb7c-aeb9-4b7b-aa2c-4eedd78c3105",
-        "customer_id": "b4b58b5c-1d09-4272-9012-abb709b74d84",
+        "order_id": "e858a774-df78-4a64-828c-f4a2c769277b",
+        "customer_id": "4d4c9770-b026-4a67-8902-fe6ac9bfdc14",
         "tax_region_id": null,
         "coupon_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/0c2dbb7c-aeb9-4b7b-aa2c-4eedd78c3105"
+            "related": "api/boomerang/orders/e858a774-df78-4a64-828c-f4a2c769277b"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/b4b58b5c-1d09-4272-9012-abb709b74d84"
+            "related": "api/boomerang/customers/4d4c9770-b026-4a67-8902-fe6ac9bfdc14"
           }
         },
         "tax_region": {
@@ -174,12 +176,12 @@ Name | Description
         },
         "lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=dc6c712e-dff1-4e61-a61c-2d6bdbc497a6&filter[owner_type]=documents"
+            "related": "api/boomerang/lines?filter[owner_id]=e518f835-8e8e-4797-9239-3ebf44d766b2&filter[owner_type]=documents"
           }
         },
         "tax_values": {
           "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=dc6c712e-dff1-4e61-a61c-2d6bdbc497a6&filter[owner_type]=documents"
+            "related": "api/boomerang/tax_values?filter[owner_id]=e518f835-8e8e-4797-9239-3ebf44d766b2&filter[owner_type]=documents"
           }
         }
       }
@@ -198,11 +200,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -213,7 +215,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -224,6 +226,7 @@ Name | Description
 `prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`due_date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `revised` | **Boolean** <br>`eq`
@@ -261,7 +264,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `status` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -334,12 +337,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "date": {
-                    "gte": "2022-11-20T11:34:12.447Z"
+                    "gte": "2023-05-12T13:48:02.691Z"
                   }
                 },
                 {
                   "date": {
-                    "lte": "2022-11-26T11:34:12.447Z"
+                    "lte": "2023-05-18T13:48:02.691Z"
                   }
                 }
               ]
@@ -356,10 +359,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "99108cdd-59d5-4c67-b18b-44df424347df"
+      "id": "055eb166-0687-4bf3-8689-e08278ab82ad"
     },
     {
-      "id": "73338cef-9610-4d0d-bf26-7e41a5b45937"
+      "id": "e1406b3d-92af-4bfe-976b-868709176983"
     }
   ]
 }
@@ -374,11 +377,11 @@ Use advanced search to make logical filter groups with and/or operators.
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -389,7 +392,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -400,6 +403,7 @@ Name | Description
 `prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`due_date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `revised` | **Boolean** <br>`eq`
@@ -437,7 +441,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `status` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
@@ -483,7 +487,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/documents/993473b2-3f82-4def-b1b3-c71a8a6ab8cc' \
+    --url 'https://example.booqable.com/api/boomerang/documents/bfa28d66-5e32-4a36-9988-cfb7acd74b4a' \
     --header 'content-type: application/json' \
 ```
 
@@ -492,11 +496,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "993473b2-3f82-4def-b1b3-c71a8a6ab8cc",
+    "id": "bfa28d66-5e32-4a36-9988-cfb7acd74b4a",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-11-23T11:34:14+00:00",
-      "updated_at": "2022-11-23T11:34:14+00:00",
+      "created_at": "2023-05-15T13:48:04+00:00",
+      "updated_at": "2023-05-15T13:48:04+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -504,6 +508,7 @@ This request accepts the following includes:
       "prefix": null,
       "prefix_with_number": null,
       "date": null,
+      "due_date": null,
       "name": "John Doe",
       "address": null,
       "reference": null,
@@ -514,7 +519,7 @@ This request accepts the following includes:
       "status": "payment_due",
       "signature_url": null,
       "deposit_type": "percentage",
-      "deposit_value": 10,
+      "deposit_value": 10.0,
       "tag_list": [],
       "price_in_cents": 80250,
       "grand_total_in_cents": 72225,
@@ -531,20 +536,20 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "390d5beb-6b0d-47c4-bab6-d56af27b6983",
-      "customer_id": "b61b8169-77f4-4d4b-aef1-8d1e88714ed8",
+      "order_id": "beeb4f29-9ee1-4702-b080-d2be9b058cf6",
+      "customer_id": "32104e59-dae6-44ab-b3c1-974cdaecc43c",
       "tax_region_id": null,
       "coupon_id": null
     },
     "relationships": {
       "order": {
         "links": {
-          "related": "api/boomerang/orders/390d5beb-6b0d-47c4-bab6-d56af27b6983"
+          "related": "api/boomerang/orders/beeb4f29-9ee1-4702-b080-d2be9b058cf6"
         }
       },
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/b61b8169-77f4-4d4b-aef1-8d1e88714ed8"
+          "related": "api/boomerang/customers/32104e59-dae6-44ab-b3c1-974cdaecc43c"
         }
       },
       "tax_region": {
@@ -559,12 +564,12 @@ This request accepts the following includes:
       },
       "lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=993473b2-3f82-4def-b1b3-c71a8a6ab8cc&filter[owner_type]=documents"
+          "related": "api/boomerang/lines?filter[owner_id]=bfa28d66-5e32-4a36-9988-cfb7acd74b4a&filter[owner_type]=documents"
         }
       },
       "tax_values": {
         "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=993473b2-3f82-4def-b1b3-c71a8a6ab8cc&filter[owner_type]=documents"
+          "related": "api/boomerang/tax_values?filter[owner_id]=bfa28d66-5e32-4a36-9988-cfb7acd74b4a&filter[owner_type]=documents"
         }
       }
     }
@@ -582,9 +587,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
 
 
 ### Includes
@@ -634,7 +639,7 @@ This request accepts the following includes:
         "type": "documents",
         "attributes": {
           "document_type": "contract",
-          "order_id": "7a5605be-802d-405d-8c58-a1d6060bd2c5"
+          "order_id": "f7ea2b1a-65e3-452a-9776-2ef3bfdeb218"
         }
       }
     }'
@@ -645,18 +650,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d1b38295-d9e4-4dfe-8d53-223ef2e36713",
+    "id": "574d553c-e53e-4734-bb5c-51da9e7ed362",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-11-23T11:34:17+00:00",
-      "updated_at": "2022-11-23T11:34:17+00:00",
+      "created_at": "2023-05-15T13:48:07+00:00",
+      "updated_at": "2023-05-15T13:48:07+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "contract",
       "number": 1,
       "prefix": null,
       "prefix_with_number": "1",
-      "date": "2022-11-23",
+      "date": "2023-05-15",
+      "due_date": null,
       "name": "John Doe",
       "address": "",
       "reference": null,
@@ -667,7 +673,7 @@ This request accepts the following includes:
       "status": "unconfirmed",
       "signature_url": null,
       "deposit_type": "percentage",
-      "deposit_value": 10,
+      "deposit_value": 10.0,
       "tag_list": [],
       "price_in_cents": 80250,
       "grand_total_in_cents": 72225,
@@ -684,8 +690,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "7a5605be-802d-405d-8c58-a1d6060bd2c5",
-      "customer_id": "feb2839a-581b-45a6-94c6-479813ec775b",
+      "order_id": "f7ea2b1a-65e3-452a-9776-2ef3bfdeb218",
+      "customer_id": "75ac9d91-85d3-4245-ad2b-cdec829b5f4b",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -735,9 +741,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -745,11 +751,12 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
 `data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
 `data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
 `data[attributes][date]` | **Date** <br>Date the document was finalized
+`data[attributes][due_date]` | **Date** <br>The latest date by which the invoice must be fully paid
 `data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
 `data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
 `data[attributes][reference]` | **String** <br>A project number or other reference
@@ -760,7 +767,7 @@ Name | Description
 `data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
 `data[attributes][signature_base64]` | **String** <br>Base64 encoded signate, use this field to store a a signature
 `data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Integer** <br>The value to use for `deposit_type`
+`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
 `data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
 `data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
@@ -809,11 +816,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/documents/ee8fd86f-e86f-4098-9637-3a463b7849de' \
+    --url 'https://example.booqable.com/api/boomerang/documents/41cf3764-3baf-4bb0-8633-edb68c4380ed' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ee8fd86f-e86f-4098-9637-3a463b7849de",
+        "id": "41cf3764-3baf-4bb0-8633-edb68c4380ed",
         "type": "documents",
         "attributes": {
           "name": "Jane Doe"
@@ -827,11 +834,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ee8fd86f-e86f-4098-9637-3a463b7849de",
+    "id": "41cf3764-3baf-4bb0-8633-edb68c4380ed",
     "type": "documents",
     "attributes": {
-      "created_at": "2022-11-23T11:34:19+00:00",
-      "updated_at": "2022-11-23T11:34:19+00:00",
+      "created_at": "2023-05-15T13:48:09+00:00",
+      "updated_at": "2023-05-15T13:48:10+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -839,6 +846,7 @@ This request accepts the following includes:
       "prefix": null,
       "prefix_with_number": null,
       "date": null,
+      "due_date": null,
       "name": "Jane Doe",
       "address": null,
       "reference": null,
@@ -849,7 +857,7 @@ This request accepts the following includes:
       "status": "payment_due",
       "signature_url": null,
       "deposit_type": "percentage",
-      "deposit_value": 10,
+      "deposit_value": 10.0,
       "tag_list": [],
       "price_in_cents": 80250,
       "grand_total_in_cents": 72225,
@@ -866,8 +874,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "8e923aff-8a3f-4764-b7e1-3510695be309",
-      "customer_id": "a51c5c5b-211e-402a-9cd6-7d1ffb82c846",
+      "order_id": "4db5e49c-5427-401f-babd-9d2239e495fb",
+      "customer_id": "873363d3-54c8-4141-832a-9187dd4c545b",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -917,9 +925,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -927,11 +935,12 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
 `data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
 `data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
 `data[attributes][date]` | **Date** <br>Date the document was finalized
+`data[attributes][due_date]` | **Date** <br>The latest date by which the invoice must be fully paid
 `data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
 `data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
 `data[attributes][reference]` | **String** <br>A project number or other reference
@@ -942,7 +951,7 @@ Name | Description
 `data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
 `data[attributes][signature_base64]` | **String** <br>Base64 encoded signate, use this field to store a a signature
 `data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Integer** <br>The value to use for `deposit_type`
+`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
 `data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
 `data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
@@ -992,7 +1001,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/documents/e44513ed-fe6b-44b1-a075-90a0440db69a' \
+    --url 'https://example.booqable.com/api/boomerang/documents/1bc20b1b-fe43-4305-9249-cb5b238eb085' \
     --header 'content-type: application/json' \
 ```
 
@@ -1013,9 +1022,8 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=order,customer,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
 
 
 ### Includes

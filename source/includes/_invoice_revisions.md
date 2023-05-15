@@ -12,7 +12,7 @@ made to the order since the last finalized invoice).
 Every invoice revision has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `order_id` | **Uuid** <br>The associated Order
 `revised_invoice_id` | **Uuid** `readonly`<br>The associated Revised invoice
@@ -23,7 +23,7 @@ Name | Description
 Invoice revisions have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `order` | **Orders**<br>Associated Order
 `revised_invoice` | **Documents** `readonly`<br>Associated Revised invoice
 `revision_invoice` | **Documents** `readonly`<br>Associated Revision invoice
@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "invoice_revisions",
         "attributes": {
-          "order_id": "c330b7fa-396f-44ad-9959-b93ffdab1773"
+          "order_id": "606ebbef-3b97-46fc-a927-cbd10b2be114"
         }
       }
     }'
@@ -54,12 +54,12 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a3dad9c2-3d1e-58d3-9644-297a7aac15c6",
+    "id": "96902231-61d5-53c5-b101-95f12847a10f",
     "type": "invoice_revisions",
     "attributes": {
-      "order_id": "c330b7fa-396f-44ad-9959-b93ffdab1773",
-      "revised_invoice_id": "deb750d9-1c54-4c4e-a171-a83454b61549",
-      "revision_invoice_id": "984f4b04-e69a-434d-9b9c-87f05c8ebc96"
+      "order_id": "606ebbef-3b97-46fc-a927-cbd10b2be114",
+      "revised_invoice_id": "88de6b5e-b728-4b16-a1ce-7e2c70ce49f5",
+      "revision_invoice_id": "e6315d8c-022d-409e-bffc-802e8cb4bf3e"
     },
     "relationships": {
       "order": {
@@ -92,9 +92,9 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,revised_invoice,revision_invoice`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[invoice_revisions]=id,created_at,updated_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[invoice_revisions]=order_id,revised_invoice_id,revision_invoice_id`
 
 
 ### Request body
@@ -102,7 +102,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
 
 

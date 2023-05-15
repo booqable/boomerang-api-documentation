@@ -282,7 +282,7 @@ Allowed attribute keys:
 Every operation has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -294,14 +294,14 @@ Name | Description
 `error_data` | **Array** `readonly`<br>An array of strings with errors that happened during execution of the operation.
 `error_count` | **Integer** `readonly`<br>The number of errors that happened during the execution. See `error_data`.
 `employee_id` | **Uuid** `readonly`<br>The associated Employee
-`operation_data` | **Hash** `extra`<br>An object with the params used to initiate the operation. See the description of the operation.
+`operation_data` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
 
 
 ## Relationships
 Operations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
@@ -323,11 +323,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "fe9940d2-ca20-4a2a-bfaf-a8f7c9275352",
+      "id": "ccce8d39-e797-4154-9244-08dcaf12b702",
       "type": "operations",
       "attributes": {
-        "created_at": "2022-11-23T11:35:26+00:00",
-        "updated_at": "2022-11-23T11:35:26+00:00",
+        "created_at": "2023-05-15T13:49:31+00:00",
+        "updated_at": "2023-05-15T13:49:31+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -337,12 +337,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "65bd5b5e-a8b3-4ecf-81e8-cf4e1a1d37c8"
+        "employee_id": "75fcd62f-fe19-4566-8a2a-5ab18791f5ef"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/65bd5b5e-a8b3-4ecf-81e8-cf4e1a1d37c8"
+            "related": "api/boomerang/employees/75fcd62f-fe19-4566-8a2a-5ab18791f5ef"
           }
         }
       }
@@ -361,11 +361,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -376,7 +376,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -390,7 +390,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -413,7 +413,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/963bbb49-2116-4716-86bf-55851205a26a' \
+    --url 'https://example.booqable.com/api/boomerang/operations/8291234d-0622-4508-8ca7-55b023e83f92' \
     --header 'content-type: application/json' \
 ```
 
@@ -422,11 +422,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "963bbb49-2116-4716-86bf-55851205a26a",
+    "id": "8291234d-0622-4508-8ca7-55b023e83f92",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-11-23T11:35:27+00:00",
-      "updated_at": "2022-11-23T11:35:27+00:00",
+      "created_at": "2023-05-15T13:49:31+00:00",
+      "updated_at": "2023-05-15T13:49:31+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -436,12 +436,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "d35ea086-29df-4263-b272-005eb188eb67"
+      "employee_id": "3560d2ea-89bd-4490-a645-6e68ba8e8f55"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/d35ea086-29df-4263-b272-005eb188eb67"
+          "related": "api/boomerang/employees/3560d2ea-89bd-4490-a645-6e68ba8e8f55"
         }
       }
     }
@@ -459,9 +459,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
 
 
 ### Includes
@@ -509,11 +509,11 @@ When creating an operation, it will start running in the background. With the `i
 ```json
   {
   "data": {
-    "id": "289b0356-a2ac-4f8f-aae3-61467eb10071",
+    "id": "ce4b95c4-f2d7-4a06-9e0f-4878d60e6ca4",
     "type": "operations",
     "attributes": {
-      "created_at": "2022-11-23T11:35:27+00:00",
-      "updated_at": "2022-11-23T11:35:27+00:00",
+      "created_at": "2023-05-15T13:49:32+00:00",
+      "updated_at": "2023-05-15T13:49:32+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -523,7 +523,7 @@ When creating an operation, it will start running in the background. With the `i
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "9320bb8f-8162-440c-a101-4bb07b2897fe"
+      "employee_id": "8e53c835-c55e-43f5-bb2f-72e02911223f"
     },
     "relationships": {
       "employee": {
@@ -546,9 +546,9 @@ When creating an operation, it will start running in the background. With the `i
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=id,created_at,updated_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
 
 
 ### Request body
@@ -556,7 +556,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
 
 

@@ -6,7 +6,7 @@ Report on how consumable products are performing. The report is filterable by da
 Every report consumable has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `created_at` | **Datetime** <br>
 `q` | **String** `writeonly`<br>Query for a specific product
@@ -22,7 +22,7 @@ Name | Description
 Report consumables have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `product` | **Products** `readonly`<br>Associated Product
 
 
@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2022-11-18+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-23+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2023-05-10+00%3A00%3A00+UTC&filter%5Btill%5D=2023-05-15+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,21 +44,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "62da0f93-9720-4c01-8791-90897e214717",
+      "id": "7db0ca34-6dca-46c1-90d0-fcb449f51f26",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2022-11-23T11:37:21+00:00",
-        "name": "Product 46",
+        "created_at": "2023-05-15T13:51:34+00:00",
+        "name": "Product 1000057",
         "sold": 2,
         "returned": 0,
-        "turnover_in_cents": 10000,
+        "turnover_in_cents": 0,
         "returned_in_cents": 0,
-        "product_id": "62da0f93-9720-4c01-8791-90897e214717"
+        "product_id": "7db0ca34-6dca-46c1-90d0-fcb449f51f26"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/62da0f93-9720-4c01-8791-90897e214717"
+            "related": "api/boomerang/products/7db0ca34-6dca-46c1-90d0-fcb449f51f26"
           }
         }
       }
@@ -77,11 +77,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_consumables]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_consumables]=created_at,name,sold`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -92,7 +92,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `q` | **String** <br>`eq`
 `product_id` | **Uuid** <br>`eq`
 `from` | **Datetime** <br>`eq`
@@ -106,7 +106,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
 

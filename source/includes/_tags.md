@@ -12,7 +12,7 @@ Tags are designed to find specific resources faster. They can be added to the fo
 Every tag has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `for` | **String** `writeonly`<br>The resource to show the tag counts for. One of `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`
 `name` | **String** <br>Name of the tag
@@ -37,7 +37,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "c0ff7a18-5c78-4921-bec5-f1a927ea9be5",
+      "id": "7bbd42eb-2771-45bb-9adb-a20256e1d977",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -45,7 +45,7 @@ Name | Description
       }
     },
     {
-      "id": "e65d6db6-6b99-4d9b-945a-e0641b15def2",
+      "id": "059f3528-79e9-447a-8876-8c79de6e4a80",
       "type": "tags",
       "attributes": {
         "name": "webshop",
@@ -66,11 +66,10 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tags]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tags]=name,count`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -81,7 +80,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `for` | **String** <br>`eq`
 
 
@@ -90,7 +89,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 

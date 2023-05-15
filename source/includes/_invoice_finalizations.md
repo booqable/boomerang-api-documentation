@@ -10,7 +10,7 @@ generated with prorated changes.
 Every invoice finalization has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `document_id` | **Uuid** <br>The associated Document
 
@@ -19,7 +19,7 @@ Name | Description
 Invoice finalizations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `document` | **Documents**<br>Associated Document
 
 
@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "invoice_finalization",
         "attributes": {
-          "document_id": "f1938644-0d86-4244-8ba2-952933cfd471"
+          "document_id": "5c874e12-7436-49a0-bc8d-10f689ef748c"
         }
       }
     }'
@@ -48,10 +48,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bb04b980-e6a4-5ad4-b63d-3ad5afc7f870",
+    "id": "505bf58f-f6db-58ef-82d5-f8eabd87732b",
     "type": "invoice_finalizations",
     "attributes": {
-      "document_id": "f1938644-0d86-4244-8ba2-952933cfd471"
+      "document_id": "5c874e12-7436-49a0-bc8d-10f689ef748c"
     },
     "relationships": {
       "document": {
@@ -74,9 +74,9 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=document`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[invoice_finalizations]=id,created_at,updated_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[invoice_finalizations]=document_id`
 
 
 ### Request body
@@ -84,7 +84,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][document_id]` | **Uuid** <br>The associated Document
 
 

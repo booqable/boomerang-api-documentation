@@ -10,12 +10,12 @@ Employees give access to a Booqable account. You can invite employees by sending
 Every employee invitation has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>Specify employee ID to re-send invitation
 `firstname` | **String** `writeonly`<br>First name of the employee
 `lastname` | **String** `writeonly`<br>Last name of the employee
 `email` | **String** `writeonly`<br>Employee's e-mail address
-`permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
+`permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`
 `employee_id` | **Uuid** <br>The associated Employee
 
 
@@ -23,7 +23,7 @@ Name | Description
 Employee invitations have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
@@ -55,27 +55,27 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "053d83b3-2c98-5c5b-a8c9-94589aa71a25",
+    "id": "c4b60cab-cdbb-53e8-9900-4cd09b0104e5",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "e4c6ec36-5791-4453-b4f3-0cee9ef00e59"
+      "employee_id": "acc43bd8-386c-4b07-beb0-4b32126b76ef"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "e4c6ec36-5791-4453-b4f3-0cee9ef00e59"
+          "id": "acc43bd8-386c-4b07-beb0-4b32126b76ef"
         }
       }
     }
   },
   "included": [
     {
-      "id": "e4c6ec36-5791-4453-b4f3-0cee9ef00e59",
+      "id": "acc43bd8-386c-4b07-beb0-4b32126b76ef",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-23T11:34:29+00:00",
-        "updated_at": "2022-11-23T11:34:29+00:00",
+        "created_at": "2023-05-15T13:48:22+00:00",
+        "updated_at": "2023-05-15T13:48:22+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -88,7 +88,7 @@ Name | Description
         "time_to_confirm": 0,
         "permissions": [],
         "has_two_factor_autentication": false,
-        "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
+        "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
       }
     }
@@ -109,7 +109,7 @@ Note that you can also update other fields.:
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "ca3e0bee-02cf-4747-a01a-ff998efd12ae",
+          "id": "769a7680-c67f-4c5c-ba08-449025dce89f",
           "email": "jane@doe.com"
         }
       },
@@ -122,27 +122,27 @@ Note that you can also update other fields.:
 ```json
   {
   "data": {
-    "id": "ca3e0bee-02cf-4747-a01a-ff998efd12ae",
+    "id": "769a7680-c67f-4c5c-ba08-449025dce89f",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "ca3e0bee-02cf-4747-a01a-ff998efd12ae"
+      "employee_id": "769a7680-c67f-4c5c-ba08-449025dce89f"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "ca3e0bee-02cf-4747-a01a-ff998efd12ae"
+          "id": "769a7680-c67f-4c5c-ba08-449025dce89f"
         }
       }
     }
   },
   "included": [
     {
-      "id": "ca3e0bee-02cf-4747-a01a-ff998efd12ae",
+      "id": "769a7680-c67f-4c5c-ba08-449025dce89f",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-23T11:34:30+00:00",
-        "updated_at": "2022-11-23T11:34:30+00:00",
+        "created_at": "2023-05-15T13:48:22+00:00",
+        "updated_at": "2023-05-15T13:48:22+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -163,10 +163,11 @@ Note that you can also update other fields.:
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
-          "make_invoice_revisions"
+          "make_invoice_revisions",
+          "override_rental_period"
         ],
         "has_two_factor_autentication": false,
-        "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=blank",
+        "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
       }
     }
@@ -184,9 +185,9 @@ Note that you can also update other fields.:
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employee_invitations]=id,created_at,updated_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employee_invitations]=employee_id`
 
 
 ### Request body
@@ -194,12 +195,12 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][id]` | **Uuid** <br>Specify employee ID to re-send invitation
 `data[attributes][firstname]` | **String** <br>First name of the employee
 `data[attributes][lastname]` | **String** <br>Last name of the employee
 `data[attributes][email]` | **String** <br>Employee's e-mail address
-`data[attributes][permissions][]` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`
+`data[attributes][permissions][]` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`
 `data[attributes][employee_id]` | **Uuid** <br>The associated Employee
 
 

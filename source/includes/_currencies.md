@@ -6,7 +6,7 @@ The currency object encapsulates all information about a monetary unit.
 Every currency has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **String** `readonly`<br>The ISO code of the currency you want to fetch
 `decimal_mark` | **String** `readonly`<br>Character between the whole and fraction amounts
 `disambiguate_symbol` | **String** `readonly`<br>Alternative currency used if symbol is ambiguous
@@ -71,9 +71,8 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[currencies]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[currencies]=decimal_mark,disambiguate_symbol,html_entity`
 
 
 ### Includes

@@ -19,7 +19,7 @@ Customers are an essential part of your business. You can manage settings and cu
 Every customer has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -43,7 +43,7 @@ Name | Description
 Customers have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `merge_suggestion_customer` | **Customers** `readonly`<br>Associated Merge suggestion customer
 `tax_region` | **Tax regions** `readonly`<br>Associated Tax region
 `properties` | **Properties** `readonly`<br>Associated Properties
@@ -69,11 +69,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0f2f45a1-8a00-45eb-88ac-473128ece451",
+      "id": "b1281864-054e-4471-b351-114920d12605",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-11-23T11:33:49+00:00",
-        "updated_at": "2022-11-23T11:33:49+00:00",
+        "created_at": "2023-05-15T13:47:44+00:00",
+        "updated_at": "2023-05-15T13:47:44+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
@@ -101,17 +101,17 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=0f2f45a1-8a00-45eb-88ac-473128ece451&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=b1281864-054e-4471-b351-114920d12605&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=0f2f45a1-8a00-45eb-88ac-473128ece451&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=b1281864-054e-4471-b351-114920d12605&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=0f2f45a1-8a00-45eb-88ac-473128ece451&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=b1281864-054e-4471-b351-114920d12605&filter[owner_type]=customers"
           }
         }
       }
@@ -130,11 +130,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -145,7 +145,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -170,7 +170,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `legal_type` | **Array** <br>`count`
@@ -180,7 +180,21 @@ Name | Description
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+`barcode`
+
+
+`properties`
+
+
+`tax_region`
+
+
+
+
+
+
 ## Searching customers
 
 Use advanced search to make logical filter groups with and/or operators.
@@ -236,10 +250,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "eefe2fc0-988b-4f71-8590-20e40a3cb139"
+      "id": "bd37b127-009b-47e4-b0e3-76faa5feeae5"
     },
     {
-      "id": "c0063d17-1707-498d-a84c-73540424b139"
+      "id": "97995390-060e-46a3-9656-339089dd048d"
     }
   ]
 }
@@ -254,11 +268,11 @@ Use advanced search to make logical filter groups with and/or operators.
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -269,7 +283,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -294,7 +308,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `archived` | **Array** <br>`count`
 `legal_type` | **Array** <br>`count`
@@ -304,7 +318,21 @@ Name | Description
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+`barcode`
+
+
+`properties`
+
+
+`tax_region`
+
+
+
+
+
+
 ## Fetching a customer
 
 
@@ -313,7 +341,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/080aad52-91cd-45e1-b7b9-3b8e6ddc2505?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/52948c5b-424d-4c3a-8ed4-cb9ddda8f212?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -322,11 +350,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "080aad52-91cd-45e1-b7b9-3b8e6ddc2505",
+    "id": "52948c5b-424d-4c3a-8ed4-cb9ddda8f212",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-23T11:33:52+00:00",
-      "updated_at": "2022-11-23T11:33:52+00:00",
+      "created_at": "2023-05-15T13:47:46+00:00",
+      "updated_at": "2023-05-15T13:47:46+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
@@ -354,19 +382,19 @@ This request does not accept any includes
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=080aad52-91cd-45e1-b7b9-3b8e6ddc2505&filter[owner_type]=customers"
+          "related": "api/boomerang/properties?filter[owner_id]=52948c5b-424d-4c3a-8ed4-cb9ddda8f212&filter[owner_type]=customers"
         },
         "data": []
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=080aad52-91cd-45e1-b7b9-3b8e6ddc2505&filter[owner_type]=customers"
+          "related": "api/boomerang/barcodes?filter[owner_id]=52948c5b-424d-4c3a-8ed4-cb9ddda8f212&filter[owner_type]=customers"
         },
         "data": null
       },
       "notes": {
         "links": {
-          "related": "api/boomerang/notes?filter[owner_id]=080aad52-91cd-45e1-b7b9-3b8e6ddc2505&filter[owner_type]=customers"
+          "related": "api/boomerang/notes?filter[owner_id]=52948c5b-424d-4c3a-8ed4-cb9ddda8f212&filter[owner_type]=customers"
         }
       }
     }
@@ -384,22 +412,22 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
 
 
 ### Includes
 
 This request accepts the following includes:
 
-`tax_region`
+`barcode`
 
 
 `properties`
 
 
-`barcode`
+`tax_region`
 
 
 
@@ -432,11 +460,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4216f233-a6fd-4a29-855c-37ae3b6084c7",
+    "id": "c13c4e7d-99d2-4be7-9a45-1c812c9c73d0",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-23T11:33:54+00:00",
-      "updated_at": "2022-11-23T11:33:54+00:00",
+      "created_at": "2023-05-15T13:47:48+00:00",
+      "updated_at": "2023-05-15T13:47:48+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -492,9 +520,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -502,7 +530,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Person or Company name
 `data[attributes][email]` | **String** <br>E-mail address used for communication
 `data[attributes][deposit_type]` | **String** <br>One of `default`, `none`, `percentage_total`, `percentage`, `fixed`
@@ -519,13 +547,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_region`
+`barcode`
 
 
 `properties`
 
 
-`barcode`
+`tax_region`
 
 
 
@@ -540,11 +568,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/851ba29b-c789-4110-af3b-cef17a2ca427' \
+    --url 'https://example.booqable.com/api/boomerang/customers/f1953636-e6d5-4245-80c1-5c9d2944b76a' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "851ba29b-c789-4110-af3b-cef17a2ca427",
+        "id": "f1953636-e6d5-4245-80c1-5c9d2944b76a",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -558,11 +586,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "851ba29b-c789-4110-af3b-cef17a2ca427",
+    "id": "f1953636-e6d5-4245-80c1-5c9d2944b76a",
     "type": "customers",
     "attributes": {
-      "created_at": "2022-11-23T11:33:56+00:00",
-      "updated_at": "2022-11-23T11:33:56+00:00",
+      "created_at": "2023-05-15T13:47:49+00:00",
+      "updated_at": "2023-05-15T13:47:50+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
@@ -618,9 +646,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -628,7 +656,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Person or Company name
 `data[attributes][email]` | **String** <br>E-mail address used for communication
 `data[attributes][deposit_type]` | **String** <br>One of `default`, `none`, `percentage_total`, `percentage`, `fixed`
@@ -645,13 +673,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_region`
+`barcode`
 
 
 `properties`
 
 
-`barcode`
+`tax_region`
 
 
 
@@ -666,7 +694,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/6911f9dd-d7ea-4139-ab2e-6bda6ddb6e3c' \
+    --url 'https://example.booqable.com/api/boomerang/customers/8f0faa16-6f06-407f-a535-0fec58515089' \
     --header 'content-type: application/json' \
 ```
 
@@ -687,9 +715,8 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=merge_suggestion_customer,tax_region,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
 
 
 ### Includes

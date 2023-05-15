@@ -6,7 +6,7 @@ Report on how stock items are performing. The report is filterable by date and c
 Every report stock item has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `created_at` | **Datetime** `readonly`<br>
 `q` | **String** `writeonly`<br>Query for a specific stock item
@@ -25,7 +25,7 @@ Name | Description
 Report stock items have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `stock_item` | **Report stock items** `readonly`<br>Associated Stock item
 `product` | **Products** `readonly`<br>Associated Product
 `location` | **Locations** `readonly`<br>Associated Location
@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2022-11-18+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-23+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2023-05-10+00%3A00%3A00+UTC&filter%5Btill%5D=2023-05-15+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,18 +49,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "virtual-1542414e-f5d1-5188-a993-d9c60791144b",
+      "id": "virtual-34598322-733f-59b9-9b9b-d7688c4dd982",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2022-11-23T11:37:38+00:00",
-        "product_name": "Product 49",
-        "identifier": "id189",
+        "created_at": "2023-05-15T13:51:51+00:00",
+        "product_name": "Product 1000060",
+        "identifier": "id1000190",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
-        "turnover_in_cents": 2000,
-        "stock_item_id": "a2138a9e-4b3e-4035-9cce-f06e7866a6a4",
-        "product_id": "e280aa43-4f97-41ce-93cb-d44731df6418",
+        "turnover_in_cents": 0,
+        "stock_item_id": "10c0abef-16f9-48ec-8f2c-bb69fc7cdeb7",
+        "product_id": "d2a121dd-c702-475b-9c47-973d7976183b",
         "location_id": null
       },
       "relationships": {
@@ -71,7 +71,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/e280aa43-4f97-41ce-93cb-d44731df6418"
+            "related": "api/boomerang/products/d2a121dd-c702-475b-9c47-973d7976183b"
           }
         },
         "location": {
@@ -82,18 +82,18 @@ Name | Description
       }
     },
     {
-      "id": "virtual-3f949ac3-96a2-59da-af41-7b6ccedddc3e",
+      "id": "virtual-7bc363c0-8cff-5010-bbf0-e223a0ef35b6",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2022-11-23T11:37:38+00:00",
-        "product_name": "Product 49",
-        "identifier": "id190",
+        "created_at": "2023-05-15T13:51:51+00:00",
+        "product_name": "Product 1000060",
+        "identifier": "id1000191",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
-        "turnover_in_cents": 2000,
-        "stock_item_id": "4ac40631-ddb0-4778-9355-918989894e45",
-        "product_id": "e280aa43-4f97-41ce-93cb-d44731df6418",
+        "turnover_in_cents": 0,
+        "stock_item_id": "13e07a8e-91fd-4c98-97e7-d2c555811f51",
+        "product_id": "d2a121dd-c702-475b-9c47-973d7976183b",
         "location_id": null
       },
       "relationships": {
@@ -104,7 +104,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/e280aa43-4f97-41ce-93cb-d44731df6418"
+            "related": "api/boomerang/products/d2a121dd-c702-475b-9c47-973d7976183b"
           }
         },
         "location": {
@@ -128,11 +128,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=stock_item,product,location`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_stock_items]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=stock_item,product`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_stock_items]=created_at,product_name,identifier`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -143,7 +143,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `q` | **String** <br>`eq`
 `stock_item_id` | **Uuid** <br>`eq`
 `product_id` | **Uuid** <br>`eq`
@@ -158,7 +158,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 

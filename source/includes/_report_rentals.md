@@ -6,7 +6,7 @@ Report on how rental products are performing. The report is filterable by date a
 Every report rental has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `created_at` | **Datetime** `readonly`<br>
 `name` | **String** `readonly`<br>Product name
@@ -22,7 +22,7 @@ Name | Description
 Report rentals have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `product` | **Products** `readonly`<br>Associated Product
 
 
@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2022-11-18+00%3A00%3A00+UTC&filter%5Btill%5D=2022-11-23+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2023-05-10+00%3A00%3A00+UTC&filter%5Btill%5D=2023-05-15+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,22 +44,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "virtual-23a9a198-4cbf-5a1b-9c78-bb7a818df043",
+      "id": "virtual-e33b3714-fa27-5d3a-9df6-aa4c32b99892",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2022-11-23T11:37:33+00:00",
-        "name": "Product 48",
+        "created_at": "2023-05-15T13:51:45+00:00",
+        "name": "Product 1000059",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
-        "turnover_in_cents": 4000,
+        "turnover_in_cents": 0,
         "quantity": 10,
-        "product_id": "f1b85602-8393-4400-858b-ec77551e75bd"
+        "product_id": "0b891e04-cacb-4026-836b-f1f35a85d771"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/f1b85602-8393-4400-858b-ec77551e75bd"
+            "related": "api/boomerang/products/0b891e04-cacb-4026-836b-f1f35a85d771"
           }
         }
       }
@@ -78,11 +78,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=product`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rentals]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:07Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rentals]=created_at,name,charge_duration_in_seconds`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -93,7 +93,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `q` | **String** <br>`eq`
 `product_id` | **Uuid** <br>`eq`
 `from` | **Datetime** <br>`eq`
@@ -110,7 +110,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
 `tracking_type` | **Array** <br>`count`

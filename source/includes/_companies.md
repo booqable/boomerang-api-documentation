@@ -11,7 +11,7 @@ Every action performed in a Booqable account is scoped to a company; A company h
 Every company has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -45,12 +45,16 @@ Name | Description
 `financial_line_2` | **String** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
 `vat_number` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
 `custom_domain` | **String** <br>Custom domain to use for hosted store and checkout
-`development` | **Boolean** `readonly`<br>Wheter this is a development account
+`development` | **Boolean** `readonly`<br>Whether this is a development account
 `shop_theme_id` | **Uuid** <br>ID of installed shop theme
-`in_europe` | **Boolean** `extra` `readonly`<br>Whether company is situated in europe
-`continent` | **String** `extra` `readonly`<br>Continent the company is situated
-`subscription` | **Hash** `extra` `readonly`<br>Details about the subscription
-`third_party_id` | **String** `extra` `readonly`<br>ID used for third party tools
+`years_active` | **String** `readonly`<br>The amount of active years, given during signup
+`source` | **String** `readonly`<br>UTM source present during signup
+`medium` | **String** `readonly`<br>UTM medium present during signup
+`tenant_token` | **String** `readonly`<br>Token
+`in_europe` | **Boolean** `readonly`<br>Whether company is situated in europe
+`continent` | **String** `readonly`<br>Continent the company is situated
+`subscription` | **Hash** `readonly`<br>Details about the subscription
+`third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
 ## Fetching a company
@@ -70,14 +74,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fc4b610b-a501-4f29-b1c5-87e43a922eb0",
+    "id": "9ea78258-355d-41e8-b689-e1f1c4927944",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-23T11:33:43+00:00",
-      "updated_at": "2022-11-23T11:33:43+00:00",
+      "created_at": "2023-05-15T13:47:37+00:00",
+      "updated_at": "2023-05-15T13:47:37+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail46@company.com",
+      "email": "mail48@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -104,7 +108,11 @@ Name | Description
       "vat_number": null,
       "custom_domain": null,
       "development": false,
-      "shop_theme_id": null
+      "shop_theme_id": null,
+      "years_active": "2-5",
+      "source": null,
+      "medium": null,
+      "tenant_token": "d9ab278ffdeceac312584b1f54989fb8"
     }
   },
   "meta": {}
@@ -120,9 +128,8 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
 
 
 ### Includes
@@ -133,7 +140,7 @@ This request does not accept any includes
 The subscription has the following fields:
 
 Name | Description
-- | -
+-- | --
 `trial_ends_at` | **Datetime** `readonly`<br>When the trial ends
 `activated` | **Boolean** `readonly`<br>Whether subscription is active
 `suspended` | **Boolean** `readonly`<br>Whether account is suspended
@@ -148,6 +155,7 @@ Name | Description
 `current_period_end` | **Datetime** `readonly`<br>When the current billing period ends
 `quantity` | **Integer** `readonly`<br>Quantity of the subscription (used for legacy subscriptions to buy seats)
 `extra_employees` | **Integer** `readonly`<br>Extra employees billed for
+`extra_locations` | **Integer** `readonly`<br>Extra locations billed for
 `amount_in_cents` | **Integer** `readonly`<br>Amount in cents
 `discount_in_cents` | **Integer** `readonly`<br>Discount in cents
 `balance_in_cents` | **Integer** `readonly`<br>Balance in cents, will be deducted from the next invoice(s)
@@ -175,24 +183,23 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1de0236a-d219-4697-bf39-bd71a5f35414",
+    "id": "2166de01-7867-450f-ac79-a6f1be48b6d9",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2022-12-07T11:33:44.302Z",
+        "trial_ends_at": "2023-05-29T13:47:37.967Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
         "canceled_at": null,
         "on_hold": false,
         "needs_activation": false,
-        "legacy": false,
         "product": "Premium",
         "plan_id": "pro_monthly",
         "interval": "month",
         "current_period_end": null,
-        "quantity": 1,
         "extra_employees": 0,
+        "extra_locations": 0,
         "amount_in_cents": 29900,
         "discount_in_cents": 0,
         "balance_in_cents": 0,
@@ -228,8 +235,10 @@ Name | Description
           "employees": 15,
           "email_max_recipients": 500,
           "rate_limit_max": 250,
-          "rate_limit_period": 60
-        }
+          "rate_limit_period": 60,
+          "locations": 3
+        },
+        "can_try_plan": true
       }
     }
   },
@@ -246,9 +255,8 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
 
 
 ### Includes
@@ -266,7 +274,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c2beb52d-c9cd-459c-adaf-e054819584eb",
+        "id": "43b00912-b0dd-4b4f-80c2-1fb3b666a361",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -280,14 +288,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c2beb52d-c9cd-459c-adaf-e054819584eb",
+    "id": "43b00912-b0dd-4b4f-80c2-1fb3b666a361",
     "type": "companies",
     "attributes": {
-      "created_at": "2022-11-23T11:33:44+00:00",
-      "updated_at": "2022-11-23T11:33:44+00:00",
+      "created_at": "2023-05-15T13:47:38+00:00",
+      "updated_at": "2023-05-15T13:47:38+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail48@company.com",
+      "email": "mail50@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -314,7 +322,11 @@ This request does not accept any includes
       "vat_number": null,
       "custom_domain": null,
       "development": false,
-      "shop_theme_id": null
+      "shop_theme_id": null,
+      "years_active": "2-5",
+      "source": null,
+      "medium": null,
+      "tenant_token": "4f38387894f304d49fee5e927026c941"
     }
   },
   "meta": {}
@@ -330,9 +342,8 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
 
 
 ### Request body
@@ -340,7 +351,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][name]` | **String** <br>Name of the company
 `data[attributes][email]` | **String** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
 `data[attributes][billing_email]` | **String** <br>Used to send billing emails to

@@ -7,6 +7,7 @@ The session tells you whether settings are changed since the last time they were
 - Settings
 - Default properties
 - Clusters and Locations
+- Employee's notification subscriptions
 
 When there's an ID mismatch, it's advised to fetch the session again and include `employee`, `company`, and `settings`. Default properties, clusters, and locations should be requested separately as they can be paginated.
 
@@ -19,20 +20,21 @@ When there's an ID mismatch, it's advised to fetch the session again and include
 Every session has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>
 `company_id` | **Uuid** <br>The associated Company
 `employee_id` | **Uuid** <br>The associated Employee
 `locations_updated_at` | **Datetime** <br>When locations were last updated
 `clusters_updated_at` | **Datetime** <br>When the clusters were last updated
 `default_properties_updated_at` | **Datetime** <br>When the default properties were last updated
+`notification_subscriptions_updated_at` | **Datetime** <br>When the employee last made a change to their notification subscriptions
 
 
 ## Relationships
 Sessions have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `company` | **Companies** `readonly`<br>Associated Company
 `employee` | **Employees** `readonly`<br>Associated Employee
 `settings` | **Settings** `readonly`<br>Associated Settings
@@ -55,15 +57,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cccd9282-a512-57b6-8d40-473d75ce879d",
+    "id": "dadcdcd2-4450-558e-8bfc-333f0238042d",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-23T11:37:44+00:00",
-      "company_id": "96557113-38c3-4c1e-a0fb-3d57f6c25be6",
-      "employee_id": "1ebc8284-045b-4636-a2de-1d6a9a97f133",
-      "locations_updated_at": "2022-11-23T11:37:44+00:00",
-      "clusters_updated_at": "2022-11-23T11:37:44+00:00",
-      "default_properties_updated_at": "2022-11-23T11:37:44+00:00"
+      "updated_at": "2023-05-15T13:51:55+00:00",
+      "company_id": "17680f83-d098-4620-9a3a-babddf30c8d9",
+      "employee_id": "dd398a17-783e-4552-bf93-c8aadc1a306c",
+      "locations_updated_at": "2023-05-15T13:51:55+00:00",
+      "clusters_updated_at": "2023-05-15T13:51:55+00:00",
+      "default_properties_updated_at": "2023-05-15T13:51:55+00:00",
+      "notification_subscriptions_updated_at": "2023-05-15T13:51:55+00:00"
     },
     "relationships": {
       "company": {
@@ -96,9 +99,9 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=employee,company,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=company_id,employee_id,locations_updated_at`
 
 
 ### Includes
@@ -135,15 +138,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2c243f6a-f469-5e26-b324-c12c48bee560",
+    "id": "dadcdcd2-4450-558e-8bfc-333f0238042d",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2022-11-23T11:37:45+00:00",
-      "company_id": "31cc344c-05b2-4afc-8341-ae5eff7f1c8c",
-      "employee_id": "39d2493f-c3be-472b-8a9d-77c2efa1eb70",
+      "updated_at": "2023-05-15T13:51:55+00:00",
+      "company_id": "e1ba6765-bf6e-44b1-b0b1-c9246498f7e1",
+      "employee_id": "beeb8cd0-94df-4240-bd54-115a3e2afa0b",
       "locations_updated_at": null,
       "clusters_updated_at": null,
-      "default_properties_updated_at": null
+      "default_properties_updated_at": null,
+      "notification_subscriptions_updated_at": "2023-05-15T13:51:55+00:00"
     },
     "relationships": {
       "company": {
@@ -152,7 +156,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "31cc344c-05b2-4afc-8341-ae5eff7f1c8c"
+          "id": "e1ba6765-bf6e-44b1-b0b1-c9246498f7e1"
         }
       },
       "employee": {
@@ -161,7 +165,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "39d2493f-c3be-472b-8a9d-77c2efa1eb70"
+          "id": "beeb8cd0-94df-4240-bd54-115a3e2afa0b"
         }
       },
       "settings": {
@@ -177,14 +181,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "31cc344c-05b2-4afc-8341-ae5eff7f1c8c",
+      "id": "e1ba6765-bf6e-44b1-b0b1-c9246498f7e1",
       "type": "companies",
       "attributes": {
-        "created_at": "2022-11-23T11:37:45+00:00",
-        "updated_at": "2022-11-23T11:37:45+00:00",
-        "name": "Company name 227",
-        "slug": "company-name-227",
-        "email": "mail230@company.com",
+        "created_at": "2023-05-15T13:51:55+00:00",
+        "updated_at": "2023-05-15T13:51:55+00:00",
+        "name": "Company name 241",
+        "slug": "company-name-241",
+        "email": "mail244@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -212,21 +216,24 @@ This request accepts the following includes:
         "custom_domain": null,
         "development": false,
         "shop_theme_id": null,
+        "years_active": "2-5",
+        "source": null,
+        "medium": null,
+        "tenant_token": "6e1f57bdce636e44540ee496bfa70c5e",
         "subscription": {
-          "trial_ends_at": "2022-12-07T11:37:45.614Z",
+          "trial_ends_at": "2023-05-29T13:51:55.755Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
           "canceled_at": null,
           "on_hold": false,
           "needs_activation": false,
-          "legacy": false,
           "product": "Premium",
           "plan_id": "pro_monthly",
           "interval": "month",
           "current_period_end": null,
-          "quantity": 1,
           "extra_employees": 0,
+          "extra_locations": 0,
           "amount_in_cents": 29900,
           "discount_in_cents": 0,
           "balance_in_cents": 0,
@@ -262,17 +269,19 @@ This request accepts the following includes:
             "employees": 15,
             "email_max_recipients": 500,
             "rate_limit_max": 250,
-            "rate_limit_period": 60
-          }
+            "rate_limit_period": 60,
+            "locations": 3
+          },
+          "can_try_plan": true
         }
       }
     },
     {
-      "id": "39d2493f-c3be-472b-8a9d-77c2efa1eb70",
+      "id": "beeb8cd0-94df-4240-bd54-115a3e2afa0b",
       "type": "employees",
       "attributes": {
-        "created_at": "2022-11-23T11:37:45+00:00",
-        "updated_at": "2022-11-23T11:37:45+00:00",
+        "created_at": "2023-05-15T13:51:55+00:00",
+        "updated_at": "2023-05-15T13:51:55+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -293,10 +302,11 @@ This request accepts the following includes:
           "cancel_orders",
           "revert_orders",
           "delete_invoices",
-          "make_invoice_revisions"
+          "make_invoice_revisions",
+          "override_rental_period"
         ],
         "has_two_factor_autentication": false,
-        "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=blank",
+        "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
       }
     },
@@ -410,7 +420,8 @@ This request accepts the following includes:
           "show_stock_identifiers": false,
           "show_free_lines": true,
           "hide_section_lines": false,
-          "prefix": null
+          "prefix": null,
+          "default_due_period": null
         },
         "quotes": {
           "footer": "",
@@ -435,8 +446,11 @@ This request accepts the following includes:
           "order": "order",
           "quote": "quote",
           "contract": "contract",
-          "packing_slip": "packing_slip"
-        }
+          "packing_slip": "packing_slip",
+          "start": "pick_up",
+          "stop": "return"
+        },
+        "emails": {}
       }
     }
   ],
@@ -453,9 +467,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=company,employee,settings`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=employee,company,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=company_id,employee_id,locations_updated_at`
 
 
 ### Includes

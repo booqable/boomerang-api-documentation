@@ -6,7 +6,7 @@ Duplicates an `Order` with a selectable subset of fields and associations.
 Every order duplication has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `custom_lines` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
 `customer` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
@@ -24,7 +24,7 @@ Name | Description
 Order duplications have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `original_order` | **Orders**<br>Associated Original order
 `new_order` | **Orders** `readonly`<br>Associated New order
 
@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_order_id": "3f7f0e55-fc3d-48f6-a228-14aab0021266",
+          "original_order_id": "45371485-1c25-4e24-8048-ccbe2c98a329",
           "custom_lines": true,
           "customer": true,
           "dates": true,
@@ -62,7 +62,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "eb0f2103-0f7c-520b-8113-7411519479ba",
+    "id": "4ada7f5b-f66b-5a59-816f-64238e491ec6",
     "type": "order_duplications",
     "attributes": {
       "custom_lines": true,
@@ -73,8 +73,8 @@ Name | Description
       "stock_item_plannings": true,
       "tags": true,
       "deposit": "current",
-      "original_order_id": "3f7f0e55-fc3d-48f6-a228-14aab0021266",
-      "new_order_id": "da6cfd90-a643-42c3-9e0c-a7c493d5596a"
+      "original_order_id": "45371485-1c25-4e24-8048-ccbe2c98a329",
+      "new_order_id": "6e2865af-56be-4e19-be2a-97eac3d089ab"
     },
     "relationships": {
       "original_order": {
@@ -102,9 +102,9 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=original_order,new_order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_duplications]=id,created_at,updated_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_duplications]=custom_lines,customer,dates`
 
 
 ### Request body
@@ -112,7 +112,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][custom_lines]` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
 `data[attributes][customer]` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
 `data[attributes][dates]` | **Boolean** <br>Indicates if the rental dates should be copied from the original Order.

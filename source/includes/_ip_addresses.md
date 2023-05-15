@@ -17,7 +17,7 @@ Restrict access by specifying allowed IP addresses. IPv4 and IPv6 addresses are 
 Every ip address has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -43,11 +43,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "5eea67b0-e459-42a3-b0c9-7e91bdeb9c4e",
+      "id": "8e13ea65-a68a-46ec-ba5e-8d5c42858bad",
       "type": "ip_addresses",
       "attributes": {
-        "created_at": "2022-11-23T11:34:52+00:00",
-        "updated_at": "2022-11-23T11:34:52+00:00",
+        "created_at": "2023-05-15T13:48:47+00:00",
+        "updated_at": "2023-05-15T13:48:47+00:00",
         "label": "John's home office",
         "address": "192.168.0.1"
       }
@@ -66,11 +66,10 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -81,7 +80,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -94,7 +93,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -109,7 +108,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/578fbb0d-c238-4e71-b7eb-abd64e553f67' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/f60e8c1e-97bb-41af-9545-8bc084ae2391' \
     --header 'content-type: application/json' \
 ```
 
@@ -118,11 +117,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "578fbb0d-c238-4e71-b7eb-abd64e553f67",
+    "id": "f60e8c1e-97bb-41af-9545-8bc084ae2391",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2022-11-23T11:34:52+00:00",
-      "updated_at": "2022-11-23T11:34:52+00:00",
+      "created_at": "2023-05-15T13:48:47+00:00",
+      "updated_at": "2023-05-15T13:48:47+00:00",
       "label": "John's home office",
       "address": "192.168.0.1"
     }
@@ -140,9 +139,8 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Includes
@@ -174,11 +172,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8bdecab3-16f7-4bee-8ef4-4195f0fbcc4b",
+    "id": "eaa2a5a8-1aba-4dbf-aeb0-1f1784ad123f",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2022-11-23T11:34:53+00:00",
-      "updated_at": "2022-11-23T11:34:53+00:00",
+      "created_at": "2023-05-15T13:48:48+00:00",
+      "updated_at": "2023-05-15T13:48:48+00:00",
       "label": "Leeuwarden office",
       "address": "192.168.0.2"
     }
@@ -196,9 +194,8 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Request body
@@ -206,7 +203,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][label]` | **String** <br>Label for the restricted IP address.
 `data[attributes][address]` | **String** <br>Restricted IP address.
 
@@ -222,11 +219,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/00636807-e646-4810-8507-ab65d058b2ce' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/6243c7fa-244d-4648-a984-49ac119b317e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "00636807-e646-4810-8507-ab65d058b2ce",
+        "id": "6243c7fa-244d-4648-a984-49ac119b317e",
         "type": "ip_addresses",
         "attributes": {
           "label": "Palo Alto office",
@@ -241,11 +238,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "00636807-e646-4810-8507-ab65d058b2ce",
+    "id": "6243c7fa-244d-4648-a984-49ac119b317e",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2022-11-23T11:34:54+00:00",
-      "updated_at": "2022-11-23T11:34:54+00:00",
+      "created_at": "2023-05-15T13:48:48+00:00",
+      "updated_at": "2023-05-15T13:48:48+00:00",
       "label": "Palo Alto office",
       "address": "192.168.0.3"
     }
@@ -263,9 +260,8 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Request body
@@ -273,7 +269,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][label]` | **String** <br>Label for the restricted IP address.
 `data[attributes][address]` | **String** <br>Restricted IP address.
 
@@ -289,7 +285,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/5ff6f75e-4aee-4b10-adf2-4f0899017b2d' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/89802fba-c05b-418b-8770-515738ecfab8' \
     --header 'content-type: application/json' \
 ```
 
@@ -310,9 +306,8 @@ This request does not accept any includes
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Includes

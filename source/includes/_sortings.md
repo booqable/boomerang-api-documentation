@@ -6,7 +6,7 @@ A convienient way to bulk update positions for supported models.
 Every sorting has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>
 `type` | **String_enum** `writeonly`<br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `ids` | **Array_of_strings** `writeonly`<br>Array of ids, positions are determined by the order of the array
@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "default_properties",
           "ids": [
-            "1d5c292a-c68c-44c0-b344-cdc6436fb207",
-            "8f070622-f56f-4848-a470-6484de561111",
-            "cb984c93-d99d-460c-9705-6d51f88d1f14",
-            "df20a8ce-05cd-4287-aff3-0dfa128d51c3",
-            "22e3d07f-ee9b-4d0b-964c-18a2cf459015"
+            "f094aecc-b9f2-4fa8-b449-84b16d2e8e03",
+            "d5809308-6b6d-4fa7-a428-f56c7e1d4aae",
+            "999bfd85-a3e6-4b29-9eba-12256b26fa07",
+            "90736599-af37-4450-99b0-b5833fc2b020",
+            "42a56519-f337-4e29-94d5-24250d37eb2f"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "56ade546-8253-5702-9ef2-2af059fc7f72",
+    "id": "3c107b1b-1222-5d9b-99a9-3c6e14b54bc5",
     "type": "sortings"
   },
   "meta": {}
@@ -55,22 +55,12 @@ Name | Description
 
 `POST /api/boomerang/sortings`
 
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sortings]=id,created_at,updated_at`
-
-
 ### Request body
 
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][type]` | **String_enum** <br>Type of model to update. Any of `checkout_fields`, `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `data[attributes][ids]` | **Array_of_strings** <br>Array of ids, positions are determined by the order of the array
 

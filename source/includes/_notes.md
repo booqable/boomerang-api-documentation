@@ -15,7 +15,7 @@ Allows you to leave notes attached to other resources.
 Every note has the following fields:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
@@ -29,7 +29,7 @@ Name | Description
 Notes have the following relationships:
 
 Name | Description
-- | -
+-- | --
 `owner` | **Customer, Product, Product group, Stock item, Bundle, Order, Document**<br>Associated Owner
 `employee` | **Employees** `readonly`<br>Associated Employee
 
@@ -52,25 +52,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "beace120-29ca-44f9-a7a2-076bf0d2fce4",
+      "id": "a56665af-685b-4172-962a-bf3e257d591d",
       "type": "notes",
       "attributes": {
-        "created_at": "2022-11-23T11:35:19+00:00",
-        "updated_at": "2022-11-23T11:35:19+00:00",
+        "created_at": "2023-05-15T13:49:19+00:00",
+        "updated_at": "2023-05-15T13:49:19+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "5e877d8c-67a8-4557-be7b-e8f874594257",
+        "owner_id": "adc0f27d-217a-45d2-84fd-87f7b6d1d78e",
         "owner_type": "customers",
-        "employee_id": "08d51991-3d7e-4dfb-a8bc-69add60ec933"
+        "employee_id": "a6c18cb3-bc8a-42f0-84e3-802e2132a27f"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/5e877d8c-67a8-4557-be7b-e8f874594257"
+            "related": "api/boomerang/customers/adc0f27d-217a-45d2-84fd-87f7b6d1d78e"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/08d51991-3d7e-4dfb-a8bc-69add60ec933"
+            "related": "api/boomerang/employees/a6c18cb3-bc8a-42f0-84e3-802e2132a27f"
           }
         }
       }
@@ -89,11 +89,11 @@ Name | Description
 This request accepts the following parameters:
 
 Name | Description
-- | -
+-- | --
 `include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
-`filter` | **Hash** <br>The filters to apply `?filter[created_at][gte]=2022-11-23T11:33:06Z`
-`sort` | **String** <br>How to sort the data `?sort=-created_at`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
 `page[number]` | **String** <br>The page to request
 `page[size]` | **String** <br>The amount of items per page (max 100)
@@ -104,7 +104,7 @@ Name | Description
 This request can be filtered on:
 
 Name | Description
-- | -
+-- | --
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -118,7 +118,7 @@ Name | Description
 Results can be aggregated on:
 
 Name | Description
-- | -
+-- | --
 `total` | **Array** <br>`count`
 
 
@@ -144,7 +144,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/fd9b0b1c-c4ac-476a-bd59-4c195a13f93c' \
+    --url 'https://example.booqable.com/api/boomerang/notes/f965f2cc-dc36-4506-bd3a-12b519dc4fd9' \
     --header 'content-type: application/json' \
 ```
 
@@ -153,25 +153,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fd9b0b1c-c4ac-476a-bd59-4c195a13f93c",
+    "id": "f965f2cc-dc36-4506-bd3a-12b519dc4fd9",
     "type": "notes",
     "attributes": {
-      "created_at": "2022-11-23T11:35:20+00:00",
-      "updated_at": "2022-11-23T11:35:20+00:00",
+      "created_at": "2023-05-15T13:49:19+00:00",
+      "updated_at": "2023-05-15T13:49:19+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "66325e09-35cf-4459-a47c-ffa876f6c311",
+      "owner_id": "637a3c5f-0733-4637-8b2e-5d5beacb80bb",
       "owner_type": "customers",
-      "employee_id": "f715b22f-8c42-44e4-afeb-1ed0431b0c9d"
+      "employee_id": "6c7d6f1b-d3e0-43d1-a096-a0f0f2d756c7"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/66325e09-35cf-4459-a47c-ffa876f6c311"
+          "related": "api/boomerang/customers/637a3c5f-0733-4637-8b2e-5d5beacb80bb"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/f715b22f-8c42-44e4-afeb-1ed0431b0c9d"
+          "related": "api/boomerang/employees/6c7d6f1b-d3e0-43d1-a096-a0f0f2d756c7"
         }
       }
     }
@@ -189,9 +189,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
 
 
 ### Includes
@@ -220,7 +220,7 @@ This request accepts the following includes:
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "e3d235f2-57fb-4198-a219-e19b4a219bfe",
+          "owner_id": "911998e7-0969-4f9e-b7a2-725762802f86",
           "owner_type": "customers"
         }
       }
@@ -232,15 +232,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a9e5f5df-9b19-44a5-85cc-3fb0455ebb2a",
+    "id": "88ec062b-37fd-4852-883c-19c7f3085641",
     "type": "notes",
     "attributes": {
-      "created_at": "2022-11-23T11:35:20+00:00",
-      "updated_at": "2022-11-23T11:35:20+00:00",
+      "created_at": "2023-05-15T13:49:20+00:00",
+      "updated_at": "2023-05-15T13:49:20+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "e3d235f2-57fb-4198-a219-e19b4a219bfe",
+      "owner_id": "911998e7-0969-4f9e-b7a2-725762802f86",
       "owner_type": "customers",
-      "employee_id": "efb93278-c4bb-4205-932a-5d60ef46a905"
+      "employee_id": "36702149-bcf7-482e-86dd-4fdcd830d301"
     },
     "relationships": {
       "owner": {
@@ -268,9 +268,9 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
 
 
 ### Request body
@@ -278,7 +278,7 @@ Name | Description
 This request accepts the following body:
 
 Name | Description
-- | -
+-- | --
 `data[attributes][body]` | **String** <br>The content of the note
 `data[attributes][owner_id]` | **Uuid** <br>ID of the resource the note is attached to
 `data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `documents`, `product_groups`, `bundles`, `products`, `customers`, `stock_items`, `users`
@@ -303,7 +303,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/b88d2309-53a6-4233-80a0-da65aab740e8' \
+    --url 'https://example.booqable.com/api/boomerang/notes/1c33fe16-3ca7-493d-9c80-e01267736856' \
     --header 'content-type: application/json' \
 ```
 
@@ -324,9 +324,8 @@ This request accepts the following includes:
 This request accepts the following parameters:
 
 Name | Description
-- | -
-`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=id,created_at,updated_at`
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
 
 
 ### Includes
