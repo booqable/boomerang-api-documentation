@@ -87,6 +87,7 @@ includes:
   - ip_addresses
   - menus
   - merges
+  - notification_subscriptions
   - login_activities
   - operating_rules
   - publications
