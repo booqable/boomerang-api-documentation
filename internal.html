@@ -1882,6 +1882,38 @@
               </ul>
           </li>
           <li>
+            <a href="#notification-subscriptions" class="toc-h1 toc-link" data-title="Notification subscriptions" title="Notification subscriptions">Notification subscriptions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#notification-subscriptions-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-listing-notification-subscriptions" class="toc-h2 toc-link" data-title="Listing notification subscriptions" title="Listing notification subscriptions">Listing notification subscriptions</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-listing-global-notification-subscriptions" class="toc-h2 toc-link" data-title="Listing global notification subscriptions" title="Listing global notification subscriptions">Listing global notification subscriptions</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-listing-non-global-owned-notification-subscriptions" class="toc-h2 toc-link" data-title="Listing non-global/ owned notification subscriptions" title="Listing non-global/ owned notification subscriptions">Listing non-global/ owned notification subscriptions</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-fetching-a-notification-subscription" class="toc-h2 toc-link" data-title="Fetching a notification subscription" title="Fetching a notification subscription">Fetching a notification subscription</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-creating-a-notification-subscription" class="toc-h2 toc-link" data-title="Creating a notification subscription" title="Creating a notification subscription">Creating a notification subscription</a>
+                  </li>
+                  <li>
+                    <a href="#notification-subscriptions-deleting-a-notification-subscription" class="toc-h2 toc-link" data-title="Deleting a notification subscription" title="Deleting a notification subscription">Deleting a notification subscription</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#login-activities" class="toc-h1 toc-link" data-title="Login activities" title="Login activities">Login activities</a>
               <ul class="toc-list-h2">
                   <li>
@@ -41815,6 +41847,719 @@ Note that you can also update other fields.:</p>
 <p>This request accepts the following includes:</p>
 
 <p><code>target</code></p>
+<h1 id='notification-subscriptions'>Notification subscriptions</h1>
+<p>Notification subscriptions can be used to subscribe an employee to a specific category of notications. Booqable offers several categories of notifications:</p>
+
+<ol>
+<li><code>note_created</code> for when a new note is created.</li>
+<li><code>webshop_order_created</code> for when a new order was create via the webshop.</li>
+<li><code>order_reserved</code> for when an order first transitions into the reserved state.</li>
+<li><code>order_updated</code> for any update to an order</li>
+<li><code>order_started</code> for when an order started plannings</li>
+<li><code>order_stopped</code> for when an order stopped plannings</li>
+</ol>
+
+<p>All categories, except for <code>webshop_order_created</code>, can be associated with an owner. At the time of this writing the owner must be an Order.</p>
+
+<p>When a notification subscriptions is associated with an owner, the notification will only be fired for the given owner.</p>
+
+<p>Multiple owned notification subsscriptions can be created for any employee. If the employee has an unowned notification subscription and an owned notification subscription for the same category, a single notification will send for the associated owner.</p>
+<h2 id='notification-subscriptions-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/notification_subscriptions</code></p>
+
+<p><code>GET /api/boomerang/notification_subscriptions/{id}</code></p>
+
+<p><code>POST /api/boomerang/notification_subscriptions</code></p>
+
+<p><code>DELETE /api/boomerang/notification_subscriptions/{id}</code></p>
+<h2 id='notification-subscriptions-fields'>Fields</h2>
+<p>Every notification subscription has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><strong>String</strong> <br>One of <code>note_created</code>, <code>webshop_order_created</code>, <code>order_updated</code>, <code>order_reserved</code>, <code>order_started</code>, <code>order_stopped</code></td>
+</tr>
+<tr>
+<td><code>global</code></td>
+<td><strong>Boolean</strong> <code>nullable</code> <code>readonly</code><br>Will be set true when the subscription is not associated with any owner, flase otherwise</td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><strong>Uuid</strong> <br>ID of the resource the notications subscription is associated with</td>
+</tr>
+<tr>
+<td><code>owner_type</code></td>
+<td><strong>String</strong> <br>The resource type of the owner. One of <code>orders</code></td>
+</tr>
+</tbody></table>
+<h2 id='notification-subscriptions-relationships'>Relationships</h2>
+<p>Notification subscriptions have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>owner</code></td>
+<td><strong>Order</strong><br>Associated Owner</td>
+</tr>
+</tbody></table>
+<h2 id='notification-subscriptions-listing-notification-subscriptions'>Listing notification subscriptions</h2>
+<blockquote>
+<p>How to fetch a list of notification subscriptions:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/notification_subscriptions'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2355dc7-5d03-42c9-82d6-20a9749c086c"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_started"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1907e45f-8063-41ce-bc7a-0e64106838b0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_updated"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1930248f-b182-4054-a0e4-bdcb1e62c36e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders/1930248f-b182-4054-a0e4-bdcb1e62c36e"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8b5100b8-7a39-443c-a1af-74a1448d2f19"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"note_created"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"972fce72-f3ee-4f24-8ad4-0e6abdc58929"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:21+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webshop_order_created"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='notification-subscriptions-listing-notification-subscriptions-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/notification_subscriptions</code></p>
+<h3 id='notification-subscriptions-listing-notification-subscriptions-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[notification_subscriptions]=created_at,updated_at,category</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-notification-subscriptions-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>global</code></td>
+<td><strong>Boolean</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>owner_type</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-notification-subscriptions-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-notification-subscriptions-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='notification-subscriptions-listing-global-notification-subscriptions'>Listing global notification subscriptions</h2>
+<blockquote>
+<p>How to fetch a list of global notification subscriptions:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/notification_subscriptions?filter%5Bglobal%5D=true'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31d3b0eb-09bd-42e4-af26-8f5de8899bb8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:22+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:22+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_started"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8875f17d-7e31-474f-90e9-e1ef98fc618b"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:22+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:22+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"note_created"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"63806311-0d40-457e-aa90-3d910bc242fa"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:22+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:22+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webshop_order_created"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='notification-subscriptions-listing-global-notification-subscriptions-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/notification_subscriptions</code></p>
+<h3 id='notification-subscriptions-listing-global-notification-subscriptions-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[notification_subscriptions]=created_at,updated_at,category</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-global-notification-subscriptions-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>global</code></td>
+<td><strong>Boolean</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>owner_type</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-global-notification-subscriptions-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-global-notification-subscriptions-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='notification-subscriptions-listing-non-global-owned-notification-subscriptions'>Listing non-global/ owned notification subscriptions</h2>
+<blockquote>
+<p>How to fetch a list of non-global/owned notification subscriptions:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/notification_subscriptions?filter%5Bglobal%5D=false'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ff585410-ebf5-413b-a4b3-b12af39bb541"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:23+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:23+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_updated"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b038b7d7-b728-4203-bc82-3ba49b56be4b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders/b038b7d7-b728-4203-bc82-3ba49b56be4b"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='notification-subscriptions-listing-non-global-owned-notification-subscriptions-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/notification_subscriptions</code></p>
+<h3 id='notification-subscriptions-listing-non-global-owned-notification-subscriptions-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[notification_subscriptions]=created_at,updated_at,category</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-non-global-owned-notification-subscriptions-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><strong>String</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>global</code></td>
+<td><strong>Boolean</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>owner_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>owner_type</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-non-global-owned-notification-subscriptions-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-listing-non-global-owned-notification-subscriptions-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='notification-subscriptions-fetching-a-notification-subscription'>Fetching a notification subscription</h2>
+<blockquote>
+<p>How to fetch a notification subscription:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/notification_subscriptions/3d0a65e5-81bf-4a89-aa8f-dc6a25bdf585'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3d0a65e5-81bf-4a89-aa8f-dc6a25bdf585"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:24+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:24+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_updated"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c11fc9be-5e14-4b0b-8c6f-b701a5c315ef"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/boomerang/orders/c11fc9be-5e14-4b0b-8c6f-b701a5c315ef"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='notification-subscriptions-fetching-a-notification-subscription-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/notification_subscriptions/{id}</code></p>
+<h3 id='notification-subscriptions-fetching-a-notification-subscription-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[notification_subscriptions]=created_at,updated_at,category</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-fetching-a-notification-subscription-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='notification-subscriptions-creating-a-notification-subscription'>Creating a notification subscription</h2>
+<blockquote>
+<p>How to create a notification_subscription:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/notification_subscriptions'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "notification_subscriptions",
+        "attributes": {
+          "category": "order_updated",
+          "owner_id": "56a15f18-2238-4015-8e37-614bfabcb624",
+          "owner_type": "orders"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8f79f7ec-aa2a-4251-936c-d2013384c7ad"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notification_subscriptions"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:24+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-05-15T13:49:24+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_updated"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"global"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56a15f18-2238-4015-8e37-614bfabcb624"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orders"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"included"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='notification-subscriptions-creating-a-notification-subscription-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/notification_subscriptions</code></p>
+<h3 id='notification-subscriptions-creating-a-notification-subscription-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[notification_subscriptions]=created_at,updated_at,category</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-creating-a-notification-subscription-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][category]</code></td>
+<td><strong>String</strong> <br>One of <code>note_created</code>, <code>webshop_order_created</code>, <code>order_updated</code>, <code>order_reserved</code>, <code>order_started</code>, <code>order_stopped</code></td>
+</tr>
+<tr>
+<td><code>data[attributes][owner_id]</code></td>
+<td><strong>Uuid</strong> <br>ID of the resource the notications subscription is associated with</td>
+</tr>
+<tr>
+<td><code>data[attributes][owner_type]</code></td>
+<td><strong>String</strong> <br>The resource type of the owner. One of <code>orders</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-creating-a-notification-subscription-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='notification-subscriptions-deleting-a-notification-subscription'>Deleting a notification subscription</h2>
+<blockquote>
+<p>How to delete a notification subscription:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> DELETE <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/notification_subscriptions/df4fc162-e616-45c6-ae67-adb7f5b51fb9'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='notification-subscriptions-deleting-a-notification-subscription-http-request'>HTTP Request</h3>
+<p><code>DELETE /api/boomerang/notification_subscriptions/{id}</code></p>
+<h3 id='notification-subscriptions-deleting-a-notification-subscription-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[notification_subscriptions]=created_at,updated_at,category</code></td>
+</tr>
+</tbody></table>
+<h3 id='notification-subscriptions-deleting-a-notification-subscription-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 <h1 id='login-activities'>Login activities</h1>
 <p>A list of all login attempts for the current employee.</p>
 <h2 id='login-activities-fields'>Fields</h2>
