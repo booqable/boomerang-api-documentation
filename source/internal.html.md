@@ -56,6 +56,7 @@ includes:
   - properties
   - sessions
   - settings
+  - signatures
   - sortings
   - stock_counts
   - stock_item_plannings
