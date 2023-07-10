@@ -55,34 +55,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "20cdc8dd-33d5-4c7e-a60a-e3dfdd3d3446",
+      "id": "2297dd10-6130-47f9-9942-f0afd94e6f62",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2023-05-15T13:52:08+00:00",
-        "updated_at": "2023-05-15T13:52:08+00:00",
+        "created_at": "2023-07-10T09:20:40+00:00",
+        "updated_at": "2023-07-10T09:20:40+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "fb358946-e53e-42ff-8e47-2de43688a3eb",
-        "planning_id": "b0c1600b-5e21-4666-a1bb-369b3568e076",
-        "order_id": "014aa077-c71e-4bc4-a24b-208de2d71536"
+        "stock_item_id": "170c7007-0673-4d13-9e73-c8fcb4f066d8",
+        "planning_id": "16df573c-d119-4d5a-9280-ffe8328720fa",
+        "order_id": "518eff6f-daf1-4986-850a-77e15cfa57f4"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/fb358946-e53e-42ff-8e47-2de43688a3eb"
+            "related": "api/boomerang/stock_items/170c7007-0673-4d13-9e73-c8fcb4f066d8"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/b0c1600b-5e21-4666-a1bb-369b3568e076"
+            "related": "api/boomerang/plannings/16df573c-d119-4d5a-9280-ffe8328720fa"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/014aa077-c71e-4bc4-a24b-208de2d71536"
+            "related": "api/boomerang/orders/518eff6f-daf1-4986-850a-77e15cfa57f4"
           }
         }
       }
@@ -170,7 +170,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/3bb96fe6-5ffe-4aab-8619-0c13d6af2b93' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/d0c878d4-d929-4159-a8fa-c86d84761058' \
     --header 'content-type: application/json' \
 ```
 

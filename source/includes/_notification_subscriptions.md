@@ -1,6 +1,6 @@
 # Notification subscriptions
 
-Notification subscriptions can be used to subscribe an employee to a specific category of notications. Booqable offers several categories of notifications:
+Notification subscriptions can be used to subscribe an employee to a specific category of notifications. Booqable offers several categories of notifications:
 
 1. `note_created` for when a new note is created.
 2. `webshop_order_created` for when a new order was create via the webshop.
@@ -13,7 +13,7 @@ All categories, except for `webshop_order_created`, can be associated with an ow
 
 When a notification subscriptions is associated with an owner, the notification will only be fired for the given owner.
 
-Multiple owned notification subsscriptions can be created for any employee. If the employee has an unowned notification subscription and an owned notification subscription for the same category, a single notification will send for the associated owner.
+Multiple owned notification subscriptions can be created for any employee. If the employee has an unowned notification subscription and an owned notification subscription for the same category, a single notification will send for the associated owner.
 
 ## Endpoints
 `GET /api/boomerang/notification_subscriptions`
@@ -33,8 +33,8 @@ Name | Description
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `category` | **String** <br>One of `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`
-`global` | **Boolean** `nullable` `readonly`<br>Will be set true when the subscription is not associated with any owner, flase otherwise
-`owner_id` | **Uuid** <br>ID of the resource the notications subscription is associated with
+`global` | **Boolean** `nullable` `readonly`<br>Will be set true when the subscription is not associated with any owner, false otherwise
+`owner_id` | **Uuid** <br>ID of the resource the notifications subscription is associated with
 `owner_type` | **String** <br>The resource type of the owner. One of `orders`
 
 
@@ -64,11 +64,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "a2355dc7-5d03-42c9-82d6-20a9749c086c",
+      "id": "a9deeb0c-702e-47e4-9e75-fdf2e838a8a0",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:21+00:00",
-        "updated_at": "2023-05-15T13:49:21+00:00",
+        "created_at": "2023-07-10T09:17:46+00:00",
+        "updated_at": "2023-07-10T09:17:46+00:00",
         "category": "order_started",
         "global": true,
         "owner_id": null,
@@ -83,30 +83,30 @@ Name | Description
       }
     },
     {
-      "id": "1907e45f-8063-41ce-bc7a-0e64106838b0",
+      "id": "5c2fd81d-cb9f-4ffc-8d02-8bff94343d81",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:21+00:00",
-        "updated_at": "2023-05-15T13:49:21+00:00",
+        "created_at": "2023-07-10T09:17:46+00:00",
+        "updated_at": "2023-07-10T09:17:46+00:00",
         "category": "order_updated",
         "global": false,
-        "owner_id": "1930248f-b182-4054-a0e4-bdcb1e62c36e",
+        "owner_id": "87c10b46-25e0-41e3-9be9-9bd2530f24e6",
         "owner_type": "orders"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/1930248f-b182-4054-a0e4-bdcb1e62c36e"
+            "related": "api/boomerang/orders/87c10b46-25e0-41e3-9be9-9bd2530f24e6"
           }
         }
       }
     },
     {
-      "id": "8b5100b8-7a39-443c-a1af-74a1448d2f19",
+      "id": "3e5b2695-f3ad-4834-b557-3b427b40af9c",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:21+00:00",
-        "updated_at": "2023-05-15T13:49:21+00:00",
+        "created_at": "2023-07-10T09:17:46+00:00",
+        "updated_at": "2023-07-10T09:17:46+00:00",
         "category": "note_created",
         "global": true,
         "owner_id": null,
@@ -121,11 +121,11 @@ Name | Description
       }
     },
     {
-      "id": "972fce72-f3ee-4f24-8ad4-0e6abdc58929",
+      "id": "8859a8de-47a5-48b3-aff6-6a0fc49d5386",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:21+00:00",
-        "updated_at": "2023-05-15T13:49:21+00:00",
+        "created_at": "2023-07-10T09:17:46+00:00",
+        "updated_at": "2023-07-10T09:17:46+00:00",
         "category": "webshop_order_created",
         "global": true,
         "owner_id": null,
@@ -207,11 +207,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "31d3b0eb-09bd-42e4-af26-8f5de8899bb8",
+      "id": "bd465e82-460f-4165-b984-b4ab692835cb",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:22+00:00",
-        "updated_at": "2023-05-15T13:49:22+00:00",
+        "created_at": "2023-07-10T09:17:47+00:00",
+        "updated_at": "2023-07-10T09:17:47+00:00",
         "category": "order_started",
         "global": true,
         "owner_id": null,
@@ -226,11 +226,11 @@ This request does not accept any includes
       }
     },
     {
-      "id": "8875f17d-7e31-474f-90e9-e1ef98fc618b",
+      "id": "d73ef95b-e923-49d7-9446-3c6ef56df1f6",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:22+00:00",
-        "updated_at": "2023-05-15T13:49:22+00:00",
+        "created_at": "2023-07-10T09:17:47+00:00",
+        "updated_at": "2023-07-10T09:17:47+00:00",
         "category": "note_created",
         "global": true,
         "owner_id": null,
@@ -245,11 +245,11 @@ This request does not accept any includes
       }
     },
     {
-      "id": "63806311-0d40-457e-aa90-3d910bc242fa",
+      "id": "efb52ec9-c9b2-42eb-b32b-3d66bdcbf9d6",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:22+00:00",
-        "updated_at": "2023-05-15T13:49:22+00:00",
+        "created_at": "2023-07-10T09:17:47+00:00",
+        "updated_at": "2023-07-10T09:17:47+00:00",
         "category": "webshop_order_created",
         "global": true,
         "owner_id": null,
@@ -331,20 +331,20 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "ff585410-ebf5-413b-a4b3-b12af39bb541",
+      "id": "75db8419-98ab-42aa-9cbb-d0e083f35355",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-05-15T13:49:23+00:00",
-        "updated_at": "2023-05-15T13:49:23+00:00",
+        "created_at": "2023-07-10T09:17:47+00:00",
+        "updated_at": "2023-07-10T09:17:47+00:00",
         "category": "order_updated",
         "global": false,
-        "owner_id": "b038b7d7-b728-4203-bc82-3ba49b56be4b",
+        "owner_id": "2cfccddf-551d-433e-902a-6378dabadd2a",
         "owner_type": "orders"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/b038b7d7-b728-4203-bc82-3ba49b56be4b"
+            "related": "api/boomerang/orders/2cfccddf-551d-433e-902a-6378dabadd2a"
           }
         }
       }
@@ -407,7 +407,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/3d0a65e5-81bf-4a89-aa8f-dc6a25bdf585' \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/cfa27f9a-a139-4649-bc7a-2a291d0f06cc' \
     --header 'content-type: application/json' \
 ```
 
@@ -416,20 +416,20 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3d0a65e5-81bf-4a89-aa8f-dc6a25bdf585",
+    "id": "cfa27f9a-a139-4649-bc7a-2a291d0f06cc",
     "type": "notification_subscriptions",
     "attributes": {
-      "created_at": "2023-05-15T13:49:24+00:00",
-      "updated_at": "2023-05-15T13:49:24+00:00",
+      "created_at": "2023-07-10T09:17:48+00:00",
+      "updated_at": "2023-07-10T09:17:48+00:00",
       "category": "order_updated",
       "global": false,
-      "owner_id": "c11fc9be-5e14-4b0b-8c6f-b701a5c315ef",
+      "owner_id": "dc4285a1-7005-4a70-b03f-d5d502fa3397",
       "owner_type": "orders"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/orders/c11fc9be-5e14-4b0b-8c6f-b701a5c315ef"
+          "related": "api/boomerang/orders/dc4285a1-7005-4a70-b03f-d5d502fa3397"
         }
       }
     }
@@ -469,7 +469,7 @@ This request does not accept any includes
         "type": "notification_subscriptions",
         "attributes": {
           "category": "order_updated",
-          "owner_id": "56a15f18-2238-4015-8e37-614bfabcb624",
+          "owner_id": "f47eebd2-19ee-466a-8d2b-e20fc1019b64",
           "owner_type": "orders"
         }
       }
@@ -481,14 +481,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8f79f7ec-aa2a-4251-936c-d2013384c7ad",
+    "id": "62e7ecd5-b0a9-40d0-9d12-688d61651892",
     "type": "notification_subscriptions",
     "attributes": {
-      "created_at": "2023-05-15T13:49:24+00:00",
-      "updated_at": "2023-05-15T13:49:24+00:00",
+      "created_at": "2023-07-10T09:17:48+00:00",
+      "updated_at": "2023-07-10T09:17:48+00:00",
       "category": "order_updated",
       "global": false,
-      "owner_id": "56a15f18-2238-4015-8e37-614bfabcb624",
+      "owner_id": "f47eebd2-19ee-466a-8d2b-e20fc1019b64",
       "owner_type": "orders"
     },
     "relationships": {
@@ -523,7 +523,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][category]` | **String** <br>One of `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`
-`data[attributes][owner_id]` | **Uuid** <br>ID of the resource the notications subscription is associated with
+`data[attributes][owner_id]` | **Uuid** <br>ID of the resource the notifications subscription is associated with
 `data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`
 
 
@@ -538,7 +538,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/df4fc162-e616-45c6-ae67-adb7f5b51fb9' \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/7f2536fa-2a31-4b0d-8836-fe73d061c4f8' \
     --header 'content-type: application/json' \
 ```
 

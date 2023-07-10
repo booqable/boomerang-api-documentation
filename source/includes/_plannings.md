@@ -80,11 +80,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "2e9aec6b-36e4-4e7b-aa8f-bc9621fcc86b",
+      "id": "b1ba6db1-9722-47d4-a64e-9191e9662d24",
       "type": "plannings",
       "attributes": {
-        "created_at": "2023-05-15T13:50:52+00:00",
-        "updated_at": "2023-05-15T13:50:53+00:00",
+        "created_at": "2023-07-10T09:19:18+00:00",
+        "updated_at": "2023-07-10T09:19:19+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
@@ -97,37 +97,37 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "order_id": "8e47226b-5caf-4717-8a3c-acf3c9cf4edd",
-        "item_id": "00f5d5ef-a041-4efc-85aa-980ca52f7171",
-        "start_location_id": "12a15db9-9d51-44c9-9d3f-0a4a0fc05b15",
-        "stop_location_id": "12a15db9-9d51-44c9-9d3f-0a4a0fc05b15",
+        "order_id": "87a27f2b-a617-470c-8504-05f39fc2b712",
+        "item_id": "c4299ff5-b98c-4fe9-aa98-e15f4b2f813d",
+        "start_location_id": "c628e9ad-83c6-4208-aec0-da5345abe7e0",
+        "stop_location_id": "c628e9ad-83c6-4208-aec0-da5345abe7e0",
         "parent_planning_id": null,
         "price_tile_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/8e47226b-5caf-4717-8a3c-acf3c9cf4edd"
+            "related": "api/boomerang/orders/87a27f2b-a617-470c-8504-05f39fc2b712"
           }
         },
         "item": {
           "links": {
-            "related": "api/boomerang/items/00f5d5ef-a041-4efc-85aa-980ca52f7171"
+            "related": "api/boomerang/items/c4299ff5-b98c-4fe9-aa98-e15f4b2f813d"
           }
         },
         "order_line": {
           "links": {
-            "related": "api/boomerang/lines?filter[planning_id]=2e9aec6b-36e4-4e7b-aa8f-bc9621fcc86b"
+            "related": "api/boomerang/lines?filter[planning_id]=b1ba6db1-9722-47d4-a64e-9191e9662d24"
           }
         },
         "start_location": {
           "links": {
-            "related": "api/boomerang/locations/12a15db9-9d51-44c9-9d3f-0a4a0fc05b15"
+            "related": "api/boomerang/locations/c628e9ad-83c6-4208-aec0-da5345abe7e0"
           }
         },
         "stop_location": {
           "links": {
-            "related": "api/boomerang/locations/12a15db9-9d51-44c9-9d3f-0a4a0fc05b15"
+            "related": "api/boomerang/locations/c628e9ad-83c6-4208-aec0-da5345abe7e0"
           }
         },
         "parent_planning": {
@@ -137,12 +137,12 @@ Name | Description
         },
         "nested_plannings": {
           "links": {
-            "related": "api/boomerang/plannings?filter[parent_planning_id]=2e9aec6b-36e4-4e7b-aa8f-bc9621fcc86b"
+            "related": "api/boomerang/plannings?filter[parent_planning_id]=b1ba6db1-9722-47d4-a64e-9191e9662d24"
           }
         },
         "stock_item_plannings": {
           "links": {
-            "related": "api/boomerang/stock_item_plannings?filter[planning_id]=2e9aec6b-36e4-4e7b-aa8f-bc9621fcc86b"
+            "related": "api/boomerang/stock_item_plannings?filter[planning_id]=b1ba6db1-9722-47d4-a64e-9191e9662d24"
           }
         },
         "price_tile": {
@@ -265,12 +265,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2023-05-16T13:50:59Z"
+                    "gte": "2023-07-11T09:19:28Z"
                   }
                 },
                 {
                   "starts_at": {
-                    "lte": "2023-05-19T13:50:59Z"
+                    "lte": "2023-07-14T09:19:28Z"
                   }
                 }
               ]
@@ -280,12 +280,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "stops_at": {
-                    "gte": "2023-05-16T13:50:59Z"
+                    "gte": "2023-07-11T09:19:28Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "lte": "2023-05-19T13:50:59Z"
+                    "lte": "2023-07-14T09:19:28Z"
                   }
                 }
               ]
@@ -302,10 +302,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "c7d8f983-d179-4312-88f8-62452210e798"
+      "id": "bc13d02a-1e5b-41e1-94c6-472c3b1f40bf"
     },
     {
-      "id": "9262267b-03ba-4bc7-b056-28d956e0e8e6"
+      "id": "b84292b4-0378-4c03-9791-ae8e29939511"
     }
   ]
 }
@@ -403,7 +403,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings/cfe22837-9624-499a-9242-52404382f1b7' \
+    --url 'https://example.booqable.com/api/boomerang/plannings/e59b8579-8be5-4c0e-b0fc-e30a541b275c' \
     --header 'content-type: application/json' \
 ```
 
@@ -412,11 +412,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cfe22837-9624-499a-9242-52404382f1b7",
+    "id": "e59b8579-8be5-4c0e-b0fc-e30a541b275c",
     "type": "plannings",
     "attributes": {
-      "created_at": "2023-05-15T13:51:00+00:00",
-      "updated_at": "2023-05-15T13:51:01+00:00",
+      "created_at": "2023-07-10T09:19:30+00:00",
+      "updated_at": "2023-07-10T09:19:31+00:00",
       "archived": false,
       "archived_at": null,
       "quantity": 1,
@@ -429,37 +429,37 @@ This request accepts the following includes:
       "stopped": 0,
       "location_shortage_amount": 0,
       "shortage_amount": 0,
-      "order_id": "37c08f3c-c201-4512-9baf-9974e423d1bf",
-      "item_id": "344186eb-66b6-44e8-91be-5fb642a3243e",
-      "start_location_id": "b48663e1-ee5c-4978-8224-12f594a27bba",
-      "stop_location_id": "b48663e1-ee5c-4978-8224-12f594a27bba",
+      "order_id": "eb075792-5cc4-49ba-934f-12c1ddf2315a",
+      "item_id": "501992a2-5ef8-4f08-9b19-030359ada231",
+      "start_location_id": "a4484aa8-f60b-4e79-886e-e799096192d1",
+      "stop_location_id": "a4484aa8-f60b-4e79-886e-e799096192d1",
       "parent_planning_id": null,
       "price_tile_id": null
     },
     "relationships": {
       "order": {
         "links": {
-          "related": "api/boomerang/orders/37c08f3c-c201-4512-9baf-9974e423d1bf"
+          "related": "api/boomerang/orders/eb075792-5cc4-49ba-934f-12c1ddf2315a"
         }
       },
       "item": {
         "links": {
-          "related": "api/boomerang/items/344186eb-66b6-44e8-91be-5fb642a3243e"
+          "related": "api/boomerang/items/501992a2-5ef8-4f08-9b19-030359ada231"
         }
       },
       "order_line": {
         "links": {
-          "related": "api/boomerang/lines?filter[planning_id]=cfe22837-9624-499a-9242-52404382f1b7"
+          "related": "api/boomerang/lines?filter[planning_id]=e59b8579-8be5-4c0e-b0fc-e30a541b275c"
         }
       },
       "start_location": {
         "links": {
-          "related": "api/boomerang/locations/b48663e1-ee5c-4978-8224-12f594a27bba"
+          "related": "api/boomerang/locations/a4484aa8-f60b-4e79-886e-e799096192d1"
         }
       },
       "stop_location": {
         "links": {
-          "related": "api/boomerang/locations/b48663e1-ee5c-4978-8224-12f594a27bba"
+          "related": "api/boomerang/locations/a4484aa8-f60b-4e79-886e-e799096192d1"
         }
       },
       "parent_planning": {
@@ -469,12 +469,12 @@ This request accepts the following includes:
       },
       "nested_plannings": {
         "links": {
-          "related": "api/boomerang/plannings?filter[parent_planning_id]=cfe22837-9624-499a-9242-52404382f1b7"
+          "related": "api/boomerang/plannings?filter[parent_planning_id]=e59b8579-8be5-4c0e-b0fc-e30a541b275c"
         }
       },
       "stock_item_plannings": {
         "links": {
-          "related": "api/boomerang/stock_item_plannings?filter[planning_id]=cfe22837-9624-499a-9242-52404382f1b7"
+          "related": "api/boomerang/stock_item_plannings?filter[planning_id]=e59b8579-8be5-4c0e-b0fc-e30a541b275c"
         }
       },
       "price_tile": {

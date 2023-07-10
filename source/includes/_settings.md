@@ -22,6 +22,7 @@ Defaults derived from other resources.
 Name | Description
 -- | --
 `timezone` | **String** `readonly`<br>The default timezone (managed on the company resource)
+`timezone_offset` | **Integer** `readonly`<br>The UTC offset of the default timezone, in minutes
 `tax_category_id` | **Uuid** `readonly`<br>ID the default tax category
 `tax_region_id` | **Uuid** `readonly`<br>ID the default tax region
 
@@ -249,10 +250,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c4d568ac-9509-5d5d-9e4c-8352c877d6a0",
+    "id": "ecf8de39-49d3-5599-b1c6-2e276cf0a864",
     "type": "settings",
     "attributes": {
-      "updated_at": "2023-05-15T13:51:56+00:00",
+      "updated_at": "2023-07-10T09:20:29+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -263,8 +264,9 @@ Name | Description
       },
       "defaults": {
         "timezone": "UTC",
-        "tax_category_id": "216b8661-4082-49fa-a2f7-a701d73ce637",
-        "tax_region_id": "2f4cfa98-c33c-45d7-b928-91e09b80d4f3",
+        "timezone_offset": 0,
+        "tax_category_id": "51612dda-46f0-4395-935b-dfceef3174cb",
+        "tax_region_id": "02b8f4db-68c2-470e-8616-b6cdad61888e",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
