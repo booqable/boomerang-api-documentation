@@ -524,6 +524,17 @@
               </ul>
           </li>
           <li>
+            <a href="#countries" class="toc-h1 toc-link" data-title="Countries" title="Countries">Countries</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#countries-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#countries-listing-countries" class="toc-h2 toc-link" data-title="Listing countries" title="Listing countries">Listing countries</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#coupons" class="toc-h1 toc-link" data-title="Coupons" title="Coupons">Coupons</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1333,6 +1344,17 @@
                   </li>
                   <li>
                     <a href="#properties-managing-multiple-properties-on-a-resource" class="toc-h2 toc-link" data-title="Managing multiple properties on a resource" title="Managing multiple properties on a resource">Managing multiple properties on a resource</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#provinces" class="toc-h1 toc-link" data-title="Provinces" title="Provinces">Provinces</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#provinces-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#provinces-listing-provinces" class="toc-h2 toc-link" data-title="Listing provinces" title="Listing provinces">Listing provinces</a>
                   </li>
               </ul>
           </li>
@@ -6390,6 +6412,196 @@ You can have multiple authentication methods active at one time.</p>
 </tr>
 </tbody></table>
 <h3 id='companies-updating-a-company-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='countries'>Countries</h1>
+<p>The <code>Country</code> resource describes countries, including the information required to validate the format of addresses.</p>
+<h2 id='countries-fields'>Fields</h2>
+<p>Every country has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <code>readonly</code><br>Name of the country</td>
+</tr>
+<tr>
+<td><code>alpha2</code></td>
+<td><strong>String</strong> <code>readonly</code><br>ISO 3166-1 alpha-2 code</td>
+</tr>
+<tr>
+<td><code>province_required</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>Whether a province is required for addresses in this country</td>
+</tr>
+<tr>
+<td><code>province_type</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The province type of this country. One of <code>county</code>, <code>emirate</code>, <code>governorate</code>, <code>prefecture</code>, <code>province</code>, <code>region</code>, <code>state</code>, <code>state_and_territory</code></td>
+</tr>
+<tr>
+<td><code>form_layout</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The layout of the address form</td>
+</tr>
+<tr>
+<td><code>show_layout</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The layout of the address when shown</td>
+</tr>
+<tr>
+<td><code>zipcode_required</code></td>
+<td><strong>Boolean</strong> <code>readonly</code><br>Whether a zipcode is required for addresses in this country</td>
+</tr>
+<tr>
+<td><code>zipcode_autofill</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The value to use for the zipcode when autofilling</td>
+</tr>
+<tr>
+<td><code>zipcode_format</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The format of the zipcode, as a regular expression</td>
+</tr>
+<tr>
+<td><code>zipcode_placeholder</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The placeholder to use for the zipcode</td>
+</tr>
+<tr>
+<td><code>zipcode_type</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The zipcode type of this country. One of <code>eircode</code>, <code>pincode</code>, <code>postal_code</code>, <code>postal_index</code>, <code>postcode</code>, <code>zipcode</code></td>
+</tr>
+<tr>
+<td><code>city_autofill</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The value to use for the city when autofilling</td>
+</tr>
+</tbody></table>
+<h2 id='countries-listing-countries'>Listing countries</h2>
+<blockquote>
+<p>How to fetch a list of countries:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/countries'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20782e57-4398-404e-a9d1-43d3166dfba6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"countries"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-07T13:58:47+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-07T13:58:47+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Netherlands"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"alpha2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"province_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"province_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"province"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"form_layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{country}</span><span class="se">\n</span><span class="s2">{first_name}{last_name}</span><span class="se">\n</span><span class="s2">{address1}</span><span class="se">\n</span><span class="s2">{address2}</span><span class="se">\n</span><span class="s2">{zipcode}{city}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"show_layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{first_name} {last_name}</span><span class="se">\n</span><span class="s2">{address1}</span><span class="se">\n</span><span class="s2">{address2}</span><span class="se">\n</span><span class="s2">{zipcode} {city}</span><span class="se">\n</span><span class="s2">{country}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zipcode_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zipcode_autofill"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zipcode_format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\\</span><span class="s2">d{4} ?[A-Z]{2}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zipcode_placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 AB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"zipcode_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postcode"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city_autofill"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='countries-listing-countries-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/countries</code></p>
+<h3 id='countries-listing-countries-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[countries]=created_at,updated_at,name</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='countries-listing-countries-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>alpha2</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+</tbody></table>
+<h3 id='countries-listing-countries-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='countries-listing-countries-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='coupons'>Coupons</h1>
 <p>Create codes to discount orders by a fixed amount or a percentage. Customers can redeem the codes online at checkout. Coupons can also be added to orders.</p>
@@ -31267,6 +31479,152 @@ be deleted instead.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='properties-managing-multiple-properties-on-a-resource-includes'>Includes</h3>
 <p>All includes are allowed on this request</p>
+<h1 id='provinces'>Provinces</h1>
+<p>The <code>Province</code> resource describes provinces/states etc. in a country.</p>
+<h2 id='provinces-fields'>Fields</h2>
+<p>Every province has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The name of the province/state.</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The code of the province/state.</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><strong>Integer</strong> <code>readonly</code><br>The position of the province/state in the list.</td>
+</tr>
+<tr>
+<td><code>country_id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>The ID of the country the province/state belongs to.</td>
+</tr>
+</tbody></table>
+<h2 id='provinces-listing-provinces'>Listing provinces</h2>
+<blockquote>
+<p>How to fetch a list of provinces.:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/provinces'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"355af257-ec0e-4b1d-962d-84039a3243fb"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provinces"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-07T13:57:44+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-07T13:57:44+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friesland"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"country_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"329e4b91-dde8-4a7f-beec-4f66fb5a02e7"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='provinces-listing-provinces-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/provinces</code></p>
+<h3 id='provinces-listing-provinces-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[provinces]=created_at,updated_at,name</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='provinces-listing-provinces-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>country_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='provinces-listing-provinces-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='provinces-listing-provinces-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 <h1 id='sessions'>Sessions</h1>
 <p>The session tells you whether settings are changed since the last time they were being requested. Every response includes a <code>Session-Id</code> header which contains a session ID. If that ID does not match with the ID of the last session that was fetched, this indicates that the following information may have been changed:</p>
 
