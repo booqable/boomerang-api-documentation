@@ -20,6 +20,7 @@ includes:
   - collections
   - collection_items
   - companies
+  - countries
   - coupons
   - customers
   - default_properties
@@ -54,6 +55,7 @@ includes:
   - product_groups
   - products
   - properties
+  - provinces
   - sessions
   - settings
   - signatures
