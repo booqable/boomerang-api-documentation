@@ -39,6 +39,9 @@ Name | Description
 `logo_url` | **String** `readonly`<br>Url of the uploaded logo
 `logo_base64` | **String** `writeonly`<br>To update a logo send it as base64 encoded string
 `remove_logo` | **Boolean** `writeonly`<br>Remove current logo
+`favicon_url` | **String** `readonly`<br>Company favicon url
+`favicon_base64` | **String** `writeonly`<br>To upload a favicon send it as a base64 encoded string
+`remove_favicon` | **Boolean** `writeonly`<br>Remove current favicon
 `default_timezone` | **String** <br>Company's default timezone
 `currency` | **String** <br>Currency of the company
 `financial_line_1` | **String** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
@@ -51,90 +54,13 @@ Name | Description
 `source` | **String** `readonly`<br>UTM source present during signup
 `medium` | **String** `readonly`<br>UTM medium present during signup
 `tenant_token` | **String** `readonly`<br>Token
+`pending_subscription` | **Boolean** `readonly`<br>Whether the company has a pending subscription
 `in_europe` | **Boolean** `readonly`<br>Whether company is situated in europe
 `continent` | **String** `readonly`<br>Continent the company is situated
 `subscription` | **Hash** `readonly`<br>Details about the subscription
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
-## Fetching a company
-
-
-
-> How to fetch a companies:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "3db21fde-cd3a-4f5e-9bbf-31fe44df1c6e",
-    "type": "companies",
-    "attributes": {
-      "created_at": "2023-07-10T09:16:10+00:00",
-      "updated_at": "2023-07-10T09:16:10+00:00",
-      "name": "iRent",
-      "slug": "irent",
-      "email": "mail53@company.com",
-      "billing_email": null,
-      "phone": "0581234567",
-      "website": "www.booqable.com",
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
-      "address_line_1": "Blokhuispoort",
-      "address_line_2": "Leeuwarden",
-      "zipcode": "8900AB",
-      "city": "Leeuwarden",
-      "region": null,
-      "country": "the Netherlands",
-      "use_billing_address": false,
-      "billing_company": null,
-      "billing_address_line_1": null,
-      "billing_address_line_2": null,
-      "billing_address_zipcode": null,
-      "billing_address_city": null,
-      "billing_address_region": null,
-      "billing_address_country": null,
-      "logo_url": null,
-      "default_timezone": "UTC",
-      "currency": "usd",
-      "financial_line_1": "Blokhuispoort",
-      "financial_line_2": "Leeuwarden",
-      "vat_number": null,
-      "custom_domain": null,
-      "development": false,
-      "shop_theme_id": null,
-      "years_active": null,
-      "source": null,
-      "medium": null,
-      "tenant_token": "d91bea29088e5fc19f4356950fd53c33"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Fetching subscription details
 
 The subscription has the following fields:
@@ -183,11 +109,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ee02e40f-bf67-487d-a6b8-4d9ed00aed0a",
+    "id": "afb96e3e-5d86-4043-b801-f2651a5ccb69",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2023-07-24T09:16:10.517Z",
+        "trial_ends_at": "2023-12-21T13:56:48.496Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -195,7 +121,7 @@ Name | Description
         "on_hold": false,
         "needs_activation": false,
         "product": "Premium",
-        "plan_id": "pro_monthly",
+        "plan_id": "premium_monthly",
         "interval": "month",
         "current_period_end": null,
         "extra_employees": 0,
@@ -225,21 +151,101 @@ Name | Description
           "permissions",
           "exports",
           "coupons",
-          "remove_powered_by",
           "shop_tracking",
           "sso",
           "iprestrictions",
-          "2fa_enforcing"
+          "2fa_enforcing",
+          "remove_powered_by"
         ],
         "restrictions": {
           "employees": 15,
-          "email_max_recipients": 500,
+          "email_max_recipients": 1000,
           "rate_limit_max": 250,
           "rate_limit_period": 60,
           "locations": 3
         },
         "can_try_plan": true
       }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a company
+
+
+
+> How to fetch a companies:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "d8acb23c-dd50-4a4e-b310-a51b935be6e4",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2023-12-07T13:56:48+00:00",
+      "updated_at": "2023-12-07T13:56:48+00:00",
+      "name": "iRent",
+      "slug": "irent",
+      "email": "mail112@company.com",
+      "billing_email": null,
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
+      "region": null,
+      "country": "the Netherlands",
+      "use_billing_address": false,
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "favicon_url": null,
+      "default_timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
+      "vat_number": null,
+      "custom_domain": null,
+      "development": false,
+      "shop_theme_id": null,
+      "years_active": null,
+      "source": null,
+      "medium": null,
+      "tenant_token": "02c05951bcd7a6902bdd21a0330997c6",
+      "pending_subscription": false
     }
   },
   "meta": {}
@@ -274,7 +280,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c95f1866-468b-4d2f-bf82-7af01ff5178b",
+        "id": "4587441e-a0b0-4e84-baa2-9741120469d5",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -288,14 +294,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c95f1866-468b-4d2f-bf82-7af01ff5178b",
+    "id": "4587441e-a0b0-4e84-baa2-9741120469d5",
     "type": "companies",
     "attributes": {
-      "created_at": "2023-07-10T09:16:10+00:00",
-      "updated_at": "2023-07-10T09:16:10+00:00",
+      "created_at": "2023-12-07T13:56:49+00:00",
+      "updated_at": "2023-12-07T13:56:49+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail55@company.com",
+      "email": "mail113@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -315,6 +321,7 @@ This request does not accept any includes
       "billing_address_region": null,
       "billing_address_country": null,
       "logo_url": null,
+      "favicon_url": null,
       "default_timezone": "UTC",
       "currency": "usd",
       "financial_line_1": "Blokhuispoort",
@@ -326,7 +333,8 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "c7e4e238e21bcdd27f8fc5ef40f0a8ea"
+      "tenant_token": "3651faf949f8da26ab6ab8e6715f9b20",
+      "pending_subscription": false
     }
   },
   "meta": {}
@@ -374,6 +382,8 @@ Name | Description
 `data[attributes][billing_address_country]` | **String** <br>Country (used for invoices received from Booqable)
 `data[attributes][logo_base64]` | **String** <br>To update a logo send it as base64 encoded string
 `data[attributes][remove_logo]` | **Boolean** <br>Remove current logo
+`data[attributes][favicon_base64]` | **String** <br>To upload a favicon send it as a base64 encoded string
+`data[attributes][remove_favicon]` | **Boolean** <br>Remove current favicon
 `data[attributes][default_timezone]` | **String** <br>Company's default timezone
 `data[attributes][currency]` | **String** <br>Currency of the company
 `data[attributes][financial_line_1]` | **String** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent

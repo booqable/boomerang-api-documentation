@@ -8,15 +8,15 @@ A tax region can have one of the following strategies:
 - **Replace**: Removes product taxes and calculates tax over the order total.
 
 ## Endpoints
+`PUT /api/boomerang/tax_regions/{id}`
+
 `GET /api/boomerang/tax_regions`
 
-`GET /api/boomerang/tax_regions/{id}`
+`DELETE /api/boomerang/tax_regions/{id}`
 
 `POST /api/boomerang/tax_regions`
 
-`PUT /api/boomerang/tax_regions/{id}`
-
-`DELETE /api/boomerang/tax_regions/{id}`
+`GET /api/boomerang/tax_regions/{id}`
 
 ## Fields
 Every tax region has the following fields:
@@ -42,6 +42,128 @@ Name | Description
 `tax_rates` | **Tax rates** `readonly`<br>Associated Tax rates
 
 
+## Updating a tax region
+
+
+
+> How to update a tax region with tax rates:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/6c120cd4-5dbd-43ba-be63-dff33a94d812' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "6c120cd4-5dbd-43ba-be63-dff33a94d812",
+        "type": "tax_regions",
+        "attributes": {
+          "name": "State Tax",
+          "tax_rates_attributes": [
+            {
+              "name": "VAT",
+              "value": 9
+            },
+            {
+              "id": "c3103e66-b0e5-44d0-be43-50c70909d561",
+              "_destroy": true
+            }
+          ]
+        }
+      },
+      "include": "tax_rates"
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "6c120cd4-5dbd-43ba-be63-dff33a94d812",
+    "type": "tax_regions",
+    "attributes": {
+      "created_at": "2023-12-07T13:57:41+00:00",
+      "updated_at": "2023-12-07T13:57:41+00:00",
+      "archived": false,
+      "archived_at": null,
+      "name": "State Tax",
+      "strategy": "add_to",
+      "default": false
+    },
+    "relationships": {
+      "tax_rates": {
+        "data": [
+          {
+            "type": "tax_rates",
+            "id": "a1f76f79-781b-4524-8db9-1ba607c8d9c9"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "a1f76f79-781b-4524-8db9-1ba607c8d9c9",
+      "type": "tax_rates",
+      "attributes": {
+        "created_at": "2023-12-07T13:57:41+00:00",
+        "updated_at": "2023-12-07T13:57:41+00:00",
+        "name": "VAT",
+        "value": 9.0,
+        "position": 2,
+        "owner_id": "6c120cd4-5dbd-43ba-be63-dff33a94d812",
+        "owner_type": "tax_regions"
+      },
+      "relationships": {
+        "owner": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/tax_regions/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the tax region
+`data[attributes][strategy]` | **String** <br>The strategy to apply. One of `add_to`, `replace`, `compound`
+`data[attributes][default]` | **Boolean** <br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
+`data[attributes][tax_rates_attributes][]` | **Array** <br>The tax rates to associate
+
+
+### Includes
+
+This request accepts the following includes:
+
+`tax_rates`
+
+
+
+
+
+
 ## Listing tax regions
 
 
@@ -60,9 +182,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "8a4df1a6-ba47-4cc9-88a7-c4ce4bc5a2c7",
-      "created_at": "2023-07-10T09:20:52+00:00",
-      "updated_at": "2023-07-10T09:20:52+00:00",
+      "id": "7a8a45cf-5c4f-4ef0-9a7c-834609920e35",
+      "created_at": "2023-12-07T13:57:41+00:00",
+      "updated_at": "2023-12-07T13:57:41+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Sales Tax",
@@ -128,50 +250,30 @@ This request accepts the following includes:
 
 
 
-## Fetching a tax region
+## Deleting a tax region
 
 
 
-> How to fetch a tax regions with it's tax rates:
+> How to delete a tax region with tax rates:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/3e49b76d-8239-4c0d-810b-06426e039c12?include=tax_rates' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/41ea2c43-f54a-4b3d-83d2-9628083bca50' \
     --header 'content-type: application/json' \
+    --data '{}'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "3e49b76d-8239-4c0d-810b-06426e039c12",
-    "created_at": "2023-07-10T09:20:52+00:00",
-    "updated_at": "2023-07-10T09:20:52+00:00",
-    "archived": false,
-    "archived_at": null,
-    "name": "Sales Tax",
-    "strategy": "add_to",
-    "default": false,
-    "tax_rates": [
-      {
-        "id": "2745e871-4ad2-4567-9d3d-e0a2042ef1ef",
-        "created_at": "2023-07-10T09:20:52+00:00",
-        "updated_at": "2023-07-10T09:20:52+00:00",
-        "name": "VAT",
-        "value": 21.0,
-        "position": 1,
-        "owner_id": "3e49b76d-8239-4c0d-810b-06426e039c12",
-        "owner_type": "tax_regions"
-      }
-    ]
-  }
+  "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/tax_regions/{id}`
+`DELETE /api/boomerang/tax_regions/{id}`
 
 ### Request params
 
@@ -179,21 +281,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=created_at,updated_at,archived`
 
 
 ### Includes
 
-This request accepts the following includes:
-
-`tax_rates`
-
-
-
-
-
-
+This request does not accept any includes
 ## Creating a tax region
 
 
@@ -227,11 +320,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "07546b39-2c11-4043-95ee-d2a55c19d88d",
+    "id": "49edb2c3-b058-4bdd-bdb6-cb9f86b31423",
     "type": "tax_regions",
     "attributes": {
-      "created_at": "2023-07-10T09:20:53+00:00",
-      "updated_at": "2023-07-10T09:20:53+00:00",
+      "created_at": "2023-12-07T13:57:43+00:00",
+      "updated_at": "2023-12-07T13:57:43+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Sales Tax",
@@ -243,7 +336,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "e63dab40-3f61-4723-b8ae-eb91327e8fae"
+            "id": "825ddd41-3a74-478e-a2ac-3fd0c556dbda"
           }
         ]
       }
@@ -251,15 +344,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "e63dab40-3f61-4723-b8ae-eb91327e8fae",
+      "id": "825ddd41-3a74-478e-a2ac-3fd0c556dbda",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2023-07-10T09:20:53+00:00",
-        "updated_at": "2023-07-10T09:20:53+00:00",
+        "created_at": "2023-12-07T13:57:43+00:00",
+        "updated_at": "2023-12-07T13:57:43+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "07546b39-2c11-4043-95ee-d2a55c19d88d",
+        "owner_id": "49edb2c3-b058-4bdd-bdb6-cb9f86b31423",
         "owner_type": "tax_regions"
       },
       "relationships": {
@@ -312,36 +405,16 @@ This request accepts the following includes:
 
 
 
-## Updating a tax region
+## Fetching a tax region
 
 
 
-> How to update a tax region with tax rates:
+> How to fetch a tax regions with it's tax rates:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/ab66a54b-da63-418d-80b2-14be7ffc1fc5' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/tax_regions/24e00bbd-2202-4a23-a488-8a7c888279dc?include=tax_rates' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "ab66a54b-da63-418d-80b2-14be7ffc1fc5",
-        "type": "tax_regions",
-        "attributes": {
-          "name": "State Tax",
-          "tax_rates_attributes": [
-            {
-              "name": "VAT",
-              "value": 9
-            },
-            {
-              "id": "62f3f855-67cc-4b4f-9b12-4468b1d298bf",
-              "_destroy": true
-            }
-          ]
-        }
-      },
-      "include": "tax_rates"
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -349,57 +422,33 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ab66a54b-da63-418d-80b2-14be7ffc1fc5",
-    "type": "tax_regions",
-    "attributes": {
-      "created_at": "2023-07-10T09:20:53+00:00",
-      "updated_at": "2023-07-10T09:20:53+00:00",
-      "archived": false,
-      "archived_at": null,
-      "name": "State Tax",
-      "strategy": "add_to",
-      "default": false
-    },
-    "relationships": {
-      "tax_rates": {
-        "data": [
-          {
-            "type": "tax_rates",
-            "id": "ba2c604b-9780-4081-b50c-a0a47ec2bf43"
-          }
-        ]
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "ba2c604b-9780-4081-b50c-a0a47ec2bf43",
-      "type": "tax_rates",
-      "attributes": {
-        "created_at": "2023-07-10T09:20:53+00:00",
-        "updated_at": "2023-07-10T09:20:53+00:00",
+    "id": "24e00bbd-2202-4a23-a488-8a7c888279dc",
+    "created_at": "2023-12-07T13:57:43+00:00",
+    "updated_at": "2023-12-07T13:57:43+00:00",
+    "archived": false,
+    "archived_at": null,
+    "name": "Sales Tax",
+    "strategy": "add_to",
+    "default": false,
+    "tax_rates": [
+      {
+        "id": "1ccd1421-3237-463e-84da-0e0a7f093e5f",
+        "created_at": "2023-12-07T13:57:43+00:00",
+        "updated_at": "2023-12-07T13:57:43+00:00",
         "name": "VAT",
-        "value": 9.0,
-        "position": 2,
-        "owner_id": "ab66a54b-da63-418d-80b2-14be7ffc1fc5",
+        "value": 21.0,
+        "position": 1,
+        "owner_id": "24e00bbd-2202-4a23-a488-8a7c888279dc",
         "owner_type": "tax_regions"
-      },
-      "relationships": {
-        "owner": {
-          "meta": {
-            "included": false
-          }
-        }
       }
-    }
-  ],
-  "meta": {}
+    ]
+  }
 }
 ```
 
 ### HTTP Request
 
-`PUT /api/boomerang/tax_regions/{id}`
+`GET /api/boomerang/tax_regions/{id}`
 
 ### Request params
 
@@ -409,18 +458,6 @@ Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the tax region
-`data[attributes][strategy]` | **String** <br>The strategy to apply. One of `add_to`, `replace`, `compound`
-`data[attributes][default]` | **Boolean** <br>Whether this is the default tax region. Setting this value to `true` will set other tax regions to `false`
-`data[attributes][tax_rates_attributes][]` | **Array** <br>The tax rates to associate
 
 
 ### Includes
@@ -433,41 +470,3 @@ This request accepts the following includes:
 
 
 
-
-## Deleting a tax region
-
-
-
-> How to delete a tax region with tax rates:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_regions/33ef1baf-ffc6-4014-8119-e03807a42741' \
-    --header 'content-type: application/json' \
-    --data '{}'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/tax_regions/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_regions]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes

@@ -3,15 +3,15 @@
 Create codes to discount orders by a fixed amount or a percentage. Customers can redeem the codes online at checkout. Coupons can also be added to orders.
 
 ## Endpoints
+`GET /api/boomerang/coupons/{id}`
+
 `GET /api/boomerang/coupons`
 
-`GET /api/boomerang/coupons/{id}`
+`DELETE /api/boomerang/coupons/{id}`
 
 `POST /api/boomerang/coupons`
 
 `PUT /api/boomerang/coupons/{id}`
-
-`DELETE /api/boomerang/coupons/{id}`
 
 ## Fields
 Every coupon has the following fields:
@@ -29,6 +29,56 @@ Name | Description
 `active` | **Boolean** <br>Whether coupon can be redeemed at the moment
 
 
+## Fetching a coupon
+
+
+
+> How to fetch a coupon:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/coupons/67fd1259-5424-4c06-8a80-66a1fc04e581' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "67fd1259-5424-4c06-8a80-66a1fc04e581",
+    "type": "coupons",
+    "attributes": {
+      "created_at": "2023-12-07T13:56:37+00:00",
+      "updated_at": "2023-12-07T13:56:37+00:00",
+      "archived": false,
+      "archived_at": null,
+      "identifier": "SUMMER20OFF",
+      "coupon_type": "percentage",
+      "value": 20,
+      "active": true
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/coupons/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[coupons]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing coupons
 
 
@@ -47,11 +97,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "96ec0b79-c192-470b-8765-5b26ac67ce92",
+      "id": "9ac7e19c-742c-4d59-85cb-f3b59c57e4bb",
       "type": "coupons",
       "attributes": {
-        "created_at": "2023-07-10T09:16:11+00:00",
-        "updated_at": "2023-07-10T09:16:11+00:00",
+        "created_at": "2023-12-07T13:56:37+00:00",
+        "updated_at": "2023-12-07T13:56:37+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "SUMMER20OFF",
@@ -112,15 +162,15 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a coupon
+## Archiving a coupon
 
 
 
-> How to fetch a coupon:
+> How to archive a coupon:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/coupons/47d45f7b-cbf8-45c2-bb12-5b26c5db4597' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/coupons/7c979189-3355-4284-a22e-627c9aba553f' \
     --header 'content-type: application/json' \
 ```
 
@@ -128,27 +178,13 @@ This request does not accept any includes
 
 ```json
   {
-  "data": {
-    "id": "47d45f7b-cbf8-45c2-bb12-5b26c5db4597",
-    "type": "coupons",
-    "attributes": {
-      "created_at": "2023-07-10T09:16:12+00:00",
-      "updated_at": "2023-07-10T09:16:12+00:00",
-      "archived": false,
-      "archived_at": null,
-      "identifier": "SUMMER20OFF",
-      "coupon_type": "percentage",
-      "value": 20,
-      "active": true
-    }
-  },
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/coupons/{id}`
+`DELETE /api/boomerang/coupons/{id}`
 
 ### Request params
 
@@ -190,11 +226,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2870bbd1-0aa1-46ac-a559-c7d44b16c7a7",
+    "id": "cdaf987e-cab5-48f7-a7b5-903ce6a5df95",
     "type": "coupons",
     "attributes": {
-      "created_at": "2023-07-10T09:16:12+00:00",
-      "updated_at": "2023-07-10T09:16:12+00:00",
+      "created_at": "2023-12-07T13:56:38+00:00",
+      "updated_at": "2023-12-07T13:56:38+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "WINTERDISCOUNT",
@@ -240,15 +276,55 @@ This request does not accept any includes
 When updating a coupon the existing one is archived and a new one gets created:
 
 
+> How to deativate a coupon:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/coupons/5a143767-0c6e-4136-bdee-863b6cde6e52' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "5a143767-0c6e-4136-bdee-863b6cde6e52",
+        "type": "coupons",
+        "attributes": {
+          "active": false
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "5c0aee56-6ba9-45ef-8afe-d30f2bab935a",
+    "type": "coupons",
+    "attributes": {
+      "created_at": "2023-12-07T13:56:39+00:00",
+      "updated_at": "2023-12-07T13:56:39+00:00",
+      "archived": false,
+      "archived_at": null,
+      "identifier": "SUMMER20OFF",
+      "coupon_type": "percentage",
+      "value": 20,
+      "active": false
+    }
+  },
+  "meta": {}
+}
+```
+
+
 > How to update a coupon:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/997f6404-e9ab-419e-9fe0-5fb21a5ef3ee' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/da9e5bd0-5b00-4e4f-ad6d-6e63625b7810' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "997f6404-e9ab-419e-9fe0-5fb21a5ef3ee",
+        "id": "da9e5bd0-5b00-4e4f-ad6d-6e63625b7810",
         "type": "coupons",
         "attributes": {
           "identifier": "SUMMER30OFF",
@@ -264,56 +340,16 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "80874ea7-d55d-4861-a4f9-9fd9e73ec121",
+    "id": "372710e3-325f-480e-a1b3-a2caeea2c6ef",
     "type": "coupons",
     "attributes": {
-      "created_at": "2023-07-10T09:16:13+00:00",
-      "updated_at": "2023-07-10T09:16:13+00:00",
+      "created_at": "2023-12-07T13:56:39+00:00",
+      "updated_at": "2023-12-07T13:56:39+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "SUMMER30OFF",
       "coupon_type": "percentage",
       "value": 30,
-      "active": false
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to deativate a coupon:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/13381f58-5f8c-49b1-a977-0b9dc1ee1409' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "13381f58-5f8c-49b1-a977-0b9dc1ee1409",
-        "type": "coupons",
-        "attributes": {
-          "active": false
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "ccea9a01-52e5-441a-a358-4f7239978c61",
-    "type": "coupons",
-    "attributes": {
-      "created_at": "2023-07-10T09:16:13+00:00",
-      "updated_at": "2023-07-10T09:16:13+00:00",
-      "archived": false,
-      "archived_at": null,
-      "identifier": "SUMMER20OFF",
-      "coupon_type": "percentage",
-      "value": 20,
       "active": false
     }
   },
@@ -344,42 +380,6 @@ Name | Description
 `data[attributes][coupon_type]` | **String** <br>One of `percentage`, `cents`
 `data[attributes][value]` | **Integer** <br>A percentage for type `percentage` or a value in cents for `cents`
 `data[attributes][active]` | **Boolean** <br>Whether coupon can be redeemed at the moment
-
-
-### Includes
-
-This request does not accept any includes
-## Archiving a coupon
-
-
-
-> How to archive a coupon:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/coupons/baefcf74-849b-494e-ab31-a8b834ace764' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/coupons/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[coupons]=created_at,updated_at,archived`
 
 
 ### Includes

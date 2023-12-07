@@ -90,7 +90,6 @@ Name | Description
 `enabled` | **Boolean**<br>Whether to accept online reservations
 `public` | **Boolean**<br>Whether to hosted online store is public
 `send_order_confirmation` | **Boolean**<br>Whether to send order confirmations automatically after checkout
-`send_orders_to_email` | **String**<br>Email address to send a blind copy to after checkout
 `brand_color` | **String**<br>Brand color as HEX code
 `use_availability` | **Boolean**<br>Whether to show availability and block checkouts when items are unavailable
 `use_prices` | **Boolean**<br>Whether to show prices
@@ -250,10 +249,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ecf8de39-49d3-5599-b1c6-2e276cf0a864",
+    "id": "82a4b476-3f1a-5c22-9f8a-216071570291",
     "type": "settings",
     "attributes": {
-      "updated_at": "2023-07-10T09:20:29+00:00",
+      "updated_at": "2023-12-07T13:56:06+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -265,8 +264,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "51612dda-46f0-4395-935b-dfceef3174cb",
-        "tax_region_id": "02b8f4db-68c2-470e-8616-b6cdad61888e",
+        "tax_category_id": "b8793c49-3abc-4c45-98f8-b97755e44d9b",
+        "tax_region_id": "891bd914-9474-4b5e-8f53-4f64323bf7be",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -308,7 +307,6 @@ Name | Description
         "enabled": true,
         "public": true,
         "send_order_confirmation": true,
-        "send_orders_to_email": null,
         "brand_color": "#2B80FF",
         "use_availability": true,
         "use_prices": true,

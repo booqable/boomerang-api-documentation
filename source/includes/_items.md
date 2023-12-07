@@ -11,9 +11,9 @@ The description of the behavior for these resources can be found in their respec
 ## Endpoints
 `GET /api/boomerang/items`
 
-`POST api/boomerang/items/search`
-
 `GET /api/boomerang/items/{id}`
+
+`POST api/boomerang/items/search`
 
 ## Fields
 For this resource fields are described in the following resources:
@@ -47,11 +47,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "26965879-616d-4650-8a90-023864d01783",
+      "id": "df0d5480-ab31-42ef-80de-dec936f10588",
       "type": "bundles",
       "attributes": {
-        "created_at": "2023-07-10T09:17:15+00:00",
-        "updated_at": "2023-07-10T09:17:15+00:00",
+        "created_at": "2023-12-07T13:54:36+00:00",
+        "updated_at": "2023-12-07T13:54:36+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -87,22 +87,22 @@ For this resource relationships are described in the following resources:
         },
         "bundle_items": {
           "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=26965879-616d-4650-8a90-023864d01783"
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=df0d5480-ab31-42ef-80de-dec936f10588"
           }
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=26965879-616d-4650-8a90-023864d01783"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=df0d5480-ab31-42ef-80de-dec936f10588"
           }
         }
       }
     },
     {
-      "id": "21c91889-0dc7-4f3d-8a24-c7c4845e3dc8",
+      "id": "4c2ba353-6323-4243-88f3-3d9d607867d2",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2023-07-10T09:17:15+00:00",
-        "updated_at": "2023-07-10T09:17:15+00:00",
+        "created_at": "2023-12-07T13:54:36+00:00",
+        "updated_at": "2023-12-07T13:54:36+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -136,7 +136,7 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "71b6a8ab-9010-4a7c-8d50-2eabb7d32dfd",
+        "tax_category_id": "d513c49f-8b2f-40ae-879a-6ea2266adb28",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "allow_shortage": true,
@@ -154,7 +154,7 @@ For this resource relationships are described in the following resources:
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/71b6a8ab-9010-4a7c-8d50-2eabb7d32dfd"
+            "related": "api/boomerang/tax_categories/d513c49f-8b2f-40ae-879a-6ea2266adb28"
           }
         },
         "price_ruleset": {
@@ -169,27 +169,27 @@ For this resource relationships are described in the following resources:
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=21c91889-0dc7-4f3d-8a24-c7c4845e3dc8"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=4c2ba353-6323-4243-88f3-3d9d607867d2"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=21c91889-0dc7-4f3d-8a24-c7c4845e3dc8&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=4c2ba353-6323-4243-88f3-3d9d607867d2&filter[owner_type]=product_groups"
           }
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=21c91889-0dc7-4f3d-8a24-c7c4845e3dc8"
+            "related": "api/boomerang/products?filter[product_group_id]=4c2ba353-6323-4243-88f3-3d9d607867d2"
           }
         }
       }
     },
     {
-      "id": "4cd11baf-c6c1-4090-96ca-8e38126e944e",
+      "id": "985d584c-761f-4df6-a2d6-4e88f0a30ed9",
       "type": "products",
       "attributes": {
-        "created_at": "2023-07-10T09:17:15+00:00",
-        "updated_at": "2023-07-10T09:17:15+00:00",
+        "created_at": "2023-12-07T13:54:36+00:00",
+        "updated_at": "2023-12-07T13:54:36+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -223,13 +223,13 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "71b6a8ab-9010-4a7c-8d50-2eabb7d32dfd",
+        "tax_category_id": "d513c49f-8b2f-40ae-879a-6ea2266adb28",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "21c91889-0dc7-4f3d-8a24-c7c4845e3dc8"
+        "product_group_id": "4c2ba353-6323-4243-88f3-3d9d607867d2"
       },
       "relationships": {
         "photo": {
@@ -239,7 +239,7 @@ For this resource relationships are described in the following resources:
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/71b6a8ab-9010-4a7c-8d50-2eabb7d32dfd"
+            "related": "api/boomerang/tax_categories/d513c49f-8b2f-40ae-879a-6ea2266adb28"
           }
         },
         "price_ruleset": {
@@ -254,22 +254,22 @@ For this resource relationships are described in the following resources:
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=4cd11baf-c6c1-4090-96ca-8e38126e944e"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=985d584c-761f-4df6-a2d6-4e88f0a30ed9"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=21c91889-0dc7-4f3d-8a24-c7c4845e3dc8&filter[owner_type]=products"
+            "related": "api/boomerang/properties?filter[owner_id]=4c2ba353-6323-4243-88f3-3d9d607867d2&filter[owner_type]=products"
           }
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/21c91889-0dc7-4f3d-8a24-c7c4845e3dc8"
+            "related": "api/boomerang/product_groups/4c2ba353-6323-4243-88f3-3d9d607867d2"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=4cd11baf-c6c1-4090-96ca-8e38126e944e&filter[owner_type]=products"
+            "related": "api/boomerang/barcodes?filter[owner_id]=985d584c-761f-4df6-a2d6-4e88f0a30ed9&filter[owner_type]=products"
           }
         }
       }
@@ -338,7 +338,7 @@ Name | Description
 `price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 `q` | **String** <br>`eq`
-`collection_id` | **Uuid** <br>`eq`
+`collection_id` | **Uuid** <br>`eq`, `not_eq`
 `product_group_id` | **Uuid** <br>`eq`
 `conditions` | **Hash** <br>`eq`
 
@@ -362,6 +362,141 @@ Name | Description
 `tax_category_id` | **Array** <br>`count`
 `deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
 `base_price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`inventory_levels`
+
+
+`photo`
+
+
+
+
+
+
+## Fetching an item
+
+
+
+> How to fetch an item:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/items/bf2b2ff2-5f5d-4b47-92f2-ff9ea3e705a4' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "bf2b2ff2-5f5d-4b47-92f2-ff9ea3e705a4",
+    "type": "product_groups",
+    "attributes": {
+      "created_at": "2023-12-07T13:54:38+00:00",
+      "updated_at": "2023-12-07T13:54:38+00:00",
+      "archived": false,
+      "archived_at": null,
+      "type": "product_groups",
+      "name": "iPad Pro",
+      "group_name": null,
+      "slug": "ipad-pro",
+      "sku": "SKU",
+      "lead_time": 0,
+      "lag_time": 0,
+      "product_type": "rental",
+      "tracking_type": "trackable",
+      "trackable": true,
+      "has_variations": false,
+      "variation": false,
+      "extra_information": "Charging cable and case included",
+      "photo_url": null,
+      "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
+      "show_in_store": true,
+      "sorting_weight": 0,
+      "base_price_in_cents": 1995,
+      "price_type": "simple",
+      "price_period": "day",
+      "deposit_in_cents": 10000,
+      "discountable": true,
+      "taxable": true,
+      "seo_title": null,
+      "seo_description": null,
+      "tag_list": [
+        "tablets",
+        "apple"
+      ],
+      "properties": {},
+      "photo_id": null,
+      "tax_category_id": "4d78e24d-ce64-4680-b5ab-df861f7ac265",
+      "price_ruleset_id": null,
+      "price_structure_id": null,
+      "allow_shortage": true,
+      "shortage_limit": 3,
+      "variation_fields": [],
+      "flat_fee_price_in_cents": 1995,
+      "structure_price_in_cents": 0,
+      "stock_item_properties": []
+    },
+    "relationships": {
+      "photo": {
+        "links": {
+          "related": null
+        }
+      },
+      "tax_category": {
+        "links": {
+          "related": "api/boomerang/tax_categories/4d78e24d-ce64-4680-b5ab-df861f7ac265"
+        }
+      },
+      "price_ruleset": {
+        "links": {
+          "related": null
+        }
+      },
+      "price_structure": {
+        "links": {
+          "related": null
+        }
+      },
+      "inventory_levels": {
+        "links": {
+          "related": "api/boomerang/inventory_levels?filter[item_id]=bf2b2ff2-5f5d-4b47-92f2-ff9ea3e705a4"
+        }
+      },
+      "properties": {
+        "links": {
+          "related": "api/boomerang/properties?filter[owner_id]=bf2b2ff2-5f5d-4b47-92f2-ff9ea3e705a4&filter[owner_type]=product_groups"
+        }
+      },
+      "products": {
+        "links": {
+          "related": "api/boomerang/products?filter[product_group_id]=bf2b2ff2-5f5d-4b47-92f2-ff9ea3e705a4"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/items/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=inventory_levels,photo`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=created_at,updated_at,archived`
 
 
 ### Includes
@@ -431,19 +566,19 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "533eef46-1450-430b-9158-c7cc933c63eb"
+      "id": "6fecf1bf-6b0d-4bc0-9595-f79456c30229"
     },
     {
-      "id": "c84f9bd6-1a2e-441c-9581-929946e1d92a"
+      "id": "21674d30-724d-4c6d-905b-634c00f51eef"
     },
     {
-      "id": "cd3cc306-6b25-4528-9440-d306fa8d4fda"
+      "id": "76513c99-f031-4adf-87cb-a6cc7f624476"
     },
     {
-      "id": "1f08d7ed-c6f2-450b-918e-99006f6f9f36"
+      "id": "8300a5ef-07fa-4596-ad72-e1797ced18b8"
     },
     {
-      "id": "97ac6d71-6dfc-4df8-8491-254868a0de8b"
+      "id": "c2de17d3-df2f-46ca-8377-cf98726cc8db"
     }
   ]
 }
@@ -508,7 +643,7 @@ Name | Description
 `price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **Uuid** <br>`eq`, `not_eq`
 `q` | **String** <br>`eq`
-`collection_id` | **Uuid** <br>`eq`
+`collection_id` | **Uuid** <br>`eq`, `not_eq`
 `product_group_id` | **Uuid** <br>`eq`
 `conditions` | **Hash** <br>`eq`
 
@@ -532,141 +667,6 @@ Name | Description
 `tax_category_id` | **Array** <br>`count`
 `deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
 `base_price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`inventory_levels`
-
-
-`photo`
-
-
-
-
-
-
-## Fetching an item
-
-
-
-> How to fetch an item:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/items/2bddf55f-822c-4df1-bf8f-a2fa8d621b07' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "2bddf55f-822c-4df1-bf8f-a2fa8d621b07",
-    "type": "product_groups",
-    "attributes": {
-      "created_at": "2023-07-10T09:17:18+00:00",
-      "updated_at": "2023-07-10T09:17:18+00:00",
-      "archived": false,
-      "archived_at": null,
-      "type": "product_groups",
-      "name": "iPad Pro",
-      "group_name": null,
-      "slug": "ipad-pro",
-      "sku": "SKU",
-      "lead_time": 0,
-      "lag_time": 0,
-      "product_type": "rental",
-      "tracking_type": "trackable",
-      "trackable": true,
-      "has_variations": false,
-      "variation": false,
-      "extra_information": "Charging cable and case included",
-      "photo_url": null,
-      "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
-      "show_in_store": true,
-      "sorting_weight": 0,
-      "base_price_in_cents": 1995,
-      "price_type": "simple",
-      "price_period": "day",
-      "deposit_in_cents": 10000,
-      "discountable": true,
-      "taxable": true,
-      "seo_title": null,
-      "seo_description": null,
-      "tag_list": [
-        "tablets",
-        "apple"
-      ],
-      "properties": {},
-      "photo_id": null,
-      "tax_category_id": "431e6927-2b48-46a1-a67f-ea5e13093de8",
-      "price_ruleset_id": null,
-      "price_structure_id": null,
-      "allow_shortage": true,
-      "shortage_limit": 3,
-      "variation_fields": [],
-      "flat_fee_price_in_cents": 1995,
-      "structure_price_in_cents": 0,
-      "stock_item_properties": []
-    },
-    "relationships": {
-      "photo": {
-        "links": {
-          "related": null
-        }
-      },
-      "tax_category": {
-        "links": {
-          "related": "api/boomerang/tax_categories/431e6927-2b48-46a1-a67f-ea5e13093de8"
-        }
-      },
-      "price_ruleset": {
-        "links": {
-          "related": null
-        }
-      },
-      "price_structure": {
-        "links": {
-          "related": null
-        }
-      },
-      "inventory_levels": {
-        "links": {
-          "related": "api/boomerang/inventory_levels?filter[item_id]=2bddf55f-822c-4df1-bf8f-a2fa8d621b07"
-        }
-      },
-      "properties": {
-        "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=2bddf55f-822c-4df1-bf8f-a2fa8d621b07&filter[owner_type]=product_groups"
-        }
-      },
-      "products": {
-        "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=2bddf55f-822c-4df1-bf8f-a2fa8d621b07"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/items/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=inventory_levels,photo`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=created_at,updated_at,archived`
 
 
 ### Includes

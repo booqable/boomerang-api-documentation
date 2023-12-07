@@ -3,15 +3,15 @@
 Allows creating and managing menus for your shop.
 
 ## Endpoints
-`GET /api/boomerang/menus`
-
 `GET /api/boomerang/menus/{id}`
 
-`POST /api/boomerang/menus`
+`GET /api/boomerang/menus`
 
 `PUT /api/boomerang/menus/{id}`
 
 `DELETE /api/boomerang/menus/{id}`
+
+`POST /api/boomerang/menus`
 
 ## Fields
 Every menu has the following fields:
@@ -34,6 +34,165 @@ Name | Description
 `menu_items` | **Menu items** `readonly`<br>Associated Menu items
 
 
+## Fetching a price structure
+
+
+
+> How to fetch a menu with it's items:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/menus/38f9003c-1d29-42c3-a8c4-c8eb867c5954?include=menu_items' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "38f9003c-1d29-42c3-a8c4-c8eb867c5954",
+    "type": "menus",
+    "attributes": {
+      "created_at": "2023-12-07T13:58:47+00:00",
+      "updated_at": "2023-12-07T13:58:47+00:00",
+      "title": "Main menu",
+      "key": "main"
+    },
+    "relationships": {
+      "menu_items": {
+        "links": {
+          "related": "api/boomerang/menu_items?filter[menu_id]=38f9003c-1d29-42c3-a8c4-c8eb867c5954"
+        },
+        "data": [
+          {
+            "type": "menu_items",
+            "id": "4bf032c4-64bc-44d9-b03d-8cf3344d9fe2"
+          },
+          {
+            "type": "menu_items",
+            "id": "14f48bce-4288-4cf7-a1ba-4696793e3cbb"
+          },
+          {
+            "type": "menu_items",
+            "id": "d7b89a41-28a9-41aa-990d-b3b793d5ec1e"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "4bf032c4-64bc-44d9-b03d-8cf3344d9fe2",
+      "type": "menu_items",
+      "attributes": {
+        "created_at": "2023-12-07T13:58:47+00:00",
+        "updated_at": "2023-12-07T13:58:47+00:00",
+        "menu_id": "38f9003c-1d29-42c3-a8c4-c8eb867c5954",
+        "parent_menu_item_id": null,
+        "title": "About us",
+        "value": "/about-us",
+        "target_id": null,
+        "target_type": "Static",
+        "sorting_weight": null
+      },
+      "relationships": {
+        "menu": {
+          "links": {
+            "related": "api/boomerang/menus/38f9003c-1d29-42c3-a8c4-c8eb867c5954"
+          }
+        },
+        "menu_items": {
+          "links": {
+            "related": "api/boomerang/menu_items?filter[parent_menu_item_id]=4bf032c4-64bc-44d9-b03d-8cf3344d9fe2"
+          }
+        }
+      }
+    },
+    {
+      "id": "14f48bce-4288-4cf7-a1ba-4696793e3cbb",
+      "type": "menu_items",
+      "attributes": {
+        "created_at": "2023-12-07T13:58:47+00:00",
+        "updated_at": "2023-12-07T13:58:47+00:00",
+        "menu_id": "38f9003c-1d29-42c3-a8c4-c8eb867c5954",
+        "parent_menu_item_id": null,
+        "title": "Home",
+        "value": "/",
+        "target_id": null,
+        "target_type": "Static",
+        "sorting_weight": null
+      },
+      "relationships": {
+        "menu": {
+          "links": {
+            "related": "api/boomerang/menus/38f9003c-1d29-42c3-a8c4-c8eb867c5954"
+          }
+        },
+        "menu_items": {
+          "links": {
+            "related": "api/boomerang/menu_items?filter[parent_menu_item_id]=14f48bce-4288-4cf7-a1ba-4696793e3cbb"
+          }
+        }
+      }
+    },
+    {
+      "id": "d7b89a41-28a9-41aa-990d-b3b793d5ec1e",
+      "type": "menu_items",
+      "attributes": {
+        "created_at": "2023-12-07T13:58:47+00:00",
+        "updated_at": "2023-12-07T13:58:47+00:00",
+        "menu_id": "38f9003c-1d29-42c3-a8c4-c8eb867c5954",
+        "parent_menu_item_id": null,
+        "title": "Rentals",
+        "value": "/products",
+        "target_id": null,
+        "target_type": "Static",
+        "sorting_weight": null
+      },
+      "relationships": {
+        "menu": {
+          "links": {
+            "related": "api/boomerang/menus/38f9003c-1d29-42c3-a8c4-c8eb867c5954"
+          }
+        },
+        "menu_items": {
+          "links": {
+            "related": "api/boomerang/menu_items?filter[parent_menu_item_id]=d7b89a41-28a9-41aa-990d-b3b793d5ec1e"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/menus/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=menu_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`menu_items`
+
+
+
+
+
+
 ## Listing menus
 
 
@@ -52,18 +211,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "c7c0d8f0-5594-47ae-b891-893fbafb660b",
+      "id": "97991ef4-cebc-4532-a60d-9d91e45497ad",
       "type": "menus",
       "attributes": {
-        "created_at": "2023-07-10T09:17:39+00:00",
-        "updated_at": "2023-07-10T09:17:39+00:00",
+        "created_at": "2023-12-07T13:58:48+00:00",
+        "updated_at": "2023-12-07T13:58:48+00:00",
         "title": "Main menu",
         "key": "main"
       },
       "relationships": {
         "menu_items": {
           "links": {
-            "related": "api/boomerang/menu_items?filter[menu_id]=c7c0d8f0-5594-47ae-b891-893fbafb660b"
+            "related": "api/boomerang/menu_items?filter[menu_id]=97991ef4-cebc-4532-a60d-9d91e45497ad"
           }
         }
       }
@@ -83,6 +242,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`include` | **String** <br>List of comma seperated relationships `?include=menu_items`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
 `filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
@@ -115,266 +275,6 @@ Name | Description
 
 ### Includes
 
-This request does not accept any includes
-## Fetching a price structure
-
-
-
-> How to fetch a menu with it's items:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/menus/9e422ec5-54dd-49eb-9883-98541d4b5a3f?include=menu_items' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "9e422ec5-54dd-49eb-9883-98541d4b5a3f",
-    "type": "menus",
-    "attributes": {
-      "created_at": "2023-07-10T09:17:40+00:00",
-      "updated_at": "2023-07-10T09:17:40+00:00",
-      "title": "Main menu",
-      "key": "main"
-    },
-    "relationships": {
-      "menu_items": {
-        "links": {
-          "related": "api/boomerang/menu_items?filter[menu_id]=9e422ec5-54dd-49eb-9883-98541d4b5a3f"
-        },
-        "data": [
-          {
-            "type": "menu_items",
-            "id": "ee55c9ad-da04-4600-8dc3-5284a21d3994"
-          },
-          {
-            "type": "menu_items",
-            "id": "ba1574a4-c82f-4975-a795-3a66c483f06b"
-          },
-          {
-            "type": "menu_items",
-            "id": "daf17a6a-98b9-4dbe-a5c7-965b193b38e9"
-          }
-        ]
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "ee55c9ad-da04-4600-8dc3-5284a21d3994",
-      "type": "menu_items",
-      "attributes": {
-        "created_at": "2023-07-10T09:17:40+00:00",
-        "updated_at": "2023-07-10T09:17:40+00:00",
-        "menu_id": "9e422ec5-54dd-49eb-9883-98541d4b5a3f",
-        "parent_menu_item_id": null,
-        "title": "About us",
-        "value": "/about-us",
-        "target_id": null,
-        "target_type": "Static",
-        "sorting_weight": null
-      },
-      "relationships": {
-        "menu": {
-          "links": {
-            "related": "api/boomerang/menus/9e422ec5-54dd-49eb-9883-98541d4b5a3f"
-          }
-        },
-        "menu_items": {
-          "links": {
-            "related": "api/boomerang/menu_items?filter[parent_menu_item_id]=ee55c9ad-da04-4600-8dc3-5284a21d3994"
-          }
-        }
-      }
-    },
-    {
-      "id": "ba1574a4-c82f-4975-a795-3a66c483f06b",
-      "type": "menu_items",
-      "attributes": {
-        "created_at": "2023-07-10T09:17:40+00:00",
-        "updated_at": "2023-07-10T09:17:40+00:00",
-        "menu_id": "9e422ec5-54dd-49eb-9883-98541d4b5a3f",
-        "parent_menu_item_id": null,
-        "title": "Home",
-        "value": "/",
-        "target_id": null,
-        "target_type": "Static",
-        "sorting_weight": null
-      },
-      "relationships": {
-        "menu": {
-          "links": {
-            "related": "api/boomerang/menus/9e422ec5-54dd-49eb-9883-98541d4b5a3f"
-          }
-        },
-        "menu_items": {
-          "links": {
-            "related": "api/boomerang/menu_items?filter[parent_menu_item_id]=ba1574a4-c82f-4975-a795-3a66c483f06b"
-          }
-        }
-      }
-    },
-    {
-      "id": "daf17a6a-98b9-4dbe-a5c7-965b193b38e9",
-      "type": "menu_items",
-      "attributes": {
-        "created_at": "2023-07-10T09:17:40+00:00",
-        "updated_at": "2023-07-10T09:17:40+00:00",
-        "menu_id": "9e422ec5-54dd-49eb-9883-98541d4b5a3f",
-        "parent_menu_item_id": null,
-        "title": "Rentals",
-        "value": "/products",
-        "target_id": null,
-        "target_type": "Static",
-        "sorting_weight": null
-      },
-      "relationships": {
-        "menu": {
-          "links": {
-            "related": "api/boomerang/menus/9e422ec5-54dd-49eb-9883-98541d4b5a3f"
-          }
-        },
-        "menu_items": {
-          "links": {
-            "related": "api/boomerang/menu_items?filter[parent_menu_item_id]=daf17a6a-98b9-4dbe-a5c7-965b193b38e9"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/menus/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=menu_items`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`menu_items`
-
-
-
-
-
-
-## Creating a menu with items
-
-
-
-> How to create a menu with menu items:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/menus' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "menus",
-        "attributes": {
-          "title": "Header menu",
-          "key": "header",
-          "menu_items_attributes": [
-            {
-              "title": "Home",
-              "target_type": "Static",
-              "value": "/"
-            },
-            {
-              "title": "Resources",
-              "target_type": "Static",
-              "value": "/resources",
-              "menu_items_attributes": [
-                {
-                  "title": "Blog",
-                  "target_type": "Static",
-                  "value": "/resources/blog",
-                  "menu_items_attributes": [
-                    {
-                      "title": "Customer stories",
-                      "target_type": "Static",
-                      "value": "/resources/blog/customer-stories"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "include": "menus"
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "8637eeac-e3c1-4457-aea6-b77364aaac51",
-    "type": "menus",
-    "attributes": {
-      "created_at": "2023-07-10T09:17:40+00:00",
-      "updated_at": "2023-07-10T09:17:40+00:00",
-      "title": "Header menu",
-      "key": "header"
-    },
-    "relationships": {
-      "menu_items": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/menus`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=menu_items`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][title]` | **String** <br>Name of the menu.
-`data[attributes][key]` | **String** <br>Key the menu can be referenced by.
-`data[attributes][menu_items_attributes][]` | **Array** <br>Attributes of child menu items to be created or changed.
-
-
-### Includes
-
 This request accepts the following includes:
 
 `menu_items` => 
@@ -398,25 +298,25 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/menus/2ffe999a-7ae7-44e3-a8c2-e6e22f81fc08' \
+    --url 'https://example.booqable.com/api/boomerang/menus/ca412eab-566a-498d-9664-50695c46240f' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "2ffe999a-7ae7-44e3-a8c2-e6e22f81fc08",
+        "id": "ca412eab-566a-498d-9664-50695c46240f",
         "type": "menus",
         "attributes": {
           "title": "Header menu",
           "menu_items_attributes": [
             {
-              "id": "311e8ec6-2e29-4a8e-b430-d32ce10aa542",
+              "id": "d094b6a7-ff8a-47ea-9a70-b0502de95f74",
               "title": "Contact us"
             },
             {
-              "id": "3c587f4a-6874-4e37-aab4-d3b7a31c2915",
+              "id": "5dfbf308-4132-43ed-992e-a86f1bcc392b",
               "title": "Start"
             },
             {
-              "id": "a1ad6f1c-cc5b-47b6-bd3e-fb99b061df67",
+              "id": "cdf944e2-4da1-4379-8cd8-eb15baafae8b",
               "title": "Rent from us"
             }
           ]
@@ -431,11 +331,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2ffe999a-7ae7-44e3-a8c2-e6e22f81fc08",
+    "id": "ca412eab-566a-498d-9664-50695c46240f",
     "type": "menus",
     "attributes": {
-      "created_at": "2023-07-10T09:17:41+00:00",
-      "updated_at": "2023-07-10T09:17:41+00:00",
+      "created_at": "2023-12-07T13:58:49+00:00",
+      "updated_at": "2023-12-07T13:58:50+00:00",
       "title": "Header menu",
       "key": "main"
     },
@@ -444,15 +344,15 @@ This request accepts the following includes:
         "data": [
           {
             "type": "menu_items",
-            "id": "311e8ec6-2e29-4a8e-b430-d32ce10aa542"
+            "id": "d094b6a7-ff8a-47ea-9a70-b0502de95f74"
           },
           {
             "type": "menu_items",
-            "id": "3c587f4a-6874-4e37-aab4-d3b7a31c2915"
+            "id": "5dfbf308-4132-43ed-992e-a86f1bcc392b"
           },
           {
             "type": "menu_items",
-            "id": "a1ad6f1c-cc5b-47b6-bd3e-fb99b061df67"
+            "id": "cdf944e2-4da1-4379-8cd8-eb15baafae8b"
           }
         ]
       }
@@ -460,12 +360,12 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "311e8ec6-2e29-4a8e-b430-d32ce10aa542",
+      "id": "d094b6a7-ff8a-47ea-9a70-b0502de95f74",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2023-07-10T09:17:41+00:00",
-        "updated_at": "2023-07-10T09:17:41+00:00",
-        "menu_id": "2ffe999a-7ae7-44e3-a8c2-e6e22f81fc08",
+        "created_at": "2023-12-07T13:58:49+00:00",
+        "updated_at": "2023-12-07T13:58:50+00:00",
+        "menu_id": "ca412eab-566a-498d-9664-50695c46240f",
         "parent_menu_item_id": null,
         "title": "Contact us",
         "value": "/about-us",
@@ -487,12 +387,12 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "3c587f4a-6874-4e37-aab4-d3b7a31c2915",
+      "id": "5dfbf308-4132-43ed-992e-a86f1bcc392b",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2023-07-10T09:17:41+00:00",
-        "updated_at": "2023-07-10T09:17:41+00:00",
-        "menu_id": "2ffe999a-7ae7-44e3-a8c2-e6e22f81fc08",
+        "created_at": "2023-12-07T13:58:49+00:00",
+        "updated_at": "2023-12-07T13:58:50+00:00",
+        "menu_id": "ca412eab-566a-498d-9664-50695c46240f",
         "parent_menu_item_id": null,
         "title": "Start",
         "value": "/",
@@ -514,12 +414,12 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "a1ad6f1c-cc5b-47b6-bd3e-fb99b061df67",
+      "id": "cdf944e2-4da1-4379-8cd8-eb15baafae8b",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2023-07-10T09:17:41+00:00",
-        "updated_at": "2023-07-10T09:17:41+00:00",
-        "menu_id": "2ffe999a-7ae7-44e3-a8c2-e6e22f81fc08",
+        "created_at": "2023-12-07T13:58:49+00:00",
+        "updated_at": "2023-12-07T13:58:50+00:00",
+        "menu_id": "ca412eab-566a-498d-9664-50695c46240f",
         "parent_menu_item_id": null,
         "title": "Rent from us",
         "value": "/products",
@@ -595,7 +495,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/menus/c6cb1bab-69b7-4664-8e98-69fcdc39c82f' \
+    --url 'https://example.booqable.com/api/boomerang/menus/ffb5c3b8-4c1d-4213-b978-2b7fd81662de' \
     --header 'content-type: application/json' \
 ```
 
@@ -623,3 +523,117 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Creating a menu with items
+
+
+
+> How to create a menu with menu items:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/menus' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "menus",
+        "attributes": {
+          "title": "Header menu",
+          "key": "header",
+          "menu_items_attributes": [
+            {
+              "title": "Home",
+              "target_type": "Static",
+              "value": "/"
+            },
+            {
+              "title": "Resources",
+              "target_type": "Static",
+              "value": "/resources",
+              "menu_items_attributes": [
+                {
+                  "title": "Blog",
+                  "target_type": "Static",
+                  "value": "/resources/blog",
+                  "menu_items_attributes": [
+                    {
+                      "title": "Customer stories",
+                      "target_type": "Static",
+                      "value": "/resources/blog/customer-stories"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "include": "menus"
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "13ce6318-dda2-405b-bd94-9dba6d6678fb",
+    "type": "menus",
+    "attributes": {
+      "created_at": "2023-12-07T13:58:53+00:00",
+      "updated_at": "2023-12-07T13:58:53+00:00",
+      "title": "Header menu",
+      "key": "header"
+    },
+    "relationships": {
+      "menu_items": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/menus`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=menu_items`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][title]` | **String** <br>Name of the menu.
+`data[attributes][key]` | **String** <br>Key the menu can be referenced by.
+`data[attributes][menu_items_attributes][]` | **Array** <br>Attributes of child menu items to be created or changed.
+
+
+### Includes
+
+This request accepts the following includes:
+
+`menu_items` => 
+`menu_items` => 
+`menu_items`
+
+
+
+
+
+
+
+
+

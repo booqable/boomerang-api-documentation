@@ -5,7 +5,7 @@ started, or stopped.
 
 The suggestions are sorted:
   1. Temporary stock items are sorted before permanent stock items.
-  2. Available stock items are sorted before unavailable and overdue stock items.
+  2. Available stock items are sorted before overdue, unavailable and already_booked stock items.
   3. Equally relevant stock items are sorted by the identifier.
 
 ## Fields
@@ -16,7 +16,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>
 `stock_item_id` | **Uuid** <br>The associated Stock item
 `item_id` | **Uuid** `readonly`<br>ID of the Product the suggested stock item belongs to.
-`status` | **String_enum** `readonly`<br>Status of the suggested stock item. One of `available_in_location`, `available_in_cluster`, `overdue`, `unavailable` 
+`status` | **String_enum** `readonly`<br>Status of the suggested stock item. One of `available_in_location`, `available_in_cluster`, `overdue`, `unavailable`, `already_booked` 
 
 
 ## Relationships
@@ -35,7 +35,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=4678c5f2-917b-41dd-aa22-705cb0600ce2&filter%5Border_id%5D=3ec0c2c9-c155-4c06-89f7-df3c42ecc248' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=fe869ad8-7c6a-426a-a232-0d29fd522ee8&filter%5Border_id%5D=5137fe07-612a-4749-9975-44a36e131036' \
     --header 'content-type: application/json' \
 ```
 
@@ -45,33 +45,33 @@ Name | Description
   {
   "data": [
     {
-      "id": "4419f575-3428-5e97-b0fe-ab0aaf2800fe",
+      "id": "f5b9c0d6-90c3-5ad0-bda4-66e0b11f2037",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "432e5ba1-3462-4708-9dfd-49073cf0ac36",
-        "item_id": "4678c5f2-917b-41dd-aa22-705cb0600ce2",
+        "stock_item_id": "59e61052-954a-4f05-bd74-1f93681700d0",
+        "item_id": "fe869ad8-7c6a-426a-a232-0d29fd522ee8",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/432e5ba1-3462-4708-9dfd-49073cf0ac36"
+            "related": "api/boomerang/stock_items/59e61052-954a-4f05-bd74-1f93681700d0"
           }
         }
       }
     },
     {
-      "id": "d47c0e9d-8274-5950-a582-035b8551f08d",
+      "id": "014af4d1-d2ab-5760-b567-876730f475b9",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "0db5ab68-e735-4000-8d77-e66aa026c25a",
-        "item_id": "4678c5f2-917b-41dd-aa22-705cb0600ce2",
-        "status": "unavailable"
+        "stock_item_id": "1e772db6-aa48-44b5-b213-96f6d19766a4",
+        "item_id": "fe869ad8-7c6a-426a-a232-0d29fd522ee8",
+        "status": "already_booked"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/0db5ab68-e735-4000-8d77-e66aa026c25a"
+            "related": "api/boomerang/stock_items/1e772db6-aa48-44b5-b213-96f6d19766a4"
           }
         }
       }

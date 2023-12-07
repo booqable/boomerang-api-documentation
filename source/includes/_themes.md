@@ -5,9 +5,9 @@ They organise custom assets and enable quick switching between different designs
 A company can 'install' a theme from the available themes, this creates a local copy which allows customizing the theme to your needs.
 
 ## Endpoints
-`GET /api/boomerang/themes`
-
 `POST /api/boomerang/themes`
+
+`GET /api/boomerang/themes`
 
 `DELETE /api/boomerang/themes/{id}`
 
@@ -22,10 +22,15 @@ Name | Description
 `name` | **String** <br>Name of the theme
 `identifier` | **String** <br>UUID used to link this theme
 `version` | **String** <br>Theme version
+`theme_id` | **Uuid** <br>Present for installed themes, Original ID of installed theme
 `theme_type` | **String** <br>Theme type, determines where the theme can be found. Custom themes are private. One of `marketplace`, `official`, `custom`
 `description` | **String** <br>Theme description
-`preview_image` | **String** <br>Theme preview image
-`theme_id` | **Uuid** <br>Present for installed themes, Original ID of installed theme
+`market` | **String** <br>The market (industry) which fits best for the theme
+`preview_url` | **String** <br>The URL where the theme could be previewed
+`detail_url` | **String** <br>The URL where more info about the theme is available
+`preview_image_long_url` | **String** `readonly`<br>Theme rectangle image preview image url
+`preview_image_medium_url` | **String** `readonly`<br>Theme medium image preview image url
+`preview_image_large_url` | **String** `readonly`<br>Theme large image preview image url
 `installed` | **Boolean** `readonly`<br>Whether or not this theme is installed
 
 
@@ -36,6 +41,109 @@ Name | Description
 -- | --
 `assets` | **Assets** `readonly`<br>Associated Assets
 `original_theme` | **Themes** `readonly`<br>Associated Original theme
+
+
+## Creating a theme
+
+
+
+> How to fork a theme to create a new theme:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/themes' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "themes",
+        "attributes": {
+          "name": "New theme",
+          "theme_id": "64a35d31-733c-402f-8696-f679f33f4013"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "347deb44-30e3-488f-a19b-f9627ddd055b",
+    "type": "themes",
+    "attributes": {
+      "created_at": "2023-12-07T13:54:57+00:00",
+      "updated_at": "2023-12-07T13:54:57+00:00",
+      "name": "Official theme",
+      "identifier": "ee383fa9-53a1-48d3-bb84-8ed895261763",
+      "version": null,
+      "theme_id": "64a35d31-733c-402f-8696-f679f33f4013",
+      "theme_type": "official",
+      "description": null,
+      "market": null,
+      "preview_url": null,
+      "detail_url": null,
+      "preview_image_long_url": null,
+      "preview_image_medium_url": null,
+      "preview_image_large_url": null,
+      "installed": true
+    },
+    "relationships": {
+      "assets": {
+        "meta": {
+          "included": false
+        }
+      },
+      "original_theme": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/themes`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=assets`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the theme
+`data[attributes][identifier]` | **String** <br>UUID used to link this theme
+`data[attributes][version]` | **String** <br>Theme version
+`data[attributes][theme_id]` | **Uuid** <br>Present for installed themes, Original ID of installed theme
+`data[attributes][theme_type]` | **String** <br>Theme type, determines where the theme can be found. Custom themes are private. One of `marketplace`, `official`, `custom`
+`data[attributes][market]` | **String** <br>The market (industry) which fits best for the theme
+`data[attributes][preview_url]` | **String** <br>The URL where the theme could be previewed
+`data[attributes][detail_url]` | **String** <br>The URL where more info about the theme is available
+
+
+### Includes
+
+This request accepts the following includes:
+
+`assets`
+
+
+
+
 
 
 ## Listing themes
@@ -56,29 +164,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "d2b4dbc3-2f3d-477a-b626-b3ae87011917",
+      "id": "7e9f9deb-20e9-42fd-8de5-03920bec6d9d",
       "type": "themes",
       "attributes": {
-        "created_at": "2023-07-10T09:20:56+00:00",
-        "updated_at": "2023-07-10T09:20:56+00:00",
-        "name": "Theme 9",
-        "identifier": "faebf350-82f6-4a65-ac8b-20b5f93fff3d",
+        "created_at": "2023-12-07T13:54:57+00:00",
+        "updated_at": "2023-12-07T13:54:57+00:00",
+        "name": "Theme 2",
+        "identifier": "4e0a963c-1bb1-4b04-b1cc-fab7c51f491b",
         "version": "1.0",
+        "theme_id": "c360d9a6-c45e-49aa-9f48-6fc49defdeaa",
         "theme_type": "official",
         "description": "A simple theme for setting up your shop",
-        "preview_image": "",
-        "theme_id": "1babfcfb-605d-4042-87fa-fd63f4964cf2",
+        "market": null,
+        "preview_url": null,
+        "detail_url": null,
+        "preview_image_long_url": null,
+        "preview_image_medium_url": null,
+        "preview_image_large_url": null,
         "installed": true
       },
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=d2b4dbc3-2f3d-477a-b626-b3ae87011917"
+            "related": "api/boomerang/assets?filter[theme_id]=7e9f9deb-20e9-42fd-8de5-03920bec6d9d"
           }
         },
         "original_theme": {
           "links": {
-            "related": "api/boomerang/themes/1babfcfb-605d-4042-87fa-fd63f4964cf2"
+            "related": "api/boomerang/themes/c360d9a6-c45e-49aa-9f48-6fc49defdeaa"
           }
         }
       }
@@ -89,11 +202,11 @@ Name | Description
 ```
 
 
-> How to fetch a list of available themes:
+> How to fetch a list of themes which are available for installation:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/themes?filter%5Bavailable%5D=true' \
+    --url 'https://example.booqable.com/api/boomerang/themes?filter%5Bavailable_for_installation%5D=true' \
     --header 'content-type: application/json' \
 ```
 
@@ -103,24 +216,29 @@ Name | Description
   {
   "data": [
     {
-      "id": "11c92626-1fc4-4127-a16a-24a8487a2b2a",
+      "id": "86f0999c-4ee7-49c9-8ad2-d5b9ecc9a342",
       "type": "themes",
       "attributes": {
-        "created_at": "2023-07-10T09:20:56+00:00",
-        "updated_at": "2023-07-10T09:20:56+00:00",
+        "created_at": "2023-12-07T13:54:58+00:00",
+        "updated_at": "2023-12-07T13:54:58+00:00",
         "name": "Official theme",
-        "identifier": "6055f4ab-0f23-4179-8bd1-8d28ffc16a30",
+        "identifier": "4b62825f-1a93-4fbf-a89a-2f9643f795d4",
         "version": "1.0",
+        "theme_id": null,
         "theme_type": "official",
         "description": null,
-        "preview_image": "",
-        "theme_id": null,
+        "market": null,
+        "preview_url": null,
+        "detail_url": null,
+        "preview_image_long_url": null,
+        "preview_image_medium_url": null,
+        "preview_image_large_url": null,
         "installed": false
       },
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=11c92626-1fc4-4127-a16a-24a8487a2b2a"
+            "related": "api/boomerang/assets?filter[theme_id]=86f0999c-4ee7-49c9-8ad2-d5b9ecc9a342"
           }
         },
         "original_theme": {
@@ -167,7 +285,7 @@ Name | Description
 `version` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `theme_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `installed` | **Boolean** <br>`eq`
-`available` | **Boolean** <br>`eq`
+`available_for_installation` | **Boolean** <br>`eq`
 
 
 ### Meta
@@ -182,102 +300,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a theme
-
-
-
-> How to fork a theme to create a new theme:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/themes' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "themes",
-        "attributes": {
-          "name": "New theme",
-          "theme_id": "d5ea114b-99cf-4222-8b5a-db10af03f9b7"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "9b24e2d6-f11c-4838-8f88-2e6728900d73",
-    "type": "themes",
-    "attributes": {
-      "created_at": "2023-07-10T09:20:57+00:00",
-      "updated_at": "2023-07-10T09:20:57+00:00",
-      "name": "Official theme",
-      "identifier": "c24d3ffc-c94b-44cd-81a6-73096e913b6d",
-      "version": null,
-      "theme_type": "official",
-      "description": null,
-      "preview_image": "",
-      "theme_id": "d5ea114b-99cf-4222-8b5a-db10af03f9b7",
-      "installed": true
-    },
-    "relationships": {
-      "assets": {
-        "meta": {
-          "included": false
-        }
-      },
-      "original_theme": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/themes`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=assets`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the theme
-`data[attributes][identifier]` | **String** <br>UUID used to link this theme
-`data[attributes][version]` | **String** <br>Theme version
-`data[attributes][theme_type]` | **String** <br>Theme type, determines where the theme can be found. Custom themes are private. One of `marketplace`, `official`, `custom`
-`data[attributes][preview_image]` | **String** <br>Theme preview image
-`data[attributes][theme_id]` | **Uuid** <br>Present for installed themes, Original ID of installed theme
-
-
-### Includes
-
-This request accepts the following includes:
-
-`assets`
-
-
-
-
-
-
 ## Deleting a theme
 
 
@@ -286,7 +308,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/eb317149-6b27-43a9-ad08-a5da0a5b7c2f' \
+    --url 'https://example.booqable.com/api/boomerang/themes/f2a4d305-8e08-4050-86f2-a4679387cb6f' \
     --header 'content-type: application/json' \
 ```
 

@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "3a505f89-1184-457c-803c-a2a7eb6e3189",
+      "id": "89b1136c-f79c-4fe7-9263-ee5d6e43417c",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2023-07-10T09:19:11+00:00",
-        "updated_at": "2023-07-10T09:19:11+00:00",
+        "created_at": "2023-12-07T13:56:58+00:00",
+        "updated_at": "2023-12-07T13:56:58+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -125,7 +125,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/25d7b1dc-dc1a-4d3c-b803-6db82f649129' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/35f80933-76a7-4f71-abaa-721241fc65f0' \
     --header 'content-type: application/json' \
 ```
 
