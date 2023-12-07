@@ -34,15 +34,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "355af257-ec0e-4b1d-962d-84039a3243fb",
+      "id": "0bb87b61-6c34-4fe5-8147-55ba8641f357",
       "type": "provinces",
       "attributes": {
-        "created_at": "2023-12-07T13:57:44+00:00",
-        "updated_at": "2023-12-07T13:57:44+00:00",
+        "created_at": "2023-12-07T18:38:39+00:00",
+        "updated_at": "2023-12-07T18:38:39+00:00",
         "name": "Friesland",
         "code": "FR",
         "position": 0,
-        "country_id": "329e4b91-dde8-4a7f-beec-4f66fb5a02e7"
+        "country_id": "e5418ef2-0346-4671-b729-fdca1066fe47"
       }
     }
   ],

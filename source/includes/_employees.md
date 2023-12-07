@@ -11,9 +11,9 @@ Employees also allow you to streamline Booqable's interface for specific roles o
 ## Endpoints
 `GET /api/boomerang/employees`
 
-`PUT /api/boomerang/employees/{id}`
-
 `GET /api/boomerang/employees/{id}`
+
+`PUT /api/boomerang/employees/{id}`
 
 ## Fields
 Every employee has the following fields:
@@ -64,11 +64,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "e9bf7d86-9b6b-48de-b836-348c1d528197",
+      "id": "b8921615-8016-4fa4-93d1-1af742e9ff35",
       "type": "employees",
       "attributes": {
-        "created_at": "2023-12-07T13:56:03+00:00",
-        "updated_at": "2023-12-07T13:56:03+00:00",
+        "created_at": "2023-12-07T18:42:12+00:00",
+        "updated_at": "2023-12-07T18:42:12+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -149,6 +149,76 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Fetching an employee
+
+
+
+> How to fetch a employee:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/employees/e09b4e2e-dad1-44f0-b7a7-a0c4afc72120' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "e09b4e2e-dad1-44f0-b7a7-a0c4afc72120",
+    "type": "employees",
+    "attributes": {
+      "created_at": "2023-12-07T18:42:14+00:00",
+      "updated_at": "2023-12-07T18:42:14+00:00",
+      "name": "John Doe",
+      "firstname": "John",
+      "lastname": "Doe",
+      "locale": null,
+      "email": "john@doe.com",
+      "unconfirmed_email": null,
+      "active": true,
+      "owner": true,
+      "confirmed": true,
+      "time_to_confirm": 0,
+      "permissions": [
+        "reports",
+        "products",
+        "settings",
+        "security_settings",
+        "account",
+        "exports",
+        "cancel_orders",
+        "revert_orders",
+        "delete_invoices",
+        "make_invoice_revisions",
+        "override_rental_period"
+      ],
+      "has_two_factor_autentication": false,
+      "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
+      "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/employees/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
 ## Updating an employee
 
 
@@ -157,11 +227,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/3f53fab3-1aab-4372-bcc5-964a36e83463' \
+    --url 'https://example.booqable.com/api/boomerang/employees/dfb1d516-724f-4fc6-ab2f-83ab841c11c2' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "3f53fab3-1aab-4372-bcc5-964a36e83463",
+        "id": "dfb1d516-724f-4fc6-ab2f-83ab841c11c2",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -178,11 +248,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3f53fab3-1aab-4372-bcc5-964a36e83463",
+    "id": "dfb1d516-724f-4fc6-ab2f-83ab841c11c2",
     "type": "employees",
     "attributes": {
-      "created_at": "2023-12-07T13:56:03+00:00",
-      "updated_at": "2023-12-07T13:56:03+00:00",
+      "created_at": "2023-12-07T18:42:16+00:00",
+      "updated_at": "2023-12-07T18:42:16+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -211,11 +281,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/7e986f0d-ba07-4032-97cc-e887e5d2d113' \
+    --url 'https://example.booqable.com/api/boomerang/employees/1f11b0ba-f58d-4717-81f1-1118f0c075c0' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "7e986f0d-ba07-4032-97cc-e887e5d2d113",
+        "id": "1f11b0ba-f58d-4717-81f1-1118f0c075c0",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -229,11 +299,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7e986f0d-ba07-4032-97cc-e887e5d2d113",
+    "id": "1f11b0ba-f58d-4717-81f1-1118f0c075c0",
     "type": "employees",
     "attributes": {
-      "created_at": "2023-12-07T13:56:04+00:00",
-      "updated_at": "2023-12-07T13:56:04+00:00",
+      "created_at": "2023-12-07T18:42:17+00:00",
+      "updated_at": "2023-12-07T18:42:17+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -271,11 +341,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/af0758f1-43de-45ea-8d11-aa7cb1e56cf1' \
+    --url 'https://example.booqable.com/api/boomerang/employees/87995da2-06f0-4a4c-8b7f-5fa910d99921' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "af0758f1-43de-45ea-8d11-aa7cb1e56cf1",
+        "id": "87995da2-06f0-4a4c-8b7f-5fa910d99921",
         "type": "employees",
         "attributes": {
           "active": false
@@ -289,11 +359,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "af0758f1-43de-45ea-8d11-aa7cb1e56cf1",
+    "id": "87995da2-06f0-4a4c-8b7f-5fa910d99921",
     "type": "employees",
     "attributes": {
-      "created_at": "2023-12-07T13:56:04+00:00",
-      "updated_at": "2023-12-07T13:56:04+00:00",
+      "created_at": "2023-12-07T18:42:17+00:00",
+      "updated_at": "2023-12-07T18:42:17+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -357,76 +427,6 @@ Name | Description
 `data[attributes][permissions][]` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `data[attributes][avatar_base64]` | **String** <br>Base64 encoded avatar
 `data[attributes][remove_avatar]` | **Boolean** <br>Remove current avatar
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching an employee
-
-
-
-> How to fetch a employee:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/a1e7c625-3006-44ab-80bc-f310354b67eb' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "a1e7c625-3006-44ab-80bc-f310354b67eb",
-    "type": "employees",
-    "attributes": {
-      "created_at": "2023-12-07T13:56:05+00:00",
-      "updated_at": "2023-12-07T13:56:05+00:00",
-      "name": "John Doe",
-      "firstname": "John",
-      "lastname": "Doe",
-      "locale": null,
-      "email": "john@doe.com",
-      "unconfirmed_email": null,
-      "active": true,
-      "owner": true,
-      "confirmed": true,
-      "time_to_confirm": 0,
-      "permissions": [
-        "reports",
-        "products",
-        "settings",
-        "security_settings",
-        "account",
-        "exports",
-        "cancel_orders",
-        "revert_orders",
-        "delete_invoices",
-        "make_invoice_revisions",
-        "override_rental_period"
-      ],
-      "has_two_factor_autentication": false,
-      "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-      "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/employees/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
 
 
 ### Includes

@@ -3,17 +3,17 @@
 Customers are an essential part of your business. You can manage settings and custom data. Stored customer information like addresses, customer tax profiles, discounts, and customized security deposits are applied to associated orders when created or when assigned a new customer.
 
 ## Endpoints
-`GET /api/boomerang/customers/{id}`
+`PUT /api/boomerang/customers/{id}`
+
+`POST api/boomerang/customers/search`
 
 `DELETE /api/boomerang/customers/{id}`
 
+`GET /api/boomerang/customers/{id}`
+
 `GET /api/boomerang/customers`
 
-`PUT /api/boomerang/customers/{id}`
-
 `POST /api/boomerang/customers`
-
-`POST api/boomerang/customers/search`
 
 ## Fields
 Every customer has the following fields:
@@ -51,287 +51,6 @@ Name | Description
 `notes` | **Notes** `readonly`<br>Associated Notes
 
 
-## Fetching a customer
-
-
-
-> How to fetch a customers:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/3ea2b437-eb2a-4bd6-8bf3-7ab10ca6d538?include=barcode%2Cproperties' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "3ea2b437-eb2a-4bd6-8bf3-7ab10ca6d538",
-    "type": "customers",
-    "attributes": {
-      "created_at": "2023-12-07T13:56:11+00:00",
-      "updated_at": "2023-12-07T13:56:11+00:00",
-      "archived": false,
-      "archived_at": null,
-      "number": 1,
-      "name": "John Doe",
-      "email": "john-23@doe.test",
-      "deposit_type": "default",
-      "deposit_value": 0.0,
-      "discount_percentage": 0.0,
-      "legal_type": "person",
-      "properties": {},
-      "tag_list": [],
-      "merge_suggestion_customer_id": null,
-      "tax_region_id": null
-    },
-    "relationships": {
-      "merge_suggestion_customer": {
-        "links": {
-          "related": null
-        }
-      },
-      "tax_region": {
-        "links": {
-          "related": null
-        }
-      },
-      "properties": {
-        "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=3ea2b437-eb2a-4bd6-8bf3-7ab10ca6d538&filter[owner_type]=customers"
-        },
-        "data": []
-      },
-      "barcode": {
-        "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=3ea2b437-eb2a-4bd6-8bf3-7ab10ca6d538&filter[owner_type]=customers"
-        },
-        "data": null
-      },
-      "notes": {
-        "links": {
-          "related": "api/boomerang/notes?filter[owner_id]=3ea2b437-eb2a-4bd6-8bf3-7ab10ca6d538&filter[owner_type]=customers"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/customers/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-
-
-
-
-## Archiving a customer
-
-
-
-> How to archive a customer:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/9af5eb0a-2c13-46f8-8b58-6631f3f10b93' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/customers/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes
-## Listing customers
-
-
-
-> How to fetch a list of customers:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "f87928a9-0464-42c4-a640-0e7cdc600acc",
-      "type": "customers",
-      "attributes": {
-        "created_at": "2023-12-07T13:56:13+00:00",
-        "updated_at": "2023-12-07T13:56:13+00:00",
-        "archived": false,
-        "archived_at": null,
-        "number": 1,
-        "name": "John Doe",
-        "email": "john-25@doe.test",
-        "deposit_type": "default",
-        "deposit_value": 0.0,
-        "discount_percentage": 0.0,
-        "legal_type": "person",
-        "properties": {},
-        "tag_list": [],
-        "merge_suggestion_customer_id": null,
-        "tax_region_id": null
-      },
-      "relationships": {
-        "merge_suggestion_customer": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=f87928a9-0464-42c4-a640-0e7cdc600acc&filter[owner_type]=customers"
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=f87928a9-0464-42c4-a640-0e7cdc600acc&filter[owner_type]=customers"
-          }
-        },
-        "notes": {
-          "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=f87928a9-0464-42c4-a640-0e7cdc600acc&filter[owner_type]=customers"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/customers`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean** <br>`eq`
-`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`email` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`deposit_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`legal_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`tag_list` | **String** <br>`eq`
-`merge_suggestion_customer_id` | **Uuid** <br>`eq`, `not_eq`
-`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
-`q` | **String** <br>`eq`
-`conditions` | **Hash** <br>`eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
-`archived` | **Array** <br>`count`
-`legal_type` | **Array** <br>`count`
-`tag_list` | **Array** <br>`count`
-`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-
-
-
-
 ## Updating a customer
 
 
@@ -340,11 +59,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/79ed3ede-849f-46a0-b8d2-3d1bb46619d4' \
+    --url 'https://example.booqable.com/api/boomerang/customers/8cccf023-c8b7-4e6b-8db3-cabd45a0d889' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "79ed3ede-849f-46a0-b8d2-3d1bb46619d4",
+        "id": "8cccf023-c8b7-4e6b-8db3-cabd45a0d889",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -358,16 +77,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "79ed3ede-849f-46a0-b8d2-3d1bb46619d4",
+    "id": "8cccf023-c8b7-4e6b-8db3-cabd45a0d889",
     "type": "customers",
     "attributes": {
-      "created_at": "2023-12-07T13:56:14+00:00",
-      "updated_at": "2023-12-07T13:56:14+00:00",
+      "created_at": "2023-12-07T18:35:45+00:00",
+      "updated_at": "2023-12-07T18:35:46+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "Jane Doe",
-      "email": "john-26@doe.test",
+      "email": "john-1@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -412,132 +131,6 @@ This request accepts the following includes:
 ### HTTP Request
 
 `PUT /api/boomerang/customers/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Person or Company name
-`data[attributes][email]` | **String** <br>E-mail address used for communication
-`data[attributes][deposit_type]` | **String** <br>One of `default`, `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
-`data[attributes][discount_percentage]` | **Float** <br>Default discount applied to each new order for this customer
-`data[attributes][legal_type]` | **String** <br>Either `person` or `commercial`
-`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this customer
-`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>The associated Merge suggestion customer
-`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-
-
-
-
-## Creating a customer
-
-
-
-> How to create a customer:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/customers' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "customers",
-        "attributes": {
-          "name": "John Doe",
-          "email": "john@doe.com"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "98952e45-55ea-4975-9ff2-3e5e1886b154",
-    "type": "customers",
-    "attributes": {
-      "created_at": "2023-12-07T13:56:16+00:00",
-      "updated_at": "2023-12-07T13:56:16+00:00",
-      "archived": false,
-      "archived_at": null,
-      "number": 2,
-      "name": "John Doe",
-      "email": "john@doe.com",
-      "deposit_type": "default",
-      "deposit_value": 0.0,
-      "discount_percentage": 0.0,
-      "legal_type": "person",
-      "properties": {},
-      "tag_list": [],
-      "merge_suggestion_customer_id": null,
-      "tax_region_id": null
-    },
-    "relationships": {
-      "merge_suggestion_customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "notes": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/customers`
 
 ### Request params
 
@@ -639,10 +232,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "8f1bd491-70bb-45a4-a87c-cf7451702b0a"
+      "id": "2b1cc79e-44d2-45b9-b7c9-f99550d96115"
     },
     {
-      "id": "26b44f9b-98ff-443d-b6b6-e77559462a87"
+      "id": "1ec55ec2-e8f8-4aff-87b3-45f833ec039c"
     }
   ]
 }
@@ -703,6 +296,413 @@ Name | Description
 `legal_type` | **Array** <br>`count`
 `tag_list` | **Array** <br>`count`
 `discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`properties`
+
+
+`tax_region`
+
+
+
+
+
+
+## Archiving a customer
+
+
+
+> How to archive a customer:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/customers/743c7646-8acb-4903-b2cf-1de301f190f2' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/customers/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a customer
+
+
+
+> How to fetch a customers:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/customers/27f9664b-68e1-40ed-b007-62e9e5c84dee?include=barcode%2Cproperties' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "27f9664b-68e1-40ed-b007-62e9e5c84dee",
+    "type": "customers",
+    "attributes": {
+      "created_at": "2023-12-07T18:35:57+00:00",
+      "updated_at": "2023-12-07T18:35:57+00:00",
+      "archived": false,
+      "archived_at": null,
+      "number": 1,
+      "name": "John Doe",
+      "email": "john-9@doe.test",
+      "deposit_type": "default",
+      "deposit_value": 0.0,
+      "discount_percentage": 0.0,
+      "legal_type": "person",
+      "properties": {},
+      "tag_list": [],
+      "merge_suggestion_customer_id": null,
+      "tax_region_id": null
+    },
+    "relationships": {
+      "merge_suggestion_customer": {
+        "links": {
+          "related": null
+        }
+      },
+      "tax_region": {
+        "links": {
+          "related": null
+        }
+      },
+      "properties": {
+        "links": {
+          "related": "api/boomerang/properties?filter[owner_id]=27f9664b-68e1-40ed-b007-62e9e5c84dee&filter[owner_type]=customers"
+        },
+        "data": []
+      },
+      "barcode": {
+        "links": {
+          "related": "api/boomerang/barcodes?filter[owner_id]=27f9664b-68e1-40ed-b007-62e9e5c84dee&filter[owner_type]=customers"
+        },
+        "data": null
+      },
+      "notes": {
+        "links": {
+          "related": "api/boomerang/notes?filter[owner_id]=27f9664b-68e1-40ed-b007-62e9e5c84dee&filter[owner_type]=customers"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/customers/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`properties`
+
+
+`tax_region`
+
+
+
+
+
+
+## Listing customers
+
+
+
+> How to fetch a list of customers:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/customers' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "286fe56d-4702-4d66-bc0a-be413f85f52f",
+      "type": "customers",
+      "attributes": {
+        "created_at": "2023-12-07T18:35:59+00:00",
+        "updated_at": "2023-12-07T18:35:59+00:00",
+        "archived": false,
+        "archived_at": null,
+        "number": 1,
+        "name": "John Doe",
+        "email": "john-10@doe.test",
+        "deposit_type": "default",
+        "deposit_value": 0.0,
+        "discount_percentage": 0.0,
+        "legal_type": "person",
+        "properties": {},
+        "tag_list": [],
+        "merge_suggestion_customer_id": null,
+        "tax_region_id": null
+      },
+      "relationships": {
+        "merge_suggestion_customer": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_region": {
+          "links": {
+            "related": null
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=286fe56d-4702-4d66-bc0a-be413f85f52f&filter[owner_type]=customers"
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=286fe56d-4702-4d66-bc0a-be413f85f52f&filter[owner_type]=customers"
+          }
+        },
+        "notes": {
+          "links": {
+            "related": "api/boomerang/notes?filter[owner_id]=286fe56d-4702-4d66-bc0a-be413f85f52f&filter[owner_type]=customers"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/customers`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`email` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`legal_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tag_list` | **String** <br>`eq`
+`merge_suggestion_customer_id` | **Uuid** <br>`eq`, `not_eq`
+`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
+`q` | **String** <br>`eq`
+`conditions` | **Hash** <br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+`archived` | **Array** <br>`count`
+`legal_type` | **Array** <br>`count`
+`tag_list` | **Array** <br>`count`
+`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`properties`
+
+
+`tax_region`
+
+
+
+
+
+
+## Creating a customer
+
+
+
+> How to create a customer:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/customers' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "customers",
+        "attributes": {
+          "name": "John Doe",
+          "email": "john@doe.com"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "c7230703-2881-4378-ad44-08aff6adf131",
+    "type": "customers",
+    "attributes": {
+      "created_at": "2023-12-07T18:36:01+00:00",
+      "updated_at": "2023-12-07T18:36:01+00:00",
+      "archived": false,
+      "archived_at": null,
+      "number": 2,
+      "name": "John Doe",
+      "email": "john@doe.com",
+      "deposit_type": "default",
+      "deposit_value": 0.0,
+      "discount_percentage": 0.0,
+      "legal_type": "person",
+      "properties": {},
+      "tag_list": [],
+      "merge_suggestion_customer_id": null,
+      "tax_region_id": null
+    },
+    "relationships": {
+      "merge_suggestion_customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "notes": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/customers`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,properties,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[customers]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Person or Company name
+`data[attributes][email]` | **String** <br>E-mail address used for communication
+`data[attributes][deposit_type]` | **String** <br>One of `default`, `none`, `percentage_total`, `percentage`, `fixed`
+`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
+`data[attributes][discount_percentage]` | **Float** <br>Default discount applied to each new order for this customer
+`data[attributes][legal_type]` | **String** <br>Either `person` or `commercial`
+`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this customer
+`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
+`data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>The associated Merge suggestion customer
+`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
 
 
 ### Includes

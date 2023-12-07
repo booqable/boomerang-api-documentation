@@ -45,7 +45,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/1ec0a33b-ae38-41f4-b75f-8651ea3c5bf8' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/befc94a4-cca9-4181-b892-74bbdcc8ca53' \
     --header 'content-type: application/json' \
 ```
 
@@ -91,34 +91,34 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "fc88d826-4f37-4b5a-9f67-d124eaa7f9d0",
+      "id": "24149f87-c423-46b1-bdb0-da1763fba531",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2023-12-07T13:56:55+00:00",
-        "updated_at": "2023-12-07T13:56:55+00:00",
+        "created_at": "2023-12-07T18:42:20+00:00",
+        "updated_at": "2023-12-07T18:42:20+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "266d7cab-4366-4ff5-9692-18ffc87fda46",
-        "planning_id": "79b1e59c-c7a7-4e40-bd35-09edc1910b65",
-        "order_id": "2e479ca3-f914-4fb6-af32-9933e9e523c5"
+        "stock_item_id": "6b0d80c2-8183-4dd8-88a6-50ac8f57cf7e",
+        "planning_id": "b4eab214-91f8-498a-b809-68f3bed7af4a",
+        "order_id": "39364709-7f68-43bb-8938-61f323341afe"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/266d7cab-4366-4ff5-9692-18ffc87fda46"
+            "related": "api/boomerang/stock_items/6b0d80c2-8183-4dd8-88a6-50ac8f57cf7e"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/79b1e59c-c7a7-4e40-bd35-09edc1910b65"
+            "related": "api/boomerang/plannings/b4eab214-91f8-498a-b809-68f3bed7af4a"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/2e479ca3-f914-4fb6-af32-9933e9e523c5"
+            "related": "api/boomerang/orders/39364709-7f68-43bb-8938-61f323341afe"
           }
         }
       }

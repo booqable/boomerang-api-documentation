@@ -3,15 +3,15 @@
 Checkout fields allow collecting additional information from the checkout.
 
 ## Endpoints
-`GET /api/boomerang/checkout_fields`
+`DELETE /api/boomerang/checkout_fields/{id}`
 
 `PUT /api/boomerang/checkout_fields/{id}`
 
 `POST /api/boomerang/checkout_fields`
 
-`DELETE /api/boomerang/checkout_fields/{id}`
-
 `GET /api/boomerang/checkout_fields/{id}`
+
+`GET /api/boomerang/checkout_fields`
 
 ## Fields
 Every checkout field has the following fields:
@@ -35,15 +35,15 @@ Name | Description
 `default_property` | **Default properties** `readonly`<br>Associated Default property
 
 
-## Listing checkout fields
+## Destroying a checkout field
 
 
 
-> How to fetch a list of checkout fields:
+> How to delete a checkout field:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/450183ca-8ee8-488c-89ed-519393337460' \
     --header 'content-type: application/json' \
 ```
 
@@ -51,34 +51,13 @@ Name | Description
 
 ```json
   {
-  "data": [
-    {
-      "id": "210426e2-58f8-4e48-8c0c-4dbc8f938c68",
-      "type": "checkout_fields",
-      "attributes": {
-        "created_at": "2023-12-07T13:58:31+00:00",
-        "updated_at": "2023-12-07T13:58:31+00:00",
-        "name": "Special requests",
-        "required": false,
-        "position": null,
-        "default_property_id": "27adc588-4eb8-42ea-aa88-e7a9216f4d90"
-      },
-      "relationships": {
-        "default_property": {
-          "links": {
-            "related": "api/boomerang/default_properties/27adc588-4eb8-42ea-aa88-e7a9216f4d90"
-          }
-        }
-      }
-    }
-  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/checkout_fields`
+`DELETE /api/boomerang/checkout_fields/{id}`
 
 ### Request params
 
@@ -87,34 +66,6 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=created_at,updated_at,name`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`required` | **Boolean** <br>`eq`
-`default_property_id` | **Uuid** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -128,11 +79,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/3f65dd2a-35d1-4701-b8cf-a6a77c8e13be' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/fda607ff-2e11-4e9b-9bf5-e851104511b7' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "3f65dd2a-35d1-4701-b8cf-a6a77c8e13be",
+        "id": "fda607ff-2e11-4e9b-9bf5-e851104511b7",
         "type": "checkout_fields",
         "attributes": {
           "name": "Additional information"
@@ -146,15 +97,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3f65dd2a-35d1-4701-b8cf-a6a77c8e13be",
+    "id": "fda607ff-2e11-4e9b-9bf5-e851104511b7",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2023-12-07T13:58:32+00:00",
-      "updated_at": "2023-12-07T13:58:32+00:00",
+      "created_at": "2023-12-07T18:41:17+00:00",
+      "updated_at": "2023-12-07T18:41:17+00:00",
       "name": "Additional information",
       "required": false,
       "position": null,
-      "default_property_id": "af619c25-0fb0-44ec-94e2-43cb5871a6ae"
+      "default_property_id": "ba1fc8bb-2d62-4530-8031-c4b6a4e2ab6c"
     },
     "relationships": {
       "default_property": {
@@ -219,7 +170,7 @@ This request accepts the following includes:
         "type": "checkout_fields",
         "attributes": {
           "name": "Special requests",
-          "default_property_id": "51a532b2-bccd-4bb9-972d-c5670a708db1"
+          "default_property_id": "2d32f43b-3da2-493a-9764-6c5b5ab64fae"
         }
       }
     }'
@@ -230,15 +181,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a2e525c5-c9ff-4500-ba07-004e50ce9044",
+    "id": "dfefb58e-2293-454a-8887-4d0eaef49983",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2023-12-07T13:58:33+00:00",
-      "updated_at": "2023-12-07T13:58:33+00:00",
+      "created_at": "2023-12-07T18:41:18+00:00",
+      "updated_at": "2023-12-07T18:41:18+00:00",
       "name": "Special requests",
       "required": false,
       "position": null,
-      "default_property_id": "51a532b2-bccd-4bb9-972d-c5670a708db1"
+      "default_property_id": "2d32f43b-3da2-493a-9764-6c5b5ab64fae"
     },
     "relationships": {
       "default_property": {
@@ -288,42 +239,6 @@ This request accepts the following includes:
 
 
 
-## Destroying a checkout field
-
-
-
-> How to delete a checkout field:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/555c56cb-97a0-4188-8b51-7681bf5a4e0f' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/checkout_fields/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Fetching a checkout field
 
 
@@ -332,7 +247,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/521c8247-d1a9-44f9-a3f0-e8f2736b5530?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/e404702e-dcac-48a5-922a-01f0f2986034?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -341,37 +256,37 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "521c8247-d1a9-44f9-a3f0-e8f2736b5530",
+    "id": "e404702e-dcac-48a5-922a-01f0f2986034",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2023-12-07T13:58:34+00:00",
-      "updated_at": "2023-12-07T13:58:34+00:00",
+      "created_at": "2023-12-07T18:41:18+00:00",
+      "updated_at": "2023-12-07T18:41:18+00:00",
       "name": "Special requests",
       "required": false,
       "position": null,
-      "default_property_id": "ad2dfba0-d092-4866-939d-033f3bc61361"
+      "default_property_id": "e5f973c1-bae0-457d-87d5-fcbc9b69d51c"
     },
     "relationships": {
       "default_property": {
         "links": {
-          "related": "api/boomerang/default_properties/ad2dfba0-d092-4866-939d-033f3bc61361"
+          "related": "api/boomerang/default_properties/e5f973c1-bae0-457d-87d5-fcbc9b69d51c"
         },
         "data": {
           "type": "default_properties",
-          "id": "ad2dfba0-d092-4866-939d-033f3bc61361"
+          "id": "e5f973c1-bae0-457d-87d5-fcbc9b69d51c"
         }
       }
     }
   },
   "included": [
     {
-      "id": "ad2dfba0-d092-4866-939d-033f3bc61361",
+      "id": "e5f973c1-bae0-457d-87d5-fcbc9b69d51c",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2023-12-07T13:58:34+00:00",
-        "updated_at": "2023-12-07T13:58:34+00:00",
-        "name": "Default Property 12",
-        "identifier": "default_property_12",
+        "created_at": "2023-12-07T18:41:18+00:00",
+        "updated_at": "2023-12-07T18:41:18+00:00",
+        "name": "Default Property 13",
+        "identifier": "default_property_13",
         "position": 1,
         "property_type": "text_field",
         "show_on": [],
@@ -410,3 +325,89 @@ This request accepts the following includes:
 
 
 
+
+## Listing checkout fields
+
+
+
+> How to fetch a list of checkout fields:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "7cb9a0dd-d5b5-4e10-ba9b-803e12283fa1",
+      "type": "checkout_fields",
+      "attributes": {
+        "created_at": "2023-12-07T18:41:19+00:00",
+        "updated_at": "2023-12-07T18:41:19+00:00",
+        "name": "Special requests",
+        "required": false,
+        "position": null,
+        "default_property_id": "a97f6725-a34d-4241-b808-0ca36555d2fa"
+      },
+      "relationships": {
+        "default_property": {
+          "links": {
+            "related": "api/boomerang/default_properties/a97f6725-a34d-4241-b808-0ca36555d2fa"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/checkout_fields`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=created_at,updated_at,name`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`required` | **Boolean** <br>`eq`
+`default_property_id` | **Uuid** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes

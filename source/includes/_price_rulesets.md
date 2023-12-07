@@ -7,15 +7,15 @@ Price rulesets are used to create elaborate pricing adjustments using the advanc
 </aside>
 
 ## Endpoints
-`GET /api/boomerang/price_rulesets`
-
 `DELETE /api/boomerang/price_rulesets/{id}`
+
+`GET /api/boomerang/price_rulesets`
 
 `GET /api/boomerang/price_rulesets/{id}`
 
-`PUT /api/boomerang/price_rulesets/{id}`
-
 `POST /api/boomerang/price_rulesets`
+
+`PUT /api/boomerang/price_rulesets/{id}`
 
 ## Fields
 Every price ruleset has the following fields:
@@ -41,6 +41,42 @@ Name | Description
 `price_rules` | **Price rules** `readonly`<br>Associated Price rules
 
 
+## Archiving a price ruleset
+
+
+
+> How to archive a price ruleset:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/ddc998ef-4ab5-46a2-91e4-9ee5b1ec68e6' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/price_rulesets/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rulesets]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing price rulesets
 
 
@@ -59,11 +95,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "d2823de5-8296-47d6-86d8-b3437d27d58c",
+      "id": "14780dbb-cb4d-47e8-ae94-7f9b03fc87fc",
       "type": "price_rulesets",
       "attributes": {
-        "created_at": "2023-12-07T13:59:39+00:00",
-        "updated_at": "2023-12-07T13:59:39+00:00",
+        "created_at": "2023-12-07T18:39:19+00:00",
+        "updated_at": "2023-12-07T18:39:19+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Ruleset",
@@ -72,7 +108,7 @@ Name | Description
       "relationships": {
         "price_rules": {
           "links": {
-            "related": "api/boomerang/price_rules?filter[price_ruleset_id]=d2823de5-8296-47d6-86d8-b3437d27d58c"
+            "related": "api/boomerang/price_rules?filter[price_ruleset_id]=14780dbb-cb4d-47e8-ae94-7f9b03fc87fc"
           }
         }
       }
@@ -127,42 +163,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Archiving a price ruleset
-
-
-
-> How to archive a price ruleset:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/81d98dd8-90d2-4853-8323-560f15b7d691' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/price_rulesets/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rulesets]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes
 ## Fetching a price ruleset
 
 
@@ -171,7 +171,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/558eabfe-011e-4fa7-944e-9e22285e8928?include=price_rules' \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/2d02d183-1800-4017-8f44-ac2517fa4704?include=price_rules' \
     --header 'content-type: application/json' \
 ```
 
@@ -180,11 +180,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "558eabfe-011e-4fa7-944e-9e22285e8928",
+    "id": "2d02d183-1800-4017-8f44-ac2517fa4704",
     "type": "price_rulesets",
     "attributes": {
-      "created_at": "2023-12-07T13:59:40+00:00",
-      "updated_at": "2023-12-07T13:59:40+00:00",
+      "created_at": "2023-12-07T18:39:19+00:00",
+      "updated_at": "2023-12-07T18:39:19+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Ruleset",
@@ -193,12 +193,12 @@ This request does not accept any includes
     "relationships": {
       "price_rules": {
         "links": {
-          "related": "api/boomerang/price_rules?filter[price_ruleset_id]=558eabfe-011e-4fa7-944e-9e22285e8928"
+          "related": "api/boomerang/price_rules?filter[price_ruleset_id]=2d02d183-1800-4017-8f44-ac2517fa4704"
         },
         "data": [
           {
             "type": "price_rules",
-            "id": "9f4c1652-b683-4a71-866f-0796a01d3729"
+            "id": "cb5354dd-e586-4d40-be55-ee533602d341"
           }
         ]
       }
@@ -206,11 +206,11 @@ This request does not accept any includes
   },
   "included": [
     {
-      "id": "9f4c1652-b683-4a71-866f-0796a01d3729",
+      "id": "cb5354dd-e586-4d40-be55-ee533602d341",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2023-12-07T13:59:40+00:00",
-        "updated_at": "2023-12-07T13:59:40+00:00",
+        "created_at": "2023-12-07T18:39:20+00:00",
+        "updated_at": "2023-12-07T18:39:20+00:00",
         "name": "Price rule",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
@@ -227,12 +227,12 @@ This request does not accept any includes
         "time": null,
         "min_duration": null,
         "max_duration": null,
-        "price_ruleset_id": "558eabfe-011e-4fa7-944e-9e22285e8928"
+        "price_ruleset_id": "2d02d183-1800-4017-8f44-ac2517fa4704"
       },
       "relationships": {
         "price_ruleset": {
           "links": {
-            "related": "api/boomerang/price_rulesets/558eabfe-011e-4fa7-944e-9e22285e8928"
+            "related": "api/boomerang/price_rulesets/2d02d183-1800-4017-8f44-ac2517fa4704"
           }
         }
       }
@@ -267,70 +267,29 @@ This request accepts the following includes:
 
 
 
-## Updating a price ruleset
+## Creating a price ruleset
 
 
 
-> How to update a price ruleset:
+> How to create a price ruleset with price rules:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/581e6a04-b132-42dc-9b4d-113c192d0653' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "581e6a04-b132-42dc-9b4d-113c192d0653",
         "type": "price_rulesets",
         "attributes": {
-          "name": "Seasonal ruleset (old)"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "581e6a04-b132-42dc-9b4d-113c192d0653",
-    "type": "price_rulesets",
-    "attributes": {
-      "created_at": "2023-12-07T13:59:41+00:00",
-      "updated_at": "2023-12-07T13:59:41+00:00",
-      "archived": false,
-      "archived_at": null,
-      "name": "Seasonal ruleset (old)",
-      "description": null
-    },
-    "relationships": {
-      "price_rules": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Updating a price ruleset's price rules:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets/aeb72f5d-1e1f-4e9a-b5d6-fdfcf6fb36bb' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "aeb72f5d-1e1f-4e9a-b5d6-fdfcf6fb36bb",
-        "type": "price_rulesets",
-        "attributes": {
+          "name": "Seasonal ruleset",
           "price_rules_attributes": [
             {
-              "id": "2bed18e2-43d8-4686-b36f-8bc780b521f1",
-              "name": "Off season"
+              "name": "Off season",
+              "rule_type": "range_of_dates",
+              "match_strategy": "span",
+              "value": 25,
+              "from": "2023-11-07T18:39:20.538Z",
+              "till": "2024-01-07T18:39:20.538Z"
             }
           ]
         }
@@ -339,19 +298,19 @@ This request accepts the following includes:
     }'
 ```
 
-> A 200 status response looks like this:
+> A 201 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "aeb72f5d-1e1f-4e9a-b5d6-fdfcf6fb36bb",
+    "id": "b42602eb-0cc9-4a42-85a9-0fbaeaa98d1c",
     "type": "price_rulesets",
     "attributes": {
-      "created_at": "2023-12-07T13:59:41+00:00",
-      "updated_at": "2023-12-07T13:59:41+00:00",
+      "created_at": "2023-12-07T18:39:20+00:00",
+      "updated_at": "2023-12-07T18:39:20+00:00",
       "archived": false,
       "archived_at": null,
-      "name": "Ruleset",
+      "name": "Seasonal ruleset",
       "description": null
     },
     "relationships": {
@@ -359,7 +318,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "price_rules",
-            "id": "2bed18e2-43d8-4686-b36f-8bc780b521f1"
+            "id": "0689f61c-dc00-407d-8634-ed4222f913dd"
           }
         ]
       }
@@ -367,18 +326,18 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "2bed18e2-43d8-4686-b36f-8bc780b521f1",
+      "id": "0689f61c-dc00-407d-8634-ed4222f913dd",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2023-12-07T13:59:41+00:00",
-        "updated_at": "2023-12-07T13:59:41+00:00",
+        "created_at": "2023-12-07T18:39:20+00:00",
+        "updated_at": "2023-12-07T18:39:20+00:00",
         "name": "Off season",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
-        "value": 30.0,
-        "from": "2030-07-01T00:00:00+00:00",
-        "till": "2030-08-31T00:00:00+00:00",
+        "value": 25.0,
+        "from": "2023-11-07T18:39:20+00:00",
+        "till": "2024-01-07T18:39:20+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -388,7 +347,7 @@ This request accepts the following includes:
         "time": null,
         "min_duration": null,
         "max_duration": null,
-        "price_ruleset_id": "aeb72f5d-1e1f-4e9a-b5d6-fdfcf6fb36bb"
+        "price_ruleset_id": "b42602eb-0cc9-4a42-85a9-0fbaeaa98d1c"
       },
       "relationships": {
         "price_ruleset": {
@@ -405,7 +364,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/price_rulesets/{id}`
+`POST /api/boomerang/price_rulesets`
 
 ### Request params
 
@@ -439,29 +398,25 @@ This request accepts the following includes:
 
 
 
-## Creating a price ruleset
+## Updating a price ruleset
 
 
 
-> How to create a price ruleset with price rules:
+> Updating a price ruleset's price rules:
 
 ```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/price_rulesets' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/cfb94865-ef05-4f16-94b9-3bac2cd6bd31' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
+        "id": "cfb94865-ef05-4f16-94b9-3bac2cd6bd31",
         "type": "price_rulesets",
         "attributes": {
-          "name": "Seasonal ruleset",
           "price_rules_attributes": [
             {
-              "name": "Off season",
-              "rule_type": "range_of_dates",
-              "match_strategy": "span",
-              "value": 25,
-              "from": "2023-11-07T13:59:43.505Z",
-              "till": "2024-01-07T13:59:43.505Z"
+              "id": "b67c0a5c-fdd6-43d7-a38a-f5f6398c417c",
+              "name": "Off season"
             }
           ]
         }
@@ -470,19 +425,19 @@ This request accepts the following includes:
     }'
 ```
 
-> A 201 status response looks like this:
+> A 200 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "e383c5ec-c9a1-4c65-9aab-9cfc8b4d891d",
+    "id": "cfb94865-ef05-4f16-94b9-3bac2cd6bd31",
     "type": "price_rulesets",
     "attributes": {
-      "created_at": "2023-12-07T13:59:43+00:00",
-      "updated_at": "2023-12-07T13:59:43+00:00",
+      "created_at": "2023-12-07T18:39:21+00:00",
+      "updated_at": "2023-12-07T18:39:21+00:00",
       "archived": false,
       "archived_at": null,
-      "name": "Seasonal ruleset",
+      "name": "Ruleset",
       "description": null
     },
     "relationships": {
@@ -490,7 +445,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "price_rules",
-            "id": "62f2e776-78ab-4eca-b644-00c9949af17f"
+            "id": "b67c0a5c-fdd6-43d7-a38a-f5f6398c417c"
           }
         ]
       }
@@ -498,18 +453,18 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "62f2e776-78ab-4eca-b644-00c9949af17f",
+      "id": "b67c0a5c-fdd6-43d7-a38a-f5f6398c417c",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2023-12-07T13:59:43+00:00",
-        "updated_at": "2023-12-07T13:59:43+00:00",
+        "created_at": "2023-12-07T18:39:21+00:00",
+        "updated_at": "2023-12-07T18:39:21+00:00",
         "name": "Off season",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
-        "value": 25.0,
-        "from": "2023-11-07T13:59:43+00:00",
-        "till": "2024-01-07T13:59:43+00:00",
+        "value": 30.0,
+        "from": "2030-07-01T00:00:00+00:00",
+        "till": "2030-08-31T00:00:00+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -519,7 +474,7 @@ This request accepts the following includes:
         "time": null,
         "min_duration": null,
         "max_duration": null,
-        "price_ruleset_id": "e383c5ec-c9a1-4c65-9aab-9cfc8b4d891d"
+        "price_ruleset_id": "cfb94865-ef05-4f16-94b9-3bac2cd6bd31"
       },
       "relationships": {
         "price_ruleset": {
@@ -534,9 +489,54 @@ This request accepts the following includes:
 }
 ```
 
+
+> How to update a price ruleset:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/price_rulesets/67abdc34-dd94-47d7-994d-f945888169be' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "67abdc34-dd94-47d7-994d-f945888169be",
+        "type": "price_rulesets",
+        "attributes": {
+          "name": "Seasonal ruleset (old)"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "67abdc34-dd94-47d7-994d-f945888169be",
+    "type": "price_rulesets",
+    "attributes": {
+      "created_at": "2023-12-07T18:39:21+00:00",
+      "updated_at": "2023-12-07T18:39:21+00:00",
+      "archived": false,
+      "archived_at": null,
+      "name": "Seasonal ruleset (old)",
+      "description": null
+    },
+    "relationships": {
+      "price_rules": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
 ### HTTP Request
 
-`POST /api/boomerang/price_rulesets`
+`PUT /api/boomerang/price_rulesets/{id}`
 
 ### Request params
 

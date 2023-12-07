@@ -3,13 +3,13 @@
 Allows you to leave notes attached to other resources.
 
 ## Endpoints
-`POST /api/boomerang/notes`
-
 `GET /api/boomerang/notes`
 
 `GET /api/boomerang/notes/{id}`
 
 `DELETE /api/boomerang/notes/{id}`
+
+`POST /api/boomerang/notes`
 
 ## Fields
 Every note has the following fields:
@@ -34,96 +34,6 @@ Name | Description
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
-## Creating a note
-
-
-
-> How to create a note:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/notes' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "notes",
-        "attributes": {
-          "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "2df23986-0cc6-45ab-83d3-2a843b998b14",
-          "owner_type": "customers"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "c856e308-590d-4075-acde-72f294f9697a",
-    "type": "notes",
-    "attributes": {
-      "created_at": "2023-12-07T14:00:58+00:00",
-      "updated_at": "2023-12-07T14:00:58+00:00",
-      "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "2df23986-0cc6-45ab-83d3-2a843b998b14",
-      "owner_type": "customers",
-      "employee_id": "fe791bf6-b932-4707-b128-5e1d397df34d"
-    },
-    "relationships": {
-      "owner": {
-        "meta": {
-          "included": false
-        }
-      },
-      "employee": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/notes`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][body]` | **String** <br>The content of the note
-`data[attributes][owner_id]` | **Uuid** <br>ID of the resource the note is attached to
-`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `documents`, `product_groups`, `bundles`, `products`, `customers`, `stock_items`, `users`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-
-
-
-
 ## Listing notes
 
 
@@ -142,25 +52,25 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "4c46a19d-efba-4114-b8ef-65ea9a4ffb60",
+      "id": "d1c27049-840e-4dfd-bc3b-2dc3269a35f6",
       "type": "notes",
       "attributes": {
-        "created_at": "2023-12-07T14:00:59+00:00",
-        "updated_at": "2023-12-07T14:00:59+00:00",
+        "created_at": "2023-12-07T18:37:22+00:00",
+        "updated_at": "2023-12-07T18:37:22+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "185697ba-cd7f-4fc3-b867-8e9f62d5bebf",
+        "owner_id": "683bfed1-b6d6-498c-8648-5161305265d1",
         "owner_type": "customers",
-        "employee_id": "651a5fb4-c39c-4366-a76c-1e7d357c7e37"
+        "employee_id": "8414cf23-8751-4987-bca9-877a12f9bba4"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/185697ba-cd7f-4fc3-b867-8e9f62d5bebf"
+            "related": "api/boomerang/customers/683bfed1-b6d6-498c-8648-5161305265d1"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/651a5fb4-c39c-4366-a76c-1e7d357c7e37"
+            "related": "api/boomerang/employees/8414cf23-8751-4987-bca9-877a12f9bba4"
           }
         }
       }
@@ -234,7 +144,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/357fe5a7-d261-494d-8f32-b575930b8cdf' \
+    --url 'https://example.booqable.com/api/boomerang/notes/0c612e99-3e0a-46e2-b63e-1e4e00856c51' \
     --header 'content-type: application/json' \
 ```
 
@@ -243,25 +153,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "357fe5a7-d261-494d-8f32-b575930b8cdf",
+    "id": "0c612e99-3e0a-46e2-b63e-1e4e00856c51",
     "type": "notes",
     "attributes": {
-      "created_at": "2023-12-07T14:00:59+00:00",
-      "updated_at": "2023-12-07T14:00:59+00:00",
+      "created_at": "2023-12-07T18:37:22+00:00",
+      "updated_at": "2023-12-07T18:37:22+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "8e165179-9c75-4f9c-9777-fe2c8d7f8f78",
+      "owner_id": "d69cbee0-9fc7-4474-9016-c62f5942665c",
       "owner_type": "customers",
-      "employee_id": "ea6e6485-4017-4254-ac74-c729cbebb9fc"
+      "employee_id": "77411f2a-c244-45dc-b56e-bdeeac9c563d"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/8e165179-9c75-4f9c-9777-fe2c8d7f8f78"
+          "related": "api/boomerang/customers/d69cbee0-9fc7-4474-9016-c62f5942665c"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/ea6e6485-4017-4254-ac74-c729cbebb9fc"
+          "related": "api/boomerang/employees/77411f2a-c244-45dc-b56e-bdeeac9c563d"
         }
       }
     }
@@ -303,7 +213,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/71ae1e42-52ec-453b-bc6a-416d6457e1b4' \
+    --url 'https://example.booqable.com/api/boomerang/notes/97803810-d71d-4f6d-acb8-55956bd14a05' \
     --header 'content-type: application/json' \
 ```
 
@@ -331,3 +241,92 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Creating a note
+
+
+
+> How to create a note:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/notes' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "notes",
+        "attributes": {
+          "body": "Agreed to give this customer a 20% discount on the next order",
+          "owner_id": "7c6e5a98-1577-467b-a743-50d7779706f9",
+          "owner_type": "customers"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "798ba14d-1c22-4352-b76f-4c915482a6a1",
+    "type": "notes",
+    "attributes": {
+      "created_at": "2023-12-07T18:37:24+00:00",
+      "updated_at": "2023-12-07T18:37:24+00:00",
+      "body": "Agreed to give this customer a 20% discount on the next order",
+      "owner_id": "7c6e5a98-1577-467b-a743-50d7779706f9",
+      "owner_type": "customers",
+      "employee_id": "9c9571a5-131d-4ced-91fb-f0672e3d1d9f"
+    },
+    "relationships": {
+      "owner": {
+        "meta": {
+          "included": false
+        }
+      },
+      "employee": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/notes`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][body]` | **String** <br>The content of the note
+`data[attributes][owner_id]` | **Uuid** <br>ID of the resource the note is attached to
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `documents`, `product_groups`, `bundles`, `products`, `customers`, `stock_items`, `users`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+
+
+

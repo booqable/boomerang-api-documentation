@@ -41,7 +41,7 @@ Name | Description
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "2d07544a-89e0-41b3-abee-f6ddf7118869"
+          "theme_id": "f34f34fc-eeb0-4c68-af8d-379fa89cd15b"
         }
       }
     }'
@@ -52,13 +52,13 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "939b7bec-e4af-4487-9c77-3d397a0c79a0",
+    "id": "17aebd7d-3c7f-47d0-9076-5f663b73e760",
     "type": "publications",
     "attributes": {
-      "created_at": "2023-12-02T13:56:57+00:00",
-      "updated_at": "2023-12-02T13:56:57+00:00",
-      "published_at": "2023-12-02T13:56:57+00:00",
-      "theme_id": "2d07544a-89e0-41b3-abee-f6ddf7118869"
+      "created_at": "2023-12-02T18:36:03+00:00",
+      "updated_at": "2023-12-02T18:36:03+00:00",
+      "published_at": "2023-12-02T18:36:03+00:00",
+      "theme_id": "f34f34fc-eeb0-4c68-af8d-379fa89cd15b"
     },
     "relationships": {
       "theme": {
@@ -127,18 +127,18 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "29e44140-024d-42d9-984b-6262f8e48510",
+      "id": "14aaf688-06ef-4828-8133-a549284e5da5",
       "type": "publications",
       "attributes": {
-        "created_at": "2023-12-07T13:56:58+00:00",
-        "updated_at": "2023-12-07T13:56:58+00:00",
-        "published_at": "2023-12-02T13:56:58+00:00",
-        "theme_id": "bfd89d13-1026-4741-9a71-187f8963e8ac"
+        "created_at": "2023-12-07T18:36:04+00:00",
+        "updated_at": "2023-12-07T18:36:04+00:00",
+        "published_at": "2023-12-02T18:36:04+00:00",
+        "theme_id": "7b15d865-73d6-4619-9c96-b985e59f6deb"
       },
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/bfd89d13-1026-4741-9a71-187f8963e8ac"
+            "related": "api/boomerang/themes/7b15d865-73d6-4619-9c96-b985e59f6deb"
           }
         }
       }

@@ -44,21 +44,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "3712e48a-2375-473b-b4ab-e342c5093678",
+      "id": "9de98b4b-4710-487a-b078-a948b2a35a56",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2023-12-07T13:55:00+00:00",
-        "name": "Product 1000000",
+        "created_at": "2023-12-07T18:41:38+00:00",
+        "name": "Product 1000042",
         "sold": 2,
         "returned": 0,
         "turnover_in_cents": 0,
         "returned_in_cents": 0,
-        "product_id": "3712e48a-2375-473b-b4ab-e342c5093678"
+        "product_id": "9de98b4b-4710-487a-b078-a948b2a35a56"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/3712e48a-2375-473b-b4ab-e342c5093678"
+            "related": "api/boomerang/products/9de98b4b-4710-487a-b078-a948b2a35a56"
           }
         }
       }

@@ -49,18 +49,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "0698fddd-9f7c-4a15-993a-1e0acea78279",
+      "id": "283de1db-b783-4370-8265-8156c6374521",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2023-12-07T13:55:03+00:00",
-        "product_name": "Product 1000001",
-        "identifier": "id1000030",
+        "created_at": "2023-12-07T18:41:21+00:00",
+        "product_name": "Product 1000039",
+        "identifier": "id1000152",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
         "turnover_in_cents": 0,
-        "stock_item_id": "6aa38965-0ef9-495e-966b-485086be3f19",
-        "product_id": "6de956f0-8748-41d1-aa9e-e0f384f2c4b3",
+        "stock_item_id": "c03cf325-afbc-4265-a28d-766e6e44a0ce",
+        "product_id": "8bfa6150-1d98-4ede-a79f-7409ce1791ad",
         "location_id": null
       },
       "relationships": {
@@ -71,7 +71,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/6de956f0-8748-41d1-aa9e-e0f384f2c4b3"
+            "related": "api/boomerang/products/8bfa6150-1d98-4ede-a79f-7409ce1791ad"
           }
         },
         "location": {
@@ -82,18 +82,18 @@ Name | Description
       }
     },
     {
-      "id": "c77e065e-d32e-47bb-8f28-e5f9b0d28740",
+      "id": "61b55d4b-6d8a-445e-bf00-6e8d2601809c",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2023-12-07T13:55:03+00:00",
-        "product_name": "Product 1000001",
-        "identifier": "id1000031",
+        "created_at": "2023-12-07T18:41:21+00:00",
+        "product_name": "Product 1000039",
+        "identifier": "id1000153",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
         "turnover_in_cents": 0,
-        "stock_item_id": "f17f7f64-fa56-4f6b-ae46-fa460854e51e",
-        "product_id": "6de956f0-8748-41d1-aa9e-e0f384f2c4b3",
+        "stock_item_id": "f375ec43-bddc-4402-a334-0e257d94cf7b",
+        "product_id": "8bfa6150-1d98-4ede-a79f-7409ce1791ad",
         "location_id": null
       },
       "relationships": {
@@ -104,7 +104,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/6de956f0-8748-41d1-aa9e-e0f384f2c4b3"
+            "related": "api/boomerang/products/8bfa6150-1d98-4ede-a79f-7409ce1791ad"
           }
         },
         "location": {
