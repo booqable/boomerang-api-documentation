@@ -57,16 +57,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "083fecfb-3f8f-5d5d-8991-b63edb0dd24a",
+    "id": "e3376dc0-f361-5e73-89b5-728e898206ef",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2023-12-07T18:42:09+00:00",
-      "company_id": "1fc032f1-87a2-4b9d-8778-38e20c1d994f",
-      "employee_id": "c7fc8b1d-a1d9-45b4-b820-a8519020213e",
+      "updated_at": "2023-12-11T15:29:41+00:00",
+      "company_id": "ff274ebd-db23-4fac-8772-08805070b703",
+      "employee_id": "5a1e19d7-ede9-4b4b-b88a-a9db9a5c1d5b",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2023-12-07T18:42:09+00:00"
+      "notification_subscriptions_updated_at": "2023-12-11T15:29:41+00:00"
     },
     "relationships": {
       "company": {
@@ -75,7 +75,7 @@ Name | Description
         },
         "data": {
           "type": "companies",
-          "id": "1fc032f1-87a2-4b9d-8778-38e20c1d994f"
+          "id": "ff274ebd-db23-4fac-8772-08805070b703"
         }
       },
       "employee": {
@@ -84,7 +84,7 @@ Name | Description
         },
         "data": {
           "type": "employees",
-          "id": "c7fc8b1d-a1d9-45b4-b820-a8519020213e"
+          "id": "5a1e19d7-ede9-4b4b-b88a-a9db9a5c1d5b"
         }
       },
       "settings": {
@@ -100,14 +100,14 @@ Name | Description
   },
   "included": [
     {
-      "id": "1fc032f1-87a2-4b9d-8778-38e20c1d994f",
+      "id": "ff274ebd-db23-4fac-8772-08805070b703",
       "type": "companies",
       "attributes": {
-        "created_at": "2023-12-07T18:42:09+00:00",
-        "updated_at": "2023-12-07T18:42:09+00:00",
-        "name": "Company name 234",
-        "slug": "company-name-234",
-        "email": "mail237@company.com",
+        "created_at": "2023-12-11T15:29:41+00:00",
+        "updated_at": "2023-12-11T15:29:41+00:00",
+        "name": "Company name 105",
+        "slug": "company-name-105",
+        "email": "mail108@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -139,10 +139,10 @@ Name | Description
         "years_active": null,
         "source": null,
         "medium": null,
-        "tenant_token": "e00483040789b246f3d7ba9be9991e78",
+        "tenant_token": "3acd444ab9c225713ae3afacecea96d9",
         "pending_subscription": false,
         "subscription": {
-          "trial_ends_at": "2023-12-21T18:42:09.244Z",
+          "trial_ends_at": "2023-12-25T15:29:41.267Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -198,11 +198,11 @@ Name | Description
       }
     },
     {
-      "id": "c7fc8b1d-a1d9-45b4-b820-a8519020213e",
+      "id": "5a1e19d7-ede9-4b4b-b88a-a9db9a5c1d5b",
       "type": "employees",
       "attributes": {
-        "created_at": "2023-12-07T18:42:09+00:00",
-        "updated_at": "2023-12-07T18:42:09+00:00",
+        "created_at": "2023-12-11T15:29:41+00:00",
+        "updated_at": "2023-12-11T15:29:41+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -427,16 +427,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "937e610f-777e-52a8-ad7f-b7a6d12df7ed",
+    "id": "173f2b46-d58f-5fa4-9995-ff5f3a1e71ec",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2023-12-07T18:43:17+00:00",
-      "company_id": "aae3f0ee-e8dd-4e9b-9bcf-9ed6fbac36ea",
-      "employee_id": "9f8f057d-a4e9-4911-a27a-a4fb49a89e3d",
-      "locations_updated_at": "2023-12-07T18:43:17+00:00",
-      "clusters_updated_at": "2023-12-07T18:43:17+00:00",
-      "default_properties_updated_at": "2023-12-07T18:43:17+00:00",
-      "notification_subscriptions_updated_at": "2023-12-07T18:43:17+00:00"
+      "updated_at": "2023-12-11T15:34:55+00:00",
+      "company_id": "7797a00b-6456-4088-bbe4-62b220559349",
+      "employee_id": "d81b9124-44e1-4666-ab9b-8005232d9cee",
+      "locations_updated_at": "2023-12-11T15:34:55+00:00",
+      "clusters_updated_at": "2023-12-11T15:34:55+00:00",
+      "default_properties_updated_at": "2023-12-11T15:34:55+00:00",
+      "notification_subscriptions_updated_at": "2023-12-11T15:34:55+00:00"
     },
     "relationships": {
       "company": {

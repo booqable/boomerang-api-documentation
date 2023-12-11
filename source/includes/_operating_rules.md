@@ -10,13 +10,13 @@ Operating rules allow creating various rules for changing how a user can select 
   - `timeslot_duration` Sets a duration timeslot, used when datepicker is in fixed durations mode. Data must include length in seconds: `{ length: 86000 }` Picker mode setting for this rule: `store.period_type` set to `timeslot_duration`
 
 ## Endpoints
-`POST /api/boomerang/operating_rules`
-
-`GET /api/boomerang/operating_rules`
+`PUT /api/boomerang/operating_rules/{id}`
 
 `DELETE /api/boomerang/operating_rules/{id}`
 
-`PUT /api/boomerang/operating_rules/{id}`
+`POST /api/boomerang/operating_rules`
+
+`GET /api/boomerang/operating_rules`
 
 ## Fields
 Every operating rule has the following fields:
@@ -30,11 +30,122 @@ Name | Description
 `data` | **Hash** <br>Content of the rule, can have keys `weekday`, `weekend`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`, `all` when `data_type` is `timeslot_fixed` or `hours` or `away` when `data_type` is `away` and `length` (for duration in seconds) when `data_type` is `timeslot_duration`' 
 
 
+## Updating an operating rule
+
+
+
+> How to update an operating rule:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/ce43a224-81f3-483b-ae47-70ea4181eaca' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "ce43a224-81f3-483b-ae47-70ea4181eaca",
+        "type": "operating_rules",
+        "attributes": {
+          "data": {
+            "away": {
+              "from": "2020-04-01",
+              "till": "2021-12-31"
+            }
+          }
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "ce43a224-81f3-483b-ae47-70ea4181eaca",
+    "type": "operating_rules",
+    "attributes": {
+      "created_at": "2023-12-11T15:28:03+00:00",
+      "updated_at": "2023-12-11T15:28:03+00:00",
+      "data_type": "away",
+      "data": {
+        "away": {
+          "from": "2020-04-01",
+          "till": "2021-12-31"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/operating_rules/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=created_at,updated_at,data_type`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][data_type]` | **String_enum** <br>Determines where the rule is applied. One of `hours`, `away`, `timeslot_fixed`, `timeslot_duration` 
+`data[attributes][data]` | **Hash** <br>Content of the rule, can have keys `weekday`, `weekend`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`, `all` when `data_type` is `timeslot_fixed` or `hours` or `away` when `data_type` is `away` and `length` (for duration in seconds) when `data_type` is `timeslot_duration`' 
+
+
+### Includes
+
+This request does not accept any includes
+## Deleting an operating rule
+
+
+
+> How to delete an operating rule:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/9d37f92d-90aa-4719-bc41-f3eb560211a4' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/operating_rules/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=created_at,updated_at,data_type`
+
+
+### Includes
+
+This request does not accept any includes
 ## Creating an operating rule
 
 
 
-> How to set a fixed timeslot:
+> How to set away mode:
 
 ```shell
   curl --request POST \
@@ -44,11 +155,11 @@ Name | Description
       "data": {
         "type": "operating_rules",
         "attributes": {
-          "data_type": "timeslot_fixed",
+          "data_type": "away",
           "data": {
-            "weekend": {
-              "from": "09:00",
-              "till": "12:00"
+            "away": {
+              "from": "2030-01-01",
+              "till": "2040-01-01"
             }
           }
         }
@@ -61,16 +172,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c05184b1-8637-45b1-a5cf-8ae1f72ade5c",
+    "id": "a09bb72c-6bc7-4eb2-98d1-21ac19197312",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2023-12-07T18:39:22+00:00",
-      "updated_at": "2023-12-07T18:39:22+00:00",
-      "data_type": "timeslot_fixed",
+      "created_at": "2023-12-11T15:28:04+00:00",
+      "updated_at": "2023-12-11T15:28:04+00:00",
+      "data_type": "away",
       "data": {
-        "weekend": {
-          "from": "09:00",
-          "till": "12:00"
+        "away": {
+          "from": "2030-01-01",
+          "till": "2040-01-01"
         }
       }
     }
@@ -104,11 +215,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4259620e-0276-4082-8b21-866758fae84f",
+    "id": "31fdbc2e-bfbd-4479-ab31-f6567837d3da",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2023-12-07T18:39:22+00:00",
-      "updated_at": "2023-12-07T18:39:22+00:00",
+      "created_at": "2023-12-11T15:28:05+00:00",
+      "updated_at": "2023-12-11T15:28:05+00:00",
       "data_type": "timeslot_duration",
       "data": {
         "length": 86000
@@ -147,11 +258,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "eaf2f63c-af38-419b-ab42-e94c8651734c",
+    "id": "1575c910-710a-4201-a2f9-e09d1bab50ab",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2023-12-07T18:39:23+00:00",
-      "updated_at": "2023-12-07T18:39:23+00:00",
+      "created_at": "2023-12-11T15:28:05+00:00",
+      "updated_at": "2023-12-11T15:28:05+00:00",
       "data_type": "hours",
       "data": {
         "mon": {
@@ -166,7 +277,7 @@ Name | Description
 ```
 
 
-> How to set away mode:
+> How to set a fixed timeslot:
 
 ```shell
   curl --request POST \
@@ -176,11 +287,11 @@ Name | Description
       "data": {
         "type": "operating_rules",
         "attributes": {
-          "data_type": "away",
+          "data_type": "timeslot_fixed",
           "data": {
-            "away": {
-              "from": "2030-01-01",
-              "till": "2040-01-01"
+            "weekend": {
+              "from": "09:00",
+              "till": "12:00"
             }
           }
         }
@@ -193,16 +304,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2aeb49f3-084f-484b-bc13-b791bab3eecb",
+    "id": "0d66b850-cef4-4f06-9d38-a04bd0dd8159",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2023-12-07T18:39:23+00:00",
-      "updated_at": "2023-12-07T18:39:23+00:00",
-      "data_type": "away",
+      "created_at": "2023-12-11T15:28:06+00:00",
+      "updated_at": "2023-12-11T15:28:06+00:00",
+      "data_type": "timeslot_fixed",
       "data": {
-        "away": {
-          "from": "2030-01-01",
-          "till": "2040-01-01"
+        "weekend": {
+          "from": "09:00",
+          "till": "12:00"
         }
       }
     }
@@ -239,11 +350,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "6fa7ce29-fc46-4959-a977-7e1113bb2590",
+    "id": "4f979091-7331-4472-8f1d-bd9785ffc401",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2023-12-07T18:39:24+00:00",
-      "updated_at": "2023-12-07T18:39:24+00:00",
+      "created_at": "2023-12-11T15:28:06+00:00",
+      "updated_at": "2023-12-11T15:28:06+00:00",
       "data_type": "hours",
       "data": {
         "weekday": {
@@ -301,11 +412,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "50dcabba-5738-43eb-8cd2-591ccdea1427",
+      "id": "f7a4dddf-3057-4877-9d6f-848bd787e687",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2023-12-07T18:39:24+00:00",
-        "updated_at": "2023-12-07T18:39:24+00:00",
+        "created_at": "2023-12-11T15:28:07+00:00",
+        "updated_at": "2023-12-11T15:28:07+00:00",
         "data_type": "away",
         "data": {
           "away": {
@@ -357,117 +468,6 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
-
-
-### Includes
-
-This request does not accept any includes
-## Deleting an operating rule
-
-
-
-> How to delete an operating rule:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/aabf8bb5-a47b-4532-83a5-d7b4241b73ef' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/operating_rules/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=created_at,updated_at,data_type`
-
-
-### Includes
-
-This request does not accept any includes
-## Updating an operating rule
-
-
-
-> How to update an operating rule:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/6e2d4c83-c72f-41e9-84c0-b6308b6f733b' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "6e2d4c83-c72f-41e9-84c0-b6308b6f733b",
-        "type": "operating_rules",
-        "attributes": {
-          "data": {
-            "away": {
-              "from": "2020-04-01",
-              "till": "2021-12-31"
-            }
-          }
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "6e2d4c83-c72f-41e9-84c0-b6308b6f733b",
-    "type": "operating_rules",
-    "attributes": {
-      "created_at": "2023-12-07T18:39:30+00:00",
-      "updated_at": "2023-12-07T18:39:30+00:00",
-      "data_type": "away",
-      "data": {
-        "away": {
-          "from": "2020-04-01",
-          "till": "2021-12-31"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/operating_rules/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=created_at,updated_at,data_type`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][data_type]` | **String_enum** <br>Determines where the rule is applied. One of `hours`, `away`, `timeslot_fixed`, `timeslot_duration` 
-`data[attributes][data]` | **Hash** <br>Content of the rule, can have keys `weekday`, `weekend`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`, `all` when `data_type` is `timeslot_fixed` or `hours` or `away` when `data_type` is `away` and `length` (for duration in seconds) when `data_type` is `timeslot_duration`' 
 
 
 ### Includes

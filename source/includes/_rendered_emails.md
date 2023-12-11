@@ -20,6 +20,44 @@ Name | Description
 
 
 
+> How to render an email from a template:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/rendered_emails' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "rendered_emails",
+        "attributes": {
+          "order_id": "f3baa1dc-447e-449e-b7f0-1f648c56e2c1",
+          "email_template_id": "7cb0470c-be60-473d-a92b-2ebebe4ae887"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "",
+    "type": "rendered_emails",
+    "attributes": {
+      "email_template_id": "7cb0470c-be60-473d-a92b-2ebebe4ae887",
+      "order_id": "f3baa1dc-447e-449e-b7f0-1f648c56e2c1",
+      "document_id": null,
+      "subject": "Order number 1",
+      "body": "<p>Thank you for ordering with us!</p>\n",
+      "full_body": null
+    }
+  },
+  "meta": {}
+}
+```
+
+
 > How to render an email with layout for preview:
 
 ```shell
@@ -30,8 +68,8 @@ Name | Description
       "data": {
         "type": "rendered_emails",
         "attributes": {
-          "order_id": "169de0a2-ddae-4597-aec9-f36a136045dd",
-          "email_template_id": "60ecd78e-52a1-4035-a5da-4964fd03507d",
+          "order_id": "01f83422-4bb8-4fd2-a0cf-04f9816cdf19",
+          "email_template_id": "b6a8f2b9-c135-4641-9da9-50576bacfd7b",
           "body": "<p>Thank you for ordering with us!</p>\n"
         }
       }
@@ -46,50 +84,12 @@ Name | Description
     "id": "",
     "type": "rendered_emails",
     "attributes": {
-      "email_template_id": "60ecd78e-52a1-4035-a5da-4964fd03507d",
-      "order_id": "169de0a2-ddae-4597-aec9-f36a136045dd",
+      "email_template_id": "b6a8f2b9-c135-4641-9da9-50576bacfd7b",
+      "order_id": "01f83422-4bb8-4fd2-a0cf-04f9816cdf19",
       "document_id": null,
       "subject": "Order number 1",
       "body": "<p>Thank you for ordering with us!</p>\n",
-      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 100</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 100</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail100@company.com'>mail100@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to render an email from a template:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/rendered_emails' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "rendered_emails",
-        "attributes": {
-          "order_id": "e2c56c07-f3c3-4f0e-8998-93084818b921",
-          "email_template_id": "590ad447-64f6-4c50-924f-89304414a701"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "",
-    "type": "rendered_emails",
-    "attributes": {
-      "email_template_id": "590ad447-64f6-4c50-924f-89304414a701",
-      "order_id": "e2c56c07-f3c3-4f0e-8998-93084818b921",
-      "document_id": null,
-      "subject": "Order number 1",
-      "body": "<p>Thank you for ordering with us!</p>\n",
-      "full_body": null
+      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 13</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 13</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail13@company.com'>mail13@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
     }
   },
   "meta": {}

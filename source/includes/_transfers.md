@@ -48,38 +48,38 @@ Name | Description
   {
   "data": [
     {
-      "id": "ecd2da2b-07f1-46be-9820-8f4c41810165",
+      "id": "6c7e92be-0891-4ef0-abbe-190d7377e79b",
       "type": "transfers",
       "attributes": {
-        "created_at": "2023-12-07T18:40:48+00:00",
-        "updated_at": "2023-12-07T18:40:48+00:00",
+        "created_at": "2023-12-11T15:31:55+00:00",
+        "updated_at": "2023-12-11T15:31:55+00:00",
         "quantity": 1,
-        "available_at": "2023-12-05T18:30:00+00:00",
+        "available_at": "2023-12-09T15:30:00+00:00",
         "finalized": false,
-        "item_id": "63c19a1d-bb24-4fcc-9740-f3814f577b96",
-        "order_id": "76182cf1-a003-43bf-a9ce-bf4ee2359d42",
-        "source_location_id": "510ce498-b5c3-4915-b37c-043da6cfb9c1",
-        "destination_location_id": "510ce498-b5c3-4915-b37c-043da6cfb9c1"
+        "item_id": "24b0ad1b-7ef1-4f6d-a74a-f2d0132144c6",
+        "order_id": "144c5b63-25c9-4d08-ac00-c5dd443fc455",
+        "source_location_id": "aa18ac9a-2f19-4af6-8a45-2f4c0297ce2b",
+        "destination_location_id": "aa18ac9a-2f19-4af6-8a45-2f4c0297ce2b"
       },
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/63c19a1d-bb24-4fcc-9740-f3814f577b96"
+            "related": "api/boomerang/items/24b0ad1b-7ef1-4f6d-a74a-f2d0132144c6"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/76182cf1-a003-43bf-a9ce-bf4ee2359d42"
+            "related": "api/boomerang/orders/144c5b63-25c9-4d08-ac00-c5dd443fc455"
           }
         },
         "source_location": {
           "links": {
-            "related": "api/boomerang/locations/510ce498-b5c3-4915-b37c-043da6cfb9c1"
+            "related": "api/boomerang/locations/aa18ac9a-2f19-4af6-8a45-2f4c0297ce2b"
           }
         },
         "destination_location": {
           "links": {
-            "related": "api/boomerang/locations/510ce498-b5c3-4915-b37c-043da6cfb9c1"
+            "related": "api/boomerang/locations/aa18ac9a-2f19-4af6-8a45-2f4c0297ce2b"
           }
         }
       }

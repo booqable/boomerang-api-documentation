@@ -54,11 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "9f663ccb-8969-4382-8428-3b7715a99d3f",
+      "id": "15d38a73-6999-4d2d-950d-f614db96372f",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2023-12-07T18:43:26+00:00",
-        "updated_at": "2023-12-07T18:43:26+00:00",
+        "created_at": "2023-12-11T15:30:25+00:00",
+        "updated_at": "2023-12-11T15:30:25+00:00",
         "number": 10002,
         "status": "open",
         "billing_reason": "subscription_cycle",
@@ -77,7 +77,7 @@ Name | Description
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/7e4cc249883f4d8cd82afe82deeba01f/e02b0ec09da2993eee05d463449e2f63"
+        "url": "http://billing.lvh.me:/invoices/1b2ecd69eb02d25f1c505e35a78f527a/8077c6e21749228e2682f232165b42d7"
       }
     }
   ],
@@ -141,7 +141,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/d9a97b2d-3209-4a61-a86f-f9237b81bd65' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/0d50c7c7-9521-47aa-b41d-7a1bdbfc0571' \
     --header 'content-type: application/json' \
 ```
 
@@ -150,11 +150,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d9a97b2d-3209-4a61-a86f-f9237b81bd65",
+    "id": "0d50c7c7-9521-47aa-b41d-7a1bdbfc0571",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2023-12-07T18:43:26+00:00",
-      "updated_at": "2023-12-07T18:43:26+00:00",
+      "created_at": "2023-12-11T15:30:26+00:00",
+      "updated_at": "2023-12-11T15:30:26+00:00",
       "number": 10002,
       "status": "open",
       "billing_reason": "subscription_cycle",
@@ -173,7 +173,7 @@ This request does not accept any includes
       "ending_balance_in_cents": null,
       "next_payment_attempt_at": null,
       "coupon": null,
-      "url": "http://billing.lvh.me:/invoices/d7374babea2b48bec1ea7bf77fb72a81/71cc8e1b7fb26d02073f2f7c00e8a662"
+      "url": "http://billing.lvh.me:/invoices/a51ec811e6bd72d7e158162c03a40ebb/dc08948fd8b626d9d29cadc709b27d37"
     }
   },
   "meta": {}

@@ -9,15 +9,15 @@ Properties inherit their fields from a default property when they are connected.
 - `default_property_id`
 
 ## Endpoints
+`GET /api/boomerang/default_properties/{id}`
+
 `DELETE /api/boomerang/default_properties/{id}`
 
 `POST /api/boomerang/default_properties`
 
-`GET /api/boomerang/default_properties/{id}`
+`PUT /api/boomerang/default_properties/{id}`
 
 `GET /api/boomerang/default_properties`
-
-`PUT /api/boomerang/default_properties/{id}`
 
 ## Fields
 Every default property has the following fields:
@@ -38,6 +38,59 @@ Name | Description
 `editable` | **Boolean** `readonly`<br>Whether this property is editable
 
 
+## Fetching a default property
+
+
+
+> How to fetch a default properties:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/73a0acaa-8549-4ff0-aabd-6bb7dcf490f4?include=owner' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "73a0acaa-8549-4ff0-aabd-6bb7dcf490f4",
+    "type": "default_properties",
+    "attributes": {
+      "created_at": "2023-12-11T15:34:55+00:00",
+      "updated_at": "2023-12-11T15:34:55+00:00",
+      "name": "Phone",
+      "identifier": "phone",
+      "position": 1,
+      "property_type": "phone",
+      "show_on": [],
+      "validation_required": false,
+      "owner_type": "customers",
+      "select_options": [],
+      "editable": true
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/default_properties/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
 ## Deleting a default property
 
 
@@ -46,7 +99,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/609ea547-12f0-4aed-a007-cf55c1ff077a' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/ff6e89b4-f0d6-4763-a3e0-99d64cd9bb05' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -102,11 +155,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "6350d343-4471-4f0c-b8f4-d57846372469",
+    "id": "31578a55-6a15-4151-b751-23df2f15db67",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2023-12-07T18:41:43+00:00",
-      "updated_at": "2023-12-07T18:41:43+00:00",
+      "created_at": "2023-12-11T15:34:56+00:00",
+      "updated_at": "2023-12-11T15:34:56+00:00",
       "name": "Mobile phone",
       "identifier": "mobile_phone",
       "position": 2,
@@ -154,16 +207,25 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a default property
+## Updating a default property
 
 
 
-> How to fetch a default properties:
+> How to update a default property:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/cd376f15-38de-46fd-846c-33e1d5f29350?include=owner' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/3d279bff-fb69-4f37-924f-737a3fa7ed0c' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "3d279bff-fb69-4f37-924f-737a3fa7ed0c",
+        "type": "default_properties",
+        "attributes": {
+          "property_type": "text_field"
+        }
+      }
+    }'
 ```
 
 > A 200 status response looks like this:
@@ -171,15 +233,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "cd376f15-38de-46fd-846c-33e1d5f29350",
+    "id": "3d279bff-fb69-4f37-924f-737a3fa7ed0c",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2023-12-07T18:41:44+00:00",
-      "updated_at": "2023-12-07T18:41:44+00:00",
+      "created_at": "2023-12-11T15:34:57+00:00",
+      "updated_at": "2023-12-11T15:34:57+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
-      "property_type": "phone",
+      "property_type": "text_field",
       "show_on": [],
       "validation_required": false,
       "owner_type": "customers",
@@ -193,7 +255,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/default_properties/{id}`
+`PUT /api/boomerang/default_properties/{id}`
 
 ### Request params
 
@@ -202,6 +264,22 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`data[attributes][position]` | **Integer** <br>Which position the property has
+`data[attributes][property_type]` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
+`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
+`data[attributes][validation_required]` | **Boolean** <br>Whether this property has to be validated
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
+`data[attributes][select_options][]` | **Array** <br>For type `select`. The select options as array.
 
 
 ### Includes
@@ -225,11 +303,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "f24b2414-b5f3-4c14-9b6d-72e67f59a006",
+      "id": "19bbc911-24d1-4ba7-9c01-28835248013f",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2023-12-07T18:41:44+00:00",
-        "updated_at": "2023-12-07T18:41:44+00:00",
+        "created_at": "2023-12-11T15:34:58+00:00",
+        "updated_at": "2023-12-11T15:34:58+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
@@ -287,84 +365,6 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
-
-
-### Includes
-
-This request does not accept any includes
-## Updating a default property
-
-
-
-> How to update a default property:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/1fc6d5a1-62ef-4a10-a83c-547c1cb91845' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "1fc6d5a1-62ef-4a10-a83c-547c1cb91845",
-        "type": "default_properties",
-        "attributes": {
-          "property_type": "text_field"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "1fc6d5a1-62ef-4a10-a83c-547c1cb91845",
-    "type": "default_properties",
-    "attributes": {
-      "created_at": "2023-12-07T18:41:45+00:00",
-      "updated_at": "2023-12-07T18:41:45+00:00",
-      "name": "Phone",
-      "identifier": "phone",
-      "position": 1,
-      "property_type": "text_field",
-      "show_on": [],
-      "validation_required": false,
-      "owner_type": "customers",
-      "select_options": [],
-      "editable": true
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/default_properties/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
-`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
-`data[attributes][position]` | **Integer** <br>Which position the property has
-`data[attributes][property_type]` | **String** <br>One of `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`, `address`
-`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `packing`, `invoice`, `contract`, `quote`
-`data[attributes][validation_required]` | **Boolean** <br>Whether this property has to be validated
-`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `orders`, `product_groups`, `customers`, `users`
-`data[attributes][select_options][]` | **Array** <br>For type `select`. The select options as array.
 
 
 ### Includes
