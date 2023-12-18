@@ -9,13 +9,13 @@ For trackable products, each stock item is tracked and managed individually. Eac
 - **Temporary:** Temporary items will automatically become unavailable once they exceed the available till date, typically a sub-rental (`from` and `till` are set).
 
 ## Endpoints
-`POST /api/boomerang/stock_items`
-
-`PUT /api/boomerang/stock_items/{id}`
-
 `GET /api/boomerang/stock_items`
 
 `GET /api/boomerang/stock_items/{id}`
+
+`PUT /api/boomerang/stock_items/{id}`
+
+`POST /api/boomerang/stock_items`
 
 ## Fields
 Every stock item has the following fields:
@@ -51,250 +51,6 @@ Name | Description
 `properties` | **Properties** `readonly`<br>Associated Properties
 
 
-## Creating a stock_item
-
-
-
-> How to create a stock item:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/stock_items' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "stock_items",
-        "attributes": {
-          "identifier": "12345",
-          "product_id": "b8e55f7b-d904-41b4-8d94-9e25bb00a249"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "2ec54f6c-53ab-40e2-af94-2952076cb88f",
-    "type": "stock_items",
-    "attributes": {
-      "created_at": "2023-12-11T15:33:52+00:00",
-      "updated_at": "2023-12-11T15:33:52+00:00",
-      "archived": false,
-      "archived_at": null,
-      "identifier": "12345",
-      "status": "in_stock",
-      "from": null,
-      "till": null,
-      "stock_item_type": "regular",
-      "product_group_id": "bdcfc800-bb88-4e57-810f-0eefc24773f8",
-      "properties": {},
-      "product_id": "b8e55f7b-d904-41b4-8d94-9e25bb00a249",
-      "location_id": "a115f11c-1947-4718-b46d-caa0cfaa8c9e"
-    },
-    "relationships": {
-      "product": {
-        "meta": {
-          "included": false
-        }
-      },
-      "location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/stock_items`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
-`data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
-`data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
-`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
-`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
-`data[attributes][product_id]` | **Uuid** <br>The associated Product
-`data[attributes][location_id]` | **Uuid** <br>The associated Location
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`location`
-
-
-`properties`
-
-
-`product` => 
-`product_group`
-
-
-
-
-
-
-
-
-## Updating a stock_item
-
-
-
-> How to update a stock item:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/a04c704c-c63e-4db3-8341-6d279dd63192' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "a04c704c-c63e-4db3-8341-6d279dd63192",
-        "type": "stock_items",
-        "attributes": {
-          "identifier": "12346"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "a04c704c-c63e-4db3-8341-6d279dd63192",
-    "type": "stock_items",
-    "attributes": {
-      "created_at": "2023-12-11T15:33:54+00:00",
-      "updated_at": "2023-12-11T15:33:54+00:00",
-      "archived": false,
-      "archived_at": null,
-      "identifier": "12346",
-      "status": "in_stock",
-      "from": null,
-      "till": null,
-      "stock_item_type": "regular",
-      "product_group_id": "26de6485-d582-4cc5-8224-29b8ef0157a4",
-      "properties": {},
-      "product_id": "03a321d6-1651-4710-b2e7-8149486330a4",
-      "location_id": "fa2ae493-a62e-4bb1-9716-b265577ca4fc"
-    },
-    "relationships": {
-      "product": {
-        "meta": {
-          "included": false
-        }
-      },
-      "location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/stock_items/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
-`data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
-`data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
-`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
-`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
-`data[attributes][product_id]` | **Uuid** <br>The associated Product
-`data[attributes][location_id]` | **Uuid** <br>The associated Location
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`location`
-
-
-`properties`
-
-
-`product` => 
-`product_group`
-
-
-
-
-
-
-
-
 ## Listing stock_items
 
 
@@ -313,42 +69,42 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "57b52a90-d320-4c9c-ac78-b12681784770",
+      "id": "343d698c-9c98-4ab1-bd26-8ffcef4f855f",
       "type": "stock_items",
       "attributes": {
-        "created_at": "2023-12-11T15:33:55+00:00",
-        "updated_at": "2023-12-11T15:33:55+00:00",
+        "created_at": "2023-12-18T09:18:54+00:00",
+        "updated_at": "2023-12-18T09:18:54+00:00",
         "archived": false,
         "archived_at": null,
-        "identifier": "id1000152",
+        "identifier": "id1000116",
         "status": "in_stock",
         "from": null,
         "till": null,
         "stock_item_type": "regular",
-        "product_group_id": "d4e5fd98-8271-4744-8c5b-900db2bd3634",
+        "product_group_id": "a14fd18b-aaba-46e6-bd69-c7f54ca38ae6",
         "properties": {},
-        "product_id": "942c899f-c1da-44a6-aba1-466efd34d028",
-        "location_id": "f75bf0aa-b1fb-47dd-8021-1abd7c977dca"
+        "product_id": "7dbe157a-7d14-4e55-872b-21048ad3576d",
+        "location_id": "a7f46cda-d65b-4692-aa17-6b9ddc51a110"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/942c899f-c1da-44a6-aba1-466efd34d028"
+            "related": "api/boomerang/products/7dbe157a-7d14-4e55-872b-21048ad3576d"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/f75bf0aa-b1fb-47dd-8021-1abd7c977dca"
+            "related": "api/boomerang/locations/a7f46cda-d65b-4692-aa17-6b9ddc51a110"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=57b52a90-d320-4c9c-ac78-b12681784770&filter[owner_type]=stock_items"
+            "related": "api/boomerang/barcodes?filter[owner_id]=343d698c-9c98-4ab1-bd26-8ffcef4f855f&filter[owner_type]=stock_items"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=57b52a90-d320-4c9c-ac78-b12681784770&filter[owner_type]=stock_items"
+            "related": "api/boomerang/properties?filter[owner_id]=343d698c-9c98-4ab1-bd26-8ffcef4f855f&filter[owner_type]=stock_items"
           }
         }
       }
@@ -438,7 +194,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/f088c260-94c5-4aa3-95b5-aad49b2c8317' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/5943ed57-0385-4a16-90b1-0ac2a4e39ff4' \
     --header 'content-type: application/json' \
 ```
 
@@ -447,42 +203,42 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f088c260-94c5-4aa3-95b5-aad49b2c8317",
+    "id": "5943ed57-0385-4a16-90b1-0ac2a4e39ff4",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2023-12-11T15:33:57+00:00",
-      "updated_at": "2023-12-11T15:33:57+00:00",
+      "created_at": "2023-12-18T09:18:55+00:00",
+      "updated_at": "2023-12-18T09:18:55+00:00",
       "archived": false,
       "archived_at": null,
-      "identifier": "id1000153",
+      "identifier": "id1000117",
       "status": "in_stock",
       "from": null,
       "till": null,
       "stock_item_type": "regular",
-      "product_group_id": "6fd8de56-0bba-4e8e-b800-983582178b15",
+      "product_group_id": "8fd8766f-4237-4c4a-bdea-0f1282b03d8d",
       "properties": {},
-      "product_id": "daf1e483-1f24-4845-a444-46fcd8ea47e9",
-      "location_id": "b3e9daa5-0f17-421b-8038-db06fee704c4"
+      "product_id": "d1fc94bc-2244-4388-862c-99f24e66b31f",
+      "location_id": "d4c687cc-a5d6-4808-827a-34dfc46a29a6"
     },
     "relationships": {
       "product": {
         "links": {
-          "related": "api/boomerang/products/daf1e483-1f24-4845-a444-46fcd8ea47e9"
+          "related": "api/boomerang/products/d1fc94bc-2244-4388-862c-99f24e66b31f"
         }
       },
       "location": {
         "links": {
-          "related": "api/boomerang/locations/b3e9daa5-0f17-421b-8038-db06fee704c4"
+          "related": "api/boomerang/locations/d4c687cc-a5d6-4808-827a-34dfc46a29a6"
         }
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=f088c260-94c5-4aa3-95b5-aad49b2c8317&filter[owner_type]=stock_items"
+          "related": "api/boomerang/barcodes?filter[owner_id]=5943ed57-0385-4a16-90b1-0ac2a4e39ff4&filter[owner_type]=stock_items"
         }
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=f088c260-94c5-4aa3-95b5-aad49b2c8317&filter[owner_type]=stock_items"
+          "related": "api/boomerang/properties?filter[owner_id]=5943ed57-0385-4a16-90b1-0ac2a4e39ff4&filter[owner_type]=stock_items"
         }
       }
     }
@@ -503,6 +259,250 @@ Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`location`
+
+
+`properties`
+
+
+`product` => 
+`product_group`
+
+
+
+
+
+
+
+
+## Updating a stock_item
+
+
+
+> How to update a stock item:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/102fedeb-e3a5-4bd6-94da-0b1960dae49f' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "102fedeb-e3a5-4bd6-94da-0b1960dae49f",
+        "type": "stock_items",
+        "attributes": {
+          "identifier": "12346"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "102fedeb-e3a5-4bd6-94da-0b1960dae49f",
+    "type": "stock_items",
+    "attributes": {
+      "created_at": "2023-12-18T09:18:56+00:00",
+      "updated_at": "2023-12-18T09:18:56+00:00",
+      "archived": false,
+      "archived_at": null,
+      "identifier": "12346",
+      "status": "in_stock",
+      "from": null,
+      "till": null,
+      "stock_item_type": "regular",
+      "product_group_id": "aeaa9b82-2544-4e42-9e2b-cfbb25473ee8",
+      "properties": {},
+      "product_id": "7a6049fd-0601-445a-b59d-a04561706123",
+      "location_id": "0be87f93-91a6-4efa-af6a-12451f4fe8fa"
+    },
+    "relationships": {
+      "product": {
+        "meta": {
+          "included": false
+        }
+      },
+      "location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/stock_items/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
+`data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
+`data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
+`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
+`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
+`data[attributes][product_id]` | **Uuid** <br>The associated Product
+`data[attributes][location_id]` | **Uuid** <br>The associated Location
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`location`
+
+
+`properties`
+
+
+`product` => 
+`product_group`
+
+
+
+
+
+
+
+
+## Creating a stock_item
+
+
+
+> How to create a stock item:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/stock_items' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "stock_items",
+        "attributes": {
+          "identifier": "12345",
+          "product_id": "ac16de1b-f8ac-480a-b111-5aba6763ccc3"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "ec50b958-1095-4461-a05b-989f5f6e870a",
+    "type": "stock_items",
+    "attributes": {
+      "created_at": "2023-12-18T09:18:57+00:00",
+      "updated_at": "2023-12-18T09:18:57+00:00",
+      "archived": false,
+      "archived_at": null,
+      "identifier": "12345",
+      "status": "in_stock",
+      "from": null,
+      "till": null,
+      "stock_item_type": "regular",
+      "product_group_id": "1d3eaeab-6abc-4d09-85bc-51c83e3f6ace",
+      "properties": {},
+      "product_id": "ac16de1b-f8ac-480a-b111-5aba6763ccc3",
+      "location_id": "3c2ade0e-d140-423b-bc97-8b5a59d70afd"
+    },
+    "relationships": {
+      "product": {
+        "meta": {
+          "included": false
+        }
+      },
+      "location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/stock_items`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
+`data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
+`data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
+`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
+`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
+`data[attributes][product_id]` | **Uuid** <br>The associated Product
+`data[attributes][location_id]` | **Uuid** <br>The associated Location
 
 
 ### Includes

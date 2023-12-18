@@ -207,11 +207,11 @@ Name | Description
 `changed_stock_item_plannings` | **Stock item plannings** `readonly`<br>Associated Changed stock item plannings
 
 
-## Specify
+## Book
 
 
 
-> Remove a StockItem:
+> Book a Product (Update Automatically):
 
 ```shell
   curl --request POST \
@@ -221,16 +221,15 @@ Name | Description
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "c6767ea6-f866-4b55-8b59-57dfd7b2baba",
+          "order_id": "4f813ade-f76b-4a64-a5fc-4dc557572edf",
+          "confirm_shortage": null,
           "actions": [
             {
-              "action": "specify_stock_items",
-              "product_id": "876b9bb2-2729-4ea9-92fd-bc4fa71289e4",
-              "planning_id": "f20f095f-09c3-4e7c-bcc7-7d87a01b8215",
-              "stock_item_ids_to_add": [],
-              "stock_item_ids_to_remove": [
-                "3058ff3a-cffb-4741-907c-8f6a3a3ddb01"
-              ]
+              "action": "book_product",
+              "mode": "infer_planning",
+              "product_id": "aff0efa4-5998-4f93-950d-cefd4d1fc73c",
+              "planning_id": null,
+              "quantity": 3
             }
           ]
         }
@@ -243,10 +242,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a9da0a93-16e8-5ec1-9082-a6b9e1d89454",
+    "id": "7e52fc4c-efe6-5ab8-a645-946b79bd9830",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "c6767ea6-f866-4b55-8b59-57dfd7b2baba"
+      "order_id": "4f813ade-f76b-4a64-a5fc-4dc557572edf"
     },
     "relationships": {
       "order": {
@@ -276,7 +275,7 @@ Name | Description
 ```
 
 
-> Add a StockItem:
+> Book a Product (New):
 
 ```shell
   curl --request POST \
@@ -286,16 +285,14 @@ Name | Description
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "6704b603-0ed5-4ce7-af63-0556e5051903",
+          "order_id": "5dcf6739-9052-45ee-98bf-b61f6802e510",
+          "confirm_shortage": null,
           "actions": [
             {
-              "action": "specify_stock_items",
-              "product_id": "1b8e8d0c-77a0-4a3a-a3a6-ba192709dbfa",
-              "planning_id": "1ded40d5-7610-4d63-972e-2ca11b38d03a",
-              "stock_item_ids_to_add": [
-                "39d0bb5e-eae4-45f1-a047-7acd3da974f2"
-              ],
-              "stock_item_ids_to_remove": []
+              "action": "book_product",
+              "mode": "create_new",
+              "product_id": "1dc1036f-f514-46ce-812d-2100cecebf9d",
+              "quantity": 3
             }
           ]
         }
@@ -308,10 +305,144 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "eeaf3f93-8c43-5379-926f-cd6222b5860b",
+    "id": "46cc2c88-df6e-59bd-aa8f-28cff86bffdc",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "6704b603-0ed5-4ce7-af63-0556e5051903"
+      "order_id": "5dcf6739-9052-45ee-98bf-b61f6802e510"
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_plannings": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_stock_item_plannings": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> Book a Bundle:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_fulfillments' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_fulfillments",
+        "attributes": {
+          "order_id": "abd77a0f-b76e-4462-85a7-cfe6ebb4d715",
+          "confirm_shortage": null,
+          "actions": [
+            {
+              "action": "book_bundle",
+              "bundle_id": "5d6e2f52-90fc-415a-a2a8-1194bd23f135",
+              "quantity": 1,
+              "product_variations": [
+                {
+                  "bundle_item_id": "b8fb2c81-4512-403d-953c-2d01611d79a6",
+                  "product_id": "863c6fd6-44cc-4322-82da-880a9adedff2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "dda63396-09b8-5a13-8d93-7cee035c3c29",
+    "type": "order_fulfillments",
+    "attributes": {
+      "order_id": "abd77a0f-b76e-4462-85a7-cfe6ebb4d715"
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_plannings": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_stock_item_plannings": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> Book StockItems:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_fulfillments' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_fulfillments",
+        "attributes": {
+          "order_id": "3613df47-d75b-4f59-aca8-69cba1d29bcd",
+          "confirm_shortage": null,
+          "actions": [
+            {
+              "action": "book_stock_items",
+              "mode": "infer_planning",
+              "product_id": "19690959-bfdd-48c4-aa5a-e80789855b37",
+              "stock_item_ids": [
+                "aca6d2f2-6547-47bb-86ee-b1f36512f260",
+                "938a61dc-b11d-4b0c-abf5-7968e941eb73"
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "20d5156c-d9bb-502d-bb01-f2688ce6fa6d",
+    "type": "order_fulfillments",
+    "attributes": {
+      "order_id": "3613df47-d75b-4f59-aca8-69cba1d29bcd"
     },
     "relationships": {
       "order": {
@@ -391,11 +522,11 @@ This request accepts the following includes:
 
 
 
-## Book
+## Specify
 
 
 
-> Book StockItems:
+> Add a StockItem:
 
 ```shell
   curl --request POST \
@@ -405,16 +536,80 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "411b1584-f994-4e3c-a0b5-18d834f8cde8",
-          "confirm_shortage": null,
+          "order_id": "65236089-ecbd-4927-bf2a-5e021cece568",
           "actions": [
             {
-              "action": "book_stock_items",
-              "mode": "infer_planning",
-              "product_id": "9c286c76-9e96-40c4-a0c0-2ecc8b9825f1",
-              "stock_item_ids": [
-                "0bb3ee4b-3e8c-4c8b-960e-fcd7e844671d",
-                "8e51dc0d-6ece-482e-a7fb-23352b7540db"
+              "action": "specify_stock_items",
+              "product_id": "9ad6b42e-4feb-423e-9c29-e66546eb81c4",
+              "planning_id": "2afe4076-3c51-4364-af65-620883c6eb65",
+              "stock_item_ids_to_add": [
+                "7323a3d9-9fec-44b2-8365-ed4fd6367639"
+              ],
+              "stock_item_ids_to_remove": []
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "3eecaa29-6294-59cf-b66a-056e5d5e48ef",
+    "type": "order_fulfillments",
+    "attributes": {
+      "order_id": "65236089-ecbd-4927-bf2a-5e021cece568"
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_plannings": {
+        "meta": {
+          "included": false
+        }
+      },
+      "changed_stock_item_plannings": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> Remove a StockItem:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_fulfillments' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_fulfillments",
+        "attributes": {
+          "order_id": "95a62341-54b7-4bf7-bcbf-2830fc28b345",
+          "actions": [
+            {
+              "action": "specify_stock_items",
+              "product_id": "44776fa3-286c-4714-bd6c-0d758192ee93",
+              "planning_id": "215f88e2-0925-435e-9ab9-24a6c24cc3eb",
+              "stock_item_ids_to_add": [],
+              "stock_item_ids_to_remove": [
+                "b4b59056-5686-4302-b174-e4217bfecac8"
               ]
             }
           ]
@@ -428,205 +623,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ae681bb5-769b-5d6f-bcef-acc467fdca24",
+    "id": "7bb9ec36-1a2f-5e7f-a111-d829fc987e6a",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "411b1584-f994-4e3c-a0b5-18d834f8cde8"
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_plannings": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_stock_item_plannings": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Book a Product (New):
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_fulfillments' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_fulfillments",
-        "attributes": {
-          "order_id": "d4283dc4-8c65-46a3-b55c-7bfa3c6eac6a",
-          "confirm_shortage": null,
-          "actions": [
-            {
-              "action": "book_product",
-              "mode": "create_new",
-              "product_id": "59a66bbd-1e97-41e8-9d6f-41aba16b282a",
-              "quantity": 3
-            }
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "b40229c0-1087-587a-8e2b-d56079d6d046",
-    "type": "order_fulfillments",
-    "attributes": {
-      "order_id": "d4283dc4-8c65-46a3-b55c-7bfa3c6eac6a"
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_plannings": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_stock_item_plannings": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Book a Product (Update Automatically):
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_fulfillments' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_fulfillments",
-        "attributes": {
-          "order_id": "20fc929f-9ab9-467a-87e3-34dac13f1668",
-          "confirm_shortage": null,
-          "actions": [
-            {
-              "action": "book_product",
-              "mode": "infer_planning",
-              "product_id": "735349a9-5bbb-40f9-bb1a-b752dfc42159",
-              "planning_id": null,
-              "quantity": 3
-            }
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "0b6afd6c-d2f2-5dbd-8dcf-21168850a655",
-    "type": "order_fulfillments",
-    "attributes": {
-      "order_id": "20fc929f-9ab9-467a-87e3-34dac13f1668"
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_plannings": {
-        "meta": {
-          "included": false
-        }
-      },
-      "changed_stock_item_plannings": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Book a Bundle:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_fulfillments' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_fulfillments",
-        "attributes": {
-          "order_id": "c0fb9c35-36c7-41c8-87a9-52876d5e61dc",
-          "confirm_shortage": null,
-          "actions": [
-            {
-              "action": "book_bundle",
-              "bundle_id": "397f6b4c-2dc7-41b2-9475-57ddc520cf7a",
-              "quantity": 1,
-              "product_variations": [
-                {
-                  "bundle_item_id": "978f38f7-6928-4ea1-a240-24760a1833d2",
-                  "product_id": "a1b3ec95-e765-4b82-8fe5-177ea4416018"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "5a6df575-030e-5a47-acbb-1490916bad2c",
-    "type": "order_fulfillments",
-    "attributes": {
-      "order_id": "c0fb9c35-36c7-41c8-87a9-52876d5e61dc"
+      "order_id": "95a62341-54b7-4bf7-bcbf-2830fc28b345"
     },
     "relationships": {
       "order": {
@@ -720,14 +720,14 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "662845a0-2047-45f4-9b37-817a85b82652",
+          "order_id": "73661e27-fe4b-429f-bfc1-c72a8b6428e0",
           "actions": [
             {
               "action": "stop_stock_items",
-              "product_id": "3b3fd07b-3d88-4668-93d4-8869ee4ee179",
-              "planning_id": "59110a30-aabf-4972-8794-68fdea4efa30",
+              "product_id": "0b8b5654-8005-4e42-a432-9f149cee3057",
+              "planning_id": "1b0f4d78-1fe0-4e33-890d-e6ecf4a23f68",
               "stock_item_ids": [
-                "261f9f65-6b87-41f0-8869-5c41d88230f2"
+                "58c8ee5e-56cc-4ac0-8286-96efab2dbe22"
               ]
             }
           ]
@@ -741,10 +741,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cccaa383-a784-5665-a7aa-905be7589337",
+    "id": "b10052ff-87cd-5c6d-ad93-c6f78d680412",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "662845a0-2047-45f4-9b37-817a85b82652"
+      "order_id": "73661e27-fe4b-429f-bfc1-c72a8b6428e0"
     },
     "relationships": {
       "order": {
@@ -784,12 +784,12 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "aea38e54-be52-4fc2-90bd-649f08b3501e",
+          "order_id": "d8b36723-1631-4f84-a8c3-83e3cc4d1ae6",
           "actions": [
             {
               "action": "stop_product",
-              "product_id": "22a2955c-bf7b-4c83-9624-8f6799aa0121",
-              "planning_id": "b0557cd9-6154-4944-a7c3-765ecae19591",
+              "product_id": "f2a5e8c9-37c5-441c-b0d1-4d242b468526",
+              "planning_id": "fbd6ce9d-6c1d-4f12-8fdd-efc1e5e9d2bc",
               "quantity": 1
             }
           ]
@@ -803,10 +803,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "520d6fb8-c97d-5dc7-8558-497783cea34e",
+    "id": "31d3db9b-dd8b-55d8-a18f-6680ca584007",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "aea38e54-be52-4fc2-90bd-649f08b3501e"
+      "order_id": "d8b36723-1631-4f84-a8c3-83e3cc4d1ae6"
     },
     "relationships": {
       "order": {
@@ -890,7 +890,7 @@ This request accepts the following includes:
 
 
 
-> Start StockItems:
+> Start a Product:
 
 ```shell
   curl --request POST \
@@ -900,16 +900,14 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "129e40cb-3386-411d-854d-e2bb31f9f671",
+          "order_id": "89ba0d5d-d318-4918-a3b9-332686f502e4",
           "confirm_shortage": null,
           "actions": [
             {
-              "action": "start_stock_items",
-              "product_id": "28b2e307-5ace-4da1-85cf-b16f9619729a",
-              "planning_id": "d5c49447-36af-4371-982c-697a78b623dd",
-              "stock_item_ids": [
-                "2b27ef87-aab8-401d-8cb0-a17c703634ef"
-              ]
+              "action": "start_product",
+              "product_id": "8a038ea9-6a65-4d3e-84e5-77f52ca80165",
+              "planning_id": "541fd2be-da39-43c7-a089-49b7926c0a7a",
+              "quantity": 1
             }
           ]
         }
@@ -922,10 +920,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c4b1fdc7-6bc8-5b61-96eb-01738a8e6791",
+    "id": "a2fb4d84-b604-502d-9ecb-03eb91b92155",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "129e40cb-3386-411d-854d-e2bb31f9f671"
+      "order_id": "89ba0d5d-d318-4918-a3b9-332686f502e4"
     },
     "relationships": {
       "order": {
@@ -955,7 +953,7 @@ This request accepts the following includes:
 ```
 
 
-> Start a Product:
+> Start StockItems:
 
 ```shell
   curl --request POST \
@@ -965,14 +963,16 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "56b73202-5e33-4b29-a9b4-40313f45040a",
+          "order_id": "9bd0990b-4775-4a9a-bdcf-607cecf44bd9",
           "confirm_shortage": null,
           "actions": [
             {
-              "action": "start_product",
-              "product_id": "0fd68368-c245-4877-abcc-13e02ac211ef",
-              "planning_id": "5ba55c36-4f04-445f-aa3b-ebcc1abcdba1",
-              "quantity": 1
+              "action": "start_stock_items",
+              "product_id": "1683ba4e-57f6-4ce7-a491-752bda2caa4f",
+              "planning_id": "dc27c70c-2505-4e4e-92fc-eee7b5b053ef",
+              "stock_item_ids": [
+                "26864ee9-c759-4b02-be1d-f3221bcd04d3"
+              ]
             }
           ]
         }
@@ -985,10 +985,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ba69a47e-b9dd-5f14-905d-91574690b414",
+    "id": "865d857f-86b8-5cf4-a49b-f7da88100eed",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "56b73202-5e33-4b29-a9b4-40313f45040a"
+      "order_id": "9bd0990b-4775-4a9a-bdcf-607cecf44bd9"
     },
     "relationships": {
       "order": {

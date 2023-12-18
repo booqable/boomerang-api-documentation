@@ -3,15 +3,15 @@
 Checkout fields allow collecting additional information from the checkout.
 
 ## Endpoints
-`GET /api/boomerang/checkout_fields/{id}`
+`PUT /api/boomerang/checkout_fields/{id}`
+
+`POST /api/boomerang/checkout_fields`
 
 `GET /api/boomerang/checkout_fields`
 
-`PUT /api/boomerang/checkout_fields/{id}`
+`GET /api/boomerang/checkout_fields/{id}`
 
 `DELETE /api/boomerang/checkout_fields/{id}`
-
-`POST /api/boomerang/checkout_fields`
 
 ## Fields
 Every checkout field has the following fields:
@@ -35,16 +35,25 @@ Name | Description
 `default_property` | **Default properties** `readonly`<br>Associated Default property
 
 
-## Fetching a checkout field
+## Updating a checkout field
 
 
 
-> How to fetch a checkout field:
+> How to update a custom field:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/ae747264-6e83-4e09-bea0-b56395ac22ad?include=default_property' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/65f29a2c-1a65-4a56-a3f3-f5e37ff22366' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "65f29a2c-1a65-4a56-a3f3-f5e37ff22366",
+        "type": "checkout_fields",
+        "attributes": {
+          "name": "Additional information"
+        }
+      }
+    }'
 ```
 
 > A 200 status response looks like this:
@@ -52,54 +61,31 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ae747264-6e83-4e09-bea0-b56395ac22ad",
+    "id": "65f29a2c-1a65-4a56-a3f3-f5e37ff22366",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2023-12-11T15:28:51+00:00",
-      "updated_at": "2023-12-11T15:28:51+00:00",
-      "name": "Special requests",
+      "created_at": "2023-12-18T09:14:35+00:00",
+      "updated_at": "2023-12-18T09:14:35+00:00",
+      "name": "Additional information",
       "required": false,
       "position": null,
-      "default_property_id": "eb178650-90a0-4d6d-88a6-25ce878a9d50"
+      "default_property_id": "0227c491-141f-4a79-9b36-bbbb87818d77"
     },
     "relationships": {
       "default_property": {
-        "links": {
-          "related": "api/boomerang/default_properties/eb178650-90a0-4d6d-88a6-25ce878a9d50"
-        },
-        "data": {
-          "type": "default_properties",
-          "id": "eb178650-90a0-4d6d-88a6-25ce878a9d50"
+        "meta": {
+          "included": false
         }
       }
     }
   },
-  "included": [
-    {
-      "id": "eb178650-90a0-4d6d-88a6-25ce878a9d50",
-      "type": "default_properties",
-      "attributes": {
-        "created_at": "2023-12-11T15:28:51+00:00",
-        "updated_at": "2023-12-11T15:28:51+00:00",
-        "name": "Default Property 7",
-        "identifier": "default_property_7",
-        "position": 1,
-        "property_type": "text_field",
-        "show_on": [],
-        "validation_required": false,
-        "owner_type": "orders",
-        "select_options": [],
-        "editable": true
-      }
-    }
-  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/checkout_fields/{id}`
+`PUT /api/boomerang/checkout_fields/{id}`
 
 ### Request params
 
@@ -109,6 +95,101 @@ Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=default_property`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
+`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout fields
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
+
+
+### Includes
+
+This request accepts the following includes:
+
+`default_property`
+
+
+
+
+
+
+## Creating a checkout field
+
+
+
+> How to create a checkout field:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "checkout_fields",
+        "attributes": {
+          "name": "Special requests",
+          "default_property_id": "f5acd61e-80fd-4782-8b87-cfde7588c6b3"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "fe48ab2c-d7e8-4d26-afdb-bd8d4034208d",
+    "type": "checkout_fields",
+    "attributes": {
+      "created_at": "2023-12-18T09:14:36+00:00",
+      "updated_at": "2023-12-18T09:14:36+00:00",
+      "name": "Special requests",
+      "required": false,
+      "position": null,
+      "default_property_id": "f5acd61e-80fd-4782-8b87-cfde7588c6b3"
+    },
+    "relationships": {
+      "default_property": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/checkout_fields`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=default_property`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
+`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout fields
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
 
 
 ### Includes
@@ -140,20 +221,20 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "34c5ded3-62f4-492f-a380-345202a5a043",
+      "id": "3dddc0ac-22ed-4b2d-a3db-b502142707a7",
       "type": "checkout_fields",
       "attributes": {
-        "created_at": "2023-12-11T15:28:52+00:00",
-        "updated_at": "2023-12-11T15:28:52+00:00",
+        "created_at": "2023-12-18T09:14:37+00:00",
+        "updated_at": "2023-12-18T09:14:37+00:00",
         "name": "Special requests",
         "required": false,
         "position": null,
-        "default_property_id": "6184eb8a-b4b0-45bd-8f2e-f14ce041c877"
+        "default_property_id": "b4e77d21-7f4e-4571-8deb-874f0fbf5a84"
       },
       "relationships": {
         "default_property": {
           "links": {
-            "related": "api/boomerang/default_properties/6184eb8a-b4b0-45bd-8f2e-f14ce041c877"
+            "related": "api/boomerang/default_properties/b4e77d21-7f4e-4571-8deb-874f0fbf5a84"
           }
         }
       }
@@ -207,25 +288,16 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a checkout field
+## Fetching a checkout field
 
 
 
-> How to update a custom field:
+> How to fetch a checkout field:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/cacdba3a-4107-4ee0-a57e-937fb89fa29b' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/ad610d7c-b981-494d-b107-2edb6fbeaea5?include=default_property' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "cacdba3a-4107-4ee0-a57e-937fb89fa29b",
-        "type": "checkout_fields",
-        "attributes": {
-          "name": "Additional information"
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -233,31 +305,54 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "cacdba3a-4107-4ee0-a57e-937fb89fa29b",
+    "id": "ad610d7c-b981-494d-b107-2edb6fbeaea5",
     "type": "checkout_fields",
     "attributes": {
-      "created_at": "2023-12-11T15:28:52+00:00",
-      "updated_at": "2023-12-11T15:28:52+00:00",
-      "name": "Additional information",
+      "created_at": "2023-12-18T09:14:38+00:00",
+      "updated_at": "2023-12-18T09:14:38+00:00",
+      "name": "Special requests",
       "required": false,
       "position": null,
-      "default_property_id": "57fa34eb-a73e-4074-ab4c-df2cdbc63a8e"
+      "default_property_id": "add46568-958e-4de7-aafc-6920f0ea7dab"
     },
     "relationships": {
       "default_property": {
-        "meta": {
-          "included": false
+        "links": {
+          "related": "api/boomerang/default_properties/add46568-958e-4de7-aafc-6920f0ea7dab"
+        },
+        "data": {
+          "type": "default_properties",
+          "id": "add46568-958e-4de7-aafc-6920f0ea7dab"
         }
       }
     }
   },
+  "included": [
+    {
+      "id": "add46568-958e-4de7-aafc-6920f0ea7dab",
+      "type": "default_properties",
+      "attributes": {
+        "created_at": "2023-12-18T09:14:38+00:00",
+        "updated_at": "2023-12-18T09:14:38+00:00",
+        "name": "Default Property 8",
+        "identifier": "default_property_8",
+        "position": 1,
+        "property_type": "text_field",
+        "show_on": [],
+        "validation_required": false,
+        "owner_type": "orders",
+        "select_options": [],
+        "editable": true
+      }
+    }
+  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`PUT /api/boomerang/checkout_fields/{id}`
+`GET /api/boomerang/checkout_fields/{id}`
 
 ### Request params
 
@@ -267,17 +362,6 @@ Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=default_property`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
-`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout fields
-`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
 
 
 ### Includes
@@ -299,7 +383,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields/7e1857da-d2aa-484d-83d4-e99b6d879e3e' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_fields/7cf16592-c57c-4c2d-add7-29513e4391f1' \
     --header 'content-type: application/json' \
 ```
 
@@ -327,86 +411,3 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a checkout field
-
-
-
-> How to create a checkout field:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/checkout_fields' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "checkout_fields",
-        "attributes": {
-          "name": "Special requests",
-          "default_property_id": "be851997-131e-4435-b22d-be52ba0cc1c0"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "bad9b240-73a9-4191-a4e4-8febbcaa01d6",
-    "type": "checkout_fields",
-    "attributes": {
-      "created_at": "2023-12-11T15:28:53+00:00",
-      "updated_at": "2023-12-11T15:28:53+00:00",
-      "name": "Special requests",
-      "required": false,
-      "position": null,
-      "default_property_id": "be851997-131e-4435-b22d-be52ba0cc1c0"
-    },
-    "relationships": {
-      "default_property": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/checkout_fields`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=default_property`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_fields]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
-`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout fields
-`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
-
-
-### Includes
-
-This request accepts the following includes:
-
-`default_property`
-
-
-
-
-

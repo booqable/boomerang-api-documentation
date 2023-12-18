@@ -42,7 +42,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=2f222d93-7970-41c2-8edc-167a4b8ca8fa&filter%5Blocation_id%5D=60a8e525-4af9-42ec-8c61-747b3790d052&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=93ebd3c1-0b80-4c5e-98da-427ce565d677&filter%5Blocation_id%5D=c32d1c21-03e4-4500-b478-5a743ab0c6a7&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -52,12 +52,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "eff452ab-82ff-5c5c-a1e6-a7c883c57f5b",
+      "id": "911227ca-7780-52d7-b688-718848ac1c0b",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "2f222d93-7970-41c2-8edc-167a4b8ca8fa",
+        "item_id": "93ebd3c1-0b80-4c5e-98da-427ce565d677",
         "order_id": null,
-        "location_id": "60a8e525-4af9-42ec-8c61-747b3790d052",
+        "location_id": "c32d1c21-03e4-4500-b478-5a743ab0c6a7",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -72,12 +72,12 @@ Name | Description
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/2f222d93-7970-41c2-8edc-167a4b8ca8fa"
+            "related": "api/boomerang/items/93ebd3c1-0b80-4c5e-98da-427ce565d677"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/60a8e525-4af9-42ec-8c61-747b3790d052"
+            "related": "api/boomerang/locations/c32d1c21-03e4-4500-b478-5a743ab0c6a7"
           }
         }
       }
@@ -150,7 +150,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=bf142a3f-84c5-4ece-89dc-473e7c6b2b10&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=d80faee6-500d-40dc-8a22-e6f37940e9de&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -160,12 +160,12 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "2271fdd3-733a-5a28-9b0c-4e83c6ba1fb8",
+      "id": "ede817f4-2a91-5943-9d5b-a5656c389fa9",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "bf142a3f-84c5-4ece-89dc-473e7c6b2b10",
+        "item_id": "d80faee6-500d-40dc-8a22-e6f37940e9de",
         "order_id": null,
-        "location_id": "1f85de18-db94-41d2-a20e-767d1c3f43f3",
+        "location_id": "ba8ad12a-50dd-4bcf-8db8-07fb018622b8",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -180,12 +180,12 @@ This request accepts the following includes:
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/bf142a3f-84c5-4ece-89dc-473e7c6b2b10"
+            "related": "api/boomerang/items/d80faee6-500d-40dc-8a22-e6f37940e9de"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/1f85de18-db94-41d2-a20e-767d1c3f43f3"
+            "related": "api/boomerang/locations/ba8ad12a-50dd-4bcf-8db8-07fb018622b8"
           }
         }
       }
