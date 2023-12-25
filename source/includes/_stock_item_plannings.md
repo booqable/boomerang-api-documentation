@@ -45,7 +45,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/5c91a5b4-adcf-48ac-baf8-78e78e7d17d8' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/83d40013-41b6-47d1-966b-c947e6e82474' \
     --header 'content-type: application/json' \
 ```
 
@@ -91,34 +91,34 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "c95827f1-c3e1-4e0b-b38a-344e7fcd6eea",
+      "id": "0dd5c0b0-5c29-4ecb-927d-872aeb959c52",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2023-12-18T09:13:33+00:00",
-        "updated_at": "2023-12-18T09:13:33+00:00",
+        "created_at": "2023-12-25T09:13:41+00:00",
+        "updated_at": "2023-12-25T09:13:41+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "9b273a84-7206-4436-a1d6-8b2bc7ee48c2",
-        "planning_id": "6f39fb34-2cbb-4d49-926b-baf22951b2cf",
-        "order_id": "6b7c91c0-6522-4d9f-9a77-4201626dd55c"
+        "stock_item_id": "519f2c34-39eb-4104-be7e-3fec7fbd9741",
+        "planning_id": "6c9edf66-2f61-48ff-876d-51a6ecace9ff",
+        "order_id": "65f668cb-75ae-45ea-a5d5-9527ac2170aa"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/9b273a84-7206-4436-a1d6-8b2bc7ee48c2"
+            "related": "api/boomerang/stock_items/519f2c34-39eb-4104-be7e-3fec7fbd9741"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/6f39fb34-2cbb-4d49-926b-baf22951b2cf"
+            "related": "api/boomerang/plannings/6c9edf66-2f61-48ff-876d-51a6ecace9ff"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/6b7c91c0-6522-4d9f-9a77-4201626dd55c"
+            "related": "api/boomerang/orders/65f668cb-75ae-45ea-a5d5-9527ac2170aa"
           }
         }
       }

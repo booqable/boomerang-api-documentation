@@ -24,52 +24,6 @@ Name | Description
 
 
 
-> How to create checkout fields in bulk:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "checkout_fields",
-          "data": [
-            {
-              "default_property_id": "3f1549e2-a478-4f98-8d11-6324fe9645db"
-            },
-            {
-              "name": "Delivery address",
-              "default_property_id": "003a9a5a-b99d-41a5-9d35-4d252606b1a2"
-            }
-          ]
-        },
-        "include": "results"
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "dc659b06-6848-528e-a381-dbf4f1ccd97c",
-    "type": "bulk_upserts",
-    "relationships": {
-      "results": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
 > How to create coupons in bulk:
 
 ```shell
@@ -105,7 +59,53 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "dc659b06-6848-528e-a381-dbf4f1ccd97c",
+    "id": "a3d185a7-e52a-5da0-90fb-9b655a98fe13",
+    "type": "bulk_upserts",
+    "relationships": {
+      "results": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to create checkout fields in bulk:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "bulk_upserts",
+        "attributes": {
+          "type": "checkout_fields",
+          "data": [
+            {
+              "default_property_id": "18b2fd28-53a3-4f3c-99d4-57f92d3f53ab"
+            },
+            {
+              "name": "Delivery address",
+              "default_property_id": "128be516-fa13-4cb9-9d3b-ab506cd2b365"
+            }
+          ]
+        },
+        "include": "results"
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "95c57179-3204-5bcb-8f98-3d09d1c62d88",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -162,18 +162,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d476ce2e-3d47-5436-b605-665008631bd3",
+    "id": "95c57179-3204-5bcb-8f98-3d09d1c62d88",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "3b6d3079-8c57-480e-8aca-a2276f673714"
+            "id": "4ba81cd4-b4be-4ab3-b1fe-2d908237575e"
           },
           {
             "type": "operating_rules",
-            "id": "b2489439-831c-449f-9945-5d123b79e0e4"
+            "id": "be976354-ee62-4215-b28e-4ca04ea0f25e"
           }
         ]
       }
@@ -181,11 +181,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "3b6d3079-8c57-480e-8aca-a2276f673714",
+      "id": "4ba81cd4-b4be-4ab3-b1fe-2d908237575e",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2023-12-18T09:14:15+00:00",
-        "updated_at": "2023-12-18T09:14:15+00:00",
+        "created_at": "2023-12-25T09:15:04+00:00",
+        "updated_at": "2023-12-25T09:15:04+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -196,11 +196,11 @@ Name | Description
       }
     },
     {
-      "id": "b2489439-831c-449f-9945-5d123b79e0e4",
+      "id": "be976354-ee62-4215-b28e-4ca04ea0f25e",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2023-12-18T09:14:15+00:00",
-        "updated_at": "2023-12-18T09:14:15+00:00",
+        "created_at": "2023-12-25T09:15:04+00:00",
+        "updated_at": "2023-12-25T09:15:04+00:00",
         "data_type": "hours",
         "data": {
           "mon": {

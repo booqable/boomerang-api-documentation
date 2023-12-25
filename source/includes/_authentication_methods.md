@@ -14,13 +14,13 @@ The following algorithms are supported to sign requests (`single_use`):
 See [Authentication](#authentication) for more information on authenticating with the API.
 
 ## Endpoints
-`POST /api/boomerang/authentication_methods`
-
-`DELETE /api/boomerang/authentication_methods/{id}`
-
 `GET /api/boomerang/authentication_methods`
 
+`POST /api/boomerang/authentication_methods`
+
 `GET /api/boomerang/authentication_methods/{id}`
+
+`DELETE /api/boomerang/authentication_methods/{id}`
 
 ## Fields
 Every authentication method has the following fields:
@@ -47,112 +47,101 @@ Name | Description
 `company` | **Companies** `readonly`<br>Associated Company
 
 
+## Listing authentication methods
+
+
+
+> How to fetch a list of authentication methods:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "3b9af2ec-98e2-4bcc-9781-1bcde20da747",
+      "type": "authentication_methods",
+      "attributes": {
+        "created_at": "2023-12-25T09:17:17+00:00",
+        "updated_at": "2023-12-25T09:17:17+00:00",
+        "name": "Segment integration",
+        "kind": "token",
+        "algorithm": null,
+        "employee_id": "a6655e8a-3359-4019-8e56-812fea25e933",
+        "company_id": "16635373-b93f-42b8-82ec-3c54f704a781"
+      },
+      "relationships": {
+        "employee": {
+          "links": {
+            "related": "api/boomerang/employees/a6655e8a-3359-4019-8e56-812fea25e933"
+          }
+        },
+        "company": {
+          "links": {
+            "related": "api/boomerang/companies/16635373-b93f-42b8-82ec-3c54f704a781"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/authentication_methods`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,updated_at,name`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`kind` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`algorithm` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`employee_id` | **Uuid** <br>`eq`, `not_eq`
+`company_id` | **Uuid** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes
 ## Creating an authentication method
 
-
-
-> How to create a single_use authentication method (with HS256 strategy):
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "authentication_methods",
-        "attributes": {
-          "name": "Segment integration",
-          "kind": "single_use",
-          "algorithm": "HS256"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "5a116f52-d94e-4324-9ca2-e99b257a33b1",
-    "type": "authentication_methods",
-    "attributes": {
-      "created_at": "2023-12-18T09:18:08+00:00",
-      "updated_at": "2023-12-18T09:18:08+00:00",
-      "name": "Segment integration",
-      "key": "dcdffdcb0e0d152aeb3778ce5a4e148a08d554c66108a16e1f57c4e233e9effc",
-      "kind": "single_use",
-      "algorithm": "HS256",
-      "employee_id": "1eaa1db4-b773-48f1-8f6f-cd51763ff30f",
-      "company_id": "9aa885be-482f-407f-b356-12c07fbf8d1e"
-    },
-    "relationships": {
-      "employee": {
-        "meta": {
-          "included": false
-        }
-      },
-      "company": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to create a token authentication method:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "authentication_methods",
-        "attributes": {
-          "name": "Segment integration"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "064a18a6-d71e-4b02-b354-98f6eb163cdb",
-    "type": "authentication_methods",
-    "attributes": {
-      "created_at": "2023-12-18T09:18:10+00:00",
-      "updated_at": "2023-12-18T09:18:10+00:00",
-      "name": "Segment integration",
-      "key": "a46182191f47dc50c34bd1a087b383a21cc2bff1baf00a7d9bea11a54174b5f4",
-      "kind": "token",
-      "algorithm": null,
-      "employee_id": "ec91cad5-df06-4ccc-949d-df57eab1a1dc",
-      "company_id": "cd8dba31-9ad0-4f43-be4c-c9252ee6e6c4"
-    },
-    "relationships": {
-      "employee": {
-        "meta": {
-          "included": false
-        }
-      },
-      "company": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
 
 
 > How to create a single_use authentication method (with RS256 strategy):
@@ -179,17 +168,17 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "25386dc7-8564-4f0b-8614-66954e040b18",
+    "id": "d351fcbc-f113-42ea-b59d-49f887b7a820",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2023-12-18T09:18:11+00:00",
-      "updated_at": "2023-12-18T09:18:11+00:00",
+      "created_at": "2023-12-25T09:17:18+00:00",
+      "updated_at": "2023-12-25T09:17:18+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtRuZD4X3MhIz1ntbxpkp\njVFUTdH7mspUNXmE0bcQ3bJrgWYZmtPm64+lpo7KWqQIL28dhtNAjImJmzcr04ve\nRAxxyQT0f0uwe3zUBEqaxKim1aCJV60c71cPKJVfhXElnjhMkBW6ftIEgf7J4bwe\n7kPCK/NfdiOuFlMjfaY+5WmaA1lAZ/SSetwglSaHPPQKaix3LW4ocHtHUd7OBKNC\nIU/DO3baUDAkymF7ZCnMaf3F9Le9sGSpgUA8Fof69rH1EdagQFmIkftflj/IlJiC\nPDEoc1x7b4opEuGp287S+DsRRgr6vzVZi4CPQcJJsG+07jZQN5K3wboBlx8LW2jT\nfQIDAQAB\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
       "algorithm": "RS256",
-      "employee_id": "90c42335-24b1-45af-b25e-6b8111663823",
-      "company_id": "86c72ee7-babf-46cc-bf6f-01e762ebb6e8"
+      "employee_id": "66838438-f732-4c8a-ac6e-c769f5a1c20d",
+      "company_id": "bed7be5e-6dda-498d-9957-3a6703e69acc"
     },
     "relationships": {
       "employee": {
@@ -233,17 +222,121 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "3b289d69-6122-4a79-a1b6-d76649876fa5",
+    "id": "9696e7b2-98b0-4e9a-b1d1-db695c72edac",
     "type": "authentication_methods",
     "attributes": {
-      "created_at": "2023-12-18T09:18:13+00:00",
-      "updated_at": "2023-12-18T09:18:13+00:00",
+      "created_at": "2023-12-25T09:17:19+00:00",
+      "updated_at": "2023-12-25T09:17:19+00:00",
       "name": "Segment integration",
       "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
       "kind": "single_use",
       "algorithm": "ES256",
-      "employee_id": "437d6942-47cb-4480-a2e6-7bdad307fe26",
-      "company_id": "39ba6c50-e0b6-4a67-a30c-fa6625f63050"
+      "employee_id": "8182da37-4fc0-4836-96c7-5b2f9e56112f",
+      "company_id": "64c52bec-8d65-4c1b-a859-7529c9a6475e"
+    },
+    "relationships": {
+      "employee": {
+        "meta": {
+          "included": false
+        }
+      },
+      "company": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to create a token authentication method:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "authentication_methods",
+        "attributes": {
+          "name": "Segment integration"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "cb226709-7ead-4168-ae36-bad4b22c1845",
+    "type": "authentication_methods",
+    "attributes": {
+      "created_at": "2023-12-25T09:17:20+00:00",
+      "updated_at": "2023-12-25T09:17:20+00:00",
+      "name": "Segment integration",
+      "key": "6cf4afc2a41340d79900dd7c46bbe3077de50482a937c0068a865f591b9cf432",
+      "kind": "token",
+      "algorithm": null,
+      "employee_id": "d5fdfd41-5173-4e39-8c2a-82664c16a242",
+      "company_id": "bcb75ad4-9bb9-47f9-9743-3891d6ea95d2"
+    },
+    "relationships": {
+      "employee": {
+        "meta": {
+          "included": false
+        }
+      },
+      "company": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to create a single_use authentication method (with HS256 strategy):
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "authentication_methods",
+        "attributes": {
+          "name": "Segment integration",
+          "kind": "single_use",
+          "algorithm": "HS256"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "1870e003-0bbc-4475-8f5b-2b9518b4feab",
+    "type": "authentication_methods",
+    "attributes": {
+      "created_at": "2023-12-25T09:17:21+00:00",
+      "updated_at": "2023-12-25T09:17:21+00:00",
+      "name": "Segment integration",
+      "key": "2843221edc7c4e9fe95ee8d36ef584c64093efca34ca36e94d1fa979f9813cd4",
+      "kind": "single_use",
+      "algorithm": "HS256",
+      "employee_id": "e130e78a-dfdd-47d1-99f5-2873a814af4f",
+      "company_id": "124c1575-ca6b-4049-ba7f-91a57760e882"
     },
     "relationships": {
       "employee": {
@@ -302,6 +395,68 @@ This request accepts the following includes:
 
 
 
+## Fetching an authentication method
+
+
+
+> How to fetch an authentication method:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/8ba68f8b-bd98-4887-9d6e-e85694679235' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "8ba68f8b-bd98-4887-9d6e-e85694679235",
+    "type": "authentication_methods",
+    "attributes": {
+      "created_at": "2023-12-25T09:17:22+00:00",
+      "updated_at": "2023-12-25T09:17:22+00:00",
+      "name": "Segment integration",
+      "key": "869080d5d089aa50795c19b0fc39cc661254dc846bcac06b9391012476365320",
+      "kind": "token",
+      "algorithm": null,
+      "employee_id": "4390a3ef-2cbf-47ae-8cde-f35076874f05",
+      "company_id": "24365039-508f-4364-b2ab-83c755680616"
+    },
+    "relationships": {
+      "employee": {
+        "links": {
+          "related": "api/boomerang/employees/4390a3ef-2cbf-47ae-8cde-f35076874f05"
+        }
+      },
+      "company": {
+        "links": {
+          "related": "api/boomerang/companies/24365039-508f-4364-b2ab-83c755680616"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/authentication_methods/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
 ## Deleting an authentication method
 
 
@@ -310,7 +465,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/03c1df1f-3a9d-48d7-97a5-db4d10678b23' \
+    --url 'https://example.booqable.com/api/boomerang/authentication_methods/466a98cf-9df8-49e3-8d83-76abc41ec0e7' \
     --header 'content-type: application/json' \
 ```
 
@@ -325,161 +480,6 @@ This request accepts the following includes:
 ### HTTP Request
 
 `DELETE /api/boomerang/authentication_methods/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
-## Listing authentication methods
-
-
-
-> How to fetch a list of authentication methods:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "a4bf1deb-f4a6-47cd-b88e-93e78175b8c6",
-      "type": "authentication_methods",
-      "attributes": {
-        "created_at": "2023-12-18T09:18:19+00:00",
-        "updated_at": "2023-12-18T09:18:19+00:00",
-        "name": "Segment integration",
-        "kind": "token",
-        "algorithm": null,
-        "employee_id": "34079230-2ceb-4511-80ec-c290785087a1",
-        "company_id": "71fad261-4916-479d-9736-4a4b54f64e53"
-      },
-      "relationships": {
-        "employee": {
-          "links": {
-            "related": "api/boomerang/employees/34079230-2ceb-4511-80ec-c290785087a1"
-          }
-        },
-        "company": {
-          "links": {
-            "related": "api/boomerang/companies/71fad261-4916-479d-9736-4a4b54f64e53"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/authentication_methods`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,updated_at,name`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`kind` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`algorithm` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`employee_id` | **Uuid** <br>`eq`, `not_eq`
-`company_id` | **Uuid** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching an authentication method
-
-
-
-> How to fetch an authentication method:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/authentication_methods/cdd9209c-689d-48f2-8a6f-77f6ca842161' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "cdd9209c-689d-48f2-8a6f-77f6ca842161",
-    "type": "authentication_methods",
-    "attributes": {
-      "created_at": "2023-12-18T09:18:21+00:00",
-      "updated_at": "2023-12-18T09:18:21+00:00",
-      "name": "Segment integration",
-      "key": "8931129d9eadde6799275e9e84d164a3b666c5c474cee63f6dbf46a73847805f",
-      "kind": "token",
-      "algorithm": null,
-      "employee_id": "5738e725-0d08-4b0b-80d4-9d02e9b2ef46",
-      "company_id": "3e4f3641-8413-4b13-a318-30b331b23c29"
-    },
-    "relationships": {
-      "employee": {
-        "links": {
-          "related": "api/boomerang/employees/5738e725-0d08-4b0b-80d4-9d02e9b2ef46"
-        }
-      },
-      "company": {
-        "links": {
-          "related": "api/boomerang/companies/3e4f3641-8413-4b13-a318-30b331b23c29"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/authentication_methods/{id}`
 
 ### Request params
 

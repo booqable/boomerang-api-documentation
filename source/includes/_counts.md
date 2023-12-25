@@ -9,13 +9,18 @@ Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>
 `product_group_count` | **Integer** <br>Amount of product groups in an account
+`product_count` | **Integer** <br>Amount of products in an account
 `tax_rate_count` | **Integer** <br>Amount of tax rates in an account
-`order_count` | **Integer** <br>Amount of active orders in an account
 `note_count` | **Integer** <br>Amount of notes in an account
 `location_count` | **Integer** <br>Amount of active locations in an account
 `employee_count` | **Integer** <br>Amount of active employees in an account
-`product_count` | **Integer** <br>Amount of products in an account
-`customer_count` | **Integer** <br>Amount of customers in an account
+`payment_profile_count` | **Integer** <br>Amount of active payment profiles in an account
+`manual_order_count` | **Integer** <br>Amount of active orders in an account not attached to a cart
+`manual_reserved_order_count` | **Integer** <br>Amount of orders not attached to a cart with the status reserved
+`started_order_count` | **Integer** <br>Amount of orders with the status started
+`stopped_order_count` | **Integer** <br>Amount of orders with the status stopped
+`archived_order_count` | **Integer** <br>Amount of orders with the status archived
+`webshop_order_count` | **Integer** <br>Amount of orders via the webshop
 
 
 ## Fetching counts
@@ -35,17 +40,22 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5736d57c-fd1b-4019-ae59-116b2555f923",
+    "id": "e1dfe1fa-9e30-4863-aa43-d0cf17004581",
     "type": "counts",
     "attributes": {
       "product_group_count": 1,
+      "product_count": 1,
       "tax_rate_count": 1,
-      "order_count": 0,
       "note_count": 0,
       "location_count": 0,
       "employee_count": 1,
-      "product_count": 1,
-      "customer_count": 0
+      "payment_profile_count": 0,
+      "manual_order_count": 0,
+      "manual_reserved_order_count": 0,
+      "started_order_count": 0,
+      "stopped_order_count": 0,
+      "archived_order_count": 0,
+      "webshop_order_count": 0
     }
   },
   "meta": {}
@@ -62,7 +72,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[counts]=product_group_count,tax_rate_count,order_count`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[counts]=product_group_count,product_count,tax_rate_count`
 
 
 ### Includes

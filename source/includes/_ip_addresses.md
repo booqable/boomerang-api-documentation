@@ -3,15 +3,15 @@
 Restrict access by specifying allowed IP addresses. IPv4 and IPv6 addresses are supported.
 
 ## Endpoints
-`POST /api/boomerang/ip_addresses`
-
-`GET /api/boomerang/ip_addresses/{id}`
-
 `DELETE /api/boomerang/ip_addresses/{id}`
+
+`GET /api/boomerang/ip_addresses`
 
 `PUT /api/boomerang/ip_addresses/{id}`
 
-`GET /api/boomerang/ip_addresses`
+`POST /api/boomerang/ip_addresses`
+
+`GET /api/boomerang/ip_addresses/{id}`
 
 ## Fields
 Every ip address has the following fields:
@@ -25,117 +25,6 @@ Name | Description
 `address` | **String** <br>Restricted IP address.
 
 
-## Creating restricted IP address
-
-
-
-> How to create a restricted IP address:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "ip_addresses",
-        "attributes": {
-          "label": "Leeuwarden office",
-          "address": "192.168.0.2"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "c53afa69-2921-4e0c-a0a3-df0e7b2b38b1",
-    "type": "ip_addresses",
-    "attributes": {
-      "created_at": "2023-12-18T09:18:44+00:00",
-      "updated_at": "2023-12-18T09:18:44+00:00",
-      "label": "Leeuwarden office",
-      "address": "192.168.0.2"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/ip_addresses`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][label]` | **String** <br>Label for the restricted IP address.
-`data[attributes][address]` | **String** <br>Restricted IP address.
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching restricted IP address
-
-
-
-> How to fetch a restricted IP address:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/f2bee27e-1c5c-408d-88d2-1245af31c947' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "f2bee27e-1c5c-408d-88d2-1245af31c947",
-    "type": "ip_addresses",
-    "attributes": {
-      "created_at": "2023-12-18T09:18:45+00:00",
-      "updated_at": "2023-12-18T09:18:45+00:00",
-      "label": "John's home office",
-      "address": "192.168.0.1"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/ip_addresses/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
-
-
-### Includes
-
-This request does not accept any includes
 ## Deleting restricted IP address
 
 
@@ -144,7 +33,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/e57fce9c-7610-41ec-a700-f94881dd11d4' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/6ca5dcb3-e3ee-43ee-824d-e2bde939c935' \
     --header 'content-type: application/json' \
 ```
 
@@ -167,72 +56,6 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
-
-
-### Includes
-
-This request does not accept any includes
-## Updating restricted IP address
-
-
-
-> How to update a restricted IP address:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/f1a3d9ca-a2ab-4492-a67e-3bc0abaca1f5' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "f1a3d9ca-a2ab-4492-a67e-3bc0abaca1f5",
-        "type": "ip_addresses",
-        "attributes": {
-          "label": "Palo Alto office",
-          "address": "192.168.0.3"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "f1a3d9ca-a2ab-4492-a67e-3bc0abaca1f5",
-    "type": "ip_addresses",
-    "attributes": {
-      "created_at": "2023-12-18T09:18:47+00:00",
-      "updated_at": "2023-12-18T09:18:47+00:00",
-      "label": "Palo Alto office",
-      "address": "192.168.0.3"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/ip_addresses/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][label]` | **String** <br>Label for the restricted IP address.
-`data[attributes][address]` | **String** <br>Restricted IP address.
 
 
 ### Includes
@@ -256,11 +79,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "650536b6-a21f-4624-b2c5-79b015d92c46",
+      "id": "9f0403d1-0b9c-436b-8284-18342ed18730",
       "type": "ip_addresses",
       "attributes": {
-        "created_at": "2023-12-18T09:18:47+00:00",
-        "updated_at": "2023-12-18T09:18:47+00:00",
+        "created_at": "2023-12-25T09:17:30+00:00",
+        "updated_at": "2023-12-25T09:17:30+00:00",
         "label": "John's home office",
         "address": "192.168.0.1"
       }
@@ -308,6 +131,183 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating restricted IP address
+
+
+
+> How to update a restricted IP address:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/1ef30bf6-1d93-48f8-a443-5f46725df594' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "1ef30bf6-1d93-48f8-a443-5f46725df594",
+        "type": "ip_addresses",
+        "attributes": {
+          "label": "Palo Alto office",
+          "address": "192.168.0.3"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "1ef30bf6-1d93-48f8-a443-5f46725df594",
+    "type": "ip_addresses",
+    "attributes": {
+      "created_at": "2023-12-25T09:17:31+00:00",
+      "updated_at": "2023-12-25T09:17:31+00:00",
+      "label": "Palo Alto office",
+      "address": "192.168.0.3"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/ip_addresses/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][label]` | **String** <br>Label for the restricted IP address.
+`data[attributes][address]` | **String** <br>Restricted IP address.
+
+
+### Includes
+
+This request does not accept any includes
+## Creating restricted IP address
+
+
+
+> How to create a restricted IP address:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "ip_addresses",
+        "attributes": {
+          "label": "Leeuwarden office",
+          "address": "192.168.0.2"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "1a969d67-c5dc-4b92-b72d-ea4162580fbb",
+    "type": "ip_addresses",
+    "attributes": {
+      "created_at": "2023-12-25T09:17:31+00:00",
+      "updated_at": "2023-12-25T09:17:31+00:00",
+      "label": "Leeuwarden office",
+      "address": "192.168.0.2"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/ip_addresses`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][label]` | **String** <br>Label for the restricted IP address.
+`data[attributes][address]` | **String** <br>Restricted IP address.
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching restricted IP address
+
+
+
+> How to fetch a restricted IP address:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/06bb9ca9-b6f9-4979-a81b-f8d1f4040812' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "06bb9ca9-b6f9-4979-a81b-f8d1f4040812",
+    "type": "ip_addresses",
+    "attributes": {
+      "created_at": "2023-12-25T09:17:32+00:00",
+      "updated_at": "2023-12-25T09:17:32+00:00",
+      "label": "John's home office",
+      "address": "192.168.0.1"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/ip_addresses/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Includes

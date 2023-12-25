@@ -45,18 +45,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "4d2bfb56-3859-4200-8b82-23e54e8854f4",
+      "id": "5181d484-a6ff-4607-b6ad-9c70544e4571",
       "type": "publications",
       "attributes": {
-        "created_at": "2023-12-18T09:13:42+00:00",
-        "updated_at": "2023-12-18T09:13:42+00:00",
-        "published_at": "2023-12-13T09:13:42+00:00",
-        "theme_id": "2658cc98-e8f7-4987-b749-bf95c860d8d1"
+        "created_at": "2023-12-25T09:18:00+00:00",
+        "updated_at": "2023-12-25T09:18:00+00:00",
+        "published_at": "2023-12-20T09:18:00+00:00",
+        "theme_id": "90f2f25c-5fcd-4794-8c95-17e1e3b7baec"
       },
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/2658cc98-e8f7-4987-b749-bf95c860d8d1"
+            "related": "api/boomerang/themes/90f2f25c-5fcd-4794-8c95-17e1e3b7baec"
           }
         }
       }
@@ -132,7 +132,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "c1b25de8-aa88-4154-af54-2b197e39692f"
+          "theme_id": "7d397be0-4b3f-466b-b8f5-63cecbbea82c"
         }
       }
     }'
@@ -143,13 +143,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d9954a24-ef25-4186-b05c-ed713985c08f",
+    "id": "e6eb18bb-d0ff-4ad7-a582-149e0ac87918",
     "type": "publications",
     "attributes": {
-      "created_at": "2023-12-13T09:13:42+00:00",
-      "updated_at": "2023-12-13T09:13:42+00:00",
-      "published_at": "2023-12-13T09:13:42+00:00",
-      "theme_id": "c1b25de8-aa88-4154-af54-2b197e39692f"
+      "created_at": "2023-12-20T09:18:01+00:00",
+      "updated_at": "2023-12-20T09:18:01+00:00",
+      "published_at": "2023-12-20T09:18:01+00:00",
+      "theme_id": "7d397be0-4b3f-466b-b8f5-63cecbbea82c"
     },
     "relationships": {
       "theme": {

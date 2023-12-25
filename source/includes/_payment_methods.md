@@ -3,9 +3,9 @@
 Re-usable payment methods stored on file.
 
 ## Endpoints
-`GET /api/boomerang/payment_methods`
-
 `DELETE /api/boomerang/payment_methods/{id}`
+
+`GET /api/boomerang/payment_methods`
 
 ## Fields
 Every payment method has the following fields:
@@ -28,6 +28,42 @@ Name | Description
 `customer` | **Customers** `readonly`<br>Associated Customer
 
 
+## Archiving a payment method
+
+
+
+> How to archive a payment method:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/4be718a9-5007-439e-a4a5-13046dd87fea' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/payment_methods/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,data`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing payment methods
 
 
@@ -46,11 +82,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "8b5430bc-f72a-4dc5-b79f-a32d1d15ddf4",
+      "id": "364aacbd-6f1c-4cc0-bac2-bb97995e08a6",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2023-12-18T09:15:40+00:00",
-        "updated_at": "2023-12-18T09:15:40+00:00",
+        "created_at": "2023-12-25T09:18:00+00:00",
+        "updated_at": "2023-12-25T09:18:00+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -112,42 +148,6 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
-
-
-### Includes
-
-This request does not accept any includes
-## Archiving a payment method
-
-
-
-> How to archive a payment method:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/34832903-8224-485d-97fa-d4514639956c' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/payment_methods/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,data`
 
 
 ### Includes
