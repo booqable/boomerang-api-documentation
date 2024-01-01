@@ -36,7 +36,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/4be718a9-5007-439e-a4a5-13046dd87fea' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/eeef763b-730c-4a73-a50b-907c625da8b8' \
     --header 'content-type: application/json' \
 ```
 
@@ -82,11 +82,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "364aacbd-6f1c-4cc0-bac2-bb97995e08a6",
+      "id": "ae929a8f-575f-4aed-be6c-95a684f10b9c",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2023-12-25T09:18:00+00:00",
-        "updated_at": "2023-12-25T09:18:00+00:00",
+        "created_at": "2024-01-01T09:18:36+00:00",
+        "updated_at": "2024-01-01T09:18:36+00:00",
         "data": {
           "name": null,
           "brand": null,

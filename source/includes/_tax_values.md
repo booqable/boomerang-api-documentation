@@ -3,9 +3,9 @@
 Tax values are always generated automatically by price calculations for `orders` and `carts`. They hold information about the amount taxed for a specific rate.
 
 ## Endpoints
-`GET /api/boomerang/tax_values/{id}`
-
 `GET api/boomerang/tax_values`
+
+`GET /api/boomerang/tax_values/{id}`
 
 ## Fields
 Every tax value has the following fields:
@@ -32,188 +32,6 @@ Name | Description
 `owner` | **Order**<br>Associated Owner
 
 
-## Fetching a tax value
-
-
-
-> How to fetch a tax value:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_values/090ecada-bbc7-4a59-82ad-6c94dca2dfea?include=owner' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "090ecada-bbc7-4a59-82ad-6c94dca2dfea",
-    "type": "tax_values",
-    "attributes": {
-      "created_at": "2023-12-25T09:17:55+00:00",
-      "updated_at": "2023-12-25T09:17:55+00:00",
-      "name": "VAT 19%",
-      "percentage": 19.0,
-      "value_in_cents": 13800,
-      "tax_rate_id": "159f18d4-5fca-4211-90d7-c4c4cefe1cbc",
-      "owner_id": "89c21295-ddbe-4aad-9515-4048ff330fdd",
-      "owner_type": "orders"
-    },
-    "relationships": {
-      "tax_rate": {
-        "links": {
-          "related": "api/boomerang/tax_rates/159f18d4-5fca-4211-90d7-c4c4cefe1cbc"
-        }
-      },
-      "owner": {
-        "links": {
-          "related": "api/boomerang/orders/89c21295-ddbe-4aad-9515-4048ff330fdd"
-        },
-        "data": {
-          "type": "orders",
-          "id": "89c21295-ddbe-4aad-9515-4048ff330fdd"
-        }
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "89c21295-ddbe-4aad-9515-4048ff330fdd",
-      "type": "orders",
-      "attributes": {
-        "created_at": "2023-12-25T09:17:54+00:00",
-        "updated_at": "2023-12-25T09:17:54+00:00",
-        "number": null,
-        "status": "new",
-        "statuses": [
-          "new"
-        ],
-        "status_counts": {
-          "new": 0,
-          "concept": 0,
-          "reserved": 0,
-          "started": 0,
-          "stopped": 0
-        },
-        "starts_at": "2023-12-23T09:15:00+00:00",
-        "stops_at": "2023-12-27T09:15:00+00:00",
-        "deposit_type": "percentage",
-        "deposit_value": 100.0,
-        "entirely_started": true,
-        "entirely_stopped": false,
-        "location_shortage": false,
-        "shortage": false,
-        "payment_status": "paid",
-        "has_signed_contract": false,
-        "tag_list": [],
-        "properties": {},
-        "price_in_cents": 0,
-        "grand_total_in_cents": 0,
-        "grand_total_with_tax_in_cents": 0,
-        "tax_in_cents": 0,
-        "discount_in_cents": 0,
-        "coupon_discount_in_cents": 0,
-        "total_discount_in_cents": 0,
-        "deposit_in_cents": 0,
-        "deposit_paid_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "deposit_held_in_cents": 0,
-        "deposit_to_refund_in_cents": 0,
-        "to_be_paid_in_cents": 0,
-        "paid_in_cents": 0,
-        "discount_type": "percentage",
-        "discount_percentage": 0.0,
-        "customer_id": null,
-        "tax_region_id": null,
-        "coupon_id": null,
-        "start_location_id": "d95dc721-2ec9-4b93-b4b4-9ccb8f623858",
-        "stop_location_id": "d95dc721-2ec9-4b93-b4b4-9ccb8f623858"
-      },
-      "relationships": {
-        "customer": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "coupon": {
-          "links": {
-            "related": null
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=89c21295-ddbe-4aad-9515-4048ff330fdd&filter[owner_type]=orders"
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=89c21295-ddbe-4aad-9515-4048ff330fdd&filter[owner_type]=orders"
-          }
-        },
-        "start_location": {
-          "links": {
-            "related": "api/boomerang/locations/d95dc721-2ec9-4b93-b4b4-9ccb8f623858"
-          }
-        },
-        "stop_location": {
-          "links": {
-            "related": "api/boomerang/locations/d95dc721-2ec9-4b93-b4b4-9ccb8f623858"
-          }
-        },
-        "tax_values": {
-          "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=89c21295-ddbe-4aad-9515-4048ff330fdd&filter[owner_type]=orders"
-          }
-        },
-        "lines": {
-          "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=89c21295-ddbe-4aad-9515-4048ff330fdd&filter[owner_type]=orders"
-          }
-        },
-        "stock_item_plannings": {
-          "links": {
-            "related": "api/boomerang/stock_item_plannings?filter[order_id]=89c21295-ddbe-4aad-9515-4048ff330fdd"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/tax_values/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_values]=created_at,updated_at,name`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-
-
-
-
 ## Listing tax values
 
 
@@ -232,27 +50,27 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "25adc4e7-5a26-4246-b460-02117fdd378b",
+      "id": "091abbe3-5e01-40e6-84af-2fd076bdd461",
       "type": "tax_values",
       "attributes": {
-        "created_at": "2023-12-25T09:17:55+00:00",
-        "updated_at": "2023-12-25T09:17:55+00:00",
+        "created_at": "2024-01-01T09:15:21+00:00",
+        "updated_at": "2024-01-01T09:15:21+00:00",
         "name": "VAT 19%",
         "percentage": 19.0,
         "value_in_cents": 13800,
-        "tax_rate_id": "809d7d81-88f0-4390-b866-bd535e65f28d",
-        "owner_id": "74d805b0-5da9-4eee-91de-b2364ecf7112",
+        "tax_rate_id": "6edd5c8c-4954-4ae3-b3c0-d6e1db796a4f",
+        "owner_id": "b7541cf4-7899-4315-ac06-0ba9e1deec06",
         "owner_type": "orders"
       },
       "relationships": {
         "tax_rate": {
           "links": {
-            "related": "api/boomerang/tax_rates/809d7d81-88f0-4390-b866-bd535e65f28d"
+            "related": "api/boomerang/tax_rates/6edd5c8c-4954-4ae3-b3c0-d6e1db796a4f"
           }
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/74d805b0-5da9-4eee-91de-b2364ecf7112"
+            "related": "api/boomerang/orders/b7541cf4-7899-4315-ac06-0ba9e1deec06"
           }
         }
       }
@@ -310,3 +128,184 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Fetching a tax value
+
+
+
+> How to fetch a tax value:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/tax_values/aa62cf59-f017-49a5-bec4-efc21f2e2e6a?include=owner' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "aa62cf59-f017-49a5-bec4-efc21f2e2e6a",
+    "type": "tax_values",
+    "attributes": {
+      "created_at": "2024-01-01T09:15:22+00:00",
+      "updated_at": "2024-01-01T09:15:22+00:00",
+      "name": "VAT 19%",
+      "percentage": 19.0,
+      "value_in_cents": 13800,
+      "tax_rate_id": "787fd644-5abd-4627-9ab6-f8a4085b936b",
+      "owner_id": "ea6b4e5d-c4e6-4052-9b16-df681c2aa615",
+      "owner_type": "orders"
+    },
+    "relationships": {
+      "tax_rate": {
+        "links": {
+          "related": "api/boomerang/tax_rates/787fd644-5abd-4627-9ab6-f8a4085b936b"
+        }
+      },
+      "owner": {
+        "links": {
+          "related": "api/boomerang/orders/ea6b4e5d-c4e6-4052-9b16-df681c2aa615"
+        },
+        "data": {
+          "type": "orders",
+          "id": "ea6b4e5d-c4e6-4052-9b16-df681c2aa615"
+        }
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "ea6b4e5d-c4e6-4052-9b16-df681c2aa615",
+      "type": "orders",
+      "attributes": {
+        "created_at": "2024-01-01T09:15:22+00:00",
+        "updated_at": "2024-01-01T09:15:22+00:00",
+        "number": null,
+        "status": "new",
+        "statuses": [
+          "new"
+        ],
+        "status_counts": {
+          "new": 0,
+          "concept": 0,
+          "reserved": 0,
+          "started": 0,
+          "stopped": 0
+        },
+        "starts_at": "2023-12-30T09:15:00+00:00",
+        "stops_at": "2024-01-03T09:15:00+00:00",
+        "deposit_type": "percentage",
+        "deposit_value": 100.0,
+        "entirely_started": true,
+        "entirely_stopped": false,
+        "location_shortage": false,
+        "shortage": false,
+        "payment_status": "paid",
+        "has_signed_contract": false,
+        "tag_list": [],
+        "properties": {},
+        "price_in_cents": 0,
+        "grand_total_in_cents": 0,
+        "grand_total_with_tax_in_cents": 0,
+        "tax_in_cents": 0,
+        "discount_in_cents": 0,
+        "coupon_discount_in_cents": 0,
+        "total_discount_in_cents": 0,
+        "deposit_in_cents": 0,
+        "deposit_paid_in_cents": 0,
+        "deposit_refunded_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "to_be_paid_in_cents": 0,
+        "paid_in_cents": 0,
+        "discount_type": "percentage",
+        "discount_percentage": 0.0,
+        "customer_id": null,
+        "tax_region_id": null,
+        "coupon_id": null,
+        "start_location_id": "a3969c83-a38f-4c7d-89d1-ecf162204862",
+        "stop_location_id": "a3969c83-a38f-4c7d-89d1-ecf162204862"
+      },
+      "relationships": {
+        "customer": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_region": {
+          "links": {
+            "related": null
+          }
+        },
+        "coupon": {
+          "links": {
+            "related": null
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=ea6b4e5d-c4e6-4052-9b16-df681c2aa615&filter[owner_type]=orders"
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=ea6b4e5d-c4e6-4052-9b16-df681c2aa615&filter[owner_type]=orders"
+          }
+        },
+        "start_location": {
+          "links": {
+            "related": "api/boomerang/locations/a3969c83-a38f-4c7d-89d1-ecf162204862"
+          }
+        },
+        "stop_location": {
+          "links": {
+            "related": "api/boomerang/locations/a3969c83-a38f-4c7d-89d1-ecf162204862"
+          }
+        },
+        "tax_values": {
+          "links": {
+            "related": "api/boomerang/tax_values?filter[owner_id]=ea6b4e5d-c4e6-4052-9b16-df681c2aa615&filter[owner_type]=orders"
+          }
+        },
+        "lines": {
+          "links": {
+            "related": "api/boomerang/lines?filter[owner_id]=ea6b4e5d-c4e6-4052-9b16-df681c2aa615&filter[owner_type]=orders"
+          }
+        },
+        "stock_item_plannings": {
+          "links": {
+            "related": "api/boomerang/stock_item_plannings?filter[order_id]=ea6b4e5d-c4e6-4052-9b16-df681c2aa615"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/tax_values/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_values]=created_at,updated_at,name`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+
+
+

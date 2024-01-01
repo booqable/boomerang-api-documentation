@@ -16,13 +16,13 @@ When a notification subscriptions is associated with an owner, the notification 
 Multiple owned notification subscriptions can be created for any employee. If the employee has an unowned notification subscription and an owned notification subscription for the same category, a single notification will send for the associated owner.
 
 ## Endpoints
-`DELETE /api/boomerang/notification_subscriptions/{id}`
-
-`GET /api/boomerang/notification_subscriptions/{id}`
+`GET /api/boomerang/notification_subscriptions`
 
 `POST /api/boomerang/notification_subscriptions`
 
-`GET /api/boomerang/notification_subscriptions`
+`DELETE /api/boomerang/notification_subscriptions/{id}`
+
+`GET /api/boomerang/notification_subscriptions/{id}`
 
 ## Fields
 Every notification subscription has the following fields:
@@ -46,15 +46,15 @@ Name | Description
 `owner` | **Order**<br>Associated Owner
 
 
-## Deleting a notification subscription
+## Listing notification subscriptions
 
 
 
-> How to delete a notification subscription:
+> How to fetch a list of notification subscriptions:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/0313d33a-fc5f-491f-9028-0b259608dca9' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions' \
     --header 'content-type: application/json' \
 ```
 
@@ -62,13 +62,91 @@ Name | Description
 
 ```json
   {
+  "data": [
+    {
+      "id": "c8ee2a8f-f0d5-4706-a88f-be3bec4c8869",
+      "type": "notification_subscriptions",
+      "attributes": {
+        "created_at": "2024-01-01T09:13:55+00:00",
+        "updated_at": "2024-01-01T09:13:55+00:00",
+        "category": "order_started",
+        "global": true,
+        "owner_id": null,
+        "owner_type": null
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": null
+          }
+        }
+      }
+    },
+    {
+      "id": "e150edcf-aa15-4f36-bbcd-4ec2d8e62106",
+      "type": "notification_subscriptions",
+      "attributes": {
+        "created_at": "2024-01-01T09:13:55+00:00",
+        "updated_at": "2024-01-01T09:13:55+00:00",
+        "category": "order_updated",
+        "global": false,
+        "owner_id": "cfbef2fa-90ec-4e69-8a46-bbd707afb1aa",
+        "owner_type": "orders"
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": "api/boomerang/orders/cfbef2fa-90ec-4e69-8a46-bbd707afb1aa"
+          }
+        }
+      }
+    },
+    {
+      "id": "3ff9c52b-d43d-4f92-bf2c-63f4620a1652",
+      "type": "notification_subscriptions",
+      "attributes": {
+        "created_at": "2024-01-01T09:13:55+00:00",
+        "updated_at": "2024-01-01T09:13:55+00:00",
+        "category": "note_created",
+        "global": true,
+        "owner_id": null,
+        "owner_type": null
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": null
+          }
+        }
+      }
+    },
+    {
+      "id": "957d0ade-2471-4592-beed-64c1ee2130df",
+      "type": "notification_subscriptions",
+      "attributes": {
+        "created_at": "2024-01-01T09:13:55+00:00",
+        "updated_at": "2024-01-01T09:13:55+00:00",
+        "category": "webshop_order_created",
+        "global": true,
+        "owner_id": null,
+        "owner_type": null
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": null
+          }
+        }
+      }
+    }
+  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`DELETE /api/boomerang/notification_subscriptions/{id}`
+`GET /api/boomerang/notification_subscriptions`
 
 ### Request params
 
@@ -77,20 +155,49 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notification_subscriptions]=created_at,updated_at,category`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`category` | **String** <br>`eq`
+`global` | **Boolean** <br>`eq`
+`owner_id` | **Uuid** <br>`eq`
+`owner_type` | **String** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
 
 
 ### Includes
 
 This request does not accept any includes
-## Fetching a notification subscription
+## Listing non-global/ owned notification subscriptions
 
 
 
-> How to fetch a notification subscription:
+> How to fetch a list of non-global/owned notification subscriptions:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/3a347b5a-203b-409e-83c7-ea5ee58e2ef0' \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions?filter%5Bglobal%5D=false' \
     --header 'content-type: application/json' \
 ```
 
@@ -98,32 +205,34 @@ This request does not accept any includes
 
 ```json
   {
-  "data": {
-    "id": "3a347b5a-203b-409e-83c7-ea5ee58e2ef0",
-    "type": "notification_subscriptions",
-    "attributes": {
-      "created_at": "2023-12-25T09:14:29+00:00",
-      "updated_at": "2023-12-25T09:14:29+00:00",
-      "category": "order_updated",
-      "global": false,
-      "owner_id": "b05f0566-f93d-488a-80b4-02e7450ec838",
-      "owner_type": "orders"
-    },
-    "relationships": {
-      "owner": {
-        "links": {
-          "related": "api/boomerang/orders/b05f0566-f93d-488a-80b4-02e7450ec838"
+  "data": [
+    {
+      "id": "6976e53f-bfc0-4b12-9a33-f4ab586c36d9",
+      "type": "notification_subscriptions",
+      "attributes": {
+        "created_at": "2024-01-01T09:13:55+00:00",
+        "updated_at": "2024-01-01T09:13:55+00:00",
+        "category": "order_updated",
+        "global": false,
+        "owner_id": "56b89e18-fbe3-46a9-a8fb-dc38755eeaa4",
+        "owner_type": "orders"
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": "api/boomerang/orders/56b89e18-fbe3-46a9-a8fb-dc38755eeaa4"
+          }
         }
       }
     }
-  },
+  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/notification_subscriptions/{id}`
+`GET /api/boomerang/notification_subscriptions`
 
 ### Request params
 
@@ -132,6 +241,35 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notification_subscriptions]=created_at,updated_at,category`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`category` | **String** <br>`eq`
+`global` | **Boolean** <br>`eq`
+`owner_id` | **Uuid** <br>`eq`
+`owner_type` | **String** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -152,7 +290,7 @@ This request does not accept any includes
         "type": "notification_subscriptions",
         "attributes": {
           "category": "order_updated",
-          "owner_id": "bc1e29ba-44a3-45fe-ab54-8f0099833e79",
+          "owner_id": "c0718514-3cdc-45df-911d-ec9382189b5d",
           "owner_type": "orders"
         }
       }
@@ -164,14 +302,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0cb62dec-cdc3-4e9e-ac29-740e11870171",
+    "id": "980b0fcf-d03b-4891-b62f-e875be68788c",
     "type": "notification_subscriptions",
     "attributes": {
-      "created_at": "2023-12-25T09:14:31+00:00",
-      "updated_at": "2023-12-25T09:14:31+00:00",
+      "created_at": "2024-01-01T09:13:56+00:00",
+      "updated_at": "2024-01-01T09:13:56+00:00",
       "category": "order_updated",
       "global": false,
-      "owner_id": "bc1e29ba-44a3-45fe-ab54-8f0099833e79",
+      "owner_id": "c0718514-3cdc-45df-911d-ec9382189b5d",
       "owner_type": "orders"
     },
     "relationships": {
@@ -213,15 +351,15 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Listing non-global/ owned notification subscriptions
+## Deleting a notification subscription
 
 
 
-> How to fetch a list of non-global/owned notification subscriptions:
+> How to delete a notification subscription:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions?filter%5Bglobal%5D=false' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/dff44072-0710-4b61-a903-35c083050e9f' \
     --header 'content-type: application/json' \
 ```
 
@@ -229,34 +367,13 @@ This request does not accept any includes
 
 ```json
   {
-  "data": [
-    {
-      "id": "05984147-1e34-4f53-abf3-aee5bef8f7d1",
-      "type": "notification_subscriptions",
-      "attributes": {
-        "created_at": "2023-12-25T09:14:31+00:00",
-        "updated_at": "2023-12-25T09:14:31+00:00",
-        "category": "order_updated",
-        "global": false,
-        "owner_id": "262a2a2f-4ad5-45da-9c4c-9306778320cd",
-        "owner_type": "orders"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "related": "api/boomerang/orders/262a2a2f-4ad5-45da-9c4c-9306778320cd"
-          }
-        }
-      }
-    }
-  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/notification_subscriptions`
+`DELETE /api/boomerang/notification_subscriptions/{id}`
 
 ### Request params
 
@@ -265,178 +382,6 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notification_subscriptions]=created_at,updated_at,category`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`category` | **String** <br>`eq`
-`global` | **Boolean** <br>`eq`
-`owner_id` | **Uuid** <br>`eq`
-`owner_type` | **String** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
-
-
-### Includes
-
-This request does not accept any includes
-## Listing notification subscriptions
-
-
-
-> How to fetch a list of notification subscriptions:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "53011bfe-f094-4107-8e4b-30f23b53a58e",
-      "type": "notification_subscriptions",
-      "attributes": {
-        "created_at": "2023-12-25T09:14:32+00:00",
-        "updated_at": "2023-12-25T09:14:32+00:00",
-        "category": "order_started",
-        "global": true,
-        "owner_id": null,
-        "owner_type": null
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "related": null
-          }
-        }
-      }
-    },
-    {
-      "id": "52307d09-54d0-4113-8943-7b0a6ba9f4f0",
-      "type": "notification_subscriptions",
-      "attributes": {
-        "created_at": "2023-12-25T09:14:32+00:00",
-        "updated_at": "2023-12-25T09:14:32+00:00",
-        "category": "order_updated",
-        "global": false,
-        "owner_id": "c5872e31-d103-4600-a6f1-e849f4bf03f2",
-        "owner_type": "orders"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "related": "api/boomerang/orders/c5872e31-d103-4600-a6f1-e849f4bf03f2"
-          }
-        }
-      }
-    },
-    {
-      "id": "ff0af5c0-e208-46ca-a610-ee834cabf059",
-      "type": "notification_subscriptions",
-      "attributes": {
-        "created_at": "2023-12-25T09:14:32+00:00",
-        "updated_at": "2023-12-25T09:14:32+00:00",
-        "category": "note_created",
-        "global": true,
-        "owner_id": null,
-        "owner_type": null
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "related": null
-          }
-        }
-      }
-    },
-    {
-      "id": "2efaa8ec-ad6e-4526-8831-8f362998b552",
-      "type": "notification_subscriptions",
-      "attributes": {
-        "created_at": "2023-12-25T09:14:32+00:00",
-        "updated_at": "2023-12-25T09:14:32+00:00",
-        "category": "webshop_order_created",
-        "global": true,
-        "owner_id": null,
-        "owner_type": null
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "related": null
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/notification_subscriptions`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notification_subscriptions]=created_at,updated_at,category`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`category` | **String** <br>`eq`
-`global` | **Boolean** <br>`eq`
-`owner_id` | **Uuid** <br>`eq`
-`owner_type` | **String** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -460,11 +405,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "af0a9d1a-f195-4f87-935a-991684c2d06f",
+      "id": "cf3b59e6-d926-4247-a20f-6a3fd4cfeb4a",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-12-25T09:14:33+00:00",
-        "updated_at": "2023-12-25T09:14:33+00:00",
+        "created_at": "2024-01-01T09:13:57+00:00",
+        "updated_at": "2024-01-01T09:13:57+00:00",
         "category": "order_started",
         "global": true,
         "owner_id": null,
@@ -479,11 +424,11 @@ This request does not accept any includes
       }
     },
     {
-      "id": "a8279623-6d6b-4dbe-97b3-dc23039abe15",
+      "id": "adccd44f-e113-4a05-b005-86c07ff34b5d",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-12-25T09:14:33+00:00",
-        "updated_at": "2023-12-25T09:14:33+00:00",
+        "created_at": "2024-01-01T09:13:57+00:00",
+        "updated_at": "2024-01-01T09:13:57+00:00",
         "category": "note_created",
         "global": true,
         "owner_id": null,
@@ -498,11 +443,11 @@ This request does not accept any includes
       }
     },
     {
-      "id": "13566726-b369-4cf8-9342-3d14e60ef5d1",
+      "id": "bac6b460-544c-4f5f-ba1b-1333a4fc0def",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2023-12-25T09:14:33+00:00",
-        "updated_at": "2023-12-25T09:14:33+00:00",
+        "created_at": "2024-01-01T09:13:57+00:00",
+        "updated_at": "2024-01-01T09:13:57+00:00",
         "category": "webshop_order_created",
         "global": true,
         "owner_id": null,
@@ -561,6 +506,61 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a notification subscription
+
+
+
+> How to fetch a notification subscription:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/72fa5544-f138-4081-b066-1ea25c9e1d30' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "72fa5544-f138-4081-b066-1ea25c9e1d30",
+    "type": "notification_subscriptions",
+    "attributes": {
+      "created_at": "2024-01-01T09:13:58+00:00",
+      "updated_at": "2024-01-01T09:13:58+00:00",
+      "category": "order_updated",
+      "global": false,
+      "owner_id": "20f76090-9100-4c42-a82a-57e846a0980d",
+      "owner_type": "orders"
+    },
+    "relationships": {
+      "owner": {
+        "links": {
+          "related": "api/boomerang/orders/20f76090-9100-4c42-a82a-57e846a0980d"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/notification_subscriptions/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notification_subscriptions]=created_at,updated_at,category`
 
 
 ### Includes

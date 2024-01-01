@@ -50,15 +50,15 @@ Properties inherit their configuration fields from a default property when they 
 - `default_property_id`
 
 ## Endpoints
-`GET /api/boomerang/properties`
-
-`POST /api/boomerang/properties`
-
-`PUT /api/boomerang/properties/{id}`
-
 `GET /api/boomerang/properties/{id}`
 
 `DELETE /api/boomerang/properties/{id}`
+
+`PUT /api/boomerang/properties/{id}`
+
+`GET /api/boomerang/properties`
+
+`POST /api/boomerang/properties`
 
 ## Fields
 Every property has the following fields:
@@ -100,119 +100,191 @@ Name | Description
 `owner` | **Customer, Order, Product group, Stock item, Location**<br>Associated Owner
 
 
-## Managing multiple properties on a resource
-
-On the following resources you can manage multiple properties at once:
-
-- Customers
-- Product groups
-- Orders
-- Stock items
+## Fetching a property
 
 
-> Creating properties that correspond with an existing default property (we've already created a default phone property for a customer):
+
+> How to fetch a properties:
 
 ```shell
-  curl --request  \
-    --url 'https://example.booqable.com/api/boomerang/customers' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/properties/8d85cc41-5f5d-441c-9ba8-45fc32d94883?include=owner' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "customers",
-        "attributes": {
-          "name": "John Doe",
-          "properties_attributes": [
-            {
-              "identifier": "phone",
-              "value": "+316000000"
-            }
-          ]
-        }
-      }
-    }'
 ```
 
-> A 201 status response looks like this:
+> A 200 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "999ada68-6645-408d-84a8-d1ec30dd8649",
-    "type": "customers",
+    "id": "8d85cc41-5f5d-441c-9ba8-45fc32d94883",
+    "type": "properties",
     "attributes": {
-      "created_at": "2023-12-25T09:16:09+00:00",
-      "updated_at": "2023-12-25T09:16:09+00:00",
-      "archived": false,
-      "archived_at": null,
-      "number": 2,
-      "name": "John Doe",
-      "email": null,
-      "deposit_type": "default",
-      "deposit_value": 0.0,
-      "discount_percentage": 0.0,
-      "legal_type": "person",
-      "properties": {
-        "phone": "+316000000"
-      },
-      "tag_list": [],
-      "merge_suggestion_customer_id": null,
-      "tax_region_id": null
+      "created_at": "2024-01-01T09:14:22+00:00",
+      "updated_at": "2024-01-01T09:14:22+00:00",
+      "name": "Phone",
+      "identifier": "property_1",
+      "position": 0,
+      "property_type": "phone",
+      "show_on": [],
+      "validation_required": false,
+      "meets_validation_requirements": true,
+      "value": "+316000000",
+      "default_property_id": null,
+      "owner_id": "dca606c4-bf96-4343-9166-16fb934eff61",
+      "owner_type": "customers"
     },
     "relationships": {
-      "merge_suggestion_customer": {
-        "meta": {
-          "included": false
+      "default_property": {
+        "links": {
+          "related": null
         }
       },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "notes": {
-        "meta": {
-          "included": false
+      "owner": {
+        "links": {
+          "related": "api/boomerang/customers/dca606c4-bf96-4343-9166-16fb934eff61"
+        },
+        "data": {
+          "type": "customers",
+          "id": "dca606c4-bf96-4343-9166-16fb934eff61"
         }
       }
     }
   },
+  "included": [
+    {
+      "id": "dca606c4-bf96-4343-9166-16fb934eff61",
+      "type": "customers",
+      "attributes": {
+        "created_at": "2024-01-01T09:14:22+00:00",
+        "updated_at": "2024-01-01T09:14:22+00:00",
+        "archived": false,
+        "archived_at": null,
+        "number": 1,
+        "name": "John Doe",
+        "email": "john-18@doe.test",
+        "deposit_type": "default",
+        "deposit_value": 0.0,
+        "discount_percentage": 0.0,
+        "legal_type": "person",
+        "properties": {
+          "property_1": "+316000000"
+        },
+        "tag_list": [],
+        "merge_suggestion_customer_id": null,
+        "tax_region_id": null
+      },
+      "relationships": {
+        "merge_suggestion_customer": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_region": {
+          "links": {
+            "related": null
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=dca606c4-bf96-4343-9166-16fb934eff61&filter[owner_type]=customers"
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=dca606c4-bf96-4343-9166-16fb934eff61&filter[owner_type]=customers"
+          }
+        },
+        "notes": {
+          "links": {
+            "related": "api/boomerang/notes?filter[owner_id]=dca606c4-bf96-4343-9166-16fb934eff61&filter[owner_type]=customers"
+          }
+        }
+      }
+    }
+  ],
   "meta": {}
 }
 ```
 
+### HTTP Request
 
-> Deleting a property while updating another one:
+`GET /api/boomerang/properties/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=created_at,updated_at,name`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+
+
+
+
+## Deleting a property
+
+
+
+> How to delete a property:
 
 ```shell
-  curl --request  \
-    --url 'https://example.booqable.com/api/boomerang/customers/29f25258-2002-4436-87f2-c4884db63cb3' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/properties/cc4a5d8d-094b-4b31-bd4a-6e8699d3e353' \
+    --header 'content-type: application/json' \
+    --data '{}'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/properties/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating a property
+
+
+
+> How to update a property:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/properties/324e50a5-cbf0-472e-8e3b-39d2c801ab7e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "type": "customers",
-        "id": "29f25258-2002-4436-87f2-c4884db63cb3",
+        "id": "324e50a5-cbf0-472e-8e3b-39d2c801ab7e",
+        "type": "properties",
         "attributes": {
-          "name": "John Doe",
-          "properties_attributes": [
-            {
-              "identifier": "phone",
-              "_destroy": true
-            },
-            {
-              "identifier": "birthday",
-              "value": "01-01-1970"
-            }
-          ]
+          "value": "+316000001"
         }
       }
     }'
@@ -223,49 +295,30 @@ On the following resources you can manage multiple properties at once:
 ```json
   {
   "data": {
-    "id": "29f25258-2002-4436-87f2-c4884db63cb3",
-    "type": "customers",
+    "id": "324e50a5-cbf0-472e-8e3b-39d2c801ab7e",
+    "type": "properties",
     "attributes": {
-      "created_at": "2023-12-25T09:16:10+00:00",
-      "updated_at": "2023-12-25T09:16:10+00:00",
-      "archived": false,
-      "archived_at": null,
-      "number": 2,
-      "name": "John Doe",
-      "email": "john-58@doe.test",
-      "deposit_type": "default",
-      "deposit_value": 0.0,
-      "discount_percentage": 0.0,
-      "legal_type": "person",
-      "properties": {
-        "birthday": "01-01-1970"
-      },
-      "tag_list": [],
-      "merge_suggestion_customer_id": null,
-      "tax_region_id": null
+      "created_at": "2024-01-01T09:14:25+00:00",
+      "updated_at": "2024-01-01T09:14:25+00:00",
+      "name": "Phone",
+      "identifier": "property_3",
+      "position": 0,
+      "property_type": "phone",
+      "show_on": [],
+      "validation_required": false,
+      "meets_validation_requirements": true,
+      "value": "+316000001",
+      "default_property_id": null,
+      "owner_id": "4b835179-4a33-458d-b38b-ebed997181ec",
+      "owner_type": "customers"
     },
     "relationships": {
-      "merge_suggestion_customer": {
+      "default_property": {
         "meta": {
           "included": false
         }
       },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "notes": {
+      "owner": {
         "meta": {
           "included": false
         }
@@ -276,91 +329,60 @@ On the following resources you can manage multiple properties at once:
 }
 ```
 
+### HTTP Request
 
-> Creating one-off properties (no corresponding default property):
+`PUT /api/boomerang/properties/{id}`
 
-```shell
-  curl --request  \
-    --url 'https://example.booqable.com/api/boomerang/customers' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "customers",
-        "attributes": {
-          "name": "John Doe",
-          "properties_attributes": [
-            {
-              "name": "Phone",
-              "value": "+316000000",
-              "property_type": "phone"
-            }
-          ]
-        }
-      }
-    }'
-```
+### Request params
 
-> A 201 status response looks like this:
+This request accepts the following parameters:
 
-```json
-  {
-  "data": {
-    "id": "4f9743f8-0ecf-494d-a041-1ab8ca5ba56b",
-    "type": "customers",
-    "attributes": {
-      "created_at": "2023-12-25T09:16:11+00:00",
-      "updated_at": "2023-12-25T09:16:11+00:00",
-      "archived": false,
-      "archived_at": null,
-      "number": 2,
-      "name": "John Doe",
-      "email": null,
-      "deposit_type": "default",
-      "deposit_value": 0.0,
-      "discount_percentage": 0.0,
-      "legal_type": "person",
-      "properties": {
-        "phone": "+316000000"
-      },
-      "tag_list": [],
-      "merge_suggestion_customer_id": null,
-      "tax_region_id": null
-    },
-    "relationships": {
-      "merge_suggestion_customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "notes": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
+`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
+`data[attributes][position]` | **Integer** <br>Which position the property has
+`data[attributes][property_type]` | **String** <br>One of `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`
+`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `contract`, `invoice`, `packing`, `quote`
+`data[attributes][validation_required]` | **Boolean** <br>Whether this property has to be validated
+`data[attributes][meets_validation_requirements]` | **Boolean** <br>Whether this property meets the validation requirements
+`data[attributes][first_name]` | **String** <br>For type `address`
+`data[attributes][last_name]` | **String** <br>For type `address`
+`data[attributes][address1]` | **String** <br>For type `address`
+`data[attributes][address2]` | **String** <br>For type `address`
+`data[attributes][city]` | **String** <br>For type `address`
+`data[attributes][region]` | **String** <br>For type `address`
+`data[attributes][zipcode]` | **String** <br>For type `address`
+`data[attributes][country]` | **String** <br>For type `address`
+`data[attributes][country_id]` | **String** <br>For type `address`
+`data[attributes][province_id]` | **String** <br>For type `address`
+`data[attributes][value]` | **String** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
+`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
+`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `companies`, `customers`, `locations`, `orders`, `product_groups`, `stock_items`, `users`
+
 
 ### Includes
 
-All includes are allowed on this request
+This request accepts the following includes:
+
+`owner`
+
+
+
+
+
+
 ## Listing properties
 
 
@@ -379,11 +401,11 @@ All includes are allowed on this request
   {
   "data": [
     {
-      "id": "ea365f2a-604a-424e-8b77-9b4c2199af37",
+      "id": "4d9da1db-8fa4-41f0-ab19-2bcc56209f89",
       "type": "properties",
       "attributes": {
-        "created_at": "2023-12-25T09:16:12+00:00",
-        "updated_at": "2023-12-25T09:16:12+00:00",
+        "created_at": "2024-01-01T09:14:25+00:00",
+        "updated_at": "2024-01-01T09:14:25+00:00",
         "name": "Phone",
         "identifier": "property_4",
         "position": 0,
@@ -393,7 +415,7 @@ All includes are allowed on this request
         "meets_validation_requirements": true,
         "value": "+316000000",
         "default_property_id": null,
-        "owner_id": "e534910a-4ec3-4959-ba5b-cc2294cb0b53",
+        "owner_id": "ffdcb7d8-4c93-4c5d-a457-e68c2bd4ba64",
         "owner_type": "customers"
       },
       "relationships": {
@@ -404,11 +426,11 @@ All includes are allowed on this request
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/e534910a-4ec3-4959-ba5b-cc2294cb0b53"
+            "related": "api/boomerang/customers/ffdcb7d8-4c93-4c5d-a457-e68c2bd4ba64"
           },
           "data": {
             "type": "customers",
-            "id": "e534910a-4ec3-4959-ba5b-cc2294cb0b53"
+            "id": "ffdcb7d8-4c93-4c5d-a457-e68c2bd4ba64"
           }
         }
       }
@@ -416,16 +438,16 @@ All includes are allowed on this request
   ],
   "included": [
     {
-      "id": "e534910a-4ec3-4959-ba5b-cc2294cb0b53",
+      "id": "ffdcb7d8-4c93-4c5d-a457-e68c2bd4ba64",
       "type": "customers",
       "attributes": {
-        "created_at": "2023-12-25T09:16:12+00:00",
-        "updated_at": "2023-12-25T09:16:12+00:00",
+        "created_at": "2024-01-01T09:14:25+00:00",
+        "updated_at": "2024-01-01T09:14:25+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-60@doe.test",
+        "email": "john-21@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -450,17 +472,17 @@ All includes are allowed on this request
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=e534910a-4ec3-4959-ba5b-cc2294cb0b53&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=ffdcb7d8-4c93-4c5d-a457-e68c2bd4ba64&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=e534910a-4ec3-4959-ba5b-cc2294cb0b53&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=ffdcb7d8-4c93-4c5d-a457-e68c2bd4ba64&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=e534910a-4ec3-4959-ba5b-cc2294cb0b53&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=ffdcb7d8-4c93-4c5d-a457-e68c2bd4ba64&filter[owner_type]=customers"
           }
         }
       }
@@ -542,7 +564,7 @@ This request accepts the following includes:
           "name": "Phone",
           "property_type": "phone",
           "value": "+316000000",
-          "owner_id": "4913b237-c500-44d0-888e-5e3d05d00f34",
+          "owner_id": "f59c889f-622f-415d-9bd6-03917c55ced5",
           "owner_type": "customers"
         }
       },
@@ -555,11 +577,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "bae2307d-db82-407e-9680-f564c2668fd6",
+    "id": "fb9fc8cf-4d7b-40f8-ab12-7f14cead507b",
     "type": "properties",
     "attributes": {
-      "created_at": "2023-12-25T09:16:12+00:00",
-      "updated_at": "2023-12-25T09:16:12+00:00",
+      "created_at": "2024-01-01T09:14:26+00:00",
+      "updated_at": "2024-01-01T09:14:26+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 0,
@@ -569,7 +591,7 @@ This request accepts the following includes:
       "meets_validation_requirements": true,
       "value": "+316000000",
       "default_property_id": null,
-      "owner_id": "4913b237-c500-44d0-888e-5e3d05d00f34",
+      "owner_id": "f59c889f-622f-415d-9bd6-03917c55ced5",
       "owner_type": "customers"
     },
     "relationships": {
@@ -581,23 +603,23 @@ This request accepts the following includes:
       "owner": {
         "data": {
           "type": "customers",
-          "id": "4913b237-c500-44d0-888e-5e3d05d00f34"
+          "id": "f59c889f-622f-415d-9bd6-03917c55ced5"
         }
       }
     }
   },
   "included": [
     {
-      "id": "4913b237-c500-44d0-888e-5e3d05d00f34",
+      "id": "f59c889f-622f-415d-9bd6-03917c55ced5",
       "type": "customers",
       "attributes": {
-        "created_at": "2023-12-25T09:16:12+00:00",
-        "updated_at": "2023-12-25T09:16:12+00:00",
+        "created_at": "2024-01-01T09:14:26+00:00",
+        "updated_at": "2024-01-01T09:14:26+00:00",
         "archived": false,
         "archived_at": null,
         "number": 2,
         "name": "Jane Doe",
-        "email": "john-62@doe.test",
+        "email": "john-23@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -696,22 +718,120 @@ This request accepts the following includes:
 
 
 
-## Updating a property
+## Managing multiple properties on a resource
+
+On the following resources you can manage multiple properties at once:
+
+- Customers
+- Product groups
+- Orders
+- Stock items
 
 
-
-> How to update a property:
+> Creating one-off properties (no corresponding default property):
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/properties/a8604db5-68af-4898-ba77-04ee81a69ac4' \
+  curl --request  \
+    --url 'https://example.booqable.com/api/boomerang/customers' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "a8604db5-68af-4898-ba77-04ee81a69ac4",
-        "type": "properties",
+        "type": "customers",
         "attributes": {
-          "value": "+316000001"
+          "name": "John Doe",
+          "properties_attributes": [
+            {
+              "name": "Phone",
+              "value": "+316000000",
+              "property_type": "phone"
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "14f846cb-3888-4156-b1fe-370ba4724d27",
+    "type": "customers",
+    "attributes": {
+      "created_at": "2024-01-01T09:14:27+00:00",
+      "updated_at": "2024-01-01T09:14:27+00:00",
+      "archived": false,
+      "archived_at": null,
+      "number": 2,
+      "name": "John Doe",
+      "email": null,
+      "deposit_type": "default",
+      "deposit_value": 0.0,
+      "discount_percentage": 0.0,
+      "legal_type": "person",
+      "properties": {
+        "phone": "+316000000"
+      },
+      "tag_list": [],
+      "merge_suggestion_customer_id": null,
+      "tax_region_id": null
+    },
+    "relationships": {
+      "merge_suggestion_customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "notes": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> Deleting a property while updating another one:
+
+```shell
+  curl --request  \
+    --url 'https://example.booqable.com/api/boomerang/customers/e0a530e4-b32a-4e2e-90aa-00f664d95007' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "customers",
+        "id": "e0a530e4-b32a-4e2e-90aa-00f664d95007",
+        "attributes": {
+          "name": "John Doe",
+          "properties_attributes": [
+            {
+              "identifier": "phone",
+              "_destroy": true
+            },
+            {
+              "identifier": "birthday",
+              "value": "01-01-1970"
+            }
+          ]
         }
       }
     }'
@@ -722,30 +842,49 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a8604db5-68af-4898-ba77-04ee81a69ac4",
-    "type": "properties",
+    "id": "e0a530e4-b32a-4e2e-90aa-00f664d95007",
+    "type": "customers",
     "attributes": {
-      "created_at": "2023-12-25T09:16:13+00:00",
-      "updated_at": "2023-12-25T09:16:13+00:00",
-      "name": "Phone",
-      "identifier": "property_6",
-      "position": 0,
-      "property_type": "phone",
-      "show_on": [],
-      "validation_required": false,
-      "meets_validation_requirements": true,
-      "value": "+316000001",
-      "default_property_id": null,
-      "owner_id": "c4bc5580-c266-46be-93df-14f1477e0ffd",
-      "owner_type": "customers"
+      "created_at": "2024-01-01T09:14:28+00:00",
+      "updated_at": "2024-01-01T09:14:28+00:00",
+      "archived": false,
+      "archived_at": null,
+      "number": 2,
+      "name": "John Doe",
+      "email": "john-26@doe.test",
+      "deposit_type": "default",
+      "deposit_value": 0.0,
+      "discount_percentage": 0.0,
+      "legal_type": "person",
+      "properties": {
+        "birthday": "01-01-1970"
+      },
+      "tag_list": [],
+      "merge_suggestion_customer_id": null,
+      "tax_region_id": null
     },
     "relationships": {
-      "default_property": {
+      "merge_suggestion_customer": {
         "meta": {
           "included": false
         }
       },
-      "owner": {
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "notes": {
         "meta": {
           "included": false
         }
@@ -756,226 +895,87 @@ This request accepts the following includes:
 }
 ```
 
-### HTTP Request
 
-`PUT /api/boomerang/properties/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the property (used as label and to compute identifier if left blank)
-`data[attributes][identifier]` | **String** <br>Key that will be used in exports, responses and custom field variables in templates
-`data[attributes][position]` | **Integer** <br>Which position the property has
-`data[attributes][property_type]` | **String** <br>One of `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`
-`data[attributes][show_on][]` | **Array** <br>Array of items to show this custom field on. Any of `contract`, `invoice`, `packing`, `quote`
-`data[attributes][validation_required]` | **Boolean** <br>Whether this property has to be validated
-`data[attributes][meets_validation_requirements]` | **Boolean** <br>Whether this property meets the validation requirements
-`data[attributes][first_name]` | **String** <br>For type `address`
-`data[attributes][last_name]` | **String** <br>For type `address`
-`data[attributes][address1]` | **String** <br>For type `address`
-`data[attributes][address2]` | **String** <br>For type `address`
-`data[attributes][city]` | **String** <br>For type `address`
-`data[attributes][region]` | **String** <br>For type `address`
-`data[attributes][zipcode]` | **String** <br>For type `address`
-`data[attributes][country]` | **String** <br>For type `address`
-`data[attributes][country_id]` | **String** <br>For type `address`
-`data[attributes][province_id]` | **String** <br>For type `address`
-`data[attributes][value]` | **String** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`
-`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
-`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
-`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `companies`, `customers`, `locations`, `orders`, `product_groups`, `stock_items`, `users`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-
-
-
-
-## Fetching a property
-
-
-
-> How to fetch a properties:
+> Creating properties that correspond with an existing default property (we've already created a default phone property for a customer):
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/properties/def1f5e9-07ac-4a1a-80c6-e8fb08c40f87?include=owner' \
+  curl --request  \
+    --url 'https://example.booqable.com/api/boomerang/customers' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "customers",
+        "attributes": {
+          "name": "John Doe",
+          "properties_attributes": [
+            {
+              "identifier": "phone",
+              "value": "+316000000"
+            }
+          ]
+        }
+      }
+    }'
 ```
 
-> A 200 status response looks like this:
+> A 201 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "def1f5e9-07ac-4a1a-80c6-e8fb08c40f87",
-    "type": "properties",
+    "id": "6e784fc8-cefe-4154-9d92-61127abbead9",
+    "type": "customers",
     "attributes": {
-      "created_at": "2023-12-25T09:16:14+00:00",
-      "updated_at": "2023-12-25T09:16:14+00:00",
-      "name": "Phone",
-      "identifier": "property_7",
-      "position": 0,
-      "property_type": "phone",
-      "show_on": [],
-      "validation_required": false,
-      "meets_validation_requirements": true,
-      "value": "+316000000",
-      "default_property_id": null,
-      "owner_id": "684c224c-e053-437e-b654-79d21da8f208",
-      "owner_type": "customers"
+      "created_at": "2024-01-01T09:14:29+00:00",
+      "updated_at": "2024-01-01T09:14:29+00:00",
+      "archived": false,
+      "archived_at": null,
+      "number": 2,
+      "name": "John Doe",
+      "email": null,
+      "deposit_type": "default",
+      "deposit_value": 0.0,
+      "discount_percentage": 0.0,
+      "legal_type": "person",
+      "properties": {
+        "phone": "+316000000"
+      },
+      "tag_list": [],
+      "merge_suggestion_customer_id": null,
+      "tax_region_id": null
     },
     "relationships": {
-      "default_property": {
-        "links": {
-          "related": null
+      "merge_suggestion_customer": {
+        "meta": {
+          "included": false
         }
       },
-      "owner": {
-        "links": {
-          "related": "api/boomerang/customers/684c224c-e053-437e-b654-79d21da8f208"
-        },
-        "data": {
-          "type": "customers",
-          "id": "684c224c-e053-437e-b654-79d21da8f208"
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "notes": {
+        "meta": {
+          "included": false
         }
       }
     }
   },
-  "included": [
-    {
-      "id": "684c224c-e053-437e-b654-79d21da8f208",
-      "type": "customers",
-      "attributes": {
-        "created_at": "2023-12-25T09:16:14+00:00",
-        "updated_at": "2023-12-25T09:16:14+00:00",
-        "archived": false,
-        "archived_at": null,
-        "number": 1,
-        "name": "John Doe",
-        "email": "john-64@doe.test",
-        "deposit_type": "default",
-        "deposit_value": 0.0,
-        "discount_percentage": 0.0,
-        "legal_type": "person",
-        "properties": {
-          "property_7": "+316000000"
-        },
-        "tag_list": [],
-        "merge_suggestion_customer_id": null,
-        "tax_region_id": null
-      },
-      "relationships": {
-        "merge_suggestion_customer": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=684c224c-e053-437e-b654-79d21da8f208&filter[owner_type]=customers"
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=684c224c-e053-437e-b654-79d21da8f208&filter[owner_type]=customers"
-          }
-        },
-        "notes": {
-          "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=684c224c-e053-437e-b654-79d21da8f208&filter[owner_type]=customers"
-          }
-        }
-      }
-    }
-  ],
   "meta": {}
 }
 ```
 
-### HTTP Request
-
-`GET /api/boomerang/properties/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=created_at,updated_at,name`
-
-
 ### Includes
 
-This request accepts the following includes:
-
-`owner`
-
-
-
-
-
-
-## Deleting a property
-
-
-
-> How to delete a property:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/properties/e4414327-c92d-4bf6-8d05-db32d1eee70e' \
-    --header 'content-type: application/json' \
-    --data '{}'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/properties/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[properties]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
+All includes are allowed on this request

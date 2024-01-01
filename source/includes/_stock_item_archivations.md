@@ -47,6 +47,39 @@ Name | Description
 
 
 
+> When the StockItem was already archived:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "stock_item_archivations",
+        "attributes": {
+          "stock_item_id": "08975fd2-1b10-4f38-95e1-c86c29eed651"
+        }
+      }
+    }'
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "stock_item_archived",
+      "status": "422",
+      "title": "Stock item archived",
+      "detail": "Stock item is already archived",
+      "meta": null
+    }
+  ]
+}
+```
+
+
 > When archival would create allowed shortage, but confirm_shortage is unspecified:
 
 ```shell
@@ -57,7 +90,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "41208b08-6658-4289-b6ff-37d3dade2fff"
+          "stock_item_id": "a06438ff-077d-4878-919c-1baa68ea2734"
         }
       }
     }'
@@ -78,12 +111,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "1829a663-7bd9-4b58-b479-fac521daf648",
+            "item_id": "075901f9-470a-43d3-b9a3-ea92b70790fe",
             "mutation": -1,
             "order_ids": [
-              "41eb2d30-7705-4354-9fbf-225fe20feba9"
+              "dee64ec7-edaa-4c30-ba94-ba4c520e009f"
             ],
-            "location_id": "8d73a3f8-64c6-433f-8d79-664a15098f35",
+            "location_id": "9ffc528a-79f6-4d54-9d94-c3df0d2cd58f",
             "available": 0,
             "plannable": 1,
             "stock_count": 1,
@@ -104,6 +137,46 @@ Name | Description
 ```
 
 
+> When archival would create allowed shortage, and confirm_shortage is true:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "stock_item_archivations",
+        "attributes": {
+          "stock_item_id": "ae4036fe-dee6-4288-b7a3-61d15ddbc722",
+          "confirm_shortage": true
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "bfa9dc27-ae97-5250-b273-343a01164016",
+    "type": "stock_item_archivations",
+    "attributes": {
+      "stock_item_id": "ae4036fe-dee6-4288-b7a3-61d15ddbc722"
+    },
+    "relationships": {
+      "stock_item": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
 > When the StockItem is specified on a reserved Order:
 
 ```shell
@@ -114,7 +187,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "965f0a5f-4bae-4f2e-932d-8b750e660528"
+          "stock_item_id": "cb0d8f8d-6bf2-4863-a716-93a7c12a7679"
         }
       }
     }'
@@ -134,7 +207,7 @@ Name | Description
         "blocking": [
           {
             "order_ids": [
-              "90281533-5c3f-4e35-8ce1-89802c0cdb3c"
+              "ceb221a2-b3ec-4208-a52b-6a4e3e111ad0"
             ]
           }
         ]
@@ -145,7 +218,7 @@ Name | Description
 ```
 
 
-> When archival would create allowed shortage, and confirm_shortage is true:
+> When the StockItem is not used, it can be archived:
 
 ```shell
   curl --request POST \
@@ -155,8 +228,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "4d6f1ef3-e6c2-459d-ac12-002d5dddc7ca",
-          "confirm_shortage": true
+          "stock_item_id": "a43a636a-e70f-42ff-b70c-a545d3e615b6"
         }
       }
     }'
@@ -167,10 +239,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4e264b1a-470f-5c62-bf49-d5455122e99f",
+    "id": "2c0515a8-18d8-578a-8ea1-68649c298593",
     "type": "stock_item_archivations",
     "attributes": {
-      "stock_item_id": "4d6f1ef3-e6c2-459d-ac12-002d5dddc7ca"
+      "stock_item_id": "a43a636a-e70f-42ff-b70c-a545d3e615b6"
     },
     "relationships": {
       "stock_item": {
@@ -195,7 +267,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "63213e78-ea1c-47a8-b79e-e499e2419c57"
+          "stock_item_id": "cf8dfb84-94e9-4840-92c7-4ab4b62b4531"
         }
       }
     }'
@@ -217,12 +289,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "72656a4b-42c6-43f4-935f-4e631aaf75be",
+            "item_id": "cd03c6b2-829a-4836-b481-5d9c0e2cee42",
             "mutation": -1,
             "order_ids": [
-              "f2df7d3f-ab4e-4997-94ab-09b1333c05ba"
+              "57b46a5b-28c5-4cd7-b89b-d4436d22d285"
             ],
-            "location_id": "fad0ba97-b141-4fc0-a7cb-225185970a17",
+            "location_id": "422f850b-aa74-4b4a-8ca7-8afa09842bf1",
             "available": 0,
             "plannable": 0,
             "stock_count": 1,
@@ -236,78 +308,6 @@ Name | Description
           }
         ]
       }
-    }
-  ]
-}
-```
-
-
-> When the StockItem is not used, it can be archived:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "stock_item_archivations",
-        "attributes": {
-          "stock_item_id": "6e6c9b52-0f28-4d8e-a94c-991b04ab2f83"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "a1ad0b45-b434-5c3f-9743-c51400b9413c",
-    "type": "stock_item_archivations",
-    "attributes": {
-      "stock_item_id": "6e6c9b52-0f28-4d8e-a94c-991b04ab2f83"
-    },
-    "relationships": {
-      "stock_item": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> When the StockItem was already archived:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "stock_item_archivations",
-        "attributes": {
-          "stock_item_id": "10dc822b-366e-416a-be35-c4ff0be8feaa"
-        }
-      }
-    }'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "stock_item_archived",
-      "status": "422",
-      "title": "Stock item archived",
-      "detail": "Stock item is already archived",
-      "meta": null
     }
   ]
 }

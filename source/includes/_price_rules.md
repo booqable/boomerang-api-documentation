@@ -25,11 +25,11 @@ as well as these adjustment strategies:
 - **percentage**: Applies `value` attribute to determine the percentage change to the pricing over the rule period. Used by `range_of_days`, `range_of_date` rule types.
 
 ## Endpoints
-`DELETE /api/boomerang/price_rules/{id}`
+`PUT /api/boomerang/price_rules/{id}`
 
 `POST /api/boomerang/price_rules`
 
-`PUT /api/boomerang/price_rules/{id}`
+`DELETE /api/boomerang/price_rules/{id}`
 
 ## Fields
 Every price rule has the following fields:
@@ -66,29 +66,129 @@ Name | Description
 `price_ruleset` | **Price rulesets** `readonly`<br>Associated Price ruleset
 
 
-## Archiving a price rule
+## Updating a price rule
 
 
 
-> How to archive a price ruleset:
+> Updating a price rule:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/e4549d72-bafe-44f5-9fa8-e310e2d4b088' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/299f804d-ea57-4d2c-ba60-c92e4ce3d8cb' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "299f804d-ea57-4d2c-ba60-c92e4ce3d8cb",
+        "type": "price_rules",
+        "attributes": {
+          "id": "299f804d-ea57-4d2c-ba60-c92e4ce3d8cb",
+          "name": "Off season"
+        }
+      }
+    }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
+  "data": {
+    "id": "299f804d-ea57-4d2c-ba60-c92e4ce3d8cb",
+    "type": "price_rules",
+    "attributes": {
+      "created_at": "2024-01-01T09:13:58+00:00",
+      "updated_at": "2024-01-01T09:13:58+00:00",
+      "name": "Off season",
+      "rule_type": "range_of_dates",
+      "match_strategy": "span",
+      "adjustment_strategy": "percentage",
+      "value": 5.0,
+      "from": "2030-12-01T00:00:00+00:00",
+      "till": "2031-01-31T00:00:00+00:00",
+      "from_day": null,
+      "till_day": null,
+      "from_time": null,
+      "till_time": null,
+      "charge": null,
+      "stacked": false,
+      "time": null,
+      "min_duration": null,
+      "max_duration": null,
+      "price_ruleset_id": "a657e5e1-d433-4581-88df-dda9c76302a5"
+    },
+    "relationships": {
+      "price_ruleset": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to update a price rule:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/5f4946ea-d69e-4a6e-b75f-88a8197620a3' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "5f4946ea-d69e-4a6e-b75f-88a8197620a3",
+        "type": "price_rules",
+        "attributes": {
+          "value": 10
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "5f4946ea-d69e-4a6e-b75f-88a8197620a3",
+    "type": "price_rules",
+    "attributes": {
+      "created_at": "2024-01-01T09:13:59+00:00",
+      "updated_at": "2024-01-01T09:13:59+00:00",
+      "name": "Holidays",
+      "rule_type": "range_of_dates",
+      "match_strategy": "span",
+      "adjustment_strategy": "percentage",
+      "value": 10.0,
+      "from": "2030-12-01T00:00:00+00:00",
+      "till": "2031-01-31T00:00:00+00:00",
+      "from_day": null,
+      "till_day": null,
+      "from_time": null,
+      "till_time": null,
+      "charge": null,
+      "stacked": false,
+      "time": null,
+      "min_duration": null,
+      "max_duration": null,
+      "price_ruleset_id": "a9c9a71d-edae-4f54-acbb-823afff2f453"
+    },
+    "relationships": {
+      "price_ruleset": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`DELETE /api/boomerang/price_rules/{id}`
+`PUT /api/boomerang/price_rules/{id}`
 
 ### Request params
 
@@ -97,6 +197,31 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the rule
+`data[attributes][rule_type]` | **String** <br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `exclude_date_range`, `exclude_week_days`, `pickup_day`, `return_day`
+`data[attributes][match_strategy]` | **String** <br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
+`data[attributes][adjustment_strategy]` | **String** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
+`data[attributes][value]` | **Float** <br>Adjustment value in percent
+`data[attributes][from]` | **Datetime** <br>Defines start of period, used by `range_of_dates` rule type
+`data[attributes][till]` | **Datetime** <br>Defines end of period, used by `range_of_dates` rule type
+`data[attributes][from_day]` | **Integer** <br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`data[attributes][till_day]` | **Integer** <br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
+`data[attributes][from_time]` | **String** <br>Defines start of period time, used by `range_of_days` rule type. Format is a `HH:mm` string, independent of time display settings. 
+`data[attributes][till_time]` | **String** <br>Defines end of period time, used by `range_of_days` rule type. Format is a `HH:mm` string, independent of time display settings. 
+`data[attributes][charge]` | **Boolean** <br>Determines effect of rules using charge attribute
+`data[attributes][stacked]` | **Boolean** <br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
+`data[attributes][time]` | **String** <br>Defines time for adjustment, used by `pickup_day` and `return_day` rule types. Format is a `HH:mm` string, independent of time display settings. 
+`data[attributes][min_duration]` | **Integer** <br>Rule will only be applied when order period is greater than min duration in seconds
+`data[attributes][max_duration]` | **Integer** <br>Rule will only be applied when order period is smaller than max duration in seconds
+`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
 
 
 ### Includes
@@ -116,13 +241,13 @@ This request does not accept any includes
       "data": {
         "type": "price_rules",
         "attributes": {
-          "price_ruleset_id": "35e6dc30-d211-4b03-be75-b681edbcb6e3",
+          "price_ruleset_id": "d5bd48d0-ddef-4d61-b016-f2e5434c6384",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "value": 25,
-          "from": "2023-11-25T09:17:27.583Z",
-          "till": "2024-01-25T09:17:27.583Z"
+          "from": "2023-12-01T09:13:59.817Z",
+          "till": "2024-02-01T09:13:59.817Z"
         }
       },
       "include": "price_rules"
@@ -134,18 +259,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b221ae58-9aa2-4b83-9d63-b41004bb3444",
+    "id": "267dc067-5df7-4aa3-8393-392759e7b5aa",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2023-12-25T09:17:27+00:00",
-      "updated_at": "2023-12-25T09:17:27+00:00",
+      "created_at": "2024-01-01T09:13:59+00:00",
+      "updated_at": "2024-01-01T09:13:59+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
       "adjustment_strategy": "percentage",
       "value": 25.0,
-      "from": "2023-11-25T09:17:27+00:00",
-      "till": "2024-01-25T09:17:27+00:00",
+      "from": "2023-12-01T09:13:59+00:00",
+      "till": "2024-02-01T09:13:59+00:00",
       "from_day": null,
       "till_day": null,
       "from_time": null,
@@ -155,7 +280,7 @@ This request does not accept any includes
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "35e6dc30-d211-4b03-be75-b681edbcb6e3"
+      "price_ruleset_id": "d5bd48d0-ddef-4d61-b016-f2e5434c6384"
     },
     "relationships": {
       "price_ruleset": {
@@ -210,129 +335,29 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a price rule
+## Archiving a price rule
 
 
 
-> How to update a price rule:
+> How to archive a price ruleset:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/c39ddbe7-04a4-429b-9d90-7dd8a256805c' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/48609b80-2694-4712-aea7-ef2ec786d09d' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "c39ddbe7-04a4-429b-9d90-7dd8a256805c",
-        "type": "price_rules",
-        "attributes": {
-          "value": 10
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "c39ddbe7-04a4-429b-9d90-7dd8a256805c",
-    "type": "price_rules",
-    "attributes": {
-      "created_at": "2023-12-25T09:17:28+00:00",
-      "updated_at": "2023-12-25T09:17:28+00:00",
-      "name": "Holidays",
-      "rule_type": "range_of_dates",
-      "match_strategy": "span",
-      "adjustment_strategy": "percentage",
-      "value": 10.0,
-      "from": "2030-12-01T00:00:00+00:00",
-      "till": "2031-01-31T00:00:00+00:00",
-      "from_day": null,
-      "till_day": null,
-      "from_time": null,
-      "till_time": null,
-      "charge": null,
-      "stacked": false,
-      "time": null,
-      "min_duration": null,
-      "max_duration": null,
-      "price_ruleset_id": "5d7eb3c9-2c8b-4065-9e6f-9a19175a21fd"
-    },
-    "relationships": {
-      "price_ruleset": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Updating a price rule:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/8a94c9c8-a2b0-4816-9893-a6bf89b69676' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "8a94c9c8-a2b0-4816-9893-a6bf89b69676",
-        "type": "price_rules",
-        "attributes": {
-          "id": "8a94c9c8-a2b0-4816-9893-a6bf89b69676",
-          "name": "Off season"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "8a94c9c8-a2b0-4816-9893-a6bf89b69676",
-    "type": "price_rules",
-    "attributes": {
-      "created_at": "2023-12-25T09:17:28+00:00",
-      "updated_at": "2023-12-25T09:17:29+00:00",
-      "name": "Off season",
-      "rule_type": "range_of_dates",
-      "match_strategy": "span",
-      "adjustment_strategy": "percentage",
-      "value": 5.0,
-      "from": "2030-12-01T00:00:00+00:00",
-      "till": "2031-01-31T00:00:00+00:00",
-      "from_day": null,
-      "till_day": null,
-      "from_time": null,
-      "till_time": null,
-      "charge": null,
-      "stacked": false,
-      "time": null,
-      "min_duration": null,
-      "max_duration": null,
-      "price_ruleset_id": "8fe0dcbf-4dcf-441c-9af4-bb2d2666d792"
-    },
-    "relationships": {
-      "price_ruleset": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`PUT /api/boomerang/price_rules/{id}`
+`DELETE /api/boomerang/price_rules/{id}`
 
 ### Request params
 
@@ -341,31 +366,6 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the rule
-`data[attributes][rule_type]` | **String** <br>Determines rule behaviour. One of `range_of_days`, `range_of_dates`, `exclude_date_range`, `exclude_week_days`, `pickup_day`, `return_day`
-`data[attributes][match_strategy]` | **String** <br>Determines how dates are matched to the rule. One of `starts_within`, `stops_within`, `overlap`, `span`, `within`
-`data[attributes][adjustment_strategy]` | **String** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts. One of `percentage`, `charge`
-`data[attributes][value]` | **Float** <br>Adjustment value in percent
-`data[attributes][from]` | **Datetime** <br>Defines start of period, used by `range_of_dates` rule type
-`data[attributes][till]` | **Datetime** <br>Defines end of period, used by `range_of_dates` rule type
-`data[attributes][from_day]` | **Integer** <br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`data[attributes][till_day]` | **Integer** <br>Defines end of period in weekdays, 0 is monday, used by `range_of_days` rule type
-`data[attributes][from_time]` | **String** <br>Defines start of period time, used by `range_of_days` rule type. Format is a `HH:mm` string, independent of time display settings. 
-`data[attributes][till_time]` | **String** <br>Defines end of period time, used by `range_of_days` rule type. Format is a `HH:mm` string, independent of time display settings. 
-`data[attributes][charge]` | **Boolean** <br>Determines effect of rules using charge attribute
-`data[attributes][stacked]` | **Boolean** <br>If a ruleset consists of multiple rules that adjust the product price, determines if rule should interact with other rules
-`data[attributes][time]` | **String** <br>Defines time for adjustment, used by `pickup_day` and `return_day` rule types. Format is a `HH:mm` string, independent of time display settings. 
-`data[attributes][min_duration]` | **Integer** <br>Rule will only be applied when order period is greater than min duration in seconds
-`data[attributes][max_duration]` | **Integer** <br>Rule will only be applied when order period is smaller than max duration in seconds
-`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
 
 
 ### Includes

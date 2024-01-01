@@ -74,7 +74,7 @@ Name | Description
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "6c86795a-b3ef-4c93-8439-f2c7cacda288",
+        "id": "6033749b-8aa1-4ffb-9381-d3f69d31d4b3",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -88,14 +88,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "6c86795a-b3ef-4c93-8439-f2c7cacda288",
+    "id": "6033749b-8aa1-4ffb-9381-d3f69d31d4b3",
     "type": "companies",
     "attributes": {
-      "created_at": "2023-12-25T09:17:52+00:00",
-      "updated_at": "2023-12-25T09:17:52+00:00",
+      "created_at": "2024-01-01T09:16:43+00:00",
+      "updated_at": "2024-01-01T09:16:43+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail215@company.com",
+      "email": "mail150@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -128,7 +128,7 @@ Name | Description
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "4b48f1de39cac7d5ac42f985eb7c9062",
+      "tenant_token": "58862f867bd849dd1ea0ecbc70f66e16",
       "pending_subscription": false
     }
   },
@@ -208,14 +208,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2340579e-7c63-43a7-81bf-bfd28c33f404",
+    "id": "66b158b5-55e6-4471-930b-22331ea39495",
     "type": "companies",
     "attributes": {
-      "created_at": "2023-12-25T09:17:53+00:00",
-      "updated_at": "2023-12-25T09:17:53+00:00",
+      "created_at": "2024-01-01T09:16:44+00:00",
+      "updated_at": "2024-01-01T09:16:44+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail216@company.com",
+      "email": "mail151@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -248,7 +248,7 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "b6b32d0134a423adb85baafda665b02f",
+      "tenant_token": "c52334281be5a06d350e7cbd3bc5e43a",
       "pending_subscription": false
     }
   },
@@ -320,11 +320,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d6fe587d-2740-4474-b339-9dbd427c5d2c",
+    "id": "98a4d365-1336-45dc-b1d8-c40d2f0f67c9",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-01-08T09:17:54.058Z",
+        "trial_ends_at": "2024-01-15T09:16:45.358Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
