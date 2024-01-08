@@ -74,7 +74,7 @@ Name | Description
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "6033749b-8aa1-4ffb-9381-d3f69d31d4b3",
+        "id": "38dbc3f4-7473-45c9-9b7f-52482e9ad72b",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -88,14 +88,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "6033749b-8aa1-4ffb-9381-d3f69d31d4b3",
+    "id": "38dbc3f4-7473-45c9-9b7f-52482e9ad72b",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-01-01T09:16:43+00:00",
-      "updated_at": "2024-01-01T09:16:43+00:00",
+      "created_at": "2024-01-08T09:20:45+00:00",
+      "updated_at": "2024-01-08T09:20:45+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail150@company.com",
+      "email": "mail273@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -128,7 +128,7 @@ Name | Description
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "58862f867bd849dd1ea0ecbc70f66e16",
+      "tenant_token": "2e79d9bb8f99897dd29a955080976b0e",
       "pending_subscription": false
     }
   },
@@ -191,87 +191,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a company
-
-
-
-> How to fetch a companies:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "66b158b5-55e6-4471-930b-22331ea39495",
-    "type": "companies",
-    "attributes": {
-      "created_at": "2024-01-01T09:16:44+00:00",
-      "updated_at": "2024-01-01T09:16:44+00:00",
-      "name": "iRent",
-      "slug": "irent",
-      "email": "mail151@company.com",
-      "billing_email": null,
-      "phone": "0581234567",
-      "website": "www.booqable.com",
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
-      "address_line_1": "Blokhuispoort",
-      "address_line_2": "Leeuwarden",
-      "zipcode": "8900AB",
-      "city": "Leeuwarden",
-      "region": null,
-      "country": "the Netherlands",
-      "use_billing_address": false,
-      "billing_company": null,
-      "billing_address_line_1": null,
-      "billing_address_line_2": null,
-      "billing_address_zipcode": null,
-      "billing_address_city": null,
-      "billing_address_region": null,
-      "billing_address_country": null,
-      "logo_url": null,
-      "favicon_url": null,
-      "default_timezone": "UTC",
-      "currency": "usd",
-      "financial_line_1": "Blokhuispoort",
-      "financial_line_2": "Leeuwarden",
-      "vat_number": null,
-      "custom_domain": null,
-      "development": false,
-      "shop_theme_id": null,
-      "installed_online_store": false,
-      "years_active": null,
-      "source": null,
-      "medium": null,
-      "tenant_token": "c52334281be5a06d350e7cbd3bc5e43a",
-      "pending_subscription": false
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Fetching subscription details
 
 The subscription has the following fields:
@@ -320,11 +239,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "98a4d365-1336-45dc-b1d8-c40d2f0f67c9",
+    "id": "5cbd89ac-a167-4561-9791-3596209fe6f6",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-01-15T09:16:45.358Z",
+        "trial_ends_at": "2024-01-22T09:20:46.309Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -377,6 +296,87 @@ Name | Description
         },
         "can_try_plan": true
       }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a company
+
+
+
+> How to fetch a companies:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "304ba5bd-5968-44b9-b253-6de95c17fd5e",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2024-01-08T09:20:47+00:00",
+      "updated_at": "2024-01-08T09:20:47+00:00",
+      "name": "iRent",
+      "slug": "irent",
+      "email": "mail275@company.com",
+      "billing_email": null,
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
+      "region": null,
+      "country": "the Netherlands",
+      "use_billing_address": false,
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "favicon_url": null,
+      "default_timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
+      "vat_number": null,
+      "custom_domain": null,
+      "development": false,
+      "shop_theme_id": null,
+      "installed_online_store": false,
+      "years_active": null,
+      "source": null,
+      "medium": null,
+      "tenant_token": "8c30a49856971a565cae2b6647baf4cb",
+      "pending_subscription": false
     }
   },
   "meta": {}

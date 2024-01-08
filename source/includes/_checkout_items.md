@@ -3,15 +3,15 @@
 Checkout items allow collecting additional information from the checkout.
 
 ## Endpoints
-`POST /api/boomerang/checkout_items`
-
 `DELETE /api/boomerang/checkout_items/{id}`
+
+`GET /api/boomerang/checkout_items/{id}`
 
 `GET /api/boomerang/checkout_items`
 
 `PUT /api/boomerang/checkout_items/{id}`
 
-`GET /api/boomerang/checkout_items/{id}`
+`POST /api/boomerang/checkout_items`
 
 ## Fields
 Every checkout item has the following fields:
@@ -43,94 +43,6 @@ Name | Description
 `default_property` | **Default properties** `readonly`<br>Associated Default property
 
 
-## Creating a checkout item
-
-
-
-> How to create a checkout item:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "checkout_items",
-        "attributes": {
-          "name": "Mobile number",
-          "item_type": "field",
-          "default_property_id": "cb9c95f2-4c43-4115-bdf1-6f1a625faf54"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "33a57f45-24ca-4fd2-8ae7-50f90ff48073",
-    "type": "checkout_items",
-    "attributes": {
-      "created_at": "2024-01-01T09:15:55+00:00",
-      "updated_at": "2024-01-01T09:15:55+00:00",
-      "name": "Mobile number",
-      "item_type": "field",
-      "default_property_id": "cb9c95f2-4c43-4115-bdf1-6f1a625faf54",
-      "tooltip": null,
-      "required": false,
-      "position": null,
-      "content": null,
-      "image_alt_text": null,
-      "image_url": null,
-      "system": false
-    },
-    "relationships": {
-      "default_property": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/checkout_items`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
-`data[attributes][item_type]` | **String** <br>What kind of input will be presented to the customer during checkout
-`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
-`data[attributes][tooltip]` | **String** <br>Tooltip for the checkout item
-`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout items
-`data[attributes][content]` | **String** <br>Text content of the checkout item
-`data[attributes][image_base64]` | **String** <br>Base64 encoded image file, only for upload
-`data[attributes][remove_image]` | **Boolean** <br>Set to true to remove existing image from checkout item
-`data[attributes][image_alt_text]` | **String** <br>Alternative text for the image checkout item
-
-
-### Includes
-
-This request does not accept any includes
 ## Destroying a checkout item
 
 
@@ -139,7 +51,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/89ccdca0-33b2-4ceb-949f-bef9369ea6b5' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/18dd7dd4-6cd1-41ee-aa09-c44c7be242e0' \
     --header 'content-type: application/json' \
 ```
 
@@ -154,6 +66,67 @@ This request does not accept any includes
 ### HTTP Request
 
 `DELETE /api/boomerang/checkout_items/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a checkout item
+
+
+
+> How to fetch a checkout item:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/3064b44e-9871-4ca3-ac63-a14971690ed5?include=default_property' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "3064b44e-9871-4ca3-ac63-a14971690ed5",
+    "type": "checkout_items",
+    "attributes": {
+      "created_at": "2024-01-08T09:20:33+00:00",
+      "updated_at": "2024-01-08T09:20:33+00:00",
+      "name": "Checkout item 2",
+      "item_type": "field",
+      "default_property_id": "1cb25e16-e1df-4f39-9e17-c5e44ebfdf5e",
+      "tooltip": null,
+      "required": false,
+      "position": null,
+      "content": null,
+      "image_alt_text": null,
+      "image_url": null,
+      "system": false
+    },
+    "relationships": {
+      "default_property": {
+        "links": {
+          "related": "api/boomerang/default_properties/1cb25e16-e1df-4f39-9e17-c5e44ebfdf5e"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/checkout_items/{id}`
 
 ### Request params
 
@@ -185,14 +158,14 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "1d4b5d67-e4d0-440a-94aa-48a9ae165d84",
+      "id": "668c01d5-1b8d-495b-910a-87b5d1822300",
       "type": "checkout_items",
       "attributes": {
-        "created_at": "2024-01-01T09:15:56+00:00",
-        "updated_at": "2024-01-01T09:15:56+00:00",
+        "created_at": "2024-01-08T09:20:34+00:00",
+        "updated_at": "2024-01-08T09:20:34+00:00",
         "name": "Checkout item 3",
         "item_type": "field",
-        "default_property_id": "c658d380-751a-4d78-bd7f-ec6e69540a00",
+        "default_property_id": "fdca02e6-fed0-4558-abc3-dd0284c69b57",
         "tooltip": null,
         "required": false,
         "position": null,
@@ -204,7 +177,7 @@ This request does not accept any includes
       "relationships": {
         "default_property": {
           "links": {
-            "related": "api/boomerang/default_properties/c658d380-751a-4d78-bd7f-ec6e69540a00"
+            "related": "api/boomerang/default_properties/fdca02e6-fed0-4558-abc3-dd0284c69b57"
           }
         }
       }
@@ -271,11 +244,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/7048b107-60df-44b3-bc56-5d9e4621c803' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/29c4cd33-e69e-4dd3-9ab7-67a4d9994be9' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "7048b107-60df-44b3-bc56-5d9e4621c803",
+        "id": "29c4cd33-e69e-4dd3-9ab7-67a4d9994be9",
         "type": "checkout_items",
         "attributes": {
           "name": "Additional information"
@@ -289,14 +262,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7048b107-60df-44b3-bc56-5d9e4621c803",
+    "id": "29c4cd33-e69e-4dd3-9ab7-67a4d9994be9",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-01-01T09:15:56+00:00",
-      "updated_at": "2024-01-01T09:15:56+00:00",
+      "created_at": "2024-01-08T09:20:36+00:00",
+      "updated_at": "2024-01-08T09:20:36+00:00",
       "name": "Additional information",
       "item_type": "field",
-      "default_property_id": "c52d328a-230f-417b-94ce-66c82c1f7bb7",
+      "default_property_id": "be816190-ef7f-4268-a5e6-fd76ca8477f4",
       "tooltip": null,
       "required": false,
       "position": null,
@@ -350,31 +323,41 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a checkout item
+## Creating a checkout item
 
 
 
-> How to fetch a checkout item:
+> How to create a checkout item:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/544a1354-d180-45d3-94aa-354c9f399017?include=default_property' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "checkout_items",
+        "attributes": {
+          "name": "Mobile number",
+          "item_type": "field",
+          "default_property_id": "3fd02060-99e3-40d0-9e74-5f8f50779442"
+        }
+      }
+    }'
 ```
 
-> A 200 status response looks like this:
+> A 201 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "544a1354-d180-45d3-94aa-354c9f399017",
+    "id": "17f6f652-5603-43e9-b9dc-385c99dc2b18",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-01-01T09:15:57+00:00",
-      "updated_at": "2024-01-01T09:15:57+00:00",
-      "name": "Checkout item 5",
+      "created_at": "2024-01-08T09:20:37+00:00",
+      "updated_at": "2024-01-08T09:20:37+00:00",
+      "name": "Mobile number",
       "item_type": "field",
-      "default_property_id": "c5ceac9a-aed9-47cf-99db-ce557450a3cb",
+      "default_property_id": "3fd02060-99e3-40d0-9e74-5f8f50779442",
       "tooltip": null,
       "required": false,
       "position": null,
@@ -385,8 +368,8 @@ This request does not accept any includes
     },
     "relationships": {
       "default_property": {
-        "links": {
-          "related": "api/boomerang/default_properties/c5ceac9a-aed9-47cf-99db-ce557450a3cb"
+        "meta": {
+          "included": false
         }
       }
     }
@@ -397,7 +380,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/checkout_items/{id}`
+`POST /api/boomerang/checkout_items`
 
 ### Request params
 
@@ -406,6 +389,23 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
+`data[attributes][item_type]` | **String** <br>What kind of input will be presented to the customer during checkout
+`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
+`data[attributes][tooltip]` | **String** <br>Tooltip for the checkout item
+`data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout items
+`data[attributes][content]` | **String** <br>Text content of the checkout item
+`data[attributes][image_base64]` | **String** <br>Base64 encoded image file, only for upload
+`data[attributes][remove_image]` | **Boolean** <br>Set to true to remove existing image from checkout item
+`data[attributes][image_alt_text]` | **String** <br>Alternative text for the image checkout item
 
 
 ### Includes

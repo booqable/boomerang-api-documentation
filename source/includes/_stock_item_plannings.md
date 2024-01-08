@@ -5,9 +5,9 @@ Stock item plannings hold information about the planning of individual stock ite
 Stock item plannings are never directly created or updated through their resource; instead, they are always managed by booking items to an order or transitioning status.
 
 ## Endpoints
-`GET /api/boomerang/stock_item_plannings`
-
 `DELETE /api/boomerang/stock_item_plannings/{id}`
+
+`GET /api/boomerang/stock_item_plannings`
 
 ## Fields
 Every stock item planning has the following fields:
@@ -37,6 +37,42 @@ Name | Description
 `order` | **Orders** `readonly`<br>Associated Order
 
 
+## Archiving a stock_item planning
+
+
+
+> How to archive a stock item planning:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/737168b8-e340-439d-b9eb-023592087ced' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/stock_item_plannings/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing stock item plannings
 
 
@@ -55,34 +91,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "5b88a637-fe84-45f6-ada5-26a721a615e8",
+      "id": "0c3ea158-61c3-4407-a357-9f3b7f4e0a40",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-01-01T09:16:36+00:00",
-        "updated_at": "2024-01-01T09:16:36+00:00",
+        "created_at": "2024-01-08T09:14:10+00:00",
+        "updated_at": "2024-01-08T09:14:10+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "679d42c5-282b-4538-bb6f-9a71f3edb1e8",
-        "planning_id": "1db67183-902d-4e18-ba30-175e8d129740",
-        "order_id": "51397393-88d6-4dfe-8c01-8a2deb75ea8e"
+        "stock_item_id": "c28c5ddd-c352-4600-8efc-9b0bd87d50fb",
+        "planning_id": "2befa272-b1f8-4a7b-af83-677c4761d16f",
+        "order_id": "e320ed51-5b0d-4e62-a5cd-e6f6bbe3547e"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/679d42c5-282b-4538-bb6f-9a71f3edb1e8"
+            "related": "api/boomerang/stock_items/c28c5ddd-c352-4600-8efc-9b0bd87d50fb"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/1db67183-902d-4e18-ba30-175e8d129740"
+            "related": "api/boomerang/plannings/2befa272-b1f8-4a7b-af83-677c4761d16f"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/51397393-88d6-4dfe-8c01-8a2deb75ea8e"
+            "related": "api/boomerang/orders/e320ed51-5b0d-4e62-a5cd-e6f6bbe3547e"
           }
         }
       }
@@ -161,40 +197,3 @@ This request accepts the following includes:
 
 
 
-
-## Archiving a stock_item planning
-
-
-
-> How to archive a stock item planning:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/74e19576-49a2-4f40-a48b-c2e28aa7f6c7' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/stock_item_plannings/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes

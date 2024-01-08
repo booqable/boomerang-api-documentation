@@ -47,6 +47,159 @@ Name | Description
 
 
 
+> When archival would create unallowed shortage:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "stock_item_archivations",
+        "attributes": {
+          "stock_item_id": "6744e71a-ccbe-41f0-87a4-628f700caa6d"
+        }
+      }
+    }'
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "shortage",
+      "status": "422",
+      "title": "Shortage",
+      "detail": "This will create shortage for running or future orders",
+      "meta": {
+        "warning": [],
+        "blocking": [
+          {
+            "reason": "shortage",
+            "shortage": 1,
+            "item_id": "3ed77ff3-1d9d-4d32-b109-a64670801051",
+            "mutation": -1,
+            "order_ids": [
+              "4651f53e-ca7e-4db4-bc8a-3331e5820120"
+            ],
+            "location_id": "fcfaa79a-3633-406c-bc92-e934d8943cf1",
+            "available": 0,
+            "plannable": 0,
+            "stock_count": 1,
+            "planned": 1,
+            "needed": 1,
+            "cluster_available": 0,
+            "cluster_plannable": 0,
+            "cluster_stock_count": 1,
+            "cluster_planned": 1,
+            "cluster_needed": 1
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+
+> When the StockItem is not used, it can be archived:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "stock_item_archivations",
+        "attributes": {
+          "stock_item_id": "f3850b7c-0484-45c9-9bfc-552432adb29e"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "7b0e0c53-457e-5c82-99ab-36b0873570c4",
+    "type": "stock_item_archivations",
+    "attributes": {
+      "stock_item_id": "f3850b7c-0484-45c9-9bfc-552432adb29e"
+    },
+    "relationships": {
+      "stock_item": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> When archival would create allowed shortage, but confirm_shortage is unspecified:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "stock_item_archivations",
+        "attributes": {
+          "stock_item_id": "b254ea27-2f48-43f3-83d6-46f1078eab59"
+        }
+      }
+    }'
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "shortage",
+      "status": "422",
+      "title": "Shortage",
+      "detail": "This will create shortage for running or future orders",
+      "meta": {
+        "warning": [
+          {
+            "reason": "shortage",
+            "shortage": 1,
+            "item_id": "389ee61f-2400-4090-bb99-0415d28b633f",
+            "mutation": -1,
+            "order_ids": [
+              "f771b085-e307-4531-99d7-d27b4edd7f96"
+            ],
+            "location_id": "1e49dac7-5392-48f5-b208-c6275f97558d",
+            "available": 0,
+            "plannable": 1,
+            "stock_count": 1,
+            "planned": 1,
+            "needed": 1,
+            "cluster_available": 0,
+            "cluster_plannable": 1,
+            "cluster_stock_count": 1,
+            "cluster_planned": 1,
+            "cluster_needed": 1
+          }
+        ],
+        "blocking": []
+      }
+    }
+  ]
+}
+```
+
+
 > When the StockItem was already archived:
 
 ```shell
@@ -57,7 +210,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "08975fd2-1b10-4f38-95e1-c86c29eed651"
+          "stock_item_id": "2ede394d-6aa0-4c24-8fc5-835d4d33b7bd"
         }
       }
     }'
@@ -80,63 +233,6 @@ Name | Description
 ```
 
 
-> When archival would create allowed shortage, but confirm_shortage is unspecified:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "stock_item_archivations",
-        "attributes": {
-          "stock_item_id": "a06438ff-077d-4878-919c-1baa68ea2734"
-        }
-      }
-    }'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "shortage",
-      "status": "422",
-      "title": "Shortage",
-      "detail": "This will create shortage for running or future orders",
-      "meta": {
-        "warning": [
-          {
-            "reason": "shortage",
-            "shortage": 1,
-            "item_id": "075901f9-470a-43d3-b9a3-ea92b70790fe",
-            "mutation": -1,
-            "order_ids": [
-              "dee64ec7-edaa-4c30-ba94-ba4c520e009f"
-            ],
-            "location_id": "9ffc528a-79f6-4d54-9d94-c3df0d2cd58f",
-            "available": 0,
-            "plannable": 1,
-            "stock_count": 1,
-            "planned": 1,
-            "needed": 1,
-            "cluster_available": 0,
-            "cluster_plannable": 1,
-            "cluster_stock_count": 1,
-            "cluster_planned": 1,
-            "cluster_needed": 1
-          }
-        ],
-        "blocking": []
-      }
-    }
-  ]
-}
-```
-
-
 > When archival would create allowed shortage, and confirm_shortage is true:
 
 ```shell
@@ -147,7 +243,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "ae4036fe-dee6-4288-b7a3-61d15ddbc722",
+          "stock_item_id": "01ec2a56-a5d8-44ae-807f-16f16224eccc",
           "confirm_shortage": true
         }
       }
@@ -159,10 +255,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bfa9dc27-ae97-5250-b273-343a01164016",
+    "id": "068f8687-19dd-5a9e-8a31-79bc19df53c5",
     "type": "stock_item_archivations",
     "attributes": {
-      "stock_item_id": "ae4036fe-dee6-4288-b7a3-61d15ddbc722"
+      "stock_item_id": "01ec2a56-a5d8-44ae-807f-16f16224eccc"
     },
     "relationships": {
       "stock_item": {
@@ -187,7 +283,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "cb0d8f8d-6bf2-4863-a716-93a7c12a7679"
+          "stock_item_id": "3dbead6a-0f8e-4555-a987-8a2969d12c66"
         }
       }
     }'
@@ -207,104 +303,8 @@ Name | Description
         "blocking": [
           {
             "order_ids": [
-              "ceb221a2-b3ec-4208-a52b-6a4e3e111ad0"
+              "43cd2577-4796-461a-8bda-e1c7931e3c25"
             ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-
-> When the StockItem is not used, it can be archived:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "stock_item_archivations",
-        "attributes": {
-          "stock_item_id": "a43a636a-e70f-42ff-b70c-a545d3e615b6"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "2c0515a8-18d8-578a-8ea1-68649c298593",
-    "type": "stock_item_archivations",
-    "attributes": {
-      "stock_item_id": "a43a636a-e70f-42ff-b70c-a545d3e615b6"
-    },
-    "relationships": {
-      "stock_item": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> When archival would create unallowed shortage:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_archivations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "stock_item_archivations",
-        "attributes": {
-          "stock_item_id": "cf8dfb84-94e9-4840-92c7-4ab4b62b4531"
-        }
-      }
-    }'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "shortage",
-      "status": "422",
-      "title": "Shortage",
-      "detail": "This will create shortage for running or future orders",
-      "meta": {
-        "warning": [],
-        "blocking": [
-          {
-            "reason": "shortage",
-            "shortage": 1,
-            "item_id": "cd03c6b2-829a-4836-b481-5d9c0e2cee42",
-            "mutation": -1,
-            "order_ids": [
-              "57b46a5b-28c5-4cd7-b89b-d4436d22d285"
-            ],
-            "location_id": "422f850b-aa74-4b4a-8ca7-8afa09842bf1",
-            "available": 0,
-            "plannable": 0,
-            "stock_count": 1,
-            "planned": 1,
-            "needed": 1,
-            "cluster_available": 0,
-            "cluster_plannable": 0,
-            "cluster_stock_count": 1,
-            "cluster_planned": 1,
-            "cluster_needed": 1
           }
         ]
       }
