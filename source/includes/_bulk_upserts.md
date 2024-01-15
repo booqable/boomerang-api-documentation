@@ -24,102 +24,6 @@ Name | Description
 
 
 
-> How to create operating rules in bulk:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "operating_rules",
-          "data": [
-            {
-              "data": {
-                "mon": {
-                  "from": "09:00",
-                  "till": "13:00"
-                }
-              },
-              "data_type": "hours"
-            },
-            {
-              "data": {
-                "mon": {
-                  "from": "15:00",
-                  "till": "17:00"
-                }
-              },
-              "data_type": "hours"
-            }
-          ]
-        }
-      },
-      "include": "results"
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "2656d462-5824-54e4-ae9c-33345c491f49",
-    "type": "bulk_upserts",
-    "relationships": {
-      "results": {
-        "data": [
-          {
-            "type": "operating_rules",
-            "id": "5d1f3590-d3e3-4737-bb1c-df73b34fb345"
-          },
-          {
-            "type": "operating_rules",
-            "id": "062345c7-dd6c-4461-a9ec-ec41ee57ab14"
-          }
-        ]
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "5d1f3590-d3e3-4737-bb1c-df73b34fb345",
-      "type": "operating_rules",
-      "attributes": {
-        "created_at": "2024-01-08T09:17:03+00:00",
-        "updated_at": "2024-01-08T09:17:03+00:00",
-        "data_type": "hours",
-        "data": {
-          "mon": {
-            "from": "09:00",
-            "till": "13:00"
-          }
-        }
-      }
-    },
-    {
-      "id": "062345c7-dd6c-4461-a9ec-ec41ee57ab14",
-      "type": "operating_rules",
-      "attributes": {
-        "created_at": "2024-01-08T09:17:03+00:00",
-        "updated_at": "2024-01-08T09:17:03+00:00",
-        "data_type": "hours",
-        "data": {
-          "mon": {
-            "from": "15:00",
-            "till": "17:00"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-
 > How to create checkout fields in bulk:
 
 ```shell
@@ -133,11 +37,11 @@ Name | Description
           "type": "checkout_fields",
           "data": [
             {
-              "default_property_id": "96283dd3-7982-439a-b081-4a009d309e7a"
+              "default_property_id": "d91d9ab5-4fb8-48ef-96f5-a2101f310fd2"
             },
             {
               "name": "Delivery address",
-              "default_property_id": "6c4516c3-ca17-411e-8de3-12a328497bfe"
+              "default_property_id": "063cf80f-2a2d-45e1-bf7e-68665ae5077b"
             }
           ]
         },
@@ -151,7 +55,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f10410e8-d58c-5424-8074-75575ad4f69b",
+    "id": "ee539b22-cc79-55b2-9104-f7291b80ac2d",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -201,7 +105,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b9f509f7-8cc4-52c1-997d-e91be8f24976",
+    "id": "844a43b4-2b16-53a4-aae4-c425d40962d7",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -211,6 +115,102 @@ Name | Description
       }
     }
   },
+  "meta": {}
+}
+```
+
+
+> How to create operating rules in bulk:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "bulk_upserts",
+        "attributes": {
+          "type": "operating_rules",
+          "data": [
+            {
+              "data": {
+                "mon": {
+                  "from": "09:00",
+                  "till": "13:00"
+                }
+              },
+              "data_type": "hours"
+            },
+            {
+              "data": {
+                "mon": {
+                  "from": "15:00",
+                  "till": "17:00"
+                }
+              },
+              "data_type": "hours"
+            }
+          ]
+        }
+      },
+      "include": "results"
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "4166ab54-90e3-543b-90d0-74264d66b295",
+    "type": "bulk_upserts",
+    "relationships": {
+      "results": {
+        "data": [
+          {
+            "type": "operating_rules",
+            "id": "4a979553-a8a5-4c7e-af62-96117b150b85"
+          },
+          {
+            "type": "operating_rules",
+            "id": "06045738-28be-4cfd-859d-3802bd487976"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "4a979553-a8a5-4c7e-af62-96117b150b85",
+      "type": "operating_rules",
+      "attributes": {
+        "created_at": "2024-01-15T09:16:38+00:00",
+        "updated_at": "2024-01-15T09:16:38+00:00",
+        "data_type": "hours",
+        "data": {
+          "mon": {
+            "from": "09:00",
+            "till": "13:00"
+          }
+        }
+      }
+    },
+    {
+      "id": "06045738-28be-4cfd-859d-3802bd487976",
+      "type": "operating_rules",
+      "attributes": {
+        "created_at": "2024-01-15T09:16:38+00:00",
+        "updated_at": "2024-01-15T09:16:38+00:00",
+        "data_type": "hours",
+        "data": {
+          "mon": {
+            "from": "15:00",
+            "till": "17:00"
+          }
+        }
+      }
+    }
+  ],
   "meta": {}
 }
 ```

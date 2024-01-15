@@ -3,9 +3,9 @@
 Every action performed in a Booqable account is scoped to a company; A company holds information and configuration about an account.
 
 ## Endpoints
-`PUT /api/boomerang/companies/current`
-
 `GET /api/boomerang/companies/current`
+
+`PUT /api/boomerang/companies/current`
 
 ## Fields
 Every company has the following fields:
@@ -28,6 +28,7 @@ Name | Description
 `city` | **String** <br>City
 `region` | **String** <br>Region
 `country` | **String** <br>Country
+`market` | **String** <br>The market the company operates in
 `use_billing_address` | **Boolean** <br>Whether to use billing address on invoices received from Booqable
 `billing_company` | **String** <br>Company name (used for invoices received from Booqable)
 `billing_address_line_1` | **String** <br>First address line (used for invoices received from Booqable)
@@ -62,25 +63,16 @@ Name | Description
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
-## Updating a company
+## Fetching a company
 
 
 
-> How to update a company:
+> How to fetch a companies:
 
 ```shell
-  curl --request PUT \
+  curl --request GET \
     --url 'https://example.booqable.com/api/boomerang/companies/current' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "38dbc3f4-7473-45c9-9b7f-52482e9ad72b",
-        "type": "companies",
-        "attributes": {
-          "name": "iRent LLC"
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -88,14 +80,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "38dbc3f4-7473-45c9-9b7f-52482e9ad72b",
+    "id": "ae83a11f-8567-4a63-8075-f9213f0ee6c7",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-01-08T09:20:45+00:00",
-      "updated_at": "2024-01-08T09:20:45+00:00",
-      "name": "iRent LLC",
+      "created_at": "2024-01-15T09:13:45+00:00",
+      "updated_at": "2024-01-15T09:13:45+00:00",
+      "name": "iRent",
       "slug": "irent",
-      "email": "mail273@company.com",
+      "email": "mail40@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -106,6 +98,7 @@ Name | Description
       "city": "Leeuwarden",
       "region": null,
       "country": "the Netherlands",
+      "market": "AV / Camera",
       "use_billing_address": false,
       "billing_company": null,
       "billing_address_line_1": null,
@@ -128,7 +121,98 @@ Name | Description
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "2e79d9bb8f99897dd29a955080976b0e",
+      "tenant_token": "67b994deed480220d7787b9affa003df",
+      "pending_subscription": false
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating a company
+
+
+
+> How to update a company:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "0f948602-4a55-48bf-b1a0-70af1433fba0",
+        "type": "companies",
+        "attributes": {
+          "name": "iRent LLC"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "0f948602-4a55-48bf-b1a0-70af1433fba0",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2024-01-15T09:13:46+00:00",
+      "updated_at": "2024-01-15T09:13:46+00:00",
+      "name": "iRent LLC",
+      "slug": "irent",
+      "email": "mail41@company.com",
+      "billing_email": null,
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
+      "region": null,
+      "country": "the Netherlands",
+      "market": "AV / Camera",
+      "use_billing_address": false,
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "favicon_url": null,
+      "default_timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
+      "vat_number": null,
+      "custom_domain": null,
+      "development": false,
+      "shop_theme_id": null,
+      "installed_online_store": false,
+      "years_active": null,
+      "source": null,
+      "medium": null,
+      "tenant_token": "cb35d105b96c694423526b8992dbbdec",
       "pending_subscription": false
     }
   },
@@ -167,6 +251,7 @@ Name | Description
 `data[attributes][city]` | **String** <br>City
 `data[attributes][region]` | **String** <br>Region
 `data[attributes][country]` | **String** <br>Country
+`data[attributes][market]` | **String** <br>The market the company operates in
 `data[attributes][use_billing_address]` | **Boolean** <br>Whether to use billing address on invoices received from Booqable
 `data[attributes][billing_company]` | **String** <br>Company name (used for invoices received from Booqable)
 `data[attributes][billing_address_line_1]` | **String** <br>First address line (used for invoices received from Booqable)
@@ -239,11 +324,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5cbd89ac-a167-4561-9791-3596209fe6f6",
+    "id": "e80b724f-0ccd-4333-bff0-54c71d870563",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-01-22T09:20:46.309Z",
+        "trial_ends_at": "2024-01-29T09:13:46.920Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -296,87 +381,6 @@ Name | Description
         },
         "can_try_plan": true
       }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching a company
-
-
-
-> How to fetch a companies:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "304ba5bd-5968-44b9-b253-6de95c17fd5e",
-    "type": "companies",
-    "attributes": {
-      "created_at": "2024-01-08T09:20:47+00:00",
-      "updated_at": "2024-01-08T09:20:47+00:00",
-      "name": "iRent",
-      "slug": "irent",
-      "email": "mail275@company.com",
-      "billing_email": null,
-      "phone": "0581234567",
-      "website": "www.booqable.com",
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
-      "address_line_1": "Blokhuispoort",
-      "address_line_2": "Leeuwarden",
-      "zipcode": "8900AB",
-      "city": "Leeuwarden",
-      "region": null,
-      "country": "the Netherlands",
-      "use_billing_address": false,
-      "billing_company": null,
-      "billing_address_line_1": null,
-      "billing_address_line_2": null,
-      "billing_address_zipcode": null,
-      "billing_address_city": null,
-      "billing_address_region": null,
-      "billing_address_country": null,
-      "logo_url": null,
-      "favicon_url": null,
-      "default_timezone": "UTC",
-      "currency": "usd",
-      "financial_line_1": "Blokhuispoort",
-      "financial_line_2": "Leeuwarden",
-      "vat_number": null,
-      "custom_domain": null,
-      "development": false,
-      "shop_theme_id": null,
-      "installed_online_store": false,
-      "years_active": null,
-      "source": null,
-      "medium": null,
-      "tenant_token": "8c30a49856971a565cae2b6647baf4cb",
-      "pending_subscription": false
     }
   },
   "meta": {}
