@@ -55,34 +55,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "3ab62284-9ffa-409a-ab46-2b03e016cec0",
+      "id": "9f87b019-ebc8-4318-b054-f0017f59517c",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-01-15T09:18:43+00:00",
-        "updated_at": "2024-01-15T09:18:43+00:00",
+        "created_at": "2024-01-22T09:21:02+00:00",
+        "updated_at": "2024-01-22T09:21:02+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "90d43d0b-d690-48cd-bf5c-5bd05a3ca088",
-        "planning_id": "4eb6db7d-96e3-4e15-81bd-f0d511eeedb5",
-        "order_id": "71d087e0-1047-4068-9fcc-829ed735ea7c"
+        "stock_item_id": "62b98703-e8d0-4532-8344-3c3fd89384e8",
+        "planning_id": "c80ddd16-d07d-4291-85fa-81dd5476c980",
+        "order_id": "310e063b-10ad-4ab9-8f29-f131b005fd0e"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/90d43d0b-d690-48cd-bf5c-5bd05a3ca088"
+            "related": "api/boomerang/stock_items/62b98703-e8d0-4532-8344-3c3fd89384e8"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/4eb6db7d-96e3-4e15-81bd-f0d511eeedb5"
+            "related": "api/boomerang/plannings/c80ddd16-d07d-4291-85fa-81dd5476c980"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/71d087e0-1047-4068-9fcc-829ed735ea7c"
+            "related": "api/boomerang/orders/310e063b-10ad-4ab9-8f29-f131b005fd0e"
           }
         }
       }
@@ -170,7 +170,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/a2dc9153-7ad0-4c04-92b3-4b7f2c2afe7e' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/e530e9fd-5db8-4abf-9bb4-b0721add2955' \
     --header 'content-type: application/json' \
 ```
 

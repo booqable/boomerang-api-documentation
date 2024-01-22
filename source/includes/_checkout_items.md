@@ -3,13 +3,13 @@
 Checkout items allow collecting additional information from the checkout.
 
 ## Endpoints
-`POST /api/boomerang/checkout_items`
+`PUT /api/boomerang/checkout_items/{id}`
 
 `GET /api/boomerang/checkout_items/{id}`
 
 `DELETE /api/boomerang/checkout_items/{id}`
 
-`PUT /api/boomerang/checkout_items/{id}`
+`POST /api/boomerang/checkout_items`
 
 `GET /api/boomerang/checkout_items`
 
@@ -43,41 +43,40 @@ Name | Description
 `default_property` | **Default properties** `readonly`<br>Associated Default property
 
 
-## Creating a checkout item
+## Updating a checkout item
 
 
 
-> How to create a checkout item:
+> How to update a checkout item:
 
 ```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/65cc3fb4-b4d1-4cdc-9365-35f21edf0e0f' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
+        "id": "65cc3fb4-b4d1-4cdc-9365-35f21edf0e0f",
         "type": "checkout_items",
         "attributes": {
-          "name": "Mobile number",
-          "item_type": "field",
-          "default_property_id": "cc0615cc-b28d-40f3-8416-2f0430a700c1"
+          "name": "Additional information"
         }
       }
     }'
 ```
 
-> A 201 status response looks like this:
+> A 200 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "19eaf032-924f-4009-b2da-ea6018a8b4ba",
+    "id": "65cc3fb4-b4d1-4cdc-9365-35f21edf0e0f",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-01-15T09:17:08+00:00",
-      "updated_at": "2024-01-15T09:17:08+00:00",
-      "name": "Mobile number",
+      "created_at": "2024-01-22T09:22:54+00:00",
+      "updated_at": "2024-01-22T09:22:54+00:00",
+      "name": "Additional information",
       "item_type": "field",
-      "default_property_id": "cc0615cc-b28d-40f3-8416-2f0430a700c1",
+      "default_property_id": "2848464d-313f-4209-b53e-39bc5391a652",
       "tooltip": null,
       "required": false,
       "position": null,
@@ -100,7 +99,7 @@ Name | Description
 
 ### HTTP Request
 
-`POST /api/boomerang/checkout_items`
+`PUT /api/boomerang/checkout_items/{id}`
 
 ### Request params
 
@@ -139,7 +138,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/53ae1f02-c389-4077-8f51-864e8c06e959?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/5292131a-59de-4b59-a73c-6a5f00bc5613?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -148,14 +147,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "53ae1f02-c389-4077-8f51-864e8c06e959",
+    "id": "5292131a-59de-4b59-a73c-6a5f00bc5613",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-01-15T09:17:09+00:00",
-      "updated_at": "2024-01-15T09:17:09+00:00",
+      "created_at": "2024-01-22T09:22:56+00:00",
+      "updated_at": "2024-01-22T09:22:56+00:00",
       "name": "Checkout item 2",
       "item_type": "field",
-      "default_property_id": "d1747e05-a232-4642-8f7b-ce71e615979d",
+      "default_property_id": "f36a7195-722f-4633-8638-9ee37e080d4c",
       "tooltip": null,
       "required": false,
       "position": null,
@@ -167,7 +166,7 @@ This request does not accept any includes
     "relationships": {
       "default_property": {
         "links": {
-          "related": "api/boomerang/default_properties/d1747e05-a232-4642-8f7b-ce71e615979d"
+          "related": "api/boomerang/default_properties/f36a7195-722f-4633-8638-9ee37e080d4c"
         }
       }
     }
@@ -200,7 +199,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/4e81ca2a-41ef-4323-af59-cb430240b73c' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/2e69beac-6bbe-473b-9e91-776159f8b406' \
     --header 'content-type: application/json' \
 ```
 
@@ -228,40 +227,41 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a checkout item
+## Creating a checkout item
 
 
 
-> How to update a checkout item:
+> How to create a checkout item:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/e01afda9-400d-43a4-9bdc-f3e9ea92b79b' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e01afda9-400d-43a4-9bdc-f3e9ea92b79b",
         "type": "checkout_items",
         "attributes": {
-          "name": "Additional information"
+          "name": "Mobile number",
+          "item_type": "field",
+          "default_property_id": "ad911b55-b2f2-4c2a-b8dc-d92ec0cfaf24"
         }
       }
     }'
 ```
 
-> A 200 status response looks like this:
+> A 201 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "e01afda9-400d-43a4-9bdc-f3e9ea92b79b",
+    "id": "e9d4b5a0-a28b-48da-b3fe-bdb4b45482b5",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-01-15T09:17:11+00:00",
-      "updated_at": "2024-01-15T09:17:11+00:00",
-      "name": "Additional information",
+      "created_at": "2024-01-22T09:22:58+00:00",
+      "updated_at": "2024-01-22T09:22:58+00:00",
+      "name": "Mobile number",
       "item_type": "field",
-      "default_property_id": "ac5f79bd-f488-4d8b-8982-b46c5e242952",
+      "default_property_id": "ad911b55-b2f2-4c2a-b8dc-d92ec0cfaf24",
       "tooltip": null,
       "required": false,
       "position": null,
@@ -284,7 +284,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/checkout_items/{id}`
+`POST /api/boomerang/checkout_items`
 
 ### Request params
 
@@ -333,14 +333,14 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "cc008df3-ec60-458e-a057-bd393d6c2556",
+      "id": "82eb1177-533a-4276-97a8-60c66483a66a",
       "type": "checkout_items",
       "attributes": {
-        "created_at": "2024-01-15T09:17:12+00:00",
-        "updated_at": "2024-01-15T09:17:12+00:00",
+        "created_at": "2024-01-22T09:22:59+00:00",
+        "updated_at": "2024-01-22T09:22:59+00:00",
         "name": "Checkout item 5",
         "item_type": "field",
-        "default_property_id": "410e76ed-df3e-44c6-8546-cde9b1ee8efa",
+        "default_property_id": "251e7b2d-cef2-4b4b-bf91-d5059d4b5606",
         "tooltip": null,
         "required": false,
         "position": null,
@@ -352,7 +352,7 @@ This request does not accept any includes
       "relationships": {
         "default_property": {
           "links": {
-            "related": "api/boomerang/default_properties/410e76ed-df3e-44c6-8546-cde9b1ee8efa"
+            "related": "api/boomerang/default_properties/251e7b2d-cef2-4b4b-bf91-d5059d4b5606"
           }
         }
       }
