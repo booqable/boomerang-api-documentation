@@ -272,9 +272,9 @@ Allowed attribute keys:
 *None*
 
 ## Endpoints
-`GET /api/boomerang/operations/{id}`
-
 `GET /api/boomerang/operations`
+
+`GET /api/boomerang/operations/{id}`
 
 `POST /api/boomerang/operations`
 
@@ -305,76 +305,6 @@ Name | Description
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
-## Fetching an operation
-
-
-
-> How to fetch an operation:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/40cebf53-88d8-4cf5-a7b4-ad6c08823219' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "40cebf53-88d8-4cf5-a7b4-ad6c08823219",
-    "type": "operations",
-    "attributes": {
-      "created_at": "2024-01-22T09:16:58+00:00",
-      "updated_at": "2024-01-22T09:16:58+00:00",
-      "status": "scheduled",
-      "status_message": null,
-      "finished_at": null,
-      "description": null,
-      "artifact": {
-        "url": null
-      },
-      "error_data": [],
-      "error_count": 0,
-      "employee_id": "23375e4c-e35f-42cf-a6e2-34f793890cfc"
-    },
-    "relationships": {
-      "employee": {
-        "links": {
-          "related": "api/boomerang/employees/23375e4c-e35f-42cf-a6e2-34f793890cfc"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/operations/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`employee`
-
-
-
-
-
-
 ## Listing operations
 
 
@@ -393,11 +323,11 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "d1b459ca-c12d-441b-b23c-4b322d34f684",
+      "id": "b38f4cda-5003-4a63-a627-73fdd5478c43",
       "type": "operations",
       "attributes": {
-        "created_at": "2024-01-22T09:16:59+00:00",
-        "updated_at": "2024-01-22T09:16:59+00:00",
+        "created_at": "2024-01-29T09:20:49+00:00",
+        "updated_at": "2024-01-29T09:20:49+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -407,12 +337,12 @@ This request accepts the following includes:
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "ac723d56-b98b-4b4d-8d47-0bc9b24c7cc3"
+        "employee_id": "1c75b4cf-2c09-4810-8bd7-588d48a0b99e"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/ac723d56-b98b-4b4d-8d47-0bc9b24c7cc3"
+            "related": "api/boomerang/employees/1c75b4cf-2c09-4810-8bd7-588d48a0b99e"
           }
         }
       }
@@ -475,6 +405,76 @@ This request accepts the following includes:
 
 
 
+## Fetching an operation
+
+
+
+> How to fetch an operation:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/operations/ad004f23-4a9f-4ab4-985a-63c4451b3e7a' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "ad004f23-4a9f-4ab4-985a-63c4451b3e7a",
+    "type": "operations",
+    "attributes": {
+      "created_at": "2024-01-29T09:20:49+00:00",
+      "updated_at": "2024-01-29T09:20:49+00:00",
+      "status": "scheduled",
+      "status_message": null,
+      "finished_at": null,
+      "description": null,
+      "artifact": {
+        "url": null
+      },
+      "error_data": [],
+      "error_count": 0,
+      "employee_id": "b711b00d-76c6-467e-bf4e-c72175696d1c"
+    },
+    "relationships": {
+      "employee": {
+        "links": {
+          "related": "api/boomerang/employees/b711b00d-76c6-467e-bf4e-c72175696d1c"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/operations/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`employee`
+
+
+
+
+
+
 ## Creating an operation
 
 When creating an operation, it will start running in the background. With the `id` provided in the response, you can poll the `operations/{id}` endpoint to check its status.
@@ -509,11 +509,11 @@ When creating an operation, it will start running in the background. With the `i
 ```json
   {
   "data": {
-    "id": "0ff7bbdc-d48e-469c-b59c-730f6bb0c87c",
+    "id": "db1321c4-2cc7-4835-a3db-e8e8c50b93e2",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-01-22T09:16:59+00:00",
-      "updated_at": "2024-01-22T09:16:59+00:00",
+      "created_at": "2024-01-29T09:20:50+00:00",
+      "updated_at": "2024-01-29T09:20:50+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -523,7 +523,7 @@ When creating an operation, it will start running in the background. With the `i
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "c2f4531a-5e5f-4c90-9aab-7077c27b4a72"
+      "employee_id": "fa28da2f-cad2-45f1-9e05-aad0492da53f"
     },
     "relationships": {
       "employee": {

@@ -19,15 +19,15 @@ Note that lines can only be created for orders. On invoices, lines are automatic
 Nested lines contain information about individual items in a bundle; for these lines, the quantity and price information can not be updated directly but should be updated through the parent line instead.
 
 ## Endpoints
-`POST /api/boomerang/lines`
-
-`DELETE /api/boomerang/lines/{id}`
-
 `PUT /api/boomerang/lines/{id}`
+
+`GET /api/boomerang/lines/{id}`
 
 `GET /api/boomerang/lines`
 
-`GET /api/boomerang/lines/{id}`
+`POST /api/boomerang/lines`
+
+`DELETE /api/boomerang/lines/{id}`
 
 ## Fields
 Every line has the following fields:
@@ -79,6 +79,532 @@ Name | Description
 `owner` | **Order**<br>Associated Owner
 
 
+## Updating a line
+
+Change information, pricing, or increase the quantity of a line. Note that when updating the quantity of a line associated with a planning, the quantity of the planninig will also be updated, which may result in a shortage error.
+
+Order totals are automatically re-calculated after updating a line and an invoice sync will be triggered if changes are relevant.
+
+
+> How to update a line:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/lines/dddb4d7b-cbe2-4aa8-ba16-7a55fca67212' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "dddb4d7b-cbe2-4aa8-ba16-7a55fca67212",
+        "type": "lines",
+        "attributes": {
+          "price_each_in_cents": 1000
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "dddb4d7b-cbe2-4aa8-ba16-7a55fca67212",
+    "type": "lines",
+    "attributes": {
+      "created_at": "2024-01-29T09:21:30+00:00",
+      "updated_at": "2024-01-29T09:21:31+00:00",
+      "archived": false,
+      "archived_at": null,
+      "title": "Macbook Pro",
+      "extra_information": "Comes with a mouse",
+      "quantity": 1,
+      "original_price_each_in_cents": 72500,
+      "original_charge_length": null,
+      "original_charge_label": null,
+      "price_each_in_cents": 1000,
+      "price_in_cents": 1000,
+      "position": 1,
+      "charge_label": "29 days",
+      "charge_length": 2505600,
+      "price_rule_values": null,
+      "discountable": true,
+      "taxable": true,
+      "line_type": "charge",
+      "relevant": true,
+      "order_id": "0107ccbc-54ba-434c-8577-71be93d9090b",
+      "item_id": "15153912-a2e4-4026-8595-378d4b517c00",
+      "tax_category_id": "1006f64e-a061-4f11-8a04-4bdd4072aedf",
+      "planning_id": "a68f08bb-2298-4263-868d-1b08a7069938",
+      "parent_line_id": null,
+      "owner_id": "0107ccbc-54ba-434c-8577-71be93d9090b",
+      "owner_type": "orders"
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "item": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_category": {
+        "meta": {
+          "included": false
+        }
+      },
+      "planning": {
+        "meta": {
+          "included": false
+        }
+      },
+      "parent_line": {
+        "meta": {
+          "included": false
+        }
+      },
+      "nested_lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "owner": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/lines/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner,tax_category,planning`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][title]` | **String** <br>Title of the line
+`data[attributes][extra_information]` | **String** <br>Extra information about the line
+`data[attributes][quantity]` | **Integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
+`data[attributes][original_charge_label]` | **String** <br>The original charge label of the product (without price rule adjustments)
+`data[attributes][price_each_in_cents]` | **Integer** <br>Price of each line
+`data[attributes][position]` | **Integer** <br>Which position the line has
+`data[attributes][charge_label]` | **String** <br>Charge label
+`data[attributes][charge_length]` | **Integer** <br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
+`data[attributes][discountable]` | **Boolean** <br>Whether line is discountable
+`data[attributes][taxable]` | **Boolean** <br>Whether line is taxable
+`data[attributes][line_type]` | **String** <br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
+`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating quantity on a line
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
+`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
+`data[attributes][owner_type]` | **String** <br>One of `orders`, `documents`, `carts`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+`tax_category`
+
+
+`planning` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+
+
+
+
+## Fetching a line
+
+
+
+> How to fetch a line:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/lines/06b6a4e2-5722-4c50-8475-aaa83cb8ce2e' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "06b6a4e2-5722-4c50-8475-aaa83cb8ce2e",
+    "type": "lines",
+    "attributes": {
+      "created_at": "2024-01-29T09:21:33+00:00",
+      "updated_at": "2024-01-29T09:21:33+00:00",
+      "archived": false,
+      "archived_at": null,
+      "title": "Macbook Pro",
+      "extra_information": "Comes with a mouse",
+      "quantity": 1,
+      "original_price_each_in_cents": 72500,
+      "original_charge_length": null,
+      "original_charge_label": null,
+      "price_each_in_cents": 80250,
+      "price_in_cents": 80250,
+      "position": 1,
+      "charge_label": "29 days",
+      "charge_length": 2505600,
+      "price_rule_values": {
+        "charge": {
+          "from": "1980-04-02T00:00:00.000Z",
+          "till": "1980-05-01T00:00:00.000Z",
+          "adjustments": [
+            {
+              "name": "Pickup day"
+            },
+            {
+              "name": "Return day"
+            }
+          ]
+        },
+        "price": [
+          {
+            "name": "High-Season",
+            "charge_length": 1339200,
+            "multiplier": "0.2",
+            "price_in_cents": 7750,
+            "adjustments": [
+              {
+                "from": "1980-04-15T12:00:00.000Z",
+                "till": "1980-05-01T00:00:00.000Z",
+                "charge_length": 1339200,
+                "charge_label": "372 hours",
+                "price_in_cents": 7750
+              }
+            ],
+            "stacked": false
+          }
+        ]
+      },
+      "discountable": true,
+      "taxable": true,
+      "line_type": "charge",
+      "relevant": true,
+      "order_id": "8911fa63-849a-4500-a3b3-142b500e3fb5",
+      "item_id": "80e10110-2302-40b3-8a0e-bcb76a2fe7d7",
+      "tax_category_id": "aceca20f-f00c-4981-b6f5-d7c4dfa1f25a",
+      "planning_id": "b749aa0a-fdde-4516-99bb-3f0c9e65dfe8",
+      "parent_line_id": null,
+      "owner_id": "8911fa63-849a-4500-a3b3-142b500e3fb5",
+      "owner_type": "orders"
+    },
+    "relationships": {
+      "order": {
+        "links": {
+          "related": "api/boomerang/orders/8911fa63-849a-4500-a3b3-142b500e3fb5"
+        }
+      },
+      "item": {
+        "links": {
+          "related": "api/boomerang/items/80e10110-2302-40b3-8a0e-bcb76a2fe7d7"
+        }
+      },
+      "tax_category": {
+        "links": {
+          "related": "api/boomerang/tax_categories/aceca20f-f00c-4981-b6f5-d7c4dfa1f25a"
+        }
+      },
+      "planning": {
+        "links": {
+          "related": "api/boomerang/plannings/b749aa0a-fdde-4516-99bb-3f0c9e65dfe8"
+        }
+      },
+      "parent_line": {
+        "links": {
+          "related": null
+        }
+      },
+      "nested_lines": {
+        "links": {
+          "related": "api/boomerang/lines?filter[parent_line_id]=06b6a4e2-5722-4c50-8475-aaa83cb8ce2e"
+        }
+      },
+      "owner": {
+        "links": {
+          "related": "api/boomerang/orders/8911fa63-849a-4500-a3b3-142b500e3fb5"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/lines/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner,tax_category,parent_line`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+`tax_category`
+
+
+`parent_line`
+
+
+`nested_lines`
+
+
+`planning` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+
+
+
+
+## Listing lines
+
+
+
+> How to fetch a list of lines:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/lines' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "1ff3dc35-6657-42a8-af12-d257b3c97c5f",
+      "type": "lines",
+      "attributes": {
+        "created_at": "2024-01-29T09:21:37+00:00",
+        "updated_at": "2024-01-29T09:21:37+00:00",
+        "archived": false,
+        "archived_at": null,
+        "title": "Macbook Pro",
+        "extra_information": "Comes with a mouse",
+        "quantity": 1,
+        "original_price_each_in_cents": 72500,
+        "original_charge_length": null,
+        "original_charge_label": null,
+        "price_each_in_cents": 80250,
+        "price_in_cents": 80250,
+        "position": 1,
+        "charge_label": "29 days",
+        "charge_length": 2505600,
+        "price_rule_values": {
+          "charge": {
+            "from": "1980-04-02T00:00:00.000Z",
+            "till": "1980-05-01T00:00:00.000Z",
+            "adjustments": [
+              {
+                "name": "Pickup day"
+              },
+              {
+                "name": "Return day"
+              }
+            ]
+          },
+          "price": [
+            {
+              "name": "High-Season",
+              "charge_length": 1339200,
+              "multiplier": "0.2",
+              "price_in_cents": 7750,
+              "adjustments": [
+                {
+                  "from": "1980-04-15T12:00:00.000Z",
+                  "till": "1980-05-01T00:00:00.000Z",
+                  "charge_length": 1339200,
+                  "charge_label": "372 hours",
+                  "price_in_cents": 7750
+                }
+              ],
+              "stacked": false
+            }
+          ]
+        },
+        "discountable": true,
+        "taxable": true,
+        "line_type": "charge",
+        "relevant": true,
+        "order_id": "2666df69-411a-4d3e-ab97-e4545f6cda6f",
+        "item_id": "dc8a2180-3869-45bd-8895-696e34060bcc",
+        "tax_category_id": "6118bb1c-f0f8-46be-b22e-9d07a14f6071",
+        "planning_id": "1ae58486-53df-4313-9f0a-2a16befeeb1f",
+        "parent_line_id": null,
+        "owner_id": "2666df69-411a-4d3e-ab97-e4545f6cda6f",
+        "owner_type": "orders"
+      },
+      "relationships": {
+        "order": {
+          "links": {
+            "related": "api/boomerang/orders/2666df69-411a-4d3e-ab97-e4545f6cda6f"
+          }
+        },
+        "item": {
+          "links": {
+            "related": "api/boomerang/items/dc8a2180-3869-45bd-8895-696e34060bcc"
+          }
+        },
+        "tax_category": {
+          "links": {
+            "related": "api/boomerang/tax_categories/6118bb1c-f0f8-46be-b22e-9d07a14f6071"
+          }
+        },
+        "planning": {
+          "links": {
+            "related": "api/boomerang/plannings/1ae58486-53df-4313-9f0a-2a16befeeb1f"
+          }
+        },
+        "parent_line": {
+          "links": {
+            "related": null
+          }
+        },
+        "nested_lines": {
+          "links": {
+            "related": "api/boomerang/lines?filter[parent_line_id]=1ff3dc35-6657-42a8-af12-d257b3c97c5f"
+          }
+        },
+        "owner": {
+          "links": {
+            "related": "api/boomerang/orders/2666df69-411a-4d3e-ab97-e4545f6cda6f"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/lines`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner,tax_category,planning`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean** <br>`eq`
+`taxable` | **Boolean** <br>`eq`
+`line_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`relevant` | **Boolean** <br>`eq`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
+`item_id` | **Uuid** <br>`eq`, `not_eq`
+`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+`planning_id` | **Uuid** <br>`eq`, `not_eq`
+`parent_line_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_id` | **Uuid** <br>`eq`, `not_eq`
+`owner_type` | **String** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+`tax_category`
+
+
+`planning` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+
+
+
+
 ## Creating a line
 
 Lines created through this endpoint, so-called custom lines, can only have the type `charge` or `section`. They enable you to add charges and organization which are not managed automatically through [bookings](#bookings).
@@ -96,7 +622,7 @@ Order totals are automatically re-calculated after the creation of a new line an
       "data": {
         "type": "lines",
         "attributes": {
-          "owner_id": "57391e67-2c34-436b-83f7-71d08e8e02d8",
+          "owner_id": "ddeff9d2-4509-4b17-b4e6-9066c7f0b13c",
           "owner_type": "orders",
           "price_each_in_cents": 1000
         }
@@ -109,11 +635,11 @@ Order totals are automatically re-calculated after the creation of a new line an
 ```json
   {
   "data": {
-    "id": "74fab43d-9282-45d5-84ca-ebb20e7306c1",
+    "id": "41a1271f-7dd3-49a7-a5f5-9ae98194e656",
     "type": "lines",
     "attributes": {
-      "created_at": "2024-01-22T09:14:34+00:00",
-      "updated_at": "2024-01-22T09:14:34+00:00",
+      "created_at": "2024-01-29T09:21:40+00:00",
+      "updated_at": "2024-01-29T09:21:40+00:00",
       "archived": false,
       "archived_at": null,
       "title": null,
@@ -132,12 +658,12 @@ Order totals are automatically re-calculated after the creation of a new line an
       "taxable": true,
       "line_type": "charge",
       "relevant": true,
-      "order_id": "57391e67-2c34-436b-83f7-71d08e8e02d8",
+      "order_id": "ddeff9d2-4509-4b17-b4e6-9066c7f0b13c",
       "item_id": null,
       "tax_category_id": null,
       "planning_id": null,
       "parent_line_id": null,
-      "owner_id": "57391e67-2c34-436b-83f7-71d08e8e02d8",
+      "owner_id": "ddeff9d2-4509-4b17-b4e6-9066c7f0b13c",
       "owner_type": "orders"
     },
     "relationships": {
@@ -250,7 +776,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/lines/d157985f-a3e3-4ed8-bf91-48539e5e36a2' \
+    --url 'https://example.booqable.com/api/boomerang/lines/2aaa2c5c-3e3d-44f2-afb1-94d372de10c7' \
     --header 'content-type: application/json' \
 ```
 
@@ -278,528 +804,3 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a line
-
-Change information, pricing, or increase the quantity of a line. Note that when updating the quantity of a line associated with a planning, the quantity of the planninig will also be updated, which may result in a shortage error.
-
-Order totals are automatically re-calculated after updating a line and an invoice sync will be triggered if changes are relevant.
-
-
-> How to update a line:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/lines/26964325-d0c2-4e97-b6da-660bce38d416' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "26964325-d0c2-4e97-b6da-660bce38d416",
-        "type": "lines",
-        "attributes": {
-          "price_each_in_cents": 1000
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "26964325-d0c2-4e97-b6da-660bce38d416",
-    "type": "lines",
-    "attributes": {
-      "created_at": "2024-01-22T09:14:38+00:00",
-      "updated_at": "2024-01-22T09:14:39+00:00",
-      "archived": false,
-      "archived_at": null,
-      "title": "Macbook Pro",
-      "extra_information": "Comes with a mouse",
-      "quantity": 1,
-      "original_price_each_in_cents": 72500,
-      "original_charge_length": null,
-      "original_charge_label": null,
-      "price_each_in_cents": 1000,
-      "price_in_cents": 1000,
-      "position": 1,
-      "charge_label": "29 days",
-      "charge_length": 2505600,
-      "price_rule_values": null,
-      "discountable": true,
-      "taxable": true,
-      "line_type": "charge",
-      "relevant": true,
-      "order_id": "a67dac13-ead8-4682-9ddd-d5a5d9ecfe01",
-      "item_id": "9d3674dd-f7f8-46bd-8a35-5ae15457954c",
-      "tax_category_id": "80eb6ec0-edcb-4a56-95aa-715486b6004e",
-      "planning_id": "17432092-3085-4fde-991e-206d99db8775",
-      "parent_line_id": null,
-      "owner_id": "a67dac13-ead8-4682-9ddd-d5a5d9ecfe01",
-      "owner_type": "orders"
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "item": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_category": {
-        "meta": {
-          "included": false
-        }
-      },
-      "planning": {
-        "meta": {
-          "included": false
-        }
-      },
-      "parent_line": {
-        "meta": {
-          "included": false
-        }
-      },
-      "nested_lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "owner": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/lines/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner,tax_category,planning`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][title]` | **String** <br>Title of the line
-`data[attributes][extra_information]` | **String** <br>Extra information about the line
-`data[attributes][quantity]` | **Integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
-`data[attributes][original_charge_label]` | **String** <br>The original charge label of the product (without price rule adjustments)
-`data[attributes][price_each_in_cents]` | **Integer** <br>Price of each line
-`data[attributes][position]` | **Integer** <br>Which position the line has
-`data[attributes][charge_label]` | **String** <br>Charge label
-`data[attributes][charge_length]` | **Integer** <br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
-`data[attributes][discountable]` | **Boolean** <br>Whether line is discountable
-`data[attributes][taxable]` | **Boolean** <br>Whether line is taxable
-`data[attributes][line_type]` | **String** <br>One of `section`, `deposit_charge`, `proration`, `charge`, `refund`, `legacy_migration`
-`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating quantity on a line
-`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
-`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
-`data[attributes][owner_type]` | **String** <br>One of `orders`, `documents`, `carts`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-`tax_category`
-
-
-`planning` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
-
-
-## Listing lines
-
-
-
-> How to fetch a list of lines:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/lines' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "ad3fd30b-fd8e-42f7-8d36-b73695312b7a",
-      "type": "lines",
-      "attributes": {
-        "created_at": "2024-01-22T09:14:41+00:00",
-        "updated_at": "2024-01-22T09:14:41+00:00",
-        "archived": false,
-        "archived_at": null,
-        "title": "Macbook Pro",
-        "extra_information": "Comes with a mouse",
-        "quantity": 1,
-        "original_price_each_in_cents": 72500,
-        "original_charge_length": null,
-        "original_charge_label": null,
-        "price_each_in_cents": 80250,
-        "price_in_cents": 80250,
-        "position": 1,
-        "charge_label": "29 days",
-        "charge_length": 2505600,
-        "price_rule_values": {
-          "charge": {
-            "from": "1980-04-02T00:00:00.000Z",
-            "till": "1980-05-01T00:00:00.000Z",
-            "adjustments": [
-              {
-                "name": "Pickup day"
-              },
-              {
-                "name": "Return day"
-              }
-            ]
-          },
-          "price": [
-            {
-              "name": "High-Season",
-              "charge_length": 1339200,
-              "multiplier": "0.2",
-              "price_in_cents": 7750,
-              "adjustments": [
-                {
-                  "from": "1980-04-15T12:00:00.000Z",
-                  "till": "1980-05-01T00:00:00.000Z",
-                  "charge_length": 1339200,
-                  "charge_label": "372 hours",
-                  "price_in_cents": 7750
-                }
-              ],
-              "stacked": false
-            }
-          ]
-        },
-        "discountable": true,
-        "taxable": true,
-        "line_type": "charge",
-        "relevant": true,
-        "order_id": "0e483a52-e967-4b4f-8f9e-073f12c1a9a0",
-        "item_id": "9a40c33c-0138-438f-8007-38bf1df13e05",
-        "tax_category_id": "d809c15a-c17c-4aa2-99a6-c592b3b3f383",
-        "planning_id": "ebf1773b-691e-4779-a257-e5cae4af9f53",
-        "parent_line_id": null,
-        "owner_id": "0e483a52-e967-4b4f-8f9e-073f12c1a9a0",
-        "owner_type": "orders"
-      },
-      "relationships": {
-        "order": {
-          "links": {
-            "related": "api/boomerang/orders/0e483a52-e967-4b4f-8f9e-073f12c1a9a0"
-          }
-        },
-        "item": {
-          "links": {
-            "related": "api/boomerang/items/9a40c33c-0138-438f-8007-38bf1df13e05"
-          }
-        },
-        "tax_category": {
-          "links": {
-            "related": "api/boomerang/tax_categories/d809c15a-c17c-4aa2-99a6-c592b3b3f383"
-          }
-        },
-        "planning": {
-          "links": {
-            "related": "api/boomerang/plannings/ebf1773b-691e-4779-a257-e5cae4af9f53"
-          }
-        },
-        "parent_line": {
-          "links": {
-            "related": null
-          }
-        },
-        "nested_lines": {
-          "links": {
-            "related": "api/boomerang/lines?filter[parent_line_id]=ad3fd30b-fd8e-42f7-8d36-b73695312b7a"
-          }
-        },
-        "owner": {
-          "links": {
-            "related": "api/boomerang/orders/0e483a52-e967-4b4f-8f9e-073f12c1a9a0"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/lines`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner,tax_category,planning`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean** <br>`eq`
-`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discountable` | **Boolean** <br>`eq`
-`taxable` | **Boolean** <br>`eq`
-`line_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`relevant` | **Boolean** <br>`eq`
-`order_id` | **Uuid** <br>`eq`, `not_eq`
-`item_id` | **Uuid** <br>`eq`, `not_eq`
-`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
-`planning_id` | **Uuid** <br>`eq`, `not_eq`
-`parent_line_id` | **Uuid** <br>`eq`, `not_eq`
-`owner_id` | **Uuid** <br>`eq`, `not_eq`
-`owner_type` | **String** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-`tax_category`
-
-
-`planning` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
-
-
-## Fetching a line
-
-
-
-> How to fetch a line:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/lines/4b8dfe6c-20f2-4629-89f9-ab5155349a57' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "4b8dfe6c-20f2-4629-89f9-ab5155349a57",
-    "type": "lines",
-    "attributes": {
-      "created_at": "2024-01-22T09:14:45+00:00",
-      "updated_at": "2024-01-22T09:14:45+00:00",
-      "archived": false,
-      "archived_at": null,
-      "title": "Macbook Pro",
-      "extra_information": "Comes with a mouse",
-      "quantity": 1,
-      "original_price_each_in_cents": 72500,
-      "original_charge_length": null,
-      "original_charge_label": null,
-      "price_each_in_cents": 80250,
-      "price_in_cents": 80250,
-      "position": 1,
-      "charge_label": "29 days",
-      "charge_length": 2505600,
-      "price_rule_values": {
-        "charge": {
-          "from": "1980-04-02T00:00:00.000Z",
-          "till": "1980-05-01T00:00:00.000Z",
-          "adjustments": [
-            {
-              "name": "Pickup day"
-            },
-            {
-              "name": "Return day"
-            }
-          ]
-        },
-        "price": [
-          {
-            "name": "High-Season",
-            "charge_length": 1339200,
-            "multiplier": "0.2",
-            "price_in_cents": 7750,
-            "adjustments": [
-              {
-                "from": "1980-04-15T12:00:00.000Z",
-                "till": "1980-05-01T00:00:00.000Z",
-                "charge_length": 1339200,
-                "charge_label": "372 hours",
-                "price_in_cents": 7750
-              }
-            ],
-            "stacked": false
-          }
-        ]
-      },
-      "discountable": true,
-      "taxable": true,
-      "line_type": "charge",
-      "relevant": true,
-      "order_id": "60f4d16f-0b6b-4ced-bdb5-9272957f12c5",
-      "item_id": "04a6949f-097e-48dc-bf82-4c8b46b70931",
-      "tax_category_id": "762f8b15-1024-481b-bd51-46dde170240d",
-      "planning_id": "c9c5b1e8-9a89-42c8-b79c-f09788ea4efc",
-      "parent_line_id": null,
-      "owner_id": "60f4d16f-0b6b-4ced-bdb5-9272957f12c5",
-      "owner_type": "orders"
-    },
-    "relationships": {
-      "order": {
-        "links": {
-          "related": "api/boomerang/orders/60f4d16f-0b6b-4ced-bdb5-9272957f12c5"
-        }
-      },
-      "item": {
-        "links": {
-          "related": "api/boomerang/items/04a6949f-097e-48dc-bf82-4c8b46b70931"
-        }
-      },
-      "tax_category": {
-        "links": {
-          "related": "api/boomerang/tax_categories/762f8b15-1024-481b-bd51-46dde170240d"
-        }
-      },
-      "planning": {
-        "links": {
-          "related": "api/boomerang/plannings/c9c5b1e8-9a89-42c8-b79c-f09788ea4efc"
-        }
-      },
-      "parent_line": {
-        "links": {
-          "related": null
-        }
-      },
-      "nested_lines": {
-        "links": {
-          "related": "api/boomerang/lines?filter[parent_line_id]=4b8dfe6c-20f2-4629-89f9-ab5155349a57"
-        }
-      },
-      "owner": {
-        "links": {
-          "related": "api/boomerang/orders/60f4d16f-0b6b-4ced-bdb5-9272957f12c5"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/lines/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner,tax_category,parent_line`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-`tax_category`
-
-
-`parent_line`
-
-
-`nested_lines`
-
-
-`planning` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
-

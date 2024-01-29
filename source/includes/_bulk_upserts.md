@@ -24,7 +24,7 @@ Name | Description
 
 
 
-> How to create coupons in bulk:
+> How to create checkout fields in bulk:
 
 ```shell
   curl --request POST \
@@ -34,18 +34,14 @@ Name | Description
       "data": {
         "type": "bulk_upserts",
         "attributes": {
-          "type": "coupons",
+          "type": "checkout_fields",
           "data": [
             {
-              "identifier": "off",
-              "coupon_type": "percentage",
-              "value": 25,
-              "active": true
+              "default_property_id": "d8352f59-5fcb-46c3-8861-77ee4eabc53d"
             },
             {
-              "identifier": "summer-22",
-              "coupon_type": "cents",
-              "value": 2200
+              "name": "Delivery address",
+              "default_property_id": "6a034f5c-63a9-462a-9a05-116f3c9ffdec"
             }
           ]
         },
@@ -59,7 +55,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "aab9fbc1-9214-5988-a53d-9bf12200a4e3",
+    "id": "5ebd3bc5-6d32-5235-9298-24b9b274e4c1",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -116,18 +112,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "63ab3312-2e9d-514f-9400-7c6fe88dcde2",
+    "id": "774c8ed5-93d3-5935-891d-47328049fab6",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "89c8f84d-e673-4c5c-a589-58c244fd5b5d"
+            "id": "a9687503-d687-439c-bb76-09509bede5f0"
           },
           {
             "type": "operating_rules",
-            "id": "065fe50f-a9d7-42b0-815b-cde4558def90"
+            "id": "128a6c15-8ec5-45a8-8d5d-277ccd2d3cce"
           }
         ]
       }
@@ -135,11 +131,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "89c8f84d-e673-4c5c-a589-58c244fd5b5d",
+      "id": "a9687503-d687-439c-bb76-09509bede5f0",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-01-22T09:17:34+00:00",
-        "updated_at": "2024-01-22T09:17:34+00:00",
+        "created_at": "2024-01-29T09:19:59+00:00",
+        "updated_at": "2024-01-29T09:19:59+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -150,11 +146,11 @@ Name | Description
       }
     },
     {
-      "id": "065fe50f-a9d7-42b0-815b-cde4558def90",
+      "id": "128a6c15-8ec5-45a8-8d5d-277ccd2d3cce",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-01-22T09:17:34+00:00",
-        "updated_at": "2024-01-22T09:17:34+00:00",
+        "created_at": "2024-01-29T09:19:59+00:00",
+        "updated_at": "2024-01-29T09:19:59+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -170,7 +166,7 @@ Name | Description
 ```
 
 
-> How to create checkout fields in bulk:
+> How to create coupons in bulk:
 
 ```shell
   curl --request POST \
@@ -180,14 +176,18 @@ Name | Description
       "data": {
         "type": "bulk_upserts",
         "attributes": {
-          "type": "checkout_fields",
+          "type": "coupons",
           "data": [
             {
-              "default_property_id": "7f9a4a8b-75c4-4964-a6ce-3e1fe45e0423"
+              "identifier": "off",
+              "coupon_type": "percentage",
+              "value": 25,
+              "active": true
             },
             {
-              "name": "Delivery address",
-              "default_property_id": "753309b3-16c2-40a9-b0ed-671ceb52ee32"
+              "identifier": "summer-22",
+              "coupon_type": "cents",
+              "value": 2200
             }
           ]
         },
@@ -201,7 +201,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ed0d25a2-4c2c-5bda-b466-bf69fe9cf947",
+    "id": "a2b3b833-d7da-5903-8471-002c7a76f276",
     "type": "bulk_upserts",
     "relationships": {
       "results": {

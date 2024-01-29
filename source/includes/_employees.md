@@ -54,7 +54,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/24941116-66a2-4dde-b8ab-0fa67b3d5f57' \
+    --url 'https://example.booqable.com/api/boomerang/employees/b7ed7967-1eb2-4d9e-aebd-cf98b2b72e45' \
     --header 'content-type: application/json' \
 ```
 
@@ -63,11 +63,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "24941116-66a2-4dde-b8ab-0fa67b3d5f57",
+    "id": "b7ed7967-1eb2-4d9e-aebd-cf98b2b72e45",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-01-22T09:15:11+00:00",
-      "updated_at": "2024-01-22T09:15:11+00:00",
+      "created_at": "2024-01-29T09:17:49+00:00",
+      "updated_at": "2024-01-29T09:17:49+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -120,69 +120,15 @@ This request does not accept any includes
 
 
 
-> How to set permissions:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/58ba4682-6a36-4dc3-a8f0-3f5532e523ee' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "58ba4682-6a36-4dc3-a8f0-3f5532e523ee",
-        "type": "employees",
-        "attributes": {
-          "permissions": [
-            "reports",
-            "settings"
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "58ba4682-6a36-4dc3-a8f0-3f5532e523ee",
-    "type": "employees",
-    "attributes": {
-      "created_at": "2024-01-22T09:15:12+00:00",
-      "updated_at": "2024-01-22T09:15:12+00:00",
-      "name": "John Doe",
-      "firstname": "John",
-      "lastname": "Doe",
-      "locale": null,
-      "email": "jane@doe.com",
-      "unconfirmed_email": null,
-      "active": true,
-      "owner": false,
-      "confirmed": true,
-      "time_to_confirm": 0,
-      "permissions": [
-        "reports",
-        "settings"
-      ],
-      "has_two_factor_autentication": false,
-      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
-    }
-  },
-  "meta": {}
-}
-```
-
-
 > How to update an employee:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/c5547926-b35a-42ab-8aa0-555b5ee33f6b' \
+    --url 'https://example.booqable.com/api/boomerang/employees/1c131be7-7fe5-4cd3-8088-e8222c7368a6' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c5547926-b35a-42ab-8aa0-555b5ee33f6b",
+        "id": "1c131be7-7fe5-4cd3-8088-e8222c7368a6",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -196,11 +142,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c5547926-b35a-42ab-8aa0-555b5ee33f6b",
+    "id": "1c131be7-7fe5-4cd3-8088-e8222c7368a6",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-01-22T09:15:13+00:00",
-      "updated_at": "2024-01-22T09:15:13+00:00",
+      "created_at": "2024-01-29T09:17:50+00:00",
+      "updated_at": "2024-01-29T09:17:50+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
@@ -234,15 +180,69 @@ This request does not accept any includes
 ```
 
 
+> How to set permissions:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/employees/5f5bc50d-6ad5-45ec-9696-9000509d6f2e' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "5f5bc50d-6ad5-45ec-9696-9000509d6f2e",
+        "type": "employees",
+        "attributes": {
+          "permissions": [
+            "reports",
+            "settings"
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "5f5bc50d-6ad5-45ec-9696-9000509d6f2e",
+    "type": "employees",
+    "attributes": {
+      "created_at": "2024-01-29T09:17:51+00:00",
+      "updated_at": "2024-01-29T09:17:51+00:00",
+      "name": "John Doe",
+      "firstname": "John",
+      "lastname": "Doe",
+      "locale": null,
+      "email": "jane@doe.com",
+      "unconfirmed_email": null,
+      "active": true,
+      "owner": false,
+      "confirmed": true,
+      "time_to_confirm": 0,
+      "permissions": [
+        "reports",
+        "settings"
+      ],
+      "has_two_factor_autentication": false,
+      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
+      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+    }
+  },
+  "meta": {}
+}
+```
+
+
 > How to de-activate an employee:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/8731a6dd-e227-453e-8424-d5fed26f0612' \
+    --url 'https://example.booqable.com/api/boomerang/employees/60054932-8391-4e44-88c7-55b9f5b99d27' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "8731a6dd-e227-453e-8424-d5fed26f0612",
+        "id": "60054932-8391-4e44-88c7-55b9f5b99d27",
         "type": "employees",
         "attributes": {
           "active": false
@@ -256,11 +256,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8731a6dd-e227-453e-8424-d5fed26f0612",
+    "id": "60054932-8391-4e44-88c7-55b9f5b99d27",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-01-22T09:15:13+00:00",
-      "updated_at": "2024-01-22T09:15:13+00:00",
+      "created_at": "2024-01-29T09:17:52+00:00",
+      "updated_at": "2024-01-29T09:17:52+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -347,11 +347,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "7cf2df76-25a9-4059-9f50-0d1abb986192",
+      "id": "51a541cc-5ea1-459a-b330-6f0ad1ac7704",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-01-22T09:15:14+00:00",
-        "updated_at": "2024-01-22T09:15:14+00:00",
+        "created_at": "2024-01-29T09:17:53+00:00",
+        "updated_at": "2024-01-29T09:17:53+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

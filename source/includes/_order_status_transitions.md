@@ -62,53 +62,6 @@ Name | Description
 
 
 
-> Revert a reserved Order to 'concept':
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_status_transitions",
-        "attributes": {
-          "order_id": "ecd794ea-8f91-41ac-a42c-38f30de3832f",
-          "transition_from": "reserved",
-          "transition_to": "concept",
-          "confirm_shortage": null,
-          "revert": true
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "0a34f3eb-5c40-5db2-9a47-1b7e47caca9e",
-    "type": "order_status_transitions",
-    "attributes": {
-      "order_id": "ecd794ea-8f91-41ac-a42c-38f30de3832f",
-      "transition_from": "reserved",
-      "transition_to": "concept",
-      "revert": true,
-      "confirm_shortage": null
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
 > Reserve a concept Order, and override the shortage warning:
 
 ```shell
@@ -119,7 +72,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "cb418477-8e5c-45f0-ac7c-436a47ab19ea",
+          "order_id": "8a572d15-afbd-49c6-89d4-4654964fa142",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": true,
@@ -134,10 +87,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "adfd44c4-3862-5c78-87cb-6942f83d2507",
+    "id": "75bc4db1-20e1-5046-9734-3857d242afa4",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "cb418477-8e5c-45f0-ac7c-436a47ab19ea",
+      "order_id": "8a572d15-afbd-49c6-89d4-4654964fa142",
       "transition_from": "concept",
       "transition_to": "reserved",
       "revert": null,
@@ -156,55 +109,6 @@ Name | Description
 ```
 
 
-> Reserve a concept Order, causing a shortage warning:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_status_transitions",
-        "attributes": {
-          "order_id": "ec42a46c-58d8-4cce-9520-0a420a1a442f",
-          "transition_from": "concept",
-          "transition_to": "reserved",
-          "confirm_shortage": null,
-          "revert": null
-        }
-      }
-    }'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "items_not_available",
-      "status": "422",
-      "title": "Items not available",
-      "detail": "One or more items are not available",
-      "meta": {
-        "warning": [
-          {
-            "reason": "shortage",
-            "item_id": "dc132977-b6c1-4b8d-8f67-4065954750a5",
-            "stock_count": 1,
-            "reserved": 0,
-            "needed": 2,
-            "shortage": 1
-          }
-        ],
-        "blocking": []
-      }
-    }
-  ]
-}
-```
-
-
 > Reserve a concept Order, causing a stock item specified error:
 
 ```shell
@@ -215,7 +119,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "2d744583-9f45-45f6-8fe7-9db6aa4301dc",
+          "order_id": "73fd651f-71a2-428f-9c66-d5e4a75ddf5b",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -240,18 +144,65 @@ Name | Description
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "1aa4fab8-eaba-4ce1-85ac-6d0965b20a66",
+            "item_id": "1d1d6f0d-02d5-4955-83e4-1ccbbc6d698a",
             "unavailable": [
-              "276159bb-686a-481d-b480-65ea4b42a4ac"
+              "6c81a02f-a0d4-43fb-a081-594e8a28495c"
             ],
             "available": [
-              "c73c014d-12ef-4dff-9c66-e8696183aa1b"
+              "9aecc4d5-a7c0-4414-b9b4-77844ae515dd"
             ]
           }
         ]
       }
     }
   ]
+}
+```
+
+
+> Save a new Order as concept:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_status_transitions",
+        "attributes": {
+          "order_id": "6bd7e7b1-9ccb-452e-847b-e276a582c59e",
+          "transition_from": "new",
+          "transition_to": "concept",
+          "confirm_shortage": null,
+          "revert": null
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "f7abfec9-a241-576d-b605-0f390835a0e6",
+    "type": "order_status_transitions",
+    "attributes": {
+      "order_id": "6bd7e7b1-9ccb-452e-847b-e276a582c59e",
+      "transition_from": "new",
+      "transition_to": "concept",
+      "revert": null,
+      "confirm_shortage": null
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
 }
 ```
 
@@ -266,7 +217,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "178fe0d1-8a70-4698-b1c0-b53a7f47daf0",
+          "order_id": "790310df-88a9-4945-a67c-0e30ce6bd615",
           "transition_from": "reserved",
           "transition_to": "archived",
           "confirm_shortage": null,
@@ -293,6 +244,104 @@ Name | Description
 ```
 
 
+> Reserve a concept Order, causing a shortage warning:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_status_transitions",
+        "attributes": {
+          "order_id": "414ce697-297d-4c5d-a715-18834de6eb59",
+          "transition_from": "concept",
+          "transition_to": "reserved",
+          "confirm_shortage": null,
+          "revert": null
+        }
+      }
+    }'
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "items_not_available",
+      "status": "422",
+      "title": "Items not available",
+      "detail": "One or more items are not available",
+      "meta": {
+        "warning": [
+          {
+            "reason": "shortage",
+            "item_id": "a6f278f0-fd04-4445-9697-53a109b53746",
+            "stock_count": 1,
+            "reserved": 0,
+            "needed": 2,
+            "shortage": 1
+          }
+        ],
+        "blocking": []
+      }
+    }
+  ]
+}
+```
+
+
+> Reserve a concept Order, causing a blocking shortage error:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_status_transitions",
+        "attributes": {
+          "order_id": "adaed3d9-b328-4852-9dd8-8d7e7cfab6ee",
+          "transition_from": "concept",
+          "transition_to": "reserved",
+          "confirm_shortage": null,
+          "revert": null
+        }
+      }
+    }'
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "items_not_available",
+      "status": "422",
+      "title": "Items not available",
+      "detail": "One or more items are not available",
+      "meta": {
+        "warning": [],
+        "blocking": [
+          {
+            "reason": "shortage",
+            "item_id": "5585fe04-e192-45e4-b5ef-4dc2fe5050c2",
+            "stock_count": 1,
+            "reserved": 0,
+            "needed": 2,
+            "shortage": 1
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+
 > Reserve a concept Order:
 
 ```shell
@@ -303,7 +352,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "77180c82-2b1a-4597-a774-c04cfdbf5afb",
+          "order_id": "8e64c4bd-25f5-4d9a-96d9-464d4c09b54d",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -318,10 +367,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "151e012c-1a44-50a2-af55-a0dc59450ec9",
+    "id": "27f03c61-20b2-547c-a78d-4b69307e24d8",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "77180c82-2b1a-4597-a774-c04cfdbf5afb",
+      "order_id": "8e64c4bd-25f5-4d9a-96d9-464d4c09b54d",
       "transition_from": "concept",
       "transition_to": "reserved",
       "revert": null,
@@ -340,7 +389,7 @@ Name | Description
 ```
 
 
-> Save a new Order as concept:
+> Revert a reserved Order to 'concept':
 
 ```shell
   curl --request POST \
@@ -350,11 +399,11 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "c4c80fc8-6180-4c10-b558-0da4b25fbc7e",
-          "transition_from": "new",
+          "order_id": "056a97cb-1a28-4df7-8064-53368770234a",
+          "transition_from": "reserved",
           "transition_to": "concept",
           "confirm_shortage": null,
-          "revert": null
+          "revert": true
         }
       }
     }'
@@ -365,13 +414,13 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f0222d66-b7d5-5c8e-a995-c020a1529dfd",
+    "id": "e901d44e-4212-5abf-8ed9-aa790c1626a8",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "c4c80fc8-6180-4c10-b558-0da4b25fbc7e",
-      "transition_from": "new",
+      "order_id": "056a97cb-1a28-4df7-8064-53368770234a",
+      "transition_from": "reserved",
       "transition_to": "concept",
-      "revert": null,
+      "revert": true,
       "confirm_shortage": null
     },
     "relationships": {
@@ -397,7 +446,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "a062135a-8110-4fc3-bf74-d21a2046aa5c",
+          "order_id": "eaa08385-c4a3-44c8-a1f9-d4e8dfbab3e9",
           "transition_from": "stopped",
           "transition_to": "archived",
           "confirm_shortage": null,
@@ -412,10 +461,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "40e10b36-b019-58ae-8164-8399c2bd3c83",
+    "id": "7344866a-0751-5df1-8c11-5d0e3bf48b7a",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "a062135a-8110-4fc3-bf74-d21a2046aa5c",
+      "order_id": "eaa08385-c4a3-44c8-a1f9-d4e8dfbab3e9",
       "transition_from": "stopped",
       "transition_to": "archived",
       "revert": null,
@@ -430,55 +479,6 @@ Name | Description
     }
   },
   "meta": {}
-}
-```
-
-
-> Reserve a concept Order, causing a blocking shortage error:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_status_transitions",
-        "attributes": {
-          "order_id": "f3fd9a83-ca24-4751-899b-74b65787e367",
-          "transition_from": "concept",
-          "transition_to": "reserved",
-          "confirm_shortage": null,
-          "revert": null
-        }
-      }
-    }'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "items_not_available",
-      "status": "422",
-      "title": "Items not available",
-      "detail": "One or more items are not available",
-      "meta": {
-        "warning": [],
-        "blocking": [
-          {
-            "reason": "shortage",
-            "item_id": "c105af62-7829-43d2-9f93-55c775818eb2",
-            "stock_count": 1,
-            "reserved": 0,
-            "needed": 2,
-            "shortage": 1
-          }
-        ]
-      }
-    }
-  ]
 }
 ```
 

@@ -57,6 +57,8 @@ Name | Description
 `medium` | **String** `readonly`<br>UTM medium present during signup
 `tenant_token` | **String** `readonly`<br>Token
 `pending_subscription` | **Boolean** `readonly`<br>Whether the company has a pending subscription
+`main_address_attributes` | **Hash** `writeonly`<br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
+`main_address` | **Hash** <br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information
 `in_europe` | **Boolean** `readonly`<br>Whether company is situated in europe
 `continent` | **String** `readonly`<br>Continent the company is situated
 `subscription` | **Hash** `readonly`<br>Details about the subscription
@@ -80,14 +82,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "302006b1-1bbb-4cfe-8fa7-7801009942d6",
+    "id": "e772f99d-814b-4ba8-8280-04e75d59713c",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-01-22T09:17:53+00:00",
-      "updated_at": "2024-01-22T09:17:53+00:00",
+      "created_at": "2024-01-29T09:14:59+00:00",
+      "updated_at": "2024-01-29T09:14:59+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail137@company.com",
+      "email": "mail44@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -121,8 +123,21 @@ Name | Description
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "a38cdb574c98f78d0bc8e5776fe3179e",
-      "pending_subscription": false
+      "tenant_token": "3d21b5cf84616098b9da84ee04d7b072",
+      "pending_subscription": false,
+      "main_address": {
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuispoort",
+        "address2": "Leeuwarden",
+        "city": "Leeuwarden",
+        "region": null,
+        "zipcode": "8900AB",
+        "country": "the Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+      }
     }
   },
   "meta": {}
@@ -193,11 +208,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2f45762a-4940-4f9a-ae3d-a6877ab02576",
+    "id": "62c922c8-342d-4ff7-b281-bc2300236d4d",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-02-05T09:17:56.649Z",
+        "trial_ends_at": "2024-02-12T09:15:00.034Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -284,7 +299,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "16dcba0e-7942-4e60-b30c-40e94292b8e1",
+        "id": "5fb651e3-6029-4471-a1f9-4dfb44e28d63",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -298,14 +313,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "16dcba0e-7942-4e60-b30c-40e94292b8e1",
+    "id": "5fb651e3-6029-4471-a1f9-4dfb44e28d63",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-01-22T09:17:57+00:00",
-      "updated_at": "2024-01-22T09:17:57+00:00",
+      "created_at": "2024-01-29T09:15:00+00:00",
+      "updated_at": "2024-01-29T09:15:01+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail139@company.com",
+      "email": "mail46@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -339,8 +354,21 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "e56630583a97d9c3300131456d0e2107",
-      "pending_subscription": false
+      "tenant_token": "6de36b0c54e5ef7aca951be852a4f250",
+      "pending_subscription": false,
+      "main_address": {
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuispoort",
+        "address2": "Leeuwarden",
+        "city": "Leeuwarden",
+        "region": null,
+        "zipcode": "8900AB",
+        "country": "the Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+      }
     }
   },
   "meta": {}
@@ -398,6 +426,8 @@ Name | Description
 `data[attributes][vat_number]` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
 `data[attributes][custom_domain]` | **String** <br>Custom domain to use for hosted store and checkout
 `data[attributes][shop_theme_id]` | **Uuid** <br>ID of installed shop theme
+`data[attributes][main_address_attributes]` | **Hash** <br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
+`data[attributes][main_address]` | **Hash** <br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information
 
 
 ### Includes

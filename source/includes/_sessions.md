@@ -58,16 +58,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "243d329e-a7d1-53b7-9b45-9a5eb193d835",
+    "id": "034ad3a3-9f41-5954-85df-5635b170af97",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-01-22T09:15:08+00:00",
-      "company_id": "677d6522-cf5e-49e0-9f40-5ebc2f7edfa5",
-      "employee_id": "3b789bf7-8c92-487e-a075-dfc248d530ca",
+      "updated_at": "2024-01-29T09:13:41+00:00",
+      "company_id": "72d89d24-f9de-4ffb-82ce-cf31eb4fe7a8",
+      "employee_id": "74cfbc72-d8af-46ae-8273-4062bef9ac40",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-01-22T09:15:08+00:00",
+      "notification_subscriptions_updated_at": "2024-01-29T09:13:41+00:00",
       "countries_updated_at": null
     },
     "relationships": {
@@ -77,7 +77,7 @@ Name | Description
         },
         "data": {
           "type": "companies",
-          "id": "677d6522-cf5e-49e0-9f40-5ebc2f7edfa5"
+          "id": "72d89d24-f9de-4ffb-82ce-cf31eb4fe7a8"
         }
       },
       "employee": {
@@ -86,7 +86,7 @@ Name | Description
         },
         "data": {
           "type": "employees",
-          "id": "3b789bf7-8c92-487e-a075-dfc248d530ca"
+          "id": "74cfbc72-d8af-46ae-8273-4062bef9ac40"
         }
       },
       "settings": {
@@ -102,14 +102,14 @@ Name | Description
   },
   "included": [
     {
-      "id": "677d6522-cf5e-49e0-9f40-5ebc2f7edfa5",
+      "id": "72d89d24-f9de-4ffb-82ce-cf31eb4fe7a8",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-01-22T09:15:08+00:00",
-        "updated_at": "2024-01-22T09:15:08+00:00",
-        "name": "Company name 42",
-        "slug": "company-name-42",
-        "email": "mail42@company.com",
+        "created_at": "2024-01-29T09:13:41+00:00",
+        "updated_at": "2024-01-29T09:13:41+00:00",
+        "name": "Company name 4",
+        "slug": "company-name-4",
+        "email": "mail4@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -143,10 +143,23 @@ Name | Description
         "years_active": null,
         "source": null,
         "medium": null,
-        "tenant_token": "fb427b9f96a1c9e450027e9dce5f3f02",
+        "tenant_token": "b00c7182fb4905d272132152ff206a40",
         "pending_subscription": false,
+        "main_address": {
+          "first_name": null,
+          "last_name": null,
+          "address1": "Blokhuispoort",
+          "address2": "Leeuwarden",
+          "city": "Leeuwarden",
+          "region": null,
+          "zipcode": "8900AB",
+          "country": "the Netherlands",
+          "country_id": null,
+          "province_id": null,
+          "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+        },
         "subscription": {
-          "trial_ends_at": "2024-02-05T09:15:08.026Z",
+          "trial_ends_at": "2024-02-12T09:13:41.681Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -202,11 +215,11 @@ Name | Description
       }
     },
     {
-      "id": "3b789bf7-8c92-487e-a075-dfc248d530ca",
+      "id": "74cfbc72-d8af-46ae-8273-4062bef9ac40",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-01-22T09:15:08+00:00",
-        "updated_at": "2024-01-22T09:15:08+00:00",
+        "created_at": "2024-01-29T09:13:41+00:00",
+        "updated_at": "2024-01-29T09:13:41+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -431,16 +444,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "12b8039e-8503-556b-9faf-506669eb3b63",
+    "id": "2d2ee3c5-7cbd-52f3-b5d5-2dbb91a257ea",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-01-22T09:21:24+00:00",
-      "company_id": "79c9fdbc-c8d9-4f7d-9f03-593af840b63a",
-      "employee_id": "75e54fa7-11a9-4d12-ad3e-c61f3b65c352",
-      "locations_updated_at": "2024-01-22T09:21:24+00:00",
-      "clusters_updated_at": "2024-01-22T09:21:24+00:00",
-      "default_properties_updated_at": "2024-01-22T09:21:24+00:00",
-      "notification_subscriptions_updated_at": "2024-01-22T09:21:24+00:00",
+      "updated_at": "2024-01-29T09:14:28+00:00",
+      "company_id": "aa3c10df-d636-4f85-89ad-59e47847b0de",
+      "employee_id": "c767558d-01cf-4b0e-a836-999e81257566",
+      "locations_updated_at": "2024-01-29T09:14:28+00:00",
+      "clusters_updated_at": "2024-01-29T09:14:28+00:00",
+      "default_properties_updated_at": "2024-01-29T09:14:28+00:00",
+      "notification_subscriptions_updated_at": "2024-01-29T09:14:28+00:00",
       "countries_updated_at": null
     },
     "relationships": {
