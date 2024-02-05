@@ -3,9 +3,9 @@
 A publication marks a moment from which all previously persisted Asstes in a Theme are released.
 
 ## Endpoints
-`GET /api/boomerang/publications`
-
 `POST /api/boomerang/publications`
+
+`GET /api/boomerang/publications`
 
 ## Fields
 Every publication has the following fields:
@@ -27,6 +27,88 @@ Name | Description
 `theme` | **Themes** `readonly`<br>Associated Theme
 
 
+## Creating a publication
+
+
+
+> How to create a new publication:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/publications' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "publications",
+        "attributes": {
+          "theme_id": "7093f187-ba6b-496c-acb5-326ae6714f0f"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "bbaf6f91-02e5-46e4-971e-165c85fb08d0",
+    "type": "publications",
+    "attributes": {
+      "created_at": "2024-01-31T09:16:38+00:00",
+      "updated_at": "2024-01-31T09:16:38+00:00",
+      "published_at": "2024-01-31T09:16:38+00:00",
+      "theme_id": "7093f187-ba6b-496c-acb5-326ae6714f0f"
+    },
+    "relationships": {
+      "theme": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/publications`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=theme,assets`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[publications]=created_at,updated_at,published_at`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][theme_id]` | **Uuid** <br>The associated Theme
+
+
+### Includes
+
+This request accepts the following includes:
+
+`theme`
+
+
+`assets`
+
+
+
+
+
+
 ## Listing publications
 
 
@@ -45,18 +127,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "bb5f9ab2-b3e8-4687-8ac6-c8b72d41e346",
+      "id": "41988aec-bf55-41e0-b67d-b08795bafbb3",
       "type": "publications",
       "attributes": {
-        "created_at": "2024-01-29T09:15:02+00:00",
-        "updated_at": "2024-01-29T09:15:02+00:00",
-        "published_at": "2024-01-24T09:15:02+00:00",
-        "theme_id": "10ea79df-c8a6-4238-af63-6b97a78a42b3"
+        "created_at": "2024-02-05T09:16:40+00:00",
+        "updated_at": "2024-02-05T09:16:40+00:00",
+        "published_at": "2024-01-31T09:16:40+00:00",
+        "theme_id": "e791795f-c9af-4ffd-8038-d4f6ee7ab631"
       },
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/10ea79df-c8a6-4238-af63-6b97a78a42b3"
+            "related": "api/boomerang/themes/e791795f-c9af-4ffd-8038-d4f6ee7ab631"
           }
         }
       }
@@ -112,88 +194,6 @@ Name | Description
 This request accepts the following includes:
 
 `theme`
-
-
-
-
-
-
-## Creating a publication
-
-
-
-> How to create a new publication:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/publications' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "publications",
-        "attributes": {
-          "theme_id": "bc4cc75c-5316-4638-bd6a-488ce5399f5b"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "a833a38a-dbff-4d1c-a991-0734fccbab15",
-    "type": "publications",
-    "attributes": {
-      "created_at": "2024-01-24T09:15:04+00:00",
-      "updated_at": "2024-01-24T09:15:04+00:00",
-      "published_at": "2024-01-24T09:15:04+00:00",
-      "theme_id": "bc4cc75c-5316-4638-bd6a-488ce5399f5b"
-    },
-    "relationships": {
-      "theme": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/publications`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=theme,assets`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[publications]=created_at,updated_at,published_at`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][theme_id]` | **Uuid** <br>The associated Theme
-
-
-### Includes
-
-This request accepts the following includes:
-
-`theme`
-
-
-`assets`
 
 
 

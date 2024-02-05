@@ -5,11 +5,11 @@ Allows you to leave notes attached to other resources.
 ## Endpoints
 `GET /api/boomerang/notes`
 
-`DELETE /api/boomerang/notes/{id}`
-
 `GET /api/boomerang/notes/{id}`
 
 `POST /api/boomerang/notes`
+
+`DELETE /api/boomerang/notes/{id}`
 
 ## Fields
 Every note has the following fields:
@@ -52,25 +52,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "9079ea9a-ed52-48a9-b22d-75a732c640e2",
+      "id": "02ac19d0-b3f1-44ea-b3c4-3dbdab7c57de",
       "type": "notes",
       "attributes": {
-        "created_at": "2024-01-29T09:21:27+00:00",
-        "updated_at": "2024-01-29T09:21:27+00:00",
+        "created_at": "2024-02-05T09:17:50+00:00",
+        "updated_at": "2024-02-05T09:17:50+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "191a495f-be78-4380-9d55-afeb510effed",
+        "owner_id": "2a7fddfc-b6b6-4039-bf5d-46cbf569862c",
         "owner_type": "customers",
-        "employee_id": "23c6f640-6b98-4c83-81d6-140c52d38d97"
+        "employee_id": "52e8ea46-7474-410c-9d9a-ed22ccea56c9"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/191a495f-be78-4380-9d55-afeb510effed"
+            "related": "api/boomerang/customers/2a7fddfc-b6b6-4039-bf5d-46cbf569862c"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/23c6f640-6b98-4c83-81d6-140c52d38d97"
+            "related": "api/boomerang/employees/52e8ea46-7474-410c-9d9a-ed22ccea56c9"
           }
         }
       }
@@ -136,42 +136,6 @@ This request accepts the following includes:
 
 
 
-## Deleting a note
-
-
-
-> How to delete a note:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/de2ff668-e72f-46c1-9b93-e377136c0253' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/notes/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
-
-
-### Includes
-
-This request does not accept any includes
 ## Fetching a note
 
 
@@ -180,7 +144,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/72a7efcc-e9aa-4b7b-b15d-25b3ee97707e' \
+    --url 'https://example.booqable.com/api/boomerang/notes/57da85f6-3246-40fc-a8a5-162a97fcec9a' \
     --header 'content-type: application/json' \
 ```
 
@@ -189,25 +153,25 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "72a7efcc-e9aa-4b7b-b15d-25b3ee97707e",
+    "id": "57da85f6-3246-40fc-a8a5-162a97fcec9a",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-01-29T09:21:28+00:00",
-      "updated_at": "2024-01-29T09:21:28+00:00",
+      "created_at": "2024-02-05T09:17:51+00:00",
+      "updated_at": "2024-02-05T09:17:51+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "16b07b1c-a506-4b0f-90b2-be002a5cecb5",
+      "owner_id": "d0689904-f59d-4134-a536-3cfcd70a475e",
       "owner_type": "customers",
-      "employee_id": "976257aa-4fbc-4ef0-a3e8-ec2459731dbd"
+      "employee_id": "fa1e5314-cd2f-493a-af97-6462691435fc"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/16b07b1c-a506-4b0f-90b2-be002a5cecb5"
+          "related": "api/boomerang/customers/d0689904-f59d-4134-a536-3cfcd70a475e"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/976257aa-4fbc-4ef0-a3e8-ec2459731dbd"
+          "related": "api/boomerang/employees/fa1e5314-cd2f-493a-af97-6462691435fc"
         }
       }
     }
@@ -256,7 +220,7 @@ This request accepts the following includes:
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "4c7b7f4b-f007-43fd-aff5-78e8db959b8a",
+          "owner_id": "454a3fb8-289b-4246-9715-e6e0b5f3ebb6",
           "owner_type": "customers"
         }
       }
@@ -268,15 +232,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f8346a9b-7f93-4de8-a075-1c9026c3051e",
+    "id": "7164a4bb-149d-4a7e-be12-d43603ef73c2",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-01-29T09:21:28+00:00",
-      "updated_at": "2024-01-29T09:21:28+00:00",
+      "created_at": "2024-02-05T09:17:52+00:00",
+      "updated_at": "2024-02-05T09:17:52+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "4c7b7f4b-f007-43fd-aff5-78e8db959b8a",
+      "owner_id": "454a3fb8-289b-4246-9715-e6e0b5f3ebb6",
       "owner_type": "customers",
-      "employee_id": "13d126bd-b14b-4070-b677-be3339c15f04"
+      "employee_id": "afa71578-2541-427f-b56e-c53ad85e847e"
     },
     "relationships": {
       "owner": {
@@ -330,3 +294,40 @@ This request accepts the following includes:
 
 
 
+
+## Deleting a note
+
+
+
+> How to delete a note:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/notes/6ad8e5c5-aae4-40c7-bf32-78476f01e3f8' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/notes/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
+
+
+### Includes
+
+This request does not accept any includes

@@ -11,9 +11,9 @@ Employees also allow you to streamline Booqable's interface for specific roles o
 ## Endpoints
 `GET /api/boomerang/employees/{id}`
 
-`PUT /api/boomerang/employees/{id}`
-
 `GET /api/boomerang/employees`
+
+`PUT /api/boomerang/employees/{id}`
 
 ## Fields
 Every employee has the following fields:
@@ -54,7 +54,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/b7ed7967-1eb2-4d9e-aebd-cf98b2b72e45' \
+    --url 'https://example.booqable.com/api/boomerang/employees/3877c7a1-b8ae-4c04-a276-4d729c83200d' \
     --header 'content-type: application/json' \
 ```
 
@@ -63,11 +63,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b7ed7967-1eb2-4d9e-aebd-cf98b2b72e45",
+    "id": "3877c7a1-b8ae-4c04-a276-4d729c83200d",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-01-29T09:17:49+00:00",
-      "updated_at": "2024-01-29T09:17:49+00:00",
+      "created_at": "2024-02-05T09:14:54+00:00",
+      "updated_at": "2024-02-05T09:14:54+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -116,219 +116,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating an employee
-
-
-
-> How to update an employee:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/1c131be7-7fe5-4cd3-8088-e8222c7368a6' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "1c131be7-7fe5-4cd3-8088-e8222c7368a6",
-        "type": "employees",
-        "attributes": {
-          "firstname": "Jane"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "1c131be7-7fe5-4cd3-8088-e8222c7368a6",
-    "type": "employees",
-    "attributes": {
-      "created_at": "2024-01-29T09:17:50+00:00",
-      "updated_at": "2024-01-29T09:17:50+00:00",
-      "name": "Jane Doe",
-      "firstname": "Jane",
-      "lastname": "Doe",
-      "locale": null,
-      "email": "jane@doe.com",
-      "unconfirmed_email": null,
-      "active": true,
-      "owner": false,
-      "confirmed": true,
-      "time_to_confirm": 0,
-      "permissions": [
-        "reports",
-        "products",
-        "settings",
-        "security_settings",
-        "account",
-        "exports",
-        "cancel_orders",
-        "revert_orders",
-        "delete_invoices",
-        "make_invoice_revisions",
-        "override_rental_period"
-      ],
-      "has_two_factor_autentication": false,
-      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to set permissions:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/5f5bc50d-6ad5-45ec-9696-9000509d6f2e' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "5f5bc50d-6ad5-45ec-9696-9000509d6f2e",
-        "type": "employees",
-        "attributes": {
-          "permissions": [
-            "reports",
-            "settings"
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "5f5bc50d-6ad5-45ec-9696-9000509d6f2e",
-    "type": "employees",
-    "attributes": {
-      "created_at": "2024-01-29T09:17:51+00:00",
-      "updated_at": "2024-01-29T09:17:51+00:00",
-      "name": "John Doe",
-      "firstname": "John",
-      "lastname": "Doe",
-      "locale": null,
-      "email": "jane@doe.com",
-      "unconfirmed_email": null,
-      "active": true,
-      "owner": false,
-      "confirmed": true,
-      "time_to_confirm": 0,
-      "permissions": [
-        "reports",
-        "settings"
-      ],
-      "has_two_factor_autentication": false,
-      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to de-activate an employee:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/60054932-8391-4e44-88c7-55b9f5b99d27' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "60054932-8391-4e44-88c7-55b9f5b99d27",
-        "type": "employees",
-        "attributes": {
-          "active": false
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "60054932-8391-4e44-88c7-55b9f5b99d27",
-    "type": "employees",
-    "attributes": {
-      "created_at": "2024-01-29T09:17:52+00:00",
-      "updated_at": "2024-01-29T09:17:52+00:00",
-      "name": "John Doe",
-      "firstname": "John",
-      "lastname": "Doe",
-      "locale": null,
-      "email": "jane@doe.com",
-      "unconfirmed_email": null,
-      "active": false,
-      "owner": false,
-      "confirmed": true,
-      "time_to_confirm": 0,
-      "permissions": [
-        "reports",
-        "products",
-        "settings",
-        "security_settings",
-        "account",
-        "exports",
-        "cancel_orders",
-        "revert_orders",
-        "delete_invoices",
-        "make_invoice_revisions",
-        "override_rental_period"
-      ],
-      "has_two_factor_autentication": false,
-      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/employees/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][firstname]` | **String** <br>First name of the employee
-`data[attributes][lastname]` | **String** <br>Last name of the employee
-`data[attributes][locale]` | **String** <br>Locale of the employee, used as application locale
-`data[attributes][email]` | **String** <br>Employee's e-mail address
-`data[attributes][current_password]` | **String** <br>Current password, needed to update password or email address
-`data[attributes][password]` | **String** <br>Set a new password
-`data[attributes][password_confirmation]` | **String** <br>Confirm new password
-`data[attributes][active]` | **Boolean** <br>Whether this employee is active (counts towards billing)
-`data[attributes][deactivated_at]` | **Datetime** <br>Employee deactivation date
-`data[attributes][permissions][]` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
-`data[attributes][avatar_base64]` | **String** <br>Base64 encoded avatar
-`data[attributes][remove_avatar]` | **Boolean** <br>Remove current avatar
-
-
-### Includes
-
-This request does not accept any includes
 ## Listing employees
 
 
@@ -347,11 +134,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "51a541cc-5ea1-459a-b330-6f0ad1ac7704",
+      "id": "ebaa0d39-e39c-4d89-971e-efde736e02ec",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-01-29T09:17:53+00:00",
-        "updated_at": "2024-01-29T09:17:53+00:00",
+        "created_at": "2024-02-05T09:14:55+00:00",
+        "updated_at": "2024-02-05T09:14:55+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -427,6 +214,219 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating an employee
+
+
+
+> How to set permissions:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/employees/179fba26-08e1-416f-b915-ef4a375d8990' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "179fba26-08e1-416f-b915-ef4a375d8990",
+        "type": "employees",
+        "attributes": {
+          "permissions": [
+            "reports",
+            "settings"
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "179fba26-08e1-416f-b915-ef4a375d8990",
+    "type": "employees",
+    "attributes": {
+      "created_at": "2024-02-05T09:14:55+00:00",
+      "updated_at": "2024-02-05T09:14:55+00:00",
+      "name": "John Doe",
+      "firstname": "John",
+      "lastname": "Doe",
+      "locale": null,
+      "email": "jane@doe.com",
+      "unconfirmed_email": null,
+      "active": true,
+      "owner": false,
+      "confirmed": true,
+      "time_to_confirm": 0,
+      "permissions": [
+        "reports",
+        "settings"
+      ],
+      "has_two_factor_autentication": false,
+      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
+      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to de-activate an employee:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/employees/15f171a5-b2f5-4d80-92e1-2818f3d7612b' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "15f171a5-b2f5-4d80-92e1-2818f3d7612b",
+        "type": "employees",
+        "attributes": {
+          "active": false
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "15f171a5-b2f5-4d80-92e1-2818f3d7612b",
+    "type": "employees",
+    "attributes": {
+      "created_at": "2024-02-05T09:14:56+00:00",
+      "updated_at": "2024-02-05T09:14:56+00:00",
+      "name": "John Doe",
+      "firstname": "John",
+      "lastname": "Doe",
+      "locale": null,
+      "email": "jane@doe.com",
+      "unconfirmed_email": null,
+      "active": false,
+      "owner": false,
+      "confirmed": true,
+      "time_to_confirm": 0,
+      "permissions": [
+        "reports",
+        "products",
+        "settings",
+        "security_settings",
+        "account",
+        "exports",
+        "cancel_orders",
+        "revert_orders",
+        "delete_invoices",
+        "make_invoice_revisions",
+        "override_rental_period"
+      ],
+      "has_two_factor_autentication": false,
+      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
+      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to update an employee:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/employees/5232ef51-795c-49a7-96e2-585f79ed6ca2' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "5232ef51-795c-49a7-96e2-585f79ed6ca2",
+        "type": "employees",
+        "attributes": {
+          "firstname": "Jane"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "5232ef51-795c-49a7-96e2-585f79ed6ca2",
+    "type": "employees",
+    "attributes": {
+      "created_at": "2024-02-05T09:14:57+00:00",
+      "updated_at": "2024-02-05T09:14:57+00:00",
+      "name": "Jane Doe",
+      "firstname": "Jane",
+      "lastname": "Doe",
+      "locale": null,
+      "email": "jane@doe.com",
+      "unconfirmed_email": null,
+      "active": true,
+      "owner": false,
+      "confirmed": true,
+      "time_to_confirm": 0,
+      "permissions": [
+        "reports",
+        "products",
+        "settings",
+        "security_settings",
+        "account",
+        "exports",
+        "cancel_orders",
+        "revert_orders",
+        "delete_invoices",
+        "make_invoice_revisions",
+        "override_rental_period"
+      ],
+      "has_two_factor_autentication": false,
+      "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
+      "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/employees/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][firstname]` | **String** <br>First name of the employee
+`data[attributes][lastname]` | **String** <br>Last name of the employee
+`data[attributes][locale]` | **String** <br>Locale of the employee, used as application locale
+`data[attributes][email]` | **String** <br>Employee's e-mail address
+`data[attributes][current_password]` | **String** <br>Current password, needed to update password or email address
+`data[attributes][password]` | **String** <br>Set a new password
+`data[attributes][password_confirmation]` | **String** <br>Confirm new password
+`data[attributes][active]` | **Boolean** <br>Whether this employee is active (counts towards billing)
+`data[attributes][deactivated_at]` | **Datetime** <br>Employee deactivation date
+`data[attributes][permissions][]` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
+`data[attributes][avatar_base64]` | **String** <br>Base64 encoded avatar
+`data[attributes][remove_avatar]` | **Boolean** <br>Remove current avatar
 
 
 ### Includes

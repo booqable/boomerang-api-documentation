@@ -12,9 +12,9 @@ The session tells you whether settings are changed since the last time they were
 When there's an ID mismatch, it's advised to fetch the session again and include `employee`, `company`, and `settings`. Default properties, clusters, and locations should be requested separately as they can be paginated.
 
 ## Endpoints
-`GET /api/boomerang/sessions/current`
-
 `GET /api/boomerang/sessions/{id}`
+
+`GET /api/boomerang/sessions/current`
 
 ## Fields
 Every session has the following fields:
@@ -41,6 +41,88 @@ Name | Description
 `settings` | **Settings** `readonly`<br>Associated Settings
 
 
+## Retreiving the session
+
+
+
+> How to retreive the session:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/sessions/current' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "3bb5340c-43ef-5b2f-ae79-79c7478fc64b",
+    "type": "sessions",
+    "attributes": {
+      "updated_at": "2024-02-05T09:16:51+00:00",
+      "company_id": "04523a46-3d24-4fad-8c4e-8ac647bbc581",
+      "employee_id": "487839e3-aafd-410a-8ad7-c394e94f6105",
+      "locations_updated_at": "2024-02-05T09:16:51+00:00",
+      "clusters_updated_at": "2024-02-05T09:16:51+00:00",
+      "default_properties_updated_at": "2024-02-05T09:16:51+00:00",
+      "notification_subscriptions_updated_at": "2024-02-05T09:16:51+00:00",
+      "countries_updated_at": null
+    },
+    "relationships": {
+      "company": {
+        "links": {
+          "related": "/api/boomerang/companies/current"
+        }
+      },
+      "employee": {
+        "links": {
+          "related": "/api/boomerang/employees/current"
+        }
+      },
+      "settings": {
+        "links": {
+          "related": "/api/boomerang/settings/current"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/sessions/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=employee,company,settings`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=company_id,employee_id,locations_updated_at`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`employee`
+
+
+`company`
+
+
+`settings`
+
+
+
+
+
+
 ## Fetching the session
 
 
@@ -58,16 +140,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "034ad3a3-9f41-5954-85df-5635b170af97",
+    "id": "c714124d-1ad3-5ea6-8b7c-a11ab0e89627",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-01-29T09:13:41+00:00",
-      "company_id": "72d89d24-f9de-4ffb-82ce-cf31eb4fe7a8",
-      "employee_id": "74cfbc72-d8af-46ae-8273-4062bef9ac40",
+      "updated_at": "2024-02-05T09:17:05+00:00",
+      "company_id": "2a997588-1b10-49ed-bd97-8ddd06f795cc",
+      "employee_id": "1fe2304d-2466-4936-94c1-2c13a834c2af",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-01-29T09:13:41+00:00",
+      "notification_subscriptions_updated_at": "2024-02-05T09:17:05+00:00",
       "countries_updated_at": null
     },
     "relationships": {
@@ -77,7 +159,7 @@ Name | Description
         },
         "data": {
           "type": "companies",
-          "id": "72d89d24-f9de-4ffb-82ce-cf31eb4fe7a8"
+          "id": "2a997588-1b10-49ed-bd97-8ddd06f795cc"
         }
       },
       "employee": {
@@ -86,7 +168,7 @@ Name | Description
         },
         "data": {
           "type": "employees",
-          "id": "74cfbc72-d8af-46ae-8273-4062bef9ac40"
+          "id": "1fe2304d-2466-4936-94c1-2c13a834c2af"
         }
       },
       "settings": {
@@ -102,18 +184,17 @@ Name | Description
   },
   "included": [
     {
-      "id": "72d89d24-f9de-4ffb-82ce-cf31eb4fe7a8",
+      "id": "2a997588-1b10-49ed-bd97-8ddd06f795cc",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-01-29T09:13:41+00:00",
-        "updated_at": "2024-01-29T09:13:41+00:00",
-        "name": "Company name 4",
-        "slug": "company-name-4",
-        "email": "mail4@company.com",
+        "created_at": "2024-02-05T09:17:05+00:00",
+        "updated_at": "2024-02-05T09:17:05+00:00",
+        "name": "Company name 122",
+        "slug": "company-name-122",
+        "email": "mail122@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
-        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
         "address_line_1": "Blokhuispoort",
         "address_line_2": "Leeuwarden",
         "zipcode": "8900AB",
@@ -143,8 +224,9 @@ Name | Description
         "years_active": null,
         "source": null,
         "medium": null,
-        "tenant_token": "b00c7182fb4905d272132152ff206a40",
+        "tenant_token": "d63e05e07e0449fb31ad14e1e9068bf5",
         "pending_subscription": false,
+        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
         "main_address": {
           "first_name": null,
           "last_name": null,
@@ -158,8 +240,9 @@ Name | Description
           "province_id": null,
           "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
         },
+        "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-02-12T09:13:41.681Z",
+          "trial_ends_at": "2024-02-19T09:17:05.077Z",
           "activated": false,
           "suspended": false,
           "canceled": false,
@@ -215,11 +298,11 @@ Name | Description
       }
     },
     {
-      "id": "74cfbc72-d8af-46ae-8273-4062bef9ac40",
+      "id": "1fe2304d-2466-4936-94c1-2c13a834c2af",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-01-29T09:13:41+00:00",
-        "updated_at": "2024-01-29T09:13:41+00:00",
+        "created_at": "2024-02-05T09:17:05+00:00",
+        "updated_at": "2024-02-05T09:17:05+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -399,88 +482,6 @@ Name | Description
 ### HTTP Request
 
 `GET /api/boomerang/sessions/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee,company,settings`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=company_id,employee_id,locations_updated_at`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`employee`
-
-
-`company`
-
-
-`settings`
-
-
-
-
-
-
-## Retreiving the session
-
-
-
-> How to retreive the session:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/sessions/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "2d2ee3c5-7cbd-52f3-b5d5-2dbb91a257ea",
-    "type": "sessions",
-    "attributes": {
-      "updated_at": "2024-01-29T09:14:28+00:00",
-      "company_id": "aa3c10df-d636-4f85-89ad-59e47847b0de",
-      "employee_id": "c767558d-01cf-4b0e-a836-999e81257566",
-      "locations_updated_at": "2024-01-29T09:14:28+00:00",
-      "clusters_updated_at": "2024-01-29T09:14:28+00:00",
-      "default_properties_updated_at": "2024-01-29T09:14:28+00:00",
-      "notification_subscriptions_updated_at": "2024-01-29T09:14:28+00:00",
-      "countries_updated_at": null
-    },
-    "relationships": {
-      "company": {
-        "links": {
-          "related": "/api/boomerang/companies/current"
-        }
-      },
-      "employee": {
-        "links": {
-          "related": "/api/boomerang/employees/current"
-        }
-      },
-      "settings": {
-        "links": {
-          "related": "/api/boomerang/settings/current"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/sessions/{id}`
 
 ### Request params
 

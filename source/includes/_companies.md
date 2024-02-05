@@ -21,7 +21,6 @@ Name | Description
 `billing_email` | **String** <br>Used to send billing emails to
 `phone` | **String** <br>Phone number
 `website` | **String** <br>Website
-`address` | **String** <br>The full address
 `address_line_1` | **String** <br>First address line
 `address_line_2` | **String** <br>Second address line
 `zipcode` | **String** <br>Zipcode
@@ -57,109 +56,17 @@ Name | Description
 `medium` | **String** `readonly`<br>UTM medium present during signup
 `tenant_token` | **String** `readonly`<br>Token
 `pending_subscription` | **Boolean** `readonly`<br>Whether the company has a pending subscription
+`address` | **String** `readonly`<br>The full address
 `main_address_attributes` | **Hash** `writeonly`<br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
-`main_address` | **Hash** <br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information
+`main_address` | **Hash** `readonly`<br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information
+`billing_address_attributes` | **Hash** `writeonly`<br>A hash with the company billing address fields. Use it when updating the company billing address. See `address` property type for more information
+`billing_address` | **Hash** `readonly`<br>A hash with the company billing address fields. Use it when fetching the company. See `address` property type for more information
 `in_europe` | **Boolean** `readonly`<br>Whether company is situated in europe
 `continent` | **String** `readonly`<br>Continent the company is situated
 `subscription` | **Hash** `readonly`<br>Details about the subscription
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
-## Fetching a company
-
-
-
-> How to fetch a companies:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "e772f99d-814b-4ba8-8280-04e75d59713c",
-    "type": "companies",
-    "attributes": {
-      "created_at": "2024-01-29T09:14:59+00:00",
-      "updated_at": "2024-01-29T09:14:59+00:00",
-      "name": "iRent",
-      "slug": "irent",
-      "email": "mail44@company.com",
-      "billing_email": null,
-      "phone": "0581234567",
-      "website": "www.booqable.com",
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
-      "address_line_1": "Blokhuispoort",
-      "address_line_2": "Leeuwarden",
-      "zipcode": "8900AB",
-      "city": "Leeuwarden",
-      "region": null,
-      "country": "the Netherlands",
-      "market": "AV / Camera",
-      "use_billing_address": false,
-      "billing_company": null,
-      "billing_address_line_1": null,
-      "billing_address_line_2": null,
-      "billing_address_zipcode": null,
-      "billing_address_city": null,
-      "billing_address_region": null,
-      "billing_address_country": null,
-      "logo_url": null,
-      "favicon_url": null,
-      "default_timezone": "UTC",
-      "currency": "usd",
-      "financial_line_1": "Blokhuispoort",
-      "financial_line_2": "Leeuwarden",
-      "vat_number": null,
-      "custom_domain": null,
-      "development": false,
-      "shop_theme_id": null,
-      "installed_online_store": false,
-      "years_active": null,
-      "source": null,
-      "medium": null,
-      "tenant_token": "3d21b5cf84616098b9da84ee04d7b072",
-      "pending_subscription": false,
-      "main_address": {
-        "first_name": null,
-        "last_name": null,
-        "address1": "Blokhuispoort",
-        "address2": "Leeuwarden",
-        "city": "Leeuwarden",
-        "region": null,
-        "zipcode": "8900AB",
-        "country": "the Netherlands",
-        "country_id": null,
-        "province_id": null,
-        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Fetching subscription details
 
 The subscription has the following fields:
@@ -208,11 +115,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "62c922c8-342d-4ff7-b281-bc2300236d4d",
+    "id": "8b045f6e-f967-4598-97b6-b32a15bcdf5f",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-02-12T09:15:00.034Z",
+        "trial_ends_at": "2024-02-19T09:17:44.021Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -287,25 +194,16 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a company
+## Fetching a company
 
 
 
-> How to update a company:
+> How to fetch a companies:
 
 ```shell
-  curl --request PUT \
+  curl --request GET \
     --url 'https://example.booqable.com/api/boomerang/companies/current' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "5fb651e3-6029-4471-a1f9-4dfb44e28d63",
-        "type": "companies",
-        "attributes": {
-          "name": "iRent LLC"
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -313,18 +211,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5fb651e3-6029-4471-a1f9-4dfb44e28d63",
+    "id": "a65aa4de-9797-4716-9e1d-486e278d97d3",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-01-29T09:15:00+00:00",
-      "updated_at": "2024-01-29T09:15:01+00:00",
-      "name": "iRent LLC",
+      "created_at": "2024-02-05T09:17:44+00:00",
+      "updated_at": "2024-02-05T09:17:45+00:00",
+      "name": "iRent",
       "slug": "irent",
-      "email": "mail46@company.com",
+      "email": "mail148@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "address_line_1": "Blokhuispoort",
       "address_line_2": "Leeuwarden",
       "zipcode": "8900AB",
@@ -354,8 +251,9 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "6de36b0c54e5ef7aca951be852a4f250",
+      "tenant_token": "74f2bb75b3caab8d92241d098c327335",
       "pending_subscription": false,
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
         "first_name": null,
         "last_name": null,
@@ -368,7 +266,113 @@ This request does not accept any includes
         "country_id": null,
         "province_id": null,
         "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+      },
+      "billing_address": null
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating a company
+
+
+
+> How to update a company:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "033bb0bf-db9a-4b48-99c3-a2e9180afcea",
+        "type": "companies",
+        "attributes": {
+          "name": "iRent LLC"
+        }
       }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "033bb0bf-db9a-4b48-99c3-a2e9180afcea",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2024-02-05T09:17:45+00:00",
+      "updated_at": "2024-02-05T09:17:45+00:00",
+      "name": "iRent LLC",
+      "slug": "irent",
+      "email": "mail149@company.com",
+      "billing_email": null,
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
+      "region": null,
+      "country": "the Netherlands",
+      "market": "AV / Camera",
+      "use_billing_address": false,
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "favicon_url": null,
+      "default_timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
+      "vat_number": null,
+      "custom_domain": null,
+      "development": false,
+      "shop_theme_id": null,
+      "installed_online_store": false,
+      "years_active": null,
+      "source": null,
+      "medium": null,
+      "tenant_token": "187d2addba819203bbd438ba23e0463d",
+      "pending_subscription": false,
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "main_address": {
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuispoort",
+        "address2": "Leeuwarden",
+        "city": "Leeuwarden",
+        "region": null,
+        "zipcode": "8900AB",
+        "country": "the Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+      },
+      "billing_address": null
     }
   },
   "meta": {}
@@ -399,7 +403,6 @@ Name | Description
 `data[attributes][billing_email]` | **String** <br>Used to send billing emails to
 `data[attributes][phone]` | **String** <br>Phone number
 `data[attributes][website]` | **String** <br>Website
-`data[attributes][address]` | **String** <br>The full address
 `data[attributes][address_line_1]` | **String** <br>First address line
 `data[attributes][address_line_2]` | **String** <br>Second address line
 `data[attributes][zipcode]` | **String** <br>Zipcode
@@ -427,7 +430,7 @@ Name | Description
 `data[attributes][custom_domain]` | **String** <br>Custom domain to use for hosted store and checkout
 `data[attributes][shop_theme_id]` | **Uuid** <br>ID of installed shop theme
 `data[attributes][main_address_attributes]` | **Hash** <br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
-`data[attributes][main_address]` | **Hash** <br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information
+`data[attributes][billing_address_attributes]` | **Hash** <br>A hash with the company billing address fields. Use it when updating the company billing address. See `address` property type for more information
 
 
 ### Includes
