@@ -25,9 +25,9 @@ as well as these adjustment strategies:
 - **percentage**: Applies `value` attribute to determine the percentage change to the pricing over the rule period. Used by `range_of_days`, `range_of_date` rule types.
 
 ## Endpoints
-`PUT /api/boomerang/price_rules/{id}`
-
 `DELETE /api/boomerang/price_rules/{id}`
+
+`PUT /api/boomerang/price_rules/{id}`
 
 `POST /api/boomerang/price_rules`
 
@@ -66,6 +66,42 @@ Name | Description
 `price_ruleset` | **Price rulesets** `readonly`<br>Associated Price ruleset
 
 
+## Archiving a price rule
+
+
+
+> How to archive a price ruleset:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/21a2aba6-a7f6-40a5-8095-c36e29dea098' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/price_rules/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
 ## Updating a price rule
 
 
@@ -74,11 +110,11 @@ Name | Description
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/218cb56f-7681-480e-9f9c-b0fbd759d1d1' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/9463f453-6859-462e-8147-2a3d73d39acb' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "218cb56f-7681-480e-9f9c-b0fbd759d1d1",
+        "id": "9463f453-6859-462e-8147-2a3d73d39acb",
         "type": "price_rules",
         "attributes": {
           "value": 10
@@ -92,11 +128,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "218cb56f-7681-480e-9f9c-b0fbd759d1d1",
+    "id": "9463f453-6859-462e-8147-2a3d73d39acb",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-02-05T09:14:03+00:00",
-      "updated_at": "2024-02-05T09:14:03+00:00",
+      "created_at": "2024-02-12T09:18:22+00:00",
+      "updated_at": "2024-02-12T09:18:22+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -113,7 +149,7 @@ Name | Description
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "b5fa299a-fb21-4717-8cbc-5b9aa4d9f894"
+      "price_ruleset_id": "7a30b06a-fd85-4435-a71b-a0bc0ea9adae"
     },
     "relationships": {
       "price_ruleset": {
@@ -132,14 +168,14 @@ Name | Description
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/4dbd9d3b-e919-4023-b462-8ca46ce598e0' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/d8e3691a-aa58-4a28-aeca-01f8612e5bc2' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "4dbd9d3b-e919-4023-b462-8ca46ce598e0",
+        "id": "d8e3691a-aa58-4a28-aeca-01f8612e5bc2",
         "type": "price_rules",
         "attributes": {
-          "id": "4dbd9d3b-e919-4023-b462-8ca46ce598e0",
+          "id": "d8e3691a-aa58-4a28-aeca-01f8612e5bc2",
           "name": "Off season"
         }
       }
@@ -151,11 +187,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4dbd9d3b-e919-4023-b462-8ca46ce598e0",
+    "id": "d8e3691a-aa58-4a28-aeca-01f8612e5bc2",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-02-05T09:14:04+00:00",
-      "updated_at": "2024-02-05T09:14:04+00:00",
+      "created_at": "2024-02-12T09:18:23+00:00",
+      "updated_at": "2024-02-12T09:18:23+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -172,7 +208,7 @@ Name | Description
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "6b345e13-a449-4306-bdca-3c0ff2623d8d"
+      "price_ruleset_id": "8fd1e77d-de2c-427d-b611-a0fd952a6983"
     },
     "relationships": {
       "price_ruleset": {
@@ -227,42 +263,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Archiving a price rule
-
-
-
-> How to archive a price ruleset:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/f9aa75b4-f768-4409-b578-b3626760180b' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/price_rules/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_rules]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Creating a price rule
 
 
@@ -277,13 +277,13 @@ This request does not accept any includes
       "data": {
         "type": "price_rules",
         "attributes": {
-          "price_ruleset_id": "61ba8b32-ab3d-4a8c-a9af-a097b1078278",
+          "price_ruleset_id": "9c710761-f6ae-4c5d-90d5-5e696024e82b",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "value": 25,
-          "from": "2024-01-05T09:14:07.245Z",
-          "till": "2024-03-05T09:14:07.245Z"
+          "from": "2024-01-12T09:18:23.586Z",
+          "till": "2024-03-12T09:18:23.586Z"
         }
       },
       "include": "price_rules"
@@ -295,18 +295,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "00b35b7e-3c4f-4424-b51f-7abbe5051b8a",
+    "id": "e18d3a5a-f496-474f-982d-bbb96889a9f9",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-02-05T09:14:07+00:00",
-      "updated_at": "2024-02-05T09:14:07+00:00",
+      "created_at": "2024-02-12T09:18:23+00:00",
+      "updated_at": "2024-02-12T09:18:23+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
       "adjustment_strategy": "percentage",
       "value": 25.0,
-      "from": "2024-01-05T09:14:07+00:00",
-      "till": "2024-03-05T09:14:07+00:00",
+      "from": "2024-01-12T09:18:23+00:00",
+      "till": "2024-03-12T09:18:23+00:00",
       "from_day": null,
       "till_day": null,
       "from_time": null,
@@ -316,7 +316,7 @@ This request does not accept any includes
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "61ba8b32-ab3d-4a8c-a9af-a097b1078278"
+      "price_ruleset_id": "9c710761-f6ae-4c5d-90d5-5e696024e82b"
     },
     "relationships": {
       "price_ruleset": {

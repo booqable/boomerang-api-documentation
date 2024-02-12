@@ -29,7 +29,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/device_tokens/129e87d0-0699-4fbb-85d1-1b0d8e0dca6b' \
+    --url 'https://example.booqable.com/api/boomerang/device_tokens/58b7f2b4-c61f-4147-8cdf-15fbaaa11fb9' \
     --header 'content-type: application/json' \
 ```
 
@@ -84,11 +84,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "10edbf3e-fdd2-415b-9914-f7aca1de0fb7",
+    "id": "0e6b0f9b-cd92-4c5f-bc3d-b69bbbb9bee4",
     "type": "device_tokens",
     "attributes": {
-      "created_at": "2024-02-05T09:14:02+00:00",
-      "updated_at": "2024-02-05T09:14:02+00:00",
+      "created_at": "2024-02-12T09:19:22+00:00",
+      "updated_at": "2024-02-12T09:19:22+00:00",
       "kind": "apn",
       "environment": "production",
       "version": 3
