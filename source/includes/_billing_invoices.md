@@ -3,9 +3,9 @@
 Invoices received from Booqable
 
 ## Endpoints
-`GET /api/boomerang/billing_invoices`
-
 `GET /api/boomerang/billing_invoices/{id}`
+
+`GET /api/boomerang/billing_invoices`
 
 ## Fields
 Every billing invoice has the following fields:
@@ -36,6 +36,69 @@ Name | Description
 `url` | **String** `readonly`<br>Url to view the invoice
 
 
+## Fetching billing invoice
+
+
+
+> How to fetch a billing invoice:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/bccf2b43-96aa-4a1e-8379-614e4e211eeb' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "bccf2b43-96aa-4a1e-8379-614e4e211eeb",
+    "type": "billing_invoices",
+    "attributes": {
+      "created_at": "2024-02-19T09:13:21+00:00",
+      "updated_at": "2024-02-19T09:13:21+00:00",
+      "number": 10002,
+      "status": "open",
+      "billing_reason": "subscription_cycle",
+      "strategy": "charge_automatically",
+      "date": null,
+      "period_start_at": null,
+      "period_end_at": null,
+      "subtotal_in_cents": 10000,
+      "total_in_cents": 10000,
+      "vat_in_cents": null,
+      "amount_due_in_cents": null,
+      "attempted": null,
+      "attempt_count": null,
+      "currency": null,
+      "starting_balance_in_cents": null,
+      "ending_balance_in_cents": null,
+      "next_payment_attempt_at": null,
+      "coupon": null,
+      "url": "http://billing.lvh.me:/invoices/fefb7190a84d652e9c099affbdceb66f/444c496219a937fa8091357d277c4b4f"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/billing_invoices/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[billing_invoices]=created_at,updated_at,number`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing billing invoices
 
 
@@ -54,11 +117,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0db62d21-b33e-445c-9572-5fea4dd4c4d7",
+      "id": "3ae90758-d39f-4919-a92c-7f2d2a4f9c75",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2024-02-12T09:14:48+00:00",
-        "updated_at": "2024-02-12T09:14:48+00:00",
+        "created_at": "2024-02-19T09:13:22+00:00",
+        "updated_at": "2024-02-19T09:13:22+00:00",
         "number": 10002,
         "status": "open",
         "billing_reason": "subscription_cycle",
@@ -77,7 +140,7 @@ Name | Description
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/144b6939819da26751daecacd61cf348/b0c2b6245297b9cd8610292275c9617f"
+        "url": "http://billing.lvh.me:/invoices/a14718c0b469481aade3465ae5519ad4/710c84d089c01b29032c5927fd22f43c"
       }
     }
   ],
@@ -128,69 +191,6 @@ Name | Description
 `total_in_cents` | **Array** <br>`sum`
 `vat_in_cents` | **Array** <br>`sum`
 `amount_due_in_cents` | **Array** <br>`sum`
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching billing invoice
-
-
-
-> How to fetch a billing invoice:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/56e56c51-cc49-4955-ad72-e8f404d7ae06' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "56e56c51-cc49-4955-ad72-e8f404d7ae06",
-    "type": "billing_invoices",
-    "attributes": {
-      "created_at": "2024-02-12T09:14:49+00:00",
-      "updated_at": "2024-02-12T09:14:49+00:00",
-      "number": 10002,
-      "status": "open",
-      "billing_reason": "subscription_cycle",
-      "strategy": "charge_automatically",
-      "date": null,
-      "period_start_at": null,
-      "period_end_at": null,
-      "subtotal_in_cents": 10000,
-      "total_in_cents": 10000,
-      "vat_in_cents": null,
-      "amount_due_in_cents": null,
-      "attempted": null,
-      "attempt_count": null,
-      "currency": null,
-      "starting_balance_in_cents": null,
-      "ending_balance_in_cents": null,
-      "next_payment_attempt_at": null,
-      "coupon": null,
-      "url": "http://billing.lvh.me:/invoices/b158f96839bba703619d59b22d82a492/137f14bb85e03fd88fb1b62cb650d4ac"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/billing_invoices/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[billing_invoices]=created_at,updated_at,number`
 
 
 ### Includes

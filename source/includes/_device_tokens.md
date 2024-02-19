@@ -3,9 +3,9 @@
 Use device tokens to register devices to receive push notifications.
 
 ## Endpoints
-`DELETE /api/boomerang/device_tokens/{id}`
-
 `POST /api/boomerang/device_tokens`
+
+`DELETE /api/boomerang/device_tokens/{id}`
 
 ## Fields
 Every device token has the following fields:
@@ -21,42 +21,6 @@ Name | Description
 `version` | **Integer** <br>The API version to use
 
 
-## Deleting a device_token
-
-
-
-> How to delete a device_token:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/device_tokens/58b7f2b4-c61f-4147-8cdf-15fbaaa11fb9' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/device_tokens/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[device_tokens]=created_at,updated_at,kind`
-
-
-### Includes
-
-This request does not accept any includes
 ## Creating a device_token
 
 
@@ -84,11 +48,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0e6b0f9b-cd92-4c5f-bc3d-b69bbbb9bee4",
+    "id": "760f7edb-6275-4164-b636-0172fa60f0f3",
     "type": "device_tokens",
     "attributes": {
-      "created_at": "2024-02-12T09:19:22+00:00",
-      "updated_at": "2024-02-12T09:19:22+00:00",
+      "created_at": "2024-02-19T09:13:52+00:00",
+      "updated_at": "2024-02-19T09:13:52+00:00",
       "kind": "apn",
       "environment": "production",
       "version": 3
@@ -121,6 +85,42 @@ Name | Description
 `data[attributes][kind]` | **String** <br>Kind of token. One of `apn`, `fcm`
 `data[attributes][environment]` | **String** <br>The enviroment to use. One of `development`, `production`
 `data[attributes][version]` | **Integer** <br>The API version to use
+
+
+### Includes
+
+This request does not accept any includes
+## Deleting a device_token
+
+
+
+> How to delete a device_token:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/device_tokens/92550444-e892-4ead-bac8-261d5bef7daa' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/device_tokens/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[device_tokens]=created_at,updated_at,kind`
 
 
 ### Includes

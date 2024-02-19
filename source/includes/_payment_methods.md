@@ -36,7 +36,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/07107f5e-0860-4500-a630-8c6cb97b952d' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/b8d75087-470d-48e1-9ef2-ec7c5f8f8f64' \
     --header 'content-type: application/json' \
 ```
 
@@ -82,11 +82,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "1e30b329-75dc-4cb1-8119-ca0c39a34ae6",
+      "id": "bc6cc100-eb26-47d0-a9b4-1b9d478adb50",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-02-12T09:13:25+00:00",
-        "updated_at": "2024-02-12T09:13:25+00:00",
+        "created_at": "2024-02-19T09:18:40+00:00",
+        "updated_at": "2024-02-19T09:18:40+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -95,12 +95,12 @@ This request does not accept any includes
           "last4": null
         },
         "payment_method_type": "creditcard",
-        "customer_id": null
+        "customer_id": "c695ddaf-c78b-4392-aff9-efaddb968ae0"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": null
+            "related": "api/boomerang/customers/c695ddaf-c78b-4392-aff9-efaddb968ae0"
           }
         }
       }

@@ -1,29 +1,43 @@
 # Operations
 
-Operations are long running tasks that support different actions like mutating data in bulk or generating artifacts (exports, reports, etc).
-Once an operation has been started, it cannot be paused or cancelled. It's status however is observable.
+Operations are long running tasks that are used to mutate data in bulk
+or to generate artifacts like exports or documents. Once an operation
+has been started it cannot be paused or cancelled. However, the status of an
+operation status can be requested.
 
-An operation required the `operation_data` object to be set during creation. It contains the params required for initiating an operation and is validated quite strictly. The structure of the object looks as follows:
+An operation requires the `operation_data` object to be set during creation.
+It contains the parameters required for initiating the operation and is validated
+strictly. The structure of the object is as follows:
 
 ```json
-{
+"operation_data": {
   "type": "<operation_type>",
   "data": { ... }
 }
 ```
 
-The operation type determines what kind of operation is initiated. The nested data object also has required keys, but depends a lot on the type of the operation.
+The operation type determines what kind of operation is started. The nested
+data object has required keys, depending on the type of the operation.
 
-The following types & data params are supported:
+The following operation types are supported:
 
-#### Archive
+  - `archive`
+  - `generate_barcode`
+  - `generate_document`
+  - `update_category`
+  - `update_tag`
+  - `export`
+  - `update`
 
-Only orders that have the status `stopped` can be archived. The target_ids with an invalid status will be ignored.
+## Archive
+
+Only orders that have the status `stopped` can be archived.
+Orders with any other status will be ignored.
 
 **Params**
 
 ```json
-{
+"operation_data": {
   "type": "archive",
   "data": {
     "target_type": "customers",
@@ -43,16 +57,16 @@ Only orders that have the status `stopped` can be archived. The target_ids with 
 
 **Artifact**
 
-*None*
+_No artifacts are generated when archiving._
 
-#### Generate Barcode
+## Generate Barcode
 
-Generates a barcode for all entities that are still missing one. Entities with existing barcodes are not modified and skipped.
+Generates a barcode for all entities that do not have a barcode. Entities that already have a barcode are skipped.
 
 **Params**
 
 ```json
-{
+"operation_data": {
   "type": "generate_barcode",
   "data": {
     "target_type": "customers",
@@ -60,32 +74,31 @@ Generates a barcode for all entities that are still missing one. Entities with e
       "123",
       "456"
     ],
-    "target_resource": "customers",
     "barcode_type": "code128"
   }
 }
 ```
 
-| Key                    | Type          | Possible values                                                | Description                                                                                                                              |
-|------------------------|---------------|----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `type`                 | String        | `generate_barcode`                                             | Required to start this specific operation.                                                                                               |
-| `data.target_type`     | String        | `customers`, 'product_groups'                                  | The type of resource that should be fitlered on. Note that for product groups barcodes are generated for either products or stock items. |
-| `data.for`             | String        | `stock_items`, 'products'                                      | The type of resource that should have its barcodes generated. Only one resource per operation is supported.                              |
-| `data.target_ids`      | Array\<Uuid\> | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                                                       |
-| `data.barcode_type`    | String        | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                                                                              |
+| Key                    | Type            | Possible values                                                | Description                                                                                              |
+|------------------------|-----------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `type`                 | String          | `generate_barcode`                                             | Required to start this specific operation.                                                               |
+| `data.target_type`     | String          | `customers`, `product_groups`                                  | The type of resource that barcodes should be generated for.                                              |
+| `data.for`             | String          | `stock_items`, `products`                                      | For `product_groups` only, this indicates whether to add barcodes to either `products` or `stock_items`. |
+| `data.target_ids`      | Array\<Uuid\>   | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                       |
+| `data.barcode_type`    | String          | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                                              |
 
 **Artifact**
 
-*None*
+_No artifacts are generated when generating barcodes._
 
-#### Generate Document
+## Generate Document
 
 Generates documents in bulk, either by a list of documents or all documents for specific orders.
 
 **Params**
 
 ```json
-{
+"operation_data":{
   "type": "generate_document",
   "data": {
     "target_type": "documents",
@@ -111,14 +124,14 @@ Generates documents in bulk, either by a list of documents or all documents for 
 
 A zip file with the generated documents of type <document_extension>.
 
-#### Update Category
+## Update Category
 
 Updates the categories associated to the entities by mutating them with the action. Other categories already associated to the entity are not modified.
 
 **Params**
 
 ```json
-{
+"operation_data": {
   "type": "update_category",
   "data": {
     "target_type": "product_groups",
@@ -145,16 +158,16 @@ Updates the categories associated to the entities by mutating them with the acti
 
 **Artifact**
 
-*None*
+_No artifacts are generated when updating categories._
 
-#### Update Tag
+## Update Tag
 
 Updates the tags associated to the entities by mutating them with the action.
 
 **Params**
 
 ```json
-{
+"operation_data": {
   "type": "update_tag",
   "data": {
     "target_type": "customers",
@@ -181,16 +194,16 @@ Updates the tags associated to the entities by mutating them with the action.
 
 **Artifact**
 
-*None*
+_No artifacts are generated when updating tags._
 
-#### Export
+## Export
 
-Exports data as csv
+Exports data as CSV.
 
 **Params**
 
 ```json
-{
+"operation_data": {
   "type": "export",
   "data": {
     "target_type": "customers",
@@ -204,22 +217,22 @@ Exports data as csv
 
 | Key                 | Type          | Possible values                                                                                                               | Description                                                                                                      |
 |---------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| `type`              | String        | `update_tag`                                                                                                                  | Required to start this specific operation.                                                                       |
+| `type`              | String        | `export`                                                                                                                      | Required to start this specific operation.                                                                       |
 | `data.target_type`  | String        | `product_groups`, `bundles`, `customers`, `orders`, `documents`, `report_rentals`, `report_consumables`, 'report_stock_items' | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
 | `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                                                                                                                | An array of primary keys for the entities that should have the associated tags updated.                          |
 
 **Artifact**
 
-A csv file containing the exported data
+A CSV file containing the exported data.
 
-#### Update
+## Update
 
 Updates the attribute of all the entities with the new value(s).
 
 **Params**
 
 ```json
-{
+"operation_data": {
   "type": "update",
   "data": {
     "target_type": "customers",
@@ -267,16 +280,16 @@ Allowed attribute keys:
 - `tax_region_id`
 - `discount_percentage`
 
-**Artifact**
+**Artifacts**
 
-*None*
+_No artifacts are generated when bullk updating resources._
 
 ## Endpoints
 `GET /api/boomerang/operations/{id}`
 
-`GET /api/boomerang/operations`
-
 `POST /api/boomerang/operations`
+
+`GET /api/boomerang/operations`
 
 ## Fields
 Every operation has the following fields:
@@ -313,7 +326,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/e92b2ea2-fc0b-4de5-8a70-b0b2f7f41e89' \
+    --url 'https://example.booqable.com/api/boomerang/operations/8a503d03-2510-42f1-9d06-855e6e129c22' \
     --header 'content-type: application/json' \
 ```
 
@@ -322,11 +335,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e92b2ea2-fc0b-4de5-8a70-b0b2f7f41e89",
+    "id": "8a503d03-2510-42f1-9d06-855e6e129c22",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-02-12T09:14:43+00:00",
-      "updated_at": "2024-02-12T09:14:43+00:00",
+      "created_at": "2024-02-19T09:20:09+00:00",
+      "updated_at": "2024-02-19T09:20:09+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -336,12 +349,12 @@ Name | Description
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "a171a9e2-f152-4367-8842-b6bcc8d8ca14"
+      "employee_id": "25444cba-c353-4383-9a6e-83e79020d0a5"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/a171a9e2-f152-4367-8842-b6bcc8d8ca14"
+          "related": "api/boomerang/employees/25444cba-c353-4383-9a6e-83e79020d0a5"
         }
       }
     }
@@ -375,6 +388,101 @@ This request accepts the following includes:
 
 
 
+## Creating an operation
+
+
+
+> How to create an operation:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/operations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "operations",
+        "attributes": {
+          "operation_data": {
+            "type": "archive",
+            "data": {
+              "target_type": "customers",
+              "target_ids": [
+                "123"
+              ]
+            }
+          }
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "4da299db-877d-4b70-8366-e22367ab2c30",
+    "type": "operations",
+    "attributes": {
+      "created_at": "2024-02-19T09:20:10+00:00",
+      "updated_at": "2024-02-19T09:20:10+00:00",
+      "status": "scheduled",
+      "status_message": null,
+      "finished_at": null,
+      "description": "Archiving customers",
+      "artifact": {
+        "url": null
+      },
+      "error_data": [],
+      "error_count": 0,
+      "employee_id": "07a9a5c7-5a11-4341-8687-fbb4cacabede"
+    },
+    "relationships": {
+      "employee": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/operations`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
+
+
+### Includes
+
+This request accepts the following includes:
+
+`employee`
+
+
+
+
+
+
 ## Listing operations
 
 
@@ -393,11 +501,11 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "50858955-a5ab-4e79-a766-009fdb3ea2c2",
+      "id": "eed00caf-d332-4f53-8bae-9912bbf1a904",
       "type": "operations",
       "attributes": {
-        "created_at": "2024-02-12T09:14:43+00:00",
-        "updated_at": "2024-02-12T09:14:43+00:00",
+        "created_at": "2024-02-19T09:20:15+00:00",
+        "updated_at": "2024-02-19T09:20:15+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -407,12 +515,12 @@ This request accepts the following includes:
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "ec641995-68e8-4b07-9140-809f49aae45a"
+        "employee_id": "404ec8f5-d484-4b04-a862-8cfc18bf0102"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/ec641995-68e8-4b07-9140-809f49aae45a"
+            "related": "api/boomerang/employees/404ec8f5-d484-4b04-a862-8cfc18bf0102"
           }
         }
       }
@@ -462,102 +570,6 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`employee`
-
-
-
-
-
-
-## Creating an operation
-
-When creating an operation, it will start running in the background. With the `id` provided in the response, you can poll the `operations/{id}` endpoint to check its status.
-
-
-> How to create an operation:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/operations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "operations",
-        "attributes": {
-          "operation_data": {
-            "type": "archive",
-            "data": {
-              "target_type": "customers",
-              "target_ids": [
-                "123"
-              ]
-            }
-          }
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "29434f1f-e907-41b6-8552-317b6a16fbb0",
-    "type": "operations",
-    "attributes": {
-      "created_at": "2024-02-12T09:14:44+00:00",
-      "updated_at": "2024-02-12T09:14:44+00:00",
-      "status": "scheduled",
-      "status_message": null,
-      "finished_at": null,
-      "description": "Archiving customers",
-      "artifact": {
-        "url": null
-      },
-      "error_data": [],
-      "error_count": 0,
-      "employee_id": "c1465ed0-d1a0-4a1e-853f-208b63f8ed47"
-    },
-    "relationships": {
-      "employee": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/operations`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
 
 
 ### Includes
