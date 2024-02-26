@@ -2100,6 +2100,29 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#webhook-endpoints" class="toc-h1 toc-link" data-title="Webhook endpoints" title="Webhook endpoints">Webhook endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#webhook-endpoints-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-endpoints-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-endpoints-listing-webhook-endpoints" class="toc-h2 toc-link" data-title="Listing webhook endpoints" title="Listing webhook endpoints">Listing webhook endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-endpoints-subscribing-to-webhook-events" class="toc-h2 toc-link" data-title="Subscribing to webhook events" title="Subscribing to webhook events">Subscribing to webhook events</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-endpoints-updating-webhook-events" class="toc-h2 toc-link" data-title="Updating webhook events" title="Updating webhook events">Updating webhook events</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-endpoints-unsubscribing-from-webhook-events" class="toc-h2 toc-link" data-title="Unsubscribing from webhook events" title="Unsubscribing from webhook events">Unsubscribing from webhook events</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -46153,6 +46176,350 @@ A company can &#39;install&#39; a theme from the available themes, this creates 
 </tr>
 </tbody></table>
 <h3 id='themes-listing-themes-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='webhook-endpoints'>Webhook endpoints</h1>
+<p>Webhook endpoints are used to notify your application when certain events occur in your Booqable account. You can use these events to trigger actions in your application, such as sending an email, updating a record, or creating a new record.</p>
+
+<p>You can listen to the following events:</p>
+
+<ul>
+<li>customer.created</li>
+<li>customer.updated</li>
+<li>customer.archived</li>
+<li>product_group.created</li>
+<li>product_group.updated</li>
+<li>product_group.archived</li>
+<li>product.created</li>
+<li>invoice.finalized</li>
+<li>order.updated</li>
+<li>order.saved_as_concept</li>
+<li>order.reserved</li>
+<li>order.started</li>
+<li>order.stopped</li>
+<li>payment.completed</li>
+<li>cart.completed_checkout</li>
+</ul>
+<h2 id='webhook-endpoints-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/webhook_endpoints</code></p>
+
+<p><code>POST /api/boomerang/webhook_endpoints</code></p>
+
+<p><code>PUT /api/boomerang/webhook_endpoints/{id}</code></p>
+
+<p><code>DELETE /api/boomerang/webhook_endpoints/{id}</code></p>
+<h2 id='webhook-endpoints-fields'>Fields</h2>
+<p>Every webhook endpoint has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><strong>String</strong> <br>The URL that will receive the webhook payload</td>
+</tr>
+<tr>
+<td><code>events</code></td>
+<td><strong>Array</strong> <br>The events that will trigger the webhook, any of <code>customer.created</code>, <code>customer.updated</code>, <code>customer.archived</code>, <code>product_group.created</code>, <code>product_group.updated</code>, <code>product_group.archived</code>, <code>product.created</code>, <code>invoice.finalized</code>, <code>order.updated</code>, <code>order.saved_as_concept</code>, <code>order.reserved</code>, <code>order.started</code>, <code>order.stopped</code>, <code>payment.completed</code>, <code>cart.completed_checkout</code></td>
+</tr>
+</tbody></table>
+<h2 id='webhook-endpoints-listing-webhook-endpoints'>Listing webhook endpoints</h2>
+<blockquote>
+<p>How to fetch a list of webhook endpoints:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/webhook_endpoints'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39909f29-2c95-498c-8ca2-86823c2a3d88"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-21T12:55:32+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-21T12:55:32+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/hooks"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"invoice.finalized"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='webhook-endpoints-listing-webhook-endpoints-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/webhook_endpoints</code></p>
+<h3 id='webhook-endpoints-listing-webhook-endpoints-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[webhook_endpoints]=created_at,updated_at,url</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-listing-webhook-endpoints-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-listing-webhook-endpoints-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-listing-webhook-endpoints-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='webhook-endpoints-subscribing-to-webhook-events'>Subscribing to webhook events</h2>
+<blockquote>
+<p>How to subscribe to webhook events:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/webhook_endpoints'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "webhook_endpoints",
+        "attributes": {
+          "url": "https://example.com/hooks",
+          "events": [
+            "customer.created",
+            "customer.updated"
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56a2f796-82c0-48e6-b103-f9d47ad41b45"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webhook_endpoints"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-21T12:55:33+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-21T12:55:33+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/hooks"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"customer.created"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"customer.updated"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='webhook-endpoints-subscribing-to-webhook-events-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/webhook_endpoints</code></p>
+<h3 id='webhook-endpoints-subscribing-to-webhook-events-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[webhook_endpoints]=created_at,updated_at,url</code></td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-subscribing-to-webhook-events-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][url]</code></td>
+<td><strong>String</strong> <br>The URL that will receive the webhook payload</td>
+</tr>
+<tr>
+<td><code>data[attributes][events][]</code></td>
+<td><strong>Array</strong> <br>The events that will trigger the webhook, any of <code>customer.created</code>, <code>customer.updated</code>, <code>customer.archived</code>, <code>product_group.created</code>, <code>product_group.updated</code>, <code>product_group.archived</code>, <code>product.created</code>, <code>invoice.finalized</code>, <code>order.updated</code>, <code>order.saved_as_concept</code>, <code>order.reserved</code>, <code>order.started</code>, <code>order.stopped</code>, <code>payment.completed</code>, <code>cart.completed_checkout</code></td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-subscribing-to-webhook-events-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='webhook-endpoints-updating-webhook-events'>Updating webhook events</h2>
+<blockquote>
+<p>How to update webhook events:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> PUT <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/webhook_endpoints/2c14d65f-0b46-490e-a082-a988b946ff15'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "webhook_endpoints",
+        "id": "2c14d65f-0b46-490e-a082-a988b946ff15",
+        "attributes": {
+          "url": "https://example.com/hooks",
+          "events": [
+            "customer.created"
+          ]
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c14d65f-0b46-490e-a082-a988b946ff15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webhook_endpoints"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-21T12:55:33+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-02-21T12:55:33+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/hooks"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"customer.created"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='webhook-endpoints-updating-webhook-events-http-request'>HTTP Request</h3>
+<p><code>PUT /api/boomerang/webhook_endpoints/{id}</code></p>
+<h3 id='webhook-endpoints-updating-webhook-events-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[webhook_endpoints]=created_at,updated_at,url</code></td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-updating-webhook-events-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][url]</code></td>
+<td><strong>String</strong> <br>The URL that will receive the webhook payload</td>
+</tr>
+<tr>
+<td><code>data[attributes][events][]</code></td>
+<td><strong>Array</strong> <br>The events that will trigger the webhook, any of <code>customer.created</code>, <code>customer.updated</code>, <code>customer.archived</code>, <code>product_group.created</code>, <code>product_group.updated</code>, <code>product_group.archived</code>, <code>product.created</code>, <code>invoice.finalized</code>, <code>order.updated</code>, <code>order.saved_as_concept</code>, <code>order.reserved</code>, <code>order.started</code>, <code>order.stopped</code>, <code>payment.completed</code>, <code>cart.completed_checkout</code></td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-updating-webhook-events-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='webhook-endpoints-unsubscribing-from-webhook-events'>Unsubscribing from webhook events</h2>
+<blockquote>
+<p>How to unsubscribe from webhook events:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> DELETE <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/webhook_endpoints/aa49b6b6-2a7c-478c-84b3-36ce33b32de8'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{}'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='webhook-endpoints-unsubscribing-from-webhook-events-http-request'>HTTP Request</h3>
+<p><code>DELETE /api/boomerang/webhook_endpoints/{id}</code></p>
+<h3 id='webhook-endpoints-unsubscribing-from-webhook-events-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[webhook_endpoints]=created_at,updated_at,url</code></td>
+</tr>
+</tbody></table>
+<h3 id='webhook-endpoints-unsubscribing-from-webhook-events-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 
       </div>
