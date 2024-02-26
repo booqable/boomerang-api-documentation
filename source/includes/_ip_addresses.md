@@ -5,13 +5,13 @@ Restrict access by specifying allowed IP addresses. IPv4 and IPv6 addresses are 
 ## Endpoints
 `GET /api/boomerang/ip_addresses`
 
-`DELETE /api/boomerang/ip_addresses/{id}`
-
-`PUT /api/boomerang/ip_addresses/{id}`
-
 `POST /api/boomerang/ip_addresses`
 
 `GET /api/boomerang/ip_addresses/{id}`
+
+`DELETE /api/boomerang/ip_addresses/{id}`
+
+`PUT /api/boomerang/ip_addresses/{id}`
 
 ## Fields
 Every ip address has the following fields:
@@ -43,11 +43,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "12b88750-bf99-4d5a-841d-2118afc63157",
+      "id": "6310545b-ea52-4e43-88bc-0f51cc9245bd",
       "type": "ip_addresses",
       "attributes": {
-        "created_at": "2024-02-19T09:18:12+00:00",
-        "updated_at": "2024-02-19T09:18:12+00:00",
+        "created_at": "2024-02-26T09:17:00+00:00",
+        "updated_at": "2024-02-26T09:17:00+00:00",
         "label": "John's home office",
         "address": "192.168.0.1"
       }
@@ -100,108 +100,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting restricted IP address
-
-
-
-> How to delete a restricted IP address:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/a43fd217-e1e4-4461-ba5c-1ef6ef29b71b' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/ip_addresses/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
-
-
-### Includes
-
-This request does not accept any includes
-## Updating restricted IP address
-
-
-
-> How to update a restricted IP address:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/cfceac1b-d7c9-4695-af24-8e77aa832184' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "cfceac1b-d7c9-4695-af24-8e77aa832184",
-        "type": "ip_addresses",
-        "attributes": {
-          "label": "Palo Alto office",
-          "address": "192.168.0.3"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "cfceac1b-d7c9-4695-af24-8e77aa832184",
-    "type": "ip_addresses",
-    "attributes": {
-      "created_at": "2024-02-19T09:18:13+00:00",
-      "updated_at": "2024-02-19T09:18:14+00:00",
-      "label": "Palo Alto office",
-      "address": "192.168.0.3"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/ip_addresses/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][label]` | **String** <br>Label for the restricted IP address.
-`data[attributes][address]` | **String** <br>Restricted IP address.
-
-
-### Includes
-
-This request does not accept any includes
 ## Creating restricted IP address
 
 
@@ -228,11 +126,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b47a3e8d-6cbd-49ae-bd6c-4c6e2054bffb",
+    "id": "1fbc4ba5-20ca-4566-ba41-9180d3abdc29",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2024-02-19T09:18:14+00:00",
-      "updated_at": "2024-02-19T09:18:14+00:00",
+      "created_at": "2024-02-26T09:17:00+00:00",
+      "updated_at": "2024-02-26T09:17:00+00:00",
       "label": "Leeuwarden office",
       "address": "192.168.0.2"
     }
@@ -275,7 +173,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/ip_addresses/d96a5da7-0fcd-4f58-ba3c-0ac6679bb96e' \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/4395868a-38f1-4617-aab2-5ca01868bbdf' \
     --header 'content-type: application/json' \
 ```
 
@@ -284,11 +182,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d96a5da7-0fcd-4f58-ba3c-0ac6679bb96e",
+    "id": "4395868a-38f1-4617-aab2-5ca01868bbdf",
     "type": "ip_addresses",
     "attributes": {
-      "created_at": "2024-02-19T09:18:15+00:00",
-      "updated_at": "2024-02-19T09:18:15+00:00",
+      "created_at": "2024-02-26T09:17:01+00:00",
+      "updated_at": "2024-02-26T09:17:01+00:00",
       "label": "John's home office",
       "address": "192.168.0.1"
     }
@@ -308,6 +206,108 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+
+
+### Includes
+
+This request does not accept any includes
+## Deleting restricted IP address
+
+
+
+> How to delete a restricted IP address:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/830009e4-41a1-49c0-b1a3-3d9617e75314' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/ip_addresses/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating restricted IP address
+
+
+
+> How to update a restricted IP address:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/ip_addresses/d633124f-ab43-4b68-bed3-7d9b1927444f' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "d633124f-ab43-4b68-bed3-7d9b1927444f",
+        "type": "ip_addresses",
+        "attributes": {
+          "label": "Palo Alto office",
+          "address": "192.168.0.3"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "d633124f-ab43-4b68-bed3-7d9b1927444f",
+    "type": "ip_addresses",
+    "attributes": {
+      "created_at": "2024-02-26T09:17:04+00:00",
+      "updated_at": "2024-02-26T09:17:04+00:00",
+      "label": "Palo Alto office",
+      "address": "192.168.0.3"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/ip_addresses/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][label]` | **String** <br>Label for the restricted IP address.
+`data[attributes][address]` | **String** <br>Restricted IP address.
 
 
 ### Includes

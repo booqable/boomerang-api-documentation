@@ -3,9 +3,9 @@
 Every action performed in a Booqable account is scoped to a company; A company holds information and configuration about an account.
 
 ## Endpoints
-`GET /api/boomerang/companies/current`
-
 `PUT /api/boomerang/companies/current`
+
+`GET /api/boomerang/companies/current`
 
 ## Fields
 Every company has the following fields:
@@ -67,230 +67,6 @@ Name | Description
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
-## Fetching a company
-
-
-
-> How to fetch a companies:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "e9227ecb-7cff-4988-9b64-f35dd887a13f",
-    "type": "companies",
-    "attributes": {
-      "created_at": "2024-02-19T09:21:25+00:00",
-      "updated_at": "2024-02-19T09:21:25+00:00",
-      "name": "iRent",
-      "slug": "irent",
-      "email": "mail260@company.com",
-      "billing_email": null,
-      "phone": "0581234567",
-      "website": "www.booqable.com",
-      "address_line_1": "Blokhuispoort",
-      "address_line_2": "Leeuwarden",
-      "zipcode": "8900AB",
-      "city": "Leeuwarden",
-      "region": null,
-      "country": "the Netherlands",
-      "market": "AV / Camera",
-      "use_billing_address": false,
-      "billing_company": null,
-      "billing_address_line_1": null,
-      "billing_address_line_2": null,
-      "billing_address_zipcode": null,
-      "billing_address_city": null,
-      "billing_address_region": null,
-      "billing_address_country": null,
-      "logo_url": null,
-      "favicon_url": null,
-      "default_timezone": "UTC",
-      "currency": "usd",
-      "financial_line_1": "Blokhuispoort",
-      "financial_line_2": "Leeuwarden",
-      "vat_number": null,
-      "custom_domain": null,
-      "development": false,
-      "shop_theme_id": null,
-      "installed_online_store": false,
-      "years_active": null,
-      "source": null,
-      "medium": null,
-      "tenant_token": "cfc1e4ed370dffc7979e31f95bc24922",
-      "pending_subscription": false,
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
-      "main_address": {
-        "meets_validation_requirements": false,
-        "first_name": null,
-        "last_name": null,
-        "address1": "Blokhuispoort",
-        "address2": "Leeuwarden",
-        "city": "Leeuwarden",
-        "region": null,
-        "zipcode": "8900AB",
-        "country": "the Netherlands",
-        "country_id": null,
-        "province_id": null,
-        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
-      },
-      "billing_address": null
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching subscription details
-
-The subscription has the following fields:
-
-Name | Description
--- | --
-`trial_ends_at` | **Datetime** `readonly`<br>When the trial ends
-`activated` | **Boolean** `readonly`<br>Whether subscription is active
-`suspended` | **Boolean** `readonly`<br>Whether account is suspended
-`canceled` | **Boolean** `readonly`<br>Whether subscription is canceled
-`canceled_at` | **Datetime** `readonly`<br>When the subscription is canceled (can also be in the future)
-`on_hold` | **Boolean** `readonly`<br>Whether account is on-hold
-`needs_activation` | **Boolean** `readonly`<br>Whether account needs to activate a subscription
-`legacy` | **Datetime** `readonly`<br>Whether it's a legacy subscription
-`product` | **String** `readonly`<br>Which product is active, one of `Essential`, `Pro`, `Premium`, `Legacy`
-`plan_id` | **String** `readonly`<br>ID of the product (used internally by Booqable)
-`interval` | **String** `readonly`<br>Billing interval, one of `month`, `year`
-`current_period_end` | **Datetime** `readonly`<br>When the current billing period ends
-`quantity` | **Integer** `readonly`<br>Quantity of the subscription (used for legacy subscriptions to buy seats)
-`extra_employees` | **Integer** `readonly`<br>Extra employees billed for
-`extra_locations` | **Integer** `readonly`<br>Extra locations billed for
-`amount_in_cents` | **Integer** `readonly`<br>Amount in cents
-`discount_in_cents` | **Integer** `readonly`<br>Discount in cents
-`balance_in_cents` | **Integer** `readonly`<br>Balance in cents, will be deducted from the next invoice(s)
-`coupon` | **String** `readonly`<br>Coupon that's currently active
-`coupon_percent_off` | **String*** readonly <br/>Percentage of discount on the current active coupon
-`coupon_duration` | **String*** readonly <br/>Duration type of the current active coupon, one of `forever`, `once`, `repeating`
-`coupon_duration_in_months` | **String*** readonly <br/>Amount of months the coupon is active. Only present when coupon duration is `repeating`.
-`strategy` | **String** `readonly`<br>Billing strategy, one of `send_invoice`, `charge_automatically`
-`source` | **Hash** `readonly`<br>Information about the payment source
-`enabled_features` | **Hash** `readonly`<br>Beta features that are currently enabled
-`allowed_features` | **Hash** `readonly`<br>List of allowed features for plan
-`restrictions` | **Hash** `readonly`<br>Restrictions applied to this account
-
-
-> How to fetch details about the company its subscription:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/current?extra_fields%5Bcompanies%5D=subscription&fields%5Bcompanies%5D=subscription' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "a706b549-df52-4e76-9b6d-52e5487ebf22",
-    "type": "companies",
-    "attributes": {
-      "subscription": {
-        "trial_ends_at": "2024-03-04T09:21:26.108Z",
-        "activated": false,
-        "suspended": false,
-        "canceled": false,
-        "canceled_at": null,
-        "on_hold": false,
-        "needs_activation": false,
-        "product": "Premium",
-        "plan_id": "premium_monthly",
-        "interval": "month",
-        "current_period_end": null,
-        "extra_employees": 0,
-        "extra_locations": 0,
-        "amount_in_cents": 29900,
-        "discount_in_cents": 0,
-        "balance_in_cents": 0,
-        "coupon": null,
-        "coupon_percent_off": null,
-        "coupon_duration": null,
-        "coupon_duration_in_months": null,
-        "strategy": "charge_automatically",
-        "source": null,
-        "enabled_features": [],
-        "allowed_features": [
-          "bundles",
-          "multiple_locations",
-          "advanced_pricing",
-          "api",
-          "custom_fields",
-          "overbookings",
-          "categories",
-          "customer_auth",
-          "custom_domain",
-          "barcodes",
-          "reports",
-          "permissions",
-          "exports",
-          "coupons",
-          "shop_tracking",
-          "sso",
-          "iprestrictions",
-          "2fa_enforcing",
-          "remove_powered_by"
-        ],
-        "restrictions": {
-          "employees": 15,
-          "email_max_recipients": 1000,
-          "rate_limit_max": 250,
-          "rate_limit_period": 60,
-          "locations": 3
-        },
-        "can_try_plan": true
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Updating a company
 
 
@@ -303,7 +79,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d51463f7-5d38-4693-903e-d690dee43fb9",
+        "id": "4457a918-66c3-425b-963a-a6c0221b7c21",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -317,14 +93,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d51463f7-5d38-4693-903e-d690dee43fb9",
+    "id": "4457a918-66c3-425b-963a-a6c0221b7c21",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-02-19T09:21:27+00:00",
-      "updated_at": "2024-02-19T09:21:27+00:00",
+      "created_at": "2024-02-26T09:18:18+00:00",
+      "updated_at": "2024-02-26T09:18:18+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail262@company.com",
+      "email": "mail160@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -357,7 +133,7 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "03e8b17015187ae83e7be3e1243f85e8",
+      "tenant_token": "dff68c36dfcd375643dcac30dd22a9cf",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -433,6 +209,230 @@ Name | Description
 `data[attributes][shop_theme_id]` | **Uuid** <br>ID of installed shop theme
 `data[attributes][main_address_attributes]` | **Hash** <br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
 `data[attributes][billing_address_attributes]` | **Hash** <br>A hash with the company billing address fields. Use it when updating the company billing address. See `address` property type for more information
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching subscription details
+
+The subscription has the following fields:
+
+Name | Description
+-- | --
+`trial_ends_at` | **Datetime** `readonly`<br>When the trial ends
+`activated` | **Boolean** `readonly`<br>Whether subscription is active
+`suspended` | **Boolean** `readonly`<br>Whether account is suspended
+`canceled` | **Boolean** `readonly`<br>Whether subscription is canceled
+`canceled_at` | **Datetime** `readonly`<br>When the subscription is canceled (can also be in the future)
+`on_hold` | **Boolean** `readonly`<br>Whether account is on-hold
+`needs_activation` | **Boolean** `readonly`<br>Whether account needs to activate a subscription
+`legacy` | **Datetime** `readonly`<br>Whether it's a legacy subscription
+`product` | **String** `readonly`<br>Which product is active, one of `Essential`, `Pro`, `Premium`, `Legacy`
+`plan_id` | **String** `readonly`<br>ID of the product (used internally by Booqable)
+`interval` | **String** `readonly`<br>Billing interval, one of `month`, `year`
+`current_period_end` | **Datetime** `readonly`<br>When the current billing period ends
+`quantity` | **Integer** `readonly`<br>Quantity of the subscription (used for legacy subscriptions to buy seats)
+`extra_employees` | **Integer** `readonly`<br>Extra employees billed for
+`extra_locations` | **Integer** `readonly`<br>Extra locations billed for
+`amount_in_cents` | **Integer** `readonly`<br>Amount in cents
+`discount_in_cents` | **Integer** `readonly`<br>Discount in cents
+`balance_in_cents` | **Integer** `readonly`<br>Balance in cents, will be deducted from the next invoice(s)
+`coupon` | **String** `readonly`<br>Coupon that's currently active
+`coupon_percent_off` | **String*** readonly <br/>Percentage of discount on the current active coupon
+`coupon_duration` | **String*** readonly <br/>Duration type of the current active coupon, one of `forever`, `once`, `repeating`
+`coupon_duration_in_months` | **String*** readonly <br/>Amount of months the coupon is active. Only present when coupon duration is `repeating`.
+`strategy` | **String** `readonly`<br>Billing strategy, one of `send_invoice`, `charge_automatically`
+`source` | **Hash** `readonly`<br>Information about the payment source
+`enabled_features` | **Hash** `readonly`<br>Beta features that are currently enabled
+`allowed_features` | **Hash** `readonly`<br>List of allowed features for plan
+`restrictions` | **Hash** `readonly`<br>Restrictions applied to this account
+
+
+> How to fetch details about the company its subscription:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/companies/current?extra_fields%5Bcompanies%5D=subscription&fields%5Bcompanies%5D=subscription' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "77e55ae1-1941-4ef3-b646-fa0eb2288e41",
+    "type": "companies",
+    "attributes": {
+      "subscription": {
+        "trial_ends_at": "2024-03-11T09:18:19.482Z",
+        "activated": false,
+        "suspended": false,
+        "canceled": false,
+        "canceled_at": null,
+        "on_hold": false,
+        "needs_activation": false,
+        "product": "Premium",
+        "plan_id": "premium_monthly",
+        "interval": "month",
+        "current_period_end": null,
+        "extra_employees": 0,
+        "extra_locations": 0,
+        "amount_in_cents": 29900,
+        "discount_in_cents": 0,
+        "balance_in_cents": 0,
+        "coupon": null,
+        "coupon_percent_off": null,
+        "coupon_duration": null,
+        "coupon_duration_in_months": null,
+        "strategy": "charge_automatically",
+        "source": null,
+        "enabled_features": [],
+        "allowed_features": [
+          "bundles",
+          "multiple_locations",
+          "advanced_pricing",
+          "api",
+          "custom_fields",
+          "overbookings",
+          "categories",
+          "customer_auth",
+          "custom_domain",
+          "barcodes",
+          "reports",
+          "permissions",
+          "exports",
+          "coupons",
+          "shop_tracking",
+          "sso",
+          "iprestrictions",
+          "2fa_enforcing",
+          "remove_powered_by"
+        ],
+        "restrictions": {
+          "employees": 15,
+          "email_max_recipients": 1000,
+          "rate_limit_max": 250,
+          "rate_limit_period": 60,
+          "locations": 3
+        },
+        "can_try_plan": true
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a company
+
+
+
+> How to fetch a companies:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "c325a694-42e5-45ca-8122-fb3d4ea8a8bc",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2024-02-26T09:18:20+00:00",
+      "updated_at": "2024-02-26T09:18:20+00:00",
+      "name": "iRent",
+      "slug": "irent",
+      "email": "mail162@company.com",
+      "billing_email": null,
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
+      "region": null,
+      "country": "the Netherlands",
+      "market": "AV / Camera",
+      "use_billing_address": false,
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "favicon_url": null,
+      "default_timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
+      "vat_number": null,
+      "custom_domain": null,
+      "development": false,
+      "shop_theme_id": null,
+      "installed_online_store": false,
+      "years_active": null,
+      "source": null,
+      "medium": null,
+      "tenant_token": "4f853349736431a694e605a3a306eda9",
+      "pending_subscription": false,
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "main_address": {
+        "meets_validation_requirements": false,
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuispoort",
+        "address2": "Leeuwarden",
+        "city": "Leeuwarden",
+        "region": null,
+        "zipcode": "8900AB",
+        "country": "the Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+      },
+      "billing_address": null
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
 
 
 ### Includes

@@ -9,11 +9,11 @@ Employees also allow you to streamline Booqable's interface for specific roles o
 </aside>
 
 ## Endpoints
+`GET /api/boomerang/employees/{id}`
+
 `PUT /api/boomerang/employees/{id}`
 
 `GET /api/boomerang/employees`
-
-`GET /api/boomerang/employees/{id}`
 
 ## Fields
 Every employee has the following fields:
@@ -46,25 +46,16 @@ Name | Description
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
-## Updating an employee
+## Fetching an employee
 
 
 
-> How to update an employee:
+> How to fetch a employee:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/be1d0b70-19f1-4376-8864-cb459c013a5c' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/employees/cd0040b7-bdf8-4780-b877-3a640de76c3e' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "be1d0b70-19f1-4376-8864-cb459c013a5c",
-        "type": "employees",
-        "attributes": {
-          "firstname": "Jane"
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -72,19 +63,19 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "be1d0b70-19f1-4376-8864-cb459c013a5c",
+    "id": "cd0040b7-bdf8-4780-b877-3a640de76c3e",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-02-19T09:19:49+00:00",
-      "updated_at": "2024-02-19T09:19:49+00:00",
-      "name": "Jane Doe",
-      "firstname": "Jane",
+      "created_at": "2024-02-26T09:20:20+00:00",
+      "updated_at": "2024-02-26T09:20:20+00:00",
+      "name": "John Doe",
+      "firstname": "John",
       "lastname": "Doe",
       "locale": null,
-      "email": "jane@doe.com",
+      "email": "john@doe.com",
       "unconfirmed_email": null,
       "active": true,
-      "owner": false,
+      "owner": true,
       "confirmed": true,
       "time_to_confirm": 0,
       "permissions": [
@@ -101,6 +92,79 @@ Name | Description
         "override_rental_period"
       ],
       "has_two_factor_autentication": false,
+      "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
+      "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/employees/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating an employee
+
+
+
+> How to set permissions:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/employees/d71cdebb-09dd-46e6-b4cd-e6f9a9a8239e' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "d71cdebb-09dd-46e6-b4cd-e6f9a9a8239e",
+        "type": "employees",
+        "attributes": {
+          "permissions": [
+            "reports",
+            "settings"
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "d71cdebb-09dd-46e6-b4cd-e6f9a9a8239e",
+    "type": "employees",
+    "attributes": {
+      "created_at": "2024-02-26T09:20:21+00:00",
+      "updated_at": "2024-02-26T09:20:21+00:00",
+      "name": "John Doe",
+      "firstname": "John",
+      "lastname": "Doe",
+      "locale": null,
+      "email": "jane@doe.com",
+      "unconfirmed_email": null,
+      "active": true,
+      "owner": false,
+      "confirmed": true,
+      "time_to_confirm": 0,
+      "permissions": [
+        "reports",
+        "settings"
+      ],
+      "has_two_factor_autentication": false,
       "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
       "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
     }
@@ -114,11 +178,11 @@ Name | Description
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/ff297b4e-3543-4233-8744-af29ff3a5603' \
+    --url 'https://example.booqable.com/api/boomerang/employees/2e7aea18-da6b-4148-9754-ddb95e8faf30' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ff297b4e-3543-4233-8744-af29ff3a5603",
+        "id": "2e7aea18-da6b-4148-9754-ddb95e8faf30",
         "type": "employees",
         "attributes": {
           "active": false
@@ -132,11 +196,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ff297b4e-3543-4233-8744-af29ff3a5603",
+    "id": "2e7aea18-da6b-4148-9754-ddb95e8faf30",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-02-19T09:19:51+00:00",
-      "updated_at": "2024-02-19T09:19:51+00:00",
+      "created_at": "2024-02-26T09:20:21+00:00",
+      "updated_at": "2024-02-26T09:20:21+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
@@ -170,21 +234,18 @@ Name | Description
 ```
 
 
-> How to set permissions:
+> How to update an employee:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/6049a7fb-a1fa-4659-be0b-bbde6ab9560a' \
+    --url 'https://example.booqable.com/api/boomerang/employees/4346cc19-fe2f-473b-b5d6-dcb4bdd6185c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "6049a7fb-a1fa-4659-be0b-bbde6ab9560a",
+        "id": "4346cc19-fe2f-473b-b5d6-dcb4bdd6185c",
         "type": "employees",
         "attributes": {
-          "permissions": [
-            "reports",
-            "settings"
-          ]
+          "firstname": "Jane"
         }
       }
     }'
@@ -195,13 +256,13 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "6049a7fb-a1fa-4659-be0b-bbde6ab9560a",
+    "id": "4346cc19-fe2f-473b-b5d6-dcb4bdd6185c",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-02-19T09:19:52+00:00",
-      "updated_at": "2024-02-19T09:19:52+00:00",
-      "name": "John Doe",
-      "firstname": "John",
+      "created_at": "2024-02-26T09:20:22+00:00",
+      "updated_at": "2024-02-26T09:20:22+00:00",
+      "name": "Jane Doe",
+      "firstname": "Jane",
       "lastname": "Doe",
       "locale": null,
       "email": "jane@doe.com",
@@ -212,7 +273,16 @@ Name | Description
       "time_to_confirm": 0,
       "permissions": [
         "reports",
-        "settings"
+        "products",
+        "settings",
+        "security_settings",
+        "account",
+        "exports",
+        "cancel_orders",
+        "revert_orders",
+        "delete_invoices",
+        "make_invoice_revisions",
+        "override_rental_period"
       ],
       "has_two_factor_autentication": false,
       "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
@@ -277,11 +347,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "749ba693-904c-4b97-a457-12968dbc7cb5",
+      "id": "cce88c32-5bb2-46ea-bbdb-f687de185013",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-02-19T09:19:53+00:00",
-        "updated_at": "2024-02-19T09:19:53+00:00",
+        "created_at": "2024-02-26T09:20:23+00:00",
+        "updated_at": "2024-02-26T09:20:23+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -357,76 +427,6 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching an employee
-
-
-
-> How to fetch a employee:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/478311fc-aec1-4e25-bc5c-dad376eae0d5' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "478311fc-aec1-4e25-bc5c-dad376eae0d5",
-    "type": "employees",
-    "attributes": {
-      "created_at": "2024-02-19T09:19:54+00:00",
-      "updated_at": "2024-02-19T09:19:54+00:00",
-      "name": "John Doe",
-      "firstname": "John",
-      "lastname": "Doe",
-      "locale": null,
-      "email": "john@doe.com",
-      "unconfirmed_email": null,
-      "active": true,
-      "owner": true,
-      "confirmed": true,
-      "time_to_confirm": 0,
-      "permissions": [
-        "reports",
-        "products",
-        "settings",
-        "security_settings",
-        "account",
-        "exports",
-        "cancel_orders",
-        "revert_orders",
-        "delete_invoices",
-        "make_invoice_revisions",
-        "override_rental_period"
-      ],
-      "has_two_factor_autentication": false,
-      "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-      "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/employees/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
 
 
 ### Includes

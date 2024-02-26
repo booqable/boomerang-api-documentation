@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-02-14+00%3A00%3A00+UTC&filter%5Btill%5D=2024-02-19+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-02-21+00%3A00%3A00+UTC&filter%5Btill%5D=2024-02-26+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,18 +49,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "e55249c2-8e87-47f5-a315-d340c1adf39d",
+      "id": "db3ef110-2326-4095-960c-cd77cce3cba0",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-02-19T09:20:39+00:00",
-        "product_name": "Product 1000060",
-        "identifier": "id1000196",
+        "created_at": "2024-02-26T09:15:48+00:00",
+        "product_name": "Product 1000006",
+        "identifier": "id1000066",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
         "turnover_in_cents": 0,
-        "stock_item_id": "9a6fc48e-f00c-4e19-b7e2-1291cf99dd8e",
-        "product_id": "a78fbbd6-bb3b-4e7c-96e9-3dfe991ccda6",
+        "stock_item_id": "0aa62da4-9823-48d3-a0fc-953a67065555",
+        "product_id": "7518a2a4-6c02-41e6-9581-e7a763967e8e",
         "location_id": null
       },
       "relationships": {
@@ -71,7 +71,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/a78fbbd6-bb3b-4e7c-96e9-3dfe991ccda6"
+            "related": "api/boomerang/products/7518a2a4-6c02-41e6-9581-e7a763967e8e"
           }
         },
         "location": {
@@ -82,18 +82,18 @@ Name | Description
       }
     },
     {
-      "id": "4abd416e-d3cf-45a7-a47d-d2a962941883",
+      "id": "d448b8d1-a7ac-4889-b727-88a7decd721c",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-02-19T09:20:39+00:00",
-        "product_name": "Product 1000060",
-        "identifier": "id1000197",
+        "created_at": "2024-02-26T09:15:48+00:00",
+        "product_name": "Product 1000006",
+        "identifier": "id1000067",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
         "turnover_in_cents": 0,
-        "stock_item_id": "b7bb8081-a866-4669-99bf-e39511c45e25",
-        "product_id": "a78fbbd6-bb3b-4e7c-96e9-3dfe991ccda6",
+        "stock_item_id": "333a85b0-648d-49e2-a6a8-f41ae81f57e8",
+        "product_id": "7518a2a4-6c02-41e6-9581-e7a763967e8e",
         "location_id": null
       },
       "relationships": {
@@ -104,7 +104,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/a78fbbd6-bb3b-4e7c-96e9-3dfe991ccda6"
+            "related": "api/boomerang/products/7518a2a4-6c02-41e6-9581-e7a763967e8e"
           }
         },
         "location": {

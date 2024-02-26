@@ -13,15 +13,15 @@ Quotes and contracts are always finalized; to make a revision, archive the docum
 Invoices are automatically generated and updated based on changes made to an order. When an invoice is finalized, and further changes are made to the order, a new invoice is created with prorated changes. The payment status of the invoice is automatically updated when payments are made for the associated order.
 
 ## Endpoints
-`POST /api/boomerang/documents`
-
 `GET /api/boomerang/documents/{id}`
+
+`POST /api/boomerang/documents`
 
 `PUT /api/boomerang/documents/{id}`
 
-`POST api/boomerang/documents/search`
-
 `GET /api/boomerang/documents`
+
+`POST api/boomerang/documents/search`
 
 `DELETE /api/boomerang/documents/{id}`
 
@@ -89,6 +89,151 @@ Name | Description
 `tax_values` | **Tax values** `readonly`<br>Associated Tax values
 
 
+## Fetching a document
+
+
+
+> How to fetch a documents:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/documents/610c4e52-b2e4-40bd-8322-f6aad439df05' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "610c4e52-b2e4-40bd-8322-f6aad439df05",
+    "type": "documents",
+    "attributes": {
+      "created_at": "2024-02-26T09:15:53+00:00",
+      "updated_at": "2024-02-26T09:15:53+00:00",
+      "archived": false,
+      "archived_at": null,
+      "document_type": "invoice",
+      "number": null,
+      "prefix": null,
+      "prefix_with_number": null,
+      "date": null,
+      "due_date": null,
+      "name": "John Doe",
+      "address": null,
+      "reference": null,
+      "revised": false,
+      "finalized": false,
+      "sent": false,
+      "confirmed": false,
+      "status": "payment_due",
+      "signature_url": null,
+      "deposit_type": "percentage",
+      "deposit_value": 10.0,
+      "tag_list": [],
+      "price_in_cents": 80250,
+      "grand_total_in_cents": 72225,
+      "grand_total_with_tax_in_cents": 87392,
+      "discount_in_cents": 8025,
+      "coupon_discount_in_cents": 0,
+      "total_discount_in_cents": 8025,
+      "deposit_in_cents": 10000,
+      "deposit_paid_in_cents": 0,
+      "deposit_refunded_in_cents": 0,
+      "deposit_held_in_cents": 0,
+      "deposit_to_refund_in_cents": 0,
+      "to_be_paid_in_cents": 97392,
+      "paid_in_cents": 0,
+      "tax_in_cents": 15167,
+      "discount_percentage": 10.0,
+      "order_id": "953d91c6-2fcf-4790-a689-d6cd7c447212",
+      "customer_id": "6f42dae6-12c8-411c-b8f8-128e63f05d7c",
+      "tax_region_id": null,
+      "coupon_id": null
+    },
+    "relationships": {
+      "order": {
+        "links": {
+          "related": "api/boomerang/orders/953d91c6-2fcf-4790-a689-d6cd7c447212"
+        }
+      },
+      "customer": {
+        "links": {
+          "related": "api/boomerang/customers/6f42dae6-12c8-411c-b8f8-128e63f05d7c"
+        }
+      },
+      "tax_region": {
+        "links": {
+          "related": null
+        }
+      },
+      "coupon": {
+        "links": {
+          "related": null
+        }
+      },
+      "lines": {
+        "links": {
+          "related": "api/boomerang/lines?filter[owner_id]=610c4e52-b2e4-40bd-8322-f6aad439df05&filter[owner_type]=documents"
+        }
+      },
+      "tax_values": {
+        "links": {
+          "related": "api/boomerang/tax_values?filter[owner_id]=610c4e52-b2e4-40bd-8322-f6aad439df05&filter[owner_type]=documents"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/documents/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`order`
+
+
+`tax_region`
+
+
+`lines` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+`tax_values`
+
+
+`coupon`
+
+
+
+
+
+
 ## Creating a document
 
 
@@ -104,7 +249,7 @@ Name | Description
         "type": "documents",
         "attributes": {
           "document_type": "contract",
-          "order_id": "2e144b4d-f27c-44fb-bcf9-6c9444b7183a"
+          "order_id": "08b8c46b-abe9-4f8f-8cc2-e195280a513a"
         }
       }
     }'
@@ -115,18 +260,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e89146a1-1139-4901-af50-20b6bb850219",
+    "id": "4c3db9fa-2d75-4c84-8fc6-94e5081509ef",
     "type": "documents",
     "attributes": {
-      "created_at": "2024-02-19T09:19:12+00:00",
-      "updated_at": "2024-02-19T09:19:12+00:00",
+      "created_at": "2024-02-26T09:15:56+00:00",
+      "updated_at": "2024-02-26T09:15:56+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "contract",
       "number": 1,
       "prefix": null,
       "prefix_with_number": "1",
-      "date": "2024-02-19",
+      "date": "2024-02-26",
       "due_date": null,
       "name": "John Doe",
       "address": "",
@@ -155,8 +300,8 @@ Name | Description
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "2e144b4d-f27c-44fb-bcf9-6c9444b7183a",
-      "customer_id": "6f2a0798-eea0-484c-a6cf-61cb294f49f1",
+      "order_id": "08b8c46b-abe9-4f8f-8cc2-e195280a513a",
+      "customer_id": "594cf0b5-ddcd-4593-8660-a930bd41b883",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -272,151 +417,6 @@ This request accepts the following includes:
 
 
 
-## Fetching a document
-
-
-
-> How to fetch a documents:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/documents/79264461-fc0c-464f-9457-0f6a4eb2256b' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "79264461-fc0c-464f-9457-0f6a4eb2256b",
-    "type": "documents",
-    "attributes": {
-      "created_at": "2024-02-19T09:19:17+00:00",
-      "updated_at": "2024-02-19T09:19:17+00:00",
-      "archived": false,
-      "archived_at": null,
-      "document_type": "invoice",
-      "number": null,
-      "prefix": null,
-      "prefix_with_number": null,
-      "date": null,
-      "due_date": null,
-      "name": "John Doe",
-      "address": null,
-      "reference": null,
-      "revised": false,
-      "finalized": false,
-      "sent": false,
-      "confirmed": false,
-      "status": "payment_due",
-      "signature_url": null,
-      "deposit_type": "percentage",
-      "deposit_value": 10.0,
-      "tag_list": [],
-      "price_in_cents": 80250,
-      "grand_total_in_cents": 72225,
-      "grand_total_with_tax_in_cents": 87392,
-      "discount_in_cents": 8025,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 8025,
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 97392,
-      "paid_in_cents": 0,
-      "tax_in_cents": 15167,
-      "discount_percentage": 10.0,
-      "order_id": "7eeeb454-acb9-435d-9f19-85429e1d11a2",
-      "customer_id": "26e22ec8-8c34-424a-808f-60deb1d34fdf",
-      "tax_region_id": null,
-      "coupon_id": null
-    },
-    "relationships": {
-      "order": {
-        "links": {
-          "related": "api/boomerang/orders/7eeeb454-acb9-435d-9f19-85429e1d11a2"
-        }
-      },
-      "customer": {
-        "links": {
-          "related": "api/boomerang/customers/26e22ec8-8c34-424a-808f-60deb1d34fdf"
-        }
-      },
-      "tax_region": {
-        "links": {
-          "related": null
-        }
-      },
-      "coupon": {
-        "links": {
-          "related": null
-        }
-      },
-      "lines": {
-        "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=79264461-fc0c-464f-9457-0f6a4eb2256b&filter[owner_type]=documents"
-        }
-      },
-      "tax_values": {
-        "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=79264461-fc0c-464f-9457-0f6a4eb2256b&filter[owner_type]=documents"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/documents/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`order`
-
-
-`tax_region`
-
-
-`lines` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-`tax_values`
-
-
-`coupon`
-
-
-
-
-
-
 ## Updating a document
 
 
@@ -425,11 +425,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/documents/d34af7d5-523f-45df-b2bb-27006e171f79' \
+    --url 'https://example.booqable.com/api/boomerang/documents/52526bf4-834e-47d4-a10a-fb4444e391f4' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d34af7d5-523f-45df-b2bb-27006e171f79",
+        "id": "52526bf4-834e-47d4-a10a-fb4444e391f4",
         "type": "documents",
         "attributes": {
           "name": "Jane Doe"
@@ -443,11 +443,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d34af7d5-523f-45df-b2bb-27006e171f79",
+    "id": "52526bf4-834e-47d4-a10a-fb4444e391f4",
     "type": "documents",
     "attributes": {
-      "created_at": "2024-02-19T09:19:21+00:00",
-      "updated_at": "2024-02-19T09:19:22+00:00",
+      "created_at": "2024-02-26T09:15:57+00:00",
+      "updated_at": "2024-02-26T09:15:58+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -483,8 +483,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "1c29af65-64b8-45ef-9859-9dfb667b194b",
-      "customer_id": "165ede2f-af02-4217-abb2-d214e7a88e9e",
+      "order_id": "ed44995e-dae6-4615-884c-f5854ce0d343",
+      "customer_id": "95538e7d-e59a-41e8-bdc9-9ec8d108d1a0",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -600,183 +600,6 @@ This request accepts the following includes:
 
 
 
-## Searching documents
-
-Use advanced search to make logical filter groups with and/or operators.
-
-
-> How to search for documents:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/documents/search' \
-    --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "documents": "id"
-      },
-      "filter": {
-        "conditions": {
-          "operator": "and",
-          "attributes": [
-            {
-              "operator": "or",
-              "attributes": [
-                {
-                  "status": "paid"
-                },
-                {
-                  "deposit_type": "none"
-                }
-              ]
-            },
-            {
-              "operator": "and",
-              "attributes": [
-                {
-                  "date": {
-                    "gte": "2024-02-16T09:19:28.564Z"
-                  }
-                },
-                {
-                  "date": {
-                    "lte": "2024-02-22T09:19:28.564Z"
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "ad7ace79-34bf-454d-969d-9fdeaba5ef4c"
-    },
-    {
-      "id": "1bbd123d-083d-4a02-bda8-870f24aa994e"
-    }
-  ]
-}
-```
-
-### HTTP Request
-
-`POST api/boomerang/documents/search`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean** <br>`eq`
-`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`document_type` | **String** <br>`eq`, `not_eq`
-`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`due_date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`revised` | **Boolean** <br>`eq`
-`finalized` | **Boolean** <br>`eq`
-`sent` | **Boolean** <br>`eq`
-`confirmed` | **Boolean** <br>`eq`
-`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`tag_list` | **String** <br>`eq`
-`price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_with_tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`coupon_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`total_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_held_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_to_refund_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`to_be_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`order_id` | **Uuid** <br>`eq`, `not_eq`
-`customer_id` | **Uuid** <br>`eq`, `not_eq`
-`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
-`coupon_id` | **Uuid** <br>`eq`, `not_eq`
-`q` | **String** <br>`eq`
-`conditions` | **Hash** <br>`eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
-`status` | **Array** <br>`count`
-`tag_list` | **Array** <br>`count`
-`tax_strategy` | **Array** <br>`count`
-`currency` | **Array** <br>`count`
-`deposit_type` | **Array** <br>`count`
-`price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_with_tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`coupon_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`total_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_refunded_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_held_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_to_refund_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`to_be_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`order`
-
-
-
-
-
-
 ## Listing documents
 
 
@@ -795,11 +618,11 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "93b79179-3c9c-40ba-8b0b-8f56a8ee327b",
+      "id": "9238dcc8-31e4-4b25-9bc8-5febe34c01fb",
       "type": "documents",
       "attributes": {
-        "created_at": "2024-02-19T09:19:30+00:00",
-        "updated_at": "2024-02-19T09:19:30+00:00",
+        "created_at": "2024-02-26T09:16:00+00:00",
+        "updated_at": "2024-02-26T09:16:00+00:00",
         "archived": false,
         "archived_at": null,
         "document_type": "invoice",
@@ -835,20 +658,20 @@ This request accepts the following includes:
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
-        "order_id": "c8b60dc5-1b89-490f-95e1-b648fdf85652",
-        "customer_id": "37c4fbb7-45a9-4475-8393-7ebd09ef4885",
+        "order_id": "4be84b1e-2e1f-425c-8d4b-29ca7e3d936d",
+        "customer_id": "a7feea7e-5df6-4c50-aa19-96b629b13e2e",
         "tax_region_id": null,
         "coupon_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/c8b60dc5-1b89-490f-95e1-b648fdf85652"
+            "related": "api/boomerang/orders/4be84b1e-2e1f-425c-8d4b-29ca7e3d936d"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/37c4fbb7-45a9-4475-8393-7ebd09ef4885"
+            "related": "api/boomerang/customers/a7feea7e-5df6-4c50-aa19-96b629b13e2e"
           }
         },
         "tax_region": {
@@ -863,12 +686,12 @@ This request accepts the following includes:
         },
         "lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=93b79179-3c9c-40ba-8b0b-8f56a8ee327b&filter[owner_type]=documents"
+            "related": "api/boomerang/lines?filter[owner_id]=9238dcc8-31e4-4b25-9bc8-5febe34c01fb&filter[owner_type]=documents"
           }
         },
         "tax_values": {
           "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=93b79179-3c9c-40ba-8b0b-8f56a8ee327b&filter[owner_type]=documents"
+            "related": "api/boomerang/tax_values?filter[owner_id]=9238dcc8-31e4-4b25-9bc8-5febe34c01fb&filter[owner_type]=documents"
           }
         }
       }
@@ -989,6 +812,183 @@ This request accepts the following includes:
 
 
 
+## Searching documents
+
+Use advanced search to make logical filter groups with and/or operators.
+
+
+> How to search for documents:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/documents/search' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "documents": "id"
+      },
+      "filter": {
+        "conditions": {
+          "operator": "and",
+          "attributes": [
+            {
+              "operator": "or",
+              "attributes": [
+                {
+                  "status": "paid"
+                },
+                {
+                  "deposit_type": "none"
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "date": {
+                    "gte": "2024-02-23T09:16:05.356Z"
+                  }
+                },
+                {
+                  "date": {
+                    "lte": "2024-02-29T09:16:05.357Z"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "1b5c36de-4834-4dc3-9368-c8e66d9798e5"
+    },
+    {
+      "id": "f117add0-055d-4c89-abda-f3d87412aae0"
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`POST api/boomerang/documents/search`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`document_type` | **String** <br>`eq`, `not_eq`
+`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`prefix` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`prefix_with_number` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`due_date` | **Date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`address` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`revised` | **Boolean** <br>`eq`
+`finalized` | **Boolean** <br>`eq`
+`sent` | **Boolean** <br>`eq`
+`confirmed` | **Boolean** <br>`eq`
+`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tag_list` | **String** <br>`eq`
+`price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_with_tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`coupon_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_held_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_to_refund_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`to_be_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
+`customer_id` | **Uuid** <br>`eq`, `not_eq`
+`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
+`coupon_id` | **Uuid** <br>`eq`, `not_eq`
+`q` | **String** <br>`eq`
+`conditions` | **Hash** <br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+`status` | **Array** <br>`count`
+`tag_list` | **Array** <br>`count`
+`tax_strategy` | **Array** <br>`count`
+`currency` | **Array** <br>`count`
+`deposit_type` | **Array** <br>`count`
+`price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_with_tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`coupon_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_refunded_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_held_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_to_refund_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`to_be_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`order`
+
+
+
+
+
+
 ## Archiving a document
 
 When archiving an invoice make sure `delete_invoices` permission is enabled.
@@ -998,7 +998,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/documents/16d8cd2e-602d-4c17-b2e3-6e7af8bc97b4' \
+    --url 'https://example.booqable.com/api/boomerang/documents/f8cb6a47-086c-48bc-9c74-fd3447f492c9' \
     --header 'content-type: application/json' \
 ```
 
