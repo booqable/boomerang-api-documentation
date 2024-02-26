@@ -99,6 +99,7 @@ includes:
   - report_rentals
   - report_stock_items
   - themes
+  - webhook_endpoints
 
 search: true
 
