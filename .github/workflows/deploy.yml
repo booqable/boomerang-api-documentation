@@ -6,18 +6,21 @@ on:
 
 jobs:
   deploy:
+    permissions:
+      contents: write
+
     runs-on: ubuntu-latest
     env:
       ruby-version: 3.2.2
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ env.ruby-version }}
 
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: gems-${{ runner.os }}-${{ env.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
