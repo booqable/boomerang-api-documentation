@@ -30,8 +30,8 @@ Name | Description
       "data": {
         "type": "rendered_emails",
         "attributes": {
-          "order_id": "6550b79e-5898-4c7e-8a72-42651e26ddea",
-          "email_template_id": "34cacd31-a413-4e59-9414-f34ff86f0368",
+          "order_id": "766ef096-d783-4ae5-8b05-e3354fe6a44a",
+          "email_template_id": "9c81d009-9bce-4041-a040-2f69c4cde6bf",
           "body": "<p>Thank you for ordering with us!</p>\n"
         }
       }
@@ -46,12 +46,12 @@ Name | Description
     "id": "",
     "type": "rendered_emails",
     "attributes": {
-      "email_template_id": "34cacd31-a413-4e59-9414-f34ff86f0368",
-      "order_id": "6550b79e-5898-4c7e-8a72-42651e26ddea",
+      "email_template_id": "9c81d009-9bce-4041-a040-2f69c4cde6bf",
+      "order_id": "766ef096-d783-4ae5-8b05-e3354fe6a44a",
       "document_id": null,
       "subject": "Order number 1",
       "body": "<p>Thank you for ordering with us!</p>\n",
-      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 249</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 249</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail252@company.com'>mail252@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
+      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 1</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 1</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail1@company.com'>mail1@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
     }
   },
   "meta": {}
@@ -69,8 +69,8 @@ Name | Description
       "data": {
         "type": "rendered_emails",
         "attributes": {
-          "order_id": "6e0c45c7-d0e3-48eb-8d3a-55bebc815b5d",
-          "email_template_id": "57449e14-eff9-499c-a380-9fc39ed67042"
+          "order_id": "2c20ad91-4347-4bce-b0f6-d4643875640c",
+          "email_template_id": "e030547a-30eb-43dd-8642-2c010a18006b"
         }
       }
     }'
@@ -84,8 +84,8 @@ Name | Description
     "id": "",
     "type": "rendered_emails",
     "attributes": {
-      "email_template_id": "57449e14-eff9-499c-a380-9fc39ed67042",
-      "order_id": "6e0c45c7-d0e3-48eb-8d3a-55bebc815b5d",
+      "email_template_id": "e030547a-30eb-43dd-8642-2c010a18006b",
+      "order_id": "2c20ad91-4347-4bce-b0f6-d4643875640c",
       "document_id": null,
       "subject": "Order number 1",
       "body": "<p>Thank you for ordering with us!</p>\n",

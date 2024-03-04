@@ -3,9 +3,9 @@
 Re-usable payment methods stored on file.
 
 ## Endpoints
-`GET /api/boomerang/payment_methods`
-
 `DELETE /api/boomerang/payment_methods/{id}`
+
+`GET /api/boomerang/payment_methods`
 
 ## Fields
 Every payment method has the following fields:
@@ -28,6 +28,42 @@ Name | Description
 `customer` | **Customers** `readonly`<br>Associated Customer
 
 
+## Archiving a payment method
+
+
+
+> How to archive a payment method:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/0b627bf0-3117-4922-a6a9-3a6a5d542eae' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/payment_methods/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,data`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing payment methods
 
 
@@ -46,11 +82,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "b319c692-3f95-4c2f-8bd1-2c44246552da",
+      "id": "369b3d61-6501-495b-a7ce-264d71fc2ee9",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-02-26T09:16:20+00:00",
-        "updated_at": "2024-02-26T09:16:20+00:00",
+        "created_at": "2024-03-04T09:13:04+00:00",
+        "updated_at": "2024-03-04T09:13:04+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -59,12 +95,12 @@ Name | Description
           "last4": null
         },
         "payment_method_type": "creditcard",
-        "customer_id": "1afdf8a6-f08f-4ba5-a36b-0665ccae8df8"
+        "customer_id": "f27fe526-c48d-429c-a66f-b9d71172f377"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/1afdf8a6-f08f-4ba5-a36b-0665ccae8df8"
+            "related": "api/boomerang/customers/f27fe526-c48d-429c-a66f-b9d71172f377"
           }
         }
       }
@@ -112,42 +148,6 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
-
-
-### Includes
-
-This request does not accept any includes
-## Archiving a payment method
-
-
-
-> How to archive a payment method:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/9551aaec-f904-4ea1-8745-2a637178c336' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/payment_methods/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,data`
 
 
 ### Includes

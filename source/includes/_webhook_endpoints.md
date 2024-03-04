@@ -4,30 +4,44 @@ Webhook endpoints are used to notify your application when certain events occur 
 
 You can listen to the following events:
 
-- customer.created
-- customer.updated
-- customer.archived
-- product_group.created
-- product_group.updated
-- product_group.archived
-- product.created
-- invoice.finalized
-- order.updated
-- order.saved_as_concept
-- order.reserved
-- order.started
-- order.stopped
-- payment.completed
-- cart.completed_checkout
+- `customer.created`
+- `customer.updated`
+- `customer.archived`
+- `product_group.created`
+- `product_group.updated`
+- `product_group.archived`
+- `product.created`
+- `invoice.created`
+- `invoice.finalized`
+- `invoice.updated`
+- `invoice.revised`
+- `invoice.archived`
+- `contract.created`
+- `contract.signed`
+- `contract.confirmed`
+- `contract.updated`
+- `contract.archived`
+- `quote.created`
+- `quote.signed`
+- `quote.confirmed`
+- `quote.updated`
+- `quote.archived`
+- `order.updated`
+- `order.saved_as_concept`
+- `order.reserved`
+- `order.started`
+- `order.stopped`
+- `payment.completed`
+- `cart.completed_checkout`
 
 ## Endpoints
-`GET /api/boomerang/webhook_endpoints`
-
-`POST /api/boomerang/webhook_endpoints`
+`DELETE /api/boomerang/webhook_endpoints/{id}`
 
 `PUT /api/boomerang/webhook_endpoints/{id}`
 
-`DELETE /api/boomerang/webhook_endpoints/{id}`
+`GET /api/boomerang/webhook_endpoints`
+
+`POST /api/boomerang/webhook_endpoints`
 
 ## Fields
 Every webhook endpoint has the following fields:
@@ -38,9 +52,116 @@ Name | Description
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `url` | **String** <br>The URL that will receive the webhook payload
-`events` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.finalized`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
+`events` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
 
 
+## Unsubscribing from webhook events
+
+
+
+> How to unsubscribe from webhook events:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/0aed8ae0-533c-4494-a45c-d1a65532cbfb' \
+    --header 'content-type: application/json' \
+    --data '{}'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/webhook_endpoints/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating webhook events
+
+
+
+> How to update webhook events:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/cdef8b39-9772-43e8-abed-a3a85e8fd2aa' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "webhook_endpoints",
+        "id": "cdef8b39-9772-43e8-abed-a3a85e8fd2aa",
+        "attributes": {
+          "url": "https://example.com/hooks",
+          "events": [
+            "customer.created"
+          ]
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "cdef8b39-9772-43e8-abed-a3a85e8fd2aa",
+    "type": "webhook_endpoints",
+    "attributes": {
+      "created_at": "2024-03-04T09:13:49+00:00",
+      "updated_at": "2024-03-04T09:13:49+00:00",
+      "url": "https://example.com/hooks",
+      "events": [
+        "customer.created"
+      ]
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/webhook_endpoints/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][url]` | **String** <br>The URL that will receive the webhook payload
+`data[attributes][events][]` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing webhook endpoints
 
 
@@ -59,9 +180,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "39909f29-2c95-498c-8ca2-86823c2a3d88",
-      "created_at": "2024-02-21T12:55:32+00:00",
-      "updated_at": "2024-02-21T12:55:32+00:00",
+      "id": "37529618-8e56-4058-bcba-c65cfcf8895f",
+      "created_at": "2024-03-04T09:13:49+00:00",
+      "updated_at": "2024-03-04T09:13:49+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "invoice.finalized"
@@ -142,11 +263,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "56a2f796-82c0-48e6-b103-f9d47ad41b45",
+    "id": "0a453744-a587-4ae4-b79b-8140d3ddaa96",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-02-21T12:55:33+00:00",
-      "updated_at": "2024-02-21T12:55:33+00:00",
+      "created_at": "2024-03-04T09:13:50+00:00",
+      "updated_at": "2024-03-04T09:13:50+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created",
@@ -178,114 +299,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][url]` | **String** <br>The URL that will receive the webhook payload
-`data[attributes][events][]` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.finalized`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
-
-
-### Includes
-
-This request does not accept any includes
-## Updating webhook events
-
-
-
-> How to update webhook events:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/2c14d65f-0b46-490e-a082-a988b946ff15' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "webhook_endpoints",
-        "id": "2c14d65f-0b46-490e-a082-a988b946ff15",
-        "attributes": {
-          "url": "https://example.com/hooks",
-          "events": [
-            "customer.created"
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "2c14d65f-0b46-490e-a082-a988b946ff15",
-    "type": "webhook_endpoints",
-    "attributes": {
-      "created_at": "2024-02-21T12:55:33+00:00",
-      "updated_at": "2024-02-21T12:55:33+00:00",
-      "url": "https://example.com/hooks",
-      "events": [
-        "customer.created"
-      ]
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/webhook_endpoints/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][url]` | **String** <br>The URL that will receive the webhook payload
-`data[attributes][events][]` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.finalized`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
-
-
-### Includes
-
-This request does not accept any includes
-## Unsubscribing from webhook events
-
-
-
-> How to unsubscribe from webhook events:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/aa49b6b6-2a7c-478c-84b3-36ce33b32de8' \
-    --header 'content-type: application/json' \
-    --data '{}'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/webhook_endpoints/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+`data[attributes][events][]` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
 
 
 ### Includes
