@@ -37,11 +37,11 @@ Name | Description
           "type": "checkout_fields",
           "data": [
             {
-              "default_property_id": "c888e644-e61d-41fa-916c-3b366f0d104e"
+              "default_property_id": "4b0f5a79-f458-45e7-8a61-7d559cfd0016"
             },
             {
               "name": "Delivery address",
-              "default_property_id": "23bb59e1-1deb-4d1b-a2de-f152f113af19"
+              "default_property_id": "f0d2c27b-1d2f-4a6e-8a27-b47f732a2c68"
             }
           ]
         },
@@ -55,57 +55,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ba4d4c82-913b-593b-bc6d-07d67c874101",
-    "type": "bulk_upserts",
-    "relationships": {
-      "results": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to create coupons in bulk:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "coupons",
-          "data": [
-            {
-              "identifier": "off",
-              "coupon_type": "percentage",
-              "value": 25,
-              "active": true
-            },
-            {
-              "identifier": "summer-22",
-              "coupon_type": "cents",
-              "value": 2200
-            }
-          ]
-        },
-        "include": "results"
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "5f1b1a43-1d64-582d-bd55-449ca9da87a0",
+    "id": "8557b099-a7ce-5c6a-a46a-68d885c823dd",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -162,18 +112,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5f1b1a43-1d64-582d-bd55-449ca9da87a0",
+    "id": "d26a557c-8585-51cc-8146-3a962a451b2a",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "126e652a-2022-46be-907b-c06402d82950"
+            "id": "3bc67601-af6c-4d4a-821f-33c5f392dd67"
           },
           {
             "type": "operating_rules",
-            "id": "508207ea-7fc9-4f0a-9e64-3493ec4e7f42"
+            "id": "aa86deae-69a2-4888-a2df-1a52d0eb1e18"
           }
         ]
       }
@@ -181,11 +131,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "126e652a-2022-46be-907b-c06402d82950",
+      "id": "3bc67601-af6c-4d4a-821f-33c5f392dd67",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-03-04T09:19:21+00:00",
-        "updated_at": "2024-03-04T09:19:21+00:00",
+        "created_at": "2024-03-11T09:14:05+00:00",
+        "updated_at": "2024-03-11T09:14:05+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -196,11 +146,11 @@ Name | Description
       }
     },
     {
-      "id": "508207ea-7fc9-4f0a-9e64-3493ec4e7f42",
+      "id": "aa86deae-69a2-4888-a2df-1a52d0eb1e18",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-03-04T09:19:21+00:00",
-        "updated_at": "2024-03-04T09:19:21+00:00",
+        "created_at": "2024-03-11T09:14:05+00:00",
+        "updated_at": "2024-03-11T09:14:05+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -211,6 +161,56 @@ Name | Description
       }
     }
   ],
+  "meta": {}
+}
+```
+
+
+> How to create coupons in bulk:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "bulk_upserts",
+        "attributes": {
+          "type": "coupons",
+          "data": [
+            {
+              "identifier": "off",
+              "coupon_type": "percentage",
+              "value": 25,
+              "active": true
+            },
+            {
+              "identifier": "summer-22",
+              "coupon_type": "cents",
+              "value": 2200
+            }
+          ]
+        },
+        "include": "results"
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "d26a557c-8585-51cc-8146-3a962a451b2a",
+    "type": "bulk_upserts",
+    "relationships": {
+      "results": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
   "meta": {}
 }
 ```

@@ -3,9 +3,9 @@
 Every action performed in a Booqable account is scoped to a company; A company holds information and configuration about an account.
 
 ## Endpoints
-`PUT /api/boomerang/companies/current`
-
 `GET /api/boomerang/companies/current`
+
+`PUT /api/boomerang/companies/current`
 
 ## Fields
 Every company has the following fields:
@@ -67,153 +67,6 @@ Name | Description
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
-## Updating a company
-
-
-
-> How to update a company:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/companies/current' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "15a365ba-bc4c-4464-8749-104617e0c45d",
-        "type": "companies",
-        "attributes": {
-          "name": "iRent LLC"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "15a365ba-bc4c-4464-8749-104617e0c45d",
-    "type": "companies",
-    "attributes": {
-      "created_at": "2024-03-04T09:14:12+00:00",
-      "updated_at": "2024-03-04T09:14:12+00:00",
-      "name": "iRent LLC",
-      "slug": "irent",
-      "email": "mail62@company.com",
-      "billing_email": null,
-      "phone": "0581234567",
-      "website": "www.booqable.com",
-      "address_line_1": "Blokhuispoort",
-      "address_line_2": "Leeuwarden",
-      "zipcode": "8900AB",
-      "city": "Leeuwarden",
-      "region": null,
-      "country": "the Netherlands",
-      "market": "AV / Camera",
-      "use_billing_address": false,
-      "billing_company": null,
-      "billing_address_line_1": null,
-      "billing_address_line_2": null,
-      "billing_address_zipcode": null,
-      "billing_address_city": null,
-      "billing_address_region": null,
-      "billing_address_country": null,
-      "logo_url": null,
-      "favicon_url": null,
-      "default_timezone": "UTC",
-      "currency": "usd",
-      "financial_line_1": "Blokhuispoort",
-      "financial_line_2": "Leeuwarden",
-      "vat_number": null,
-      "custom_domain": null,
-      "development": false,
-      "shop_theme_id": null,
-      "installed_online_store": false,
-      "years_active": null,
-      "source": null,
-      "medium": null,
-      "tenant_token": "5ce5425eef12c5e4811d257f2ee2ac56",
-      "pending_subscription": false,
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
-      "main_address": {
-        "meets_validation_requirements": false,
-        "first_name": null,
-        "last_name": null,
-        "address1": "Blokhuispoort",
-        "address2": "Leeuwarden",
-        "city": "Leeuwarden",
-        "region": null,
-        "zipcode": "8900AB",
-        "country": "the Netherlands",
-        "country_id": null,
-        "province_id": null,
-        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
-      },
-      "billing_address": null
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the company
-`data[attributes][email]` | **String** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
-`data[attributes][billing_email]` | **String** <br>Used to send billing emails to
-`data[attributes][phone]` | **String** <br>Phone number
-`data[attributes][website]` | **String** <br>Website
-`data[attributes][address_line_1]` | **String** <br>First address line
-`data[attributes][address_line_2]` | **String** <br>Second address line
-`data[attributes][zipcode]` | **String** <br>Zipcode
-`data[attributes][city]` | **String** <br>City
-`data[attributes][region]` | **String** <br>Region
-`data[attributes][country]` | **String** <br>Country
-`data[attributes][market]` | **String** <br>The market the company operates in
-`data[attributes][use_billing_address]` | **Boolean** <br>Whether to use billing address on invoices received from Booqable
-`data[attributes][billing_company]` | **String** <br>Company name (used for invoices received from Booqable)
-`data[attributes][billing_address_line_1]` | **String** <br>First address line (used for invoices received from Booqable)
-`data[attributes][billing_address_line_2]` | **String** <br>Second address line (used for invoices received from Booqable)
-`data[attributes][billing_address_zipcode]` | **String** <br>Zipcode (used for invoices received from Booqable)
-`data[attributes][billing_address_city]` | **String** <br>City (used for invoices received from Booqable)
-`data[attributes][billing_address_region]` | **String** <br>Region (used for invoices received from Booqable)
-`data[attributes][billing_address_country]` | **String** <br>Country (used for invoices received from Booqable)
-`data[attributes][logo_base64]` | **String** <br>To update a logo send it as base64 encoded string
-`data[attributes][remove_logo]` | **Boolean** <br>Remove current logo
-`data[attributes][favicon_base64]` | **String** <br>To upload a favicon send it as a base64 encoded string
-`data[attributes][remove_favicon]` | **Boolean** <br>Remove current favicon
-`data[attributes][default_timezone]` | **String** <br>Company's default timezone
-`data[attributes][currency]` | **String** <br>Currency of the company
-`data[attributes][financial_line_1]` | **String** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
-`data[attributes][financial_line_2]` | **String** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
-`data[attributes][vat_number]` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
-`data[attributes][custom_domain]` | **String** <br>Custom domain to use for hosted store and checkout
-`data[attributes][shop_theme_id]` | **Uuid** <br>ID of installed shop theme
-`data[attributes][main_address_attributes]` | **Hash** <br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
-`data[attributes][billing_address_attributes]` | **Hash** <br>A hash with the company billing address fields. Use it when updating the company billing address. See `address` property type for more information
-
-
-### Includes
-
-This request does not accept any includes
 ## Fetching subscription details
 
 The subscription has the following fields:
@@ -262,11 +115,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e3862f73-e9fd-465b-8846-6ed3fbf09e08",
+    "id": "11a0798e-4e7d-4f44-9673-03c0d0e07b05",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-03-18T09:14:13.699Z",
+        "trial_ends_at": "2024-03-25T09:20:06.747Z",
         "activated": false,
         "suspended": false,
         "canceled": false,
@@ -358,14 +211,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f1db23c5-b942-454a-8bce-1dbf0cc76014",
+    "id": "77e14171-a4c2-4464-928f-455be045d7ae",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-03-04T09:14:14+00:00",
-      "updated_at": "2024-03-04T09:14:14+00:00",
+      "created_at": "2024-03-11T09:20:07+00:00",
+      "updated_at": "2024-03-11T09:20:07+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail64@company.com",
+      "email": "mail285@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -398,7 +251,7 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "398a53598769d83658ea69cb8e9b4508",
+      "tenant_token": "620285b223897560099a7ab94753608f",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -433,6 +286,153 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Updating a company
+
+
+
+> How to update a company:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "ba78e73f-3859-46e2-92b8-87598af80a24",
+        "type": "companies",
+        "attributes": {
+          "name": "iRent LLC"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "ba78e73f-3859-46e2-92b8-87598af80a24",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2024-03-11T09:20:07+00:00",
+      "updated_at": "2024-03-11T09:20:07+00:00",
+      "name": "iRent LLC",
+      "slug": "irent",
+      "email": "mail286@company.com",
+      "billing_email": null,
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
+      "region": null,
+      "country": "the Netherlands",
+      "market": "AV / Camera",
+      "use_billing_address": false,
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "favicon_url": null,
+      "default_timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
+      "vat_number": null,
+      "custom_domain": null,
+      "development": false,
+      "shop_theme_id": null,
+      "installed_online_store": false,
+      "years_active": null,
+      "source": null,
+      "medium": null,
+      "tenant_token": "329d5b9b44066fdf8c417d4a5f295311",
+      "pending_subscription": false,
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "main_address": {
+        "meets_validation_requirements": false,
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuispoort",
+        "address2": "Leeuwarden",
+        "city": "Leeuwarden",
+        "region": null,
+        "zipcode": "8900AB",
+        "country": "the Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+      },
+      "billing_address": null
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the company
+`data[attributes][email]` | **String** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent
+`data[attributes][billing_email]` | **String** <br>Used to send billing emails to
+`data[attributes][phone]` | **String** <br>Phone number
+`data[attributes][website]` | **String** <br>Website
+`data[attributes][address_line_1]` | **String** <br>First address line
+`data[attributes][address_line_2]` | **String** <br>Second address line
+`data[attributes][zipcode]` | **String** <br>Zipcode
+`data[attributes][city]` | **String** <br>City
+`data[attributes][region]` | **String** <br>Region
+`data[attributes][country]` | **String** <br>Country
+`data[attributes][market]` | **String** <br>The market the company operates in
+`data[attributes][use_billing_address]` | **Boolean** <br>Whether to use billing address on invoices received from Booqable
+`data[attributes][billing_company]` | **String** <br>Company name (used for invoices received from Booqable)
+`data[attributes][billing_address_line_1]` | **String** <br>First address line (used for invoices received from Booqable)
+`data[attributes][billing_address_line_2]` | **String** <br>Second address line (used for invoices received from Booqable)
+`data[attributes][billing_address_zipcode]` | **String** <br>Zipcode (used for invoices received from Booqable)
+`data[attributes][billing_address_city]` | **String** <br>City (used for invoices received from Booqable)
+`data[attributes][billing_address_region]` | **String** <br>Region (used for invoices received from Booqable)
+`data[attributes][billing_address_country]` | **String** <br>Country (used for invoices received from Booqable)
+`data[attributes][logo_base64]` | **String** <br>To update a logo send it as base64 encoded string
+`data[attributes][remove_logo]` | **Boolean** <br>Remove current logo
+`data[attributes][favicon_base64]` | **String** <br>To upload a favicon send it as a base64 encoded string
+`data[attributes][remove_favicon]` | **Boolean** <br>Remove current favicon
+`data[attributes][default_timezone]` | **String** <br>Company's default timezone
+`data[attributes][currency]` | **String** <br>Currency of the company
+`data[attributes][financial_line_1]` | **String** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
+`data[attributes][financial_line_2]` | **String** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
+`data[attributes][vat_number]` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
+`data[attributes][custom_domain]` | **String** <br>Custom domain to use for hosted store and checkout
+`data[attributes][shop_theme_id]` | **Uuid** <br>ID of installed shop theme
+`data[attributes][main_address_attributes]` | **Hash** <br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
+`data[attributes][billing_address_attributes]` | **Hash** <br>A hash with the company billing address fields. Use it when updating the company billing address. See `address` property type for more information
 
 
 ### Includes

@@ -23,17 +23,17 @@ Product groups hold general information and configuration about products. A prod
 - **Private structure:** Applies associated private price structure (only for product_type `rental`, `service`).
 
 ## Endpoints
-`GET /api/boomerang/product_groups`
+`GET /api/boomerang/product_groups/{id}`
 
 `DELETE /api/boomerang/product_groups/{id}`
 
-`GET /api/boomerang/product_groups/{id}`
+`GET /api/boomerang/product_groups`
+
+`POST api/boomerang/product_groups/search`
 
 `PUT /api/boomerang/product_groups/{id}`
 
 `POST /api/boomerang/product_groups`
-
-`POST api/boomerang/product_groups/search`
 
 ## Fields
 Every product group has the following fields:
@@ -102,6 +102,190 @@ Name | Description
 `products` | **Products** `readonly`<br>Associated Products
 
 
+## Fetching a product group
+
+
+
+> How to fetch a product group:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/a97bb081-6cd1-45bc-83fe-79f988ea17c0' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "a97bb081-6cd1-45bc-83fe-79f988ea17c0",
+    "type": "product_groups",
+    "attributes": {
+      "created_at": "2024-03-11T09:19:25+00:00",
+      "updated_at": "2024-03-11T09:19:25+00:00",
+      "archived": false,
+      "archived_at": null,
+      "type": "product_groups",
+      "name": "iPad Pro",
+      "group_name": null,
+      "slug": "ipad-pro",
+      "sku": "SKU",
+      "lead_time": 0,
+      "lag_time": 0,
+      "product_type": "rental",
+      "tracking_type": "bulk",
+      "trackable": false,
+      "has_variations": false,
+      "variation": false,
+      "extra_information": null,
+      "photo_url": null,
+      "description": null,
+      "show_in_store": true,
+      "sorting_weight": 0,
+      "base_price_in_cents": 0,
+      "price_type": "simple",
+      "price_period": "day",
+      "deposit_in_cents": 0,
+      "discountable": true,
+      "taxable": true,
+      "seo_title": null,
+      "seo_description": null,
+      "tag_list": [],
+      "properties": {},
+      "photo_id": null,
+      "tax_category_id": null,
+      "price_ruleset_id": null,
+      "price_structure_id": null,
+      "allow_shortage": false,
+      "shortage_limit": 0,
+      "variation_fields": [],
+      "flat_fee_price_in_cents": 0,
+      "structure_price_in_cents": 0,
+      "stock_item_properties": []
+    },
+    "relationships": {
+      "photo": {
+        "links": {
+          "related": null
+        }
+      },
+      "tax_category": {
+        "links": {
+          "related": null
+        }
+      },
+      "price_ruleset": {
+        "links": {
+          "related": null
+        }
+      },
+      "price_structure": {
+        "links": {
+          "related": null
+        }
+      },
+      "inventory_levels": {
+        "links": {
+          "related": "api/boomerang/inventory_levels?filter[item_id]=a97bb081-6cd1-45bc-83fe-79f988ea17c0"
+        }
+      },
+      "properties": {
+        "links": {
+          "related": "api/boomerang/properties?filter[owner_id]=a97bb081-6cd1-45bc-83fe-79f988ea17c0&filter[owner_type]=product_groups"
+        }
+      },
+      "products": {
+        "links": {
+          "related": "api/boomerang/products?filter[product_group_id]=a97bb081-6cd1-45bc-83fe-79f988ea17c0"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/product_groups/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`photo`
+
+
+`properties`
+
+
+`tax_category`
+
+
+`barcode`
+
+
+`products`
+
+
+`price_structure` => 
+`price_tiles`
+
+
+
+
+
+
+
+
+## Archiving a product group
+
+
+
+> How to delete a product group:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/c14228aa-c64f-43e1-987f-13454958f0e3' \
+    --header 'content-type: application/json' \
+    --data '{}'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/product_groups/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing product groups
 
 
@@ -120,11 +304,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "caf02887-9991-4a5d-9675-aa71460bfee2",
+      "id": "1895a588-a654-44d4-8b8c-d3d3b19a8ffb",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2024-03-04T09:15:59+00:00",
-        "updated_at": "2024-03-04T09:15:59+00:00",
+        "created_at": "2024-03-11T09:19:27+00:00",
+        "updated_at": "2024-03-11T09:19:27+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -188,17 +372,17 @@ Name | Description
         },
         "inventory_levels": {
           "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=caf02887-9991-4a5d-9675-aa71460bfee2"
+            "related": "api/boomerang/inventory_levels?filter[item_id]=1895a588-a654-44d4-8b8c-d3d3b19a8ffb"
           }
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=caf02887-9991-4a5d-9675-aa71460bfee2&filter[owner_type]=product_groups"
+            "related": "api/boomerang/properties?filter[owner_id]=1895a588-a654-44d4-8b8c-d3d3b19a8ffb&filter[owner_type]=product_groups"
           }
         },
         "products": {
           "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=caf02887-9991-4a5d-9675-aa71460bfee2"
+            "related": "api/boomerang/products?filter[product_group_id]=1895a588-a654-44d4-8b8c-d3d3b19a8ffb"
           }
         }
       }
@@ -311,150 +495,74 @@ This request accepts the following includes:
 
 
 
-## Archiving a product group
+## Searching product groups
+
+Use advanced search to make logical filter groups with and/or operators.
 
 
-
-> How to delete a product group:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/02fa75df-429d-454d-a9b2-9c0061fb39ba' \
-    --header 'content-type: application/json' \
-    --data '{}'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/product_groups/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching a product group
-
-
-
-> How to fetch a product group:
+> How to search for product groups:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/3684ce5e-48c8-4a9a-9003-c95b7e331e8b' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/search' \
     --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "3684ce5e-48c8-4a9a-9003-c95b7e331e8b",
-    "type": "product_groups",
-    "attributes": {
-      "created_at": "2024-03-04T09:16:02+00:00",
-      "updated_at": "2024-03-04T09:16:02+00:00",
-      "archived": false,
-      "archived_at": null,
-      "type": "product_groups",
-      "name": "iPad Pro",
-      "group_name": null,
-      "slug": "ipad-pro",
-      "sku": "SKU",
-      "lead_time": 0,
-      "lag_time": 0,
-      "product_type": "rental",
-      "tracking_type": "bulk",
-      "trackable": false,
-      "has_variations": false,
-      "variation": false,
-      "extra_information": null,
-      "photo_url": null,
-      "description": null,
-      "show_in_store": true,
-      "sorting_weight": 0,
-      "base_price_in_cents": 0,
-      "price_type": "simple",
-      "price_period": "day",
-      "deposit_in_cents": 0,
-      "discountable": true,
-      "taxable": true,
-      "seo_title": null,
-      "seo_description": null,
-      "tag_list": [],
-      "properties": {},
-      "photo_id": null,
-      "tax_category_id": null,
-      "price_ruleset_id": null,
-      "price_structure_id": null,
-      "allow_shortage": false,
-      "shortage_limit": 0,
-      "variation_fields": [],
-      "flat_fee_price_in_cents": 0,
-      "structure_price_in_cents": 0,
-      "stock_item_properties": []
-    },
-    "relationships": {
-      "photo": {
-        "links": {
-          "related": null
-        }
+    --data '{
+      "fields": {
+        "product_groups": "id"
       },
-      "tax_category": {
-        "links": {
-          "related": null
-        }
-      },
-      "price_ruleset": {
-        "links": {
-          "related": null
-        }
-      },
-      "price_structure": {
-        "links": {
-          "related": null
-        }
-      },
-      "inventory_levels": {
-        "links": {
-          "related": "api/boomerang/inventory_levels?filter[item_id]=3684ce5e-48c8-4a9a-9003-c95b7e331e8b"
-        }
-      },
-      "properties": {
-        "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=3684ce5e-48c8-4a9a-9003-c95b7e331e8b&filter[owner_type]=product_groups"
-        }
-      },
-      "products": {
-        "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=3684ce5e-48c8-4a9a-9003-c95b7e331e8b"
+      "filter": {
+        "conditions": {
+          "operator": "or",
+          "attributes": [
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "discountable": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "show_in_store": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            }
+          ]
         }
       }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "3eab12dc-e668-404a-8ea7-ea5cefd9e0dd"
+    },
+    {
+      "id": "45fab4f3-44ed-444f-9628-98dc386f0c29"
+    },
+    {
+      "id": "6b24b323-f79a-42de-beab-31f8d9088c6e"
     }
-  },
-  "meta": {}
+  ]
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/product_groups/{id}`
+`POST api/boomerang/product_groups/search`
 
 ### Request params
 
@@ -462,8 +570,83 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`include` | **String** <br>List of comma seperated relationships `?include=photo,properties`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`type` | **String** <br>`eq`, `not_eq`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`group_name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`slug` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`sku` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`lead_time` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`lag_time` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`product_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tracking_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`trackable` | **Boolean** <br>`eq`
+`has_variations` | **Boolean** <br>`eq`
+`variation` | **Boolean** <br>`eq`
+`extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`show_in_store` | **Boolean** <br>`eq`
+`sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`base_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`price_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`price_period` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discountable` | **Boolean** <br>`eq`
+`taxable` | **Boolean** <br>`eq`
+`seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tag_list` | **String** <br>`eq`
+`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
+`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
+`price_structure_id` | **Uuid** <br>`eq`, `not_eq`
+`q` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`collection_id` | **Uuid** <br>`eq`, `not_eq`
+`product_group_id` | **Uuid** <br>`eq`
+`allow_shortage` | **Boolean** <br>`eq`
+`shortage_limit` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`flat_fee_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`structure_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`photo_id` | **Uuid** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+`archived` | **Array** <br>`count`
+`tag_list` | **Array** <br>`count`
+`taxable` | **Array** <br>`count`
+`discountable` | **Array** <br>`count`
+`product_type` | **Array** <br>`count`
+`tracking_type` | **Array** <br>`count`
+`show_in_store` | **Array** <br>`count`
+`price_type` | **Array** <br>`count`
+`price_period` | **Array** <br>`count`
+`tax_category_id` | **Array** <br>`count`
+`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`base_price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -474,21 +657,6 @@ This request accepts the following includes:
 
 
 `properties`
-
-
-`tax_category`
-
-
-`barcode`
-
-
-`products`
-
-
-`price_structure` => 
-`price_tiles`
-
-
 
 
 
@@ -503,11 +671,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/8990b957-14d9-4ccb-8437-c99c1067ce32' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/21714288-1ef8-4db4-ad47-fbc2b173ec96' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "8990b957-14d9-4ccb-8437-c99c1067ce32",
+        "id": "21714288-1ef8-4db4-ad47-fbc2b173ec96",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -521,11 +689,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8990b957-14d9-4ccb-8437-c99c1067ce32",
+    "id": "21714288-1ef8-4db4-ad47-fbc2b173ec96",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-03-04T09:16:03+00:00",
-      "updated_at": "2024-03-04T09:16:03+00:00",
+      "created_at": "2024-03-11T09:19:32+00:00",
+      "updated_at": "2024-03-11T09:19:32+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -722,11 +890,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dbebe15c-fd99-4312-8121-3e2dbf30601b",
+    "id": "9053791c-cb59-477d-b046-2f80dc73064f",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-03-04T09:16:04+00:00",
-      "updated_at": "2024-03-04T09:16:04+00:00",
+      "created_at": "2024-03-11T09:19:34+00:00",
+      "updated_at": "2024-03-11T09:19:34+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -887,174 +1055,6 @@ This request accepts the following includes:
 `price_tiles`
 
 
-
-
-
-
-
-
-## Searching product groups
-
-Use advanced search to make logical filter groups with and/or operators.
-
-
-> How to search for product groups:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/search' \
-    --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "product_groups": "id"
-      },
-      "filter": {
-        "conditions": {
-          "operator": "or",
-          "attributes": [
-            {
-              "operator": "and",
-              "attributes": [
-                {
-                  "discountable": true
-                },
-                {
-                  "taxable": true
-                }
-              ]
-            },
-            {
-              "operator": "and",
-              "attributes": [
-                {
-                  "show_in_store": true
-                },
-                {
-                  "taxable": true
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "9d73f6f8-4b4c-473a-a5c5-18798ab13f6f"
-    },
-    {
-      "id": "2ccd19e5-ecc3-4bf6-a70e-11a17715ed09"
-    },
-    {
-      "id": "e7f06879-ddf9-4be6-80d0-6116885de1cd"
-    }
-  ]
-}
-```
-
-### HTTP Request
-
-`POST api/boomerang/product_groups/search`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=photo,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean** <br>`eq`
-`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`type` | **String** <br>`eq`, `not_eq`
-`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`group_name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`slug` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`sku` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`lead_time` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`lag_time` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`product_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`tracking_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`trackable` | **Boolean** <br>`eq`
-`has_variations` | **Boolean** <br>`eq`
-`variation` | **Boolean** <br>`eq`
-`extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`show_in_store` | **Boolean** <br>`eq`
-`sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`base_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`price_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`price_period` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discountable` | **Boolean** <br>`eq`
-`taxable` | **Boolean** <br>`eq`
-`seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`tag_list` | **String** <br>`eq`
-`tax_category_id` | **Uuid** <br>`eq`, `not_eq`
-`price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
-`price_structure_id` | **Uuid** <br>`eq`, `not_eq`
-`q` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`collection_id` | **Uuid** <br>`eq`, `not_eq`
-`product_group_id` | **Uuid** <br>`eq`
-`allow_shortage` | **Boolean** <br>`eq`
-`shortage_limit` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`flat_fee_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`structure_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`photo_id` | **Uuid** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
-`archived` | **Array** <br>`count`
-`tag_list` | **Array** <br>`count`
-`taxable` | **Array** <br>`count`
-`discountable` | **Array** <br>`count`
-`product_type` | **Array** <br>`count`
-`tracking_type` | **Array** <br>`count`
-`show_in_store` | **Array** <br>`count`
-`price_type` | **Array** <br>`count`
-`price_period` | **Array** <br>`count`
-`tax_category_id` | **Array** <br>`count`
-`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`base_price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`photo`
-
-
-`properties`
 
 
 

@@ -31,73 +31,6 @@ Name | Description
 
 
 
-> How to create an invitation:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/employee_invitations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "employee_invitations",
-        "attributes": {
-          "firstname": "John",
-          "lastname": "Doe",
-          "email": "john@doe.com"
-        }
-      },
-      "include": "employee"
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "81478c9d-1a20-53ed-8ea9-a3cd73e859fc",
-    "type": "employee_invitations",
-    "attributes": {
-      "employee_id": "4d71c6b2-572b-44cf-a886-6adfb87833e1"
-    },
-    "relationships": {
-      "employee": {
-        "data": {
-          "type": "employees",
-          "id": "4d71c6b2-572b-44cf-a886-6adfb87833e1"
-        }
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "4d71c6b2-572b-44cf-a886-6adfb87833e1",
-      "type": "employees",
-      "attributes": {
-        "created_at": "2024-03-04T09:18:57+00:00",
-        "updated_at": "2024-03-04T09:18:57+00:00",
-        "name": "John Doe",
-        "firstname": "John",
-        "lastname": "Doe",
-        "locale": null,
-        "email": "john@doe.com",
-        "unconfirmed_email": null,
-        "active": true,
-        "owner": false,
-        "confirmed": false,
-        "time_to_confirm": 0,
-        "permissions": [],
-        "has_two_factor_autentication": false,
-        "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-
 > To re-send an invitation we supply the ID the employee for which the invitation was sent.
 Note that you can also update other fields.:
 
@@ -109,7 +42,7 @@ Note that you can also update other fields.:
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "788edf65-27df-46fe-99b6-a87ce48cf859",
+          "id": "0ac82ebf-2824-411c-957b-93ba6d7692c6",
           "email": "jane@doe.com"
         }
       },
@@ -122,27 +55,27 @@ Note that you can also update other fields.:
 ```json
   {
   "data": {
-    "id": "788edf65-27df-46fe-99b6-a87ce48cf859",
+    "id": "0ac82ebf-2824-411c-957b-93ba6d7692c6",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "788edf65-27df-46fe-99b6-a87ce48cf859"
+      "employee_id": "0ac82ebf-2824-411c-957b-93ba6d7692c6"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "788edf65-27df-46fe-99b6-a87ce48cf859"
+          "id": "0ac82ebf-2824-411c-957b-93ba6d7692c6"
         }
       }
     }
   },
   "included": [
     {
-      "id": "788edf65-27df-46fe-99b6-a87ce48cf859",
+      "id": "0ac82ebf-2824-411c-957b-93ba6d7692c6",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-03-04T09:18:57+00:00",
-        "updated_at": "2024-03-04T09:18:57+00:00",
+        "created_at": "2024-03-11T09:16:25+00:00",
+        "updated_at": "2024-03-11T09:16:26+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -169,6 +102,73 @@ Note that you can also update other fields.:
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+
+> How to create an invitation:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/employee_invitations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "employee_invitations",
+        "attributes": {
+          "firstname": "John",
+          "lastname": "Doe",
+          "email": "john@doe.com"
+        }
+      },
+      "include": "employee"
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "c42fde84-0b9b-5e60-9406-6ed72a080193",
+    "type": "employee_invitations",
+    "attributes": {
+      "employee_id": "df01c1ac-86b9-45f5-87ec-9179e0663c78"
+    },
+    "relationships": {
+      "employee": {
+        "data": {
+          "type": "employees",
+          "id": "df01c1ac-86b9-45f5-87ec-9179e0663c78"
+        }
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "df01c1ac-86b9-45f5-87ec-9179e0663c78",
+      "type": "employees",
+      "attributes": {
+        "created_at": "2024-03-11T09:16:26+00:00",
+        "updated_at": "2024-03-11T09:16:26+00:00",
+        "name": "John Doe",
+        "firstname": "John",
+        "lastname": "Doe",
+        "locale": null,
+        "email": "john@doe.com",
+        "unconfirmed_email": null,
+        "active": true,
+        "owner": false,
+        "confirmed": false,
+        "time_to_confirm": 0,
+        "permissions": [],
+        "has_two_factor_autentication": false,
+        "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
+        "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
       }
     }
   ],
