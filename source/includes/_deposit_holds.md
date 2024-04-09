@@ -11,6 +11,7 @@ Name | Description
 `amount_in_cents` | **Integer** `writeonly`<br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
 `reason` | **String** `writeonly`<br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 `order_id` | **Uuid** <br>The associated Order
+`deposit_line_id` | **Uuid** <br>The associated Deposit line
 
 
 ## Relationships
@@ -19,6 +20,7 @@ Deposit holds have the following relationships:
 Name | Description
 -- | --
 `order` | **Orders** `readonly`<br>Associated Order
+`deposit_line` | **Lines** `readonly`<br>Associated Deposit line
 
 
 ## Create
@@ -35,7 +37,7 @@ Name | Description
       "data": {
         "type": "deposit_holds",
         "attributes": {
-          "order_id": "232fc09d-6384-48ea-9bf6-12fc19c39b95",
+          "order_id": "0e047214-095e-4171-a22c-59bef8a4fc18",
           "amount_in_cents": 5000,
           "reason": "damages"
         }
@@ -48,13 +50,19 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bddae903-e58c-516b-9c56-1853a19b3a5e",
+    "id": "2809567e-df57-5e86-8e21-52fafbaa4cc3",
     "type": "deposit_holds",
     "attributes": {
-      "order_id": "232fc09d-6384-48ea-9bf6-12fc19c39b95"
+      "order_id": "0e047214-095e-4171-a22c-59bef8a4fc18",
+      "deposit_line_id": "4bd5bc91-94de-4018-94d0-7b7f73607f7f"
     },
     "relationships": {
       "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "deposit_line": {
         "meta": {
           "included": false
         }
@@ -75,8 +83,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[deposit_holds]=order_id`
+`include` | **String** <br>List of comma seperated relationships `?include=deposit_line,order`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[deposit_holds]=order_id,deposit_line_id`
 
 
 ### Request body
@@ -88,13 +96,26 @@ Name | Description
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
 `data[attributes][reason]` | **String** <br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][deposit_line_id]` | **Uuid** <br>The associated Deposit line
 
 
 ### Includes
 
 This request accepts the following includes:
 
-`order`
+`deposit_line` => 
+`tax_category`
+
+
+`tax_values`
+
+
+
+
+`order` => 
+`tax_values`
+
+
 
 
 

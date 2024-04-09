@@ -12,9 +12,7 @@ Name | Description
 `q` | **String** `writeonly`<br>Query for a specific product
 `name` | **String** <br>Product name
 `sold` | **Integer** <br>Amount of times the product was sold
-`returned` | **Integer** <br>Amount of times the product got sent back
 `turnover_in_cents` | **Integer** <br>Turnover during period
-`returned_in_cents` | **Integer** <br>Refunds during period
 `product_id` | **Uuid** <br>The associated Product
 
 
@@ -34,7 +32,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-03-06+00%3A00%3A00+UTC&filter%5Btill%5D=2024-03-11+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-04-04+00%3A00%3A00+UTC&filter%5Btill%5D=2024-04-09+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,21 +42,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "e4cebc3d-118d-4f3a-b3dd-fc388e328512",
+      "id": "6ffe8daf-5d37-4d78-898c-3baa372f2811",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2024-03-11T09:13:39+00:00",
-        "name": "Product 1000000",
+        "created_at": "2024-04-09T07:39:47+00:00",
+        "name": "Product 1000031",
         "sold": 2,
-        "returned": 0,
         "turnover_in_cents": 0,
-        "returned_in_cents": 0,
-        "product_id": "e4cebc3d-118d-4f3a-b3dd-fc388e328512"
+        "product_id": "6ffe8daf-5d37-4d78-898c-3baa372f2811"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/e4cebc3d-118d-4f3a-b3dd-fc388e328512"
+            "related": "api/boomerang/products/6ffe8daf-5d37-4d78-898c-3baa372f2811"
           }
         }
       }

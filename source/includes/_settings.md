@@ -230,6 +230,7 @@ Name | Description
 `setup_checklist` | **Hash** <br>Setup checklist settings (Used internally by Booqable)
 `onboarding` | **Hash** <br>Onboarding settings (Used internally by Booqable)
 `instructions` | **Hash** <br>Settings for in app instructions (Used internally by Booqable)
+`tracking` | **Hash** <br>Tracking settings (Used internally by Booqable)
 
 
 ## Fetching settings
@@ -249,10 +250,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "47ad896b-7964-5783-9fd3-0d080426aca1",
+    "id": "deebd0b8-bdb7-5767-985e-d4492fdec25e",
     "type": "settings",
     "attributes": {
-      "updated_at": "2024-03-11T09:16:27+00:00",
+      "updated_at": "2024-04-09T07:41:43+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -264,8 +265,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "be3deddf-6f24-489c-b86d-aa098809325e",
-        "tax_region_id": "cddac550-06bc-4733-8e76-cc1083eacd77",
+        "tax_category_id": "32e5f6a6-00bb-459a-93cc-42f972ef144c",
+        "tax_region_id": "3927f297-1f6a-4abf-9216-0350671f50e1",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },

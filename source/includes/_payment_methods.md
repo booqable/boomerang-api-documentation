@@ -36,7 +36,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/d8d7fe4b-aba7-4bdb-b0a7-c9ce62fdc133' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/194e07b6-2b68-4bac-ace3-178f1487133a' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,6 +44,30 @@ Name | Description
 
 ```json
   {
+  "data": {
+    "id": "194e07b6-2b68-4bac-ace3-178f1487133a",
+    "type": "payment_methods",
+    "attributes": {
+      "created_at": "2024-04-09T07:40:22+00:00",
+      "updated_at": "2024-04-09T07:40:22+00:00",
+      "data": {
+        "name": null,
+        "brand": null,
+        "exp_month": null,
+        "exp_year": null,
+        "last4": null
+      },
+      "payment_method_type": "creditcard",
+      "customer_id": "fb1906d1-9afe-4456-8891-801d95aca4b0"
+    },
+    "relationships": {
+      "customer": {
+        "links": {
+          "related": "api/boomerang/customers/fb1906d1-9afe-4456-8891-801d95aca4b0"
+        }
+      }
+    }
+  },
   "meta": {}
 }
 ```
@@ -82,11 +106,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "72d03f5d-d8ce-4051-b3f2-edca7583c91e",
+      "id": "87330231-6690-4016-bcf1-fea845cd4f2a",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-03-11T09:18:22+00:00",
-        "updated_at": "2024-03-11T09:18:22+00:00",
+        "created_at": "2024-04-09T07:40:22+00:00",
+        "updated_at": "2024-04-09T07:40:22+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -95,12 +119,12 @@ This request does not accept any includes
           "last4": null
         },
         "payment_method_type": "creditcard",
-        "customer_id": "dd75cd2a-4dd4-411e-8da8-dc176361bcdc"
+        "customer_id": "f98dfc52-2809-4207-91af-54710e00a0cd"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/dd75cd2a-4dd4-411e-8da8-dc176361bcdc"
+            "related": "api/boomerang/customers/f98dfc52-2809-4207-91af-54710e00a0cd"
           }
         }
       }
