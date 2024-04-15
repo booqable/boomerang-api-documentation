@@ -18,11 +18,11 @@ Note that when using URLs as numbers, it's advised to base64 encode the number b
 
 `POST /api/boomerang/barcodes`
 
-`DELETE /api/boomerang/barcodes/{id}`
+`PUT /api/boomerang/barcodes/{id}`
 
 `GET /api/boomerang/barcodes/{id}`
 
-`PUT /api/boomerang/barcodes/{id}`
+`DELETE /api/boomerang/barcodes/{id}`
 
 ## Fields
 Every barcode has the following fields:
@@ -55,7 +55,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Fbc15b9ce-c7d3-474f-92ae-9f65589d9a4a&include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2F66d5b4a9-1e92-4e37-8bde-b09137656062&include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -65,25 +65,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "bc15b9ce-c7d3-474f-92ae-9f65589d9a4a",
+      "id": "66d5b4a9-1e92-4e37-8bde-b09137656062",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2024-04-09T07:43:25+00:00",
-        "updated_at": "2024-04-09T07:43:25+00:00",
-        "number": "http://bqbl.it/bc15b9ce-c7d3-474f-92ae-9f65589d9a4a",
+        "created_at": "2024-04-15T09:27:52+00:00",
+        "updated_at": "2024-04-15T09:27:52+00:00",
+        "number": "http://bqbl.it/66d5b4a9-1e92-4e37-8bde-b09137656062",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-284.lvh.me:/barcodes/bc15b9ce-c7d3-474f-92ae-9f65589d9a4a/image",
-        "owner_id": "61353b6b-54c6-4a47-a2a0-c630905d7313",
+        "image_url": "http://company-name-229.lvh.me:/barcodes/66d5b4a9-1e92-4e37-8bde-b09137656062/image",
+        "owner_id": "061d8026-a40a-4a9f-8cad-f12b752bc3e6",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/61353b6b-54c6-4a47-a2a0-c630905d7313"
+            "related": "api/boomerang/customers/061d8026-a40a-4a9f-8cad-f12b752bc3e6"
           },
           "data": {
             "type": "customers",
-            "id": "61353b6b-54c6-4a47-a2a0-c630905d7313"
+            "id": "061d8026-a40a-4a9f-8cad-f12b752bc3e6"
           }
         }
       }
@@ -91,16 +91,16 @@ Name | Description
   ],
   "included": [
     {
-      "id": "61353b6b-54c6-4a47-a2a0-c630905d7313",
+      "id": "061d8026-a40a-4a9f-8cad-f12b752bc3e6",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-04-09T07:43:25+00:00",
-        "updated_at": "2024-04-09T07:43:25+00:00",
+        "created_at": "2024-04-15T09:27:52+00:00",
+        "updated_at": "2024-04-15T09:27:52+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-70@doe.test",
+        "email": "john-65@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -123,17 +123,17 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=61353b6b-54c6-4a47-a2a0-c630905d7313&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=061d8026-a40a-4a9f-8cad-f12b752bc3e6&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=61353b6b-54c6-4a47-a2a0-c630905d7313&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=061d8026-a40a-4a9f-8cad-f12b752bc3e6&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=61353b6b-54c6-4a47-a2a0-c630905d7313&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=061d8026-a40a-4a9f-8cad-f12b752bc3e6&filter[owner_type]=customers"
           }
         }
       }
@@ -148,7 +148,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=aHR0cDovL2JxYmwuaXQvNTQyMTdiMTktYTI3My00M2VjLTk2ZGYtNTJlMzJlZWIyMTcy&include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=aHR0cDovL2JxYmwuaXQvYTc1YjNhMjYtOWEzMC00ZTlhLWE3OTUtM2JlNTg1NDllOTEy&include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -158,25 +158,25 @@ Name | Description
   {
   "data": [
     {
-      "id": "54217b19-a273-43ec-96df-52e32eeb2172",
+      "id": "a75b3a26-9a30-4e9a-a795-3be58549e912",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2024-04-09T07:43:26+00:00",
-        "updated_at": "2024-04-09T07:43:26+00:00",
-        "number": "http://bqbl.it/54217b19-a273-43ec-96df-52e32eeb2172",
+        "created_at": "2024-04-15T09:27:53+00:00",
+        "updated_at": "2024-04-15T09:27:53+00:00",
+        "number": "http://bqbl.it/a75b3a26-9a30-4e9a-a795-3be58549e912",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-285.lvh.me:/barcodes/54217b19-a273-43ec-96df-52e32eeb2172/image",
-        "owner_id": "2049580e-d6f4-4a42-ae7d-fb1798eff75b",
+        "image_url": "http://company-name-230.lvh.me:/barcodes/a75b3a26-9a30-4e9a-a795-3be58549e912/image",
+        "owner_id": "9c76ebae-26ef-4691-b464-cbd747f1fb07",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/2049580e-d6f4-4a42-ae7d-fb1798eff75b"
+            "related": "api/boomerang/customers/9c76ebae-26ef-4691-b464-cbd747f1fb07"
           },
           "data": {
             "type": "customers",
-            "id": "2049580e-d6f4-4a42-ae7d-fb1798eff75b"
+            "id": "9c76ebae-26ef-4691-b464-cbd747f1fb07"
           }
         }
       }
@@ -184,16 +184,16 @@ Name | Description
   ],
   "included": [
     {
-      "id": "2049580e-d6f4-4a42-ae7d-fb1798eff75b",
+      "id": "9c76ebae-26ef-4691-b464-cbd747f1fb07",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-04-09T07:43:26+00:00",
-        "updated_at": "2024-04-09T07:43:26+00:00",
+        "created_at": "2024-04-15T09:27:53+00:00",
+        "updated_at": "2024-04-15T09:27:53+00:00",
         "archived": false,
         "archived_at": null,
         "number": 2,
         "name": "John Doe",
-        "email": "john-72@doe.test",
+        "email": "john-67@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -216,17 +216,17 @@ Name | Description
         },
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=2049580e-d6f4-4a42-ae7d-fb1798eff75b&filter[owner_type]=customers"
+            "related": "api/boomerang/properties?filter[owner_id]=9c76ebae-26ef-4691-b464-cbd747f1fb07&filter[owner_type]=customers"
           }
         },
         "barcode": {
           "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=2049580e-d6f4-4a42-ae7d-fb1798eff75b&filter[owner_type]=customers"
+            "related": "api/boomerang/barcodes?filter[owner_id]=9c76ebae-26ef-4691-b464-cbd747f1fb07&filter[owner_type]=customers"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=2049580e-d6f4-4a42-ae7d-fb1798eff75b&filter[owner_type]=customers"
+            "related": "api/boomerang/notes?filter[owner_id]=9c76ebae-26ef-4691-b464-cbd747f1fb07&filter[owner_type]=customers"
           }
         }
       }
@@ -251,21 +251,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "918f6b74-6ed4-40e7-b474-d47d549c9e92",
+      "id": "0db95860-9624-4fb3-8eff-8ac465a58dcd",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2024-04-09T07:43:27+00:00",
-        "updated_at": "2024-04-09T07:43:27+00:00",
-        "number": "http://bqbl.it/918f6b74-6ed4-40e7-b474-d47d549c9e92",
+        "created_at": "2024-04-15T09:27:53+00:00",
+        "updated_at": "2024-04-15T09:27:53+00:00",
+        "number": "http://bqbl.it/0db95860-9624-4fb3-8eff-8ac465a58dcd",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-286.lvh.me:/barcodes/918f6b74-6ed4-40e7-b474-d47d549c9e92/image",
-        "owner_id": "f90f8364-bb2b-4b97-91e4-1197e81c13b1",
+        "image_url": "http://company-name-231.lvh.me:/barcodes/0db95860-9624-4fb3-8eff-8ac465a58dcd/image",
+        "owner_id": "0c378061-893d-48a7-8c38-13022c4e8462",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/f90f8364-bb2b-4b97-91e4-1197e81c13b1"
+            "related": "api/boomerang/customers/0c378061-893d-48a7-8c38-13022c4e8462"
           }
         }
       }
@@ -344,7 +344,7 @@ This request accepts the following includes:
         "type": "barcodes",
         "attributes": {
           "barcode_type": "qr_code",
-          "owner_id": "b8ba56a9-1076-49b7-842a-b07480b1f9b7",
+          "owner_id": "efb9272f-9f41-4e61-81fd-2b785652d700",
           "owner_type": "customers"
         }
       }
@@ -356,15 +356,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "79f47345-2834-4ddd-89da-da4b13260c92",
+    "id": "efa9b99b-5101-477c-9109-27fa50d51736",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2024-04-09T07:43:28+00:00",
-      "updated_at": "2024-04-09T07:43:28+00:00",
-      "number": "http://bqbl.it/79f47345-2834-4ddd-89da-da4b13260c92",
+      "created_at": "2024-04-15T09:27:54+00:00",
+      "updated_at": "2024-04-15T09:27:54+00:00",
+      "number": "http://bqbl.it/efa9b99b-5101-477c-9109-27fa50d51736",
       "barcode_type": "qr_code",
-      "image_url": "http://company-name-287.lvh.me:/barcodes/79f47345-2834-4ddd-89da-da4b13260c92/image",
-      "owner_id": "b8ba56a9-1076-49b7-842a-b07480b1f9b7",
+      "image_url": "http://company-name-232.lvh.me:/barcodes/efa9b99b-5101-477c-9109-27fa50d51736/image",
+      "owner_id": "efb9272f-9f41-4e61-81fd-2b785652d700",
       "owner_type": "customers"
     },
     "relationships": {
@@ -416,181 +416,6 @@ This request accepts the following includes:
 
 
 
-## Destroying a barcode
-
-
-
-> How to delete a barcode:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/c372f238-60dd-4569-b0a5-db453e0f95c6' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "c372f238-60dd-4569-b0a5-db453e0f95c6",
-    "type": "barcodes",
-    "attributes": {
-      "created_at": "2024-04-09T07:43:29+00:00",
-      "updated_at": "2024-04-09T07:43:29+00:00",
-      "number": "http://bqbl.it/c372f238-60dd-4569-b0a5-db453e0f95c6",
-      "barcode_type": "qr_code",
-      "image_url": "http://company-name-288.lvh.me:/barcodes/c372f238-60dd-4569-b0a5-db453e0f95c6/image",
-      "owner_id": "66f78943-1234-48fa-b14a-2361d3192398",
-      "owner_type": "customers"
-    },
-    "relationships": {
-      "owner": {
-        "links": {
-          "related": "api/boomerang/customers/66f78943-1234-48fa-b14a-2361d3192398"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/barcodes/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
-
-
-### Includes
-
-This request does not accept any includes
-## Fetching a barcode
-
-
-
-> How to fetch a barcode:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/5e2e68fb-c416-40f0-b3ca-9e24fbaa5c1a?include=owner' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "5e2e68fb-c416-40f0-b3ca-9e24fbaa5c1a",
-    "type": "barcodes",
-    "attributes": {
-      "created_at": "2024-04-09T07:43:30+00:00",
-      "updated_at": "2024-04-09T07:43:30+00:00",
-      "number": "http://bqbl.it/5e2e68fb-c416-40f0-b3ca-9e24fbaa5c1a",
-      "barcode_type": "qr_code",
-      "image_url": "http://company-name-289.lvh.me:/barcodes/5e2e68fb-c416-40f0-b3ca-9e24fbaa5c1a/image",
-      "owner_id": "ee943191-ea73-4b88-82ef-2caa526b5482",
-      "owner_type": "customers"
-    },
-    "relationships": {
-      "owner": {
-        "links": {
-          "related": "api/boomerang/customers/ee943191-ea73-4b88-82ef-2caa526b5482"
-        },
-        "data": {
-          "type": "customers",
-          "id": "ee943191-ea73-4b88-82ef-2caa526b5482"
-        }
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "ee943191-ea73-4b88-82ef-2caa526b5482",
-      "type": "customers",
-      "attributes": {
-        "created_at": "2024-04-09T07:43:30+00:00",
-        "updated_at": "2024-04-09T07:43:30+00:00",
-        "archived": false,
-        "archived_at": null,
-        "number": 1,
-        "name": "John Doe",
-        "email": "john-77@doe.test",
-        "deposit_type": "default",
-        "deposit_value": 0.0,
-        "discount_percentage": 0.0,
-        "legal_type": "person",
-        "properties": {},
-        "tag_list": [],
-        "merge_suggestion_customer_id": null,
-        "tax_region_id": null
-      },
-      "relationships": {
-        "merge_suggestion_customer": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=ee943191-ea73-4b88-82ef-2caa526b5482&filter[owner_type]=customers"
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=ee943191-ea73-4b88-82ef-2caa526b5482&filter[owner_type]=customers"
-          }
-        },
-        "notes": {
-          "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=ee943191-ea73-4b88-82ef-2caa526b5482&filter[owner_type]=customers"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/barcodes/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-
-
-
-
 ## Updating a barcode
 
 
@@ -599,11 +424,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/982c775e-a49d-453d-872e-2504d4a090d8' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/b27d037b-ce1b-4e4c-8a57-f081b8855178' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "982c775e-a49d-453d-872e-2504d4a090d8",
+        "id": "b27d037b-ce1b-4e4c-8a57-f081b8855178",
         "type": "barcodes",
         "attributes": {
           "number": "https://myfancysite.com"
@@ -617,15 +442,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "982c775e-a49d-453d-872e-2504d4a090d8",
+    "id": "b27d037b-ce1b-4e4c-8a57-f081b8855178",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2024-04-09T07:43:31+00:00",
-      "updated_at": "2024-04-09T07:43:31+00:00",
+      "created_at": "2024-04-15T09:27:55+00:00",
+      "updated_at": "2024-04-15T09:27:55+00:00",
       "number": "https://myfancysite.com",
       "barcode_type": "qr_code",
-      "image_url": "http://company-name-290.lvh.me:/barcodes/982c775e-a49d-453d-872e-2504d4a090d8/image",
-      "owner_id": "d57e56c1-bed7-4414-b3c9-ac9143db2ca9",
+      "image_url": "http://company-name-233.lvh.me:/barcodes/b27d037b-ce1b-4e4c-8a57-f081b8855178/image",
+      "owner_id": "ca064645-d31e-41fe-868e-0b70f0675ac1",
       "owner_type": "customers"
     },
     "relationships": {
@@ -676,3 +501,179 @@ This request accepts the following includes:
 
 
 
+
+## Fetching a barcode
+
+
+
+> How to fetch a barcode:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/8162cc16-4295-413e-9d6d-8239e17000cf?include=owner' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "8162cc16-4295-413e-9d6d-8239e17000cf",
+    "type": "barcodes",
+    "attributes": {
+      "created_at": "2024-04-15T09:27:55+00:00",
+      "updated_at": "2024-04-15T09:27:55+00:00",
+      "number": "http://bqbl.it/8162cc16-4295-413e-9d6d-8239e17000cf",
+      "barcode_type": "qr_code",
+      "image_url": "http://company-name-234.lvh.me:/barcodes/8162cc16-4295-413e-9d6d-8239e17000cf/image",
+      "owner_id": "c06323ad-cc4f-47b5-bb20-e8d7c6292907",
+      "owner_type": "customers"
+    },
+    "relationships": {
+      "owner": {
+        "links": {
+          "related": "api/boomerang/customers/c06323ad-cc4f-47b5-bb20-e8d7c6292907"
+        },
+        "data": {
+          "type": "customers",
+          "id": "c06323ad-cc4f-47b5-bb20-e8d7c6292907"
+        }
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "c06323ad-cc4f-47b5-bb20-e8d7c6292907",
+      "type": "customers",
+      "attributes": {
+        "created_at": "2024-04-15T09:27:55+00:00",
+        "updated_at": "2024-04-15T09:27:55+00:00",
+        "archived": false,
+        "archived_at": null,
+        "number": 1,
+        "name": "John Doe",
+        "email": "john-72@doe.test",
+        "deposit_type": "default",
+        "deposit_value": 0.0,
+        "discount_percentage": 0.0,
+        "legal_type": "person",
+        "properties": {},
+        "tag_list": [],
+        "merge_suggestion_customer_id": null,
+        "tax_region_id": null
+      },
+      "relationships": {
+        "merge_suggestion_customer": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_region": {
+          "links": {
+            "related": null
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=c06323ad-cc4f-47b5-bb20-e8d7c6292907&filter[owner_type]=customers"
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=c06323ad-cc4f-47b5-bb20-e8d7c6292907&filter[owner_type]=customers"
+          }
+        },
+        "notes": {
+          "links": {
+            "related": "api/boomerang/notes?filter[owner_id]=c06323ad-cc4f-47b5-bb20-e8d7c6292907&filter[owner_type]=customers"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/barcodes/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+
+
+
+
+## Destroying a barcode
+
+
+
+> How to delete a barcode:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/a19a7ae4-b500-40a5-b2a5-ff509a66e32d' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "a19a7ae4-b500-40a5-b2a5-ff509a66e32d",
+    "type": "barcodes",
+    "attributes": {
+      "created_at": "2024-04-15T09:27:56+00:00",
+      "updated_at": "2024-04-15T09:27:56+00:00",
+      "number": "http://bqbl.it/a19a7ae4-b500-40a5-b2a5-ff509a66e32d",
+      "barcode_type": "qr_code",
+      "image_url": "http://company-name-235.lvh.me:/barcodes/a19a7ae4-b500-40a5-b2a5-ff509a66e32d/image",
+      "owner_id": "2d52e9a3-d494-4ab5-add4-a6f49a64594f",
+      "owner_type": "customers"
+    },
+    "relationships": {
+      "owner": {
+        "links": {
+          "related": "api/boomerang/customers/2d52e9a3-d494-4ab5-add4-a6f49a64594f"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/barcodes/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
+
+
+### Includes
+
+This request does not accept any includes

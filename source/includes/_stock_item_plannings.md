@@ -45,7 +45,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/81b83871-2180-4d9d-9cd0-d50d36889f34' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/e7ec3048-e78f-49d5-a2ce-0c0d068510f5' \
     --header 'content-type: application/json' \
 ```
 
@@ -54,34 +54,34 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "81b83871-2180-4d9d-9cd0-d50d36889f34",
+    "id": "e7ec3048-e78f-49d5-a2ce-0c0d068510f5",
     "type": "stock_item_plannings",
     "attributes": {
-      "created_at": "2024-04-09T07:43:09+00:00",
-      "updated_at": "2024-04-09T07:43:09+00:00",
+      "created_at": "2024-04-15T09:25:03+00:00",
+      "updated_at": "2024-04-15T09:25:03+00:00",
       "archived": false,
       "archived_at": null,
       "reserved": false,
       "started": false,
       "stopped": false,
-      "stock_item_id": "09153171-6da2-47ef-8d8e-ac5e7d59bcce",
-      "planning_id": "5b835657-b783-4794-b55d-5a4f39ac9d6f",
-      "order_id": "c6e0931d-85b2-47d9-b38f-149fc0acee2e"
+      "stock_item_id": "3bc7d260-a060-4967-8739-92b843faf1fe",
+      "planning_id": "e6c31b67-91b6-4614-be04-d0b50007421c",
+      "order_id": "a9aa33e8-1598-4c2e-ae61-49ced48c9c9a"
     },
     "relationships": {
       "stock_item": {
         "links": {
-          "related": "api/boomerang/stock_items/09153171-6da2-47ef-8d8e-ac5e7d59bcce"
+          "related": "api/boomerang/stock_items/3bc7d260-a060-4967-8739-92b843faf1fe"
         }
       },
       "planning": {
         "links": {
-          "related": "api/boomerang/plannings/5b835657-b783-4794-b55d-5a4f39ac9d6f"
+          "related": "api/boomerang/plannings/e6c31b67-91b6-4614-be04-d0b50007421c"
         }
       },
       "order": {
         "links": {
-          "related": "api/boomerang/orders/c6e0931d-85b2-47d9-b38f-149fc0acee2e"
+          "related": "api/boomerang/orders/a9aa33e8-1598-4c2e-ae61-49ced48c9c9a"
         }
       }
     }
@@ -124,34 +124,34 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "d605ed5f-74b7-46eb-a88c-a2a1f145add4",
+      "id": "28eeef5c-e1df-4974-8083-e3ea192798f3",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-04-09T07:43:10+00:00",
-        "updated_at": "2024-04-09T07:43:10+00:00",
+        "created_at": "2024-04-15T09:25:04+00:00",
+        "updated_at": "2024-04-15T09:25:04+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "854b3cce-b70a-456b-b81b-23444dadb755",
-        "planning_id": "52338c29-e917-4461-b3d6-4c641b86edad",
-        "order_id": "7b9dfc87-c4ff-4585-92e1-b64810b0e6d1"
+        "stock_item_id": "29417b9b-539a-4757-a3f9-3746a0734671",
+        "planning_id": "8c291f95-9d0a-490a-9043-6e2c19d147ea",
+        "order_id": "1d4a81c0-16b0-4539-b6e0-262df405cf7a"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/854b3cce-b70a-456b-b81b-23444dadb755"
+            "related": "api/boomerang/stock_items/29417b9b-539a-4757-a3f9-3746a0734671"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/52338c29-e917-4461-b3d6-4c641b86edad"
+            "related": "api/boomerang/plannings/8c291f95-9d0a-490a-9043-6e2c19d147ea"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/7b9dfc87-c4ff-4585-92e1-b64810b0e6d1"
+            "related": "api/boomerang/orders/1d4a81c0-16b0-4539-b6e0-262df405cf7a"
           }
         }
       }
