@@ -35,7 +35,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=3eb47395-c8df-4cc1-b07c-c385c927baf9&filter%5Border_id%5D=4e3c0257-2f99-42bf-90f3-c414c1c0ec22' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=85d7523a-3b43-42ca-a5c0-009cbae35cab&filter%5Border_id%5D=992d1673-8fcb-4ccb-ac72-7fc88866febe' \
     --header 'content-type: application/json' \
 ```
 
@@ -45,33 +45,33 @@ Name | Description
   {
   "data": [
     {
-      "id": "4b3ee7b7-1d5e-5942-9125-08c248c94067",
+      "id": "7165f37e-b8e3-5633-b159-76f9e544acac",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "cd03119c-e85f-451a-991d-f4acac8bde1d",
-        "item_id": "3eb47395-c8df-4cc1-b07c-c385c927baf9",
+        "stock_item_id": "6479e3b8-f229-4df0-9854-58326f3de06d",
+        "item_id": "85d7523a-3b43-42ca-a5c0-009cbae35cab",
         "status": "available_in_location"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/cd03119c-e85f-451a-991d-f4acac8bde1d"
+            "related": "api/boomerang/stock_items/6479e3b8-f229-4df0-9854-58326f3de06d"
           }
         }
       }
     },
     {
-      "id": "a7bac858-05fc-5081-9897-3684de3d9a46",
+      "id": "3f44f2fb-abd7-596d-bb9b-20dae3b097d5",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "98cdb36c-f020-4f0b-b921-d2334aa08aea",
-        "item_id": "3eb47395-c8df-4cc1-b07c-c385c927baf9",
+        "stock_item_id": "595b873e-03e2-417a-90a5-6e4ffc907912",
+        "item_id": "85d7523a-3b43-42ca-a5c0-009cbae35cab",
         "status": "already_booked"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/98cdb36c-f020-4f0b-b921-d2334aa08aea"
+            "related": "api/boomerang/stock_items/595b873e-03e2-417a-90a5-6e4ffc907912"
           }
         }
       }

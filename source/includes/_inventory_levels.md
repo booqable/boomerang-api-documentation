@@ -34,15 +34,15 @@ Name | Description
 `location` | **Locations** `readonly`<br>Associated Location
 
 
-## Obtaining inventory levels for a product
+## Obtaining inventory levels for a product for a specific location
 
 
 
-> How to fetch inventory levels for a product:
+> How to fetch inventory levels for a product for a specific location:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=dd593d29-f857-4208-8118-a3451a71c92c&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=650ef0d8-f3c1-4426-9daa-a8ba87c49417&filter%5Blocation_id%5D=7567c257-9701-4475-9bf4-5d896e34a791&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -52,12 +52,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "a8203363-2440-5e34-9392-387ff34a272b",
+      "id": "35d89eae-4281-57c3-9409-065bbd8c922f",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "dd593d29-f857-4208-8118-a3451a71c92c",
+        "item_id": "650ef0d8-f3c1-4426-9daa-a8ba87c49417",
         "order_id": null,
-        "location_id": "599c1c79-d9c3-4655-a8bc-42eac38ac562",
+        "location_id": "7567c257-9701-4475-9bf4-5d896e34a791",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -72,12 +72,12 @@ Name | Description
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/dd593d29-f857-4208-8118-a3451a71c92c"
+            "related": "api/boomerang/items/650ef0d8-f3c1-4426-9daa-a8ba87c49417"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/599c1c79-d9c3-4655-a8bc-42eac38ac562"
+            "related": "api/boomerang/locations/7567c257-9701-4475-9bf4-5d896e34a791"
           }
         }
       }
@@ -142,15 +142,15 @@ This request accepts the following includes:
 
 
 
-## Obtaining inventory levels for a product for a specific location
+## Obtaining inventory levels for a product
 
 
 
-> How to fetch inventory levels for a product for a specific location:
+> How to fetch inventory levels for a product:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=e9f1922c-f1aa-44ac-81ce-5e3a7cc37a35&filter%5Blocation_id%5D=2bfec6c7-f8f4-4910-897b-36d6f827e11e&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=e9e95a4e-ff65-40e9-998b-6f9846dd0210&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -160,12 +160,12 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "1cb942a2-5a59-5018-89a4-ab178159e2ff",
+      "id": "0782a81b-d47d-5287-bd0c-25f0c1eac478",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "e9f1922c-f1aa-44ac-81ce-5e3a7cc37a35",
+        "item_id": "e9e95a4e-ff65-40e9-998b-6f9846dd0210",
         "order_id": null,
-        "location_id": "2bfec6c7-f8f4-4910-897b-36d6f827e11e",
+        "location_id": "d17485a2-49cb-41c0-a743-cc6bb1b71c29",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -180,12 +180,12 @@ This request accepts the following includes:
       "relationships": {
         "item": {
           "links": {
-            "related": "api/boomerang/items/e9f1922c-f1aa-44ac-81ce-5e3a7cc37a35"
+            "related": "api/boomerang/items/e9e95a4e-ff65-40e9-998b-6f9846dd0210"
           }
         },
         "location": {
           "links": {
-            "related": "api/boomerang/locations/2bfec6c7-f8f4-4910-897b-36d6f827e11e"
+            "related": "api/boomerang/locations/d17485a2-49cb-41c0-a743-cc6bb1b71c29"
           }
         }
       }

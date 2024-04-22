@@ -10,11 +10,11 @@ Depending on the setting in your Booqable account, creating a user can actually 
 ## Endpoints
 `POST /api/boomerang/users`
 
+`GET /api/boomerang/users/{id}`
+
 `GET /api/boomerang/users`
 
 `PUT /api/boomerang/users/{id}`
-
-`GET /api/boomerang/users/{id}`
 
 ## Fields
 Every user has the following fields:
@@ -59,7 +59,7 @@ Name | Description
           "first_name": "Bob",
           "last_name": "Bobsen",
           "email": "bob@booqable.com",
-          "customer_id": "c7650a5b-0cde-4ab9-af8e-fee89a356673"
+          "customer_id": "11f2e5f6-9751-41a0-b093-572c9783ce23"
         }
       }
     }'
@@ -70,17 +70,17 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "709a093e-5ee9-451e-a9a0-9acadaed0d9a",
+    "id": "30f84447-977a-4931-a7b3-cc5be67c9d16",
     "type": "users",
     "attributes": {
-      "created_at": "2024-04-15T09:26:18+00:00",
-      "updated_at": "2024-04-15T09:26:18+00:00",
+      "created_at": "2024-04-22T09:26:39+00:00",
+      "updated_at": "2024-04-22T09:26:39+00:00",
       "first_name": "Bob",
       "last_name": "Bobsen",
       "name": "Bob Bobsen",
       "email": "bob@booqable.com",
       "status": "invited",
-      "customer_id": "c7650a5b-0cde-4ab9-af8e-fee89a356673"
+      "customer_id": "11f2e5f6-9751-41a0-b093-572c9783ce23"
     },
     "relationships": {
       "customer": {
@@ -144,6 +144,83 @@ This request accepts the following includes:
 
 
 
+## Fetching a user
+
+
+
+> How to fetch a user:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/users/a7fe6a3b-3531-4097-b2cc-06ced7fa35f8' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "a7fe6a3b-3531-4097-b2cc-06ced7fa35f8",
+    "type": "users",
+    "attributes": {
+      "created_at": "2024-04-22T09:26:40+00:00",
+      "updated_at": "2024-04-22T09:26:40+00:00",
+      "first_name": "John",
+      "last_name": "Doe",
+      "name": "John Doe",
+      "email": "john-3@doe.test",
+      "status": "active",
+      "customer_id": "741e1565-306a-4a7c-9e2d-1757a1c3f6bd"
+    },
+    "relationships": {
+      "customer": {
+        "links": {
+          "related": "api/boomerang/customers/741e1565-306a-4a7c-9e2d-1757a1c3f6bd"
+        }
+      },
+      "notes": {
+        "links": {
+          "related": "api/boomerang/notes?filter[owner_id]=a7fe6a3b-3531-4097-b2cc-06ced7fa35f8&filter[owner_type]=users"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/users/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`disabled_by`
+
+
+`notes`
+
+
+
+
+
+
 ## Listing users
 
 
@@ -162,27 +239,27 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "535e5731-d78d-4e60-a35a-6bbb95e69536",
+      "id": "079b30c9-cb6b-47cb-9637-643ee4b1a7e5",
       "type": "users",
       "attributes": {
-        "created_at": "2024-04-15T09:26:19+00:00",
-        "updated_at": "2024-04-15T09:26:19+00:00",
+        "created_at": "2024-04-22T09:26:41+00:00",
+        "updated_at": "2024-04-22T09:26:41+00:00",
         "first_name": "John",
         "last_name": "Doe",
         "name": "John Doe",
-        "email": "john-3@doe.test",
+        "email": "john-4@doe.test",
         "status": "active",
-        "customer_id": "5b2b3e8c-b8d8-4311-9cce-74c103118098"
+        "customer_id": "a60c15e6-7675-4a4b-9bdc-c1ab106c61bd"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/5b2b3e8c-b8d8-4311-9cce-74c103118098"
+            "related": "api/boomerang/customers/a60c15e6-7675-4a4b-9bdc-c1ab106c61bd"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=535e5731-d78d-4e60-a35a-6bbb95e69536&filter[owner_type]=users"
+            "related": "api/boomerang/notes?filter[owner_id]=079b30c9-cb6b-47cb-9637-643ee4b1a7e5&filter[owner_type]=users"
           }
         }
       }
@@ -197,7 +274,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=cb8e5baa-6932-4909-95dc-51ea22e9834d&include=customer' \
+    --url 'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=df5c5248-fb68-4453-8d32-a9e7f7823e1c&include=customer' \
     --header 'content-type: application/json' \
 ```
 
@@ -207,27 +284,27 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "5f73c610-76d1-47d7-886c-967a011be3fc",
+      "id": "88be5620-4d0e-4541-bd48-0ed3c08f59bd",
       "type": "users",
       "attributes": {
-        "created_at": "2024-04-15T09:26:20+00:00",
-        "updated_at": "2024-04-15T09:26:20+00:00",
+        "created_at": "2024-04-22T09:26:41+00:00",
+        "updated_at": "2024-04-22T09:26:41+00:00",
         "first_name": "John",
         "last_name": "Doe",
         "name": "John Doe",
-        "email": "john-4@doe.test",
+        "email": "john-5@doe.test",
         "status": "active",
-        "customer_id": "cb8e5baa-6932-4909-95dc-51ea22e9834d"
+        "customer_id": "df5c5248-fb68-4453-8d32-a9e7f7823e1c"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/cb8e5baa-6932-4909-95dc-51ea22e9834d"
+            "related": "api/boomerang/customers/df5c5248-fb68-4453-8d32-a9e7f7823e1c"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=5f73c610-76d1-47d7-886c-967a011be3fc&filter[owner_type]=users"
+            "related": "api/boomerang/notes?filter[owner_id]=88be5620-4d0e-4541-bd48-0ed3c08f59bd&filter[owner_type]=users"
           }
         }
       }
@@ -284,22 +361,22 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Enabling a user
+## Disabling a user
 
 
 
-> How to enable a user:
+> How to disable a user:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/88c203a0-fab6-452f-bc2c-0dcdfc426e05' \
+    --url 'https://example.booqable.com/api/boomerang/users/aea5b965-3b16-456a-b09d-532ba9222ea5' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "88c203a0-fab6-452f-bc2c-0dcdfc426e05",
+        "id": "aea5b965-3b16-456a-b09d-532ba9222ea5",
         "type": "users",
         "attributes": {
-          "disabled": false
+          "disabled": true
         }
       }
     }'
@@ -310,17 +387,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "88c203a0-fab6-452f-bc2c-0dcdfc426e05",
+    "id": "aea5b965-3b16-456a-b09d-532ba9222ea5",
     "type": "users",
     "attributes": {
-      "created_at": "2024-04-15T09:26:21+00:00",
-      "updated_at": "2024-04-15T09:26:21+00:00",
+      "created_at": "2024-04-22T09:26:42+00:00",
+      "updated_at": "2024-04-22T09:26:42+00:00",
       "first_name": "John",
       "last_name": "Doe",
       "name": "John Doe",
-      "email": "john-5@doe.test",
-      "status": "active",
-      "customer_id": "80dbecb0-5313-4849-b22e-d545a615ea79"
+      "email": "john-6@doe.test",
+      "status": "disabled",
+      "customer_id": "1ac2d1a7-c328-47bf-8519-ff59066ef56f"
     },
     "relationships": {
       "customer": {
@@ -384,99 +461,22 @@ This request accepts the following includes:
 
 
 
-## Fetching a user
+## Enabling a user
 
 
 
-> How to fetch a user:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/users/4dbec42f-b217-4848-a30f-f49409b62be7' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "4dbec42f-b217-4848-a30f-f49409b62be7",
-    "type": "users",
-    "attributes": {
-      "created_at": "2024-04-15T09:26:21+00:00",
-      "updated_at": "2024-04-15T09:26:21+00:00",
-      "first_name": "John",
-      "last_name": "Doe",
-      "name": "John Doe",
-      "email": "john-6@doe.test",
-      "status": "active",
-      "customer_id": "4df11048-a309-4cb8-944c-2137e1eec06a"
-    },
-    "relationships": {
-      "customer": {
-        "links": {
-          "related": "api/boomerang/customers/4df11048-a309-4cb8-944c-2137e1eec06a"
-        }
-      },
-      "notes": {
-        "links": {
-          "related": "api/boomerang/notes?filter[owner_id]=4dbec42f-b217-4848-a30f-f49409b62be7&filter[owner_type]=users"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/users/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
-
-
-## Disabling a user
-
-
-
-> How to disable a user:
+> How to enable a user:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/5def6f6d-df7d-4928-b286-a3b97531a300' \
+    --url 'https://example.booqable.com/api/boomerang/users/59c88e63-f9b7-4d89-9a4d-865ee5c5f82c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5def6f6d-df7d-4928-b286-a3b97531a300",
+        "id": "59c88e63-f9b7-4d89-9a4d-865ee5c5f82c",
         "type": "users",
         "attributes": {
-          "disabled": true
+          "disabled": false
         }
       }
     }'
@@ -487,17 +487,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5def6f6d-df7d-4928-b286-a3b97531a300",
+    "id": "59c88e63-f9b7-4d89-9a4d-865ee5c5f82c",
     "type": "users",
     "attributes": {
-      "created_at": "2024-04-15T09:26:22+00:00",
-      "updated_at": "2024-04-15T09:26:22+00:00",
+      "created_at": "2024-04-22T09:26:42+00:00",
+      "updated_at": "2024-04-22T09:26:42+00:00",
       "first_name": "John",
       "last_name": "Doe",
       "name": "John Doe",
       "email": "john-7@doe.test",
-      "status": "disabled",
-      "customer_id": "1ea431de-47ed-4969-97c8-14dcef715d19"
+      "status": "active",
+      "customer_id": "2f7e92e9-bc92-40a0-9b84-dace047098e8"
     },
     "relationships": {
       "customer": {
@@ -569,11 +569,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/1b5597ba-91fa-49ac-81f6-3cfd1feb038c' \
+    --url 'https://example.booqable.com/api/boomerang/users/b3abcfba-2969-4f9c-b164-714c2c351afd' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "1b5597ba-91fa-49ac-81f6-3cfd1feb038c",
+        "id": "b3abcfba-2969-4f9c-b164-714c2c351afd",
         "type": "users",
         "attributes": {
           "first_name": "Bobba"
@@ -587,17 +587,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1b5597ba-91fa-49ac-81f6-3cfd1feb038c",
+    "id": "b3abcfba-2969-4f9c-b164-714c2c351afd",
     "type": "users",
     "attributes": {
-      "created_at": "2024-04-15T09:26:23+00:00",
-      "updated_at": "2024-04-15T09:26:23+00:00",
+      "created_at": "2024-04-22T09:26:43+00:00",
+      "updated_at": "2024-04-22T09:26:43+00:00",
       "first_name": "Bobba",
       "last_name": "Doe",
       "name": "Bobba Doe",
       "email": "john-8@doe.test",
       "status": "active",
-      "customer_id": "2d1561ce-3ea4-4373-aa93-7dc9b62cd0c0"
+      "customer_id": "25b5345f-d0de-4941-9e50-97232feb1d6a"
     },
     "relationships": {
       "customer": {

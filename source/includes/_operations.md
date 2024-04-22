@@ -285,11 +285,11 @@ Allowed attribute keys:
 _No artifacts are generated when bullk updating resources._
 
 ## Endpoints
+`POST /api/boomerang/operations`
+
 `GET /api/boomerang/operations/{id}`
 
 `GET /api/boomerang/operations`
-
-`POST /api/boomerang/operations`
 
 ## Fields
 Every operation has the following fields:
@@ -318,6 +318,101 @@ Name | Description
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
+## Creating an operation
+
+
+
+> How to create an operation:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/operations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "operations",
+        "attributes": {
+          "operation_data": {
+            "type": "archive",
+            "data": {
+              "target_type": "customers",
+              "target_ids": [
+                "123"
+              ]
+            }
+          }
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "b8319cc5-e65a-45b5-a6ad-2e387daa4bb3",
+    "type": "operations",
+    "attributes": {
+      "created_at": "2024-04-22T09:24:36+00:00",
+      "updated_at": "2024-04-22T09:24:36+00:00",
+      "status": "scheduled",
+      "status_message": null,
+      "finished_at": null,
+      "description": "Archiving customers",
+      "artifact": {
+        "url": null
+      },
+      "error_data": [],
+      "error_count": 0,
+      "employee_id": "935a6a36-0588-4e90-acfd-2d85a3166f20"
+    },
+    "relationships": {
+      "employee": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/operations`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
+
+
+### Includes
+
+This request accepts the following includes:
+
+`employee`
+
+
+
+
+
+
 ## Fetching an operation
 
 
@@ -326,7 +421,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/be77e7f1-9682-4093-b465-6e2cfcc55edd' \
+    --url 'https://example.booqable.com/api/boomerang/operations/b9717554-bfaa-49ef-90ce-1ffd08c79e1f' \
     --header 'content-type: application/json' \
 ```
 
@@ -335,11 +430,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "be77e7f1-9682-4093-b465-6e2cfcc55edd",
+    "id": "b9717554-bfaa-49ef-90ce-1ffd08c79e1f",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-04-15T09:25:05+00:00",
-      "updated_at": "2024-04-15T09:25:05+00:00",
+      "created_at": "2024-04-22T09:24:37+00:00",
+      "updated_at": "2024-04-22T09:24:37+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -349,12 +444,12 @@ Name | Description
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "40544b4f-d92e-45e9-939b-bfd75f7f8fa6"
+      "employee_id": "ea7d2eef-bd4a-4293-b19a-7a3c7711fedf"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/40544b4f-d92e-45e9-939b-bfd75f7f8fa6"
+          "related": "api/boomerang/employees/ea7d2eef-bd4a-4293-b19a-7a3c7711fedf"
         }
       }
     }
@@ -406,11 +501,11 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "da2d7f14-923c-4c72-a8e3-95db3a257205",
+      "id": "26355724-cd3d-4912-8d30-5fe3a61bae9c",
       "type": "operations",
       "attributes": {
-        "created_at": "2024-04-15T09:25:06+00:00",
-        "updated_at": "2024-04-15T09:25:06+00:00",
+        "created_at": "2024-04-22T09:24:38+00:00",
+        "updated_at": "2024-04-22T09:24:38+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -420,12 +515,12 @@ This request accepts the following includes:
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "06e28083-7022-4a88-a577-213a6f90352d"
+        "employee_id": "b4158aea-03fa-4041-aa7b-25f57e6e4054"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/06e28083-7022-4a88-a577-213a6f90352d"
+            "related": "api/boomerang/employees/b4158aea-03fa-4041-aa7b-25f57e6e4054"
           }
         }
       }
@@ -475,101 +570,6 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`employee`
-
-
-
-
-
-
-## Creating an operation
-
-
-
-> How to create an operation:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/operations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "operations",
-        "attributes": {
-          "operation_data": {
-            "type": "archive",
-            "data": {
-              "target_type": "customers",
-              "target_ids": [
-                "123"
-              ]
-            }
-          }
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "fef6debd-676c-4e9d-a8ad-40bd47ecc3ab",
-    "type": "operations",
-    "attributes": {
-      "created_at": "2024-04-15T09:25:07+00:00",
-      "updated_at": "2024-04-15T09:25:07+00:00",
-      "status": "scheduled",
-      "status_message": null,
-      "finished_at": null,
-      "description": "Archiving customers",
-      "artifact": {
-        "url": null
-      },
-      "error_data": [],
-      "error_count": 0,
-      "employee_id": "c3011165-7a04-4b5a-a48a-f9ed1104b96d"
-    },
-    "relationships": {
-      "employee": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/operations`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
 
 
 ### Includes

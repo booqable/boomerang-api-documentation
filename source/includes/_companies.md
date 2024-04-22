@@ -84,14 +84,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cef23c4f-4303-4c38-9b88-45a9933ed9e6",
+    "id": "8703e6b7-1d1f-473a-888f-fc9637d7e93c",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-04-15T09:26:50+00:00",
-      "updated_at": "2024-04-15T09:26:50+00:00",
+      "created_at": "2024-04-22T09:24:19+00:00",
+      "updated_at": "2024-04-22T09:24:19+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail194@company.com",
+      "email": "mail92@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -124,7 +124,7 @@ Name | Description
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "28f658dbe00049d33f80f1a7d02dda91",
+      "tenant_token": "40f5d9c1cc828cfe8c23784cab849dcb",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -176,7 +176,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "1acb1ea5-ee4a-495f-94e2-c33cdc7a6892",
+        "id": "7d6c6c0f-60fa-4d39-b07a-8bd7a3d2b443",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -190,14 +190,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "1acb1ea5-ee4a-495f-94e2-c33cdc7a6892",
+    "id": "7d6c6c0f-60fa-4d39-b07a-8bd7a3d2b443",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-04-15T09:26:50+00:00",
-      "updated_at": "2024-04-15T09:26:51+00:00",
+      "created_at": "2024-04-22T09:24:20+00:00",
+      "updated_at": "2024-04-22T09:24:20+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail195@company.com",
+      "email": "mail93@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -230,7 +230,7 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "474669999d3b015015ce3204197aee6d",
+      "tenant_token": "8cbd6aaf25e6f4fd2f99236c74266630",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -359,11 +359,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "01a45859-f279-4cd8-909e-dd3cbc772e93",
+    "id": "1012fc2f-39ac-422c-9160-d7af3e936ea7",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-04-29T09:26:51.505Z",
+        "trial_ends_at": "2024-05-06T09:24:21.005Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,

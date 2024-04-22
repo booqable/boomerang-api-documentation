@@ -32,7 +32,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-04-10+00%3A00%3A00+UTC&filter%5Btill%5D=2024-04-15+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-04-17+00%3A00%3A00+UTC&filter%5Btill%5D=2024-04-22+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -42,19 +42,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "c0417a8b-3f49-4098-96ad-b01369e199e4",
+      "id": "3c460d26-8ba9-4526-8ca6-827c4f6f3f82",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2024-04-15T09:22:01+00:00",
-        "name": "Product 1000000",
+        "created_at": "2024-04-22T09:27:56+00:00",
+        "name": "Product 1000075",
         "sold": 2,
         "turnover_in_cents": 0,
-        "product_id": "c0417a8b-3f49-4098-96ad-b01369e199e4"
+        "product_id": "3c460d26-8ba9-4526-8ca6-827c4f6f3f82"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/c0417a8b-3f49-4098-96ad-b01369e199e4"
+            "related": "api/boomerang/products/3c460d26-8ba9-4526-8ca6-827c4f6f3f82"
           }
         }
       }

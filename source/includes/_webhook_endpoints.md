@@ -35,9 +35,9 @@ You can listen to the following events:
 - `cart.completed_checkout`
 
 ## Endpoints
-`PUT /api/boomerang/webhook_endpoints/{id}`
-
 `DELETE /api/boomerang/webhook_endpoints/{id}`
+
+`PUT /api/boomerang/webhook_endpoints/{id}`
 
 `POST /api/boomerang/webhook_endpoints`
 
@@ -55,6 +55,53 @@ Name | Description
 `events` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
 
 
+## Unsubscribing from webhook events
+
+
+
+> How to unsubscribe from webhook events:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/e291ea2d-967b-40aa-ba51-63c34a19b7a3' \
+    --header 'content-type: application/json' \
+    --data '{}'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "e291ea2d-967b-40aa-ba51-63c34a19b7a3",
+    "type": "webhook_endpoints",
+    "attributes": {
+      "created_at": "2024-04-22T09:25:16+00:00",
+      "updated_at": "2024-04-22T09:25:16+00:00",
+      "url": "https://example.com/hooks",
+      "events": []
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/webhook_endpoints/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+
+
+### Includes
+
+This request does not accept any includes
 ## Updating webhook events
 
 
@@ -63,12 +110,12 @@ Name | Description
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/f3cd89e1-340a-47f5-bec4-12aa6e5fb0e6' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/20daf2be-5d88-492a-9db5-69eaae9464cc' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "webhook_endpoints",
-        "id": "f3cd89e1-340a-47f5-bec4-12aa6e5fb0e6",
+        "id": "20daf2be-5d88-492a-9db5-69eaae9464cc",
         "attributes": {
           "url": "https://example.com/hooks",
           "events": [
@@ -84,11 +131,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f3cd89e1-340a-47f5-bec4-12aa6e5fb0e6",
+    "id": "20daf2be-5d88-492a-9db5-69eaae9464cc",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-04-15T09:29:34+00:00",
-      "updated_at": "2024-04-15T09:29:34+00:00",
+      "created_at": "2024-04-22T09:25:17+00:00",
+      "updated_at": "2024-04-22T09:25:17+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created"
@@ -125,53 +172,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Unsubscribing from webhook events
-
-
-
-> How to unsubscribe from webhook events:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/dcad733d-5e8e-4eb2-9724-11d4831ef8bb' \
-    --header 'content-type: application/json' \
-    --data '{}'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "dcad733d-5e8e-4eb2-9724-11d4831ef8bb",
-    "type": "webhook_endpoints",
-    "attributes": {
-      "created_at": "2024-04-15T09:29:35+00:00",
-      "updated_at": "2024-04-15T09:29:35+00:00",
-      "url": "https://example.com/hooks",
-      "events": []
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/webhook_endpoints/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
-
-
-### Includes
-
-This request does not accept any includes
 ## Subscribing to webhook events
 
 
@@ -201,11 +201,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9923fee4-4866-4781-bbca-4bb622d41000",
+    "id": "1e7db511-2217-4b27-a42e-5927d42f1242",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-04-15T09:29:40+00:00",
-      "updated_at": "2024-04-15T09:29:40+00:00",
+      "created_at": "2024-04-22T09:25:19+00:00",
+      "updated_at": "2024-04-22T09:25:19+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created",
@@ -261,9 +261,9 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "e496e5d0-1110-494f-8de2-a759a94ca745",
-      "created_at": "2024-04-15T09:29:42+00:00",
-      "updated_at": "2024-04-15T09:29:42+00:00",
+      "id": "ba9c26b9-e4f4-42d4-95fd-183eb94ceb46",
+      "created_at": "2024-04-22T09:25:19+00:00",
+      "updated_at": "2024-04-22T09:25:19+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "invoice.finalized"

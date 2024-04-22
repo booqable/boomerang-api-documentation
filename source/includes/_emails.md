@@ -3,9 +3,9 @@
 Emails allow you to easily communicate with your customers by using optional templates. Booqable keeps a history of e-mail being sent for orders or customers.
 
 ## Endpoints
-`POST /api/boomerang/emails`
-
 `GET /api/boomerang/emails`
+
+`POST /api/boomerang/emails`
 
 ## Fields
 Every email has the following fields:
@@ -36,128 +36,6 @@ Name | Description
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
-## Creating and sending an email
-
-
-
-> How to create and send an email:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/emails' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "emails",
-        "attributes": {
-          "recipients": "customer1@example.com,customer2@example.com",
-          "subject": "Order confirmation",
-          "body": "Hi {{customer.name}}",
-          "email_template_id": "bc83ec5a-fde2-40be-8f19-57b632e5a49d",
-          "order_id": "faae2328-4fbe-4f9e-9878-5401b0a902c2",
-          "customer_id": "2bfb9bef-2c91-4caf-bfda-293a9374a40f",
-          "document_ids": [
-            "96ff16fd-1385-4d7e-abd6-be96ac590a3d"
-          ]
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "d499b9bc-5597-4f98-ae79-49f7beba4c92",
-    "type": "emails",
-    "attributes": {
-      "created_at": "2024-04-15T09:24:04+00:00",
-      "updated_at": "2024-04-15T09:24:04+00:00",
-      "subject": "Order confirmation",
-      "body": "Hi {{customer.name}}",
-      "recipients": "customer1@example.com,customer2@example.com",
-      "document_ids": [
-        "96ff16fd-1385-4d7e-abd6-be96ac590a3d"
-      ],
-      "order_id": "faae2328-4fbe-4f9e-9878-5401b0a902c2",
-      "customer_id": "2bfb9bef-2c91-4caf-bfda-293a9374a40f",
-      "email_template_id": "bc83ec5a-fde2-40be-8f19-57b632e5a49d",
-      "employee_id": "e17fe8ac-abb2-49de-a62f-8c9fdf8682e4"
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "email_template": {
-        "meta": {
-          "included": false
-        }
-      },
-      "employee": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/emails`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,order,email_template`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[emails]=created_at,updated_at,subject`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][subject]` | **String** <br>Email subject
-`data[attributes][body]` | **String** <br>Email body
-`data[attributes][recipients]` | **String** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
-`data[attributes][document_ids][]` | **Array** <br>Documents to send as attachments to the email
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-`data[attributes][email_template_id]` | **Uuid** <br>The associated Email template
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`order`
-
-
-`email_template`
-
-
-
-
-
-
 ## Listing emails
 
 
@@ -176,17 +54,17 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "6165c996-1b6f-47ac-a2de-17c83e84d879",
+      "id": "e98c5c88-675d-4f89-9eea-a78360e2b734",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-04-15T09:24:31+00:00",
-        "updated_at": "2024-04-15T09:24:31+00:00",
+        "created_at": "2024-04-22T09:25:41+00:00",
+        "updated_at": "2024-04-22T09:25:41+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "document_ids": [],
         "order_id": null,
-        "customer_id": "0fb707d5-3791-4812-8225-9c07eaade476",
+        "customer_id": "cc9938b8-3be5-4c17-ad31-0966cfeacb8f",
         "email_template_id": null,
         "employee_id": null
       },
@@ -198,7 +76,7 @@ This request accepts the following includes:
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/0fb707d5-3791-4812-8225-9c07eaade476"
+            "related": "api/boomerang/customers/cc9938b8-3be5-4c17-ad31-0966cfeacb8f"
           }
         },
         "email_template": {
@@ -223,7 +101,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=68fcbe94-ef4f-4fe0-8eb0-e6877ec07ae7' \
+    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=d9a9b580-c82c-454d-ac6d-85a96a90bb00' \
     --header 'content-type: application/json' \
 ```
 
@@ -233,29 +111,29 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "826c0705-680e-4217-9da7-3a4c8941faf6",
+      "id": "2a392eec-6181-42d3-8fab-ac93092fee23",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-04-15T09:24:31+00:00",
-        "updated_at": "2024-04-15T09:24:31+00:00",
+        "created_at": "2024-04-22T09:25:42+00:00",
+        "updated_at": "2024-04-22T09:25:42+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "document_ids": [],
-        "order_id": "68fcbe94-ef4f-4fe0-8eb0-e6877ec07ae7",
-        "customer_id": "f60cddc5-c66c-48a0-928c-f207e2f49267",
+        "order_id": "d9a9b580-c82c-454d-ac6d-85a96a90bb00",
+        "customer_id": "7399162d-c1a9-4172-b37a-00de1233f7d9",
         "email_template_id": null,
         "employee_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/68fcbe94-ef4f-4fe0-8eb0-e6877ec07ae7"
+            "related": "api/boomerang/orders/d9a9b580-c82c-454d-ac6d-85a96a90bb00"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/f60cddc5-c66c-48a0-928c-f207e2f49267"
+            "related": "api/boomerang/customers/7399162d-c1a9-4172-b37a-00de1233f7d9"
           }
         },
         "email_template": {
@@ -327,6 +205,128 @@ This request accepts the following includes:
 
 
 `order`
+
+
+
+
+
+
+## Creating and sending an email
+
+
+
+> How to create and send an email:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/emails' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "emails",
+        "attributes": {
+          "recipients": "customer1@example.com,customer2@example.com",
+          "subject": "Order confirmation",
+          "body": "Hi {{customer.name}}",
+          "email_template_id": "a8e4a8e1-85ac-44fe-ae89-3f3f647ce6a4",
+          "order_id": "b780ec38-f7fb-463d-b1a9-545778532768",
+          "customer_id": "bfce75bd-821f-451d-a23d-6dd297ac3112",
+          "document_ids": [
+            "8085ec7f-180b-498c-8587-d10f640e2a83"
+          ]
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "6d4d547a-1c3a-4397-a3b5-d70cf30ec083",
+    "type": "emails",
+    "attributes": {
+      "created_at": "2024-04-22T09:25:43+00:00",
+      "updated_at": "2024-04-22T09:25:43+00:00",
+      "subject": "Order confirmation",
+      "body": "Hi {{customer.name}}",
+      "recipients": "customer1@example.com,customer2@example.com",
+      "document_ids": [
+        "8085ec7f-180b-498c-8587-d10f640e2a83"
+      ],
+      "order_id": "b780ec38-f7fb-463d-b1a9-545778532768",
+      "customer_id": "bfce75bd-821f-451d-a23d-6dd297ac3112",
+      "email_template_id": "a8e4a8e1-85ac-44fe-ae89-3f3f647ce6a4",
+      "employee_id": "d2a52ca0-0873-4eaf-b583-e8f65892c15a"
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "email_template": {
+        "meta": {
+          "included": false
+        }
+      },
+      "employee": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/emails`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order,email_template`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[emails]=created_at,updated_at,subject`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][subject]` | **String** <br>Email subject
+`data[attributes][body]` | **String** <br>Email body
+`data[attributes][recipients]` | **String** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
+`data[attributes][document_ids][]` | **Array** <br>Documents to send as attachments to the email
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][email_template_id]` | **Uuid** <br>The associated Email template
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`order`
+
+
+`email_template`
 
 
 

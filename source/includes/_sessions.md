@@ -58,16 +58,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "aaf5f7d1-5e19-53a1-9bab-2bbcf4482507",
+    "id": "d873f19f-fc84-5f5f-becd-676535429fe9",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-04-15T09:24:03+00:00",
-      "company_id": "87a0fb23-a9ab-436d-a313-7db5429edacc",
-      "employee_id": "d90d0a28-df2b-46da-a340-97acfe0e68fc",
+      "updated_at": "2024-04-22T09:24:19+00:00",
+      "company_id": "6c773e28-ca85-4242-96e6-fb6fd9ef822e",
+      "employee_id": "166ad020-6d77-483a-b05d-7f3187be9d1c",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-04-15T09:24:03+00:00",
+      "notification_subscriptions_updated_at": "2024-04-22T09:24:19+00:00",
       "countries_updated_at": null
     },
     "relationships": {
@@ -77,7 +77,7 @@ Name | Description
         },
         "data": {
           "type": "companies",
-          "id": "87a0fb23-a9ab-436d-a313-7db5429edacc"
+          "id": "6c773e28-ca85-4242-96e6-fb6fd9ef822e"
         }
       },
       "employee": {
@@ -86,7 +86,7 @@ Name | Description
         },
         "data": {
           "type": "employees",
-          "id": "d90d0a28-df2b-46da-a340-97acfe0e68fc"
+          "id": "166ad020-6d77-483a-b05d-7f3187be9d1c"
         }
       },
       "settings": {
@@ -102,14 +102,14 @@ Name | Description
   },
   "included": [
     {
-      "id": "87a0fb23-a9ab-436d-a313-7db5429edacc",
+      "id": "6c773e28-ca85-4242-96e6-fb6fd9ef822e",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-04-15T09:24:03+00:00",
-        "updated_at": "2024-04-15T09:24:03+00:00",
-        "name": "Company name 73",
-        "slug": "company-name-73",
-        "email": "mail73@company.com",
+        "created_at": "2024-04-22T09:24:19+00:00",
+        "updated_at": "2024-04-22T09:24:19+00:00",
+        "name": "Company name 91",
+        "slug": "company-name-91",
+        "email": "mail91@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -142,7 +142,7 @@ Name | Description
         "years_active": null,
         "source": null,
         "medium": null,
-        "tenant_token": "571f4affcbef4056ebabae571437a1bc",
+        "tenant_token": "bab5f1f58c4e7d22ed7a23d1746dac58",
         "pending_subscription": false,
         "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
         "main_address": {
@@ -161,7 +161,7 @@ Name | Description
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-04-29T09:24:03.903Z",
+          "trial_ends_at": "2024-05-06T09:24:19.386Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -218,11 +218,11 @@ Name | Description
       }
     },
     {
-      "id": "d90d0a28-df2b-46da-a340-97acfe0e68fc",
+      "id": "166ad020-6d77-483a-b05d-7f3187be9d1c",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-04-15T09:24:03+00:00",
-        "updated_at": "2024-04-15T09:24:03+00:00",
+        "created_at": "2024-04-22T09:24:19+00:00",
+        "updated_at": "2024-04-22T09:24:19+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -447,16 +447,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9ce98724-f24b-5b51-90ec-994708d53ca1",
+    "id": "82c9e2fe-f758-5dbe-88b0-87f6aa2fdcec",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-04-15T09:28:12+00:00",
-      "company_id": "149c8784-6467-426a-b96d-83582ff91c21",
-      "employee_id": "c05573ea-0077-4014-a0ff-cfa2813c913b",
-      "locations_updated_at": "2024-04-15T09:28:12+00:00",
-      "clusters_updated_at": "2024-04-15T09:28:12+00:00",
-      "default_properties_updated_at": "2024-04-15T09:28:12+00:00",
-      "notification_subscriptions_updated_at": "2024-04-15T09:28:12+00:00",
+      "updated_at": "2024-04-22T09:28:12+00:00",
+      "company_id": "4a93158b-3737-4478-978c-7d80f02f049e",
+      "employee_id": "5c5bf62a-cb31-4942-bfae-f6d33965668e",
+      "locations_updated_at": "2024-04-22T09:28:12+00:00",
+      "clusters_updated_at": "2024-04-22T09:28:12+00:00",
+      "default_properties_updated_at": "2024-04-22T09:28:12+00:00",
+      "notification_subscriptions_updated_at": "2024-04-22T09:28:12+00:00",
       "countries_updated_at": null
     },
     "relationships": {
