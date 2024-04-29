@@ -5,11 +5,11 @@ A location is a place (like a store) where customers pick up and return orders o
 ## Endpoints
 `PUT /api/boomerang/locations/{id}`
 
-`POST /api/boomerang/locations`
+`GET /api/boomerang/locations`
 
 `DELETE /api/boomerang/locations/{id}`
 
-`GET /api/boomerang/locations`
+`POST /api/boomerang/locations`
 
 `GET /api/boomerang/locations/{id}`
 
@@ -54,11 +54,11 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/locations/23b49979-319e-4ce1-826b-dd953c60a5da' \
+    --url 'https://example.booqable.com/api/boomerang/locations/629f4380-8b9a-4c74-8f27-3b8a5bd5a7a2' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "23b49979-319e-4ce1-826b-dd953c60a5da",
+        "id": "629f4380-8b9a-4c74-8f27-3b8a5bd5a7a2",
         "type": "locations",
         "attributes": {
           "name": "Old warehouse",
@@ -85,12 +85,12 @@ Note that disassociating clusters may result in a shortage error.
           {
             "reason": "shortage",
             "shortage": 2,
-            "item_id": "6c0a4474-1679-4b6f-a9a1-baae7f67bc36",
+            "item_id": "a9711067-e041-4aa7-afe4-3702eaa5edc0",
             "mutation": 0,
             "order_ids": [
-              "4c426d4d-e0eb-43ea-949f-4f7afd83bf29"
+              "b9897d46-a8fe-47d2-8a10-854c8ca9c6a5"
             ],
-            "location_id": "23b49979-319e-4ce1-826b-dd953c60a5da",
+            "location_id": "629f4380-8b9a-4c74-8f27-3b8a5bd5a7a2",
             "available": -2,
             "plannable": -2,
             "stock_count": 0,
@@ -114,17 +114,17 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/locations/14617169-f57b-40a6-b0dd-4113e5c2e213' \
+    --url 'https://example.booqable.com/api/boomerang/locations/3980926c-dbc7-4983-bd46-c6fd6bd2b6da' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "14617169-f57b-40a6-b0dd-4113e5c2e213",
+        "id": "3980926c-dbc7-4983-bd46-c6fd6bd2b6da",
         "type": "locations",
         "attributes": {
           "name": "Old warehouse",
           "cluster_ids": [
-            "876a48f3-4921-4ce3-930e-b53e5e186a87",
-            "7ea430e9-6b53-47b4-a6f2-f2f6e0d6dedc"
+            "8f7fdad9-ad46-4cf7-8d44-0aed69940503",
+            "96605719-3a5b-4807-89df-7eb5dff5d701"
           ]
         }
       },
@@ -137,15 +137,15 @@ Note that disassociating clusters may result in a shortage error.
 ```json
   {
   "data": {
-    "id": "14617169-f57b-40a6-b0dd-4113e5c2e213",
+    "id": "3980926c-dbc7-4983-bd46-c6fd6bd2b6da",
     "type": "locations",
     "attributes": {
-      "created_at": "2024-04-22T09:26:48+00:00",
-      "updated_at": "2024-04-22T09:26:48+00:00",
+      "created_at": "2024-04-29T09:30:00+00:00",
+      "updated_at": "2024-04-29T09:30:00+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Old warehouse",
-      "code": "LOC1000060",
+      "code": "LOC1000078",
       "location_type": "rental",
       "address_line_1": "Blokhuisplein 40",
       "address_line_2": "Department II",
@@ -154,8 +154,8 @@ Note that disassociating clusters may result in a shortage error.
       "region": "Friesland",
       "country": "Netherlands",
       "cluster_ids": [
-        "876a48f3-4921-4ce3-930e-b53e5e186a87",
-        "7ea430e9-6b53-47b4-a6f2-f2f6e0d6dedc"
+        "8f7fdad9-ad46-4cf7-8d44-0aed69940503",
+        "96605719-3a5b-4807-89df-7eb5dff5d701"
       ],
       "main_address": {
         "meets_validation_requirements": false,
@@ -177,11 +177,11 @@ Note that disassociating clusters may result in a shortage error.
         "data": [
           {
             "type": "clusters",
-            "id": "876a48f3-4921-4ce3-930e-b53e5e186a87"
+            "id": "8f7fdad9-ad46-4cf7-8d44-0aed69940503"
           },
           {
             "type": "clusters",
-            "id": "7ea430e9-6b53-47b4-a6f2-f2f6e0d6dedc"
+            "id": "96605719-3a5b-4807-89df-7eb5dff5d701"
           }
         ]
       }
@@ -189,14 +189,14 @@ Note that disassociating clusters may result in a shortage error.
   },
   "included": [
     {
-      "id": "876a48f3-4921-4ce3-930e-b53e5e186a87",
+      "id": "8f7fdad9-ad46-4cf7-8d44-0aed69940503",
       "type": "clusters",
       "attributes": {
-        "created_at": "2024-04-22T09:26:48+00:00",
-        "updated_at": "2024-04-22T09:26:48+00:00",
+        "created_at": "2024-04-29T09:30:00+00:00",
+        "updated_at": "2024-04-29T09:30:00+00:00",
         "name": "North",
         "location_ids": [
-          "14617169-f57b-40a6-b0dd-4113e5c2e213"
+          "3980926c-dbc7-4983-bd46-c6fd6bd2b6da"
         ]
       },
       "relationships": {
@@ -208,14 +208,14 @@ Note that disassociating clusters may result in a shortage error.
       }
     },
     {
-      "id": "7ea430e9-6b53-47b4-a6f2-f2f6e0d6dedc",
+      "id": "96605719-3a5b-4807-89df-7eb5dff5d701",
       "type": "clusters",
       "attributes": {
-        "created_at": "2024-04-22T09:26:48+00:00",
-        "updated_at": "2024-04-22T09:26:48+00:00",
+        "created_at": "2024-04-29T09:30:00+00:00",
+        "updated_at": "2024-04-29T09:30:00+00:00",
         "name": "Central",
         "location_ids": [
-          "14617169-f57b-40a6-b0dd-4113e5c2e213"
+          "3980926c-dbc7-4983-bd46-c6fd6bd2b6da"
         ]
       },
       "relationships": {
@@ -279,302 +279,6 @@ This request accepts the following includes:
 
 
 
-## Creating a location
-
-
-
-> How to create a location and assign it to a cluster:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/locations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "locations",
-        "attributes": {
-          "name": "Store",
-          "code": "STR",
-          "location_type": "rental",
-          "address_line_1": "Blokhuisplein 40",
-          "address_line_2": "Department II",
-          "zipcode": "8911LJ",
-          "city": "Leeuwarden",
-          "region": "Friesland",
-          "country": "Netherlands",
-          "cluster_ids": [
-            "a63842c5-107e-423f-90a0-dff13329a201"
-          ]
-        }
-      },
-      "include": "clusters"
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "7cc87c63-51a7-4570-9a06-123312cf5ac0",
-    "type": "locations",
-    "attributes": {
-      "created_at": "2024-04-22T09:26:49+00:00",
-      "updated_at": "2024-04-22T09:26:49+00:00",
-      "archived": false,
-      "archived_at": null,
-      "name": "Store",
-      "code": "STR",
-      "location_type": "rental",
-      "address_line_1": "Blokhuisplein 40",
-      "address_line_2": "Department II",
-      "zipcode": "8911LJ",
-      "city": "Leeuwarden",
-      "region": "Friesland",
-      "country": "Netherlands",
-      "cluster_ids": [
-        "a63842c5-107e-423f-90a0-dff13329a201"
-      ],
-      "main_address": {
-        "meets_validation_requirements": false,
-        "first_name": null,
-        "last_name": null,
-        "address1": "Blokhuisplein 40",
-        "address2": "Department II",
-        "city": "Leeuwarden",
-        "region": "Friesland",
-        "zipcode": "8911LJ",
-        "country": "Netherlands",
-        "country_id": null,
-        "province_id": null,
-        "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
-      }
-    },
-    "relationships": {
-      "clusters": {
-        "data": [
-          {
-            "type": "clusters",
-            "id": "a63842c5-107e-423f-90a0-dff13329a201"
-          }
-        ]
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "a63842c5-107e-423f-90a0-dff13329a201",
-      "type": "clusters",
-      "attributes": {
-        "created_at": "2024-04-22T09:26:49+00:00",
-        "updated_at": "2024-04-22T09:26:49+00:00",
-        "name": "North",
-        "location_ids": [
-          "7cc87c63-51a7-4570-9a06-123312cf5ac0"
-        ]
-      },
-      "relationships": {
-        "locations": {
-          "meta": {
-            "included": false
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/locations`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=clusters,main_address`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the location
-`data[attributes][code]` | **String** <br>Code used to identify the location
-`data[attributes][location_type]` | **String** <br>Determines if the location can be seen in the online webshop. One of `rental`, `internal`
-`data[attributes][address_line_1]` | **String** <br>First address line
-`data[attributes][address_line_2]` | **String** <br>Second address line
-`data[attributes][zipcode]` | **String** <br>Address zipcode
-`data[attributes][city]` | **String** <br>Address city
-`data[attributes][region]` | **String** <br>Address region
-`data[attributes][country]` | **String** <br>Address country
-`data[attributes][cluster_ids][]` | **Array** <br>Clusters this location belongs to
-`data[attributes][main_address_attributes]` | **Hash** <br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information
-`data[attributes][main_address]` | **Hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information
-
-
-### Includes
-
-This request accepts the following includes:
-
-`clusters`
-
-
-`main_address`
-
-
-
-
-
-
-## Archiving a location
-
-To archive a location make sure that:
-
-- There is no active stock at the location
-- There are no running or future orders for this location
-- This is not the last active location
-
-
-> Failure due to active stock at location:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/6240be38-a1d4-4208-bba1-e40c3e902e62' \
-    --header 'content-type: application/json' \
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "location_has_stock",
-      "status": "422",
-      "title": "Location has stock",
-      "detail": "This location has active stock",
-      "meta": {
-        "item_ids": [
-          "7e42c969-5e24-4eda-9f51-5a7004f81837"
-        ]
-      }
-    }
-  ]
-}
-```
-
-
-> How to archive a location:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/6f246717-33bc-41a8-ac9d-21bf585da9ee' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "6f246717-33bc-41a8-ac9d-21bf585da9ee",
-    "type": "locations",
-    "attributes": {
-      "created_at": "2024-04-22T09:26:50+00:00",
-      "updated_at": "2024-04-22T09:26:50+00:00",
-      "archived": true,
-      "archived_at": "2024-04-22T09:26:50+00:00",
-      "name": "Warehouse",
-      "code": "LOC1000063",
-      "location_type": "rental",
-      "address_line_1": "Blokhuisplein 40",
-      "address_line_2": "Department II",
-      "zipcode": "8911LJ",
-      "city": "Leeuwarden",
-      "region": "Friesland",
-      "country": "Netherlands",
-      "cluster_ids": [],
-      "main_address": {
-        "meets_validation_requirements": false,
-        "first_name": null,
-        "last_name": null,
-        "address1": "Blokhuisplein 40",
-        "address2": "Department II",
-        "city": "Leeuwarden",
-        "region": "Friesland",
-        "zipcode": "8911LJ",
-        "country": "Netherlands",
-        "country_id": null,
-        "province_id": null,
-        "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
-      }
-    },
-    "relationships": {
-      "clusters": {
-        "links": {
-          "related": "api/boomerang/clusters?filter[location_id]=6f246717-33bc-41a8-ac9d-21bf585da9ee"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Failure due to a future order:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/583b3a38-e3fa-4e17-b9e1-ffdf89ab3b6c' \
-    --header 'content-type: application/json' \
-    --data '{}'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "location_has_orders",
-      "status": "422",
-      "title": "Location has orders",
-      "detail": "This location has running or future orders",
-      "meta": {
-        "order_ids": [
-          "e14845b2-16ef-43cf-9691-b9da7b10e608"
-        ]
-      }
-    }
-  ]
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/locations/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes
 ## Listing locations
 
 
@@ -593,15 +297,15 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "8c38b395-46ae-4f78-becc-68ee841de79f",
+      "id": "88b908fb-c92a-4a45-961c-a1f2ae1541dd",
       "type": "locations",
       "attributes": {
-        "created_at": "2024-04-22T09:26:51+00:00",
-        "updated_at": "2024-04-22T09:26:51+00:00",
+        "created_at": "2024-04-29T09:30:01+00:00",
+        "updated_at": "2024-04-29T09:30:01+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Warehouse",
-        "code": "LOC1000066",
+        "code": "LOC1000079",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -628,7 +332,7 @@ This request does not accept any includes
       "relationships": {
         "clusters": {
           "links": {
-            "related": "api/boomerang/clusters?filter[location_id]=8c38b395-46ae-4f78-becc-68ee841de79f"
+            "related": "api/boomerang/clusters?filter[location_id]=88b908fb-c92a-4a45-961c-a1f2ae1541dd"
           }
         }
       }
@@ -695,15 +399,20 @@ This request accepts the following includes:
 
 
 
-## Fetching a location
+## Archiving a location
+
+To archive a location make sure that:
+
+- There is no active stock at the location
+- There are no running or future orders for this location
+- This is not the last active location
 
 
-
-> How to fetch a single location:
+> How to archive a location:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/locations/e6388bb4-1e33-4b78-be49-897455bf4576' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/locations/ab7f1776-b396-4c69-8618-d48ede5abfb4' \
     --header 'content-type: application/json' \
 ```
 
@@ -712,15 +421,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e6388bb4-1e33-4b78-be49-897455bf4576",
+    "id": "ab7f1776-b396-4c69-8618-d48ede5abfb4",
     "type": "locations",
     "attributes": {
-      "created_at": "2024-04-22T09:26:52+00:00",
-      "updated_at": "2024-04-22T09:26:52+00:00",
-      "archived": false,
-      "archived_at": null,
+      "created_at": "2024-04-29T09:30:03+00:00",
+      "updated_at": "2024-04-29T09:30:04+00:00",
+      "archived": true,
+      "archived_at": "2024-04-29T09:30:04+00:00",
       "name": "Warehouse",
-      "code": "LOC1000067",
+      "code": "LOC1000080",
       "location_type": "rental",
       "address_line_1": "Blokhuisplein 40",
       "address_line_2": "Department II",
@@ -747,7 +456,298 @@ This request accepts the following includes:
     "relationships": {
       "clusters": {
         "links": {
-          "related": "api/boomerang/clusters?filter[location_id]=e6388bb4-1e33-4b78-be49-897455bf4576"
+          "related": "api/boomerang/clusters?filter[location_id]=ab7f1776-b396-4c69-8618-d48ede5abfb4"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> Failure due to active stock at location:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/locations/dedf06bd-4386-4d6c-8d98-9185e97043c1' \
+    --header 'content-type: application/json' \
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "location_has_stock",
+      "status": "422",
+      "title": "Location has stock",
+      "detail": "This location has active stock",
+      "meta": {
+        "item_ids": [
+          "be5b177f-013c-4e6e-9416-b926daec8154"
+        ]
+      }
+    }
+  ]
+}
+```
+
+
+> Failure due to a future order:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/locations/819e6245-d499-4b1f-a763-3cedc19dd878' \
+    --header 'content-type: application/json' \
+    --data '{}'
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "location_has_orders",
+      "status": "422",
+      "title": "Location has orders",
+      "detail": "This location has running or future orders",
+      "meta": {
+        "order_ids": [
+          "e8864260-3331-414b-930e-30a480632573"
+        ]
+      }
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/locations/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
+## Creating a location
+
+
+
+> How to create a location and assign it to a cluster:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/locations' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "locations",
+        "attributes": {
+          "name": "Store",
+          "code": "STR",
+          "location_type": "rental",
+          "address_line_1": "Blokhuisplein 40",
+          "address_line_2": "Department II",
+          "zipcode": "8911LJ",
+          "city": "Leeuwarden",
+          "region": "Friesland",
+          "country": "Netherlands",
+          "cluster_ids": [
+            "a58e84bb-a789-4c87-bf3c-5dfc246b1aae"
+          ]
+        }
+      },
+      "include": "clusters"
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "0e1555f7-046f-45a8-85a9-d2c70e6a367c",
+    "type": "locations",
+    "attributes": {
+      "created_at": "2024-04-29T09:30:07+00:00",
+      "updated_at": "2024-04-29T09:30:07+00:00",
+      "archived": false,
+      "archived_at": null,
+      "name": "Store",
+      "code": "STR",
+      "location_type": "rental",
+      "address_line_1": "Blokhuisplein 40",
+      "address_line_2": "Department II",
+      "zipcode": "8911LJ",
+      "city": "Leeuwarden",
+      "region": "Friesland",
+      "country": "Netherlands",
+      "cluster_ids": [
+        "a58e84bb-a789-4c87-bf3c-5dfc246b1aae"
+      ],
+      "main_address": {
+        "meets_validation_requirements": false,
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuisplein 40",
+        "address2": "Department II",
+        "city": "Leeuwarden",
+        "region": "Friesland",
+        "zipcode": "8911LJ",
+        "country": "Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
+      }
+    },
+    "relationships": {
+      "clusters": {
+        "data": [
+          {
+            "type": "clusters",
+            "id": "a58e84bb-a789-4c87-bf3c-5dfc246b1aae"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "a58e84bb-a789-4c87-bf3c-5dfc246b1aae",
+      "type": "clusters",
+      "attributes": {
+        "created_at": "2024-04-29T09:30:07+00:00",
+        "updated_at": "2024-04-29T09:30:07+00:00",
+        "name": "North",
+        "location_ids": [
+          "0e1555f7-046f-45a8-85a9-d2c70e6a367c"
+        ]
+      },
+      "relationships": {
+        "locations": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/locations`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=clusters,main_address`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the location
+`data[attributes][code]` | **String** <br>Code used to identify the location
+`data[attributes][location_type]` | **String** <br>Determines if the location can be seen in the online webshop. One of `rental`, `internal`
+`data[attributes][address_line_1]` | **String** <br>First address line
+`data[attributes][address_line_2]` | **String** <br>Second address line
+`data[attributes][zipcode]` | **String** <br>Address zipcode
+`data[attributes][city]` | **String** <br>Address city
+`data[attributes][region]` | **String** <br>Address region
+`data[attributes][country]` | **String** <br>Address country
+`data[attributes][cluster_ids][]` | **Array** <br>Clusters this location belongs to
+`data[attributes][main_address_attributes]` | **Hash** <br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information
+`data[attributes][main_address]` | **Hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information
+
+
+### Includes
+
+This request accepts the following includes:
+
+`clusters`
+
+
+`main_address`
+
+
+
+
+
+
+## Fetching a location
+
+
+
+> How to fetch a single location:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/locations/7c7ea955-c508-4f66-95a2-432d818eb7ee' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "7c7ea955-c508-4f66-95a2-432d818eb7ee",
+    "type": "locations",
+    "attributes": {
+      "created_at": "2024-04-29T09:30:08+00:00",
+      "updated_at": "2024-04-29T09:30:08+00:00",
+      "archived": false,
+      "archived_at": null,
+      "name": "Warehouse",
+      "code": "LOC1000085",
+      "location_type": "rental",
+      "address_line_1": "Blokhuisplein 40",
+      "address_line_2": "Department II",
+      "zipcode": "8911LJ",
+      "city": "Leeuwarden",
+      "region": "Friesland",
+      "country": "Netherlands",
+      "cluster_ids": [],
+      "main_address": {
+        "meets_validation_requirements": false,
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuisplein 40",
+        "address2": "Department II",
+        "city": "Leeuwarden",
+        "region": "Friesland",
+        "zipcode": "8911LJ",
+        "country": "Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
+      }
+    },
+    "relationships": {
+      "clusters": {
+        "links": {
+          "related": "api/boomerang/clusters?filter[location_id]=7c7ea955-c508-4f66-95a2-432d818eb7ee"
         }
       }
     }

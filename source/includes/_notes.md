@@ -7,9 +7,9 @@ Allows you to leave notes attached to other resources.
 
 `GET /api/boomerang/notes`
 
-`DELETE /api/boomerang/notes/{id}`
-
 `GET /api/boomerang/notes/{id}`
+
+`DELETE /api/boomerang/notes/{id}`
 
 ## Fields
 Every note has the following fields:
@@ -49,7 +49,7 @@ Name | Description
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "0eb6ba22-43bd-449a-a772-cd2065a1e2da",
+          "owner_id": "ad34e77a-8f0c-4133-bd6c-adb8158415f5",
           "owner_type": "customers"
         }
       }
@@ -61,15 +61,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a78200f8-743b-4075-aa5c-f208ef0bf24b",
+    "id": "7984793f-6451-4d55-96c3-eb7244786275",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-04-22T09:27:59+00:00",
-      "updated_at": "2024-04-22T09:27:59+00:00",
+      "created_at": "2024-04-29T09:29:50+00:00",
+      "updated_at": "2024-04-29T09:29:50+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "0eb6ba22-43bd-449a-a772-cd2065a1e2da",
+      "owner_id": "ad34e77a-8f0c-4133-bd6c-adb8158415f5",
       "owner_type": "customers",
-      "employee_id": "0aebfe65-c132-4b95-a2c8-b091e6ff4a43"
+      "employee_id": "3258f348-7a82-42e1-8537-f39fd6eac750"
     },
     "relationships": {
       "owner": {
@@ -145,25 +145,25 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "af406d95-4da2-4108-9acb-4019b51d4465",
+      "id": "a6e45491-5837-460a-a3f2-6e269be5bbfb",
       "type": "notes",
       "attributes": {
-        "created_at": "2024-04-22T09:28:00+00:00",
-        "updated_at": "2024-04-22T09:28:00+00:00",
+        "created_at": "2024-04-29T09:29:51+00:00",
+        "updated_at": "2024-04-29T09:29:51+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "c11d3b3e-24e7-4ef3-ba38-a5e055a785de",
+        "owner_id": "0a86cc50-462d-427e-83a4-0be9164c80d7",
         "owner_type": "customers",
-        "employee_id": "4e29c386-4c27-42ff-a56a-6886e8b8c130"
+        "employee_id": "efe06596-998a-4201-b75c-91efdd181d36"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/c11d3b3e-24e7-4ef3-ba38-a5e055a785de"
+            "related": "api/boomerang/customers/0a86cc50-462d-427e-83a4-0be9164c80d7"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/4e29c386-4c27-42ff-a56a-6886e8b8c130"
+            "related": "api/boomerang/employees/efe06596-998a-4201-b75c-91efdd181d36"
           }
         }
       }
@@ -229,15 +229,15 @@ This request accepts the following includes:
 
 
 
-## Deleting a note
+## Fetching a note
 
 
 
-> How to delete a note:
+> How to fetch a note:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/39ab2a1c-fba3-4712-b0c4-041c81084367' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/notes/06c55be2-0b0b-49e4-a533-a40839164e5b' \
     --header 'content-type: application/json' \
 ```
 
@@ -246,25 +246,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "39ab2a1c-fba3-4712-b0c4-041c81084367",
+    "id": "06c55be2-0b0b-49e4-a533-a40839164e5b",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-04-22T09:28:00+00:00",
-      "updated_at": "2024-04-22T09:28:00+00:00",
+      "created_at": "2024-04-29T09:29:52+00:00",
+      "updated_at": "2024-04-29T09:29:52+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "f95871e5-9b2d-47f5-8389-bd7fdf10795b",
+      "owner_id": "142fd9e0-140d-428a-9ce6-95badba1b58d",
       "owner_type": "customers",
-      "employee_id": "012aa71e-11bc-4419-bf3d-c19afca612f6"
+      "employee_id": "c2bb3b05-18e8-4b36-9bc0-4895f1c3ae9e"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/f95871e5-9b2d-47f5-8389-bd7fdf10795b"
+          "related": "api/boomerang/customers/142fd9e0-140d-428a-9ce6-95badba1b58d"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/012aa71e-11bc-4419-bf3d-c19afca612f6"
+          "related": "api/boomerang/employees/c2bb3b05-18e8-4b36-9bc0-4895f1c3ae9e"
         }
       }
     }
@@ -275,7 +275,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/notes/{id}`
+`GET /api/boomerang/notes/{id}`
 
 ### Request params
 
@@ -301,15 +301,15 @@ This request accepts the following includes:
 
 
 
-## Fetching a note
+## Deleting a note
 
 
 
-> How to fetch a note:
+> How to delete a note:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/4f7060e3-0d63-4afd-9406-5d94f9ac4fce' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/notes/6a130d8b-4027-442a-a2a4-0d1ee7ef986e' \
     --header 'content-type: application/json' \
 ```
 
@@ -318,25 +318,25 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4f7060e3-0d63-4afd-9406-5d94f9ac4fce",
+    "id": "6a130d8b-4027-442a-a2a4-0d1ee7ef986e",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-04-22T09:28:01+00:00",
-      "updated_at": "2024-04-22T09:28:01+00:00",
+      "created_at": "2024-04-29T09:29:53+00:00",
+      "updated_at": "2024-04-29T09:29:53+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "26d7d133-26d1-455d-8aca-3184a6a8194c",
+      "owner_id": "5a5e2b19-7f22-4621-9a87-a1cc8960d375",
       "owner_type": "customers",
-      "employee_id": "cdcb6b8a-a90b-4ea4-afee-46e1d728ca24"
+      "employee_id": "39f2bfd1-f118-4917-9401-b906510e8c8f"
     },
     "relationships": {
       "owner": {
         "links": {
-          "related": "api/boomerang/customers/26d7d133-26d1-455d-8aca-3184a6a8194c"
+          "related": "api/boomerang/customers/5a5e2b19-7f22-4621-9a87-a1cc8960d375"
         }
       },
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/cdcb6b8a-a90b-4ea4-afee-46e1d728ca24"
+          "related": "api/boomerang/employees/39f2bfd1-f118-4917-9401-b906510e8c8f"
         }
       }
     }
@@ -347,7 +347,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/notes/{id}`
+`DELETE /api/boomerang/notes/{id}`
 
 ### Request params
 

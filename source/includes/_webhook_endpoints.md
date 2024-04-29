@@ -35,13 +35,13 @@ You can listen to the following events:
 - `cart.completed_checkout`
 
 ## Endpoints
+`GET /api/boomerang/webhook_endpoints`
+
 `DELETE /api/boomerang/webhook_endpoints/{id}`
 
 `PUT /api/boomerang/webhook_endpoints/{id}`
 
 `POST /api/boomerang/webhook_endpoints`
-
-`GET /api/boomerang/webhook_endpoints`
 
 ## Fields
 Every webhook endpoint has the following fields:
@@ -55,6 +55,78 @@ Name | Description
 `events` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
 
 
+## Listing webhook endpoints
+
+
+
+> How to fetch a list of webhook endpoints:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "8927adac-d399-4923-998f-5bfd14684f8a",
+      "created_at": "2024-04-29T09:30:41+00:00",
+      "updated_at": "2024-04-29T09:30:41+00:00",
+      "url": "https://example.com/hooks",
+      "events": [
+        "invoice.finalized"
+      ]
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/webhook_endpoints`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`url` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes
 ## Unsubscribing from webhook events
 
 
@@ -63,7 +135,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/e291ea2d-967b-40aa-ba51-63c34a19b7a3' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/97e2c341-4b4f-4fce-b120-8d5c776d1f1d' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -73,11 +145,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e291ea2d-967b-40aa-ba51-63c34a19b7a3",
+    "id": "97e2c341-4b4f-4fce-b120-8d5c776d1f1d",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-04-22T09:25:16+00:00",
-      "updated_at": "2024-04-22T09:25:16+00:00",
+      "created_at": "2024-04-29T09:30:42+00:00",
+      "updated_at": "2024-04-29T09:30:42+00:00",
       "url": "https://example.com/hooks",
       "events": []
     }
@@ -110,12 +182,12 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/20daf2be-5d88-492a-9db5-69eaae9464cc' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/908ef209-9479-46cf-9194-febd651baad4' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "webhook_endpoints",
-        "id": "20daf2be-5d88-492a-9db5-69eaae9464cc",
+        "id": "908ef209-9479-46cf-9194-febd651baad4",
         "attributes": {
           "url": "https://example.com/hooks",
           "events": [
@@ -131,11 +203,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "20daf2be-5d88-492a-9db5-69eaae9464cc",
+    "id": "908ef209-9479-46cf-9194-febd651baad4",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-04-22T09:25:17+00:00",
-      "updated_at": "2024-04-22T09:25:17+00:00",
+      "created_at": "2024-04-29T09:30:44+00:00",
+      "updated_at": "2024-04-29T09:30:44+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created"
@@ -201,11 +273,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "1e7db511-2217-4b27-a42e-5927d42f1242",
+    "id": "8dd845e0-18ed-49ee-85a3-0d0b00ded76d",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-04-22T09:25:19+00:00",
-      "updated_at": "2024-04-22T09:25:19+00:00",
+      "created_at": "2024-04-29T09:30:45+00:00",
+      "updated_at": "2024-04-29T09:30:45+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created",
@@ -238,78 +310,6 @@ Name | Description
 -- | --
 `data[attributes][url]` | **String** <br>The URL that will receive the webhook payload
 `data[attributes][events][]` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
-
-
-### Includes
-
-This request does not accept any includes
-## Listing webhook endpoints
-
-
-
-> How to fetch a list of webhook endpoints:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "ba9c26b9-e4f4-42d4-95fd-183eb94ceb46",
-      "created_at": "2024-04-22T09:25:19+00:00",
-      "updated_at": "2024-04-22T09:25:19+00:00",
-      "url": "https://example.com/hooks",
-      "events": [
-        "invoice.finalized"
-      ]
-    }
-  ]
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/webhook_endpoints`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`url` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
 
 
 ### Includes

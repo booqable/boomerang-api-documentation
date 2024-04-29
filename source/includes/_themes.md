@@ -5,11 +5,11 @@ They organise custom assets and enable quick switching between different designs
 A company can 'install' a theme from the available themes, this creates a local copy which allows customizing the theme to your needs.
 
 ## Endpoints
-`GET /api/boomerang/themes`
+`DELETE /api/boomerang/themes/{id}`
 
 `POST /api/boomerang/themes`
 
-`DELETE /api/boomerang/themes/{id}`
+`GET /api/boomerang/themes`
 
 ## Fields
 Every theme has the following fields:
@@ -43,15 +43,15 @@ Name | Description
 `original_theme` | **Themes** `readonly`<br>Associated Original theme
 
 
-## Listing themes
+## Deleting a theme
 
 
 
-> How to fetch a list of installed themes:
+> How to delete a theme:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/themes' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/themes/19046bed-505c-482c-a841-a882ebcaed57' \
     --header 'content-type: application/json' \
 ```
 
@@ -59,100 +59,46 @@ Name | Description
 
 ```json
   {
-  "data": [
-    {
-      "id": "469a2031-3309-485e-ba29-f22dc9e32be9",
-      "type": "themes",
-      "attributes": {
-        "created_at": "2024-04-22T09:26:44+00:00",
-        "updated_at": "2024-04-22T09:26:44+00:00",
-        "name": "Theme 9",
-        "identifier": "c0871f63-ec4c-43d7-aecf-341c9ca9bb51",
-        "version": "1.0",
-        "theme_id": "bbf8f19c-d375-4992-95e2-08534b989f90",
-        "theme_type": "official",
-        "description": "A simple theme for setting up your shop",
-        "market": null,
-        "preview_url": null,
-        "detail_url": null,
-        "preview_image_long_url": null,
-        "preview_image_medium_url": null,
-        "preview_image_large_url": null,
-        "installed": true
+  "data": {
+    "id": "19046bed-505c-482c-a841-a882ebcaed57",
+    "type": "themes",
+    "attributes": {
+      "created_at": "2024-04-29T09:24:33+00:00",
+      "updated_at": "2024-04-29T09:24:33+00:00",
+      "name": "Theme 2",
+      "identifier": "b7c18b84-8398-4384-9d7b-e04fe45fcc68",
+      "version": "1.0",
+      "theme_id": "545b7c99-a3ef-47a7-ba95-651b6fc2c19a",
+      "theme_type": "official",
+      "description": null,
+      "market": null,
+      "preview_url": null,
+      "detail_url": null,
+      "preview_image_long_url": null,
+      "preview_image_medium_url": null,
+      "preview_image_large_url": null,
+      "installed": true
+    },
+    "relationships": {
+      "assets": {
+        "links": {
+          "related": "api/boomerang/assets?filter[theme_id]=19046bed-505c-482c-a841-a882ebcaed57"
+        }
       },
-      "relationships": {
-        "assets": {
-          "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=469a2031-3309-485e-ba29-f22dc9e32be9"
-          }
-        },
-        "original_theme": {
-          "links": {
-            "related": "api/boomerang/themes/bbf8f19c-d375-4992-95e2-08534b989f90"
-          }
+      "original_theme": {
+        "links": {
+          "related": "api/boomerang/themes/545b7c99-a3ef-47a7-ba95-651b6fc2c19a"
         }
       }
     }
-  ],
-  "meta": {}
-}
-```
-
-
-> How to fetch a list of themes which are available for installation:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/themes?filter%5Bavailable_for_installation%5D=true' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "adedfd06-cabb-49d0-9a9c-490819fd9e04",
-      "type": "themes",
-      "attributes": {
-        "created_at": "2024-04-22T09:26:44+00:00",
-        "updated_at": "2024-04-22T09:26:44+00:00",
-        "name": "Official theme",
-        "identifier": "49cf957e-a560-47ce-823d-fba792649295",
-        "version": "1.0",
-        "theme_id": null,
-        "theme_type": "official",
-        "description": null,
-        "market": null,
-        "preview_url": null,
-        "detail_url": null,
-        "preview_image_long_url": null,
-        "preview_image_medium_url": null,
-        "preview_image_large_url": null,
-        "installed": false
-      },
-      "relationships": {
-        "assets": {
-          "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=adedfd06-cabb-49d0-9a9c-490819fd9e04"
-          }
-        },
-        "original_theme": {
-          "links": {
-            "related": null
-          }
-        }
-      }
-    }
-  ],
+  },
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/themes`
+`DELETE /api/boomerang/themes/{id}`
 
 ### Request params
 
@@ -161,37 +107,6 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`version` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`theme_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`installed` | **Boolean** <br>`eq`
-`available_for_installation` | **Boolean** <br>`eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
 
 
 ### Includes
@@ -212,7 +127,7 @@ This request does not accept any includes
         "type": "themes",
         "attributes": {
           "name": "New theme",
-          "theme_id": "52f610c8-15ff-47d0-9620-88834093858c"
+          "theme_id": "6fb0b984-6341-4621-b9e8-e018d1641662"
         }
       }
     }'
@@ -223,15 +138,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3cfdda53-9c32-4722-90b3-301e816e83a4",
+    "id": "07273b5c-543f-4b60-ab14-250bd1046971",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-04-22T09:26:45+00:00",
-      "updated_at": "2024-04-22T09:26:45+00:00",
+      "created_at": "2024-04-29T09:24:34+00:00",
+      "updated_at": "2024-04-29T09:24:34+00:00",
       "name": "Official theme",
-      "identifier": "dd8ea268-6c54-4308-b97b-ef24ff7e5031",
+      "identifier": "5f8beec9-6b1f-46c7-a253-afb452149110",
       "version": null,
-      "theme_id": "52f610c8-15ff-47d0-9620-88834093858c",
+      "theme_id": "6fb0b984-6341-4621-b9e8-e018d1641662",
       "theme_type": "official",
       "description": null,
       "market": null,
@@ -300,15 +215,15 @@ This request accepts the following includes:
 
 
 
-## Deleting a theme
+## Listing themes
 
 
 
-> How to delete a theme:
+> How to fetch a list of themes which are available for installation:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/3827ff6a-dba9-4a67-a854-8aaef780b38a' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/themes?filter%5Bavailable_for_installation%5D=true' \
     --header 'content-type: application/json' \
 ```
 
@@ -316,46 +231,100 @@ This request accepts the following includes:
 
 ```json
   {
-  "data": {
-    "id": "3827ff6a-dba9-4a67-a854-8aaef780b38a",
-    "type": "themes",
-    "attributes": {
-      "created_at": "2024-04-22T09:26:45+00:00",
-      "updated_at": "2024-04-22T09:26:45+00:00",
-      "name": "Theme 13",
-      "identifier": "b1d1e7a5-c10f-42fc-9e8c-7278550fbb58",
-      "version": "1.0",
-      "theme_id": "0bf4bdab-50c9-4419-825d-793680d2c137",
-      "theme_type": "official",
-      "description": null,
-      "market": null,
-      "preview_url": null,
-      "detail_url": null,
-      "preview_image_long_url": null,
-      "preview_image_medium_url": null,
-      "preview_image_large_url": null,
-      "installed": true
-    },
-    "relationships": {
-      "assets": {
-        "links": {
-          "related": "api/boomerang/assets?filter[theme_id]=3827ff6a-dba9-4a67-a854-8aaef780b38a"
-        }
+  "data": [
+    {
+      "id": "568ce988-8c8c-4b53-b2e3-ea67ae126fe8",
+      "type": "themes",
+      "attributes": {
+        "created_at": "2024-04-29T09:24:34+00:00",
+        "updated_at": "2024-04-29T09:24:34+00:00",
+        "name": "Official theme",
+        "identifier": "10325027-e2b5-48a3-8fb7-cca1694ed6c4",
+        "version": "1.0",
+        "theme_id": null,
+        "theme_type": "official",
+        "description": null,
+        "market": null,
+        "preview_url": null,
+        "detail_url": null,
+        "preview_image_long_url": null,
+        "preview_image_medium_url": null,
+        "preview_image_large_url": null,
+        "installed": false
       },
-      "original_theme": {
-        "links": {
-          "related": "api/boomerang/themes/0bf4bdab-50c9-4419-825d-793680d2c137"
+      "relationships": {
+        "assets": {
+          "links": {
+            "related": "api/boomerang/assets?filter[theme_id]=568ce988-8c8c-4b53-b2e3-ea67ae126fe8"
+          }
+        },
+        "original_theme": {
+          "links": {
+            "related": null
+          }
         }
       }
     }
-  },
+  ],
+  "meta": {}
+}
+```
+
+
+> How to fetch a list of installed themes:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/themes' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "a2efdadf-75bf-41cd-ac22-4f988f4f6e00",
+      "type": "themes",
+      "attributes": {
+        "created_at": "2024-04-29T09:24:35+00:00",
+        "updated_at": "2024-04-29T09:24:35+00:00",
+        "name": "Theme 5",
+        "identifier": "94dfa368-b287-4e2b-bd07-0bd79ad8190a",
+        "version": "1.0",
+        "theme_id": "88980036-ceaa-4a3d-a8c5-791c3f653300",
+        "theme_type": "official",
+        "description": "A simple theme for setting up your shop",
+        "market": null,
+        "preview_url": null,
+        "detail_url": null,
+        "preview_image_long_url": null,
+        "preview_image_medium_url": null,
+        "preview_image_large_url": null,
+        "installed": true
+      },
+      "relationships": {
+        "assets": {
+          "links": {
+            "related": "api/boomerang/assets?filter[theme_id]=a2efdadf-75bf-41cd-ac22-4f988f4f6e00"
+          }
+        },
+        "original_theme": {
+          "links": {
+            "related": "api/boomerang/themes/88980036-ceaa-4a3d-a8c5-791c3f653300"
+          }
+        }
+      }
+    }
+  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`DELETE /api/boomerang/themes/{id}`
+`GET /api/boomerang/themes`
 
 ### Request params
 
@@ -364,6 +333,37 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`version` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`theme_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`installed` | **Boolean** <br>`eq`
+`available_for_installation` | **Boolean** <br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
 
 
 ### Includes

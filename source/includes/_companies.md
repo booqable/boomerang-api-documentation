@@ -3,9 +3,9 @@
 Every action performed in a Booqable account is scoped to a company; A company holds information and configuration about an account.
 
 ## Endpoints
-`GET /api/boomerang/companies/current`
-
 `PUT /api/boomerang/companies/current`
+
+`GET /api/boomerang/companies/current`
 
 ## Fields
 Every company has the following fields:
@@ -67,103 +67,6 @@ Name | Description
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
 
 
-## Fetching a company
-
-
-
-> How to fetch a companies:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/companies/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "8703e6b7-1d1f-473a-888f-fc9637d7e93c",
-    "type": "companies",
-    "attributes": {
-      "created_at": "2024-04-22T09:24:19+00:00",
-      "updated_at": "2024-04-22T09:24:19+00:00",
-      "name": "iRent",
-      "slug": "irent",
-      "email": "mail92@company.com",
-      "billing_email": null,
-      "phone": "0581234567",
-      "website": "www.booqable.com",
-      "address_line_1": "Blokhuispoort",
-      "address_line_2": "Leeuwarden",
-      "zipcode": "8900AB",
-      "city": "Leeuwarden",
-      "region": null,
-      "country": "the Netherlands",
-      "market": "AV / Camera",
-      "use_billing_address": false,
-      "billing_company": null,
-      "billing_address_line_1": null,
-      "billing_address_line_2": null,
-      "billing_address_zipcode": null,
-      "billing_address_city": null,
-      "billing_address_region": null,
-      "billing_address_country": null,
-      "logo_url": null,
-      "favicon_url": null,
-      "default_timezone": "UTC",
-      "currency": "usd",
-      "financial_line_1": "Blokhuispoort",
-      "financial_line_2": "Leeuwarden",
-      "vat_number": null,
-      "custom_domain": null,
-      "development": false,
-      "shop_theme_id": null,
-      "installed_online_store": false,
-      "years_active": null,
-      "source": null,
-      "medium": null,
-      "tenant_token": "40f5d9c1cc828cfe8c23784cab849dcb",
-      "pending_subscription": false,
-      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
-      "main_address": {
-        "meets_validation_requirements": false,
-        "first_name": null,
-        "last_name": null,
-        "address1": "Blokhuispoort",
-        "address2": "Leeuwarden",
-        "city": "Leeuwarden",
-        "region": null,
-        "zipcode": "8900AB",
-        "country": "the Netherlands",
-        "country_id": null,
-        "province_id": null,
-        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
-      },
-      "billing_address": null
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/companies/current`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Updating a company
 
 
@@ -176,7 +79,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "7d6c6c0f-60fa-4d39-b07a-8bd7a3d2b443",
+        "id": "fcb94f98-fc8b-4fa5-8348-c78f2e817e67",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -190,14 +93,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7d6c6c0f-60fa-4d39-b07a-8bd7a3d2b443",
+    "id": "fcb94f98-fc8b-4fa5-8348-c78f2e817e67",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-04-22T09:24:20+00:00",
-      "updated_at": "2024-04-22T09:24:20+00:00",
+      "created_at": "2024-04-29T09:31:17+00:00",
+      "updated_at": "2024-04-29T09:31:17+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail93@company.com",
+      "email": "mail306@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -230,7 +133,7 @@ This request does not accept any includes
       "years_active": null,
       "source": null,
       "medium": null,
-      "tenant_token": "8cbd6aaf25e6f4fd2f99236c74266630",
+      "tenant_token": "33cb495457a70b10b6a824b1f31ff86e",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -359,11 +262,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1012fc2f-39ac-422c-9160-d7af3e936ea7",
+    "id": "c60fe46c-731d-4b75-88d5-d5eb150e1fae",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-05-06T09:24:21.005Z",
+        "trial_ends_at": "2024-05-13T09:31:17.936Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,
@@ -417,6 +320,103 @@ Name | Description
         },
         "can_try_plan": true
       }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/companies/current`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a company
+
+
+
+> How to fetch a companies:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/companies/current' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "18adfe0a-00ff-4506-b2a5-399e46a63304",
+    "type": "companies",
+    "attributes": {
+      "created_at": "2024-04-29T09:31:18+00:00",
+      "updated_at": "2024-04-29T09:31:18+00:00",
+      "name": "iRent",
+      "slug": "irent",
+      "email": "mail308@company.com",
+      "billing_email": null,
+      "phone": "0581234567",
+      "website": "www.booqable.com",
+      "address_line_1": "Blokhuispoort",
+      "address_line_2": "Leeuwarden",
+      "zipcode": "8900AB",
+      "city": "Leeuwarden",
+      "region": null,
+      "country": "the Netherlands",
+      "market": "AV / Camera",
+      "use_billing_address": false,
+      "billing_company": null,
+      "billing_address_line_1": null,
+      "billing_address_line_2": null,
+      "billing_address_zipcode": null,
+      "billing_address_city": null,
+      "billing_address_region": null,
+      "billing_address_country": null,
+      "logo_url": null,
+      "favicon_url": null,
+      "default_timezone": "UTC",
+      "currency": "usd",
+      "financial_line_1": "Blokhuispoort",
+      "financial_line_2": "Leeuwarden",
+      "vat_number": null,
+      "custom_domain": null,
+      "development": false,
+      "shop_theme_id": null,
+      "installed_online_store": false,
+      "years_active": null,
+      "source": null,
+      "medium": null,
+      "tenant_token": "30d3084d3b55b4d523513cd90a99595b",
+      "pending_subscription": false,
+      "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+      "main_address": {
+        "meets_validation_requirements": false,
+        "first_name": null,
+        "last_name": null,
+        "address1": "Blokhuispoort",
+        "address2": "Leeuwarden",
+        "city": "Leeuwarden",
+        "region": null,
+        "zipcode": "8900AB",
+        "country": "the Netherlands",
+        "country_id": null,
+        "province_id": null,
+        "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+      },
+      "billing_address": null
     }
   },
   "meta": {}

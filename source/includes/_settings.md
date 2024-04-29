@@ -250,10 +250,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "27c6a93c-1cb5-5b7e-b2ec-5e490d9a1064",
+    "id": "d9e03e74-ba3c-57ac-ab21-f18cc76326af",
     "type": "settings",
     "attributes": {
-      "updated_at": "2024-04-22T09:22:04+00:00",
+      "updated_at": "2024-04-29T09:23:50+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -265,8 +265,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "5cd6ad3f-a337-4f38-8974-b454842b963f",
-        "tax_region_id": "09dd742e-250c-4893-9275-2d4af4af87ea",
+        "tax_category_id": "8af2cbfb-b083-4d20-9470-49b70eb63e65",
+        "tax_region_id": "98061a47-791e-426a-bb56-1850a71fe034",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -308,7 +308,7 @@ Name | Description
         "enabled": true,
         "public": true,
         "send_order_confirmation": true,
-        "brand_color": "#2B80FF",
+        "brand_color": "#136DEB",
         "use_availability": true,
         "use_prices": true,
         "display_price": "period",
