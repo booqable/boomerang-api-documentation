@@ -5,9 +5,9 @@ Stock item plannings hold information about the planning of individual stock ite
 Stock item plannings are never directly created or updated through their resource; instead, they are always managed by booking items to an order or transitioning status.
 
 ## Endpoints
-`GET /api/boomerang/stock_item_plannings`
-
 `DELETE /api/boomerang/stock_item_plannings/{id}`
+
+`GET /api/boomerang/stock_item_plannings`
 
 ## Fields
 Every stock item planning has the following fields:
@@ -37,6 +37,75 @@ Name | Description
 `order` | **Orders** `readonly`<br>Associated Order
 
 
+## Archiving a stock_item planning
+
+
+
+> How to archive a stock item planning:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/c5dac737-9844-4dca-b9d3-b881d8ce5c0c' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "c5dac737-9844-4dca-b9d3-b881d8ce5c0c",
+    "type": "stock_item_plannings",
+    "attributes": {
+      "created_at": "2024-05-06T09:26:16+00:00",
+      "updated_at": "2024-05-06T09:26:16+00:00",
+      "archived": false,
+      "archived_at": null,
+      "reserved": false,
+      "started": false,
+      "stopped": false,
+      "stock_item_id": "99e752bf-9530-4455-a2a1-e0495ee26373",
+      "planning_id": "574de9c8-5510-4cd2-86a8-984ab7220a78",
+      "order_id": "5d436557-8606-40be-97a9-23a88c5db339"
+    },
+    "relationships": {
+      "stock_item": {
+        "links": {
+          "related": "api/boomerang/stock_items/99e752bf-9530-4455-a2a1-e0495ee26373"
+        }
+      },
+      "planning": {
+        "links": {
+          "related": "api/boomerang/plannings/574de9c8-5510-4cd2-86a8-984ab7220a78"
+        }
+      },
+      "order": {
+        "links": {
+          "related": "api/boomerang/orders/5d436557-8606-40be-97a9-23a88c5db339"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/stock_item_plannings/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing stock item plannings
 
 
@@ -55,34 +124,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "8bbdcf72-becb-4b54-8817-63198f52a115",
+      "id": "829dbcda-dd4d-42ef-bd0c-c5895ccedd1d",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-04-29T09:24:11+00:00",
-        "updated_at": "2024-04-29T09:24:11+00:00",
+        "created_at": "2024-05-06T09:26:17+00:00",
+        "updated_at": "2024-05-06T09:26:17+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "888aac61-a494-4bb6-8154-eea69bc58320",
-        "planning_id": "4cb59ba5-7ca4-4236-899a-29bbb6eeca0a",
-        "order_id": "a732aa44-8be7-43e8-a679-f98446f11782"
+        "stock_item_id": "627ef993-3228-4734-aac0-0af86dd6ecd4",
+        "planning_id": "86087c54-7bb6-4f39-823d-43d8780b16c4",
+        "order_id": "9a796b1a-f8ec-4487-9ded-9b3072fed9ec"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/888aac61-a494-4bb6-8154-eea69bc58320"
+            "related": "api/boomerang/stock_items/627ef993-3228-4734-aac0-0af86dd6ecd4"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/4cb59ba5-7ca4-4236-899a-29bbb6eeca0a"
+            "related": "api/boomerang/plannings/86087c54-7bb6-4f39-823d-43d8780b16c4"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/a732aa44-8be7-43e8-a679-f98446f11782"
+            "related": "api/boomerang/orders/9a796b1a-f8ec-4487-9ded-9b3072fed9ec"
           }
         }
       }
@@ -161,73 +230,3 @@ This request accepts the following includes:
 
 
 
-
-## Archiving a stock_item planning
-
-
-
-> How to archive a stock item planning:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/39c814c5-34dd-4f9a-b789-f3b0ee90b06b' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "39c814c5-34dd-4f9a-b789-f3b0ee90b06b",
-    "type": "stock_item_plannings",
-    "attributes": {
-      "created_at": "2024-04-29T09:24:12+00:00",
-      "updated_at": "2024-04-29T09:24:12+00:00",
-      "archived": false,
-      "archived_at": null,
-      "reserved": false,
-      "started": false,
-      "stopped": false,
-      "stock_item_id": "0ba9e2a9-22d3-48e0-adc2-a12071e6e9ae",
-      "planning_id": "02a1a672-f65d-403c-9cae-9c598106513c",
-      "order_id": "c8f9fbd5-a993-4421-8d50-5de1b2a5d1a9"
-    },
-    "relationships": {
-      "stock_item": {
-        "links": {
-          "related": "api/boomerang/stock_items/0ba9e2a9-22d3-48e0-adc2-a12071e6e9ae"
-        }
-      },
-      "planning": {
-        "links": {
-          "related": "api/boomerang/plannings/02a1a672-f65d-403c-9cae-9c598106513c"
-        }
-      },
-      "order": {
-        "links": {
-          "related": "api/boomerang/orders/c8f9fbd5-a993-4421-8d50-5de1b2a5d1a9"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/stock_item_plannings/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes

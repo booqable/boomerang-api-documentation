@@ -51,7 +51,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/19046bed-505c-482c-a841-a882ebcaed57' \
+    --url 'https://example.booqable.com/api/boomerang/themes/df15b9c0-3716-4d25-bbfc-7c720bcfe4a7' \
     --header 'content-type: application/json' \
 ```
 
@@ -60,15 +60,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "19046bed-505c-482c-a841-a882ebcaed57",
+    "id": "df15b9c0-3716-4d25-bbfc-7c720bcfe4a7",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-04-29T09:24:33+00:00",
-      "updated_at": "2024-04-29T09:24:33+00:00",
-      "name": "Theme 2",
-      "identifier": "b7c18b84-8398-4384-9d7b-e04fe45fcc68",
+      "created_at": "2024-05-06T09:26:23+00:00",
+      "updated_at": "2024-05-06T09:26:23+00:00",
+      "name": "Theme 10",
+      "identifier": "f12791e2-4445-4d19-9a2d-7fcf01f5f50c",
       "version": "1.0",
-      "theme_id": "545b7c99-a3ef-47a7-ba95-651b6fc2c19a",
+      "theme_id": "78129e3b-c6e8-4da1-9be8-b6facea24973",
       "theme_type": "official",
       "description": null,
       "market": null,
@@ -82,12 +82,12 @@ Name | Description
     "relationships": {
       "assets": {
         "links": {
-          "related": "api/boomerang/assets?filter[theme_id]=19046bed-505c-482c-a841-a882ebcaed57"
+          "related": "api/boomerang/assets?filter[theme_id]=df15b9c0-3716-4d25-bbfc-7c720bcfe4a7"
         }
       },
       "original_theme": {
         "links": {
-          "related": "api/boomerang/themes/545b7c99-a3ef-47a7-ba95-651b6fc2c19a"
+          "related": "api/boomerang/themes/78129e3b-c6e8-4da1-9be8-b6facea24973"
         }
       }
     }
@@ -127,7 +127,7 @@ This request does not accept any includes
         "type": "themes",
         "attributes": {
           "name": "New theme",
-          "theme_id": "6fb0b984-6341-4621-b9e8-e018d1641662"
+          "theme_id": "bb66991d-a073-420d-9b34-6a3411033141"
         }
       }
     }'
@@ -138,15 +138,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "07273b5c-543f-4b60-ab14-250bd1046971",
+    "id": "1f624347-87f3-4ca3-abfc-b4a17717606b",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-04-29T09:24:34+00:00",
-      "updated_at": "2024-04-29T09:24:34+00:00",
+      "created_at": "2024-05-06T09:26:24+00:00",
+      "updated_at": "2024-05-06T09:26:24+00:00",
       "name": "Official theme",
-      "identifier": "5f8beec9-6b1f-46c7-a253-afb452149110",
+      "identifier": "926f6a7d-9b38-4e60-bf94-589adbd957d7",
       "version": null,
-      "theme_id": "6fb0b984-6341-4621-b9e8-e018d1641662",
+      "theme_id": "bb66991d-a073-420d-9b34-6a3411033141",
       "theme_type": "official",
       "description": null,
       "market": null,
@@ -219,6 +219,58 @@ This request accepts the following includes:
 
 
 
+> How to fetch a list of installed themes:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/themes' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "0dd5cfff-8789-45cd-ae37-04daee33d08e",
+      "type": "themes",
+      "attributes": {
+        "created_at": "2024-05-06T09:26:24+00:00",
+        "updated_at": "2024-05-06T09:26:24+00:00",
+        "name": "Theme 12",
+        "identifier": "5b4b29df-c52b-4b6e-9cc4-0730285da48b",
+        "version": "1.0",
+        "theme_id": "8b4498dc-812c-4b94-af65-cdcd974f36e6",
+        "theme_type": "official",
+        "description": "A simple theme for setting up your shop",
+        "market": null,
+        "preview_url": null,
+        "detail_url": null,
+        "preview_image_long_url": null,
+        "preview_image_medium_url": null,
+        "preview_image_large_url": null,
+        "installed": true
+      },
+      "relationships": {
+        "assets": {
+          "links": {
+            "related": "api/boomerang/assets?filter[theme_id]=0dd5cfff-8789-45cd-ae37-04daee33d08e"
+          }
+        },
+        "original_theme": {
+          "links": {
+            "related": "api/boomerang/themes/8b4498dc-812c-4b94-af65-cdcd974f36e6"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+
 > How to fetch a list of themes which are available for installation:
 
 ```shell
@@ -233,13 +285,13 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "568ce988-8c8c-4b53-b2e3-ea67ae126fe8",
+      "id": "fa47ffcb-1774-42af-ab9c-a802a7efa42b",
       "type": "themes",
       "attributes": {
-        "created_at": "2024-04-29T09:24:34+00:00",
-        "updated_at": "2024-04-29T09:24:34+00:00",
+        "created_at": "2024-05-06T09:26:25+00:00",
+        "updated_at": "2024-05-06T09:26:25+00:00",
         "name": "Official theme",
-        "identifier": "10325027-e2b5-48a3-8fb7-cca1694ed6c4",
+        "identifier": "fcba7739-2699-4a12-bbc4-ead55e4b64be",
         "version": "1.0",
         "theme_id": null,
         "theme_type": "official",
@@ -255,64 +307,12 @@ This request accepts the following includes:
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=568ce988-8c8c-4b53-b2e3-ea67ae126fe8"
+            "related": "api/boomerang/assets?filter[theme_id]=fa47ffcb-1774-42af-ab9c-a802a7efa42b"
           }
         },
         "original_theme": {
           "links": {
             "related": null
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-
-> How to fetch a list of installed themes:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/themes' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "a2efdadf-75bf-41cd-ac22-4f988f4f6e00",
-      "type": "themes",
-      "attributes": {
-        "created_at": "2024-04-29T09:24:35+00:00",
-        "updated_at": "2024-04-29T09:24:35+00:00",
-        "name": "Theme 5",
-        "identifier": "94dfa368-b287-4e2b-bd07-0bd79ad8190a",
-        "version": "1.0",
-        "theme_id": "88980036-ceaa-4a3d-a8c5-791c3f653300",
-        "theme_type": "official",
-        "description": "A simple theme for setting up your shop",
-        "market": null,
-        "preview_url": null,
-        "detail_url": null,
-        "preview_image_long_url": null,
-        "preview_image_medium_url": null,
-        "preview_image_large_url": null,
-        "installed": true
-      },
-      "relationships": {
-        "assets": {
-          "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=a2efdadf-75bf-41cd-ac22-4f988f4f6e00"
-          }
-        },
-        "original_theme": {
-          "links": {
-            "related": "api/boomerang/themes/88980036-ceaa-4a3d-a8c5-791c3f653300"
           }
         }
       }

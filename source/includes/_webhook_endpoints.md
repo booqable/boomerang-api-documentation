@@ -35,13 +35,13 @@ You can listen to the following events:
 - `cart.completed_checkout`
 
 ## Endpoints
+`POST /api/boomerang/webhook_endpoints`
+
 `GET /api/boomerang/webhook_endpoints`
 
 `DELETE /api/boomerang/webhook_endpoints/{id}`
 
 `PUT /api/boomerang/webhook_endpoints/{id}`
-
-`POST /api/boomerang/webhook_endpoints`
 
 ## Fields
 Every webhook endpoint has the following fields:
@@ -55,6 +55,77 @@ Name | Description
 `events` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
 
 
+## Subscribing to webhook events
+
+
+
+> How to subscribe to webhook events:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "webhook_endpoints",
+        "attributes": {
+          "url": "https://example.com/hooks",
+          "events": [
+            "customer.created",
+            "customer.updated"
+          ]
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "e6d793fe-1529-41ec-8a57-4c1d3a6112c4",
+    "type": "webhook_endpoints",
+    "attributes": {
+      "created_at": "2024-05-06T09:22:03+00:00",
+      "updated_at": "2024-05-06T09:22:03+00:00",
+      "url": "https://example.com/hooks",
+      "events": [
+        "customer.created",
+        "customer.updated"
+      ]
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/webhook_endpoints`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][url]` | **String** <br>The URL that will receive the webhook payload
+`data[attributes][events][]` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing webhook endpoints
 
 
@@ -73,9 +144,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "8927adac-d399-4923-998f-5bfd14684f8a",
-      "created_at": "2024-04-29T09:30:41+00:00",
-      "updated_at": "2024-04-29T09:30:41+00:00",
+      "id": "e45aef5b-f0d4-4593-b6e0-6c818933e9b0",
+      "created_at": "2024-05-06T09:22:03+00:00",
+      "updated_at": "2024-05-06T09:22:03+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "invoice.finalized"
@@ -135,7 +206,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/97e2c341-4b4f-4fce-b120-8d5c776d1f1d' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/e5aec04a-23dc-4595-8ec7-3d9bc2787d00' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -145,11 +216,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "97e2c341-4b4f-4fce-b120-8d5c776d1f1d",
+    "id": "e5aec04a-23dc-4595-8ec7-3d9bc2787d00",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-04-29T09:30:42+00:00",
-      "updated_at": "2024-04-29T09:30:42+00:00",
+      "created_at": "2024-05-06T09:22:04+00:00",
+      "updated_at": "2024-05-06T09:22:04+00:00",
       "url": "https://example.com/hooks",
       "events": []
     }
@@ -182,12 +253,12 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/908ef209-9479-46cf-9194-febd651baad4' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/f067b077-9af3-4999-9703-171bd71b6ecf' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "webhook_endpoints",
-        "id": "908ef209-9479-46cf-9194-febd651baad4",
+        "id": "f067b077-9af3-4999-9703-171bd71b6ecf",
         "attributes": {
           "url": "https://example.com/hooks",
           "events": [
@@ -203,11 +274,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "908ef209-9479-46cf-9194-febd651baad4",
+    "id": "f067b077-9af3-4999-9703-171bd71b6ecf",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-04-29T09:30:44+00:00",
-      "updated_at": "2024-04-29T09:30:44+00:00",
+      "created_at": "2024-05-06T09:22:04+00:00",
+      "updated_at": "2024-05-06T09:22:04+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created"
@@ -221,77 +292,6 @@ This request does not accept any includes
 ### HTTP Request
 
 `PUT /api/boomerang/webhook_endpoints/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][url]` | **String** <br>The URL that will receive the webhook payload
-`data[attributes][events][]` | **Array** <br>The events that will trigger the webhook, any of `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`
-
-
-### Includes
-
-This request does not accept any includes
-## Subscribing to webhook events
-
-
-
-> How to subscribe to webhook events:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "webhook_endpoints",
-        "attributes": {
-          "url": "https://example.com/hooks",
-          "events": [
-            "customer.created",
-            "customer.updated"
-          ]
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "8dd845e0-18ed-49ee-85a3-0d0b00ded76d",
-    "type": "webhook_endpoints",
-    "attributes": {
-      "created_at": "2024-04-29T09:30:45+00:00",
-      "updated_at": "2024-04-29T09:30:45+00:00",
-      "url": "https://example.com/hooks",
-      "events": [
-        "customer.created",
-        "customer.updated"
-      ]
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/webhook_endpoints`
 
 ### Request params
 
