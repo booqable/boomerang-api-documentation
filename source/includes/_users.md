@@ -10,11 +10,11 @@ Depending on the setting in your Booqable account, creating a user can actually 
 ## Endpoints
 `PUT /api/boomerang/users/{id}`
 
-`POST /api/boomerang/users`
-
 `GET /api/boomerang/users/{id}`
 
 `GET /api/boomerang/users`
+
+`POST /api/boomerang/users`
 
 ## Fields
 Every user has the following fields:
@@ -42,22 +42,22 @@ Name | Description
 `notes` | **Notes** `readonly`<br>Associated Notes
 
 
-## Disabling a user
+## Updating a user
 
 
 
-> How to disable a user:
+> How to update a user:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/9fe2ba69-a492-443e-a087-e843c0af372e' \
+    --url 'https://example.booqable.com/api/boomerang/users/4304ca53-5641-49bf-8164-81edf46f66f9' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9fe2ba69-a492-443e-a087-e843c0af372e",
+        "id": "4304ca53-5641-49bf-8164-81edf46f66f9",
         "type": "users",
         "attributes": {
-          "disabled": true
+          "first_name": "Bobba"
         }
       }
     }'
@@ -68,219 +68,17 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "9fe2ba69-a492-443e-a087-e843c0af372e",
+    "id": "4304ca53-5641-49bf-8164-81edf46f66f9",
     "type": "users",
     "attributes": {
-      "created_at": "2024-05-06T09:23:30+00:00",
-      "updated_at": "2024-05-06T09:23:30+00:00",
-      "first_name": "John",
+      "created_at": "2024-05-13T09:24:16+00:00",
+      "updated_at": "2024-05-13T09:24:16+00:00",
+      "first_name": "Bobba",
       "last_name": "Doe",
-      "name": "John Doe",
-      "email": "john-2@doe.test",
-      "status": "disabled",
-      "customer_id": "45ee187d-779f-4734-8def-9bf835e2e6b0"
-    },
-    "relationships": {
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "notes": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/users/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][first_name]` | **String** <br>The first name of the user
-`data[attributes][last_name]` | **String** <br>The last name of the user
-`data[attributes][name]` | **String** <br>The full name of the user (first_name + last_name)
-`data[attributes][email]` | **String** <br>The email of the user
-`data[attributes][disabled]` | **Boolean** <br>When a user is disabled they cannot log into their account or create orders
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
-
-
-## Inviting a user
-
-
-
-> How to invite a user:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/users' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "users",
-        "attributes": {
-          "first_name": "Bob",
-          "last_name": "Bobsen",
-          "email": "bob@booqable.com",
-          "customer_id": "00c7ad17-afa3-4c19-9439-984edb32f442"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "30885471-4725-46f8-af7d-842d9947bae9",
-    "type": "users",
-    "attributes": {
-      "created_at": "2024-05-06T09:23:30+00:00",
-      "updated_at": "2024-05-06T09:23:30+00:00",
-      "first_name": "Bob",
-      "last_name": "Bobsen",
-      "name": "Bob Bobsen",
-      "email": "bob@booqable.com",
-      "status": "invited",
-      "customer_id": "00c7ad17-afa3-4c19-9439-984edb32f442"
-    },
-    "relationships": {
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "notes": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/users`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][first_name]` | **String** <br>The first name of the user
-`data[attributes][last_name]` | **String** <br>The last name of the user
-`data[attributes][name]` | **String** <br>The full name of the user (first_name + last_name)
-`data[attributes][email]` | **String** <br>The email of the user
-`data[attributes][disabled]` | **Boolean** <br>When a user is disabled they cannot log into their account or create orders
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
-
-
-## Enabling a user
-
-
-
-> How to enable a user:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/905717ad-5311-4fba-81ee-699a67157221' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "905717ad-5311-4fba-81ee-699a67157221",
-        "type": "users",
-        "attributes": {
-          "disabled": false
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "905717ad-5311-4fba-81ee-699a67157221",
-    "type": "users",
-    "attributes": {
-      "created_at": "2024-05-06T09:23:31+00:00",
-      "updated_at": "2024-05-06T09:23:31+00:00",
-      "first_name": "John",
-      "last_name": "Doe",
-      "name": "John Doe",
-      "email": "john-4@doe.test",
+      "name": "Bobba Doe",
+      "email": "john-1@doe.test",
       "status": "active",
-      "customer_id": "8932c41f-6da1-4d53-b689-61dafc799b3e"
+      "customer_id": "630bd730-319f-45af-ae72-a9be15577a0f"
     },
     "relationships": {
       "customer": {
@@ -352,7 +150,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/users/f0b56fcf-1b58-41aa-a7a2-f8033383c3c6' \
+    --url 'https://example.booqable.com/api/boomerang/users/370444ad-0f19-4ac3-9ced-82bd61fc4456' \
     --header 'content-type: application/json' \
 ```
 
@@ -361,27 +159,27 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f0b56fcf-1b58-41aa-a7a2-f8033383c3c6",
+    "id": "370444ad-0f19-4ac3-9ced-82bd61fc4456",
     "type": "users",
     "attributes": {
-      "created_at": "2024-05-06T09:23:32+00:00",
-      "updated_at": "2024-05-06T09:23:32+00:00",
+      "created_at": "2024-05-13T09:24:18+00:00",
+      "updated_at": "2024-05-13T09:24:18+00:00",
       "first_name": "John",
       "last_name": "Doe",
       "name": "John Doe",
-      "email": "john-5@doe.test",
+      "email": "john-2@doe.test",
       "status": "active",
-      "customer_id": "6b740263-39a7-47ce-be14-f04ffa376acc"
+      "customer_id": "0d1b9469-92a1-46af-a1e1-e18e2e61c39e"
     },
     "relationships": {
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/6b740263-39a7-47ce-be14-f04ffa376acc"
+          "related": "api/boomerang/customers/0d1b9469-92a1-46af-a1e1-e18e2e61c39e"
         }
       },
       "notes": {
         "links": {
-          "related": "api/boomerang/notes?filter[owner_id]=f0b56fcf-1b58-41aa-a7a2-f8033383c3c6&filter[owner_type]=users"
+          "related": "api/boomerang/notes?filter[owner_id]=370444ad-0f19-4ac3-9ced-82bd61fc4456&filter[owner_type]=users"
         }
       }
     }
@@ -421,8 +219,153 @@ This request accepts the following includes:
 
 
 
+## Disabling a user
+
+
+
+> How to disable a user:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/users/a37438e5-f1f7-4c57-bc69-044c1cd3c301' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "a37438e5-f1f7-4c57-bc69-044c1cd3c301",
+        "type": "users",
+        "attributes": {
+          "disabled": true
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "a37438e5-f1f7-4c57-bc69-044c1cd3c301",
+    "type": "users",
+    "attributes": {
+      "created_at": "2024-05-13T09:24:19+00:00",
+      "updated_at": "2024-05-13T09:24:19+00:00",
+      "first_name": "John",
+      "last_name": "Doe",
+      "name": "John Doe",
+      "email": "john-3@doe.test",
+      "status": "disabled",
+      "customer_id": "a16ae1ff-ade0-4fbe-9e85-670fdedda6ee"
+    },
+    "relationships": {
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "notes": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/users/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][first_name]` | **String** <br>The first name of the user
+`data[attributes][last_name]` | **String** <br>The last name of the user
+`data[attributes][name]` | **String** <br>The full name of the user (first_name + last_name)
+`data[attributes][email]` | **String** <br>The email of the user
+`data[attributes][disabled]` | **Boolean** <br>When a user is disabled they cannot log into their account or create orders
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`disabled_by`
+
+
+`notes`
+
+
+
+
+
+
 ## Listing users
 
+
+
+> How to find users belonging to a customer:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=d39050b6-af81-4db0-82ea-df5fe0a64dd4&include=customer' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "e5aa26c4-d380-4939-80c9-736735bafbd9",
+      "type": "users",
+      "attributes": {
+        "created_at": "2024-05-13T09:24:21+00:00",
+        "updated_at": "2024-05-13T09:24:21+00:00",
+        "first_name": "John",
+        "last_name": "Doe",
+        "name": "John Doe",
+        "email": "john-4@doe.test",
+        "status": "active",
+        "customer_id": "d39050b6-af81-4db0-82ea-df5fe0a64dd4"
+      },
+      "relationships": {
+        "customer": {
+          "links": {
+            "related": "api/boomerang/customers/d39050b6-af81-4db0-82ea-df5fe0a64dd4"
+          }
+        },
+        "notes": {
+          "links": {
+            "related": "api/boomerang/notes?filter[owner_id]=e5aa26c4-d380-4939-80c9-736735bafbd9&filter[owner_type]=users"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
 
 
 > How to fetch a list of users:
@@ -439,72 +382,27 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "201119e3-df6c-4cf8-872d-00a90b2b046e",
+      "id": "c9c253eb-c807-4855-9f6c-3743c0452a5f",
       "type": "users",
       "attributes": {
-        "created_at": "2024-05-06T09:23:32+00:00",
-        "updated_at": "2024-05-06T09:23:32+00:00",
+        "created_at": "2024-05-13T09:24:22+00:00",
+        "updated_at": "2024-05-13T09:24:22+00:00",
         "first_name": "John",
         "last_name": "Doe",
         "name": "John Doe",
-        "email": "john-6@doe.test",
+        "email": "john-5@doe.test",
         "status": "active",
-        "customer_id": "44583339-e95b-4dca-bb6e-a2908fab774e"
+        "customer_id": "363cef62-7f5c-4523-8ba6-3524409b2d99"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/44583339-e95b-4dca-bb6e-a2908fab774e"
+            "related": "api/boomerang/customers/363cef62-7f5c-4523-8ba6-3524409b2d99"
           }
         },
         "notes": {
           "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=201119e3-df6c-4cf8-872d-00a90b2b046e&filter[owner_type]=users"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-
-> How to find users belonging to a customer:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/users?filter%5Bcustomer_id%5D=06e12b88-cf7c-477b-91f6-71d45dbe189e&include=customer' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "e8f94542-1908-4008-93fa-a7db03d466ef",
-      "type": "users",
-      "attributes": {
-        "created_at": "2024-05-06T09:23:33+00:00",
-        "updated_at": "2024-05-06T09:23:33+00:00",
-        "first_name": "John",
-        "last_name": "Doe",
-        "name": "John Doe",
-        "email": "john-7@doe.test",
-        "status": "active",
-        "customer_id": "06e12b88-cf7c-477b-91f6-71d45dbe189e"
-      },
-      "relationships": {
-        "customer": {
-          "links": {
-            "related": "api/boomerang/customers/06e12b88-cf7c-477b-91f6-71d45dbe189e"
-          }
-        },
-        "notes": {
-          "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=e8f94542-1908-4008-93fa-a7db03d466ef&filter[owner_type]=users"
+            "related": "api/boomerang/notes?filter[owner_id]=c9c253eb-c807-4855-9f6c-3743c0452a5f&filter[owner_type]=users"
           }
         }
       }
@@ -561,22 +459,124 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a user
+## Inviting a user
 
 
 
-> How to update a user:
+> How to invite a user:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/users/9f1f6958-4a1d-4c98-8079-652a6c7348ee' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/users' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9f1f6958-4a1d-4c98-8079-652a6c7348ee",
         "type": "users",
         "attributes": {
-          "first_name": "Bobba"
+          "first_name": "Bob",
+          "last_name": "Bobsen",
+          "email": "bob@booqable.com",
+          "customer_id": "76816a9d-ead3-4a6e-9e5b-90bf04c4ec78"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "179951a4-7332-4bf1-9a9e-08ba873944d5",
+    "type": "users",
+    "attributes": {
+      "created_at": "2024-05-13T09:24:23+00:00",
+      "updated_at": "2024-05-13T09:24:23+00:00",
+      "first_name": "Bob",
+      "last_name": "Bobsen",
+      "name": "Bob Bobsen",
+      "email": "bob@booqable.com",
+      "status": "invited",
+      "customer_id": "76816a9d-ead3-4a6e-9e5b-90bf04c4ec78"
+    },
+    "relationships": {
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "notes": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/users`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][first_name]` | **String** <br>The first name of the user
+`data[attributes][last_name]` | **String** <br>The last name of the user
+`data[attributes][name]` | **String** <br>The full name of the user (first_name + last_name)
+`data[attributes][email]` | **String** <br>The email of the user
+`data[attributes][disabled]` | **Boolean** <br>When a user is disabled they cannot log into their account or create orders
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`disabled_by`
+
+
+`notes`
+
+
+
+
+
+
+## Enabling a user
+
+
+
+> How to enable a user:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/users/1b3ac1a8-d31a-451f-8876-aa50ea5de9d7' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "1b3ac1a8-d31a-451f-8876-aa50ea5de9d7",
+        "type": "users",
+        "attributes": {
+          "disabled": false
         }
       }
     }'
@@ -587,17 +587,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9f1f6958-4a1d-4c98-8079-652a6c7348ee",
+    "id": "1b3ac1a8-d31a-451f-8876-aa50ea5de9d7",
     "type": "users",
     "attributes": {
-      "created_at": "2024-05-06T09:23:33+00:00",
-      "updated_at": "2024-05-06T09:23:33+00:00",
-      "first_name": "Bobba",
+      "created_at": "2024-05-13T09:24:24+00:00",
+      "updated_at": "2024-05-13T09:24:24+00:00",
+      "first_name": "John",
       "last_name": "Doe",
-      "name": "Bobba Doe",
-      "email": "john-8@doe.test",
+      "name": "John Doe",
+      "email": "john-7@doe.test",
       "status": "active",
-      "customer_id": "e19ecbac-4e83-4173-a7ee-0f1869c14325"
+      "customer_id": "0d68abf6-abd4-4886-b134-d3f0d4cf356d"
     },
     "relationships": {
       "customer": {

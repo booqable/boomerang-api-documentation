@@ -36,7 +36,7 @@ Name | Description
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/29f2720a-30a4-411e-83f4-bd6717f5c38e' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/cbd5451a-a409-471b-8d68-0f8277a9a988' \
     --header 'content-type: application/json' \
 ```
 
@@ -45,11 +45,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "29f2720a-30a4-411e-83f4-bd6717f5c38e",
+    "id": "cbd5451a-a409-471b-8d68-0f8277a9a988",
     "type": "payment_methods",
     "attributes": {
-      "created_at": "2024-05-06T09:23:25+00:00",
-      "updated_at": "2024-05-06T09:23:25+00:00",
+      "created_at": "2024-05-13T09:25:28+00:00",
+      "updated_at": "2024-05-13T09:25:28+00:00",
       "data": {
         "name": null,
         "brand": null,
@@ -58,12 +58,12 @@ Name | Description
         "last4": null
       },
       "payment_method_type": "creditcard",
-      "customer_id": "86f0bbed-8dfe-4158-9552-a4508f6df3d4"
+      "customer_id": "11a3102e-2a44-4898-9763-937e45f28e71"
     },
     "relationships": {
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/86f0bbed-8dfe-4158-9552-a4508f6df3d4"
+          "related": "api/boomerang/customers/11a3102e-2a44-4898-9763-937e45f28e71"
         }
       }
     }
@@ -106,11 +106,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "4953db5d-5216-4306-a6c1-08c2bd74390f",
+      "id": "54b56f1b-3594-48e3-880f-b77b97c4b8fd",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-05-06T09:23:26+00:00",
-        "updated_at": "2024-05-06T09:23:26+00:00",
+        "created_at": "2024-05-13T09:25:29+00:00",
+        "updated_at": "2024-05-13T09:25:29+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -119,12 +119,12 @@ This request does not accept any includes
           "last4": null
         },
         "payment_method_type": "creditcard",
-        "customer_id": "be1bbd6b-6378-483a-b4a6-c091e5968c18"
+        "customer_id": "8d551390-b6c2-4639-be41-951a0e6be1e0"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/be1bbd6b-6378-483a-b4a6-c091e5968c18"
+            "related": "api/boomerang/customers/8d551390-b6c2-4639-be41-951a0e6be1e0"
           }
         }
       }

@@ -9,11 +9,11 @@ The Item resource gives the ability to fetch the following resources:
 The description of the behavior for these resources can be found in their respective sections
 
 ## Endpoints
-`POST api/boomerang/items/search`
-
 `GET /api/boomerang/items/{id}`
 
 `GET /api/boomerang/items`
+
+`POST api/boomerang/items/search`
 
 ## Fields
 For this resource fields are described in the following resources:
@@ -29,51 +29,151 @@ For this resource relationships are described in the following resources:
 - Products
 - Bundles
 
-## Searching items
-
-Use advanced search to make logical filter groups with and/or operators.
+## Fetching an item
 
 
-> How to search for items:
+
+> How to fetch an item:
 
 ```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/items/search' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/items/9a9390e1-f5b4-4d05-9bcf-4d7f2c4ba99f' \
     --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "items": "id"
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "9a9390e1-f5b4-4d05-9bcf-4d7f2c4ba99f",
+    "type": "product_groups",
+    "attributes": {
+      "created_at": "2024-05-13T09:25:12+00:00",
+      "updated_at": "2024-05-13T09:25:12+00:00",
+      "archived": false,
+      "archived_at": null,
+      "type": "product_groups",
+      "name": "iPad Pro",
+      "group_name": null,
+      "slug": "ipad-pro",
+      "sku": "SKU",
+      "lead_time": 0,
+      "lag_time": 0,
+      "product_type": "rental",
+      "tracking_type": "trackable",
+      "trackable": true,
+      "has_variations": false,
+      "variation": false,
+      "extra_information": "Charging cable and case included",
+      "photo_url": null,
+      "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
+      "show_in_store": true,
+      "sorting_weight": 0,
+      "base_price_in_cents": 1995,
+      "price_type": "simple",
+      "price_period": "day",
+      "deposit_in_cents": 10000,
+      "discountable": true,
+      "taxable": true,
+      "seo_title": null,
+      "seo_description": null,
+      "tag_list": [
+        "tablets",
+        "apple"
+      ],
+      "properties": {},
+      "photo_id": null,
+      "tax_category_id": "9f8a6024-09c4-43f6-9ab4-42ef913277b1",
+      "price_ruleset_id": null,
+      "price_structure_id": null,
+      "allow_shortage": true,
+      "shortage_limit": 3,
+      "variation_fields": [],
+      "flat_fee_price_in_cents": 1995,
+      "structure_price_in_cents": 0,
+      "stock_item_properties": []
+    },
+    "relationships": {
+      "photo": {
+        "links": {
+          "related": null
+        }
       },
-      "filter": {
-        "conditions": {
-          "operator": "or",
-          "attributes": [
-            {
-              "operator": "and",
-              "attributes": [
-                {
-                  "discountable": true
-                },
-                {
-                  "taxable": true
-                }
-              ]
-            },
-            {
-              "operator": "and",
-              "attributes": [
-                {
-                  "show_in_store": true
-                },
-                {
-                  "taxable": true
-                }
-              ]
-            }
-          ]
+      "tax_category": {
+        "links": {
+          "related": "api/boomerang/tax_categories/9f8a6024-09c4-43f6-9ab4-42ef913277b1"
+        }
+      },
+      "price_ruleset": {
+        "links": {
+          "related": null
+        }
+      },
+      "price_structure": {
+        "links": {
+          "related": null
+        }
+      },
+      "inventory_levels": {
+        "links": {
+          "related": "api/boomerang/inventory_levels?filter[item_id]=9a9390e1-f5b4-4d05-9bcf-4d7f2c4ba99f"
+        }
+      },
+      "properties": {
+        "links": {
+          "related": "api/boomerang/properties?filter[owner_id]=9a9390e1-f5b4-4d05-9bcf-4d7f2c4ba99f&filter[owner_type]=product_groups"
+        }
+      },
+      "products": {
+        "links": {
+          "related": "api/boomerang/products?filter[product_group_id]=9a9390e1-f5b4-4d05-9bcf-4d7f2c4ba99f"
         }
       }
-    }'
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/items/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=inventory_levels,photo`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`inventory_levels`
+
+
+`photo`
+
+
+
+
+
+
+## Listing items
+
+
+
+> How to fetch a list of items:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/items' \
+    --header 'content-type: application/json' \
 ```
 
 > A 200 status response looks like this:
@@ -82,27 +182,241 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "4065f499-c3a5-4fd3-83bf-f4adfadd4474"
+      "id": "b63e372e-1c1e-46b1-b7ca-9fcabf74e994",
+      "type": "bundles",
+      "attributes": {
+        "created_at": "2024-05-13T09:25:14+00:00",
+        "updated_at": "2024-05-13T09:25:14+00:00",
+        "archived": false,
+        "archived_at": null,
+        "type": "bundles",
+        "name": "iPad Bundle",
+        "slug": "ipad-bundle",
+        "product_type": "bundle",
+        "extra_information": null,
+        "photo_url": null,
+        "description": null,
+        "show_in_store": true,
+        "sorting_weight": 0,
+        "discountable": true,
+        "taxable": true,
+        "seo_title": null,
+        "seo_description": null,
+        "tag_list": [
+          "tablets",
+          "apple"
+        ],
+        "photo_id": null,
+        "tax_category_id": null
+      },
+      "relationships": {
+        "photo": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_category": {
+          "links": {
+            "related": null
+          }
+        },
+        "bundle_items": {
+          "links": {
+            "related": "api/boomerang/bundle_items?filter[bundle_id]=b63e372e-1c1e-46b1-b7ca-9fcabf74e994"
+          }
+        },
+        "inventory_levels": {
+          "links": {
+            "related": "api/boomerang/inventory_levels?filter[item_id]=b63e372e-1c1e-46b1-b7ca-9fcabf74e994"
+          }
+        }
+      }
     },
     {
-      "id": "89ff5301-aa3d-4638-baec-d12990d68e5a"
+      "id": "c6ba241b-47ef-4d2f-8e8f-5d8f7ddf6360",
+      "type": "product_groups",
+      "attributes": {
+        "created_at": "2024-05-13T09:25:14+00:00",
+        "updated_at": "2024-05-13T09:25:14+00:00",
+        "archived": false,
+        "archived_at": null,
+        "type": "product_groups",
+        "name": "iPad Pro",
+        "group_name": null,
+        "slug": "ipad-pro",
+        "sku": "SKU",
+        "lead_time": 0,
+        "lag_time": 0,
+        "product_type": "rental",
+        "tracking_type": "trackable",
+        "trackable": true,
+        "has_variations": false,
+        "variation": false,
+        "extra_information": "Charging cable and case included",
+        "photo_url": null,
+        "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
+        "show_in_store": true,
+        "sorting_weight": 0,
+        "base_price_in_cents": 1995,
+        "price_type": "simple",
+        "price_period": "day",
+        "deposit_in_cents": 10000,
+        "discountable": true,
+        "taxable": true,
+        "seo_title": null,
+        "seo_description": null,
+        "tag_list": [
+          "tablets",
+          "apple"
+        ],
+        "properties": {},
+        "photo_id": null,
+        "tax_category_id": "92bb59cc-8750-4b54-9795-0ec97f643b09",
+        "price_ruleset_id": null,
+        "price_structure_id": null,
+        "allow_shortage": true,
+        "shortage_limit": 3,
+        "variation_fields": [],
+        "flat_fee_price_in_cents": 1995,
+        "structure_price_in_cents": 0,
+        "stock_item_properties": []
+      },
+      "relationships": {
+        "photo": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_category": {
+          "links": {
+            "related": "api/boomerang/tax_categories/92bb59cc-8750-4b54-9795-0ec97f643b09"
+          }
+        },
+        "price_ruleset": {
+          "links": {
+            "related": null
+          }
+        },
+        "price_structure": {
+          "links": {
+            "related": null
+          }
+        },
+        "inventory_levels": {
+          "links": {
+            "related": "api/boomerang/inventory_levels?filter[item_id]=c6ba241b-47ef-4d2f-8e8f-5d8f7ddf6360"
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=c6ba241b-47ef-4d2f-8e8f-5d8f7ddf6360&filter[owner_type]=product_groups"
+          }
+        },
+        "products": {
+          "links": {
+            "related": "api/boomerang/products?filter[product_group_id]=c6ba241b-47ef-4d2f-8e8f-5d8f7ddf6360"
+          }
+        }
+      }
     },
     {
-      "id": "e7580cbf-e8af-4a36-8c99-c33ace2b0a9a"
-    },
-    {
-      "id": "78749779-3f15-4d3f-8ae1-753793f77d1b"
-    },
-    {
-      "id": "fb520b90-acbd-4bf7-ad8b-652b2f3ae9db"
+      "id": "be4280e8-a792-4f9b-af2a-27de1f255508",
+      "type": "products",
+      "attributes": {
+        "created_at": "2024-05-13T09:25:14+00:00",
+        "updated_at": "2024-05-13T09:25:14+00:00",
+        "archived": false,
+        "archived_at": null,
+        "type": "products",
+        "name": "iPad Pro",
+        "group_name": "iPad Pro",
+        "slug": "ipad-pro",
+        "sku": "SKU",
+        "lead_time": 0,
+        "lag_time": 0,
+        "product_type": "rental",
+        "tracking_type": "trackable",
+        "trackable": true,
+        "has_variations": false,
+        "variation": false,
+        "extra_information": "Charging cable and case included",
+        "photo_url": null,
+        "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
+        "show_in_store": true,
+        "sorting_weight": 1,
+        "base_price_in_cents": 1995,
+        "price_type": "simple",
+        "price_period": "day",
+        "deposit_in_cents": 10000,
+        "discountable": true,
+        "taxable": true,
+        "seo_title": null,
+        "seo_description": null,
+        "tag_list": [
+          "tablets",
+          "apple"
+        ],
+        "properties": {},
+        "photo_id": null,
+        "tax_category_id": "92bb59cc-8750-4b54-9795-0ec97f643b09",
+        "price_ruleset_id": null,
+        "price_structure_id": null,
+        "variation_values": [],
+        "allow_shortage": true,
+        "shortage_limit": 3,
+        "product_group_id": "c6ba241b-47ef-4d2f-8e8f-5d8f7ddf6360"
+      },
+      "relationships": {
+        "photo": {
+          "links": {
+            "related": null
+          }
+        },
+        "tax_category": {
+          "links": {
+            "related": "api/boomerang/tax_categories/92bb59cc-8750-4b54-9795-0ec97f643b09"
+          }
+        },
+        "price_ruleset": {
+          "links": {
+            "related": null
+          }
+        },
+        "price_structure": {
+          "links": {
+            "related": null
+          }
+        },
+        "inventory_levels": {
+          "links": {
+            "related": "api/boomerang/inventory_levels?filter[item_id]=be4280e8-a792-4f9b-af2a-27de1f255508"
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=c6ba241b-47ef-4d2f-8e8f-5d8f7ddf6360&filter[owner_type]=products"
+          }
+        },
+        "product_group": {
+          "links": {
+            "related": "api/boomerang/product_groups/c6ba241b-47ef-4d2f-8e8f-5d8f7ddf6360"
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=be4280e8-a792-4f9b-af2a-27de1f255508&filter[owner_type]=products"
+          }
+        }
+      }
     }
-  ]
+  ],
+  "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`POST api/boomerang/items/search`
+`GET /api/boomerang/items`
 
 ### Request params
 
@@ -199,151 +513,51 @@ This request accepts the following includes:
 
 
 
-## Fetching an item
+## Searching items
+
+Use advanced search to make logical filter groups with and/or operators.
 
 
-
-> How to fetch an item:
+> How to search for items:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/items/b1b58d3f-45c9-48c9-b627-cf817d1ad301' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/items/search' \
     --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "b1b58d3f-45c9-48c9-b627-cf817d1ad301",
-    "type": "product_groups",
-    "attributes": {
-      "created_at": "2024-05-06T09:22:11+00:00",
-      "updated_at": "2024-05-06T09:22:11+00:00",
-      "archived": false,
-      "archived_at": null,
-      "type": "product_groups",
-      "name": "iPad Pro",
-      "group_name": null,
-      "slug": "ipad-pro",
-      "sku": "SKU",
-      "lead_time": 0,
-      "lag_time": 0,
-      "product_type": "rental",
-      "tracking_type": "trackable",
-      "trackable": true,
-      "has_variations": false,
-      "variation": false,
-      "extra_information": "Charging cable and case included",
-      "photo_url": null,
-      "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
-      "show_in_store": true,
-      "sorting_weight": 0,
-      "base_price_in_cents": 1995,
-      "price_type": "simple",
-      "price_period": "day",
-      "deposit_in_cents": 10000,
-      "discountable": true,
-      "taxable": true,
-      "seo_title": null,
-      "seo_description": null,
-      "tag_list": [
-        "tablets",
-        "apple"
-      ],
-      "properties": {},
-      "photo_id": null,
-      "tax_category_id": "06853c85-5ac1-4617-8c16-e7f3125a7df7",
-      "price_ruleset_id": null,
-      "price_structure_id": null,
-      "allow_shortage": true,
-      "shortage_limit": 3,
-      "variation_fields": [],
-      "flat_fee_price_in_cents": 1995,
-      "structure_price_in_cents": 0,
-      "stock_item_properties": []
-    },
-    "relationships": {
-      "photo": {
-        "links": {
-          "related": null
-        }
+    --data '{
+      "fields": {
+        "items": "id"
       },
-      "tax_category": {
-        "links": {
-          "related": "api/boomerang/tax_categories/06853c85-5ac1-4617-8c16-e7f3125a7df7"
-        }
-      },
-      "price_ruleset": {
-        "links": {
-          "related": null
-        }
-      },
-      "price_structure": {
-        "links": {
-          "related": null
-        }
-      },
-      "inventory_levels": {
-        "links": {
-          "related": "api/boomerang/inventory_levels?filter[item_id]=b1b58d3f-45c9-48c9-b627-cf817d1ad301"
-        }
-      },
-      "properties": {
-        "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=b1b58d3f-45c9-48c9-b627-cf817d1ad301&filter[owner_type]=product_groups"
-        }
-      },
-      "products": {
-        "links": {
-          "related": "api/boomerang/products?filter[product_group_id]=b1b58d3f-45c9-48c9-b627-cf817d1ad301"
+      "filter": {
+        "conditions": {
+          "operator": "or",
+          "attributes": [
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "discountable": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "show_in_store": true
+                },
+                {
+                  "taxable": true
+                }
+              ]
+            }
+          ]
         }
       }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/items/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=inventory_levels,photo`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`inventory_levels`
-
-
-`photo`
-
-
-
-
-
-
-## Listing items
-
-
-
-> How to fetch a list of items:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/items' \
-    --header 'content-type: application/json' \
+    }'
 ```
 
 > A 200 status response looks like this:
@@ -352,241 +566,27 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "4ba10354-43ae-4c78-acda-18e369b72416",
-      "type": "bundles",
-      "attributes": {
-        "created_at": "2024-05-06T09:22:13+00:00",
-        "updated_at": "2024-05-06T09:22:13+00:00",
-        "archived": false,
-        "archived_at": null,
-        "type": "bundles",
-        "name": "iPad Bundle",
-        "slug": "ipad-bundle",
-        "product_type": "bundle",
-        "extra_information": null,
-        "photo_url": null,
-        "description": null,
-        "show_in_store": true,
-        "sorting_weight": 0,
-        "discountable": true,
-        "taxable": true,
-        "seo_title": null,
-        "seo_description": null,
-        "tag_list": [
-          "tablets",
-          "apple"
-        ],
-        "photo_id": null,
-        "tax_category_id": null
-      },
-      "relationships": {
-        "photo": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_category": {
-          "links": {
-            "related": null
-          }
-        },
-        "bundle_items": {
-          "links": {
-            "related": "api/boomerang/bundle_items?filter[bundle_id]=4ba10354-43ae-4c78-acda-18e369b72416"
-          }
-        },
-        "inventory_levels": {
-          "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=4ba10354-43ae-4c78-acda-18e369b72416"
-          }
-        }
-      }
+      "id": "20c82cb4-f91f-4c5f-afe9-ccf6413026c1"
     },
     {
-      "id": "b61912d8-f22b-4937-b1f1-a11d4674751b",
-      "type": "product_groups",
-      "attributes": {
-        "created_at": "2024-05-06T09:22:13+00:00",
-        "updated_at": "2024-05-06T09:22:13+00:00",
-        "archived": false,
-        "archived_at": null,
-        "type": "product_groups",
-        "name": "iPad Pro",
-        "group_name": null,
-        "slug": "ipad-pro",
-        "sku": "SKU",
-        "lead_time": 0,
-        "lag_time": 0,
-        "product_type": "rental",
-        "tracking_type": "trackable",
-        "trackable": true,
-        "has_variations": false,
-        "variation": false,
-        "extra_information": "Charging cable and case included",
-        "photo_url": null,
-        "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
-        "show_in_store": true,
-        "sorting_weight": 0,
-        "base_price_in_cents": 1995,
-        "price_type": "simple",
-        "price_period": "day",
-        "deposit_in_cents": 10000,
-        "discountable": true,
-        "taxable": true,
-        "seo_title": null,
-        "seo_description": null,
-        "tag_list": [
-          "tablets",
-          "apple"
-        ],
-        "properties": {},
-        "photo_id": null,
-        "tax_category_id": "013033a6-de19-495c-96b0-bc2145909bbe",
-        "price_ruleset_id": null,
-        "price_structure_id": null,
-        "allow_shortage": true,
-        "shortage_limit": 3,
-        "variation_fields": [],
-        "flat_fee_price_in_cents": 1995,
-        "structure_price_in_cents": 0,
-        "stock_item_properties": []
-      },
-      "relationships": {
-        "photo": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_category": {
-          "links": {
-            "related": "api/boomerang/tax_categories/013033a6-de19-495c-96b0-bc2145909bbe"
-          }
-        },
-        "price_ruleset": {
-          "links": {
-            "related": null
-          }
-        },
-        "price_structure": {
-          "links": {
-            "related": null
-          }
-        },
-        "inventory_levels": {
-          "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=b61912d8-f22b-4937-b1f1-a11d4674751b"
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=b61912d8-f22b-4937-b1f1-a11d4674751b&filter[owner_type]=product_groups"
-          }
-        },
-        "products": {
-          "links": {
-            "related": "api/boomerang/products?filter[product_group_id]=b61912d8-f22b-4937-b1f1-a11d4674751b"
-          }
-        }
-      }
+      "id": "348888ab-cc17-4db1-bbcf-11e0a6154d21"
     },
     {
-      "id": "f37e57f8-dfee-496e-8bf9-d87770f371dc",
-      "type": "products",
-      "attributes": {
-        "created_at": "2024-05-06T09:22:13+00:00",
-        "updated_at": "2024-05-06T09:22:13+00:00",
-        "archived": false,
-        "archived_at": null,
-        "type": "products",
-        "name": "iPad Pro",
-        "group_name": "iPad Pro",
-        "slug": "ipad-pro",
-        "sku": "SKU",
-        "lead_time": 0,
-        "lag_time": 0,
-        "product_type": "rental",
-        "tracking_type": "trackable",
-        "trackable": true,
-        "has_variations": false,
-        "variation": false,
-        "extra_information": "Charging cable and case included",
-        "photo_url": null,
-        "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
-        "show_in_store": true,
-        "sorting_weight": 1,
-        "base_price_in_cents": 1995,
-        "price_type": "simple",
-        "price_period": "day",
-        "deposit_in_cents": 10000,
-        "discountable": true,
-        "taxable": true,
-        "seo_title": null,
-        "seo_description": null,
-        "tag_list": [
-          "tablets",
-          "apple"
-        ],
-        "properties": {},
-        "photo_id": null,
-        "tax_category_id": "013033a6-de19-495c-96b0-bc2145909bbe",
-        "price_ruleset_id": null,
-        "price_structure_id": null,
-        "variation_values": [],
-        "allow_shortage": true,
-        "shortage_limit": 3,
-        "product_group_id": "b61912d8-f22b-4937-b1f1-a11d4674751b"
-      },
-      "relationships": {
-        "photo": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_category": {
-          "links": {
-            "related": "api/boomerang/tax_categories/013033a6-de19-495c-96b0-bc2145909bbe"
-          }
-        },
-        "price_ruleset": {
-          "links": {
-            "related": null
-          }
-        },
-        "price_structure": {
-          "links": {
-            "related": null
-          }
-        },
-        "inventory_levels": {
-          "links": {
-            "related": "api/boomerang/inventory_levels?filter[item_id]=f37e57f8-dfee-496e-8bf9-d87770f371dc"
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=b61912d8-f22b-4937-b1f1-a11d4674751b&filter[owner_type]=products"
-          }
-        },
-        "product_group": {
-          "links": {
-            "related": "api/boomerang/product_groups/b61912d8-f22b-4937-b1f1-a11d4674751b"
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=f37e57f8-dfee-496e-8bf9-d87770f371dc&filter[owner_type]=products"
-          }
-        }
-      }
+      "id": "b6e25c54-d647-4707-8ebc-f5faf6dbe0b9"
+    },
+    {
+      "id": "4facff1c-99ab-4c1f-ba39-eb4084953033"
+    },
+    {
+      "id": "bd3f5c69-ce07-4955-9a59-862672b188dd"
     }
-  ],
-  "meta": {}
+  ]
 }
 ```
 
 ### HTTP Request
 
-`GET /api/boomerang/items`
+`POST api/boomerang/items/search`
 
 ### Request params
 

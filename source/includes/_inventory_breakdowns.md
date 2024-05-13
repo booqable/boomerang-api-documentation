@@ -41,11 +41,11 @@ Name | Description
 
 
 
-> How to fetch a breakdown of all items in stock:
+> How to fetch a breakdown of all expired items:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=4872e756-ce7a-41dc-b050-339b5cb742e1&filter%5Bstatus%5D=in_stock&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=c7f2b6a9-3ec3-42da-b59d-2b75be7f224f&filter%5Bstatus%5D=expired&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
     --header 'content-type: application/json' \
 ```
 
@@ -55,31 +55,96 @@ Name | Description
   {
   "data": [
     {
-      "id": "9a6fadec-2815-4a53-b653-f5684d21e9e1",
+      "id": "d8ef2379-004d-4fea-ab86-e403c59f660a",
+      "type": "inventory_breakdowns",
+      "attributes": {
+        "till": "1988-02-11T20:00:00+00:00",
+        "stock_count": 22,
+        "status": "expired",
+        "inventory_breakdown_type": "temporary",
+        "location_id": "a516bc3b-7259-45c9-9474-5029a6d2b04b",
+        "product_id": "edb18116-fcd8-4103-bb45-9f518d14ad8e"
+      },
+      "relationships": {
+        "location": {
+          "links": {
+            "related": "api/boomerang/locations/a516bc3b-7259-45c9-9474-5029a6d2b04b"
+          }
+        },
+        "product": {
+          "links": {
+            "related": "api/boomerang/products/edb18116-fcd8-4103-bb45-9f518d14ad8e"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "stats": {
+      "inventory_breakdown_type": {
+        "sum": {
+          "regular": 0,
+          "temporary": 22
+        }
+      },
+      "started": {
+        "sum": 0
+      },
+      "status": {
+        "sum": {
+          "in_stock": 105,
+          "expected": 17,
+          "expired": 22
+        }
+      },
+      "stock_count": {
+        "sum": 22
+      }
+    }
+  }
+}
+```
+
+
+> How to fetch a breakdown of all items in stock:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=a8871145-c956-49c5-95eb-7ff5bc17d963&filter%5Bstatus%5D=in_stock&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "5df6afb6-c45f-44e4-ba99-fa1e226b3b0d",
       "type": "inventory_breakdowns",
       "attributes": {
         "stock_count": 100,
         "started": 50,
         "status": "in_stock",
         "inventory_breakdown_type": "regular",
-        "location_id": "b4800bec-f8bc-4a70-a226-3ea3ab7826d7",
-        "product_id": "ecfc98ae-1e61-4eaa-8eec-fc846356e6b2"
+        "location_id": "d0a9e569-5901-468e-835a-ddea7abeb51b",
+        "product_id": "32d3fb78-1985-4559-8f82-141ad3c0623a"
       },
       "relationships": {
         "location": {
           "links": {
-            "related": "api/boomerang/locations/b4800bec-f8bc-4a70-a226-3ea3ab7826d7"
+            "related": "api/boomerang/locations/d0a9e569-5901-468e-835a-ddea7abeb51b"
           }
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/ecfc98ae-1e61-4eaa-8eec-fc846356e6b2"
+            "related": "api/boomerang/products/32d3fb78-1985-4559-8f82-141ad3c0623a"
           }
         }
       }
     },
     {
-      "id": "59d01a95-b324-492b-95b6-6e81aede5683",
+      "id": "da2d56d4-2a42-4a56-9571-a11a80d6c280",
       "type": "inventory_breakdowns",
       "attributes": {
         "till": "1988-09-11T20:00:00+00:00",
@@ -87,18 +152,18 @@ Name | Description
         "started": 0,
         "status": "in_stock",
         "inventory_breakdown_type": "temporary",
-        "location_id": "b4800bec-f8bc-4a70-a226-3ea3ab7826d7",
-        "product_id": "ecfc98ae-1e61-4eaa-8eec-fc846356e6b2"
+        "location_id": "d0a9e569-5901-468e-835a-ddea7abeb51b",
+        "product_id": "32d3fb78-1985-4559-8f82-141ad3c0623a"
       },
       "relationships": {
         "location": {
           "links": {
-            "related": "api/boomerang/locations/b4800bec-f8bc-4a70-a226-3ea3ab7826d7"
+            "related": "api/boomerang/locations/d0a9e569-5901-468e-835a-ddea7abeb51b"
           }
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/ecfc98ae-1e61-4eaa-8eec-fc846356e6b2"
+            "related": "api/boomerang/products/32d3fb78-1985-4559-8f82-141ad3c0623a"
           }
         }
       }
@@ -135,7 +200,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=549c443d-32d5-4475-bf9c-c5508847694c&filter%5Bstatus%5D=expected&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=f4d70ef4-35c2-43d9-a0fe-6d039fcf10e2&filter%5Bstatus%5D=expected&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
     --header 'content-type: application/json' \
 ```
 
@@ -145,31 +210,31 @@ Name | Description
   {
   "data": [
     {
-      "id": "835a99e6-a485-4936-9498-e8d8e68fd83f",
+      "id": "4df89ece-890f-4769-95fa-4287bf36cb87",
       "type": "inventory_breakdowns",
       "attributes": {
         "from": "1989-03-11T20:00:00+00:00",
         "stock_count": 12,
         "status": "expected",
         "inventory_breakdown_type": "regular",
-        "location_id": "6d2e9c65-dcce-43df-9e04-3ac6d139a7ba",
-        "product_id": "880a8f28-8c49-4e7d-9004-e4608fd741d5"
+        "location_id": "8171122d-8412-47ce-adc8-84816523ad09",
+        "product_id": "174d6565-ce43-4957-b1e2-5c27cd6e82e4"
       },
       "relationships": {
         "location": {
           "links": {
-            "related": "api/boomerang/locations/6d2e9c65-dcce-43df-9e04-3ac6d139a7ba"
+            "related": "api/boomerang/locations/8171122d-8412-47ce-adc8-84816523ad09"
           }
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/880a8f28-8c49-4e7d-9004-e4608fd741d5"
+            "related": "api/boomerang/products/174d6565-ce43-4957-b1e2-5c27cd6e82e4"
           }
         }
       }
     },
     {
-      "id": "76e78bb7-bcd0-47a2-8349-39ce79bd3732",
+      "id": "42c71c2b-484c-4993-8757-1310ae2cf9f9",
       "type": "inventory_breakdowns",
       "attributes": {
         "from": "1989-03-11T20:00:00+00:00",
@@ -177,18 +242,18 @@ Name | Description
         "stock_count": 5,
         "status": "expected",
         "inventory_breakdown_type": "temporary",
-        "location_id": "6d2e9c65-dcce-43df-9e04-3ac6d139a7ba",
-        "product_id": "880a8f28-8c49-4e7d-9004-e4608fd741d5"
+        "location_id": "8171122d-8412-47ce-adc8-84816523ad09",
+        "product_id": "174d6565-ce43-4957-b1e2-5c27cd6e82e4"
       },
       "relationships": {
         "location": {
           "links": {
-            "related": "api/boomerang/locations/6d2e9c65-dcce-43df-9e04-3ac6d139a7ba"
+            "related": "api/boomerang/locations/8171122d-8412-47ce-adc8-84816523ad09"
           }
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/880a8f28-8c49-4e7d-9004-e4608fd741d5"
+            "related": "api/boomerang/products/174d6565-ce43-4957-b1e2-5c27cd6e82e4"
           }
         }
       }
@@ -214,71 +279,6 @@ Name | Description
       },
       "stock_count": {
         "sum": 17
-      }
-    }
-  }
-}
-```
-
-
-> How to fetch a breakdown of all expired items:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=75eba07f-1eb9-42ae-bf7a-912467ad3149&filter%5Bstatus%5D=expired&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "c5e17c53-e12b-40df-b8db-aa27afb15674",
-      "type": "inventory_breakdowns",
-      "attributes": {
-        "till": "1988-02-11T20:00:00+00:00",
-        "stock_count": 22,
-        "status": "expired",
-        "inventory_breakdown_type": "temporary",
-        "location_id": "abaec605-dd9a-47d9-8254-f7650145d4de",
-        "product_id": "5188c853-fb87-4086-a62e-4dd57bbcca47"
-      },
-      "relationships": {
-        "location": {
-          "links": {
-            "related": "api/boomerang/locations/abaec605-dd9a-47d9-8254-f7650145d4de"
-          }
-        },
-        "product": {
-          "links": {
-            "related": "api/boomerang/products/5188c853-fb87-4086-a62e-4dd57bbcca47"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {
-    "stats": {
-      "inventory_breakdown_type": {
-        "sum": {
-          "regular": 0,
-          "temporary": 22
-        }
-      },
-      "started": {
-        "sum": 0
-      },
-      "status": {
-        "sum": {
-          "in_stock": 105,
-          "expected": 17,
-          "expired": 22
-        }
-      },
-      "stock_count": {
-        "sum": 22
       }
     }
   }

@@ -14,9 +14,9 @@ Operating rules allow creating various rules for changing how a user can select 
 
 `POST /api/boomerang/operating_rules`
 
-`PUT /api/boomerang/operating_rules/{id}`
-
 `DELETE /api/boomerang/operating_rules/{id}`
+
+`PUT /api/boomerang/operating_rules/{id}`
 
 ## Fields
 Every operating rule has the following fields:
@@ -48,11 +48,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "1192dcfe-74c0-490e-9b37-050a39113acc",
+      "id": "d3d6276f-f790-4a7e-b4fa-01a8c38e5c38",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-05-06T09:22:25+00:00",
-        "updated_at": "2024-05-06T09:22:25+00:00",
+        "created_at": "2024-05-13T09:31:19+00:00",
+        "updated_at": "2024-05-13T09:31:19+00:00",
         "data_type": "away",
         "data": {
           "away": {
@@ -113,52 +113,6 @@ This request does not accept any includes
 
 
 
-> How to create an operating rule:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "operating_rules",
-        "attributes": {
-          "data_type": "hours",
-          "data": {
-            "mon": {
-              "from": "09:00",
-              "till": "17:00"
-            }
-          }
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "54be2e5a-b74c-4bf7-ab5b-47fb830efe92",
-    "type": "operating_rules",
-    "attributes": {
-      "created_at": "2024-05-06T09:22:26+00:00",
-      "updated_at": "2024-05-06T09:22:26+00:00",
-      "data_type": "hours",
-      "data": {
-        "mon": {
-          "from": "09:00",
-          "till": "17:00"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
 > How to set a duration timeslot:
 
 ```shell
@@ -183,60 +137,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c53bd9c0-e0a6-4f87-b882-5c7fe573238e",
+    "id": "26189a5b-9dde-4a9b-80d4-275a790c9e65",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2024-05-06T09:22:26+00:00",
-      "updated_at": "2024-05-06T09:22:26+00:00",
+      "created_at": "2024-05-13T09:31:20+00:00",
+      "updated_at": "2024-05-13T09:31:20+00:00",
       "data_type": "timeslot_duration",
       "data": {
         "length": 86000
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to set away mode:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "operating_rules",
-        "attributes": {
-          "data_type": "away",
-          "data": {
-            "away": {
-              "from": "2030-01-01",
-              "till": "2040-01-01"
-            }
-          }
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "52fb8b17-7651-4171-8cd3-9ca252ccf63b",
-    "type": "operating_rules",
-    "attributes": {
-      "created_at": "2024-05-06T09:22:27+00:00",
-      "updated_at": "2024-05-06T09:22:27+00:00",
-      "data_type": "away",
-      "data": {
-        "away": {
-          "from": "2030-01-01",
-          "till": "2040-01-01"
-        }
       }
     }
   },
@@ -272,16 +180,108 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2bd7d5f6-acc5-45d4-8e09-8c9473918587",
+    "id": "895bac51-a205-4a96-baf9-bcb4f1ab6b50",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2024-05-06T09:22:27+00:00",
-      "updated_at": "2024-05-06T09:22:27+00:00",
+      "created_at": "2024-05-13T09:31:21+00:00",
+      "updated_at": "2024-05-13T09:31:21+00:00",
       "data_type": "timeslot_fixed",
       "data": {
         "weekend": {
           "from": "09:00",
           "till": "12:00"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to create an operating rule:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "operating_rules",
+        "attributes": {
+          "data_type": "hours",
+          "data": {
+            "mon": {
+              "from": "09:00",
+              "till": "17:00"
+            }
+          }
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "9243be92-ed74-433a-91fd-1fb77cddae79",
+    "type": "operating_rules",
+    "attributes": {
+      "created_at": "2024-05-13T09:31:21+00:00",
+      "updated_at": "2024-05-13T09:31:21+00:00",
+      "data_type": "hours",
+      "data": {
+        "mon": {
+          "from": "09:00",
+          "till": "17:00"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to set away mode:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "operating_rules",
+        "attributes": {
+          "data_type": "away",
+          "data": {
+            "away": {
+              "from": "2030-01-01",
+              "till": "2040-01-01"
+            }
+          }
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "c25a81c2-3e59-4a1a-be8f-eac054acf99c",
+    "type": "operating_rules",
+    "attributes": {
+      "created_at": "2024-05-13T09:31:22+00:00",
+      "updated_at": "2024-05-13T09:31:22+00:00",
+      "data_type": "away",
+      "data": {
+        "away": {
+          "from": "2030-01-01",
+          "till": "2040-01-01"
         }
       }
     }
@@ -318,11 +318,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5dc04c06-a3d7-4f24-996d-cdd2c3021017",
+    "id": "80ea0980-0911-4a78-bdbf-8eb2a08a97b8",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2024-05-06T09:22:28+00:00",
-      "updated_at": "2024-05-06T09:22:28+00:00",
+      "created_at": "2024-05-13T09:31:23+00:00",
+      "updated_at": "2024-05-13T09:31:23+00:00",
       "data_type": "hours",
       "data": {
         "weekday": {
@@ -362,6 +362,57 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Deleting an operating rule
+
+
+
+> How to delete an operating rule:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/d748c5d5-0013-49ba-b8e3-4c9776213abf' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "d748c5d5-0013-49ba-b8e3-4c9776213abf",
+    "type": "operating_rules",
+    "attributes": {
+      "created_at": "2024-05-13T09:31:23+00:00",
+      "updated_at": "2024-05-13T09:31:23+00:00",
+      "data_type": "away",
+      "data": {
+        "away": {
+          "from": "2020-01-01",
+          "till": "2021-12-31"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/operating_rules/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=created_at,updated_at,data_type`
+
+
+### Includes
+
+This request does not accept any includes
 ## Updating an operating rule
 
 
@@ -370,11 +421,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/718671a1-a2f3-40d4-b067-e4a5d777de57' \
+    --url 'https://example.booqable.com/api/boomerang/operating_rules/5e163f7c-2eee-4c82-b8c2-ad59177d88f7' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "718671a1-a2f3-40d4-b067-e4a5d777de57",
+        "id": "5e163f7c-2eee-4c82-b8c2-ad59177d88f7",
         "type": "operating_rules",
         "attributes": {
           "data": {
@@ -393,11 +444,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "718671a1-a2f3-40d4-b067-e4a5d777de57",
+    "id": "5e163f7c-2eee-4c82-b8c2-ad59177d88f7",
     "type": "operating_rules",
     "attributes": {
-      "created_at": "2024-05-06T09:22:28+00:00",
-      "updated_at": "2024-05-06T09:22:28+00:00",
+      "created_at": "2024-05-13T09:31:24+00:00",
+      "updated_at": "2024-05-13T09:31:24+00:00",
       "data_type": "away",
       "data": {
         "away": {
@@ -432,57 +483,6 @@ Name | Description
 -- | --
 `data[attributes][data_type]` | **String_enum** <br>Determines where the rule is applied. One of `hours`, `away`, `timeslot_fixed`, `timeslot_duration` 
 `data[attributes][data]` | **Hash** <br>Content of the rule, can have keys `weekday`, `weekend`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`, `all` when `data_type` is `timeslot_fixed` or `hours` or `away` when `data_type` is `away` and `length` (for duration in seconds) when `data_type` is `timeslot_duration`' 
-
-
-### Includes
-
-This request does not accept any includes
-## Deleting an operating rule
-
-
-
-> How to delete an operating rule:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/operating_rules/736f68c6-9fe0-4c18-8e96-8d17fd1dd032' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "736f68c6-9fe0-4c18-8e96-8d17fd1dd032",
-    "type": "operating_rules",
-    "attributes": {
-      "created_at": "2024-05-06T09:22:29+00:00",
-      "updated_at": "2024-05-06T09:22:29+00:00",
-      "data_type": "away",
-      "data": {
-        "away": {
-          "from": "2020-01-01",
-          "till": "2021-12-31"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/operating_rules/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operating_rules]=created_at,updated_at,data_type`
 
 
 ### Includes

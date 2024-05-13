@@ -3,13 +3,13 @@
 A cluster is a group of locations that share their inventory (and availability). Stock can move between locations within the same cluster, meaning they can be picked up at one location and returned to another.
 
 ## Endpoints
-`DELETE /api/boomerang/clusters/{id}`
-
-`GET /api/boomerang/clusters/{id}`
+`PUT /api/boomerang/clusters/{id}`
 
 `GET /api/boomerang/clusters`
 
-`PUT /api/boomerang/clusters/{id}`
+`GET /api/boomerang/clusters/{id}`
+
+`DELETE /api/boomerang/clusters/{id}`
 
 `POST /api/boomerang/clusters`
 
@@ -33,46 +33,25 @@ Name | Description
 `locations` | **Locations** `readonly`<br>Associated Locations
 
 
-## Deleting a cluster
-
-To delete a cluster make sure no active locations are associated with it anymore.
+## Updating a cluster
 
 
-> A failure due to a cluster still being associated with locations:
+
+> How to update a cluster:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/4974c97f-a3df-40e6-a0d4-81f6ea120256' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/clusters/b7e04ceb-2049-480a-ac4d-f174e858100e' \
     --header 'content-type: application/json' \
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "cluster_has_locations",
-      "status": "422",
-      "title": "Cluster has locations",
-      "detail": "This cluster has 1 or more active locations",
-      "meta": {
-        "location_ids": [
-          "253994cd-8988-43ef-b5b0-9774f2eb3363"
-        ]
+    --data '{
+      "data": {
+        "id": "b7e04ceb-2049-480a-ac4d-f174e858100e",
+        "type": "clusters",
+        "attributes": {
+          "name": "Rotterdam"
+        }
       }
-    }
-  ]
-}
-```
-
-
-> How to delete a cluster:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/b8a77a8c-5279-4e4b-ada8-774581ff3f08' \
-    --header 'content-type: application/json' \
+    }'
 ```
 
 > A 200 status response looks like this:
@@ -80,18 +59,18 @@ To delete a cluster make sure no active locations are associated with it anymore
 ```json
   {
   "data": {
-    "id": "b8a77a8c-5279-4e4b-ada8-774581ff3f08",
+    "id": "b7e04ceb-2049-480a-ac4d-f174e858100e",
     "type": "clusters",
     "attributes": {
-      "created_at": "2024-05-06T09:22:45+00:00",
-      "updated_at": "2024-05-06T09:22:45+00:00",
-      "name": "Main",
+      "created_at": "2024-05-13T09:26:19+00:00",
+      "updated_at": "2024-05-13T09:26:19+00:00",
+      "name": "Rotterdam",
       "location_ids": []
     },
     "relationships": {
       "locations": {
-        "links": {
-          "related": "api/boomerang/locations?filter[cluster_id]=b8a77a8c-5279-4e4b-ada8-774581ff3f08"
+        "meta": {
+          "included": false
         }
       }
     }
@@ -102,7 +81,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ### HTTP Request
 
-`DELETE /api/boomerang/clusters/{id}`
+`PUT /api/boomerang/clusters/{id}`
 
 ### Request params
 
@@ -114,66 +93,14 @@ Name | Description
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
 
 
-### Includes
+### Request body
 
-This request accepts the following includes:
-
-`locations`
-
-
-
-
-
-
-## Fetching a cluster
-
-
-
-> How to fetch a single cluster:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/clusters/6d3976dd-de86-422c-8d76-9e526e85245b' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "6d3976dd-de86-422c-8d76-9e526e85245b",
-    "type": "clusters",
-    "attributes": {
-      "created_at": "2024-05-06T09:22:45+00:00",
-      "updated_at": "2024-05-06T09:22:45+00:00",
-      "name": "Main",
-      "location_ids": []
-    },
-    "relationships": {
-      "locations": {
-        "links": {
-          "related": "api/boomerang/locations?filter[cluster_id]=6d3976dd-de86-422c-8d76-9e526e85245b"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/clusters/{id}`
-
-### Request params
-
-This request accepts the following parameters:
+This request accepts the following body:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=locations`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
+`data[attributes][name]` | **String** <br>Name of the cluster
+`data[attributes][location_ids][]` | **Array** <br>The locations that belong to this cluster
 
 
 ### Includes
@@ -205,18 +132,18 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "f042af34-b121-4bad-8b31-41ebf4272612",
+      "id": "b72dce7a-ceb1-4804-962d-570977f68042",
       "type": "clusters",
       "attributes": {
-        "created_at": "2024-05-06T09:22:46+00:00",
-        "updated_at": "2024-05-06T09:22:46+00:00",
+        "created_at": "2024-05-13T09:26:20+00:00",
+        "updated_at": "2024-05-13T09:26:20+00:00",
         "name": "Main",
         "location_ids": []
       },
       "relationships": {
         "locations": {
           "links": {
-            "related": "api/boomerang/locations?filter[cluster_id]=f042af34-b121-4bad-8b31-41ebf4272612"
+            "related": "api/boomerang/locations?filter[cluster_id]=b72dce7a-ceb1-4804-962d-570977f68042"
           }
         }
       }
@@ -278,25 +205,16 @@ This request accepts the following includes:
 
 
 
-## Updating a cluster
+## Fetching a cluster
 
 
 
-> How to update a cluster:
+> How to fetch a single cluster:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/clusters/f9b984ce-dfe3-4f75-b6b6-b7603b5297b2' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/clusters/2db5f204-d408-4000-bba6-452ef817453f' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "f9b984ce-dfe3-4f75-b6b6-b7603b5297b2",
-        "type": "clusters",
-        "attributes": {
-          "name": "Rotterdam"
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -304,18 +222,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f9b984ce-dfe3-4f75-b6b6-b7603b5297b2",
+    "id": "2db5f204-d408-4000-bba6-452ef817453f",
     "type": "clusters",
     "attributes": {
-      "created_at": "2024-05-06T09:22:46+00:00",
-      "updated_at": "2024-05-06T09:22:46+00:00",
-      "name": "Rotterdam",
+      "created_at": "2024-05-13T09:26:21+00:00",
+      "updated_at": "2024-05-13T09:26:21+00:00",
+      "name": "Main",
       "location_ids": []
     },
     "relationships": {
       "locations": {
-        "meta": {
-          "included": false
+        "links": {
+          "related": "api/boomerang/locations?filter[cluster_id]=2db5f204-d408-4000-bba6-452ef817453f"
         }
       }
     }
@@ -326,7 +244,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/clusters/{id}`
+`GET /api/boomerang/clusters/{id}`
 
 ### Request params
 
@@ -338,14 +256,96 @@ Name | Description
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
 
 
-### Request body
+### Includes
 
-This request accepts the following body:
+This request accepts the following includes:
+
+`locations`
+
+
+
+
+
+
+## Deleting a cluster
+
+To delete a cluster make sure no active locations are associated with it anymore.
+
+
+> A failure due to a cluster still being associated with locations:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/clusters/c6310eb6-fedc-4d37-848e-a1fa1b8aeeee' \
+    --header 'content-type: application/json' \
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "cluster_has_locations",
+      "status": "422",
+      "title": "Cluster has locations",
+      "detail": "This cluster has 1 or more active locations",
+      "meta": {
+        "location_ids": [
+          "e5d25631-3a2e-480a-8796-cdd2a53ef01a"
+        ]
+      }
+    }
+  ]
+}
+```
+
+
+> How to delete a cluster:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/clusters/9c83b4f3-dbf7-4c3c-8a16-24b94dab8fa8' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "9c83b4f3-dbf7-4c3c-8a16-24b94dab8fa8",
+    "type": "clusters",
+    "attributes": {
+      "created_at": "2024-05-13T09:26:23+00:00",
+      "updated_at": "2024-05-13T09:26:23+00:00",
+      "name": "Main",
+      "location_ids": []
+    },
+    "relationships": {
+      "locations": {
+        "links": {
+          "related": "api/boomerang/locations?filter[cluster_id]=9c83b4f3-dbf7-4c3c-8a16-24b94dab8fa8"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/clusters/{id}`
+
+### Request params
+
+This request accepts the following parameters:
 
 Name | Description
 -- | --
-`data[attributes][name]` | **String** <br>Name of the cluster
-`data[attributes][location_ids][]` | **Array** <br>The locations that belong to this cluster
+`include` | **String** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
 
 
 ### Includes
@@ -384,11 +384,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "405b01dd-74fb-463f-9ecd-30a613d084cf",
+    "id": "0d632ac2-0efb-430f-9e47-4de383ccf08e",
     "type": "clusters",
     "attributes": {
-      "created_at": "2024-05-06T09:22:47+00:00",
-      "updated_at": "2024-05-06T09:22:47+00:00",
+      "created_at": "2024-05-13T09:26:23+00:00",
+      "updated_at": "2024-05-13T09:26:23+00:00",
       "name": "Amsterdam",
       "location_ids": []
     },

@@ -24,6 +24,52 @@ Name | Description
 
 
 
+> How to create checkout fields in bulk:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "bulk_upserts",
+        "attributes": {
+          "type": "checkout_fields",
+          "data": [
+            {
+              "default_property_id": "8b2bac01-2ec3-49f4-acb3-16ce779d4799"
+            },
+            {
+              "name": "Delivery address",
+              "default_property_id": "c865d8e2-3ca8-4063-9b4a-7d37a9c5a804"
+            }
+          ]
+        },
+        "include": "results"
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "7c3873db-6320-5197-bc8c-c3269cb98c48",
+    "type": "bulk_upserts",
+    "relationships": {
+      "results": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
 > How to create operating rules in bulk:
 
 ```shell
@@ -66,18 +112,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "762dabbd-95ba-5bea-a37b-0ebb341e9020",
+    "id": "e16e7434-764a-5c26-a948-1545758e9971",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "5ccb411d-d19a-4cd7-ae4a-f748dfeeb36d"
+            "id": "cdf242ea-e46e-4847-8512-84b453b0311a"
           },
           {
             "type": "operating_rules",
-            "id": "f0f49b48-d62e-4a8b-a30a-ce182e5d2d58"
+            "id": "383a22c4-caf9-4e07-8e9a-08dde35b4018"
           }
         ]
       }
@@ -85,11 +131,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "5ccb411d-d19a-4cd7-ae4a-f748dfeeb36d",
+      "id": "cdf242ea-e46e-4847-8512-84b453b0311a",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-05-06T09:22:50+00:00",
-        "updated_at": "2024-05-06T09:22:50+00:00",
+        "created_at": "2024-05-13T09:31:01+00:00",
+        "updated_at": "2024-05-13T09:31:01+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -100,11 +146,11 @@ Name | Description
       }
     },
     {
-      "id": "f0f49b48-d62e-4a8b-a30a-ce182e5d2d58",
+      "id": "383a22c4-caf9-4e07-8e9a-08dde35b4018",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-05-06T09:22:50+00:00",
-        "updated_at": "2024-05-06T09:22:50+00:00",
+        "created_at": "2024-05-13T09:31:01+00:00",
+        "updated_at": "2024-05-13T09:31:01+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -155,53 +201,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "762dabbd-95ba-5bea-a37b-0ebb341e9020",
-    "type": "bulk_upserts",
-    "relationships": {
-      "results": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to create checkout fields in bulk:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "checkout_fields",
-          "data": [
-            {
-              "default_property_id": "b9a23c46-87b4-4850-8c72-17f0aafb30c0"
-            },
-            {
-              "name": "Delivery address",
-              "default_property_id": "73963524-6567-400e-8f70-5375ebf1719f"
-            }
-          ]
-        },
-        "include": "results"
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "3cd6d6c2-7070-5797-b34c-39b56df58df1",
+    "id": "d939a334-fbac-531c-9de4-85bd583ed3f0",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
