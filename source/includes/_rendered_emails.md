@@ -30,8 +30,8 @@ Name | Description
       "data": {
         "type": "rendered_emails",
         "attributes": {
-          "order_id": "4cb8b03e-051d-4db1-9469-ec6438ae4831",
-          "email_template_id": "a51dab45-39fc-4723-8bcd-b7c34c2fe029",
+          "order_id": "6179a394-0699-4d6e-982c-c13b48cefebc",
+          "email_template_id": "86fcbe22-815f-4094-83bd-b02783a14238",
           "body": "<p>Thank you for ordering with us!</p>\n"
         }
       }
@@ -43,15 +43,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b5003f11-a7ed-54b0-bce1-a24740040eb3",
+    "id": "0b218508-ba66-55b8-9427-e82dbf53a8f1",
     "type": "rendered_emails",
     "attributes": {
-      "email_template_id": "a51dab45-39fc-4723-8bcd-b7c34c2fe029",
-      "order_id": "4cb8b03e-051d-4db1-9469-ec6438ae4831",
+      "email_template_id": "86fcbe22-815f-4094-83bd-b02783a14238",
+      "order_id": "6179a394-0699-4d6e-982c-c13b48cefebc",
       "document_id": null,
       "subject": "Order number 1",
       "body": "<p>Thank you for ordering with us!</p>\n",
-      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 254</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 254</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail257@company.com'>mail257@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
+      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 56</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 56</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail56@company.com'>mail56@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
     }
   },
   "meta": {}
@@ -69,8 +69,8 @@ Name | Description
       "data": {
         "type": "rendered_emails",
         "attributes": {
-          "order_id": "a386875d-8478-4f89-9d68-e3039bcb643f",
-          "email_template_id": "9dbd339c-1936-4aab-9fbb-4656bfe473e6"
+          "order_id": "00cd0754-c342-4f4c-a372-e1b4217c2a73",
+          "email_template_id": "b449a020-72c0-4e0b-8908-e2007566f23a"
         }
       }
     }'
@@ -81,11 +81,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5b00019b-fcce-5669-bff4-c5309eb71d1f",
+    "id": "382e7aad-dee7-59df-90ea-574ee57d4eb2",
     "type": "rendered_emails",
     "attributes": {
-      "email_template_id": "9dbd339c-1936-4aab-9fbb-4656bfe473e6",
-      "order_id": "a386875d-8478-4f89-9d68-e3039bcb643f",
+      "email_template_id": "b449a020-72c0-4e0b-8908-e2007566f23a",
+      "order_id": "00cd0754-c342-4f4c-a372-e1b4217c2a73",
       "document_id": null,
       "subject": "Order number 1",
       "body": "<p>Thank you for ordering with us!</p>\n",

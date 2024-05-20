@@ -5,15 +5,15 @@ Email templates allow for creating pre-filled emails with dynamic data. Booqable
 For more information about using variables for dynamic data in e-mail templates see [our help center](https://help.booqable.com/en/articles/3832164-emails-types-and-templates)
 
 ## Endpoints
-`PUT /api/boomerang/email_templates/{id}`
+`DELETE /api/boomerang/email_templates/{id}`
+
+`GET /api/boomerang/email_templates/{id}`
 
 `POST /api/boomerang/email_templates`
 
-`DELETE /api/boomerang/email_templates/{id}`
-
 `GET /api/boomerang/email_templates`
 
-`GET /api/boomerang/email_templates/{id}`
+`PUT /api/boomerang/email_templates/{id}`
 
 ## Fields
 Every email template has the following fields:
@@ -32,25 +32,16 @@ Name | Description
 `automated` | **Boolean** `readonly`<br>When `true`, this template is used by built-in features and can not be deleted. Updating is possible.
 
 
-## Updating an email template
+## Deleting an email template
 
 
 
-> How to update a default email template:
+> How to delete a email template:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/d47580e1-aa8d-4a87-b539-1059318c270a' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/809efa42-7a53-4f42-8e77-27a0de2410c3' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "d47580e1-aa8d-4a87-b539-1059318c270a",
-        "type": "email_templates",
-        "attributes": {
-          "name": "Order confirmation"
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -58,17 +49,17 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d47580e1-aa8d-4a87-b539-1059318c270a",
+    "id": "809efa42-7a53-4f42-8e77-27a0de2410c3",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-05-13T09:24:08+00:00",
-      "updated_at": "2024-05-13T09:24:08+00:00",
-      "name": "Order confirmation",
-      "identifier": "webshop_confirmation",
-      "subject": "We received your order",
+      "created_at": "2024-05-20T09:23:27+00:00",
+      "updated_at": "2024-05-20T09:23:27+00:00",
+      "name": "Sales Tax",
+      "identifier": "sales_tax",
+      "subject": "This is a subject!",
       "context": "all",
-      "body": "We'll get started on it right away",
-      "default": true,
+      "body": "Hi there user!",
+      "default": false,
       "automated": false
     }
   },
@@ -76,22 +67,32 @@ Name | Description
 }
 ```
 
+### HTTP Request
 
-> How to update an email template:
+`DELETE /api/boomerang/email_templates/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[email_templates]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching an email template
+
+
+
+> How to fetch an email templates:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/b4a06ec8-433d-4277-a0db-9f822b9f0b74' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/1ebc4188-2d51-4add-bd55-0a2994d5749a' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "b4a06ec8-433d-4277-a0db-9f822b9f0b74",
-        "type": "email_templates",
-        "attributes": {
-          "name": "Order confirmation"
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -99,12 +100,12 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b4a06ec8-433d-4277-a0db-9f822b9f0b74",
+    "id": "1ebc4188-2d51-4add-bd55-0a2994d5749a",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-05-13T09:24:09+00:00",
-      "updated_at": "2024-05-13T09:24:09+00:00",
-      "name": "Order confirmation",
+      "created_at": "2024-05-20T09:23:27+00:00",
+      "updated_at": "2024-05-20T09:23:27+00:00",
+      "name": "Webshop confirmation",
       "identifier": "webshop_confirmation",
       "subject": "We received your order",
       "context": "all",
@@ -119,7 +120,7 @@ Name | Description
 
 ### HTTP Request
 
-`PUT /api/boomerang/email_templates/{id}`
+`GET /api/boomerang/email_templates/{id}`
 
 ### Request params
 
@@ -127,24 +128,21 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`include` | **String** <br>List of comma seperated relationships `?include=emails`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[email_templates]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the template
-`data[attributes][subject]` | **String** <br>Email subject line template
-`data[attributes][context]` | **String** <br>Which resource or process the template applies to. One of `order`, `invoice`, `document`, `all`, `payment`, `user`
-`data[attributes][body]` | **String** <br>Email body template
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+`emails`
+
+
+
+
+
+
 ## Creating an email template
 
 
@@ -173,11 +171,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e145679b-6b37-4b3b-aa9b-b57c4d7ef0bb",
+    "id": "570a91d1-c4df-4a89-a1c1-67e537233327",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-05-13T09:24:10+00:00",
-      "updated_at": "2024-05-13T09:24:10+00:00",
+      "created_at": "2024-05-20T09:23:28+00:00",
+      "updated_at": "2024-05-20T09:23:28+00:00",
       "name": "Webshop confirmation",
       "identifier": "webshop_confirmation",
       "subject": "We received your order (#{{order.number}})",
@@ -219,57 +217,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting an email template
-
-
-
-> How to delete a email template:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/e54c2397-e20a-4314-b7ed-dac5d73b8d15' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "e54c2397-e20a-4314-b7ed-dac5d73b8d15",
-    "type": "email_templates",
-    "attributes": {
-      "created_at": "2024-05-13T09:24:11+00:00",
-      "updated_at": "2024-05-13T09:24:11+00:00",
-      "name": "Sales Tax",
-      "identifier": "sales_tax",
-      "subject": "This is a subject!",
-      "context": "all",
-      "body": "Hi there user!",
-      "default": false,
-      "automated": false
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/email_templates/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[email_templates]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Listing email templates
 
 
@@ -288,11 +235,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "cd1f4ac5-ca59-47fe-9884-4fa4bfbe8c39",
+      "id": "0510ed1b-fb02-4d1a-af5b-947165e33e0f",
       "type": "email_templates",
       "attributes": {
-        "created_at": "2024-05-13T09:24:13+00:00",
-        "updated_at": "2024-05-13T09:24:13+00:00",
+        "created_at": "2024-05-20T09:23:28+00:00",
+        "updated_at": "2024-05-20T09:23:28+00:00",
         "name": "Webshop confirmation",
         "identifier": "webshop_confirmation",
         "subject": "We received your order",
@@ -353,16 +300,25 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching an email template
+## Updating an email template
 
 
 
-> How to fetch an email templates:
+> How to update an email template:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/0a5f88ee-0ff3-4512-81a0-0b8c4dc5f576' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/5999ea62-d370-48ec-b554-bba1991bb4b3' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "5999ea62-d370-48ec-b554-bba1991bb4b3",
+        "type": "email_templates",
+        "attributes": {
+          "name": "Order confirmation"
+        }
+      }
+    }'
 ```
 
 > A 200 status response looks like this:
@@ -370,12 +326,12 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0a5f88ee-0ff3-4512-81a0-0b8c4dc5f576",
+    "id": "5999ea62-d370-48ec-b554-bba1991bb4b3",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-05-13T09:24:14+00:00",
-      "updated_at": "2024-05-13T09:24:14+00:00",
-      "name": "Webshop confirmation",
+      "created_at": "2024-05-20T09:23:29+00:00",
+      "updated_at": "2024-05-20T09:23:29+00:00",
+      "name": "Order confirmation",
       "identifier": "webshop_confirmation",
       "subject": "We received your order",
       "context": "all",
@@ -388,9 +344,50 @@ This request does not accept any includes
 }
 ```
 
+
+> How to update a default email template:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/eaaeea8d-34d3-4e03-99f0-c4f722c5ff1a' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "eaaeea8d-34d3-4e03-99f0-c4f722c5ff1a",
+        "type": "email_templates",
+        "attributes": {
+          "name": "Order confirmation"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "eaaeea8d-34d3-4e03-99f0-c4f722c5ff1a",
+    "type": "email_templates",
+    "attributes": {
+      "created_at": "2024-05-20T09:23:30+00:00",
+      "updated_at": "2024-05-20T09:23:30+00:00",
+      "name": "Order confirmation",
+      "identifier": "webshop_confirmation",
+      "subject": "We received your order",
+      "context": "all",
+      "body": "We'll get started on it right away",
+      "default": true,
+      "automated": false
+    }
+  },
+  "meta": {}
+}
+```
+
 ### HTTP Request
 
-`GET /api/boomerang/email_templates/{id}`
+`PUT /api/boomerang/email_templates/{id}`
 
 ### Request params
 
@@ -398,17 +395,21 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=emails`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[email_templates]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the template
+`data[attributes][subject]` | **String** <br>Email subject line template
+`data[attributes][context]` | **String** <br>Which resource or process the template applies to. One of `order`, `invoice`, `document`, `all`, `payment`, `user`
+`data[attributes][body]` | **String** <br>Email body template
 
 
 ### Includes
 
-This request accepts the following includes:
-
-`emails`
-
-
-
-
-
+This request does not accept any includes

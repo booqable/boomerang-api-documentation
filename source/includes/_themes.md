@@ -5,9 +5,9 @@ They organise custom assets and enable quick switching between different designs
 A company can 'install' a theme from the available themes, this creates a local copy which allows customizing the theme to your needs.
 
 ## Endpoints
-`GET /api/boomerang/themes`
-
 `DELETE /api/boomerang/themes/{id}`
+
+`GET /api/boomerang/themes`
 
 `POST /api/boomerang/themes`
 
@@ -43,15 +43,15 @@ Name | Description
 `original_theme` | **Themes** `readonly`<br>Associated Original theme
 
 
-## Listing themes
+## Deleting a theme
 
 
 
-> How to fetch a list of installed themes:
+> How to delete a theme:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/themes' \
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/themes/d72f3830-0e85-45b8-8521-6a9f1667b629' \
     --header 'content-type: application/json' \
 ```
 
@@ -59,44 +59,61 @@ Name | Description
 
 ```json
   {
-  "data": [
-    {
-      "id": "a8f571ad-d67d-4cd5-af21-bfad4deb977e",
-      "type": "themes",
-      "attributes": {
-        "created_at": "2024-05-13T09:27:28+00:00",
-        "updated_at": "2024-05-13T09:27:28+00:00",
-        "name": "Theme 1",
-        "identifier": "8145bb17-2831-4072-8394-ed5ba37be900",
-        "version": "1.0",
-        "theme_id": "1749e259-dd84-42ec-92c5-e7f43e027314",
-        "theme_type": "official",
-        "description": "A simple theme for setting up your shop",
-        "market": null,
-        "preview_url": null,
-        "detail_url": null,
-        "preview_image_long_url": null,
-        "preview_image_medium_url": null,
-        "preview_image_large_url": null,
-        "installed": true
+  "data": {
+    "id": "d72f3830-0e85-45b8-8521-6a9f1667b629",
+    "type": "themes",
+    "attributes": {
+      "created_at": "2024-05-20T09:26:41+00:00",
+      "updated_at": "2024-05-20T09:26:41+00:00",
+      "name": "Theme 10",
+      "identifier": "5e798ba5-84a9-486d-acf5-e26663b60962",
+      "version": "1.0",
+      "theme_id": "c2f3a5d5-8f7a-4795-8918-9d8ff6c1363a",
+      "theme_type": "official",
+      "description": null,
+      "market": null,
+      "preview_url": null,
+      "detail_url": null,
+      "preview_image_long_url": null,
+      "preview_image_medium_url": null,
+      "preview_image_large_url": null,
+      "installed": true
+    },
+    "relationships": {
+      "assets": {
+        "links": {
+          "related": "api/boomerang/assets?filter[theme_id]=d72f3830-0e85-45b8-8521-6a9f1667b629"
+        }
       },
-      "relationships": {
-        "assets": {
-          "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=a8f571ad-d67d-4cd5-af21-bfad4deb977e"
-          }
-        },
-        "original_theme": {
-          "links": {
-            "related": "api/boomerang/themes/1749e259-dd84-42ec-92c5-e7f43e027314"
-          }
+      "original_theme": {
+        "links": {
+          "related": "api/boomerang/themes/c2f3a5d5-8f7a-4795-8918-9d8ff6c1363a"
         }
       }
     }
-  ],
+  },
   "meta": {}
 }
 ```
+
+### HTTP Request
+
+`DELETE /api/boomerang/themes/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Listing themes
+
 
 
 > How to fetch a list of themes which are available for installation:
@@ -113,13 +130,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "bf81255b-0a66-45ef-8de5-d2ca6113dbf5",
+      "id": "fba4cb1d-1839-40b2-a8fe-4eed0b25ee95",
       "type": "themes",
       "attributes": {
-        "created_at": "2024-05-13T09:27:28+00:00",
-        "updated_at": "2024-05-13T09:27:28+00:00",
+        "created_at": "2024-05-20T09:26:42+00:00",
+        "updated_at": "2024-05-20T09:26:42+00:00",
         "name": "Official theme",
-        "identifier": "1053b4fd-e92e-42cc-bdb9-7d315081cbf9",
+        "identifier": "8d5eb3a2-2de9-47a5-95fd-a676b3a48bfa",
         "version": "1.0",
         "theme_id": null,
         "theme_type": "official",
@@ -135,12 +152,64 @@ Name | Description
       "relationships": {
         "assets": {
           "links": {
-            "related": "api/boomerang/assets?filter[theme_id]=bf81255b-0a66-45ef-8de5-d2ca6113dbf5"
+            "related": "api/boomerang/assets?filter[theme_id]=fba4cb1d-1839-40b2-a8fe-4eed0b25ee95"
           }
         },
         "original_theme": {
           "links": {
             "related": null
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+
+> How to fetch a list of installed themes:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/themes' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "52884d8f-340f-4263-87b0-83b9214081c6",
+      "type": "themes",
+      "attributes": {
+        "created_at": "2024-05-20T09:26:44+00:00",
+        "updated_at": "2024-05-20T09:26:44+00:00",
+        "name": "Theme 12",
+        "identifier": "900a5a89-2832-4821-b0df-7d05d11545a4",
+        "version": "1.0",
+        "theme_id": "9f644a39-bcb2-47e1-87d4-8cf0e745ee90",
+        "theme_type": "official",
+        "description": "A simple theme for setting up your shop",
+        "market": null,
+        "preview_url": null,
+        "detail_url": null,
+        "preview_image_long_url": null,
+        "preview_image_medium_url": null,
+        "preview_image_large_url": null,
+        "installed": true
+      },
+      "relationships": {
+        "assets": {
+          "links": {
+            "related": "api/boomerang/assets?filter[theme_id]=52884d8f-340f-4263-87b0-83b9214081c6"
+          }
+        },
+        "original_theme": {
+          "links": {
+            "related": "api/boomerang/themes/9f644a39-bcb2-47e1-87d4-8cf0e745ee90"
           }
         }
       }
@@ -197,75 +266,6 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting a theme
-
-
-
-> How to delete a theme:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/aa70bdd7-061f-446e-a5fe-0f8dbaaeb844' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "aa70bdd7-061f-446e-a5fe-0f8dbaaeb844",
-    "type": "themes",
-    "attributes": {
-      "created_at": "2024-05-13T09:27:29+00:00",
-      "updated_at": "2024-05-13T09:27:29+00:00",
-      "name": "Theme 4",
-      "identifier": "7b4dd853-ab91-43ff-86f6-08a6ed52edbf",
-      "version": "1.0",
-      "theme_id": "2c77a2e3-086f-459a-b3bc-01da45e62ab9",
-      "theme_type": "official",
-      "description": null,
-      "market": null,
-      "preview_url": null,
-      "detail_url": null,
-      "preview_image_long_url": null,
-      "preview_image_medium_url": null,
-      "preview_image_large_url": null,
-      "installed": true
-    },
-    "relationships": {
-      "assets": {
-        "links": {
-          "related": "api/boomerang/assets?filter[theme_id]=aa70bdd7-061f-446e-a5fe-0f8dbaaeb844"
-        }
-      },
-      "original_theme": {
-        "links": {
-          "related": "api/boomerang/themes/2c77a2e3-086f-459a-b3bc-01da45e62ab9"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/themes/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
 ## Creating a theme
 
 
@@ -281,7 +281,7 @@ This request does not accept any includes
         "type": "themes",
         "attributes": {
           "name": "New theme",
-          "theme_id": "9e9a13c5-ec03-470d-a2cc-9023d8c12d9d"
+          "theme_id": "74059497-cdf6-42f8-8a3b-198ff3cfc1f8"
         }
       }
     }'
@@ -292,15 +292,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "50e2e77c-3ef2-4786-9603-8c4076133211",
+    "id": "42fbd6bc-e65f-4b0a-b08e-5644899f055d",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-05-13T09:27:30+00:00",
-      "updated_at": "2024-05-13T09:27:30+00:00",
+      "created_at": "2024-05-20T09:26:47+00:00",
+      "updated_at": "2024-05-20T09:26:47+00:00",
       "name": "Official theme",
-      "identifier": "c7df26bd-324e-4803-8afb-aa5f13733676",
+      "identifier": "4f83ea6b-9de6-4964-9740-fc097018ff04",
       "version": null,
-      "theme_id": "9e9a13c5-ec03-470d-a2cc-9023d8c12d9d",
+      "theme_id": "74059497-cdf6-42f8-8a3b-198ff3cfc1f8",
       "theme_type": "official",
       "description": null,
       "market": null,

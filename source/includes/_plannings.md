@@ -12,11 +12,11 @@ Note that nested plannings can not be deleted directly, the parent should
 be deleted instead.
 
 ## Endpoints
+`GET /api/boomerang/plannings`
+
 `POST api/boomerang/plannings/search`
 
 `GET /api/boomerang/plannings/{id}`
-
-`GET /api/boomerang/plannings`
 
 ## Fields
 Every planning has the following fields:
@@ -62,6 +62,187 @@ Name | Description
 `price_tile` | **Price tiles** `readonly`<br>Associated Price tile
 
 
+## Listing plannings
+
+
+
+> How to fetch a list of plannings:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/plannings' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "ff4ba10c-794b-4ee6-9dda-6ef7896caa40",
+      "type": "plannings",
+      "attributes": {
+        "created_at": "2024-05-20T09:29:28+00:00",
+        "updated_at": "2024-05-20T09:29:29+00:00",
+        "archived": false,
+        "archived_at": null,
+        "quantity": 1,
+        "starts_at": "1980-04-01T12:00:00+00:00",
+        "stops_at": "1980-05-01T12:00:00+00:00",
+        "reserved_from": "1980-04-01T12:00:00+00:00",
+        "reserved_till": "1980-05-01T12:00:00+00:00",
+        "reserved": true,
+        "started": 0,
+        "stopped": 0,
+        "location_shortage_amount": 0,
+        "shortage_amount": 0,
+        "order_id": "a54ce68a-62b8-4add-9935-1add1f0a2e09",
+        "item_id": "517f04a7-ee9f-4fde-acfe-ae9acd26bb6f",
+        "start_location_id": "5016a505-9c33-4d33-bc2f-abfc31a6e2d2",
+        "stop_location_id": "5016a505-9c33-4d33-bc2f-abfc31a6e2d2",
+        "parent_planning_id": null,
+        "price_tile_id": null
+      },
+      "relationships": {
+        "order": {
+          "links": {
+            "related": "api/boomerang/orders/a54ce68a-62b8-4add-9935-1add1f0a2e09"
+          }
+        },
+        "item": {
+          "links": {
+            "related": "api/boomerang/items/517f04a7-ee9f-4fde-acfe-ae9acd26bb6f"
+          }
+        },
+        "order_line": {
+          "links": {
+            "related": "api/boomerang/lines?filter[planning_id]=ff4ba10c-794b-4ee6-9dda-6ef7896caa40"
+          }
+        },
+        "start_location": {
+          "links": {
+            "related": "api/boomerang/locations/5016a505-9c33-4d33-bc2f-abfc31a6e2d2"
+          }
+        },
+        "stop_location": {
+          "links": {
+            "related": "api/boomerang/locations/5016a505-9c33-4d33-bc2f-abfc31a6e2d2"
+          }
+        },
+        "parent_planning": {
+          "links": {
+            "related": null
+          }
+        },
+        "nested_plannings": {
+          "links": {
+            "related": "api/boomerang/plannings?filter[parent_planning_id]=ff4ba10c-794b-4ee6-9dda-6ef7896caa40"
+          }
+        },
+        "stock_item_plannings": {
+          "links": {
+            "related": "api/boomerang/stock_item_plannings?filter[planning_id]=ff4ba10c-794b-4ee6-9dda-6ef7896caa40"
+          }
+        },
+        "price_tile": {
+          "links": {
+            "related": null
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/plannings`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=order,item,order_line`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[plannings]=created_at,updated_at,archived`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`archived` | **Boolean** <br>`eq`
+`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`starts_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`stops_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reserved_from` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reserved_till` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reserved` | **Boolean** <br>`eq`
+`started` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`stopped` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`location_shortage_amount` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`shortage_amount` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`order_id` | **Uuid** <br>`eq`, `not_eq`
+`item_id` | **Uuid** <br>`eq`, `not_eq`
+`start_location_id` | **Uuid** <br>`eq`, `not_eq`
+`stop_location_id` | **Uuid** <br>`eq`, `not_eq`
+`parent_planning_id` | **Uuid** <br>`eq`, `not_eq`
+`price_tile_id` | **Uuid** <br>`eq`, `not_eq`
+`q` | **String** <br>`eq`
+`item_type` | **String** <br>`eq`, `not_eq`
+`product_type` | **String** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`order`
+
+
+`item` => 
+`photo`
+
+
+
+
+`order_line`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+
+
+
+
 ## Searching plannings
 
 Use advanced search to make logical filter groups with and/or operators.
@@ -86,12 +267,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-05-14T09:26:31Z"
+                    "gte": "2024-05-21T09:29:36Z"
                   }
                 },
                 {
                   "starts_at": {
-                    "lte": "2024-05-17T09:26:31Z"
+                    "lte": "2024-05-24T09:29:36Z"
                   }
                 }
               ]
@@ -101,12 +282,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "stops_at": {
-                    "gte": "2024-05-14T09:26:31Z"
+                    "gte": "2024-05-21T09:29:36Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "lte": "2024-05-17T09:26:31Z"
+                    "lte": "2024-05-24T09:29:36Z"
                   }
                 }
               ]
@@ -123,10 +304,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "b0b6fcc0-41b6-4cb1-87ba-0a391bfc6a62"
+      "id": "3411a613-0c48-4d69-99e9-ad698cd7aa32"
     },
     {
-      "id": "acd8ded4-3728-4784-b713-0b422c831cd7"
+      "id": "3b5e1dd9-7b27-4792-8ee2-e6c3ade7ada6"
     }
   ]
 }
@@ -226,7 +407,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings/19aece33-3178-4370-ac9b-30b28e4f0731' \
+    --url 'https://example.booqable.com/api/boomerang/plannings/82cbff9d-c4f9-4510-814c-6fea58137ea4' \
     --header 'content-type: application/json' \
 ```
 
@@ -235,11 +416,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "19aece33-3178-4370-ac9b-30b28e4f0731",
+    "id": "82cbff9d-c4f9-4510-814c-6fea58137ea4",
     "type": "plannings",
     "attributes": {
-      "created_at": "2024-05-13T09:26:33+00:00",
-      "updated_at": "2024-05-13T09:26:34+00:00",
+      "created_at": "2024-05-20T09:29:37+00:00",
+      "updated_at": "2024-05-20T09:29:38+00:00",
       "archived": false,
       "archived_at": null,
       "quantity": 1,
@@ -252,37 +433,37 @@ This request accepts the following includes:
       "stopped": 0,
       "location_shortage_amount": 0,
       "shortage_amount": 0,
-      "order_id": "80f9a197-8f65-46a0-bf88-16a7f94e059e",
-      "item_id": "6a21d2e0-ba64-40fd-9fa0-86c69e11ef72",
-      "start_location_id": "69109a26-0373-439d-862f-a9d0684a31cb",
-      "stop_location_id": "69109a26-0373-439d-862f-a9d0684a31cb",
+      "order_id": "c7d920ee-85f4-4591-8af7-7ea3d968dabe",
+      "item_id": "7de73f3e-40c7-4994-a167-2acba3070f92",
+      "start_location_id": "93388322-3949-40f7-9843-3fca8c40e3bd",
+      "stop_location_id": "93388322-3949-40f7-9843-3fca8c40e3bd",
       "parent_planning_id": null,
       "price_tile_id": null
     },
     "relationships": {
       "order": {
         "links": {
-          "related": "api/boomerang/orders/80f9a197-8f65-46a0-bf88-16a7f94e059e"
+          "related": "api/boomerang/orders/c7d920ee-85f4-4591-8af7-7ea3d968dabe"
         }
       },
       "item": {
         "links": {
-          "related": "api/boomerang/items/6a21d2e0-ba64-40fd-9fa0-86c69e11ef72"
+          "related": "api/boomerang/items/7de73f3e-40c7-4994-a167-2acba3070f92"
         }
       },
       "order_line": {
         "links": {
-          "related": "api/boomerang/lines?filter[planning_id]=19aece33-3178-4370-ac9b-30b28e4f0731"
+          "related": "api/boomerang/lines?filter[planning_id]=82cbff9d-c4f9-4510-814c-6fea58137ea4"
         }
       },
       "start_location": {
         "links": {
-          "related": "api/boomerang/locations/69109a26-0373-439d-862f-a9d0684a31cb"
+          "related": "api/boomerang/locations/93388322-3949-40f7-9843-3fca8c40e3bd"
         }
       },
       "stop_location": {
         "links": {
-          "related": "api/boomerang/locations/69109a26-0373-439d-862f-a9d0684a31cb"
+          "related": "api/boomerang/locations/93388322-3949-40f7-9843-3fca8c40e3bd"
         }
       },
       "parent_planning": {
@@ -292,12 +473,12 @@ This request accepts the following includes:
       },
       "nested_plannings": {
         "links": {
-          "related": "api/boomerang/plannings?filter[parent_planning_id]=19aece33-3178-4370-ac9b-30b28e4f0731"
+          "related": "api/boomerang/plannings?filter[parent_planning_id]=82cbff9d-c4f9-4510-814c-6fea58137ea4"
         }
       },
       "stock_item_plannings": {
         "links": {
-          "related": "api/boomerang/stock_item_plannings?filter[planning_id]=19aece33-3178-4370-ac9b-30b28e4f0731"
+          "related": "api/boomerang/stock_item_plannings?filter[planning_id]=82cbff9d-c4f9-4510-814c-6fea58137ea4"
         }
       },
       "price_tile": {
@@ -351,187 +532,6 @@ This request accepts the following includes:
 
 
 `nested_plannings`
-
-
-
-
-
-
-## Listing plannings
-
-
-
-> How to fetch a list of plannings:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "658f092d-ef9b-442d-9d1c-4f636e0572cb",
-      "type": "plannings",
-      "attributes": {
-        "created_at": "2024-05-13T09:26:37+00:00",
-        "updated_at": "2024-05-13T09:26:38+00:00",
-        "archived": false,
-        "archived_at": null,
-        "quantity": 1,
-        "starts_at": "1980-04-01T12:00:00+00:00",
-        "stops_at": "1980-05-01T12:00:00+00:00",
-        "reserved_from": "1980-04-01T12:00:00+00:00",
-        "reserved_till": "1980-05-01T12:00:00+00:00",
-        "reserved": true,
-        "started": 0,
-        "stopped": 0,
-        "location_shortage_amount": 0,
-        "shortage_amount": 0,
-        "order_id": "e1bf95d2-ea1d-4315-b9e5-25ecec1cdbdc",
-        "item_id": "dc5cda64-b258-45c3-bc14-58a265e0d7ae",
-        "start_location_id": "df515139-a029-4731-81ae-608fbb54a209",
-        "stop_location_id": "df515139-a029-4731-81ae-608fbb54a209",
-        "parent_planning_id": null,
-        "price_tile_id": null
-      },
-      "relationships": {
-        "order": {
-          "links": {
-            "related": "api/boomerang/orders/e1bf95d2-ea1d-4315-b9e5-25ecec1cdbdc"
-          }
-        },
-        "item": {
-          "links": {
-            "related": "api/boomerang/items/dc5cda64-b258-45c3-bc14-58a265e0d7ae"
-          }
-        },
-        "order_line": {
-          "links": {
-            "related": "api/boomerang/lines?filter[planning_id]=658f092d-ef9b-442d-9d1c-4f636e0572cb"
-          }
-        },
-        "start_location": {
-          "links": {
-            "related": "api/boomerang/locations/df515139-a029-4731-81ae-608fbb54a209"
-          }
-        },
-        "stop_location": {
-          "links": {
-            "related": "api/boomerang/locations/df515139-a029-4731-81ae-608fbb54a209"
-          }
-        },
-        "parent_planning": {
-          "links": {
-            "related": null
-          }
-        },
-        "nested_plannings": {
-          "links": {
-            "related": "api/boomerang/plannings?filter[parent_planning_id]=658f092d-ef9b-442d-9d1c-4f636e0572cb"
-          }
-        },
-        "stock_item_plannings": {
-          "links": {
-            "related": "api/boomerang/stock_item_plannings?filter[planning_id]=658f092d-ef9b-442d-9d1c-4f636e0572cb"
-          }
-        },
-        "price_tile": {
-          "links": {
-            "related": null
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/plannings`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=order,item,order_line`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[plannings]=created_at,updated_at,archived`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean** <br>`eq`
-`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`starts_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`stops_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`reserved_from` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`reserved_till` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`reserved` | **Boolean** <br>`eq`
-`started` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`stopped` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`location_shortage_amount` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`shortage_amount` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`order_id` | **Uuid** <br>`eq`, `not_eq`
-`item_id` | **Uuid** <br>`eq`, `not_eq`
-`start_location_id` | **Uuid** <br>`eq`, `not_eq`
-`stop_location_id` | **Uuid** <br>`eq`, `not_eq`
-`parent_planning_id` | **Uuid** <br>`eq`, `not_eq`
-`price_tile_id` | **Uuid** <br>`eq`, `not_eq`
-`q` | **String** <br>`eq`
-`item_type` | **String** <br>`eq`, `not_eq`
-`product_type` | **String** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`order`
-
-
-`item` => 
-`photo`
-
-
-
-
-`order_line`
-
-
-`start_location`
-
-
-`stop_location`
 
 
 

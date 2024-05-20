@@ -37,11 +37,11 @@ Name | Description
           "type": "checkout_fields",
           "data": [
             {
-              "default_property_id": "8b2bac01-2ec3-49f4-acb3-16ce779d4799"
+              "default_property_id": "94fdd586-4fb0-4ce1-9425-c5c604746097"
             },
             {
               "name": "Delivery address",
-              "default_property_id": "c865d8e2-3ca8-4063-9b4a-7d37a9c5a804"
+              "default_property_id": "6e2626ff-14ce-4100-8c1b-b4b246e95e9e"
             }
           ]
         },
@@ -55,7 +55,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7c3873db-6320-5197-bc8c-c3269cb98c48",
+    "id": "ab234966-82bf-5440-9026-88b010a7723d",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
@@ -112,18 +112,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e16e7434-764a-5c26-a948-1545758e9971",
+    "id": "a5b9e0fb-37cd-57db-b4e3-cb9c173babb9",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "cdf242ea-e46e-4847-8512-84b453b0311a"
+            "id": "c3fe6d03-d2b5-43a7-93fc-3134b640e702"
           },
           {
             "type": "operating_rules",
-            "id": "383a22c4-caf9-4e07-8e9a-08dde35b4018"
+            "id": "2f4d61f1-8d56-4fd1-8122-36101e369c28"
           }
         ]
       }
@@ -131,11 +131,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "cdf242ea-e46e-4847-8512-84b453b0311a",
+      "id": "c3fe6d03-d2b5-43a7-93fc-3134b640e702",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-05-13T09:31:01+00:00",
-        "updated_at": "2024-05-13T09:31:01+00:00",
+        "created_at": "2024-05-20T09:28:01+00:00",
+        "updated_at": "2024-05-20T09:28:01+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -146,11 +146,11 @@ Name | Description
       }
     },
     {
-      "id": "383a22c4-caf9-4e07-8e9a-08dde35b4018",
+      "id": "2f4d61f1-8d56-4fd1-8122-36101e369c28",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-05-13T09:31:01+00:00",
-        "updated_at": "2024-05-13T09:31:01+00:00",
+        "created_at": "2024-05-20T09:28:01+00:00",
+        "updated_at": "2024-05-20T09:28:01+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -201,7 +201,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d939a334-fbac-531c-9de4-85bd583ed3f0",
+    "id": "150648c6-cf8b-5e25-8bcd-95545a0592a3",
     "type": "bulk_upserts",
     "relationships": {
       "results": {

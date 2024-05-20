@@ -3,15 +3,15 @@
 You can create different tax categories and assign them according to the tax requirements of a product. The tax rates in the category are charged over a product when it's added to an order. An order's total tax rate is the sum of all product taxes on that order.
 
 ## Endpoints
-`DELETE /api/boomerang/tax_categories/{id}`
+`POST /api/boomerang/tax_categories`
 
 `GET /api/boomerang/tax_categories`
 
-`PUT /api/boomerang/tax_categories/{id}`
-
-`POST /api/boomerang/tax_categories`
+`DELETE /api/boomerang/tax_categories/{id}`
 
 `GET /api/boomerang/tax_categories/{id}`
+
+`PUT /api/boomerang/tax_categories/{id}`
 
 ## Fields
 Every tax category has the following fields:
@@ -36,48 +36,88 @@ Name | Description
 `tax_rates` | **Tax rates** `readonly`<br>Associated Tax rates
 
 
-## Deleting a tax category
+## Creating a tax category
 
 
 
-> How to delete a tax category with tax rates:
+> How to create a tax category with tax rates:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/c6e00dd1-d21a-4bac-ab82-613190617364' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "tax_categories",
+        "attributes": {
+          "name": "Sales Tax",
+          "tax_rates_attributes": [
+            {
+              "name": "VAT",
+              "value": 21
+            }
+          ]
+        }
+      },
+      "include": "tax_rates"
+    }'
 ```
 
-> A 200 status response looks like this:
+> A 201 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "c6e00dd1-d21a-4bac-ab82-613190617364",
+    "id": "51a8ae3c-f3e4-4c8a-86a4-c339af4d6837",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2024-05-13T09:30:31+00:00",
-      "updated_at": "2024-05-13T09:30:31+00:00",
-      "archived": true,
-      "archived_at": "2024-05-13T09:30:31+00:00",
-      "name": "Sales Tax (Deleted)",
+      "created_at": "2024-05-20T09:23:45+00:00",
+      "updated_at": "2024-05-20T09:23:45+00:00",
+      "archived": false,
+      "archived_at": null,
+      "name": "Sales Tax",
       "default": false
     },
     "relationships": {
       "tax_rates": {
-        "links": {
-          "related": "api/boomerang/tax_rates?filter[owner_id]=c6e00dd1-d21a-4bac-ab82-613190617364&filter[owner_type]=tax_categories"
-        }
+        "data": [
+          {
+            "type": "tax_rates",
+            "id": "01b06d79-15f9-4e6d-9b58-d9e500389648"
+          }
+        ]
       }
     }
   },
+  "included": [
+    {
+      "id": "01b06d79-15f9-4e6d-9b58-d9e500389648",
+      "type": "tax_rates",
+      "attributes": {
+        "created_at": "2024-05-20T09:23:45+00:00",
+        "updated_at": "2024-05-20T09:23:45+00:00",
+        "name": "VAT",
+        "value": 21.0,
+        "position": 1,
+        "owner_id": "51a8ae3c-f3e4-4c8a-86a4-c339af4d6837",
+        "owner_type": "tax_categories"
+      },
+      "relationships": {
+        "owner": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    }
+  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`DELETE /api/boomerang/tax_categories/{id}`
+`POST /api/boomerang/tax_categories`
 
 ### Request params
 
@@ -85,12 +125,32 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the tax category
+`data[attributes][default]` | **Boolean** <br>Whether this is the default tax category. Setting this value to `true` will set other tax categories to `false`
+`data[attributes][tax_rates_attributes][]` | **Array** <br>The tax rates to associate
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+`tax_rates`
+
+
+
+
+
+
 ## Listing tax categories
 
 
@@ -109,11 +169,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "d1bfb00c-e6ab-496d-b02a-04c564fd3346",
+      "id": "cc7253aa-4f5d-40ae-b33e-6f267f167513",
       "type": "tax_categories",
       "attributes": {
-        "created_at": "2024-05-13T09:30:32+00:00",
-        "updated_at": "2024-05-13T09:30:32+00:00",
+        "created_at": "2024-05-20T09:23:46+00:00",
+        "updated_at": "2024-05-20T09:23:46+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Sales Tax",
@@ -122,7 +182,7 @@ This request does not accept any includes
       "relationships": {
         "tax_rates": {
           "links": {
-            "related": "api/boomerang/tax_rates?filter[owner_id]=d1bfb00c-e6ab-496d-b02a-04c564fd3346&filter[owner_type]=tax_categories"
+            "related": "api/boomerang/tax_rates?filter[owner_id]=cc7253aa-4f5d-40ae-b33e-6f267f167513&filter[owner_type]=tax_categories"
           }
         }
       }
@@ -185,6 +245,153 @@ This request accepts the following includes:
 
 
 
+## Deleting a tax category
+
+
+
+> How to delete a tax category with tax rates:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/65aec857-f560-428c-bd71-d01fb0e5ad93' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "65aec857-f560-428c-bd71-d01fb0e5ad93",
+    "type": "tax_categories",
+    "attributes": {
+      "created_at": "2024-05-20T09:23:46+00:00",
+      "updated_at": "2024-05-20T09:23:46+00:00",
+      "archived": true,
+      "archived_at": "2024-05-20T09:23:46+00:00",
+      "name": "Sales Tax (Deleted)",
+      "default": false
+    },
+    "relationships": {
+      "tax_rates": {
+        "links": {
+          "related": "api/boomerang/tax_rates?filter[owner_id]=65aec857-f560-428c-bd71-d01fb0e5ad93&filter[owner_type]=tax_categories"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/tax_categories/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetching a tax category
+
+
+
+> How to fetch a tax categories with it's tax rates:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/1aaf8097-dd33-4ee8-ba0e-0e49d5e76d3d?include=tax_rates' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "1aaf8097-dd33-4ee8-ba0e-0e49d5e76d3d",
+    "type": "tax_categories",
+    "attributes": {
+      "created_at": "2024-05-20T09:23:47+00:00",
+      "updated_at": "2024-05-20T09:23:47+00:00",
+      "archived": false,
+      "archived_at": null,
+      "name": "Sales Tax",
+      "default": false
+    },
+    "relationships": {
+      "tax_rates": {
+        "links": {
+          "related": "api/boomerang/tax_rates?filter[owner_id]=1aaf8097-dd33-4ee8-ba0e-0e49d5e76d3d&filter[owner_type]=tax_categories"
+        },
+        "data": [
+          {
+            "type": "tax_rates",
+            "id": "abd056c6-5279-4423-915a-c58859288189"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "id": "abd056c6-5279-4423-915a-c58859288189",
+      "type": "tax_rates",
+      "attributes": {
+        "created_at": "2024-05-20T09:23:47+00:00",
+        "updated_at": "2024-05-20T09:23:47+00:00",
+        "name": "VAT",
+        "value": 21.0,
+        "position": 1,
+        "owner_id": "1aaf8097-dd33-4ee8-ba0e-0e49d5e76d3d",
+        "owner_type": "tax_categories"
+      },
+      "relationships": {
+        "owner": {
+          "links": {
+            "related": "api/boomerang/tax_categories/1aaf8097-dd33-4ee8-ba0e-0e49d5e76d3d"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/tax_categories/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`tax_rates`
+
+
+
+
+
+
 ## Updating a tax category
 
 
@@ -193,11 +400,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/23dba818-38a8-4bb7-acf6-5a34dfe99369' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/a2a5f513-8c22-4eed-bec9-167dddb4d511' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "23dba818-38a8-4bb7-acf6-5a34dfe99369",
+        "id": "a2a5f513-8c22-4eed-bec9-167dddb4d511",
         "type": "tax_categories",
         "attributes": {
           "name": "State Tax",
@@ -207,7 +414,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "3a727831-9191-479e-991f-66f6280f6261",
+              "id": "33813c01-b0ab-46cc-b5cf-5f156b2d493f",
               "_destroy": true
             }
           ]
@@ -222,11 +429,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "23dba818-38a8-4bb7-acf6-5a34dfe99369",
+    "id": "a2a5f513-8c22-4eed-bec9-167dddb4d511",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2024-05-13T09:30:33+00:00",
-      "updated_at": "2024-05-13T09:30:33+00:00",
+      "created_at": "2024-05-20T09:23:48+00:00",
+      "updated_at": "2024-05-20T09:23:48+00:00",
       "archived": false,
       "archived_at": null,
       "name": "State Tax",
@@ -237,7 +444,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "31f2c5e4-94b7-4353-a1d4-8d1ec0ceda0d"
+            "id": "288d0adc-e005-44cb-9d01-0433515cd842"
           }
         ]
       }
@@ -245,15 +452,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "31f2c5e4-94b7-4353-a1d4-8d1ec0ceda0d",
+      "id": "288d0adc-e005-44cb-9d01-0433515cd842",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2024-05-13T09:30:33+00:00",
-        "updated_at": "2024-05-13T09:30:33+00:00",
+        "created_at": "2024-05-20T09:23:48+00:00",
+        "updated_at": "2024-05-20T09:23:48+00:00",
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "23dba818-38a8-4bb7-acf6-5a34dfe99369",
+        "owner_id": "a2a5f513-8c22-4eed-bec9-167dddb4d511",
         "owner_type": "tax_categories"
       },
       "relationships": {
@@ -292,213 +499,6 @@ Name | Description
 `data[attributes][name]` | **String** <br>Name of the tax category
 `data[attributes][default]` | **Boolean** <br>Whether this is the default tax category. Setting this value to `true` will set other tax categories to `false`
 `data[attributes][tax_rates_attributes][]` | **Array** <br>The tax rates to associate
-
-
-### Includes
-
-This request accepts the following includes:
-
-`tax_rates`
-
-
-
-
-
-
-## Creating a tax category
-
-
-
-> How to create a tax category with tax rates:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "tax_categories",
-        "attributes": {
-          "name": "Sales Tax",
-          "tax_rates_attributes": [
-            {
-              "name": "VAT",
-              "value": 21
-            }
-          ]
-        }
-      },
-      "include": "tax_rates"
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "e525a0e4-f76f-45e1-86d7-ea6dd5600cbb",
-    "type": "tax_categories",
-    "attributes": {
-      "created_at": "2024-05-13T09:30:35+00:00",
-      "updated_at": "2024-05-13T09:30:35+00:00",
-      "archived": false,
-      "archived_at": null,
-      "name": "Sales Tax",
-      "default": false
-    },
-    "relationships": {
-      "tax_rates": {
-        "data": [
-          {
-            "type": "tax_rates",
-            "id": "2f73794c-935d-47fd-9a92-0e2d9469fbc3"
-          }
-        ]
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "2f73794c-935d-47fd-9a92-0e2d9469fbc3",
-      "type": "tax_rates",
-      "attributes": {
-        "created_at": "2024-05-13T09:30:35+00:00",
-        "updated_at": "2024-05-13T09:30:35+00:00",
-        "name": "VAT",
-        "value": 21.0,
-        "position": 1,
-        "owner_id": "e525a0e4-f76f-45e1-86d7-ea6dd5600cbb",
-        "owner_type": "tax_categories"
-      },
-      "relationships": {
-        "owner": {
-          "meta": {
-            "included": false
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/tax_categories`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the tax category
-`data[attributes][default]` | **Boolean** <br>Whether this is the default tax category. Setting this value to `true` will set other tax categories to `false`
-`data[attributes][tax_rates_attributes][]` | **Array** <br>The tax rates to associate
-
-
-### Includes
-
-This request accepts the following includes:
-
-`tax_rates`
-
-
-
-
-
-
-## Fetching a tax category
-
-
-
-> How to fetch a tax categories with it's tax rates:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/0c0418b1-6435-4e9f-9625-c902b7163450?include=tax_rates' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "0c0418b1-6435-4e9f-9625-c902b7163450",
-    "type": "tax_categories",
-    "attributes": {
-      "created_at": "2024-05-13T09:30:36+00:00",
-      "updated_at": "2024-05-13T09:30:36+00:00",
-      "archived": false,
-      "archived_at": null,
-      "name": "Sales Tax",
-      "default": false
-    },
-    "relationships": {
-      "tax_rates": {
-        "links": {
-          "related": "api/boomerang/tax_rates?filter[owner_id]=0c0418b1-6435-4e9f-9625-c902b7163450&filter[owner_type]=tax_categories"
-        },
-        "data": [
-          {
-            "type": "tax_rates",
-            "id": "3d79fac3-d95b-4065-9592-e3f9e95289cf"
-          }
-        ]
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "3d79fac3-d95b-4065-9592-e3f9e95289cf",
-      "type": "tax_rates",
-      "attributes": {
-        "created_at": "2024-05-13T09:30:36+00:00",
-        "updated_at": "2024-05-13T09:30:36+00:00",
-        "name": "VAT",
-        "value": 21.0,
-        "position": 1,
-        "owner_id": "0c0418b1-6435-4e9f-9625-c902b7163450",
-        "owner_type": "tax_categories"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "related": "api/boomerang/tax_categories/0c0418b1-6435-4e9f-9625-c902b7163450"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/tax_categories/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=tax_rates`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
 
 
 ### Includes

@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "deposit_holds",
         "attributes": {
-          "order_id": "0068fd7f-d5d7-4a31-96a9-0378d1f38463",
+          "order_id": "c1fc649b-c0d4-4214-a23c-b0d07c593b39",
           "amount_in_cents": 5000,
           "reason": "damages"
         }
@@ -50,11 +50,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "454a5b24-87f6-5025-9ddc-cd4a614f05e0",
+    "id": "625298bd-4a16-5561-867e-11f3fae60707",
     "type": "deposit_holds",
     "attributes": {
-      "order_id": "0068fd7f-d5d7-4a31-96a9-0378d1f38463",
-      "deposit_line_id": "7c64e567-ed46-4178-8f64-b3327d4bc0e7"
+      "order_id": "c1fc649b-c0d4-4214-a23c-b0d07c593b39",
+      "deposit_line_id": "273abb23-e8c1-4c21-82d3-28c9c9af3ed4"
     },
     "relationships": {
       "order": {
