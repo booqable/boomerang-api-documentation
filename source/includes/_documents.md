@@ -13,17 +13,17 @@ Quotes and contracts are always finalized; to make a revision, archive the docum
 Invoices are automatically generated and updated based on changes made to an order. When an invoice is finalized, and further changes are made to the order, a new invoice is created with prorated changes. The payment status of the invoice is automatically updated when payments are made for the associated order.
 
 ## Endpoints
-`PUT /api/boomerang/documents/{id}`
+`GET /api/boomerang/documents`
 
 `POST /api/boomerang/documents`
 
-`DELETE /api/boomerang/documents/{id}`
-
-`GET /api/boomerang/documents`
-
 `GET /api/boomerang/documents/{id}`
 
+`DELETE /api/boomerang/documents/{id}`
+
 `POST api/boomerang/documents/search`
+
+`PUT /api/boomerang/documents/{id}`
 
 ## Fields
 Every document has the following fields:
@@ -89,488 +89,6 @@ Name | Description
 `tax_values` | **Tax values** `readonly`<br>Associated Tax values
 
 
-## Updating a document
-
-
-
-> How to update a document:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/documents/9df872c2-42c1-4e4b-811c-fec89e77f769' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "9df872c2-42c1-4e4b-811c-fec89e77f769",
-        "type": "documents",
-        "attributes": {
-          "name": "Jane Doe"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "9df872c2-42c1-4e4b-811c-fec89e77f769",
-    "type": "documents",
-    "attributes": {
-      "created_at": "2024-05-20T09:22:42+00:00",
-      "updated_at": "2024-05-20T09:22:43+00:00",
-      "archived": false,
-      "archived_at": null,
-      "document_type": "invoice",
-      "number": null,
-      "prefix": null,
-      "prefix_with_number": null,
-      "date": null,
-      "due_date": null,
-      "name": "Jane Doe",
-      "address": null,
-      "reference": null,
-      "revised": false,
-      "finalized": false,
-      "sent": false,
-      "confirmed": false,
-      "status": "payment_due",
-      "signature_url": null,
-      "deposit_type": "percentage",
-      "deposit_value": 10.0,
-      "tag_list": [],
-      "price_in_cents": 80250,
-      "grand_total_in_cents": 72225,
-      "grand_total_with_tax_in_cents": 87392,
-      "discount_in_cents": 8025,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 8025,
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 97392,
-      "paid_in_cents": 0,
-      "tax_in_cents": 15167,
-      "discount_percentage": 10.0,
-      "order_id": "90fcecc5-adde-4311-99c0-7426e7895b82",
-      "customer_id": "0b604de2-b423-42fc-9fde-465c96036a58",
-      "tax_region_id": null,
-      "coupon_id": null
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "coupon": {
-        "meta": {
-          "included": false
-        }
-      },
-      "lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_values": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/documents/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
-`data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
-`data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
-`data[attributes][date]` | **Date** <br>Date the document was finalized
-`data[attributes][due_date]` | **Date** <br>The latest date by which the invoice must be fully paid
-`data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
-`data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
-`data[attributes][reference]` | **String** <br>A project number or other reference
-`data[attributes][revised]` | **Boolean** <br>Whether document is revised (applies only to `invoice`)
-`data[attributes][finalized]` | **Boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized)
-`data[attributes][sent]` | **Boolean** <br>Whether document is sent (with Booqable)
-`data[attributes][confirmed]` | **Boolean** <br>Whether document is confirmed, applies to `quote` and `contract`
-`data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
-`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
-`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
-`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`order`
-
-
-`tax_region`
-
-
-`lines` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-`tax_values`
-
-
-`coupon`
-
-
-
-
-
-
-## Creating a document
-
-
-
-> How to create a contract:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/documents' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "documents",
-        "attributes": {
-          "document_type": "contract",
-          "order_id": "ba44c2cc-2e6a-4dbd-bb89-402f96810d79"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "df5599fe-598d-4bb1-837a-585b2a4b20aa",
-    "type": "documents",
-    "attributes": {
-      "created_at": "2024-05-20T09:22:46+00:00",
-      "updated_at": "2024-05-20T09:22:46+00:00",
-      "archived": false,
-      "archived_at": null,
-      "document_type": "contract",
-      "number": 1,
-      "prefix": null,
-      "prefix_with_number": "1",
-      "date": "2024-05-20",
-      "due_date": null,
-      "name": "John Doe",
-      "address": "",
-      "reference": null,
-      "revised": false,
-      "finalized": true,
-      "sent": false,
-      "confirmed": false,
-      "status": "unconfirmed",
-      "signature_url": null,
-      "deposit_type": "percentage",
-      "deposit_value": 10.0,
-      "tag_list": [],
-      "price_in_cents": 80250,
-      "grand_total_in_cents": 72225,
-      "grand_total_with_tax_in_cents": 87392,
-      "discount_in_cents": 8025,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 8025,
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 0,
-      "paid_in_cents": 0,
-      "tax_in_cents": 15167,
-      "discount_percentage": 10.0,
-      "order_id": "ba44c2cc-2e6a-4dbd-bb89-402f96810d79",
-      "customer_id": "30e93d29-bbd7-4627-825b-f6126567fb02",
-      "tax_region_id": null,
-      "coupon_id": null
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "coupon": {
-        "meta": {
-          "included": false
-        }
-      },
-      "lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_values": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/documents`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
-`data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
-`data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
-`data[attributes][date]` | **Date** <br>Date the document was finalized
-`data[attributes][due_date]` | **Date** <br>The latest date by which the invoice must be fully paid
-`data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
-`data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
-`data[attributes][reference]` | **String** <br>A project number or other reference
-`data[attributes][revised]` | **Boolean** <br>Whether document is revised (applies only to `invoice`)
-`data[attributes][finalized]` | **Boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized)
-`data[attributes][sent]` | **Boolean** <br>Whether document is sent (with Booqable)
-`data[attributes][confirmed]` | **Boolean** <br>Whether document is confirmed, applies to `quote` and `contract`
-`data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
-`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
-`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
-`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
-
-
-### Includes
-
-This request accepts the following includes:
-
-`customer`
-
-
-`order`
-
-
-`tax_region`
-
-
-`lines` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-`tax_values`
-
-
-`coupon`
-
-
-
-
-
-
-## Archiving a document
-
-When archiving an invoice make sure `delete_invoices` permission is enabled.
-
-
-> How to archive a document:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/documents/80b7d12f-03ee-49f8-b186-6cba86f218de' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "80b7d12f-03ee-49f8-b186-6cba86f218de",
-    "type": "documents",
-    "attributes": {
-      "created_at": "2024-05-20T09:22:48+00:00",
-      "updated_at": "2024-05-20T09:22:48+00:00",
-      "archived": true,
-      "archived_at": "2024-05-20T09:22:48+00:00",
-      "document_type": "invoice",
-      "number": null,
-      "prefix": null,
-      "prefix_with_number": null,
-      "date": null,
-      "due_date": null,
-      "name": "John Doe",
-      "address": null,
-      "reference": null,
-      "revised": false,
-      "finalized": false,
-      "sent": false,
-      "confirmed": false,
-      "status": "payment_due",
-      "signature_url": null,
-      "deposit_type": "percentage",
-      "deposit_value": 10.0,
-      "tag_list": [],
-      "price_in_cents": 80250,
-      "grand_total_in_cents": 72225,
-      "grand_total_with_tax_in_cents": 87392,
-      "discount_in_cents": 8025,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 8025,
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 97392,
-      "paid_in_cents": 0,
-      "tax_in_cents": 15167,
-      "discount_percentage": 10.0,
-      "order_id": "d6d8f01b-9ddf-415e-9ba3-36721bb48c97",
-      "customer_id": "a72c895f-1e4a-4b4a-b4d6-82d4b3d97050",
-      "tax_region_id": null,
-      "coupon_id": null
-    },
-    "relationships": {
-      "order": {
-        "links": {
-          "related": "api/boomerang/orders/d6d8f01b-9ddf-415e-9ba3-36721bb48c97"
-        }
-      },
-      "customer": {
-        "links": {
-          "related": "api/boomerang/customers/a72c895f-1e4a-4b4a-b4d6-82d4b3d97050"
-        }
-      },
-      "tax_region": {
-        "links": {
-          "related": null
-        }
-      },
-      "coupon": {
-        "links": {
-          "related": null
-        }
-      },
-      "lines": {
-        "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=80b7d12f-03ee-49f8-b186-6cba86f218de&filter[owner_type]=documents"
-        }
-      },
-      "tax_values": {
-        "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=80b7d12f-03ee-49f8-b186-6cba86f218de&filter[owner_type]=documents"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/documents/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request does not accept any includes
 ## Listing documents
 
 
@@ -589,11 +107,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "f68d6535-85fe-4e7f-bf2f-adc7a7d8962f",
+      "id": "e13c8143-4866-460d-b427-c64f5f3ba338",
       "type": "documents",
       "attributes": {
-        "created_at": "2024-05-20T09:22:50+00:00",
-        "updated_at": "2024-05-20T09:22:50+00:00",
+        "created_at": "2024-05-27T09:29:40.274188+00:00",
+        "updated_at": "2024-05-27T09:29:40.362993+00:00",
         "archived": false,
         "archived_at": null,
         "document_type": "invoice",
@@ -629,20 +147,20 @@ This request does not accept any includes
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
-        "order_id": "9151f7ae-c0ad-4108-b994-bf1a6850e947",
-        "customer_id": "dc03db9e-ced8-4b6a-9308-c1f2da47f65f",
+        "order_id": "2d5b90e0-f509-4013-b4ac-0170e98d52d0",
+        "customer_id": "0322d2ba-72dc-4885-9e3d-b033974a8a4d",
         "tax_region_id": null,
         "coupon_id": null
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/9151f7ae-c0ad-4108-b994-bf1a6850e947"
+            "related": "api/boomerang/orders/2d5b90e0-f509-4013-b4ac-0170e98d52d0"
           }
         },
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/dc03db9e-ced8-4b6a-9308-c1f2da47f65f"
+            "related": "api/boomerang/customers/0322d2ba-72dc-4885-9e3d-b033974a8a4d"
           }
         },
         "tax_region": {
@@ -657,12 +175,12 @@ This request does not accept any includes
         },
         "lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=f68d6535-85fe-4e7f-bf2f-adc7a7d8962f&filter[owner_type]=documents"
+            "related": "api/boomerang/lines?filter[owner_id]=e13c8143-4866-460d-b427-c64f5f3ba338&filter[owner_type]=documents"
           }
         },
         "tax_values": {
           "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=f68d6535-85fe-4e7f-bf2f-adc7a7d8962f&filter[owner_type]=documents"
+            "related": "api/boomerang/tax_values?filter[owner_id]=e13c8143-4866-460d-b427-c64f5f3ba338&filter[owner_type]=documents"
           }
         }
       }
@@ -783,6 +301,189 @@ This request accepts the following includes:
 
 
 
+## Creating a document
+
+
+
+> How to create a contract:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/documents' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "documents",
+        "attributes": {
+          "document_type": "contract",
+          "order_id": "65740064-fdce-4974-8cba-0248972c4eeb"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "86251ab8-592f-4a57-9af6-8c39dcf5625c",
+    "type": "documents",
+    "attributes": {
+      "created_at": "2024-05-27T09:29:45.568197+00:00",
+      "updated_at": "2024-05-27T09:29:45.586351+00:00",
+      "archived": false,
+      "archived_at": null,
+      "document_type": "contract",
+      "number": 1,
+      "prefix": null,
+      "prefix_with_number": "1",
+      "date": "2024-05-27",
+      "due_date": null,
+      "name": "John Doe",
+      "address": "",
+      "reference": null,
+      "revised": false,
+      "finalized": true,
+      "sent": false,
+      "confirmed": false,
+      "status": "unconfirmed",
+      "signature_url": null,
+      "deposit_type": "percentage",
+      "deposit_value": 10.0,
+      "tag_list": [],
+      "price_in_cents": 80250,
+      "grand_total_in_cents": 72225,
+      "grand_total_with_tax_in_cents": 87392,
+      "discount_in_cents": 8025,
+      "coupon_discount_in_cents": 0,
+      "total_discount_in_cents": 8025,
+      "deposit_in_cents": 10000,
+      "deposit_paid_in_cents": 0,
+      "deposit_refunded_in_cents": 0,
+      "deposit_held_in_cents": 0,
+      "deposit_to_refund_in_cents": 0,
+      "to_be_paid_in_cents": 0,
+      "paid_in_cents": 0,
+      "tax_in_cents": 15167,
+      "discount_percentage": 10.0,
+      "order_id": "65740064-fdce-4974-8cba-0248972c4eeb",
+      "customer_id": "ae1348bd-b878-4af3-9f86-56bf75a16725",
+      "tax_region_id": null,
+      "coupon_id": null
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "coupon": {
+        "meta": {
+          "included": false
+        }
+      },
+      "lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_values": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/documents`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
+`data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
+`data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
+`data[attributes][date]` | **Date** <br>Date the document was finalized
+`data[attributes][due_date]` | **Date** <br>The latest date by which the invoice must be fully paid
+`data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
+`data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
+`data[attributes][reference]` | **String** <br>A project number or other reference
+`data[attributes][revised]` | **Boolean** <br>Whether document is revised (applies only to `invoice`)
+`data[attributes][finalized]` | **Boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized)
+`data[attributes][sent]` | **Boolean** <br>Whether document is sent (with Booqable)
+`data[attributes][confirmed]` | **Boolean** <br>Whether document is confirmed, applies to `quote` and `contract`
+`data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
+`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
+`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
+`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
+`data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`order`
+
+
+`tax_region`
+
+
+`lines` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+`tax_values`
+
+
+`coupon`
+
+
+
+
+
+
 ## Fetching a document
 
 
@@ -791,7 +492,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/documents/2970db1c-b2b9-4d4f-a549-a2a7477ee7dc' \
+    --url 'https://example.booqable.com/api/boomerang/documents/d82a7bbc-ef31-4776-b266-55b26556c0b9' \
     --header 'content-type: application/json' \
 ```
 
@@ -800,11 +501,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2970db1c-b2b9-4d4f-a549-a2a7477ee7dc",
+    "id": "d82a7bbc-ef31-4776-b266-55b26556c0b9",
     "type": "documents",
     "attributes": {
-      "created_at": "2024-05-20T09:22:53+00:00",
-      "updated_at": "2024-05-20T09:22:53+00:00",
+      "created_at": "2024-05-27T09:29:47.758011+00:00",
+      "updated_at": "2024-05-27T09:29:47.917986+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -840,20 +541,20 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "36690469-9779-407b-8892-4e1dd5c0089a",
-      "customer_id": "041f52cc-26a2-4930-82e2-16a37b36e8ed",
+      "order_id": "54a99b2a-1908-4b93-ab53-4195d7d35b12",
+      "customer_id": "1d3c3fe1-e4d7-45df-b44a-70d1037c666c",
       "tax_region_id": null,
       "coupon_id": null
     },
     "relationships": {
       "order": {
         "links": {
-          "related": "api/boomerang/orders/36690469-9779-407b-8892-4e1dd5c0089a"
+          "related": "api/boomerang/orders/54a99b2a-1908-4b93-ab53-4195d7d35b12"
         }
       },
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/041f52cc-26a2-4930-82e2-16a37b36e8ed"
+          "related": "api/boomerang/customers/1d3c3fe1-e4d7-45df-b44a-70d1037c666c"
         }
       },
       "tax_region": {
@@ -868,12 +569,12 @@ This request accepts the following includes:
       },
       "lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=2970db1c-b2b9-4d4f-a549-a2a7477ee7dc&filter[owner_type]=documents"
+          "related": "api/boomerang/lines?filter[owner_id]=d82a7bbc-ef31-4776-b266-55b26556c0b9&filter[owner_type]=documents"
         }
       },
       "tax_values": {
         "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=2970db1c-b2b9-4d4f-a549-a2a7477ee7dc&filter[owner_type]=documents"
+          "related": "api/boomerang/tax_values?filter[owner_id]=d82a7bbc-ef31-4776-b266-55b26556c0b9&filter[owner_type]=documents"
         }
       }
     }
@@ -928,6 +629,122 @@ This request accepts the following includes:
 
 
 
+## Archiving a document
+
+When archiving an invoice make sure `delete_invoices` permission is enabled.
+
+
+> How to archive a document:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/documents/f9113522-3b73-492f-97a5-ccbb3d3b02af' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "f9113522-3b73-492f-97a5-ccbb3d3b02af",
+    "type": "documents",
+    "attributes": {
+      "created_at": "2024-05-27T09:29:51.926307+00:00",
+      "updated_at": "2024-05-27T09:29:53.029231+00:00",
+      "archived": true,
+      "archived_at": "2024-05-27T09:29:53.029231+00:00",
+      "document_type": "invoice",
+      "number": null,
+      "prefix": null,
+      "prefix_with_number": null,
+      "date": null,
+      "due_date": null,
+      "name": "John Doe",
+      "address": null,
+      "reference": null,
+      "revised": false,
+      "finalized": false,
+      "sent": false,
+      "confirmed": false,
+      "status": "payment_due",
+      "signature_url": null,
+      "deposit_type": "percentage",
+      "deposit_value": 10.0,
+      "tag_list": [],
+      "price_in_cents": 80250,
+      "grand_total_in_cents": 72225,
+      "grand_total_with_tax_in_cents": 87392,
+      "discount_in_cents": 8025,
+      "coupon_discount_in_cents": 0,
+      "total_discount_in_cents": 8025,
+      "deposit_in_cents": 10000,
+      "deposit_paid_in_cents": 0,
+      "deposit_refunded_in_cents": 0,
+      "deposit_held_in_cents": 0,
+      "deposit_to_refund_in_cents": 0,
+      "to_be_paid_in_cents": 97392,
+      "paid_in_cents": 0,
+      "tax_in_cents": 15167,
+      "discount_percentage": 10.0,
+      "order_id": "b7b14a5f-9e3d-42df-8fc2-df8979ed1878",
+      "customer_id": "ebb601c2-215c-4e17-b0c5-eebd0068ff2d",
+      "tax_region_id": null,
+      "coupon_id": null
+    },
+    "relationships": {
+      "order": {
+        "links": {
+          "related": "api/boomerang/orders/b7b14a5f-9e3d-42df-8fc2-df8979ed1878"
+        }
+      },
+      "customer": {
+        "links": {
+          "related": "api/boomerang/customers/ebb601c2-215c-4e17-b0c5-eebd0068ff2d"
+        }
+      },
+      "tax_region": {
+        "links": {
+          "related": null
+        }
+      },
+      "coupon": {
+        "links": {
+          "related": null
+        }
+      },
+      "lines": {
+        "links": {
+          "related": "api/boomerang/lines?filter[owner_id]=f9113522-3b73-492f-97a5-ccbb3d3b02af&filter[owner_type]=documents"
+        }
+      },
+      "tax_values": {
+        "links": {
+          "related": "api/boomerang/tax_values?filter[owner_id]=f9113522-3b73-492f-97a5-ccbb3d3b02af&filter[owner_type]=documents"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/documents/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
 ## Searching documents
 
 Use advanced search to make logical filter groups with and/or operators.
@@ -963,12 +780,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "date": {
-                    "gte": "2024-05-17T09:22:58.583Z"
+                    "gte": "2024-05-24T09:29:59.257Z"
                   }
                 },
                 {
                   "date": {
-                    "lte": "2024-05-23T09:22:58.583Z"
+                    "lte": "2024-05-30T09:29:59.257Z"
                   }
                 }
               ]
@@ -985,10 +802,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "bfb7b0a4-bffc-4f6c-bf82-69531ac3cfcb"
+      "id": "ddedd2df-119e-4613-8d01-7bf3f838636f"
     },
     {
-      "id": "49500cd0-f55c-48fb-bf15-e2593d5b343e"
+      "id": "b7937c06-4055-4756-89a8-d0ad1ca5b91c"
     }
   ]
 }
@@ -1099,6 +916,189 @@ This request accepts the following includes:
 
 
 `order`
+
+
+
+
+
+
+## Updating a document
+
+
+
+> How to update a document:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/documents/1cdf19c8-92db-4171-b100-c178df8d0541' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "1cdf19c8-92db-4171-b100-c178df8d0541",
+        "type": "documents",
+        "attributes": {
+          "name": "Jane Doe"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "1cdf19c8-92db-4171-b100-c178df8d0541",
+    "type": "documents",
+    "attributes": {
+      "created_at": "2024-05-27T09:30:01.747850+00:00",
+      "updated_at": "2024-05-27T09:30:02.782994+00:00",
+      "archived": false,
+      "archived_at": null,
+      "document_type": "invoice",
+      "number": null,
+      "prefix": null,
+      "prefix_with_number": null,
+      "date": null,
+      "due_date": null,
+      "name": "Jane Doe",
+      "address": null,
+      "reference": null,
+      "revised": false,
+      "finalized": false,
+      "sent": false,
+      "confirmed": false,
+      "status": "payment_due",
+      "signature_url": null,
+      "deposit_type": "percentage",
+      "deposit_value": 10.0,
+      "tag_list": [],
+      "price_in_cents": 80250,
+      "grand_total_in_cents": 72225,
+      "grand_total_with_tax_in_cents": 87392,
+      "discount_in_cents": 8025,
+      "coupon_discount_in_cents": 0,
+      "total_discount_in_cents": 8025,
+      "deposit_in_cents": 10000,
+      "deposit_paid_in_cents": 0,
+      "deposit_refunded_in_cents": 0,
+      "deposit_held_in_cents": 0,
+      "deposit_to_refund_in_cents": 0,
+      "to_be_paid_in_cents": 97392,
+      "paid_in_cents": 0,
+      "tax_in_cents": 15167,
+      "discount_percentage": 10.0,
+      "order_id": "f24c3186-2329-4502-8730-10b660da2eb9",
+      "customer_id": "3ee81e4f-08d2-4478-8625-868ad60862cc",
+      "tax_region_id": null,
+      "coupon_id": null
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "coupon": {
+        "meta": {
+          "included": false
+        }
+      },
+      "lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_values": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/documents/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][document_type]` | **String** <br>One of `invoice`, `contract`, `quote`
+`data[attributes][number]` | **Integer** <br>The document number, must be unique per type. Automatically generated if left blank.
+`data[attributes][prefix]` | **String** <br>Add a prefix to document numbers to make it easier to identify different documents. You can add dynamic values (like a year or order number) and custom prefixes e.g. `{year}-{customer_number}`.
+`data[attributes][date]` | **Date** <br>Date the document was finalized
+`data[attributes][due_date]` | **Date** <br>The latest date by which the invoice must be fully paid
+`data[attributes][name]` | **String** <br>Customer name. If left blank, automatically populated with the customer name of the associated order
+`data[attributes][address]` | **String** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order
+`data[attributes][reference]` | **String** <br>A project number or other reference
+`data[attributes][revised]` | **Boolean** <br>Whether document is revised (applies only to `invoice`)
+`data[attributes][finalized]` | **Boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized)
+`data[attributes][sent]` | **Boolean** <br>Whether document is sent (with Booqable)
+`data[attributes][confirmed]` | **Boolean** <br>Whether document is confirmed, applies to `quote` and `contract`
+`data[attributes][status]` | **String** <br>One of `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`
+`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
+`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
+`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
+`data[attributes][discount_percentage]` | **Float** <br>The discount percentage applied to this order
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
+
+
+### Includes
+
+This request accepts the following includes:
+
+`customer`
+
+
+`order`
+
+
+`tax_region`
+
+
+`lines` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+`tax_values`
+
+
+`coupon`
 
 
 

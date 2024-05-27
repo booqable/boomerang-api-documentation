@@ -72,7 +72,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "0c509d10-30cf-4ea7-b130-d95a13f41c47",
+          "order_id": "382f7593-ba1f-4a54-a767-84a409da161c",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -97,7 +97,7 @@ Name | Description
         "blocking": [
           {
             "reason": "shortage",
-            "item_id": "a2ad7cd0-c526-4dbf-9696-f6d079f89dae",
+            "item_id": "b9ad8b8f-d491-466d-9943-77c256ef30cb",
             "stock_count": 1,
             "reserved": 0,
             "needed": 2,
@@ -111,7 +111,7 @@ Name | Description
 ```
 
 
-> Save a new Order as concept:
+> Reserve a concept Order, causing a shortage warning:
 
 ```shell
   curl --request POST \
@@ -121,103 +121,9 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "8a4f373e-bcf0-4b5f-8e18-954de7a728ae",
-          "transition_from": "new",
-          "transition_to": "concept",
-          "confirm_shortage": null,
-          "revert": null
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "3b8f23d3-8f8b-5831-b1a6-8c93f756d936",
-    "type": "order_status_transitions",
-    "attributes": {
-      "order_id": "8a4f373e-bcf0-4b5f-8e18-954de7a728ae",
-      "transition_from": "new",
-      "transition_to": "concept",
-      "revert": null,
-      "confirm_shortage": null
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Archive a stopped Order:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_status_transitions",
-        "attributes": {
-          "order_id": "9f10dfc4-3b87-4ae8-a5be-a94165866ad6",
-          "transition_from": "stopped",
-          "transition_to": "archived",
-          "confirm_shortage": null,
-          "revert": null
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "7fbb6f27-0e66-5c39-9cb9-979cf5e79b37",
-    "type": "order_status_transitions",
-    "attributes": {
-      "order_id": "9f10dfc4-3b87-4ae8-a5be-a94165866ad6",
-      "transition_from": "stopped",
-      "transition_to": "archived",
-      "revert": null,
-      "confirm_shortage": null
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Archive a reserved Order:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_status_transitions",
-        "attributes": {
-          "order_id": "f6f3e2b5-bd31-4642-976f-7ba0d2b6df5e",
-          "transition_from": "reserved",
-          "transition_to": "archived",
+          "order_id": "3a200694-3a41-420c-b390-e333e5660081",
+          "transition_from": "concept",
+          "transition_to": "reserved",
           "confirm_shortage": null,
           "revert": null
         }
@@ -231,11 +137,23 @@ Name | Description
   {
   "errors": [
     {
-      "code": "wrong_status",
+      "code": "items_not_available",
       "status": "422",
-      "title": "Wrong status",
-      "detail": "Can't transition order from 'reserved' to 'archived'",
-      "meta": null
+      "title": "Items not available",
+      "detail": "One or more items are not available",
+      "meta": {
+        "warning": [
+          {
+            "reason": "shortage",
+            "item_id": "2fe38fba-e0bf-4456-a248-6c052d4a3238",
+            "stock_count": 1,
+            "reserved": 0,
+            "needed": 2,
+            "shortage": 1
+          }
+        ],
+        "blocking": []
+      }
     }
   ]
 }
@@ -252,7 +170,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "32be0c72-2fb5-4a8c-9eb8-939aac22a65d",
+          "order_id": "80e8bfce-bf54-4886-966a-22c66dc7ad92",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": true,
@@ -267,10 +185,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "38470125-04e6-5147-b4cd-7d60a04059e2",
+    "id": "73e8bb02-78ea-5af5-abc7-d4bc77c3690c",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "32be0c72-2fb5-4a8c-9eb8-939aac22a65d",
+      "order_id": "80e8bfce-bf54-4886-966a-22c66dc7ad92",
       "transition_from": "concept",
       "transition_to": "reserved",
       "revert": null,
@@ -299,7 +217,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "513dea63-7709-41b1-b248-a61cef97e24b",
+          "order_id": "acfc4604-2ed8-4cab-b24a-b620ba5ad2c0",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -314,10 +232,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "9d8ff843-49f0-515e-9dce-f7559f746eab",
+    "id": "50404484-8d59-5346-bd9b-248b836dbf6b",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "513dea63-7709-41b1-b248-a61cef97e24b",
+      "order_id": "acfc4604-2ed8-4cab-b24a-b620ba5ad2c0",
       "transition_from": "concept",
       "transition_to": "reserved",
       "revert": null,
@@ -346,7 +264,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "e2849c17-9dbe-498b-9523-51178c062af6",
+          "order_id": "f2cfc730-547a-47b6-9de9-0432ecf90ff8",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -371,12 +289,12 @@ Name | Description
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "74b5f6a3-c7cd-4713-8ad7-4eba6088ad87",
+            "item_id": "86056f0e-4bbb-4999-95f1-61ffc30b3936",
             "unavailable": [
-              "74c5503e-eebe-4e2b-820c-eedf672b7416"
+              "1501df25-3000-4cc1-b920-8ba477b27a7a"
             ],
             "available": [
-              "22597739-33aa-480d-ae30-7b85ad11e95e"
+              "71cff64c-3cfe-4cca-ac66-39a0cc5699e3"
             ]
           }
         ]
@@ -387,7 +305,7 @@ Name | Description
 ```
 
 
-> Reserve a concept Order, causing a shortage warning:
+> Archive a reserved Order:
 
 ```shell
   curl --request POST \
@@ -397,9 +315,9 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "085e7f3d-975a-419c-bf08-279296f30905",
-          "transition_from": "concept",
-          "transition_to": "reserved",
+          "order_id": "01b210b4-4147-4f54-9787-a4b5d235579b",
+          "transition_from": "reserved",
+          "transition_to": "archived",
           "confirm_shortage": null,
           "revert": null
         }
@@ -413,25 +331,107 @@ Name | Description
   {
   "errors": [
     {
-      "code": "items_not_available",
+      "code": "wrong_status",
       "status": "422",
-      "title": "Items not available",
-      "detail": "One or more items are not available",
-      "meta": {
-        "warning": [
-          {
-            "reason": "shortage",
-            "item_id": "7dfd773a-7f83-4443-98d4-e7a8a71dbcef",
-            "stock_count": 1,
-            "reserved": 0,
-            "needed": 2,
-            "shortage": 1
-          }
-        ],
-        "blocking": []
-      }
+      "title": "Wrong status",
+      "detail": "Can't transition order from 'reserved' to 'archived'",
+      "meta": null
     }
   ]
+}
+```
+
+
+> Archive a stopped Order:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_status_transitions",
+        "attributes": {
+          "order_id": "859b1f6a-9bab-47fd-a4b5-6e46fd37b903",
+          "transition_from": "stopped",
+          "transition_to": "archived",
+          "confirm_shortage": null,
+          "revert": null
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "a0cf3728-cd0d-5079-bc84-d9f273fd8474",
+    "type": "order_status_transitions",
+    "attributes": {
+      "order_id": "859b1f6a-9bab-47fd-a4b5-6e46fd37b903",
+      "transition_from": "stopped",
+      "transition_to": "archived",
+      "revert": null,
+      "confirm_shortage": null
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> Save a new Order as concept:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/order_status_transitions' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "order_status_transitions",
+        "attributes": {
+          "order_id": "5290e4f5-e685-4321-a671-5ed6672b8875",
+          "transition_from": "new",
+          "transition_to": "concept",
+          "confirm_shortage": null,
+          "revert": null
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "7cb7aa83-437f-5b2c-a2b7-f30342a62a56",
+    "type": "order_status_transitions",
+    "attributes": {
+      "order_id": "5290e4f5-e685-4321-a671-5ed6672b8875",
+      "transition_from": "new",
+      "transition_to": "concept",
+      "revert": null,
+      "confirm_shortage": null
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
 }
 ```
 
@@ -446,7 +446,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "f4a7b3e4-cc39-46b6-a00e-1f82469ea283",
+          "order_id": "d15eb217-b273-49f1-9aeb-87da42757e22",
           "transition_from": "reserved",
           "transition_to": "concept",
           "confirm_shortage": null,
@@ -461,10 +461,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ce7ee763-0145-5e1a-814c-c555478a1796",
+    "id": "4a1422b5-ffb7-577d-9465-ce8bcc640a8e",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "f4a7b3e4-cc39-46b6-a00e-1f82469ea283",
+      "order_id": "d15eb217-b273-49f1-9aeb-87da42757e22",
       "transition_from": "reserved",
       "transition_to": "concept",
       "revert": true,

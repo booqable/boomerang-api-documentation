@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "invoice_revisions",
         "attributes": {
-          "order_id": "67fed26d-73a5-4aee-b7e7-c3c1fa822889"
+          "order_id": "73581c79-4024-44f3-936c-553f4037e93e"
         }
       }
     }'
@@ -54,12 +54,12 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "8736abdc-981f-5167-97ad-f2e6ba5523e6",
+    "id": "a851aebb-6108-5e5d-9cfc-0d4d87d70901",
     "type": "invoice_revisions",
     "attributes": {
-      "order_id": "67fed26d-73a5-4aee-b7e7-c3c1fa822889",
-      "revised_invoice_id": "903e9abf-b10b-455f-97b5-00568e485b48",
-      "revision_invoice_id": "e7ed5a0f-08dc-4118-acbb-64e39ea335f5"
+      "order_id": "73581c79-4024-44f3-936c-553f4037e93e",
+      "revised_invoice_id": "09c63e77-dc4b-4ba3-849f-22ed726f202d",
+      "revision_invoice_id": "eb0f1dfe-3407-46ed-af56-07e86930bda6"
     },
     "relationships": {
       "order": {
