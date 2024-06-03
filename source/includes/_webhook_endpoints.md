@@ -73,9 +73,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "a2a2d36c-0516-46ad-b87d-50b196d7cce3",
-      "created_at": "2024-05-27T09:24:43.049050+00:00",
-      "updated_at": "2024-05-27T09:24:43.049050+00:00",
+      "id": "3e262ed9-19df-4d5e-a891-478d2d8b4eb5",
+      "created_at": "2024-06-03T09:27:58.318667+00:00",
+      "updated_at": "2024-06-03T09:27:58.318667+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "invoice.finalized"
@@ -135,7 +135,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/c277711e-80b2-4e0b-9fc3-4e352f4d4345' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/b3e2ee5a-e99a-494c-9fd3-bb1cd1ba6c2d' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -145,11 +145,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c277711e-80b2-4e0b-9fc3-4e352f4d4345",
+    "id": "b3e2ee5a-e99a-494c-9fd3-bb1cd1ba6c2d",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-05-27T09:24:44.025229+00:00",
-      "updated_at": "2024-05-27T09:24:44.025229+00:00",
+      "created_at": "2024-06-03T09:27:58.940302+00:00",
+      "updated_at": "2024-06-03T09:27:58.940302+00:00",
       "url": "https://example.com/hooks",
       "events": []
     }
@@ -182,12 +182,12 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/eba1122c-9bbe-4ebd-a3d4-3c8dad7618c3' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/f41fc7f4-6920-48c4-8621-5e444ace1311' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "webhook_endpoints",
-        "id": "eba1122c-9bbe-4ebd-a3d4-3c8dad7618c3",
+        "id": "f41fc7f4-6920-48c4-8621-5e444ace1311",
         "attributes": {
           "url": "https://example.com/hooks",
           "events": [
@@ -203,11 +203,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "eba1122c-9bbe-4ebd-a3d4-3c8dad7618c3",
+    "id": "f41fc7f4-6920-48c4-8621-5e444ace1311",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-05-27T09:24:44.757928+00:00",
-      "updated_at": "2024-05-27T09:24:44.757928+00:00",
+      "created_at": "2024-06-03T09:27:59.570233+00:00",
+      "updated_at": "2024-06-03T09:27:59.570233+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created"
@@ -273,11 +273,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "a14a65d1-0685-42d0-83ab-be7145037801",
+    "id": "626347e5-333a-47d5-b406-ef15910dce8c",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-05-27T09:24:45.443827+00:00",
-      "updated_at": "2024-05-27T09:24:45.443827+00:00",
+      "created_at": "2024-06-03T09:28:00.166072+00:00",
+      "updated_at": "2024-06-03T09:28:00.166072+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created",

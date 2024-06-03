@@ -9,15 +9,15 @@ Properties inherit their fields from a default property when they are connected.
 - `default_property_id`
 
 ## Endpoints
-`GET /api/boomerang/default_properties`
+`GET /api/boomerang/default_properties/{id}`
 
 `DELETE /api/boomerang/default_properties/{id}`
 
-`PUT /api/boomerang/default_properties/{id}`
-
-`GET /api/boomerang/default_properties/{id}`
+`GET /api/boomerang/default_properties`
 
 `POST /api/boomerang/default_properties`
+
+`PUT /api/boomerang/default_properties/{id}`
 
 ## Fields
 Every default property has the following fields:
@@ -38,6 +38,113 @@ Name | Description
 `editable` | **Boolean** `readonly`<br>Whether this property is editable
 
 
+## Fetching a default property
+
+
+
+> How to fetch a default properties:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/15348267-4d3b-4551-a7fb-1d26de944746?include=owner' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "15348267-4d3b-4551-a7fb-1d26de944746",
+    "type": "default_properties",
+    "attributes": {
+      "created_at": "2024-06-03T09:26:12.785962+00:00",
+      "updated_at": "2024-06-03T09:26:12.785962+00:00",
+      "name": "Phone",
+      "identifier": "phone",
+      "position": 1,
+      "property_type": "phone",
+      "show_on": [],
+      "validation_required": false,
+      "owner_type": "customers",
+      "select_options": [],
+      "editable": true
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/default_properties/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
+## Deleting a default property
+
+
+
+> How to delete a default property:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/55f7eab7-0102-46c9-af1d-6239e4fa7b49' \
+    --header 'content-type: application/json' \
+    --data '{}'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "55f7eab7-0102-46c9-af1d-6239e4fa7b49",
+    "type": "default_properties",
+    "attributes": {
+      "created_at": "2024-06-03T09:26:13.375192+00:00",
+      "updated_at": "2024-06-03T09:26:13.375192+00:00",
+      "name": "Phone",
+      "identifier": "phone",
+      "position": 1,
+      "property_type": "phone",
+      "show_on": [],
+      "validation_required": false,
+      "owner_type": "customers",
+      "select_options": [],
+      "editable": true
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/default_properties/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=created_at,updated_at,name`
+
+
+### Includes
+
+This request does not accept any includes
 ## Listing default properties
 
 
@@ -56,11 +163,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "52398b4a-ba8a-42ef-b2e3-f8eb8e692570",
+      "id": "40c8d3bc-c1ca-4518-b7bc-d00c70a5a73f",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2024-05-27T09:26:37.437160+00:00",
-        "updated_at": "2024-05-27T09:26:37.437160+00:00",
+        "created_at": "2024-06-03T09:26:14.025156+00:00",
+        "updated_at": "2024-06-03T09:26:14.025156+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
@@ -123,32 +230,41 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting a default property
+## Creating a default property
 
 
 
-> How to delete a default property:
+> How to create a default property and assign it to an owner:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/e081154b-9b7b-4664-91ba-784765419d1c' \
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/default_properties' \
     --header 'content-type: application/json' \
-    --data '{}'
+    --data '{
+      "data": {
+        "type": "default_properties",
+        "attributes": {
+          "name": "Mobile phone",
+          "property_type": "phone",
+          "owner_type": "customers"
+        }
+      }
+    }'
 ```
 
-> A 200 status response looks like this:
+> A 201 status response looks like this:
 
 ```json
   {
   "data": {
-    "id": "e081154b-9b7b-4664-91ba-784765419d1c",
+    "id": "850f4e6c-c5c7-45a8-afb1-3dd946732f68",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2024-05-27T09:26:38.886486+00:00",
-      "updated_at": "2024-05-27T09:26:38.886486+00:00",
-      "name": "Phone",
-      "identifier": "phone",
-      "position": 1,
+      "created_at": "2024-06-03T09:26:14.676883+00:00",
+      "updated_at": "2024-06-03T09:26:14.676883+00:00",
+      "name": "Mobile phone",
+      "identifier": "mobile_phone",
+      "position": 2,
       "property_type": "phone",
       "show_on": [],
       "validation_required": false,
@@ -163,69 +279,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/default_properties/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
-## Updating a default property
-
-
-
-> How to update a default property:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/62f759c7-cfa3-4195-a1a6-50d6815592b7' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "62f759c7-cfa3-4195-a1a6-50d6815592b7",
-        "type": "default_properties",
-        "attributes": {
-          "property_type": "text_field"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "62f759c7-cfa3-4195-a1a6-50d6815592b7",
-    "type": "default_properties",
-    "attributes": {
-      "created_at": "2024-05-27T09:26:39.870702+00:00",
-      "updated_at": "2024-05-27T09:26:39.929421+00:00",
-      "name": "Phone",
-      "identifier": "phone",
-      "position": 1,
-      "property_type": "text_field",
-      "show_on": [],
-      "validation_required": false,
-      "owner_type": "customers",
-      "select_options": [],
-      "editable": true
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/default_properties/{id}`
+`POST /api/boomerang/default_properties`
 
 ### Request params
 
@@ -255,16 +309,25 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a default property
+## Updating a default property
 
 
 
-> How to fetch a default properties:
+> How to update a default property:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/df5ba002-c8b7-4371-8046-b8155fd7cd93?include=owner' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/91d51fb5-592e-4485-8c38-b4ae4bc63bef' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "91d51fb5-592e-4485-8c38-b4ae4bc63bef",
+        "type": "default_properties",
+        "attributes": {
+          "property_type": "text_field"
+        }
+      }
+    }'
 ```
 
 > A 200 status response looks like this:
@@ -272,15 +335,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "df5ba002-c8b7-4371-8046-b8155fd7cd93",
+    "id": "91d51fb5-592e-4485-8c38-b4ae4bc63bef",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2024-05-27T09:26:40.964236+00:00",
-      "updated_at": "2024-05-27T09:26:40.964236+00:00",
+      "created_at": "2024-06-03T09:26:15.363665+00:00",
+      "updated_at": "2024-06-03T09:26:15.409369+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
-      "property_type": "phone",
+      "property_type": "text_field",
       "show_on": [],
       "validation_required": false,
       "owner_type": "customers",
@@ -294,70 +357,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/default_properties/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[default_properties]=created_at,updated_at,name`
-
-
-### Includes
-
-This request does not accept any includes
-## Creating a default property
-
-
-
-> How to create a default property and assign it to an owner:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/default_properties' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "default_properties",
-        "attributes": {
-          "name": "Mobile phone",
-          "property_type": "phone",
-          "owner_type": "customers"
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "b645f96c-8487-4bc4-ad21-45be8657d82b",
-    "type": "default_properties",
-    "attributes": {
-      "created_at": "2024-05-27T09:26:41.798975+00:00",
-      "updated_at": "2024-05-27T09:26:41.798975+00:00",
-      "name": "Mobile phone",
-      "identifier": "mobile_phone",
-      "position": 2,
-      "property_type": "phone",
-      "show_on": [],
-      "validation_required": false,
-      "owner_type": "customers",
-      "select_options": [],
-      "editable": true
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/default_properties`
+`PUT /api/boomerang/default_properties/{id}`
 
 ### Request params
 

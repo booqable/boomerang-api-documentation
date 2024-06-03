@@ -8,15 +8,15 @@ Price structures enable you to control what is being priced for a specific perio
 2. `private`: Structure for a specific product group. These are automatically created when a product group its `price_type` is set to `private_structure`.
 
 ## Endpoints
-`GET /api/boomerang/price_structures/{id}`
-
 `GET /api/boomerang/price_structures`
 
-`PUT /api/boomerang/price_structures/{id}`
+`GET /api/boomerang/price_structures/{id}`
+
+`DELETE /api/boomerang/price_structures/{id}`
 
 `POST /api/boomerang/price_structures`
 
-`DELETE /api/boomerang/price_structures/{id}`
+`PUT /api/boomerang/price_structures/{id}`
 
 ## Fields
 Every price structure has the following fields:
@@ -47,105 +47,6 @@ Name | Description
 `price_tiles` | **Price tiles** `readonly`<br>Associated Price tiles
 
 
-## Fetching a price structure
-
-
-
-> How to fetch a price structure with it's tiles:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_structures/b776acd7-3bf5-4d8f-9412-d3983ce702b6?include=price_tiles' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "b776acd7-3bf5-4d8f-9412-d3983ce702b6",
-    "type": "price_structures",
-    "attributes": {
-      "created_at": "2024-05-27T09:26:13.435867+00:00",
-      "updated_at": "2024-05-27T09:26:13.445674+00:00",
-      "archived": false,
-      "archived_at": null,
-      "name": "Price per hour (3 hours minimum)",
-      "price_structure_type": "reusable",
-      "product_group_id": null,
-      "hour": 1.0,
-      "day": 0.0,
-      "week": 0.0,
-      "month": 0.0,
-      "year": 0.0
-    },
-    "relationships": {
-      "price_tiles": {
-        "links": {
-          "related": "api/boomerang/price_tiles?filter[price_structure_id]=b776acd7-3bf5-4d8f-9412-d3983ce702b6"
-        },
-        "data": [
-          {
-            "type": "price_tiles",
-            "id": "a1d501d6-8c02-49de-8732-dec3231e1980"
-          }
-        ]
-      }
-    }
-  },
-  "included": [
-    {
-      "id": "a1d501d6-8c02-49de-8732-dec3231e1980",
-      "type": "price_tiles",
-      "attributes": {
-        "created_at": "2024-05-27T09:26:13.440433+00:00",
-        "updated_at": "2024-05-27T09:26:13.440433+00:00",
-        "name": "3 hours",
-        "quantity": 3,
-        "length": 10800,
-        "multiplier": 1.0,
-        "period": "hours",
-        "price_structure_id": "b776acd7-3bf5-4d8f-9412-d3983ce702b6"
-      },
-      "relationships": {
-        "price_structure": {
-          "links": {
-            "related": "api/boomerang/price_structures/b776acd7-3bf5-4d8f-9412-d3983ce702b6"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/price_structures/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=price_tiles`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_structures]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`price_tiles`
-
-
-
-
-
-
 ## Listing price structures
 
 
@@ -164,11 +65,11 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "657e326d-70c5-4730-84a3-a19da8b812a8",
+      "id": "82647fd8-effb-4469-97d5-902ca171a2e0",
       "type": "price_structures",
       "attributes": {
-        "created_at": "2024-05-27T09:26:14.148417+00:00",
-        "updated_at": "2024-05-27T09:26:14.156609+00:00",
+        "created_at": "2024-06-03T09:27:15.020333+00:00",
+        "updated_at": "2024-06-03T09:27:15.033635+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Price per hour (3 hours minimum)",
@@ -183,7 +84,7 @@ This request accepts the following includes:
       "relationships": {
         "price_tiles": {
           "links": {
-            "related": "api/boomerang/price_tiles?filter[price_structure_id]=657e326d-70c5-4730-84a3-a19da8b812a8"
+            "related": "api/boomerang/price_tiles?filter[price_structure_id]=82647fd8-effb-4469-97d5-902ca171a2e0"
           }
         }
       }
@@ -237,44 +138,16 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a price structure
+## Fetching a price structure
 
 
 
-> How to update a price structure with price tiles:
+> How to fetch a price structure with it's tiles:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_structures/9046183e-7e19-4a0b-9b64-4e04913e3645' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/price_structures/120b6df9-017d-4204-9bf8-06579133a4dd?include=price_tiles' \
     --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "9046183e-7e19-4a0b-9b64-4e04913e3645",
-        "type": "price_structures",
-        "attributes": {
-          "name": "Charge per week (cut-rate > 3 weeks)",
-          "price_tiles_attributes": [
-            {
-              "id": "bfea7ad2-dcb4-4bbb-bb18-1b24f4fbba0c",
-              "name": "1 semana"
-            },
-            {
-              "id": "c7eaf29e-2e91-487d-a8af-b014677f8d6d",
-              "name": "2 semanas"
-            },
-            {
-              "id": "301486b6-dd22-461b-9416-d5dca331236e",
-              "name": "3 semanas"
-            },
-            {
-              "id": "0b1a419a-6960-468d-aaf4-b66a32fa4ee3",
-              "_destroy": true
-            }
-          ]
-        }
-      },
-      "include": "price_tiles"
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -282,36 +155,31 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "9046183e-7e19-4a0b-9b64-4e04913e3645",
+    "id": "120b6df9-017d-4204-9bf8-06579133a4dd",
     "type": "price_structures",
     "attributes": {
-      "created_at": "2024-05-27T09:26:14.974489+00:00",
-      "updated_at": "2024-05-27T09:26:15.151921+00:00",
+      "created_at": "2024-06-03T09:27:15.722273+00:00",
+      "updated_at": "2024-06-03T09:27:15.735238+00:00",
       "archived": false,
       "archived_at": null,
-      "name": "Charge per week (cut-rate > 3 weeks)",
+      "name": "Price per hour (3 hours minimum)",
       "price_structure_type": "reusable",
       "product_group_id": null,
-      "hour": 0.0,
+      "hour": 1.0,
       "day": 0.0,
-      "week": 0.8,
+      "week": 0.0,
       "month": 0.0,
       "year": 0.0
     },
     "relationships": {
       "price_tiles": {
+        "links": {
+          "related": "api/boomerang/price_tiles?filter[price_structure_id]=120b6df9-017d-4204-9bf8-06579133a4dd"
+        },
         "data": [
           {
             "type": "price_tiles",
-            "id": "bfea7ad2-dcb4-4bbb-bb18-1b24f4fbba0c"
-          },
-          {
-            "type": "price_tiles",
-            "id": "c7eaf29e-2e91-487d-a8af-b014677f8d6d"
-          },
-          {
-            "type": "price_tiles",
-            "id": "301486b6-dd22-461b-9416-d5dca331236e"
+            "id": "7f745dc5-6039-42eb-a11a-c2ab0cf29bca"
           }
         ]
       }
@@ -319,64 +187,22 @@ This request does not accept any includes
   },
   "included": [
     {
-      "id": "bfea7ad2-dcb4-4bbb-bb18-1b24f4fbba0c",
+      "id": "7f745dc5-6039-42eb-a11a-c2ab0cf29bca",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-05-27T09:26:14.978840+00:00",
-        "updated_at": "2024-05-27T09:26:15.134963+00:00",
-        "name": "1 semana",
-        "quantity": 1,
-        "length": 604800,
-        "multiplier": 1.0,
-        "period": "weeks",
-        "price_structure_id": "9046183e-7e19-4a0b-9b64-4e04913e3645"
-      },
-      "relationships": {
-        "price_structure": {
-          "meta": {
-            "included": false
-          }
-        }
-      }
-    },
-    {
-      "id": "c7eaf29e-2e91-487d-a8af-b014677f8d6d",
-      "type": "price_tiles",
-      "attributes": {
-        "created_at": "2024-05-27T09:26:14.983843+00:00",
-        "updated_at": "2024-05-27T09:26:15.141026+00:00",
-        "name": "2 semanas",
-        "quantity": 2,
-        "length": 1209600,
-        "multiplier": 2.0,
-        "period": "weeks",
-        "price_structure_id": "9046183e-7e19-4a0b-9b64-4e04913e3645"
-      },
-      "relationships": {
-        "price_structure": {
-          "meta": {
-            "included": false
-          }
-        }
-      }
-    },
-    {
-      "id": "301486b6-dd22-461b-9416-d5dca331236e",
-      "type": "price_tiles",
-      "attributes": {
-        "created_at": "2024-05-27T09:26:14.988335+00:00",
-        "updated_at": "2024-05-27T09:26:15.146886+00:00",
-        "name": "3 semanas",
+        "created_at": "2024-06-03T09:27:15.728320+00:00",
+        "updated_at": "2024-06-03T09:27:15.728320+00:00",
+        "name": "3 hours",
         "quantity": 3,
-        "length": 1814400,
-        "multiplier": 3.0,
-        "period": "weeks",
-        "price_structure_id": "9046183e-7e19-4a0b-9b64-4e04913e3645"
+        "length": 10800,
+        "multiplier": 1.0,
+        "period": "hours",
+        "price_structure_id": "120b6df9-017d-4204-9bf8-06579133a4dd"
       },
       "relationships": {
         "price_structure": {
-          "meta": {
-            "included": false
+          "links": {
+            "related": "api/boomerang/price_structures/120b6df9-017d-4204-9bf8-06579133a4dd"
           }
         }
       }
@@ -388,7 +214,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/price_structures/{id}`
+`GET /api/boomerang/price_structures/{id}`
 
 ### Request params
 
@@ -398,21 +224,6 @@ Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=price_tiles`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_structures]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the structure
-`data[attributes][price_tiles_attributes][]` | **Array** <br>The price tiles to associate
-`data[attributes][hour]` | **Float** <br>Multiplier for every hour outside of its tiles
-`data[attributes][day]` | **Float** <br>Multiplier for every day outside of its tiles
-`data[attributes][week]` | **Float** <br>Multiplier for every week outside of its tiles
-`data[attributes][month]` | **Float** <br>Multiplier for every month outside of its tiles
-`data[attributes][year]` | **Float** <br>Multiplier for every year outside of its tiles
 
 
 ### Includes
@@ -426,6 +237,67 @@ This request accepts the following includes:
 
 
 
+## Deleting a price structure
+
+
+
+> How to delete a price structure with tax rates:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/price_structures/e24b173c-ed89-448a-ac72-5f0566e91227' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "e24b173c-ed89-448a-ac72-5f0566e91227",
+    "type": "price_structures",
+    "attributes": {
+      "created_at": "2024-06-03T09:27:16.554610+00:00",
+      "updated_at": "2024-06-03T09:27:16.607928+00:00",
+      "archived": true,
+      "archived_at": "2024-06-03T09:27:16.607928+00:00",
+      "name": "Price per hour (3 hours minimum) (Deleted)",
+      "price_structure_type": "reusable",
+      "product_group_id": null,
+      "hour": 1.0,
+      "day": 0.0,
+      "week": 0.0,
+      "month": 0.0,
+      "year": 0.0
+    },
+    "relationships": {
+      "price_tiles": {
+        "links": {
+          "related": "api/boomerang/price_tiles?filter[price_structure_id]=e24b173c-ed89-448a-ac72-5f0566e91227"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/price_structures/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_structures]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request does not accept any includes
 ## Creating a price structure
 
 
@@ -461,11 +333,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1e716ad8-b535-45e6-8c8d-007fbe4b4e84",
+    "id": "24e90bf0-6459-4678-a358-24100569376e",
     "type": "price_structures",
     "attributes": {
-      "created_at": "2024-05-27T09:26:15.822429+00:00",
-      "updated_at": "2024-05-27T09:26:15.833462+00:00",
+      "created_at": "2024-06-03T09:27:17.367610+00:00",
+      "updated_at": "2024-06-03T09:27:17.381916+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Price per hour (3 hours minimum)",
@@ -482,7 +354,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "price_tiles",
-            "id": "5b83dc99-7b95-4a48-bf46-4b2ac6196fd6"
+            "id": "c6f7df9c-5434-409f-8b7f-8efdc525480b"
           }
         ]
       }
@@ -490,17 +362,17 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "5b83dc99-7b95-4a48-bf46-4b2ac6196fd6",
+      "id": "c6f7df9c-5434-409f-8b7f-8efdc525480b",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-05-27T09:26:15.827769+00:00",
-        "updated_at": "2024-05-27T09:26:15.827769+00:00",
+        "created_at": "2024-06-03T09:27:17.374803+00:00",
+        "updated_at": "2024-06-03T09:27:17.374803+00:00",
         "name": "3 hours",
         "quantity": 3,
         "length": 10800,
         "multiplier": 1.0,
         "period": "hours",
-        "price_structure_id": "1e716ad8-b535-45e6-8c8d-007fbe4b4e84"
+        "price_structure_id": "24e90bf0-6459-4678-a358-24100569376e"
       },
       "relationships": {
         "price_structure": {
@@ -555,16 +427,44 @@ This request accepts the following includes:
 
 
 
-## Deleting a price structure
+## Updating a price structure
 
 
 
-> How to delete a price structure with tax rates:
+> How to update a price structure with price tiles:
 
 ```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_structures/da67b81f-ba4c-4b3e-a3fb-f25a6851ac61' \
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/price_structures/654af35b-311e-4f44-90f9-2bcc93627a86' \
     --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "654af35b-311e-4f44-90f9-2bcc93627a86",
+        "type": "price_structures",
+        "attributes": {
+          "name": "Charge per week (cut-rate > 3 weeks)",
+          "price_tiles_attributes": [
+            {
+              "id": "eed265af-2006-42c9-8708-32f63b344dbd",
+              "name": "1 semana"
+            },
+            {
+              "id": "57f1aec5-2cf7-4bca-b6ca-a590bbca3e0a",
+              "name": "2 semanas"
+            },
+            {
+              "id": "b3a432d4-3a90-4ced-a844-0dcd669e7657",
+              "name": "3 semanas"
+            },
+            {
+              "id": "2d6c381b-0561-4f40-a68d-a4ce7b510337",
+              "_destroy": true
+            }
+          ]
+        }
+      },
+      "include": "price_tiles"
+    }'
 ```
 
 > A 200 status response looks like this:
@@ -572,37 +472,113 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "da67b81f-ba4c-4b3e-a3fb-f25a6851ac61",
+    "id": "654af35b-311e-4f44-90f9-2bcc93627a86",
     "type": "price_structures",
     "attributes": {
-      "created_at": "2024-05-27T09:26:16.512140+00:00",
-      "updated_at": "2024-05-27T09:26:16.561771+00:00",
-      "archived": true,
-      "archived_at": "2024-05-27T09:26:16.561771+00:00",
-      "name": "Price per hour (3 hours minimum) (Deleted)",
+      "created_at": "2024-06-03T09:27:18.216571+00:00",
+      "updated_at": "2024-06-03T09:27:18.400205+00:00",
+      "archived": false,
+      "archived_at": null,
+      "name": "Charge per week (cut-rate > 3 weeks)",
       "price_structure_type": "reusable",
       "product_group_id": null,
-      "hour": 1.0,
+      "hour": 0.0,
       "day": 0.0,
-      "week": 0.0,
+      "week": 0.8,
       "month": 0.0,
       "year": 0.0
     },
     "relationships": {
       "price_tiles": {
-        "links": {
-          "related": "api/boomerang/price_tiles?filter[price_structure_id]=da67b81f-ba4c-4b3e-a3fb-f25a6851ac61"
-        }
+        "data": [
+          {
+            "type": "price_tiles",
+            "id": "eed265af-2006-42c9-8708-32f63b344dbd"
+          },
+          {
+            "type": "price_tiles",
+            "id": "57f1aec5-2cf7-4bca-b6ca-a590bbca3e0a"
+          },
+          {
+            "type": "price_tiles",
+            "id": "b3a432d4-3a90-4ced-a844-0dcd669e7657"
+          }
+        ]
       }
     }
   },
+  "included": [
+    {
+      "id": "eed265af-2006-42c9-8708-32f63b344dbd",
+      "type": "price_tiles",
+      "attributes": {
+        "created_at": "2024-06-03T09:27:18.224404+00:00",
+        "updated_at": "2024-06-03T09:27:18.381219+00:00",
+        "name": "1 semana",
+        "quantity": 1,
+        "length": 604800,
+        "multiplier": 1.0,
+        "period": "weeks",
+        "price_structure_id": "654af35b-311e-4f44-90f9-2bcc93627a86"
+      },
+      "relationships": {
+        "price_structure": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    },
+    {
+      "id": "57f1aec5-2cf7-4bca-b6ca-a590bbca3e0a",
+      "type": "price_tiles",
+      "attributes": {
+        "created_at": "2024-06-03T09:27:18.232858+00:00",
+        "updated_at": "2024-06-03T09:27:18.387438+00:00",
+        "name": "2 semanas",
+        "quantity": 2,
+        "length": 1209600,
+        "multiplier": 2.0,
+        "period": "weeks",
+        "price_structure_id": "654af35b-311e-4f44-90f9-2bcc93627a86"
+      },
+      "relationships": {
+        "price_structure": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    },
+    {
+      "id": "b3a432d4-3a90-4ced-a844-0dcd669e7657",
+      "type": "price_tiles",
+      "attributes": {
+        "created_at": "2024-06-03T09:27:18.240562+00:00",
+        "updated_at": "2024-06-03T09:27:18.393795+00:00",
+        "name": "3 semanas",
+        "quantity": 3,
+        "length": 1814400,
+        "multiplier": 3.0,
+        "period": "weeks",
+        "price_structure_id": "654af35b-311e-4f44-90f9-2bcc93627a86"
+      },
+      "relationships": {
+        "price_structure": {
+          "meta": {
+            "included": false
+          }
+        }
+      }
+    }
+  ],
   "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`DELETE /api/boomerang/price_structures/{id}`
+`PUT /api/boomerang/price_structures/{id}`
 
 ### Request params
 
@@ -610,9 +586,32 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`include` | **String** <br>List of comma seperated relationships `?include=price_tiles`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_structures]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the structure
+`data[attributes][price_tiles_attributes][]` | **Array** <br>The price tiles to associate
+`data[attributes][hour]` | **Float** <br>Multiplier for every hour outside of its tiles
+`data[attributes][day]` | **Float** <br>Multiplier for every day outside of its tiles
+`data[attributes][week]` | **Float** <br>Multiplier for every week outside of its tiles
+`data[attributes][month]` | **Float** <br>Multiplier for every month outside of its tiles
+`data[attributes][year]` | **Float** <br>Multiplier for every year outside of its tiles
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+`price_tiles`
+
+
+
+
+

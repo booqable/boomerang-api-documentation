@@ -21,13 +21,13 @@ Nested lines contain information about individual items in a bundle; for these l
 ## Endpoints
 `GET /api/boomerang/lines`
 
-`DELETE /api/boomerang/lines/{id}`
-
-`PUT /api/boomerang/lines/{id}`
-
 `GET /api/boomerang/lines/{id}`
 
 `POST /api/boomerang/lines`
+
+`DELETE /api/boomerang/lines/{id}`
+
+`PUT /api/boomerang/lines/{id}`
 
 ## Fields
 Every line has the following fields:
@@ -102,11 +102,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "35ac0c2e-d15e-49d7-96f4-da963f8372f5",
+      "id": "f10fb433-e093-415b-af10-430d911d3f84",
       "type": "lines",
       "attributes": {
-        "created_at": "2024-05-27T09:28:55.344753+00:00",
-        "updated_at": "2024-05-27T09:28:55.406219+00:00",
+        "created_at": "2024-06-03T09:26:52.779734+00:00",
+        "updated_at": "2024-06-03T09:26:52.834418+00:00",
         "archived": false,
         "archived_at": null,
         "title": "Macbook Pro",
@@ -157,35 +157,35 @@ Name | Description
         "taxable": true,
         "line_type": "charge",
         "relevant": true,
-        "order_id": "4c4baaae-b70f-4c91-980e-471f15ec5509",
-        "item_id": "c234925b-4762-426b-90bf-be5fb4470176",
-        "tax_category_id": "f2b7b8c7-4dc8-4289-bdf4-09b3d31e5858",
-        "planning_id": "1b0965c0-1d4e-48a0-8c47-61e82a951119",
+        "order_id": "a84314f8-c6ed-4a6b-9ba6-43bf1558de79",
+        "item_id": "bebd7f48-3742-4320-96bb-ce7cd03c7bc1",
+        "tax_category_id": "2d27f1fc-8633-4eb0-96f0-a0dbd2c2e885",
+        "planning_id": "789025b4-f20c-414f-824c-aad504c5b6ed",
         "price_structure_id": null,
         "price_tile_id": null,
         "parent_line_id": null,
-        "owner_id": "4c4baaae-b70f-4c91-980e-471f15ec5509",
+        "owner_id": "a84314f8-c6ed-4a6b-9ba6-43bf1558de79",
         "owner_type": "orders"
       },
       "relationships": {
         "order": {
           "links": {
-            "related": "api/boomerang/orders/4c4baaae-b70f-4c91-980e-471f15ec5509"
+            "related": "api/boomerang/orders/a84314f8-c6ed-4a6b-9ba6-43bf1558de79"
           }
         },
         "item": {
           "links": {
-            "related": "api/boomerang/items/c234925b-4762-426b-90bf-be5fb4470176"
+            "related": "api/boomerang/items/bebd7f48-3742-4320-96bb-ce7cd03c7bc1"
           }
         },
         "tax_category": {
           "links": {
-            "related": "api/boomerang/tax_categories/f2b7b8c7-4dc8-4289-bdf4-09b3d31e5858"
+            "related": "api/boomerang/tax_categories/2d27f1fc-8633-4eb0-96f0-a0dbd2c2e885"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/1b0965c0-1d4e-48a0-8c47-61e82a951119"
+            "related": "api/boomerang/plannings/789025b4-f20c-414f-824c-aad504c5b6ed"
           }
         },
         "price_structure": {
@@ -205,12 +205,12 @@ Name | Description
         },
         "nested_lines": {
           "links": {
-            "related": "api/boomerang/lines?filter[parent_line_id]=35ac0c2e-d15e-49d7-96f4-da963f8372f5"
+            "related": "api/boomerang/lines?filter[parent_line_id]=f10fb433-e093-415b-af10-430d911d3f84"
           }
         },
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/4c4baaae-b70f-4c91-980e-471f15ec5509"
+            "related": "api/boomerang/orders/a84314f8-c6ed-4a6b-9ba6-43bf1558de79"
           }
         }
       }
@@ -302,390 +302,6 @@ This request accepts the following includes:
 
 
 
-## Archiving a line
-
-
-
-> How to delete a line:
-
-```shell
-  curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/lines/760e4775-8769-4245-bfff-e0eea75cbf4a' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "760e4775-8769-4245-bfff-e0eea75cbf4a",
-    "type": "lines",
-    "attributes": {
-      "created_at": "2024-05-27T09:28:58.203734+00:00",
-      "updated_at": "2024-05-27T09:28:58.294450+00:00",
-      "archived": false,
-      "archived_at": null,
-      "title": "Macbook Pro",
-      "extra_information": "Comes with a mouse",
-      "quantity": 1,
-      "original_price_each_in_cents": 72500,
-      "original_charge_length": null,
-      "original_charge_label": null,
-      "price_each_in_cents": 80250,
-      "price_in_cents": 80250,
-      "display_price_in_cents": 80250,
-      "position": 1,
-      "charge_label": "29 days",
-      "charge_length": 2505600,
-      "price_rule_values": {
-        "charge": {
-          "from": "1980-04-02T00:00:00.000Z",
-          "till": "1980-05-01T00:00:00.000Z",
-          "adjustments": [
-            {
-              "name": "Pickup day"
-            },
-            {
-              "name": "Return day"
-            }
-          ]
-        },
-        "price": [
-          {
-            "name": "High-Season",
-            "charge_length": 1339200,
-            "multiplier": "0.2",
-            "price_in_cents": 7750,
-            "adjustments": [
-              {
-                "from": "1980-04-15T12:00:00.000Z",
-                "till": "1980-05-01T00:00:00.000Z",
-                "charge_length": 1339200,
-                "charge_label": "372 hours",
-                "price_in_cents": 7750
-              }
-            ],
-            "stacked": false
-          }
-        ]
-      },
-      "discountable": true,
-      "taxable": true,
-      "line_type": "charge",
-      "relevant": true,
-      "order_id": "b6cb04dd-067c-4fb1-bce8-f8dc4428d5ac",
-      "item_id": "bf8e4553-1541-48f4-9f6c-d80a96abad4e",
-      "tax_category_id": "f632d3f4-c9b6-4239-8a9f-f877465f33b6",
-      "planning_id": "140dc66a-9310-42ea-b6fd-7350c6f592cd",
-      "price_structure_id": null,
-      "price_tile_id": null,
-      "parent_line_id": null,
-      "owner_id": "b6cb04dd-067c-4fb1-bce8-f8dc4428d5ac",
-      "owner_type": "orders"
-    },
-    "relationships": {
-      "order": {
-        "links": {
-          "related": "api/boomerang/orders/b6cb04dd-067c-4fb1-bce8-f8dc4428d5ac"
-        }
-      },
-      "item": {
-        "links": {
-          "related": "api/boomerang/items/bf8e4553-1541-48f4-9f6c-d80a96abad4e"
-        }
-      },
-      "tax_category": {
-        "links": {
-          "related": "api/boomerang/tax_categories/f632d3f4-c9b6-4239-8a9f-f877465f33b6"
-        }
-      },
-      "planning": {
-        "links": {
-          "related": "api/boomerang/plannings/140dc66a-9310-42ea-b6fd-7350c6f592cd"
-        }
-      },
-      "price_structure": {
-        "links": {
-          "related": null
-        }
-      },
-      "price_tile": {
-        "links": {
-          "related": null
-        }
-      },
-      "parent_line": {
-        "links": {
-          "related": null
-        }
-      },
-      "nested_lines": {
-        "links": {
-          "related": "api/boomerang/lines?filter[parent_line_id]=760e4775-8769-4245-bfff-e0eea75cbf4a"
-        }
-      },
-      "owner": {
-        "links": {
-          "related": "api/boomerang/orders/b6cb04dd-067c-4fb1-bce8-f8dc4428d5ac"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`DELETE /api/boomerang/lines/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=order,owner,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`order` => 
-`tax_values`
-
-
-
-
-`owner` => 
-`tax_values`
-
-
-
-
-`tax_category`
-
-
-`parent_line`
-
-
-`nested_lines` => 
-`planning`
-
-
-
-
-`planning` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
-
-
-## Updating a line
-
-Change information, pricing, or increase the quantity of a line. Note that when updating the quantity of a line associated with a planning, the quantity of the planninig will also be updated, which may result in a shortage error.
-
-Order totals are automatically re-calculated after updating a line and an invoice sync will be triggered if changes are relevant.
-
-
-> How to update a line:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/lines/53a6f78a-93b1-4806-adad-8454e978523c' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "53a6f78a-93b1-4806-adad-8454e978523c",
-        "type": "lines",
-        "attributes": {
-          "price_each_in_cents": 1000
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "53a6f78a-93b1-4806-adad-8454e978523c",
-    "type": "lines",
-    "attributes": {
-      "created_at": "2024-05-27T09:29:01.980879+00:00",
-      "updated_at": "2024-05-27T09:29:03.183145+00:00",
-      "archived": false,
-      "archived_at": null,
-      "title": "Macbook Pro",
-      "extra_information": "Comes with a mouse",
-      "quantity": 1,
-      "original_price_each_in_cents": 72500,
-      "original_charge_length": null,
-      "original_charge_label": null,
-      "price_each_in_cents": 1000,
-      "price_in_cents": 1000,
-      "display_price_in_cents": 1000,
-      "position": 1,
-      "charge_label": "29 days",
-      "charge_length": 2505600,
-      "price_rule_values": null,
-      "discountable": true,
-      "taxable": true,
-      "line_type": "charge",
-      "relevant": true,
-      "order_id": "8866ad6c-8e62-49d7-94ad-30bab8826929",
-      "item_id": "60e6df57-8080-4c87-956a-21f697c55af0",
-      "tax_category_id": "017c2144-8102-42d3-969c-b9eacbb714bb",
-      "planning_id": "212f9e24-f2a7-4704-8e61-ec9f64120c97",
-      "price_structure_id": null,
-      "price_tile_id": null,
-      "parent_line_id": null,
-      "owner_id": "8866ad6c-8e62-49d7-94ad-30bab8826929",
-      "owner_type": "orders"
-    },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "item": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_category": {
-        "meta": {
-          "included": false
-        }
-      },
-      "planning": {
-        "meta": {
-          "included": false
-        }
-      },
-      "price_structure": {
-        "meta": {
-          "included": false
-        }
-      },
-      "price_tile": {
-        "meta": {
-          "included": false
-        }
-      },
-      "parent_line": {
-        "meta": {
-          "included": false
-        }
-      },
-      "nested_lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "owner": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/lines/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=order,owner,tax_category`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][title]` | **String** <br>Title of the line
-`data[attributes][extra_information]` | **String** <br>Extra information about the line
-`data[attributes][quantity]` | **Integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
-`data[attributes][original_charge_label]` | **String** <br>The original charge label of the product (without price rule adjustments)
-`data[attributes][price_each_in_cents]` | **Integer** <br>Price of each line
-`data[attributes][position]` | **Integer** <br>Which position the line has
-`data[attributes][charge_label]` | **String** <br>Charge label
-`data[attributes][charge_length]` | **Integer** <br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
-`data[attributes][discountable]` | **Boolean** <br>Whether line is discountable
-`data[attributes][taxable]` | **Boolean** <br>Whether line is taxable
-`data[attributes][line_type]` | **String** <br>One of `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`
-`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating quantity on a line
-`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
-`data[attributes][price_tile_id]` | **Uuid** <br>The associated Price tile
-`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
-`data[attributes][owner_type]` | **String** <br>One of `orders`, `documents`, `carts`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`order` => 
-`tax_values`
-
-
-
-
-`owner` => 
-`tax_values`
-
-
-
-
-`tax_category`
-
-
-`parent_line`
-
-
-`nested_lines` => 
-`planning`
-
-
-
-
-`planning` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
-
-
 ## Fetching a line
 
 
@@ -694,7 +310,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/lines/2f47dc1a-2c24-47d8-9b06-d4616745ded0' \
+    --url 'https://example.booqable.com/api/boomerang/lines/abb69911-a161-4cb2-96cf-84a31a46d5c6' \
     --header 'content-type: application/json' \
 ```
 
@@ -703,11 +319,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2f47dc1a-2c24-47d8-9b06-d4616745ded0",
+    "id": "abb69911-a161-4cb2-96cf-84a31a46d5c6",
     "type": "lines",
     "attributes": {
-      "created_at": "2024-05-27T09:29:06.757962+00:00",
-      "updated_at": "2024-05-27T09:29:06.829734+00:00",
+      "created_at": "2024-06-03T09:26:58.495514+00:00",
+      "updated_at": "2024-06-03T09:26:58.565081+00:00",
       "archived": false,
       "archived_at": null,
       "title": "Macbook Pro",
@@ -758,35 +374,35 @@ This request accepts the following includes:
       "taxable": true,
       "line_type": "charge",
       "relevant": true,
-      "order_id": "538bcbee-012d-4c01-9c99-102f2ab495a3",
-      "item_id": "6c0e3c41-ffbd-497f-9745-b927c57faa6f",
-      "tax_category_id": "634c4970-b959-4e7f-9957-c9cf889be70b",
-      "planning_id": "dc55b5d6-94cc-4db6-a10d-f147e6fc0148",
+      "order_id": "1a2b79cf-f1cb-4aeb-af13-d16c9f9dc3fb",
+      "item_id": "91d1db3c-9140-48bc-8fbc-9d6acbd7a9da",
+      "tax_category_id": "9ebc4df5-1028-4e93-bcb4-5368c85c6dbb",
+      "planning_id": "a0db052b-05c3-4751-ac30-c9a156aa57eb",
       "price_structure_id": null,
       "price_tile_id": null,
       "parent_line_id": null,
-      "owner_id": "538bcbee-012d-4c01-9c99-102f2ab495a3",
+      "owner_id": "1a2b79cf-f1cb-4aeb-af13-d16c9f9dc3fb",
       "owner_type": "orders"
     },
     "relationships": {
       "order": {
         "links": {
-          "related": "api/boomerang/orders/538bcbee-012d-4c01-9c99-102f2ab495a3"
+          "related": "api/boomerang/orders/1a2b79cf-f1cb-4aeb-af13-d16c9f9dc3fb"
         }
       },
       "item": {
         "links": {
-          "related": "api/boomerang/items/6c0e3c41-ffbd-497f-9745-b927c57faa6f"
+          "related": "api/boomerang/items/91d1db3c-9140-48bc-8fbc-9d6acbd7a9da"
         }
       },
       "tax_category": {
         "links": {
-          "related": "api/boomerang/tax_categories/634c4970-b959-4e7f-9957-c9cf889be70b"
+          "related": "api/boomerang/tax_categories/9ebc4df5-1028-4e93-bcb4-5368c85c6dbb"
         }
       },
       "planning": {
         "links": {
-          "related": "api/boomerang/plannings/dc55b5d6-94cc-4db6-a10d-f147e6fc0148"
+          "related": "api/boomerang/plannings/a0db052b-05c3-4751-ac30-c9a156aa57eb"
         }
       },
       "price_structure": {
@@ -806,12 +422,12 @@ This request accepts the following includes:
       },
       "nested_lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[parent_line_id]=2f47dc1a-2c24-47d8-9b06-d4616745ded0"
+          "related": "api/boomerang/lines?filter[parent_line_id]=abb69911-a161-4cb2-96cf-84a31a46d5c6"
         }
       },
       "owner": {
         "links": {
-          "related": "api/boomerang/orders/538bcbee-012d-4c01-9c99-102f2ab495a3"
+          "related": "api/boomerang/orders/1a2b79cf-f1cb-4aeb-af13-d16c9f9dc3fb"
         }
       }
     }
@@ -892,7 +508,7 @@ Order totals are automatically re-calculated after the creation of a new line an
       "data": {
         "type": "lines",
         "attributes": {
-          "owner_id": "f6f65ec6-c71b-4814-8dfc-25cdf9842f8f",
+          "owner_id": "b1b19942-f710-429b-bcd6-051e82ec6cd2",
           "owner_type": "orders",
           "price_each_in_cents": 1000
         }
@@ -905,11 +521,11 @@ Order totals are automatically re-calculated after the creation of a new line an
 ```json
   {
   "data": {
-    "id": "ce2bb419-fce5-4ab7-9f55-7f521ed98c46",
+    "id": "006ebf79-7899-4ae5-9ceb-4b8ced06f81b",
     "type": "lines",
     "attributes": {
-      "created_at": "2024-05-27T09:29:11.897107+00:00",
-      "updated_at": "2024-05-27T09:29:11.912045+00:00",
+      "created_at": "2024-06-03T09:27:03.542337+00:00",
+      "updated_at": "2024-06-03T09:27:03.563120+00:00",
       "archived": false,
       "archived_at": null,
       "title": null,
@@ -929,14 +545,14 @@ Order totals are automatically re-calculated after the creation of a new line an
       "taxable": true,
       "line_type": "charge",
       "relevant": true,
-      "order_id": "f6f65ec6-c71b-4814-8dfc-25cdf9842f8f",
+      "order_id": "b1b19942-f710-429b-bcd6-051e82ec6cd2",
       "item_id": null,
       "tax_category_id": null,
       "planning_id": null,
       "price_structure_id": null,
       "price_tile_id": null,
       "parent_line_id": null,
-      "owner_id": "f6f65ec6-c71b-4814-8dfc-25cdf9842f8f",
+      "owner_id": "b1b19942-f710-429b-bcd6-051e82ec6cd2",
       "owner_type": "orders"
     },
     "relationships": {
@@ -994,6 +610,390 @@ Order totals are automatically re-calculated after the creation of a new line an
 ### HTTP Request
 
 `POST /api/boomerang/lines`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=order,owner,tax_category`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][title]` | **String** <br>Title of the line
+`data[attributes][extra_information]` | **String** <br>Extra information about the line
+`data[attributes][quantity]` | **Integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error
+`data[attributes][original_charge_label]` | **String** <br>The original charge label of the product (without price rule adjustments)
+`data[attributes][price_each_in_cents]` | **Integer** <br>Price of each line
+`data[attributes][position]` | **Integer** <br>Which position the line has
+`data[attributes][charge_label]` | **String** <br>Charge label
+`data[attributes][charge_length]` | **Integer** <br>The charge length in seconds. It can be different than the time planned. Set to null to recalculate pricing based on order period and apply price rules.
+`data[attributes][discountable]` | **Boolean** <br>Whether line is discountable
+`data[attributes][taxable]` | **Boolean** <br>Whether line is taxable
+`data[attributes][line_type]` | **String** <br>One of `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`
+`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating quantity on a line
+`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
+`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+`data[attributes][price_tile_id]` | **Uuid** <br>The associated Price tile
+`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
+`data[attributes][owner_type]` | **String** <br>One of `orders`, `documents`, `carts`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`order` => 
+`tax_values`
+
+
+
+
+`owner` => 
+`tax_values`
+
+
+
+
+`tax_category`
+
+
+`parent_line`
+
+
+`nested_lines` => 
+`planning`
+
+
+
+
+`planning` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+
+
+
+
+## Archiving a line
+
+
+
+> How to delete a line:
+
+```shell
+  curl --request DELETE \
+    --url 'https://example.booqable.com/api/boomerang/lines/32368cef-20c7-4193-b2a3-f337299a869d' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "32368cef-20c7-4193-b2a3-f337299a869d",
+    "type": "lines",
+    "attributes": {
+      "created_at": "2024-06-03T09:27:05.799683+00:00",
+      "updated_at": "2024-06-03T09:27:05.859868+00:00",
+      "archived": false,
+      "archived_at": null,
+      "title": "Macbook Pro",
+      "extra_information": "Comes with a mouse",
+      "quantity": 1,
+      "original_price_each_in_cents": 72500,
+      "original_charge_length": null,
+      "original_charge_label": null,
+      "price_each_in_cents": 80250,
+      "price_in_cents": 80250,
+      "display_price_in_cents": 80250,
+      "position": 1,
+      "charge_label": "29 days",
+      "charge_length": 2505600,
+      "price_rule_values": {
+        "charge": {
+          "from": "1980-04-02T00:00:00.000Z",
+          "till": "1980-05-01T00:00:00.000Z",
+          "adjustments": [
+            {
+              "name": "Pickup day"
+            },
+            {
+              "name": "Return day"
+            }
+          ]
+        },
+        "price": [
+          {
+            "name": "High-Season",
+            "charge_length": 1339200,
+            "multiplier": "0.2",
+            "price_in_cents": 7750,
+            "adjustments": [
+              {
+                "from": "1980-04-15T12:00:00.000Z",
+                "till": "1980-05-01T00:00:00.000Z",
+                "charge_length": 1339200,
+                "charge_label": "372 hours",
+                "price_in_cents": 7750
+              }
+            ],
+            "stacked": false
+          }
+        ]
+      },
+      "discountable": true,
+      "taxable": true,
+      "line_type": "charge",
+      "relevant": true,
+      "order_id": "e5935f51-1e48-43f1-9591-c6f8550d2dd6",
+      "item_id": "66ad2722-6e16-45a3-9b2b-9b706c916af5",
+      "tax_category_id": "ceaaa819-b065-4895-8a6d-92c3e8396708",
+      "planning_id": "e1fddcb5-d680-41a5-8a2f-5c8f0b777b0e",
+      "price_structure_id": null,
+      "price_tile_id": null,
+      "parent_line_id": null,
+      "owner_id": "e5935f51-1e48-43f1-9591-c6f8550d2dd6",
+      "owner_type": "orders"
+    },
+    "relationships": {
+      "order": {
+        "links": {
+          "related": "api/boomerang/orders/e5935f51-1e48-43f1-9591-c6f8550d2dd6"
+        }
+      },
+      "item": {
+        "links": {
+          "related": "api/boomerang/items/66ad2722-6e16-45a3-9b2b-9b706c916af5"
+        }
+      },
+      "tax_category": {
+        "links": {
+          "related": "api/boomerang/tax_categories/ceaaa819-b065-4895-8a6d-92c3e8396708"
+        }
+      },
+      "planning": {
+        "links": {
+          "related": "api/boomerang/plannings/e1fddcb5-d680-41a5-8a2f-5c8f0b777b0e"
+        }
+      },
+      "price_structure": {
+        "links": {
+          "related": null
+        }
+      },
+      "price_tile": {
+        "links": {
+          "related": null
+        }
+      },
+      "parent_line": {
+        "links": {
+          "related": null
+        }
+      },
+      "nested_lines": {
+        "links": {
+          "related": "api/boomerang/lines?filter[parent_line_id]=32368cef-20c7-4193-b2a3-f337299a869d"
+        }
+      },
+      "owner": {
+        "links": {
+          "related": "api/boomerang/orders/e5935f51-1e48-43f1-9591-c6f8550d2dd6"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`DELETE /api/boomerang/lines/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=order,owner,tax_category`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`order` => 
+`tax_values`
+
+
+
+
+`owner` => 
+`tax_values`
+
+
+
+
+`tax_category`
+
+
+`parent_line`
+
+
+`nested_lines` => 
+`planning`
+
+
+
+
+`planning` => 
+`item` => 
+`photo`
+
+
+
+
+
+
+
+
+
+
+## Updating a line
+
+Change information, pricing, or increase the quantity of a line. Note that when updating the quantity of a line associated with a planning, the quantity of the planninig will also be updated, which may result in a shortage error.
+
+Order totals are automatically re-calculated after updating a line and an invoice sync will be triggered if changes are relevant.
+
+
+> How to update a line:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/lines/93a246ad-3184-409c-b6ee-09125d30253d' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "93a246ad-3184-409c-b6ee-09125d30253d",
+        "type": "lines",
+        "attributes": {
+          "price_each_in_cents": 1000
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "93a246ad-3184-409c-b6ee-09125d30253d",
+    "type": "lines",
+    "attributes": {
+      "created_at": "2024-06-03T09:27:09.545070+00:00",
+      "updated_at": "2024-06-03T09:27:10.991553+00:00",
+      "archived": false,
+      "archived_at": null,
+      "title": "Macbook Pro",
+      "extra_information": "Comes with a mouse",
+      "quantity": 1,
+      "original_price_each_in_cents": 72500,
+      "original_charge_length": null,
+      "original_charge_label": null,
+      "price_each_in_cents": 1000,
+      "price_in_cents": 1000,
+      "display_price_in_cents": 1000,
+      "position": 1,
+      "charge_label": "29 days",
+      "charge_length": 2505600,
+      "price_rule_values": null,
+      "discountable": true,
+      "taxable": true,
+      "line_type": "charge",
+      "relevant": true,
+      "order_id": "764a65ee-1bcf-46f8-b47d-720a81457c73",
+      "item_id": "bfc5b22d-8cdc-4245-bdf9-38f734d82304",
+      "tax_category_id": "2139ed9c-34f2-4274-be45-9fa7cf933cca",
+      "planning_id": "deb6ebaf-9df5-42d4-82d7-a39244afa163",
+      "price_structure_id": null,
+      "price_tile_id": null,
+      "parent_line_id": null,
+      "owner_id": "764a65ee-1bcf-46f8-b47d-720a81457c73",
+      "owner_type": "orders"
+    },
+    "relationships": {
+      "order": {
+        "meta": {
+          "included": false
+        }
+      },
+      "item": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_category": {
+        "meta": {
+          "included": false
+        }
+      },
+      "planning": {
+        "meta": {
+          "included": false
+        }
+      },
+      "price_structure": {
+        "meta": {
+          "included": false
+        }
+      },
+      "price_tile": {
+        "meta": {
+          "included": false
+        }
+      },
+      "parent_line": {
+        "meta": {
+          "included": false
+        }
+      },
+      "nested_lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "owner": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/lines/{id}`
 
 ### Request params
 

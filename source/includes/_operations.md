@@ -285,11 +285,11 @@ Allowed attribute keys:
 _No artifacts are generated when bullk updating resources._
 
 ## Endpoints
+`GET /api/boomerang/operations`
+
 `GET /api/boomerang/operations/{id}`
 
 `POST /api/boomerang/operations`
-
-`GET /api/boomerang/operations`
 
 ## Fields
 Every operation has the following fields:
@@ -318,6 +318,106 @@ Name | Description
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
+## Listing operations
+
+
+
+> How to fetch a list of operations:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/operations' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": [
+    {
+      "id": "3a88ecbc-a563-426e-bfb6-ab644fba17b7",
+      "type": "operations",
+      "attributes": {
+        "created_at": "2024-06-03T09:30:14.159077+00:00",
+        "updated_at": "2024-06-03T09:30:14.159077+00:00",
+        "status": "scheduled",
+        "status_message": null,
+        "finished_at": null,
+        "description": null,
+        "artifact": {
+          "url": null
+        },
+        "error_data": [],
+        "error_count": 0,
+        "employee_id": "e1e0dee5-eaff-4367-9f8a-4fd12505db78"
+      },
+      "relationships": {
+        "employee": {
+          "links": {
+            "related": "api/boomerang/employees/e1e0dee5-eaff-4367-9f8a-4fd12505db78"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/operations`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **String** <br>The page to request
+`page[size]` | **String** <br>The amount of items per page (max 100)
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`finished_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`employee_id` | **Uuid** <br>`eq`, `not_eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **Array** <br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`employee`
+
+
+
+
+
+
 ## Fetching an operation
 
 
@@ -326,7 +426,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/1f11e4df-2c49-42bb-8581-9583628b34e6' \
+    --url 'https://example.booqable.com/api/boomerang/operations/e0ef055a-e35e-4418-8fac-e02656c0415e' \
     --header 'content-type: application/json' \
 ```
 
@@ -335,11 +435,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1f11e4df-2c49-42bb-8581-9583628b34e6",
+    "id": "e0ef055a-e35e-4418-8fac-e02656c0415e",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-05-27T09:21:30.584551+00:00",
-      "updated_at": "2024-05-27T09:21:30.584551+00:00",
+      "created_at": "2024-06-03T09:30:14.959787+00:00",
+      "updated_at": "2024-06-03T09:30:14.959787+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -349,12 +449,12 @@ Name | Description
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "c00cb40f-5740-4083-b15c-033670d46a88"
+      "employee_id": "d8cd1e55-aa18-442b-b72f-159b0dd000ff"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/c00cb40f-5740-4083-b15c-033670d46a88"
+          "related": "api/boomerang/employees/d8cd1e55-aa18-442b-b72f-159b0dd000ff"
         }
       }
     }
@@ -421,11 +521,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e66aafc8-4564-4d29-915f-f8ff76cc20ca",
+    "id": "e4420dd0-2d04-4731-9dea-4cfa7ed7aa45",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-05-27T09:21:32.436425+00:00",
-      "updated_at": "2024-05-27T09:21:32.436425+00:00",
+      "created_at": "2024-06-03T09:30:16.064964+00:00",
+      "updated_at": "2024-06-03T09:30:16.064964+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -435,7 +535,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "422504e5-bde1-4b89-ad1a-a50a6ff08658"
+      "employee_id": "2f3fe07c-3c92-446a-8a33-18cf8e5b527a"
     },
     "relationships": {
       "employee": {
@@ -470,106 +570,6 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
-
-
-### Includes
-
-This request accepts the following includes:
-
-`employee`
-
-
-
-
-
-
-## Listing operations
-
-
-
-> How to fetch a list of operations:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": [
-    {
-      "id": "7dadc3cb-fa4b-47b7-b4ca-5315350bce33",
-      "type": "operations",
-      "attributes": {
-        "created_at": "2024-05-27T09:21:33.261488+00:00",
-        "updated_at": "2024-05-27T09:21:33.261488+00:00",
-        "status": "scheduled",
-        "status_message": null,
-        "finished_at": null,
-        "description": null,
-        "artifact": {
-          "url": null
-        },
-        "error_data": [],
-        "error_count": 0,
-        "employee_id": "3135b5a9-9bd4-440b-a4a5-c10c7192e17a"
-      },
-      "relationships": {
-        "employee": {
-          "links": {
-            "related": "api/boomerang/employees/3135b5a9-9bd4-440b-a4a5-c10c7192e17a"
-          }
-        }
-      }
-    }
-  ],
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/operations`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
-
-
-### Filters
-
-This request can be filtered on:
-
-Name | Description
--- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`finished_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`employee_id` | **Uuid** <br>`eq`, `not_eq`
-
-
-### Meta
-
-Results can be aggregated on:
-
-Name | Description
--- | --
-`total` | **Array** <br>`count`
 
 
 ### Includes
