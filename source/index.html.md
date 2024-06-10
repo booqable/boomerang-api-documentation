@@ -38,7 +38,6 @@ includes:
   - notes
   - operations
   - orders
-  - order_bookings
   - order_duplications
   - order_fulfillments
   - order_price_recalculations
