@@ -16,7 +16,6 @@ includes:
   - barcodes
   - bundle_items
   - bundles
-  - clusters
   - collections
   - collection_items
   - companies
