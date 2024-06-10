@@ -40,17 +40,17 @@ The actual status of items and stock items can be found in their respective reso
 A shortage error can be confirmed by setting the `confirm_shortage` attribute to `true`. Only if the shortage is within the limit configured in the product group(s). See the Product group resource for more information.
 
 ## Endpoints
-`PUT api/boomerang/orders/{id}`
+`GET api/boomerang/orders`
 
 `POST api/boomerang/orders/search`
 
-`POST /api/boomerang/orders`
+`GET api/boomerang/orders/new`
 
 `GET api/boomerang/orders/{id}`
 
-`GET api/boomerang/orders`
+`POST /api/boomerang/orders`
 
-`GET api/boomerang/orders/new`
+`PUT api/boomerang/orders/{id}`
 
 ## Fields
 Every order has the following fields:
@@ -118,393 +118,23 @@ Name | Description
 When the clusters feature is in use, the stop location needs
 to be in the same cluster as the start location.
 
+`documents` | **Documents** `readonly`<br>Associated Documents
 `transfers` | **Transfers** `readonly`<br>Associated Transfers
 `tax_values` | **Tax values** `readonly`<br>Associated Tax values
 `lines` | **Lines** `readonly`<br>Associated Lines
 `stock_item_plannings` | **Stock item plannings** `readonly`<br>Associated Stock item plannings
 
 
-## Updating an order
-
-When updating a customer on an order the following settings will be applied and prices will be calculated accordingly:
-
-- `discount_percentage`
-- `deposit_type`
-- `deposit_value`
-- `tax_region_id`
+## Listing orders
 
 
-> How to assign a (new) customer to an order:
+
+> How to fetch a list of orders:
 
 ```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/8f6fdd87-5a00-4544-8a7c-07a4b947fe31' \
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/orders' \
     --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
-      },
-      "data": {
-        "id": "8f6fdd87-5a00-4544-8a7c-07a4b947fe31",
-        "type": "orders",
-        "attributes": {
-          "customer_id": "979e2d91-8ff0-4ce5-ac5d-662f23973902"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "8f6fdd87-5a00-4544-8a7c-07a4b947fe31",
-    "type": "orders",
-    "attributes": {
-      "price_in_cents": 80250,
-      "grand_total_with_tax_in_cents": 97103,
-      "to_be_paid_in_cents": 197103,
-      "customer_id": "979e2d91-8ff0-4ce5-ac5d-662f23973902",
-      "tax_region_id": null
-    },
-    "relationships": {
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "coupon": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      },
-      "start_location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "stop_location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "transfers": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_values": {
-        "meta": {
-          "included": false
-        }
-      },
-      "lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "stock_item_plannings": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> How to update the deposit_type:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/42787e96-a89e-4250-b5ff-6243024d6416' \
-    --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
-      },
-      "data": {
-        "id": "42787e96-a89e-4250-b5ff-6243024d6416",
-        "type": "orders",
-        "attributes": {
-          "deposit_type": "percentage"
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "42787e96-a89e-4250-b5ff-6243024d6416",
-    "type": "orders",
-    "attributes": {
-      "deposit_type": "percentage",
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "to_be_paid_in_cents": 97392
-    },
-    "relationships": {
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "coupon": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      },
-      "start_location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "stop_location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "transfers": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_values": {
-        "meta": {
-          "included": false
-        }
-      },
-      "lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "stock_item_plannings": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
-> Updating stops_at resulting in a shortage:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/2b21a347-e1b3-411c-b476-701c678cd596' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "2b21a347-e1b3-411c-b476-701c678cd596",
-        "type": "orders",
-        "attributes": {
-          "stops_at": "1980-05-04T12:00:00.000Z"
-        }
-      }
-    }'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-  "errors": [
-    {
-      "code": "stock_item_specified",
-      "status": "422",
-      "title": "Stock item specified",
-      "detail": "One or more items are not available",
-      "meta": {
-        "warning": [],
-        "blocking": [
-          {
-            "reason": "stock_item_specified",
-            "item_id": "cd52588e-df7d-4dc2-a146-ca1d4b7b315d",
-            "unavailable": [
-              "51909345-f878-4dec-b0bb-793f2eed4bef"
-            ],
-            "available": [
-              "8d6943bb-8a11-4592-a4fe-f572e96de786"
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-### HTTP Request
-
-`PUT api/boomerang/orders/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,customer,coupon`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][starts_at]` | **Datetime** <br>When items become unavailable, changing this value may result in shortages
-`data[attributes][stops_at]` | **Datetime** <br>When items become available, changing this value may result in shortages
-`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
-`data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
-`data[attributes][confirm_shortage]` | **Boolean** <br>Confirm shortage on update
-`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
-`data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
-`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
-`data[attributes][start_location_id]` | **Uuid** <br>The associated Start location
-`data[attributes][stop_location_id]` | **Uuid** <br>The associated Stop location
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`customer` => 
-`merge_suggestion_customer`
-
-
-`properties`
-
-
-
-
-`coupon`
-
-
-`lines`
-
-
-`properties`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-`tax_region`
-
-
-`tax_values`
-
-
-`transfers`
-
-
-
-
-
-
-## Searching orders
-
-Use advanced search to make logical filter groups with and/or operators.
-
-
-> How to search for orders:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/orders/search' \
-    --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "orders": "id"
-      },
-      "filter": {
-        "conditions": {
-          "operator": "and",
-          "attributes": [
-            {
-              "operator": "or",
-              "attributes": [
-                {
-                  "starts_at": {
-                    "gte": "2024-06-04T09:25:03Z",
-                    "lte": "2024-06-07T09:25:03Z"
-                  }
-                },
-                {
-                  "stops_at": {
-                    "gte": "2024-06-04T09:25:03Z",
-                    "lte": "2024-06-07T09:25:03Z"
-                  }
-                }
-              ]
-            },
-            {
-              "operator": "and",
-              "attributes": [
-                {
-                  "deposit_type": "none"
-                },
-                {
-                  "payment_status": "paid"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }'
 ```
 
 > A 200 status response looks like this:
@@ -513,18 +143,131 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "120a4a91-a8f1-4b3b-9aa1-dcae5fb69540"
-    },
-    {
-      "id": "565af486-8906-4063-9514-1a981866c96b"
+      "id": "07143c68-f149-4f0f-92f4-dc2bfe853908",
+      "type": "orders",
+      "attributes": {
+        "created_at": "2024-06-10T09:23:26.096132+00:00",
+        "updated_at": "2024-06-10T09:23:27.918593+00:00",
+        "number": 1,
+        "status": "reserved",
+        "statuses": [
+          "reserved"
+        ],
+        "status_counts": {
+          "concept": 0,
+          "new": 0,
+          "reserved": 1,
+          "started": 0,
+          "stopped": 0
+        },
+        "starts_at": "1980-04-01T12:00:00.000000+00:00",
+        "stops_at": "1980-05-01T12:00:00.000000+00:00",
+        "deposit_type": "percentage",
+        "deposit_value": 10.0,
+        "entirely_started": false,
+        "entirely_stopped": false,
+        "location_shortage": false,
+        "shortage": false,
+        "payment_status": "payment_due",
+        "override_period_restrictions": false,
+        "has_signed_contract": false,
+        "tag_list": [
+          "webshop"
+        ],
+        "properties": {},
+        "price_in_cents": 80250,
+        "grand_total_in_cents": 72225,
+        "grand_total_with_tax_in_cents": 87392,
+        "tax_in_cents": 15167,
+        "discount_in_cents": 8025,
+        "coupon_discount_in_cents": 0,
+        "total_discount_in_cents": 8025,
+        "deposit_in_cents": 10000,
+        "deposit_paid_in_cents": 0,
+        "deposit_refunded_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "to_be_paid_in_cents": 97392,
+        "paid_in_cents": 0,
+        "discount_type": "percentage",
+        "discount_percentage": 10.0,
+        "customer_id": "96eeb829-cc72-4e75-a135-775855d18d94",
+        "tax_region_id": null,
+        "coupon_id": null,
+        "start_location_id": "3521205c-d490-4165-a4ae-c940eec7d9e7",
+        "stop_location_id": "3521205c-d490-4165-a4ae-c940eec7d9e7"
+      },
+      "relationships": {
+        "customer": {
+          "links": {
+            "related": "api/boomerang/customers/96eeb829-cc72-4e75-a135-775855d18d94"
+          }
+        },
+        "tax_region": {
+          "links": {
+            "related": null
+          }
+        },
+        "coupon": {
+          "links": {
+            "related": null
+          }
+        },
+        "barcode": {
+          "links": {
+            "related": "api/boomerang/barcodes?filter[owner_id]=07143c68-f149-4f0f-92f4-dc2bfe853908&filter[owner_type]=orders"
+          }
+        },
+        "properties": {
+          "links": {
+            "related": "api/boomerang/properties?filter[owner_id]=07143c68-f149-4f0f-92f4-dc2bfe853908&filter[owner_type]=orders"
+          }
+        },
+        "start_location": {
+          "links": {
+            "related": "api/boomerang/locations/3521205c-d490-4165-a4ae-c940eec7d9e7"
+          }
+        },
+        "stop_location": {
+          "links": {
+            "related": "api/boomerang/locations/3521205c-d490-4165-a4ae-c940eec7d9e7"
+          }
+        },
+        "documents": {
+          "links": {
+            "related": "api/boomerang/documents?filter[order_id]=07143c68-f149-4f0f-92f4-dc2bfe853908"
+          }
+        },
+        "transfers": {
+          "links": {
+            "related": "api/boomerang/transfers?filter[order_id]=07143c68-f149-4f0f-92f4-dc2bfe853908"
+          }
+        },
+        "tax_values": {
+          "links": {
+            "related": "api/boomerang/tax_values?filter[owner_id]=07143c68-f149-4f0f-92f4-dc2bfe853908&filter[owner_type]=orders"
+          }
+        },
+        "lines": {
+          "links": {
+            "related": "api/boomerang/lines?filter[owner_id]=07143c68-f149-4f0f-92f4-dc2bfe853908&filter[owner_type]=orders"
+          }
+        },
+        "stock_item_plannings": {
+          "links": {
+            "related": "api/boomerang/stock_item_plannings?filter[order_id]=07143c68-f149-4f0f-92f4-dc2bfe853908"
+          }
+        }
+      }
     }
-  ]
+  ],
+  "meta": {}
 }
 ```
 
 ### HTTP Request
 
-`POST api/boomerang/orders/search`
+`GET api/boomerang/orders`
 
 ### Request params
 
@@ -645,433 +388,57 @@ This request accepts the following includes:
 
 
 
-## Creating an order
+## Searching orders
 
-When creating an order, and the following fields are left blank, a sensible default will be picked:
-
-- `deposit_type` Default deposit type configured in settings.
-- `deposit_value` Default deposit value configured in settings.
-- `start_location_id` First location in account.
-- `stop_location_id` First location in account.
+Use advanced search to make logical filter groups with and/or operators.
 
 
-> How to create an order:
+> How to search for orders:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/orders' \
+    --url 'https://example.booqable.com/api/boomerang/orders/search' \
     --header 'content-type: application/json' \
     --data '{
-      "data": {
-        "type": "orders",
-        "attributes": {
-          "starts_at": "2024-06-06T09:25:06.147Z",
-          "stops_at": "2024-07-15T09:25:06.147Z"
+      "fields": {
+        "orders": "id"
+      },
+      "filter": {
+        "conditions": {
+          "operator": "and",
+          "attributes": [
+            {
+              "operator": "or",
+              "attributes": [
+                {
+                  "starts_at": {
+                    "gte": "2024-06-11T09:23:07Z",
+                    "lte": "2024-06-14T09:23:07Z"
+                  }
+                },
+                {
+                  "stops_at": {
+                    "gte": "2024-06-11T09:23:07Z",
+                    "lte": "2024-06-14T09:23:07Z"
+                  }
+                }
+              ]
+            },
+            {
+              "operator": "and",
+              "attributes": [
+                {
+                  "deposit_type": "none"
+                },
+                {
+                  "payment_status": "paid"
+                }
+              ]
+            }
+          ]
         }
       }
     }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "90ae6af1-b828-4791-9e76-03bcbeea865a",
-    "type": "orders",
-    "attributes": {
-      "created_at": "2024-06-03T09:25:06.190577+00:00",
-      "updated_at": "2024-06-03T09:25:06.213082+00:00",
-      "number": null,
-      "status": "new",
-      "statuses": [
-        "new"
-      ],
-      "status_counts": {
-        "new": 0,
-        "concept": 0,
-        "reserved": 0,
-        "started": 0,
-        "stopped": 0
-      },
-      "starts_at": "2024-06-06T09:15:00.000000+00:00",
-      "stops_at": "2024-07-15T09:15:00.000000+00:00",
-      "deposit_type": "percentage",
-      "deposit_value": 100.0,
-      "entirely_started": true,
-      "entirely_stopped": false,
-      "location_shortage": false,
-      "shortage": false,
-      "payment_status": "paid",
-      "override_period_restrictions": false,
-      "has_signed_contract": false,
-      "tag_list": [],
-      "properties": {},
-      "price_in_cents": 0,
-      "grand_total_in_cents": 0,
-      "grand_total_with_tax_in_cents": 0,
-      "tax_in_cents": 0,
-      "discount_in_cents": 0,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 0,
-      "deposit_in_cents": 0,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 0,
-      "paid_in_cents": 0,
-      "discount_type": "percentage",
-      "discount_percentage": 0.0,
-      "customer_id": null,
-      "tax_region_id": null,
-      "coupon_id": null,
-      "start_location_id": "fd56de1b-835f-434a-a876-9903f11e6116",
-      "stop_location_id": "fd56de1b-835f-434a-a876-9903f11e6116"
-    },
-    "relationships": {
-      "customer": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_region": {
-        "meta": {
-          "included": false
-        }
-      },
-      "coupon": {
-        "meta": {
-          "included": false
-        }
-      },
-      "barcode": {
-        "meta": {
-          "included": false
-        }
-      },
-      "properties": {
-        "meta": {
-          "included": false
-        }
-      },
-      "start_location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "stop_location": {
-        "meta": {
-          "included": false
-        }
-      },
-      "transfers": {
-        "meta": {
-          "included": false
-        }
-      },
-      "tax_values": {
-        "meta": {
-          "included": false
-        }
-      },
-      "lines": {
-        "meta": {
-          "included": false
-        }
-      },
-      "stock_item_plannings": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/orders`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,customer,coupon`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][starts_at]` | **Datetime** <br>When the items on the order become unavailable
-`data[attributes][stops_at]` | **Datetime** <br>When the items on the order become available again
-`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
-`data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
-`data[attributes][confirm_shortage]` | **Boolean** <br>Confirm shortage on update
-`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
-`data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
-`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
-`data[attributes][start_location_id]` | **Uuid** <br>The associated Start location
-`data[attributes][stop_location_id]` | **Uuid** <br>The associated Stop location
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`customer` => 
-`merge_suggestion_customer`
-
-
-`properties`
-
-
-
-
-`coupon`
-
-
-`lines`
-
-
-`properties`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-`tax_region`
-
-
-`tax_values`
-
-
-`transfers`
-
-
-
-
-
-
-## Fetching an order
-
-
-
-> How to fetch an order:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders/25b5de7b-7364-4817-9656-7a1d74e7639d' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "25b5de7b-7364-4817-9656-7a1d74e7639d",
-    "type": "orders",
-    "attributes": {
-      "created_at": "2024-06-03T09:25:07.100281+00:00",
-      "updated_at": "2024-06-03T09:25:08.997856+00:00",
-      "number": 1,
-      "status": "reserved",
-      "statuses": [
-        "reserved"
-      ],
-      "status_counts": {
-        "concept": 0,
-        "new": 0,
-        "reserved": 1,
-        "started": 0,
-        "stopped": 0
-      },
-      "starts_at": "1980-04-01T12:00:00.000000+00:00",
-      "stops_at": "1980-05-01T12:00:00.000000+00:00",
-      "deposit_type": "percentage",
-      "deposit_value": 10.0,
-      "entirely_started": false,
-      "entirely_stopped": false,
-      "location_shortage": false,
-      "shortage": false,
-      "payment_status": "payment_due",
-      "override_period_restrictions": false,
-      "has_signed_contract": false,
-      "tag_list": [
-        "webshop"
-      ],
-      "properties": {},
-      "price_in_cents": 80250,
-      "grand_total_in_cents": 72225,
-      "grand_total_with_tax_in_cents": 87392,
-      "tax_in_cents": 15167,
-      "discount_in_cents": 8025,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 8025,
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 97392,
-      "paid_in_cents": 0,
-      "discount_type": "percentage",
-      "discount_percentage": 10.0,
-      "customer_id": "1bf4973e-715e-4cb6-a93a-49e96cd7c171",
-      "tax_region_id": null,
-      "coupon_id": null,
-      "start_location_id": "8850f148-bb4c-4eae-850f-650ceb0a861d",
-      "stop_location_id": "8850f148-bb4c-4eae-850f-650ceb0a861d"
-    },
-    "relationships": {
-      "customer": {
-        "links": {
-          "related": "api/boomerang/customers/1bf4973e-715e-4cb6-a93a-49e96cd7c171"
-        }
-      },
-      "tax_region": {
-        "links": {
-          "related": null
-        }
-      },
-      "coupon": {
-        "links": {
-          "related": null
-        }
-      },
-      "barcode": {
-        "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=25b5de7b-7364-4817-9656-7a1d74e7639d&filter[owner_type]=orders"
-        }
-      },
-      "properties": {
-        "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=25b5de7b-7364-4817-9656-7a1d74e7639d&filter[owner_type]=orders"
-        }
-      },
-      "start_location": {
-        "links": {
-          "related": "api/boomerang/locations/8850f148-bb4c-4eae-850f-650ceb0a861d"
-        }
-      },
-      "stop_location": {
-        "links": {
-          "related": "api/boomerang/locations/8850f148-bb4c-4eae-850f-650ceb0a861d"
-        }
-      },
-      "transfers": {
-        "links": {
-          "related": "api/boomerang/transfers?filter[order_id]=25b5de7b-7364-4817-9656-7a1d74e7639d"
-        }
-      },
-      "tax_values": {
-        "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=25b5de7b-7364-4817-9656-7a1d74e7639d&filter[owner_type]=orders"
-        }
-      },
-      "lines": {
-        "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=25b5de7b-7364-4817-9656-7a1d74e7639d&filter[owner_type]=orders"
-        }
-      },
-      "stock_item_plannings": {
-        "links": {
-          "related": "api/boomerang/stock_item_plannings?filter[order_id]=25b5de7b-7364-4817-9656-7a1d74e7639d"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET api/boomerang/orders/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,customer,coupon`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`barcode`
-
-
-`customer` => 
-`merge_suggestion_customer`
-
-
-`properties`
-
-
-
-
-`coupon`
-
-
-`lines`
-
-
-`properties`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-`tax_region`
-
-
-`tax_values`
-
-
-`transfers`
-
-
-
-
-
-
-## Listing orders
-
-
-
-> How to fetch a list of orders:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders' \
-    --header 'content-type: application/json' \
 ```
 
 > A 200 status response looks like this:
@@ -1080,126 +447,18 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "cf097bf7-25ab-4442-8b16-dce14311e2d4",
-      "type": "orders",
-      "attributes": {
-        "created_at": "2024-06-03T09:25:10.084936+00:00",
-        "updated_at": "2024-06-03T09:25:11.655816+00:00",
-        "number": 1,
-        "status": "reserved",
-        "statuses": [
-          "reserved"
-        ],
-        "status_counts": {
-          "concept": 0,
-          "new": 0,
-          "reserved": 1,
-          "started": 0,
-          "stopped": 0
-        },
-        "starts_at": "1980-04-01T12:00:00.000000+00:00",
-        "stops_at": "1980-05-01T12:00:00.000000+00:00",
-        "deposit_type": "percentage",
-        "deposit_value": 10.0,
-        "entirely_started": false,
-        "entirely_stopped": false,
-        "location_shortage": false,
-        "shortage": false,
-        "payment_status": "payment_due",
-        "override_period_restrictions": false,
-        "has_signed_contract": false,
-        "tag_list": [
-          "webshop"
-        ],
-        "properties": {},
-        "price_in_cents": 80250,
-        "grand_total_in_cents": 72225,
-        "grand_total_with_tax_in_cents": 87392,
-        "tax_in_cents": 15167,
-        "discount_in_cents": 8025,
-        "coupon_discount_in_cents": 0,
-        "total_discount_in_cents": 8025,
-        "deposit_in_cents": 10000,
-        "deposit_paid_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "deposit_held_in_cents": 0,
-        "deposit_to_refund_in_cents": 0,
-        "to_be_paid_in_cents": 97392,
-        "paid_in_cents": 0,
-        "discount_type": "percentage",
-        "discount_percentage": 10.0,
-        "customer_id": "6dea75e3-3a4f-4a00-8555-117c3140ad0f",
-        "tax_region_id": null,
-        "coupon_id": null,
-        "start_location_id": "d1ffc262-6404-49a5-a918-70d1d1b10acd",
-        "stop_location_id": "d1ffc262-6404-49a5-a918-70d1d1b10acd"
-      },
-      "relationships": {
-        "customer": {
-          "links": {
-            "related": "api/boomerang/customers/6dea75e3-3a4f-4a00-8555-117c3140ad0f"
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "coupon": {
-          "links": {
-            "related": null
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=cf097bf7-25ab-4442-8b16-dce14311e2d4&filter[owner_type]=orders"
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=cf097bf7-25ab-4442-8b16-dce14311e2d4&filter[owner_type]=orders"
-          }
-        },
-        "start_location": {
-          "links": {
-            "related": "api/boomerang/locations/d1ffc262-6404-49a5-a918-70d1d1b10acd"
-          }
-        },
-        "stop_location": {
-          "links": {
-            "related": "api/boomerang/locations/d1ffc262-6404-49a5-a918-70d1d1b10acd"
-          }
-        },
-        "transfers": {
-          "links": {
-            "related": "api/boomerang/transfers?filter[order_id]=cf097bf7-25ab-4442-8b16-dce14311e2d4"
-          }
-        },
-        "tax_values": {
-          "links": {
-            "related": "api/boomerang/tax_values?filter[owner_id]=cf097bf7-25ab-4442-8b16-dce14311e2d4&filter[owner_type]=orders"
-          }
-        },
-        "lines": {
-          "links": {
-            "related": "api/boomerang/lines?filter[owner_id]=cf097bf7-25ab-4442-8b16-dce14311e2d4&filter[owner_type]=orders"
-          }
-        },
-        "stock_item_plannings": {
-          "links": {
-            "related": "api/boomerang/stock_item_plannings?filter[order_id]=cf097bf7-25ab-4442-8b16-dce14311e2d4"
-          }
-        }
-      }
+      "id": "0756f30d-daf2-4f9b-bf3b-18b3e24f9b85"
+    },
+    {
+      "id": "deb13c17-27e1-4160-b36a-011c8d7f8c3d"
     }
-  ],
-  "meta": {}
+  ]
 }
 ```
 
 ### HTTP Request
 
-`GET api/boomerang/orders`
+`POST api/boomerang/orders/search`
 
 ### Request params
 
@@ -1338,11 +597,11 @@ Returns an existing or new order for the current employee.
 ```json
   {
   "data": {
-    "id": "3136086e-9c82-45b0-84e5-296e451c7706",
+    "id": "96c808f9-fab3-450b-81c4-0386972731ba",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-06-03T09:25:14.619563+00:00",
-      "updated_at": "2024-06-03T09:25:14.641222+00:00",
+      "created_at": "2024-06-10T09:23:03.016516+00:00",
+      "updated_at": "2024-06-10T09:23:03.041193+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -1387,8 +646,8 @@ Returns an existing or new order for the current employee.
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "3d8444c0-886c-47bf-85ec-34efdfddd992",
-      "stop_location_id": "3d8444c0-886c-47bf-85ec-34efdfddd992"
+      "start_location_id": "60d6ecd5-28da-4488-b308-a67f5c8d43a7",
+      "stop_location_id": "60d6ecd5-28da-4488-b308-a67f5c8d43a7"
     },
     "relationships": {
       "customer": {
@@ -1408,42 +667,47 @@ Returns an existing or new order for the current employee.
       },
       "barcode": {
         "links": {
-          "related": "api/boomerang/barcodes?filter[owner_id]=3136086e-9c82-45b0-84e5-296e451c7706&filter[owner_type]=orders"
+          "related": "api/boomerang/barcodes?filter[owner_id]=96c808f9-fab3-450b-81c4-0386972731ba&filter[owner_type]=orders"
         }
       },
       "properties": {
         "links": {
-          "related": "api/boomerang/properties?filter[owner_id]=3136086e-9c82-45b0-84e5-296e451c7706&filter[owner_type]=orders"
+          "related": "api/boomerang/properties?filter[owner_id]=96c808f9-fab3-450b-81c4-0386972731ba&filter[owner_type]=orders"
         }
       },
       "start_location": {
         "links": {
-          "related": "api/boomerang/locations/3d8444c0-886c-47bf-85ec-34efdfddd992"
+          "related": "api/boomerang/locations/60d6ecd5-28da-4488-b308-a67f5c8d43a7"
         }
       },
       "stop_location": {
         "links": {
-          "related": "api/boomerang/locations/3d8444c0-886c-47bf-85ec-34efdfddd992"
+          "related": "api/boomerang/locations/60d6ecd5-28da-4488-b308-a67f5c8d43a7"
+        }
+      },
+      "documents": {
+        "links": {
+          "related": "api/boomerang/documents?filter[order_id]=96c808f9-fab3-450b-81c4-0386972731ba"
         }
       },
       "transfers": {
         "links": {
-          "related": "api/boomerang/transfers?filter[order_id]=3136086e-9c82-45b0-84e5-296e451c7706"
+          "related": "api/boomerang/transfers?filter[order_id]=96c808f9-fab3-450b-81c4-0386972731ba"
         }
       },
       "tax_values": {
         "links": {
-          "related": "api/boomerang/tax_values?filter[owner_id]=3136086e-9c82-45b0-84e5-296e451c7706&filter[owner_type]=orders"
+          "related": "api/boomerang/tax_values?filter[owner_id]=96c808f9-fab3-450b-81c4-0386972731ba&filter[owner_type]=orders"
         }
       },
       "lines": {
         "links": {
-          "related": "api/boomerang/lines?filter[owner_id]=3136086e-9c82-45b0-84e5-296e451c7706&filter[owner_type]=orders"
+          "related": "api/boomerang/lines?filter[owner_id]=96c808f9-fab3-450b-81c4-0386972731ba&filter[owner_type]=orders"
         }
       },
       "stock_item_plannings": {
         "links": {
-          "related": "api/boomerang/stock_item_plannings?filter[order_id]=3136086e-9c82-45b0-84e5-296e451c7706"
+          "related": "api/boomerang/stock_item_plannings?filter[order_id]=96c808f9-fab3-450b-81c4-0386972731ba"
         }
       }
     }
@@ -1464,6 +728,773 @@ Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=barcode,customer,coupon`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`customer` => 
+`merge_suggestion_customer`
+
+
+`properties`
+
+
+
+
+`coupon`
+
+
+`lines`
+
+
+`properties`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+`tax_region`
+
+
+`tax_values`
+
+
+`transfers`
+
+
+
+
+
+
+## Fetching an order
+
+
+
+> How to fetch an order:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/orders/6676768c-4367-4e69-a721-53f143c6751f' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "6676768c-4367-4e69-a721-53f143c6751f",
+    "type": "orders",
+    "attributes": {
+      "created_at": "2024-06-10T09:23:23.135156+00:00",
+      "updated_at": "2024-06-10T09:23:24.994461+00:00",
+      "number": 1,
+      "status": "reserved",
+      "statuses": [
+        "reserved"
+      ],
+      "status_counts": {
+        "concept": 0,
+        "new": 0,
+        "reserved": 1,
+        "started": 0,
+        "stopped": 0
+      },
+      "starts_at": "1980-04-01T12:00:00.000000+00:00",
+      "stops_at": "1980-05-01T12:00:00.000000+00:00",
+      "deposit_type": "percentage",
+      "deposit_value": 10.0,
+      "entirely_started": false,
+      "entirely_stopped": false,
+      "location_shortage": false,
+      "shortage": false,
+      "payment_status": "payment_due",
+      "override_period_restrictions": false,
+      "has_signed_contract": false,
+      "tag_list": [
+        "webshop"
+      ],
+      "properties": {},
+      "price_in_cents": 80250,
+      "grand_total_in_cents": 72225,
+      "grand_total_with_tax_in_cents": 87392,
+      "tax_in_cents": 15167,
+      "discount_in_cents": 8025,
+      "coupon_discount_in_cents": 0,
+      "total_discount_in_cents": 8025,
+      "deposit_in_cents": 10000,
+      "deposit_paid_in_cents": 0,
+      "deposit_refunded_in_cents": 0,
+      "deposit_held_in_cents": 0,
+      "deposit_to_refund_in_cents": 0,
+      "to_be_paid_in_cents": 97392,
+      "paid_in_cents": 0,
+      "discount_type": "percentage",
+      "discount_percentage": 10.0,
+      "customer_id": "cae4abba-6acd-48a9-a5aa-bc508faf9975",
+      "tax_region_id": null,
+      "coupon_id": null,
+      "start_location_id": "63952ff6-9c38-4c46-8ade-c0fac27570fd",
+      "stop_location_id": "63952ff6-9c38-4c46-8ade-c0fac27570fd"
+    },
+    "relationships": {
+      "customer": {
+        "links": {
+          "related": "api/boomerang/customers/cae4abba-6acd-48a9-a5aa-bc508faf9975"
+        }
+      },
+      "tax_region": {
+        "links": {
+          "related": null
+        }
+      },
+      "coupon": {
+        "links": {
+          "related": null
+        }
+      },
+      "barcode": {
+        "links": {
+          "related": "api/boomerang/barcodes?filter[owner_id]=6676768c-4367-4e69-a721-53f143c6751f&filter[owner_type]=orders"
+        }
+      },
+      "properties": {
+        "links": {
+          "related": "api/boomerang/properties?filter[owner_id]=6676768c-4367-4e69-a721-53f143c6751f&filter[owner_type]=orders"
+        }
+      },
+      "start_location": {
+        "links": {
+          "related": "api/boomerang/locations/63952ff6-9c38-4c46-8ade-c0fac27570fd"
+        }
+      },
+      "stop_location": {
+        "links": {
+          "related": "api/boomerang/locations/63952ff6-9c38-4c46-8ade-c0fac27570fd"
+        }
+      },
+      "documents": {
+        "links": {
+          "related": "api/boomerang/documents?filter[order_id]=6676768c-4367-4e69-a721-53f143c6751f"
+        }
+      },
+      "transfers": {
+        "links": {
+          "related": "api/boomerang/transfers?filter[order_id]=6676768c-4367-4e69-a721-53f143c6751f"
+        }
+      },
+      "tax_values": {
+        "links": {
+          "related": "api/boomerang/tax_values?filter[owner_id]=6676768c-4367-4e69-a721-53f143c6751f&filter[owner_type]=orders"
+        }
+      },
+      "lines": {
+        "links": {
+          "related": "api/boomerang/lines?filter[owner_id]=6676768c-4367-4e69-a721-53f143c6751f&filter[owner_type]=orders"
+        }
+      },
+      "stock_item_plannings": {
+        "links": {
+          "related": "api/boomerang/stock_item_plannings?filter[order_id]=6676768c-4367-4e69-a721-53f143c6751f"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET api/boomerang/orders/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,customer,coupon`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`customer` => 
+`merge_suggestion_customer`
+
+
+`properties`
+
+
+
+
+`coupon`
+
+
+`lines`
+
+
+`properties`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+`tax_region`
+
+
+`tax_values`
+
+
+`transfers`
+
+
+
+
+
+
+## Creating an order
+
+When creating an order, and the following fields are left blank, a sensible default will be picked:
+
+- `deposit_type` Default deposit type configured in settings.
+- `deposit_value` Default deposit value configured in settings.
+- `start_location_id` First location in account.
+- `stop_location_id` First location in account.
+
+
+> How to create an order:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/orders' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "orders",
+        "attributes": {
+          "starts_at": "2024-06-13T09:23:10.667Z",
+          "stops_at": "2024-07-22T09:23:10.668Z"
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "547aeec3-c8fb-46d4-bdbf-cf8b9a5ca88f",
+    "type": "orders",
+    "attributes": {
+      "created_at": "2024-06-10T09:23:10.712677+00:00",
+      "updated_at": "2024-06-10T09:23:10.740456+00:00",
+      "number": null,
+      "status": "new",
+      "statuses": [
+        "new"
+      ],
+      "status_counts": {
+        "new": 0,
+        "concept": 0,
+        "reserved": 0,
+        "started": 0,
+        "stopped": 0
+      },
+      "starts_at": "2024-06-13T09:15:00.000000+00:00",
+      "stops_at": "2024-07-22T09:15:00.000000+00:00",
+      "deposit_type": "percentage",
+      "deposit_value": 100.0,
+      "entirely_started": true,
+      "entirely_stopped": false,
+      "location_shortage": false,
+      "shortage": false,
+      "payment_status": "paid",
+      "override_period_restrictions": false,
+      "has_signed_contract": false,
+      "tag_list": [],
+      "properties": {},
+      "price_in_cents": 0,
+      "grand_total_in_cents": 0,
+      "grand_total_with_tax_in_cents": 0,
+      "tax_in_cents": 0,
+      "discount_in_cents": 0,
+      "coupon_discount_in_cents": 0,
+      "total_discount_in_cents": 0,
+      "deposit_in_cents": 0,
+      "deposit_paid_in_cents": 0,
+      "deposit_refunded_in_cents": 0,
+      "deposit_held_in_cents": 0,
+      "deposit_to_refund_in_cents": 0,
+      "to_be_paid_in_cents": 0,
+      "paid_in_cents": 0,
+      "discount_type": "percentage",
+      "discount_percentage": 0.0,
+      "customer_id": null,
+      "tax_region_id": null,
+      "coupon_id": null,
+      "start_location_id": "d75395ec-47fa-4def-af13-1e206e4f33cd",
+      "stop_location_id": "d75395ec-47fa-4def-af13-1e206e4f33cd"
+    },
+    "relationships": {
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "coupon": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "start_location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "stop_location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "documents": {
+        "meta": {
+          "included": false
+        }
+      },
+      "transfers": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_values": {
+        "meta": {
+          "included": false
+        }
+      },
+      "lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "stock_item_plannings": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/orders`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,customer,coupon`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][starts_at]` | **Datetime** <br>When the items on the order become unavailable
+`data[attributes][stops_at]` | **Datetime** <br>When the items on the order become available again
+`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
+`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
+`data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
+`data[attributes][confirm_shortage]` | **Boolean** <br>Confirm shortage on update
+`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
+`data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
+`data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
+`data[attributes][start_location_id]` | **Uuid** <br>The associated Start location
+`data[attributes][stop_location_id]` | **Uuid** <br>The associated Stop location
+
+
+### Includes
+
+This request accepts the following includes:
+
+`barcode`
+
+
+`customer` => 
+`merge_suggestion_customer`
+
+
+`properties`
+
+
+
+
+`coupon`
+
+
+`lines`
+
+
+`properties`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+`tax_region`
+
+
+`tax_values`
+
+
+`transfers`
+
+
+
+
+
+
+## Updating an order
+
+When updating a customer on an order the following settings will be applied and prices will be calculated accordingly:
+
+- `discount_percentage`
+- `deposit_type`
+- `deposit_value`
+- `tax_region_id`
+
+
+> How to assign a (new) customer to an order:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/orders/4f21cb4b-1e47-45c9-96ff-1132f8af4538' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
+      },
+      "data": {
+        "id": "4f21cb4b-1e47-45c9-96ff-1132f8af4538",
+        "type": "orders",
+        "attributes": {
+          "customer_id": "a97e0233-e55e-418f-a743-fd2292ec70d8"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "4f21cb4b-1e47-45c9-96ff-1132f8af4538",
+    "type": "orders",
+    "attributes": {
+      "price_in_cents": 80250,
+      "grand_total_with_tax_in_cents": 97103,
+      "to_be_paid_in_cents": 197103,
+      "customer_id": "a97e0233-e55e-418f-a743-fd2292ec70d8",
+      "tax_region_id": null
+    },
+    "relationships": {
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "coupon": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "start_location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "stop_location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "documents": {
+        "meta": {
+          "included": false
+        }
+      },
+      "transfers": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_values": {
+        "meta": {
+          "included": false
+        }
+      },
+      "lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "stock_item_plannings": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> How to update the deposit_type:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/orders/edf999a2-ce93-4a72-9185-500abcc785f4' \
+    --header 'content-type: application/json' \
+    --data '{
+      "fields": {
+        "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
+      },
+      "data": {
+        "id": "edf999a2-ce93-4a72-9185-500abcc785f4",
+        "type": "orders",
+        "attributes": {
+          "deposit_type": "percentage"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "edf999a2-ce93-4a72-9185-500abcc785f4",
+    "type": "orders",
+    "attributes": {
+      "deposit_type": "percentage",
+      "deposit_in_cents": 10000,
+      "deposit_paid_in_cents": 0,
+      "to_be_paid_in_cents": 97392
+    },
+    "relationships": {
+      "customer": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_region": {
+        "meta": {
+          "included": false
+        }
+      },
+      "coupon": {
+        "meta": {
+          "included": false
+        }
+      },
+      "barcode": {
+        "meta": {
+          "included": false
+        }
+      },
+      "properties": {
+        "meta": {
+          "included": false
+        }
+      },
+      "start_location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "stop_location": {
+        "meta": {
+          "included": false
+        }
+      },
+      "documents": {
+        "meta": {
+          "included": false
+        }
+      },
+      "transfers": {
+        "meta": {
+          "included": false
+        }
+      },
+      "tax_values": {
+        "meta": {
+          "included": false
+        }
+      },
+      "lines": {
+        "meta": {
+          "included": false
+        }
+      },
+      "stock_item_plannings": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+
+> Updating stops_at resulting in a shortage:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/orders/8881142d-d0a3-4c6e-bc6f-2bce0911ebb5' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "8881142d-d0a3-4c6e-bc6f-2bce0911ebb5",
+        "type": "orders",
+        "attributes": {
+          "stops_at": "1980-05-04T12:00:00.000Z"
+        }
+      }
+    }'
+```
+
+> A 422 status response looks like this:
+
+```json
+  {
+  "errors": [
+    {
+      "code": "stock_item_specified",
+      "status": "422",
+      "title": "Stock item specified",
+      "detail": "One or more items are not available",
+      "meta": {
+        "warning": [],
+        "blocking": [
+          {
+            "reason": "stock_item_specified",
+            "item_id": "3bba0ebb-4656-4b6c-80c5-8c81e8771e2a",
+            "unavailable": [
+              "593c21dc-e9f0-47c6-8f75-45e679924a50"
+            ],
+            "available": [
+              "1a4846eb-3f8e-4d3f-a6cf-b3f3e4b037b4"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`PUT api/boomerang/orders/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=barcode,customer,coupon`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][starts_at]` | **Datetime** <br>When items become unavailable, changing this value may result in shortages
+`data[attributes][stops_at]` | **Datetime** <br>When items become available, changing this value may result in shortages
+`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
+`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
+`data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
+`data[attributes][confirm_shortage]` | **Boolean** <br>Confirm shortage on update
+`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
+`data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
+`data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][coupon_id]` | **Uuid** <br>The associated Coupon
+`data[attributes][start_location_id]` | **Uuid** <br>The associated Start location
+`data[attributes][stop_location_id]` | **Uuid** <br>The associated Stop location
 
 
 ### Includes

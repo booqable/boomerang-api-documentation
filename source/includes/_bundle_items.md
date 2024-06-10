@@ -5,15 +5,15 @@ Bundle items define which products and product groups are associated with a bund
 When `product_id` is left blank, and the associated product group has variations, the variation needs to be specified when adding this bundle to an order (see [order bookings](#order-bookings) for more information).
 
 ## Endpoints
-`PUT /api/boomerang/bundle_items/{id}`
-
 `GET /api/boomerang/bundle_items`
+
+`GET /api/boomerang/bundle_items/{id}`
 
 `POST /api/boomerang/bundle_items`
 
-`DELETE /api/boomerang/bundle_items/{id}`
+`PUT /api/boomerang/bundle_items/{id}`
 
-`GET /api/boomerang/bundle_items/{id}`
+`DELETE /api/boomerang/bundle_items/{id}`
 
 ## Fields
 Every bundle item has the following fields:
@@ -41,118 +41,6 @@ Name | Description
 `product` | **Products** `readonly`<br>Associated Product
 
 
-## Updating a bundle item
-
-
-
-> How to update a bundle item:
-
-```shell
-  curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/2f95e7b0-3d0b-476c-bcf0-03ddfbf7f40e' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "2f95e7b0-3d0b-476c-bcf0-03ddfbf7f40e",
-        "type": "bundle_items",
-        "attributes": {
-          "quantity": 3,
-          "discount_percentage": 20
-        }
-      }
-    }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "2f95e7b0-3d0b-476c-bcf0-03ddfbf7f40e",
-    "type": "bundle_items",
-    "attributes": {
-      "created_at": "2024-06-03T09:29:09.180729+00:00",
-      "updated_at": "2024-06-03T09:29:09.299064+00:00",
-      "quantity": 3,
-      "discount_percentage": 20.0,
-      "position": 1,
-      "bundle_id": "3024ad7e-6893-407b-b112-464cbf07d133",
-      "product_group_id": "bd9d0039-d6ec-40e5-9899-ed7c7a016988",
-      "product_id": "92f199bd-9b52-48aa-9b76-bc4c75315b45"
-    },
-    "relationships": {
-      "bundle": {
-        "meta": {
-          "included": false
-        }
-      },
-      "product_group": {
-        "meta": {
-          "included": false
-        }
-      },
-      "product": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`PUT /api/boomerang/bundle_items/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=bundle,product,product_group`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][quantity]` | **Integer** <br>The quantity of the item
-`data[attributes][discount_percentage]` | **Float** <br>The discount percentage for this product when rented out in a bundle
-`data[attributes][position]` | **Integer** <br>Position of the product in bundle list
-`data[attributes][bundle_id]` | **Uuid** <br>The associated Bundle
-`data[attributes][product_group_id]` | **Uuid** <br>The associated Product group
-`data[attributes][product_id]` | **Uuid** <br>The associated Product
-
-
-### Includes
-
-This request accepts the following includes:
-
-`bundle`
-
-
-`product` => 
-`photo`
-
-
-
-
-`product_group` => 
-`photo`
-
-
-
-
-
-
-
-
 ## Listing bundle items
 
 
@@ -161,7 +49,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=b2400523-86b5-4543-ac99-71bea9a2d945' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=6bb856a9-fc23-4432-9568-5d60814fe3c3' \
     --header 'content-type: application/json' \
 ```
 
@@ -171,32 +59,32 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "54f178bb-d5ef-400e-997d-ce83d45f0370",
+      "id": "6efcc77f-11e2-4387-a078-95293e8ddead",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2024-06-03T09:29:10.620328+00:00",
-        "updated_at": "2024-06-03T09:29:10.620328+00:00",
+        "created_at": "2024-06-10T09:24:53.563379+00:00",
+        "updated_at": "2024-06-10T09:24:53.563379+00:00",
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 1,
-        "bundle_id": "b2400523-86b5-4543-ac99-71bea9a2d945",
-        "product_group_id": "b2f2fc3a-808f-4ce2-8db9-c603db330932",
-        "product_id": "1da0b870-23f6-4ff3-b071-4a3fcc8e2d4a"
+        "bundle_id": "6bb856a9-fc23-4432-9568-5d60814fe3c3",
+        "product_group_id": "0312343c-70e8-459d-9973-e4de78b025b2",
+        "product_id": "60821148-ec72-46ce-84d0-498036454ee2"
       },
       "relationships": {
         "bundle": {
           "links": {
-            "related": "api/boomerang/bundles/b2400523-86b5-4543-ac99-71bea9a2d945"
+            "related": "api/boomerang/bundles/6bb856a9-fc23-4432-9568-5d60814fe3c3"
           }
         },
         "product_group": {
           "links": {
-            "related": "api/boomerang/product_groups/b2f2fc3a-808f-4ce2-8db9-c603db330932"
+            "related": "api/boomerang/product_groups/0312343c-70e8-459d-9973-e4de78b025b2"
           }
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/1da0b870-23f6-4ff3-b071-4a3fcc8e2d4a"
+            "related": "api/boomerang/products/60821148-ec72-46ce-84d0-498036454ee2"
           }
         }
       }
@@ -274,6 +162,94 @@ This request accepts the following includes:
 
 
 
+## Fetching a bundle item
+
+
+
+> How to fetch a bundle item:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/157146bc-1eba-4081-b16f-56c47f68ebef' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "157146bc-1eba-4081-b16f-56c47f68ebef",
+    "type": "bundle_items",
+    "attributes": {
+      "created_at": "2024-06-10T09:24:55.149073+00:00",
+      "updated_at": "2024-06-10T09:24:55.149073+00:00",
+      "quantity": 2,
+      "discount_percentage": 15.0,
+      "position": 1,
+      "bundle_id": "4895e502-a27b-4bdb-915e-bf0663827872",
+      "product_group_id": "430f4a95-9ca0-4be1-811c-cf1bd45fbe01",
+      "product_id": "4445496d-884a-4285-b132-062e14a88121"
+    },
+    "relationships": {
+      "bundle": {
+        "links": {
+          "related": "api/boomerang/bundles/4895e502-a27b-4bdb-915e-bf0663827872"
+        }
+      },
+      "product_group": {
+        "links": {
+          "related": "api/boomerang/product_groups/430f4a95-9ca0-4be1-811c-cf1bd45fbe01"
+        }
+      },
+      "product": {
+        "links": {
+          "related": "api/boomerang/products/4445496d-884a-4285-b132-062e14a88121"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/bundle_items/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=bundle,product,product_group`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`bundle`
+
+
+`product` => 
+`photo`
+
+
+
+
+`product_group` => 
+`photo`
+
+
+
+
+
+
+
+
 ## Creating a bundle item
 
 
@@ -288,9 +264,9 @@ This request accepts the following includes:
       "data": {
         "type": "bundle_items",
         "attributes": {
-          "bundle_id": "3a95f3e8-b105-46aa-b449-dee1f7d6c1b1",
-          "product_group_id": "11eb4cd7-2984-4224-9d6d-1c0a5b1616a3",
-          "product_id": "550b17e4-b9fe-42eb-bd3a-63cda3be3826",
+          "bundle_id": "563810ef-8424-47a5-8983-eab208eed973",
+          "product_group_id": "fd2916a0-f334-480c-8c89-150214608ce9",
+          "product_id": "9f5930a5-36f3-4c26-b0f2-9872122001b9",
           "quantity": 2,
           "discount_percentage": 15
         }
@@ -303,17 +279,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4b98f672-de86-4d04-9d9b-0c88cdcccccf",
+    "id": "5547e44d-4035-41d6-97ca-239e6390c834",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2024-06-03T09:29:12.373000+00:00",
-      "updated_at": "2024-06-03T09:29:12.373000+00:00",
+      "created_at": "2024-06-10T09:24:52.054649+00:00",
+      "updated_at": "2024-06-10T09:24:52.054649+00:00",
       "quantity": 2,
       "discount_percentage": 15.0,
       "position": 2,
-      "bundle_id": "3a95f3e8-b105-46aa-b449-dee1f7d6c1b1",
-      "product_group_id": "11eb4cd7-2984-4224-9d6d-1c0a5b1616a3",
-      "product_id": "550b17e4-b9fe-42eb-bd3a-63cda3be3826"
+      "bundle_id": "563810ef-8424-47a5-8983-eab208eed973",
+      "product_group_id": "fd2916a0-f334-480c-8c89-150214608ce9",
+      "product_id": "9f5930a5-36f3-4c26-b0f2-9872122001b9"
     },
     "relationships": {
       "bundle": {
@@ -388,6 +364,118 @@ This request accepts the following includes:
 
 
 
+## Updating a bundle item
+
+
+
+> How to update a bundle item:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/97a1bd80-658f-4c1c-9384-9b6d2d1d7d82' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "97a1bd80-658f-4c1c-9384-9b6d2d1d7d82",
+        "type": "bundle_items",
+        "attributes": {
+          "quantity": 3,
+          "discount_percentage": 20
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "97a1bd80-658f-4c1c-9384-9b6d2d1d7d82",
+    "type": "bundle_items",
+    "attributes": {
+      "created_at": "2024-06-10T09:24:59.847996+00:00",
+      "updated_at": "2024-06-10T09:24:59.925559+00:00",
+      "quantity": 3,
+      "discount_percentage": 20.0,
+      "position": 1,
+      "bundle_id": "eb596be3-e090-4d58-a778-0cd6e6849831",
+      "product_group_id": "0ece6699-4ed4-4a55-bb17-d8ddd9023a1e",
+      "product_id": "e46f713f-bc46-4321-bfad-702e27605842"
+    },
+    "relationships": {
+      "bundle": {
+        "meta": {
+          "included": false
+        }
+      },
+      "product_group": {
+        "meta": {
+          "included": false
+        }
+      },
+      "product": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/bundle_items/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=bundle,product,product_group`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][quantity]` | **Integer** <br>The quantity of the item
+`data[attributes][discount_percentage]` | **Float** <br>The discount percentage for this product when rented out in a bundle
+`data[attributes][position]` | **Integer** <br>Position of the product in bundle list
+`data[attributes][bundle_id]` | **Uuid** <br>The associated Bundle
+`data[attributes][product_group_id]` | **Uuid** <br>The associated Product group
+`data[attributes][product_id]` | **Uuid** <br>The associated Product
+
+
+### Includes
+
+This request accepts the following includes:
+
+`bundle`
+
+
+`product` => 
+`photo`
+
+
+
+
+`product_group` => 
+`photo`
+
+
+
+
+
+
+
+
 ## Deleting a bundle item
 
 
@@ -396,7 +484,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/dfd9a324-e2c7-4e11-8a07-f6c8a7bac925' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/b888af77-5ef8-4a23-84fa-863cb9d3a623' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -406,17 +494,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dfd9a324-e2c7-4e11-8a07-f6c8a7bac925",
+    "id": "b888af77-5ef8-4a23-84fa-863cb9d3a623",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2024-06-03T09:29:14.717026+00:00",
-      "updated_at": "2024-06-03T09:29:14.717026+00:00",
+      "created_at": "2024-06-10T09:24:58.386999+00:00",
+      "updated_at": "2024-06-10T09:24:58.386999+00:00",
       "quantity": 2,
       "discount_percentage": 15.0,
       "position": 1,
-      "bundle_id": "297a2923-619c-478a-9ee5-3d3fd97d8de8",
-      "product_group_id": "39009873-e37c-4c52-878b-02557aa19d8b",
-      "product_id": "53632f1f-2c73-4f79-92a1-2446ebabfd5a"
+      "bundle_id": "e06623b7-f759-41ff-b88f-70f6f3a5e6fb",
+      "product_group_id": "6cc380cd-467d-40fd-8170-1e26a342f932",
+      "product_id": "2c5f1e7d-1732-4c55-81e1-b38a279cf6bb"
     },
     "relationships": {
       "bundle": {
@@ -456,90 +544,3 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a bundle item
-
-
-
-> How to fetch a bundle item:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/75376021-ea59-400b-b601-ca7b3e6bb076' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "75376021-ea59-400b-b601-ca7b3e6bb076",
-    "type": "bundle_items",
-    "attributes": {
-      "created_at": "2024-06-03T09:29:16.476904+00:00",
-      "updated_at": "2024-06-03T09:29:16.476904+00:00",
-      "quantity": 2,
-      "discount_percentage": 15.0,
-      "position": 1,
-      "bundle_id": "025e3406-4c11-4c35-a782-1247ca46d71a",
-      "product_group_id": "2c7188d3-2c94-4711-a1e7-c69a7d40dd09",
-      "product_id": "aa51f960-58bb-41b2-bee4-070715463c97"
-    },
-    "relationships": {
-      "bundle": {
-        "links": {
-          "related": "api/boomerang/bundles/025e3406-4c11-4c35-a782-1247ca46d71a"
-        }
-      },
-      "product_group": {
-        "links": {
-          "related": "api/boomerang/product_groups/2c7188d3-2c94-4711-a1e7-c69a7d40dd09"
-        }
-      },
-      "product": {
-        "links": {
-          "related": "api/boomerang/products/aa51f960-58bb-41b2-bee4-070715463c97"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/bundle_items/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=bundle,product,product_group`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`bundle`
-
-
-`product` => 
-`photo`
-
-
-
-
-`product_group` => 
-`photo`
-
-
-
-
-
-
-

@@ -47,7 +47,7 @@ Name | Description
 
 
 
-> When the StockItem is specified on a reserved Order:
+> When the StockItem is not used, it can be archived:
 
 ```shell
   curl --request POST \
@@ -57,33 +57,31 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "c4e33d61-e2ac-4388-9ca6-366e7f18015a"
+          "stock_item_id": "9e9c5dbe-565d-4df6-9c96-5bd4eed72233"
         }
       }
     }'
 ```
 
-> A 422 status response looks like this:
+> A 200 status response looks like this:
 
 ```json
   {
-  "errors": [
-    {
-      "code": "stock_item_specified",
-      "status": "422",
-      "title": "Stock item specified",
-      "detail": "This stock item is specified on a current or future order",
-      "meta": {
-        "blocking": [
-          {
-            "order_ids": [
-              "9b912603-8bb9-4dad-8a18-7f548c5a9d5a"
-            ]
-          }
-        ]
+  "data": {
+    "id": "dad700a3-f67c-57b0-8e3e-2cd7f4edca5c",
+    "type": "stock_item_archivations",
+    "attributes": {
+      "stock_item_id": "9e9c5dbe-565d-4df6-9c96-5bd4eed72233"
+    },
+    "relationships": {
+      "stock_item": {
+        "meta": {
+          "included": false
+        }
       }
     }
-  ]
+  },
+  "meta": {}
 }
 ```
 
@@ -98,7 +96,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "c984d2a4-e562-4e26-b092-f2f072b1eb8a"
+          "stock_item_id": "665c78f8-50e0-44c1-bd98-e3f2e53ba67b"
         }
       }
     }'
@@ -121,7 +119,7 @@ Name | Description
 ```
 
 
-> When archival would create allowed shortage, and confirm_shortage is true:
+> When the StockItem is specified on a reserved Order:
 
 ```shell
   curl --request POST \
@@ -131,32 +129,33 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "38ce41fc-a62e-4aad-a542-6d3e04bf3579",
-          "confirm_shortage": true
+          "stock_item_id": "0741280f-6943-40da-b1b6-2cced637585a"
         }
       }
     }'
 ```
 
-> A 200 status response looks like this:
+> A 422 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "4eea3b93-063b-5fd6-a6cc-3fcb89d988b6",
-    "type": "stock_item_archivations",
-    "attributes": {
-      "stock_item_id": "38ce41fc-a62e-4aad-a542-6d3e04bf3579"
-    },
-    "relationships": {
-      "stock_item": {
-        "meta": {
-          "included": false
-        }
+  "errors": [
+    {
+      "code": "stock_item_specified",
+      "status": "422",
+      "title": "Stock item specified",
+      "detail": "This stock item is specified on a current or future order",
+      "meta": {
+        "blocking": [
+          {
+            "order_ids": [
+              "de921a1d-a3a4-4852-ad34-909612c3823b"
+            ]
+          }
+        ]
       }
     }
-  },
-  "meta": {}
+  ]
 }
 ```
 
@@ -171,7 +170,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "99901ebd-e1b3-4e00-81a5-05067b91b6cd"
+          "stock_item_id": "925e4406-c9aa-4164-9e27-1131cdfb2f70"
         }
       }
     }'
@@ -193,12 +192,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "98c9c587-186b-438b-9fcc-90b0403ec097",
+            "item_id": "fec30cd5-56b0-461e-97d1-3b7851dff0e8",
             "mutation": -1,
             "order_ids": [
-              "e744f5f0-1780-4d6a-a2e4-34817d24412f"
+              "7480718e-f31c-4b2d-930f-f88e8f25f818"
             ],
-            "location_id": "2f0f5623-4cb0-4f4a-9ed9-4f19d835a23c",
+            "location_id": "a8eb7721-4cf0-4db4-acde-dd7492fd9d35",
             "available": 0,
             "plannable": 0,
             "stock_count": 1,
@@ -228,7 +227,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "38ef82ff-9814-434b-8834-ccc15b870808"
+          "stock_item_id": "6961a57f-4724-41e3-a489-85074564a593"
         }
       }
     }'
@@ -249,12 +248,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "f4ffb0a8-e742-4771-a89d-c5fecc8a43b2",
+            "item_id": "7b224055-8f10-4136-8c0b-745d5b4441b7",
             "mutation": -1,
             "order_ids": [
-              "097a88f7-0b65-4522-bc58-7cab59e41306"
+              "37767de4-bf4a-45cb-8099-f1915a99b28e"
             ],
-            "location_id": "799a1729-3fbb-4603-b2e0-5736d041c61c",
+            "location_id": "ede520f8-eed8-44bc-a814-770c23009bab",
             "available": 0,
             "plannable": 1,
             "stock_count": 1,
@@ -275,7 +274,7 @@ Name | Description
 ```
 
 
-> When the StockItem is not used, it can be archived:
+> When archival would create allowed shortage, and confirm_shortage is true:
 
 ```shell
   curl --request POST \
@@ -285,7 +284,8 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "d5dfeb91-f634-4710-861c-50b13bc4efd1"
+          "stock_item_id": "b621cfc2-c894-4ced-a80a-6b3c92191605",
+          "confirm_shortage": true
         }
       }
     }'
@@ -296,10 +296,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2f43623c-76b9-5441-8dfc-ec7ffc6620f2",
+    "id": "f536ff05-757a-5a35-ac9c-2d0f63beabee",
     "type": "stock_item_archivations",
     "attributes": {
-      "stock_item_id": "d5dfeb91-f634-4710-861c-50b13bc4efd1"
+      "stock_item_id": "b621cfc2-c894-4ced-a80a-6b3c92191605"
     },
     "relationships": {
       "stock_item": {

@@ -336,11 +336,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "3a88ecbc-a563-426e-bfb6-ab644fba17b7",
+      "id": "24ca8b1c-d90e-491f-847a-70efa46827c3",
       "type": "operations",
       "attributes": {
-        "created_at": "2024-06-03T09:30:14.159077+00:00",
-        "updated_at": "2024-06-03T09:30:14.159077+00:00",
+        "created_at": "2024-06-10T09:24:13.717265+00:00",
+        "updated_at": "2024-06-10T09:24:13.717265+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -350,12 +350,12 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "e1e0dee5-eaff-4367-9f8a-4fd12505db78"
+        "employee_id": "2f53d68d-a266-4acc-8263-19fa68271465"
       },
       "relationships": {
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/e1e0dee5-eaff-4367-9f8a-4fd12505db78"
+            "related": "api/boomerang/employees/2f53d68d-a266-4acc-8263-19fa68271465"
           }
         }
       }
@@ -426,7 +426,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/e0ef055a-e35e-4418-8fac-e02656c0415e' \
+    --url 'https://example.booqable.com/api/boomerang/operations/dad8ba40-8447-4bc8-ba20-0e354de20747' \
     --header 'content-type: application/json' \
 ```
 
@@ -435,11 +435,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e0ef055a-e35e-4418-8fac-e02656c0415e",
+    "id": "dad8ba40-8447-4bc8-ba20-0e354de20747",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-06-03T09:30:14.959787+00:00",
-      "updated_at": "2024-06-03T09:30:14.959787+00:00",
+      "created_at": "2024-06-10T09:24:14.423898+00:00",
+      "updated_at": "2024-06-10T09:24:14.423898+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -449,12 +449,12 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "d8cd1e55-aa18-442b-b72f-159b0dd000ff"
+      "employee_id": "b8d1e2d1-3b0b-4b3e-94d0-6551347bdcac"
     },
     "relationships": {
       "employee": {
         "links": {
-          "related": "api/boomerang/employees/d8cd1e55-aa18-442b-b72f-159b0dd000ff"
+          "related": "api/boomerang/employees/b8d1e2d1-3b0b-4b3e-94d0-6551347bdcac"
         }
       }
     }
@@ -521,11 +521,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e4420dd0-2d04-4731-9dea-4cfa7ed7aa45",
+    "id": "b7122fcb-d22a-468c-81b6-038b18136d58",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-06-03T09:30:16.064964+00:00",
-      "updated_at": "2024-06-03T09:30:16.064964+00:00",
+      "created_at": "2024-06-10T09:24:12.880473+00:00",
+      "updated_at": "2024-06-10T09:24:12.880473+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -535,7 +535,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "2f3fe07c-3c92-446a-8a33-18cf8e5b527a"
+      "employee_id": "49da9e1e-6e86-4630-863f-251a226c5524"
     },
     "relationships": {
       "employee": {

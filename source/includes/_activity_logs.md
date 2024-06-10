@@ -5,9 +5,9 @@ Activity logs describe an event where changes took place in our database. Exampl
 Activity logs contain `action_key` and `action_args`, which determine the summary line, and `data` which contains a copy of or details about the subject that the event is about, such as a order, product, customer or e-mail.
 
 ## Endpoints
-`GET /api/boomerang/activity_logs/{id}`
-
 `GET /api/boomerang/activity_logs`
+
+`GET /api/boomerang/activity_logs/{id}`
 
 ## Fields
 Every activity log has the following fields:
@@ -35,135 +35,6 @@ Name | Description
 `employee` | **Employees** `readonly`<br>Associated Employee
 
 
-## Fetching an activity log
-
-
-
-> How to fetch an activity log:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/activity_logs/f3aa955e-0e02-4762-a1e5-89cfe1393c87' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "f3aa955e-0e02-4762-a1e5-89cfe1393c87",
-    "type": "activity_logs",
-    "attributes": {
-      "created_at": "2024-06-03T09:26:03.099257+00:00",
-      "action_key": "product.created",
-      "action_args": {},
-      "has_data": true,
-      "data": {
-        "products": [
-          {
-            "id": "749fb59e-0ce2-41a1-8e71-e6c08bcc7419",
-            "legacy_id": null,
-            "name": "Product 1000021",
-            "quantity": 0,
-            "created_at": "2024-06-03T09:26:02.899Z",
-            "updated_at": "2024-06-03T09:26:02.899Z",
-            "lag_time": 0,
-            "lead_time": 0,
-            "always_available": false,
-            "trackable": false,
-            "sku": "PRODUCT 1000022",
-            "type": "Product",
-            "base_price_in_cents": 0,
-            "group_name": "Product 1000021",
-            "has_variations": false,
-            "variation": false,
-            "variation_name": null,
-            "variation_values": [],
-            "variation_fields": null,
-            "price_type": "simple",
-            "price_period": "hour",
-            "stock_item_properties": null,
-            "archived_at": null,
-            "stock_count": 0,
-            "extra_information": null,
-            "photo": null,
-            "photo_url": null,
-            "flat_fee_price_in_cents": 0,
-            "structure_price_in_cents": 0,
-            "deposit_in_cents": 0,
-            "company_id": "410b3687-f2d8-4c1e-b02b-39327fadc051",
-            "item_group_id": "b080fcab-f726-48d0-a8b0-b9c6e291f017",
-            "price_wrapper_id": null,
-            "tax_category_id": null,
-            "slug": "product-1000021",
-            "description": null,
-            "show_in_store": true,
-            "product_type": "rental",
-            "tracking_type": "bulk",
-            "discountable": true,
-            "taxable": true,
-            "allow_shortage": false,
-            "shortage_limit": 0,
-            "photo_id": null,
-            "price_ruleset_id": null,
-            "sorting_weight": 1,
-            "price_structure_id": null,
-            "seo_title": null,
-            "seo_description": null,
-            "cached_tag_list": null
-          }
-        ]
-      },
-      "owner_id": "cab95063-d341-441c-b3fa-9ae75fedd69b",
-      "owner_type": "orders",
-      "employee_id": "6ee3d2dd-713f-46cd-935f-0962d5a9b3d6"
-    },
-    "relationships": {
-      "owner": {
-        "links": {
-          "related": "api/boomerang/orders/cab95063-d341-441c-b3fa-9ae75fedd69b"
-        }
-      },
-      "employee": {
-        "links": {
-          "related": "api/boomerang/employees/6ee3d2dd-713f-46cd-935f-0962d5a9b3d6"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/activity_logs/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[activity_logs]=created_at,updated_at,action_key`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`owner`
-
-
-`employee`
-
-
-
-
-
-
 ## Listing activity logs
 
 
@@ -182,51 +53,51 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "8dc7c828-f10d-4567-92f1-4a0840f8c7f0",
+      "id": "f90c54e3-a65d-4024-9ec9-b52130b9a6d3",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-06-03T09:26:04.530789+00:00",
+        "created_at": "2024-06-10T09:29:28.624030+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "f3e5a18c-187f-406b-b3fa-335a6094af67",
+        "owner_id": "bd98ae17-4601-402b-b6b8-7f838e74aabb",
         "owner_type": "orders",
-        "employee_id": "e238e259-a55c-4b30-a0e3-a686a2e4bcdf"
+        "employee_id": "1ba7375c-4ccc-4bcf-984b-d47980728efe"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/f3e5a18c-187f-406b-b3fa-335a6094af67"
+            "related": "api/boomerang/orders/bd98ae17-4601-402b-b6b8-7f838e74aabb"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/e238e259-a55c-4b30-a0e3-a686a2e4bcdf"
+            "related": "api/boomerang/employees/1ba7375c-4ccc-4bcf-984b-d47980728efe"
           }
         }
       }
     },
     {
-      "id": "43912a5f-be57-4894-aaa7-35744cb265b6",
+      "id": "9a040f16-094e-4e92-abca-a8431afcabd0",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-06-03T09:26:04.323364+00:00",
+        "created_at": "2024-06-10T09:29:28.464893+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "fa7be0d6-75f8-4b4c-b786-ab3113ce3973",
+        "owner_id": "6def208b-a2c6-4339-adae-139d3aa9902e",
         "owner_type": "orders",
-        "employee_id": "dc6e250a-ebf5-46c9-b957-ba865db3d0a0"
+        "employee_id": "9a2846ea-1984-4afd-85b9-c8b16e337c90"
       },
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/orders/fa7be0d6-75f8-4b4c-b786-ab3113ce3973"
+            "related": "api/boomerang/orders/6def208b-a2c6-4339-adae-139d3aa9902e"
           }
         },
         "employee": {
           "links": {
-            "related": "api/boomerang/employees/dc6e250a-ebf5-46c9-b957-ba865db3d0a0"
+            "related": "api/boomerang/employees/9a2846ea-1984-4afd-85b9-c8b16e337c90"
           }
         }
       }
@@ -278,6 +149,135 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`owner`
+
+
+`employee`
+
+
+
+
+
+
+## Fetching an activity log
+
+
+
+> How to fetch an activity log:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/activity_logs/0ed29c96-41d8-4936-97cb-eb210aa6363c' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "0ed29c96-41d8-4936-97cb-eb210aa6363c",
+    "type": "activity_logs",
+    "attributes": {
+      "created_at": "2024-06-10T09:29:29.404104+00:00",
+      "action_key": "product.created",
+      "action_args": {},
+      "has_data": true,
+      "data": {
+        "products": [
+          {
+            "id": "07c0cfb6-6b8a-4607-a29c-8a29c6f90b56",
+            "legacy_id": null,
+            "name": "Product 1000079",
+            "quantity": 0,
+            "created_at": "2024-06-10T09:29:29.256Z",
+            "updated_at": "2024-06-10T09:29:29.256Z",
+            "lag_time": 0,
+            "lead_time": 0,
+            "always_available": false,
+            "trackable": false,
+            "sku": "PRODUCT 1000082",
+            "type": "Product",
+            "base_price_in_cents": 0,
+            "group_name": "Product 1000079",
+            "has_variations": false,
+            "variation": false,
+            "variation_name": null,
+            "variation_values": [],
+            "variation_fields": null,
+            "price_type": "simple",
+            "price_period": "hour",
+            "stock_item_properties": null,
+            "archived_at": null,
+            "stock_count": 0,
+            "extra_information": null,
+            "photo": null,
+            "photo_url": null,
+            "flat_fee_price_in_cents": 0,
+            "structure_price_in_cents": 0,
+            "deposit_in_cents": 0,
+            "company_id": "8ea078b2-f7cb-4075-acbf-232a2e6b6cd9",
+            "item_group_id": "1a31633e-750c-4ad1-aa49-74d3f3baa22c",
+            "price_wrapper_id": null,
+            "tax_category_id": null,
+            "slug": "product-1000079",
+            "description": null,
+            "show_in_store": true,
+            "product_type": "rental",
+            "tracking_type": "bulk",
+            "discountable": true,
+            "taxable": true,
+            "allow_shortage": false,
+            "shortage_limit": 0,
+            "photo_id": null,
+            "price_ruleset_id": null,
+            "sorting_weight": 1,
+            "price_structure_id": null,
+            "seo_title": null,
+            "seo_description": null,
+            "cached_tag_list": null
+          }
+        ]
+      },
+      "owner_id": "61ff1215-fb71-4b5d-a28b-6e77aeec8741",
+      "owner_type": "orders",
+      "employee_id": "bf27a398-3bb7-41c0-987d-d81881a9b1c0"
+    },
+    "relationships": {
+      "owner": {
+        "links": {
+          "related": "api/boomerang/orders/61ff1215-fb71-4b5d-a28b-6e77aeec8741"
+        }
+      },
+      "employee": {
+        "links": {
+          "related": "api/boomerang/employees/bf27a398-3bb7-41c0-987d-d81881a9b1c0"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/activity_logs/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=owner,employee`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[activity_logs]=created_at,updated_at,action_key`
 
 
 ### Includes

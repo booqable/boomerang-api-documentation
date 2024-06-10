@@ -24,52 +24,6 @@ Name | Description
 
 
 
-> How to create checkout fields in bulk:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "bulk_upserts",
-        "attributes": {
-          "type": "checkout_fields",
-          "data": [
-            {
-              "default_property_id": "b757414e-95da-4bd6-a924-bcd16878939e"
-            },
-            {
-              "name": "Delivery address",
-              "default_property_id": "77f09d2e-2f03-4b95-86ee-3aa66d4f1689"
-            }
-          ]
-        },
-        "include": "results"
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "26949825-0dd9-557c-907b-bbc1a9c9863f",
-    "type": "bulk_upserts",
-    "relationships": {
-      "results": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-
 > How to create operating rules in bulk:
 
 ```shell
@@ -112,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d029fbbf-78ae-52d6-b288-5535ac301426",
+    "id": "8f656e29-d829-58a4-8dfe-9edba8d281bb",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "7b525610-b0ab-48d0-8fc1-37998e7eb36a"
+            "id": "3dd1da0e-6643-4452-aa76-78e91636896c"
           },
           {
             "type": "operating_rules",
-            "id": "7c5447a9-0e35-4cc4-beca-f0c9c9472381"
+            "id": "f2a4ad00-53e1-4362-bc64-6183e5406a43"
           }
         ]
       }
@@ -131,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "7b525610-b0ab-48d0-8fc1-37998e7eb36a",
+      "id": "3dd1da0e-6643-4452-aa76-78e91636896c",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-06-03T09:30:36.114805+00:00",
-        "updated_at": "2024-06-03T09:30:36.114805+00:00",
+        "created_at": "2024-06-10T09:27:17.445054+00:00",
+        "updated_at": "2024-06-10T09:27:17.445054+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -146,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "7c5447a9-0e35-4cc4-beca-f0c9c9472381",
+      "id": "f2a4ad00-53e1-4362-bc64-6183e5406a43",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-06-03T09:30:36.114805+00:00",
-        "updated_at": "2024-06-03T09:30:36.114805+00:00",
+        "created_at": "2024-06-10T09:27:17.445054+00:00",
+        "updated_at": "2024-06-10T09:27:17.445054+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -161,6 +115,52 @@ Name | Description
       }
     }
   ],
+  "meta": {}
+}
+```
+
+
+> How to create checkout fields in bulk:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/bulk_upserts' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "bulk_upserts",
+        "attributes": {
+          "type": "checkout_fields",
+          "data": [
+            {
+              "default_property_id": "8f90a5dd-838f-492b-a7a6-18019c6b7507"
+            },
+            {
+              "name": "Delivery address",
+              "default_property_id": "5b9cce61-435b-4d65-b8ec-b78b8372f7a0"
+            }
+          ]
+        },
+        "include": "results"
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "f3aa324a-c147-58a3-884e-67f74a7f342d",
+    "type": "bulk_upserts",
+    "relationships": {
+      "results": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
   "meta": {}
 }
 ```
@@ -201,7 +201,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "9ff202f5-62aa-57ac-8c22-f4a1ce4158f7",
+    "id": "f3aa324a-c147-58a3-884e-67f74a7f342d",
     "type": "bulk_upserts",
     "relationships": {
       "results": {

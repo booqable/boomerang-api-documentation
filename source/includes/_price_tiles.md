@@ -3,15 +3,15 @@
 Price tiles hold information on how to calculate a price for a specific period. According to the `charge_length`, a tile will be picked in price calculations. Note that Booqable always rounds up to the highest tile it can find. The base price of a product is multiplied by the `multiplier`.
 
 ## Endpoints
-`POST /api/boomerang/price_tiles`
-
 `GET /api/boomerang/price_tiles`
+
+`GET /api/boomerang/price_tiles/{id}`
+
+`POST /api/boomerang/price_tiles`
 
 `PUT /api/boomerang/price_tiles/{id}`
 
 `DELETE /api/boomerang/price_tiles/{id}`
-
-`GET /api/boomerang/price_tiles/{id}`
 
 ## Fields
 Every price tile has the following fields:
@@ -37,97 +37,6 @@ Name | Description
 `price_structure` | **Price structures** `readonly`<br>Associated Price structure
 
 
-## Creating a price tile
-
-
-
-> How to create a price tile:
-
-```shell
-  curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "price_tiles",
-        "attributes": {
-          "price_structure_id": "289d9914-87e4-4efe-b797-bf20c2f5da25",
-          "name": "3 hours",
-          "quantity": 3,
-          "period": "hours",
-          "multiplier": 3
-        }
-      }
-    }'
-```
-
-> A 201 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "6488ad7b-67c0-4ebd-b464-37941b567709",
-    "type": "price_tiles",
-    "attributes": {
-      "created_at": "2024-06-03T09:25:59.119367+00:00",
-      "updated_at": "2024-06-03T09:25:59.119367+00:00",
-      "name": "3 hours",
-      "quantity": 3,
-      "length": 10800,
-      "multiplier": 3.0,
-      "period": "hours",
-      "price_structure_id": "289d9914-87e4-4efe-b797-bf20c2f5da25"
-    },
-    "relationships": {
-      "price_structure": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`POST /api/boomerang/price_tiles`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=price_structure`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][name]` | **String** <br>Name of the tile as it's going to be used in charge labels
-`data[attributes][quantity]` | **Integer** <br>Used in combination with period (e.g. `3` with period `days`)
-`data[attributes][multiplier]` | **Float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
-`data[attributes][period]` | **String** <br>One of `hours`, `days`, `weeks`, `months`, `years`
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
-
-
-### Includes
-
-This request accepts the following includes:
-
-`price_structure`
-
-
-
-
-
-
 ## Listing price tiles
 
 
@@ -146,22 +55,22 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "6fa462e4-9cf7-44cd-aff6-99ed5d536947",
+      "id": "7d61540e-d028-4618-bee5-31748fd07a1d",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-06-03T09:25:59.828193+00:00",
-        "updated_at": "2024-06-03T09:25:59.828193+00:00",
+        "created_at": "2024-06-10T09:28:32.051260+00:00",
+        "updated_at": "2024-06-10T09:28:32.051260+00:00",
         "name": "3 hours",
         "quantity": 3,
         "length": 10800,
         "multiplier": 3.0,
         "period": "hours",
-        "price_structure_id": "623b9e7b-88f6-48b1-9116-878f474bb856"
+        "price_structure_id": "d0bb1724-2345-410f-b7ec-a598c8f1ba85"
       },
       "relationships": {
         "price_structure": {
           "links": {
-            "related": "api/boomerang/price_structures/623b9e7b-88f6-48b1-9116-878f474bb856"
+            "related": "api/boomerang/price_structures/d0bb1724-2345-410f-b7ec-a598c8f1ba85"
           }
         }
       }
@@ -213,6 +122,163 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Fetching a price tile
+
+
+
+> How to fetch a price tile:
+
+```shell
+  curl --request GET \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/4170c981-f526-4740-bc6c-15b4be50d317?include=price_tiles' \
+    --header 'content-type: application/json' \
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "4170c981-f526-4740-bc6c-15b4be50d317",
+    "type": "price_tiles",
+    "attributes": {
+      "created_at": "2024-06-10T09:28:32.672775+00:00",
+      "updated_at": "2024-06-10T09:28:32.672775+00:00",
+      "name": "3 hours",
+      "quantity": 3,
+      "length": 10800,
+      "multiplier": 3.0,
+      "period": "hours",
+      "price_structure_id": "5f0272d4-c57f-4052-88d8-122c1d48402b"
+    },
+    "relationships": {
+      "price_structure": {
+        "links": {
+          "related": "api/boomerang/price_structures/5f0272d4-c57f-4052-88d8-122c1d48402b"
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`GET /api/boomerang/price_tiles/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=price_structure`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
+
+
+### Includes
+
+This request accepts the following includes:
+
+`price_structure`
+
+
+
+
+
+
+## Creating a price tile
+
+
+
+> How to create a price tile:
+
+```shell
+  curl --request POST \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "type": "price_tiles",
+        "attributes": {
+          "price_structure_id": "4a1dab83-d5c9-49a5-9c2e-912c4a29e404",
+          "name": "3 hours",
+          "quantity": 3,
+          "period": "hours",
+          "multiplier": 3
+        }
+      }
+    }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "64d88f29-aeb6-46e5-bfd5-265aec4c99d1",
+    "type": "price_tiles",
+    "attributes": {
+      "created_at": "2024-06-10T09:28:34.064687+00:00",
+      "updated_at": "2024-06-10T09:28:34.064687+00:00",
+      "name": "3 hours",
+      "quantity": 3,
+      "length": 10800,
+      "multiplier": 3.0,
+      "period": "hours",
+      "price_structure_id": "4a1dab83-d5c9-49a5-9c2e-912c4a29e404"
+    },
+    "relationships": {
+      "price_structure": {
+        "meta": {
+          "included": false
+        }
+      }
+    }
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`POST /api/boomerang/price_tiles`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=price_structure`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][name]` | **String** <br>Name of the tile as it's going to be used in charge labels
+`data[attributes][quantity]` | **Integer** <br>Used in combination with period (e.g. `3` with period `days`)
+`data[attributes][multiplier]` | **Float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
+`data[attributes][period]` | **String** <br>One of `hours`, `days`, `weeks`, `months`, `years`
+`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+
+
+### Includes
+
+This request accepts the following includes:
+
+`price_structure`
+
+
+
+
+
+
 ## Updating a price tile
 
 
@@ -221,11 +287,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/ac7dbcf2-8b49-48f5-abae-df0d3aa7f07c' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/0b488c06-ec25-40b3-97d1-53eb9293ed91' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ac7dbcf2-8b49-48f5-abae-df0d3aa7f07c",
+        "id": "0b488c06-ec25-40b3-97d1-53eb9293ed91",
         "type": "price_tiles",
         "attributes": {
           "name": "4 days",
@@ -242,17 +308,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ac7dbcf2-8b49-48f5-abae-df0d3aa7f07c",
+    "id": "0b488c06-ec25-40b3-97d1-53eb9293ed91",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-06-03T09:26:00.576780+00:00",
-      "updated_at": "2024-06-03T09:26:00.630818+00:00",
+      "created_at": "2024-06-10T09:28:34.656552+00:00",
+      "updated_at": "2024-06-10T09:28:34.709916+00:00",
       "name": "4 days",
       "quantity": 4,
       "length": 345600,
       "multiplier": 4.0,
       "period": "days",
-      "price_structure_id": "efb0ece1-6b1b-4ac6-8bea-f594ba89c98e"
+      "price_structure_id": "a74291f0-584a-4a8f-88ff-2bb02bdf5a00"
     },
     "relationships": {
       "price_structure": {
@@ -312,7 +378,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/cf284e59-78e6-40ef-8e55-4f391f6e5eef' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/1924b83a-d506-4eb3-903e-348ecfff505c' \
     --header 'content-type: application/json' \
 ```
 
@@ -321,22 +387,22 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cf284e59-78e6-40ef-8e55-4f391f6e5eef",
+    "id": "1924b83a-d506-4eb3-903e-348ecfff505c",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-06-03T09:26:01.297624+00:00",
-      "updated_at": "2024-06-03T09:26:01.297624+00:00",
+      "created_at": "2024-06-10T09:28:33.362671+00:00",
+      "updated_at": "2024-06-10T09:28:33.362671+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "77ed53bc-d47b-4578-87b1-d3fbb9fad273"
+      "price_structure_id": "b9e1582c-a188-4847-aa8a-e88383df3c13"
     },
     "relationships": {
       "price_structure": {
         "links": {
-          "related": "api/boomerang/price_structures/77ed53bc-d47b-4578-87b1-d3fbb9fad273"
+          "related": "api/boomerang/price_structures/b9e1582c-a188-4847-aa8a-e88383df3c13"
         }
       }
     }
@@ -361,68 +427,3 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a price tile
-
-
-
-> How to fetch a price tile:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/f22dac73-2edc-4b31-a8aa-10a1dcfab12d?include=price_tiles' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "f22dac73-2edc-4b31-a8aa-10a1dcfab12d",
-    "type": "price_tiles",
-    "attributes": {
-      "created_at": "2024-06-03T09:26:02.086171+00:00",
-      "updated_at": "2024-06-03T09:26:02.086171+00:00",
-      "name": "3 hours",
-      "quantity": 3,
-      "length": 10800,
-      "multiplier": 3.0,
-      "period": "hours",
-      "price_structure_id": "1f41d6d7-0532-4afe-9b15-2b695f066c15"
-    },
-    "relationships": {
-      "price_structure": {
-        "links": {
-          "related": "api/boomerang/price_structures/1f41d6d7-0532-4afe-9b15-2b695f066c15"
-        }
-      }
-    }
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/price_tiles/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=price_structure`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`price_structure`
-
-
-
-
-
