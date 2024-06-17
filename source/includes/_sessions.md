@@ -58,16 +58,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "98061ca0-1d7b-5410-9bd4-663c8de6f9c1",
+    "id": "b6eb1b30-53fc-5f40-842d-532a063f3c10",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-06-10T09:25:01.544169+00:00",
-      "company_id": "8e53c99d-3fa3-40ba-a271-f38b50f3270b",
-      "employee_id": "3bcd1871-d381-44d9-8da1-53758fcd8587",
-      "locations_updated_at": "2024-06-10T09:25:01.567357+00:00",
-      "clusters_updated_at": "2024-06-10T09:25:01.579901+00:00",
-      "default_properties_updated_at": "2024-06-10T09:25:01.592747+00:00",
-      "notification_subscriptions_updated_at": "2024-06-10T09:25:01.551782+00:00",
+      "updated_at": "2024-06-17T09:25:56.814009+00:00",
+      "company_id": "965e6722-1d05-47f0-8d54-a8e90dd14901",
+      "employee_id": "ffef69cf-9d94-4124-86d5-ec8ab4e40ec2",
+      "locations_updated_at": "2024-06-17T09:25:56.832240+00:00",
+      "clusters_updated_at": "2024-06-17T09:25:56.842675+00:00",
+      "default_properties_updated_at": "2024-06-17T09:25:56.852711+00:00",
+      "notification_subscriptions_updated_at": "2024-06-17T09:25:56.820509+00:00",
       "countries_updated_at": null
     },
     "relationships": {
@@ -140,16 +140,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4cb2bfac-45bb-5244-ae0f-841b661a0f40",
+    "id": "4145b93e-66ce-513a-a36c-bce1a231dcaa",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-06-10T09:29:20.355686+00:00",
-      "company_id": "72c39a36-d744-4dab-9e38-d8651b822c04",
-      "employee_id": "553fa083-9965-4831-b0d4-6235af17bab5",
+      "updated_at": "2024-06-17T09:27:33.402740+00:00",
+      "company_id": "1289a552-761b-48b6-adb4-75c3b8d58239",
+      "employee_id": "635c22b8-6bc3-4988-8e8d-7dda5db0783b",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-06-10T09:29:20.363050+00:00",
+      "notification_subscriptions_updated_at": "2024-06-17T09:27:33.409841+00:00",
       "countries_updated_at": null
     },
     "relationships": {
@@ -159,7 +159,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "companies",
-          "id": "72c39a36-d744-4dab-9e38-d8651b822c04"
+          "id": "1289a552-761b-48b6-adb4-75c3b8d58239"
         }
       },
       "employee": {
@@ -168,7 +168,7 @@ This request accepts the following includes:
         },
         "data": {
           "type": "employees",
-          "id": "553fa083-9965-4831-b0d4-6235af17bab5"
+          "id": "635c22b8-6bc3-4988-8e8d-7dda5db0783b"
         }
       },
       "settings": {
@@ -184,14 +184,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "72c39a36-d744-4dab-9e38-d8651b822c04",
+      "id": "1289a552-761b-48b6-adb4-75c3b8d58239",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-06-10T09:29:20.323616+00:00",
-        "updated_at": "2024-06-10T09:29:20.338962+00:00",
-        "name": "Company name 287",
-        "slug": "company-name-287",
-        "email": "mail290@company.com",
+        "created_at": "2024-06-17T09:27:33.371253+00:00",
+        "updated_at": "2024-06-17T09:27:33.386426+00:00",
+        "name": "Company name 169",
+        "slug": "company-name-169",
+        "email": "mail169@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -223,7 +223,7 @@ This request accepts the following includes:
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "24accef1fa7ca02281b3fc8970031460",
+        "tenant_token": "188d0aa5c9f4fb1c22173af2faeca6e0",
         "pending_subscription": false,
         "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
         "main_address": {
@@ -238,11 +238,13 @@ This request accepts the following includes:
           "country": "the Netherlands",
           "country_id": null,
           "province_id": null,
+          "latitude": null,
+          "longitude": null,
           "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-06-24T09:29:20.301Z",
+          "trial_ends_at": "2024-07-01T09:27:33.351Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -299,11 +301,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "553fa083-9965-4831-b0d4-6235af17bab5",
+      "id": "635c22b8-6bc3-4988-8e8d-7dda5db0783b",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-06-10T09:29:20.355686+00:00",
-        "updated_at": "2024-06-10T09:29:20.355686+00:00",
+        "created_at": "2024-06-17T09:27:33.402740+00:00",
+        "updated_at": "2024-06-17T09:27:33.402740+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

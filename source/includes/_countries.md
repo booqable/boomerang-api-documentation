@@ -42,11 +42,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "7d0df182-7ec1-44c8-b459-eb74a91ff57c",
+      "id": "7a8f48a8-9908-4950-8582-af7df54e3dbc",
       "type": "countries",
       "attributes": {
-        "created_at": "2024-06-10T09:27:05.360254+00:00",
-        "updated_at": "2024-06-10T09:27:05.360254+00:00",
+        "created_at": "2024-06-17T09:26:42.314082+00:00",
+        "updated_at": "2024-06-17T09:26:42.314082+00:00",
         "name": "Netherlands",
         "alpha2": "NL",
         "province_required": false,

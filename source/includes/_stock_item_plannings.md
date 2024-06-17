@@ -1,8 +1,13 @@
 # Stock item plannings
 
-Stock item plannings hold information about the planning of individual stock items (for trackable products). They make it possible to know precisely which stock items have been where and define when an item is available during a given period.
+Stock item plannings hold information about the planning of individual stock items (for trackable products).
+They make it possible to know precisely which stock items have been where and define when an item is available
+during a given period.
 
-Stock item plannings are never directly created or updated through their resource; instead, they are always managed by booking items to an order or transitioning status.
+Stock item plannings are never directly created or updated through their resource;
+instead they are created by booking or specifying stock items; they are updated by
+starting or stoppinmg them. See the [OrderFulfilments](#order-fulfilments) resource
+for examples.
 
 ## Endpoints
 `GET /api/boomerang/stock_item_plannings`
@@ -55,34 +60,34 @@ Name | Description
   {
   "data": [
     {
-      "id": "f3341b5c-e973-48e5-a986-f6186f9a2ba1",
+      "id": "90111615-1c8f-404b-848f-468613d074a6",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-06-10T09:27:25.824411+00:00",
-        "updated_at": "2024-06-10T09:27:25.824411+00:00",
+        "created_at": "2024-06-17T09:26:31.087833+00:00",
+        "updated_at": "2024-06-17T09:26:31.087833+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "45d74570-9092-4f20-a8fd-0a49121570f4",
-        "planning_id": "8e7df894-0147-4d9c-81d5-1f5ac8caac68",
-        "order_id": "ff68cb21-61ea-4a60-b1a4-7ddbb8c361e7"
+        "stock_item_id": "8bf3480c-51dc-4abc-b985-17fac4443aa4",
+        "planning_id": "b33ecc88-d20e-4556-a37f-dfbb3d16cf45",
+        "order_id": "ef2e048c-af0e-40be-9c21-4bbd0be38b3e"
       },
       "relationships": {
         "stock_item": {
           "links": {
-            "related": "api/boomerang/stock_items/45d74570-9092-4f20-a8fd-0a49121570f4"
+            "related": "api/boomerang/stock_items/8bf3480c-51dc-4abc-b985-17fac4443aa4"
           }
         },
         "planning": {
           "links": {
-            "related": "api/boomerang/plannings/8e7df894-0147-4d9c-81d5-1f5ac8caac68"
+            "related": "api/boomerang/plannings/b33ecc88-d20e-4556-a37f-dfbb3d16cf45"
           }
         },
         "order": {
           "links": {
-            "related": "api/boomerang/orders/ff68cb21-61ea-4a60-b1a4-7ddbb8c361e7"
+            "related": "api/boomerang/orders/ef2e048c-af0e-40be-9c21-4bbd0be38b3e"
           }
         }
       }
@@ -170,7 +175,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/e3573c48-1430-485c-9de0-1f6d2ae13d05' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/64d5e5c6-a8d6-4aac-91e0-320c2ea23c14' \
     --header 'content-type: application/json' \
 ```
 
@@ -179,34 +184,34 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e3573c48-1430-485c-9de0-1f6d2ae13d05",
+    "id": "64d5e5c6-a8d6-4aac-91e0-320c2ea23c14",
     "type": "stock_item_plannings",
     "attributes": {
-      "created_at": "2024-06-10T09:27:26.750340+00:00",
-      "updated_at": "2024-06-10T09:27:26.750340+00:00",
+      "created_at": "2024-06-17T09:26:29.014477+00:00",
+      "updated_at": "2024-06-17T09:26:29.014477+00:00",
       "archived": false,
       "archived_at": null,
       "reserved": false,
       "started": false,
       "stopped": false,
-      "stock_item_id": "54d38542-4cc8-4604-9a4d-fb16a8646cf8",
-      "planning_id": "96da41dc-59a3-43f7-8765-4dede811f4f9",
-      "order_id": "06f70ec9-1794-48b1-a803-c86a2770c219"
+      "stock_item_id": "eae837ce-b1d9-4f17-8c7f-df7d98bbaab3",
+      "planning_id": "b81cd5ab-06e3-413d-9089-4fb947c39cbc",
+      "order_id": "506492f1-4eb9-4442-8dbb-dea3af7362ee"
     },
     "relationships": {
       "stock_item": {
         "links": {
-          "related": "api/boomerang/stock_items/54d38542-4cc8-4604-9a4d-fb16a8646cf8"
+          "related": "api/boomerang/stock_items/eae837ce-b1d9-4f17-8c7f-df7d98bbaab3"
         }
       },
       "planning": {
         "links": {
-          "related": "api/boomerang/plannings/96da41dc-59a3-43f7-8765-4dede811f4f9"
+          "related": "api/boomerang/plannings/b81cd5ab-06e3-413d-9089-4fb947c39cbc"
         }
       },
       "order": {
         "links": {
-          "related": "api/boomerang/orders/06f70ec9-1794-48b1-a803-c86a2770c219"
+          "related": "api/boomerang/orders/506492f1-4eb9-4442-8dbb-dea3af7362ee"
         }
       }
     }

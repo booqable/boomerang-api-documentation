@@ -83,14 +83,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f25b09e4-2957-407f-a0c9-24b23c17cf5f",
+    "id": "1af20248-cb8c-4a3d-8a77-b0b01ad21bdd",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-06-10T09:25:12.190921+00:00",
-      "updated_at": "2024-06-10T09:25:12.218393+00:00",
+      "created_at": "2024-06-17T09:28:46.398699+00:00",
+      "updated_at": "2024-06-17T09:28:46.412917+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail116@company.com",
+      "email": "mail250@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -122,7 +122,7 @@ Name | Description
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "868a1f17c86681eeefb53f8bfa4e5fa4",
+      "tenant_token": "30c05750567eff4c7c39f5433c4f9eae",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -137,6 +137,8 @@ Name | Description
         "country": "the Netherlands",
         "country_id": null,
         "province_id": null,
+        "latitude": null,
+        "longitude": null,
         "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
       },
       "billing_address": null
@@ -210,11 +212,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "88348caa-f8d1-4ead-8130-9104e20c0c6f",
+    "id": "f9edf074-bda0-41a3-859e-20e1d9f533c3",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-06-24T09:25:13.425Z",
+        "trial_ends_at": "2024-07-01T09:28:46.925Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,
@@ -302,7 +304,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "42b5e164-0645-4313-9247-f80bffa756b9",
+        "id": "28e20cfe-aa61-49bd-a416-d1c48dd32ecd",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -316,14 +318,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "42b5e164-0645-4313-9247-f80bffa756b9",
+    "id": "28e20cfe-aa61-49bd-a416-d1c48dd32ecd",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-06-10T09:25:12.837267+00:00",
-      "updated_at": "2024-06-10T09:25:12.924961+00:00",
+      "created_at": "2024-06-17T09:28:47.402721+00:00",
+      "updated_at": "2024-06-17T09:28:47.463227+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail117@company.com",
+      "email": "mail252@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -355,7 +357,7 @@ This request does not accept any includes
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "1a1c6f2b37fd43bf22e1ff3c7c533113",
+      "tenant_token": "6d2a16af5a904ca65aa54bfd19dc16d3",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -370,6 +372,8 @@ This request does not accept any includes
         "country": "the Netherlands",
         "country_id": null,
         "province_id": null,
+        "latitude": null,
+        "longitude": null,
         "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
       },
       "billing_address": null
