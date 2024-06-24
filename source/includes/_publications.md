@@ -45,18 +45,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "fb0413de-064d-41ef-865e-0097cee07488",
+      "id": "18c507a4-d293-4ddc-a0d5-99918581693d",
       "type": "publications",
       "attributes": {
-        "created_at": "2024-06-17T09:25:29.587567+00:00",
-        "updated_at": "2024-06-17T09:25:29.587567+00:00",
-        "published_at": "2024-06-12T09:25:29.579884+00:00",
-        "theme_id": "0bd7d5da-73d8-4385-8bcf-f8de11f4008f"
+        "created_at": "2024-06-24T09:27:18.876764+00:00",
+        "updated_at": "2024-06-24T09:27:18.876764+00:00",
+        "published_at": "2024-06-19T09:27:18.863814+00:00",
+        "theme_id": "565de2f1-b3b7-4d06-ad3a-85d19b2956c4"
       },
       "relationships": {
         "theme": {
           "links": {
-            "related": "api/boomerang/themes/0bd7d5da-73d8-4385-8bcf-f8de11f4008f"
+            "related": "api/boomerang/themes/565de2f1-b3b7-4d06-ad3a-85d19b2956c4"
           }
         }
       }
@@ -132,7 +132,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "45926de2-a4ec-4961-9b82-4d322de1a186"
+          "theme_id": "8e7399ea-4237-4c9f-8d0e-6566cd152cf4"
         }
       }
     }'
@@ -143,13 +143,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3dbaeb07-c473-43be-ae4c-a09a73a5cec9",
+    "id": "22514faf-d698-4b2d-8807-2955af76d951",
     "type": "publications",
     "attributes": {
-      "created_at": "2024-06-12T09:25:30.150992+00:00",
-      "updated_at": "2024-06-12T09:25:30.150992+00:00",
-      "published_at": "2024-06-12T09:25:30.150992+00:00",
-      "theme_id": "45926de2-a4ec-4961-9b82-4d322de1a186"
+      "created_at": "2024-06-19T09:27:19.457526+00:00",
+      "updated_at": "2024-06-19T09:27:19.457526+00:00",
+      "published_at": "2024-06-19T09:27:19.457526+00:00",
+      "theme_id": "8e7399ea-4237-4c9f-8d0e-6566cd152cf4"
     },
     "relationships": {
       "theme": {

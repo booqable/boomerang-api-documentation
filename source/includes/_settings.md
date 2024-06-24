@@ -251,10 +251,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2eb87797-8fcd-5ef8-bd4d-f09ea903f7ef",
+    "id": "bfd1140e-8476-5ed7-844e-bfd30e11fceb",
     "type": "settings",
     "attributes": {
-      "updated_at": "2024-06-17T09:28:41.121737+00:00",
+      "updated_at": "2024-06-24T09:26:45.040516+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -266,8 +266,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "ab3a8685-6d2f-47b6-9191-5e4bdc4a4754",
-        "tax_region_id": "4b46980d-646a-4c62-a99e-76fdcc8bc6e0",
+        "tax_category_id": "d6bc93bc-1857-4634-9385-7591a51c4aba",
+        "tax_region_id": "332255b6-123c-41f1-b1cf-2fa9c0e456c1",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },

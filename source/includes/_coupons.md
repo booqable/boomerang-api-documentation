@@ -47,11 +47,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "060dd032-1d14-4d98-993a-15aa77b9e0c6",
+      "id": "70d7b38a-3424-4bc5-8151-a021048b5ce2",
       "type": "coupons",
       "attributes": {
-        "created_at": "2024-06-17T09:27:34.988166+00:00",
-        "updated_at": "2024-06-17T09:27:34.988166+00:00",
+        "created_at": "2024-06-24T09:28:08.609781+00:00",
+        "updated_at": "2024-06-24T09:28:08.609781+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "SUMMER20OFF",
@@ -120,7 +120,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/coupons/ed000aa7-b4f6-459d-8770-d9e8adc6ef8b' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/5e4796cb-3221-42ba-ba89-8a8cabe639a0' \
     --header 'content-type: application/json' \
 ```
 
@@ -129,11 +129,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ed000aa7-b4f6-459d-8770-d9e8adc6ef8b",
+    "id": "5e4796cb-3221-42ba-ba89-8a8cabe639a0",
     "type": "coupons",
     "attributes": {
-      "created_at": "2024-06-17T09:27:33.939835+00:00",
-      "updated_at": "2024-06-17T09:27:33.939835+00:00",
+      "created_at": "2024-06-24T09:28:09.189487+00:00",
+      "updated_at": "2024-06-24T09:28:09.189487+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "SUMMER20OFF",
@@ -190,11 +190,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "782b005e-f2ff-46e5-af30-b6268c971a8a",
+    "id": "36e9e0dd-63d2-44f1-8e56-a5ec5380120f",
     "type": "coupons",
     "attributes": {
-      "created_at": "2024-06-17T09:27:34.452083+00:00",
-      "updated_at": "2024-06-17T09:27:34.452083+00:00",
+      "created_at": "2024-06-24T09:28:10.980783+00:00",
+      "updated_at": "2024-06-24T09:28:10.980783+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "WINTERDISCOUNT",
@@ -244,11 +244,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/c784eaf8-f036-46a5-ae98-735eff1d8a5a' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/f8aea79b-bf60-4937-9e4d-9adfc8d3e123' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c784eaf8-f036-46a5-ae98-735eff1d8a5a",
+        "id": "f8aea79b-bf60-4937-9e4d-9adfc8d3e123",
         "type": "coupons",
         "attributes": {
           "identifier": "SUMMER30OFF",
@@ -264,11 +264,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "a721771b-ec51-418d-8052-8086661c7038",
+    "id": "51e6c0d0-d307-425b-ac2a-c33245111e25",
     "type": "coupons",
     "attributes": {
-      "created_at": "2024-06-17T09:27:36.817003+00:00",
-      "updated_at": "2024-06-17T09:27:36.847034+00:00",
+      "created_at": "2024-06-24T09:28:09.799725+00:00",
+      "updated_at": "2024-06-24T09:28:09.836277+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "SUMMER30OFF",
@@ -286,11 +286,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/coupons/3a3387b3-37fc-42f4-980e-261218cb052f' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/93359ecf-48a4-4540-92eb-c3c8780deb9d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "3a3387b3-37fc-42f4-980e-261218cb052f",
+        "id": "93359ecf-48a4-4540-92eb-c3c8780deb9d",
         "type": "coupons",
         "attributes": {
           "active": false
@@ -304,11 +304,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
   "data": {
-    "id": "7178380a-258f-40ae-a189-64972139c62e",
+    "id": "6b8cf966-86fc-4a06-9985-e5d398509ebb",
     "type": "coupons",
     "attributes": {
-      "created_at": "2024-06-17T09:27:36.336300+00:00",
-      "updated_at": "2024-06-17T09:27:36.369380+00:00",
+      "created_at": "2024-06-24T09:28:10.378548+00:00",
+      "updated_at": "2024-06-24T09:28:10.413334+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "SUMMER20OFF",
@@ -357,7 +357,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/coupons/4f45f394-46ac-402b-a89d-2c5e4f7e0a58' \
+    --url 'https://example.booqable.com/api/boomerang/coupons/bff3f502-1b72-46ab-93c6-0ba8873c0e19' \
     --header 'content-type: application/json' \
 ```
 
@@ -366,13 +366,13 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4f45f394-46ac-402b-a89d-2c5e4f7e0a58",
+    "id": "bff3f502-1b72-46ab-93c6-0ba8873c0e19",
     "type": "coupons",
     "attributes": {
-      "created_at": "2024-06-17T09:27:35.491522+00:00",
-      "updated_at": "2024-06-17T09:27:35.514666+00:00",
+      "created_at": "2024-06-24T09:28:11.619697+00:00",
+      "updated_at": "2024-06-24T09:28:11.655314+00:00",
       "archived": true,
-      "archived_at": "2024-06-17T09:27:35.514666+00:00",
+      "archived_at": "2024-06-24T09:28:11.655314+00:00",
       "identifier": "SUMMER20OFF",
       "coupon_type": "percentage",
       "value": 20,

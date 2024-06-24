@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "9f22d754-e4bc-4362-9d6f-b56a11533218",
+      "id": "d748739b-7bcd-4862-a24e-db7b8f5ac6f2",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-06-17T09:29:13.730581+00:00",
-        "updated_at": "2024-06-17T09:29:13.730581+00:00",
+        "created_at": "2024-06-24T09:26:46.452966+00:00",
+        "updated_at": "2024-06-24T09:26:46.452966+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -59,12 +59,12 @@ Name | Description
           "last4": null
         },
         "payment_method_type": "creditcard",
-        "customer_id": "103c9209-8cb3-43ba-b13a-889469189406"
+        "customer_id": "7e55405d-3115-4b3a-bfe6-52536444a259"
       },
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/103c9209-8cb3-43ba-b13a-889469189406"
+            "related": "api/boomerang/customers/7e55405d-3115-4b3a-bfe6-52536444a259"
           }
         }
       }
@@ -125,7 +125,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/ff651bdc-4036-4b4f-ab11-949ec4111457' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/ee45dba6-3ff6-47e2-8ed6-fac1a7faf5eb' \
     --header 'content-type: application/json' \
 ```
 
@@ -134,11 +134,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ff651bdc-4036-4b4f-ab11-949ec4111457",
+    "id": "ee45dba6-3ff6-47e2-8ed6-fac1a7faf5eb",
     "type": "payment_methods",
     "attributes": {
-      "created_at": "2024-06-17T09:29:13.147282+00:00",
-      "updated_at": "2024-06-17T09:29:13.177790+00:00",
+      "created_at": "2024-06-24T09:26:47.139098+00:00",
+      "updated_at": "2024-06-24T09:26:47.174326+00:00",
       "data": {
         "name": null,
         "brand": null,
@@ -147,12 +147,12 @@ This request does not accept any includes
         "last4": null
       },
       "payment_method_type": "creditcard",
-      "customer_id": "cb4ded94-ee7e-4c9f-a6d4-d5a0d9e09684"
+      "customer_id": "213cafcf-13d9-4e6d-946a-13963e110aa5"
     },
     "relationships": {
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/cb4ded94-ee7e-4c9f-a6d4-d5a0d9e09684"
+          "related": "api/boomerang/customers/213cafcf-13d9-4e6d-946a-13963e110aa5"
         }
       }
     }
