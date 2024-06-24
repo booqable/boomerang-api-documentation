@@ -49,18 +49,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "ea93fd8d-da67-4f77-95ba-0ca4d52d36d9",
+      "id": "f5feac03-bec0-4a4a-88ef-e854fe9403da",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-06-24T09:25:31.391982+00:00",
-        "product_name": "Product 1000017",
-        "identifier": "id1000054",
+        "created_at": "2024-06-24T09:48:28.938941+00:00",
+        "product_name": "Product 1000020",
+        "identifier": "id1000016",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
         "turnover_in_cents": 0,
-        "stock_item_id": "5e4a70ad-6512-4de1-9dc2-971e959efb3c",
-        "product_id": "1a51217e-8e14-46ec-84e2-b2bb82a94917",
+        "stock_item_id": "1476e1c3-55a7-431d-af78-c0e6eb2fdfa3",
+        "product_id": "4dc52e15-0813-4088-8c14-2f20aefaec96",
         "location_id": null
       },
       "relationships": {
@@ -71,7 +71,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/1a51217e-8e14-46ec-84e2-b2bb82a94917"
+            "related": "api/boomerang/products/4dc52e15-0813-4088-8c14-2f20aefaec96"
           }
         },
         "location": {
@@ -82,18 +82,18 @@ Name | Description
       }
     },
     {
-      "id": "134b9380-37c0-4e0e-ae76-4222ae6d0823",
+      "id": "3cee6c1e-160a-48a0-8623-9a5b4cb247f1",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-06-24T09:25:31.416045+00:00",
-        "product_name": "Product 1000017",
-        "identifier": "id1000055",
+        "created_at": "2024-06-24T09:48:28.966410+00:00",
+        "product_name": "Product 1000020",
+        "identifier": "id1000017",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
         "turnover_in_cents": 0,
-        "stock_item_id": "88e03c8a-6c05-416d-b033-9abe564975d4",
-        "product_id": "1a51217e-8e14-46ec-84e2-b2bb82a94917",
+        "stock_item_id": "1e07f020-466e-4c00-b80f-65af0a8adcf5",
+        "product_id": "4dc52e15-0813-4088-8c14-2f20aefaec96",
         "location_id": null
       },
       "relationships": {
@@ -104,7 +104,7 @@ Name | Description
         },
         "product": {
           "links": {
-            "related": "api/boomerang/products/1a51217e-8e14-46ec-84e2-b2bb82a94917"
+            "related": "api/boomerang/products/4dc52e15-0813-4088-8c14-2f20aefaec96"
           }
         },
         "location": {

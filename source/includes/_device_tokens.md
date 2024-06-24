@@ -48,11 +48,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "dc841be1-4d58-4048-989d-9db7000e79d6",
+    "id": "87f69862-8b69-4553-9cfd-7ccdfd4c1138",
     "type": "device_tokens",
     "attributes": {
-      "created_at": "2024-06-24T09:28:01.911998+00:00",
-      "updated_at": "2024-06-24T09:28:01.911998+00:00",
+      "created_at": "2024-06-24T09:48:06.379829+00:00",
+      "updated_at": "2024-06-24T09:48:06.379829+00:00",
       "kind": "apn",
       "environment": "production",
       "version": 3
@@ -98,7 +98,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/device_tokens/ad97da11-1ac9-419d-9326-d860319cb87a' \
+    --url 'https://example.booqable.com/api/boomerang/device_tokens/14eae21b-8c24-4a19-96ce-831c57fed2ab' \
     --header 'content-type: application/json' \
 ```
 
@@ -107,11 +107,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ad97da11-1ac9-419d-9326-d860319cb87a",
+    "id": "14eae21b-8c24-4a19-96ce-831c57fed2ab",
     "type": "device_tokens",
     "attributes": {
-      "created_at": "2024-06-24T09:28:02.511820+00:00",
-      "updated_at": "2024-06-24T09:28:02.511820+00:00",
+      "created_at": "2024-06-24T09:48:07.447493+00:00",
+      "updated_at": "2024-06-24T09:48:07.447493+00:00",
       "kind": "apn",
       "environment": "production",
       "version": 3

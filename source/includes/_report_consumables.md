@@ -42,19 +42,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "4467339d-1aa8-47f0-b2a5-47f5065662f2",
+      "id": "89e61e8d-de39-4391-b5a2-e4d1554b27ac",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2024-06-24T09:29:48.039455+00:00",
-        "name": "Product 1000073",
+        "created_at": "2024-06-24T09:48:50.100923+00:00",
+        "name": "Product 1000022",
         "sold": 2,
         "turnover_in_cents": 0,
-        "product_id": "4467339d-1aa8-47f0-b2a5-47f5065662f2"
+        "product_id": "89e61e8d-de39-4391-b5a2-e4d1554b27ac"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/4467339d-1aa8-47f0-b2a5-47f5065662f2"
+            "related": "api/boomerang/products/89e61e8d-de39-4391-b5a2-e4d1554b27ac"
           }
         }
       }

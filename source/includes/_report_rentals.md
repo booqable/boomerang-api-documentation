@@ -44,22 +44,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "ce7c6796-923c-42a7-bc29-bf6a2b36aa04",
+      "id": "31e150b7-9c85-4f6e-93f2-9932563ba219",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2024-06-24T09:25:16.119212+00:00",
-        "name": "Product 1000016",
+        "created_at": "2024-06-24T09:48:01.013743+00:00",
+        "name": "Product 1000019",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
         "turnover_in_cents": 0,
         "quantity": 10,
-        "product_id": "81939474-fc31-45e5-bddd-595a923589cf"
+        "product_id": "1a68ce22-f063-42ec-9d26-d3187e174bc2"
       },
       "relationships": {
         "product": {
           "links": {
-            "related": "api/boomerang/products/81939474-fc31-45e5-bddd-595a923589cf"
+            "related": "api/boomerang/products/1a68ce22-f063-42ec-9d26-d3187e174bc2"
           }
         }
       }
