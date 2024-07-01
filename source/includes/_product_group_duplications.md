@@ -47,7 +47,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_product_group_id": "a8a941d8-bdb6-4bac-9ce8-e5c34865b365",
+          "original_product_group_id": "171f8d93-96c2-4068-8771-914003d22dfe",
           "name": "New name",
           "description": "New description",
           "collections": true,
@@ -68,7 +68,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "77938ed1-d55c-5c80-b629-573bed15833a",
+    "id": "00ce3d7a-664a-5661-9768-050a9ad8c26e",
     "type": "product_group_duplications",
     "attributes": {
       "name": "New name",
@@ -83,21 +83,10 @@ Name | Description
       "show_in_store": true,
       "photo_base64": null,
       "remote_photo_url": null,
-      "original_product_group_id": "a8a941d8-bdb6-4bac-9ce8-e5c34865b365",
-      "new_product_group_id": "f10e84da-3104-469b-b6b3-c36d05693ffd"
+      "original_product_group_id": "171f8d93-96c2-4068-8771-914003d22dfe",
+      "new_product_group_id": "72ccf261-dede-4e76-b35f-048ab2854a80"
     },
-    "relationships": {
-      "original_product_group": {
-        "meta": {
-          "included": false
-        }
-      },
-      "new_product_group": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }

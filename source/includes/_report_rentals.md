@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-06-19+00%3A00%3A00+UTC&filter%5Btill%5D=2024-06-24+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-06-26+00%3A00%3A00+UTC&filter%5Btill%5D=2024-07-01+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,25 +44,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "31e150b7-9c85-4f6e-93f2-9932563ba219",
+      "id": "4ed31f09-c2b0-4764-80d8-8f8538052a52",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2024-06-24T09:48:01.013743+00:00",
-        "name": "Product 1000019",
+        "created_at": "2024-07-01T09:30:46.117577+00:00",
+        "name": "Product 1000077",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
         "turnover_in_cents": 0,
         "quantity": 10,
-        "product_id": "1a68ce22-f063-42ec-9d26-d3187e174bc2"
+        "product_id": "4ead5f62-bbc9-40dd-bc89-1a329cb1acbb"
       },
-      "relationships": {
-        "product": {
-          "links": {
-            "related": "api/boomerang/products/1a68ce22-f063-42ec-9d26-d3187e174bc2"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}

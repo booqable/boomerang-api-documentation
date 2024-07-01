@@ -37,10 +37,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "b91df989-f05b-4639-904e-c7ba9a895ffd",
+      "id": "d5d7e6ca-5a61-486b-bbea-c40fdecf4887",
       "type": "login_activities",
       "attributes": {
-        "created_at": "2024-06-24T09:51:58.449971+00:00",
+        "created_at": "2024-07-01T09:28:04.390352+00:00",
         "ip": "192.168.1.28",
         "strategy": "saml",
         "success": false,

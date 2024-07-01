@@ -35,7 +35,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=ba56de30-3fa0-4ee2-bd90-3ce60d0ee6e5&filter%5Border_id%5D=3770120c-6fd7-40a5-a0e4-d24f60d783dd' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=743ced39-07c8-4048-a389-c19fe3b5044f&filter%5Border_id%5D=c656c18d-fe50-4f32-9f21-0b73452682d5' \
     --header 'content-type: application/json' \
 ```
 
@@ -45,36 +45,24 @@ Name | Description
   {
   "data": [
     {
-      "id": "d93041c8-b8c4-5611-bb19-7551496dc401",
+      "id": "2a1eea06-97ca-5658-be64-974c039f99f8",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "c920b450-4e3b-4590-8bed-9bd0656cf970",
-        "item_id": "ba56de30-3fa0-4ee2-bd90-3ce60d0ee6e5",
+        "stock_item_id": "f77a9830-77a2-4b9b-969a-9c7fb7c6f85f",
+        "item_id": "743ced39-07c8-4048-a389-c19fe3b5044f",
         "status": "available_in_location"
       },
-      "relationships": {
-        "stock_item": {
-          "links": {
-            "related": "api/boomerang/stock_items/c920b450-4e3b-4590-8bed-9bd0656cf970"
-          }
-        }
-      }
+      "relationships": {}
     },
     {
-      "id": "7257ad30-81a3-5878-ba1d-d843d0d71005",
+      "id": "2fcc8d68-5bf8-5d7b-b66b-365636721df6",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "812ab714-cb41-4b8c-b180-25966a953223",
-        "item_id": "ba56de30-3fa0-4ee2-bd90-3ce60d0ee6e5",
+        "stock_item_id": "76123d31-3829-4138-8b91-7351617eb635",
+        "item_id": "743ced39-07c8-4048-a389-c19fe3b5044f",
         "status": "already_booked"
       },
-      "relationships": {
-        "stock_item": {
-          "links": {
-            "related": "api/boomerang/stock_items/812ab714-cb41-4b8c-b180-25966a953223"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}

@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "invoice_revisions",
         "attributes": {
-          "order_id": "92f2cecb-98e8-47f2-85dd-10cb38e17b9d"
+          "order_id": "302b5a2b-f000-414c-8e81-411300b62c70"
         }
       }
     }'
@@ -54,30 +54,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "313606a1-b2c9-55c6-a0ef-19fc57f0fdae",
+    "id": "69df075b-20a0-5691-8054-442490c2a849",
     "type": "invoice_revisions",
     "attributes": {
-      "order_id": "92f2cecb-98e8-47f2-85dd-10cb38e17b9d",
-      "revised_invoice_id": "81e99662-421a-4746-81b3-b9971b2d9207",
-      "revision_invoice_id": "2d10b45c-c1c2-45c7-87e1-ce5d02db02a2"
+      "order_id": "302b5a2b-f000-414c-8e81-411300b62c70",
+      "revised_invoice_id": "9517e822-47be-4499-9a88-c6199c11cb8b",
+      "revision_invoice_id": "d9de47e9-6fc9-4715-897b-379d17a1a00c"
     },
-    "relationships": {
-      "order": {
-        "meta": {
-          "included": false
-        }
-      },
-      "revised_invoice": {
-        "meta": {
-          "included": false
-        }
-      },
-      "revision_invoice": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }

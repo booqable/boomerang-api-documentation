@@ -48,41 +48,20 @@ Name | Description
   {
   "data": [
     {
-      "id": "22ab8093-732d-42df-84ab-fa9238bef8f9",
+      "id": "a351b4ce-5d45-4376-b8c3-346098906f06",
       "type": "transfers",
       "attributes": {
-        "created_at": "2024-06-24T09:51:57.638600+00:00",
-        "updated_at": "2024-06-24T09:51:57.638600+00:00",
+        "created_at": "2024-07-01T09:23:38.561824+00:00",
+        "updated_at": "2024-07-01T09:23:38.561824+00:00",
         "quantity": 1,
-        "available_at": "2024-06-22T09:45:00.000000+00:00",
+        "available_at": "2024-06-29T09:15:00.000000+00:00",
         "finalized": false,
-        "item_id": "a70d4c3b-dd75-4f0f-9909-f59fdf9a7095",
-        "order_id": "b80b9436-6fe4-428a-9bc3-62654cbbf30b",
-        "source_location_id": "3b278114-286e-4553-9d4e-93084b7f16ce",
-        "destination_location_id": "3b278114-286e-4553-9d4e-93084b7f16ce"
+        "item_id": "f09014dd-6dc6-4b27-85f6-5db3a6b7464d",
+        "order_id": "cedeecc1-96f6-44de-962e-06d0782bd7ba",
+        "source_location_id": "09d827c7-21c0-4208-b51f-a47ea2ec594a",
+        "destination_location_id": "09d827c7-21c0-4208-b51f-a47ea2ec594a"
       },
-      "relationships": {
-        "item": {
-          "links": {
-            "related": "api/boomerang/items/a70d4c3b-dd75-4f0f-9909-f59fdf9a7095"
-          }
-        },
-        "order": {
-          "links": {
-            "related": "api/boomerang/orders/b80b9436-6fe4-428a-9bc3-62654cbbf30b"
-          }
-        },
-        "source_location": {
-          "links": {
-            "related": "api/boomerang/locations/3b278114-286e-4553-9d4e-93084b7f16ce"
-          }
-        },
-        "destination_location": {
-          "links": {
-            "related": "api/boomerang/locations/3b278114-286e-4553-9d4e-93084b7f16ce"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}

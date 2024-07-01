@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "ff3b6a44-b002-4a2b-840a-1592f1eb7faa",
-          "target_id": "13f23b5b-1917-4275-bf31-5aa4d773f785"
+          "source_id": "c2619247-d7af-4783-8998-7f7fb24c58b1",
+          "target_id": "064b71d1-29b7-4df8-b7e8-d7c1bc98aecf"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "9b2964f1-1ffc-52e5-841e-ab8e06c812d9",
+    "id": "99108476-7d69-554a-b6ff-41bf9c627f92",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "ff3b6a44-b002-4a2b-840a-1592f1eb7faa",
-      "target_id": "13f23b5b-1917-4275-bf31-5aa4d773f785"
+      "source_id": "c2619247-d7af-4783-8998-7f7fb24c58b1",
+      "target_id": "064b71d1-29b7-4df8-b7e8-d7c1bc98aecf"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "13f23b5b-1917-4275-bf31-5aa4d773f785"
+          "id": "064b71d1-29b7-4df8-b7e8-d7c1bc98aecf"
         }
       }
     }
   },
   "included": [
     {
-      "id": "13f23b5b-1917-4275-bf31-5aa4d773f785",
+      "id": "064b71d1-29b7-4df8-b7e8-d7c1bc98aecf",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-06-24T09:54:45.600395+00:00",
-        "updated_at": "2024-06-24T09:54:45.714675+00:00",
+        "created_at": "2024-07-01T09:26:00.291889+00:00",
+        "updated_at": "2024-07-01T09:26:00.501685+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
@@ -86,33 +86,7 @@ Name | Description
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
-      "relationships": {
-        "merge_suggestion_customer": {
-          "meta": {
-            "included": false
-          }
-        },
-        "tax_region": {
-          "meta": {
-            "included": false
-          }
-        },
-        "properties": {
-          "meta": {
-            "included": false
-          }
-        },
-        "barcode": {
-          "meta": {
-            "included": false
-          }
-        },
-        "notes": {
-          "meta": {
-            "included": false
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}

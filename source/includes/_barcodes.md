@@ -65,24 +65,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "8ede70e1-b2e4-4130-8fde-b7bce329b4cf",
+      "id": "80e7068e-b5f8-47f4-bfff-7425cba8c0ce",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2024-06-24T09:50:13.470658+00:00",
-        "updated_at": "2024-06-24T09:50:13.470658+00:00",
-        "number": "http://bqbl.it/8ede70e1-b2e4-4130-8fde-b7bce329b4cf",
+        "created_at": "2024-07-01T09:26:07.154512+00:00",
+        "updated_at": "2024-07-01T09:26:07.154512+00:00",
+        "number": "http://bqbl.it/80e7068e-b5f8-47f4-bfff-7425cba8c0ce",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-110.lvh.me:/barcodes/8ede70e1-b2e4-4130-8fde-b7bce329b4cf/image",
-        "owner_id": "7b943e15-a7ee-426d-a70f-869c3453e485",
+        "image_url": "http://company-name-105.lvh.me:/barcodes/80e7068e-b5f8-47f4-bfff-7425cba8c0ce/image",
+        "owner_id": "99986c72-9ff0-4db4-8766-d7a592f3277b",
         "owner_type": "customers"
       },
-      "relationships": {
-        "owner": {
-          "links": {
-            "related": "api/boomerang/customers/7b943e15-a7ee-426d-a70f-869c3453e485"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}
@@ -94,7 +88,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Ff0ee8f7b-f2b4-4451-88b8-03357734bcab&include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=http%3A%2F%2Fbqbl.it%2Ff4f0cd12-4978-4ceb-bcc1-38b422fc0196&include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -104,25 +98,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "f0ee8f7b-f2b4-4451-88b8-03357734bcab",
+      "id": "f4f0cd12-4978-4ceb-bcc1-38b422fc0196",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2024-06-24T09:50:11.620678+00:00",
-        "updated_at": "2024-06-24T09:50:11.620678+00:00",
-        "number": "http://bqbl.it/f0ee8f7b-f2b4-4451-88b8-03357734bcab",
+        "created_at": "2024-07-01T09:26:05.628239+00:00",
+        "updated_at": "2024-07-01T09:26:05.628239+00:00",
+        "number": "http://bqbl.it/f4f0cd12-4978-4ceb-bcc1-38b422fc0196",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-108.lvh.me:/barcodes/f0ee8f7b-f2b4-4451-88b8-03357734bcab/image",
-        "owner_id": "56f266fe-40ee-4f67-959f-af7fef98f389",
+        "image_url": "http://company-name-103.lvh.me:/barcodes/f4f0cd12-4978-4ceb-bcc1-38b422fc0196/image",
+        "owner_id": "da23bc0a-5668-4574-ba05-95d582c55142",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
-          "links": {
-            "related": "api/boomerang/customers/56f266fe-40ee-4f67-959f-af7fef98f389"
-          },
           "data": {
             "type": "customers",
-            "id": "56f266fe-40ee-4f67-959f-af7fef98f389"
+            "id": "da23bc0a-5668-4574-ba05-95d582c55142"
           }
         }
       }
@@ -130,16 +121,16 @@ Name | Description
   ],
   "included": [
     {
-      "id": "56f266fe-40ee-4f67-959f-af7fef98f389",
+      "id": "da23bc0a-5668-4574-ba05-95d582c55142",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-06-24T09:50:11.594539+00:00",
-        "updated_at": "2024-06-24T09:50:11.624599+00:00",
+        "created_at": "2024-07-01T09:26:05.579720+00:00",
+        "updated_at": "2024-07-01T09:26:05.631075+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-17@doe.test",
+        "email": "john-46@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -149,33 +140,7 @@ Name | Description
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
-      "relationships": {
-        "merge_suggestion_customer": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=56f266fe-40ee-4f67-959f-af7fef98f389&filter[owner_type]=customers"
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=56f266fe-40ee-4f67-959f-af7fef98f389&filter[owner_type]=customers"
-          }
-        },
-        "notes": {
-          "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=56f266fe-40ee-4f67-959f-af7fef98f389&filter[owner_type]=customers"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}
@@ -187,7 +152,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=aHR0cDovL2JxYmwuaXQvMDBmNDFiZTMtZGMwMi00NGQyLWJlY2UtOTEyYjZmZDNjNmMw&include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes?filter%5Bnumber%5D=aHR0cDovL2JxYmwuaXQvOGVlMjkwNDktZmYxZi00ODY0LWI1NDQtNjE4ZDNlZWY1ZmNl&include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -197,25 +162,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "00f41be3-dc02-44d2-bece-912b6fd3c6c0",
+      "id": "8ee29049-ff1f-4864-b544-618d3eef5fce",
       "type": "barcodes",
       "attributes": {
-        "created_at": "2024-06-24T09:50:12.429868+00:00",
-        "updated_at": "2024-06-24T09:50:12.429868+00:00",
-        "number": "http://bqbl.it/00f41be3-dc02-44d2-bece-912b6fd3c6c0",
+        "created_at": "2024-07-01T09:26:06.464269+00:00",
+        "updated_at": "2024-07-01T09:26:06.464269+00:00",
+        "number": "http://bqbl.it/8ee29049-ff1f-4864-b544-618d3eef5fce",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-109.lvh.me:/barcodes/00f41be3-dc02-44d2-bece-912b6fd3c6c0/image",
-        "owner_id": "217d0c64-dcee-4680-85d8-b6ba64c9a968",
+        "image_url": "http://company-name-104.lvh.me:/barcodes/8ee29049-ff1f-4864-b544-618d3eef5fce/image",
+        "owner_id": "7e1041fe-1f10-440f-85bc-b0353c1526ff",
         "owner_type": "customers"
       },
       "relationships": {
         "owner": {
-          "links": {
-            "related": "api/boomerang/customers/217d0c64-dcee-4680-85d8-b6ba64c9a968"
-          },
           "data": {
             "type": "customers",
-            "id": "217d0c64-dcee-4680-85d8-b6ba64c9a968"
+            "id": "7e1041fe-1f10-440f-85bc-b0353c1526ff"
           }
         }
       }
@@ -223,16 +185,16 @@ Name | Description
   ],
   "included": [
     {
-      "id": "217d0c64-dcee-4680-85d8-b6ba64c9a968",
+      "id": "7e1041fe-1f10-440f-85bc-b0353c1526ff",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-06-24T09:50:12.392721+00:00",
-        "updated_at": "2024-06-24T09:50:12.435269+00:00",
+        "created_at": "2024-07-01T09:26:06.415491+00:00",
+        "updated_at": "2024-07-01T09:26:06.466681+00:00",
         "archived": false,
         "archived_at": null,
         "number": 2,
         "name": "John Doe",
-        "email": "john-19@doe.test",
+        "email": "john-48@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -242,33 +204,7 @@ Name | Description
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
-      "relationships": {
-        "merge_suggestion_customer": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=217d0c64-dcee-4680-85d8-b6ba64c9a968&filter[owner_type]=customers"
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=217d0c64-dcee-4680-85d8-b6ba64c9a968&filter[owner_type]=customers"
-          }
-        },
-        "notes": {
-          "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=217d0c64-dcee-4680-85d8-b6ba64c9a968&filter[owner_type]=customers"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}
@@ -346,7 +282,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/e25285ad-991c-4c24-b898-0fddc6ba4d60?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/54fb64ca-34ff-4f3f-ba16-6ac577f633a3?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -355,41 +291,38 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e25285ad-991c-4c24-b898-0fddc6ba4d60",
+    "id": "54fb64ca-34ff-4f3f-ba16-6ac577f633a3",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2024-06-24T09:50:17.182914+00:00",
-      "updated_at": "2024-06-24T09:50:17.182914+00:00",
-      "number": "http://bqbl.it/e25285ad-991c-4c24-b898-0fddc6ba4d60",
+      "created_at": "2024-07-01T09:26:10.493657+00:00",
+      "updated_at": "2024-07-01T09:26:10.493657+00:00",
+      "number": "http://bqbl.it/54fb64ca-34ff-4f3f-ba16-6ac577f633a3",
       "barcode_type": "qr_code",
-      "image_url": "http://company-name-114.lvh.me:/barcodes/e25285ad-991c-4c24-b898-0fddc6ba4d60/image",
-      "owner_id": "ea70cc9d-5418-4244-9366-3a2ca853a6b4",
+      "image_url": "http://company-name-109.lvh.me:/barcodes/54fb64ca-34ff-4f3f-ba16-6ac577f633a3/image",
+      "owner_id": "77b1631b-3035-436b-b35e-a84f2f64e124",
       "owner_type": "customers"
     },
     "relationships": {
       "owner": {
-        "links": {
-          "related": "api/boomerang/customers/ea70cc9d-5418-4244-9366-3a2ca853a6b4"
-        },
         "data": {
           "type": "customers",
-          "id": "ea70cc9d-5418-4244-9366-3a2ca853a6b4"
+          "id": "77b1631b-3035-436b-b35e-a84f2f64e124"
         }
       }
     }
   },
   "included": [
     {
-      "id": "ea70cc9d-5418-4244-9366-3a2ca853a6b4",
+      "id": "77b1631b-3035-436b-b35e-a84f2f64e124",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-06-24T09:50:17.164187+00:00",
-        "updated_at": "2024-06-24T09:50:17.185599+00:00",
+        "created_at": "2024-07-01T09:26:10.417573+00:00",
+        "updated_at": "2024-07-01T09:26:10.497382+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-25@doe.test",
+        "email": "john-54@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -399,33 +332,7 @@ This request accepts the following includes:
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
-      "relationships": {
-        "merge_suggestion_customer": {
-          "links": {
-            "related": null
-          }
-        },
-        "tax_region": {
-          "links": {
-            "related": null
-          }
-        },
-        "properties": {
-          "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=ea70cc9d-5418-4244-9366-3a2ca853a6b4&filter[owner_type]=customers"
-          }
-        },
-        "barcode": {
-          "links": {
-            "related": "api/boomerang/barcodes?filter[owner_id]=ea70cc9d-5418-4244-9366-3a2ca853a6b4&filter[owner_type]=customers"
-          }
-        },
-        "notes": {
-          "links": {
-            "related": "api/boomerang/notes?filter[owner_id]=ea70cc9d-5418-4244-9366-3a2ca853a6b4&filter[owner_type]=customers"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}
@@ -481,7 +388,7 @@ This request accepts the following includes:
         "type": "barcodes",
         "attributes": {
           "barcode_type": "qr_code",
-          "owner_id": "bc59392f-4964-4aba-8154-7dbed63565b4",
+          "owner_id": "3ce60639-324f-4ad1-bd1a-ca4bcf571f38",
           "owner_type": "customers"
         }
       }
@@ -493,24 +400,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a4c94ab7-8a33-4e98-aec3-420211916ed5",
+    "id": "a6c669bb-db48-49ca-8b60-ae41990333d7",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2024-06-24T09:50:15.592722+00:00",
-      "updated_at": "2024-06-24T09:50:15.592722+00:00",
-      "number": "http://bqbl.it/a4c94ab7-8a33-4e98-aec3-420211916ed5",
+      "created_at": "2024-07-01T09:26:08.943592+00:00",
+      "updated_at": "2024-07-01T09:26:08.943592+00:00",
+      "number": "http://bqbl.it/a6c669bb-db48-49ca-8b60-ae41990333d7",
       "barcode_type": "qr_code",
-      "image_url": "http://company-name-112.lvh.me:/barcodes/a4c94ab7-8a33-4e98-aec3-420211916ed5/image",
-      "owner_id": "bc59392f-4964-4aba-8154-7dbed63565b4",
+      "image_url": "http://company-name-107.lvh.me:/barcodes/a6c669bb-db48-49ca-8b60-ae41990333d7/image",
+      "owner_id": "3ce60639-324f-4ad1-bd1a-ca4bcf571f38",
       "owner_type": "customers"
     },
-    "relationships": {
-      "owner": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }
@@ -570,11 +471,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/abf78bfe-bc49-49d8-8412-3ffc57ea988c' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/a30939e7-1b75-4e83-a74d-2130dd4283f0' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "abf78bfe-bc49-49d8-8412-3ffc57ea988c",
+        "id": "a30939e7-1b75-4e83-a74d-2130dd4283f0",
         "type": "barcodes",
         "attributes": {
           "number": "https://myfancysite.com"
@@ -588,24 +489,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "abf78bfe-bc49-49d8-8412-3ffc57ea988c",
+    "id": "a30939e7-1b75-4e83-a74d-2130dd4283f0",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2024-06-24T09:50:14.512398+00:00",
-      "updated_at": "2024-06-24T09:50:14.571838+00:00",
+      "created_at": "2024-07-01T09:26:08.070371+00:00",
+      "updated_at": "2024-07-01T09:26:08.158864+00:00",
       "number": "https://myfancysite.com",
       "barcode_type": "qr_code",
-      "image_url": "http://company-name-111.lvh.me:/barcodes/abf78bfe-bc49-49d8-8412-3ffc57ea988c/image",
-      "owner_id": "4a69d342-1352-47dc-8f80-d533d6c6763a",
+      "image_url": "http://company-name-106.lvh.me:/barcodes/a30939e7-1b75-4e83-a74d-2130dd4283f0/image",
+      "owner_id": "adebe5e2-6f80-47eb-851f-9784a4b2d174",
       "owner_type": "customers"
     },
-    "relationships": {
-      "owner": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }
@@ -665,7 +560,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/barcodes/f4bf792e-88ae-47cf-8af4-4162a06384c5' \
+    --url 'https://example.booqable.com/api/boomerang/barcodes/9503d8f8-a53c-4393-9ab9-bdce393c4395' \
     --header 'content-type: application/json' \
 ```
 
@@ -674,24 +569,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f4bf792e-88ae-47cf-8af4-4162a06384c5",
+    "id": "9503d8f8-a53c-4393-9ab9-bdce393c4395",
     "type": "barcodes",
     "attributes": {
-      "created_at": "2024-06-24T09:50:16.535360+00:00",
-      "updated_at": "2024-06-24T09:50:16.535360+00:00",
-      "number": "http://bqbl.it/f4bf792e-88ae-47cf-8af4-4162a06384c5",
+      "created_at": "2024-07-01T09:26:09.688480+00:00",
+      "updated_at": "2024-07-01T09:26:09.688480+00:00",
+      "number": "http://bqbl.it/9503d8f8-a53c-4393-9ab9-bdce393c4395",
       "barcode_type": "qr_code",
-      "image_url": "http://company-name-113.lvh.me:/barcodes/f4bf792e-88ae-47cf-8af4-4162a06384c5/image",
-      "owner_id": "808b5098-2905-4c3e-a903-4d453290825b",
+      "image_url": "http://company-name-108.lvh.me:/barcodes/9503d8f8-a53c-4393-9ab9-bdce393c4395/image",
+      "owner_id": "c4e93740-51f7-4c83-ab10-4b2cfd6e5034",
       "owner_type": "customers"
     },
-    "relationships": {
-      "owner": {
-        "links": {
-          "related": "api/boomerang/customers/808b5098-2905-4c3e-a903-4d453290825b"
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }

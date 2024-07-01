@@ -45,21 +45,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "808a34d3-8107-4651-a70e-507059188b67",
+      "id": "dba9f524-abfd-4e6d-885c-2ba9d8f08fff",
       "type": "publications",
       "attributes": {
-        "created_at": "2024-06-24T09:53:28.284656+00:00",
-        "updated_at": "2024-06-24T09:53:28.284656+00:00",
-        "published_at": "2024-06-19T09:53:28.267444+00:00",
-        "theme_id": "7425fdf6-ba1b-4d63-9df9-82fff2d604c3"
+        "created_at": "2024-07-01T09:30:41.216393+00:00",
+        "updated_at": "2024-07-01T09:30:41.216393+00:00",
+        "published_at": "2024-06-26T09:30:41.206715+00:00",
+        "theme_id": "beda7a63-5e73-45e9-aae2-d5c71b603c95"
       },
-      "relationships": {
-        "theme": {
-          "links": {
-            "related": "api/boomerang/themes/7425fdf6-ba1b-4d63-9df9-82fff2d604c3"
-          }
-        }
-      }
+      "relationships": {}
     }
   ],
   "meta": {}
@@ -132,7 +126,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "d99518dd-8bc0-4b74-9cbf-a1eb8d007e91"
+          "theme_id": "eed2499e-7965-4988-861c-07c89dab133d"
         }
       }
     }'
@@ -143,21 +137,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "69de3fec-8abb-49ce-9bd8-83c585ae5cd7",
+    "id": "7d26f3dc-2023-4675-8f8b-3e3f2702f1d0",
     "type": "publications",
     "attributes": {
-      "created_at": "2024-06-19T09:53:29.001870+00:00",
-      "updated_at": "2024-06-19T09:53:29.001870+00:00",
-      "published_at": "2024-06-19T09:53:29.001870+00:00",
-      "theme_id": "d99518dd-8bc0-4b74-9cbf-a1eb8d007e91"
+      "created_at": "2024-06-26T09:30:42.247975+00:00",
+      "updated_at": "2024-06-26T09:30:42.247975+00:00",
+      "published_at": "2024-06-26T09:30:42.247975+00:00",
+      "theme_id": "eed2499e-7965-4988-861c-07c89dab133d"
     },
-    "relationships": {
-      "theme": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }

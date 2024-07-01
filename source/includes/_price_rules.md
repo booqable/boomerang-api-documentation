@@ -80,13 +80,13 @@ Name | Description
       "data": {
         "type": "price_rules",
         "attributes": {
-          "price_ruleset_id": "12b44c14-2eee-4470-9d53-2bb2e3da3798",
+          "price_ruleset_id": "ec3ed244-ec8f-4367-af3c-e120610ce912",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "value": 25,
-          "from": "2024-05-24T09:48:16.553Z",
-          "till": "2024-07-24T09:48:16.553Z"
+          "from": "2024-06-01T09:22:54.990Z",
+          "till": "2024-08-01T09:22:54.990Z"
         }
       },
       "include": "price_rules"
@@ -98,18 +98,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "9eda9972-66cb-4e72-84ba-f311aabff884",
+    "id": "eee2ca58-d651-4019-8791-61fdabc72538",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-06-24T09:48:16.612869+00:00",
-      "updated_at": "2024-06-24T09:48:16.612869+00:00",
+      "created_at": "2024-07-01T09:22:55.077669+00:00",
+      "updated_at": "2024-07-01T09:22:55.077669+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
       "adjustment_strategy": "percentage",
       "value": 25.0,
-      "from": "2024-05-24T09:48:16.553000+00:00",
-      "till": "2024-07-24T09:48:16.553000+00:00",
+      "from": "2024-06-01T09:22:54.990000+00:00",
+      "till": "2024-08-01T09:22:54.990000+00:00",
       "from_day": null,
       "till_day": null,
       "from_time": null,
@@ -119,15 +119,9 @@ Name | Description
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "12b44c14-2eee-4470-9d53-2bb2e3da3798"
+      "price_ruleset_id": "ec3ed244-ec8f-4367-af3c-e120610ce912"
     },
-    "relationships": {
-      "price_ruleset": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }
@@ -194,11 +188,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/9d7c434f-ea11-4de8-9fcb-da6868d6fab9' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/779f1f3a-9b3a-4ff8-b30d-84f6a9887124' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9d7c434f-ea11-4de8-9fcb-da6868d6fab9",
+        "id": "779f1f3a-9b3a-4ff8-b30d-84f6a9887124",
         "type": "price_rules",
         "attributes": {
           "value": 10
@@ -212,11 +206,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9d7c434f-ea11-4de8-9fcb-da6868d6fab9",
+    "id": "779f1f3a-9b3a-4ff8-b30d-84f6a9887124",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-06-24T09:48:15.899544+00:00",
-      "updated_at": "2024-06-24T09:48:15.956157+00:00",
+      "created_at": "2024-07-01T09:22:53.707145+00:00",
+      "updated_at": "2024-07-01T09:22:53.749748+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -233,15 +227,9 @@ This request accepts the following includes:
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "0594f9c2-8f53-4501-b556-92f8582f18f8"
+      "price_ruleset_id": "a03c119f-95dc-4d5c-8f13-1ba9a7cd1277"
     },
-    "relationships": {
-      "price_ruleset": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }
@@ -252,14 +240,14 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/7e4ef812-d006-42a4-b02d-8f70e755d27a' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/2452518c-d1b6-4e9a-9666-7ba6bb6b1d4e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "7e4ef812-d006-42a4-b02d-8f70e755d27a",
+        "id": "2452518c-d1b6-4e9a-9666-7ba6bb6b1d4e",
         "type": "price_rules",
         "attributes": {
-          "id": "7e4ef812-d006-42a4-b02d-8f70e755d27a",
+          "id": "2452518c-d1b6-4e9a-9666-7ba6bb6b1d4e",
           "name": "Off season"
         }
       }
@@ -271,11 +259,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7e4ef812-d006-42a4-b02d-8f70e755d27a",
+    "id": "2452518c-d1b6-4e9a-9666-7ba6bb6b1d4e",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-06-24T09:48:14.566380+00:00",
-      "updated_at": "2024-06-24T09:48:14.788849+00:00",
+      "created_at": "2024-07-01T09:22:54.411061+00:00",
+      "updated_at": "2024-07-01T09:22:54.456023+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -292,15 +280,9 @@ This request accepts the following includes:
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "e34649e1-4878-4298-9e2b-b6f94aaf785d"
+      "price_ruleset_id": "45b62d7b-94d2-4501-b25c-6cef636c16f3"
     },
-    "relationships": {
-      "price_ruleset": {
-        "meta": {
-          "included": false
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }
@@ -367,7 +349,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/f0e81d93-bf10-47cc-b9b9-cafc04450eb0' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/7f49a4c1-709a-4ef9-ae5e-b8966951d587' \
     --header 'content-type: application/json' \
 ```
 
@@ -376,11 +358,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f0e81d93-bf10-47cc-b9b9-cafc04450eb0",
+    "id": "7f49a4c1-709a-4ef9-ae5e-b8966951d587",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-06-24T09:48:13.768750+00:00",
-      "updated_at": "2024-06-24T09:48:13.768750+00:00",
+      "created_at": "2024-07-01T09:22:53.149360+00:00",
+      "updated_at": "2024-07-01T09:22:53.149360+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -397,15 +379,9 @@ This request accepts the following includes:
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "e447920a-ff44-433e-9657-cd90e8c4732d"
+      "price_ruleset_id": "f8aef211-9ff1-43a1-bb4e-56c95dd80cb1"
     },
-    "relationships": {
-      "price_ruleset": {
-        "links": {
-          "related": "api/boomerang/price_rulesets/e447920a-ff44-433e-9657-cd90e8c4732d"
-        }
-      }
-    }
+    "relationships": {}
   },
   "meta": {}
 }
