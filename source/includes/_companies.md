@@ -83,14 +83,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "6e6dd76c-485e-4872-ace1-c798d49ee56d",
+    "id": "b1a650ee-0ade-4437-86d2-428a3bb185bc",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-07-01T09:31:08.907441+00:00",
-      "updated_at": "2024-07-01T09:31:08.923066+00:00",
+      "created_at": "2024-07-08T09:25:04.362698+00:00",
+      "updated_at": "2024-07-08T09:25:04.381899+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail274@company.com",
+      "email": "mail97@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -122,7 +122,7 @@ Name | Description
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "1504c46a1f6af1ba37ee3de264c31a91",
+      "tenant_token": "418453b32eff0eaf0c00d0f4fa7cc926",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -212,11 +212,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e620a53b-e371-485d-b186-074fc9f2e32f",
+    "id": "20e46c40-f766-4df3-8ade-753c0ebac53f",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-07-15T09:31:07.742Z",
+        "trial_ends_at": "2024-07-22T09:25:03.734Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,
@@ -304,7 +304,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d66d4980-6b0d-4d3a-a35c-744804492ddf",
+        "id": "00d87e6b-c406-4f7c-bcb7-1747a5f4a469",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -318,14 +318,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "d66d4980-6b0d-4d3a-a35c-744804492ddf",
+    "id": "00d87e6b-c406-4f7c-bcb7-1747a5f4a469",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-07-01T09:31:08.322071+00:00",
-      "updated_at": "2024-07-01T09:31:08.404203+00:00",
+      "created_at": "2024-07-08T09:25:05.002521+00:00",
+      "updated_at": "2024-07-08T09:25:05.105388+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail273@company.com",
+      "email": "mail98@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -357,7 +357,7 @@ This request does not accept any includes
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "97130cb04ab8392cecb1dc31faeaabc4",
+      "tenant_token": "2e3f613e08a690402d8867d080c5cf3a",
       "pending_subscription": false,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {

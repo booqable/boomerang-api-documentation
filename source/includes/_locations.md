@@ -34,6 +34,8 @@ Name | Description
 `country` | **String** <br>Address country
 `cluster_ids` | **Array** <br>Clusters this location belongs to
 `main_address_attributes` | **Hash** `writeonly`<br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information
+`carrier_ids` | **Array** <br>Delivery carriers this location supports
+`pickup_enabled` | **Boolean** <br>Whether the location supports pickup
 `main_address` | **Hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information
 
 
@@ -43,6 +45,7 @@ Locations have the following relationships:
 Name | Description
 -- | --
 `clusters` | **Clusters** `readonly`<br>Associated Clusters
+`carriers` | **Carriers** `readonly`<br>Associated Carriers
 
 
 ## Listing locations
@@ -63,15 +66,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "80c0a5e1-1d6d-4964-8770-1d6b8d188fa6",
+      "id": "e9d5099a-0866-4065-a3c3-20b87aa16b22",
       "type": "locations",
       "attributes": {
-        "created_at": "2024-07-01T09:31:01.600677+00:00",
-        "updated_at": "2024-07-01T09:31:01.608863+00:00",
+        "created_at": "2024-07-08T09:26:42.053606+00:00",
+        "updated_at": "2024-07-08T09:26:42.060451+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Warehouse",
-        "code": "LOC1000091",
+        "code": "LOC1000043",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -80,6 +83,8 @@ Name | Description
         "region": "Friesland",
         "country": "Netherlands",
         "cluster_ids": [],
+        "carrier_ids": [],
+        "pickup_enabled": true,
         "main_address": {
           "meets_validation_requirements": false,
           "first_name": null,
@@ -114,7 +119,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=clusters`
+`include` | **String** <br>List of comma seperated relationships `?include=main_address,clusters,carriers`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
 `filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
@@ -154,7 +159,13 @@ Name | Description
 
 This request accepts the following includes:
 
+`main_address`
+
+
 `clusters`
+
+
+`carriers`
 
 
 
@@ -169,7 +180,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/locations/6b76f603-6b14-4ccb-96b9-cd556c97d125' \
+    --url 'https://example.booqable.com/api/boomerang/locations/b5abec37-4e5c-484d-832c-ffed937ae630' \
     --header 'content-type: application/json' \
 ```
 
@@ -178,15 +189,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6b76f603-6b14-4ccb-96b9-cd556c97d125",
+    "id": "b5abec37-4e5c-484d-832c-ffed937ae630",
     "type": "locations",
     "attributes": {
-      "created_at": "2024-07-01T09:31:03.192096+00:00",
-      "updated_at": "2024-07-01T09:31:03.199792+00:00",
+      "created_at": "2024-07-08T09:26:37.896697+00:00",
+      "updated_at": "2024-07-08T09:26:37.902892+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Warehouse",
-      "code": "LOC1000093",
+      "code": "LOC1000037",
       "location_type": "rental",
       "address_line_1": "Blokhuisplein 40",
       "address_line_2": "Department II",
@@ -195,6 +206,8 @@ This request accepts the following includes:
       "region": "Friesland",
       "country": "Netherlands",
       "cluster_ids": [],
+      "carrier_ids": [],
+      "pickup_enabled": true,
       "main_address": {
         "meets_validation_requirements": false,
         "first_name": null,
@@ -228,7 +241,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=clusters,main_address`
+`include` | **String** <br>List of comma seperated relationships `?include=main_address,clusters,carriers`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
 
 
@@ -236,10 +249,13 @@ Name | Description
 
 This request accepts the following includes:
 
+`main_address`
+
+
 `clusters`
 
 
-`main_address`
+`carriers`
 
 
 
@@ -270,11 +286,14 @@ This request accepts the following includes:
           "region": "Friesland",
           "country": "Netherlands",
           "cluster_ids": [
-            "f280e726-bcdb-4916-8594-f54d21bf3c44"
+            "3835b628-23b2-46f8-b570-df6fdbddcb0f"
+          ],
+          "carrier_ids": [
+            "342687ff-be2d-4578-8d8e-6697b7d1cdbe"
           ]
         }
       },
-      "include": "clusters"
+      "include": "clusters,carriers"
     }'
 ```
 
@@ -283,11 +302,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ed67da95-c91a-491d-9eb3-3007c492d9c7",
+    "id": "b2e37575-711c-443d-ba9b-39d8630bcbb5",
     "type": "locations",
     "attributes": {
-      "created_at": "2024-07-01T09:31:02.511554+00:00",
-      "updated_at": "2024-07-01T09:31:02.528335+00:00",
+      "created_at": "2024-07-08T09:26:38.684292+00:00",
+      "updated_at": "2024-07-08T09:26:38.701700+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Store",
@@ -300,8 +319,12 @@ This request accepts the following includes:
       "region": "Friesland",
       "country": "Netherlands",
       "cluster_ids": [
-        "f280e726-bcdb-4916-8594-f54d21bf3c44"
+        "3835b628-23b2-46f8-b570-df6fdbddcb0f"
       ],
+      "carrier_ids": [
+        "342687ff-be2d-4578-8d8e-6697b7d1cdbe"
+      ],
+      "pickup_enabled": true,
       "main_address": {
         "meets_validation_requirements": false,
         "first_name": null,
@@ -324,7 +347,15 @@ This request accepts the following includes:
         "data": [
           {
             "type": "clusters",
-            "id": "f280e726-bcdb-4916-8594-f54d21bf3c44"
+            "id": "3835b628-23b2-46f8-b570-df6fdbddcb0f"
+          }
+        ]
+      },
+      "carriers": {
+        "data": [
+          {
+            "type": "carriers",
+            "id": "342687ff-be2d-4578-8d8e-6697b7d1cdbe"
           }
         ]
       }
@@ -332,15 +363,28 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "f280e726-bcdb-4916-8594-f54d21bf3c44",
+      "id": "3835b628-23b2-46f8-b570-df6fdbddcb0f",
       "type": "clusters",
       "attributes": {
-        "created_at": "2024-07-01T09:31:02.405062+00:00",
-        "updated_at": "2024-07-01T09:31:02.405062+00:00",
+        "created_at": "2024-07-08T09:26:38.487750+00:00",
+        "updated_at": "2024-07-08T09:26:38.487750+00:00",
         "name": "North",
         "location_ids": [
-          "ed67da95-c91a-491d-9eb3-3007c492d9c7"
+          "b2e37575-711c-443d-ba9b-39d8630bcbb5"
         ]
+      },
+      "relationships": {}
+    },
+    {
+      "id": "342687ff-be2d-4578-8d8e-6697b7d1cdbe",
+      "type": "carriers",
+      "attributes": {
+        "created_at": "2024-07-08T09:26:38.600870+00:00",
+        "updated_at": "2024-07-08T09:26:38.600870+00:00",
+        "identifier": "FedEx",
+        "rates_url": "https://www.example.com",
+        "tax_category_id": "a79c71e4-6671-46e2-b2fa-b361135d7c23",
+        "app_subscription_id": "e7fdeaaa-7778-4b97-bc5f-f2f39c3a1e41"
       },
       "relationships": {}
     }
@@ -359,7 +403,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=clusters,main_address`
+`include` | **String** <br>List of comma seperated relationships `?include=main_address,clusters,carriers`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
 
 
@@ -380,6 +424,8 @@ Name | Description
 `data[attributes][country]` | **String** <br>Address country
 `data[attributes][cluster_ids][]` | **Array** <br>Clusters this location belongs to
 `data[attributes][main_address_attributes]` | **Hash** <br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information
+`data[attributes][carrier_ids][]` | **Array** <br>Delivery carriers this location supports
+`data[attributes][pickup_enabled]` | **Boolean** <br>Whether the location supports pickup
 `data[attributes][main_address]` | **Hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information
 
 
@@ -387,10 +433,13 @@ Name | Description
 
 This request accepts the following includes:
 
+`main_address`
+
+
 `clusters`
 
 
-`main_address`
+`carriers`
 
 
 
@@ -406,21 +455,24 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/locations/23db05f4-d879-493e-b76f-16baac7bb4df' \
+    --url 'https://example.booqable.com/api/boomerang/locations/6cbf3d5d-2b50-4099-bfce-0bd8bbe0cd45' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "23db05f4-d879-493e-b76f-16baac7bb4df",
+        "id": "6cbf3d5d-2b50-4099-bfce-0bd8bbe0cd45",
         "type": "locations",
         "attributes": {
           "name": "Old warehouse",
           "cluster_ids": [
-            "cd547511-f5bb-4607-9c8a-294f1e088fd8",
-            "22af6a6f-c5ff-4247-9874-00385db46d08"
+            "780187b4-4964-44ef-95b0-5181a55eb04a",
+            "694f6a9e-f880-4f9f-9de0-71ead6771651"
+          ],
+          "carrier_ids": [
+            "96f1570e-ea9f-4589-a76b-858c0cb319ef"
           ]
         }
       },
-      "include": "clusters"
+      "include": "clusters,carriers"
     }'
 ```
 
@@ -429,15 +481,15 @@ Note that disassociating clusters may result in a shortage error.
 ```json
   {
   "data": {
-    "id": "23db05f4-d879-493e-b76f-16baac7bb4df",
+    "id": "6cbf3d5d-2b50-4099-bfce-0bd8bbe0cd45",
     "type": "locations",
     "attributes": {
-      "created_at": "2024-07-01T09:31:07.097373+00:00",
-      "updated_at": "2024-07-01T09:31:07.190459+00:00",
+      "created_at": "2024-07-08T09:26:42.674595+00:00",
+      "updated_at": "2024-07-08T09:26:42.960445+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Old warehouse",
-      "code": "LOC1000096",
+      "code": "LOC1000044",
       "location_type": "rental",
       "address_line_1": "Blokhuisplein 40",
       "address_line_2": "Department II",
@@ -446,9 +498,13 @@ Note that disassociating clusters may result in a shortage error.
       "region": "Friesland",
       "country": "Netherlands",
       "cluster_ids": [
-        "cd547511-f5bb-4607-9c8a-294f1e088fd8",
-        "22af6a6f-c5ff-4247-9874-00385db46d08"
+        "780187b4-4964-44ef-95b0-5181a55eb04a",
+        "694f6a9e-f880-4f9f-9de0-71ead6771651"
       ],
+      "carrier_ids": [
+        "96f1570e-ea9f-4589-a76b-858c0cb319ef"
+      ],
+      "pickup_enabled": true,
       "main_address": {
         "meets_validation_requirements": false,
         "first_name": null,
@@ -471,11 +527,19 @@ Note that disassociating clusters may result in a shortage error.
         "data": [
           {
             "type": "clusters",
-            "id": "cd547511-f5bb-4607-9c8a-294f1e088fd8"
+            "id": "780187b4-4964-44ef-95b0-5181a55eb04a"
           },
           {
             "type": "clusters",
-            "id": "22af6a6f-c5ff-4247-9874-00385db46d08"
+            "id": "694f6a9e-f880-4f9f-9de0-71ead6771651"
+          }
+        ]
+      },
+      "carriers": {
+        "data": [
+          {
+            "type": "carriers",
+            "id": "96f1570e-ea9f-4589-a76b-858c0cb319ef"
           }
         ]
       }
@@ -483,28 +547,41 @@ Note that disassociating clusters may result in a shortage error.
   },
   "included": [
     {
-      "id": "cd547511-f5bb-4607-9c8a-294f1e088fd8",
+      "id": "780187b4-4964-44ef-95b0-5181a55eb04a",
       "type": "clusters",
       "attributes": {
-        "created_at": "2024-07-01T09:31:07.113020+00:00",
-        "updated_at": "2024-07-01T09:31:07.113020+00:00",
+        "created_at": "2024-07-08T09:26:42.691245+00:00",
+        "updated_at": "2024-07-08T09:26:42.691245+00:00",
         "name": "North",
         "location_ids": [
-          "23db05f4-d879-493e-b76f-16baac7bb4df"
+          "6cbf3d5d-2b50-4099-bfce-0bd8bbe0cd45"
         ]
       },
       "relationships": {}
     },
     {
-      "id": "22af6a6f-c5ff-4247-9874-00385db46d08",
+      "id": "694f6a9e-f880-4f9f-9de0-71ead6771651",
       "type": "clusters",
       "attributes": {
-        "created_at": "2024-07-01T09:31:07.121535+00:00",
-        "updated_at": "2024-07-01T09:31:07.121535+00:00",
+        "created_at": "2024-07-08T09:26:42.702137+00:00",
+        "updated_at": "2024-07-08T09:26:42.702137+00:00",
         "name": "Central",
         "location_ids": [
-          "23db05f4-d879-493e-b76f-16baac7bb4df"
+          "6cbf3d5d-2b50-4099-bfce-0bd8bbe0cd45"
         ]
+      },
+      "relationships": {}
+    },
+    {
+      "id": "96f1570e-ea9f-4589-a76b-858c0cb319ef",
+      "type": "carriers",
+      "attributes": {
+        "created_at": "2024-07-08T09:26:42.793327+00:00",
+        "updated_at": "2024-07-08T09:26:42.793327+00:00",
+        "identifier": "FedEx",
+        "rates_url": "https://www.example.com",
+        "tax_category_id": "2b1043a8-c02a-429f-a678-99178a31d9d3",
+        "app_subscription_id": "304186bf-d261-495d-97cb-d3dd115d725f"
       },
       "relationships": {}
     }
@@ -518,11 +595,11 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/locations/fa317ffb-2686-4cba-931d-d66900ddbe83' \
+    --url 'https://example.booqable.com/api/boomerang/locations/6945fe8e-0482-4f0b-af22-f8a6d51087c7' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "fa317ffb-2686-4cba-931d-d66900ddbe83",
+        "id": "6945fe8e-0482-4f0b-af22-f8a6d51087c7",
         "type": "locations",
         "attributes": {
           "name": "Old warehouse",
@@ -549,12 +626,12 @@ Note that disassociating clusters may result in a shortage error.
           {
             "reason": "shortage",
             "shortage": 2,
-            "item_id": "592db326-11e6-46da-9901-7c5a6edad484",
+            "item_id": "b701633e-9ec2-4a6f-95b6-1753d898c200",
             "mutation": 0,
             "order_ids": [
-              "98cdd1ef-51f2-4923-bbc3-f95e3beb0b7e"
+              "e809a716-2d12-41c3-93b4-61694c4b3438"
             ],
-            "location_id": "fa317ffb-2686-4cba-931d-d66900ddbe83",
+            "location_id": "6945fe8e-0482-4f0b-af22-f8a6d51087c7",
             "available": -2,
             "plannable": -2,
             "stock_count": 0,
@@ -583,7 +660,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=clusters,main_address`
+`include` | **String** <br>List of comma seperated relationships `?include=main_address,clusters,carriers`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
 
 
@@ -604,6 +681,8 @@ Name | Description
 `data[attributes][country]` | **String** <br>Address country
 `data[attributes][cluster_ids][]` | **Array** <br>Clusters this location belongs to
 `data[attributes][main_address_attributes]` | **Hash** <br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information
+`data[attributes][carrier_ids][]` | **Array** <br>Delivery carriers this location supports
+`data[attributes][pickup_enabled]` | **Boolean** <br>Whether the location supports pickup
 `data[attributes][main_address]` | **Hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information
 
 
@@ -611,10 +690,13 @@ Name | Description
 
 This request accepts the following includes:
 
+`main_address`
+
+
 `clusters`
 
 
-`main_address`
+`carriers`
 
 
 
@@ -634,7 +716,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/fbda3196-cc4b-4f3f-85ce-c012e4f73a0a' \
+    --url 'https://example.booqable.com/api/boomerang/locations/6c5aae0b-19b3-4d33-9ce8-0cd45a363c0a' \
     --header 'content-type: application/json' \
 ```
 
@@ -643,15 +725,15 @@ To archive a location make sure that:
 ```json
   {
   "data": {
-    "id": "fbda3196-cc4b-4f3f-85ce-c012e4f73a0a",
+    "id": "6c5aae0b-19b3-4d33-9ce8-0cd45a363c0a",
     "type": "locations",
     "attributes": {
-      "created_at": "2024-07-01T09:30:56.993225+00:00",
-      "updated_at": "2024-07-01T09:30:57.057399+00:00",
+      "created_at": "2024-07-08T09:26:41.272809+00:00",
+      "updated_at": "2024-07-08T09:26:41.333092+00:00",
       "archived": true,
-      "archived_at": "2024-07-01T09:30:57.057399+00:00",
+      "archived_at": "2024-07-08T09:26:41.333092+00:00",
       "name": "Warehouse",
-      "code": "LOC1000087",
+      "code": "LOC1000041",
       "location_type": "rental",
       "address_line_1": "Blokhuisplein 40",
       "address_line_2": "Department II",
@@ -660,6 +742,8 @@ To archive a location make sure that:
       "region": "Friesland",
       "country": "Netherlands",
       "cluster_ids": [],
+      "carrier_ids": [],
+      "pickup_enabled": true,
       "main_address": {
         "meets_validation_requirements": false,
         "first_name": null,
@@ -688,7 +772,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/4f415a93-3e06-452e-be9a-64310d998833' \
+    --url 'https://example.booqable.com/api/boomerang/locations/5dd351cc-cc88-4e21-b881-41f7c48bd636' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -705,7 +789,7 @@ To archive a location make sure that:
       "detail": "This location has running or future orders",
       "meta": {
         "order_ids": [
-          "5065338e-2b93-491d-a740-7407c75e7ed9"
+          "f26172e0-ff32-4c10-95a4-9d45bc197f94"
         ]
       }
     }
@@ -718,7 +802,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/locations/944f3711-cbf3-4a82-b66f-2a9d41ebfe99' \
+    --url 'https://example.booqable.com/api/boomerang/locations/c1666c17-363b-463c-bcaf-88fef6b463d2' \
     --header 'content-type: application/json' \
 ```
 
@@ -734,7 +818,7 @@ To archive a location make sure that:
       "detail": "This location has active stock",
       "meta": {
         "item_ids": [
-          "8e15158c-fe3a-4ae8-97be-c0e891092253"
+          "92df131e-e04e-43a9-b93c-c4f658330cbd"
         ]
       }
     }

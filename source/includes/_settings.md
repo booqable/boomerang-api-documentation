@@ -101,7 +101,7 @@ Name | Description
 `payment_strategy` | **String**<br>One of `none` (no payment required at checkout), `full` (full payment required at checkout), `partial` (partial payment required at checkout)
 `payment_strategy_value` | **Integer**<br>Percentage to be paid at checkout (for payment_strategy `partial`)
 `payment_deposit` | **Boolean**<br>Whether deposit should be paid during checkout
-`payment_methods` | **Array**<br>List of enabled payment methods, any of `ideal`, `giropay`, `bancontact`, `eps`, `alipay`, `p24`, `creditcard`, `paypal`
+`payment_methods` | **Array**<br>List of enabled payment methods, any of `ideal`, `bancontact`, `eps`, `alipay`, `p24`, `creditcard`, `paypal`
 `use_toc` | **Boolean**<br>Wheter the agreement should be accepted during checkout
 `toc_label` | **String**<br>The label of the agreement checkbox
 `toc_content` | **String**<br>The contents of the actual agreement
@@ -226,6 +226,7 @@ Name | Description
 `contracts` | **Hash** <br>Settings that apply to contracts
 `labels` | **Hash** <br>Customization settings for labels
 `emails` | **Hash** <br>Settings for emails
+`deliveries` | **Hash** <br>Settings for deliveries
 `dashboard` | **Hash** <br>Dashboard settings (Used internally by Booqable)
 `setup_checklist` | **Hash** <br>Setup checklist settings (Used internally by Booqable)
 `onboarding` | **Hash** <br>Onboarding settings (Used internally by Booqable)
@@ -251,10 +252,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fcd81ef6-9eae-5fd8-bae9-bd724b3d57f4",
+    "id": "4be6b137-48dc-5876-ac29-a493b1d808a8",
     "type": "settings",
     "attributes": {
-      "updated_at": "2024-07-01T09:24:50.867996+00:00",
+      "updated_at": "2024-07-08T09:30:49.331153+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -266,8 +267,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "cd305d0c-f02a-42fe-b2d9-9fe89bd553c3",
-        "tax_region_id": "ef685345-45dd-443e-be8e-a37e01a1a311",
+        "tax_category_id": "1758571f-db5a-475c-918b-a2ac3ce8b915",
+        "tax_region_id": "0fef7168-deba-4210-ae58-9ac40ab2f53a",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -391,7 +392,8 @@ Name | Description
         "start": "pick_up",
         "stop": "return"
       },
-      "emails": {}
+      "emails": {},
+      "deliveries": {}
     }
   },
   "meta": {}

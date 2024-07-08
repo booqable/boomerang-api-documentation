@@ -32,7 +32,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-06-26+00%3A00%3A00+UTC&filter%5Btill%5D=2024-07-01+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-07-03+00%3A00%3A00+UTC&filter%5Btill%5D=2024-07-08+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -42,14 +42,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "d1b7006a-c13b-4e7f-991b-28b89d92e4ab",
+      "id": "1699c648-758a-48ad-a805-544ceb887aa9",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2024-07-01T09:28:06.777773+00:00",
-        "name": "Product 1000030",
+        "created_at": "2024-07-08T09:23:57.011741+00:00",
+        "name": "Product 1000015",
         "sold": 2,
         "turnover_in_cents": 0,
-        "product_id": "d1b7006a-c13b-4e7f-991b-28b89d92e4ab"
+        "product_id": "1699c648-758a-48ad-a805-544ceb887aa9"
       },
       "relationships": {}
     }

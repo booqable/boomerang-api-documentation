@@ -40,7 +40,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "789e80c8-4b8c-4896-9e38-f13415847e96",
+    "id": "a3f3f4dc-4497-4981-993d-808f36985b76",
     "type": "counts",
     "attributes": {
       "product_group_count": 1,

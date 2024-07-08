@@ -52,15 +52,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "2369a160-ebd2-4d43-9f81-c269681f80eb",
+      "id": "352014c7-119b-4a13-ba6c-50331e9528fc",
       "type": "notes",
       "attributes": {
-        "created_at": "2024-07-01T09:23:52.326353+00:00",
-        "updated_at": "2024-07-01T09:23:52.326353+00:00",
+        "created_at": "2024-07-08T09:30:18.879824+00:00",
+        "updated_at": "2024-07-08T09:30:18.879824+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "de0ce140-8e16-43d8-864e-63e927ab0991",
+        "owner_id": "42b56ee6-df82-4dcb-a8d6-b88199e8f7b6",
         "owner_type": "customers",
-        "employee_id": "aa1620cc-effc-4409-8d8c-9e806a6ed847"
+        "employee_id": "48c269ab-bff3-4cf1-b3ff-4573f2dbcfdf"
       },
       "relationships": {}
     }
@@ -133,7 +133,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/e64c0c2d-fc0c-49a4-b401-db132a1e75cc' \
+    --url 'https://example.booqable.com/api/boomerang/notes/7cb3d1cc-8aa7-4402-91b0-d1ffa273a1e0' \
     --header 'content-type: application/json' \
 ```
 
@@ -142,15 +142,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e64c0c2d-fc0c-49a4-b401-db132a1e75cc",
+    "id": "7cb3d1cc-8aa7-4402-91b0-d1ffa273a1e0",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-07-01T09:23:53.023292+00:00",
-      "updated_at": "2024-07-01T09:23:53.023292+00:00",
+      "created_at": "2024-07-08T09:30:19.597916+00:00",
+      "updated_at": "2024-07-08T09:30:19.597916+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "1810868c-a806-474c-bc95-1182643f3453",
+      "owner_id": "fdd532ae-61c6-4e70-8d3a-23afed1acf35",
       "owner_type": "customers",
-      "employee_id": "919140bf-90b3-4d5d-a7a2-79341cfbee32"
+      "employee_id": "80600a6e-497b-4fd5-b53a-af91881a3eff"
     },
     "relationships": {}
   },
@@ -201,7 +201,7 @@ This request accepts the following includes:
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "ff80e0c9-2be8-4c0d-8c60-77dafd3d6a7c",
+          "owner_id": "a3897569-9bb8-4d75-9950-c8b11e6f9723",
           "owner_type": "customers"
         }
       }
@@ -213,15 +213,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a4d394a2-7ef2-4948-a5bd-bd4f5dcf6308",
+    "id": "e2000848-c7c5-4240-a20c-b87257f1e935",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-07-01T09:23:54.455382+00:00",
-      "updated_at": "2024-07-01T09:23:54.455382+00:00",
+      "created_at": "2024-07-08T09:30:20.975437+00:00",
+      "updated_at": "2024-07-08T09:30:20.975437+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "ff80e0c9-2be8-4c0d-8c60-77dafd3d6a7c",
+      "owner_id": "a3897569-9bb8-4d75-9950-c8b11e6f9723",
       "owner_type": "customers",
-      "employee_id": "22a55f39-227b-4e2a-9535-cd1fa0207760"
+      "employee_id": "26b1d02c-c815-4abe-a5e1-73d88096211f"
     },
     "relationships": {}
   },
@@ -276,7 +276,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/fa17a889-24e5-4452-bfb0-ccd01c5d982e' \
+    --url 'https://example.booqable.com/api/boomerang/notes/621d3fe7-3a23-42a0-a3e3-6ba5bf1ef561' \
     --header 'content-type: application/json' \
 ```
 
@@ -285,15 +285,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fa17a889-24e5-4452-bfb0-ccd01c5d982e",
+    "id": "621d3fe7-3a23-42a0-a3e3-6ba5bf1ef561",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-07-01T09:23:53.691545+00:00",
-      "updated_at": "2024-07-01T09:23:53.691545+00:00",
+      "created_at": "2024-07-08T09:30:20.262771+00:00",
+      "updated_at": "2024-07-08T09:30:20.262771+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "bdf67419-7e77-4aab-82d9-8e0e622355e5",
+      "owner_id": "d1f7f865-2d58-4ebc-9a9c-ee75ca62250f",
       "owner_type": "customers",
-      "employee_id": "1f5730ef-a10a-4571-b45b-70864f571484"
+      "employee_id": "daefbbbc-3e76-4312-b153-7e1f1d7cb645"
     },
     "relationships": {}
   },

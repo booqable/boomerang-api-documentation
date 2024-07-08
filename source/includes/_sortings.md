@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "default_properties",
           "ids": [
-            "cf4df8b5-67cb-4d12-84ae-6e359bbb301a",
-            "7e74163f-97e7-42c7-9c66-aed2f25bf972",
-            "323f6764-4f04-42c2-b64c-58b3e027db4b",
-            "dc250986-8dc5-4e05-92f8-73d4fb69ce1f",
-            "38fb5ccd-15a3-459c-a858-4c06c463c059"
+            "03584faa-053e-494e-8f01-d9efebadde12",
+            "881d5250-7f1c-4e78-ad0f-7d48b7f95576",
+            "329bea61-cc9d-40a4-8686-9b223371642d",
+            "4d9c5980-b10a-41fd-ae2c-eab9031f7a01",
+            "a08c4151-a787-4dfd-b745-60e17852aefb"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "17ca0d9f-dfc0-55ec-b84d-24b39e5adf44",
+    "id": "4188598f-c951-5d4c-8e59-5313512505db",
     "type": "sortings"
   },
   "meta": {}

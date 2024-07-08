@@ -60,19 +60,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "292184c4-95e7-4506-8c2a-77e90f87e734",
+      "id": "8e7b938d-32a1-4117-bf7a-3b4354c4efa6",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-07-01T09:30:25.937084+00:00",
-        "updated_at": "2024-07-01T09:30:25.937084+00:00",
+        "created_at": "2024-07-08T09:30:39.353559+00:00",
+        "updated_at": "2024-07-08T09:30:39.353559+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "d7738bac-e547-4fb1-bb4c-3dd4ee7b653c",
-        "planning_id": "e53e0f46-65a4-44bd-b530-04c084a2d454",
-        "order_id": "791fae7d-958d-40e7-bc27-31617ae80695"
+        "stock_item_id": "338b0dcc-97b3-491d-9e77-2a1ce48aab86",
+        "planning_id": "cf756193-8783-41ef-b48f-2535bda31e0e",
+        "order_id": "0fb78591-adf8-4725-ab9a-d0eac57fbc73"
       },
       "relationships": {}
     }
@@ -159,7 +159,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/b7b84d38-90d8-4737-83ac-e72b7e8a2cba' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/ba2a514e-36cc-48a0-9bd1-c7ea4e97ecd1' \
     --header 'content-type: application/json' \
 ```
 
@@ -168,19 +168,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b7b84d38-90d8-4737-83ac-e72b7e8a2cba",
+    "id": "ba2a514e-36cc-48a0-9bd1-c7ea4e97ecd1",
     "type": "stock_item_plannings",
     "attributes": {
-      "created_at": "2024-07-01T09:30:27.240769+00:00",
-      "updated_at": "2024-07-01T09:30:27.240769+00:00",
+      "created_at": "2024-07-08T09:30:37.251715+00:00",
+      "updated_at": "2024-07-08T09:30:37.251715+00:00",
       "archived": false,
       "archived_at": null,
       "reserved": false,
       "started": false,
       "stopped": false,
-      "stock_item_id": "e2bb0d24-f304-4ef2-8f84-4299d3dc7c89",
-      "planning_id": "41e4ea40-da3e-46e5-8cb9-259930527c0c",
-      "order_id": "a41ed44e-122b-4a76-8ea8-0180992ea363"
+      "stock_item_id": "bb0c053d-0372-46ee-8fdb-212aee3007fc",
+      "planning_id": "92a61c4d-26cd-4bd7-aede-e58d862640da",
+      "order_id": "1ba4c4aa-e78b-4cad-9a9e-7175f6310952"
     },
     "relationships": {}
   },

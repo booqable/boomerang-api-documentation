@@ -54,11 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "d8ed2a7f-e867-4770-95ca-b4b39181ff5c",
+      "id": "79c58a7b-fab9-4662-922b-75b49f8c61e3",
       "type": "tax_categories",
       "attributes": {
-        "created_at": "2024-07-01T09:29:31.942918+00:00",
-        "updated_at": "2024-07-01T09:29:31.949521+00:00",
+        "created_at": "2024-07-08T09:22:40.434316+00:00",
+        "updated_at": "2024-07-08T09:22:40.440917+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Sales Tax",
@@ -132,7 +132,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/43f96abe-21af-4c96-b33b-0702e79bdfcf?include=tax_rates' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/cace2c01-99a9-4aee-8221-0f10d684d426?include=tax_rates' \
     --header 'content-type: application/json' \
 ```
 
@@ -141,11 +141,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "43f96abe-21af-4c96-b33b-0702e79bdfcf",
+    "id": "cace2c01-99a9-4aee-8221-0f10d684d426",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2024-07-01T09:29:29.337815+00:00",
-      "updated_at": "2024-07-01T09:29:29.347582+00:00",
+      "created_at": "2024-07-08T09:22:42.703958+00:00",
+      "updated_at": "2024-07-08T09:22:42.711686+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Sales Tax",
@@ -156,7 +156,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "11e96594-4413-4de2-b951-8ed92947562d"
+            "id": "dac45cf7-c9ec-4136-bcab-67cfd700e6c7"
           }
         ]
       }
@@ -164,15 +164,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "11e96594-4413-4de2-b951-8ed92947562d",
+      "id": "dac45cf7-c9ec-4136-bcab-67cfd700e6c7",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2024-07-01T09:29:29.342276+00:00",
-        "updated_at": "2024-07-01T09:29:29.342276+00:00",
+        "created_at": "2024-07-08T09:22:42.707672+00:00",
+        "updated_at": "2024-07-08T09:22:42.707672+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "43f96abe-21af-4c96-b33b-0702e79bdfcf",
+        "owner_id": "cace2c01-99a9-4aee-8221-0f10d684d426",
         "owner_type": "tax_categories"
       },
       "relationships": {}
@@ -239,11 +239,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cdf33149-bf8a-4934-8822-e1a9d5de0372",
+    "id": "4a36c6d0-e607-4bc7-942e-6c2ce0903d79",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2024-07-01T09:29:30.042134+00:00",
-      "updated_at": "2024-07-01T09:29:30.049484+00:00",
+      "created_at": "2024-07-08T09:22:39.826240+00:00",
+      "updated_at": "2024-07-08T09:22:39.834277+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Sales Tax",
@@ -254,7 +254,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "98c25d2e-23a2-4321-95f1-0be236edb330"
+            "id": "fb5db9b2-cbc2-4e10-aa42-6de61d189b58"
           }
         ]
       }
@@ -262,15 +262,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "98c25d2e-23a2-4321-95f1-0be236edb330",
+      "id": "fb5db9b2-cbc2-4e10-aa42-6de61d189b58",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2024-07-01T09:29:30.045721+00:00",
-        "updated_at": "2024-07-01T09:29:30.045721+00:00",
+        "created_at": "2024-07-08T09:22:39.830135+00:00",
+        "updated_at": "2024-07-08T09:22:39.830135+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
-        "owner_id": "cdf33149-bf8a-4934-8822-e1a9d5de0372",
+        "owner_id": "4a36c6d0-e607-4bc7-942e-6c2ce0903d79",
         "owner_type": "tax_categories"
       },
       "relationships": {}
@@ -324,11 +324,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/d459a163-5d8b-4d92-bab8-e5d03a20e664' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/f02ec8b8-1583-40d3-93be-6d69dba0283d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d459a163-5d8b-4d92-bab8-e5d03a20e664",
+        "id": "f02ec8b8-1583-40d3-93be-6d69dba0283d",
         "type": "tax_categories",
         "attributes": {
           "name": "State Tax",
@@ -338,7 +338,7 @@ This request accepts the following includes:
               "value": 9
             },
             {
-              "id": "545d9637-ee0d-4928-8ad7-3de14aa2c40b",
+              "id": "05f6bc28-07a3-4ea2-9dda-425e6a2590ec",
               "_destroy": true
             }
           ]
@@ -353,11 +353,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d459a163-5d8b-4d92-bab8-e5d03a20e664",
+    "id": "f02ec8b8-1583-40d3-93be-6d69dba0283d",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2024-07-01T09:29:31.283309+00:00",
-      "updated_at": "2024-07-01T09:29:31.370321+00:00",
+      "created_at": "2024-07-08T09:22:41.828280+00:00",
+      "updated_at": "2024-07-08T09:22:41.910991+00:00",
       "archived": false,
       "archived_at": null,
       "name": "State Tax",
@@ -368,7 +368,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "tax_rates",
-            "id": "f3a68955-70cc-425e-b59f-5d91788755bc"
+            "id": "8e00f5e2-7697-45b5-abf5-05670e0b9265"
           }
         ]
       }
@@ -376,15 +376,15 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "f3a68955-70cc-425e-b59f-5d91788755bc",
+      "id": "8e00f5e2-7697-45b5-abf5-05670e0b9265",
       "type": "tax_rates",
       "attributes": {
-        "created_at": "2024-07-01T09:29:31.366948+00:00",
-        "updated_at": "2024-07-01T09:29:31.366948+00:00",
+        "created_at": "2024-07-08T09:22:41.907431+00:00",
+        "updated_at": "2024-07-08T09:22:41.907431+00:00",
         "name": "VAT",
         "value": 9.0,
         "position": 2,
-        "owner_id": "d459a163-5d8b-4d92-bab8-e5d03a20e664",
+        "owner_id": "f02ec8b8-1583-40d3-93be-6d69dba0283d",
         "owner_type": "tax_categories"
       },
       "relationships": {}
@@ -438,7 +438,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/tax_categories/87f704cc-2809-409f-aaaf-eeb9dab3515c' \
+    --url 'https://example.booqable.com/api/boomerang/tax_categories/d8cefbf0-a26a-4749-8bb2-2445d1ded194' \
     --header 'content-type: application/json' \
 ```
 
@@ -447,13 +447,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "87f704cc-2809-409f-aaaf-eeb9dab3515c",
+    "id": "d8cefbf0-a26a-4749-8bb2-2445d1ded194",
     "type": "tax_categories",
     "attributes": {
-      "created_at": "2024-07-01T09:29:30.666321+00:00",
-      "updated_at": "2024-07-01T09:29:30.698138+00:00",
+      "created_at": "2024-07-08T09:22:41.164414+00:00",
+      "updated_at": "2024-07-08T09:22:41.197179+00:00",
       "archived": true,
-      "archived_at": "2024-07-01T09:29:30.698138+00:00",
+      "archived_at": "2024-07-08T09:22:41.197179+00:00",
       "name": "Sales Tax (Deleted)",
       "default": false
     },
