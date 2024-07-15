@@ -53,7 +53,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=728ea6b2-b5dd-46c8-968e-a994fce7c56e' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items?filter%5Bbundle_id%5D=62b859a4-d04e-49fd-9b0e-dd60985050b1' \
     --header 'content-type: application/json' \
 ```
 
@@ -63,17 +63,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "866b1066-33fc-4ba3-b4f9-57ba244d899d",
+      "id": "f43aa21c-6ecb-4dd7-a3e5-c0e25fe2c0d5",
       "type": "bundle_items",
       "attributes": {
-        "created_at": "2024-07-08T09:27:29.027219+00:00",
-        "updated_at": "2024-07-08T09:27:29.027219+00:00",
+        "created_at": "2024-07-15T09:29:29.047654+00:00",
+        "updated_at": "2024-07-15T09:29:29.047654+00:00",
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 1,
-        "bundle_id": "728ea6b2-b5dd-46c8-968e-a994fce7c56e",
-        "product_group_id": "70fc9cf3-f1c4-4c88-87e2-6669b16b6879",
-        "product_id": "58a50d1c-d004-44be-8505-d391a124e5c7"
+        "bundle_id": "62b859a4-d04e-49fd-9b0e-dd60985050b1",
+        "product_group_id": "a0dd6015-1d3a-4088-b8dd-2a91f33e94ed",
+        "product_id": "e84e6e53-e61b-4502-9437-5b46361a4169"
       },
       "relationships": {}
     }
@@ -158,7 +158,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/32b17a0c-5154-49f8-97d8-3db18c226964' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/efb28abe-7afb-4dbb-9db7-79ea0861ad3a' \
     --header 'content-type: application/json' \
 ```
 
@@ -167,17 +167,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "32b17a0c-5154-49f8-97d8-3db18c226964",
+    "id": "efb28abe-7afb-4dbb-9db7-79ea0861ad3a",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2024-07-08T09:27:27.875211+00:00",
-      "updated_at": "2024-07-08T09:27:27.875211+00:00",
+      "created_at": "2024-07-15T09:29:33.759482+00:00",
+      "updated_at": "2024-07-15T09:29:33.759482+00:00",
       "quantity": 2,
       "discount_percentage": 15.0,
       "position": 1,
-      "bundle_id": "9f056ef8-351a-47fa-bdd5-ff248e0904a3",
-      "product_group_id": "257a0d6d-f0e0-4e12-91b3-f08c7472d432",
-      "product_id": "13b375da-362b-4b2e-9875-8a732bdc051f"
+      "bundle_id": "04cd781d-8f6b-40f3-b105-5b087d71c006",
+      "product_group_id": "55bece55-c1a0-4d09-b847-03d47bbdb399",
+      "product_id": "ed2423c8-edd9-494b-b2bb-39435188aeaf"
     },
     "relationships": {}
   },
@@ -236,9 +236,9 @@ This request accepts the following includes:
       "data": {
         "type": "bundle_items",
         "attributes": {
-          "bundle_id": "0fe926a5-4d50-42b8-a27b-c757c7920d1f",
-          "product_group_id": "0ed323d7-9cb9-4c53-b080-e34afb109940",
-          "product_id": "999a8968-8fe2-4997-9eda-6b97cc2363e4",
+          "bundle_id": "e3354294-fd85-44f3-9697-3980c4c03b40",
+          "product_group_id": "6d21a078-796b-4ebf-9191-f6a51aa7a32c",
+          "product_id": "8f222d4a-38e1-4924-bfd9-85359d96db23",
           "quantity": 2,
           "discount_percentage": 15
         }
@@ -251,17 +251,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6e940d07-9b14-4f73-af68-1e0817747295",
+    "id": "94812632-a29f-40ae-a3e5-7dc7db1ddf3c",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2024-07-08T09:27:25.240161+00:00",
-      "updated_at": "2024-07-08T09:27:25.240161+00:00",
+      "created_at": "2024-07-15T09:29:27.240378+00:00",
+      "updated_at": "2024-07-15T09:29:27.240378+00:00",
       "quantity": 2,
       "discount_percentage": 15.0,
       "position": 2,
-      "bundle_id": "0fe926a5-4d50-42b8-a27b-c757c7920d1f",
-      "product_group_id": "0ed323d7-9cb9-4c53-b080-e34afb109940",
-      "product_id": "999a8968-8fe2-4997-9eda-6b97cc2363e4"
+      "bundle_id": "e3354294-fd85-44f3-9697-3980c4c03b40",
+      "product_group_id": "6d21a078-796b-4ebf-9191-f6a51aa7a32c",
+      "product_id": "8f222d4a-38e1-4924-bfd9-85359d96db23"
     },
     "relationships": {}
   },
@@ -328,11 +328,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/dbc5abd9-9d1d-405f-b0b8-a12a6c805167' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/27ed4bd3-9ee5-4223-aa71-59b416355214' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "dbc5abd9-9d1d-405f-b0b8-a12a6c805167",
+        "id": "27ed4bd3-9ee5-4223-aa71-59b416355214",
         "type": "bundle_items",
         "attributes": {
           "quantity": 3,
@@ -347,17 +347,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dbc5abd9-9d1d-405f-b0b8-a12a6c805167",
+    "id": "27ed4bd3-9ee5-4223-aa71-59b416355214",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2024-07-08T09:27:30.656375+00:00",
-      "updated_at": "2024-07-08T09:27:30.859766+00:00",
+      "created_at": "2024-07-15T09:29:30.535663+00:00",
+      "updated_at": "2024-07-15T09:29:30.677010+00:00",
       "quantity": 3,
       "discount_percentage": 20.0,
       "position": 1,
-      "bundle_id": "3d2484fb-0ed6-40ee-ae14-7ad43a21040c",
-      "product_group_id": "47193d6a-1294-497c-bebb-15976251356e",
-      "product_id": "e167409f-af69-40b0-937a-b9cd84dd27fe"
+      "bundle_id": "6caa526c-9975-43ed-8de5-6402e797df63",
+      "product_group_id": "a29ed967-c8f3-4d1f-946b-4c971c6e5cd5",
+      "product_id": "d9e70106-d55c-476a-bb00-02454ea5d462"
     },
     "relationships": {}
   },
@@ -424,7 +424,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/bundle_items/45b86719-27ff-46f6-9434-5488271f98bb' \
+    --url 'https://example.booqable.com/api/boomerang/bundle_items/7f60eb92-882f-4ddf-a9b2-c03e3e69a7fa' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -434,17 +434,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "45b86719-27ff-46f6-9434-5488271f98bb",
+    "id": "7f60eb92-882f-4ddf-a9b2-c03e3e69a7fa",
     "type": "bundle_items",
     "attributes": {
-      "created_at": "2024-07-08T09:27:26.581400+00:00",
-      "updated_at": "2024-07-08T09:27:26.581400+00:00",
+      "created_at": "2024-07-15T09:29:31.978233+00:00",
+      "updated_at": "2024-07-15T09:29:31.978233+00:00",
       "quantity": 2,
       "discount_percentage": 15.0,
       "position": 1,
-      "bundle_id": "26b3195e-39bd-4056-998c-ed02aea74d5a",
-      "product_group_id": "65ffa74d-5bc8-447a-895e-617ed23ef4ac",
-      "product_id": "b6238370-2b47-476f-a56b-6067864f3fea"
+      "bundle_id": "38d65c76-d69e-46e7-a1ec-a7f1fa606aa9",
+      "product_group_id": "f0ba6bf5-e0ec-40ba-9b9d-c54004ccf5be",
+      "product_id": "ed954741-1ca4-452c-bcee-19f90467b63d"
     },
     "relationships": {}
   },

@@ -69,11 +69,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "b450a4b4-b2f7-4090-884b-d55fab814776",
+      "id": "584e7f95-43ea-47b9-a474-cc3a551e260a",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-07-08T09:24:20.787545+00:00",
-        "updated_at": "2024-07-08T09:24:20.787545+00:00",
+        "created_at": "2024-07-15T09:24:29.961727+00:00",
+        "updated_at": "2024-07-15T09:24:29.961727+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
@@ -224,10 +224,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "7a11defe-ec82-4eba-9331-1ead1c35f95e"
+      "id": "33e7cf78-cdda-41de-bf33-91ba5510c4c3"
     },
     {
-      "id": "9d95ff4b-bdc2-4d35-b676-cad85b838ea1"
+      "id": "b0d511b3-7196-4306-be72-9521b788bc81"
     }
   ]
 }
@@ -315,7 +315,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/90c9f8c8-cde9-4f14-b330-2f0fdbe792a1?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/9ae0ecf3-d6a1-48db-aa4e-b78d55740aa7?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -324,16 +324,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "90c9f8c8-cde9-4f14-b330-2f0fdbe792a1",
+    "id": "9ae0ecf3-d6a1-48db-aa4e-b78d55740aa7",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-08T09:24:19.370752+00:00",
-      "updated_at": "2024-07-08T09:24:19.370752+00:00",
+      "created_at": "2024-07-15T09:24:35.907820+00:00",
+      "updated_at": "2024-07-15T09:24:35.907820+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "John Doe",
-      "email": "john-12@doe.test",
+      "email": "john-23@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -413,11 +413,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "94b473d0-6a4e-429a-b1b0-6570bf49d2ce",
+    "id": "aab1fb57-3d6e-479f-936f-452d2ba75ed6",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-08T09:24:22.037511+00:00",
-      "updated_at": "2024-07-08T09:24:22.037511+00:00",
+      "created_at": "2024-07-15T09:24:31.064437+00:00",
+      "updated_at": "2024-07-15T09:24:31.064437+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -495,11 +495,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/98a6fe65-0a67-4896-84ac-17cdf65deeed' \
+    --url 'https://example.booqable.com/api/boomerang/customers/4c7529ba-5c94-4b72-8881-d754398befd0' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "98a6fe65-0a67-4896-84ac-17cdf65deeed",
+        "id": "4c7529ba-5c94-4b72-8881-d754398befd0",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -513,16 +513,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "98a6fe65-0a67-4896-84ac-17cdf65deeed",
+    "id": "4c7529ba-5c94-4b72-8881-d754398befd0",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-08T09:24:17.471096+00:00",
-      "updated_at": "2024-07-08T09:24:17.618288+00:00",
+      "created_at": "2024-07-15T09:24:34.691414+00:00",
+      "updated_at": "2024-07-15T09:24:34.849587+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "Jane Doe",
-      "email": "john-11@doe.test",
+      "email": "john-22@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -595,7 +595,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/787ddcd1-e70a-4e51-b322-b7153f71288c' \
+    --url 'https://example.booqable.com/api/boomerang/customers/2ecbe8b0-68f4-4e36-abd9-51847a19dcdc' \
     --header 'content-type: application/json' \
 ```
 
@@ -604,16 +604,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "787ddcd1-e70a-4e51-b322-b7153f71288c",
+    "id": "2ecbe8b0-68f4-4e36-abd9-51847a19dcdc",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-08T09:24:23.569153+00:00",
-      "updated_at": "2024-07-08T09:24:23.825960+00:00",
+      "created_at": "2024-07-15T09:24:33.571597+00:00",
+      "updated_at": "2024-07-15T09:24:33.703161+00:00",
       "archived": true,
-      "archived_at": "2024-07-08T09:24:23.825960+00:00",
+      "archived_at": "2024-07-15T09:24:33.703161+00:00",
       "number": 1,
       "name": "John Doe",
-      "email": "john-15@doe.test",
+      "email": "john-21@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,

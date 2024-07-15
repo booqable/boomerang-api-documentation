@@ -50,16 +50,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "e95ee3d6-6acf-4dab-8fa1-b7cb5e906a45",
+      "id": "81c38053-5918-4750-abca-e15268d2ed24",
       "type": "tax_values",
       "attributes": {
-        "created_at": "2024-07-08T09:30:26.568001+00:00",
-        "updated_at": "2024-07-08T09:30:26.568001+00:00",
+        "created_at": "2024-07-15T09:26:14.414368+00:00",
+        "updated_at": "2024-07-15T09:26:14.414368+00:00",
         "name": "VAT 19%",
         "percentage": 19.0,
         "value_in_cents": 13800,
-        "tax_rate_id": "ce62ba8d-5d56-4410-8702-35ea066483e7",
-        "owner_id": "081d2d6e-3d57-433e-a228-3f7de19ec4f1",
+        "tax_rate_id": "79c05e6e-4218-441a-8145-642b0370f416",
+        "owner_id": "01c08c59-c1a2-4d21-8ec7-3dafc9872e12",
         "owner_type": "orders"
       },
       "relationships": {}
@@ -125,7 +125,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_values/82b74d2e-87a3-42af-aa24-9bbb5597aa69?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/tax_values/ad25e03c-a74e-42d0-89f5-60bdbc28a366?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -134,34 +134,34 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "82b74d2e-87a3-42af-aa24-9bbb5597aa69",
+    "id": "ad25e03c-a74e-42d0-89f5-60bdbc28a366",
     "type": "tax_values",
     "attributes": {
-      "created_at": "2024-07-08T09:30:27.364732+00:00",
-      "updated_at": "2024-07-08T09:30:27.364732+00:00",
+      "created_at": "2024-07-15T09:26:13.663006+00:00",
+      "updated_at": "2024-07-15T09:26:13.663006+00:00",
       "name": "VAT 19%",
       "percentage": 19.0,
       "value_in_cents": 13800,
-      "tax_rate_id": "602fae1d-6600-41c3-b8e0-29f59db85783",
-      "owner_id": "ebe5ae4d-96e5-486b-8724-9d7f5820fec5",
+      "tax_rate_id": "a6ac8547-5101-439a-a753-69fb27c1da1f",
+      "owner_id": "c2dee4d7-d55f-4779-aadc-895f57ea8878",
       "owner_type": "orders"
     },
     "relationships": {
       "owner": {
         "data": {
           "type": "orders",
-          "id": "ebe5ae4d-96e5-486b-8724-9d7f5820fec5"
+          "id": "c2dee4d7-d55f-4779-aadc-895f57ea8878"
         }
       }
     }
   },
   "included": [
     {
-      "id": "ebe5ae4d-96e5-486b-8724-9d7f5820fec5",
+      "id": "c2dee4d7-d55f-4779-aadc-895f57ea8878",
       "type": "orders",
       "attributes": {
-        "created_at": "2024-07-08T09:30:27.306140+00:00",
-        "updated_at": "2024-07-08T09:30:27.306140+00:00",
+        "created_at": "2024-07-15T09:26:13.604383+00:00",
+        "updated_at": "2024-07-15T09:26:13.604383+00:00",
         "number": null,
         "status": "new",
         "statuses": [
@@ -174,8 +174,8 @@ This request does not accept any includes
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2024-07-06T09:30:00.000000+00:00",
-        "stops_at": "2024-07-10T09:30:00.000000+00:00",
+        "starts_at": "2024-07-13T09:15:00.000000+00:00",
+        "stops_at": "2024-07-17T09:15:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -206,8 +206,8 @@ This request does not accept any includes
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "d1f8fb6a-a4d4-4853-a620-fa15e71e5c0b",
-        "stop_location_id": "d1f8fb6a-a4d4-4853-a620-fa15e71e5c0b"
+        "start_location_id": "4cba2f77-c4c5-4006-b4cd-ff7afac48585",
+        "stop_location_id": "4cba2f77-c4c5-4006-b4cd-ff7afac48585"
       },
       "relationships": {}
     }

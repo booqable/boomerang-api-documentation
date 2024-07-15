@@ -29,18 +29,19 @@ Name | Description
 `locale` | **String** <br>Locale of the employee, used as application locale
 `email` | **String** <br>Employee's e-mail address
 `unconfirmed_email` | **String** `readonly`<br>Unconfirmed e-mail address if present
+`viewed_whats_new_at` | **Datetime** <br>Date when this employee viewed product updates for the last time (Used internally by Booqable)
 `current_password` | **String** `writeonly`<br>Current password, needed to update password or email address
 `password` | **String** `writeonly`<br>Set a new password
 `password_confirmation` | **String** `writeonly`<br>Confirm new password
 `active` | **Boolean** <br>Whether this employee is active (counts towards billing)
 `deactivated_at` | **Datetime** `writeonly`<br>Employee deactivation date
 `owner` | **Boolean** `readonly`<br>Whether this employee is the account owner
-`confirmed` | **Boolean** `readonly`<br>Wheter this employee confirmed it's email address
+`confirmed` | **Boolean** `readonly`<br>Whether this employee confirmed it's email address
 `time_to_confirm` | **Integer** `readonly`<br>Time in days left to confirm
 `permissions` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when this feature is not included in the current pricing plan or if the employee is the account owner
 `avatar_base64` | **String** `writeonly`<br>Base64 encoded avatar
 `remove_avatar` | **Boolean** `writeonly`<br>Remove current avatar
-`has_two_factor_autentication` | **Boolean** `readonly`<br>Wheter two factor authentication is enabled
+`has_two_factor_autentication` | **Boolean** `readonly`<br>Whether two factor authentication is enabled
 `avatar_url` | **String** `readonly`<br>Url to avatar
 `large_avatar_url` | **String** `readonly`<br>Url to avatar (Large)
 `third_party_id` | **String** `readonly`<br>ID used for third party tools
@@ -64,17 +65,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "3781cf53-7109-44c6-bcc4-fb059863c4d5",
+      "id": "108e57b2-8f7f-41b0-97bd-ed60762449ad",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-07-08T09:29:35.022792+00:00",
-        "updated_at": "2024-07-08T09:29:35.029453+00:00",
+        "created_at": "2024-07-15T09:30:26.055236+00:00",
+        "updated_at": "2024-07-15T09:30:26.061695+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
+        "viewed_whats_new_at": "2024-07-15T09:30:26.044359+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,
@@ -157,7 +159,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/employees/c2393606-8245-46cf-8e15-8527d30f6310' \
+    --url 'https://example.booqable.com/api/boomerang/employees/bb3b6769-4736-4977-a33c-0211ae689257' \
     --header 'content-type: application/json' \
 ```
 
@@ -166,17 +168,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c2393606-8245-46cf-8e15-8527d30f6310",
+    "id": "bb3b6769-4736-4977-a33c-0211ae689257",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-07-08T09:29:34.307551+00:00",
-      "updated_at": "2024-07-08T09:29:34.307551+00:00",
+      "created_at": "2024-07-15T09:30:26.671027+00:00",
+      "updated_at": "2024-07-15T09:30:26.671027+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
       "locale": null,
       "email": "john@doe.com",
       "unconfirmed_email": null,
+      "viewed_whats_new_at": null,
       "active": true,
       "owner": true,
       "confirmed": true,
@@ -227,11 +230,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/2717b2ca-e00d-4629-bec5-ddfec3fbfa53' \
+    --url 'https://example.booqable.com/api/boomerang/employees/bd87ef34-298e-478f-ace0-cd07db65c1fc' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "2717b2ca-e00d-4629-bec5-ddfec3fbfa53",
+        "id": "bd87ef34-298e-478f-ace0-cd07db65c1fc",
         "type": "employees",
         "attributes": {
           "firstname": "Jane"
@@ -245,17 +248,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2717b2ca-e00d-4629-bec5-ddfec3fbfa53",
+    "id": "bd87ef34-298e-478f-ace0-cd07db65c1fc",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-07-08T09:29:29.202038+00:00",
-      "updated_at": "2024-07-08T09:29:29.257657+00:00",
+      "created_at": "2024-07-15T09:30:24.141520+00:00",
+      "updated_at": "2024-07-15T09:30:24.187837+00:00",
       "name": "Jane Doe",
       "firstname": "Jane",
       "lastname": "Doe",
       "locale": null,
       "email": "jane@doe.com",
       "unconfirmed_email": null,
+      "viewed_whats_new_at": "2024-07-15T09:30:24.131403+00:00",
       "active": true,
       "owner": false,
       "confirmed": true,
@@ -287,11 +291,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/e65767bc-ab13-4a10-b192-ad6f39a892b2' \
+    --url 'https://example.booqable.com/api/boomerang/employees/b2754b30-fbca-4d55-bd60-dc32a72bac89' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e65767bc-ab13-4a10-b192-ad6f39a892b2",
+        "id": "b2754b30-fbca-4d55-bd60-dc32a72bac89",
         "type": "employees",
         "attributes": {
           "active": false
@@ -305,17 +309,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e65767bc-ab13-4a10-b192-ad6f39a892b2",
+    "id": "b2754b30-fbca-4d55-bd60-dc32a72bac89",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-07-08T09:29:30.030810+00:00",
-      "updated_at": "2024-07-08T09:29:30.086151+00:00",
+      "created_at": "2024-07-15T09:30:24.739353+00:00",
+      "updated_at": "2024-07-15T09:30:24.786900+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
       "locale": null,
       "email": "jane@doe.com",
       "unconfirmed_email": null,
+      "viewed_whats_new_at": "2024-07-15T09:30:24.729776+00:00",
       "active": false,
       "owner": false,
       "confirmed": true,
@@ -347,11 +352,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/employees/0656b687-18f7-47e5-b7d2-8530cf16ea74' \
+    --url 'https://example.booqable.com/api/boomerang/employees/e27ca10b-8f35-43f8-ba01-70e2fafbbcfa' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0656b687-18f7-47e5-b7d2-8530cf16ea74",
+        "id": "e27ca10b-8f35-43f8-ba01-70e2fafbbcfa",
         "type": "employees",
         "attributes": {
           "permissions": [
@@ -368,17 +373,18 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0656b687-18f7-47e5-b7d2-8530cf16ea74",
+    "id": "e27ca10b-8f35-43f8-ba01-70e2fafbbcfa",
     "type": "employees",
     "attributes": {
-      "created_at": "2024-07-08T09:29:32.767107+00:00",
-      "updated_at": "2024-07-08T09:29:32.828389+00:00",
+      "created_at": "2024-07-15T09:30:25.430173+00:00",
+      "updated_at": "2024-07-15T09:30:25.484233+00:00",
       "name": "John Doe",
       "firstname": "John",
       "lastname": "Doe",
       "locale": null,
       "email": "jane@doe.com",
       "unconfirmed_email": null,
+      "viewed_whats_new_at": "2024-07-15T09:30:25.420107+00:00",
       "active": true,
       "owner": false,
       "confirmed": true,
@@ -419,6 +425,7 @@ Name | Description
 `data[attributes][lastname]` | **String** <br>Last name of the employee
 `data[attributes][locale]` | **String** <br>Locale of the employee, used as application locale
 `data[attributes][email]` | **String** <br>Employee's e-mail address
+`data[attributes][viewed_whats_new_at]` | **Datetime** <br>Date when this employee viewed product updates for the last time (Used internally by Booqable)
 `data[attributes][current_password]` | **String** <br>Current password, needed to update password or email address
 `data[attributes][password]` | **String** <br>Set a new password
 `data[attributes][password_confirmation]` | **String** <br>Confirm new password
