@@ -30,7 +30,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rental_intervals?filter%5Bfrom%5D=2024-07-05+00%3A00%3A00+UTC&filter%5Bproduct_id%5D=c82911d9-0005-4359-9155-f88c81e3fe47&filter%5Btill%5D=2024-07-14+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rental_intervals?filter%5Bfrom%5D=2024-07-12+00%3A00%3A00+UTC&filter%5Bproduct_id%5D=0953c693-45ce-46d0-a6cf-ddb5be25c493&filter%5Btill%5D=2024-07-21+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -40,112 +40,112 @@ Name | Description
   {
   "data": [
     {
-      "id": "15e190d4-c3c0-4781-a445-6fbc6299cc8a",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-07-05",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
-      },
-      "relationships": {}
-    },
-    {
-      "id": "ebcc27b1-44c4-4543-aee5-81ec01190e7c",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-07-06",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
-      },
-      "relationships": {}
-    },
-    {
-      "id": "764ed138-7cc5-4675-a8d6-cf835dd96d54",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-07-07",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
-      },
-      "relationships": {}
-    },
-    {
-      "id": "6ea1fec1-56f2-4d13-a0fe-27adfab95b88",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-07-08",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
-      },
-      "relationships": {}
-    },
-    {
-      "id": "2e1c7229-d8ac-4884-a01f-9e6d49b03811",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-07-09",
-        "rented_count": 1,
-        "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
-      },
-      "relationships": {}
-    },
-    {
-      "id": "7400b1bb-b872-499c-9a36-67252805db1c",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-07-10",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
-      },
-      "relationships": {}
-    },
-    {
-      "id": "168ca754-2389-4295-9b2a-91d10edb7f0e",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-07-11",
-        "rented_count": 1,
-        "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
-      },
-      "relationships": {}
-    },
-    {
-      "id": "a6b28884-2f3d-4410-96f8-fbd219abeb09",
+      "id": "7223a4c0-2501-4305-8910-b43ba8d72fcd",
       "type": "report_rental_intervals",
       "attributes": {
         "date": "2024-07-12",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
       },
       "relationships": {}
     },
     {
-      "id": "913c7702-711c-49c6-ae30-de6f2a9bda76",
+      "id": "ed0ff63f-6ab0-4a27-b03f-06d92d35cfab",
       "type": "report_rental_intervals",
       "attributes": {
         "date": "2024-07-13",
-        "rented_count": 1,
+        "rented_count": 0,
         "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
       },
       "relationships": {}
     },
     {
-      "id": "ae1ef53d-5b43-42ee-9369-a060cdbfd0ca",
+      "id": "8947e8f9-4375-4b55-8319-1311a627e08f",
       "type": "report_rental_intervals",
       "attributes": {
         "date": "2024-07-14",
         "rented_count": 0,
         "interval": "day",
-        "product_id": "c82911d9-0005-4359-9155-f88c81e3fe47"
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
+      },
+      "relationships": {}
+    },
+    {
+      "id": "ba04e627-04b0-4ca0-b3ed-8d2a7c1efe06",
+      "type": "report_rental_intervals",
+      "attributes": {
+        "date": "2024-07-15",
+        "rented_count": 0,
+        "interval": "day",
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
+      },
+      "relationships": {}
+    },
+    {
+      "id": "6acce305-5ff3-46c1-b0ef-e58895fc230c",
+      "type": "report_rental_intervals",
+      "attributes": {
+        "date": "2024-07-16",
+        "rented_count": 1,
+        "interval": "day",
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
+      },
+      "relationships": {}
+    },
+    {
+      "id": "8c4f2cd7-6286-421e-832d-7839bdd5e9fa",
+      "type": "report_rental_intervals",
+      "attributes": {
+        "date": "2024-07-17",
+        "rented_count": 0,
+        "interval": "day",
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
+      },
+      "relationships": {}
+    },
+    {
+      "id": "cb724e02-04f4-4a5b-9cff-f71891a289b3",
+      "type": "report_rental_intervals",
+      "attributes": {
+        "date": "2024-07-18",
+        "rented_count": 1,
+        "interval": "day",
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
+      },
+      "relationships": {}
+    },
+    {
+      "id": "3c90e4ea-353a-4e65-8801-8acfa8001f55",
+      "type": "report_rental_intervals",
+      "attributes": {
+        "date": "2024-07-19",
+        "rented_count": 0,
+        "interval": "day",
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
+      },
+      "relationships": {}
+    },
+    {
+      "id": "b32359ea-5b63-42d8-9f11-84bea02c468e",
+      "type": "report_rental_intervals",
+      "attributes": {
+        "date": "2024-07-20",
+        "rented_count": 1,
+        "interval": "day",
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
+      },
+      "relationships": {}
+    },
+    {
+      "id": "a6585029-d0df-40b3-b6f5-3c7dbff3e149",
+      "type": "report_rental_intervals",
+      "attributes": {
+        "date": "2024-07-21",
+        "rented_count": 0,
+        "interval": "day",
+        "product_id": "0953c693-45ce-46d0-a6cf-ddb5be25c493"
       },
       "relationships": {}
     }
