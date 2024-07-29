@@ -107,11 +107,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "984e6d16-896d-45c8-afab-9b9b8319218a",
+      "id": "9eb5e1d1-4046-4f9c-a08a-67a345970675",
       "type": "documents",
       "attributes": {
-        "created_at": "2024-07-22T09:25:56.907884+00:00",
-        "updated_at": "2024-07-22T09:25:56.994797+00:00",
+        "created_at": "2024-07-29T09:25:02.599066+00:00",
+        "updated_at": "2024-07-29T09:25:02.655115+00:00",
         "archived": false,
         "archived_at": null,
         "document_type": "invoice",
@@ -147,8 +147,8 @@ Name | Description
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
-        "order_id": "9c1b8cd7-f61d-4a91-994c-3d8a57173194",
-        "customer_id": "4eed4c85-62a2-4ba5-81bc-4c7a1ec15091",
+        "order_id": "b739d73d-b267-4a30-aa9f-e5462a4b93e9",
+        "customer_id": "01caacec-f77c-473c-a683-488bd3d23ac7",
         "tax_region_id": null,
         "coupon_id": null
       },
@@ -306,12 +306,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "date": {
-                    "gte": "2024-07-19T09:26:03.405Z"
+                    "gte": "2024-07-26T09:25:00.632Z"
                   }
                 },
                 {
                   "date": {
-                    "lte": "2024-07-25T09:26:03.405Z"
+                    "lte": "2024-08-01T09:25:00.632Z"
                   }
                 }
               ]
@@ -328,10 +328,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "2ae2d7f1-e9fe-4835-9a28-cbc9101bbee9"
+      "id": "425ade8b-31ec-4500-b057-c110830e02f5"
     },
     {
-      "id": "292a69bb-99b1-46cf-b214-aef52bfeb375"
+      "id": "a15aedd1-7f69-43d8-b2cd-e5bde38a052d"
     }
   ]
 }
@@ -457,7 +457,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/documents/91cc145e-0298-43cc-bcb4-e151181ecaab' \
+    --url 'https://example.booqable.com/api/boomerang/documents/a0dc9de9-b9b7-4ba6-8c01-ecf32a15f76e' \
     --header 'content-type: application/json' \
 ```
 
@@ -466,11 +466,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "91cc145e-0298-43cc-bcb4-e151181ecaab",
+    "id": "a0dc9de9-b9b7-4ba6-8c01-ecf32a15f76e",
     "type": "documents",
     "attributes": {
-      "created_at": "2024-07-22T09:26:05.649703+00:00",
-      "updated_at": "2024-07-22T09:26:05.720576+00:00",
+      "created_at": "2024-07-29T09:25:11.925155+00:00",
+      "updated_at": "2024-07-29T09:25:11.967764+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -506,8 +506,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "985ee12c-358d-431e-b90c-ef768bbb6b25",
-      "customer_id": "88a8fcc3-6651-45ce-a5b7-03a799bea69d",
+      "order_id": "df85a4f8-f8d1-469e-bded-3baed3580daf",
+      "customer_id": "c9b4bbd2-44b3-4e23-a332-29ecb83e36cb",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -578,7 +578,7 @@ This request accepts the following includes:
         "type": "documents",
         "attributes": {
           "document_type": "contract",
-          "order_id": "d8eb232c-9845-4ed4-ac24-6e8f812cafa3"
+          "order_id": "6a214e03-cd2a-4bb2-8c1f-7900d2312aa3"
         }
       }
     }'
@@ -589,18 +589,18 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b82283bd-89fc-4be9-9f9d-e4247347f784",
+    "id": "cc5b130a-edcd-4c0e-a534-405a2165015e",
     "type": "documents",
     "attributes": {
-      "created_at": "2024-07-22T09:25:54.245343+00:00",
-      "updated_at": "2024-07-22T09:25:54.259940+00:00",
+      "created_at": "2024-07-29T09:24:56.136963+00:00",
+      "updated_at": "2024-07-29T09:24:56.153379+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "contract",
       "number": 1,
       "prefix": null,
       "prefix_with_number": "1",
-      "date": "2024-07-22",
+      "date": "2024-07-29",
       "due_date": null,
       "name": "John Doe",
       "address": "",
@@ -629,8 +629,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "d8eb232c-9845-4ed4-ac24-6e8f812cafa3",
-      "customer_id": "863b7aff-af2c-4be7-a341-cdb19ff1cac7",
+      "order_id": "6a214e03-cd2a-4bb2-8c1f-7900d2312aa3",
+      "customer_id": "a9d7d33f-7087-4c98-89f8-d617fbd6a4b0",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -723,11 +723,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/documents/dbe84284-9fa2-4321-a87c-c41434487a1c' \
+    --url 'https://example.booqable.com/api/boomerang/documents/e1ab6ba2-8985-437e-9b0d-80bc90320837' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "dbe84284-9fa2-4321-a87c-c41434487a1c",
+        "id": "e1ab6ba2-8985-437e-9b0d-80bc90320837",
         "type": "documents",
         "attributes": {
           "name": "Jane Doe"
@@ -741,11 +741,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dbe84284-9fa2-4321-a87c-c41434487a1c",
+    "id": "e1ab6ba2-8985-437e-9b0d-80bc90320837",
     "type": "documents",
     "attributes": {
-      "created_at": "2024-07-22T09:26:08.650906+00:00",
-      "updated_at": "2024-07-22T09:26:09.655866+00:00",
+      "created_at": "2024-07-29T09:25:08.824690+00:00",
+      "updated_at": "2024-07-29T09:25:09.613000+00:00",
       "archived": false,
       "archived_at": null,
       "document_type": "invoice",
@@ -781,8 +781,8 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "a1e41e63-7ac4-4fea-a4d2-3439633f49d9",
-      "customer_id": "ca7d16b7-8b1f-4be4-bdb6-fc7607cceb3f",
+      "order_id": "1be163cc-3ec0-42b5-af69-7c576c0b780f",
+      "customer_id": "cb30212d-c877-4319-9422-ad303e696a77",
       "tax_region_id": null,
       "coupon_id": null
     },
@@ -876,7 +876,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/documents/ecb5f41c-62f1-4f49-bd94-dbe319c62bfc' \
+    --url 'https://example.booqable.com/api/boomerang/documents/ea07b877-f3cc-49c9-9754-6c3fbff173c1' \
     --header 'content-type: application/json' \
 ```
 
@@ -885,13 +885,13 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 ```json
   {
   "data": {
-    "id": "ecb5f41c-62f1-4f49-bd94-dbe319c62bfc",
+    "id": "ea07b877-f3cc-49c9-9754-6c3fbff173c1",
     "type": "documents",
     "attributes": {
-      "created_at": "2024-07-22T09:26:11.946613+00:00",
-      "updated_at": "2024-07-22T09:26:12.938704+00:00",
+      "created_at": "2024-07-29T09:25:05.119678+00:00",
+      "updated_at": "2024-07-29T09:25:06.130243+00:00",
       "archived": true,
-      "archived_at": "2024-07-22T09:26:12.938704+00:00",
+      "archived_at": "2024-07-29T09:25:06.130243+00:00",
       "document_type": "invoice",
       "number": null,
       "prefix": null,
@@ -925,8 +925,8 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
       "paid_in_cents": 0,
       "tax_in_cents": 15167,
       "discount_percentage": 10.0,
-      "order_id": "36505d2c-5c82-4c3b-9d62-d434448d3f0a",
-      "customer_id": "c10abdc3-a0a7-4225-addd-d812facee6e6",
+      "order_id": "516c8dfa-bbe0-45f6-b6fa-1e079215a57c",
+      "customer_id": "ad327cf0-6dc9-409f-a2a6-e6d748ed5bce",
       "tax_region_id": null,
       "coupon_id": null
     },

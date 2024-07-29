@@ -66,6 +66,7 @@ Name | Description
 `status_counts` | **Hash** `readonly`<br>An object containing the status counts of planned products `{ "concept": 0, "reserved": 2, "started": 5, "stopped": 10 }`
 `starts_at` | **Datetime** `nullable`<br>When the items on the order become unavailable
 `stops_at` | **Datetime** `nullable`<br>When the items on the order become available again
+`charge_in_seconds` | **Integer** <br>The charge duration in seconds
 `deposit_type` | **String** `nullable`<br>One of `none`, `percentage_total`, `percentage`, `fixed`
 `deposit_value` | **Float** <br>The value to use for `deposit_type`
 `entirely_started` | **Boolean** `readonly`<br>Whether all items on the order are started
@@ -145,11 +146,11 @@ to be in the same cluster as the start location.
   {
   "data": [
     {
-      "id": "c71a880d-e264-4524-9c9a-76d210b69c28",
+      "id": "c0355574-a9b7-4e67-9c24-ec825b66515c",
       "type": "orders",
       "attributes": {
-        "created_at": "2024-07-22T09:24:14.452623+00:00",
-        "updated_at": "2024-07-22T09:24:17.031258+00:00",
+        "created_at": "2024-07-29T09:26:56.395979+00:00",
+        "updated_at": "2024-07-29T09:26:57.816441+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -164,6 +165,7 @@ to be in the same cluster as the start location.
         },
         "starts_at": "1980-04-01T12:00:00.000000+00:00",
         "stops_at": "1980-05-01T12:00:00.000000+00:00",
+        "charge_in_seconds": null,
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -193,11 +195,11 @@ to be in the same cluster as the start location.
         "paid_in_cents": 0,
         "discount_type": "percentage",
         "discount_percentage": 10.0,
-        "customer_id": "e05e9959-cca7-438c-8982-086586d27c8d",
+        "customer_id": "e2eccaf5-4fba-449f-abcc-445e3ea88a13",
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "acb4891a-3238-4f0d-8355-f4e7dbc8191e",
-        "stop_location_id": "acb4891a-3238-4f0d-8355-f4e7dbc8191e"
+        "start_location_id": "51212660-b12b-4118-8fc7-6223ebbaf9a4",
+        "stop_location_id": "51212660-b12b-4118-8fc7-6223ebbaf9a4"
       },
       "relationships": {}
     }
@@ -240,6 +242,7 @@ Name | Description
 `status_counts` | **Hash** <br>`eq`
 `starts_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `stops_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`charge_in_seconds` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `location_shortage` | **Boolean** <br>`eq`
 `shortage` | **Boolean** <br>`eq`
@@ -353,14 +356,14 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-07-23T09:24:23Z",
-                    "lte": "2024-07-26T09:24:23Z"
+                    "gte": "2024-07-30T09:27:01Z",
+                    "lte": "2024-08-02T09:27:01Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "gte": "2024-07-23T09:24:23Z",
-                    "lte": "2024-07-26T09:24:23Z"
+                    "gte": "2024-07-30T09:27:01Z",
+                    "lte": "2024-08-02T09:27:01Z"
                   }
                 }
               ]
@@ -388,10 +391,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "9bf44435-a437-4039-8a6e-326e6d199a69"
+      "id": "370179d6-6861-4652-a871-b60ed0ae7f05"
     },
     {
-      "id": "c004e8b6-06b9-4ba7-99a2-d8a33015fef6"
+      "id": "ec65ac70-2fee-4730-82aa-b7a43ea4421e"
     }
   ]
 }
@@ -431,6 +434,7 @@ Name | Description
 `status_counts` | **Hash** <br>`eq`
 `starts_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `stops_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`charge_in_seconds` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `location_shortage` | **Boolean** <br>`eq`
 `shortage` | **Boolean** <br>`eq`
@@ -538,11 +542,11 @@ Returns an existing or new order for the current employee.
 ```json
   {
   "data": {
-    "id": "fd7ebf33-d49e-47aa-bf84-ec3112eafa5a",
+    "id": "c62ffd60-8946-4b10-9836-4dc4198c4bdb",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-07-22T09:24:12.438743+00:00",
-      "updated_at": "2024-07-22T09:24:12.460923+00:00",
+      "created_at": "2024-07-29T09:26:40.321776+00:00",
+      "updated_at": "2024-07-29T09:26:40.331070+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -557,6 +561,7 @@ Returns an existing or new order for the current employee.
       },
       "starts_at": null,
       "stops_at": null,
+      "charge_in_seconds": null,
       "deposit_type": "percentage",
       "deposit_value": 100.0,
       "entirely_started": true,
@@ -587,8 +592,8 @@ Returns an existing or new order for the current employee.
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "1c52d727-0835-471f-b2ee-11a1893fd430",
-      "stop_location_id": "1c52d727-0835-471f-b2ee-11a1893fd430"
+      "start_location_id": "52a77d7f-2a19-4305-9537-3b54a4ffa183",
+      "stop_location_id": "52a77d7f-2a19-4305-9537-3b54a4ffa183"
     },
     "relationships": {}
   },
@@ -686,7 +691,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders/798397e9-1012-4376-b4df-82bba0b151d4' \
+    --url 'https://example.booqable.com/api/boomerang/orders/45bfa533-c9ee-4c89-80ab-1b16c75d6ca5' \
     --header 'content-type: application/json' \
 ```
 
@@ -695,11 +700,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "798397e9-1012-4376-b4df-82bba0b151d4",
+    "id": "45bfa533-c9ee-4c89-80ab-1b16c75d6ca5",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-07-22T09:24:39.203226+00:00",
-      "updated_at": "2024-07-22T09:24:42.286280+00:00",
+      "created_at": "2024-07-29T09:26:40.963438+00:00",
+      "updated_at": "2024-07-29T09:26:42.319670+00:00",
       "number": 1,
       "status": "reserved",
       "statuses": [
@@ -714,6 +719,7 @@ This request accepts the following includes:
       },
       "starts_at": "1980-04-01T12:00:00.000000+00:00",
       "stops_at": "1980-05-01T12:00:00.000000+00:00",
+      "charge_in_seconds": null,
       "deposit_type": "percentage",
       "deposit_value": 10.0,
       "entirely_started": false,
@@ -743,11 +749,11 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "discount_type": "percentage",
       "discount_percentage": 10.0,
-      "customer_id": "836f4ec4-9995-424b-875a-f53443f929e0",
+      "customer_id": "a8aae197-5f27-4169-98f0-096604daee79",
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "21ef48d9-e470-4afc-bb56-80425bc7ce42",
-      "stop_location_id": "21ef48d9-e470-4afc-bb56-80425bc7ce42"
+      "start_location_id": "19a705c7-e2e9-4cba-92f4-147d90867f85",
+      "stop_location_id": "19a705c7-e2e9-4cba-92f4-147d90867f85"
     },
     "relationships": {}
   },
@@ -857,8 +863,8 @@ When creating an order, and the following fields are left blank, a sensible defa
       "data": {
         "type": "orders",
         "attributes": {
-          "starts_at": "2024-07-25T09:24:08.706Z",
-          "stops_at": "2024-09-02T09:24:08.706Z"
+          "starts_at": "2024-08-01T09:26:55.674Z",
+          "stops_at": "2024-09-09T09:26:55.674Z"
         }
       }
     }'
@@ -869,11 +875,11 @@ When creating an order, and the following fields are left blank, a sensible defa
 ```json
   {
   "data": {
-    "id": "9dd36712-22de-42b6-b0c0-ff64a4646dd1",
+    "id": "0beb5cb1-8d4a-47e6-b613-1e286f6ea0f1",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-07-22T09:24:08.738041+00:00",
-      "updated_at": "2024-07-22T09:24:08.761026+00:00",
+      "created_at": "2024-07-29T09:26:55.696689+00:00",
+      "updated_at": "2024-07-29T09:26:55.709679+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -886,8 +892,9 @@ When creating an order, and the following fields are left blank, a sensible defa
         "started": 0,
         "stopped": 0
       },
-      "starts_at": "2024-07-25T09:15:00.000000+00:00",
-      "stops_at": "2024-09-02T09:15:00.000000+00:00",
+      "starts_at": "2024-08-01T09:15:00.000000+00:00",
+      "stops_at": "2024-09-09T09:15:00.000000+00:00",
+      "charge_in_seconds": null,
       "deposit_type": "percentage",
       "deposit_value": 100.0,
       "entirely_started": true,
@@ -918,8 +925,8 @@ When creating an order, and the following fields are left blank, a sensible defa
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "bc7efa59-1a31-46c5-916b-de3a75bd1948",
-      "stop_location_id": "bc7efa59-1a31-46c5-916b-de3a75bd1948"
+      "start_location_id": "c6810959-3fac-4809-868d-cfeb2df8dd9f",
+      "stop_location_id": "c6810959-3fac-4809-868d-cfeb2df8dd9f"
     },
     "relationships": {}
   },
@@ -949,6 +956,7 @@ Name | Description
 -- | --
 `data[attributes][starts_at]` | **Datetime** <br>When the items on the order become unavailable
 `data[attributes][stops_at]` | **Datetime** <br>When the items on the order become available again
+`data[attributes][charge_in_seconds]` | **Integer** <br>The charge duration in seconds
 `data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
 `data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
 `data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
@@ -1045,17 +1053,17 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/c4e13445-8d60-4e3c-b525-99704ce75464' \
+    --url 'https://example.booqable.com/api/boomerang/orders/992b8378-7fc1-4b18-a125-69faf9900e88' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
       },
       "data": {
-        "id": "c4e13445-8d60-4e3c-b525-99704ce75464",
+        "id": "992b8378-7fc1-4b18-a125-69faf9900e88",
         "type": "orders",
         "attributes": {
-          "customer_id": "b3a72d9b-7a22-4f53-a608-cf1eec569c89"
+          "customer_id": "2ff5159c-edb9-49b8-a8de-433189109a5d"
         }
       }
     }'
@@ -1066,13 +1074,13 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "c4e13445-8d60-4e3c-b525-99704ce75464",
+    "id": "992b8378-7fc1-4b18-a125-69faf9900e88",
     "type": "orders",
     "attributes": {
       "price_in_cents": 80250,
       "grand_total_with_tax_in_cents": 97103,
       "to_be_paid_in_cents": 197103,
-      "customer_id": "b3a72d9b-7a22-4f53-a608-cf1eec569c89",
+      "customer_id": "2ff5159c-edb9-49b8-a8de-433189109a5d",
       "tax_region_id": null
     },
     "relationships": {}
@@ -1086,14 +1094,14 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/11b23ba7-a8b8-4f1b-bc49-8c9f521a14cb' \
+    --url 'https://example.booqable.com/api/boomerang/orders/37c8b411-8ac2-432b-9bfb-d6b03698c1be' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
       },
       "data": {
-        "id": "11b23ba7-a8b8-4f1b-bc49-8c9f521a14cb",
+        "id": "37c8b411-8ac2-432b-9bfb-d6b03698c1be",
         "type": "orders",
         "attributes": {
           "deposit_type": "percentage"
@@ -1107,7 +1115,7 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "11b23ba7-a8b8-4f1b-bc49-8c9f521a14cb",
+    "id": "37c8b411-8ac2-432b-9bfb-d6b03698c1be",
     "type": "orders",
     "attributes": {
       "deposit_type": "percentage",
@@ -1126,11 +1134,11 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/8a5f9705-1997-4454-ba65-a73d12607a3d' \
+    --url 'https://example.booqable.com/api/boomerang/orders/19fcea17-8a21-44e6-bc52-e27dcc2cc656' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "8a5f9705-1997-4454-ba65-a73d12607a3d",
+        "id": "19fcea17-8a21-44e6-bc52-e27dcc2cc656",
         "type": "orders",
         "attributes": {
           "stops_at": "1980-05-04T12:00:00.000Z"
@@ -1154,12 +1162,12 @@ When updating a customer on an order the following settings will be applied and 
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "ba0e722d-27c9-439d-9e4c-3be4c9d6ce57",
+            "item_id": "b406814c-27b5-4713-bbee-b855d537844d",
             "unavailable": [
-              "463b27f2-36ba-4c14-a54d-95bf83032fa3"
+              "e64f08ea-bf09-4e83-9de6-7bb61503f78a"
             ],
             "available": [
-              "b7aee379-5a98-4613-abfe-92b47dd8f8b1"
+              "e2ed0fd0-e3f6-41d7-be3b-8cb5e4c6c3c6"
             ]
           }
         ]
@@ -1191,6 +1199,7 @@ Name | Description
 -- | --
 `data[attributes][starts_at]` | **Datetime** <br>When items become unavailable, changing this value may result in shortages
 `data[attributes][stops_at]` | **Datetime** <br>When items become available, changing this value may result in shortages
+`data[attributes][charge_in_seconds]` | **Integer** <br>The charge duration in seconds
 `data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
 `data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
 `data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker

@@ -32,6 +32,8 @@ Name | Description
 `deposit_value` | **Float** <br>The value to use for `deposit_type`
 `discount_percentage` | **Float** <br>Default discount applied to each new order for this customer
 `legal_type` | **String** <br>Either `person` or `commercial`
+`email_marketing_consented` | **Boolean** <br>Whether the customer has consented to receive email marketing
+`email_marketing_consent_updated_at` | **Datetime** `readonly`<br>When the email marketing consent was last updated
 `properties` | **Hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties)
 `properties_attributes` | **Array** `writeonly`<br>Create or update multiple properties associated with this customer
 `tag_list` | **Array** <br>Case insensitive tag list
@@ -69,20 +71,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "27e73e87-6208-4e2a-a37e-5bb130dac3ef",
+      "id": "60a5c24f-81d1-45b2-b26e-79ebdeb02f0c",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-07-22T09:30:04.817295+00:00",
-        "updated_at": "2024-07-22T09:30:04.817295+00:00",
+        "created_at": "2024-07-29T09:24:29.501983+00:00",
+        "updated_at": "2024-07-29T09:24:29.501983+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-65@doe.test",
+        "email": "john-23@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
         "legal_type": "person",
+        "email_marketing_consented": false,
+        "email_marketing_consent_updated_at": null,
         "properties": {},
         "tag_list": [],
         "merge_suggestion_customer_id": null,
@@ -132,6 +136,7 @@ Name | Description
 `deposit_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `legal_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`email_marketing_consented` | **Boolean** <br>`eq`
 `tag_list` | **String** <br>`eq`
 `merge_suggestion_customer_id` | **Uuid** <br>`eq`, `not_eq`
 `tax_region_id` | **Uuid** <br>`eq`, `not_eq`
@@ -224,10 +229,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "dc32dae0-c83d-44be-a995-2ed47e373bc8"
+      "id": "52d08d7c-566c-4919-8273-5abdbe0f3338"
     },
     {
-      "id": "3a0bf64e-e6c8-41c8-8d77-b856c5d9e399"
+      "id": "2eef83ce-549d-474a-b309-aa9b4f205ef7"
     }
   ]
 }
@@ -270,6 +275,7 @@ Name | Description
 `deposit_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `legal_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`email_marketing_consented` | **Boolean** <br>`eq`
 `tag_list` | **String** <br>`eq`
 `merge_suggestion_customer_id` | **Uuid** <br>`eq`, `not_eq`
 `tax_region_id` | **Uuid** <br>`eq`, `not_eq`
@@ -315,7 +321,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/27f7cc36-bf36-4832-ab43-f5b43ccfc7ec?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/f4c32229-0009-4235-ae00-586d4c215c5b?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -324,20 +330,22 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "27f7cc36-bf36-4832-ab43-f5b43ccfc7ec",
+    "id": "f4c32229-0009-4235-ae00-586d4c215c5b",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-22T09:30:09.798735+00:00",
-      "updated_at": "2024-07-22T09:30:09.798735+00:00",
+      "created_at": "2024-07-29T09:24:36.619030+00:00",
+      "updated_at": "2024-07-29T09:24:36.619030+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "John Doe",
-      "email": "john-68@doe.test",
+      "email": "john-26@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
       "legal_type": "person",
+      "email_marketing_consented": false,
+      "email_marketing_consent_updated_at": null,
       "properties": {},
       "tag_list": [],
       "merge_suggestion_customer_id": null,
@@ -413,11 +421,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "eba85aa6-60e8-4788-a05c-b9f52eceab58",
+    "id": "cac20379-7688-4274-bdd5-778a38f2b603",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-22T09:30:02.769816+00:00",
-      "updated_at": "2024-07-22T09:30:02.769816+00:00",
+      "created_at": "2024-07-29T09:24:27.654020+00:00",
+      "updated_at": "2024-07-29T09:24:27.654020+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -427,6 +435,8 @@ This request accepts the following includes:
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
       "legal_type": "person",
+      "email_marketing_consented": false,
+      "email_marketing_consent_updated_at": null,
       "properties": {},
       "tag_list": [],
       "merge_suggestion_customer_id": null,
@@ -464,6 +474,7 @@ Name | Description
 `data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
 `data[attributes][discount_percentage]` | **Float** <br>Default discount applied to each new order for this customer
 `data[attributes][legal_type]` | **String** <br>Either `person` or `commercial`
+`data[attributes][email_marketing_consented]` | **Boolean** <br>Whether the customer has consented to receive email marketing
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this customer
 `data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
 `data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>The associated Merge suggestion customer
@@ -495,11 +506,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/69264711-61ae-4bc2-87a6-219b79cefb0b' \
+    --url 'https://example.booqable.com/api/boomerang/customers/9c8a9d33-3c9f-45f4-af48-3eb776dba892' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "69264711-61ae-4bc2-87a6-219b79cefb0b",
+        "id": "9c8a9d33-3c9f-45f4-af48-3eb776dba892",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -513,20 +524,22 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "69264711-61ae-4bc2-87a6-219b79cefb0b",
+    "id": "9c8a9d33-3c9f-45f4-af48-3eb776dba892",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-22T09:30:06.493218+00:00",
-      "updated_at": "2024-07-22T09:30:06.717134+00:00",
+      "created_at": "2024-07-29T09:24:32.792357+00:00",
+      "updated_at": "2024-07-29T09:24:32.903750+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "Jane Doe",
-      "email": "john-66@doe.test",
+      "email": "john-24@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
       "legal_type": "person",
+      "email_marketing_consented": false,
+      "email_marketing_consent_updated_at": null,
       "properties": {},
       "tag_list": [],
       "merge_suggestion_customer_id": null,
@@ -564,6 +577,7 @@ Name | Description
 `data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
 `data[attributes][discount_percentage]` | **Float** <br>Default discount applied to each new order for this customer
 `data[attributes][legal_type]` | **String** <br>Either `person` or `commercial`
+`data[attributes][email_marketing_consented]` | **Boolean** <br>Whether the customer has consented to receive email marketing
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this customer
 `data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
 `data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>The associated Merge suggestion customer
@@ -595,7 +609,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/22d2c04b-b678-4a08-81a4-f36ddd1a22e3' \
+    --url 'https://example.booqable.com/api/boomerang/customers/f80950df-fb1c-4b84-8855-0a291df49d9e' \
     --header 'content-type: application/json' \
 ```
 
@@ -604,20 +618,22 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "22d2c04b-b678-4a08-81a4-f36ddd1a22e3",
+    "id": "f80950df-fb1c-4b84-8855-0a291df49d9e",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-07-22T09:30:08.219590+00:00",
-      "updated_at": "2024-07-22T09:30:08.401930+00:00",
+      "created_at": "2024-07-29T09:24:34.482192+00:00",
+      "updated_at": "2024-07-29T09:24:34.614920+00:00",
       "archived": true,
-      "archived_at": "2024-07-22T09:30:08.401930+00:00",
+      "archived_at": "2024-07-29T09:24:34.614920+00:00",
       "number": 1,
       "name": "John Doe",
-      "email": "john-67@doe.test",
+      "email": "john-25@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
       "legal_type": "person",
+      "email_marketing_consented": false,
+      "email_marketing_consent_updated_at": null,
       "properties": {},
       "tag_list": [],
       "merge_suggestion_customer_id": null,
