@@ -41,7 +41,7 @@ Name | Description
       "data": {
         "type": "order_price_recalculations",
         "attributes": {
-          "order_id": "2de2a441-7180-476d-94b4-821a2c7c7f7c"
+          "order_id": "79f5b3bf-d5bb-4403-874f-e274df7ea3f4"
         }
       }
     }'
@@ -52,10 +52,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "337f450d-0236-5382-b927-2d22b39768e5",
+    "id": "2a6eb2f6-382a-522b-9a01-684e45e04d1b",
     "type": "order_price_recalculations",
     "attributes": {
-      "order_id": "2de2a441-7180-476d-94b4-821a2c7c7f7c"
+      "order_id": "79f5b3bf-d5bb-4403-874f-e274df7ea3f4"
     },
     "relationships": {}
   },

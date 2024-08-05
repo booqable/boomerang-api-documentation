@@ -27,7 +27,7 @@ Name | Description
       "data": {
         "type": "user_invitations",
         "attributes": {
-          "user_id": "c4ec7cf8-8ed9-43e3-a701-6c1d9f48fc17"
+          "user_id": "647c8124-c490-42c2-a923-b02958679488"
         }
       }
     }'
@@ -38,7 +38,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "76fad443-77e7-5b7a-858f-8d89961e0cd5",
+    "id": "ee9f6622-057f-5148-bca1-49016386e25c",
     "type": "user_invitations"
   },
   "meta": {}

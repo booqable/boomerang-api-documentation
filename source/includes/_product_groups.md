@@ -60,6 +60,7 @@ Name | Description
 `extra_information` | **String** `nullable`<br>Extra information about the item, shown on orders and documents
 `photo_url` | **String** `readonly`<br>Main photo url
 `description` | **String** `nullable`<br>Description used in the online store
+`excerpt` | **String** <br>Excerpt used in the online store
 `show_in_store` | **Boolean** <br>Whether to show this item in the online
 `sorting_weight` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
 `base_price_in_cents` | **Integer** `readonly`<br>The value that is being calculated with (based on the current `price_type`)
@@ -120,11 +121,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "23c4f200-76f4-49ca-a545-877fe9364c6f",
+      "id": "ca540adc-fb83-4e1c-b067-ca95e1251621",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2024-07-29T09:26:11.140934+00:00",
-        "updated_at": "2024-07-29T09:26:11.140934+00:00",
+        "created_at": "2024-08-05T09:23:56.302161+00:00",
+        "updated_at": "2024-08-05T09:23:56.302161+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -142,6 +143,7 @@ Name | Description
         "extra_information": null,
         "photo_url": null,
         "description": null,
+        "excerpt": null,
         "show_in_store": true,
         "sorting_weight": 0,
         "base_price_in_cents": 0,
@@ -216,6 +218,7 @@ Name | Description
 `variation` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`excerpt` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
 `sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -328,13 +331,13 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "4be4c16c-ac1e-4d47-8a2d-90c926e887b9"
+      "id": "0204024c-443f-4e1a-8231-263e2b0f47d0"
     },
     {
-      "id": "09ce3a3a-e1bf-4324-b89c-95539729640c"
+      "id": "a30e7e36-ebda-455d-894d-ae0ace8ffcff"
     },
     {
-      "id": "dafdb223-90bd-45b8-ad14-cc392e6716e7"
+      "id": "7fc0302e-3cb8-4be6-8194-705361f2068d"
     }
   ]
 }
@@ -384,6 +387,7 @@ Name | Description
 `variation` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`excerpt` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
 `sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -451,7 +455,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/3378cc1c-e367-4915-938c-ba912421f1f6' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/7eb1f559-b1f9-4710-b33f-4de4556f01f6' \
     --header 'content-type: application/json' \
 ```
 
@@ -460,11 +464,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3378cc1c-e367-4915-938c-ba912421f1f6",
+    "id": "7eb1f559-b1f9-4710-b33f-4de4556f01f6",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-07-29T09:26:09.474435+00:00",
-      "updated_at": "2024-07-29T09:26:09.474435+00:00",
+      "created_at": "2024-08-05T09:23:57.321031+00:00",
+      "updated_at": "2024-08-05T09:23:57.321031+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -482,6 +486,7 @@ This request accepts the following includes:
       "extra_information": null,
       "photo_url": null,
       "description": null,
+      "excerpt": null,
       "show_in_store": true,
       "sorting_weight": 0,
       "base_price_in_cents": 0,
@@ -587,11 +592,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f6fe64db-98f0-472d-af57-be9d9011653c",
+    "id": "b266fbf6-eb7a-4afb-bfeb-fde234ae5b4c",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-07-29T09:26:10.390304+00:00",
-      "updated_at": "2024-07-29T09:26:10.390304+00:00",
+      "created_at": "2024-08-05T09:23:55.022674+00:00",
+      "updated_at": "2024-08-05T09:23:55.022674+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -609,6 +614,7 @@ This request accepts the following includes:
       "extra_information": null,
       "photo_url": null,
       "description": null,
+      "excerpt": null,
       "show_in_store": true,
       "sorting_weight": 0,
       "base_price_in_cents": 0,
@@ -671,6 +677,7 @@ Name | Description
 `data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
 `data[attributes][variation]` | **Boolean** <br>Whether this Item is a variation in a ProductGroup.
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
+`data[attributes][excerpt]` | **String** <br>Excerpt used in the online store
 `data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
 `data[attributes][price_type]` | **String** <br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
@@ -730,11 +737,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/aa794a0e-1deb-49dc-b412-00b7b4946024' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/dc82ed84-264b-4625-b8a2-01d0881fa9b9' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "aa794a0e-1deb-49dc-b412-00b7b4946024",
+        "id": "dc82ed84-264b-4625-b8a2-01d0881fa9b9",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -748,11 +755,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "aa794a0e-1deb-49dc-b412-00b7b4946024",
+    "id": "dc82ed84-264b-4625-b8a2-01d0881fa9b9",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-07-29T09:26:06.318363+00:00",
-      "updated_at": "2024-07-29T09:26:06.807591+00:00",
+      "created_at": "2024-08-05T09:23:58.706192+00:00",
+      "updated_at": "2024-08-05T09:23:59.118209+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -770,6 +777,7 @@ This request accepts the following includes:
       "extra_information": null,
       "photo_url": null,
       "description": null,
+      "excerpt": null,
       "show_in_store": true,
       "sorting_weight": 0,
       "base_price_in_cents": 0,
@@ -829,6 +837,7 @@ Name | Description
 `data[attributes][has_variations]` | **Boolean** <br>Whether variations are enabled. Not applicable for product_type `service`
 `data[attributes][variation]` | **Boolean** <br>Whether this Item is a variation in a ProductGroup.
 `data[attributes][extra_information]` | **String** <br>Extra information about the item, shown on orders and documents
+`data[attributes][excerpt]` | **String** <br>Excerpt used in the online store
 `data[attributes][show_in_store]` | **Boolean** <br>Whether to show this item in the online
 `data[attributes][sorting_weight]` | **Integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists
 `data[attributes][price_type]` | **String** <br>One of `structure`, `private_structure`, `fixed`, `simple`, `none`
@@ -888,7 +897,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/c9271115-9853-4f8e-a47c-af5b8c7f17de' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/1a51a386-18ea-4caf-abfe-9432ccd82a10' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -898,17 +907,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c9271115-9853-4f8e-a47c-af5b8c7f17de",
+    "id": "1a51a386-18ea-4caf-abfe-9432ccd82a10",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-07-29T09:26:11.811747+00:00",
-      "updated_at": "2024-07-29T09:26:12.129628+00:00",
+      "created_at": "2024-08-05T09:24:00.133377+00:00",
+      "updated_at": "2024-08-05T09:24:00.603345+00:00",
       "archived": true,
-      "archived_at": "2024-07-29T09:26:12.129628+00:00",
+      "archived_at": "2024-08-05T09:24:00.603345+00:00",
       "type": "product_groups",
       "name": "iPad Pro",
       "group_name": null,
-      "slug": "ipad-pro-archived-c9271115-9853-4f8e-a47c-af5b8c7f17de",
+      "slug": "ipad-pro-archived-1a51a386-18ea-4caf-abfe-9432ccd82a10",
       "sku": "SKU",
       "lead_time": 0,
       "lag_time": 0,
@@ -920,6 +929,7 @@ This request accepts the following includes:
       "extra_information": null,
       "photo_url": null,
       "description": null,
+      "excerpt": null,
       "show_in_store": true,
       "sorting_weight": 0,
       "base_price_in_cents": 0,

@@ -47,11 +47,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "1ef20013-bf04-4bb9-b86d-40dd22a33716",
+      "id": "c8b9fea3-125c-4e70-ba7b-e6db15864dbb",
       "type": "bundles",
       "attributes": {
-        "created_at": "2024-07-29T09:27:08.709868+00:00",
-        "updated_at": "2024-07-29T09:27:08.709868+00:00",
+        "created_at": "2024-08-05T09:24:10.414541+00:00",
+        "updated_at": "2024-08-05T09:24:10.414541+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -61,6 +61,7 @@ For this resource relationships are described in the following resources:
         "extra_information": null,
         "photo_url": null,
         "description": null,
+        "excerpt": null,
         "show_in_store": true,
         "sorting_weight": 0,
         "discountable": true,
@@ -77,11 +78,11 @@ For this resource relationships are described in the following resources:
       "relationships": {}
     },
     {
-      "id": "c51cf4e8-4b68-4f18-ae02-6d805188b11d",
+      "id": "15875613-189d-464f-ad7b-b421d721a398",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2024-07-29T09:27:08.826413+00:00",
-        "updated_at": "2024-07-29T09:27:08.826413+00:00",
+        "created_at": "2024-08-05T09:24:10.546797+00:00",
+        "updated_at": "2024-08-05T09:24:10.546797+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -99,6 +100,7 @@ For this resource relationships are described in the following resources:
         "extra_information": "Charging cable and case included",
         "photo_url": null,
         "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
+        "excerpt": null,
         "show_in_store": true,
         "sorting_weight": 0,
         "base_price_in_cents": 1995,
@@ -115,7 +117,7 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "7917c87b-84bf-4341-a383-7b69eea2d206",
+        "tax_category_id": "c441b70d-9313-4a46-bca5-be61b38cc66e",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "allow_shortage": true,
@@ -128,11 +130,11 @@ For this resource relationships are described in the following resources:
       "relationships": {}
     },
     {
-      "id": "9d7a3b8d-e696-426f-a850-02716fcb03b4",
+      "id": "ed8cd85e-3e44-40cb-ac09-dbd3f7b5ab05",
       "type": "products",
       "attributes": {
-        "created_at": "2024-07-29T09:27:08.831480+00:00",
-        "updated_at": "2024-07-29T09:27:08.831480+00:00",
+        "created_at": "2024-08-05T09:24:10.553187+00:00",
+        "updated_at": "2024-08-05T09:24:10.553187+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -150,6 +152,7 @@ For this resource relationships are described in the following resources:
         "extra_information": "Charging cable and case included",
         "photo_url": null,
         "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
+        "excerpt": null,
         "show_in_store": true,
         "sorting_weight": 1,
         "base_price_in_cents": 1995,
@@ -166,13 +169,13 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "7917c87b-84bf-4341-a383-7b69eea2d206",
+        "tax_category_id": "c441b70d-9313-4a46-bca5-be61b38cc66e",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "c51cf4e8-4b68-4f18-ae02-6d805188b11d"
+        "product_group_id": "15875613-189d-464f-ad7b-b421d721a398"
       },
       "relationships": {}
     }
@@ -225,6 +228,7 @@ Name | Description
 `variation` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`excerpt` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
 `sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -333,19 +337,19 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "1681cf06-4713-44fc-9e58-e7d9aa2556d1"
+      "id": "1f100821-7b3d-4f51-b0b6-6156b0e12431"
     },
     {
-      "id": "ec99a9ac-5c3f-437a-b03c-296feaca8c22"
+      "id": "cc636fcc-ce86-4c27-a195-f9ccb94b6345"
     },
     {
-      "id": "10faba10-d567-4c6e-9587-2ce84cf419e5"
+      "id": "dbb31639-a2cb-429b-b771-8cd947fee8a5"
     },
     {
-      "id": "3b26e9b1-eb57-4fd9-a3d9-d94a1f1019cf"
+      "id": "61da7ac9-effc-4cd3-9f46-de4257d99186"
     },
     {
-      "id": "c04b8134-0f82-4a17-8641-637eb7a96130"
+      "id": "44ed486c-4935-4a76-9f7e-a8f44ce5f587"
     }
   ]
 }
@@ -395,6 +399,7 @@ Name | Description
 `variation` | **Boolean** <br>`eq`
 `extra_information` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`excerpt` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `show_in_store` | **Boolean** <br>`eq`
 `sorting_weight` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -458,7 +463,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/items/9c29ec38-188c-4ea1-91be-0aaeba1ee71e' \
+    --url 'https://example.booqable.com/api/boomerang/items/8533898c-d76a-4c2a-bcdf-e2720bbe5125' \
     --header 'content-type: application/json' \
 ```
 
@@ -467,11 +472,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9c29ec38-188c-4ea1-91be-0aaeba1ee71e",
+    "id": "8533898c-d76a-4c2a-bcdf-e2720bbe5125",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-07-29T09:27:09.932540+00:00",
-      "updated_at": "2024-07-29T09:27:09.932540+00:00",
+      "created_at": "2024-08-05T09:24:11.663921+00:00",
+      "updated_at": "2024-08-05T09:24:11.663921+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -489,6 +494,7 @@ This request accepts the following includes:
       "extra_information": "Charging cable and case included",
       "photo_url": null,
       "description": "The Apple iPad Pro (2021) 12.9 inches 128GB Space Gray is one of the most powerful and fastest tablets of this moment thanks to the new M1 chip. This chip ensures that demanding apps from Adobe or 3D games run smoothly",
+      "excerpt": null,
       "show_in_store": true,
       "sorting_weight": 0,
       "base_price_in_cents": 1995,
@@ -505,7 +511,7 @@ This request accepts the following includes:
       ],
       "properties": {},
       "photo_id": null,
-      "tax_category_id": "be3ae580-92be-4cf0-b305-2290f1d41eb0",
+      "tax_category_id": "d87ac87f-3a0b-4b72-8119-674e090e8f15",
       "price_ruleset_id": null,
       "price_structure_id": null,
       "allow_shortage": true,
