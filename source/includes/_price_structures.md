@@ -65,11 +65,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "20794849-b733-4e88-bb09-461b19a6448f",
+      "id": "ba547cf8-94d4-482b-99b5-e30fc4cb6af0",
       "type": "price_structures",
       "attributes": {
-        "created_at": "2024-08-05T09:26:31.741893+00:00",
-        "updated_at": "2024-08-05T09:26:31.747312+00:00",
+        "created_at": "2024-08-12T09:23:28.436979+00:00",
+        "updated_at": "2024-08-12T09:23:28.440961+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Price per hour (3 hours minimum)",
@@ -140,7 +140,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_structures/c24b891c-98fc-40a4-a0f4-c5ad9657e9ab?include=price_tiles' \
+    --url 'https://example.booqable.com/api/boomerang/price_structures/fce606e8-08f5-4b0b-8a3f-0e726375818e?include=price_tiles' \
     --header 'content-type: application/json' \
 ```
 
@@ -149,11 +149,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c24b891c-98fc-40a4-a0f4-c5ad9657e9ab",
+    "id": "fce606e8-08f5-4b0b-8a3f-0e726375818e",
     "type": "price_structures",
     "attributes": {
-      "created_at": "2024-08-05T09:26:35.117610+00:00",
-      "updated_at": "2024-08-05T09:26:35.124271+00:00",
+      "created_at": "2024-08-12T09:23:30.964010+00:00",
+      "updated_at": "2024-08-12T09:23:30.968876+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Price per hour (3 hours minimum)",
@@ -170,7 +170,7 @@ This request does not accept any includes
         "data": [
           {
             "type": "price_tiles",
-            "id": "e3c0384c-02ba-4f16-815a-18b638248cc3"
+            "id": "f0ea425c-0f6f-4165-96b1-7630615d504c"
           }
         ]
       }
@@ -178,17 +178,17 @@ This request does not accept any includes
   },
   "included": [
     {
-      "id": "e3c0384c-02ba-4f16-815a-18b638248cc3",
+      "id": "f0ea425c-0f6f-4165-96b1-7630615d504c",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-08-05T09:26:35.120929+00:00",
-        "updated_at": "2024-08-05T09:26:35.120929+00:00",
+        "created_at": "2024-08-12T09:23:30.966050+00:00",
+        "updated_at": "2024-08-12T09:23:30.966050+00:00",
         "name": "3 hours",
         "quantity": 3,
         "length": 10800,
         "multiplier": 1.0,
         "period": "hours",
-        "price_structure_id": "c24b891c-98fc-40a4-a0f4-c5ad9657e9ab"
+        "price_structure_id": "fce606e8-08f5-4b0b-8a3f-0e726375818e"
       },
       "relationships": {}
     }
@@ -257,11 +257,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d443507e-10b4-4073-8b65-4a0a0e3f7807",
+    "id": "fa921e78-b7c0-48ad-b365-865e69012901",
     "type": "price_structures",
     "attributes": {
-      "created_at": "2024-08-05T09:26:33.571202+00:00",
-      "updated_at": "2024-08-05T09:26:33.577744+00:00",
+      "created_at": "2024-08-12T09:23:27.485116+00:00",
+      "updated_at": "2024-08-12T09:23:27.488709+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Price per hour (3 hours minimum)",
@@ -278,7 +278,7 @@ This request accepts the following includes:
         "data": [
           {
             "type": "price_tiles",
-            "id": "46da72f3-b6ed-4b60-9248-a55cce6f3d69"
+            "id": "2bd0b044-f479-4858-91f1-aa210778af13"
           }
         ]
       }
@@ -286,17 +286,17 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "46da72f3-b6ed-4b60-9248-a55cce6f3d69",
+      "id": "2bd0b044-f479-4858-91f1-aa210778af13",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-08-05T09:26:33.574547+00:00",
-        "updated_at": "2024-08-05T09:26:33.574547+00:00",
+        "created_at": "2024-08-12T09:23:27.486884+00:00",
+        "updated_at": "2024-08-12T09:23:27.486884+00:00",
         "name": "3 hours",
         "quantity": 3,
         "length": 10800,
         "multiplier": 1.0,
         "period": "hours",
-        "price_structure_id": "d443507e-10b4-4073-8b65-4a0a0e3f7807"
+        "price_structure_id": "fa921e78-b7c0-48ad-b365-865e69012901"
       },
       "relationships": {}
     }
@@ -353,29 +353,29 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_structures/d97ddaeb-491d-4bf7-bb18-1158320f4d71' \
+    --url 'https://example.booqable.com/api/boomerang/price_structures/59a22fc4-ab1c-498c-a742-655e58b9f004' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d97ddaeb-491d-4bf7-bb18-1158320f4d71",
+        "id": "59a22fc4-ab1c-498c-a742-655e58b9f004",
         "type": "price_structures",
         "attributes": {
           "name": "Charge per week (cut-rate > 3 weeks)",
           "price_tiles_attributes": [
             {
-              "id": "49b9d6fb-8438-4441-8b91-d5b09cd8a712",
+              "id": "eb05e23b-2939-454a-a427-8c7bf52efacd",
               "name": "1 semana"
             },
             {
-              "id": "c8c3a382-1d63-4b29-b1f3-51b11132d8bb",
+              "id": "47a8590a-6abe-4ec5-b12d-f7ed9e9b9184",
               "name": "2 semanas"
             },
             {
-              "id": "779ea2d9-1a8a-4e48-816e-b5eb98e3ec44",
+              "id": "b10e1574-9d30-4b53-99e2-ca3cfd478b88",
               "name": "3 semanas"
             },
             {
-              "id": "b39bdc64-d580-412e-a56d-27e7d143a1fc",
+              "id": "dc62f833-b5b7-4b2a-9420-11ce0f1dcd05",
               "_destroy": true
             }
           ]
@@ -390,11 +390,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d97ddaeb-491d-4bf7-bb18-1158320f4d71",
+    "id": "59a22fc4-ab1c-498c-a742-655e58b9f004",
     "type": "price_structures",
     "attributes": {
-      "created_at": "2024-08-05T09:26:34.242746+00:00",
-      "updated_at": "2024-08-05T09:26:34.316386+00:00",
+      "created_at": "2024-08-12T09:23:29.275143+00:00",
+      "updated_at": "2024-08-12T09:23:29.332897+00:00",
       "archived": false,
       "archived_at": null,
       "name": "Charge per week (cut-rate > 3 weeks)",
@@ -411,15 +411,15 @@ This request accepts the following includes:
         "data": [
           {
             "type": "price_tiles",
-            "id": "49b9d6fb-8438-4441-8b91-d5b09cd8a712"
+            "id": "eb05e23b-2939-454a-a427-8c7bf52efacd"
           },
           {
             "type": "price_tiles",
-            "id": "c8c3a382-1d63-4b29-b1f3-51b11132d8bb"
+            "id": "47a8590a-6abe-4ec5-b12d-f7ed9e9b9184"
           },
           {
             "type": "price_tiles",
-            "id": "779ea2d9-1a8a-4e48-816e-b5eb98e3ec44"
+            "id": "b10e1574-9d30-4b53-99e2-ca3cfd478b88"
           }
         ]
       }
@@ -427,47 +427,47 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "49b9d6fb-8438-4441-8b91-d5b09cd8a712",
+      "id": "eb05e23b-2939-454a-a427-8c7bf52efacd",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-08-05T09:26:34.246492+00:00",
-        "updated_at": "2024-08-05T09:26:34.310542+00:00",
+        "created_at": "2024-08-12T09:23:29.278370+00:00",
+        "updated_at": "2024-08-12T09:23:29.327569+00:00",
         "name": "1 semana",
         "quantity": 1,
         "length": 604800,
         "multiplier": 1.0,
         "period": "weeks",
-        "price_structure_id": "d97ddaeb-491d-4bf7-bb18-1158320f4d71"
+        "price_structure_id": "59a22fc4-ab1c-498c-a742-655e58b9f004"
       },
       "relationships": {}
     },
     {
-      "id": "c8c3a382-1d63-4b29-b1f3-51b11132d8bb",
+      "id": "47a8590a-6abe-4ec5-b12d-f7ed9e9b9184",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-08-05T09:26:34.250272+00:00",
-        "updated_at": "2024-08-05T09:26:34.312741+00:00",
+        "created_at": "2024-08-12T09:23:29.280757+00:00",
+        "updated_at": "2024-08-12T09:23:29.329444+00:00",
         "name": "2 semanas",
         "quantity": 2,
         "length": 1209600,
         "multiplier": 2.0,
         "period": "weeks",
-        "price_structure_id": "d97ddaeb-491d-4bf7-bb18-1158320f4d71"
+        "price_structure_id": "59a22fc4-ab1c-498c-a742-655e58b9f004"
       },
       "relationships": {}
     },
     {
-      "id": "779ea2d9-1a8a-4e48-816e-b5eb98e3ec44",
+      "id": "b10e1574-9d30-4b53-99e2-ca3cfd478b88",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-08-05T09:26:34.253203+00:00",
-        "updated_at": "2024-08-05T09:26:34.314803+00:00",
+        "created_at": "2024-08-12T09:23:29.282667+00:00",
+        "updated_at": "2024-08-12T09:23:29.331308+00:00",
         "name": "3 semanas",
         "quantity": 3,
         "length": 1814400,
         "multiplier": 3.0,
         "period": "weeks",
-        "price_structure_id": "d97ddaeb-491d-4bf7-bb18-1158320f4d71"
+        "price_structure_id": "59a22fc4-ab1c-498c-a742-655e58b9f004"
       },
       "relationships": {}
     }
@@ -524,7 +524,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_structures/72832688-e0d5-44b0-bb57-ddeb94c5d588' \
+    --url 'https://example.booqable.com/api/boomerang/price_structures/675a2902-227c-4cc8-ad68-67a1ff5f2150' \
     --header 'content-type: application/json' \
 ```
 
@@ -533,13 +533,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "72832688-e0d5-44b0-bb57-ddeb94c5d588",
+    "id": "675a2902-227c-4cc8-ad68-67a1ff5f2150",
     "type": "price_structures",
     "attributes": {
-      "created_at": "2024-08-05T09:26:32.463702+00:00",
-      "updated_at": "2024-08-05T09:26:32.498389+00:00",
+      "created_at": "2024-08-12T09:23:30.269092+00:00",
+      "updated_at": "2024-08-12T09:23:30.293309+00:00",
       "archived": true,
-      "archived_at": "2024-08-05T09:26:32.498389+00:00",
+      "archived_at": "2024-08-12T09:23:30.293309+00:00",
       "name": "Price per hour (3 hours minimum) (Deleted)",
       "price_structure_type": "reusable",
       "product_group_id": null,

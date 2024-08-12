@@ -58,16 +58,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d4056823-87f9-5f65-b375-029fdb7faef6",
+    "id": "2c7cf333-f810-5392-8932-7bb25a3c0d8e",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-08-05T09:26:45.351107+00:00",
-      "company_id": "8ed36d43-9e4e-4b13-8e3e-9ec7edde204a",
-      "employee_id": "a6f27b0e-4874-41ea-a09e-27ddb8e4e140",
-      "locations_updated_at": "2024-08-05T09:26:45.369255+00:00",
-      "clusters_updated_at": "2024-08-05T09:26:45.375990+00:00",
-      "default_properties_updated_at": "2024-08-05T09:26:45.384849+00:00",
-      "notification_subscriptions_updated_at": "2024-08-05T09:26:45.357926+00:00",
+      "updated_at": "2024-08-12T09:27:36.636456+00:00",
+      "company_id": "a1958db3-7d67-464d-8789-b46ae4257ae8",
+      "employee_id": "deceb88d-c162-4419-89a3-d6e349af1f7b",
+      "locations_updated_at": "2024-08-12T09:27:36.648180+00:00",
+      "clusters_updated_at": "2024-08-12T09:27:36.653090+00:00",
+      "default_properties_updated_at": "2024-08-12T09:27:36.659238+00:00",
+      "notification_subscriptions_updated_at": "2024-08-12T09:27:36.640695+00:00",
       "countries_updated_at": null
     },
     "relationships": {}
@@ -124,29 +124,29 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dc24aae8-e89a-51aa-b549-162863c9218a",
+    "id": "1a1dfeb3-3547-5e9b-9865-304e29f7d0dc",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-08-05T09:24:48.119726+00:00",
-      "company_id": "876a1daf-9331-4968-bf67-6d2ca4786666",
-      "employee_id": "d376a424-ac19-4e20-8a22-306d78570a67",
+      "updated_at": "2024-08-12T09:26:55.155754+00:00",
+      "company_id": "aaf6b2a0-e055-47f0-abee-8878e26dd8b8",
+      "employee_id": "90c13a9e-7092-4880-93c9-930c4be47e25",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-08-05T09:24:48.126549+00:00",
+      "notification_subscriptions_updated_at": "2024-08-12T09:26:55.159883+00:00",
       "countries_updated_at": null
     },
     "relationships": {
       "company": {
         "data": {
           "type": "companies",
-          "id": "876a1daf-9331-4968-bf67-6d2ca4786666"
+          "id": "aaf6b2a0-e055-47f0-abee-8878e26dd8b8"
         }
       },
       "employee": {
         "data": {
           "type": "employees",
-          "id": "d376a424-ac19-4e20-8a22-306d78570a67"
+          "id": "90c13a9e-7092-4880-93c9-930c4be47e25"
         }
       },
       "settings": {
@@ -159,14 +159,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "876a1daf-9331-4968-bf67-6d2ca4786666",
+      "id": "aaf6b2a0-e055-47f0-abee-8878e26dd8b8",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-08-05T09:24:48.082426+00:00",
-        "updated_at": "2024-08-05T09:24:48.096196+00:00",
-        "name": "Company name 134",
-        "slug": "company-name-134",
-        "email": "mail134@company.com",
+        "created_at": "2024-08-12T09:26:55.129905+00:00",
+        "updated_at": "2024-08-12T09:26:55.139602+00:00",
+        "name": "Company name 197",
+        "slug": "company-name-197",
+        "email": "mail200@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -198,7 +198,7 @@ This request accepts the following includes:
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "40c860f686f844adff8385e49fedd862",
+        "tenant_token": "c682ea0d93e4640fada473f5d0e24717",
         "pending_subscription": false,
         "team_size": null,
         "projected_revenue": null,
@@ -221,7 +221,7 @@ This request accepts the following includes:
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-08-19T09:24:48.066Z",
+          "trial_ends_at": "2024-08-26T09:26:55.118Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -278,11 +278,11 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "d376a424-ac19-4e20-8a22-306d78570a67",
+      "id": "90c13a9e-7092-4880-93c9-930c4be47e25",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-08-05T09:24:48.119726+00:00",
-        "updated_at": "2024-08-05T09:24:48.119726+00:00",
+        "created_at": "2024-08-12T09:26:55.155754+00:00",
+        "updated_at": "2024-08-12T09:26:55.155754+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

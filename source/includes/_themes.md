@@ -61,15 +61,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "0c62cc92-2031-46f0-ae9f-87d41d808509",
+      "id": "1b1946dd-3bfe-453a-a41c-4b0ddffacf9a",
       "type": "themes",
       "attributes": {
-        "created_at": "2024-08-05T09:24:06.069032+00:00",
-        "updated_at": "2024-08-05T09:24:06.069032+00:00",
-        "name": "Theme 12",
-        "identifier": "e4434785-c53a-4186-895a-f31a673c145c",
+        "created_at": "2024-08-12T09:27:57.588030+00:00",
+        "updated_at": "2024-08-12T09:27:57.588030+00:00",
+        "name": "Theme 5",
+        "identifier": "d23f691f-acd6-41d9-b56a-323a0162b57b",
         "version": "1.0",
-        "theme_id": "defc4cf7-4b03-47e9-ad24-1a5f19c041f3",
+        "theme_id": "762fe4d3-e64f-474a-bca8-bba8eb8c9798",
         "theme_type": "official",
         "description": "A simple theme for setting up your shop",
         "market": null,
@@ -102,13 +102,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "ca7fb4f3-6cbe-418c-b71e-438541be419f",
+      "id": "ffc49dcc-3e16-4d87-b8f1-366d3ee5e1e1",
       "type": "themes",
       "attributes": {
-        "created_at": "2024-08-05T09:24:07.358308+00:00",
-        "updated_at": "2024-08-05T09:24:07.358308+00:00",
+        "created_at": "2024-08-12T09:27:57.095016+00:00",
+        "updated_at": "2024-08-12T09:27:57.095016+00:00",
         "name": "Official theme",
-        "identifier": "e3e5d227-5589-4d8b-a7da-42b0f4161bb6",
+        "identifier": "b8a65e40-8170-43e3-a486-07f5a7adfb2b",
         "version": "1.0",
         "theme_id": null,
         "theme_type": "official",
@@ -191,7 +191,7 @@ This request does not accept any includes
         "type": "themes",
         "attributes": {
           "name": "New theme",
-          "theme_id": "867a604c-89c0-4229-9bb1-f1fd37132806"
+          "theme_id": "8d64256a-6989-407a-be21-69b678133b31"
         }
       }
     }'
@@ -202,15 +202,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c44c2a88-3247-4ae8-864d-0ce55436ead6",
+    "id": "9e60725b-2e9a-4e9f-b8c3-6276b7f66b5a",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-08-05T09:24:05.275440+00:00",
-      "updated_at": "2024-08-05T09:24:05.275440+00:00",
+      "created_at": "2024-08-12T09:27:56.642842+00:00",
+      "updated_at": "2024-08-12T09:27:56.642842+00:00",
       "name": "Official theme",
-      "identifier": "5a1c4a50-aa00-48fb-bf5c-44753309e4ef",
+      "identifier": "dd8c426c-fa75-4524-a617-d41815a9b121",
       "version": null,
-      "theme_id": "867a604c-89c0-4229-9bb1-f1fd37132806",
+      "theme_id": "8d64256a-6989-407a-be21-69b678133b31",
       "theme_type": "official",
       "description": null,
       "market": null,
@@ -276,7 +276,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/fa85daf9-28d7-41b3-948b-298955a7a180' \
+    --url 'https://example.booqable.com/api/boomerang/themes/d03e6543-f212-4506-9564-ce0f453b1a07' \
     --header 'content-type: application/json' \
 ```
 
@@ -285,15 +285,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fa85daf9-28d7-41b3-948b-298955a7a180",
+    "id": "d03e6543-f212-4506-9564-ce0f453b1a07",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-08-05T09:24:04.552019+00:00",
-      "updated_at": "2024-08-05T09:24:04.552019+00:00",
-      "name": "Theme 10",
-      "identifier": "8e0dd0c5-7c27-42e6-917a-ee6af13da6cd",
+      "created_at": "2024-08-12T09:27:56.128972+00:00",
+      "updated_at": "2024-08-12T09:27:56.128972+00:00",
+      "name": "Theme 2",
+      "identifier": "fa636d35-c4ed-4ce4-9576-2dff04aaa98b",
       "version": "1.0",
-      "theme_id": "307ff76c-2565-4a54-b888-79b7dfc28354",
+      "theme_id": "314bd9b0-8b0c-4057-9097-c11ddc5e47d2",
       "theme_type": "official",
       "description": null,
       "market": null,

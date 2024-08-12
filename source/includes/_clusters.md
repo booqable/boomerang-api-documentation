@@ -51,11 +51,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "ac5a0989-0a21-4596-aaa2-ec89e1dd076b",
+      "id": "ba22e56e-0fef-4759-956c-f37740726663",
       "type": "clusters",
       "attributes": {
-        "created_at": "2024-08-05T09:25:43.751926+00:00",
-        "updated_at": "2024-08-05T09:25:43.751926+00:00",
+        "created_at": "2024-08-12T09:24:07.518401+00:00",
+        "updated_at": "2024-08-12T09:24:07.518401+00:00",
         "name": "Main",
         "location_ids": []
       },
@@ -126,7 +126,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/clusters/c72cea37-5fc4-4927-909c-df7672352aef' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/6a56bb0b-2c48-4d58-bc42-f8fccbb7f781' \
     --header 'content-type: application/json' \
 ```
 
@@ -135,11 +135,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c72cea37-5fc4-4927-909c-df7672352aef",
+    "id": "6a56bb0b-2c48-4d58-bc42-f8fccbb7f781",
     "type": "clusters",
     "attributes": {
-      "created_at": "2024-08-05T09:25:47.059321+00:00",
-      "updated_at": "2024-08-05T09:25:47.059321+00:00",
+      "created_at": "2024-08-12T09:24:04.420089+00:00",
+      "updated_at": "2024-08-12T09:24:04.420089+00:00",
       "name": "Main",
       "location_ids": []
     },
@@ -199,11 +199,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f6fe2014-ca51-4878-ab20-3de43319e27a",
+    "id": "278c810e-018e-4029-9f72-a946d452a6b6",
     "type": "clusters",
     "attributes": {
-      "created_at": "2024-08-05T09:25:44.708543+00:00",
-      "updated_at": "2024-08-05T09:25:44.708543+00:00",
+      "created_at": "2024-08-12T09:24:04.967963+00:00",
+      "updated_at": "2024-08-12T09:24:04.967963+00:00",
       "name": "Amsterdam",
       "location_ids": []
     },
@@ -256,11 +256,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/clusters/92955693-2baf-4c9e-8b3e-ad7264ce03a6' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/1be18198-3fc5-4d8d-91eb-0136c87c9f2d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "92955693-2baf-4c9e-8b3e-ad7264ce03a6",
+        "id": "1be18198-3fc5-4d8d-91eb-0136c87c9f2d",
         "type": "clusters",
         "attributes": {
           "name": "Rotterdam"
@@ -274,11 +274,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "92955693-2baf-4c9e-8b3e-ad7264ce03a6",
+    "id": "1be18198-3fc5-4d8d-91eb-0136c87c9f2d",
     "type": "clusters",
     "attributes": {
-      "created_at": "2024-08-05T09:25:42.531179+00:00",
-      "updated_at": "2024-08-05T09:25:42.565605+00:00",
+      "created_at": "2024-08-12T09:24:05.596990+00:00",
+      "updated_at": "2024-08-12T09:24:05.636778+00:00",
       "name": "Rotterdam",
       "location_ids": []
     },
@@ -332,7 +332,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/18446416-2950-4262-84bc-354efe29fad2' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/c485fb1d-6004-4173-9ccb-c26f13444bb6' \
     --header 'content-type: application/json' \
 ```
 
@@ -341,11 +341,11 @@ To delete a cluster make sure no active locations are associated with it anymore
 ```json
   {
   "data": {
-    "id": "18446416-2950-4262-84bc-354efe29fad2",
+    "id": "c485fb1d-6004-4173-9ccb-c26f13444bb6",
     "type": "clusters",
     "attributes": {
-      "created_at": "2024-08-05T09:25:46.284525+00:00",
-      "updated_at": "2024-08-05T09:25:46.284525+00:00",
+      "created_at": "2024-08-12T09:24:06.287108+00:00",
+      "updated_at": "2024-08-12T09:24:06.287108+00:00",
       "name": "Main",
       "location_ids": []
     },
@@ -360,7 +360,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/clusters/d390983e-dc21-4623-80c2-2461724b44ab' \
+    --url 'https://example.booqable.com/api/boomerang/clusters/ed58c137-a11f-49a9-be67-bdaf41ed44dc' \
     --header 'content-type: application/json' \
 ```
 
@@ -376,7 +376,7 @@ To delete a cluster make sure no active locations are associated with it anymore
       "detail": "This cluster has 1 or more active locations",
       "meta": {
         "location_ids": [
-          "221745c7-9cd4-4d55-9c9f-d3ffd8fc7ace"
+          "f1531144-d239-4666-ac69-3bf793c3f075"
         ]
       }
     }

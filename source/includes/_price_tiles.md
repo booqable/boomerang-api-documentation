@@ -55,17 +55,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "3e0ca30b-2140-490b-b773-f53fcd5a15e9",
+      "id": "ad3a5792-e2c8-4ae4-ae67-a53beee61948",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-08-05T09:26:35.924868+00:00",
-        "updated_at": "2024-08-05T09:26:35.924868+00:00",
+        "created_at": "2024-08-12T09:24:09.031309+00:00",
+        "updated_at": "2024-08-12T09:24:09.031309+00:00",
         "name": "3 hours",
         "quantity": 3,
         "length": 10800,
         "multiplier": 3.0,
         "period": "hours",
-        "price_structure_id": "ef114e9e-3bf1-4ad6-9179-42a780ceb0c8"
+        "price_structure_id": "bba9ce9e-7720-4cb7-b445-9a7bd3109f9b"
       },
       "relationships": {}
     }
@@ -124,7 +124,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/7d8e3e53-8325-4fe6-a2c4-70cef34874bd?include=price_tiles' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/2a8cfe60-1a53-4e8e-affe-a626b7a031af?include=price_tiles' \
     --header 'content-type: application/json' \
 ```
 
@@ -133,17 +133,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7d8e3e53-8325-4fe6-a2c4-70cef34874bd",
+    "id": "2a8cfe60-1a53-4e8e-affe-a626b7a031af",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-08-05T09:26:41.406480+00:00",
-      "updated_at": "2024-08-05T09:26:41.406480+00:00",
+      "created_at": "2024-08-12T09:24:09.762343+00:00",
+      "updated_at": "2024-08-12T09:24:09.762343+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "0bdabc05-1eef-4838-b0f5-f1eadd4e7baf"
+      "price_structure_id": "75ad4e17-8f21-45d2-89dd-94e65ba82360"
     },
     "relationships": {}
   },
@@ -190,7 +190,7 @@ This request accepts the following includes:
       "data": {
         "type": "price_tiles",
         "attributes": {
-          "price_structure_id": "3c0febe2-2801-4193-87b9-35975ad5f09f",
+          "price_structure_id": "9d4ed48d-1bbb-43c0-9ac7-2951bba82bdd",
           "name": "3 hours",
           "quantity": 3,
           "period": "hours",
@@ -205,17 +205,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "31567d73-dd1a-4a6d-a966-f37248596639",
+    "id": "c374f1b7-14fb-49e1-b53b-df212562c0d6",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-08-05T09:26:40.349420+00:00",
-      "updated_at": "2024-08-05T09:26:40.349420+00:00",
+      "created_at": "2024-08-12T09:24:08.271545+00:00",
+      "updated_at": "2024-08-12T09:24:08.271545+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "3c0febe2-2801-4193-87b9-35975ad5f09f"
+      "price_structure_id": "9d4ed48d-1bbb-43c0-9ac7-2951bba82bdd"
     },
     "relationships": {}
   },
@@ -269,11 +269,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/742500f8-32d6-4404-a7df-c7b967b2b9d0' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/9a53eef3-1610-46bd-baf0-aabae45692df' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "742500f8-32d6-4404-a7df-c7b967b2b9d0",
+        "id": "9a53eef3-1610-46bd-baf0-aabae45692df",
         "type": "price_tiles",
         "attributes": {
           "name": "4 days",
@@ -290,17 +290,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "742500f8-32d6-4404-a7df-c7b967b2b9d0",
+    "id": "9a53eef3-1610-46bd-baf0-aabae45692df",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-08-05T09:26:39.135732+00:00",
-      "updated_at": "2024-08-05T09:26:39.169877+00:00",
+      "created_at": "2024-08-12T09:24:10.605710+00:00",
+      "updated_at": "2024-08-12T09:24:10.651930+00:00",
       "name": "4 days",
       "quantity": 4,
       "length": 345600,
       "multiplier": 4.0,
       "period": "days",
-      "price_structure_id": "229552c3-8a0a-4c48-b08b-bc6c0a2ac9f8"
+      "price_structure_id": "ca59b423-897a-43a2-afe7-a468634b8650"
     },
     "relationships": {}
   },
@@ -354,7 +354,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/49ddb6c4-899a-4080-a867-63b77c23bde0' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/65b49225-c235-426b-b7c9-af04004f60d7' \
     --header 'content-type: application/json' \
 ```
 
@@ -363,17 +363,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "49ddb6c4-899a-4080-a867-63b77c23bde0",
+    "id": "65b49225-c235-426b-b7c9-af04004f60d7",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-08-05T09:26:36.898148+00:00",
-      "updated_at": "2024-08-05T09:26:36.898148+00:00",
+      "created_at": "2024-08-12T09:24:11.459972+00:00",
+      "updated_at": "2024-08-12T09:24:11.459972+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "cad8a9e8-9580-45d4-9026-bb6772201a67"
+      "price_structure_id": "31860a51-3cb9-431d-b7b5-fb7e57e6921a"
     },
     "relationships": {}
   },
