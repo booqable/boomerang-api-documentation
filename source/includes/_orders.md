@@ -149,11 +149,11 @@ to be in the same cluster as the start location.
   {
   "data": [
     {
-      "id": "39b1d639-ffed-48df-aa00-f9bb78f9d0c3",
+      "id": "e8f700da-9658-490f-9eb3-d3c92c7a6a4b",
       "type": "orders",
       "attributes": {
-        "created_at": "2024-08-12T09:28:14.797542+00:00",
-        "updated_at": "2024-08-12T09:28:15.912126+00:00",
+        "created_at": "2024-08-19T09:22:43.684999+00:00",
+        "updated_at": "2024-08-19T09:22:45.009987+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -199,11 +199,11 @@ to be in the same cluster as the start location.
         "discount_percentage": 10.0,
         "delivery_address_property_id": null,
         "delivery_billing_address_property_id": null,
-        "customer_id": "c7a541ab-dc6e-4dab-8405-7d21c19bbc6b",
+        "customer_id": "45bfe7af-8406-4d1b-b169-e7847552d4cd",
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "ecd3e1a0-30df-43f7-a662-e9a577ba0bcd",
-        "stop_location_id": "ecd3e1a0-30df-43f7-a662-e9a577ba0bcd"
+        "start_location_id": "2cff8c27-505c-4670-a32d-4c33485cb5e1",
+        "stop_location_id": "2cff8c27-505c-4670-a32d-4c33485cb5e1"
       },
       "relationships": {}
     }
@@ -361,14 +361,14 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-08-13T09:28:20Z",
-                    "lte": "2024-08-16T09:28:20Z"
+                    "gte": "2024-08-20T09:22:34Z",
+                    "lte": "2024-08-23T09:22:34Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "gte": "2024-08-13T09:28:20Z",
-                    "lte": "2024-08-16T09:28:20Z"
+                    "gte": "2024-08-20T09:22:34Z",
+                    "lte": "2024-08-23T09:22:34Z"
                   }
                 }
               ]
@@ -396,10 +396,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "692d46b3-acd0-43c1-bae8-a21bea15cf47"
+      "id": "4a10d25f-87fc-43ed-896c-1de752d3e51f"
     },
     {
-      "id": "58a9b3cd-1137-4ae5-ab14-7dbe7e5abb6c"
+      "id": "af7aca81-c803-4cf5-8ac6-c9c0447195c7"
     }
   ]
 }
@@ -548,11 +548,11 @@ Returns an existing or new order for the current employee.
 ```json
   {
   "data": {
-    "id": "c4649719-effd-41cc-b390-4a990060e399",
+    "id": "104dbdad-63e0-46ff-a64b-c47fff99e3ab",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-08-12T09:28:29.006406+00:00",
-      "updated_at": "2024-08-12T09:28:29.015659+00:00",
+      "created_at": "2024-08-19T09:22:32.046764+00:00",
+      "updated_at": "2024-08-19T09:22:32.055915+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -599,8 +599,8 @@ Returns an existing or new order for the current employee.
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "8d4d1f6f-819c-4f5a-acdc-e5871cf07351",
-      "stop_location_id": "8d4d1f6f-819c-4f5a-acdc-e5871cf07351"
+      "start_location_id": "7343866e-9fb6-4f51-a9be-3ce933471e6f",
+      "stop_location_id": "7343866e-9fb6-4f51-a9be-3ce933471e6f"
     },
     "relationships": {}
   },
@@ -701,7 +701,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders/b0eb2296-4e28-4eee-b148-b796a592e681' \
+    --url 'https://example.booqable.com/api/boomerang/orders/cf34a3dc-f1ae-4cca-837e-c3cc92cdd0be' \
     --header 'content-type: application/json' \
 ```
 
@@ -710,11 +710,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b0eb2296-4e28-4eee-b148-b796a592e681",
+    "id": "cf34a3dc-f1ae-4cca-837e-c3cc92cdd0be",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-08-12T09:28:16.665410+00:00",
-      "updated_at": "2024-08-12T09:28:17.734154+00:00",
+      "created_at": "2024-08-19T09:22:25.731272+00:00",
+      "updated_at": "2024-08-19T09:22:27.460513+00:00",
       "number": 1,
       "status": "reserved",
       "statuses": [
@@ -760,11 +760,11 @@ This request accepts the following includes:
       "discount_percentage": 10.0,
       "delivery_address_property_id": null,
       "delivery_billing_address_property_id": null,
-      "customer_id": "87f3c591-9b7c-46d4-842d-d5d467a5f2d8",
+      "customer_id": "1f8cc046-9be3-48bc-b3ca-4292b1f9f061",
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "3c99e686-80e8-48c7-a9ed-e6d712c1021b",
-      "stop_location_id": "3c99e686-80e8-48c7-a9ed-e6d712c1021b"
+      "start_location_id": "5605ef26-314d-4876-b245-596b4793ec5e",
+      "stop_location_id": "5605ef26-314d-4876-b245-596b4793ec5e"
     },
     "relationships": {}
   },
@@ -877,8 +877,8 @@ When creating an order, and the following fields are left blank, a sensible defa
       "data": {
         "type": "orders",
         "attributes": {
-          "starts_at": "2024-08-15T09:28:14.227Z",
-          "stops_at": "2024-09-23T09:28:14.227Z"
+          "starts_at": "2024-08-22T09:22:29.912Z",
+          "stops_at": "2024-09-30T09:22:29.912Z"
         }
       }
     }'
@@ -889,11 +889,11 @@ When creating an order, and the following fields are left blank, a sensible defa
 ```json
   {
   "data": {
-    "id": "c804c464-84eb-4902-90c6-d06a04d671b1",
+    "id": "0a4bcd7a-8690-47b2-b3dc-3d9e223fb410",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-08-12T09:28:14.246930+00:00",
-      "updated_at": "2024-08-12T09:28:14.256945+00:00",
+      "created_at": "2024-08-19T09:22:29.933380+00:00",
+      "updated_at": "2024-08-19T09:22:29.944307+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -906,8 +906,8 @@ When creating an order, and the following fields are left blank, a sensible defa
         "started": 0,
         "stopped": 0
       },
-      "starts_at": "2024-08-15T09:15:00.000000+00:00",
-      "stops_at": "2024-09-23T09:15:00.000000+00:00",
+      "starts_at": "2024-08-22T09:15:00.000000+00:00",
+      "stops_at": "2024-09-30T09:15:00.000000+00:00",
       "deposit_type": "percentage",
       "deposit_value": 100.0,
       "entirely_started": true,
@@ -940,8 +940,8 @@ When creating an order, and the following fields are left blank, a sensible defa
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "73216e89-17ed-43cc-929d-a24de5c9bed1",
-      "stop_location_id": "73216e89-17ed-43cc-929d-a24de5c9bed1"
+      "start_location_id": "57d31a68-2a79-49b0-92da-dc891d5d3c4a",
+      "stop_location_id": "57d31a68-2a79-49b0-92da-dc891d5d3c4a"
     },
     "relationships": {}
   },
@@ -1073,17 +1073,17 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/f8aab717-97f9-4ff2-807f-7e073aad076e' \
+    --url 'https://example.booqable.com/api/boomerang/orders/65ebfd6d-6c65-40aa-bd57-e067b1a3de78' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
       },
       "data": {
-        "id": "f8aab717-97f9-4ff2-807f-7e073aad076e",
+        "id": "65ebfd6d-6c65-40aa-bd57-e067b1a3de78",
         "type": "orders",
         "attributes": {
-          "customer_id": "0303f34a-132c-4c37-a5c9-c61de2f17eda"
+          "customer_id": "b762e4ce-f65a-4ec3-9081-075bc16131d1"
         }
       }
     }'
@@ -1094,13 +1094,13 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "f8aab717-97f9-4ff2-807f-7e073aad076e",
+    "id": "65ebfd6d-6c65-40aa-bd57-e067b1a3de78",
     "type": "orders",
     "attributes": {
       "price_in_cents": 80250,
       "grand_total_with_tax_in_cents": 97103,
       "to_be_paid_in_cents": 197103,
-      "customer_id": "0303f34a-132c-4c37-a5c9-c61de2f17eda",
+      "customer_id": "b762e4ce-f65a-4ec3-9081-075bc16131d1",
       "tax_region_id": null
     },
     "relationships": {}
@@ -1114,14 +1114,14 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/bd60eb2c-1cd3-4973-8b0c-c78cbbf2367d' \
+    --url 'https://example.booqable.com/api/boomerang/orders/7b06dedb-4e42-4145-9c2b-0fa4caf7d104' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
       },
       "data": {
-        "id": "bd60eb2c-1cd3-4973-8b0c-c78cbbf2367d",
+        "id": "7b06dedb-4e42-4145-9c2b-0fa4caf7d104",
         "type": "orders",
         "attributes": {
           "deposit_type": "percentage"
@@ -1135,7 +1135,7 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "bd60eb2c-1cd3-4973-8b0c-c78cbbf2367d",
+    "id": "7b06dedb-4e42-4145-9c2b-0fa4caf7d104",
     "type": "orders",
     "attributes": {
       "deposit_type": "percentage",
@@ -1154,11 +1154,11 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/c8d6955f-80d3-4cf5-8062-68a8538b3e4b' \
+    --url 'https://example.booqable.com/api/boomerang/orders/381162d3-eea4-4cc6-8f66-6e667125a7d1' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c8d6955f-80d3-4cf5-8062-68a8538b3e4b",
+        "id": "381162d3-eea4-4cc6-8f66-6e667125a7d1",
         "type": "orders",
         "attributes": {
           "stops_at": "1980-05-04T12:00:00.000Z"
@@ -1182,12 +1182,12 @@ When updating a customer on an order the following settings will be applied and 
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "ce24f9c6-a31b-4fbe-9e06-b8f30da48d94",
+            "item_id": "979be0fc-eef9-4a5e-8634-bb32cac67c17",
             "unavailable": [
-              "96725daa-db75-4da6-a96c-f418d26c8ecf"
+              "1526e59c-d5aa-464e-a802-a6b4e537b623"
             ],
             "available": [
-              "86000f68-4023-4d77-904a-75165cd4d71c"
+              "98f10941-df8f-4b2f-88d1-f7b8d333690f"
             ]
           }
         ]

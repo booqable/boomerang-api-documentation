@@ -37,7 +37,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "41087fac-f9fc-4974-9fab-c3374d853e40",
+      "id": "b54354f4-db75-42bb-b559-b1420d7b6d27",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -45,7 +45,7 @@ Name | Description
       }
     },
     {
-      "id": "cf11273c-cb58-41f1-9494-ca7f81a3cc6e",
+      "id": "e130e6dc-bf8d-4055-84e8-9333a2a67979",
       "type": "tags",
       "attributes": {
         "name": "webshop",

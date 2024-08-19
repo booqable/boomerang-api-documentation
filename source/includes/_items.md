@@ -47,11 +47,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "b29ec962-bb09-4062-9798-99a2ac9375b9",
+      "id": "100b5e9c-c62e-4699-a866-a4d416297c0c",
       "type": "bundles",
       "attributes": {
-        "created_at": "2024-08-12T09:24:26.962776+00:00",
-        "updated_at": "2024-08-12T09:24:26.962776+00:00",
+        "created_at": "2024-08-19T09:25:50.889144+00:00",
+        "updated_at": "2024-08-19T09:25:50.889144+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -78,11 +78,11 @@ For this resource relationships are described in the following resources:
       "relationships": {}
     },
     {
-      "id": "2d770df5-7e6b-4bae-9d82-595f5827342c",
+      "id": "ef4bb4a2-8ffc-487c-942d-abbeed2077f9",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2024-08-12T09:24:27.076307+00:00",
-        "updated_at": "2024-08-12T09:24:27.076307+00:00",
+        "created_at": "2024-08-19T09:25:50.961055+00:00",
+        "updated_at": "2024-08-19T09:25:50.961055+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -117,7 +117,7 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "0f24ec58-44a0-40d9-afd1-d4604f4951fe",
+        "tax_category_id": "a383c154-c2b3-466c-9370-1196950e1484",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "allow_shortage": true,
@@ -130,11 +130,11 @@ For this resource relationships are described in the following resources:
       "relationships": {}
     },
     {
-      "id": "ae463c7d-a9e2-4eb4-a3d5-95eb5dfae1dc",
+      "id": "4de2f7aa-4cb4-4fa3-8356-0b838471c2d8",
       "type": "products",
       "attributes": {
-        "created_at": "2024-08-12T09:24:27.086083+00:00",
-        "updated_at": "2024-08-12T09:24:27.086083+00:00",
+        "created_at": "2024-08-19T09:25:50.966306+00:00",
+        "updated_at": "2024-08-19T09:25:50.966306+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -169,13 +169,13 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "0f24ec58-44a0-40d9-afd1-d4604f4951fe",
+        "tax_category_id": "a383c154-c2b3-466c-9370-1196950e1484",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "2d770df5-7e6b-4bae-9d82-595f5827342c"
+        "product_group_id": "ef4bb4a2-8ffc-487c-942d-abbeed2077f9"
       },
       "relationships": {}
     }
@@ -194,7 +194,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=inventory_levels,photo`
+`include` | **String** <br>List of comma seperated relationships `?include=bundle_items,photo`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=created_at,updated_at,archived`
 `filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
@@ -274,7 +274,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`inventory_levels`
+`bundle_items`
 
 
 `photo`
@@ -337,19 +337,19 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "0c03e5db-6a7f-4ce3-9e3b-ebe9b123404f"
+      "id": "fdced90f-c9c1-46d6-ba3d-e6db63fbe0cf"
     },
     {
-      "id": "b3084d06-873e-4718-bf89-dd28c2d66b29"
+      "id": "2fd70329-c400-46ad-bddd-af319130e08f"
     },
     {
-      "id": "c956a596-50f9-462d-b7cc-02451b4dc639"
+      "id": "e9a797f2-f4f1-47d8-91dc-d8016169046e"
     },
     {
-      "id": "1e5c2bf6-5ec4-4584-b20c-563eac341f39"
+      "id": "c61f04d3-0ac8-4153-82cc-105beebfd69c"
     },
     {
-      "id": "6770d9a1-ff87-4f99-98b9-4b2d069c0957"
+      "id": "b266bea5-e1e0-4f31-aaa7-add2f7d6982d"
     }
   ]
 }
@@ -365,7 +365,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=inventory_levels,photo`
+`include` | **String** <br>List of comma seperated relationships `?include=bundle_items,photo`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=created_at,updated_at,archived`
 `filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
@@ -445,7 +445,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`inventory_levels`
+`bundle_items`
 
 
 `photo`
@@ -463,7 +463,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/items/83e08c88-bef2-4edc-b0c7-85965892fe21' \
+    --url 'https://example.booqable.com/api/boomerang/items/1d64155f-84b9-4cf2-a791-35a33a23a407' \
     --header 'content-type: application/json' \
 ```
 
@@ -472,11 +472,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "83e08c88-bef2-4edc-b0c7-85965892fe21",
+    "id": "1d64155f-84b9-4cf2-a791-35a33a23a407",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-08-12T09:24:28.170772+00:00",
-      "updated_at": "2024-08-12T09:24:28.170772+00:00",
+      "created_at": "2024-08-19T09:25:48.679165+00:00",
+      "updated_at": "2024-08-19T09:25:48.679165+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -511,7 +511,7 @@ This request accepts the following includes:
       ],
       "properties": {},
       "photo_id": null,
-      "tax_category_id": "68bff9d1-7180-417c-b8a6-933ba69b57b5",
+      "tax_category_id": "75a7f6e1-1f15-4c8a-9442-80d938858cd4",
       "price_ruleset_id": null,
       "price_structure_id": null,
       "allow_shortage": true,
@@ -537,7 +537,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=inventory_levels,photo`
+`include` | **String** <br>List of comma seperated relationships `?include=bundle_items,photo`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[items]=created_at,updated_at,archived`
 
 
@@ -545,7 +545,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`inventory_levels`
+`bundle_items`
 
 
 `photo`

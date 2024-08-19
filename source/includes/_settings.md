@@ -252,10 +252,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2604fa60-ae27-56ec-9c4b-5fb360b5c2fd",
+    "id": "c553b899-bf9b-534a-b776-9b93a7ade50e",
     "type": "settings",
     "attributes": {
-      "updated_at": "2024-08-12T09:24:29.152194+00:00",
+      "updated_at": "2024-08-19T09:25:45.158026+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -267,8 +267,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "6839329f-a026-4f6f-99d3-6d60297ab641",
-        "tax_region_id": "aae5fb6a-ca82-431a-ac0b-d03316f6b58d",
+        "tax_category_id": "73c35154-537c-438a-9bf7-ce022de910c9",
+        "tax_region_id": "fbaaaa6e-5542-41c7-a9a3-dc1ada2aced1",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -338,6 +338,7 @@ Name | Description
         "show_cart_availability": true,
         "website": null,
         "custom_scripts": "",
+        "checkout_scripts": "",
         "google_analytics_id": null,
         "google_anlaytics_options": "{}",
         "facebook_pixel_id": null,
@@ -393,7 +394,9 @@ Name | Description
         "stop": "return"
       },
       "emails": {},
-      "deliveries": {}
+      "deliveries": {
+        "distance_unit": "metric"
+      }
     }
   },
   "meta": {}
