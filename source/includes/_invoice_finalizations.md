@@ -20,7 +20,7 @@ Invoice finalizations have the following relationships:
 
 Name | Description
 -- | --
-`document` | **Documents**<br>Associated Document
+`document` | **Documents** <br>Associated Document
 
 
 ## Finalize invoice
@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "invoice_finalization",
         "attributes": {
-          "document_id": "f4012307-6d8d-4203-9413-deff982d232a"
+          "document_id": "abb55b6a-f791-408c-999b-fa2ce5f03163"
         }
       }
     }'
@@ -48,10 +48,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "85d971a9-0a6c-5e95-9c1e-eedaaa4fb95f",
+    "id": "7446de77-9faa-5825-922e-a3b7709880ac",
     "type": "invoice_finalizations",
     "attributes": {
-      "document_id": "f4012307-6d8d-4203-9413-deff982d232a"
+      "document_id": "abb55b6a-f791-408c-999b-fa2ce5f03163"
     },
     "relationships": {}
   },

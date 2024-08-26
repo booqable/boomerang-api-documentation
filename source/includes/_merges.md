@@ -18,7 +18,7 @@ Merges have the following relationships:
 
 Name | Description
 -- | --
-`target` | **Customers**<br>Associated Target
+`target` | **Customers** <br>Associated Target
 
 
 ## Merging resources
@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "b6bf0322-4559-4e80-a434-2487d1562467",
-          "target_id": "dfcaf77e-c4ca-4029-8c64-40c502fe958c"
+          "source_id": "b557a879-acb7-4b16-922d-f5ba35950f42",
+          "target_id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "3cac7dcd-fecb-5964-be97-ca571df0a2fe",
+    "id": "8ff97853-e4dd-51c7-be4e-3a9095492873",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "b6bf0322-4559-4e80-a434-2487d1562467",
-      "target_id": "dfcaf77e-c4ca-4029-8c64-40c502fe958c"
+      "source_id": "b557a879-acb7-4b16-922d-f5ba35950f42",
+      "target_id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "dfcaf77e-c4ca-4029-8c64-40c502fe958c"
+          "id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79"
         }
       }
     }
   },
   "included": [
     {
-      "id": "dfcaf77e-c4ca-4029-8c64-40c502fe958c",
+      "id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-08-19T09:21:59.691223+00:00",
-        "updated_at": "2024-08-19T09:21:59.867312+00:00",
+        "created_at": "2024-08-26T09:22:52.254659+00:00",
+        "updated_at": "2024-08-26T09:22:52.494025+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,

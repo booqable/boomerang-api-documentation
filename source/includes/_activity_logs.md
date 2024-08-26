@@ -31,8 +31,8 @@ Activity logs have the following relationships:
 
 Name | Description
 -- | --
-`owner` | **Customer, Product, Product group, Stock item, Bundle, Order, Document, Email**<br>Associated Owner
 `employee` | **Employees** `readonly`<br>Associated Employee
+`owner` | **Customer, Product, Product group, Stock item, Bundle, Order, Document, Email** <br>Associated Owner
 
 
 ## Listing activity logs
@@ -53,30 +53,30 @@ Name | Description
   {
   "data": [
     {
-      "id": "a71f0602-6870-4884-af1b-a7ea14b7b087",
+      "id": "72b55dea-00aa-41f1-b75e-75f3124daf0c",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-08-19T09:25:11.892857+00:00",
+        "created_at": "2024-08-26T09:26:32.911121+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "8558206f-f0d1-462a-8634-a865dd0279eb",
+        "owner_id": "9361713d-1801-4d39-adc6-6741a711b6c7",
         "owner_type": "orders",
-        "employee_id": "1cef3006-5769-4e67-9bd0-af92be8dfe78"
+        "employee_id": "42775148-7c9b-4d92-9807-e4b7245c012f"
       },
       "relationships": {}
     },
     {
-      "id": "9162d93e-7aec-491e-b556-554d92376b5a",
+      "id": "7fe22aa5-4571-4733-a80d-0c96e3578d2e",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-08-19T09:25:11.616623+00:00",
+        "created_at": "2024-08-26T09:26:32.561724+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "9c7b2c28-abe8-495d-95d9-6eddbd7496ce",
+        "owner_id": "cdc52ecd-3b31-4e23-acb2-09ef8899d15e",
         "owner_type": "orders",
-        "employee_id": "e2f37bdc-744a-4ecc-89ef-5d5ed09054c4"
+        "employee_id": "663ba5a1-eaaa-41e1-aef9-cb3c14d29783"
       },
       "relationships": {}
     }
@@ -151,7 +151,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/activity_logs/86ab5b20-a7c6-45b3-b0aa-15e53bc477c8' \
+    --url 'https://example.booqable.com/api/boomerang/activity_logs/6a1ac63b-e151-4410-a585-14cfc278cfe7' \
     --header 'content-type: application/json' \
 ```
 
@@ -160,30 +160,30 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "86ab5b20-a7c6-45b3-b0aa-15e53bc477c8",
+    "id": "6a1ac63b-e151-4410-a585-14cfc278cfe7",
     "type": "activity_logs",
     "attributes": {
-      "created_at": "2024-08-19T09:25:12.686240+00:00",
+      "created_at": "2024-08-26T09:26:31.314734+00:00",
       "action_key": "product.created",
       "action_args": {},
       "has_data": true,
       "data": {
         "products": [
           {
-            "id": "eaf4ae20-0090-435a-823b-91c0e58ed37c",
+            "id": "b33ef7aa-6d06-4651-a270-36f9c8fe1f55",
             "legacy_id": null,
-            "name": "Product 1000063",
+            "name": "Product 1000055",
             "quantity": 0,
-            "created_at": "2024-08-19T09:25:12.435Z",
-            "updated_at": "2024-08-19T09:25:12.435Z",
+            "created_at": "2024-08-26T09:26:31.047Z",
+            "updated_at": "2024-08-26T09:26:31.047Z",
             "lag_time": 0,
             "lead_time": 0,
             "always_available": false,
             "trackable": false,
-            "sku": "PRODUCT 1000065",
+            "sku": "PRODUCT 1000055",
             "type": "Product",
             "base_price_in_cents": 0,
-            "group_name": "Product 1000063",
+            "group_name": "Product 1000055",
             "has_variations": false,
             "variation": false,
             "variation_name": null,
@@ -200,11 +200,11 @@ This request accepts the following includes:
             "flat_fee_price_in_cents": 0,
             "structure_price_in_cents": 0,
             "deposit_in_cents": 0,
-            "company_id": "66d6ff8c-e399-4cbf-92cb-59d1fbeb0dcf",
-            "item_group_id": "eed2bd42-4b71-4270-b5be-6ca50aafeadd",
+            "company_id": "d7600fcb-7e02-49ca-8734-a05d59abc4f3",
+            "item_group_id": "1a545789-d615-43e8-a5ae-39bc9d5629c8",
             "price_wrapper_id": null,
             "tax_category_id": null,
-            "slug": "product-1000063",
+            "slug": "product-1000055",
             "description": null,
             "show_in_store": true,
             "product_type": "rental",
@@ -224,9 +224,9 @@ This request accepts the following includes:
           }
         ]
       },
-      "owner_id": "0c6dc81d-0bed-4bca-8aaf-be3b9c59fa09",
+      "owner_id": "9aaac7d6-1907-4e9b-8583-bed322105ff8",
       "owner_type": "orders",
-      "employee_id": "e699facf-426d-4915-b281-9e2d1e325328"
+      "employee_id": "17ea7b06-4ea6-48de-8382-c7e98b948d80"
     },
     "relationships": {}
   },

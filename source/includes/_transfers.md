@@ -24,10 +24,10 @@ Transfers have the following relationships:
 
 Name | Description
 -- | --
+`destination_location` | **Locations** `readonly`<br>Associated Destination location
 `item` | **Items** `readonly`<br>Associated Item
 `order` | **Orders** `readonly`<br>Associated Order
 `source_location` | **Locations** `readonly`<br>Associated Source location
-`destination_location` | **Locations** `readonly`<br>Associated Destination location
 
 
 ## Listing transfers
@@ -48,18 +48,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "0acb1ffe-3e3b-47b5-8d39-cb0fb7a4015b",
+      "id": "ce716583-8d65-4a1e-a6ba-799dc9370c9c",
       "type": "transfers",
       "attributes": {
-        "created_at": "2024-08-19T09:27:20.912985+00:00",
-        "updated_at": "2024-08-19T09:27:20.912985+00:00",
+        "created_at": "2024-08-26T09:25:52.052697+00:00",
+        "updated_at": "2024-08-26T09:25:52.052697+00:00",
         "quantity": 1,
-        "available_at": "2024-08-17T09:15:00.000000+00:00",
+        "available_at": "2024-08-24T09:15:00.000000+00:00",
         "finalized": false,
-        "item_id": "5cc7f2fc-42b3-46ff-a75b-102ff814e707",
-        "order_id": "fc1df04f-1768-4ab2-aadb-e52a7a829623",
-        "source_location_id": "5f06fe67-2504-4d39-9470-ac977f65c6bb",
-        "destination_location_id": "5f06fe67-2504-4d39-9470-ac977f65c6bb"
+        "item_id": "1ea9f4e3-7f02-4258-accd-ea89c9badba6",
+        "order_id": "b5a557f1-3e2d-4f1b-8781-540c9d1d0f0e",
+        "source_location_id": "38081f3b-64f9-48db-81f5-a06ee7be81bc",
+        "destination_location_id": "38081f3b-64f9-48db-81f5-a06ee7be81bc"
       },
       "relationships": {}
     }

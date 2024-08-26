@@ -19,8 +19,8 @@ Deposit holds have the following relationships:
 
 Name | Description
 -- | --
-`order` | **Orders** `readonly`<br>Associated Order
 `deposit_line` | **Lines** `readonly`<br>Associated Deposit line
+`order` | **Orders** `readonly`<br>Associated Order
 
 
 ## Create
@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "deposit_holds",
         "attributes": {
-          "order_id": "2b98628a-7f49-4084-8311-8a19c27a484c",
+          "order_id": "58f7fcb5-e678-4702-8149-13563baf1ba9",
           "amount_in_cents": 5000,
           "reason": "damages"
         }
@@ -50,11 +50,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f97a1df6-6712-5351-a34e-46361b6d0156",
+    "id": "018653d9-0367-5fa1-8fc5-b639352d839b",
     "type": "deposit_holds",
     "attributes": {
-      "order_id": "2b98628a-7f49-4084-8311-8a19c27a484c",
-      "deposit_line_id": "ee1f3007-f786-4f11-a004-9a0454f45a66"
+      "order_id": "58f7fcb5-e678-4702-8149-13563baf1ba9",
+      "deposit_line_id": "4ea37f6f-c759-4aea-bf11-00cdd436e6f6"
     },
     "relationships": {}
   },

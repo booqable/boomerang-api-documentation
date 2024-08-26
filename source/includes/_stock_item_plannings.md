@@ -37,9 +37,9 @@ Stock item plannings have the following relationships:
 
 Name | Description
 -- | --
-`stock_item` | **Stock items** `readonly`<br>Associated Stock item
-`planning` | **Plannings** `readonly`<br>Associated Planning
 `order` | **Orders** `readonly`<br>Associated Order
+`planning` | **Plannings** `readonly`<br>Associated Planning
+`stock_item` | **Stock items** `readonly`<br>Associated Stock item
 
 
 ## Listing stock item plannings
@@ -60,19 +60,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "00686d4d-0590-4648-bc45-089d357a51f4",
+      "id": "d78194d8-a251-44b0-904f-8c5459e5cc71",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-08-19T09:23:15.162163+00:00",
-        "updated_at": "2024-08-19T09:23:15.162163+00:00",
+        "created_at": "2024-08-26T09:29:02.752392+00:00",
+        "updated_at": "2024-08-26T09:29:02.752392+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "66ffff88-7ac0-467b-b0b2-2a9f75954ad6",
-        "planning_id": "3e667047-dfc3-46c0-8028-76fd86398081",
-        "order_id": "82efdcd2-654f-480b-b6c1-9edf1021385d"
+        "stock_item_id": "4b690c96-2803-49f0-a627-7118e55ee1c2",
+        "planning_id": "0dcdebcc-7d1c-4a15-b93e-ad7eb0800d73",
+        "order_id": "62d3b99c-18eb-4f7c-9a8d-ec88e1a8179f"
       },
       "relationships": {}
     }
@@ -159,7 +159,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/2e138510-5492-4770-90f1-2023c394e59e' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/7cdcd304-2db7-4cfb-82a9-6158a5e6c1cb' \
     --header 'content-type: application/json' \
 ```
 
@@ -168,19 +168,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2e138510-5492-4770-90f1-2023c394e59e",
+    "id": "7cdcd304-2db7-4cfb-82a9-6158a5e6c1cb",
     "type": "stock_item_plannings",
     "attributes": {
-      "created_at": "2024-08-19T09:23:14.117501+00:00",
-      "updated_at": "2024-08-19T09:23:14.117501+00:00",
+      "created_at": "2024-08-26T09:29:01.788015+00:00",
+      "updated_at": "2024-08-26T09:29:01.788015+00:00",
       "archived": false,
       "archived_at": null,
       "reserved": false,
       "started": false,
       "stopped": false,
-      "stock_item_id": "95bca764-52f0-4fa1-a8af-a9f44416c14f",
-      "planning_id": "1394bfc3-c55a-461c-9e8f-f9d06b7b4568",
-      "order_id": "7c4c7879-16f8-4eae-a7ed-785c8fab334a"
+      "stock_item_id": "0633daba-69df-4cd7-9276-4eb693f9531e",
+      "planning_id": "a689099e-c763-4b7c-9783-773ee085ee4b",
+      "order_id": "71cfd760-b2d2-4614-962d-0d0477e360c6"
     },
     "relationships": {}
   },

@@ -50,11 +50,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "c372b35e-0714-429b-916f-5099364bbecc",
+      "id": "a74c56b5-0f77-41fa-8c29-6ae209815f73",
       "type": "email_templates",
       "attributes": {
-        "created_at": "2024-08-19T09:27:30.164787+00:00",
-        "updated_at": "2024-08-19T09:27:30.164787+00:00",
+        "created_at": "2024-08-26T09:24:52.106667+00:00",
+        "updated_at": "2024-08-26T09:24:52.106667+00:00",
         "name": "Webshop confirmation",
         "identifier": "webshop_confirmation",
         "subject": "We received your order",
@@ -123,7 +123,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/5641ded7-da74-4f11-b82b-f6d4c318b60e' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/e21bef42-29a9-43d8-9b7c-a39a599dfa0f' \
     --header 'content-type: application/json' \
 ```
 
@@ -132,11 +132,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5641ded7-da74-4f11-b82b-f6d4c318b60e",
+    "id": "e21bef42-29a9-43d8-9b7c-a39a599dfa0f",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-08-19T09:27:25.201014+00:00",
-      "updated_at": "2024-08-19T09:27:25.201014+00:00",
+      "created_at": "2024-08-26T09:24:50.050246+00:00",
+      "updated_at": "2024-08-26T09:24:50.050246+00:00",
       "name": "Webshop confirmation",
       "identifier": "webshop_confirmation",
       "subject": "We received your order",
@@ -203,11 +203,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f834c165-e517-451d-af02-7197f61541a3",
+    "id": "8ca4be36-f3bb-4465-98ae-a29f00d9b094",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-08-19T09:27:26.132248+00:00",
-      "updated_at": "2024-08-19T09:27:26.132248+00:00",
+      "created_at": "2024-08-26T09:24:50.768203+00:00",
+      "updated_at": "2024-08-26T09:24:50.768203+00:00",
       "name": "Webshop confirmation",
       "identifier": "webshop_confirmation",
       "subject": "We received your order (#{{order.number}})",
@@ -257,11 +257,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/8e93d8f1-9c72-4e75-86eb-6aedb99baa17' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/a9acd079-ddf3-45f8-8394-3337d1c69310' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "8e93d8f1-9c72-4e75-86eb-6aedb99baa17",
+        "id": "a9acd079-ddf3-45f8-8394-3337d1c69310",
         "type": "email_templates",
         "attributes": {
           "name": "Order confirmation"
@@ -275,11 +275,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "8e93d8f1-9c72-4e75-86eb-6aedb99baa17",
+    "id": "a9acd079-ddf3-45f8-8394-3337d1c69310",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-08-19T09:27:29.393821+00:00",
-      "updated_at": "2024-08-19T09:27:29.420375+00:00",
+      "created_at": "2024-08-26T09:24:48.615110+00:00",
+      "updated_at": "2024-08-26T09:24:48.651679+00:00",
       "name": "Order confirmation",
       "identifier": "webshop_confirmation",
       "subject": "We received your order",
@@ -298,11 +298,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/f64f4ae0-bb81-46d3-8b80-b518765f2959' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/de58d078-7453-4d98-8de6-26b615035d45' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f64f4ae0-bb81-46d3-8b80-b518765f2959",
+        "id": "de58d078-7453-4d98-8de6-26b615035d45",
         "type": "email_templates",
         "attributes": {
           "name": "Order confirmation"
@@ -316,11 +316,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f64f4ae0-bb81-46d3-8b80-b518765f2959",
+    "id": "de58d078-7453-4d98-8de6-26b615035d45",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-08-19T09:27:28.414041+00:00",
-      "updated_at": "2024-08-19T09:27:28.438540+00:00",
+      "created_at": "2024-08-26T09:24:49.329403+00:00",
+      "updated_at": "2024-08-26T09:24:49.374945+00:00",
       "name": "Order confirmation",
       "identifier": "webshop_confirmation",
       "subject": "We received your order",
@@ -370,7 +370,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/email_templates/3da5784c-b5a9-4430-b27a-2ad76ba70759' \
+    --url 'https://example.booqable.com/api/boomerang/email_templates/998799ea-af5f-49f3-8909-ac805d3cac92' \
     --header 'content-type: application/json' \
 ```
 
@@ -379,11 +379,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3da5784c-b5a9-4430-b27a-2ad76ba70759",
+    "id": "998799ea-af5f-49f3-8909-ac805d3cac92",
     "type": "email_templates",
     "attributes": {
-      "created_at": "2024-08-19T09:27:27.049036+00:00",
-      "updated_at": "2024-08-19T09:27:27.049036+00:00",
+      "created_at": "2024-08-26T09:24:51.449116+00:00",
+      "updated_at": "2024-08-26T09:24:51.449116+00:00",
       "name": "Sales Tax",
       "identifier": "sales_tax",
       "subject": "This is a subject!",

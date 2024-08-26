@@ -28,8 +28,8 @@ Tax values have the following relationships:
 
 Name | Description
 -- | --
+`owner` | **Order** <br>Associated Owner
 `tax_rate` | **Tax rates** `readonly`<br>Associated Tax rate
-`owner` | **Order**<br>Associated Owner
 
 
 ## Listing tax values
@@ -50,16 +50,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "4db9787a-ce45-4a8c-8cf2-7a125195488d",
+      "id": "75175606-bbd7-490c-ae0b-c6e56cc157a6",
       "type": "tax_values",
       "attributes": {
-        "created_at": "2024-08-19T09:24:37.282174+00:00",
-        "updated_at": "2024-08-19T09:24:37.282174+00:00",
+        "created_at": "2024-08-26T09:25:10.706381+00:00",
+        "updated_at": "2024-08-26T09:25:10.706381+00:00",
         "name": "VAT 19%",
         "percentage": 19.0,
         "value_in_cents": 13800,
-        "tax_rate_id": "064d29be-ab8a-4ab1-90cf-8dfdce3b933c",
-        "owner_id": "61a4218f-1ba6-4dd3-844c-57c91ac52e80",
+        "tax_rate_id": "5821927c-2618-4a25-a125-8cc58dd65b2d",
+        "owner_id": "75041a40-83c7-4a30-ae50-1714e1cc7092",
         "owner_type": "orders"
       },
       "relationships": {}
@@ -125,7 +125,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_values/a1568b2e-6697-47b4-8409-6bb37906710f?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/tax_values/19c2cdfb-af46-4819-a225-a3f0c3a3a063?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -134,34 +134,34 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "a1568b2e-6697-47b4-8409-6bb37906710f",
+    "id": "19c2cdfb-af46-4819-a225-a3f0c3a3a063",
     "type": "tax_values",
     "attributes": {
-      "created_at": "2024-08-19T09:24:37.909460+00:00",
-      "updated_at": "2024-08-19T09:24:37.909460+00:00",
+      "created_at": "2024-08-26T09:25:11.527608+00:00",
+      "updated_at": "2024-08-26T09:25:11.527608+00:00",
       "name": "VAT 19%",
       "percentage": 19.0,
       "value_in_cents": 13800,
-      "tax_rate_id": "90171512-e25f-40bb-964a-a4f54c4bbcd8",
-      "owner_id": "a6ecc192-0d65-47b1-977f-83a8202f3be9",
+      "tax_rate_id": "19f2bbc5-6474-4333-b849-712d12265e47",
+      "owner_id": "35726054-d6d9-4a51-b652-472603f98185",
       "owner_type": "orders"
     },
     "relationships": {
       "owner": {
         "data": {
           "type": "orders",
-          "id": "a6ecc192-0d65-47b1-977f-83a8202f3be9"
+          "id": "35726054-d6d9-4a51-b652-472603f98185"
         }
       }
     }
   },
   "included": [
     {
-      "id": "a6ecc192-0d65-47b1-977f-83a8202f3be9",
+      "id": "35726054-d6d9-4a51-b652-472603f98185",
       "type": "orders",
       "attributes": {
-        "created_at": "2024-08-19T09:24:37.863957+00:00",
-        "updated_at": "2024-08-19T09:24:37.863957+00:00",
+        "created_at": "2024-08-26T09:25:11.479655+00:00",
+        "updated_at": "2024-08-26T09:25:11.479655+00:00",
         "number": null,
         "status": "new",
         "statuses": [
@@ -174,8 +174,8 @@ This request does not accept any includes
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2024-08-17T09:15:00.000000+00:00",
-        "stops_at": "2024-08-21T09:15:00.000000+00:00",
+        "starts_at": "2024-08-24T09:15:00.000000+00:00",
+        "stops_at": "2024-08-28T09:15:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -205,11 +205,12 @@ This request does not accept any includes
         "discount_percentage": 0.0,
         "delivery_address_property_id": null,
         "delivery_billing_address_property_id": null,
+        "fulfillment_type": "pickup",
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "bbc40bd7-5a69-41a2-9b4f-cebb13b9d09e",
-        "stop_location_id": "bbc40bd7-5a69-41a2-9b4f-cebb13b9d09e"
+        "start_location_id": "921f592e-e8f4-4026-a700-2ffae22c1042",
+        "stop_location_id": "921f592e-e8f4-4026-a700-2ffae22c1042"
       },
       "relationships": {}
     }

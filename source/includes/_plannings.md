@@ -50,14 +50,14 @@ Plannings have the following relationships:
 
 Name | Description
 -- | --
-`order` | **Orders** `readonly`<br>Associated Order
 `item` | **Items** `readonly`<br>Associated Item
-`order_line` | **Lines** `readonly`<br>Associated Order line
-`start_location` | **Locations** `readonly`<br>Associated Start location
-`stop_location` | **Locations** `readonly`<br>Associated Stop location
-`parent_planning` | **Plannings** `readonly`<br>Associated Parent planning
 `nested_plannings` | **Plannings** `readonly`<br>Associated Nested plannings
+`order` | **Orders** `readonly`<br>Associated Order
+`order_line` | **Lines** `readonly`<br>Associated Order line
+`parent_planning` | **Plannings** `readonly`<br>Associated Parent planning
+`start_location` | **Locations** `readonly`<br>Associated Start location
 `stock_item_plannings` | **Stock item plannings** `readonly`<br>Associated Stock item plannings
+`stop_location` | **Locations** `readonly`<br>Associated Stop location
 
 
 ## Listing plannings
@@ -78,11 +78,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "24915e7c-3ca1-4ca9-8b5f-748f6f2215e4",
+      "id": "99028dea-e747-457b-ad81-e965523f90da",
       "type": "plannings",
       "attributes": {
-        "created_at": "2024-08-19T09:25:29.367643+00:00",
-        "updated_at": "2024-08-19T09:25:29.754789+00:00",
+        "created_at": "2024-08-26T09:29:36.206587+00:00",
+        "updated_at": "2024-08-26T09:29:36.640774+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
@@ -95,10 +95,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "order_id": "cd711d08-7b93-4b8a-b2bf-d442fb4ec94c",
-        "item_id": "bfc9e8df-0db1-422b-b8c2-94da90b58333",
-        "start_location_id": "3bcc07ca-d72d-414f-b3d6-dce6f775ffa8",
-        "stop_location_id": "3bcc07ca-d72d-414f-b3d6-dce6f775ffa8",
+        "order_id": "2f9b2968-2fc9-4396-bf14-4f29642c225f",
+        "item_id": "b4522cc4-165f-40af-9af5-cba02f6e085d",
+        "start_location_id": "5eb27e81-d028-4e18-831f-c978b8691875",
+        "stop_location_id": "5eb27e81-d028-4e18-831f-c978b8691875",
         "parent_planning_id": null
       },
       "relationships": {}
@@ -217,12 +217,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-08-20T09:25:25Z"
+                    "gte": "2024-08-27T09:29:32Z"
                   }
                 },
                 {
                   "starts_at": {
-                    "lte": "2024-08-23T09:25:25Z"
+                    "lte": "2024-08-30T09:29:32Z"
                   }
                 }
               ]
@@ -232,12 +232,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "stops_at": {
-                    "gte": "2024-08-20T09:25:25Z"
+                    "gte": "2024-08-27T09:29:32Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "lte": "2024-08-23T09:25:25Z"
+                    "lte": "2024-08-30T09:29:32Z"
                   }
                 }
               ]
@@ -254,10 +254,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "140faa5e-487b-4996-9674-a279dcb056b6"
+      "id": "52d3173c-f5bf-46ea-ac6f-38ac2f72f50a"
     },
     {
-      "id": "5b846d78-3904-4da5-ab6d-c5c3563ba7ea"
+      "id": "eef3c908-1619-40df-a4a1-e793f5f1a20d"
     }
   ]
 }
@@ -356,7 +356,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings/4c8d995b-996a-4838-9e8e-f73f3265a5f9' \
+    --url 'https://example.booqable.com/api/boomerang/plannings/6ee1dbff-0a9e-4e15-8fa7-6fad38cb3bf3' \
     --header 'content-type: application/json' \
 ```
 
@@ -365,11 +365,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4c8d995b-996a-4838-9e8e-f73f3265a5f9",
+    "id": "6ee1dbff-0a9e-4e15-8fa7-6fad38cb3bf3",
     "type": "plannings",
     "attributes": {
-      "created_at": "2024-08-19T09:25:27.027504+00:00",
-      "updated_at": "2024-08-19T09:25:27.409397+00:00",
+      "created_at": "2024-08-26T09:29:33.637141+00:00",
+      "updated_at": "2024-08-26T09:29:34.019212+00:00",
       "archived": false,
       "archived_at": null,
       "quantity": 1,
@@ -382,10 +382,10 @@ This request accepts the following includes:
       "stopped": 0,
       "location_shortage_amount": 0,
       "shortage_amount": 0,
-      "order_id": "1c212fc2-0d2f-4049-adbc-73cb76e29889",
-      "item_id": "cb34a92a-6177-4e6a-a69f-3c26d4898c02",
-      "start_location_id": "45a7bc58-51a1-4edc-b7a8-0cf71856c35c",
-      "stop_location_id": "45a7bc58-51a1-4edc-b7a8-0cf71856c35c",
+      "order_id": "093ce1f5-799e-4f0b-95f1-d0e684b6c4af",
+      "item_id": "31b7e7ea-2be9-421e-a6a1-b08dfd0f5c9a",
+      "start_location_id": "c4980f2c-914a-42ed-b855-27d716506855",
+      "stop_location_id": "c4980f2c-914a-42ed-b855-27d716506855",
       "parent_planning_id": null
     },
     "relationships": {}

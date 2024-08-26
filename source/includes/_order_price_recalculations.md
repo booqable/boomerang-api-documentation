@@ -24,7 +24,7 @@ Order price recalculations have the following relationships:
 
 Name | Description
 -- | --
-`order` | **Orders**<br>Associated Order
+`order` | **Orders** <br>Associated Order
 
 
 ## Recalculate prices
@@ -41,7 +41,7 @@ Name | Description
       "data": {
         "type": "order_price_recalculations",
         "attributes": {
-          "order_id": "f30d75e4-acff-473e-8e65-00eb00d46aa1"
+          "order_id": "b353d31f-30b5-4252-a0bf-392152201872"
         }
       }
     }'
@@ -52,10 +52,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "9d54ad3f-b8fa-5b4b-bfa7-591617a3bdbd",
+    "id": "e4dee9f0-900d-5777-876d-0dc390a53433",
     "type": "order_price_recalculations",
     "attributes": {
-      "order_id": "f30d75e4-acff-473e-8e65-00eb00d46aa1"
+      "order_id": "b353d31f-30b5-4252-a0bf-392152201872"
     },
     "relationships": {}
   },
