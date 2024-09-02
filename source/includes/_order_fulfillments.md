@@ -224,13 +224,13 @@ Name | Description
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "0849ffad-7e27-45ed-9f15-faf3ecb4d425",
+          "order_id": "d6b8d605-a63f-488e-9e33-b77da5a7405a",
           "confirm_shortage": null,
           "actions": [
             {
               "action": "book_product",
               "mode": "create_new",
-              "product_id": "9be50810-0649-4221-b25b-402395977561",
+              "product_id": "94c32359-5d7b-4513-ae46-2ef2d5fd2142",
               "quantity": 3
             }
           ]
@@ -244,10 +244,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "390a0f98-0ddd-5c41-9df7-33e246943615",
+    "id": "d82e76f9-d922-5042-9a82-325b5472b05e",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "0849ffad-7e27-45ed-9f15-faf3ecb4d425"
+      "order_id": "d6b8d605-a63f-488e-9e33-b77da5a7405a"
     },
     "relationships": {}
   },
@@ -266,13 +266,13 @@ Name | Description
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "dbd825d9-24bc-48f8-84a3-cd7eb1e9025a",
+          "order_id": "fff612e1-ffaf-408c-b7e2-0b5085928958",
           "confirm_shortage": null,
           "actions": [
             {
               "action": "book_product",
               "mode": "infer_planning",
-              "product_id": "168c2987-f588-4abf-a796-b9f7ea7cffac",
+              "product_id": "8b2253da-0949-4219-8483-dd889275c689",
               "planning_id": null,
               "quantity": 3
             }
@@ -287,10 +287,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "133a04ef-1801-5c0d-9e61-6edd9b77c528",
+    "id": "0e30df71-5702-5771-8a66-20a5886ae8e6",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "dbd825d9-24bc-48f8-84a3-cd7eb1e9025a"
+      "order_id": "fff612e1-ffaf-408c-b7e2-0b5085928958"
     },
     "relationships": {}
   },
@@ -309,14 +309,14 @@ Name | Description
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "4718eb6f-faed-471a-8bd0-e44da528583d",
+          "order_id": "6e07d7b3-974a-4a08-91cb-34f890cdcc57",
           "confirm_shortage": null,
           "actions": [
             {
               "action": "book_product",
               "mode": "update_existing",
-              "product_id": "8236cc51-7c37-4c28-9ed6-fbcb010940d4",
-              "planning_id": "1db6c845-c605-4fe5-a135-d8b55d309a2f",
+              "product_id": "c5082c78-61aa-48f5-8b38-a7cf366ee3e0",
+              "planning_id": "7c9ff166-4a17-4650-88c5-1641c87ef009",
               "quantity": 3
             }
           ]
@@ -330,10 +330,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "2b4f83d3-6824-5cb8-805e-ecab4b036c4f",
+    "id": "396e3e5b-fe1e-5f19-94ef-07681817c8d7",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "4718eb6f-faed-471a-8bd0-e44da528583d"
+      "order_id": "6e07d7b3-974a-4a08-91cb-34f890cdcc57"
     },
     "relationships": {}
   },
@@ -352,16 +352,16 @@ Name | Description
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "1a84be3f-f68a-495d-b39d-c681337f7762",
+          "order_id": "364d198d-8b4d-42f6-96e7-fd221856338b",
           "confirm_shortage": null,
           "actions": [
             {
               "action": "book_stock_items",
               "mode": "infer_planning",
-              "product_id": "ab12324d-b83d-4cd8-af79-192d60fd4ace",
+              "product_id": "7cbc12cd-9a79-45e5-ab97-f783d0f7c98d",
               "stock_item_ids": [
-                "a739176d-22cc-43e0-8dd5-e97a4c6afdad",
-                "41e69ca6-dcc6-4a2d-bbdd-c1e36a1d7913"
+                "c37aaec8-44e8-41e4-9486-1ba6e2f015e8",
+                "b07d3e68-75e9-47ae-957d-401b664f1d1e"
               ]
             }
           ]
@@ -375,10 +375,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "3ddf6daf-38cd-5fa6-98d3-91c5b14cd2e2",
+    "id": "006a404c-bcff-5576-80d6-fe1acc36088a",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "1a84be3f-f68a-495d-b39d-c681337f7762"
+      "order_id": "364d198d-8b4d-42f6-96e7-fd221856338b"
     },
     "relationships": {}
   },
@@ -397,17 +397,17 @@ Name | Description
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "c857585f-bfc1-4e4a-9a7d-41b7848ed60b",
+          "order_id": "047371f9-b1ea-4a79-b80a-c35e7c3af5d7",
           "confirm_shortage": null,
           "actions": [
             {
               "action": "book_bundle",
-              "bundle_id": "91afc327-cf2c-4a81-8f15-915ffe83619d",
+              "bundle_id": "d10a84ce-56da-4ad4-acaa-a543e31f7179",
               "quantity": 1,
               "product_variations": [
                 {
-                  "bundle_item_id": "715a0742-0e37-460b-88c0-37115954c09c",
-                  "product_id": "cb7f1496-44c8-4364-8d22-ac18150a50ca"
+                  "bundle_item_id": "d75150ba-2859-4668-b10f-093db1f1c588",
+                  "product_id": "fd74c79f-2c62-4462-9959-eaa83027e686"
                 }
               ]
             }
@@ -422,10 +422,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4909f737-0b5c-59e1-a360-6a1c67f87f0b",
+    "id": "c1ab550b-b087-5eda-a663-73f56f6dfe7f",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "c857585f-bfc1-4e4a-9a7d-41b7848ed60b"
+      "order_id": "047371f9-b1ea-4a79-b80a-c35e7c3af5d7"
     },
     "relationships": {}
   },
@@ -507,14 +507,14 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "9db4d2f1-dbe2-4f82-8eb8-97ea70489b9e",
+          "order_id": "bb8bfc19-15d8-4825-8721-389623fed0b0",
           "actions": [
             {
               "action": "specify_stock_items",
-              "product_id": "6c0d42d8-4fa4-4051-935b-653986e44125",
-              "planning_id": "f72844cd-f766-42f6-b98a-b345ab900a63",
+              "product_id": "baeffb19-ad63-46b6-9783-bc010af53e5d",
+              "planning_id": "2e7e6285-b111-4ef3-b7d7-1520b5e2ce13",
               "stock_item_ids_to_add": [
-                "c03eb774-6d41-416b-ace9-5ebee80b1e84"
+                "5583cd72-6edf-4aa5-a1dc-c602f170726c"
               ],
               "stock_item_ids_to_remove": []
             }
@@ -529,10 +529,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ae98eb4b-7ea6-58e2-a7a8-7b97922574ff",
+    "id": "a7c26449-7e57-53a3-84e1-1df086aedaed",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "9db4d2f1-dbe2-4f82-8eb8-97ea70489b9e"
+      "order_id": "bb8bfc19-15d8-4825-8721-389623fed0b0"
     },
     "relationships": {}
   },
@@ -551,15 +551,15 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "8a46f84f-6360-424a-a459-6d30ea9f4bc1",
+          "order_id": "9c0ec1bc-ee97-47a2-992c-adb107876aef",
           "actions": [
             {
               "action": "specify_stock_items",
-              "product_id": "89943d38-71eb-4908-83df-7431d4d8235e",
-              "planning_id": "fed17897-7fe8-45d2-8712-01d71dfecb43",
+              "product_id": "027bdd91-bbe7-4d3f-8d62-94a0902574c8",
+              "planning_id": "a62bddaf-0e69-4a2a-ab89-9c84febf68af",
               "stock_item_ids_to_add": [],
               "stock_item_ids_to_remove": [
-                "aac7caf0-b084-4dd2-b80e-21b601ec3851"
+                "f2f4953f-2d07-4be5-b4e4-3665d9556f29"
               ]
             }
           ]
@@ -574,17 +574,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a1f6f3d9-c67a-54fd-bcb2-72395b417e2e",
+    "id": "d220ba13-4268-54fd-8238-3ce47873ae17",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "8a46f84f-6360-424a-a459-6d30ea9f4bc1"
+      "order_id": "9c0ec1bc-ee97-47a2-992c-adb107876aef"
     },
     "relationships": {
       "changed_stock_item_plannings": {
         "data": [
           {
             "type": "stock_item_plannings",
-            "id": "73f31d00-3e5d-4c95-95d7-14f11ab2113e"
+            "id": "23589883-c3cc-4a3f-a50b-0823e9068923"
           }
         ]
       }
@@ -592,19 +592,19 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "73f31d00-3e5d-4c95-95d7-14f11ab2113e",
+      "id": "23589883-c3cc-4a3f-a50b-0823e9068923",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-08-26T09:26:03.236794+00:00",
-        "updated_at": "2024-08-26T09:26:03.456401+00:00",
+        "created_at": "2024-09-02T09:23:48.148275+00:00",
+        "updated_at": "2024-09-02T09:23:48.295747+00:00",
         "archived": true,
-        "archived_at": "2024-08-26T09:26:03.444890+00:00",
+        "archived_at": "2024-09-02T09:23:48.289112+00:00",
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "aac7caf0-b084-4dd2-b80e-21b601ec3851",
-        "planning_id": "fed17897-7fe8-45d2-8712-01d71dfecb43",
-        "order_id": "8a46f84f-6360-424a-a459-6d30ea9f4bc1"
+        "stock_item_id": "f2f4953f-2d07-4be5-b4e4-3665d9556f29",
+        "planning_id": "a62bddaf-0e69-4a2a-ab89-9c84febf68af",
+        "order_id": "9c0ec1bc-ee97-47a2-992c-adb107876aef"
       },
       "relationships": {}
     }
@@ -687,13 +687,13 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "84d3756a-fc53-4aad-b1fb-1069837d2f1f",
+          "order_id": "42848cac-1e16-45ef-9d19-646b5f6e5199",
           "confirm_shortage": null,
           "actions": [
             {
               "action": "start_product",
-              "product_id": "0705b561-c766-44e4-8079-8657d1ddacae",
-              "planning_id": "d1509b8f-28ab-4537-9718-f23253206cd9",
+              "product_id": "a5379e97-5942-43fd-8e44-f4668bf97105",
+              "planning_id": "95a93d95-0d92-4127-848a-955d84e318d4",
               "quantity": 1
             }
           ]
@@ -707,10 +707,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "720cc84d-af14-5a4c-bb1a-01ad76e05b8f",
+    "id": "bbba92d4-1783-5ac8-b672-75e1439544ba",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "84d3756a-fc53-4aad-b1fb-1069837d2f1f"
+      "order_id": "42848cac-1e16-45ef-9d19-646b5f6e5199"
     },
     "relationships": {}
   },
@@ -729,15 +729,15 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "5a24244a-8beb-4a19-b89e-719d351e0f34",
+          "order_id": "5bcb3fc1-a509-4ae9-9f77-749b5d3e1b6b",
           "confirm_shortage": null,
           "actions": [
             {
               "action": "start_stock_items",
-              "product_id": "bd66c8ad-693f-4eb3-96c3-45dca5c7a698",
-              "planning_id": "6bbd4d78-b331-4506-a89b-4dc07de4aff5",
+              "product_id": "74695ccd-e81b-4339-b8f3-c531e5c5308d",
+              "planning_id": "1e46990d-2b8c-48d8-9baa-cb315bca0b4e",
               "stock_item_ids": [
-                "a9499206-ab6c-49f7-bba7-9738adfdc721"
+                "a5a79b07-56cd-41f1-8a1d-e69cbcb9172f"
               ]
             }
           ]
@@ -751,10 +751,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "85dff46a-9844-5884-b536-c7264ab47596",
+    "id": "abf16a96-7a2d-5fcf-91bb-1d034fe88f99",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "5a24244a-8beb-4a19-b89e-719d351e0f34"
+      "order_id": "5bcb3fc1-a509-4ae9-9f77-749b5d3e1b6b"
     },
     "relationships": {}
   },
@@ -836,12 +836,12 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "492d7902-6dc4-4a4a-8451-21ca671026cc",
+          "order_id": "8ad3ecf9-cafe-4ad1-9983-5f30dcfbcf46",
           "actions": [
             {
               "action": "stop_product",
-              "product_id": "0283e842-59b4-4ce3-8676-5f6ec676a525",
-              "planning_id": "62c825f5-8f85-45d4-8855-06b597295dbd",
+              "product_id": "d0b89c5a-a166-4847-a7e4-2486dabf215d",
+              "planning_id": "c436bc48-d997-4ac6-b2b3-05ab83fcfc6d",
               "quantity": 1
             }
           ]
@@ -855,10 +855,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5ffb1257-051b-5b0b-b9c0-ddd1a7c73b8b",
+    "id": "7b35cfb6-242a-5724-8e05-92147183432f",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "492d7902-6dc4-4a4a-8451-21ca671026cc"
+      "order_id": "8ad3ecf9-cafe-4ad1-9983-5f30dcfbcf46"
     },
     "relationships": {}
   },
@@ -877,14 +877,14 @@ This request accepts the following includes:
       "data": {
         "type": "order_fulfillments",
         "attributes": {
-          "order_id": "3d8984b5-2ba1-412a-850d-1b6610d8b022",
+          "order_id": "dfd0c5c4-05a3-4e81-9d66-155749c37425",
           "actions": [
             {
               "action": "stop_stock_items",
-              "product_id": "28d28960-96a7-4d1a-b9ed-be8b5cf1fde1",
-              "planning_id": "484011a5-7089-43a4-b577-cbfffd0de8cf",
+              "product_id": "674c5a62-95cb-4396-95f7-5d1a9d129adc",
+              "planning_id": "57f58535-fd79-4331-8ab6-4ee86f7031cd",
               "stock_item_ids": [
-                "5ca97bf0-1a57-44cf-b154-76d499d6192a"
+                "cf707565-389a-49a5-9cd3-b7ff9a400402"
               ]
             }
           ]
@@ -898,10 +898,10 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a1e9d065-9b34-5bbc-bf6d-ef36f09ff7dc",
+    "id": "e9c739d6-226f-5fbd-97c2-4b7840888961",
     "type": "order_fulfillments",
     "attributes": {
-      "order_id": "3d8984b5-2ba1-412a-850d-1b6610d8b022"
+      "order_id": "dfd0c5c4-05a3-4e81-9d66-155749c37425"
     },
     "relationships": {}
   },

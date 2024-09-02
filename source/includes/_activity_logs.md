@@ -53,30 +53,30 @@ Name | Description
   {
   "data": [
     {
-      "id": "72b55dea-00aa-41f1-b75e-75f3124daf0c",
+      "id": "0a70a9fc-0b9e-410f-aafe-60eac40734ac",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-08-26T09:26:32.911121+00:00",
+        "created_at": "2024-09-02T09:22:33.471820+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "9361713d-1801-4d39-adc6-6741a711b6c7",
+        "owner_id": "e4e6fac4-9eff-477e-9a2a-5f9e1c17bce2",
         "owner_type": "orders",
-        "employee_id": "42775148-7c9b-4d92-9807-e4b7245c012f"
+        "employee_id": "5a51e7f4-701d-4211-b7f3-baacaf4def03"
       },
       "relationships": {}
     },
     {
-      "id": "7fe22aa5-4571-4733-a80d-0c96e3578d2e",
+      "id": "f98b282c-39b4-46b4-b87a-553b425741b7",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-08-26T09:26:32.561724+00:00",
+        "created_at": "2024-09-02T09:22:33.069579+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "cdc52ecd-3b31-4e23-acb2-09ef8899d15e",
+        "owner_id": "071b7fea-b24a-486e-87fc-89e3e87fdc02",
         "owner_type": "orders",
-        "employee_id": "663ba5a1-eaaa-41e1-aef9-cb3c14d29783"
+        "employee_id": "d6687c9c-4422-4731-8ea2-526aa85ae791"
       },
       "relationships": {}
     }
@@ -151,7 +151,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/activity_logs/6a1ac63b-e151-4410-a585-14cfc278cfe7' \
+    --url 'https://example.booqable.com/api/boomerang/activity_logs/a0daf4d8-7245-4387-b83a-2c13fa80faef' \
     --header 'content-type: application/json' \
 ```
 
@@ -160,30 +160,30 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6a1ac63b-e151-4410-a585-14cfc278cfe7",
+    "id": "a0daf4d8-7245-4387-b83a-2c13fa80faef",
     "type": "activity_logs",
     "attributes": {
-      "created_at": "2024-08-26T09:26:31.314734+00:00",
+      "created_at": "2024-09-02T09:22:34.715876+00:00",
       "action_key": "product.created",
       "action_args": {},
       "has_data": true,
       "data": {
         "products": [
           {
-            "id": "b33ef7aa-6d06-4651-a270-36f9c8fe1f55",
+            "id": "bdd886ff-42ce-4609-ba9f-116438d7091a",
             "legacy_id": null,
-            "name": "Product 1000055",
+            "name": "Product 1000002",
             "quantity": 0,
-            "created_at": "2024-08-26T09:26:31.047Z",
-            "updated_at": "2024-08-26T09:26:31.047Z",
+            "created_at": "2024-09-02T09:22:34.345Z",
+            "updated_at": "2024-09-02T09:22:34.345Z",
             "lag_time": 0,
             "lead_time": 0,
             "always_available": false,
             "trackable": false,
-            "sku": "PRODUCT 1000055",
+            "sku": "PRODUCT 1000002",
             "type": "Product",
             "base_price_in_cents": 0,
-            "group_name": "Product 1000055",
+            "group_name": "Product 1000002",
             "has_variations": false,
             "variation": false,
             "variation_name": null,
@@ -200,11 +200,11 @@ This request accepts the following includes:
             "flat_fee_price_in_cents": 0,
             "structure_price_in_cents": 0,
             "deposit_in_cents": 0,
-            "company_id": "d7600fcb-7e02-49ca-8734-a05d59abc4f3",
-            "item_group_id": "1a545789-d615-43e8-a5ae-39bc9d5629c8",
+            "company_id": "f4f0188c-6940-40c5-8dd5-bf989e418a0a",
+            "item_group_id": "a2649c47-d611-4137-a22c-0cd1b5e1969a",
             "price_wrapper_id": null,
             "tax_category_id": null,
-            "slug": "product-1000055",
+            "slug": "product-1000002",
             "description": null,
             "show_in_store": true,
             "product_type": "rental",
@@ -224,9 +224,9 @@ This request accepts the following includes:
           }
         ]
       },
-      "owner_id": "9aaac7d6-1907-4e9b-8583-bed322105ff8",
+      "owner_id": "3770fd00-b47f-4d3e-be8b-471244c7e0f6",
       "owner_type": "orders",
-      "employee_id": "17ea7b06-4ea6-48de-8382-c7e98b948d80"
+      "employee_id": "4177113c-0925-4825-a1bb-810acefb678f"
     },
     "relationships": {}
   },

@@ -99,11 +99,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "3beec08f-03a2-4d12-91cf-0c82727b9673",
+      "id": "337108a2-d772-41d8-9a88-198cd78e0629",
       "type": "products",
       "attributes": {
-        "created_at": "2024-08-26T09:22:45.747259+00:00",
-        "updated_at": "2024-08-26T09:22:46.205917+00:00",
+        "created_at": "2024-09-02T09:26:53.219986+00:00",
+        "updated_at": "2024-09-02T09:26:53.468802+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -143,23 +143,23 @@ Name | Description
         ],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "3821c3ff-76f9-4470-8f4f-a3ec80d64386"
+        "product_group_id": "e227d345-ff5e-496e-97f7-1e4c5ab1ae4e"
       },
       "relationships": {}
     },
     {
-      "id": "89253c2b-7fd4-47cb-a441-a788e329a3c0",
+      "id": "b88d2dc3-d272-43da-b00f-a0feb4d780c4",
       "type": "products",
       "attributes": {
-        "created_at": "2024-08-26T09:22:46.399098+00:00",
-        "updated_at": "2024-08-26T09:22:46.399098+00:00",
+        "created_at": "2024-09-02T09:26:53.578944+00:00",
+        "updated_at": "2024-09-02T09:26:53.578944+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
         "name": "iPad Pro - blue",
         "group_name": "iPad Pro",
         "slug": "ipad-pro-blue",
-        "sku": "PRODUCT 1000002",
+        "sku": "PRODUCT 1000049",
         "lead_time": 0,
         "lag_time": 0,
         "product_type": "rental",
@@ -192,7 +192,7 @@ Name | Description
         ],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "3821c3ff-76f9-4470-8f4f-a3ec80d64386"
+        "product_group_id": "e227d345-ff5e-496e-97f7-1e4c5ab1ae4e"
       },
       "relationships": {}
     }
@@ -374,16 +374,16 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "f366c4b1-5615-4067-abcd-70ec109a6e02"
+      "id": "cc2ceabc-b314-4287-9de8-0baf1468f5d7"
     },
     {
-      "id": "fd1f4d32-a969-4784-881c-8e30615e919d"
+      "id": "fc3f6b56-26d1-4d19-bb8d-f8958d53b3bd"
     },
     {
-      "id": "e65c75d5-0263-4111-bf2c-756f7a489ad3"
+      "id": "bb8b7080-ff4c-4011-bfc0-dc0eb03285b1"
     },
     {
-      "id": "5886bc87-e6ef-4cf2-8324-56202345f587"
+      "id": "bc542f67-287e-4b1e-82f9-6489703cbbbf"
     }
   ]
 }
@@ -517,7 +517,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/products/7f360684-34fc-4fc9-9416-2aed2f300845' \
+    --url 'https://example.booqable.com/api/boomerang/products/c6805592-37ad-4559-9fba-8922f629c373' \
     --header 'content-type: application/json' \
 ```
 
@@ -526,11 +526,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7f360684-34fc-4fc9-9416-2aed2f300845",
+    "id": "c6805592-37ad-4559-9fba-8922f629c373",
     "type": "products",
     "attributes": {
-      "created_at": "2024-08-26T09:22:50.864397+00:00",
-      "updated_at": "2024-08-26T09:22:51.269722+00:00",
+      "created_at": "2024-09-02T09:26:50.074739+00:00",
+      "updated_at": "2024-09-02T09:26:50.339616+00:00",
       "archived": false,
       "archived_at": null,
       "type": "products",
@@ -570,7 +570,7 @@ This request accepts the following includes:
       ],
       "allow_shortage": false,
       "shortage_limit": 0,
-      "product_group_id": "0f8d23e9-3b06-4deb-a03d-abd66d70a000"
+      "product_group_id": "13be134e-0db6-4c8b-a7bb-a024893ae4a2"
     },
     "relationships": {}
   },
@@ -638,7 +638,7 @@ This request accepts the following includes:
       "data": {
         "type": "products",
         "attributes": {
-          "product_group_id": "1e761060-2dbf-4072-90b8-fd79e3143f89",
+          "product_group_id": "37357584-b36e-4dee-ae21-5ae571beeef1",
           "variation_values": [
             "red"
           ]
@@ -652,11 +652,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6720b990-a178-4433-9c56-944913bad6b4",
+    "id": "c8837b81-9573-4653-95b4-cc762ea9fc12",
     "type": "products",
     "attributes": {
-      "created_at": "2024-08-26T09:22:48.221393+00:00",
-      "updated_at": "2024-08-26T09:22:48.221393+00:00",
+      "created_at": "2024-09-02T09:26:49.487169+00:00",
+      "updated_at": "2024-09-02T09:26:49.487169+00:00",
       "archived": false,
       "archived_at": null,
       "type": "products",
@@ -696,7 +696,7 @@ This request accepts the following includes:
       ],
       "allow_shortage": false,
       "shortage_limit": 0,
-      "product_group_id": "1e761060-2dbf-4072-90b8-fd79e3143f89"
+      "product_group_id": "37357584-b36e-4dee-ae21-5ae571beeef1"
     },
     "relationships": {}
   },
@@ -778,11 +778,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/products/f2970bbd-0e59-4e1c-99d9-2060194836de' \
+    --url 'https://example.booqable.com/api/boomerang/products/d008149f-1103-40e6-a010-43d0b1299b5c' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f2970bbd-0e59-4e1c-99d9-2060194836de",
+        "id": "d008149f-1103-40e6-a010-43d0b1299b5c",
         "type": "products",
         "attributes": {
           "variation_values": [
@@ -798,11 +798,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f2970bbd-0e59-4e1c-99d9-2060194836de",
+    "id": "d008149f-1103-40e6-a010-43d0b1299b5c",
     "type": "products",
     "attributes": {
-      "created_at": "2024-08-26T09:22:49.195837+00:00",
-      "updated_at": "2024-08-26T09:22:50.058885+00:00",
+      "created_at": "2024-09-02T09:26:46.582232+00:00",
+      "updated_at": "2024-09-02T09:26:47.100772+00:00",
       "archived": false,
       "archived_at": null,
       "type": "products",
@@ -842,7 +842,7 @@ This request accepts the following includes:
       ],
       "allow_shortage": false,
       "shortage_limit": 0,
-      "product_group_id": "01ecde3e-6437-4005-8030-83198c85f71b"
+      "product_group_id": "9f67b3ca-f14d-496b-a6a1-e29e044d353e"
     },
     "relationships": {}
   },
@@ -924,7 +924,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/products/cc379223-e3f1-4eb0-a5b3-a1032adaaed8' \
+    --url 'https://example.booqable.com/api/boomerang/products/266e290e-c845-4fd1-a1a9-f9bd4550bc8e' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -934,13 +934,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cc379223-e3f1-4eb0-a5b3-a1032adaaed8",
+    "id": "266e290e-c845-4fd1-a1a9-f9bd4550bc8e",
     "type": "products",
     "attributes": {
-      "created_at": "2024-08-26T09:22:43.594996+00:00",
-      "updated_at": "2024-08-26T09:22:44.693536+00:00",
+      "created_at": "2024-09-02T09:26:47.651803+00:00",
+      "updated_at": "2024-09-02T09:26:48.315510+00:00",
       "archived": true,
-      "archived_at": "2024-08-26T09:22:44.693536+00:00",
+      "archived_at": "2024-09-02T09:26:48.315510+00:00",
       "type": "products",
       "name": "iPad Pro",
       "group_name": "iPad Pro",
@@ -978,7 +978,7 @@ This request accepts the following includes:
       ],
       "allow_shortage": false,
       "shortage_limit": 0,
-      "product_group_id": "3b8ae9af-3127-4f7f-8b50-aa674346dcaa"
+      "product_group_id": "13152334-d449-46b3-895a-54696a30ce32"
     },
     "relationships": {}
   },

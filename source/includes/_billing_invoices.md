@@ -54,11 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "5a48331a-29dc-4fa3-9f5f-ce28ebf491de",
+      "id": "dab02548-3a05-4884-8391-24a0869bc319",
       "type": "billing_invoices",
       "attributes": {
-        "created_at": "2024-08-26T09:26:39.355883+00:00",
-        "updated_at": "2024-08-26T09:26:39.355883+00:00",
+        "created_at": "2024-09-02T09:23:10.430774+00:00",
+        "updated_at": "2024-09-02T09:23:10.430774+00:00",
         "number": 10002,
         "status": "open",
         "billing_reason": "subscription_cycle",
@@ -77,7 +77,7 @@ Name | Description
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/0b9a98520f18b1f657a98575c52e8d76/4b71dbf5b8ee57f18a391ba35a83dc00"
+        "url": "http://billing.lvh.me:/invoices/2ca994246f23f1535c9aa96587c51e1d/56c6fc1c4190296967a79eddbae789a1"
       }
     }
   ],
@@ -141,7 +141,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/billing_invoices/6486efd6-4f50-4e82-9db9-3af170b9cd53' \
+    --url 'https://example.booqable.com/api/boomerang/billing_invoices/fd55940f-f42a-41ab-b9dd-8e64af85449f' \
     --header 'content-type: application/json' \
 ```
 
@@ -150,11 +150,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "6486efd6-4f50-4e82-9db9-3af170b9cd53",
+    "id": "fd55940f-f42a-41ab-b9dd-8e64af85449f",
     "type": "billing_invoices",
     "attributes": {
-      "created_at": "2024-08-26T09:26:39.948130+00:00",
-      "updated_at": "2024-08-26T09:26:39.948130+00:00",
+      "created_at": "2024-09-02T09:23:11.026341+00:00",
+      "updated_at": "2024-09-02T09:23:11.026341+00:00",
       "number": 10002,
       "status": "open",
       "billing_reason": "subscription_cycle",
@@ -173,7 +173,7 @@ This request does not accept any includes
       "ending_balance_in_cents": null,
       "next_payment_attempt_at": null,
       "coupon": null,
-      "url": "http://billing.lvh.me:/invoices/28925d4747626afebd7f3da64018886b/6d49ac327d2cf160733033c323f9705b"
+      "url": "http://billing.lvh.me:/invoices/3b97039241bd0ad0d40c80dedc2c626d/c802fb206ae72aed9146b662bf70f4a3"
     }
   },
   "meta": {}

@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-08-21+00%3A00%3A00+UTC&filter%5Btill%5D=2024-08-26+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-08-28+00%3A00%3A00+UTC&filter%5Btill%5D=2024-09-02+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,35 +49,35 @@ Name | Description
   {
   "data": [
     {
-      "id": "99215f8b-867f-4e89-a58c-ab1bc15c3166",
+      "id": "55d0c6a7-29a2-4978-a378-eabb6ca8a43d",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-08-26T09:29:25.195052+00:00",
-        "product_name": "Product 1000075",
-        "identifier": "id1000166",
+        "created_at": "2024-09-02T09:23:25.283759+00:00",
+        "product_name": "Product 1000007",
+        "identifier": "id1000002",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
         "turnover_in_cents": 0,
-        "stock_item_id": "5c281ccb-1dfe-45a8-a347-667966ab9225",
-        "product_id": "c661b477-3dcd-4a79-9329-d4c11cb65aa5",
+        "stock_item_id": "b94ea52e-e95a-49b8-a1c4-51fba00cc25a",
+        "product_id": "351ffda7-0c83-462d-96df-0d741ca953ad",
         "location_id": null
       },
       "relationships": {}
     },
     {
-      "id": "bf57b56a-5500-4e25-9951-5a1057e466b4",
+      "id": "d9267160-70cc-41a0-91b9-e50c4735ecba",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-08-26T09:29:25.215489+00:00",
-        "product_name": "Product 1000075",
-        "identifier": "id1000167",
+        "created_at": "2024-09-02T09:23:25.311211+00:00",
+        "product_name": "Product 1000007",
+        "identifier": "id1000003",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
         "turnover_in_cents": 0,
-        "stock_item_id": "07b1f5b1-edca-4556-820e-a345f4bcb1f2",
-        "product_id": "c661b477-3dcd-4a79-9329-d4c11cb65aa5",
+        "stock_item_id": "7e79ae2f-043a-499f-9623-f9dde94eeea2",
+        "product_id": "351ffda7-0c83-462d-96df-0d741ca953ad",
         "location_id": null
       },
       "relationships": {}

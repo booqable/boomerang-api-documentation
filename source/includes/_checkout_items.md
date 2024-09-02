@@ -61,14 +61,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "58f9d55d-c8f7-43eb-a1c1-29bd1a540b57",
+      "id": "b9cdfb42-cd08-46ee-984d-97299fc39e7f",
       "type": "checkout_items",
       "attributes": {
-        "created_at": "2024-08-26T09:25:48.824667+00:00",
-        "updated_at": "2024-08-26T09:25:48.824667+00:00",
-        "name": "Checkout item 2",
+        "created_at": "2024-09-02T09:27:01.799399+00:00",
+        "updated_at": "2024-09-02T09:27:01.799399+00:00",
+        "name": "Checkout item 1",
         "item_type": "field",
-        "default_property_id": "a49586a7-3a35-4d47-99b1-4357b8a17e00",
+        "default_property_id": "a2430b8f-77f1-4023-b76c-4fac6d0acd46",
         "tooltip": null,
         "required": false,
         "position": 1,
@@ -141,7 +141,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/c50e811a-fec5-4e99-a7c1-99006b7f17d0?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/3488e443-127e-461d-979b-5ffa236e918c?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -150,14 +150,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "c50e811a-fec5-4e99-a7c1-99006b7f17d0",
+    "id": "3488e443-127e-461d-979b-5ffa236e918c",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-08-26T09:25:50.217821+00:00",
-      "updated_at": "2024-08-26T09:25:50.217821+00:00",
-      "name": "Checkout item 4",
+      "created_at": "2024-09-02T09:27:02.289057+00:00",
+      "updated_at": "2024-09-02T09:27:02.289057+00:00",
+      "name": "Checkout item 2",
       "item_type": "field",
-      "default_property_id": "7fcfc59f-78f3-4b00-a9e0-5d40b578d259",
+      "default_property_id": "d252d867-60ce-46e3-8b7c-a6081e0dc9a7",
       "tooltip": null,
       "required": false,
       "position": 1,
@@ -204,7 +204,7 @@ This request does not accept any includes
         "attributes": {
           "name": "Mobile number",
           "item_type": "field",
-          "default_property_id": "e4a420f0-beba-43f9-954a-1b74da982656"
+          "default_property_id": "4dd1fe0d-3605-41c0-a3ef-6ab2f9382b5b"
         }
       }
     }'
@@ -215,14 +215,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "00e09d6a-a9ec-4118-bd9d-c55304347ead",
+    "id": "7090729c-8c41-40c3-90e3-38b1bc1ccf91",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-08-26T09:25:48.156942+00:00",
-      "updated_at": "2024-08-26T09:25:48.156942+00:00",
+      "created_at": "2024-09-02T09:27:03.292572+00:00",
+      "updated_at": "2024-09-02T09:27:03.292572+00:00",
       "name": "Mobile number",
       "item_type": "field",
-      "default_property_id": "e4a420f0-beba-43f9-954a-1b74da982656",
+      "default_property_id": "4dd1fe0d-3605-41c0-a3ef-6ab2f9382b5b",
       "tooltip": null,
       "required": false,
       "position": 2,
@@ -278,11 +278,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/ac0a12cc-0a28-4949-afe0-500613785355' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/508221bd-42a5-4425-bd22-fbba0f69bcfe' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ac0a12cc-0a28-4949-afe0-500613785355",
+        "id": "508221bd-42a5-4425-bd22-fbba0f69bcfe",
         "type": "checkout_items",
         "attributes": {
           "name": "Additional information"
@@ -296,14 +296,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ac0a12cc-0a28-4949-afe0-500613785355",
+    "id": "508221bd-42a5-4425-bd22-fbba0f69bcfe",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-08-26T09:25:50.850267+00:00",
-      "updated_at": "2024-08-26T09:25:50.891397+00:00",
+      "created_at": "2024-09-02T09:27:03.736305+00:00",
+      "updated_at": "2024-09-02T09:27:03.763170+00:00",
       "name": "Additional information",
       "item_type": "field",
-      "default_property_id": "c804e793-b091-494d-a9b4-9a4946e29bfb",
+      "default_property_id": "d84eecea-5642-47d7-a9fb-487075233786",
       "tooltip": null,
       "required": false,
       "position": 1,
@@ -359,7 +359,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/2e08736d-2aca-4b67-a9b6-eec73f2f740d' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/ef2f60ab-ba9f-46eb-b7af-d6d13d94a2cd' \
     --header 'content-type: application/json' \
 ```
 
@@ -368,14 +368,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2e08736d-2aca-4b67-a9b6-eec73f2f740d",
+    "id": "ef2f60ab-ba9f-46eb-b7af-d6d13d94a2cd",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-08-26T09:25:49.560355+00:00",
-      "updated_at": "2024-08-26T09:25:49.560355+00:00",
+      "created_at": "2024-09-02T09:27:02.768620+00:00",
+      "updated_at": "2024-09-02T09:27:02.768620+00:00",
       "name": "Checkout item 3",
       "item_type": "field",
-      "default_property_id": "d54866b7-d124-494f-b2f9-7572333d9e2c",
+      "default_property_id": "e9f46ed6-38a9-4ca6-9dac-824820f5a7a0",
       "tooltip": null,
       "required": false,
       "position": 1,

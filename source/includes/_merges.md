@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "b557a879-acb7-4b16-922d-f5ba35950f42",
-          "target_id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79"
+          "source_id": "7d28aeff-d72a-4562-9df5-a9d52fb4f036",
+          "target_id": "4cb0c50a-8352-44b6-bf21-3db54d1ad3a5"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "8ff97853-e4dd-51c7-be4e-3a9095492873",
+    "id": "40c125c0-6484-5317-9136-72404144fbba",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "b557a879-acb7-4b16-922d-f5ba35950f42",
-      "target_id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79"
+      "source_id": "7d28aeff-d72a-4562-9df5-a9d52fb4f036",
+      "target_id": "4cb0c50a-8352-44b6-bf21-3db54d1ad3a5"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79"
+          "id": "4cb0c50a-8352-44b6-bf21-3db54d1ad3a5"
         }
       }
     }
   },
   "included": [
     {
-      "id": "5c565d7d-70e6-4fcb-9bef-bbff1fe77a79",
+      "id": "4cb0c50a-8352-44b6-bf21-3db54d1ad3a5",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-08-26T09:22:52.254659+00:00",
-        "updated_at": "2024-08-26T09:22:52.494025+00:00",
+        "created_at": "2024-09-02T09:23:51.166011+00:00",
+        "updated_at": "2024-09-02T09:23:51.360496+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
