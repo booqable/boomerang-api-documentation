@@ -58,16 +58,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "48054f36-afa1-54f4-8b85-b76f8f2770d7",
+    "id": "8b061b1b-5485-570d-ab73-738ec3305133",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-09-02T09:22:30.950050+00:00",
-      "company_id": "35333659-74fa-4ee6-a819-03306545e5ec",
-      "employee_id": "cc551d14-eede-421b-a10e-acb6a217d574",
-      "locations_updated_at": "2024-09-02T09:22:30.972268+00:00",
-      "clusters_updated_at": "2024-09-02T09:22:30.994423+00:00",
-      "default_properties_updated_at": "2024-09-02T09:22:31.027140+00:00",
-      "notification_subscriptions_updated_at": "2024-09-02T09:22:30.958251+00:00",
+      "updated_at": "2024-09-09T09:26:30.757716+00:00",
+      "company_id": "0c9e113d-7002-466c-9a8c-d735cdc3be33",
+      "employee_id": "aa845fbc-4521-43e1-89ba-ee737609532f",
+      "locations_updated_at": "2024-09-09T09:26:30.768681+00:00",
+      "clusters_updated_at": "2024-09-09T09:26:30.776512+00:00",
+      "default_properties_updated_at": "2024-09-09T09:26:30.782313+00:00",
+      "notification_subscriptions_updated_at": "2024-09-09T09:26:30.761906+00:00",
       "countries_updated_at": null
     },
     "relationships": {}
@@ -124,29 +124,29 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ea53c3a3-fc59-5802-8fb6-f981db88ea3e",
+    "id": "98966e11-54c0-5810-b013-361f06da2cf2",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-09-02T09:26:08.984410+00:00",
-      "company_id": "40eb6bbd-133d-4f21-aa32-1fda7cfa8c72",
-      "employee_id": "deb6150c-eff6-4dcc-a5fe-e72abdf51e1a",
+      "updated_at": "2024-09-09T09:22:56.917229+00:00",
+      "company_id": "6f0c8345-519d-46bb-9fcf-498be6ea0342",
+      "employee_id": "8688917b-9b5b-4663-b1b6-47ae91d68662",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-09-02T09:26:08.989759+00:00",
+      "notification_subscriptions_updated_at": "2024-09-09T09:22:56.921310+00:00",
       "countries_updated_at": null
     },
     "relationships": {
       "company": {
         "data": {
           "type": "companies",
-          "id": "40eb6bbd-133d-4f21-aa32-1fda7cfa8c72"
+          "id": "6f0c8345-519d-46bb-9fcf-498be6ea0342"
         }
       },
       "employee": {
         "data": {
           "type": "employees",
-          "id": "deb6150c-eff6-4dcc-a5fe-e72abdf51e1a"
+          "id": "8688917b-9b5b-4663-b1b6-47ae91d68662"
         }
       },
       "settings": {
@@ -159,14 +159,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "40eb6bbd-133d-4f21-aa32-1fda7cfa8c72",
+      "id": "6f0c8345-519d-46bb-9fcf-498be6ea0342",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-09-02T09:26:08.950627+00:00",
-        "updated_at": "2024-09-02T09:26:08.962348+00:00",
-        "name": "Company name 146",
-        "slug": "company-name-146",
-        "email": "mail146@company.com",
+        "created_at": "2024-09-09T09:22:56.891287+00:00",
+        "updated_at": "2024-09-09T09:22:56.900711+00:00",
+        "name": "Company name 21",
+        "slug": "company-name-21",
+        "email": "mail21@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -198,7 +198,7 @@ This request accepts the following includes:
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "55fc4b9c26baaea63556dcc7bc29c15f",
+        "tenant_token": "0f89044981d0c6c40267e702676763b3",
         "pending_subscription": false,
         "team_size": null,
         "projected_revenue": null,
@@ -221,7 +221,7 @@ This request accepts the following includes:
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-09-16T09:26:08.936Z",
+          "trial_ends_at": "2024-09-23T09:22:56.880Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -278,18 +278,18 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "deb6150c-eff6-4dcc-a5fe-e72abdf51e1a",
+      "id": "8688917b-9b5b-4663-b1b6-47ae91d68662",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-09-02T09:26:08.984410+00:00",
-        "updated_at": "2024-09-02T09:26:08.984410+00:00",
+        "created_at": "2024-09-09T09:22:56.917229+00:00",
+        "updated_at": "2024-09-09T09:22:56.917229+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-09-02T09:26:08.978779+00:00",
+        "viewed_whats_new_at": "2024-09-09T09:22:56.913119+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,

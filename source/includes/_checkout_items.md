@@ -31,8 +31,10 @@ Name | Description
 `image_base64` | **String** `writeonly`<br>Base64 encoded image file, only for upload
 `remove_image` | **Boolean** `writeonly`<br>Set to true to remove existing image from checkout item
 `image_alt_text` | **String** <br>Alternative text for the image checkout item
+`pickup_requires_billing_address` | **Boolean** <br>Whether the billing address is required for pickup checkout item
 `image_url` | **String** `readonly`<br>Image URL of the checkout item
 `system` | **Boolean** `readonly`<br>System checkout item name can not be changed or deleted
+`deletable` | **Boolean** `readonly`<br>Whether the checkout item can be deleted
 
 
 ## Relationships
@@ -61,21 +63,23 @@ Name | Description
   {
   "data": [
     {
-      "id": "b9cdfb42-cd08-46ee-984d-97299fc39e7f",
+      "id": "d1f004a5-41e5-4b2e-aecb-32701b7aefb3",
       "type": "checkout_items",
       "attributes": {
-        "created_at": "2024-09-02T09:27:01.799399+00:00",
-        "updated_at": "2024-09-02T09:27:01.799399+00:00",
-        "name": "Checkout item 1",
+        "created_at": "2024-09-09T09:25:36.988891+00:00",
+        "updated_at": "2024-09-09T09:25:36.988891+00:00",
+        "name": "Checkout item 4",
         "item_type": "field",
-        "default_property_id": "a2430b8f-77f1-4023-b76c-4fac6d0acd46",
+        "default_property_id": "6f03ec57-4ec4-4915-94ad-4d7d5cf55352",
         "tooltip": null,
         "required": false,
         "position": 1,
         "content": null,
         "image_alt_text": null,
+        "pickup_requires_billing_address": null,
         "image_url": null,
-        "system": false
+        "system": false,
+        "deletable": true
       },
       "relationships": {}
     }
@@ -118,7 +122,9 @@ Name | Description
 `required` | **Boolean** <br>`eq`
 `content` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `image_alt_text` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`pickup_requires_billing_address` | **Boolean** <br>`eq`
 `system` | **Boolean** <br>`eq`
+`deletable` | **Boolean** <br>`eq`
 
 
 ### Meta
@@ -141,7 +147,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/3488e443-127e-461d-979b-5ffa236e918c?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/e8dd78db-308d-40fc-84de-535c88cbae4c?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -150,21 +156,23 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "3488e443-127e-461d-979b-5ffa236e918c",
+    "id": "e8dd78db-308d-40fc-84de-535c88cbae4c",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-09-02T09:27:02.289057+00:00",
-      "updated_at": "2024-09-02T09:27:02.289057+00:00",
-      "name": "Checkout item 2",
+      "created_at": "2024-09-09T09:25:36.539381+00:00",
+      "updated_at": "2024-09-09T09:25:36.539381+00:00",
+      "name": "Checkout item 3",
       "item_type": "field",
-      "default_property_id": "d252d867-60ce-46e3-8b7c-a6081e0dc9a7",
+      "default_property_id": "7b0583f7-54d0-4597-bce7-c45775a90e30",
       "tooltip": null,
       "required": false,
       "position": 1,
       "content": null,
       "image_alt_text": null,
+      "pickup_requires_billing_address": null,
       "image_url": null,
-      "system": false
+      "system": false,
+      "deletable": true
     },
     "relationships": {}
   },
@@ -204,7 +212,7 @@ This request does not accept any includes
         "attributes": {
           "name": "Mobile number",
           "item_type": "field",
-          "default_property_id": "4dd1fe0d-3605-41c0-a3ef-6ab2f9382b5b"
+          "default_property_id": "a5d61b1a-985f-41df-98b0-a2a7fd020547"
         }
       }
     }'
@@ -215,21 +223,23 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "7090729c-8c41-40c3-90e3-38b1bc1ccf91",
+    "id": "821a8ad2-307f-4b83-82ec-4abf2d8d86e8",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-09-02T09:27:03.292572+00:00",
-      "updated_at": "2024-09-02T09:27:03.292572+00:00",
+      "created_at": "2024-09-09T09:25:36.118841+00:00",
+      "updated_at": "2024-09-09T09:25:36.118841+00:00",
       "name": "Mobile number",
       "item_type": "field",
-      "default_property_id": "4dd1fe0d-3605-41c0-a3ef-6ab2f9382b5b",
+      "default_property_id": "a5d61b1a-985f-41df-98b0-a2a7fd020547",
       "tooltip": null,
       "required": false,
       "position": 2,
       "content": null,
       "image_alt_text": null,
+      "pickup_requires_billing_address": null,
       "image_url": null,
-      "system": false
+      "system": false,
+      "deletable": true
     },
     "relationships": {}
   },
@@ -265,6 +275,7 @@ Name | Description
 `data[attributes][image_base64]` | **String** <br>Base64 encoded image file, only for upload
 `data[attributes][remove_image]` | **Boolean** <br>Set to true to remove existing image from checkout item
 `data[attributes][image_alt_text]` | **String** <br>Alternative text for the image checkout item
+`data[attributes][pickup_requires_billing_address]` | **Boolean** <br>Whether the billing address is required for pickup checkout item
 
 
 ### Includes
@@ -278,11 +289,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/508221bd-42a5-4425-bd22-fbba0f69bcfe' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/a98c2c75-93ba-4309-bc61-3948542c1475' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "508221bd-42a5-4425-bd22-fbba0f69bcfe",
+        "id": "a98c2c75-93ba-4309-bc61-3948542c1475",
         "type": "checkout_items",
         "attributes": {
           "name": "Additional information"
@@ -296,21 +307,23 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "508221bd-42a5-4425-bd22-fbba0f69bcfe",
+    "id": "a98c2c75-93ba-4309-bc61-3948542c1475",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-09-02T09:27:03.736305+00:00",
-      "updated_at": "2024-09-02T09:27:03.763170+00:00",
+      "created_at": "2024-09-09T09:25:35.630389+00:00",
+      "updated_at": "2024-09-09T09:25:35.648839+00:00",
       "name": "Additional information",
       "item_type": "field",
-      "default_property_id": "d84eecea-5642-47d7-a9fb-487075233786",
+      "default_property_id": "ba3d0e30-6fb7-4a56-9597-ba2de8ca0c02",
       "tooltip": null,
       "required": false,
       "position": 1,
       "content": null,
       "image_alt_text": null,
+      "pickup_requires_billing_address": null,
       "image_url": null,
-      "system": false
+      "system": false,
+      "deletable": true
     },
     "relationships": {}
   },
@@ -346,6 +359,7 @@ Name | Description
 `data[attributes][image_base64]` | **String** <br>Base64 encoded image file, only for upload
 `data[attributes][remove_image]` | **Boolean** <br>Set to true to remove existing image from checkout item
 `data[attributes][image_alt_text]` | **String** <br>Alternative text for the image checkout item
+`data[attributes][pickup_requires_billing_address]` | **Boolean** <br>Whether the billing address is required for pickup checkout item
 
 
 ### Includes
@@ -359,7 +373,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/ef2f60ab-ba9f-46eb-b7af-d6d13d94a2cd' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/6efcf88a-fffb-4a32-95fe-b39688cb1c90' \
     --header 'content-type: application/json' \
 ```
 
@@ -368,21 +382,23 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ef2f60ab-ba9f-46eb-b7af-d6d13d94a2cd",
+    "id": "6efcf88a-fffb-4a32-95fe-b39688cb1c90",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-09-02T09:27:02.768620+00:00",
-      "updated_at": "2024-09-02T09:27:02.768620+00:00",
-      "name": "Checkout item 3",
+      "created_at": "2024-09-09T09:25:37.423889+00:00",
+      "updated_at": "2024-09-09T09:25:37.423889+00:00",
+      "name": "Checkout item 5",
       "item_type": "field",
-      "default_property_id": "e9f46ed6-38a9-4ca6-9dac-824820f5a7a0",
+      "default_property_id": "27f15849-0939-4a8f-8ed3-cd7fe8e10490",
       "tooltip": null,
       "required": false,
       "position": 1,
       "content": null,
       "image_alt_text": null,
+      "pickup_requires_billing_address": null,
       "image_url": null,
-      "system": false
+      "system": false,
+      "deletable": true
     },
     "relationships": {}
   },
