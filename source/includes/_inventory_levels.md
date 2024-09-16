@@ -42,7 +42,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=bf82f033-7532-459d-8a5a-d833b5076ed3&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=28986475-a3e5-41f0-9a3d-53f8ad2356a5&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -52,12 +52,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "89e01549-e27c-5bde-b330-83268477dd4d",
+      "id": "a66d2ec7-cdce-56c2-b9b0-1e38650b876b",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "bf82f033-7532-459d-8a5a-d833b5076ed3",
+        "item_id": "28986475-a3e5-41f0-9a3d-53f8ad2356a5",
         "order_id": null,
-        "location_id": "925118cd-1596-43f6-918e-4bd9e099f1bd",
+        "location_id": "fd7edcbc-e08f-4c16-8228-893c569428f3",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -139,7 +139,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=d66a8d72-f24b-435f-ae3e-63e36b8463fa&filter%5Blocation_id%5D=0b8ccd2a-bf07-4a57-b0ff-c79c85a19669&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=127e8747-20aa-47eb-a5ce-68d22839e998&filter%5Blocation_id%5D=9b396ca4-ee8b-48ff-805c-ab73945e2c6b&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -149,12 +149,12 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "9b5b15ab-7497-54ed-aef3-c2f6d216c20e",
+      "id": "49afe630-914f-5fe7-b3bb-968cabd53806",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "d66a8d72-f24b-435f-ae3e-63e36b8463fa",
+        "item_id": "127e8747-20aa-47eb-a5ce-68d22839e998",
         "order_id": null,
-        "location_id": "0b8ccd2a-bf07-4a57-b0ff-c79c85a19669",
+        "location_id": "9b396ca4-ee8b-48ff-805c-ab73945e2c6b",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,

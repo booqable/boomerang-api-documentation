@@ -48,7 +48,7 @@ Name | Description
 `type` | **String** `readonly`<br>One of `product_groups`, `products`, `bundles`
 `name` | **String** <br>Name of the item
 `group_name` | **String** `readonly`<br>The name of the ProductGroup, if this is a Product that is one of the variations in the group.
-`slug` | **String** `readonly`<br>Slug of the item
+`slug` | **String** <br>Slug of the item
 `sku` | **String** <br>Stock keeping unit
 `lead_time` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
 `lag_time` | **Integer** <br>The amount of seconds the item should be unavailable after a reservation
@@ -121,11 +121,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "1d17f30b-dc0f-4046-aab4-b375969e3b5f",
+      "id": "9f86132b-7e53-4585-8c8f-37f62887c193",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2024-09-09T09:22:56.308472+00:00",
-        "updated_at": "2024-09-09T09:22:56.317348+00:00",
+        "created_at": "2024-09-16T09:23:53.567494+00:00",
+        "updated_at": "2024-09-16T09:23:53.577275+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -331,13 +331,13 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "72cb3a5e-4d1f-4d0c-9801-13fb2eda3a22"
+      "id": "f1f519a7-5f13-4c55-aae9-b00c806d4b19"
     },
     {
-      "id": "f1ac5048-44af-4188-ac0d-693d71f9dd99"
+      "id": "cac69eeb-b57f-4799-b334-52482f47fb34"
     },
     {
-      "id": "de7ecb41-6104-4f69-996e-01ec05c6585f"
+      "id": "360f5e62-8749-490c-a79c-1adfeb31c37c"
     }
   ]
 }
@@ -455,7 +455,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/53911701-766e-48db-b76b-06c4bd377ef4' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/862da150-1026-4fa0-8a5d-bea08ce174d7' \
     --header 'content-type: application/json' \
 ```
 
@@ -464,11 +464,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "53911701-766e-48db-b76b-06c4bd377ef4",
+    "id": "862da150-1026-4fa0-8a5d-bea08ce174d7",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-09-09T09:22:53.180624+00:00",
-      "updated_at": "2024-09-09T09:22:53.190391+00:00",
+      "created_at": "2024-09-16T09:23:52.716524+00:00",
+      "updated_at": "2024-09-16T09:23:52.733037+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -592,11 +592,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "eae2cc30-5ec6-4497-ad06-b2f9d390ec7e",
+    "id": "67a64dab-5a31-43af-acd5-81c68ff97eff",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-09-09T09:22:51.784701+00:00",
-      "updated_at": "2024-09-09T09:22:51.784701+00:00",
+      "created_at": "2024-09-16T09:23:47.229248+00:00",
+      "updated_at": "2024-09-16T09:23:47.229248+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -668,6 +668,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][name]` | **String** <br>Name of the item
+`data[attributes][slug]` | **String** <br>Slug of the item
 `data[attributes][sku]` | **String** <br>Stock keeping unit
 `data[attributes][lead_time]` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
 `data[attributes][lag_time]` | **Integer** <br>The amount of seconds the item should be unavailable after a reservation
@@ -737,11 +738,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/051a8564-b814-445c-8668-c08a0c8cbfff' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/853bb33d-9dd7-40b2-a1f7-a8c47cc4fc5b' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "051a8564-b814-445c-8668-c08a0c8cbfff",
+        "id": "853bb33d-9dd7-40b2-a1f7-a8c47cc4fc5b",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -755,11 +756,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "051a8564-b814-445c-8668-c08a0c8cbfff",
+    "id": "853bb33d-9dd7-40b2-a1f7-a8c47cc4fc5b",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-09-09T09:22:52.377443+00:00",
-      "updated_at": "2024-09-09T09:22:52.650169+00:00",
+      "created_at": "2024-09-16T09:23:44.893416+00:00",
+      "updated_at": "2024-09-16T09:23:45.366136+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -828,6 +829,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][name]` | **String** <br>Name of the item
+`data[attributes][slug]` | **String** <br>Slug of the item
 `data[attributes][sku]` | **String** <br>Stock keeping unit
 `data[attributes][lead_time]` | **Integer** <br>The amount of seconds the item should be unavailable before a reservation
 `data[attributes][lag_time]` | **Integer** <br>The amount of seconds the item should be unavailable after a reservation
@@ -897,7 +899,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/f0ade642-bde5-48e1-880d-a3f5b7191da4' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/4081a7e9-5150-4f86-9f36-cd91418e2c30' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -907,17 +909,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f0ade642-bde5-48e1-880d-a3f5b7191da4",
+    "id": "4081a7e9-5150-4f86-9f36-cd91418e2c30",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-09-09T09:22:55.543044+00:00",
-      "updated_at": "2024-09-09T09:22:55.788847+00:00",
+      "created_at": "2024-09-16T09:23:48.421548+00:00",
+      "updated_at": "2024-09-16T09:23:48.876593+00:00",
       "archived": true,
-      "archived_at": "2024-09-09T09:22:55.788847+00:00",
+      "archived_at": "2024-09-16T09:23:48.876593+00:00",
       "type": "product_groups",
       "name": "iPad Pro",
       "group_name": null,
-      "slug": "ipad-pro-archived-f0ade642-bde5-48e1-880d-a3f5b7191da4",
+      "slug": "ipad-pro-archived-4081a7e9-5150-4f86-9f36-cd91418e2c30",
       "sku": "SKU",
       "lead_time": 0,
       "lag_time": 0,
