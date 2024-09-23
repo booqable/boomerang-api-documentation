@@ -1,20 +1,19 @@
 # Sessions
 
-The session tells you whether settings are changed since the last time they were being requested. Every response includes a `Session-Id` header which contains a session ID. If that ID does not match with the ID of the last session that was fetched, this indicates that the following information may have been changed:
+The session tells you whether settings are changed since the last time they were being requested.
+Every response includes a `Session-Id` header which contains a session ID. If that ID does not
+match with the ID of the last session that was fetched, this indicates that the following information
+may have been changed:
 
 - Employee's permissions
 - Company's subscription
 - Settings
 - Default properties
 - Clusters and Locations
+- Operating rules
 - Employee's notification subscriptions
 
-When there's an ID mismatch, it's advised to fetch the session again and include `employee`, `company`, and `settings`. Default properties, clusters, and locations should be requested separately as they can be paginated.
-
-## Endpoints
-`GET /api/boomerang/sessions/{id}`
-
-`GET /api/boomerang/sessions/current`
+When there's an ID mismatch, it's advised to fetch the session again to reload these resources.
 
 ## Fields
 Every session has the following fields:
@@ -29,6 +28,7 @@ Name | Description
 `default_properties_updated_at` | **Datetime** <br>When the default properties were last updated
 `notification_subscriptions_updated_at` | **Datetime** <br>When the employee last made a change to their notification subscriptions
 `countries_updated_at` | **Datetime** <br>When the countries were last updated
+`operating_rules_updated_at` | **Datetime** <br>When the operating rules were last updated
 
 
 ## Relationships
@@ -36,75 +36,14 @@ Sessions have the following relationships:
 
 Name | Description
 -- | --
+`app_subscriptions` | **App subscriptions** `readonly`<br>Associated App subscriptions
+`clusters` | **Clusters** `readonly`<br>Associated Clusters
 `company` | **Companies** `readonly`<br>Associated Company
+`default_properties` | **Default properties** `readonly`<br>Associated Default properties
 `employee` | **Employees** `readonly`<br>Associated Employee
+`locations` | **Locations** `readonly`<br>Associated Locations
+`operating_rules` | **Operating rules** `readonly`<br>Associated Operating rules
 `settings` | **Settings** `readonly`<br>Associated Settings
-
-
-## Retreiving the session
-
-
-
-> How to retreive the session:
-
-```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/sessions/current' \
-    --header 'content-type: application/json' \
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-  "data": {
-    "id": "15e9c075-9b90-5365-bd4b-046c8156c50c",
-    "type": "sessions",
-    "attributes": {
-      "updated_at": "2024-09-16T09:24:23.437373+00:00",
-      "company_id": "1f8ed50f-0ef1-47ff-a524-2f35712d151f",
-      "employee_id": "b278fa79-0262-4384-977d-283d9ecb911d",
-      "locations_updated_at": "2024-09-16T09:24:23.450108+00:00",
-      "clusters_updated_at": "2024-09-16T09:24:23.462092+00:00",
-      "default_properties_updated_at": "2024-09-16T09:24:23.468998+00:00",
-      "notification_subscriptions_updated_at": "2024-09-16T09:24:23.442272+00:00",
-      "countries_updated_at": null
-    },
-    "relationships": {}
-  },
-  "meta": {}
-}
-```
-
-### HTTP Request
-
-`GET /api/boomerang/sessions/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee,company,settings`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=company_id,employee_id,locations_updated_at`
-
-
-### Includes
-
-This request accepts the following includes:
-
-`employee`
-
-
-`company`
-
-
-`settings`
-
-
-
-
 
 
 ## Fetching the session
@@ -124,29 +63,30 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ca8d88f2-8cbc-51b1-abf3-b2c5222bda17",
+    "id": "2003d36f-6d93-505e-b215-92ccca164afc",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-09-16T09:25:42.586801+00:00",
-      "company_id": "a54bc8bf-aa50-41c6-bd6b-65f0374a3ce1",
-      "employee_id": "165fb0d4-b250-48cc-94e6-774b3d019889",
+      "updated_at": "2024-09-23T09:23:38.977948+00:00",
+      "company_id": "3a0b9976-08e7-40f0-b0b8-58609d95d00d",
+      "employee_id": "fee1ec93-c2b1-4111-a87e-d4ed658a5d7a",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-09-16T09:25:42.591658+00:00",
-      "countries_updated_at": null
+      "notification_subscriptions_updated_at": "2024-09-23T09:23:38.982243+00:00",
+      "countries_updated_at": null,
+      "operating_rules_updated_at": null
     },
     "relationships": {
       "company": {
         "data": {
           "type": "companies",
-          "id": "a54bc8bf-aa50-41c6-bd6b-65f0374a3ce1"
+          "id": "3a0b9976-08e7-40f0-b0b8-58609d95d00d"
         }
       },
       "employee": {
         "data": {
           "type": "employees",
-          "id": "165fb0d4-b250-48cc-94e6-774b3d019889"
+          "id": "fee1ec93-c2b1-4111-a87e-d4ed658a5d7a"
         }
       },
       "settings": {
@@ -159,14 +99,14 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "a54bc8bf-aa50-41c6-bd6b-65f0374a3ce1",
+      "id": "3a0b9976-08e7-40f0-b0b8-58609d95d00d",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-09-16T09:25:42.555052+00:00",
-        "updated_at": "2024-09-16T09:25:42.565929+00:00",
-        "name": "Company name 122",
-        "slug": "company-name-122",
-        "email": "mail125@company.com",
+        "created_at": "2024-09-23T09:23:38.949677+00:00",
+        "updated_at": "2024-09-23T09:23:38.959926+00:00",
+        "name": "Company name 88",
+        "slug": "company-name-88",
+        "email": "mail91@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -198,7 +138,7 @@ This request accepts the following includes:
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "4081c10e3a205cd25468666e9dec0adb",
+        "tenant_token": "a934e003bc20cc883274a78ec4e90680",
         "pending_subscription": false,
         "team_size": null,
         "projected_revenue": null,
@@ -221,7 +161,7 @@ This request accepts the following includes:
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-09-30T09:25:42.542Z",
+          "trial_ends_at": "2024-10-07T09:23:38.938Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -278,18 +218,18 @@ This request accepts the following includes:
       }
     },
     {
-      "id": "165fb0d4-b250-48cc-94e6-774b3d019889",
+      "id": "fee1ec93-c2b1-4111-a87e-d4ed658a5d7a",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-09-16T09:25:42.586801+00:00",
-        "updated_at": "2024-09-16T09:25:42.586801+00:00",
+        "created_at": "2024-09-23T09:23:38.977948+00:00",
+        "updated_at": "2024-09-23T09:23:38.977948+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-09-16T09:25:42.581639+00:00",
+        "viewed_whats_new_at": "2024-09-23T09:23:38.973566+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,
@@ -474,7 +414,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee,company,settings`
+`include` | **String** <br>List of comma seperated relationships `?include=app_subscriptions,clusters,company`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[sessions]=company_id,employee_id,locations_updated_at`
 
 
@@ -482,10 +422,25 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
+`app_subscriptions`
+
+
+`clusters`
 
 
 `company`
+
+
+`default_properties`
+
+
+`employee`
+
+
+`locations`
+
+
+`operating_rules`
 
 
 `settings`

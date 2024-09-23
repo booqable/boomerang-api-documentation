@@ -56,11 +56,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "9effbcb7-ad2f-46ea-b15c-161f5433b143",
+      "id": "ebfbcbf7-b6b0-40b5-b932-229df48eb463",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-09-16T09:22:39.139701+00:00",
-        "updated_at": "2024-09-16T09:22:39.139701+00:00",
+        "created_at": "2024-09-23T09:24:59.193433+00:00",
+        "updated_at": "2024-09-23T09:24:59.193433+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
@@ -68,7 +68,7 @@ Name | Description
         "sent": false,
         "document_ids": [],
         "order_id": null,
-        "customer_id": "08f89e9c-7939-467a-a7e9-7b2f4ede621c",
+        "customer_id": "e2a85774-c929-406f-a2d4-c65966bfbd15",
         "email_template_id": null,
         "employee_id": null
       },
@@ -84,7 +84,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=61c43c4f-3e2b-419e-af9f-36ea8f8643a3' \
+    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=0e027fe5-a935-4f0c-af89-03b814dc7bea' \
     --header 'content-type: application/json' \
 ```
 
@@ -94,19 +94,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "3e928225-ce27-4e3c-a53f-d8927b9e45a6",
+      "id": "6283e3c6-17bb-45f3-a6f6-e2aa8f34b00b",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-09-16T09:22:38.348628+00:00",
-        "updated_at": "2024-09-16T09:22:38.413998+00:00",
+        "created_at": "2024-09-23T09:24:59.704373+00:00",
+        "updated_at": "2024-09-23T09:24:59.733648+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "has_error": false,
         "sent": false,
         "document_ids": [],
-        "order_id": "61c43c4f-3e2b-419e-af9f-36ea8f8643a3",
-        "customer_id": "9d94fe8d-ed4f-4fb1-bbe0-d11eb4cf846a",
+        "order_id": "0e027fe5-a935-4f0c-af89-03b814dc7bea",
+        "customer_id": "68216124-1147-42ac-9954-4ab3794b8b17",
         "email_template_id": null,
         "employee_id": null
       },
@@ -194,11 +194,11 @@ This request accepts the following includes:
           "recipients": "customer1@example.com,customer2@example.com",
           "subject": "Order confirmation",
           "body": "Hi {{customer.name}}",
-          "email_template_id": "0da304af-abb1-407f-b046-4d8b3e0a1675",
-          "order_id": "f5dec206-5348-4534-837c-5939067556f6",
-          "customer_id": "de3e6a5b-0095-4427-a0e2-fcfc6cd5bab7",
+          "email_template_id": "c64c72cd-ac10-4e72-89f9-ddabd03e8a12",
+          "order_id": "c478fd43-b0f4-41ea-bd5e-23b8bf5511f8",
+          "customer_id": "9a22e012-66ab-4c4f-8cae-6be866a1d4a8",
           "document_ids": [
-            "9a37cd4b-827f-4df8-91c4-24132696a7a0"
+            "24ab1bfd-a8d0-4e9e-bb27-3e1de2710190"
           ]
         }
       }
@@ -210,23 +210,23 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d456838b-fc9c-479e-abce-5d0763a34c5a",
+    "id": "adc501db-eebd-434c-a249-f2ddbee0d3c7",
     "type": "emails",
     "attributes": {
-      "created_at": "2024-09-16T09:22:40.363496+00:00",
-      "updated_at": "2024-09-16T09:22:40.363496+00:00",
+      "created_at": "2024-09-23T09:25:00.443383+00:00",
+      "updated_at": "2024-09-23T09:25:00.443383+00:00",
       "subject": "Order confirmation",
       "body": "Hi {{customer.name}}",
       "recipients": "customer1@example.com,customer2@example.com",
       "has_error": false,
       "sent": false,
       "document_ids": [
-        "9a37cd4b-827f-4df8-91c4-24132696a7a0"
+        "24ab1bfd-a8d0-4e9e-bb27-3e1de2710190"
       ],
-      "order_id": "f5dec206-5348-4534-837c-5939067556f6",
-      "customer_id": "de3e6a5b-0095-4427-a0e2-fcfc6cd5bab7",
-      "email_template_id": "0da304af-abb1-407f-b046-4d8b3e0a1675",
-      "employee_id": "a589effd-6f92-49b2-b8a1-16beb470ad8f"
+      "order_id": "c478fd43-b0f4-41ea-bd5e-23b8bf5511f8",
+      "customer_id": "9a22e012-66ab-4c4f-8cae-6be866a1d4a8",
+      "email_template_id": "c64c72cd-ac10-4e72-89f9-ddabd03e8a12",
+      "employee_id": "23fc9e89-a4f7-4f67-811b-bdb0066055e1"
     },
     "relationships": {}
   },
