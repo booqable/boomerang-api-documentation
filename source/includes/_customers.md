@@ -71,16 +71,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "5f56a7af-5513-492c-8f13-8ccb4fa9e555",
+      "id": "d28b545e-280a-411a-9c51-809f9d2b4242",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-09-23T09:23:23.756158+00:00",
-        "updated_at": "2024-09-23T09:23:23.756158+00:00",
+        "created_at": "2024-09-30T09:24:22.512826+00:00",
+        "updated_at": "2024-09-30T09:24:22.512826+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-16@doe.test",
+        "email": "john-13@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -229,10 +229,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "d8ad7194-6910-4fe6-8b45-e807158f5677"
+      "id": "c37d600d-3119-4955-a5d0-5ab2353113a0"
     },
     {
-      "id": "cfb87f5c-d98b-43b4-8106-bfbdb4d70aac"
+      "id": "86898e86-a0ac-48c4-93ad-6f5a43e96781"
     }
   ]
 }
@@ -321,7 +321,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/10d84d60-3500-4361-a06d-4bc73c36548d?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/fd59bb3f-94eb-48d4-a45f-62560d594843?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -330,11 +330,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "10d84d60-3500-4361-a06d-4bc73c36548d",
+    "id": "fd59bb3f-94eb-48d4-a45f-62560d594843",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-09-23T09:23:24.744541+00:00",
-      "updated_at": "2024-09-23T09:23:24.744541+00:00",
+      "created_at": "2024-09-30T09:24:29.469973+00:00",
+      "updated_at": "2024-09-30T09:24:29.469973+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
@@ -421,11 +421,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a75dd2bf-12f2-424f-a38f-10ee7ea5c06f",
+    "id": "18d5e1d8-bb99-4d1b-8996-242be24ca277",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-09-23T09:23:28.019225+00:00",
-      "updated_at": "2024-09-23T09:23:28.019225+00:00",
+      "created_at": "2024-09-30T09:24:27.999608+00:00",
+      "updated_at": "2024-09-30T09:24:27.999608+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -506,11 +506,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/237a2401-8fe8-4fae-a66b-92edfc79b400' \
+    --url 'https://example.booqable.com/api/boomerang/customers/40e7aac5-4ec5-4844-b24d-9c1dcdd20785' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "237a2401-8fe8-4fae-a66b-92edfc79b400",
+        "id": "40e7aac5-4ec5-4844-b24d-9c1dcdd20785",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -524,11 +524,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "237a2401-8fe8-4fae-a66b-92edfc79b400",
+    "id": "40e7aac5-4ec5-4844-b24d-9c1dcdd20785",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-09-23T09:23:22.623065+00:00",
-      "updated_at": "2024-09-23T09:23:22.708602+00:00",
+      "created_at": "2024-09-30T09:24:25.230790+00:00",
+      "updated_at": "2024-09-30T09:24:25.331154+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
@@ -609,7 +609,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/ad37b0a9-c7e8-4e2d-afb2-4133e6a9f6b9' \
+    --url 'https://example.booqable.com/api/boomerang/customers/db0b6ab2-807f-4f7f-98a4-ac738dc7f2a3' \
     --header 'content-type: application/json' \
 ```
 
@@ -618,13 +618,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ad37b0a9-c7e8-4e2d-afb2-4133e6a9f6b9",
+    "id": "db0b6ab2-807f-4f7f-98a4-ac738dc7f2a3",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-09-23T09:23:21.547020+00:00",
-      "updated_at": "2024-09-23T09:23:21.632899+00:00",
+      "created_at": "2024-09-30T09:24:23.818893+00:00",
+      "updated_at": "2024-09-30T09:24:23.944510+00:00",
       "archived": true,
-      "archived_at": "2024-09-23T09:23:21.632899+00:00",
+      "archived_at": "2024-09-30T09:24:23.944510+00:00",
       "number": 1,
       "name": "John Doe",
       "email": "john-14@doe.test",

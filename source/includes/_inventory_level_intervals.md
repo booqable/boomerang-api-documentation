@@ -47,7 +47,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_level_intervals?filter%5Bfrom%5D=2022-01-01&filter%5Binterval%5D=day&filter%5Bitem_id%5D=074a37a8-3d07-4cbb-85c5-183567178b5f&filter%5Btill%5D=2022-01-07' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_level_intervals?filter%5Bfrom%5D=2022-01-01&filter%5Binterval%5D=day&filter%5Bitem_id%5D=96da910e-fe77-48b3-954f-485c03639528&filter%5Btill%5D=2022-01-07' \
     --header 'content-type: application/json' \
 ```
 
@@ -57,11 +57,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "c3fa2bea-ea29-5fb7-8297-8250c2e8e55a",
+      "id": "11088ea0-50cc-595d-938e-8918d519bc53",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "074a37a8-3d07-4cbb-85c5-183567178b5f",
-        "location_id": "b14a7216-7268-4353-af5d-21b0901fc844",
+        "item_id": "96da910e-fe77-48b3-954f-485c03639528",
+        "location_id": "4d07474e-f366-4cdb-bcf7-539f393b053b",
         "from": "2022-01-01T00:00:00.000000+00:00",
         "till": "2022-01-02T00:00:00.000000+00:00",
         "location_available": 4,
@@ -84,11 +84,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "7186e84b-48ac-51c5-9433-9cb6df174641",
+      "id": "4fb2d54a-ffc9-5d9a-b6ac-995a8ae126b4",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "074a37a8-3d07-4cbb-85c5-183567178b5f",
-        "location_id": "b14a7216-7268-4353-af5d-21b0901fc844",
+        "item_id": "96da910e-fe77-48b3-954f-485c03639528",
+        "location_id": "4d07474e-f366-4cdb-bcf7-539f393b053b",
         "from": "2022-01-02T00:00:00.000000+00:00",
         "till": "2022-01-03T00:00:00.000000+00:00",
         "location_available": 4,
@@ -111,11 +111,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "e0b31a99-db7d-5815-97cd-9afc22874784",
+      "id": "50fdfca6-b2e1-54a9-be10-f87f4eede3d2",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "074a37a8-3d07-4cbb-85c5-183567178b5f",
-        "location_id": "b14a7216-7268-4353-af5d-21b0901fc844",
+        "item_id": "96da910e-fe77-48b3-954f-485c03639528",
+        "location_id": "4d07474e-f366-4cdb-bcf7-539f393b053b",
         "from": "2022-01-03T00:00:00.000000+00:00",
         "till": "2022-01-04T00:00:00.000000+00:00",
         "location_available": 4,
@@ -138,11 +138,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "da369a17-accd-5b53-a3f8-a6d146f50931",
+      "id": "e27d8c8d-d20f-53a4-a61e-2d0833a9f657",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "074a37a8-3d07-4cbb-85c5-183567178b5f",
-        "location_id": "b14a7216-7268-4353-af5d-21b0901fc844",
+        "item_id": "96da910e-fe77-48b3-954f-485c03639528",
+        "location_id": "4d07474e-f366-4cdb-bcf7-539f393b053b",
         "from": "2022-01-04T00:00:00.000000+00:00",
         "till": "2022-01-05T00:00:00.000000+00:00",
         "location_available": 4,
@@ -165,11 +165,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "01472796-6ef5-5fe1-bb56-23b8b6a6b77f",
+      "id": "be90b5b9-7934-5e10-a239-c82ff82443f3",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "074a37a8-3d07-4cbb-85c5-183567178b5f",
-        "location_id": "b14a7216-7268-4353-af5d-21b0901fc844",
+        "item_id": "96da910e-fe77-48b3-954f-485c03639528",
+        "location_id": "4d07474e-f366-4cdb-bcf7-539f393b053b",
         "from": "2022-01-05T00:00:00.000000+00:00",
         "till": "2022-01-06T00:00:00.000000+00:00",
         "location_available": 4,
@@ -192,11 +192,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "09f80229-2cc2-56db-b27b-442b42144220",
+      "id": "a624dcea-2ca0-54a1-990f-d9b125f2f36c",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "074a37a8-3d07-4cbb-85c5-183567178b5f",
-        "location_id": "b14a7216-7268-4353-af5d-21b0901fc844",
+        "item_id": "96da910e-fe77-48b3-954f-485c03639528",
+        "location_id": "4d07474e-f366-4cdb-bcf7-539f393b053b",
         "from": "2022-01-06T00:00:00.000000+00:00",
         "till": "2022-01-07T00:00:00.000000+00:00",
         "location_available": 4,
@@ -219,11 +219,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "abde6d86-794c-5e7f-ac0a-1d4d252cfe0d",
+      "id": "79d19ee1-2b14-54b3-a157-c850e409d9af",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "074a37a8-3d07-4cbb-85c5-183567178b5f",
-        "location_id": "b14a7216-7268-4353-af5d-21b0901fc844",
+        "item_id": "96da910e-fe77-48b3-954f-485c03639528",
+        "location_id": "4d07474e-f366-4cdb-bcf7-539f393b053b",
         "from": "2022-01-07T00:00:00.000000+00:00",
         "till": "2022-01-08T00:00:00.000000+00:00",
         "location_available": 4,
