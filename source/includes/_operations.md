@@ -24,7 +24,7 @@ The following operation types are supported:
   - `archive`
   - `generate_barcode`
   - `generate_document`
-  - `update_category`
+  - `update_collections`
   - `update_tag`
   - `export`
   - `update`
@@ -124,15 +124,15 @@ Generates documents in bulk, either by a list of documents or all documents for 
 
 A zip file with the generated documents of type <document_extension>.
 
-## Update Category
+## Update Collection
 
-Updates the categories associated to the entities by mutating them with the action. Other categories already associated to the entity are not modified.
+Updates the collections associated to the entities by mutating them with the action. Other collections already associated to the entity are not modified.
 
 **Params**
 
 ```json
 "operation_data": {
-  "type": "update_category",
+  "type": "update_collections",
   "data": {
     "target_type": "product_groups",
     "target_ids": [
@@ -140,7 +140,7 @@ Updates the categories associated to the entities by mutating them with the acti
       "456"
     ],
     "action": "add_entities",
-    "category_ids": [
+    "collection_ids": [
       "789",
       "101"
     ]
@@ -148,17 +148,17 @@ Updates the categories associated to the entities by mutating them with the acti
 }
 ```
 
-| Key                 | Type          | Possible values                       | Description                                                                                                            |
-|---------------------|---------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| `type`              | String        | `update_category`                     | Required to start this specific operation.                                                                             |
-| `data.target_type`  | String        | `product_groups`                      | The type of resource that should have the associated categories updated. Only one resource per operation is supported. |
-| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                        | An array of primary keys for the entities that should have the associated categories updated.                          |
-| `data.action`       | String        | `add_entities`, `remove_entities`     | The action that should be executed on the categories of the entities.                                                  |
-| `data.category_ids` | Array\<Uuid\> | `[{id}, {id}]`                        | The primary keys of the categories that should be used with the action.                                                |
+| Key                   | Type          | Possible values                       | Description                                                                                                             |
+|-----------------------|---------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `type`                | String        | `update_collections`                  | Required to start this specific operation.                                                                              |
+| `data.target_type`    | String        | `product_groups`                      | The type of resource that should have the associated collections updated. Only one resource per operation is supported. |
+| `data.target_ids`     | Array\<Uuid\> | `[{id}, {id}]`                        | An array of primary keys for the entities that should have the associated collections updated.                          |
+| `data.action`         | String        | `add_entities`, `remove_entities`     | The action that should be executed on the collections of the entities.                                                  |
+| `data.collection_ids` | Array\<Uuid\> | `[{id}, {id}]`                        | The primary keys of the collections that should be used with the action.                                                |
 
 **Artifact**
 
-_No artifacts are generated when updating categories._
+_No artifacts are generated when updating collections._
 
 ## Update Tag
 
@@ -336,11 +336,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "78b70250-f63d-476c-8842-c28951b1cfb0",
+      "id": "e0f40f23-09aa-4911-9dff-2ac14a21c460",
       "type": "operations",
       "attributes": {
-        "created_at": "2024-09-30T09:24:04.038532+00:00",
-        "updated_at": "2024-09-30T09:24:04.038532+00:00",
+        "created_at": "2024-10-07T09:27:55.899325+00:00",
+        "updated_at": "2024-10-07T09:27:55.899325+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -350,7 +350,7 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "514f299e-a057-43d5-b0d2-7c5d72fd55e5"
+        "employee_id": "ccf32af4-8191-4c36-9ad2-f7206a78e180"
       },
       "relationships": {}
     }
@@ -420,7 +420,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/fba2bdaa-140a-405d-bb1a-4529aa21a54c' \
+    --url 'https://example.booqable.com/api/boomerang/operations/3d224799-a50e-40d2-a4b9-59cb09ce8bb1' \
     --header 'content-type: application/json' \
 ```
 
@@ -429,11 +429,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fba2bdaa-140a-405d-bb1a-4529aa21a54c",
+    "id": "3d224799-a50e-40d2-a4b9-59cb09ce8bb1",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-09-30T09:24:03.526953+00:00",
-      "updated_at": "2024-09-30T09:24:03.526953+00:00",
+      "created_at": "2024-10-07T09:27:56.724160+00:00",
+      "updated_at": "2024-10-07T09:27:56.724160+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -443,7 +443,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "579b46fa-1f52-4366-966a-aebf4bf1c76e"
+      "employee_id": "92829b0f-30d0-4041-84e7-ebde34244c0f"
     },
     "relationships": {}
   },
@@ -509,11 +509,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b422b0c9-62b3-4505-be34-efd0495ba359",
+    "id": "21ed1969-5148-423a-b10c-db79b703a8be",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-09-30T09:24:04.588168+00:00",
-      "updated_at": "2024-09-30T09:24:04.588168+00:00",
+      "created_at": "2024-10-07T09:27:54.939486+00:00",
+      "updated_at": "2024-10-07T09:27:54.939486+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -523,7 +523,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "598e6fe3-1190-401e-b36e-3ac7a1a0477f"
+      "employee_id": "117e9809-4257-436a-b505-12e40962ed69"
     },
     "relationships": {}
   },

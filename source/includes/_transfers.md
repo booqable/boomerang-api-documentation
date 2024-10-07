@@ -48,18 +48,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "3e91f5dd-73b6-4d0f-af2b-dd2164273f98",
+      "id": "60a5d848-fdb7-4df7-a222-1743ba1aca48",
       "type": "transfers",
       "attributes": {
-        "created_at": "2024-09-30T09:24:51.764582+00:00",
-        "updated_at": "2024-09-30T09:24:51.764582+00:00",
+        "created_at": "2024-10-07T09:33:43.060727+00:00",
+        "updated_at": "2024-10-07T09:33:43.060727+00:00",
         "quantity": 1,
-        "available_at": "2024-09-28T09:15:00.000000+00:00",
+        "available_at": "2024-10-05T09:30:00.000000+00:00",
         "finalized": false,
-        "item_id": "d15f4384-c865-48ee-ad89-44d4a5a4f4fb",
-        "order_id": "689fd982-51ac-49ef-83cb-bee685b3d562",
-        "source_location_id": "0f425b9c-7f48-491e-b4a7-fe6f16572294",
-        "destination_location_id": "0f425b9c-7f48-491e-b4a7-fe6f16572294"
+        "item_id": "42e49617-33a4-4ae1-b663-ce572c18a2c6",
+        "order_id": "dc4a6327-4b62-4336-9a64-5bc36563bd78",
+        "source_location_id": "396faf89-5a0d-4b63-a05d-d5cac917b09a",
+        "destination_location_id": "396faf89-5a0d-4b63-a05d-d5cac917b09a"
       },
       "relationships": {}
     }

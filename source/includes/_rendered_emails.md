@@ -30,8 +30,8 @@ Name | Description
       "data": {
         "type": "rendered_emails",
         "attributes": {
-          "order_id": "168aa216-05fa-473a-b411-50b38a53fd91",
-          "email_template_id": "8ce95d83-b7a6-4f4c-9a42-8f34e27a9de0"
+          "order_id": "8c4311c7-9ef7-447a-b4f0-69a78002cadb",
+          "email_template_id": "e8bf0b07-f994-4e10-9ed2-0fab8aed9bd8"
         }
       }
     }'
@@ -42,11 +42,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c3cc7406-96b0-5d13-b56e-2f40ec50e17c",
+    "id": "92615e11-b21b-5974-8976-45605c880e0c",
     "type": "rendered_emails",
     "attributes": {
-      "email_template_id": "8ce95d83-b7a6-4f4c-9a42-8f34e27a9de0",
-      "order_id": "168aa216-05fa-473a-b411-50b38a53fd91",
+      "email_template_id": "e8bf0b07-f994-4e10-9ed2-0fab8aed9bd8",
+      "order_id": "8c4311c7-9ef7-447a-b4f0-69a78002cadb",
       "document_id": null,
       "subject": "Order number 1",
       "body": "<p>Thank you for ordering with us!</p>\n",
@@ -68,8 +68,8 @@ Name | Description
       "data": {
         "type": "rendered_emails",
         "attributes": {
-          "order_id": "e21e7542-2904-4a73-97ad-c8ef4501ab6f",
-          "email_template_id": "42fde21d-cccc-4c08-ad93-13eba08eb34c",
+          "order_id": "f69d03c8-e870-40df-914f-db709d948463",
+          "email_template_id": "296c2c64-617d-4191-b927-a118bd7b8747",
           "body": "<p>Thank you for ordering with us!</p>\n"
         }
       }
@@ -81,15 +81,15 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e1a154a4-f2b5-5e78-bdf0-74da992417e9",
+    "id": "74706a85-f3a9-5dd4-905c-17c226e90d39",
     "type": "rendered_emails",
     "attributes": {
-      "email_template_id": "42fde21d-cccc-4c08-ad93-13eba08eb34c",
-      "order_id": "e21e7542-2904-4a73-97ad-c8ef4501ab6f",
+      "email_template_id": "296c2c64-617d-4191-b927-a118bd7b8747",
+      "order_id": "f69d03c8-e870-40df-914f-db709d948463",
       "document_id": null,
       "subject": "Order number 1",
       "body": "<p>Thank you for ordering with us!</p>\n",
-      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 83</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 83</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail86@company.com'>mail86@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='www.booqable.com'>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
+      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 280</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 280</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail283@company.com'>mail283@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='tel:0581234567'>0581234567</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='www.booqable.com'>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
     }
   },
   "meta": {}
