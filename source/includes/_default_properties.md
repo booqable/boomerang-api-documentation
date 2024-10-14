@@ -56,11 +56,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "c193be53-fe40-4bf5-92a1-b20582b4ba54",
+      "id": "14d503b6-4524-449b-8339-964f4fae5f72",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2024-10-07T09:33:53.587912+00:00",
-        "updated_at": "2024-10-07T09:33:53.587912+00:00",
+        "created_at": "2024-10-14T09:24:12.164424+00:00",
+        "updated_at": "2024-10-14T09:24:12.164424+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
@@ -131,7 +131,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/5f3c321d-8b99-4e3a-b4c8-ac8099d066f9?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/cfa787bb-a99b-4b9a-88f9-a31cec71ae5d?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -140,11 +140,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "5f3c321d-8b99-4e3a-b4c8-ac8099d066f9",
+    "id": "cfa787bb-a99b-4b9a-88f9-a31cec71ae5d",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2024-10-07T09:33:55.834174+00:00",
-      "updated_at": "2024-10-07T09:33:55.834174+00:00",
+      "created_at": "2024-10-14T09:24:11.176244+00:00",
+      "updated_at": "2024-10-14T09:24:11.176244+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -203,11 +203,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "6100df4e-6e14-4775-8c2c-46772bb7f23e",
+    "id": "98869de9-0974-41c1-a566-38bdb895cbf9",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2024-10-07T09:33:54.425913+00:00",
-      "updated_at": "2024-10-07T09:33:54.425913+00:00",
+      "created_at": "2024-10-14T09:24:11.644330+00:00",
+      "updated_at": "2024-10-14T09:24:11.644330+00:00",
       "name": "Mobile phone",
       "identifier": "mobile_phone",
       "position": 2,
@@ -263,11 +263,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/ad37468a-206a-4e45-b4ba-89ab1456b212' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/c15e38e3-897d-4e32-85f5-277527ff09fd' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ad37468a-206a-4e45-b4ba-89ab1456b212",
+        "id": "c15e38e3-897d-4e32-85f5-277527ff09fd",
         "type": "default_properties",
         "attributes": {
           "property_type": "text_field"
@@ -281,11 +281,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ad37468a-206a-4e45-b4ba-89ab1456b212",
+    "id": "c15e38e3-897d-4e32-85f5-277527ff09fd",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2024-10-07T09:33:55.115877+00:00",
-      "updated_at": "2024-10-07T09:33:55.156667+00:00",
+      "created_at": "2024-10-14T09:24:12.593149+00:00",
+      "updated_at": "2024-10-14T09:24:12.615095+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,
@@ -341,7 +341,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/default_properties/b1ac1ee9-ea46-4c25-9835-905f162759e8' \
+    --url 'https://example.booqable.com/api/boomerang/default_properties/8c37f122-bdd2-4c71-9e21-5e7d7758341b' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -351,11 +351,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b1ac1ee9-ea46-4c25-9835-905f162759e8",
+    "id": "8c37f122-bdd2-4c71-9e21-5e7d7758341b",
     "type": "default_properties",
     "attributes": {
-      "created_at": "2024-10-07T09:33:52.828133+00:00",
-      "updated_at": "2024-10-07T09:33:52.828133+00:00",
+      "created_at": "2024-10-14T09:24:13.025054+00:00",
+      "updated_at": "2024-10-14T09:24:13.025054+00:00",
       "name": "Phone",
       "identifier": "phone",
       "position": 1,

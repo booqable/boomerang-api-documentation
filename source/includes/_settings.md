@@ -115,7 +115,7 @@ Name | Description
 `hide_product_availability_quantities` | **Boolean**<br>Whether hide quantities in the product availability calendar
 `show_cart_availability` | **Boolean**<br>Whether to show on which dates the products in a cart are available during the period selection
 `website` | **String**<br>Website to use to redirect back to from the checkout
-`custom_scripts` | **String**<br>Custom scripts to execute during checkout
+`checkout_scripts` | **String**<br>Custom scripts to execute during checkout
 `google_analytics_id` | **String**<br>Google analytics ID to use for tracking
 `facebook_pixel_id` | **String**<br>Facebook pixel ID to use for tracking
 `facebook_domain_verification` | **String**<br>Content for the `facebook-domain-verification` meta tag
@@ -252,10 +252,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "574f782a-4bdb-5d97-a891-35628dcf2753",
+    "id": "a7cbba35-e9ab-590c-afa7-f0291bdb97d4",
     "type": "settings",
     "attributes": {
-      "updated_at": "2024-10-07T09:33:15.127221+00:00",
+      "updated_at": "2024-10-14T09:24:24.000884+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -267,8 +267,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "cd755401-6c9a-436e-a6ae-b34712e436c5",
-        "tax_region_id": "aa5ccd6b-75bc-406f-9760-4f684ea15b84",
+        "tax_category_id": "a6e91b86-b2d1-4bb0-9212-0a72d1c030a8",
+        "tax_region_id": "01efa8bd-74b7-4032-b670-16520af4c64d",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },
@@ -337,7 +337,6 @@ Name | Description
         "hide_product_availability_quantities": false,
         "show_cart_availability": true,
         "website": null,
-        "custom_scripts": "",
         "checkout_scripts": "",
         "google_analytics_id": null,
         "google_anlaytics_options": "{}",

@@ -1,16 +1,16 @@
-# Payment charges
+# Payment refunds
 
-Creates a `PaymentCharge` record. A `PaymentCharge` is a record of payment of an User that is used to track the payment status and details.
+Creates a `PaymentRefund` record. A `PaymentRefund` is a record of refund to the User that is used to track the refund status and details.
 
 ## Endpoints
-`GET /api/boomerang/payment_charges`
+`GET /api/boomerang/payment_refunds`
 
-`GET /api/boomerang/payment_charges/{id}`
+`GET /api/boomerang/payment_refunds/{id}`
 
-`POST /api/boomerang/payment_charges`
+`POST /api/boomerang/payment_refunds`
 
 ## Fields
-Every payment charge has the following fields:
+Every payment refund has the following fields:
 
 Name | Description
 -- | --
@@ -20,49 +20,45 @@ Name | Description
 `status` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
-`total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
+`total_in_cents` | **Integer** `readonly`<br>Total amount in cents (`amount + deposit`)
 `currency` | **String** <br>Currency
-`mode` | **String** <br>Mode. One of `manual`, `off_session`, `request`, `terminal`. `checkout` mode is reserved for checkout payments, not available for API.
 `description` | **String** <br>Description
+`failure_reason` | **String** <br>Failure reason
+`reason` | **String** <br>Reason
 `provider` | **String** <br>Provider. Can be one of `[:stripe, "stripe"]`, `[:app, "app"]`, `[:none, "none"]`
-`provider_id` | **String** <br>External provider payment identification
-`provider_method` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.
-`provider_secret` | **String** <br>Provider payment secret
-`refundable` | **Boolean** `readonly`<br>Whether the payment is refundable
-`amount_refundable_in_cents` | **Integer** `readonly`<br>Refundable amount in cents
-`amount_refunded_in_cents` | **Integer** `readonly`<br>Refunded amount in cents
-`deposit_refundable_in_cents` | **Integer** `readonly`<br>Refundable deposit in cents
-`deposit_refunded_in_cents` | **Integer** `readonly`<br>Refunded deposit in cents
-`total_refundable_in_cents` | **Integer** `readonly`<br>Total refundable amount in cents (`amount_refundable + deposit_refundable`)
-`total_refunded_in_cents` | **Integer** `readonly`<br>Total refunded amount in cents (`amount_refunded + deposit_refunded`)
-`succeeded_at` | **Datetime** `readonly`<br>When payment charge succeeded
-`failed_at` | **Datetime** `readonly`<br>When payment charge failed
-`canceled_at` | **Datetime** `readonly`<br>When payment charge was canceled
-`expired_at` | **Datetime** `readonly`<br>When payment charge expired
+`provider_id` | **String** <br>External provider refund identification
+`provider_method` | **String** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc.
+`provider_secret` | **String** <br>Provider refund secret
+`succeeded_at` | **Datetime** `readonly`<br>When payment refund succeeded
+`failed_at` | **Datetime** `readonly`<br>When payment refund failed
+`canceled_at` | **Datetime** `readonly`<br>When payment refund was canceled
+`expired_at` | **Datetime** `readonly`<br>When payment refund expired
 `employee_id` | **Uuid** <br>The associated Employee
 `order_id` | **Uuid** <br>The associated Order
 `customer_id` | **Uuid** <br>The associated Customer
+`payment_charge_id` | **Uuid** <br>The associated Payment charge
 
 
 ## Relationships
-Payment charges have the following relationships:
+Payment refunds have the following relationships:
 
 Name | Description
 -- | --
 `customer` | **Customers** `readonly`<br>Associated Customer
 `employee` | **Employees** `readonly`<br>Associated Employee
 `order` | **Orders** `readonly`<br>Associated Order
+`payment_charge` | **Payment charges** `readonly`<br>Associated Payment charge
 
 
-## Listing payment charges
+## Listing payment refunds
 
 
 
-> How to fetch a list of payment charges:
+> How to fetch a list of payment refunds:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds' \
     --header 'content-type: application/json' \
 ```
 
@@ -72,36 +68,31 @@ Name | Description
   {
   "data": [
     {
-      "id": "90435603-5d14-4a91-959c-880d61bb645b",
-      "type": "payment_charges",
+      "id": "87f2575c-9d0f-4d28-8454-342b87130c92",
+      "type": "payment_refunds",
       "attributes": {
-        "created_at": "2024-10-14T09:24:10.713759+00:00",
-        "updated_at": "2024-10-14T09:24:10.713759+00:00",
+        "created_at": "2024-10-14T09:25:12.533413+00:00",
+        "updated_at": "2024-10-14T09:25:12.533413+00:00",
         "status": "created",
-        "amount_in_cents": 5000,
+        "amount_in_cents": 100,
         "deposit_in_cents": 0,
-        "total_in_cents": 5000,
+        "total_in_cents": 100,
         "currency": "usd",
-        "mode": "request",
         "description": null,
-        "provider": null,
+        "failure_reason": null,
+        "reason": null,
+        "provider": "none",
         "provider_id": null,
         "provider_method": null,
         "provider_secret": null,
-        "refundable": true,
-        "amount_refundable_in_cents": 5000,
-        "amount_refunded_in_cents": 0,
-        "deposit_refundable_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "total_refundable_in_cents": 5000,
-        "total_refunded_in_cents": 0,
         "succeeded_at": null,
         "failed_at": null,
         "canceled_at": null,
         "expired_at": null,
         "employee_id": null,
         "order_id": null,
-        "customer_id": null
+        "customer_id": null,
+        "payment_charge_id": null
       },
       "relationships": {}
     }
@@ -112,7 +103,7 @@ Name | Description
 
 ### HTTP Request
 
-`GET /api/boomerang/payment_charges`
+`GET /api/boomerang/payment_refunds`
 
 ### Request params
 
@@ -121,7 +112,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
 `filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
 `meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
@@ -143,19 +134,13 @@ Name | Description
 `deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `total_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `currency` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`mode` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`failure_reason` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`reason` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider_id` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider_method` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider_secret` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`refundable` | **Boolean** <br>`eq`
-`amount_refundable_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`amount_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_refundable_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`total_refundable_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`total_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `succeeded_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `failed_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `canceled_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -163,6 +148,7 @@ Name | Description
 `employee_id` | **Uuid** <br>`eq`, `not_eq`
 `order_id` | **Uuid** <br>`eq`, `not_eq`
 `customer_id` | **Uuid** <br>`eq`, `not_eq`
+`payment_charge_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -188,15 +174,15 @@ This request accepts the following includes:
 
 
 
-## Fetching a payment charge
+## Fetching a payment refund
 
 
 
-> How to fetch a payment charge:
+> How to fetch a payment refund:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/52f65f02-a7d8-456a-a075-be7a7862b9d2' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds/7ef32f04-7a95-4085-9c2e-d28e510c6896' \
     --header 'content-type: application/json' \
 ```
 
@@ -205,36 +191,31 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "52f65f02-a7d8-456a-a075-be7a7862b9d2",
-    "type": "payment_charges",
+    "id": "7ef32f04-7a95-4085-9c2e-d28e510c6896",
+    "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-10-14T09:24:09.785434+00:00",
-      "updated_at": "2024-10-14T09:24:09.785434+00:00",
+      "created_at": "2024-10-14T09:25:13.479082+00:00",
+      "updated_at": "2024-10-14T09:25:13.479082+00:00",
       "status": "created",
-      "amount_in_cents": 5000,
+      "amount_in_cents": 100,
       "deposit_in_cents": 0,
-      "total_in_cents": 5000,
+      "total_in_cents": 100,
       "currency": "usd",
-      "mode": "request",
       "description": null,
-      "provider": null,
+      "failure_reason": null,
+      "reason": null,
+      "provider": "none",
       "provider_id": null,
       "provider_method": null,
       "provider_secret": null,
-      "refundable": true,
-      "amount_refundable_in_cents": 5000,
-      "amount_refunded_in_cents": 0,
-      "deposit_refundable_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "total_refundable_in_cents": 5000,
-      "total_refunded_in_cents": 0,
       "succeeded_at": null,
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
       "employee_id": null,
       "order_id": null,
-      "customer_id": null
+      "customer_id": null,
+      "payment_charge_id": null
     },
     "relationships": {}
   },
@@ -244,7 +225,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/payment_charges/{id}`
+`GET /api/boomerang/payment_refunds/{id}`
 
 ### Request params
 
@@ -253,7 +234,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
 
 
 ### Includes
@@ -270,21 +251,20 @@ This request accepts the following includes:
 
 
 
-## Creating a payment charge
+## Creating a payment refund
 
 
 
-> How to create a payment charge:
+> How to create a payment refund:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "type": "payment_charges",
+        "type": "payment_refunds",
         "attributes": {
-          "mode": "manual",
           "provider": "none",
           "amount_in_cents": 10000,
           "deposit_in_cents": 5000
@@ -298,36 +278,31 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2dd3cda4-ebc6-437b-b1d2-67400031aee6",
-    "type": "payment_charges",
+    "id": "ed93c367-e0e9-422a-8996-f245256963cb",
+    "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-10-14T09:24:10.271018+00:00",
-      "updated_at": "2024-10-14T09:24:10.271018+00:00",
+      "created_at": "2024-10-14T09:25:13.042193+00:00",
+      "updated_at": "2024-10-14T09:25:13.042193+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
       "total_in_cents": 15000,
       "currency": "usd",
-      "mode": "manual",
       "description": null,
+      "failure_reason": null,
+      "reason": null,
       "provider": "none",
       "provider_id": null,
-      "provider_method": "bank",
+      "provider_method": null,
       "provider_secret": null,
-      "refundable": true,
-      "amount_refundable_in_cents": 10000,
-      "amount_refunded_in_cents": 0,
-      "deposit_refundable_in_cents": 5000,
-      "deposit_refunded_in_cents": 0,
-      "total_refundable_in_cents": 15000,
-      "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-10-14T09:24:10.270264+00:00",
+      "succeeded_at": "2024-10-14T09:25:13.041433+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "4b34ad97-980b-45c1-99b5-36e09003c84c",
+      "employee_id": "7bddb26a-79a9-410d-ad9d-34cc51d0665e",
       "order_id": null,
-      "customer_id": null
+      "customer_id": null,
+      "payment_charge_id": null
     },
     "relationships": {}
   },
@@ -337,7 +312,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/payment_charges`
+`POST /api/boomerang/payment_refunds`
 
 ### Request params
 
@@ -346,7 +321,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `include` | **String** <br>List of comma seperated relationships `?include=order,customer`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
 
 
 ### Request body
@@ -359,14 +334,16 @@ Name | Description
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency
-`data[attributes][mode]` | **String** <br>Mode. One of `manual`, `off_session`, `request`, `terminal`. `checkout` mode is reserved for checkout payments, not available for API.
+`data[attributes][failure_reason]` | **String** <br>Failure reason
+`data[attributes][reason]` | **String** <br>Reason
 `data[attributes][provider]` | **String** <br>Provider. Can be one of `[:stripe, "stripe"]`, `[:app, "app"]`, `[:none, "none"]`
-`data[attributes][provider_id]` | **String** <br>External provider payment identification
-`data[attributes][provider_method]` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.
-`data[attributes][provider_secret]` | **String** <br>Provider payment secret
+`data[attributes][provider_id]` | **String** <br>External provider refund identification
+`data[attributes][provider_method]` | **String** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc.
+`data[attributes][provider_secret]` | **String** <br>Provider refund secret
 `data[attributes][employee_id]` | **Uuid** <br>The associated Employee
 `data[attributes][order_id]` | **Uuid** <br>The associated Order
 `data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][payment_charge_id]` | **Uuid** <br>The associated Payment charge
 
 
 ### Includes

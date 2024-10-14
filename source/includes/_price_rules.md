@@ -80,13 +80,13 @@ Name | Description
       "data": {
         "type": "price_rules",
         "attributes": {
-          "price_ruleset_id": "7df2a49d-cdf0-4a41-929b-136b588edbb0",
+          "price_ruleset_id": "3ee25b49-522f-4e77-b982-f12bf9384e17",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "value": 25,
-          "from": "2024-09-07T09:33:21.120Z",
-          "till": "2024-11-07T09:33:21.120Z"
+          "from": "2024-09-14T09:23:37.814Z",
+          "till": "2024-11-14T09:23:37.814Z"
         }
       },
       "include": "price_rules"
@@ -98,18 +98,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "0b9ee992-954a-4f81-8b3f-669352c3f5a8",
+    "id": "f8447e7e-ae4f-4f04-bc20-3baa07cb842e",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-10-07T09:33:21.143299+00:00",
-      "updated_at": "2024-10-07T09:33:21.143299+00:00",
+      "created_at": "2024-10-14T09:23:37.831568+00:00",
+      "updated_at": "2024-10-14T09:23:37.831568+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
       "adjustment_strategy": "percentage",
       "value": 25.0,
-      "from": "2024-09-07T09:33:21.120000+00:00",
-      "till": "2024-11-07T09:33:21.120000+00:00",
+      "from": "2024-09-14T09:23:37.814000+00:00",
+      "till": "2024-11-14T09:23:37.814000+00:00",
       "from_day": null,
       "till_day": null,
       "from_time": null,
@@ -119,7 +119,7 @@ Name | Description
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "7df2a49d-cdf0-4a41-929b-136b588edbb0"
+      "price_ruleset_id": "3ee25b49-522f-4e77-b982-f12bf9384e17"
     },
     "relationships": {}
   },
@@ -188,11 +188,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/30382196-9224-45cb-8e28-3110f9d91915' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/0d91f4b9-9f4b-4fd3-b5b5-1a835b449692' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "30382196-9224-45cb-8e28-3110f9d91915",
+        "id": "0d91f4b9-9f4b-4fd3-b5b5-1a835b449692",
         "type": "price_rules",
         "attributes": {
           "value": 10
@@ -206,11 +206,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "30382196-9224-45cb-8e28-3110f9d91915",
+    "id": "0d91f4b9-9f4b-4fd3-b5b5-1a835b449692",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-10-07T09:33:17.950111+00:00",
-      "updated_at": "2024-10-07T09:33:17.983547+00:00",
+      "created_at": "2024-10-14T09:23:38.271733+00:00",
+      "updated_at": "2024-10-14T09:23:38.293021+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -227,7 +227,7 @@ This request accepts the following includes:
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "4165ce70-1eb1-48e8-aef0-406d358bcab7"
+      "price_ruleset_id": "ef8dacd1-dbc1-4d36-b421-3d71223725a6"
     },
     "relationships": {}
   },
@@ -240,14 +240,14 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/2d17a661-86db-4dc0-8e6b-ddb8335d5ad9' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/f3610c17-065a-4924-8076-57255564965e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "2d17a661-86db-4dc0-8e6b-ddb8335d5ad9",
+        "id": "f3610c17-065a-4924-8076-57255564965e",
         "type": "price_rules",
         "attributes": {
-          "id": "2d17a661-86db-4dc0-8e6b-ddb8335d5ad9",
+          "id": "f3610c17-065a-4924-8076-57255564965e",
           "name": "Off season"
         }
       }
@@ -259,11 +259,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2d17a661-86db-4dc0-8e6b-ddb8335d5ad9",
+    "id": "f3610c17-065a-4924-8076-57255564965e",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-10-07T09:33:16.786084+00:00",
-      "updated_at": "2024-10-07T09:33:16.810673+00:00",
+      "created_at": "2024-10-14T09:23:38.731715+00:00",
+      "updated_at": "2024-10-14T09:23:38.750370+00:00",
       "name": "Off season",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -280,7 +280,7 @@ This request accepts the following includes:
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "43237362-46d9-4403-973b-8e21c402b1d6"
+      "price_ruleset_id": "be3ac3f9-6a02-49cf-9581-7511d45fce6f"
     },
     "relationships": {}
   },
@@ -349,7 +349,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_rules/5334161b-9b4f-455c-9449-2140170eb975' \
+    --url 'https://example.booqable.com/api/boomerang/price_rules/3a4573ab-c201-400b-829b-9ab1106c2210' \
     --header 'content-type: application/json' \
 ```
 
@@ -358,11 +358,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5334161b-9b4f-455c-9449-2140170eb975",
+    "id": "3a4573ab-c201-400b-829b-9ab1106c2210",
     "type": "price_rules",
     "attributes": {
-      "created_at": "2024-10-07T09:33:18.802831+00:00",
-      "updated_at": "2024-10-07T09:33:18.802831+00:00",
+      "created_at": "2024-10-14T09:23:39.172857+00:00",
+      "updated_at": "2024-10-14T09:23:39.172857+00:00",
       "name": "Holidays",
       "rule_type": "range_of_dates",
       "match_strategy": "span",
@@ -379,7 +379,7 @@ This request accepts the following includes:
       "time": null,
       "min_duration": null,
       "max_duration": null,
-      "price_ruleset_id": "c1e6ee80-2afa-43b9-9595-93390551f85c"
+      "price_ruleset_id": "2095ae02-cc64-42e7-9538-1c5bac164e84"
     },
     "relationships": {}
   },

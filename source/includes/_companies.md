@@ -85,14 +85,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4b594a6e-e921-471f-afa4-66fb2e12a5b4",
+    "id": "c3597bc0-eb7b-4a35-89cf-131c1f97da5a",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-10-07T09:28:53.886093+00:00",
-      "updated_at": "2024-10-07T09:28:53.905833+00:00",
+      "created_at": "2024-10-14T09:24:48.294569+00:00",
+      "updated_at": "2024-10-14T09:24:48.304496+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail86@company.com",
+      "email": "mail107@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -124,7 +124,7 @@ Name | Description
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "9f3ee7bb676d6bd5c912220836bf6efd",
+      "tenant_token": "ec30ea632d8ccb1720f0bfa5f38b93ff",
       "pending_subscription": false,
       "team_size": null,
       "projected_revenue": null,
@@ -216,11 +216,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ca644861-9969-42f8-adf8-d329e57b7b65",
+    "id": "cd567275-0594-4e12-95d9-a7216ae4c249",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-10-21T09:28:54.989Z",
+        "trial_ends_at": "2024-10-28T09:24:47.956Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,
@@ -307,7 +307,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "f4bea427-da03-486c-a49e-b76ab2aada26",
+        "id": "410994a7-3ebc-46d7-a6aa-0c845f260492",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -321,14 +321,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "f4bea427-da03-486c-a49e-b76ab2aada26",
+    "id": "410994a7-3ebc-46d7-a6aa-0c845f260492",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-10-07T09:28:52.940689+00:00",
-      "updated_at": "2024-10-07T09:28:53.043529+00:00",
+      "created_at": "2024-10-14T09:24:47.519913+00:00",
+      "updated_at": "2024-10-14T09:24:47.571210+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail85@company.com",
+      "email": "mail105@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -360,7 +360,7 @@ This request does not accept any includes
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "62b36893de1426d5f26f252d4390b4b4",
+      "tenant_token": "9e85e3ab0f755b0f49e3da5f2065e7f2",
       "pending_subscription": false,
       "team_size": null,
       "projected_revenue": null,

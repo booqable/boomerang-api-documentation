@@ -63,16 +63,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "53f0c0fe-41e3-5a44-af41-e564afd28e20",
+    "id": "ec17a0cd-102d-559f-875c-410514f609c0",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-10-07T09:32:25.782317+00:00",
-      "company_id": "8296052f-bee3-4359-8bda-5c3dee288d72",
-      "employee_id": "baf855e1-97b5-4b4b-99c8-744e55a1c5ac",
+      "updated_at": "2024-10-14T09:25:57.120083+00:00",
+      "company_id": "d570a1ec-517f-4943-94ea-24885948b56f",
+      "employee_id": "3bd57f20-759a-48b2-8784-9ce4af4bb737",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-10-07T09:32:25.789815+00:00",
+      "notification_subscriptions_updated_at": "2024-10-14T09:25:57.124723+00:00",
       "countries_updated_at": null,
       "operating_rules_updated_at": null
     },
@@ -80,13 +80,13 @@ Name | Description
       "company": {
         "data": {
           "type": "companies",
-          "id": "8296052f-bee3-4359-8bda-5c3dee288d72"
+          "id": "d570a1ec-517f-4943-94ea-24885948b56f"
         }
       },
       "employee": {
         "data": {
           "type": "employees",
-          "id": "baf855e1-97b5-4b4b-99c8-744e55a1c5ac"
+          "id": "3bd57f20-759a-48b2-8784-9ce4af4bb737"
         }
       },
       "settings": {
@@ -99,14 +99,14 @@ Name | Description
   },
   "included": [
     {
-      "id": "8296052f-bee3-4359-8bda-5c3dee288d72",
+      "id": "d570a1ec-517f-4943-94ea-24885948b56f",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-10-07T09:32:25.741121+00:00",
-        "updated_at": "2024-10-07T09:32:25.755836+00:00",
-        "name": "Company name 168",
-        "slug": "company-name-168",
-        "email": "mail171@company.com",
+        "created_at": "2024-10-14T09:25:57.099339+00:00",
+        "updated_at": "2024-10-14T09:25:57.109454+00:00",
+        "name": "Company name 204",
+        "slug": "company-name-204",
+        "email": "mail207@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -138,7 +138,7 @@ Name | Description
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "2ba1914ced2841094e374b61f21540a9",
+        "tenant_token": "1cdd45b91e32822f022c4de10ea82e03",
         "pending_subscription": false,
         "team_size": null,
         "projected_revenue": null,
@@ -161,7 +161,7 @@ Name | Description
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-10-21T09:32:25.723Z",
+          "trial_ends_at": "2024-10-28T09:25:57.087Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -217,18 +217,18 @@ Name | Description
       }
     },
     {
-      "id": "baf855e1-97b5-4b4b-99c8-744e55a1c5ac",
+      "id": "3bd57f20-759a-48b2-8784-9ce4af4bb737",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-10-07T09:32:25.782317+00:00",
-        "updated_at": "2024-10-07T09:32:25.782317+00:00",
+        "created_at": "2024-10-14T09:25:57.120083+00:00",
+        "updated_at": "2024-10-14T09:25:57.120083+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-10-07T09:32:25.775526+00:00",
+        "viewed_whats_new_at": "2024-10-14T09:25:57.115709+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,
@@ -336,7 +336,6 @@ Name | Description
           "hide_product_availability_quantities": false,
           "show_cart_availability": true,
           "website": null,
-          "custom_scripts": "",
           "checkout_scripts": "",
           "google_analytics_id": null,
           "google_anlaytics_options": "{}",
