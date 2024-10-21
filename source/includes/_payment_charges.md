@@ -17,12 +17,12 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
+`status` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
 `total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
 `currency` | **String** <br>Currency
-`mode` | **String** <br>Mode. One of `manual`, `off_session`, `request`, `terminal`. `checkout` mode is reserved for checkout payments, not available for API.
+`mode` | **String** <br>Mode. One of `manual`, `off_session`, `request`, `terminal`, `capture`. `checkout` mode is reserved for checkout payments, not available for API.
 `description` | **String** <br>Description
 `provider` | **String** <br>Provider. Can be one of `[:stripe, "stripe"]`, `[:app, "app"]`, `[:none, "none"]`
 `provider_id` | **String** <br>External provider payment identification
@@ -72,11 +72,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "90435603-5d14-4a91-959c-880d61bb645b",
+      "id": "0d72a93b-a25b-47df-b17c-211f926da186",
       "type": "payment_charges",
       "attributes": {
-        "created_at": "2024-10-14T09:24:10.713759+00:00",
-        "updated_at": "2024-10-14T09:24:10.713759+00:00",
+        "created_at": "2024-10-21T09:26:02.905042+00:00",
+        "updated_at": "2024-10-21T09:26:02.905042+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -196,7 +196,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/52f65f02-a7d8-456a-a075-be7a7862b9d2' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/fa6473bb-5a4a-4214-b30c-712aa744527c' \
     --header 'content-type: application/json' \
 ```
 
@@ -205,11 +205,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "52f65f02-a7d8-456a-a075-be7a7862b9d2",
+    "id": "fa6473bb-5a4a-4214-b30c-712aa744527c",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-10-14T09:24:09.785434+00:00",
-      "updated_at": "2024-10-14T09:24:09.785434+00:00",
+      "created_at": "2024-10-21T09:26:03.685095+00:00",
+      "updated_at": "2024-10-21T09:26:03.685095+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -298,11 +298,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2dd3cda4-ebc6-437b-b1d2-67400031aee6",
+    "id": "31fb5a1b-1c9f-4fce-b326-eedac7e39f94",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-10-14T09:24:10.271018+00:00",
-      "updated_at": "2024-10-14T09:24:10.271018+00:00",
+      "created_at": "2024-10-21T09:26:04.420508+00:00",
+      "updated_at": "2024-10-21T09:26:04.420508+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -321,11 +321,11 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 15000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-10-14T09:24:10.270264+00:00",
+      "succeeded_at": "2024-10-21T09:26:04.418461+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "4b34ad97-980b-45c1-99b5-36e09003c84c",
+      "employee_id": "e2499c1a-6876-4dd6-887b-dec298c08f00",
       "order_id": null,
       "customer_id": null
     },
@@ -355,11 +355,11 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
+`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency
-`data[attributes][mode]` | **String** <br>Mode. One of `manual`, `off_session`, `request`, `terminal`. `checkout` mode is reserved for checkout payments, not available for API.
+`data[attributes][mode]` | **String** <br>Mode. One of `manual`, `off_session`, `request`, `terminal`, `capture`. `checkout` mode is reserved for checkout payments, not available for API.
 `data[attributes][provider]` | **String** <br>Provider. Can be one of `[:stripe, "stripe"]`, `[:app, "app"]`, `[:none, "none"]`
 `data[attributes][provider_id]` | **String** <br>External provider payment identification
 `data[attributes][provider_method]` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.

@@ -96,7 +96,6 @@ Name | Description
 `discount_value` | **Float** `writeonly`<br>The value to use for `discount_type`
 `discount_type` | **String** <br>One of `percentage`, `fixed`
 `discount_percentage` | **Float** `readonly`<br>The discount percentage applied to this order. May update if order amount changes and type is `fixed`
-`delivery_address_property_id` | **Uuid** <br>The property id of the delivery address
 `billing_address_property_id` | **Uuid** <br>The property id of the billing address
 `fulfillment_type` | **String** <br>One of `pickup`, `delivery`
 `customer_id` | **Uuid** `nullable`<br>The associated Customer
@@ -146,11 +145,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "cae9980a-3518-4668-9441-798dc42e5292",
+      "id": "d0a444e1-279a-40da-8b1f-e5b4eccfae7f",
       "type": "orders",
       "attributes": {
-        "created_at": "2024-10-14T09:24:28.788987+00:00",
-        "updated_at": "2024-10-14T09:24:30.406888+00:00",
+        "created_at": "2024-10-21T09:22:03.632582+00:00",
+        "updated_at": "2024-10-21T09:22:05.146429+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -194,14 +193,13 @@ Name | Description
         "paid_in_cents": 0,
         "discount_type": "percentage",
         "discount_percentage": 10.0,
-        "delivery_address_property_id": null,
         "billing_address_property_id": null,
         "fulfillment_type": "pickup",
-        "customer_id": "abe88b64-7d0f-49ed-94a4-abec7a341bd1",
+        "customer_id": "77ca25fc-7542-4552-bc89-260fa20338ee",
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "c978a3a2-7f71-41eb-bc45-af2bbcb2c2e5",
-        "stop_location_id": "c978a3a2-7f71-41eb-bc45-af2bbcb2c2e5"
+        "start_location_id": "b04fd25e-6d24-4cf8-8512-8635b88e12e1",
+        "stop_location_id": "b04fd25e-6d24-4cf8-8512-8635b88e12e1"
       },
       "relationships": {}
     }
@@ -266,7 +264,6 @@ Name | Description
 `paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`delivery_address_property_id` | **Uuid** <br>`eq`, `not_eq`
 `billing_address_property_id` | **Uuid** <br>`eq`, `not_eq`
 `fulfillment_type` | **String** <br>`eq`
 `customer_id` | **Uuid** <br>`eq`, `not_eq`
@@ -360,14 +357,14 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-10-15T09:24:28Z",
-                    "lte": "2024-10-18T09:24:28Z"
+                    "gte": "2024-10-22T09:22:23Z",
+                    "lte": "2024-10-25T09:22:23Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "gte": "2024-10-15T09:24:28Z",
-                    "lte": "2024-10-18T09:24:28Z"
+                    "gte": "2024-10-22T09:22:23Z",
+                    "lte": "2024-10-25T09:22:23Z"
                   }
                 }
               ]
@@ -395,10 +392,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "2c8450a7-fbc7-4020-b122-c6b644fe4360"
+      "id": "cc8a0008-23c0-40e9-a336-4a5f9152ee8c"
     },
     {
-      "id": "cb24f91c-a361-431c-9783-67587aeac783"
+      "id": "171764d7-c5a7-45a3-b7f2-32b2708e4254"
     }
   ]
 }
@@ -460,7 +457,6 @@ Name | Description
 `paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`delivery_address_property_id` | **Uuid** <br>`eq`, `not_eq`
 `billing_address_property_id` | **Uuid** <br>`eq`, `not_eq`
 `fulfillment_type` | **String** <br>`eq`
 `customer_id` | **Uuid** <br>`eq`, `not_eq`
@@ -548,11 +544,11 @@ Returns an existing or new order for the current employee.
 ```json
   {
   "data": {
-    "id": "710c170a-8325-4a72-9ece-c3c808439877",
+    "id": "50dd2c5b-8ef7-468b-81cd-929d17b1d143",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-10-14T09:24:47.174032+00:00",
-      "updated_at": "2024-10-14T09:24:47.182882+00:00",
+      "created_at": "2024-10-21T09:22:03.072449+00:00",
+      "updated_at": "2024-10-21T09:22:03.081703+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -594,14 +590,13 @@ Returns an existing or new order for the current employee.
       "paid_in_cents": 0,
       "discount_type": "percentage",
       "discount_percentage": 0.0,
-      "delivery_address_property_id": null,
       "billing_address_property_id": null,
       "fulfillment_type": "pickup",
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "d91c60b8-185c-4c9a-96cc-32fa401bd6c0",
-      "stop_location_id": "d91c60b8-185c-4c9a-96cc-32fa401bd6c0"
+      "start_location_id": "13bacf3a-3b44-4191-90ca-174d2a9cad4b",
+      "stop_location_id": "13bacf3a-3b44-4191-90ca-174d2a9cad4b"
     },
     "relationships": {}
   },
@@ -687,7 +682,10 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate`
+`order_delivery_rate` => 
+`delivery_address`
+
+
 
 
 
@@ -702,7 +700,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders/88a2d8dd-1a96-45af-8b3b-ca27a632e396' \
+    --url 'https://example.booqable.com/api/boomerang/orders/9455f176-a489-45b0-86a4-81b99279939e' \
     --header 'content-type: application/json' \
 ```
 
@@ -711,11 +709,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "88a2d8dd-1a96-45af-8b3b-ca27a632e396",
+    "id": "9455f176-a489-45b0-86a4-81b99279939e",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-10-14T09:24:31.129614+00:00",
-      "updated_at": "2024-10-14T09:24:32.728514+00:00",
+      "created_at": "2024-10-21T09:22:08.358185+00:00",
+      "updated_at": "2024-10-21T09:22:10.115077+00:00",
       "number": 1,
       "status": "reserved",
       "statuses": [
@@ -759,14 +757,13 @@ This request accepts the following includes:
       "paid_in_cents": 0,
       "discount_type": "percentage",
       "discount_percentage": 10.0,
-      "delivery_address_property_id": null,
       "billing_address_property_id": null,
       "fulfillment_type": "pickup",
-      "customer_id": "ec02723c-a304-49fb-9630-a594c5706c5c",
+      "customer_id": "4644a4f0-52d8-4372-a446-714e4c25ba74",
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "27099db1-e9d2-4e63-a1af-debced43b674",
-      "stop_location_id": "27099db1-e9d2-4e63-a1af-debced43b674"
+      "start_location_id": "062a9600-4a52-4ec3-a233-6325ce1a6858",
+      "stop_location_id": "062a9600-4a52-4ec3-a233-6325ce1a6858"
     },
     "relationships": {}
   },
@@ -852,7 +849,10 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate`
+`order_delivery_rate` => 
+`delivery_address`
+
+
 
 
 
@@ -879,8 +879,8 @@ When creating an order, and the following fields are left blank, a sensible defa
       "data": {
         "type": "orders",
         "attributes": {
-          "starts_at": "2024-10-17T09:24:35.393Z",
-          "stops_at": "2024-11-25T09:24:35.393Z"
+          "starts_at": "2024-10-24T09:22:07.752Z",
+          "stops_at": "2024-12-02T09:22:07.752Z"
         }
       }
     }'
@@ -891,11 +891,11 @@ When creating an order, and the following fields are left blank, a sensible defa
 ```json
   {
   "data": {
-    "id": "6168df3b-a62b-4032-9ab2-d94af5c53b11",
+    "id": "3a38d795-3965-4d8d-9673-8c6dcdc18182",
     "type": "orders",
     "attributes": {
-      "created_at": "2024-10-14T09:24:35.414630+00:00",
-      "updated_at": "2024-10-14T09:24:35.424487+00:00",
+      "created_at": "2024-10-21T09:22:07.777954+00:00",
+      "updated_at": "2024-10-21T09:22:07.788634+00:00",
       "number": null,
       "status": "new",
       "statuses": [
@@ -908,8 +908,8 @@ When creating an order, and the following fields are left blank, a sensible defa
         "started": 0,
         "stopped": 0
       },
-      "starts_at": "2024-10-17T09:15:00.000000+00:00",
-      "stops_at": "2024-11-25T09:15:00.000000+00:00",
+      "starts_at": "2024-10-24T09:15:00.000000+00:00",
+      "stops_at": "2024-12-02T09:15:00.000000+00:00",
       "deposit_type": "percentage",
       "deposit_value": 100.0,
       "entirely_started": true,
@@ -937,14 +937,13 @@ When creating an order, and the following fields are left blank, a sensible defa
       "paid_in_cents": 0,
       "discount_type": "percentage",
       "discount_percentage": 0.0,
-      "delivery_address_property_id": null,
       "billing_address_property_id": null,
       "fulfillment_type": "pickup",
       "customer_id": null,
       "tax_region_id": null,
       "coupon_id": null,
-      "start_location_id": "8f171f55-6f82-4e03-92ad-3594a58db157",
-      "stop_location_id": "8f171f55-6f82-4e03-92ad-3594a58db157"
+      "start_location_id": "201f23bd-17fe-4a58-acfd-4d4b2858e67b",
+      "stop_location_id": "201f23bd-17fe-4a58-acfd-4d4b2858e67b"
     },
     "relationships": {}
   },
@@ -982,7 +981,6 @@ Name | Description
 `data[attributes][properties_attributes][]` | **Array** <br>The properties of the order
 `data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
 `data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
-`data[attributes][delivery_address_property_id]` | **Uuid** <br>The property id of the delivery address
 `data[attributes][billing_address_property_id]` | **Uuid** <br>The property id of the billing address
 `data[attributes][fulfillment_type]` | **String** <br>One of `pickup`, `delivery`
 `data[attributes][customer_id]` | **Uuid** <br>The associated Customer
@@ -1056,7 +1054,10 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate`
+`order_delivery_rate` => 
+`delivery_address`
+
+
 
 
 
@@ -1077,17 +1078,17 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/128762c2-1a83-4a8d-bebc-d1fdc942137a' \
+    --url 'https://example.booqable.com/api/boomerang/orders/a0e5b804-7310-4974-b797-1927aedda21c' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
       },
       "data": {
-        "id": "128762c2-1a83-4a8d-bebc-d1fdc942137a",
+        "id": "a0e5b804-7310-4974-b797-1927aedda21c",
         "type": "orders",
         "attributes": {
-          "customer_id": "afaf6591-da6a-4627-ba0b-afce9eb74041"
+          "customer_id": "1d585e7f-d0b9-4d1f-9133-df93adc8f857"
         }
       }
     }'
@@ -1098,13 +1099,13 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "128762c2-1a83-4a8d-bebc-d1fdc942137a",
+    "id": "a0e5b804-7310-4974-b797-1927aedda21c",
     "type": "orders",
     "attributes": {
       "price_in_cents": 80250,
       "grand_total_with_tax_in_cents": 97103,
       "to_be_paid_in_cents": 197103,
-      "customer_id": "afaf6591-da6a-4627-ba0b-afce9eb74041",
+      "customer_id": "1d585e7f-d0b9-4d1f-9133-df93adc8f857",
       "tax_region_id": null
     },
     "relationships": {}
@@ -1118,14 +1119,14 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/43c2a824-0bab-4bc8-9ac9-f8d06ea0cb5b' \
+    --url 'https://example.booqable.com/api/boomerang/orders/5381a2f7-ccaa-47de-9bd8-8618a0a290b3' \
     --header 'content-type: application/json' \
     --data '{
       "fields": {
         "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
       },
       "data": {
-        "id": "43c2a824-0bab-4bc8-9ac9-f8d06ea0cb5b",
+        "id": "5381a2f7-ccaa-47de-9bd8-8618a0a290b3",
         "type": "orders",
         "attributes": {
           "deposit_type": "percentage"
@@ -1139,7 +1140,7 @@ When updating a customer on an order the following settings will be applied and 
 ```json
   {
   "data": {
-    "id": "43c2a824-0bab-4bc8-9ac9-f8d06ea0cb5b",
+    "id": "5381a2f7-ccaa-47de-9bd8-8618a0a290b3",
     "type": "orders",
     "attributes": {
       "deposit_type": "percentage",
@@ -1158,11 +1159,11 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/904b082d-0e6f-4a9f-a8d6-1014d67ed54e' \
+    --url 'https://example.booqable.com/api/boomerang/orders/53d2b231-7e90-4b72-b97c-2d24a556cf2e' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "904b082d-0e6f-4a9f-a8d6-1014d67ed54e",
+        "id": "53d2b231-7e90-4b72-b97c-2d24a556cf2e",
         "type": "orders",
         "attributes": {
           "stops_at": "1980-05-04T12:00:00.000Z"
@@ -1186,12 +1187,12 @@ When updating a customer on an order the following settings will be applied and 
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "844011f1-ec4c-4924-b70f-6b2b77a46f0f",
+            "item_id": "8cb2ecd2-b4f8-416d-ab81-8809e56dd540",
             "unavailable": [
-              "48f84177-0b7d-45fa-9783-a96641e2d923"
+              "b4f0b906-c977-4a82-a811-dde0c89046d1"
             ],
             "available": [
-              "d11c3980-fa99-4042-a581-ec4671eedc3a"
+              "ded1b1f6-a533-4209-ae48-2f139c83dbb9"
             ]
           }
         ]
@@ -1231,7 +1232,6 @@ Name | Description
 `data[attributes][properties_attributes][]` | **Array** <br>The properties of the order
 `data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
 `data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
-`data[attributes][delivery_address_property_id]` | **Uuid** <br>The property id of the delivery address
 `data[attributes][billing_address_property_id]` | **Uuid** <br>The property id of the billing address
 `data[attributes][fulfillment_type]` | **String** <br>One of `pickup`, `delivery`
 `data[attributes][customer_id]` | **Uuid** <br>The associated Customer
@@ -1305,7 +1305,10 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate`
+`order_delivery_rate` => 
+`delivery_address`
+
+
 
 
 

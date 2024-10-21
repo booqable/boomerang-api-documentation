@@ -48,6 +48,7 @@ Name | Description
 `financial_line_2` | **String** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
 `vat_number` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
 `custom_domain` | **String** <br>Custom domain to use for hosted store and checkout
+`custom_domain_validation` | **Hash** <br>Validation details for the custom domain
 `development` | **Boolean** `readonly`<br>Whether this is a development account
 `shop_theme_id` | **Uuid** <br>ID of installed shop theme
 `installed_online_store` | **Boolean** `readonly`<br>If the online store is installed, this boolean will return true
@@ -85,14 +86,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c3597bc0-eb7b-4a35-89cf-131c1f97da5a",
+    "id": "51c7d756-0d1e-4601-b182-e522ead84da4",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-10-14T09:24:48.294569+00:00",
-      "updated_at": "2024-10-14T09:24:48.304496+00:00",
+      "created_at": "2024-10-21T09:24:26.873593+00:00",
+      "updated_at": "2024-10-21T09:24:26.884245+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail107@company.com",
+      "email": "mail141@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -119,12 +120,13 @@ Name | Description
       "financial_line_2": "Leeuwarden",
       "vat_number": null,
       "custom_domain": null,
+      "custom_domain_validation": null,
       "development": false,
       "shop_theme_id": null,
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "ec30ea632d8ccb1720f0bfa5f38b93ff",
+      "tenant_token": "125f13645bd38a6c7752f72a984bc0c8",
       "pending_subscription": false,
       "team_size": null,
       "projected_revenue": null,
@@ -216,11 +218,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "cd567275-0594-4e12-95d9-a7216ae4c249",
+    "id": "2e1283c4-7cf6-47f4-b399-06af5ec33dc6",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-10-28T09:24:47.956Z",
+        "trial_ends_at": "2024-11-04T09:24:27.843Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,
@@ -307,7 +309,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "410994a7-3ebc-46d7-a6aa-0c845f260492",
+        "id": "ed5b3557-4322-4439-ab02-1134eb81c53c",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -321,14 +323,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "410994a7-3ebc-46d7-a6aa-0c845f260492",
+    "id": "ed5b3557-4322-4439-ab02-1134eb81c53c",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-10-14T09:24:47.519913+00:00",
-      "updated_at": "2024-10-14T09:24:47.571210+00:00",
+      "created_at": "2024-10-21T09:24:27.431510+00:00",
+      "updated_at": "2024-10-21T09:24:27.514391+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail105@company.com",
+      "email": "mail142@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -355,12 +357,13 @@ This request does not accept any includes
       "financial_line_2": "Leeuwarden",
       "vat_number": null,
       "custom_domain": null,
+      "custom_domain_validation": null,
       "development": false,
       "shop_theme_id": null,
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "9e85e3ab0f755b0f49e3da5f2065e7f2",
+      "tenant_token": "d278ffe7b4666f1b34d57c94e6584aad",
       "pending_subscription": false,
       "team_size": null,
       "projected_revenue": null,
@@ -437,6 +440,7 @@ Name | Description
 `data[attributes][financial_line_2]` | **String** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent
 `data[attributes][vat_number]` | **String** <br>Company's vat number, used in customer communication and to define tax exempts
 `data[attributes][custom_domain]` | **String** <br>Custom domain to use for hosted store and checkout
+`data[attributes][custom_domain_validation]` | **Hash** <br>Validation details for the custom domain
 `data[attributes][shop_theme_id]` | **Uuid** <br>ID of installed shop theme
 `data[attributes][main_address_attributes]` | **Hash** <br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
 `data[attributes][billing_address_attributes]` | **Hash** <br>A hash with the company billing address fields. Use it when updating the company billing address. See `address` property type for more information

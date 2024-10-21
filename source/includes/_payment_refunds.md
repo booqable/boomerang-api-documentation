@@ -9,6 +9,8 @@ Creates a `PaymentRefund` record. A `PaymentRefund` is a record of refund to the
 
 `POST /api/boomerang/payment_refunds`
 
+`PUT /api/boomerang/payment_refunds/{id}`
+
 ## Fields
 Every payment refund has the following fields:
 
@@ -17,7 +19,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
+`status` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
 `total_in_cents` | **Integer** `readonly`<br>Total amount in cents (`amount + deposit`)
@@ -68,11 +70,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "87f2575c-9d0f-4d28-8454-342b87130c92",
+      "id": "10df8b61-2e0e-42fd-8b45-e66403eea6c9",
       "type": "payment_refunds",
       "attributes": {
-        "created_at": "2024-10-14T09:25:12.533413+00:00",
-        "updated_at": "2024-10-14T09:25:12.533413+00:00",
+        "created_at": "2024-10-21T09:23:45.436757+00:00",
+        "updated_at": "2024-10-21T09:23:45.436757+00:00",
         "status": "created",
         "amount_in_cents": 100,
         "deposit_in_cents": 0,
@@ -182,7 +184,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_refunds/7ef32f04-7a95-4085-9c2e-d28e510c6896' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds/1c0fa04c-5b5a-4ec7-aa23-1d379a33f721' \
     --header 'content-type: application/json' \
 ```
 
@@ -191,11 +193,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7ef32f04-7a95-4085-9c2e-d28e510c6896",
+    "id": "1c0fa04c-5b5a-4ec7-aa23-1d379a33f721",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-10-14T09:25:13.479082+00:00",
-      "updated_at": "2024-10-14T09:25:13.479082+00:00",
+      "created_at": "2024-10-21T09:23:44.514942+00:00",
+      "updated_at": "2024-10-21T09:23:44.514942+00:00",
       "status": "created",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -278,11 +280,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ed93c367-e0e9-422a-8996-f245256963cb",
+    "id": "8a9ea0cf-9bc4-4a50-98ef-619692bcdae6",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-10-14T09:25:13.042193+00:00",
-      "updated_at": "2024-10-14T09:25:13.042193+00:00",
+      "created_at": "2024-10-21T09:23:45.030644+00:00",
+      "updated_at": "2024-10-21T09:23:45.030644+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -295,11 +297,11 @@ This request accepts the following includes:
       "provider_id": null,
       "provider_method": null,
       "provider_secret": null,
-      "succeeded_at": "2024-10-14T09:25:13.041433+00:00",
+      "succeeded_at": "2024-10-21T09:23:45.029856+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "7bddb26a-79a9-410d-ad9d-34cc51d0665e",
+      "employee_id": "0d297416-e36e-4a6b-94a7-498a1837061e",
       "order_id": null,
       "customer_id": null,
       "payment_charge_id": null
@@ -330,7 +332,115 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
+`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
+`data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
+`data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
+`data[attributes][currency]` | **String** <br>Currency
+`data[attributes][failure_reason]` | **String** <br>Failure reason
+`data[attributes][reason]` | **String** <br>Reason
+`data[attributes][provider]` | **String** <br>Provider. Can be one of `[:stripe, "stripe"]`, `[:app, "app"]`, `[:none, "none"]`
+`data[attributes][provider_id]` | **String** <br>External provider refund identification
+`data[attributes][provider_method]` | **String** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc.
+`data[attributes][provider_secret]` | **String** <br>Provider refund secret
+`data[attributes][employee_id]` | **Uuid** <br>The associated Employee
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][payment_charge_id]` | **Uuid** <br>The associated Payment charge
+
+
+### Includes
+
+This request accepts the following includes:
+
+`order`
+
+
+`customer`
+
+
+
+
+
+
+## Updating a payment refund
+
+
+
+> How to update a payment refund:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds/663041c8-ccb5-4c97-9b2f-c1d033f1b1b1' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "663041c8-ccb5-4c97-9b2f-c1d033f1b1b1",
+        "type": "payment_refunds",
+        "attributes": {
+          "status": "succeeded"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "663041c8-ccb5-4c97-9b2f-c1d033f1b1b1",
+    "type": "payment_refunds",
+    "attributes": {
+      "created_at": "2024-10-21T09:23:45.856786+00:00",
+      "updated_at": "2024-10-21T09:23:45.856786+00:00",
+      "status": "succeeded",
+      "amount_in_cents": 100,
+      "deposit_in_cents": 0,
+      "total_in_cents": 100,
+      "currency": "usd",
+      "description": null,
+      "failure_reason": null,
+      "reason": null,
+      "provider": "none",
+      "provider_id": null,
+      "provider_method": null,
+      "provider_secret": null,
+      "succeeded_at": "2024-10-21T09:23:45.880918+00:00",
+      "failed_at": null,
+      "canceled_at": null,
+      "expired_at": null,
+      "employee_id": null,
+      "order_id": null,
+      "customer_id": null,
+      "payment_charge_id": null
+    },
+    "relationships": {}
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/payment_refunds/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency

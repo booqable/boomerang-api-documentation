@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-10-09+00%3A00%3A00+UTC&filter%5Btill%5D=2024-10-14+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-10-16+00%3A00%3A00+UTC&filter%5Btill%5D=2024-10-21+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,17 +44,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "76327189-e881-4443-897f-81f67ac3152f",
+      "id": "08b6ece3-05f4-4b15-87bd-a796dcdeb67b",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2024-10-14T09:24:13.986421+00:00",
-        "name": "Product 1000018",
+        "created_at": "2024-10-21T09:24:37.383891+00:00",
+        "name": "Product 1000040",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
         "turnover_in_cents": 0,
         "quantity": 10,
-        "product_id": "5303831f-b6b1-4b2b-ac01-f5d1a11f86cf"
+        "product_id": "7320da22-c5e9-449b-a524-affa9e1cb04c"
       },
       "relationships": {}
     }

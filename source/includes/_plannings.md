@@ -78,11 +78,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "d2404a6b-1bf1-4f5f-bdbd-29fa192c3100",
+      "id": "f6f78351-ab18-4ee2-b590-d308a8b6b5ba",
       "type": "plannings",
       "attributes": {
-        "created_at": "2024-10-14T09:24:58.024751+00:00",
-        "updated_at": "2024-10-14T09:24:58.338624+00:00",
+        "created_at": "2024-10-21T09:22:32.365867+00:00",
+        "updated_at": "2024-10-21T09:22:32.707263+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
@@ -95,10 +95,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "order_id": "3d69aa60-748f-4161-b5d1-837395a2e794",
-        "item_id": "b95461f6-e1de-43e6-aef9-47596af8cd0d",
-        "start_location_id": "574eddd9-917d-45e1-8ce4-5ce7b7ebc689",
-        "stop_location_id": "574eddd9-917d-45e1-8ce4-5ce7b7ebc689",
+        "order_id": "b756c9ea-befa-4b7d-baac-3d008a0c390e",
+        "item_id": "f4855233-0890-4f79-babe-931b930f82ee",
+        "start_location_id": "0cabfde3-fc5d-4180-b6ec-6182ca1a035b",
+        "stop_location_id": "0cabfde3-fc5d-4180-b6ec-6182ca1a035b",
         "parent_planning_id": null
       },
       "relationships": {}
@@ -217,12 +217,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-10-15T09:24:56Z"
+                    "gte": "2024-10-22T09:22:36Z"
                   }
                 },
                 {
                   "starts_at": {
-                    "lte": "2024-10-18T09:24:56Z"
+                    "lte": "2024-10-25T09:22:36Z"
                   }
                 }
               ]
@@ -232,12 +232,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "stops_at": {
-                    "gte": "2024-10-15T09:24:56Z"
+                    "gte": "2024-10-22T09:22:36Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "lte": "2024-10-18T09:24:56Z"
+                    "lte": "2024-10-25T09:22:36Z"
                   }
                 }
               ]
@@ -254,10 +254,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "4bd925ec-65a9-4334-b6b8-7a285d3cd26c"
+      "id": "32facab0-cf79-4336-891d-0f13b7a71009"
     },
     {
-      "id": "34f8c2c9-4510-48b7-a9ce-f63e830911e9"
+      "id": "5e7b3d9d-abce-4931-9d69-e66e0a73eb98"
     }
   ]
 }
@@ -356,7 +356,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings/aa8d97f3-397c-4480-8cc4-6b0665954bdf' \
+    --url 'https://example.booqable.com/api/boomerang/plannings/db6b5175-3404-419e-9a78-750dcdd31e33' \
     --header 'content-type: application/json' \
 ```
 
@@ -365,11 +365,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "aa8d97f3-397c-4480-8cc4-6b0665954bdf",
+    "id": "db6b5175-3404-419e-9a78-750dcdd31e33",
     "type": "plannings",
     "attributes": {
-      "created_at": "2024-10-14T09:24:52.724191+00:00",
-      "updated_at": "2024-10-14T09:24:53.078714+00:00",
+      "created_at": "2024-10-21T09:22:37.117604+00:00",
+      "updated_at": "2024-10-21T09:22:37.475814+00:00",
       "archived": false,
       "archived_at": null,
       "quantity": 1,
@@ -382,10 +382,10 @@ This request accepts the following includes:
       "stopped": 0,
       "location_shortage_amount": 0,
       "shortage_amount": 0,
-      "order_id": "7f81eb25-fee3-4541-907d-9ea91ff04ed7",
-      "item_id": "76f0f1da-2ca2-442f-8335-6976ea410be5",
-      "start_location_id": "20a86218-0217-4b9a-8a88-62a12a789461",
-      "stop_location_id": "20a86218-0217-4b9a-8a88-62a12a789461",
+      "order_id": "40aeb157-e313-4200-8e6b-312a022ec4cd",
+      "item_id": "f5f0fac4-2ddf-4c8d-9fbf-0c3e2d8b591c",
+      "start_location_id": "534c4984-e144-4376-b73f-837472cd28d6",
+      "stop_location_id": "534c4984-e144-4376-b73f-837472cd28d6",
       "parent_planning_id": null
     },
     "relationships": {}
