@@ -66,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "fc03d4fc-0d41-52d0-a0a9-8c8a572cdc24",
+    "id": "9eb56f6c-eb55-5b32-988c-e8795b6761c9",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "d8f05568-7dc4-4bc7-8617-eacb7aa00d64"
+            "id": "9154d09e-704d-4f93-822f-63a1745b81f0"
           },
           {
             "type": "operating_rules",
-            "id": "09d9358d-7d8d-43d8-9034-3965e2bd008b"
+            "id": "3a5c3598-df60-4d5f-b6f2-80125735ec86"
           }
         ]
       }
@@ -85,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "d8f05568-7dc4-4bc7-8617-eacb7aa00d64",
+      "id": "9154d09e-704d-4f93-822f-63a1745b81f0",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-10-21T09:26:30.579526+00:00",
-        "updated_at": "2024-10-21T09:26:30.579526+00:00",
+        "created_at": "2024-10-28T09:31:15.136912+00:00",
+        "updated_at": "2024-10-28T09:31:15.136912+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -100,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "09d9358d-7d8d-43d8-9034-3965e2bd008b",
+      "id": "3a5c3598-df60-4d5f-b6f2-80125735ec86",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-10-21T09:26:30.579526+00:00",
-        "updated_at": "2024-10-21T09:26:30.579526+00:00",
+        "created_at": "2024-10-28T09:31:15.136912+00:00",
+        "updated_at": "2024-10-28T09:31:15.136912+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -155,7 +155,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ddd7a2f0-b63b-52ad-b7c2-135bcbdbda3c",
+    "id": "6c4dd893-951b-5e5a-88af-a0d23043ffaa",
     "type": "bulk_upserts",
     "relationships": {}
   },

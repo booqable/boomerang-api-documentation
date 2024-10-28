@@ -17,7 +17,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
+`status` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
 `total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
@@ -75,11 +75,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "72029123-6eab-468c-9ef1-43f1ce7c630d",
+      "id": "69c428a1-2877-47be-822f-0abd703e09d5",
       "type": "payment_authorizations",
       "attributes": {
-        "created_at": "2024-10-21T09:26:28.921238+00:00",
-        "updated_at": "2024-10-21T09:26:28.921238+00:00",
+        "created_at": "2024-10-28T09:24:36.540505+00:00",
+        "updated_at": "2024-10-28T09:24:36.540505+00:00",
         "status": "created",
         "amount_in_cents": 100,
         "deposit_in_cents": 0,
@@ -206,7 +206,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/208dbae9-9b0e-4bc0-8aa7-0318c2fe5c27' \
+    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/070e4e35-5fb5-4d53-94e4-b37e930a63fd' \
     --header 'content-type: application/json' \
 ```
 
@@ -215,11 +215,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "208dbae9-9b0e-4bc0-8aa7-0318c2fe5c27",
+    "id": "070e4e35-5fb5-4d53-94e4-b37e930a63fd",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-10-21T09:26:28.134670+00:00",
-      "updated_at": "2024-10-21T09:26:28.134670+00:00",
+      "created_at": "2024-10-28T09:24:35.994903+00:00",
+      "updated_at": "2024-10-28T09:24:35.994903+00:00",
       "status": "created",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -312,11 +312,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "bf2a6792-a072-4834-8cea-2c1bfd50af24",
+    "id": "06237575-b406-40fb-9048-a92808edc90e",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-10-21T09:26:27.396890+00:00",
-      "updated_at": "2024-10-21T09:26:27.396890+00:00",
+      "created_at": "2024-10-28T09:24:37.229235+00:00",
+      "updated_at": "2024-10-28T09:24:37.229235+00:00",
       "status": "created",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -340,7 +340,7 @@ This request accepts the following includes:
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "9749d5e9-5925-4996-94d0-3405df9022b3",
+      "employee_id": "c4b874dd-bed5-4881-a072-2e7a9d1d1f66",
       "order_id": null,
       "customer_id": null,
       "payment_method_id": null
@@ -371,7 +371,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
+`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency

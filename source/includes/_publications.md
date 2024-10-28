@@ -45,13 +45,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "a38722e1-229f-414b-ac26-4c84baaad9b4",
+      "id": "e93bfa99-1e3d-4f71-ab15-49426b839828",
       "type": "publications",
       "attributes": {
-        "created_at": "2024-10-21T09:24:59.267813+00:00",
-        "updated_at": "2024-10-21T09:24:59.267813+00:00",
-        "published_at": "2024-10-16T09:24:59.262032+00:00",
-        "theme_id": "9473309d-8f26-4eed-b5b6-c91dd088b650"
+        "created_at": "2024-10-28T09:24:17.199769+00:00",
+        "updated_at": "2024-10-28T09:24:17.199769+00:00",
+        "published_at": "2024-10-23T09:24:17.194531+00:00",
+        "theme_id": "4ec603fb-2b23-41b4-8043-0f59e8620252"
       },
       "relationships": {}
     }
@@ -126,7 +126,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "5b86bcd5-340d-43b9-92a1-dbce1804109a"
+          "theme_id": "23f22fae-333d-4539-8332-c118f474c3f5"
         }
       }
     }'
@@ -137,13 +137,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fe574ccc-394f-4ab2-bf1d-3e1452e01cb7",
+    "id": "dc5a50da-f729-4047-a795-25e0605cbc14",
     "type": "publications",
     "attributes": {
-      "created_at": "2024-10-16T09:25:00.123193+00:00",
-      "updated_at": "2024-10-16T09:25:00.123193+00:00",
-      "published_at": "2024-10-16T09:25:00.123193+00:00",
-      "theme_id": "5b86bcd5-340d-43b9-92a1-dbce1804109a"
+      "created_at": "2024-10-23T09:24:16.651358+00:00",
+      "updated_at": "2024-10-23T09:24:16.651358+00:00",
+      "published_at": "2024-10-23T09:24:16.651358+00:00",
+      "theme_id": "23f22fae-333d-4539-8332-c118f474c3f5"
     },
     "relationships": {}
   },

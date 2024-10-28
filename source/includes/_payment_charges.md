@@ -17,7 +17,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
+`status` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
 `total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
@@ -72,11 +72,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0d72a93b-a25b-47df-b17c-211f926da186",
+      "id": "88f186a7-60eb-459c-b901-1a5164ca7842",
       "type": "payment_charges",
       "attributes": {
-        "created_at": "2024-10-21T09:26:02.905042+00:00",
-        "updated_at": "2024-10-21T09:26:02.905042+00:00",
+        "created_at": "2024-10-28T09:23:35.942012+00:00",
+        "updated_at": "2024-10-28T09:23:35.942012+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -196,7 +196,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/fa6473bb-5a4a-4214-b30c-712aa744527c' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/a4fd53f9-8fe9-4f04-a86a-c123329b141b' \
     --header 'content-type: application/json' \
 ```
 
@@ -205,11 +205,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fa6473bb-5a4a-4214-b30c-712aa744527c",
+    "id": "a4fd53f9-8fe9-4f04-a86a-c123329b141b",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-10-21T09:26:03.685095+00:00",
-      "updated_at": "2024-10-21T09:26:03.685095+00:00",
+      "created_at": "2024-10-28T09:23:34.038735+00:00",
+      "updated_at": "2024-10-28T09:23:34.038735+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -298,11 +298,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "31fb5a1b-1c9f-4fce-b326-eedac7e39f94",
+    "id": "eeebbdcb-4b9d-4d26-9712-08ecf71290a5",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-10-21T09:26:04.420508+00:00",
-      "updated_at": "2024-10-21T09:26:04.420508+00:00",
+      "created_at": "2024-10-28T09:23:34.708709+00:00",
+      "updated_at": "2024-10-28T09:23:34.708709+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -321,11 +321,11 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 15000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-10-21T09:26:04.418461+00:00",
+      "succeeded_at": "2024-10-28T09:23:34.707096+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "e2499c1a-6876-4dd6-887b-dec298c08f00",
+      "employee_id": "2cb1ebcc-7a8b-4c49-850e-f13485b3e80a",
       "order_id": null,
       "customer_id": null
     },
@@ -355,7 +355,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:pending, "pending"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
+`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency

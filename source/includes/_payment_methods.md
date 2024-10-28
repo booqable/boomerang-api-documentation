@@ -46,11 +46,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "b1b62728-a102-417a-bd6c-3e289f7d6eb2",
+      "id": "c3c03e12-03e1-4bee-85ff-5282d85861be",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-10-21T09:23:40.801449+00:00",
-        "updated_at": "2024-10-21T09:23:40.801449+00:00",
+        "created_at": "2024-10-28T09:31:26.438756+00:00",
+        "updated_at": "2024-10-28T09:31:26.438756+00:00",
         "data": {
           "name": null,
           "brand": null,
@@ -59,7 +59,7 @@ Name | Description
           "last4": null
         },
         "payment_method_type": "creditcard",
-        "customer_id": "3745cb9c-2263-48de-8d29-5d132aed9d31"
+        "customer_id": "467d804b-2ae2-4af4-ba04-8d3d90a11142"
       },
       "relationships": {}
     }
@@ -119,7 +119,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/22d4e7ef-0fcc-4ea7-aa40-f0f62a5cf36c' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/ba322849-6efb-4e79-ac1b-b6421845f9c9' \
     --header 'content-type: application/json' \
 ```
 
@@ -128,11 +128,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "22d4e7ef-0fcc-4ea7-aa40-f0f62a5cf36c",
+    "id": "ba322849-6efb-4e79-ac1b-b6421845f9c9",
     "type": "payment_methods",
     "attributes": {
-      "created_at": "2024-10-21T09:23:41.343356+00:00",
-      "updated_at": "2024-10-21T09:23:41.360402+00:00",
+      "created_at": "2024-10-28T09:31:25.793668+00:00",
+      "updated_at": "2024-10-28T09:31:25.826286+00:00",
       "data": {
         "name": null,
         "brand": null,
@@ -141,7 +141,7 @@ This request does not accept any includes
         "last4": null
       },
       "payment_method_type": "creditcard",
-      "customer_id": "dfb0e65a-41e7-49ec-94bb-27e6e7a40ae3"
+      "customer_id": "1ec8a639-8cfc-4c34-9899-be09bc89abb5"
     },
     "relationships": {}
   },

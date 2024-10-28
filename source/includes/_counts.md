@@ -42,10 +42,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "8b1e62d7-2774-4739-9594-71ff9b8a49c1",
+    "id": "bb52f7ab-5827-4d01-801b-5eb6d9a7e497",
     "type": "counts",
     "attributes": {
-      "created_at": "2024-10-21T09:28:33.636233+00:00",
+      "created_at": "2024-10-28T09:23:33.172763+00:00",
       "product_group_count": 1,
       "product_count": 1,
       "tax_rate_count": 1,
