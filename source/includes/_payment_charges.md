@@ -9,6 +9,8 @@ Creates a `PaymentCharge` record. A `PaymentCharge` is a record of payment of an
 
 `POST /api/boomerang/payment_charges`
 
+`PUT /api/boomerang/payment_charges/{id}`
+
 ## Fields
 Every payment charge has the following fields:
 
@@ -17,7 +19,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
+`status` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
 `total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
@@ -72,11 +74,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "88f186a7-60eb-459c-b901-1a5164ca7842",
+      "id": "af1131e0-c687-41ff-83c0-331cb2845e85",
       "type": "payment_charges",
       "attributes": {
-        "created_at": "2024-10-28T09:23:35.942012+00:00",
-        "updated_at": "2024-10-28T09:23:35.942012+00:00",
+        "created_at": "2024-11-04T09:26:48.639981+00:00",
+        "updated_at": "2024-11-04T09:26:48.639981+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -84,7 +86,7 @@ Name | Description
         "currency": "usd",
         "mode": "request",
         "description": null,
-        "provider": null,
+        "provider": "stripe",
         "provider_id": null,
         "provider_method": null,
         "provider_secret": null,
@@ -196,7 +198,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/a4fd53f9-8fe9-4f04-a86a-c123329b141b' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/8b7f0b26-d78f-415a-8e3b-3381402ce4b0' \
     --header 'content-type: application/json' \
 ```
 
@@ -205,11 +207,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a4fd53f9-8fe9-4f04-a86a-c123329b141b",
+    "id": "8b7f0b26-d78f-415a-8e3b-3381402ce4b0",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-10-28T09:23:34.038735+00:00",
-      "updated_at": "2024-10-28T09:23:34.038735+00:00",
+      "created_at": "2024-11-04T09:26:49.537887+00:00",
+      "updated_at": "2024-11-04T09:26:49.537887+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -217,7 +219,7 @@ This request accepts the following includes:
       "currency": "usd",
       "mode": "request",
       "description": null,
-      "provider": null,
+      "provider": "stripe",
       "provider_id": null,
       "provider_method": null,
       "provider_secret": null,
@@ -298,11 +300,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "eeebbdcb-4b9d-4d26-9712-08ecf71290a5",
+    "id": "4d82683d-b025-4385-9b69-d99997dc39b1",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-10-28T09:23:34.708709+00:00",
-      "updated_at": "2024-10-28T09:23:34.708709+00:00",
+      "created_at": "2024-11-04T09:26:49.988615+00:00",
+      "updated_at": "2024-11-04T09:26:49.988615+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -321,11 +323,11 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 15000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-10-28T09:23:34.707096+00:00",
+      "succeeded_at": "2024-11-04T09:26:49.987418+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "2cb1ebcc-7a8b-4c49-850e-f13485b3e80a",
+      "employee_id": "0c7f04c5-090e-40ec-ae54-a2d5e638cb75",
       "order_id": null,
       "customer_id": null
     },
@@ -355,7 +357,118 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`
+`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`
+`data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
+`data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
+`data[attributes][currency]` | **String** <br>Currency
+`data[attributes][mode]` | **String** <br>Mode. One of `manual`, `off_session`, `request`, `terminal`, `capture`. `checkout` mode is reserved for checkout payments, not available for API.
+`data[attributes][provider]` | **String** <br>Provider. Can be one of `[:stripe, "stripe"]`, `[:app, "app"]`, `[:none, "none"]`
+`data[attributes][provider_id]` | **String** <br>External provider payment identification
+`data[attributes][provider_method]` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.
+`data[attributes][provider_secret]` | **String** <br>Provider payment secret
+`data[attributes][employee_id]` | **Uuid** <br>The associated Employee
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+
+
+### Includes
+
+This request accepts the following includes:
+
+`order`
+
+
+`customer`
+
+
+
+
+
+
+## Updating a payment charge
+
+
+
+> How to update a payment charge:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/41c865f4-2c17-4338-b4c5-a2f2d8fcac45' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "41c865f4-2c17-4338-b4c5-a2f2d8fcac45",
+        "type": "payment_charges",
+        "attributes": {
+          "status": "succeeded"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "41c865f4-2c17-4338-b4c5-a2f2d8fcac45",
+    "type": "payment_charges",
+    "attributes": {
+      "created_at": "2024-11-04T09:26:49.078437+00:00",
+      "updated_at": "2024-11-04T09:26:49.078437+00:00",
+      "status": "succeeded",
+      "amount_in_cents": 5000,
+      "deposit_in_cents": 0,
+      "total_in_cents": 5000,
+      "currency": "usd",
+      "mode": "request",
+      "description": null,
+      "provider": "stripe",
+      "provider_id": null,
+      "provider_method": null,
+      "provider_secret": null,
+      "refundable": true,
+      "amount_refundable_in_cents": 5000,
+      "amount_refunded_in_cents": 0,
+      "deposit_refundable_in_cents": 0,
+      "deposit_refunded_in_cents": 0,
+      "total_refundable_in_cents": 5000,
+      "total_refunded_in_cents": 0,
+      "succeeded_at": "2024-11-04T09:26:49.105087+00:00",
+      "failed_at": null,
+      "canceled_at": null,
+      "expired_at": null,
+      "employee_id": null,
+      "order_id": null,
+      "customer_id": null
+    },
+    "relationships": {}
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/payment_charges/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency

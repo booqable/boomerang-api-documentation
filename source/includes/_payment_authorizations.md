@@ -9,6 +9,8 @@ Creates a `PaymentAuthorization` record. A `PaymentAuthorization` is a record of
 
 `POST /api/boomerang/payment_authorizations`
 
+`PUT /api/boomerang/payment_authorizations/{id}`
+
 ## Fields
 Every payment authorization has the following fields:
 
@@ -17,7 +19,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
+`status` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`, `captured`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
 `total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
@@ -75,11 +77,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "69c428a1-2877-47be-822f-0abd703e09d5",
+      "id": "75032432-db5d-4116-b69b-344ad5086565",
       "type": "payment_authorizations",
       "attributes": {
-        "created_at": "2024-10-28T09:24:36.540505+00:00",
-        "updated_at": "2024-10-28T09:24:36.540505+00:00",
+        "created_at": "2024-11-04T09:23:50.331857+00:00",
+        "updated_at": "2024-11-04T09:23:50.331857+00:00",
         "status": "created",
         "amount_in_cents": 100,
         "deposit_in_cents": 0,
@@ -206,7 +208,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/070e4e35-5fb5-4d53-94e4-b37e930a63fd' \
+    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/9797abc2-3906-4728-bf19-61c0893a7c35' \
     --header 'content-type: application/json' \
 ```
 
@@ -215,11 +217,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "070e4e35-5fb5-4d53-94e4-b37e930a63fd",
+    "id": "9797abc2-3906-4728-bf19-61c0893a7c35",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-10-28T09:24:35.994903+00:00",
-      "updated_at": "2024-10-28T09:24:35.994903+00:00",
+      "created_at": "2024-11-04T09:23:52.491713+00:00",
+      "updated_at": "2024-11-04T09:23:52.491713+00:00",
       "status": "created",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -312,11 +314,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "06237575-b406-40fb-9048-a92808edc90e",
+    "id": "0443a9ca-8ccf-48a2-9eb3-bc313572012f",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-10-28T09:24:37.229235+00:00",
-      "updated_at": "2024-10-28T09:24:37.229235+00:00",
+      "created_at": "2024-11-04T09:23:53.150406+00:00",
+      "updated_at": "2024-11-04T09:23:53.150406+00:00",
       "status": "created",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -340,7 +342,7 @@ This request accepts the following includes:
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "c4b874dd-bed5-4881-a072-2e7a9d1d1f66",
+      "employee_id": "8cd6fb6f-db9c-4deb-a506-9446a2a1cd74",
       "order_id": null,
       "customer_id": null,
       "payment_method_id": null
@@ -371,7 +373,124 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `[:created, "created"]`, `[:started, "started"]`, `[:action_required, "action_required"]`, `[:succeeded, "succeeded"]`, `[:failed, "failed"]`, `[:canceled, "canceled"]`, `[:expired, "expired"]`, `[:captured, "captured"]`
+`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`, `captured`
+`data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
+`data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
+`data[attributes][currency]` | **String** <br>Currency
+`data[attributes][mode]` | **String** <br>Mode. One of `off_session`, `checkout`, `request`, `terminal`.
+`data[attributes][provider]` | **String** <br>Provider. Can be one of `stripe`, `app`
+`data[attributes][provider_id]` | **String** <br>External provider authorization identification
+`data[attributes][provider_method]` | **String** <br>Provider authorization method. Ex: credit_card, boleto, cash, bank, etc.
+`data[attributes][provider_secret]` | **String** <br>Provider authorization secret
+`data[attributes][employee_id]` | **Uuid** <br>The associated Employee
+`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][payment_method_id]` | **Uuid** <br>The associated Payment method
+
+
+### Includes
+
+This request accepts the following includes:
+
+`order`
+
+
+`customer`
+
+
+`payment_method`
+
+
+
+
+
+
+## Updating a payment authorization
+
+
+
+> How to update a payment authorization:
+
+```shell
+  curl --request PUT \
+    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/85fe272d-1bf8-4cfb-82a1-c4673cb2642a' \
+    --header 'content-type: application/json' \
+    --data '{
+      "data": {
+        "id": "85fe272d-1bf8-4cfb-82a1-c4673cb2642a",
+        "type": "payment_authorizations",
+        "attributes": {
+          "status": "succeeded"
+        }
+      }
+    }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+  "data": {
+    "id": "85fe272d-1bf8-4cfb-82a1-c4673cb2642a",
+    "type": "payment_authorizations",
+    "attributes": {
+      "created_at": "2024-11-04T09:23:51.547893+00:00",
+      "updated_at": "2024-11-04T09:23:51.547893+00:00",
+      "status": "succeeded",
+      "amount_in_cents": 100,
+      "deposit_in_cents": 0,
+      "total_in_cents": 100,
+      "currency": "usd",
+      "mode": "request",
+      "provider": "stripe",
+      "provider_id": null,
+      "provider_method": null,
+      "provider_secret": null,
+      "capturable": true,
+      "amount_capturable_in_cents": 100,
+      "deposit_capturable_in_cents": 0,
+      "total_capturable_in_cents": 100,
+      "amount_captured_in_cents": 0,
+      "deposit_captured_in_cents": 0,
+      "total_captured_in_cents": 0,
+      "captured_at": null,
+      "capture_before": null,
+      "succeeded_at": null,
+      "failed_at": null,
+      "canceled_at": null,
+      "expired_at": null,
+      "employee_id": null,
+      "order_id": null,
+      "customer_id": null,
+      "payment_method_id": null
+    },
+    "relationships": {}
+  },
+  "meta": {}
+}
+```
+
+### HTTP Request
+
+`PUT /api/boomerang/payment_authorizations/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`include` | **String** <br>List of comma seperated relationships `?include=order,customer,payment_method`
+`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_authorizations]=created_at,updated_at,status`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`, `captured`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency

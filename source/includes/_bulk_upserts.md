@@ -66,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "9eb56f6c-eb55-5b32-988c-e8795b6761c9",
+    "id": "3cec5369-7442-5ade-a9f9-e42761aec533",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "9154d09e-704d-4f93-822f-63a1745b81f0"
+            "id": "d1711e74-8eb1-4b31-818b-7cdad5028da6"
           },
           {
             "type": "operating_rules",
-            "id": "3a5c3598-df60-4d5f-b6f2-80125735ec86"
+            "id": "50aebb46-a58f-448f-81bd-c1f3ecb37173"
           }
         ]
       }
@@ -85,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "9154d09e-704d-4f93-822f-63a1745b81f0",
+      "id": "d1711e74-8eb1-4b31-818b-7cdad5028da6",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-10-28T09:31:15.136912+00:00",
-        "updated_at": "2024-10-28T09:31:15.136912+00:00",
+        "created_at": "2024-11-04T09:28:33.916751+00:00",
+        "updated_at": "2024-11-04T09:28:33.916751+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -100,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "3a5c3598-df60-4d5f-b6f2-80125735ec86",
+      "id": "50aebb46-a58f-448f-81bd-c1f3ecb37173",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-10-28T09:31:15.136912+00:00",
-        "updated_at": "2024-10-28T09:31:15.136912+00:00",
+        "created_at": "2024-11-04T09:28:33.916751+00:00",
+        "updated_at": "2024-11-04T09:28:33.916751+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -155,7 +155,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "6c4dd893-951b-5e5a-88af-a0d23043ffaa",
+    "id": "3cec5369-7442-5ade-a9f9-e42761aec533",
     "type": "bulk_upserts",
     "relationships": {}
   },

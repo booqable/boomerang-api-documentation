@@ -52,11 +52,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "e880debc-68d1-4b79-9d64-a712eac42b42",
+      "id": "d5878a73-3bf4-45df-8d91-4f7817fa77f8",
       "type": "menus",
       "attributes": {
-        "created_at": "2024-10-28T09:25:29.717156+00:00",
-        "updated_at": "2024-10-28T09:25:29.717156+00:00",
+        "created_at": "2024-11-04T09:27:47.502582+00:00",
+        "updated_at": "2024-11-04T09:27:47.502582+00:00",
         "title": "Main menu",
         "key": "main"
       },
@@ -133,7 +133,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/menus/7745c341-b583-4149-8ff5-41ccc70281b3?include=menu_items' \
+    --url 'https://example.booqable.com/api/boomerang/menus/1039aeac-ac23-4006-bd0f-6f1edebac20d?include=menu_items' \
     --header 'content-type: application/json' \
 ```
 
@@ -142,11 +142,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7745c341-b583-4149-8ff5-41ccc70281b3",
+    "id": "1039aeac-ac23-4006-bd0f-6f1edebac20d",
     "type": "menus",
     "attributes": {
-      "created_at": "2024-10-28T09:25:27.001339+00:00",
-      "updated_at": "2024-10-28T09:25:27.001339+00:00",
+      "created_at": "2024-11-04T09:27:47.977243+00:00",
+      "updated_at": "2024-11-04T09:27:47.977243+00:00",
       "title": "Main menu",
       "key": "main"
     },
@@ -155,15 +155,15 @@ This request accepts the following includes:
         "data": [
           {
             "type": "menu_items",
-            "id": "2755a102-cd13-45c5-adaa-790d16c61ea9"
+            "id": "9875abda-47ee-484c-a2bb-0dbc5aace93e"
           },
           {
             "type": "menu_items",
-            "id": "7ecf04e7-6163-4341-87d6-527c7496b5f3"
+            "id": "c7980226-2e5a-4cd5-9788-da1c8987c9de"
           },
           {
             "type": "menu_items",
-            "id": "44b003eb-a83b-471d-959b-a7f8c5c0b27e"
+            "id": "cf0a5e76-5544-4133-9ea8-0feb666b330e"
           }
         ]
       }
@@ -171,12 +171,12 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "2755a102-cd13-45c5-adaa-790d16c61ea9",
+      "id": "9875abda-47ee-484c-a2bb-0dbc5aace93e",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2024-10-28T09:25:27.005480+00:00",
-        "updated_at": "2024-10-28T09:25:27.005480+00:00",
-        "menu_id": "7745c341-b583-4149-8ff5-41ccc70281b3",
+        "created_at": "2024-11-04T09:27:47.978778+00:00",
+        "updated_at": "2024-11-04T09:27:47.978778+00:00",
+        "menu_id": "1039aeac-ac23-4006-bd0f-6f1edebac20d",
         "parent_menu_item_id": null,
         "title": "About us",
         "value": "/about-us",
@@ -189,12 +189,12 @@ This request accepts the following includes:
       "relationships": {}
     },
     {
-      "id": "7ecf04e7-6163-4341-87d6-527c7496b5f3",
+      "id": "c7980226-2e5a-4cd5-9788-da1c8987c9de",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2024-10-28T09:25:27.009556+00:00",
-        "updated_at": "2024-10-28T09:25:27.009556+00:00",
-        "menu_id": "7745c341-b583-4149-8ff5-41ccc70281b3",
+        "created_at": "2024-11-04T09:27:47.980476+00:00",
+        "updated_at": "2024-11-04T09:27:47.980476+00:00",
+        "menu_id": "1039aeac-ac23-4006-bd0f-6f1edebac20d",
         "parent_menu_item_id": null,
         "title": "Home",
         "value": "/",
@@ -207,12 +207,12 @@ This request accepts the following includes:
       "relationships": {}
     },
     {
-      "id": "44b003eb-a83b-471d-959b-a7f8c5c0b27e",
+      "id": "cf0a5e76-5544-4133-9ea8-0feb666b330e",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2024-10-28T09:25:27.011790+00:00",
-        "updated_at": "2024-10-28T09:25:27.011790+00:00",
-        "menu_id": "7745c341-b583-4149-8ff5-41ccc70281b3",
+        "created_at": "2024-11-04T09:27:47.981902+00:00",
+        "updated_at": "2024-11-04T09:27:47.981902+00:00",
+        "menu_id": "1039aeac-ac23-4006-bd0f-6f1edebac20d",
         "parent_menu_item_id": null,
         "title": "Rentals",
         "value": "/products",
@@ -307,11 +307,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e45853d8-3436-4d8d-9f35-a256bee5442f",
+    "id": "da19aeac-b71f-4897-a484-327fbd110e15",
     "type": "menus",
     "attributes": {
-      "created_at": "2024-10-28T09:25:27.671937+00:00",
-      "updated_at": "2024-10-28T09:25:27.671937+00:00",
+      "created_at": "2024-11-04T09:27:48.549336+00:00",
+      "updated_at": "2024-11-04T09:27:48.549336+00:00",
       "title": "Header menu",
       "key": "header"
     },
@@ -371,25 +371,25 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/menus/76939b2e-feb2-4bdf-be58-d09169b2a389' \
+    --url 'https://example.booqable.com/api/boomerang/menus/b30b2bff-c88c-48f3-ad74-f1b6fdf887ce' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "76939b2e-feb2-4bdf-be58-d09169b2a389",
+        "id": "b30b2bff-c88c-48f3-ad74-f1b6fdf887ce",
         "type": "menus",
         "attributes": {
           "title": "Header menu",
           "menu_items_attributes": [
             {
-              "id": "d7bd8afc-36f3-45fb-ad47-b65826d68132",
+              "id": "bf3b6816-2563-4fe3-b06f-6671149d9929",
               "title": "Contact us"
             },
             {
-              "id": "3c97b2b3-4147-4b15-ab41-50889bba073f",
+              "id": "cfe6fd8e-1f70-42ab-9750-0683bedd6d73",
               "title": "Start"
             },
             {
-              "id": "4fc48eb6-a344-4714-8b74-45bdd898a4a0",
+              "id": "e000594d-1fe4-4ed7-b3fc-ee11c8320855",
               "title": "Rent from us"
             }
           ]
@@ -404,11 +404,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "76939b2e-feb2-4bdf-be58-d09169b2a389",
+    "id": "b30b2bff-c88c-48f3-ad74-f1b6fdf887ce",
     "type": "menus",
     "attributes": {
-      "created_at": "2024-10-28T09:25:29.078889+00:00",
-      "updated_at": "2024-10-28T09:25:29.130163+00:00",
+      "created_at": "2024-11-04T09:27:49.149713+00:00",
+      "updated_at": "2024-11-04T09:27:49.182617+00:00",
       "title": "Header menu",
       "key": "main"
     },
@@ -417,15 +417,15 @@ This request accepts the following includes:
         "data": [
           {
             "type": "menu_items",
-            "id": "d7bd8afc-36f3-45fb-ad47-b65826d68132"
+            "id": "bf3b6816-2563-4fe3-b06f-6671149d9929"
           },
           {
             "type": "menu_items",
-            "id": "3c97b2b3-4147-4b15-ab41-50889bba073f"
+            "id": "cfe6fd8e-1f70-42ab-9750-0683bedd6d73"
           },
           {
             "type": "menu_items",
-            "id": "4fc48eb6-a344-4714-8b74-45bdd898a4a0"
+            "id": "e000594d-1fe4-4ed7-b3fc-ee11c8320855"
           }
         ]
       }
@@ -433,12 +433,12 @@ This request accepts the following includes:
   },
   "included": [
     {
-      "id": "d7bd8afc-36f3-45fb-ad47-b65826d68132",
+      "id": "bf3b6816-2563-4fe3-b06f-6671149d9929",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2024-10-28T09:25:29.080759+00:00",
-        "updated_at": "2024-10-28T09:25:29.132229+00:00",
-        "menu_id": "76939b2e-feb2-4bdf-be58-d09169b2a389",
+        "created_at": "2024-11-04T09:27:49.151231+00:00",
+        "updated_at": "2024-11-04T09:27:49.184457+00:00",
+        "menu_id": "b30b2bff-c88c-48f3-ad74-f1b6fdf887ce",
         "parent_menu_item_id": null,
         "title": "Contact us",
         "value": "/about-us",
@@ -451,12 +451,12 @@ This request accepts the following includes:
       "relationships": {}
     },
     {
-      "id": "3c97b2b3-4147-4b15-ab41-50889bba073f",
+      "id": "cfe6fd8e-1f70-42ab-9750-0683bedd6d73",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2024-10-28T09:25:29.083004+00:00",
-        "updated_at": "2024-10-28T09:25:29.134948+00:00",
-        "menu_id": "76939b2e-feb2-4bdf-be58-d09169b2a389",
+        "created_at": "2024-11-04T09:27:49.152930+00:00",
+        "updated_at": "2024-11-04T09:27:49.186084+00:00",
+        "menu_id": "b30b2bff-c88c-48f3-ad74-f1b6fdf887ce",
         "parent_menu_item_id": null,
         "title": "Start",
         "value": "/",
@@ -469,12 +469,12 @@ This request accepts the following includes:
       "relationships": {}
     },
     {
-      "id": "4fc48eb6-a344-4714-8b74-45bdd898a4a0",
+      "id": "e000594d-1fe4-4ed7-b3fc-ee11c8320855",
       "type": "menu_items",
       "attributes": {
-        "created_at": "2024-10-28T09:25:29.084878+00:00",
-        "updated_at": "2024-10-28T09:25:29.136631+00:00",
-        "menu_id": "76939b2e-feb2-4bdf-be58-d09169b2a389",
+        "created_at": "2024-11-04T09:27:49.154289+00:00",
+        "updated_at": "2024-11-04T09:27:49.187452+00:00",
+        "menu_id": "b30b2bff-c88c-48f3-ad74-f1b6fdf887ce",
         "parent_menu_item_id": null,
         "title": "Rent from us",
         "value": "/products",
@@ -541,7 +541,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/menus/df2b7ace-ad74-44b2-b305-d7c35710cd71' \
+    --url 'https://example.booqable.com/api/boomerang/menus/3a988583-6502-412c-a207-10d5b90c1be4' \
     --header 'content-type: application/json' \
 ```
 
@@ -550,11 +550,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "df2b7ace-ad74-44b2-b305-d7c35710cd71",
+    "id": "3a988583-6502-412c-a207-10d5b90c1be4",
     "type": "menus",
     "attributes": {
-      "created_at": "2024-10-28T09:25:28.349456+00:00",
-      "updated_at": "2024-10-28T09:25:28.349456+00:00",
+      "created_at": "2024-11-04T09:27:47.006013+00:00",
+      "updated_at": "2024-11-04T09:27:47.006013+00:00",
       "title": "Main menu",
       "key": "main"
     },

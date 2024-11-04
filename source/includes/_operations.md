@@ -336,11 +336,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "bf01fede-4c3c-41fa-9943-6e74d66e6051",
+      "id": "cd9a7733-cd26-4807-b0a9-497c3815ad95",
       "type": "operations",
       "attributes": {
-        "created_at": "2024-10-28T09:29:11.480124+00:00",
-        "updated_at": "2024-10-28T09:29:11.480124+00:00",
+        "created_at": "2024-11-04T09:27:08.093920+00:00",
+        "updated_at": "2024-11-04T09:27:08.093920+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -350,7 +350,7 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "ad139932-b3e7-4d8f-8127-a2391110d3e6"
+        "employee_id": "648e0375-044a-4046-b3a4-5ebc47a3bf18"
       },
       "relationships": {}
     }
@@ -420,7 +420,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/6b41d2ea-b5d0-439e-9307-0457840df1f9' \
+    --url 'https://example.booqable.com/api/boomerang/operations/8d4b1b09-92ad-4ef9-9cbb-3c14fb7ada09' \
     --header 'content-type: application/json' \
 ```
 
@@ -429,11 +429,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6b41d2ea-b5d0-439e-9307-0457840df1f9",
+    "id": "8d4b1b09-92ad-4ef9-9cbb-3c14fb7ada09",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-10-28T09:29:11.984549+00:00",
-      "updated_at": "2024-10-28T09:29:11.984549+00:00",
+      "created_at": "2024-11-04T09:27:08.530820+00:00",
+      "updated_at": "2024-11-04T09:27:08.530820+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -443,7 +443,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "86218dcf-8208-43a9-9fed-3110b05ea797"
+      "employee_id": "a20afad3-fc52-4262-8488-36e78777ffd1"
     },
     "relationships": {}
   },
@@ -509,11 +509,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ffa9e110-efb0-4118-b789-eda02d809e44",
+    "id": "a18ba78b-277f-4284-981c-8d75964da959",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-10-28T09:29:12.546853+00:00",
-      "updated_at": "2024-10-28T09:29:12.546853+00:00",
+      "created_at": "2024-11-04T09:27:09.030178+00:00",
+      "updated_at": "2024-11-04T09:27:09.030178+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -523,7 +523,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "c8642d4d-7d40-444c-8802-5ac10e93a381"
+      "employee_id": "df2b0222-0ab3-44a2-b55c-4f588d2e1b5b"
     },
     "relationships": {}
   },
