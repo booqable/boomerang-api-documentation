@@ -72,7 +72,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "d0562432-4c24-410f-9a7a-b03212c82088",
+          "order_id": "b00458c5-1444-4908-b48a-5999b7b2be62",
           "transition_from": "new",
           "transition_to": "concept",
           "confirm_shortage": null,
@@ -87,10 +87,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4b736c77-7852-5906-b104-d3dea8282122",
+    "id": "c7fa674a-9bc2-5e5e-9876-b38a54841583",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "d0562432-4c24-410f-9a7a-b03212c82088",
+      "order_id": "b00458c5-1444-4908-b48a-5999b7b2be62",
       "transition_from": "new",
       "transition_to": "concept",
       "revert": null,
@@ -113,7 +113,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "4b7d53b5-5cc6-4f51-b794-78fe85d3d3a4",
+          "order_id": "c53bacde-875e-48f4-a1fe-606dadd29365",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -128,10 +128,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "ea83ee3d-555e-5987-b609-0cc65f45716e",
+    "id": "bf935de4-49fa-5ece-9380-62ded8a4f272",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "4b7d53b5-5cc6-4f51-b794-78fe85d3d3a4",
+      "order_id": "c53bacde-875e-48f4-a1fe-606dadd29365",
       "transition_from": "concept",
       "transition_to": "reserved",
       "revert": null,
@@ -154,7 +154,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "def1378c-749e-4a4c-9be3-3c27b11b8a2f",
+          "order_id": "1fb550af-ae57-4dc8-a656-fabc0866c6df",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -179,7 +179,7 @@ Name | Description
         "blocking": [
           {
             "reason": "shortage",
-            "item_id": "02e071f6-89b9-4253-87be-991142dabddf",
+            "item_id": "0430b184-e9e6-4546-93ac-74d9e9d7bd5d",
             "stock_count": 1,
             "reserved": 0,
             "needed": 2,
@@ -203,7 +203,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "1331e030-b1f4-4450-b688-d31927bb6b21",
+          "order_id": "fea9303e-3ae1-4ad5-b083-f92bd5ab0cfd",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -227,7 +227,7 @@ Name | Description
         "warning": [
           {
             "reason": "shortage",
-            "item_id": "5395284b-42df-467f-b1b2-a390ef3ed8cf",
+            "item_id": "8b4d46b8-4080-4c1a-a34c-5fad056500c8",
             "stock_count": 1,
             "reserved": 0,
             "needed": 2,
@@ -252,7 +252,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "0e43fa23-7dcc-4da8-a7fc-11ef06ad1359",
+          "order_id": "bdd5b890-c3b1-4252-a1c2-06b1ee77e464",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": true,
@@ -267,10 +267,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "69a63628-0d43-50b6-a9f0-390e285cb4f2",
+    "id": "0d51dbda-6284-5db2-85a3-094041f332b1",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "0e43fa23-7dcc-4da8-a7fc-11ef06ad1359",
+      "order_id": "bdd5b890-c3b1-4252-a1c2-06b1ee77e464",
       "transition_from": "concept",
       "transition_to": "reserved",
       "revert": null,
@@ -293,7 +293,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "74efbf49-ebdb-4fff-91c4-46ca5cf9a134",
+          "order_id": "8032c439-bcc7-42e4-af9b-6ad63ae7f361",
           "transition_from": "concept",
           "transition_to": "reserved",
           "confirm_shortage": null,
@@ -318,12 +318,12 @@ Name | Description
         "blocking": [
           {
             "reason": "stock_item_specified",
-            "item_id": "cf80710d-712a-4f0f-a16f-a701e33b3152",
+            "item_id": "400cf29b-490d-4661-b0f9-2a3ab8825473",
             "unavailable": [
-              "74ad9486-4f8a-4816-8814-2bef9a3a78c0"
+              "53351b60-88f2-45bc-a6d0-0600d783dfbc"
             ],
             "available": [
-              "e4f17554-9458-439d-bc45-32f4fc7a732b"
+              "5716ca56-1537-4ea1-ae02-dd1d963a8fdb"
             ]
           }
         ]
@@ -344,7 +344,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "f4ea85e5-3ec6-46ad-8d4c-3943c371d719",
+          "order_id": "44426bd3-499d-4cd0-b1f7-5710b05e59a7",
           "transition_from": "reserved",
           "transition_to": "archived",
           "confirm_shortage": null,
@@ -381,7 +381,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "be268691-ca6a-4bf8-8ce2-147e0763d2f7",
+          "order_id": "ae23a547-360d-4837-b182-10901f98e827",
           "transition_from": "stopped",
           "transition_to": "archived",
           "confirm_shortage": null,
@@ -396,10 +396,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1bb38a22-af59-5fc6-88e6-1a3a37312b86",
+    "id": "3156e17f-270c-599c-95c1-a594d759e62b",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "be268691-ca6a-4bf8-8ce2-147e0763d2f7",
+      "order_id": "ae23a547-360d-4837-b182-10901f98e827",
       "transition_from": "stopped",
       "transition_to": "archived",
       "revert": null,
@@ -422,7 +422,7 @@ Name | Description
       "data": {
         "type": "order_status_transitions",
         "attributes": {
-          "order_id": "392b6dd7-5ed1-4400-932e-d17a08f199e1",
+          "order_id": "d85f2eff-fd66-49eb-91aa-23150343f9bf",
           "transition_from": "reserved",
           "transition_to": "concept",
           "confirm_shortage": null,
@@ -437,10 +437,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5e408cef-97c1-5109-b318-2d8531519a08",
+    "id": "cec1b537-9fff-554e-ba41-78e1a9dd5c02",
     "type": "order_status_transitions",
     "attributes": {
-      "order_id": "392b6dd7-5ed1-4400-932e-d17a08f199e1",
+      "order_id": "d85f2eff-fd66-49eb-91aa-23150343f9bf",
       "transition_from": "reserved",
       "transition_to": "concept",
       "revert": true,

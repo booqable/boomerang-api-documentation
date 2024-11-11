@@ -77,9 +77,9 @@ Name | Description
   {
   "data": [
     {
-      "id": "9292acb9-0e93-4b49-8919-7046fb6464b0",
-      "created_at": "2024-11-04T09:28:41.825390+00:00",
-      "updated_at": "2024-11-04T09:28:41.825390+00:00",
+      "id": "a91791c7-a7f8-4e1a-807c-326466ab3432",
+      "created_at": "2024-11-11T09:28:16.537173+00:00",
+      "updated_at": "2024-11-11T09:28:16.537173+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "invoice.finalized"
@@ -160,11 +160,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "aea5ada9-2434-4bbb-8eb5-f557403270ec",
+    "id": "63755782-0925-471e-b13c-654bc1b478f3",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-11-04T09:28:42.367009+00:00",
-      "updated_at": "2024-11-04T09:28:42.367009+00:00",
+      "created_at": "2024-11-11T09:28:16.029819+00:00",
+      "updated_at": "2024-11-11T09:28:16.029819+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created",
@@ -210,12 +210,12 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/414b0ab6-ed60-46cb-a095-80eb3bae6cc6' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/7afc2f0f-1868-441d-ba6f-98195b7dc1fd' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "webhook_endpoints",
-        "id": "414b0ab6-ed60-46cb-a095-80eb3bae6cc6",
+        "id": "7afc2f0f-1868-441d-ba6f-98195b7dc1fd",
         "attributes": {
           "url": "https://example.com/hooks",
           "events": [
@@ -231,11 +231,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "414b0ab6-ed60-46cb-a095-80eb3bae6cc6",
+    "id": "7afc2f0f-1868-441d-ba6f-98195b7dc1fd",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-11-04T09:28:40.775286+00:00",
-      "updated_at": "2024-11-04T09:28:40.775286+00:00",
+      "created_at": "2024-11-11T09:28:14.917793+00:00",
+      "updated_at": "2024-11-11T09:28:14.917793+00:00",
       "url": "https://example.com/hooks",
       "events": [
         "customer.created"
@@ -280,7 +280,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/b544591e-0dfb-4d8d-9988-9083611598d8' \
+    --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/3a4c050c-00b2-41d8-9a11-d76b3d54eccd' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -290,11 +290,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b544591e-0dfb-4d8d-9988-9083611598d8",
+    "id": "3a4c050c-00b2-41d8-9a11-d76b3d54eccd",
     "type": "webhook_endpoints",
     "attributes": {
-      "created_at": "2024-11-04T09:28:41.356978+00:00",
-      "updated_at": "2024-11-04T09:28:41.356978+00:00",
+      "created_at": "2024-11-11T09:28:15.460597+00:00",
+      "updated_at": "2024-11-11T09:28:15.460597+00:00",
       "url": "https://example.com/hooks",
       "events": []
     }

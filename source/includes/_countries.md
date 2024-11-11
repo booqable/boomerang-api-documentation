@@ -24,6 +24,14 @@ Name | Description
 `city_autofill` | **String** `readonly`<br>The value to use for the city when autofilling
 
 
+## Relationships
+Countries have the following relationships:
+
+Name | Description
+-- | --
+`provinces` | **Provinces** `readonly`<br>Associated Provinces
+
+
 ## Listing countries
 
 
@@ -42,11 +50,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "34b11fbf-ee3e-4286-bd45-62400596e51f",
+      "id": "625d5fe4-01b8-4243-9b10-bc8073b1b824",
       "type": "countries",
       "attributes": {
-        "created_at": "2024-11-04T09:22:55.640833+00:00",
-        "updated_at": "2024-11-04T09:22:55.640833+00:00",
+        "created_at": "2024-11-11T09:25:32.073230+00:00",
+        "updated_at": "2024-11-11T09:25:32.073230+00:00",
         "name": "Netherlands",
         "alpha2": "NL",
         "province_required": false,
@@ -59,7 +67,8 @@ Name | Description
         "zipcode_placeholder": "1234 AB",
         "zipcode_type": "postcode",
         "city_autofill": null
-      }
+      },
+      "relationships": {}
     }
   ],
   "meta": {}
@@ -76,6 +85,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`include` | **String** <br>List of comma seperated relationships `?include=provinces`
 `fields[]` | **Array** <br>List of comma seperated fields to include `?fields[countries]=created_at,updated_at,name`
 `filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
@@ -108,4 +118,11 @@ Name | Description
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+`provinces`
+
+
+
+
+

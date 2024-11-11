@@ -58,6 +58,7 @@ Name | Description
 `pending_subscription` | **Boolean** `readonly`<br>Whether the company has a pending subscription
 `team_size` | **String** `readonly`<br>Team size given during signup
 `projected_revenue` | **String** `readonly`<br>Projected revenue size given during signup
+`year_business_start` | **String** `readonly`<br>Year when company started, given during signup
 `address` | **String** `readonly`<br>The full address
 `main_address_attributes` | **Hash** `writeonly`<br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
 `main_address` | **Hash** `readonly`<br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information
@@ -86,14 +87,14 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "32df8bf7-be48-4c0a-b58a-75dd6f19b353",
+    "id": "15c3caee-2f15-45b1-b4e3-6d62f2768180",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-11-04T09:22:54.956940+00:00",
-      "updated_at": "2024-11-04T09:22:54.967499+00:00",
+      "created_at": "2024-11-11T09:23:00.552789+00:00",
+      "updated_at": "2024-11-11T09:23:00.563925+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail12@company.com",
+      "email": "mail48@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -126,10 +127,11 @@ Name | Description
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "0222052dc748bb51a887208e178ec156",
+      "tenant_token": "1afc1bac1e6cec2d73d97e4c42bdbcbe",
       "pending_subscription": false,
       "team_size": null,
       "projected_revenue": null,
+      "year_business_start": null,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
         "meets_validation_requirements": false,
@@ -218,11 +220,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "3d6c72f4-5fdb-4292-a22e-9659a2b2e566",
+    "id": "1d07eb8a-dba3-4f10-9953-348e280fb1d3",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-11-18T09:22:54.113Z",
+        "trial_ends_at": "2024-11-25T09:23:01.556Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,
@@ -309,7 +311,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "ac0244f4-b2ce-4f31-810e-80a7f7f55cd9",
+        "id": "01444ec4-cbed-4e40-8741-ca7eea4ab461",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -323,14 +325,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ac0244f4-b2ce-4f31-810e-80a7f7f55cd9",
+    "id": "01444ec4-cbed-4e40-8741-ca7eea4ab461",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-11-04T09:22:54.526556+00:00",
-      "updated_at": "2024-11-04T09:22:54.576755+00:00",
+      "created_at": "2024-11-11T09:23:01.006853+00:00",
+      "updated_at": "2024-11-11T09:23:01.056029+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail11@company.com",
+      "email": "mail49@company.com",
       "billing_email": null,
       "phone": "0581234567",
       "website": "www.booqable.com",
@@ -363,10 +365,11 @@ This request does not accept any includes
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "9b594a2e9911d6b0303ef1533767c158",
+      "tenant_token": "d8415fc1269e68b0db754eeac1d2e036",
       "pending_subscription": false,
       "team_size": null,
       "projected_revenue": null,
+      "year_business_start": null,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
         "meets_validation_requirements": false,
