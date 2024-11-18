@@ -13,18 +13,18 @@ Every email has the following fields:
 Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
+`created_at` | **Datetime** `readonly`<br>When the email was created by the user, or automatically by Booqable. At this time, the email has not been sent yet.
+`updated_at` | **Datetime** `readonly`<br>The last time the email was updated. Typically this is updated after a delivery attempt has failed.
 `subject` | **String** <br>Email subject
 `body` | **String** <br>Email body
 `recipients` | **String** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
 `has_error` | **Boolean** `readonly`<br>Whether any errors occur when sending this email
 `sent` | **Boolean** `readonly`<br>Whether the email was sent successfully
 `document_ids` | **Array** <br>Documents to send as attachments to the email
-`order_id` | **Uuid** <br>The associated Order
-`customer_id` | **Uuid** <br>The associated Customer
-`email_template_id` | **Uuid** <br>The associated Email template
-`employee_id` | **Uuid** `readonly`<br>The associated Employee
+`order_id` | **Uuid** <br>Order the email is associated with, will be used to fill template data
+`customer_id` | **Uuid** <br>Customer the email is associated with, will be used to fill template data
+`email_template_id` | **Uuid** <br>Which email template to use
+`employee_id` | **Uuid** `readonly`<br>Employee who sent the email
 
 
 ## Relationships
@@ -56,11 +56,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "0e87f78d-a4dc-4f3c-a983-06fb1120ba8c",
+      "id": "83bc50bb-d429-418a-b9cd-36157e0cadcf",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-11-11T09:24:46.398095+00:00",
-        "updated_at": "2024-11-11T09:24:46.398095+00:00",
+        "created_at": "2024-11-18T09:24:36.598633+00:00",
+        "updated_at": "2024-11-18T09:24:36.598633+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
@@ -68,7 +68,7 @@ Name | Description
         "sent": false,
         "document_ids": [],
         "order_id": null,
-        "customer_id": "dfc81bc9-9bfc-434c-9270-a95973b5ae11",
+        "customer_id": "8e6aa32d-1435-4a70-bbef-501228f00bd0",
         "email_template_id": null,
         "employee_id": null
       },
@@ -84,7 +84,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=5718f23e-eb49-46ec-8b4f-9edaf0feb2fb' \
+    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=7842da1b-991d-4c37-aae7-6a520653c9a6' \
     --header 'content-type: application/json' \
 ```
 
@@ -94,19 +94,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "92afc5e3-462a-4670-bd40-3b2686887ab4",
+      "id": "8788daef-9728-4ff7-9486-a9210f1fb1ba",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-11-11T09:24:45.870513+00:00",
-        "updated_at": "2024-11-11T09:24:45.902063+00:00",
+        "created_at": "2024-11-18T09:24:36.012151+00:00",
+        "updated_at": "2024-11-18T09:24:36.069583+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "has_error": false,
         "sent": false,
         "document_ids": [],
-        "order_id": "5718f23e-eb49-46ec-8b4f-9edaf0feb2fb",
-        "customer_id": "dc6f2ea1-b9f3-4456-9d98-830910bc39c7",
+        "order_id": "7842da1b-991d-4c37-aae7-6a520653c9a6",
+        "customer_id": "647bc1a0-2617-451e-885b-c295065bc207",
         "email_template_id": null,
         "employee_id": null
       },
@@ -194,11 +194,11 @@ This request accepts the following includes:
           "recipients": "customer1@example.com,customer2@example.com",
           "subject": "Order confirmation",
           "body": "Hi {{customer.name}}",
-          "email_template_id": "7a5b4435-7024-4263-ae51-0fcb067ad0ea",
-          "order_id": "5a9a75aa-8dfa-4a4f-9c48-733c300b2c61",
-          "customer_id": "de098264-6177-430c-b84a-49c0098f6322",
+          "email_template_id": "dc972425-c1d6-4ebf-b82d-c7fe8a5218ce",
+          "order_id": "f46d4ab2-fbfe-4792-b97e-62738d1abb94",
+          "customer_id": "1e1ade55-39c2-4f3f-b47e-b5c597320262",
           "document_ids": [
-            "881b50a4-b6be-48b9-89e5-337a49bf4921"
+            "f543d51d-4ef0-49d8-9ae0-f1571fd9169b"
           ]
         }
       }
@@ -210,23 +210,23 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "4595dba1-33dd-481c-80fc-3c57a26a53c2",
+    "id": "f3ef879c-d1ce-4fe9-85bb-a6958e301f2f",
     "type": "emails",
     "attributes": {
-      "created_at": "2024-11-11T09:24:03.856921+00:00",
-      "updated_at": "2024-11-11T09:24:03.856921+00:00",
+      "created_at": "2024-11-18T09:24:37.344876+00:00",
+      "updated_at": "2024-11-18T09:24:37.344876+00:00",
       "subject": "Order confirmation",
       "body": "Hi {{customer.name}}",
       "recipients": "customer1@example.com,customer2@example.com",
       "has_error": false,
       "sent": false,
       "document_ids": [
-        "881b50a4-b6be-48b9-89e5-337a49bf4921"
+        "f543d51d-4ef0-49d8-9ae0-f1571fd9169b"
       ],
-      "order_id": "5a9a75aa-8dfa-4a4f-9c48-733c300b2c61",
-      "customer_id": "de098264-6177-430c-b84a-49c0098f6322",
-      "email_template_id": "7a5b4435-7024-4263-ae51-0fcb067ad0ea",
-      "employee_id": "38414e83-0ed9-4c74-9cbf-9c0e5bc9c342"
+      "order_id": "f46d4ab2-fbfe-4792-b97e-62738d1abb94",
+      "customer_id": "1e1ade55-39c2-4f3f-b47e-b5c597320262",
+      "email_template_id": "dc972425-c1d6-4ebf-b82d-c7fe8a5218ce",
+      "employee_id": "0489674e-9a2b-4185-a060-c780a3dd7df2"
     },
     "relationships": {}
   },
@@ -258,9 +258,9 @@ Name | Description
 `data[attributes][body]` | **String** <br>Email body
 `data[attributes][recipients]` | **String** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send.
 `data[attributes][document_ids][]` | **Array** <br>Documents to send as attachments to the email
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
-`data[attributes][email_template_id]` | **Uuid** <br>The associated Email template
+`data[attributes][order_id]` | **Uuid** <br>Order the email is associated with, will be used to fill template data
+`data[attributes][customer_id]` | **Uuid** <br>Customer the email is associated with, will be used to fill template data
+`data[attributes][email_template_id]` | **Uuid** <br>Which email template to use
 
 
 ### Includes

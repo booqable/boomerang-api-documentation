@@ -16,7 +16,7 @@ Name | Description
 `lastname` | **String** `writeonly`<br>Last name of the employee
 `email` | **String** `writeonly`<br>Employee's e-mail address
 `permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`
-`employee_id` | **Uuid** <br>The associated Employee
+`employee_id` | **Uuid** <br>Associated Employee
 
 
 ## Relationships
@@ -55,34 +55,34 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d75de6de-7e09-567c-9c71-3c43e8887fa9",
+    "id": "15972d9c-002d-5b39-aad9-aa6528798e85",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "e349aac3-6f97-44df-97fe-d64f3189dc95"
+      "employee_id": "7b2cfa39-442c-4a58-9e4b-917fa2025362"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "e349aac3-6f97-44df-97fe-d64f3189dc95"
+          "id": "7b2cfa39-442c-4a58-9e4b-917fa2025362"
         }
       }
     }
   },
   "included": [
     {
-      "id": "e349aac3-6f97-44df-97fe-d64f3189dc95",
+      "id": "7b2cfa39-442c-4a58-9e4b-917fa2025362",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-11-11T09:23:03.797135+00:00",
-        "updated_at": "2024-11-11T09:23:03.799960+00:00",
+        "created_at": "2024-11-18T09:27:22.907757+00:00",
+        "updated_at": "2024-11-18T09:27:22.910149+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-11-11T09:23:03.798711+00:00",
+        "viewed_whats_new_at": "2024-11-18T09:27:22.909105+00:00",
         "active": true,
         "owner": false,
         "confirmed": false,
@@ -110,7 +110,7 @@ Note that you can also update other fields.:
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "f66cba28-a515-456e-b5e0-beb93a453fce",
+          "id": "d8721c97-c74d-4fd0-8450-07d1b9e879dc",
           "email": "jane@doe.com"
         }
       },
@@ -123,34 +123,34 @@ Note that you can also update other fields.:
 ```json
   {
   "data": {
-    "id": "f66cba28-a515-456e-b5e0-beb93a453fce",
+    "id": "d8721c97-c74d-4fd0-8450-07d1b9e879dc",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "f66cba28-a515-456e-b5e0-beb93a453fce"
+      "employee_id": "d8721c97-c74d-4fd0-8450-07d1b9e879dc"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "f66cba28-a515-456e-b5e0-beb93a453fce"
+          "id": "d8721c97-c74d-4fd0-8450-07d1b9e879dc"
         }
       }
     }
   },
   "included": [
     {
-      "id": "f66cba28-a515-456e-b5e0-beb93a453fce",
+      "id": "d8721c97-c74d-4fd0-8450-07d1b9e879dc",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-11-11T09:23:03.153371+00:00",
-        "updated_at": "2024-11-11T09:23:03.244180+00:00",
+        "created_at": "2024-11-18T09:27:22.385107+00:00",
+        "updated_at": "2024-11-18T09:27:22.460115+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "jane@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-11-11T09:23:03.155626+00:00",
+        "viewed_whats_new_at": "2024-11-18T09:27:22.387027+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,
@@ -203,7 +203,7 @@ Name | Description
 `data[attributes][lastname]` | **String** <br>Last name of the employee
 `data[attributes][email]` | **String** <br>Employee's e-mail address
 `data[attributes][permissions][]` | **Array** <br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`
-`data[attributes][employee_id]` | **Uuid** <br>The associated Employee
+`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
 
 
 ### Includes

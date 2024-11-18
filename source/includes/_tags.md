@@ -13,7 +13,7 @@ Every tag has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `for` | **String** `writeonly`<br>The resource to show the tag counts for. One of `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`
 `name` | **String** <br>Name of the tag
 `count` | **Integer** <br>Total count
@@ -37,7 +37,7 @@ Name | Description
   {
   "data": [
     {
-      "id": "5287f8ae-3e45-401f-9f8e-a868431bc9ae",
+      "id": "bcbe3816-3813-43f6-a513-fde09d143179",
       "type": "tags",
       "attributes": {
         "name": "vip",
@@ -45,7 +45,7 @@ Name | Description
       }
     },
     {
-      "id": "9628c97f-44a0-485c-a5a5-382128bb22f0",
+      "id": "62f4b42e-b436-43c4-aeff-d432fca8e2cf",
       "type": "tags",
       "attributes": {
         "name": "webshop",

@@ -7,7 +7,7 @@ Every sorting has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `type` | **String_enum** `writeonly`<br>Type of model to update. Any of `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
 `ids` | **Array_of_strings** `writeonly`<br>Array of ids, positions are determined by the order of the array
 
@@ -28,11 +28,11 @@ Name | Description
         "attributes": {
           "type": "default_properties",
           "ids": [
-            "f15308b0-4274-42ea-a874-567c3fd08ce3",
-            "2171c270-92e1-4836-8429-286700681eb1",
-            "cc95d280-9955-4ae5-bc4b-fd485debe2a7",
-            "505c3a32-4df4-4ae9-913f-21ebb4e68934",
-            "d9df9371-5c38-4a71-88e3-6aea72da757e"
+            "bb7f4276-da73-494f-8d73-54b7f5041d92",
+            "cd6d9345-70b5-49c7-bb07-0f367d7da7dc",
+            "c8beb36c-ecbf-43a6-98cc-ed52272f66ba",
+            "59e9fb5f-4855-4e17-a8a0-f224c8cedea7",
+            "552d9ad0-341b-4b2c-b015-16e9cf01cf50"
           ]
         }
       }
@@ -44,7 +44,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d25840f5-a41e-5410-9da8-eb05ed083e5f",
+    "id": "53550759-e6c0-5d3c-b928-aa062ab05149",
     "type": "sortings"
   },
   "meta": {}

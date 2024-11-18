@@ -73,10 +73,10 @@ Name | Description
 `seo_description` | **String** <br>SEO meta description tag
 `tag_list` | **Array** <br>List of tags
 `properties` | **Hash** `readonly`<br>Key value pairs of associated properties
-`photo_id` | **Uuid** `readonly`<br>The associated Photo
-`tax_category_id` | **Uuid** <br>The associated Tax category
-`price_ruleset_id` | **Uuid** <br>The associated Price ruleset
-`price_structure_id` | **Uuid** <br>The associated Price structure
+`photo_id` | **Uuid** `readonly`<br>Associated Photo
+`tax_category_id` | **Uuid** <br>Associated Tax category
+`price_ruleset_id` | **Uuid** <br>Associated Price ruleset
+`price_structure_id` | **Uuid** <br>Associated Price structure
 `allow_shortage` | **Boolean** <br>Whether shortages are allowed
 `shortage_limit` | **Integer** <br>The maximum allowed shortage for any date range
 `variation_fields` | **Array** <br>Array of fields that distinguish variations (e.g. color or size)
@@ -121,11 +121,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "7b0b2b10-9f0f-43dd-94bc-823ef1536d54",
+      "id": "01e4bbd3-03eb-486c-9ca9-dff9808c04bf",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2024-11-11T09:25:04.365953+00:00",
-        "updated_at": "2024-11-11T09:25:04.381584+00:00",
+        "created_at": "2024-11-18T09:27:16.338140+00:00",
+        "updated_at": "2024-11-18T09:27:16.347504+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -331,13 +331,13 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "60d3a815-5f77-44bc-9f57-8c68ba514330"
+      "id": "6d7c728a-4347-4a2e-9be0-90e9c7b2d65f"
     },
     {
-      "id": "563775a6-ed5f-4c5a-80ed-3bcf8567dee9"
+      "id": "66966493-68fc-4923-bba2-a4067b30f803"
     },
     {
-      "id": "e44ad6e0-e252-41c8-a10f-21aa53208148"
+      "id": "53733dfb-8d29-4e1c-bdd0-dca863401367"
     }
   ]
 }
@@ -455,7 +455,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/afc7610a-f53f-4858-90c4-1842c2b18723' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/6bfd7e96-290a-47fd-b6f4-c6666573be76' \
     --header 'content-type: application/json' \
 ```
 
@@ -464,11 +464,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "afc7610a-f53f-4858-90c4-1842c2b18723",
+    "id": "6bfd7e96-290a-47fd-b6f4-c6666573be76",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-11-11T09:25:00.112460+00:00",
-      "updated_at": "2024-11-11T09:25:00.122163+00:00",
+      "created_at": "2024-11-18T09:27:16.996410+00:00",
+      "updated_at": "2024-11-18T09:27:17.005451+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -592,11 +592,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6925ff17-9b75-4bf0-96af-7dfcd674a0cc",
+    "id": "cc07cabe-565b-4566-8295-ee03a2b271a3",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-11-11T09:25:01.098969+00:00",
-      "updated_at": "2024-11-11T09:25:01.098969+00:00",
+      "created_at": "2024-11-18T09:27:20.245114+00:00",
+      "updated_at": "2024-11-18T09:27:20.245114+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -689,9 +689,9 @@ Name | Description
 `data[attributes][seo_title]` | **String** <br>SEO title tag
 `data[attributes][seo_description]` | **String** <br>SEO meta description tag
 `data[attributes][tag_list][]` | **Array** <br>List of tags
-`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
-`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+`data[attributes][tax_category_id]` | **Uuid** <br>Associated Tax category
+`data[attributes][price_ruleset_id]` | **Uuid** <br>Associated Price ruleset
+`data[attributes][price_structure_id]` | **Uuid** <br>Associated Price structure
 `data[attributes][allow_shortage]` | **Boolean** <br>Whether shortages are allowed
 `data[attributes][shortage_limit]` | **Integer** <br>The maximum allowed shortage for any date range
 `data[attributes][variation_fields][]` | **Array** <br>Array of fields that distinguish variations (e.g. color or size)
@@ -738,11 +738,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/e3243c64-8a55-4775-8995-3a00a37a30d2' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/f023c10a-b952-4217-bb77-b7f9b9dc3558' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "e3243c64-8a55-4775-8995-3a00a37a30d2",
+        "id": "f023c10a-b952-4217-bb77-b7f9b9dc3558",
         "type": "product_groups",
         "attributes": {
           "name": "iPad mini"
@@ -756,11 +756,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e3243c64-8a55-4775-8995-3a00a37a30d2",
+    "id": "f023c10a-b952-4217-bb77-b7f9b9dc3558",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-11-11T09:25:05.541848+00:00",
-      "updated_at": "2024-11-11T09:25:06.052470+00:00",
+      "created_at": "2024-11-18T09:27:19.185964+00:00",
+      "updated_at": "2024-11-18T09:27:19.437848+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -850,9 +850,9 @@ Name | Description
 `data[attributes][seo_title]` | **String** <br>SEO title tag
 `data[attributes][seo_description]` | **String** <br>SEO meta description tag
 `data[attributes][tag_list][]` | **Array** <br>List of tags
-`data[attributes][tax_category_id]` | **Uuid** <br>The associated Tax category
-`data[attributes][price_ruleset_id]` | **Uuid** <br>The associated Price ruleset
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+`data[attributes][tax_category_id]` | **Uuid** <br>Associated Tax category
+`data[attributes][price_ruleset_id]` | **Uuid** <br>Associated Price ruleset
+`data[attributes][price_structure_id]` | **Uuid** <br>Associated Price structure
 `data[attributes][allow_shortage]` | **Boolean** <br>Whether shortages are allowed
 `data[attributes][shortage_limit]` | **Integer** <br>The maximum allowed shortage for any date range
 `data[attributes][variation_fields][]` | **Array** <br>Array of fields that distinguish variations (e.g. color or size)
@@ -899,7 +899,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/product_groups/f6c654ba-02f9-47b3-b994-85e97605d138' \
+    --url 'https://example.booqable.com/api/boomerang/product_groups/0bb56781-68aa-4ff5-bce3-d66f994d66ef' \
     --header 'content-type: application/json' \
     --data '{}'
 ```
@@ -909,17 +909,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f6c654ba-02f9-47b3-b994-85e97605d138",
+    "id": "0bb56781-68aa-4ff5-bce3-d66f994d66ef",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-11-11T09:25:07.091450+00:00",
-      "updated_at": "2024-11-11T09:25:07.436994+00:00",
+      "created_at": "2024-11-18T09:27:20.818441+00:00",
+      "updated_at": "2024-11-18T09:27:21.050010+00:00",
       "archived": true,
-      "archived_at": "2024-11-11T09:25:07.436994+00:00",
+      "archived_at": "2024-11-18T09:27:21.050010+00:00",
       "type": "product_groups",
       "name": "iPad Pro",
       "group_name": null,
-      "slug": "ipad-pro-archived-f6c654ba-02f9-47b3-b994-85e97605d138",
+      "slug": "ipad-pro-archived-0bb56781-68aa-4ff5-bce3-d66f994d66ef",
       "sku": "SKU",
       "lead_time": 0,
       "lag_time": 0,

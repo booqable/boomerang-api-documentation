@@ -7,13 +7,13 @@ Every report consumable has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`created_at` | **Datetime** <br>
+`id` | **Uuid** `readonly`<br>Primary key
+`created_at` | **Datetime** <br>When the resource was created
 `q` | **String** `writeonly`<br>Query for a specific product
 `name` | **String** <br>Product name
 `sold` | **Integer** <br>Amount of times the product was sold
 `turnover_in_cents` | **Integer** <br>Turnover during period
-`product_id` | **Uuid** <br>The associated Product
+`product_id` | **Uuid** <br>Associated Product
 
 
 ## Relationships
@@ -32,7 +32,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-11-06+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-11+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-11-13+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-18+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -42,14 +42,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "8e5eb67d-8388-4864-a834-5ab649d2fcfa",
+      "id": "903a126c-ec1c-417d-be73-ef5d6db5e703",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2024-11-11T09:22:57.362244+00:00",
-        "name": "Product 1000020",
+        "created_at": "2024-11-18T09:26:33.233333+00:00",
+        "name": "Product 1000035",
         "sold": 2,
         "turnover_in_cents": 0,
-        "product_id": "8e5eb67d-8388-4864-a834-5ab649d2fcfa"
+        "product_id": "903a126c-ec1c-417d-be73-ef5d6db5e703"
       },
       "relationships": {}
     }

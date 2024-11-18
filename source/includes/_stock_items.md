@@ -36,8 +36,8 @@ Name | Description
 `properties` | **Hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties)
 `properties_attributes` | **Array** `writeonly`<br>Create or update multiple properties associated with this item
 `confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm a shortage when updating from, till or location of a stock item
-`product_id` | **Uuid** <br>The associated Product
-`location_id` | **Uuid** <br>The associated Location
+`product_id` | **Uuid** <br>Associated Product
+`location_id` | **Uuid** <br>Associated Location
 
 
 ## Relationships
@@ -69,22 +69,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "db7a27f6-a9b3-448d-9c6b-3043470b690f",
+      "id": "27d3da68-1bfa-4130-b850-37896122c717",
       "type": "stock_items",
       "attributes": {
-        "created_at": "2024-11-11T09:27:46.600005+00:00",
-        "updated_at": "2024-11-11T09:27:46.600005+00:00",
+        "created_at": "2024-11-18T09:26:15.656564+00:00",
+        "updated_at": "2024-11-18T09:26:15.656564+00:00",
         "archived": false,
         "archived_at": null,
-        "identifier": "id1000161",
+        "identifier": "id1000156",
         "status": "in_stock",
         "from": null,
         "till": null,
         "stock_item_type": "regular",
-        "product_group_id": "7e0bf58d-0e65-46be-9347-3f0d6c7091ef",
+        "product_group_id": "3b302307-5c29-4daf-bf16-3f16d327a60d",
         "properties": {},
-        "product_id": "222062a5-4d0e-4f3f-9ff7-69f98698a029",
-        "location_id": "af593ca0-0915-4fd0-b251-585a919b03b0"
+        "product_id": "7eede27c-cd89-45b2-be55-d9642fde97bc",
+        "location_id": "03f07e26-3a7a-466c-b8d7-cea91455d54a"
       },
       "relationships": {}
     }
@@ -173,7 +173,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/5aebefcb-3052-402a-b34a-79ed1c99fc5e' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/410d787a-23b1-41cf-a879-055256821b56' \
     --header 'content-type: application/json' \
 ```
 
@@ -182,22 +182,22 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5aebefcb-3052-402a-b34a-79ed1c99fc5e",
+    "id": "410d787a-23b1-41cf-a879-055256821b56",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2024-11-11T09:27:44.809860+00:00",
-      "updated_at": "2024-11-11T09:27:44.809860+00:00",
+      "created_at": "2024-11-18T09:26:15.000272+00:00",
+      "updated_at": "2024-11-18T09:26:15.000272+00:00",
       "archived": false,
       "archived_at": null,
-      "identifier": "id1000159",
+      "identifier": "id1000155",
       "status": "in_stock",
       "from": null,
       "till": null,
       "stock_item_type": "regular",
-      "product_group_id": "a1027456-4114-4cb4-b362-3e76b3563604",
+      "product_group_id": "8809d688-d86d-4b34-abc3-29a3ff30ea4a",
       "properties": {},
-      "product_id": "45196155-42ea-4997-842b-eb44669168ca",
-      "location_id": "426a7c25-7765-4a19-952a-216812659ec1"
+      "product_id": "3dd8833c-4a18-4571-b419-77806db6b944",
+      "location_id": "c7d2798a-db1e-482d-9a28-e7ba6134cf67"
     },
     "relationships": {}
   },
@@ -257,7 +257,7 @@ This request accepts the following includes:
         "type": "stock_items",
         "attributes": {
           "identifier": "12345",
-          "product_id": "6799ed47-f168-41a6-a06f-cfeb85578e6f"
+          "product_id": "fdb197d5-81ba-492c-ba43-8938e023cada"
         }
       }
     }'
@@ -268,11 +268,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "af9cac10-66ed-410b-a8a0-3641ef5c10bf",
+    "id": "93ba9bc4-e135-42fb-8aa9-79cff1d0bfe9",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2024-11-11T09:27:43.826861+00:00",
-      "updated_at": "2024-11-11T09:27:43.826861+00:00",
+      "created_at": "2024-11-18T09:26:14.298427+00:00",
+      "updated_at": "2024-11-18T09:26:14.298427+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "12345",
@@ -280,10 +280,10 @@ This request accepts the following includes:
       "from": null,
       "till": null,
       "stock_item_type": "regular",
-      "product_group_id": "29ca1f13-13f2-4686-9e04-f99fe6a5cefb",
+      "product_group_id": "1ece0599-1bc6-42e4-ac36-765c9e1e7fea",
       "properties": {},
-      "product_id": "6799ed47-f168-41a6-a06f-cfeb85578e6f",
-      "location_id": "2ea6c37b-be7b-4357-b415-98f9b779a302"
+      "product_id": "fdb197d5-81ba-492c-ba43-8938e023cada",
+      "location_id": "151e9f3e-e2c7-46ec-88a0-18992482c43a"
     },
     "relationships": {}
   },
@@ -316,8 +316,8 @@ Name | Description
 `data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
 `data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
-`data[attributes][product_id]` | **Uuid** <br>The associated Product
-`data[attributes][location_id]` | **Uuid** <br>The associated Location
+`data[attributes][product_id]` | **Uuid** <br>Associated Product
+`data[attributes][location_id]` | **Uuid** <br>Associated Location
 
 
 ### Includes
@@ -351,11 +351,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/52c0e157-ee61-4cce-adb1-40afd7d7a723' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/35873521-88a7-48c5-a989-5ade6ce13645' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "52c0e157-ee61-4cce-adb1-40afd7d7a723",
+        "id": "35873521-88a7-48c5-a989-5ade6ce13645",
         "type": "stock_items",
         "attributes": {
           "identifier": "12346"
@@ -369,11 +369,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "52c0e157-ee61-4cce-adb1-40afd7d7a723",
+    "id": "35873521-88a7-48c5-a989-5ade6ce13645",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2024-11-11T09:27:45.754985+00:00",
-      "updated_at": "2024-11-11T09:27:45.822458+00:00",
+      "created_at": "2024-11-18T09:26:16.309527+00:00",
+      "updated_at": "2024-11-18T09:26:16.370862+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "12346",
@@ -381,10 +381,10 @@ This request accepts the following includes:
       "from": null,
       "till": null,
       "stock_item_type": "regular",
-      "product_group_id": "7d045d0d-f4df-4ed9-b5ff-8eb7e3423eb8",
+      "product_group_id": "06c3c62a-1a8e-4b0b-b44b-239fd76f907a",
       "properties": {},
-      "product_id": "4d01dd0c-11ec-42ba-b737-5190a04841cd",
-      "location_id": "2072cfe5-04b2-4e83-a66c-f1b31059bba1"
+      "product_id": "7daf2d45-a4d5-490e-8153-832697031d53",
+      "location_id": "56c86c9b-78e4-4642-af19-1d8cadc34c7b"
     },
     "relationships": {}
   },
@@ -417,8 +417,8 @@ Name | Description
 `data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
 `data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
-`data[attributes][product_id]` | **Uuid** <br>The associated Product
-`data[attributes][location_id]` | **Uuid** <br>The associated Location
+`data[attributes][product_id]` | **Uuid** <br>Associated Product
+`data[attributes][location_id]` | **Uuid** <br>Associated Location
 
 
 ### Includes

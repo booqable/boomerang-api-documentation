@@ -11,8 +11,8 @@ Every invoice finalization has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`document_id` | **Uuid** <br>The associated Document
+`id` | **Uuid** `readonly`<br>Primary key
+`document_id` | **Uuid** <br>ID of the invoice that needs to be finalized.
 
 
 ## Relationships
@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "invoice_finalization",
         "attributes": {
-          "document_id": "cfc43f8e-4d7a-4234-8061-8f18f72f0f06"
+          "document_id": "20fd22d6-d71e-4b85-bd3f-38c00c9aa08f"
         }
       }
     }'
@@ -48,10 +48,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "257fb362-4105-570f-a938-931e32a87f01",
+    "id": "a397344b-3089-56a2-b290-798457c48c5c",
     "type": "invoice_finalizations",
     "attributes": {
-      "document_id": "cfc43f8e-4d7a-4234-8061-8f18f72f0f06"
+      "document_id": "20fd22d6-d71e-4b85-bd3f-38c00c9aa08f"
     },
     "relationships": {}
   },
@@ -79,7 +79,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][document_id]` | **Uuid** <br>The associated Document
+`data[attributes][document_id]` | **Uuid** <br>ID of the invoice that needs to be finalized.
 
 
 ### Includes

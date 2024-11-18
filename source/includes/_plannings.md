@@ -38,11 +38,11 @@ Name | Description
 `stopped` | **Integer** `readonly`<br>Amount of items stopped. Cannot exceed `quantity` and `started`. This attribute is omitted when this is a parent planning for a Bundle. 
 `location_shortage_amount` | **Integer** `readonly`<br>Amount of items short. This attribute is omitted when this is a parent planning for a Bundle. 
 `shortage_amount` | **Integer** `readonly`<br>Amount of items short on location (could be there are still available on other locations in the same cluster). This attribute is omitted when this is a parent planning for a Bundle. 
-`order_id` | **Uuid** `readonly`<br>The associated Order
-`item_id` | **Uuid** `readonly`<br>The associated Item
-`start_location_id` | **Uuid** `readonly`<br>The associated Start location
-`stop_location_id` | **Uuid** `readonly`<br>The associated Stop location
-`parent_planning_id` | **Uuid** `readonly`<br>The associated Parent planning
+`order_id` | **Uuid** `readonly`<br>Associated Order
+`item_id` | **Uuid** `readonly`<br>Associated Item
+`start_location_id` | **Uuid** `readonly`<br>Associated Start location
+`stop_location_id` | **Uuid** `readonly`<br>Associated Stop location
+`parent_planning_id` | **Uuid** `readonly`<br>Associated Parent planning
 
 
 ## Relationships
@@ -78,11 +78,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "9d47d40d-11e3-4ea1-8882-916b147a6f10",
+      "id": "8e1c2910-f0c2-483e-b9d5-60249d65ddb7",
       "type": "plannings",
       "attributes": {
-        "created_at": "2024-11-11T09:27:52.149947+00:00",
-        "updated_at": "2024-11-11T09:27:52.588225+00:00",
+        "created_at": "2024-11-18T09:23:07.785924+00:00",
+        "updated_at": "2024-11-18T09:23:08.491051+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
@@ -95,10 +95,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "order_id": "b43bfc00-1673-4d75-a57b-b842cf8a5135",
-        "item_id": "d66adad7-f2aa-43f8-b65e-18fa2775e865",
-        "start_location_id": "3bf927b5-b7d2-46a5-866a-9a78130d82f9",
-        "stop_location_id": "3bf927b5-b7d2-46a5-866a-9a78130d82f9",
+        "order_id": "9726be0e-a9d5-4613-91ee-37f10e219c8e",
+        "item_id": "84e1042d-15b8-46c3-8a30-c14201132ecf",
+        "start_location_id": "f6da41dc-9f43-4b14-819c-9f355488b35b",
+        "stop_location_id": "f6da41dc-9f43-4b14-819c-9f355488b35b",
         "parent_planning_id": null
       },
       "relationships": {}
@@ -217,12 +217,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-11-12T09:27:50Z"
+                    "gte": "2024-11-19T09:23:05Z"
                   }
                 },
                 {
                   "starts_at": {
-                    "lte": "2024-11-15T09:27:50Z"
+                    "lte": "2024-11-22T09:23:05Z"
                   }
                 }
               ]
@@ -232,12 +232,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "stops_at": {
-                    "gte": "2024-11-12T09:27:50Z"
+                    "gte": "2024-11-19T09:23:05Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "lte": "2024-11-15T09:27:50Z"
+                    "lte": "2024-11-22T09:23:05Z"
                   }
                 }
               ]
@@ -254,10 +254,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "a8245471-c7b1-474b-b024-ae039f6a8190"
+      "id": "3f936aa9-57ce-47de-87de-0bd418fbb0e0"
     },
     {
-      "id": "cf8e78ce-f008-4c88-94ee-5e948b08e93d"
+      "id": "2af258b6-cd8e-457f-81f7-b7c44bc9ce82"
     }
   ]
 }
@@ -356,7 +356,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings/d493f0ae-0474-4106-b322-bd8f33650584' \
+    --url 'https://example.booqable.com/api/boomerang/plannings/5bba73a9-1a51-4758-b178-9a984ea332d8' \
     --header 'content-type: application/json' \
 ```
 
@@ -365,11 +365,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d493f0ae-0474-4106-b322-bd8f33650584",
+    "id": "5bba73a9-1a51-4758-b178-9a984ea332d8",
     "type": "plannings",
     "attributes": {
-      "created_at": "2024-11-11T09:27:54.216153+00:00",
-      "updated_at": "2024-11-11T09:27:54.587572+00:00",
+      "created_at": "2024-11-18T09:22:58.399095+00:00",
+      "updated_at": "2024-11-18T09:22:59.086068+00:00",
       "archived": false,
       "archived_at": null,
       "quantity": 1,
@@ -382,10 +382,10 @@ This request accepts the following includes:
       "stopped": 0,
       "location_shortage_amount": 0,
       "shortage_amount": 0,
-      "order_id": "f3342606-9473-4c9c-a04d-473bee1c2fde",
-      "item_id": "7792bc7e-575c-427f-b0ca-04f76d69dc31",
-      "start_location_id": "7eb6b31a-869e-4d4d-a84b-7c919d62954f",
-      "stop_location_id": "7eb6b31a-869e-4d4d-a84b-7c919d62954f",
+      "order_id": "544d539b-a0de-44a7-a4dd-f33b488b42af",
+      "item_id": "74b4c663-e088-4908-b4b1-b5d682d48c19",
+      "start_location_id": "d184d70a-ac34-4828-b57a-d49c1a63b0f6",
+      "stop_location_id": "d184d70a-ac34-4828-b57a-d49c1a63b0f6",
       "parent_planning_id": null
     },
     "relationships": {}

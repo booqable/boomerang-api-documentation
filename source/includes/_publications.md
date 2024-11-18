@@ -16,7 +16,7 @@ Name | Description
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `published_at` | **Datetime** `readonly`<br>The date and time (ISO 8601 format) the Publication uses to filter all released Assets by.
-`theme_id` | **Uuid** <br>The associated Theme
+`theme_id` | **Uuid** <br>The ID of the Theme that the Publication belongs to.
 
 
 ## Relationships
@@ -45,13 +45,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "a1b2f081-b596-4194-8c0c-d0bedd524835",
+      "id": "b075295d-fb61-4068-a9bf-a2e906752551",
       "type": "publications",
       "attributes": {
-        "created_at": "2024-11-11T09:26:40.032063+00:00",
-        "updated_at": "2024-11-11T09:26:40.032063+00:00",
-        "published_at": "2024-11-06T09:26:40.027637+00:00",
-        "theme_id": "a5e556ed-13ee-47da-bc64-ba6ed7cd4c65"
+        "created_at": "2024-11-18T09:27:58.558660+00:00",
+        "updated_at": "2024-11-18T09:27:58.558660+00:00",
+        "published_at": "2024-11-13T09:27:58.555319+00:00",
+        "theme_id": "3a883f2e-023b-4c08-a0b0-4cffa7b9a82c"
       },
       "relationships": {}
     }
@@ -126,7 +126,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "c66c5831-8f1d-4cad-be5f-1355e638102b"
+          "theme_id": "7dea4a2f-bb1f-4dc4-85ea-38452fd3af0d"
         }
       }
     }'
@@ -137,13 +137,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d4b246a5-a99b-4cf9-995c-5a32a4aadd97",
+    "id": "a746cec7-88a6-4809-a171-1ea9aaf33670",
     "type": "publications",
     "attributes": {
-      "created_at": "2024-11-06T09:26:39.456422+00:00",
-      "updated_at": "2024-11-06T09:26:39.456422+00:00",
-      "published_at": "2024-11-06T09:26:39.456422+00:00",
-      "theme_id": "c66c5831-8f1d-4cad-be5f-1355e638102b"
+      "created_at": "2024-11-13T09:27:58.119874+00:00",
+      "updated_at": "2024-11-13T09:27:58.119874+00:00",
+      "published_at": "2024-11-13T09:27:58.119874+00:00",
+      "theme_id": "7dea4a2f-bb1f-4dc4-85ea-38452fd3af0d"
     },
     "relationships": {}
   },
@@ -171,7 +171,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][theme_id]` | **Uuid** <br>The associated Theme
+`data[attributes][theme_id]` | **Uuid** <br>The ID of the Theme that the Publication belongs to.
 
 
 ### Includes

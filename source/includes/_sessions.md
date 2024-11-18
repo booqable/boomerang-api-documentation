@@ -20,9 +20,9 @@ Every session has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>
-`company_id` | **Uuid** <br>The associated Company
-`employee_id` | **Uuid** <br>The associated Employee
+`id` | **Uuid** <br>Primary key
+`company_id` | **Uuid** <br>Associated Company
+`employee_id` | **Uuid** <br>Associated Employee
 `locations_updated_at` | **Datetime** <br>When locations were last updated
 `clusters_updated_at` | **Datetime** <br>When the clusters were last updated
 `default_properties_updated_at` | **Datetime** <br>When the default properties were last updated
@@ -63,16 +63,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "28dec8d7-677f-5d1a-997a-7a8096df9de0",
+    "id": "4bb4e738-088a-506e-9ebc-a9a8e2f12880",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-11-11T09:25:15.767373+00:00",
-      "company_id": "35f7de3a-f6a5-4119-bae3-60378f9ad2db",
-      "employee_id": "ff20bb60-9a96-44b0-b6f4-acc8c55b3048",
+      "updated_at": "2024-11-18T09:27:25.910380+00:00",
+      "company_id": "627f4155-a2f0-4083-a183-27aeb508a429",
+      "employee_id": "a2d5fbf0-9995-44cb-a99d-fa8e57d3512b",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-11-11T09:25:15.779764+00:00",
+      "notification_subscriptions_updated_at": "2024-11-18T09:27:25.914618+00:00",
       "countries_updated_at": null,
       "operating_rules_updated_at": null
     },
@@ -80,13 +80,13 @@ Name | Description
       "company": {
         "data": {
           "type": "companies",
-          "id": "35f7de3a-f6a5-4119-bae3-60378f9ad2db"
+          "id": "627f4155-a2f0-4083-a183-27aeb508a429"
         }
       },
       "employee": {
         "data": {
           "type": "employees",
-          "id": "ff20bb60-9a96-44b0-b6f4-acc8c55b3048"
+          "id": "a2d5fbf0-9995-44cb-a99d-fa8e57d3512b"
         }
       },
       "settings": {
@@ -99,14 +99,14 @@ Name | Description
   },
   "included": [
     {
-      "id": "35f7de3a-f6a5-4119-bae3-60378f9ad2db",
+      "id": "627f4155-a2f0-4083-a183-27aeb508a429",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-11-11T09:25:15.717452+00:00",
-        "updated_at": "2024-11-11T09:25:15.735872+00:00",
-        "name": "Company name 149",
-        "slug": "company-name-149",
-        "email": "mail152@company.com",
+        "created_at": "2024-11-18T09:27:25.889806+00:00",
+        "updated_at": "2024-11-18T09:27:25.899642+00:00",
+        "name": "Company name 258",
+        "slug": "company-name-258",
+        "email": "mail261@company.com",
         "billing_email": null,
         "phone": "0581234567",
         "website": "www.booqable.com",
@@ -139,7 +139,7 @@ Name | Description
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "b0ce000338b33fe6853f7f0471846a54",
+        "tenant_token": "d4b44d657f3adc30a4702fdf72b1de26",
         "pending_subscription": false,
         "team_size": null,
         "projected_revenue": null,
@@ -163,7 +163,7 @@ Name | Description
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-11-25T09:25:15.692Z",
+          "trial_ends_at": "2024-12-02T09:27:25.878Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -219,18 +219,18 @@ Name | Description
       }
     },
     {
-      "id": "ff20bb60-9a96-44b0-b6f4-acc8c55b3048",
+      "id": "a2d5fbf0-9995-44cb-a99d-fa8e57d3512b",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-11-11T09:25:15.767373+00:00",
-        "updated_at": "2024-11-11T09:25:15.767373+00:00",
+        "created_at": "2024-11-18T09:27:25.910380+00:00",
+        "updated_at": "2024-11-18T09:27:25.910380+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-11-11T09:25:15.757498+00:00",
+        "viewed_whats_new_at": "2024-11-18T09:27:25.905972+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,

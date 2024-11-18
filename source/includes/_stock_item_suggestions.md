@@ -13,8 +13,8 @@ Every stock item suggestion has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`stock_item_id` | **Uuid** <br>The associated Stock item
+`id` | **Uuid** `readonly`<br>Primary key
+`stock_item_id` | **Uuid** <br>ID of the suggested stock item.
 `item_id` | **Uuid** `readonly`<br>ID of the Product the suggested stock item belongs to.
 `status` | **String_enum** `readonly`<br>Status of the suggested stock item. One of `available_in_location`, `available_in_cluster`, `overdue`, `unavailable`, `already_booked` 
 
@@ -35,7 +35,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=1c30b205-05ed-4822-be8f-fcbd342a0d1a&filter%5Border_id%5D=932b675b-ff52-4baa-aa6c-8adf97e14f95' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=ddf5186e-09ad-4294-97bd-7af70a2b6d8a&filter%5Border_id%5D=46bec75b-a35b-4bf8-bc2d-e4506dc330db' \
     --header 'content-type: application/json' \
 ```
 
@@ -45,21 +45,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "912c05ce-8dab-52d3-9874-69de675a9a4c",
+      "id": "41bf5a91-0b08-5314-a67f-f03c6d431fc3",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "4f403027-aa1e-4a8c-b3a0-3fd7505cc909",
-        "item_id": "1c30b205-05ed-4822-be8f-fcbd342a0d1a",
+        "stock_item_id": "38b0aaa1-a169-4605-9ab3-b7d9c780be6b",
+        "item_id": "ddf5186e-09ad-4294-97bd-7af70a2b6d8a",
         "status": "available_in_location"
       },
       "relationships": {}
     },
     {
-      "id": "cfd64cf8-3045-5a70-8b4d-303c9dbfad93",
+      "id": "8c16ba54-f162-550a-acf5-b72602115dd5",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "f0ae3509-e183-41bd-808f-c8a3162cde03",
-        "item_id": "1c30b205-05ed-4822-be8f-fcbd342a0d1a",
+        "stock_item_id": "c3d58a50-3f57-48a2-8cf1-4ac6b7f85f63",
+        "item_id": "ddf5186e-09ad-4294-97bd-7af70a2b6d8a",
         "status": "already_booked"
       },
       "relationships": {}

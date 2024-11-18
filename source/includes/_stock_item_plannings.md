@@ -27,9 +27,9 @@ Name | Description
 `reserved` | **Boolean** `readonly`<br>Wheter stock item is reserved, meaning it's unavailable for other orders
 `started` | **Boolean** `readonly`<br>Wheter stock item is started
 `stopped` | **Boolean** `readonly`<br>Wheter stock item is stopped. Meaning it's available again
-`stock_item_id` | **Uuid** `readonly`<br>The associated Stock item
-`planning_id` | **Uuid** `readonly`<br>The associated Planning
-`order_id` | **Uuid** `readonly`<br>The associated Order
+`stock_item_id` | **Uuid** `readonly`<br>Associated Stock item
+`planning_id` | **Uuid** `readonly`<br>Associated Planning
+`order_id` | **Uuid** `readonly`<br>Associated Order
 
 
 ## Relationships
@@ -60,19 +60,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "843fa573-5d21-4ce0-a129-10db0d1ec811",
+      "id": "4ad3c7af-cfa0-43c0-9f34-5daae8a36669",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-11-11T09:24:48.429647+00:00",
-        "updated_at": "2024-11-11T09:24:48.429647+00:00",
+        "created_at": "2024-11-18T09:25:18.245107+00:00",
+        "updated_at": "2024-11-18T09:25:18.245107+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "caf01f23-65b3-4a4f-8fce-44a1e4021a7d",
-        "planning_id": "7df75170-3cae-42bd-aada-9eaff02b7092",
-        "order_id": "1cc1de42-bafa-41c0-beaf-f6653d654120"
+        "stock_item_id": "eaa2c494-5168-4ad3-836f-aa09f20e5185",
+        "planning_id": "870fd7e6-2392-40aa-9134-8c4005e7d04d",
+        "order_id": "717daba6-e911-45e7-aa81-fee3bd75a543"
       },
       "relationships": {}
     }
@@ -159,7 +159,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/1ab27718-d06c-47b3-9719-d5683c8925a9' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/bd731992-db6e-4968-8521-3a5188892e90' \
     --header 'content-type: application/json' \
 ```
 
@@ -168,19 +168,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1ab27718-d06c-47b3-9719-d5683c8925a9",
+    "id": "bd731992-db6e-4968-8521-3a5188892e90",
     "type": "stock_item_plannings",
     "attributes": {
-      "created_at": "2024-11-11T09:24:47.569996+00:00",
-      "updated_at": "2024-11-11T09:24:47.569996+00:00",
+      "created_at": "2024-11-18T09:25:17.350471+00:00",
+      "updated_at": "2024-11-18T09:25:17.350471+00:00",
       "archived": false,
       "archived_at": null,
       "reserved": false,
       "started": false,
       "stopped": false,
-      "stock_item_id": "cdb65c9b-8398-41a2-9e4a-e497e4aadc03",
-      "planning_id": "b6e718ac-8dee-4474-a32b-4641c94fd069",
-      "order_id": "e3c2bfcf-4356-4710-9a93-8671a9a76094"
+      "stock_item_id": "3f3b5e57-68a2-4e5a-a097-7bc925d3212d",
+      "planning_id": "7de7367a-6680-465d-b4bf-fd857af7b5d4",
+      "order_id": "28c2c0b5-6654-4672-9a56-41f7badb7d93"
     },
     "relationships": {}
   },

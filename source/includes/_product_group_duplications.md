@@ -7,7 +7,7 @@ Every product group duplication has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `name` | **String** <br>Name of the newly created Product Group.
 `description` | **String** <br>Description used in the online store.
 `collections` | **Boolean** <br>Indicates if collections should be copied from the original Product Group.
@@ -20,8 +20,8 @@ Name | Description
 `show_in_store` | **Boolean** <br>Indicates if the copied product should be visible in the online store.
 `photo_base64` | **String** <br>Base64 encoded photo, use this field to store a main photo
 `remote_photo_url` | **String** <br>Url to an image on the web
-`original_product_group_id` | **Uuid** <br>The associated Original product group
-`new_product_group_id` | **Uuid** `readonly`<br>The associated New product group
+`original_product_group_id` | **Uuid** <br>ID of the Product Group to be duplicated.
+`new_product_group_id` | **Uuid** `readonly`<br>ID of the newly created Product Group.
 
 
 ## Relationships
@@ -47,7 +47,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_product_group_id": "531a7585-6eb0-455a-8b96-d225806fc1a3",
+          "original_product_group_id": "7e8e9ea9-c5bc-4338-ae59-83d75fc7fd1f",
           "name": "New name",
           "description": "New description",
           "collections": true,
@@ -68,7 +68,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "d9bc9047-aaf9-5daf-ab01-d47ef7ff221c",
+    "id": "42b9203f-f6b0-5c43-8997-722e35980310",
     "type": "product_group_duplications",
     "attributes": {
       "name": "New name",
@@ -83,8 +83,8 @@ Name | Description
       "show_in_store": true,
       "photo_base64": null,
       "remote_photo_url": null,
-      "original_product_group_id": "531a7585-6eb0-455a-8b96-d225806fc1a3",
-      "new_product_group_id": "0b167b21-d4bf-4640-acd2-03ff1af7c0bb"
+      "original_product_group_id": "7e8e9ea9-c5bc-4338-ae59-83d75fc7fd1f",
+      "new_product_group_id": "fa40598f-07aa-440a-ab2b-5e7f1175136f"
     },
     "relationships": {}
   },
@@ -123,7 +123,7 @@ Name | Description
 `data[attributes][show_in_store]` | **Boolean** <br>Indicates if the copied product should be visible in the online store.
 `data[attributes][photo_base64]` | **String** <br>Base64 encoded photo, use this field to store a main photo
 `data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
-`data[attributes][original_product_group_id]` | **Uuid** <br>The associated Original product group
+`data[attributes][original_product_group_id]` | **Uuid** <br>ID of the Product Group to be duplicated.
 
 
 ### Includes

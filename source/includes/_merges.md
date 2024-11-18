@@ -7,7 +7,7 @@ Every merge has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `type` | **Uuid** <br>Type of resource to merge. One of `customers`
 `source_id` | **Uuid** <br>Resource from which data is taken, this resource gets archived or destroyed
 `target_id` | **Uuid** <br>Resource to which data is saved, this resource is returned if `target` is specified in includes
@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "971489e9-cc86-4d81-a11c-e5e705991e1a",
-          "target_id": "acb660d5-7e40-4e13-b64e-115fa9960286"
+          "source_id": "67d2c838-34bb-4350-b9f4-1f64cb4fc90c",
+          "target_id": "50549fea-e28d-4e83-925c-e2b079ba0878"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "e4d00be4-f033-5a9c-a8f9-cce7531d1c6b",
+    "id": "d473202a-e10e-58cf-b861-3695620d9b06",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "971489e9-cc86-4d81-a11c-e5e705991e1a",
-      "target_id": "acb660d5-7e40-4e13-b64e-115fa9960286"
+      "source_id": "67d2c838-34bb-4350-b9f4-1f64cb4fc90c",
+      "target_id": "50549fea-e28d-4e83-925c-e2b079ba0878"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "acb660d5-7e40-4e13-b64e-115fa9960286"
+          "id": "50549fea-e28d-4e83-925c-e2b079ba0878"
         }
       }
     }
   },
   "included": [
     {
-      "id": "acb660d5-7e40-4e13-b64e-115fa9960286",
+      "id": "50549fea-e28d-4e83-925c-e2b079ba0878",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-11-11T09:23:05.435988+00:00",
-        "updated_at": "2024-11-11T09:23:05.568150+00:00",
+        "created_at": "2024-11-18T09:22:28.989847+00:00",
+        "updated_at": "2024-11-18T09:22:29.216199+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,

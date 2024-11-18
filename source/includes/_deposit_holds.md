@@ -7,11 +7,11 @@ Every deposit hold has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `amount_in_cents` | **Integer** `writeonly`<br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
 `reason` | **String** `writeonly`<br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
-`order_id` | **Uuid** <br>The associated Order
-`deposit_line_id` | **Uuid** <br>The associated Deposit line
+`order_id` | **Uuid** <br>Associated Order
+`deposit_line_id` | **Uuid** <br>Associated Deposit line
 
 
 ## Relationships
@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "deposit_holds",
         "attributes": {
-          "order_id": "f5a8d47b-931c-4d3c-a569-fe2edf6a698a",
+          "order_id": "d4c974a5-be63-4a5d-8892-3592b26e9eb4",
           "amount_in_cents": 5000,
           "reason": "damages"
         }
@@ -50,11 +50,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1bde79de-e16a-5124-95c2-324f0f0a7280",
+    "id": "8fa8f14b-9193-5356-a38e-6b7d5d062854",
     "type": "deposit_holds",
     "attributes": {
-      "order_id": "f5a8d47b-931c-4d3c-a569-fe2edf6a698a",
-      "deposit_line_id": "55787a22-0c93-4e14-92a4-792362b8a2a8"
+      "order_id": "d4c974a5-be63-4a5d-8892-3592b26e9eb4",
+      "deposit_line_id": "f69200dd-da22-4cb3-9184-f94101ceb4d8"
     },
     "relationships": {}
   },
@@ -84,8 +84,8 @@ Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
 `data[attributes][reason]` | **String** <br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][deposit_line_id]` | **Uuid** <br>The associated Deposit line
+`data[attributes][order_id]` | **Uuid** <br>Associated Order
+`data[attributes][deposit_line_id]` | **Uuid** <br>Associated Deposit line
 
 
 ### Includes

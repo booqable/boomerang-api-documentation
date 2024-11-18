@@ -7,7 +7,7 @@ Every order duplication has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `custom_lines` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
 `customer` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
 `dates` | **Boolean** <br>Indicates if the rental dates should be copied from the original Order.
@@ -16,8 +16,8 @@ Name | Description
 `stock_item_plannings` | **Boolean** <br>Indicates if planned stock items should be copied from the original Order.
 `tags` | **Boolean** <br>Indicates if tags should be copied from the original Order.
 `deposit` | **String** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
-`original_order_id` | **Uuid** <br>The associated Original order
-`new_order_id` | **Uuid** `readonly`<br>The associated New order
+`original_order_id` | **Uuid** <br>ID of the Order to be duplicated.
+`new_order_id` | **Uuid** `readonly`<br>ID of the newly created Order.
 
 
 ## Relationships
@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_order_id": "c9a251e6-a0bd-4b52-b4ce-2b5678f447e4",
+          "original_order_id": "4d558118-762f-4db0-9acd-137bc6cb1b8f",
           "custom_lines": true,
           "customer": true,
           "dates": true,
@@ -62,7 +62,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f97f33d9-8889-51c3-8ea0-705b7f96b5c8",
+    "id": "52c9b1c3-9708-5df4-bb92-26718f06d29a",
     "type": "order_duplications",
     "attributes": {
       "custom_lines": true,
@@ -73,8 +73,8 @@ Name | Description
       "stock_item_plannings": true,
       "tags": true,
       "deposit": "current",
-      "original_order_id": "c9a251e6-a0bd-4b52-b4ce-2b5678f447e4",
-      "new_order_id": "96cc5b1c-85b4-487e-9fb7-0be6afe7b1f3"
+      "original_order_id": "4d558118-762f-4db0-9acd-137bc6cb1b8f",
+      "new_order_id": "4f321a57-e531-41e5-a5ad-f86a82049d06"
     },
     "relationships": {}
   },
@@ -110,7 +110,7 @@ Name | Description
 `data[attributes][stock_item_plannings]` | **Boolean** <br>Indicates if planned stock items should be copied from the original Order.
 `data[attributes][tags]` | **Boolean** <br>Indicates if tags should be copied from the original Order.
 `data[attributes][deposit]` | **String** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
-`data[attributes][original_order_id]` | **Uuid** <br>The associated Original order
+`data[attributes][original_order_id]` | **Uuid** <br>ID of the Order to be duplicated.
 
 
 ### Includes

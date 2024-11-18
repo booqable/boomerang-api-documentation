@@ -7,7 +7,7 @@ Every login activity has the following fields:
 Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
+`created_at` | **Datetime** `readonly`<br>The time at which the login was attempted.
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `ip` | **String** `readonly`<br>IP address of the login attempt
 `strategy` | **String** `readonly`<br>One of `saml`, `token`, `single_use`, `database_authenticatable`, `rememberable`, `BooqableApp-iOS`
@@ -37,10 +37,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "a575ce25-e333-49e0-be2c-3085c37d4d1d",
+      "id": "ec261274-fe44-4008-9473-d7a92fe89bbc",
       "type": "login_activities",
       "attributes": {
-        "created_at": "2024-11-11T09:23:40.593015+00:00",
+        "created_at": "2024-11-18T09:24:07.907516+00:00",
         "ip": "192.168.1.28",
         "strategy": "saml",
         "success": false,

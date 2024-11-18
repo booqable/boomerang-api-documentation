@@ -22,7 +22,7 @@ Name | Description
 `identifier` | **String** <br>Provider identifier of the payment method
 `method_type` | **String** <br>Provider method type
 `details` | **Hash** <br>Method details
-`customer_id` | **Uuid** <br>The associated Customer
+`customer_id` | **Uuid** <br>Associated Customer
 
 
 ## Relationships
@@ -51,17 +51,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "a7829f41-120e-47e8-b1b5-791f92dcfdf0",
+      "id": "374e65b7-b2f3-42fb-a3d7-0eca1ee78910",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-11-11T09:27:34.292753+00:00",
-        "updated_at": "2024-11-11T09:27:34.292753+00:00",
+        "created_at": "2024-11-18T09:24:34.315163+00:00",
+        "updated_at": "2024-11-18T09:24:34.315163+00:00",
         "label": "Visa XXX1234",
         "provider": "stripe",
         "identifier": "pm_1234567890",
         "method_type": null,
         "details": {},
-        "customer_id": "6735ddd9-0daf-4bf9-8702-a70d71c79333"
+        "customer_id": "06b7ae81-4a21-491d-ab08-7e42f0a5b361"
       },
       "relationships": {}
     }
@@ -132,7 +132,7 @@ This request does not accept any includes
         "attributes": {
           "provider": "stripe",
           "identifier": "pm_123",
-          "customer_id": "7f33cd99-be52-4f2d-b3a2-e68b6d2464a3",
+          "customer_id": "a3dbdd3b-7e7e-4e64-82ef-2d973a41bfad",
           "label": "Test card"
         }
       }
@@ -144,17 +144,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "ff18f8a2-5a16-4741-ad13-fb4711490c29",
+    "id": "ea0d844f-675d-47d2-9560-b094e3c15ca6",
     "type": "payment_methods",
     "attributes": {
-      "created_at": "2024-11-11T09:27:36.076090+00:00",
-      "updated_at": "2024-11-11T09:27:36.076090+00:00",
+      "created_at": "2024-11-18T09:24:34.909699+00:00",
+      "updated_at": "2024-11-18T09:24:34.909699+00:00",
       "label": "Test card",
       "provider": "stripe",
       "identifier": "pm_123",
       "method_type": null,
       "details": {},
-      "customer_id": "7f33cd99-be52-4f2d-b3a2-e68b6d2464a3"
+      "customer_id": "a3dbdd3b-7e7e-4e64-82ef-2d973a41bfad"
     },
     "relationships": {}
   },
@@ -186,7 +186,7 @@ Name | Description
 `data[attributes][identifier]` | **String** <br>Provider identifier of the payment method
 `data[attributes][method_type]` | **String** <br>Provider method type
 `data[attributes][details]` | **Hash** <br>Method details
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][customer_id]` | **Uuid** <br>Associated Customer
 
 
 ### Includes
@@ -200,7 +200,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/6a75c377-f0cb-420a-ba2d-8b3511a5692a' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/33c7dedd-c6d3-4962-84c9-5d1c9aed68f2' \
     --header 'content-type: application/json' \
 ```
 
@@ -209,11 +209,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "6a75c377-f0cb-420a-ba2d-8b3511a5692a",
+    "id": "33c7dedd-c6d3-4962-84c9-5d1c9aed68f2",
     "type": "payment_methods",
     "attributes": {
-      "created_at": "2024-11-11T09:27:34.820073+00:00",
-      "updated_at": "2024-11-11T09:27:34.882498+00:00",
+      "created_at": "2024-11-18T09:24:33.810560+00:00",
+      "updated_at": "2024-11-18T09:24:33.859756+00:00",
       "label": "Visa XXX1234",
       "provider": "stripe",
       "identifier": "pm_1234567890",

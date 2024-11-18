@@ -210,7 +210,7 @@ Every setting has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>
+`id` | **Uuid** <br>Primary key
 `currency` | **Hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource)
 `defaults` | **Hash** `readonly`<br>Defaults derived from other resources
 `pricing` | **Hash** <br>Configuration on how to handle and display pricing
@@ -252,10 +252,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7d8c0096-5485-5d2a-ba30-6979b30cf608",
+    "id": "1f5650da-6406-55f0-bb69-a750e18473cd",
     "type": "settings",
     "attributes": {
-      "updated_at": "2024-11-11T09:24:55.833071+00:00",
+      "updated_at": "2024-11-18T09:24:11.405355+00:00",
       "currency": {
         "name": "USD",
         "decimal": ".",
@@ -267,8 +267,8 @@ Name | Description
       "defaults": {
         "timezone": "UTC",
         "timezone_offset": 0,
-        "tax_category_id": "7d9714a0-2340-43ba-966d-de53f9c3b2e5",
-        "tax_region_id": "8336def3-e451-496b-a063-330831189b8e",
+        "tax_category_id": "90d36861-8677-4f46-a92b-cc1e3fe6b6bc",
+        "tax_region_id": "88629637-c4d3-4566-94d5-7bfd1381e62b",
         "shop_start_location_id": null,
         "shop_stop_location_id": null
       },

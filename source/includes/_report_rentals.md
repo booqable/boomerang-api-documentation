@@ -7,15 +7,15 @@ Every report rental has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`created_at` | **Datetime** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
+`created_at` | **Datetime** `readonly`<br>When the resource was created
 `name` | **String** `readonly`<br>Product name
 `charge_duration_in_seconds` | **Integer** `readonly`<br>How many seconds were charged
 `planned_duration_in_seconds` | **Integer** `readonly`<br>How many seconds the product was planned
 `rented_count` | **Integer** `readonly`<br>How many times the product was rented out
 `turnover_in_cents` | **Integer** `readonly`<br>Turnover during period
 `quantity` | **Integer** `readonly`<br>Quantity in stock during period
-`product_id` | **Uuid** <br>The associated Product
+`product_id` | **Uuid** <br>Associated Product
 
 
 ## Relationships
@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-11-06+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-11+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-11-13+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-18+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,17 +44,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "5f45bb62-5f0a-40cc-97ba-81d7a92baef6",
+      "id": "ad27acea-b1a0-469a-a75f-9ba73c3744eb",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2024-11-11T09:28:30.035973+00:00",
-        "name": "Product 1000078",
+        "created_at": "2024-11-18T09:25:32.339838+00:00",
+        "name": "Product 1000023",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
         "turnover_in_cents": 0,
         "quantity": 10,
-        "product_id": "1f9a05f9-e9a3-4748-b0ed-1e1130b78a34"
+        "product_id": "668862f7-4680-4be6-bf98-3cfed3d9dd7a"
       },
       "relationships": {}
     }

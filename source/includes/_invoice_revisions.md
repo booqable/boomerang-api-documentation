@@ -13,10 +13,10 @@ Every invoice revision has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`order_id` | **Uuid** <br>The associated Order
-`revised_invoice_id` | **Uuid** `readonly`<br>The associated Revised invoice
-`revision_invoice_id` | **Uuid** `readonly`<br>The associated Revision invoice
+`id` | **Uuid** `readonly`<br>Primary key
+`order_id` | **Uuid** <br>ID of the order for which the invoice needs to be revised.
+`revised_invoice_id` | **Uuid** `readonly`<br>Document ID of the finalized invoice that was revised.
+`revision_invoice_id` | **Uuid** `readonly`<br>Associated Revision invoice
 
 
 ## Relationships
@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "invoice_revisions",
         "attributes": {
-          "order_id": "adda955e-8a0b-4840-803b-7a4125f3c41f"
+          "order_id": "ecc950c7-9258-4c8a-af11-c113ebc28032"
         }
       }
     }'
@@ -54,12 +54,12 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7d8c0096-5485-5d2a-ba30-6979b30cf608",
+    "id": "41aa4c36-6001-5548-9857-c5298c7754f3",
     "type": "invoice_revisions",
     "attributes": {
-      "order_id": "adda955e-8a0b-4840-803b-7a4125f3c41f",
-      "revised_invoice_id": "0a48168e-481c-41aa-8830-679441ecc4e7",
-      "revision_invoice_id": "de69e083-1a4e-43ac-b047-b5b4a2ccda9a"
+      "order_id": "ecc950c7-9258-4c8a-af11-c113ebc28032",
+      "revised_invoice_id": "6359c520-13ba-4042-b791-3bf1484419aa",
+      "revision_invoice_id": "e533c378-ce00-414f-a53b-6ba3400135c9"
     },
     "relationships": {}
   },
@@ -87,7 +87,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
+`data[attributes][order_id]` | **Uuid** <br>ID of the order for which the invoice needs to be revised.
 
 
 ### Includes

@@ -13,10 +13,10 @@ Name | Description
 `quantity` | **Integer** `readonly`<br>Quantity of items being transfered
 `available_at` | **Datetime** `readonly`<br>Date when item should be available at destination location
 `finalized` | **Boolean** `readonly`<br>Whether or not the transfer has completed
-`item_id` | **Uuid** `readonly`<br>The associated Item
-`order_id` | **Uuid** `readonly`<br>The associated Order
-`source_location_id` | **Uuid** `readonly`<br>The associated Source location
-`destination_location_id` | **Uuid** `readonly`<br>The associated Destination location
+`item_id` | **Uuid** `readonly`<br>ID of the product being transfered
+`order_id` | **Uuid** `readonly`<br>Order the item is being transfered for
+`source_location_id` | **Uuid** `readonly`<br>Location item is being transfered from
+`destination_location_id` | **Uuid** `readonly`<br>Location item is being transfered to
 
 
 ## Relationships
@@ -48,18 +48,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "ff84f583-64d2-4491-89bc-470c53a89833",
+      "id": "9d597fd3-732a-4dc2-99d6-fabd2a9fc6da",
       "type": "transfers",
       "attributes": {
-        "created_at": "2024-11-11T09:23:49.741732+00:00",
-        "updated_at": "2024-11-11T09:23:49.741732+00:00",
+        "created_at": "2024-11-18T09:25:53.486812+00:00",
+        "updated_at": "2024-11-18T09:25:53.486812+00:00",
         "quantity": 1,
-        "available_at": "2024-11-09T09:15:00.000000+00:00",
+        "available_at": "2024-11-16T09:15:00.000000+00:00",
         "finalized": false,
-        "item_id": "9caff7ed-6ead-4c89-b12c-fc2df2bb155b",
-        "order_id": "f0045d6c-ddd5-45b5-ba0d-ae80611d4b8f",
-        "source_location_id": "a8a9f70a-926a-4542-99c7-a2ffebf1344a",
-        "destination_location_id": "a8a9f70a-926a-4542-99c7-a2ffebf1344a"
+        "item_id": "ebd4c0f1-6e59-44fb-9e85-7c7e89c1fa82",
+        "order_id": "34810cc9-084e-48c4-9b03-eb85f0ec1a36",
+        "source_location_id": "2bc930e6-60c2-4b0a-9073-cae5792052b7",
+        "destination_location_id": "2bc930e6-60c2-4b0a-9073-cae5792052b7"
       },
       "relationships": {}
     }

@@ -37,8 +37,8 @@ Name | Description
 `properties` | **Hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties)
 `properties_attributes` | **Array** `writeonly`<br>Create or update multiple properties associated with this customer
 `tag_list` | **Array** <br>Case insensitive tag list
-`merge_suggestion_customer_id` | **Uuid** <br>The associated Merge suggestion customer
-`tax_region_id` | **Uuid** `nullable`<br>The associated Tax region
+`merge_suggestion_customer_id` | **Uuid** <br>Associated Merge suggestion customer
+`tax_region_id` | **Uuid** `nullable`<br>Associated Tax region
 
 
 ## Relationships
@@ -71,16 +71,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "bb74d461-34c2-40db-987f-26010c89ab2f",
+      "id": "426b878d-e680-4002-8069-493cc89f2f4c",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-11-11T09:22:41.920005+00:00",
-        "updated_at": "2024-11-11T09:22:41.920005+00:00",
+        "created_at": "2024-11-18T09:25:52.358919+00:00",
+        "updated_at": "2024-11-18T09:25:52.358919+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-10@doe.test",
+        "email": "john-67@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -229,10 +229,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "9ea43367-ace9-4b9c-b725-0805a4ecd90f"
+      "id": "7c37ff2f-d2b3-47c4-8969-f5661df164d2"
     },
     {
-      "id": "c6a36ddf-599a-4558-8bae-a7b83bd7fdec"
+      "id": "04b130ec-ff38-46e6-8c67-1c36542e0ab4"
     }
   ]
 }
@@ -321,7 +321,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/3abba5f1-8a48-485b-b394-c14f51da119f?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/e4a4664b-fda8-48a1-a7ca-3e4d1ade64e8?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -330,16 +330,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3abba5f1-8a48-485b-b394-c14f51da119f",
+    "id": "e4a4664b-fda8-48a1-a7ca-3e4d1ade64e8",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-11T09:22:43.635880+00:00",
-      "updated_at": "2024-11-11T09:22:43.635880+00:00",
+      "created_at": "2024-11-18T09:25:47.819935+00:00",
+      "updated_at": "2024-11-18T09:25:47.819935+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "John Doe",
-      "email": "john-11@doe.test",
+      "email": "john-57@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -421,11 +421,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c790f62c-26dd-4805-a11d-0f83d63cbc7c",
+    "id": "ae77c22f-fe76-40ed-8bdd-b96801be9b44",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-11T09:22:40.347353+00:00",
-      "updated_at": "2024-11-11T09:22:40.347353+00:00",
+      "created_at": "2024-11-18T09:25:50.593549+00:00",
+      "updated_at": "2024-11-18T09:25:50.593549+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -477,8 +477,8 @@ Name | Description
 `data[attributes][email_marketing_consented]` | **Boolean** <br>Whether the customer has consented to receive email marketing
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this customer
 `data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>The associated Merge suggestion customer
-`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>Associated Merge suggestion customer
+`data[attributes][tax_region_id]` | **Uuid** <br>Associated Tax region
 
 
 ### Includes
@@ -506,11 +506,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/982155dd-b9cd-4dfa-a737-f10e051d8ad3' \
+    --url 'https://example.booqable.com/api/boomerang/customers/fbf904ac-3550-4276-8beb-60e6b98395b5' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "982155dd-b9cd-4dfa-a737-f10e051d8ad3",
+        "id": "fbf904ac-3550-4276-8beb-60e6b98395b5",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -524,16 +524,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "982155dd-b9cd-4dfa-a737-f10e051d8ad3",
+    "id": "fbf904ac-3550-4276-8beb-60e6b98395b5",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-11T09:22:37.551842+00:00",
-      "updated_at": "2024-11-11T09:22:37.633929+00:00",
+      "created_at": "2024-11-18T09:25:51.477474+00:00",
+      "updated_at": "2024-11-18T09:25:51.540752+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "Jane Doe",
-      "email": "john-7@doe.test",
+      "email": "john-66@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -580,8 +580,8 @@ Name | Description
 `data[attributes][email_marketing_consented]` | **Boolean** <br>Whether the customer has consented to receive email marketing
 `data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this customer
 `data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>The associated Merge suggestion customer
-`data[attributes][tax_region_id]` | **Uuid** <br>The associated Tax region
+`data[attributes][merge_suggestion_customer_id]` | **Uuid** <br>Associated Merge suggestion customer
+`data[attributes][tax_region_id]` | **Uuid** <br>Associated Tax region
 
 
 ### Includes
@@ -609,7 +609,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/be7f7225-6db4-4cfd-a828-b704530df084' \
+    --url 'https://example.booqable.com/api/boomerang/customers/1f63c9b6-3a5d-4d2f-8791-8ad60eed97e2' \
     --header 'content-type: application/json' \
 ```
 
@@ -618,16 +618,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "be7f7225-6db4-4cfd-a828-b704530df084",
+    "id": "1f63c9b6-3a5d-4d2f-8791-8ad60eed97e2",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-11T09:22:38.747118+00:00",
-      "updated_at": "2024-11-11T09:22:38.856036+00:00",
+      "created_at": "2024-11-18T09:25:49.629777+00:00",
+      "updated_at": "2024-11-18T09:25:49.696143+00:00",
       "archived": true,
-      "archived_at": "2024-11-11T09:22:38.856036+00:00",
+      "archived_at": "2024-11-18T09:25:49.696143+00:00",
       "number": 1,
       "name": "John Doe",
-      "email": "john-8@doe.test",
+      "email": "john-64@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,

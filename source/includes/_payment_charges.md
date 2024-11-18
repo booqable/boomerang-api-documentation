@@ -41,9 +41,9 @@ Name | Description
 `failed_at` | **Datetime** `readonly`<br>When payment charge failed
 `canceled_at` | **Datetime** `readonly`<br>When payment charge was canceled
 `expired_at` | **Datetime** `readonly`<br>When payment charge expired
-`employee_id` | **Uuid** <br>The associated Employee
-`order_id` | **Uuid** <br>The associated Order
-`customer_id` | **Uuid** <br>The associated Customer
+`employee_id` | **Uuid** <br>Associated Employee
+`order_id` | **Uuid** <br>Associated Order
+`customer_id` | **Uuid** <br>Associated Customer
 
 
 ## Relationships
@@ -74,11 +74,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "ab2e0315-b533-47fe-84c8-724f8f0900c7",
+      "id": "cf3c8608-5939-45b6-b16e-94c117db1302",
       "type": "payment_charges",
       "attributes": {
-        "created_at": "2024-11-11T09:22:48.113867+00:00",
-        "updated_at": "2024-11-11T09:22:48.113867+00:00",
+        "created_at": "2024-11-18T09:25:21.821576+00:00",
+        "updated_at": "2024-11-18T09:25:21.821576+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -198,7 +198,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/b4988ff6-0392-4d26-8eca-af6479cbc561' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/8088307b-670c-435b-b8d7-cf031b7efce3' \
     --header 'content-type: application/json' \
 ```
 
@@ -207,11 +207,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b4988ff6-0392-4d26-8eca-af6479cbc561",
+    "id": "8088307b-670c-435b-b8d7-cf031b7efce3",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-11T09:22:48.608022+00:00",
-      "updated_at": "2024-11-11T09:22:48.608022+00:00",
+      "created_at": "2024-11-18T09:25:21.407381+00:00",
+      "updated_at": "2024-11-18T09:25:21.407381+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -300,11 +300,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "99f70346-3b45-4684-8ee2-2eeb419252e5",
+    "id": "8e82646b-26ea-41ad-89a3-5d736261619e",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-11T09:22:47.708798+00:00",
-      "updated_at": "2024-11-11T09:22:47.708798+00:00",
+      "created_at": "2024-11-18T09:25:20.555199+00:00",
+      "updated_at": "2024-11-18T09:25:20.555199+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -323,11 +323,11 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 15000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-11-11T09:22:47.707382+00:00",
+      "succeeded_at": "2024-11-18T09:25:20.554180+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "594f1525-deef-4307-b8a1-dfdb86d49b6c",
+      "employee_id": "379ff27a-db70-4308-a8d9-59d71362614c",
       "order_id": null,
       "customer_id": null
     },
@@ -366,9 +366,9 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider payment identification
 `data[attributes][provider_method]` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider payment secret
-`data[attributes][employee_id]` | **Uuid** <br>The associated Employee
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
+`data[attributes][order_id]` | **Uuid** <br>Associated Order
+`data[attributes][customer_id]` | **Uuid** <br>Associated Customer
 
 
 ### Includes
@@ -393,11 +393,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/141cc012-9d37-4bd0-ab61-da02a6aea433' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/0401a550-69de-461c-81bf-b4bdf01b10a4' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "141cc012-9d37-4bd0-ab61-da02a6aea433",
+        "id": "0401a550-69de-461c-81bf-b4bdf01b10a4",
         "type": "payment_charges",
         "attributes": {
           "status": "succeeded"
@@ -411,11 +411,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "141cc012-9d37-4bd0-ab61-da02a6aea433",
+    "id": "0401a550-69de-461c-81bf-b4bdf01b10a4",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-11T09:22:47.189178+00:00",
-      "updated_at": "2024-11-11T09:22:47.189178+00:00",
+      "created_at": "2024-11-18T09:25:20.966533+00:00",
+      "updated_at": "2024-11-18T09:25:20.966533+00:00",
       "status": "succeeded",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -434,7 +434,7 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 5000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-11-11T09:22:47.221160+00:00",
+      "succeeded_at": "2024-11-18T09:25:20.990807+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
@@ -477,9 +477,9 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider payment identification
 `data[attributes][provider_method]` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider payment secret
-`data[attributes][employee_id]` | **Uuid** <br>The associated Employee
-`data[attributes][order_id]` | **Uuid** <br>The associated Order
-`data[attributes][customer_id]` | **Uuid** <br>The associated Customer
+`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
+`data[attributes][order_id]` | **Uuid** <br>Associated Order
+`data[attributes][customer_id]` | **Uuid** <br>Associated Customer
 
 
 ### Includes

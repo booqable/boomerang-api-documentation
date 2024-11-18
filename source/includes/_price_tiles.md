@@ -26,7 +26,7 @@ Name | Description
 `length` | **Integer** `readonly`<br>Length in seconds (is computed based on `quantity` and `period`)
 `multiplier` | **Float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
 `period` | **String** <br>One of `hours`, `days`, `weeks`, `months`, `years`
-`price_structure_id` | **Uuid** <br>The associated Price structure
+`price_structure_id` | **Uuid** <br>Associated Price structure
 
 
 ## Relationships
@@ -55,17 +55,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "a96b5f1a-3038-40e2-ba15-29e2000aa447",
+      "id": "f725a611-ed0b-409a-b1c2-637b734c8c40",
       "type": "price_tiles",
       "attributes": {
-        "created_at": "2024-11-11T09:22:33.134846+00:00",
-        "updated_at": "2024-11-11T09:22:33.134846+00:00",
+        "created_at": "2024-11-18T09:26:45.248016+00:00",
+        "updated_at": "2024-11-18T09:26:45.248016+00:00",
         "name": "3 hours",
         "quantity": 3,
         "length": 10800,
         "multiplier": 3.0,
         "period": "hours",
-        "price_structure_id": "00d97490-b07e-4d06-9891-8382eba78cf1"
+        "price_structure_id": "dbec53ca-4238-4838-97c7-9d2e7d9edbda"
       },
       "relationships": {}
     }
@@ -124,7 +124,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/6458cda2-780a-4d92-9680-0cfd74bca4f3?include=price_tiles' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/eb6d1364-d199-41a6-92a2-126e2e2edb44?include=price_tiles' \
     --header 'content-type: application/json' \
 ```
 
@@ -133,17 +133,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "6458cda2-780a-4d92-9680-0cfd74bca4f3",
+    "id": "eb6d1364-d199-41a6-92a2-126e2e2edb44",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-11-11T09:22:32.635084+00:00",
-      "updated_at": "2024-11-11T09:22:32.635084+00:00",
+      "created_at": "2024-11-18T09:26:45.686175+00:00",
+      "updated_at": "2024-11-18T09:26:45.686175+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "fad19ab1-a76e-4c74-b37b-251b47951d06"
+      "price_structure_id": "ac389339-65a4-4171-90bc-f57ed99bdad2"
     },
     "relationships": {}
   },
@@ -190,7 +190,7 @@ This request accepts the following includes:
       "data": {
         "type": "price_tiles",
         "attributes": {
-          "price_structure_id": "d151cf83-eaa3-4a53-b271-5f225d9997e5",
+          "price_structure_id": "e5c099c0-8c67-4cb8-b174-15bbdaeb2e13",
           "name": "3 hours",
           "quantity": 3,
           "period": "hours",
@@ -205,17 +205,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "62f84906-4785-4126-989d-ec0fe32419e8",
+    "id": "11e40c53-c751-4a0b-9a5c-31294c6733d0",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-11-11T09:22:34.146119+00:00",
-      "updated_at": "2024-11-11T09:22:34.146119+00:00",
+      "created_at": "2024-11-18T09:26:46.140102+00:00",
+      "updated_at": "2024-11-18T09:26:46.140102+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "d151cf83-eaa3-4a53-b271-5f225d9997e5"
+      "price_structure_id": "e5c099c0-8c67-4cb8-b174-15bbdaeb2e13"
     },
     "relationships": {}
   },
@@ -247,7 +247,7 @@ Name | Description
 `data[attributes][quantity]` | **Integer** <br>Used in combination with period (e.g. `3` with period `days`)
 `data[attributes][multiplier]` | **Float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
 `data[attributes][period]` | **String** <br>One of `hours`, `days`, `weeks`, `months`, `years`
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+`data[attributes][price_structure_id]` | **Uuid** <br>Associated Price structure
 
 
 ### Includes
@@ -269,11 +269,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/9d39cfbe-18da-41cc-affa-eaa27372d817' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/b392f310-441a-4cce-ba60-23c071a97be8' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "9d39cfbe-18da-41cc-affa-eaa27372d817",
+        "id": "b392f310-441a-4cce-ba60-23c071a97be8",
         "type": "price_tiles",
         "attributes": {
           "name": "4 days",
@@ -290,17 +290,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "9d39cfbe-18da-41cc-affa-eaa27372d817",
+    "id": "b392f310-441a-4cce-ba60-23c071a97be8",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-11-11T09:22:33.615960+00:00",
-      "updated_at": "2024-11-11T09:22:33.638135+00:00",
+      "created_at": "2024-11-18T09:26:46.993682+00:00",
+      "updated_at": "2024-11-18T09:26:47.012286+00:00",
       "name": "4 days",
       "quantity": 4,
       "length": 345600,
       "multiplier": 4.0,
       "period": "days",
-      "price_structure_id": "ec8c10dc-a248-462a-b261-bc1f8d0511e3"
+      "price_structure_id": "9bfcc5db-6192-4ce9-9b6d-f903284908b7"
     },
     "relationships": {}
   },
@@ -332,7 +332,7 @@ Name | Description
 `data[attributes][quantity]` | **Integer** <br>Used in combination with period (e.g. `3` with period `days`)
 `data[attributes][multiplier]` | **Float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
 `data[attributes][period]` | **String** <br>One of `hours`, `days`, `weeks`, `months`, `years`
-`data[attributes][price_structure_id]` | **Uuid** <br>The associated Price structure
+`data[attributes][price_structure_id]` | **Uuid** <br>Associated Price structure
 
 
 ### Includes
@@ -354,7 +354,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/price_tiles/aa4baac2-8d8d-48be-ab26-6954ca5e6ea9' \
+    --url 'https://example.booqable.com/api/boomerang/price_tiles/6ea1cd16-e16b-433a-951e-993f5dda7062' \
     --header 'content-type: application/json' \
 ```
 
@@ -363,17 +363,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "aa4baac2-8d8d-48be-ab26-6954ca5e6ea9",
+    "id": "6ea1cd16-e16b-433a-951e-993f5dda7062",
     "type": "price_tiles",
     "attributes": {
-      "created_at": "2024-11-11T09:22:34.602702+00:00",
-      "updated_at": "2024-11-11T09:22:34.602702+00:00",
+      "created_at": "2024-11-18T09:26:46.564816+00:00",
+      "updated_at": "2024-11-18T09:26:46.564816+00:00",
       "name": "3 hours",
       "quantity": 3,
       "length": 10800,
       "multiplier": 3.0,
       "period": "hours",
-      "price_structure_id": "9a59b08f-1e88-4d38-adde-c86a828ea731"
+      "price_structure_id": "c0cff345-cfe4-4e2c-8629-3c8d870d5099"
     },
     "relationships": {}
   },

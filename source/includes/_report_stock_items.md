@@ -7,8 +7,8 @@ Every report stock item has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`created_at` | **Datetime** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
+`created_at` | **Datetime** `readonly`<br>When the resource was created
 `q` | **String** `writeonly`<br>Query for a specific stock item
 `product_name` | **String** <br>Product name
 `identifier` | **String** <br>Stock item identifier
@@ -16,9 +16,9 @@ Name | Description
 `planned_duration_in_seconds` | **Integer** <br>How many seconds the product was planned
 `rented_count` | **Integer** <br>How many times the product was rented out
 `turnover_in_cents` | **Integer** <br>Turnover during period
-`stock_item_id` | **Uuid** <br>The associated Stock item
-`product_id` | **Uuid** <br>The associated Product
-`location_id` | **Uuid** <br>The associated Location
+`stock_item_id` | **Uuid** <br>Associated Stock item
+`product_id` | **Uuid** <br>Associated Product
+`location_id` | **Uuid** <br>Associated Location
 
 
 ## Relationships
@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-11-06+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-11+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-11-13+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-18+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,35 +49,35 @@ Name | Description
   {
   "data": [
     {
-      "id": "b0650bc2-510c-4f44-a6f6-504491d74910",
+      "id": "2e5a986c-e34d-44ab-b52a-f79ac4277fc8",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-11-11T09:25:34.989120+00:00",
-        "product_name": "Product 1000043",
-        "identifier": "id1000036",
+        "created_at": "2024-11-18T09:24:14.670696+00:00",
+        "product_name": "Product 1000008",
+        "identifier": "id1000138",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
         "turnover_in_cents": 0,
-        "stock_item_id": "bd15b519-ce6b-452c-af25-c4aa2e286dae",
-        "product_id": "670ae08f-b162-45bb-9082-74b7de366caf",
+        "stock_item_id": "8e6c223d-31ec-4f06-84e8-fe5309c0bd7f",
+        "product_id": "a0f397a3-1a9c-4910-92bb-e7a1d4894beb",
         "location_id": null
       },
       "relationships": {}
     },
     {
-      "id": "3af64df2-0713-4fb7-bbf0-c484f8f044ee",
+      "id": "19597b82-7c0d-48be-8180-870ace2e28bd",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-11-11T09:25:35.014078+00:00",
-        "product_name": "Product 1000043",
-        "identifier": "id1000037",
+        "created_at": "2024-11-18T09:24:14.689532+00:00",
+        "product_name": "Product 1000008",
+        "identifier": "id1000139",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
         "turnover_in_cents": 0,
-        "stock_item_id": "97e90603-4b7f-4aab-9e98-24f4d97979c7",
-        "product_id": "670ae08f-b162-45bb-9082-74b7de366caf",
+        "stock_item_id": "ecf4d2bb-ab47-4fc3-a1dd-d99b0c0b99fc",
+        "product_id": "a0f397a3-1a9c-4910-92bb-e7a1d4894beb",
         "location_id": null
       },
       "relationships": {}

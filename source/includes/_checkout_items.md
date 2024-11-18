@@ -23,7 +23,7 @@ Name | Description
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `name` | **String** <br>Name of the field, will be shown as a field label in the checkout
 `item_type` | **String** <br>What kind of input will be presented to the customer during checkout
-`default_property_id` | **Uuid** <br>The associated Default property
+`default_property_id` | **Uuid** <br>The ID of the linked Default field (displayed in UI as Custom field)
 `tooltip` | **String** <br>Tooltip for the checkout item
 `required` | **Boolean** <br>Whether the item is required to complete checkout
 `position` | **Integer** <br>Used to determine sorting relative to other checkout items
@@ -63,14 +63,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "a3aaef80-11cf-4009-a3f0-e91e7e3f646d",
+      "id": "ed9e091e-6c5c-4735-9d6a-3a8b4043813e",
       "type": "checkout_items",
       "attributes": {
-        "created_at": "2024-11-11T09:24:01.059209+00:00",
-        "updated_at": "2024-11-11T09:24:01.059209+00:00",
-        "name": "Checkout item 2",
+        "created_at": "2024-11-18T09:27:28.716670+00:00",
+        "updated_at": "2024-11-18T09:27:28.716670+00:00",
+        "name": "Checkout item 1",
         "item_type": "field",
-        "default_property_id": "481cd92e-fa60-4e77-bd89-0964dc12e18f",
+        "default_property_id": "c6a2db01-18f8-4bf1-988d-cc47c63c9efb",
         "tooltip": null,
         "required": false,
         "position": 1,
@@ -147,7 +147,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/887596d9-2d31-4ab8-9102-b43a5593fef3?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/6472e724-918a-47a8-be29-8e400c0f09bf?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -156,14 +156,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "887596d9-2d31-4ab8-9102-b43a5593fef3",
+    "id": "6472e724-918a-47a8-be29-8e400c0f09bf",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-11T09:24:01.511467+00:00",
-      "updated_at": "2024-11-11T09:24:01.511467+00:00",
+      "created_at": "2024-11-18T09:27:29.581978+00:00",
+      "updated_at": "2024-11-18T09:27:29.581978+00:00",
       "name": "Checkout item 3",
       "item_type": "field",
-      "default_property_id": "33d106b3-e548-4e1d-a653-b5c5e684bbe2",
+      "default_property_id": "40de7538-19e2-43b4-bad9-c44734f341f1",
       "tooltip": null,
       "required": false,
       "position": 1,
@@ -212,7 +212,7 @@ This request does not accept any includes
         "attributes": {
           "name": "Mobile number",
           "item_type": "field",
-          "default_property_id": "7319c489-bb2e-447b-a602-1499a743102d"
+          "default_property_id": "4ca66f0b-f62d-4a64-9b89-55ac9e5dd2b8"
         }
       }
     }'
@@ -223,14 +223,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4a0c08d7-1ea3-47f0-a8b0-704788e46eb6",
+    "id": "b2af74c1-a425-44f9-ab9e-3fa2f1a733cc",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-11T09:24:02.247133+00:00",
-      "updated_at": "2024-11-11T09:24:02.247133+00:00",
+      "created_at": "2024-11-18T09:27:30.075643+00:00",
+      "updated_at": "2024-11-18T09:27:30.075643+00:00",
       "name": "Mobile number",
       "item_type": "field",
-      "default_property_id": "7319c489-bb2e-447b-a602-1499a743102d",
+      "default_property_id": "4ca66f0b-f62d-4a64-9b89-55ac9e5dd2b8",
       "tooltip": null,
       "required": false,
       "position": 2,
@@ -268,7 +268,7 @@ Name | Description
 -- | --
 `data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
 `data[attributes][item_type]` | **String** <br>What kind of input will be presented to the customer during checkout
-`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
+`data[attributes][default_property_id]` | **Uuid** <br>The ID of the linked Default field (displayed in UI as Custom field)
 `data[attributes][tooltip]` | **String** <br>Tooltip for the checkout item
 `data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout items
 `data[attributes][content]` | **String** <br>Text content of the checkout item
@@ -289,11 +289,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/1569a14c-494c-43c9-90dd-07dd089ecdb4' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/a68757a8-fe7b-4084-83ae-c70afd7331f1' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "1569a14c-494c-43c9-90dd-07dd089ecdb4",
+        "id": "a68757a8-fe7b-4084-83ae-c70afd7331f1",
         "type": "checkout_items",
         "attributes": {
           "name": "Additional information"
@@ -307,14 +307,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "1569a14c-494c-43c9-90dd-07dd089ecdb4",
+    "id": "a68757a8-fe7b-4084-83ae-c70afd7331f1",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-11T09:24:02.847137+00:00",
-      "updated_at": "2024-11-11T09:24:02.865497+00:00",
+      "created_at": "2024-11-18T09:27:30.502775+00:00",
+      "updated_at": "2024-11-18T09:27:30.521185+00:00",
       "name": "Additional information",
       "item_type": "field",
-      "default_property_id": "5d4deea3-0812-43b6-a9f7-a3854bf06ee2",
+      "default_property_id": "05f166ba-7045-41da-9115-13fe17f5fa16",
       "tooltip": null,
       "required": false,
       "position": 1,
@@ -352,7 +352,7 @@ Name | Description
 -- | --
 `data[attributes][name]` | **String** <br>Name of the field, will be shown as a field label in the checkout
 `data[attributes][item_type]` | **String** <br>What kind of input will be presented to the customer during checkout
-`data[attributes][default_property_id]` | **Uuid** <br>The associated Default property
+`data[attributes][default_property_id]` | **Uuid** <br>The ID of the linked Default field (displayed in UI as Custom field)
 `data[attributes][tooltip]` | **String** <br>Tooltip for the checkout item
 `data[attributes][position]` | **Integer** <br>Used to determine sorting relative to other checkout items
 `data[attributes][content]` | **String** <br>Text content of the checkout item
@@ -373,7 +373,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/2de755d4-e0c0-4940-8036-69d652d7dfba' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/0b525a89-c091-43fb-a91e-bb68b0b67867' \
     --header 'content-type: application/json' \
 ```
 
@@ -382,14 +382,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2de755d4-e0c0-4940-8036-69d652d7dfba",
+    "id": "0b525a89-c091-43fb-a91e-bb68b0b67867",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-11T09:24:00.128123+00:00",
-      "updated_at": "2024-11-11T09:24:00.128123+00:00",
-      "name": "Checkout item 1",
+      "created_at": "2024-11-18T09:27:29.137059+00:00",
+      "updated_at": "2024-11-18T09:27:29.137059+00:00",
+      "name": "Checkout item 2",
       "item_type": "field",
-      "default_property_id": "4c84186e-37c6-49be-b273-48ff65dfd725",
+      "default_property_id": "7fdb942f-6d30-4ad0-9eaf-81bcfcafe20e",
       "tooltip": null,
       "required": false,
       "position": 1,

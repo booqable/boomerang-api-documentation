@@ -7,7 +7,7 @@ Every bulk upsert has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `type` | **String** `writeonly`<br>Type of data being submitted. One of `coupons`, `operating_rules`
 `data` | **Array** `writeonly`<br>Array of objects, all objects must contain valid data for the specified type, see documentation for relevant type endpoint for more details.
 
@@ -66,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "757f4516-f7c7-5537-9c63-78b175ac0b89",
+    "id": "7b597ed0-0f55-5237-b8c2-776b213f4288",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "80455307-612e-448c-ac48-30a864d333ea"
+            "id": "114e2df1-ea6b-4ad9-9983-fc52186f7d15"
           },
           {
             "type": "operating_rules",
-            "id": "688798cb-7647-4c9c-a445-1ec9afd3f958"
+            "id": "e1afe9c4-5421-4370-a6ed-dca3fd6f0c64"
           }
         ]
       }
@@ -85,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "80455307-612e-448c-ac48-30a864d333ea",
+      "id": "114e2df1-ea6b-4ad9-9983-fc52186f7d15",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-11-11T09:26:01.485604+00:00",
-        "updated_at": "2024-11-11T09:26:01.485604+00:00",
+        "created_at": "2024-11-18T09:26:44.188572+00:00",
+        "updated_at": "2024-11-18T09:26:44.188572+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -100,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "688798cb-7647-4c9c-a445-1ec9afd3f958",
+      "id": "e1afe9c4-5421-4370-a6ed-dca3fd6f0c64",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-11-11T09:26:01.485604+00:00",
-        "updated_at": "2024-11-11T09:26:01.485604+00:00",
+        "created_at": "2024-11-18T09:26:44.188572+00:00",
+        "updated_at": "2024-11-18T09:26:44.188572+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -155,7 +155,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "f2da1046-dfac-5af9-afb9-26453390d102",
+    "id": "8aeaf49e-6a7e-5e89-a989-bca59ae3746e",
     "type": "bulk_upserts",
     "relationships": {}
   },

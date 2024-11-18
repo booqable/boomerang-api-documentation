@@ -9,10 +9,10 @@ Every inventory level has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`item_id` | **Uuid** <br>The associated Item
+`id` | **Uuid** `readonly`<br>Primary key
+`item_id` | **Uuid** <br>ID of the item to return data for, this can be a single ID or an array of multiple IDs
 `order_id` | **Uuid** `readonly`<br>Return data for all items on an order
-`location_id` | **Uuid** <br>The associated Location
+`location_id` | **Uuid** <br>ID of the location to filter for
 `location_available` | **Integer** `readonly`<br>The available quantity for the given location
 `location_stock_count` | **Integer** `readonly`<br>The quantity of stock present for the given the location
 `location_plannable` | **Integer** `readonly`<br>The number of products that can be planned for the given location
@@ -42,7 +42,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=75dace79-c256-4dd3-a7a0-2cdf09741a85&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=a03e4620-e8e0-437f-b9a0-96127061323e&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -52,12 +52,12 @@ Name | Description
   {
   "data": [
     {
-      "id": "bfd97ae2-11e6-5cb1-83fc-c7e05ec2c053",
+      "id": "05034a0f-58e0-50a4-807e-4366e96a9a39",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "75dace79-c256-4dd3-a7a0-2cdf09741a85",
+        "item_id": "a03e4620-e8e0-437f-b9a0-96127061323e",
         "order_id": null,
-        "location_id": "d5475880-7a79-4315-918b-17f7f63bb52a",
+        "location_id": "cf55d954-2575-4f32-8dd1-fcb74047315e",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,
@@ -139,7 +139,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=2b9bdc22-e6e2-4812-ae01-27b27f8a5592&filter%5Blocation_id%5D=0e4d2d89-832e-4dd5-9ba2-f4c61d880d02&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=0d67a100-8165-4d05-a716-198cb24f95a1&filter%5Blocation_id%5D=e6255162-f185-4952-9f2a-bfc999b77750&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
     --header 'content-type: application/json' \
 ```
 
@@ -149,12 +149,12 @@ This request accepts the following includes:
   {
   "data": [
     {
-      "id": "b65e3e9a-9757-5c09-94f8-f7e0ff5877b8",
+      "id": "1d04d639-bd64-5d25-aa65-63dd4b3507fb",
       "type": "inventory_levels",
       "attributes": {
-        "item_id": "2b9bdc22-e6e2-4812-ae01-27b27f8a5592",
+        "item_id": "0d67a100-8165-4d05-a716-198cb24f95a1",
         "order_id": null,
-        "location_id": "0e4d2d89-832e-4dd5-9ba2-f4c61d880d02",
+        "location_id": "e6255162-f185-4952-9f2a-bfc999b77750",
         "location_available": 0,
         "location_stock_count": 0,
         "location_plannable": 0,

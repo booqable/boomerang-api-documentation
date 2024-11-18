@@ -1,6 +1,6 @@
 # Activity logs
 
-Activity logs describe an event where changes took place in our database. Examples of such events can be an order that was created or placed, a product name that changed, a custoemr that was added or an e-mail that got sent. 
+Activity logs describe an event where changes took place in our database. Examples of such events can be an order that was created or placed, a product name that changed, a custoemr that was added or an e-mail that got sent.
 
 Activity logs contain `action_key` and `action_args`, which determine the summary line, and `data` which contains a copy of or details about the subject that the event is about, such as a order, product, customer or e-mail.
 
@@ -15,15 +15,15 @@ Every activity log has the following fields:
 Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
+`created_at` | **Datetime** `readonly`<br>When the activity happened.
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `action_key` | **String** <br>The name of the event that the activity log describes. This determines which translated summary line will be displayed in the web client. Examples are "product.created" or "order.updated".
 `action_args` | **Hash** <br>Arguments that can be passed to enrich the summary line of the web client with details, such as a product name.
 `has_data` | **Boolean** `readonly`<br>Boolean value flag indicating whether this activity log contains additional data describing the subject of the event.
 `owner_id` | **Uuid** <br>ID of the subject the event is about.
 `owner_type` | **String** <br>Class of the subject the event is about
-`employee_id` | **Uuid** <br>The associated Employee
-`data` | **Hash** `readonly`<br>Hash containing (details on) the subject(s) of the event this activity log describes. The subject(s) are contained in individual arrays grouped by their type. For example: { products: [{ id: 1, name: 'Product 1'}] } 
+`employee_id` | **Uuid** <br>The employee who performed the action.
+`data` | **Hash** `readonly`<br>Hash containing (details on) the subject(s) of the event this activity log describes.
 
 
 ## Relationships
@@ -31,7 +31,7 @@ Activity logs have the following relationships:
 
 Name | Description
 -- | --
-`employee` | **Employees** `readonly`<br>Associated Employee
+`employee` | **Employees** `readonly`<br>The employee who performed the action.
 `owner` | **Customer, Product, Product group, Stock item, Bundle, Order, Document, Email** <br>Associated Owner
 
 
@@ -53,30 +53,30 @@ Name | Description
   {
   "data": [
     {
-      "id": "729f0f64-390b-41eb-a12a-ad535d40f591",
+      "id": "307a60be-0313-4c96-a56a-c364afc0bf58",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-11-11T09:28:17.766045+00:00",
+        "created_at": "2024-11-18T09:26:01.274513+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "91bdecb4-1774-46f0-917b-7c0fb1c67eaa",
+        "owner_id": "914b0d42-29a7-4146-9469-94f43ba3a4c7",
         "owner_type": "orders",
-        "employee_id": "41b47a7a-0c20-4a6a-88a2-586827ca9956"
+        "employee_id": "48b92bbf-f199-430e-addf-1736fd6c075c"
       },
       "relationships": {}
     },
     {
-      "id": "a7be4c5a-ffe4-4030-b613-153115e852f4",
+      "id": "1e56416a-c3cb-4b70-8aff-9649107b93bb",
       "type": "activity_logs",
       "attributes": {
-        "created_at": "2024-11-11T09:28:17.509907+00:00",
+        "created_at": "2024-11-18T09:26:01.054727+00:00",
         "action_key": "product.created",
         "action_args": {},
         "has_data": true,
-        "owner_id": "16a88be3-cff6-4f8b-8eeb-c69ee1f152ca",
+        "owner_id": "5983afef-fe12-42e9-be6c-859a82c61559",
         "owner_type": "orders",
-        "employee_id": "e662e717-f8f8-40b8-8763-9312be74bafb"
+        "employee_id": "87517ff4-0eef-4db4-a4b5-0d6ad2824244"
       },
       "relationships": {}
     }
@@ -151,7 +151,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/activity_logs/f3e1d179-7814-4284-8fae-ad9b25ec0b94' \
+    --url 'https://example.booqable.com/api/boomerang/activity_logs/aeedae4b-9fe5-4713-b2ae-38f8234597e0' \
     --header 'content-type: application/json' \
 ```
 
@@ -160,30 +160,30 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f3e1d179-7814-4284-8fae-ad9b25ec0b94",
+    "id": "aeedae4b-9fe5-4713-b2ae-38f8234597e0",
     "type": "activity_logs",
     "attributes": {
-      "created_at": "2024-11-11T09:28:18.665186+00:00",
+      "created_at": "2024-11-18T09:26:01.970317+00:00",
       "action_key": "product.created",
       "action_args": {},
       "has_data": true,
       "data": {
         "products": [
           {
-            "id": "06324c20-432f-4700-9a7a-9129d607cf74",
+            "id": "95d1397a-2aa8-446a-b042-d49e941794b2",
             "legacy_id": null,
-            "name": "Product 1000076",
+            "name": "Product 1000029",
             "quantity": 0,
-            "created_at": "2024-11-11T09:28:18.442Z",
-            "updated_at": "2024-11-11T09:28:18.442Z",
+            "created_at": "2024-11-18T09:26:01.762Z",
+            "updated_at": "2024-11-18T09:26:01.762Z",
             "lag_time": 0,
             "lead_time": 0,
             "always_available": false,
             "trackable": false,
-            "sku": "PRODUCT 1000079",
+            "sku": "PRODUCT 1000031",
             "type": "Product",
             "base_price_in_cents": 0,
-            "group_name": "Product 1000076",
+            "group_name": "Product 1000029",
             "has_variations": false,
             "variation": false,
             "variation_name": null,
@@ -200,11 +200,11 @@ This request accepts the following includes:
             "flat_fee_price_in_cents": 0,
             "structure_price_in_cents": 0,
             "deposit_in_cents": 0,
-            "company_id": "9001cf25-6325-405c-b39b-ea5aa10cf8bb",
-            "item_group_id": "8db84439-977d-4eea-937b-c85c83c8ae32",
+            "company_id": "f7c5795a-cd27-4c26-b000-2ff85391013f",
+            "item_group_id": "290ff3c6-f8f3-46df-8b0a-a512fb08b75f",
             "price_wrapper_id": null,
             "tax_category_id": null,
-            "slug": "product-1000076",
+            "slug": "product-1000029",
             "description": null,
             "show_in_store": true,
             "product_type": "rental",
@@ -224,9 +224,9 @@ This request accepts the following includes:
           }
         ]
       },
-      "owner_id": "98e4ca9f-e1a2-41d8-8bfe-1f7770f2ac44",
+      "owner_id": "49b216ef-ac52-4398-a7ee-160a0dd54f63",
       "owner_type": "orders",
-      "employee_id": "3068e21d-2269-4e07-b9fb-07aa3848d684"
+      "employee_id": "962c91ad-be62-429c-b709-783dbd0fa366"
     },
     "relationships": {}
   },

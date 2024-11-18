@@ -12,8 +12,8 @@ Every item price has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
-`item_id` | **Uuid** <br>The associated Item
+`id` | **Uuid** `readonly`<br>Primary key
+`item_id` | **Uuid** <br>Required, the item or items to calculate price for
 `from` | **Datetime** <br>Start of charge period
 `till` | **Datetime** <br>End of charge period
 `original_charge_length` | **Integer** `readonly`<br>Length of charge period before charge rules are applied
@@ -23,9 +23,9 @@ Name | Description
 `original_price_each_in_cents` | **Integer** `readonly`<br>Price per item before charge rules are applied
 `price_each_in_cents` | **Integer** `readonly`<br>Final price per item
 `price_rule_values` | **Hash** `readonly`<br>What price rules were applied
-`price_structure_id` | **Uuid** <br>The associated Price structure
-`price_ruleset_id` | **Uuid** <br>The associated Price ruleset
-`price_tile_id` | **Uuid** `readonly`<br>The associated Price tile
+`price_structure_id` | **Uuid** <br>Optional price structure to use, if the item has a price structure associated with it that will be used by default
+`price_ruleset_id` | **Uuid** <br>Associated Price ruleset
+`price_tile_id` | **Uuid** `readonly`<br>Associated Price tile
 
 
 ## Relationships
@@ -47,7 +47,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=67a3f87a-c747-43bc-8bac-c419c4f1b955&filter%5Bitem_id%5D%5B%5D=663572ee-d47e-4f9b-84ff-1787455aec67&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item' \
+    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bfrom%5D=2030-01-01+12%3A00%3A00+UTC&filter%5Bitem_id%5D%5B%5D=7bc82df7-652c-4d49-b614-5ed4e4fd37b9&filter%5Bitem_id%5D%5B%5D=a33ee4e9-8de5-4dca-b794-9219cb9ac81f&filter%5Btill%5D=2030-01-14+12%3A00%3A00+UTC&include=item' \
     --header 'content-type: application/json' \
 ```
 
@@ -57,10 +57,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "2644dcca-78d4-4648-969c-f757df61c0fa",
+      "id": "953344df-0eb1-4933-abcd-82a6d26ed57b",
       "type": "item_prices",
       "attributes": {
-        "item_id": "67a3f87a-c747-43bc-8bac-c419c4f1b955",
+        "item_id": "7bc82df7-652c-4d49-b614-5ed4e4fd37b9",
         "from": "2030-01-01T12:00:00.000000+00:00",
         "till": "2030-01-14T12:00:00.000000+00:00",
         "original_charge_length": 1123200,
@@ -78,16 +78,16 @@ Name | Description
         "item": {
           "data": {
             "type": "products",
-            "id": "67a3f87a-c747-43bc-8bac-c419c4f1b955"
+            "id": "7bc82df7-652c-4d49-b614-5ed4e4fd37b9"
           }
         }
       }
     },
     {
-      "id": "3b78ff27-1736-4de5-a29d-262c7a4aec25",
+      "id": "a48b41f4-c5ed-4a86-9e7f-5733710ea152",
       "type": "item_prices",
       "attributes": {
-        "item_id": "663572ee-d47e-4f9b-84ff-1787455aec67",
+        "item_id": "a33ee4e9-8de5-4dca-b794-9219cb9ac81f",
         "from": "2030-01-01T12:00:00.000000+00:00",
         "till": "2030-01-14T12:00:00.000000+00:00",
         "original_charge_length": 1123200,
@@ -105,7 +105,7 @@ Name | Description
         "item": {
           "data": {
             "type": "products",
-            "id": "663572ee-d47e-4f9b-84ff-1787455aec67"
+            "id": "a33ee4e9-8de5-4dca-b794-9219cb9ac81f"
           }
         }
       }
@@ -113,18 +113,18 @@ Name | Description
   ],
   "included": [
     {
-      "id": "67a3f87a-c747-43bc-8bac-c419c4f1b955",
+      "id": "7bc82df7-652c-4d49-b614-5ed4e4fd37b9",
       "type": "products",
       "attributes": {
-        "created_at": "2024-11-11T09:22:46.054480+00:00",
-        "updated_at": "2024-11-11T09:22:46.054480+00:00",
+        "created_at": "2024-11-18T09:23:36.944682+00:00",
+        "updated_at": "2024-11-18T09:23:36.944682+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
-        "name": "Product 1000018",
-        "group_name": "Product 1000018",
-        "slug": "product-1000018",
-        "sku": "PRODUCT 1000018",
+        "name": "Product 1000006",
+        "group_name": "Product 1000006",
+        "slug": "product-1000006",
+        "sku": "PRODUCT 1000006",
         "lead_time": 0,
         "lag_time": 0,
         "product_type": "rental",
@@ -155,23 +155,23 @@ Name | Description
         "variation_values": [],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "3b006dd8-1939-4e95-b0b2-b23f8376d3c6"
+        "product_group_id": "7150e5fc-1f68-4059-902f-f93b9f430747"
       },
       "relationships": {}
     },
     {
-      "id": "663572ee-d47e-4f9b-84ff-1787455aec67",
+      "id": "a33ee4e9-8de5-4dca-b794-9219cb9ac81f",
       "type": "products",
       "attributes": {
-        "created_at": "2024-11-11T09:22:46.447262+00:00",
-        "updated_at": "2024-11-11T09:22:46.447262+00:00",
+        "created_at": "2024-11-18T09:23:37.194104+00:00",
+        "updated_at": "2024-11-18T09:23:37.194104+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
-        "name": "Product 1000019",
-        "group_name": "Product 1000019",
-        "slug": "product-1000019",
-        "sku": "PRODUCT 1000019",
+        "name": "Product 1000007",
+        "group_name": "Product 1000007",
+        "slug": "product-1000007",
+        "sku": "PRODUCT 1000007",
         "lead_time": 0,
         "lag_time": 0,
         "product_type": "rental",
@@ -202,7 +202,7 @@ Name | Description
         "variation_values": [],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "f4691c55-5deb-4582-8ffd-c98e46bdc698"
+        "product_group_id": "5bd48a2b-409b-4cfe-b525-05bd8a7e5734"
       },
       "relationships": {}
     }
@@ -216,7 +216,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=f0358876-7327-4144-94e7-a5b1734463f0&include=item' \
+    --url 'https://example.booqable.com/api/boomerang/item_prices?filter%5Bcharge_length%5D=36000&filter%5Bitem_id%5D=e3bc89d2-7264-4cd9-818d-645f0e7b6ff4&include=item' \
     --header 'content-type: application/json' \
 ```
 
@@ -226,10 +226,10 @@ Name | Description
   {
   "data": [
     {
-      "id": "d7455fef-9c6f-48d1-8239-ddcbe0949642",
+      "id": "c1f098b8-7971-4588-9926-bc6800c2e66f",
       "type": "item_prices",
       "attributes": {
-        "item_id": "f0358876-7327-4144-94e7-a5b1734463f0",
+        "item_id": "e3bc89d2-7264-4cd9-818d-645f0e7b6ff4",
         "from": null,
         "till": null,
         "original_charge_length": 36000,
@@ -247,7 +247,7 @@ Name | Description
         "item": {
           "data": {
             "type": "products",
-            "id": "f0358876-7327-4144-94e7-a5b1734463f0"
+            "id": "e3bc89d2-7264-4cd9-818d-645f0e7b6ff4"
           }
         }
       }
@@ -255,18 +255,18 @@ Name | Description
   ],
   "included": [
     {
-      "id": "f0358876-7327-4144-94e7-a5b1734463f0",
+      "id": "e3bc89d2-7264-4cd9-818d-645f0e7b6ff4",
       "type": "products",
       "attributes": {
-        "created_at": "2024-11-11T09:22:44.559602+00:00",
-        "updated_at": "2024-11-11T09:22:44.559602+00:00",
+        "created_at": "2024-11-18T09:23:35.866061+00:00",
+        "updated_at": "2024-11-18T09:23:35.866061+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
-        "name": "Product 1000016",
-        "group_name": "Product 1000016",
-        "slug": "product-1000016",
-        "sku": "PRODUCT 1000016",
+        "name": "Product 1000004",
+        "group_name": "Product 1000004",
+        "slug": "product-1000004",
+        "sku": "PRODUCT 1000004",
         "lead_time": 0,
         "lag_time": 0,
         "product_type": "rental",
@@ -297,7 +297,7 @@ Name | Description
         "variation_values": [],
         "allow_shortage": false,
         "shortage_limit": 0,
-        "product_group_id": "45184560-8bd6-4393-b0fd-fceedbc5e3ee"
+        "product_group_id": "80f75fa7-7eb5-47eb-8dd9-85858af0a8d6"
       },
       "relationships": {}
     }

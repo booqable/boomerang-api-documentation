@@ -9,7 +9,7 @@ Every user invitation has the following fields:
 
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>
+`id` | **Uuid** `readonly`<br>Primary key
 `user_id` | **Uuid** `writeonly`<br>The user to send the invitation to.
 
 
@@ -27,7 +27,7 @@ Name | Description
       "data": {
         "type": "user_invitations",
         "attributes": {
-          "user_id": "a6abf255-e576-4e78-8d0f-b9250d536639"
+          "user_id": "5e7a0c5c-4b95-4f7b-96e3-ac4f348a997a"
         }
       }
     }'
@@ -38,7 +38,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "558e0e11-19ab-5e4f-81ff-fe1188287202",
+    "id": "0678d8a5-1774-57d7-9d19-476a8f1514c1",
     "type": "user_invitations"
   },
   "meta": {}
