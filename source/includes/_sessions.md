@@ -63,16 +63,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4bb4e738-088a-506e-9ebc-a9a8e2f12880",
+    "id": "83e28d2f-6e99-5788-8e3a-2004916fc12f",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-11-18T09:27:25.910380+00:00",
-      "company_id": "627f4155-a2f0-4083-a183-27aeb508a429",
-      "employee_id": "a2d5fbf0-9995-44cb-a99d-fa8e57d3512b",
+      "updated_at": "2024-11-25T09:29:24.925182+00:00",
+      "company_id": "dc05ff06-384b-406d-879d-b0d6f5ebbcd0",
+      "employee_id": "0f42d5ae-686c-4b18-a36e-61cfb1e98b5c",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-11-18T09:27:25.914618+00:00",
+      "notification_subscriptions_updated_at": "2024-11-25T09:29:24.932836+00:00",
       "countries_updated_at": null,
       "operating_rules_updated_at": null
     },
@@ -80,13 +80,13 @@ Name | Description
       "company": {
         "data": {
           "type": "companies",
-          "id": "627f4155-a2f0-4083-a183-27aeb508a429"
+          "id": "dc05ff06-384b-406d-879d-b0d6f5ebbcd0"
         }
       },
       "employee": {
         "data": {
           "type": "employees",
-          "id": "a2d5fbf0-9995-44cb-a99d-fa8e57d3512b"
+          "id": "0f42d5ae-686c-4b18-a36e-61cfb1e98b5c"
         }
       },
       "settings": {
@@ -99,16 +99,16 @@ Name | Description
   },
   "included": [
     {
-      "id": "627f4155-a2f0-4083-a183-27aeb508a429",
+      "id": "dc05ff06-384b-406d-879d-b0d6f5ebbcd0",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-11-18T09:27:25.889806+00:00",
-        "updated_at": "2024-11-18T09:27:25.899642+00:00",
-        "name": "Company name 258",
-        "slug": "company-name-258",
-        "email": "mail261@company.com",
+        "created_at": "2024-11-25T09:29:24.888388+00:00",
+        "updated_at": "2024-11-25T09:29:24.907255+00:00",
+        "name": "Company name 176",
+        "slug": "company-name-176",
+        "email": "mail176@company.com",
         "billing_email": null,
-        "phone": "0581234567",
+        "phone": null,
         "website": "www.booqable.com",
         "address_line_1": "Blokhuispoort",
         "address_line_2": "Leeuwarden",
@@ -139,10 +139,10 @@ Name | Description
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "d4b44d657f3adc30a4702fdf72b1de26",
+        "tenant_token": "808a9a6a2a17ead71733d57d0a618919",
         "pending_subscription": false,
         "team_size": null,
-        "projected_revenue": null,
+        "revenue_last_year": null,
         "year_business_start": null,
         "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
         "main_address": {
@@ -163,7 +163,7 @@ Name | Description
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-12-02T09:27:25.878Z",
+          "trial_ends_at": "2024-12-09T09:29:24.870Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -219,18 +219,18 @@ Name | Description
       }
     },
     {
-      "id": "a2d5fbf0-9995-44cb-a99d-fa8e57d3512b",
+      "id": "0f42d5ae-686c-4b18-a36e-61cfb1e98b5c",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-11-18T09:27:25.910380+00:00",
-        "updated_at": "2024-11-18T09:27:25.910380+00:00",
+        "created_at": "2024-11-25T09:29:24.925182+00:00",
+        "updated_at": "2024-11-25T09:29:24.925182+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-11-18T09:27:25.905972+00:00",
+        "viewed_whats_new_at": "2024-11-25T09:29:24.917556+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,

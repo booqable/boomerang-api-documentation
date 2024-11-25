@@ -16,6 +16,14 @@ Name | Description
 `country_id` | **Uuid** `readonly`<br>The ID of the country the province/state belongs to.
 
 
+## Relationships
+Provinces have the following relationships:
+
+Name | Description
+-- | --
+`country` | **Countries** `readonly`<br>Associated Country
+
+
 ## Listing provinces
 
 
@@ -34,16 +42,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "8cc070fd-3693-4940-b79b-e348c6ffc16a",
+      "id": "695f68be-9a42-462c-8698-a66c9213be92",
       "type": "provinces",
       "attributes": {
-        "created_at": "2024-11-18T09:22:27.057084+00:00",
-        "updated_at": "2024-11-18T09:22:27.057084+00:00",
+        "created_at": "2024-11-25T09:30:47.048063+00:00",
+        "updated_at": "2024-11-25T09:30:47.048063+00:00",
         "name": "Friesland",
         "code": "FR",
         "position": 0,
-        "country_id": "a795f587-f6d5-43b4-aba8-b0859d0cb648"
-      }
+        "country_id": "1e81f49b-2b41-4746-a454-fa1d4478504a"
+      },
+      "relationships": {}
     }
   ],
   "meta": {}

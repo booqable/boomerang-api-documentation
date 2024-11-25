@@ -57,7 +57,7 @@ Name | Description
 `tenant_token` | **String** `readonly`<br>Token
 `pending_subscription` | **Boolean** `readonly`<br>Whether the company has a pending subscription
 `team_size` | **String** `readonly`<br>Team size given during signup
-`projected_revenue` | **String** `readonly`<br>Projected revenue size given during signup
+`revenue_last_year` | **String** `readonly`<br>Revenue last year given during signup
 `year_business_start` | **String** `readonly`<br>Year when company started, given during signup
 `address` | **String** `readonly`<br>The full address
 `main_address_attributes` | **Hash** `writeonly`<br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information
@@ -87,16 +87,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a1f7cf71-f008-49df-8a15-734ba9420280",
+    "id": "0eea18e0-8a24-4f89-97db-14d911a5f65a",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-11-18T09:24:27.865681+00:00",
-      "updated_at": "2024-11-18T09:24:27.881598+00:00",
+      "created_at": "2024-11-25T09:31:38.705411+00:00",
+      "updated_at": "2024-11-25T09:31:38.723604+00:00",
       "name": "iRent",
       "slug": "irent",
-      "email": "mail85@company.com",
+      "email": "mail259@company.com",
       "billing_email": null,
-      "phone": "0581234567",
+      "phone": null,
       "website": "www.booqable.com",
       "address_line_1": "Blokhuispoort",
       "address_line_2": "Leeuwarden",
@@ -127,10 +127,10 @@ Name | Description
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "c7b0d7d18102fc4b6500dda1e81dbbf8",
+      "tenant_token": "d79189a0a9d62e31b18d8ac461cc08a9",
       "pending_subscription": false,
       "team_size": null,
-      "projected_revenue": null,
+      "revenue_last_year": null,
       "year_business_start": null,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {
@@ -220,11 +220,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c3920ceb-09bf-4577-85e4-60bda3d2c752",
+    "id": "271e16bc-56f5-44aa-bb54-8c8221d8a500",
     "type": "companies",
     "attributes": {
       "subscription": {
-        "trial_ends_at": "2024-12-02T09:24:28.273Z",
+        "trial_ends_at": "2024-12-09T09:31:38.059Z",
         "activated": false,
         "active_subscription": false,
         "suspended": false,
@@ -311,7 +311,7 @@ This request does not accept any includes
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "b3edd09d-8c49-4c07-b1be-0abbaf58a4f7",
+        "id": "aa72d5a3-7f7e-401f-b2fe-cc2fa544ef5d",
         "type": "companies",
         "attributes": {
           "name": "iRent LLC"
@@ -325,16 +325,16 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "b3edd09d-8c49-4c07-b1be-0abbaf58a4f7",
+    "id": "aa72d5a3-7f7e-401f-b2fe-cc2fa544ef5d",
     "type": "companies",
     "attributes": {
-      "created_at": "2024-11-18T09:24:27.427109+00:00",
-      "updated_at": "2024-11-18T09:24:27.484231+00:00",
+      "created_at": "2024-11-25T09:31:37.524881+00:00",
+      "updated_at": "2024-11-25T09:31:37.603686+00:00",
       "name": "iRent LLC",
       "slug": "irent",
-      "email": "mail84@company.com",
+      "email": "mail257@company.com",
       "billing_email": null,
-      "phone": "0581234567",
+      "phone": null,
       "website": "www.booqable.com",
       "address_line_1": "Blokhuispoort",
       "address_line_2": "Leeuwarden",
@@ -365,10 +365,10 @@ This request does not accept any includes
       "installed_online_store": false,
       "source": null,
       "medium": null,
-      "tenant_token": "3a3bc661f2cfef523c2788aca7718954",
+      "tenant_token": "471d0f0960c17bc472b44169c37f7f4a",
       "pending_subscription": false,
       "team_size": null,
-      "projected_revenue": null,
+      "revenue_last_year": null,
       "year_business_start": null,
       "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
       "main_address": {

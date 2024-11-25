@@ -77,11 +77,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "a827ae24-9945-48db-aa1d-ae2dfa717c92",
+      "id": "6186815d-212a-4174-832e-4fd8df230d81",
       "type": "payment_authorizations",
       "attributes": {
-        "created_at": "2024-11-18T09:25:19.152828+00:00",
-        "updated_at": "2024-11-18T09:25:19.152828+00:00",
+        "created_at": "2024-11-25T09:27:45.708334+00:00",
+        "updated_at": "2024-11-25T09:27:45.708334+00:00",
         "status": "created",
         "amount_in_cents": 100,
         "deposit_in_cents": 0,
@@ -208,7 +208,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/8d13a02b-55c6-4bc2-b71c-1abf0b239c1d' \
+    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/25b71e63-993b-4ef6-82fd-730d31b80d28' \
     --header 'content-type: application/json' \
 ```
 
@@ -217,11 +217,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8d13a02b-55c6-4bc2-b71c-1abf0b239c1d",
+    "id": "25b71e63-993b-4ef6-82fd-730d31b80d28",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-11-18T09:25:18.726084+00:00",
-      "updated_at": "2024-11-18T09:25:18.726084+00:00",
+      "created_at": "2024-11-25T09:27:45.102658+00:00",
+      "updated_at": "2024-11-25T09:27:45.102658+00:00",
       "status": "created",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -314,11 +314,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "21192461-66d3-42e7-9e69-b0ed8e461585",
+    "id": "b7f7fffb-70ca-4df3-9a13-905189cf65ac",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-11-18T09:25:20.114372+00:00",
-      "updated_at": "2024-11-18T09:25:20.114372+00:00",
+      "created_at": "2024-11-25T09:27:43.442001+00:00",
+      "updated_at": "2024-11-25T09:27:43.442001+00:00",
       "status": "created",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -342,7 +342,7 @@ This request accepts the following includes:
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "cf32b75b-6e3f-452b-a834-adcb0e6a8b07",
+      "employee_id": "4fe5b712-985f-4365-951d-1986a9c0604b",
       "order_id": null,
       "customer_id": null,
       "payment_method_id": null
@@ -413,14 +413,14 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/5c2c8276-6b3d-4f71-9867-4a6e345a02a9' \
+    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/d6f8a181-3477-4ce5-814c-590aae7a4115' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5c2c8276-6b3d-4f71-9867-4a6e345a02a9",
+        "id": "d6f8a181-3477-4ce5-814c-590aae7a4115",
         "type": "payment_authorizations",
         "attributes": {
-          "status": "succeeded"
+          "status": "started"
         }
       }
     }'
@@ -431,12 +431,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5c2c8276-6b3d-4f71-9867-4a6e345a02a9",
+    "id": "d6f8a181-3477-4ce5-814c-590aae7a4115",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-11-18T09:25:19.596290+00:00",
-      "updated_at": "2024-11-18T09:25:19.596290+00:00",
-      "status": "succeeded",
+      "created_at": "2024-11-25T09:27:44.224497+00:00",
+      "updated_at": "2024-11-25T09:27:44.224497+00:00",
+      "status": "started",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
       "total_in_cents": 100,

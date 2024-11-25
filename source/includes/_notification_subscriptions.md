@@ -64,11 +64,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "d333578b-1b9e-4db8-8c4d-e7b34f548ec7",
+      "id": "d698dff1-1472-418a-8a42-36e47475ae11",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:28:00.787393+00:00",
-        "updated_at": "2024-11-18T09:28:00.787393+00:00",
+        "created_at": "2024-11-25T09:27:50.343967+00:00",
+        "updated_at": "2024-11-25T09:27:50.343967+00:00",
         "category": "order_started",
         "global": true,
         "owner_id": null,
@@ -77,24 +77,24 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "5321e3a3-d7a5-4a79-bc46-b669983060a1",
+      "id": "5671ad16-7144-434d-9be8-aace883895c2",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:28:00.783228+00:00",
-        "updated_at": "2024-11-18T09:28:00.783228+00:00",
+        "created_at": "2024-11-25T09:27:50.335286+00:00",
+        "updated_at": "2024-11-25T09:27:50.335286+00:00",
         "category": "order_updated",
         "global": false,
-        "owner_id": "4f2deba2-5930-4c56-adbe-4590b43e2b44",
+        "owner_id": "5556628f-b945-46ed-af2b-e2065f9e736e",
         "owner_type": "orders"
       },
       "relationships": {}
     },
     {
-      "id": "a790c13c-2a5b-4df6-a408-54738c6d9a2a",
+      "id": "d54b97a8-d42b-4b31-a9cf-4c45871a3114",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:28:00.751032+00:00",
-        "updated_at": "2024-11-18T09:28:00.751032+00:00",
+        "created_at": "2024-11-25T09:27:50.278867+00:00",
+        "updated_at": "2024-11-25T09:27:50.278867+00:00",
         "category": "note_created",
         "global": true,
         "owner_id": null,
@@ -103,11 +103,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "e610c145-8a5b-441e-981e-6f6cd1fc40e7",
+      "id": "5f882bd9-0e77-41b8-a515-6caf1d28b9c2",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:28:00.751032+00:00",
-        "updated_at": "2024-11-18T09:28:00.751032+00:00",
+        "created_at": "2024-11-25T09:27:50.278867+00:00",
+        "updated_at": "2024-11-25T09:27:50.278867+00:00",
         "category": "webshop_order_created",
         "global": true,
         "owner_id": null,
@@ -183,11 +183,11 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "048a03cf-568b-4be6-9461-b393b40ce35c",
+      "id": "daa2a16f-5b18-4f18-ae8b-6c7ad466b379",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:27:59.914430+00:00",
-        "updated_at": "2024-11-18T09:27:59.914430+00:00",
+        "created_at": "2024-11-25T09:27:47.252030+00:00",
+        "updated_at": "2024-11-25T09:27:47.252030+00:00",
         "category": "order_started",
         "global": true,
         "owner_id": null,
@@ -196,11 +196,11 @@ This request does not accept any includes
       "relationships": {}
     },
     {
-      "id": "cdfa049e-040d-4db2-a07e-a3848892ea22",
+      "id": "2958dae9-1cd0-47f1-acaf-59501b4e477b",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:27:59.878272+00:00",
-        "updated_at": "2024-11-18T09:27:59.878272+00:00",
+        "created_at": "2024-11-25T09:27:47.173484+00:00",
+        "updated_at": "2024-11-25T09:27:47.173484+00:00",
         "category": "note_created",
         "global": true,
         "owner_id": null,
@@ -209,11 +209,11 @@ This request does not accept any includes
       "relationships": {}
     },
     {
-      "id": "0a4b9c5d-c617-4fad-ab57-bd4ecef4031c",
+      "id": "a8f36c42-cc72-4ebe-b1d3-092045055c87",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:27:59.878272+00:00",
-        "updated_at": "2024-11-18T09:27:59.878272+00:00",
+        "created_at": "2024-11-25T09:27:47.173484+00:00",
+        "updated_at": "2024-11-25T09:27:47.173484+00:00",
         "category": "webshop_order_created",
         "global": true,
         "owner_id": null,
@@ -289,14 +289,14 @@ This request does not accept any includes
   {
   "data": [
     {
-      "id": "49ddecdc-f79c-4f5e-9f46-b7c08eb3bb4d",
+      "id": "ac99a5fb-a1c1-4fb9-919d-b1d276ffa8fc",
       "type": "notification_subscriptions",
       "attributes": {
-        "created_at": "2024-11-18T09:28:00.363353+00:00",
-        "updated_at": "2024-11-18T09:28:00.363353+00:00",
+        "created_at": "2024-11-25T09:27:46.459886+00:00",
+        "updated_at": "2024-11-25T09:27:46.459886+00:00",
         "category": "order_updated",
         "global": false,
-        "owner_id": "d0c29cac-3f03-402e-ba70-a7adb5a39fc7",
+        "owner_id": "5f0d6bfe-0643-41b2-ab88-40cb603b43e7",
         "owner_type": "orders"
       },
       "relationships": {}
@@ -359,7 +359,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/875ae959-e33c-4e81-ad91-d1c42f4d8585' \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/473fd0d3-9f4e-44b1-b9ea-7bc6a46d6ad0' \
     --header 'content-type: application/json' \
 ```
 
@@ -368,14 +368,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "875ae959-e33c-4e81-ad91-d1c42f4d8585",
+    "id": "473fd0d3-9f4e-44b1-b9ea-7bc6a46d6ad0",
     "type": "notification_subscriptions",
     "attributes": {
-      "created_at": "2024-11-18T09:27:59.016633+00:00",
-      "updated_at": "2024-11-18T09:27:59.016633+00:00",
+      "created_at": "2024-11-25T09:27:51.289467+00:00",
+      "updated_at": "2024-11-25T09:27:51.289467+00:00",
       "category": "order_updated",
       "global": false,
-      "owner_id": "806f606b-8236-42ab-98a7-da4159dbb682",
+      "owner_id": "200fbfd8-b3b7-46da-a696-b80dddd33cac",
       "owner_type": "orders"
     },
     "relationships": {}
@@ -415,7 +415,7 @@ This request does not accept any includes
         "type": "notification_subscriptions",
         "attributes": {
           "category": "order_updated",
-          "owner_id": "4457d79a-3a6f-4630-9877-def08c2e40ce",
+          "owner_id": "b6200940-d6f8-4d68-9b59-53a0341b5374",
           "owner_type": "orders"
         }
       }
@@ -427,14 +427,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "eb11ae1c-0b35-4390-aa8e-d9ece95246f2",
+    "id": "f6c30930-f67b-4b22-9c12-455e48e524f2",
     "type": "notification_subscriptions",
     "attributes": {
-      "created_at": "2024-11-18T09:27:59.490503+00:00",
-      "updated_at": "2024-11-18T09:27:59.490503+00:00",
+      "created_at": "2024-11-25T09:27:48.796909+00:00",
+      "updated_at": "2024-11-25T09:27:48.796909+00:00",
       "category": "order_updated",
       "global": false,
-      "owner_id": "4457d79a-3a6f-4630-9877-def08c2e40ce",
+      "owner_id": "b6200940-d6f8-4d68-9b59-53a0341b5374",
       "owner_type": "orders"
     },
     "relationships": {}
@@ -478,7 +478,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/4e8e4aa1-0ef3-45e3-b23b-34da5b9488d6' \
+    --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/05c26621-71f5-4c5d-89d7-fcd174725c69' \
     --header 'content-type: application/json' \
 ```
 
@@ -487,14 +487,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "4e8e4aa1-0ef3-45e3-b23b-34da5b9488d6",
+    "id": "05c26621-71f5-4c5d-89d7-fcd174725c69",
     "type": "notification_subscriptions",
     "attributes": {
-      "created_at": "2024-11-18T09:28:01.230114+00:00",
-      "updated_at": "2024-11-18T09:28:01.230114+00:00",
+      "created_at": "2024-11-25T09:27:47.978189+00:00",
+      "updated_at": "2024-11-25T09:27:47.978189+00:00",
       "category": "order_updated",
       "global": false,
-      "owner_id": "b6673c64-14b6-4acb-b30a-29573b3f7cc7",
+      "owner_id": "2defb6e6-d1b6-4448-ab3a-8c5fc9df2266",
       "owner_type": "orders"
     },
     "relationships": {}

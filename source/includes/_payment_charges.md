@@ -74,11 +74,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "cf3c8608-5939-45b6-b16e-94c117db1302",
+      "id": "63788898-9d24-45da-986c-ca99d99ea4be",
       "type": "payment_charges",
       "attributes": {
-        "created_at": "2024-11-18T09:25:21.821576+00:00",
-        "updated_at": "2024-11-18T09:25:21.821576+00:00",
+        "created_at": "2024-11-25T09:28:28.708625+00:00",
+        "updated_at": "2024-11-25T09:28:28.708625+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -198,7 +198,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/8088307b-670c-435b-b8d7-cf031b7efce3' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/26883f3b-7f2d-4350-a748-d6ab5c8b1938' \
     --header 'content-type: application/json' \
 ```
 
@@ -207,11 +207,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8088307b-670c-435b-b8d7-cf031b7efce3",
+    "id": "26883f3b-7f2d-4350-a748-d6ab5c8b1938",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-18T09:25:21.407381+00:00",
-      "updated_at": "2024-11-18T09:25:21.407381+00:00",
+      "created_at": "2024-11-25T09:28:29.482507+00:00",
+      "updated_at": "2024-11-25T09:28:29.482507+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -300,11 +300,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8e82646b-26ea-41ad-89a3-5d736261619e",
+    "id": "ea90ee87-49eb-45a9-8304-0414d6aafd25",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-18T09:25:20.555199+00:00",
-      "updated_at": "2024-11-18T09:25:20.555199+00:00",
+      "created_at": "2024-11-25T09:28:27.269094+00:00",
+      "updated_at": "2024-11-25T09:28:27.269094+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -323,11 +323,11 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 15000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-11-18T09:25:20.554180+00:00",
+      "succeeded_at": "2024-11-25T09:28:27.266810+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "379ff27a-db70-4308-a8d9-59d71362614c",
+      "employee_id": "1b7e476e-888b-472c-9fc8-85b37ab2c52f",
       "order_id": null,
       "customer_id": null
     },
@@ -393,14 +393,14 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/0401a550-69de-461c-81bf-b4bdf01b10a4' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/5ac74948-bd26-44d1-b5f9-4e67cd954879' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "0401a550-69de-461c-81bf-b4bdf01b10a4",
+        "id": "5ac74948-bd26-44d1-b5f9-4e67cd954879",
         "type": "payment_charges",
         "attributes": {
-          "status": "succeeded"
+          "status": "started"
         }
       }
     }'
@@ -411,12 +411,12 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0401a550-69de-461c-81bf-b4bdf01b10a4",
+    "id": "5ac74948-bd26-44d1-b5f9-4e67cd954879",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-18T09:25:20.966533+00:00",
-      "updated_at": "2024-11-18T09:25:20.966533+00:00",
-      "status": "succeeded",
+      "created_at": "2024-11-25T09:28:26.624536+00:00",
+      "updated_at": "2024-11-25T09:28:26.624536+00:00",
+      "status": "started",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
       "total_in_cents": 5000,
@@ -434,7 +434,7 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 5000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-11-18T09:25:20.990807+00:00",
+      "succeeded_at": null,
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
