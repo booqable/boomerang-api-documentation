@@ -41,8 +41,10 @@ includes:
   - order_fulfillments
   - order_price_recalculations
   - order_status_transitions
+  - payment_authorizations
+  - payment_charges
   - payment_methods
-  - payments
+  - payment_refunds
   - photos
   - plannings
   - price_rules
