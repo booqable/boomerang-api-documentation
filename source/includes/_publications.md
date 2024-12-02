@@ -16,7 +16,7 @@ Name | Description
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `published_at` | **Datetime** `readonly`<br>The date and time (ISO 8601 format) the Publication uses to filter all released Assets by.
-`theme_id` | **Uuid** <br>The ID of the Theme that the Publication belongs to.
+`theme_id` | **Uuid** `readonly-after-create`<br>The ID of the Theme that the Publication belongs to.
 
 
 ## Relationships
@@ -24,7 +24,7 @@ Publications have the following relationships:
 
 Name | Description
 -- | --
-`theme` | **Themes** `readonly`<br>Associated Theme
+`theme` | **[Theme](#themes)** <br>Associated Theme
 
 
 ## Listing publications
@@ -45,13 +45,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "46fa1247-e0f7-405d-ac05-7258994a4bcf",
+      "id": "ac742a30-897b-405b-977e-276baa6e6493",
       "type": "publications",
       "attributes": {
-        "created_at": "2024-11-25T09:27:06.278196+00:00",
-        "updated_at": "2024-11-25T09:27:06.278196+00:00",
-        "published_at": "2024-11-20T09:27:06.270999+00:00",
-        "theme_id": "13a4ac4b-1274-4748-a2d4-78df5e285533"
+        "created_at": "2024-12-02T09:27:28.703411+00:00",
+        "updated_at": "2024-12-02T09:27:28.703411+00:00",
+        "published_at": "2024-11-27T09:27:28.697915+00:00",
+        "theme_id": "47f204ac-c484-456c-a725-ca6da8281729"
       },
       "relationships": {}
     }
@@ -126,7 +126,7 @@ This request accepts the following includes:
       "data": {
         "type": "publications",
         "attributes": {
-          "theme_id": "50395ff4-b024-4813-87d6-9c4421656968"
+          "theme_id": "7eb43e5c-bb28-4dbc-b567-fe57986c89c3"
         }
       }
     }'
@@ -137,13 +137,13 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "44c6cbae-ed66-4fd6-8048-17744f003874",
+    "id": "f1a5aae1-2e30-4467-ab12-b139e3ee2d29",
     "type": "publications",
     "attributes": {
-      "created_at": "2024-11-20T09:27:06.899903+00:00",
-      "updated_at": "2024-11-20T09:27:06.899903+00:00",
-      "published_at": "2024-11-20T09:27:06.899903+00:00",
-      "theme_id": "50395ff4-b024-4813-87d6-9c4421656968"
+      "created_at": "2024-11-27T09:27:29.162267+00:00",
+      "updated_at": "2024-11-27T09:27:29.162267+00:00",
+      "published_at": "2024-11-27T09:27:29.162267+00:00",
+      "theme_id": "7eb43e5c-bb28-4dbc-b567-fe57986c89c3"
     },
     "relationships": {}
   },

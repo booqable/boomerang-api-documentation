@@ -36,7 +36,7 @@ Name | Description
 `properties` | **Hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties)
 `properties_attributes` | **Array** `writeonly`<br>Create or update multiple properties associated with this item
 `confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm a shortage when updating from, till or location of a stock item
-`product_id` | **Uuid** <br>Associated Product
+`product_id` | **Uuid** `readonly-after-create`<br>Associated Product
 `location_id` | **Uuid** <br>Associated Location
 
 
@@ -45,10 +45,10 @@ Stock items have the following relationships:
 
 Name | Description
 -- | --
-`barcode` | **Barcodes** <br>Associated Barcode
-`location` | **Locations** `readonly`<br>Associated Location
-`product` | **Products** <br>Associated Product
-`properties` | **Properties** `readonly`<br>Associated Properties
+`barcode` | **[Barcode](#barcodes)** <br>Associated Barcode
+`location` | **[Location](#locations)** <br>Associated Location
+`product` | **[Product](#products)** <br>Associated Product
+`properties` | **[Properties](#properties)** <br>Associated Properties
 
 
 ## Listing stock_items
@@ -69,22 +69,22 @@ Name | Description
   {
   "data": [
     {
-      "id": "0c754d47-caf4-4ac1-8395-965ce016c3e9",
+      "id": "da1b7f6d-197d-40bc-ad85-d5f9f5597642",
       "type": "stock_items",
       "attributes": {
-        "created_at": "2024-11-25T09:31:54.259754+00:00",
-        "updated_at": "2024-11-25T09:31:54.259754+00:00",
+        "created_at": "2024-12-02T09:23:02.537216+00:00",
+        "updated_at": "2024-12-02T09:23:02.537216+00:00",
         "archived": false,
         "archived_at": null,
-        "identifier": "id1000154",
+        "identifier": "id1000007",
         "status": "in_stock",
         "from": null,
         "till": null,
         "stock_item_type": "regular",
-        "product_group_id": "be4c9d01-9fad-4a08-91c4-bb8a655f55da",
+        "product_group_id": "156c08c1-84e8-4b36-bbdd-46739f127990",
         "properties": {},
-        "product_id": "0df55c59-8d4d-42f9-89ea-d76f64733383",
-        "location_id": "bffae285-c05e-4b73-bd62-b71fbca56c6b"
+        "product_id": "87847e30-d6ca-4342-bbd4-3eded38b1542",
+        "location_id": "f74c0ab8-0c75-466f-bf02-ac6f96a15f69"
       },
       "relationships": {}
     }
@@ -173,7 +173,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/cb263200-b598-46bb-9ac5-64b9b787ce9c' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/82f20880-eb00-43e5-91dc-a0a7565e88c1' \
     --header 'content-type: application/json' \
 ```
 
@@ -182,22 +182,22 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "cb263200-b598-46bb-9ac5-64b9b787ce9c",
+    "id": "82f20880-eb00-43e5-91dc-a0a7565e88c1",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2024-11-25T09:31:59.245800+00:00",
-      "updated_at": "2024-11-25T09:31:59.245800+00:00",
+      "created_at": "2024-12-02T09:23:01.839788+00:00",
+      "updated_at": "2024-12-02T09:23:01.839788+00:00",
       "archived": false,
       "archived_at": null,
-      "identifier": "id1000156",
+      "identifier": "id1000006",
       "status": "in_stock",
       "from": null,
       "till": null,
       "stock_item_type": "regular",
-      "product_group_id": "dc394b62-d3c2-4312-a504-53c443f1c665",
+      "product_group_id": "d5997aa0-c22e-42c9-a584-3346810e0d5a",
       "properties": {},
-      "product_id": "0033cfb4-3ec6-4b7f-ad1a-7419f0afefa1",
-      "location_id": "6cfe3638-09cc-4fe7-93e7-99f75c38982e"
+      "product_id": "fc195c2a-edb4-498d-8ccf-5eaa52a3d833",
+      "location_id": "4e860eee-f21d-4910-b123-0d5c9862bf02"
     },
     "relationships": {}
   },
@@ -257,7 +257,7 @@ This request accepts the following includes:
         "type": "stock_items",
         "attributes": {
           "identifier": "12345",
-          "product_id": "bbefdfd1-8e63-4d2e-9a2d-f002f658558d"
+          "product_id": "2e32eeec-f831-4eb2-98da-87678ebc4434"
         }
       }
     }'
@@ -268,11 +268,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d0b48d0e-f946-4fa3-b2c1-0370acfa85dd",
+    "id": "006cdd81-f9aa-4523-a0db-b8b1416c51f8",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2024-11-25T09:31:57.695078+00:00",
-      "updated_at": "2024-11-25T09:31:57.695078+00:00",
+      "created_at": "2024-12-02T09:23:03.256694+00:00",
+      "updated_at": "2024-12-02T09:23:03.256694+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "12345",
@@ -280,10 +280,10 @@ This request accepts the following includes:
       "from": null,
       "till": null,
       "stock_item_type": "regular",
-      "product_group_id": "26ea6a01-4a7b-4c2f-a1b2-a7e5e546aed4",
+      "product_group_id": "481546b2-d1df-4918-ac38-e30ba92fccb4",
       "properties": {},
-      "product_id": "bbefdfd1-8e63-4d2e-9a2d-f002f658558d",
-      "location_id": "624ffc9f-1dea-4ac9-bd81-88115444d8d9"
+      "product_id": "2e32eeec-f831-4eb2-98da-87678ebc4434",
+      "location_id": "0a38cffd-9e9e-4b9a-a380-46a7a5c4536d"
     },
     "relationships": {}
   },
@@ -351,11 +351,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/88235177-ac43-4240-a671-1631bafe95f9' \
+    --url 'https://example.booqable.com/api/boomerang/stock_items/93cd5281-7883-497e-a7e8-4346ade53bf8' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "88235177-ac43-4240-a671-1631bafe95f9",
+        "id": "93cd5281-7883-497e-a7e8-4346ade53bf8",
         "type": "stock_items",
         "attributes": {
           "identifier": "12346"
@@ -369,11 +369,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "88235177-ac43-4240-a671-1631bafe95f9",
+    "id": "93cd5281-7883-497e-a7e8-4346ade53bf8",
     "type": "stock_items",
     "attributes": {
-      "created_at": "2024-11-25T09:31:52.915757+00:00",
-      "updated_at": "2024-11-25T09:31:53.024747+00:00",
+      "created_at": "2024-12-02T09:23:04.016789+00:00",
+      "updated_at": "2024-12-02T09:23:04.077125+00:00",
       "archived": false,
       "archived_at": null,
       "identifier": "12346",
@@ -381,10 +381,10 @@ This request accepts the following includes:
       "from": null,
       "till": null,
       "stock_item_type": "regular",
-      "product_group_id": "7286656f-beae-42fd-8532-75395587c38f",
+      "product_group_id": "2ebd5790-77a0-4783-a9a7-fe977c9ba54a",
       "properties": {},
-      "product_id": "df9e7f3d-b6ab-4877-afb4-bc4cdf2494f2",
-      "location_id": "e50afacd-c5bf-41e1-b693-f4e0cd570e72"
+      "product_id": "8c9b7bbc-604e-4531-8731-b001798dcffa",
+      "location_id": "0587d406-bc3d-4ae0-b1a4-550790115287"
     },
     "relationships": {}
   },

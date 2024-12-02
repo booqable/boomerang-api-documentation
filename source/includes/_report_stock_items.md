@@ -26,9 +26,9 @@ Report stock items have the following relationships:
 
 Name | Description
 -- | --
-`location` | **Locations** `readonly`<br>Associated Location
-`product` | **Products** `readonly`<br>Associated Product
-`stock_item` | **Report stock items** `readonly`<br>Associated Stock item
+`location` | **[Location](#locations)** <br>Associated Location
+`product` | **[Product](#products)** <br>Associated Product
+`stock_item` | **[Report stock item](#report-stock-items)** <br>Associated Stock item
 
 
 ## Listing performance for stock items
@@ -39,7 +39,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-11-20+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-25+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-11-27+00%3A00%3A00+UTC&filter%5Btill%5D=2024-12-02+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -49,35 +49,35 @@ Name | Description
   {
   "data": [
     {
-      "id": "04d3ae9d-7dc0-400b-8664-1a9b07a7ee64",
+      "id": "4fa5b979-ddd8-495f-9d66-b0e25d93ea0b",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-11-25T09:28:18.020103+00:00",
-        "product_name": "Product 1000055",
-        "identifier": "id1000088",
+        "created_at": "2024-12-02T09:27:16.326574+00:00",
+        "product_name": "Product 1000081",
+        "identifier": "id1000179",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
-        "turnover_in_cents": 0,
-        "stock_item_id": "394265b1-45e3-4f35-bfd3-4bdc66d83c80",
-        "product_id": "f6c58a80-73a3-460c-b179-714bd257d27e",
+        "turnover_in_cents": 2000,
+        "stock_item_id": "62c7e630-cfa0-4cc3-b03b-546858c57444",
+        "product_id": "21346baa-8ae8-486f-aaff-7febecaccd03",
         "location_id": null
       },
       "relationships": {}
     },
     {
-      "id": "4d3fbc20-6af8-4e4c-ae84-abd7923d461e",
+      "id": "7f54582e-6832-452c-8a66-4abab9a8abd0",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-11-25T09:28:18.047647+00:00",
-        "product_name": "Product 1000055",
-        "identifier": "id1000089",
+        "created_at": "2024-12-02T09:27:16.350831+00:00",
+        "product_name": "Product 1000081",
+        "identifier": "id1000180",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
-        "turnover_in_cents": 0,
-        "stock_item_id": "3142dbfb-3adc-431b-934d-f3c87e626580",
-        "product_id": "f6c58a80-73a3-460c-b179-714bd257d27e",
+        "turnover_in_cents": 2000,
+        "stock_item_id": "0c646353-edef-4873-94ca-e300de22cc5f",
+        "product_id": "21346baa-8ae8-486f-aaff-7febecaccd03",
         "location_id": null
       },
       "relationships": {}

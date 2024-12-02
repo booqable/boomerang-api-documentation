@@ -8,8 +8,8 @@ Every inventory level interval has the following fields:
 Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>Primary key
-`item_id` | **Uuid** <br>ID of the item to return data for, this can a single ID or an array of multiple IDs
-`location_id` | **Uuid** <br>ID of the location to filter for
+`item_id` | **Uuid** `readonly`<br>ID of the item to return data for, this can a single ID or an array of multiple IDs
+`location_id` | **Uuid** `readonly`<br>ID of the location to filter for
 `from` | **Datetime** `readonly`<br>Start of the period to list inventory levels for
 `till` | **Datetime** `readonly`<br>End of the period to list inventory levels for
 `location_available` | **Integer** `readonly`<br>The minimum available quantity for the location within the interval
@@ -35,8 +35,8 @@ Inventory level intervals have the following relationships:
 
 Name | Description
 -- | --
-`item` | **Items** `readonly`<br>Associated Item
-`location` | **Locations** `readonly`<br>Associated Location
+`item` | **[Item](#items)** <br>Associated Item
+`location` | **[Location](#locations)** <br>Associated Location
 
 
 ## Listing inventory level intervals
@@ -47,7 +47,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_level_intervals?filter%5Bfrom%5D=2022-01-01&filter%5Binterval%5D=day&filter%5Bitem_id%5D=a12af7ac-110b-44ac-ad72-fdc5a680dfb6&filter%5Btill%5D=2022-01-07' \
+    --url 'https://example.booqable.com/api/boomerang/inventory_level_intervals?filter%5Bfrom%5D=2022-01-01&filter%5Binterval%5D=day&filter%5Bitem_id%5D=fc26a36c-65e9-4b7a-9afe-390019e1a1d5&filter%5Btill%5D=2022-01-07' \
     --header 'content-type: application/json' \
 ```
 
@@ -57,11 +57,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "9507f72d-72c1-5ea4-8df4-c9d31890bc55",
+      "id": "52aac7c6-c205-5f43-8381-a6476b02a39f",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "a12af7ac-110b-44ac-ad72-fdc5a680dfb6",
-        "location_id": "a076f232-7fa4-4891-b664-047e01620919",
+        "item_id": "fc26a36c-65e9-4b7a-9afe-390019e1a1d5",
+        "location_id": "efed72c1-8e04-4546-a00b-85421e1420e8",
         "from": "2022-01-01T00:00:00.000000+00:00",
         "till": "2022-01-02T00:00:00.000000+00:00",
         "location_available": 4,
@@ -84,11 +84,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "ae604c64-ac06-57d4-8172-9cb1bc11b5be",
+      "id": "c5f4b83a-79e4-5dfb-8cf1-480782eaa798",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "a12af7ac-110b-44ac-ad72-fdc5a680dfb6",
-        "location_id": "a076f232-7fa4-4891-b664-047e01620919",
+        "item_id": "fc26a36c-65e9-4b7a-9afe-390019e1a1d5",
+        "location_id": "efed72c1-8e04-4546-a00b-85421e1420e8",
         "from": "2022-01-02T00:00:00.000000+00:00",
         "till": "2022-01-03T00:00:00.000000+00:00",
         "location_available": 4,
@@ -111,11 +111,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "74f0b633-4053-5e94-9810-f2d644b4ee65",
+      "id": "214dd339-442d-57be-a286-77362cae04ea",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "a12af7ac-110b-44ac-ad72-fdc5a680dfb6",
-        "location_id": "a076f232-7fa4-4891-b664-047e01620919",
+        "item_id": "fc26a36c-65e9-4b7a-9afe-390019e1a1d5",
+        "location_id": "efed72c1-8e04-4546-a00b-85421e1420e8",
         "from": "2022-01-03T00:00:00.000000+00:00",
         "till": "2022-01-04T00:00:00.000000+00:00",
         "location_available": 4,
@@ -138,11 +138,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "c6cff7fa-49b0-57d9-906a-d00e04842fbb",
+      "id": "24682b2d-be79-5836-ae0a-5fe2b3cac921",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "a12af7ac-110b-44ac-ad72-fdc5a680dfb6",
-        "location_id": "a076f232-7fa4-4891-b664-047e01620919",
+        "item_id": "fc26a36c-65e9-4b7a-9afe-390019e1a1d5",
+        "location_id": "efed72c1-8e04-4546-a00b-85421e1420e8",
         "from": "2022-01-04T00:00:00.000000+00:00",
         "till": "2022-01-05T00:00:00.000000+00:00",
         "location_available": 4,
@@ -165,11 +165,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "ea3a15e3-aa06-53e1-92ea-1dd35b3f96c1",
+      "id": "2db97b09-6f7e-5b66-a573-3f397778c6d0",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "a12af7ac-110b-44ac-ad72-fdc5a680dfb6",
-        "location_id": "a076f232-7fa4-4891-b664-047e01620919",
+        "item_id": "fc26a36c-65e9-4b7a-9afe-390019e1a1d5",
+        "location_id": "efed72c1-8e04-4546-a00b-85421e1420e8",
         "from": "2022-01-05T00:00:00.000000+00:00",
         "till": "2022-01-06T00:00:00.000000+00:00",
         "location_available": 4,
@@ -192,11 +192,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "5fcc1c6c-ebf7-50e7-88f8-594c6f566832",
+      "id": "b4dbe27b-f55f-5f17-8aca-fc14b92d6812",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "a12af7ac-110b-44ac-ad72-fdc5a680dfb6",
-        "location_id": "a076f232-7fa4-4891-b664-047e01620919",
+        "item_id": "fc26a36c-65e9-4b7a-9afe-390019e1a1d5",
+        "location_id": "efed72c1-8e04-4546-a00b-85421e1420e8",
         "from": "2022-01-06T00:00:00.000000+00:00",
         "till": "2022-01-07T00:00:00.000000+00:00",
         "location_available": 4,
@@ -219,11 +219,11 @@ Name | Description
       "relationships": {}
     },
     {
-      "id": "3a8774d3-f92d-5af0-a8c5-b76980a0c954",
+      "id": "7fadd525-dfad-5f90-9787-f0884bcaa64b",
       "type": "inventory_level_intervals",
       "attributes": {
-        "item_id": "a12af7ac-110b-44ac-ad72-fdc5a680dfb6",
-        "location_id": "a076f232-7fa4-4891-b664-047e01620919",
+        "item_id": "fc26a36c-65e9-4b7a-9afe-390019e1a1d5",
+        "location_id": "efed72c1-8e04-4546-a00b-85421e1420e8",
         "from": "2022-01-07T00:00:00.000000+00:00",
         "till": "2022-01-08T00:00:00.000000+00:00",
         "location_available": 4,

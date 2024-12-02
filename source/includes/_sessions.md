@@ -36,14 +36,14 @@ Sessions have the following relationships:
 
 Name | Description
 -- | --
-`app_subscriptions` | **App subscriptions** `readonly`<br>Associated App subscriptions
-`clusters` | **Clusters** `readonly`<br>Associated Clusters
-`company` | **Companies** `readonly`<br>Associated Company
-`default_properties` | **Default properties** `readonly`<br>Associated Default properties
-`employee` | **Employees** `readonly`<br>Associated Employee
-`locations` | **Locations** `readonly`<br>Associated Locations
-`operating_rules` | **Operating rules** `readonly`<br>Associated Operating rules
-`settings` | **Settings** `readonly`<br>Associated Settings
+`app_subscriptions` | **[App subscriptions](#app-subscriptions)** <br>Associated App subscriptions
+`clusters` | **[Clusters](#clusters)** <br>Associated Clusters
+`company` | **[Company](#companies)** <br>Associated Company
+`default_properties` | **[Default properties](#default-properties)** <br>Associated Default properties
+`employee` | **[Employee](#employees)** <br>Associated Employee
+`locations` | **[Locations](#locations)** <br>Associated Locations
+`operating_rules` | **[Operating rules](#operating-rules)** <br>Associated Operating rules
+`settings` | **[Setting](#settings)** <br>Associated Settings
 
 
 ## Fetching the session
@@ -63,16 +63,16 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "83e28d2f-6e99-5788-8e3a-2004916fc12f",
+    "id": "c5e88490-4e09-5bf3-84ca-4eddd8ab6ca7",
     "type": "sessions",
     "attributes": {
-      "updated_at": "2024-11-25T09:29:24.925182+00:00",
-      "company_id": "dc05ff06-384b-406d-879d-b0d6f5ebbcd0",
-      "employee_id": "0f42d5ae-686c-4b18-a36e-61cfb1e98b5c",
+      "updated_at": "2024-12-02T09:24:38.787366+00:00",
+      "company_id": "b36a6e3d-e9fb-4d19-b57f-6bac9c7e768e",
+      "employee_id": "c8996f9c-0cd7-4ed3-83e5-9f5a46d0158a",
       "locations_updated_at": null,
       "clusters_updated_at": null,
       "default_properties_updated_at": null,
-      "notification_subscriptions_updated_at": "2024-11-25T09:29:24.932836+00:00",
+      "notification_subscriptions_updated_at": "2024-12-02T09:24:38.792179+00:00",
       "countries_updated_at": null,
       "operating_rules_updated_at": null
     },
@@ -80,13 +80,13 @@ Name | Description
       "company": {
         "data": {
           "type": "companies",
-          "id": "dc05ff06-384b-406d-879d-b0d6f5ebbcd0"
+          "id": "b36a6e3d-e9fb-4d19-b57f-6bac9c7e768e"
         }
       },
       "employee": {
         "data": {
           "type": "employees",
-          "id": "0f42d5ae-686c-4b18-a36e-61cfb1e98b5c"
+          "id": "c8996f9c-0cd7-4ed3-83e5-9f5a46d0158a"
         }
       },
       "settings": {
@@ -99,14 +99,14 @@ Name | Description
   },
   "included": [
     {
-      "id": "dc05ff06-384b-406d-879d-b0d6f5ebbcd0",
+      "id": "b36a6e3d-e9fb-4d19-b57f-6bac9c7e768e",
       "type": "companies",
       "attributes": {
-        "created_at": "2024-11-25T09:29:24.888388+00:00",
-        "updated_at": "2024-11-25T09:29:24.907255+00:00",
-        "name": "Company name 176",
-        "slug": "company-name-176",
-        "email": "mail176@company.com",
+        "created_at": "2024-12-02T09:24:38.764163+00:00",
+        "updated_at": "2024-12-02T09:24:38.775779+00:00",
+        "name": "Company name 165",
+        "slug": "company-name-165",
+        "email": "mail168@company.com",
         "billing_email": null,
         "phone": null,
         "website": "www.booqable.com",
@@ -139,7 +139,7 @@ Name | Description
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "808a9a6a2a17ead71733d57d0a618919",
+        "tenant_token": "c8ee2a4848ed2e39285544a38bcbee23",
         "pending_subscription": false,
         "team_size": null,
         "revenue_last_year": null,
@@ -163,7 +163,7 @@ Name | Description
         },
         "billing_address": null,
         "subscription": {
-          "trial_ends_at": "2024-12-09T09:29:24.870Z",
+          "trial_ends_at": "2024-12-16T09:24:38.752Z",
           "activated": false,
           "active_subscription": false,
           "suspended": false,
@@ -219,18 +219,18 @@ Name | Description
       }
     },
     {
-      "id": "0f42d5ae-686c-4b18-a36e-61cfb1e98b5c",
+      "id": "c8996f9c-0cd7-4ed3-83e5-9f5a46d0158a",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-11-25T09:29:24.925182+00:00",
-        "updated_at": "2024-11-25T09:29:24.925182+00:00",
+        "created_at": "2024-12-02T09:24:38.787366+00:00",
+        "updated_at": "2024-12-02T09:24:38.787366+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-11-25T09:29:24.917556+00:00",
+        "viewed_whats_new_at": "2024-12-02T09:24:38.782631+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,

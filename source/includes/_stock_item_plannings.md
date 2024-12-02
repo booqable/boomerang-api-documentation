@@ -24,12 +24,12 @@ Name | Description
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `archived` | **Boolean** `readonly`<br>Whether stock item planning is archived
 `archived_at` | **Datetime** `nullable` `readonly`<br>When the stock item planning was archived
-`reserved` | **Boolean** `readonly`<br>Wheter stock item is reserved, meaning it's unavailable for other orders
-`started` | **Boolean** `readonly`<br>Wheter stock item is started
-`stopped` | **Boolean** `readonly`<br>Wheter stock item is stopped. Meaning it's available again
-`stock_item_id` | **Uuid** `readonly`<br>Associated Stock item
-`planning_id` | **Uuid** `readonly`<br>Associated Planning
-`order_id` | **Uuid** `readonly`<br>Associated Order
+`reserved` | **Boolean** <br>Wheter stock item is reserved, meaning it's unavailable for other orders
+`started` | **Boolean** <br>Wheter stock item is started
+`stopped` | **Boolean** <br>Wheter stock item is stopped. Meaning it's available again
+`stock_item_id` | **Uuid** <br>Associated Stock item
+`planning_id` | **Uuid** <br>Associated Planning
+`order_id` | **Uuid** <br>Associated Order
 
 
 ## Relationships
@@ -37,9 +37,9 @@ Stock item plannings have the following relationships:
 
 Name | Description
 -- | --
-`order` | **Orders** `readonly`<br>Associated Order
-`planning` | **Plannings** `readonly`<br>Associated Planning
-`stock_item` | **Stock items** `readonly`<br>Associated Stock item
+`order` | **[Order](#orders)** <br>Associated Order
+`planning` | **[Planning](#plannings)** <br>Associated Planning
+`stock_item` | **[Stock item](#stock-items)** <br>Associated Stock item
 
 
 ## Listing stock item plannings
@@ -60,19 +60,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "0f34f893-4c9f-458b-b60d-a22d2f2086ed",
+      "id": "2cfc3a45-135d-49e1-ab31-a5389acd72f1",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2024-11-25T09:29:42.513831+00:00",
-        "updated_at": "2024-11-25T09:29:42.513831+00:00",
+        "created_at": "2024-12-02T09:25:32.494935+00:00",
+        "updated_at": "2024-12-02T09:25:32.494935+00:00",
         "archived": false,
         "archived_at": null,
         "reserved": false,
         "started": false,
         "stopped": false,
-        "stock_item_id": "2e52cea9-4866-4dc3-a645-15a62e27de89",
-        "planning_id": "c47b9df2-4242-4fe4-9a12-d4953ecf1997",
-        "order_id": "32c64b30-523e-4fb7-9a5c-843c78a0c5fc"
+        "stock_item_id": "42e16b9d-87a1-4b9f-95d8-16bc291eba4f",
+        "planning_id": "73863efc-11c6-4227-8b74-8d179b3d839d",
+        "order_id": "31141f3a-b1d1-4eba-8697-f961936d16fa"
       },
       "relationships": {}
     }
@@ -159,7 +159,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/6bb4521b-70c9-4133-86de-cd5bf5b98e6a' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/e53395bb-e54d-43be-928c-b1bd45c2a891' \
     --header 'content-type: application/json' \
 ```
 
@@ -168,19 +168,19 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "6bb4521b-70c9-4133-86de-cd5bf5b98e6a",
+    "id": "e53395bb-e54d-43be-928c-b1bd45c2a891",
     "type": "stock_item_plannings",
     "attributes": {
-      "created_at": "2024-11-25T09:29:41.272070+00:00",
-      "updated_at": "2024-11-25T09:29:41.272070+00:00",
+      "created_at": "2024-12-02T09:25:31.509683+00:00",
+      "updated_at": "2024-12-02T09:25:31.509683+00:00",
       "archived": false,
       "archived_at": null,
       "reserved": false,
       "started": false,
       "stopped": false,
-      "stock_item_id": "4822006e-a76d-4603-a2a8-91c57b692449",
-      "planning_id": "cbabdb11-e961-47fd-8f70-704fac430d27",
-      "order_id": "68a5c05e-c53d-4a46-baee-0eeb084b27ce"
+      "stock_item_id": "51e8925e-2c54-4489-963b-7e534b8fcc4c",
+      "planning_id": "14dcaa20-140a-4f4f-a221-92c131b9d785",
+      "order_id": "8ec3da20-dd8a-45c9-b158-852359d04fcb"
     },
     "relationships": {}
   },

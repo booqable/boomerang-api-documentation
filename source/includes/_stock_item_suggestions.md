@@ -14,7 +14,7 @@ Every stock item suggestion has the following fields:
 Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>Primary key
-`stock_item_id` | **Uuid** <br>ID of the suggested stock item.
+`stock_item_id` | **Uuid** `readonly`<br>ID of the suggested stock item.
 `item_id` | **Uuid** `readonly`<br>ID of the Product the suggested stock item belongs to.
 `status` | **String_enum** `readonly`<br>Status of the suggested stock item. One of `available_in_location`, `available_in_cluster`, `overdue`, `unavailable`, `already_booked` 
 
@@ -24,7 +24,7 @@ Stock item suggestions have the following relationships:
 
 Name | Description
 -- | --
-`stock_item` | **Stock items** `readonly`<br>Associated Stock item
+`stock_item` | **[Stock item](#stock-items)** <br>Associated Stock item
 
 
 ## Listing stock item suggestions
@@ -35,7 +35,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=589ed14d-6257-4d34-96c9-d6142a674e5a&filter%5Border_id%5D=310298ac-0479-4ba4-b7a2-462cfcb78f49' \
+    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=8b421ba7-d21a-4773-800b-24346a59ffa5&filter%5Border_id%5D=20e30f31-5030-42ac-89ad-f9a208913e25' \
     --header 'content-type: application/json' \
 ```
 
@@ -45,21 +45,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "3eba5dc5-b65d-5d46-bc2f-37edce2fd2e5",
+      "id": "fe118acc-5f1a-5d9a-8249-844d3259efbd",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "ff800e8f-44fb-4425-88dc-539c1703730c",
-        "item_id": "589ed14d-6257-4d34-96c9-d6142a674e5a",
+        "stock_item_id": "a32b1c67-3629-43bc-b4ff-560984f0a3fc",
+        "item_id": "8b421ba7-d21a-4773-800b-24346a59ffa5",
         "status": "available_in_location"
       },
       "relationships": {}
     },
     {
-      "id": "768d400a-acec-5832-8c3f-f987cbb22d5e",
+      "id": "f544ad1d-c69e-5a2a-8922-8e9d565d0395",
       "type": "stock_item_suggestions",
       "attributes": {
-        "stock_item_id": "eb47d2dc-acb3-462f-a268-432b5f477045",
-        "item_id": "589ed14d-6257-4d34-96c9-d6142a674e5a",
+        "stock_item_id": "dc1dc853-c640-417e-b238-3227760f4de7",
+        "item_id": "8b421ba7-d21a-4773-800b-24346a59ffa5",
         "status": "already_booked"
       },
       "relationships": {}

@@ -46,11 +46,11 @@ Customers have the following relationships:
 
 Name | Description
 -- | --
-`barcode` | **Barcodes** <br>Associated Barcode
-`merge_suggestion_customer` | **Customers** `readonly`<br>Associated Merge suggestion customer
-`notes` | **Notes** `readonly`<br>Associated Notes
-`properties` | **Properties** `readonly`<br>Associated Properties
-`tax_region` | **Tax regions** `readonly`<br>Associated Tax region
+`barcode` | **[Barcode](#barcodes)** <br>Associated Barcode
+`merge_suggestion_customer` | **[Customer](#customers)** <br>Associated Merge suggestion customer
+`notes` | **[Notes](#notes)** <br>Associated Notes
+`properties` | **[Properties](#properties)** <br>Associated Properties
+`tax_region` | **[Tax region](#tax-regions)** <br>Associated Tax region
 
 
 ## Listing customers
@@ -71,16 +71,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "14ae6039-0307-4700-bb32-5432f3244687",
+      "id": "6d35b286-0e63-4c2b-b8f4-314d48be9366",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-11-25T09:30:35.748518+00:00",
-        "updated_at": "2024-11-25T09:30:35.748518+00:00",
+        "created_at": "2024-12-02T09:26:15.003922+00:00",
+        "updated_at": "2024-12-02T09:26:15.003922+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-65@doe.test",
+        "email": "john-70@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -229,10 +229,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "608b80c7-d211-445d-b394-b425be4694e0"
+      "id": "58be84d0-d0e2-411d-b40c-4e1d89044b60"
     },
     {
-      "id": "ab199775-c1ab-4f71-afaa-e01bff38ac7e"
+      "id": "970f474f-bd23-4a71-95f2-c724715b2ec7"
     }
   ]
 }
@@ -321,7 +321,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/customers/f9f588c1-272c-4916-8dca-9237c18dcabc?include=barcode%2Cproperties' \
+    --url 'https://example.booqable.com/api/boomerang/customers/fc4634b1-a204-4e0c-9dd0-06e1ddee8cee?include=barcode%2Cproperties' \
     --header 'content-type: application/json' \
 ```
 
@@ -330,16 +330,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "f9f588c1-272c-4916-8dca-9237c18dcabc",
+    "id": "fc4634b1-a204-4e0c-9dd0-06e1ddee8cee",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-25T09:30:31.579028+00:00",
-      "updated_at": "2024-11-25T09:30:31.579028+00:00",
+      "created_at": "2024-12-02T09:26:11.252768+00:00",
+      "updated_at": "2024-12-02T09:26:11.252768+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "John Doe",
-      "email": "john-62@doe.test",
+      "email": "john-61@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -421,11 +421,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "160a4452-5753-4776-afcb-0d784b529a64",
+    "id": "91876d0a-6327-4960-9e05-f7d413e9a045",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-25T09:30:32.787351+00:00",
-      "updated_at": "2024-11-25T09:30:32.787351+00:00",
+      "created_at": "2024-12-02T09:26:12.114157+00:00",
+      "updated_at": "2024-12-02T09:26:12.114157+00:00",
       "archived": false,
       "archived_at": null,
       "number": 2,
@@ -506,11 +506,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/customers/8eb34888-7303-4fa6-af27-60ebf13f5cdb' \
+    --url 'https://example.booqable.com/api/boomerang/customers/72b8ecbf-15be-48f4-825a-562cc4986a51' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "8eb34888-7303-4fa6-af27-60ebf13f5cdb",
+        "id": "72b8ecbf-15be-48f4-825a-562cc4986a51",
         "type": "customers",
         "attributes": {
           "name": "Jane Doe"
@@ -524,16 +524,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8eb34888-7303-4fa6-af27-60ebf13f5cdb",
+    "id": "72b8ecbf-15be-48f4-825a-562cc4986a51",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-25T09:30:30.274746+00:00",
-      "updated_at": "2024-11-25T09:30:30.370161+00:00",
+      "created_at": "2024-12-02T09:26:12.968179+00:00",
+      "updated_at": "2024-12-02T09:26:13.049647+00:00",
       "archived": false,
       "archived_at": null,
       "number": 1,
       "name": "Jane Doe",
-      "email": "john-61@doe.test",
+      "email": "john-63@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,
@@ -609,7 +609,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/customers/e62bcdcd-b040-4324-9398-b665b5aa5bb2' \
+    --url 'https://example.booqable.com/api/boomerang/customers/f5ab8e7c-f37e-4e90-93cf-62487ceecb69' \
     --header 'content-type: application/json' \
 ```
 
@@ -618,16 +618,16 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "e62bcdcd-b040-4324-9398-b665b5aa5bb2",
+    "id": "f5ab8e7c-f37e-4e90-93cf-62487ceecb69",
     "type": "customers",
     "attributes": {
-      "created_at": "2024-11-25T09:30:34.006271+00:00",
-      "updated_at": "2024-11-25T09:30:34.127289+00:00",
+      "created_at": "2024-12-02T09:26:10.198931+00:00",
+      "updated_at": "2024-12-02T09:26:10.271407+00:00",
       "archived": true,
-      "archived_at": "2024-11-25T09:30:34.127289+00:00",
+      "archived_at": "2024-12-02T09:26:10.271407+00:00",
       "number": 1,
       "name": "John Doe",
-      "email": "john-64@doe.test",
+      "email": "john-60@doe.test",
       "deposit_type": "default",
       "deposit_value": 0.0,
       "discount_percentage": 0.0,

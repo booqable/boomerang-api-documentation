@@ -47,11 +47,11 @@ For this resource relationships are described in the following resources:
   {
   "data": [
     {
-      "id": "01e4bf3e-58b6-4774-b511-48a25d089a56",
+      "id": "8494a79b-5f0d-4ec4-8042-2b3a2a3cbcb7",
       "type": "bundles",
       "attributes": {
-        "created_at": "2024-11-25T09:29:39.786444+00:00",
-        "updated_at": "2024-11-25T09:29:39.786444+00:00",
+        "created_at": "2024-12-02T09:24:34.725659+00:00",
+        "updated_at": "2024-12-02T09:24:34.725659+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -78,11 +78,11 @@ For this resource relationships are described in the following resources:
       "relationships": {}
     },
     {
-      "id": "9ab253bf-4540-4875-bfc4-c698b7eee840",
+      "id": "96eaf438-2903-417b-815c-3014f2ba3f33",
       "type": "product_groups",
       "attributes": {
-        "created_at": "2024-11-25T09:29:39.885675+00:00",
-        "updated_at": "2024-11-25T09:29:39.903425+00:00",
+        "created_at": "2024-12-02T09:24:34.783692+00:00",
+        "updated_at": "2024-12-02T09:24:34.791954+00:00",
         "archived": false,
         "archived_at": null,
         "type": "product_groups",
@@ -117,7 +117,7 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "f920ad0b-f23b-4ba0-96bb-2598a8b3d430",
+        "tax_category_id": "20089732-894c-4aab-ad59-7cffd93f37aa",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "allow_shortage": true,
@@ -130,11 +130,11 @@ For this resource relationships are described in the following resources:
       "relationships": {}
     },
     {
-      "id": "836714fa-cebb-420a-9916-c3c01bde28eb",
+      "id": "01ed32ed-ed09-418a-9c99-27b5d5d90d4a",
       "type": "products",
       "attributes": {
-        "created_at": "2024-11-25T09:29:39.892731+00:00",
-        "updated_at": "2024-11-25T09:29:39.892731+00:00",
+        "created_at": "2024-12-02T09:24:34.786897+00:00",
+        "updated_at": "2024-12-02T09:24:34.786897+00:00",
         "archived": false,
         "archived_at": null,
         "type": "products",
@@ -169,13 +169,13 @@ For this resource relationships are described in the following resources:
         ],
         "properties": {},
         "photo_id": null,
-        "tax_category_id": "f920ad0b-f23b-4ba0-96bb-2598a8b3d430",
+        "tax_category_id": "20089732-894c-4aab-ad59-7cffd93f37aa",
         "price_ruleset_id": null,
         "price_structure_id": null,
         "variation_values": [],
         "allow_shortage": true,
         "shortage_limit": 3,
-        "product_group_id": "9ab253bf-4540-4875-bfc4-c698b7eee840"
+        "product_group_id": "96eaf438-2903-417b-815c-3014f2ba3f33"
       },
       "relationships": {}
     }
@@ -240,6 +240,7 @@ Name | Description
 `seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **String** <br>`eq`
+`photo_id` | **Uuid** <br>`eq`, `not_eq`
 `tax_category_id` | **Uuid** <br>`eq`, `not_eq`
 `price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **Uuid** <br>`eq`, `not_eq`
@@ -340,19 +341,19 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "ae628ab7-6863-40fb-a38a-335cdb036a3e"
+      "id": "795a0a86-c43f-49b0-aac2-274ec0e3a313"
     },
     {
-      "id": "371b0ba2-38ca-4e32-b9d2-08a4d0b53bc7"
+      "id": "13c05f34-2497-48d5-9952-fde7738ae006"
     },
     {
-      "id": "53c7c644-a63e-4231-8b3f-f2d3f5b3950f"
+      "id": "fe8ea007-aba1-46ed-8904-ae9dd46193e1"
     },
     {
-      "id": "8d45ea0d-fb77-4e61-a33c-e159f2d2b7d2"
+      "id": "a9017209-c60c-4a4b-bbd6-5daac0b54fd1"
     },
     {
-      "id": "cb02658a-5000-421c-9d92-48e906f23dce"
+      "id": "bd5e21ef-9463-452a-9d34-8c8ebca22856"
     }
   ]
 }
@@ -414,6 +415,7 @@ Name | Description
 `seo_title` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **String** <br>`eq`
+`photo_id` | **Uuid** <br>`eq`, `not_eq`
 `tax_category_id` | **Uuid** <br>`eq`, `not_eq`
 `price_ruleset_id` | **Uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **Uuid** <br>`eq`, `not_eq`
@@ -469,7 +471,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/items/2efe0ca7-9692-4dc9-a989-c206676b29ed' \
+    --url 'https://example.booqable.com/api/boomerang/items/3038bf1e-b8cf-4492-97c3-d2cc63a026ef' \
     --header 'content-type: application/json' \
 ```
 
@@ -478,11 +480,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "2efe0ca7-9692-4dc9-a989-c206676b29ed",
+    "id": "3038bf1e-b8cf-4492-97c3-d2cc63a026ef",
     "type": "product_groups",
     "attributes": {
-      "created_at": "2024-11-25T09:29:36.201123+00:00",
-      "updated_at": "2024-11-25T09:29:36.211872+00:00",
+      "created_at": "2024-12-02T09:24:34.091052+00:00",
+      "updated_at": "2024-12-02T09:24:34.099063+00:00",
       "archived": false,
       "archived_at": null,
       "type": "product_groups",
@@ -517,7 +519,7 @@ This request accepts the following includes:
       ],
       "properties": {},
       "photo_id": null,
-      "tax_category_id": "6183df72-6112-4130-8733-c997ba29c140",
+      "tax_category_id": "775a0e3d-0748-4459-915d-7c5241d0d4ab",
       "price_ruleset_id": null,
       "price_structure_id": null,
       "allow_shortage": true,

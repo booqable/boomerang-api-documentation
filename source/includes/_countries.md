@@ -29,7 +29,7 @@ Countries have the following relationships:
 
 Name | Description
 -- | --
-`provinces` | **Provinces** `readonly`<br>Associated Provinces
+`provinces` | **[Provinces](#provinces)** <br>Associated Provinces
 
 
 ## Listing countries
@@ -50,11 +50,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "39811aa8-78e0-4215-94ab-29d55fbff013",
+      "id": "b5ea01ff-5196-443b-8f83-04aee80a66ec",
       "type": "countries",
       "attributes": {
-        "created_at": "2024-11-25T09:25:43.608763+00:00",
-        "updated_at": "2024-11-25T09:25:43.608763+00:00",
+        "created_at": "2024-12-02T09:27:32.255239+00:00",
+        "updated_at": "2024-12-02T09:27:32.255239+00:00",
         "name": "Netherlands",
         "alpha2": "NL",
         "province_required": false,

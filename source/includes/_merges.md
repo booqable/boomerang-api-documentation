@@ -18,7 +18,7 @@ Merges have the following relationships:
 
 Name | Description
 -- | --
-`target` | **Customers** <br>Associated Target
+`target` | **[Customer](#customers)** <br>Associated Target
 
 
 ## Merging resources
@@ -36,8 +36,8 @@ Name | Description
         "type": "merges",
         "attributes": {
           "type": "customers",
-          "source_id": "98cf5e28-a4bb-4e8c-ad8e-0db8a879de83",
-          "target_id": "582f135d-e1a8-4c70-b4f4-02133f83bfba"
+          "source_id": "411629ea-eb1f-4700-b035-c7a640ca9140",
+          "target_id": "e59c1312-6071-4bca-860d-85d37a56832c"
         }
       },
       "include": "target"
@@ -49,29 +49,29 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7bfea067-64e4-54b6-8257-628976726dc3",
+    "id": "c1a9bb1c-8b50-53bf-b8f0-14ccc592b56b",
     "type": "merges",
     "attributes": {
       "type": "customers",
-      "source_id": "98cf5e28-a4bb-4e8c-ad8e-0db8a879de83",
-      "target_id": "582f135d-e1a8-4c70-b4f4-02133f83bfba"
+      "source_id": "411629ea-eb1f-4700-b035-c7a640ca9140",
+      "target_id": "e59c1312-6071-4bca-860d-85d37a56832c"
     },
     "relationships": {
       "target": {
         "data": {
           "type": "customers",
-          "id": "582f135d-e1a8-4c70-b4f4-02133f83bfba"
+          "id": "e59c1312-6071-4bca-860d-85d37a56832c"
         }
       }
     }
   },
   "included": [
     {
-      "id": "582f135d-e1a8-4c70-b4f4-02133f83bfba",
+      "id": "e59c1312-6071-4bca-860d-85d37a56832c",
       "type": "customers",
       "attributes": {
-        "created_at": "2024-11-25T09:30:38.982658+00:00",
-        "updated_at": "2024-11-25T09:30:39.136756+00:00",
+        "created_at": "2024-12-02T09:25:00.834060+00:00",
+        "updated_at": "2024-12-02T09:25:00.928825+00:00",
         "archived": false,
         "archived_at": null,
         "number": 1,

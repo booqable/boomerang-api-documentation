@@ -26,10 +26,10 @@ Product trackers have the following relationships:
 
 Name | Description
 -- | --
-`employee` | **Employees** `readonly`<br>The employee who handled the pickup/return. 
-`order` | **Orders** `readonly`<br>The order the pickup/return was part of. 
-`product` | **Products** `readonly`<br>The product that was picked up/returned. 
-`stock_item_trackers` | **Stock item trackers** `readonly`<br>The StockItems that were picked up/returned. 
+`employee` | **[Employee](#employees)** <br>The employee who handled the pickup/return. 
+`order` | **[Order](#orders)** <br>The order the pickup/return was part of. 
+`product` | **[Product](#products)** <br>The product that was picked up/returned. 
+`stock_item_trackers` | **[Stock item trackers](#stock-item-trackers)** <br>The StockItems that were picked up/returned. 
 
 
 ## Listing product trackers
@@ -40,7 +40,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_trackers?filter%5Bproduct_group_id%5D%5B%5D=12efdf8d-c9e8-4da0-a787-eb6f2fc34796' \
+    --url 'https://example.booqable.com/api/boomerang/product_trackers?filter%5Bproduct_group_id%5D%5B%5D=2e3939f5-fdfd-4aff-9bd0-587e4f196def' \
     --header 'content-type: application/json' \
 ```
 
@@ -50,28 +50,28 @@ Name | Description
   {
   "data": [
     {
-      "id": "65b961c5-0a89-4531-984e-56681a7ddca7",
+      "id": "16015339-86aa-4929-a805-110573d85191",
       "type": "product_trackers",
       "attributes": {
-        "created_at": "2024-11-25T09:25:42.855183+00:00",
-        "updated_at": "2024-11-25T09:25:42.855183+00:00",
+        "created_at": "2024-12-02T09:23:14.326359+00:00",
+        "updated_at": "2024-12-02T09:23:14.326359+00:00",
         "quantity": 3,
-        "product_id": "37d01889-b864-4e9c-b346-9c1f9a633535",
-        "employee_id": "1a499e53-75b1-41ea-9b3e-25593c47da69",
-        "order_id": "85830d40-0d8a-4863-a648-b2d4cb2eea97"
+        "product_id": "b6a234f7-865f-41d5-9ba7-e03ea5cf2410",
+        "employee_id": "9703e0ef-d1f6-41b6-9286-7d071f1aba21",
+        "order_id": "947dbf9f-998a-4724-a0dd-d0cd0c75bf7a"
       },
       "relationships": {}
     },
     {
-      "id": "04597cab-17f1-4543-8838-dca1f732f2f3",
+      "id": "984491c0-bba4-45a3-a22f-fdd9eb34f6a2",
       "type": "product_trackers",
       "attributes": {
-        "created_at": "2024-11-25T09:25:42.950591+00:00",
-        "updated_at": "2024-11-25T09:25:42.950591+00:00",
+        "created_at": "2024-12-02T09:23:14.397196+00:00",
+        "updated_at": "2024-12-02T09:23:14.397196+00:00",
         "quantity": -2,
-        "product_id": "37d01889-b864-4e9c-b346-9c1f9a633535",
-        "employee_id": "e5543270-f828-4e68-a14b-000ebf5aa6d5",
-        "order_id": "85830d40-0d8a-4863-a648-b2d4cb2eea97"
+        "product_id": "b6a234f7-865f-41d5-9ba7-e03ea5cf2410",
+        "employee_id": "edcdee20-a549-4b5b-b413-4daba856985f",
+        "order_id": "947dbf9f-998a-4724-a0dd-d0cd0c75bf7a"
       },
       "relationships": {}
     }

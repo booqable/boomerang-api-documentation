@@ -315,7 +315,7 @@ Operations have the following relationships:
 
 Name | Description
 -- | --
-`employee` | **Employees** `readonly`<br>Associated Employee
+`employee` | **[Employee](#employees)** <br>Associated Employee
 
 
 ## Listing operations
@@ -336,11 +336,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "a7a1d400-5a9c-4d64-acb7-15b8d75b64d7",
+      "id": "be56eb70-2e76-4de3-ae8e-d4f57a617423",
       "type": "operations",
       "attributes": {
-        "created_at": "2024-11-25T09:31:40.553418+00:00",
-        "updated_at": "2024-11-25T09:31:40.553418+00:00",
+        "created_at": "2024-12-02T09:27:00.681808+00:00",
+        "updated_at": "2024-12-02T09:27:00.681808+00:00",
         "status": "scheduled",
         "status_message": null,
         "finished_at": null,
@@ -350,7 +350,7 @@ Name | Description
         },
         "error_data": [],
         "error_count": 0,
-        "employee_id": "370b3b09-b21d-44dd-9a24-72037bd0187c"
+        "employee_id": "ee53154c-78a3-436d-9687-77a84fcb3dc6"
       },
       "relationships": {}
     }
@@ -420,7 +420,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/0dc5889a-fd1e-4b1c-9ad8-268d3af98cb3' \
+    --url 'https://example.booqable.com/api/boomerang/operations/ea7837f6-6776-489c-9227-c94251225ab1' \
     --header 'content-type: application/json' \
 ```
 
@@ -429,11 +429,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0dc5889a-fd1e-4b1c-9ad8-268d3af98cb3",
+    "id": "ea7837f6-6776-489c-9227-c94251225ab1",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-11-25T09:31:41.525509+00:00",
-      "updated_at": "2024-11-25T09:31:41.525509+00:00",
+      "created_at": "2024-12-02T09:27:00.159318+00:00",
+      "updated_at": "2024-12-02T09:27:00.159318+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -443,7 +443,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "5902e45f-cdd3-4542-a856-9fb01c38ad1f"
+      "employee_id": "0cd6114e-cce1-4342-b1ad-f041e35cfbe2"
     },
     "relationships": {}
   },
@@ -509,11 +509,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "1def8252-7f3d-4301-a4ad-99518ab65c56",
+    "id": "6a86f5ff-de76-4a3e-9081-822ac3305e4b",
     "type": "operations",
     "attributes": {
-      "created_at": "2024-11-25T09:31:39.408266+00:00",
-      "updated_at": "2024-11-25T09:31:39.408266+00:00",
+      "created_at": "2024-12-02T09:26:59.557379+00:00",
+      "updated_at": "2024-12-02T09:26:59.557379+00:00",
       "status": "scheduled",
       "status_message": null,
       "finished_at": null,
@@ -523,7 +523,7 @@ This request accepts the following includes:
       },
       "error_data": [],
       "error_count": 0,
-      "employee_id": "ac40cc0b-0847-4d16-98cc-a5e4809bbe69"
+      "employee_id": "0b37b8a7-46ed-4ec1-bca6-7f76100a6be5"
     },
     "relationships": {}
   },

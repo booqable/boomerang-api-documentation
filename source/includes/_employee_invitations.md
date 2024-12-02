@@ -16,7 +16,7 @@ Name | Description
 `lastname` | **String** `writeonly`<br>Last name of the employee
 `email` | **String** `writeonly`<br>Employee's e-mail address
 `permissions` | **Array** `writeonly`<br>Any of: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`
-`employee_id` | **Uuid** <br>Associated Employee
+`employee_id` | **Uuid** `nullable`<br>Associated Employee
 
 
 ## Relationships
@@ -24,7 +24,7 @@ Employee invitations have the following relationships:
 
 Name | Description
 -- | --
-`employee` | **Employees** `readonly`<br>Associated Employee
+`employee` | **[Employee](#employees)** <br>Associated Employee
 
 
 ## Sending invitations
@@ -55,34 +55,34 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "b13079b8-a682-548b-abf7-b490ee19b3f9",
+    "id": "45fce9e3-daae-5374-a1c2-b7abfa66d153",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "de6b5e75-fe66-4ace-9a67-81cfcf1050f2"
+      "employee_id": "91f7798e-a8a9-42ac-88ea-10815b4d9de3"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "de6b5e75-fe66-4ace-9a67-81cfcf1050f2"
+          "id": "91f7798e-a8a9-42ac-88ea-10815b4d9de3"
         }
       }
     }
   },
   "included": [
     {
-      "id": "de6b5e75-fe66-4ace-9a67-81cfcf1050f2",
+      "id": "91f7798e-a8a9-42ac-88ea-10815b4d9de3",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-11-25T09:30:51.648467+00:00",
-        "updated_at": "2024-11-25T09:30:51.652311+00:00",
+        "created_at": "2024-12-02T09:22:12.730638+00:00",
+        "updated_at": "2024-12-02T09:22:12.733494+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-11-25T09:30:51.650528+00:00",
+        "viewed_whats_new_at": "2024-12-02T09:22:12.732251+00:00",
         "active": true,
         "owner": false,
         "confirmed": false,
@@ -110,7 +110,7 @@ Note that you can also update other fields.:
       "data": {
         "type": "employee_invitations",
         "attributes": {
-          "id": "8db6db78-38ba-4e36-863e-42c226b42c71",
+          "id": "10adf78b-4ea0-466d-b33a-d9ce52909e13",
           "email": "jane@doe.com"
         }
       },
@@ -123,34 +123,34 @@ Note that you can also update other fields.:
 ```json
   {
   "data": {
-    "id": "8db6db78-38ba-4e36-863e-42c226b42c71",
+    "id": "10adf78b-4ea0-466d-b33a-d9ce52909e13",
     "type": "employee_invitations",
     "attributes": {
-      "employee_id": "8db6db78-38ba-4e36-863e-42c226b42c71"
+      "employee_id": "10adf78b-4ea0-466d-b33a-d9ce52909e13"
     },
     "relationships": {
       "employee": {
         "data": {
           "type": "employees",
-          "id": "8db6db78-38ba-4e36-863e-42c226b42c71"
+          "id": "10adf78b-4ea0-466d-b33a-d9ce52909e13"
         }
       }
     }
   },
   "included": [
     {
-      "id": "8db6db78-38ba-4e36-863e-42c226b42c71",
+      "id": "10adf78b-4ea0-466d-b33a-d9ce52909e13",
       "type": "employees",
       "attributes": {
-        "created_at": "2024-11-25T09:30:52.472656+00:00",
-        "updated_at": "2024-11-25T09:30:52.545543+00:00",
+        "created_at": "2024-12-02T09:22:13.244538+00:00",
+        "updated_at": "2024-12-02T09:22:13.283352+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "jane@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2024-11-25T09:30:52.476384+00:00",
+        "viewed_whats_new_at": "2024-12-02T09:22:13.246447+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,

@@ -17,7 +17,7 @@ Bulk upserts have the following relationships:
 
 Name | Description
 -- | --
-`results` | **Virtuals** `readonly`<br>Associated Results
+`results` | **[Virtuals](#virtuals)** <br>Associated Results
 
 
 ## Creating a bulk upsert
@@ -66,18 +66,18 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "07d3c7b7-8ca1-51f0-b6fc-89f43ad76f48",
+    "id": "6b2d99b2-86c9-5d3f-8682-e3820795dedd",
     "type": "bulk_upserts",
     "relationships": {
       "results": {
         "data": [
           {
             "type": "operating_rules",
-            "id": "41d1f980-7fbf-4c64-8da0-b211ed2a80d7"
+            "id": "79df033e-91fb-47ff-bf75-f9d81d2c1734"
           },
           {
             "type": "operating_rules",
-            "id": "94a4679e-85f5-4690-92bf-2748e3f2f13e"
+            "id": "e5ee13aa-91f5-4c3d-85a1-2b7672794227"
           }
         ]
       }
@@ -85,11 +85,11 @@ Name | Description
   },
   "included": [
     {
-      "id": "41d1f980-7fbf-4c64-8da0-b211ed2a80d7",
+      "id": "79df033e-91fb-47ff-bf75-f9d81d2c1734",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-11-25T09:26:53.722835+00:00",
-        "updated_at": "2024-11-25T09:26:53.722835+00:00",
+        "created_at": "2024-12-02T09:26:17.932373+00:00",
+        "updated_at": "2024-12-02T09:26:17.932373+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -100,11 +100,11 @@ Name | Description
       }
     },
     {
-      "id": "94a4679e-85f5-4690-92bf-2748e3f2f13e",
+      "id": "e5ee13aa-91f5-4c3d-85a1-2b7672794227",
       "type": "operating_rules",
       "attributes": {
-        "created_at": "2024-11-25T09:26:53.722835+00:00",
-        "updated_at": "2024-11-25T09:26:53.722835+00:00",
+        "created_at": "2024-12-02T09:26:17.932373+00:00",
+        "updated_at": "2024-12-02T09:26:17.932373+00:00",
         "data_type": "hours",
         "data": {
           "mon": {
@@ -155,7 +155,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "4fa724bf-01a0-5454-ba9d-1c774f859a8b",
+    "id": "b5d2bbb2-17b4-5c98-b46b-1525fa118d6b",
     "type": "bulk_upserts",
     "relationships": {}
   },

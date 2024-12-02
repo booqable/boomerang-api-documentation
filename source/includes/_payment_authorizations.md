@@ -42,10 +42,10 @@ Name | Description
 `failed_at` | **Datetime** `readonly`<br>When payment authorization failed
 `canceled_at` | **Datetime** `readonly`<br>When payment authorization was canceled
 `expired_at` | **Datetime** `readonly`<br>When payment authorization expired
-`employee_id` | **Uuid** <br>Associated Employee
-`order_id` | **Uuid** <br>Associated Order
-`customer_id` | **Uuid** <br>Associated Customer
-`payment_method_id` | **Uuid** <br>Associated Payment method
+`employee_id` | **Uuid** `readonly`<br>Associated Employee
+`order_id` | **Uuid** `readonly-after-create`<br>Associated Order
+`customer_id` | **Uuid** `readonly-after-create`<br>Associated Customer
+`payment_method_id` | **Uuid** `readonly-after-create`<br>Associated Payment method
 
 
 ## Relationships
@@ -53,10 +53,12 @@ Payment authorizations have the following relationships:
 
 Name | Description
 -- | --
-`customer` | **Customers** `readonly`<br>Associated Customer
-`employee` | **Employees** `readonly`<br>Associated Employee
-`order` | **Orders** `readonly`<br>Associated Order
-`payment_method` | **Payment methods** `readonly`<br>Associated Payment method
+`customer` | **[Customer](#customers)** <br>Associated Customer
+`employee` | **[Employee](#employees)** <br>Associated Employee
+`order` | **[Order](#orders)** <br>Associated Order
+`payment` | **[Payment](#payments)** <br>Associated Payment
+`payment_charges` | **[Payment charges](#payment-charges)** <br>Associated Payment charges
+`payment_method` | **[Payment method](#payment-methods)** <br>Associated Payment method
 
 
 ## Listing payment authorizations
@@ -77,11 +79,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "6186815d-212a-4174-832e-4fd8df230d81",
+      "id": "950bf3e2-c321-40bf-81ec-27d1b444c163",
       "type": "payment_authorizations",
       "attributes": {
-        "created_at": "2024-11-25T09:27:45.708334+00:00",
-        "updated_at": "2024-11-25T09:27:45.708334+00:00",
+        "created_at": "2024-12-02T09:26:09.359430+00:00",
+        "updated_at": "2024-12-02T09:26:09.359430+00:00",
         "status": "created",
         "amount_in_cents": 100,
         "deposit_in_cents": 0,
@@ -181,6 +183,9 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+`amount_in_cents` | **Array** <br>`sum`
+`deposit_in_cents` | **Array** <br>`sum`
+`total_in_cents` | **Array** <br>`sum`
 
 
 ### Includes
@@ -208,7 +213,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/25b71e63-993b-4ef6-82fd-730d31b80d28' \
+    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/ef035a78-232b-4bf4-8d37-b241ade8c222' \
     --header 'content-type: application/json' \
 ```
 
@@ -217,11 +222,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "25b71e63-993b-4ef6-82fd-730d31b80d28",
+    "id": "ef035a78-232b-4bf4-8d37-b241ade8c222",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-11-25T09:27:45.102658+00:00",
-      "updated_at": "2024-11-25T09:27:45.102658+00:00",
+      "created_at": "2024-12-02T09:26:08.103450+00:00",
+      "updated_at": "2024-12-02T09:26:08.103450+00:00",
       "status": "created",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -314,11 +319,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b7f7fffb-70ca-4df3-9a13-905189cf65ac",
+    "id": "abc5ad70-cfac-4916-a1e7-398c036daf2e",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-11-25T09:27:43.442001+00:00",
-      "updated_at": "2024-11-25T09:27:43.442001+00:00",
+      "created_at": "2024-12-02T09:26:08.531506+00:00",
+      "updated_at": "2024-12-02T09:26:08.531506+00:00",
       "status": "created",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -342,7 +347,7 @@ This request accepts the following includes:
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "4fe5b712-985f-4365-951d-1986a9c0604b",
+      "employee_id": "2c9eee55-ac29-414c-94a1-2371d6700820",
       "order_id": null,
       "customer_id": null,
       "payment_method_id": null
@@ -382,7 +387,6 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider authorization identification
 `data[attributes][provider_method]` | **String** <br>Provider authorization method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider authorization secret
-`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
 `data[attributes][order_id]` | **Uuid** <br>Associated Order
 `data[attributes][customer_id]` | **Uuid** <br>Associated Customer
 `data[attributes][payment_method_id]` | **Uuid** <br>Associated Payment method
@@ -413,11 +417,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/d6f8a181-3477-4ce5-814c-590aae7a4115' \
+    --url 'https://example.booqable.com/api/boomerang/payment_authorizations/bbc2d49d-6bdf-423e-8d53-d266362490b0' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "d6f8a181-3477-4ce5-814c-590aae7a4115",
+        "id": "bbc2d49d-6bdf-423e-8d53-d266362490b0",
         "type": "payment_authorizations",
         "attributes": {
           "status": "started"
@@ -431,11 +435,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "d6f8a181-3477-4ce5-814c-590aae7a4115",
+    "id": "bbc2d49d-6bdf-423e-8d53-d266362490b0",
     "type": "payment_authorizations",
     "attributes": {
-      "created_at": "2024-11-25T09:27:44.224497+00:00",
-      "updated_at": "2024-11-25T09:27:44.224497+00:00",
+      "created_at": "2024-12-02T09:26:08.926044+00:00",
+      "updated_at": "2024-12-02T09:26:08.926044+00:00",
       "status": "started",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -499,7 +503,6 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider authorization identification
 `data[attributes][provider_method]` | **String** <br>Provider authorization method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider authorization secret
-`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
 `data[attributes][order_id]` | **Uuid** <br>Associated Order
 `data[attributes][customer_id]` | **Uuid** <br>Associated Customer
 `data[attributes][payment_method_id]` | **Uuid** <br>Associated Payment method

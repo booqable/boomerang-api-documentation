@@ -31,14 +31,14 @@ Name | Description
 `provider_id` | **String** <br>External provider refund identification
 `provider_method` | **String** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc.
 `provider_secret` | **String** <br>Provider refund secret
-`succeeded_at` | **Datetime** `readonly`<br>When payment refund succeeded
+`succeeded_at` | **Datetime** <br>When payment refund succeeded
 `failed_at` | **Datetime** `readonly`<br>When payment refund failed
 `canceled_at` | **Datetime** `readonly`<br>When payment refund was canceled
 `expired_at` | **Datetime** `readonly`<br>When payment refund expired
-`employee_id` | **Uuid** <br>Associated Employee
-`order_id` | **Uuid** <br>Associated Order
-`customer_id` | **Uuid** <br>Associated Customer
-`payment_charge_id` | **Uuid** <br>Associated Payment charge
+`employee_id` | **Uuid** `readonly`<br>Associated Employee
+`order_id` | **Uuid** `readonly-after-create`<br>Associated Order
+`customer_id` | **Uuid** `readonly-after-create`<br>Associated Customer
+`payment_charge_id` | **Uuid** `readonly-after-create`<br>Associated Payment charge
 
 
 ## Relationships
@@ -46,10 +46,10 @@ Payment refunds have the following relationships:
 
 Name | Description
 -- | --
-`customer` | **Customers** `readonly`<br>Associated Customer
-`employee` | **Employees** `readonly`<br>Associated Employee
-`order` | **Orders** `readonly`<br>Associated Order
-`payment_charge` | **Payment charges** `readonly`<br>Associated Payment charge
+`customer` | **[Customer](#customers)** <br>Associated Customer
+`employee` | **[Employee](#employees)** <br>Associated Employee
+`order` | **[Order](#orders)** <br>Associated Order
+`payment_charge` | **[Payment charge](#payment-charges)** <br>Associated Payment charge
 
 
 ## Listing payment refunds
@@ -70,11 +70,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "5cc56b53-9bfc-4ad8-bafa-7ff5b101f3a1",
+      "id": "cfcb54c4-6e28-44c2-bacc-ae28ba7a8d54",
       "type": "payment_refunds",
       "attributes": {
-        "created_at": "2024-11-25T09:27:11.910278+00:00",
-        "updated_at": "2024-11-25T09:27:11.910278+00:00",
+        "created_at": "2024-12-02T09:26:43.073483+00:00",
+        "updated_at": "2024-12-02T09:26:43.073483+00:00",
         "status": "created",
         "amount_in_cents": 100,
         "deposit_in_cents": 0,
@@ -160,6 +160,9 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+`amount_in_cents` | **Array** <br>`sum`
+`deposit_in_cents` | **Array** <br>`sum`
+`total_in_cents` | **Array** <br>`sum`
 
 
 ### Includes
@@ -184,7 +187,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_refunds/845734d0-8861-4807-8a17-c565d4a4787b' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds/dc13b316-f646-42fd-95bb-b63998b62678' \
     --header 'content-type: application/json' \
 ```
 
@@ -193,11 +196,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "845734d0-8861-4807-8a17-c565d4a4787b",
+    "id": "dc13b316-f646-42fd-95bb-b63998b62678",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-11-25T09:27:11.251558+00:00",
-      "updated_at": "2024-11-25T09:27:11.251558+00:00",
+      "created_at": "2024-12-02T09:26:43.482523+00:00",
+      "updated_at": "2024-12-02T09:26:43.482523+00:00",
       "status": "created",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -280,11 +283,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b7d0211e-7be1-461c-9ab8-ebd4ab7d72b4",
+    "id": "3f951d33-7bc5-4443-bbb8-97d4fb7c8881",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-11-25T09:27:12.596217+00:00",
-      "updated_at": "2024-11-25T09:27:12.596217+00:00",
+      "created_at": "2024-12-02T09:26:42.310141+00:00",
+      "updated_at": "2024-12-02T09:26:42.310141+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -297,11 +300,11 @@ This request accepts the following includes:
       "provider_id": null,
       "provider_method": null,
       "provider_secret": null,
-      "succeeded_at": "2024-11-25T09:27:12.594307+00:00",
+      "succeeded_at": "2024-12-02T09:26:42.308728+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "e7c97a82-4d71-4645-b2f7-b717773442ad",
+      "employee_id": "91973ffa-a040-4d8a-8e3e-a615287fd820",
       "order_id": null,
       "customer_id": null,
       "payment_charge_id": null
@@ -342,7 +345,7 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider refund identification
 `data[attributes][provider_method]` | **String** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider refund secret
-`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
+`data[attributes][succeeded_at]` | **Datetime** <br>When payment refund succeeded
 `data[attributes][order_id]` | **Uuid** <br>Associated Order
 `data[attributes][customer_id]` | **Uuid** <br>Associated Customer
 `data[attributes][payment_charge_id]` | **Uuid** <br>Associated Payment charge
@@ -370,11 +373,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/payment_refunds/c7bd5620-84b8-47db-bf7b-ebff6d1c4504' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds/a0309d20-bad6-4dc5-bd44-999690bccfbc' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "c7bd5620-84b8-47db-bf7b-ebff6d1c4504",
+        "id": "a0309d20-bad6-4dc5-bd44-999690bccfbc",
         "type": "payment_refunds",
         "attributes": {
           "status": "succeeded"
@@ -388,11 +391,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c7bd5620-84b8-47db-bf7b-ebff6d1c4504",
+    "id": "a0309d20-bad6-4dc5-bd44-999690bccfbc",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-11-25T09:27:10.608875+00:00",
-      "updated_at": "2024-11-25T09:27:10.608875+00:00",
+      "created_at": "2024-12-02T09:26:43.989610+00:00",
+      "updated_at": "2024-12-02T09:26:43.989610+00:00",
       "status": "succeeded",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -405,7 +408,7 @@ This request accepts the following includes:
       "provider_id": null,
       "provider_method": null,
       "provider_secret": null,
-      "succeeded_at": "2024-11-25T09:27:10.663853+00:00",
+      "succeeded_at": "2024-12-02T09:26:44.015736+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
@@ -450,7 +453,7 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider refund identification
 `data[attributes][provider_method]` | **String** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider refund secret
-`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
+`data[attributes][succeeded_at]` | **Datetime** <br>When payment refund succeeded
 `data[attributes][order_id]` | **Uuid** <br>Associated Order
 `data[attributes][customer_id]` | **Uuid** <br>Associated Customer
 `data[attributes][payment_charge_id]` | **Uuid** <br>Associated Payment charge

@@ -21,7 +21,7 @@ Report consumables have the following relationships:
 
 Name | Description
 -- | --
-`product` | **Products** `readonly`<br>Associated Product
+`product` | **[Product](#products)** <br>Associated Product
 
 
 ## Listing performance for consumables products
@@ -32,7 +32,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-11-20+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-25+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_consumables?filter%5Bfrom%5D=2024-11-27+00%3A00%3A00+UTC&filter%5Btill%5D=2024-12-02+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -42,14 +42,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "a37a984e-3000-4f53-9da4-85f02d0b7760",
+      "id": "32e0b36a-5636-4d37-8560-d01b8e33f4bd",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2024-11-25T09:28:11.091655+00:00",
-        "name": "Product 1000054",
+        "created_at": "2024-12-02T09:22:52.406467+00:00",
+        "name": "Product 1000016",
         "sold": 2,
-        "turnover_in_cents": 0,
-        "product_id": "a37a984e-3000-4f53-9da4-85f02d0b7760"
+        "turnover_in_cents": 10000,
+        "product_id": "32e0b36a-5636-4d37-8560-d01b8e33f4bd"
       },
       "relationships": {}
     }

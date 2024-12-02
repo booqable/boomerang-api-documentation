@@ -30,8 +30,8 @@ Notes have the following relationships:
 
 Name | Description
 -- | --
-`employee` | **Employees** `readonly`<br>Associated Employee
-`owner` | **Customer, Product, Product group, Stock item, Bundle, Order, Document, User** <br>Associated Owner
+`employee` | **[Employee](#employees)** <br>Associated Employee
+`owner` | **[Customer](#customers), [Product](#products), [Product group](#product-groups), [Stock item](#stock-items), [Bundle](#bundles), [Order](#orders), [Document](#documents), [User](#users)** <br>Associated Owner
 
 
 ## Listing notes
@@ -52,15 +52,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "a34a432b-b690-4b9a-8b1d-752b557f68ea",
+      "id": "6ce5e967-8e55-4c02-971b-a13ea13620cf",
       "type": "notes",
       "attributes": {
-        "created_at": "2024-11-25T09:31:42.427299+00:00",
-        "updated_at": "2024-11-25T09:31:42.427299+00:00",
+        "created_at": "2024-12-02T09:22:44.313286+00:00",
+        "updated_at": "2024-12-02T09:22:44.313286+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "f9c0e780-451f-4ddb-a3cd-0e861f1692d1",
+        "owner_id": "af6675e9-60a6-4567-8ff1-ede590a74fb3",
         "owner_type": "customers",
-        "employee_id": "d8cc3f69-c595-4da8-b54c-c9a45ca866f3"
+        "employee_id": "de08ecb7-81c3-4e0b-8ba4-5ce86c9e9f08"
       },
       "relationships": {}
     }
@@ -133,7 +133,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/notes/b49eeb96-ed9d-472e-9191-7be8540c93b2' \
+    --url 'https://example.booqable.com/api/boomerang/notes/90115bea-a0f8-4026-ab3a-a408fe174a20' \
     --header 'content-type: application/json' \
 ```
 
@@ -142,15 +142,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "b49eeb96-ed9d-472e-9191-7be8540c93b2",
+    "id": "90115bea-a0f8-4026-ab3a-a408fe174a20",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-11-25T09:31:47.112242+00:00",
-      "updated_at": "2024-11-25T09:31:47.112242+00:00",
+      "created_at": "2024-12-02T09:22:45.402385+00:00",
+      "updated_at": "2024-12-02T09:22:45.402385+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "78ba5366-9f53-45af-9d19-7c54b502b24e",
+      "owner_id": "ce18c8cc-999e-429e-92d6-7c23aaf5bfd8",
       "owner_type": "customers",
-      "employee_id": "592752cb-d580-4966-8cf2-24f2bbfa473c"
+      "employee_id": "9881722b-48fb-48a4-9d45-e40a748f3d9b"
     },
     "relationships": {}
   },
@@ -201,7 +201,7 @@ This request accepts the following includes:
         "type": "notes",
         "attributes": {
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "83111b40-ec7c-450c-8660-cda956e3dbf1",
+          "owner_id": "e22db86c-e5ef-498d-90f4-9ea8a9f4e4d2",
           "owner_type": "customers"
         }
       }
@@ -213,15 +213,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "fd734cc1-ac9e-4375-afb4-e0629b3caee0",
+    "id": "39cc60ee-acfe-458f-bd18-42652dfa5fa9",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-11-25T09:31:44.479776+00:00",
-      "updated_at": "2024-11-25T09:31:44.479776+00:00",
+      "created_at": "2024-12-02T09:22:44.849421+00:00",
+      "updated_at": "2024-12-02T09:22:44.849421+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "83111b40-ec7c-450c-8660-cda956e3dbf1",
+      "owner_id": "e22db86c-e5ef-498d-90f4-9ea8a9f4e4d2",
       "owner_type": "customers",
-      "employee_id": "b9e281de-750b-4567-b57b-5673c9d87b83"
+      "employee_id": "244ab269-1e36-43ce-a1e5-77190dbd7882"
     },
     "relationships": {}
   },
@@ -276,7 +276,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/notes/7e0c4c6c-f764-4f2f-a3f9-24d9683bc364' \
+    --url 'https://example.booqable.com/api/boomerang/notes/61d171b4-b614-432e-a622-8d6ea57e5ede' \
     --header 'content-type: application/json' \
 ```
 
@@ -285,15 +285,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7e0c4c6c-f764-4f2f-a3f9-24d9683bc364",
+    "id": "61d171b4-b614-432e-a622-8d6ea57e5ede",
     "type": "notes",
     "attributes": {
-      "created_at": "2024-11-25T09:31:43.345177+00:00",
-      "updated_at": "2024-11-25T09:31:43.345177+00:00",
+      "created_at": "2024-12-02T09:22:43.801824+00:00",
+      "updated_at": "2024-12-02T09:22:43.801824+00:00",
       "body": "Agreed to give this customer a 20% discount on the next order",
-      "owner_id": "41eb0ea8-e355-49fe-94e3-216a737f8d25",
+      "owner_id": "d72980ed-dfdd-4946-a2c5-48916a5c939c",
       "owner_type": "customers",
-      "employee_id": "c16d06c6-84f1-40ff-acba-4dba61ab2f80"
+      "employee_id": "367ca35a-afa2-400e-9c42-38043a7976a2"
     },
     "relationships": {}
   },

@@ -21,9 +21,9 @@ Name | Description
 `has_error` | **Boolean** `readonly`<br>Whether any errors occur when sending this email
 `sent` | **Boolean** `readonly`<br>Whether the email was sent successfully
 `document_ids` | **Array** <br>Documents to send as attachments to the email
-`order_id` | **Uuid** <br>Order the email is associated with, will be used to fill template data
-`customer_id` | **Uuid** <br>Customer the email is associated with, will be used to fill template data
-`email_template_id` | **Uuid** <br>Which email template to use
+`order_id` | **Uuid** `readonly-after-create`<br>Order the email is associated with, will be used to fill template data
+`customer_id` | **Uuid** `readonly-after-create`<br>Customer the email is associated with, will be used to fill template data
+`email_template_id` | **Uuid** `readonly-after-create`<br>Which email template to use
 `employee_id` | **Uuid** `readonly`<br>Employee who sent the email
 
 
@@ -32,10 +32,10 @@ Emails have the following relationships:
 
 Name | Description
 -- | --
-`customer` | **Customers** `readonly`<br>Associated Customer
-`email_template` | **Email templates** `readonly`<br>Associated Email template
-`employee` | **Employees** `readonly`<br>Associated Employee
-`order` | **Orders** `readonly`<br>Associated Order
+`customer` | **[Customer](#customers)** <br>Associated Customer
+`email_template` | **[Email template](#email-templates)** <br>Associated Email template
+`employee` | **[Employee](#employees)** <br>Associated Employee
+`order` | **[Order](#orders)** <br>Associated Order
 
 
 ## Listing emails
@@ -56,11 +56,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "3b2ecbc4-18fa-4b7a-b261-f6323cb4841c",
+      "id": "9a456d03-2fdf-44d3-99b7-e7cf5080fb18",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-11-25T09:26:06.885844+00:00",
-        "updated_at": "2024-11-25T09:26:06.885844+00:00",
+        "created_at": "2024-12-02T09:24:50.908477+00:00",
+        "updated_at": "2024-12-02T09:24:50.908477+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
@@ -68,7 +68,7 @@ Name | Description
         "sent": false,
         "document_ids": [],
         "order_id": null,
-        "customer_id": "6029b7d7-981c-436e-b963-c83e0d423556",
+        "customer_id": "208b781f-d8bf-42a5-9636-572d5803d7d8",
         "email_template_id": null,
         "employee_id": null
       },
@@ -84,7 +84,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=7b053bdf-3759-4bfe-985e-90eea1ce948c' \
+    --url 'https://example.booqable.com/api/boomerang/emails?filter%5Border_id%5D=91e54734-552a-4c1a-a1b7-e366f8418b68' \
     --header 'content-type: application/json' \
 ```
 
@@ -94,19 +94,19 @@ Name | Description
   {
   "data": [
     {
-      "id": "75efafd4-f9fd-449a-98a6-719cee9e8f8a",
+      "id": "212ebf19-a01e-4c22-b546-6b5c5a45ad4b",
       "type": "emails",
       "attributes": {
-        "created_at": "2024-11-25T09:26:05.442643+00:00",
-        "updated_at": "2024-11-25T09:26:05.488162+00:00",
+        "created_at": "2024-12-02T09:24:51.352812+00:00",
+        "updated_at": "2024-12-02T09:24:51.381300+00:00",
         "subject": "Order confirmation",
         "body": "We hereby confirm your order with number #123",
         "recipients": "jon@doe.com",
         "has_error": false,
         "sent": false,
         "document_ids": [],
-        "order_id": "7b053bdf-3759-4bfe-985e-90eea1ce948c",
-        "customer_id": "ba578992-d8d9-4589-a97b-26ec70a5e85a",
+        "order_id": "91e54734-552a-4c1a-a1b7-e366f8418b68",
+        "customer_id": "13f5e89e-d320-4167-8295-e0be4106082b",
         "email_template_id": null,
         "employee_id": null
       },
@@ -194,11 +194,11 @@ This request accepts the following includes:
           "recipients": "customer1@example.com,customer2@example.com",
           "subject": "Order confirmation",
           "body": "Hi {{customer.name}}",
-          "email_template_id": "b1a45294-1ab8-4542-ae7e-fbe9fc11dc46",
-          "order_id": "a9cff8fa-4762-4237-8432-a64faa4fadd9",
-          "customer_id": "d39b7223-2589-4778-a945-df02f83000ae",
+          "email_template_id": "05ea6cd2-fc74-4cb3-8bd3-9c22d1146131",
+          "order_id": "aacf9fd2-7d7c-4e17-bdad-514046b03025",
+          "customer_id": "5a2a8db3-7921-414d-b0c0-b81f20ddd5ae",
           "document_ids": [
-            "0794e89a-195a-4563-89ac-1bc90af82124"
+            "ac3e5fa4-84c8-4434-893e-db61b5c05ed3"
           ]
         }
       }
@@ -210,23 +210,23 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0e02491f-d38d-47a8-b340-5617f21634cf",
+    "id": "f731f557-c09e-4634-8235-3e3d37c0e156",
     "type": "emails",
     "attributes": {
-      "created_at": "2024-11-25T09:25:54.461789+00:00",
-      "updated_at": "2024-11-25T09:25:54.461789+00:00",
+      "created_at": "2024-12-02T09:24:52.008898+00:00",
+      "updated_at": "2024-12-02T09:24:52.008898+00:00",
       "subject": "Order confirmation",
       "body": "Hi {{customer.name}}",
       "recipients": "customer1@example.com,customer2@example.com",
       "has_error": false,
       "sent": false,
       "document_ids": [
-        "0794e89a-195a-4563-89ac-1bc90af82124"
+        "ac3e5fa4-84c8-4434-893e-db61b5c05ed3"
       ],
-      "order_id": "a9cff8fa-4762-4237-8432-a64faa4fadd9",
-      "customer_id": "d39b7223-2589-4778-a945-df02f83000ae",
-      "email_template_id": "b1a45294-1ab8-4542-ae7e-fbe9fc11dc46",
-      "employee_id": "a6a40c01-4eca-4603-8d15-4b9c0b63afcd"
+      "order_id": "aacf9fd2-7d7c-4e17-bdad-514046b03025",
+      "customer_id": "5a2a8db3-7921-414d-b0c0-b81f20ddd5ae",
+      "email_template_id": "05ea6cd2-fc74-4cb3-8bd3-9c22d1146131",
+      "employee_id": "cb3e21d8-053f-4336-9cec-d7bf9fb52327"
     },
     "relationships": {}
   },
