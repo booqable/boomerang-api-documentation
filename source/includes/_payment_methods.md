@@ -51,17 +51,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "3d9908b9-6395-4ed3-a744-d47ab474b1d8",
+      "id": "e2349e0f-e367-4e6c-a654-7f2ab11d9668",
       "type": "payment_methods",
       "attributes": {
-        "created_at": "2024-12-02T09:26:19.393106+00:00",
-        "updated_at": "2024-12-02T09:26:19.393106+00:00",
+        "created_at": "2024-12-02T13:04:45.293465+00:00",
+        "updated_at": "2024-12-02T13:04:45.293465+00:00",
         "label": "Visa XXX1234",
         "provider": "stripe",
         "identifier": "pm_1234567890",
         "method_type": null,
         "details": {},
-        "customer_id": "8db43193-dbaa-40e1-9fe4-193ab1fa6745"
+        "customer_id": "193e545c-82bc-45f2-a82a-5659fde49521"
       },
       "relationships": {}
     }
@@ -132,7 +132,7 @@ This request does not accept any includes
         "attributes": {
           "provider": "stripe",
           "identifier": "pm_123",
-          "customer_id": "f6928cf7-0fb6-4ba4-ae5d-5e3b113a36eb",
+          "customer_id": "52b816f6-29b0-4ff5-8fa5-d4413685f1f3",
           "label": "Test card"
         }
       }
@@ -144,17 +144,17 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "0dd9c04e-7d6f-43f9-ac36-5299d97afe6c",
+    "id": "454d3f56-0ca7-4435-9a12-4a65f364c726",
     "type": "payment_methods",
     "attributes": {
-      "created_at": "2024-12-02T09:26:19.983687+00:00",
-      "updated_at": "2024-12-02T09:26:19.983687+00:00",
+      "created_at": "2024-12-02T13:04:45.951469+00:00",
+      "updated_at": "2024-12-02T13:04:45.951469+00:00",
       "label": "Test card",
       "provider": "stripe",
       "identifier": "pm_123",
       "method_type": null,
       "details": {},
-      "customer_id": "f6928cf7-0fb6-4ba4-ae5d-5e3b113a36eb"
+      "customer_id": "52b816f6-29b0-4ff5-8fa5-d4413685f1f3"
     },
     "relationships": {}
   },
@@ -200,7 +200,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/008160b9-7d06-4d01-af15-c7f384734621' \
+    --url 'https://example.booqable.com/api/boomerang/payment_methods/879dd920-7921-4c1c-a98a-30b5f591a746' \
     --header 'content-type: application/json' \
 ```
 
@@ -209,11 +209,11 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "008160b9-7d06-4d01-af15-c7f384734621",
+    "id": "879dd920-7921-4c1c-a98a-30b5f591a746",
     "type": "payment_methods",
     "attributes": {
-      "created_at": "2024-12-02T09:26:18.876179+00:00",
-      "updated_at": "2024-12-02T09:26:18.939022+00:00",
+      "created_at": "2024-12-02T13:04:44.768557+00:00",
+      "updated_at": "2024-12-02T13:04:44.815074+00:00",
       "label": "Visa XXX1234",
       "provider": "stripe",
       "identifier": "pm_1234567890",

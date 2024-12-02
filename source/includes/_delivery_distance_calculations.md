@@ -21,7 +21,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/delivery_distance_calculations?filter%5Bdelivery_address_property_id%5D=7641345d-2510-489c-9399-f94412bc059b&filter%5Blocation_ids%5D%5B%5D=a461fcb7-d35b-45e1-b2f9-034581cf62cc&filter%5Blocation_ids%5D%5B%5D=f668ac97-bd54-45dd-9d97-d695d0bdfe9f' \
+    --url 'https://example.booqable.com/api/boomerang/delivery_distance_calculations?filter%5Bdelivery_address_property_id%5D=ffc7b000-7c91-40b4-8931-d94cbc797e14&filter%5Blocation_ids%5D%5B%5D=cbf9195e-b6d3-4566-9642-948b67912700&filter%5Blocation_ids%5D%5B%5D=5f67ab9c-4d37-4121-bb57-c21de627b22e' \
     --header 'content-type: application/json' \
 ```
 
@@ -31,21 +31,21 @@ Name | Description
   {
   "data": [
     {
-      "id": "e39f8fee-22a3-4d35-bad1-d8daf97c94d2",
+      "id": "220a26ae-4e85-425d-8c38-41c8c249b16d",
       "type": "delivery_distance_calculations",
       "attributes": {
         "distance": 10.0,
         "distance_unit": "km",
-        "location_id": "a461fcb7-d35b-45e1-b2f9-034581cf62cc"
+        "location_id": "cbf9195e-b6d3-4566-9642-948b67912700"
       }
     },
     {
-      "id": "57f5841f-51f1-4645-a47b-87c3c7c08973",
+      "id": "a812d200-015b-472f-bcd7-a293b37fc937",
       "type": "delivery_distance_calculations",
       "attributes": {
         "distance": 20.0,
         "distance_unit": "km",
-        "location_id": "f668ac97-bd54-45dd-9d97-d695d0bdfe9f"
+        "location_id": "5f67ab9c-4d37-4121-bb57-c21de627b22e"
       }
     }
   ],

@@ -49,35 +49,35 @@ Name | Description
   {
   "data": [
     {
-      "id": "4fa5b979-ddd8-495f-9d66-b0e25d93ea0b",
+      "id": "6c4685c6-ac2a-417c-8057-4eb366e7aaa0",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-12-02T09:27:16.326574+00:00",
+        "created_at": "2024-12-02T13:07:04.464708+00:00",
         "product_name": "Product 1000081",
-        "identifier": "id1000179",
+        "identifier": "id1000185",
         "charge_duration_in_seconds": 7200,
         "planned_duration_in_seconds": 7200,
         "rented_count": 1,
         "turnover_in_cents": 2000,
-        "stock_item_id": "62c7e630-cfa0-4cc3-b03b-546858c57444",
-        "product_id": "21346baa-8ae8-486f-aaff-7febecaccd03",
+        "stock_item_id": "5685a83f-2670-4aa1-bf12-53e8899f1784",
+        "product_id": "c3f25ec8-5146-4986-b1f5-9fd5aa49b158",
         "location_id": null
       },
       "relationships": {}
     },
     {
-      "id": "7f54582e-6832-452c-8a66-4abab9a8abd0",
+      "id": "ef95abac-ad09-49fd-8c6f-42c28d852a68",
       "type": "report_stock_items",
       "attributes": {
-        "created_at": "2024-12-02T09:27:16.350831+00:00",
+        "created_at": "2024-12-02T13:07:04.486915+00:00",
         "product_name": "Product 1000081",
-        "identifier": "id1000180",
+        "identifier": "id1000186",
         "charge_duration_in_seconds": 0,
         "planned_duration_in_seconds": 0,
         "rented_count": 0,
         "turnover_in_cents": 2000,
-        "stock_item_id": "0c646353-edef-4873-94ca-e300de22cc5f",
-        "product_id": "21346baa-8ae8-486f-aaff-7febecaccd03",
+        "stock_item_id": "77c4a427-a3e2-4b70-bd6d-19c7d9db62c0",
+        "product_id": "c3f25ec8-5146-4986-b1f5-9fd5aa49b158",
         "location_id": null
       },
       "relationships": {}

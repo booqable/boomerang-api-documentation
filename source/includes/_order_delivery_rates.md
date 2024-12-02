@@ -47,7 +47,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates?order_id=e5812166-cc02-479f-a63c-e77e56e84e83' \
+    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates?order_id=a0d18838-aac7-4e15-be6f-7457df237e80' \
     --header 'content-type: application/json' \
 ```
 
@@ -57,9 +57,9 @@ Name | Description
   {
   "delivery_rates": [
     {
-      "id": "7d33c33b-d1ab-48aa-a95c-98d392c51238",
+      "id": "a92e6b5b-a831-4146-b89a-c09a1985abcb",
       "type": "flat",
-      "carrier_id": "8bbf5f83-f95b-4fc3-9ae3-8a8fc0d9c558",
+      "carrier_id": "80cdb598-0cb2-4c89-bf6f-1ebeeefb55af",
       "price_in_cents": 1000,
       "label": "standard_delivery",
       "range": "10 km",
@@ -68,9 +68,9 @@ Name | Description
       "errors": []
     },
     {
-      "id": "31fa374d-fc31-4cab-a90d-5103839c6ced",
+      "id": "a7a6bf6f-7ff8-4567-bb3b-b82983c2b161",
       "type": "calculated",
-      "carrier_id": "8bbf5f83-f95b-4fc3-9ae3-8a8fc0d9c558",
+      "carrier_id": "80cdb598-0cb2-4c89-bf6f-1ebeeefb55af",
       "price_in_cents": 2500,
       "label": "fast_delivery",
       "range": "8.75 km",
@@ -151,7 +151,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/8be1eab7-3750-4dba-9b71-bbf466aaebba' \
+    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/d29daefc-c068-40c3-99e1-5bbfaa62bf15' \
     --header 'content-type: application/json' \
 ```
 
@@ -160,17 +160,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8be1eab7-3750-4dba-9b71-bbf466aaebba",
+    "id": "d29daefc-c068-40c3-99e1-5bbfaa62bf15",
     "type": "order_delivery_rates",
     "attributes": {
-      "created_at": "2024-12-02T09:22:09.645472+00:00",
-      "updated_at": "2024-12-02T09:22:09.645472+00:00",
+      "created_at": "2024-12-02T13:07:12.834731+00:00",
+      "updated_at": "2024-12-02T13:07:12.834731+00:00",
       "identifier": "Xpress",
       "price_in_cents": 10000,
-      "rate_id": "021e8bd9-f43a-49c1-9e57-2ce360ea233b",
+      "rate_id": "1e878ebf-8cc8-49ec-8733-10dd049b8c34",
       "minimum_order_amount_in_cents": 0,
-      "carrier_id": "ec87c621-e217-4492-aa6f-072c570820c7",
-      "order_id": "f4af4e36-b881-4a3e-9a57-c5b8ff13de17"
+      "carrier_id": "463ebf4d-9bcb-414c-8c2b-47dfc5a3159d",
+      "order_id": "4a49e9f9-f9c5-4042-9e53-a3341d4075ab"
     },
     "relationships": {}
   },
@@ -224,7 +224,7 @@ This request accepts the following includes:
           "price_in_cents": 5000,
           "rate_id": null,
           "carrier_id": null,
-          "order_id": "1105fffd-87f5-4931-ac4b-33a68551a779"
+          "order_id": "660a78b3-b021-45d4-b7f1-007cf25c304f"
         }
       }
     }'
@@ -235,17 +235,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "0e9cd80f-2326-4f10-b688-a057b38d5b50",
+    "id": "326ee6a6-2185-4198-a356-604549f532a8",
     "type": "order_delivery_rates",
     "attributes": {
-      "created_at": "2024-12-02T09:22:10.169987+00:00",
-      "updated_at": "2024-12-02T09:22:10.169987+00:00",
+      "created_at": "2024-12-02T13:07:09.150759+00:00",
+      "updated_at": "2024-12-02T13:07:09.150759+00:00",
       "identifier": "Custom rate",
       "price_in_cents": 5000,
       "rate_id": null,
       "minimum_order_amount_in_cents": null,
       "carrier_id": null,
-      "order_id": "1105fffd-87f5-4931-ac4b-33a68551a779"
+      "order_id": "660a78b3-b021-45d4-b7f1-007cf25c304f"
     },
     "relationships": {}
   },
@@ -303,16 +303,16 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/c15d873b-3072-44ec-ac2f-18e70219d6a2' \
+    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/c6c0e679-854b-44a2-92a8-107648b0cd99' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
         "type": "order_delivery_rates",
-        "id": "c15d873b-3072-44ec-ac2f-18e70219d6a2",
+        "id": "c6c0e679-854b-44a2-92a8-107648b0cd99",
         "attributes": {
           "identifier": "Standard",
           "price_in_cents": 5000,
-          "rate_id": "31d2f147-cdfc-41ad-bad9-d6da1c038549"
+          "rate_id": "4e733d4e-ccbc-4b4a-b38d-de08aa1d1410"
         }
       }
     }'
@@ -323,17 +323,17 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "c15d873b-3072-44ec-ac2f-18e70219d6a2",
+    "id": "c6c0e679-854b-44a2-92a8-107648b0cd99",
     "type": "order_delivery_rates",
     "attributes": {
-      "created_at": "2024-12-02T09:22:08.212525+00:00",
-      "updated_at": "2024-12-02T09:22:08.228660+00:00",
+      "created_at": "2024-12-02T13:07:11.333761+00:00",
+      "updated_at": "2024-12-02T13:07:11.353632+00:00",
       "identifier": "Standard",
       "price_in_cents": 5000,
-      "rate_id": "31d2f147-cdfc-41ad-bad9-d6da1c038549",
+      "rate_id": "4e733d4e-ccbc-4b4a-b38d-de08aa1d1410",
       "minimum_order_amount_in_cents": 0,
-      "carrier_id": "4f690bd8-8a98-4337-ad47-f4839d16dbf6",
-      "order_id": "c873bd6e-d7e0-4d9c-81f8-b41b06d6796c"
+      "carrier_id": "d20ca0dc-570e-4b13-917a-c8e598c6682f",
+      "order_id": "c3ff6b1a-7b68-48fd-b721-e4f71cdcdb24"
     },
     "relationships": {}
   },
@@ -391,7 +391,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/153afcbd-029b-4183-a52e-488718806c65' \
+    --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/95b2ab80-6dc6-4bac-98a6-f77d1c840627' \
     --header 'content-type: application/json' \
     --data '{}'
 ```

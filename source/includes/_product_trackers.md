@@ -40,7 +40,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/product_trackers?filter%5Bproduct_group_id%5D%5B%5D=2e3939f5-fdfd-4aff-9bd0-587e4f196def' \
+    --url 'https://example.booqable.com/api/boomerang/product_trackers?filter%5Bproduct_group_id%5D%5B%5D=9ef53203-3a6a-48e9-b567-aa6bfc04465d' \
     --header 'content-type: application/json' \
 ```
 
@@ -50,28 +50,28 @@ Name | Description
   {
   "data": [
     {
-      "id": "16015339-86aa-4929-a805-110573d85191",
+      "id": "67bf9923-61ec-4491-94e8-9289614d4209",
       "type": "product_trackers",
       "attributes": {
-        "created_at": "2024-12-02T09:23:14.326359+00:00",
-        "updated_at": "2024-12-02T09:23:14.326359+00:00",
+        "created_at": "2024-12-02T13:01:34.706607+00:00",
+        "updated_at": "2024-12-02T13:01:34.706607+00:00",
         "quantity": 3,
-        "product_id": "b6a234f7-865f-41d5-9ba7-e03ea5cf2410",
-        "employee_id": "9703e0ef-d1f6-41b6-9286-7d071f1aba21",
-        "order_id": "947dbf9f-998a-4724-a0dd-d0cd0c75bf7a"
+        "product_id": "bfcb5ec3-c184-4afd-8188-2994134f30fa",
+        "employee_id": "40c42b4b-4f89-4c41-835a-f88535c1934f",
+        "order_id": "d68b447a-c4b9-4207-8cd1-22dc8c1db245"
       },
       "relationships": {}
     },
     {
-      "id": "984491c0-bba4-45a3-a22f-fdd9eb34f6a2",
+      "id": "50ca7ecd-90d4-4122-b9b6-4513ded00a99",
       "type": "product_trackers",
       "attributes": {
-        "created_at": "2024-12-02T09:23:14.397196+00:00",
-        "updated_at": "2024-12-02T09:23:14.397196+00:00",
+        "created_at": "2024-12-02T13:01:34.780717+00:00",
+        "updated_at": "2024-12-02T13:01:34.780717+00:00",
         "quantity": -2,
-        "product_id": "b6a234f7-865f-41d5-9ba7-e03ea5cf2410",
-        "employee_id": "edcdee20-a549-4b5b-b413-4daba856985f",
-        "order_id": "947dbf9f-998a-4724-a0dd-d0cd0c75bf7a"
+        "product_id": "bfcb5ec3-c184-4afd-8188-2994134f30fa",
+        "employee_id": "1e37f212-b99c-447f-9050-57cc86f6367d",
+        "order_id": "d68b447a-c4b9-4207-8cd1-22dc8c1db245"
       },
       "relationships": {}
     }

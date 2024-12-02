@@ -44,17 +44,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "6d99afb8-0b58-4f59-b6da-7c0305b799b5",
+      "id": "5e4565b7-da0c-462c-9a7b-f6bc925b3f9f",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2024-12-02T09:25:28.182244+00:00",
-        "name": "Product 1000058",
+        "created_at": "2024-12-02T13:05:10.515746+00:00",
+        "name": "Product 1000037",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
         "turnover_in_cents": 4000,
         "quantity": 10,
-        "product_id": "eaa8c395-9639-4f02-9ac0-e445d5b075c4"
+        "product_id": "7c360c4b-e1cd-4d9f-8071-7f11a75e0e5d"
       },
       "relationships": {}
     }

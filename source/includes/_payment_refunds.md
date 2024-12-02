@@ -70,11 +70,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "cfcb54c4-6e28-44c2-bacc-ae28ba7a8d54",
+      "id": "bb717621-9046-42fd-939d-7d7f64bb6d14",
       "type": "payment_refunds",
       "attributes": {
-        "created_at": "2024-12-02T09:26:43.073483+00:00",
-        "updated_at": "2024-12-02T09:26:43.073483+00:00",
+        "created_at": "2024-12-02T13:01:50.967837+00:00",
+        "updated_at": "2024-12-02T13:01:50.967837+00:00",
         "status": "created",
         "amount_in_cents": 100,
         "deposit_in_cents": 0,
@@ -187,7 +187,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_refunds/dc13b316-f646-42fd-95bb-b63998b62678' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds/d1026ad5-37f9-4803-8c59-d34ac8a85c33' \
     --header 'content-type: application/json' \
 ```
 
@@ -196,11 +196,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "dc13b316-f646-42fd-95bb-b63998b62678",
+    "id": "d1026ad5-37f9-4803-8c59-d34ac8a85c33",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-12-02T09:26:43.482523+00:00",
-      "updated_at": "2024-12-02T09:26:43.482523+00:00",
+      "created_at": "2024-12-02T13:01:50.431689+00:00",
+      "updated_at": "2024-12-02T13:01:50.431689+00:00",
       "status": "created",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -283,11 +283,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "3f951d33-7bc5-4443-bbb8-97d4fb7c8881",
+    "id": "e9d98602-d0f1-4ce6-9a3c-e3ad7905145d",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-12-02T09:26:42.310141+00:00",
-      "updated_at": "2024-12-02T09:26:42.310141+00:00",
+      "created_at": "2024-12-02T13:01:49.389148+00:00",
+      "updated_at": "2024-12-02T13:01:49.389148+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -300,11 +300,11 @@ This request accepts the following includes:
       "provider_id": null,
       "provider_method": null,
       "provider_secret": null,
-      "succeeded_at": "2024-12-02T09:26:42.308728+00:00",
+      "succeeded_at": "2024-12-02T13:01:49.388147+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "91973ffa-a040-4d8a-8e3e-a615287fd820",
+      "employee_id": "60f86baf-a387-49e6-aa08-903d5975001e",
       "order_id": null,
       "customer_id": null,
       "payment_charge_id": null
@@ -373,11 +373,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/payment_refunds/a0309d20-bad6-4dc5-bd44-999690bccfbc' \
+    --url 'https://example.booqable.com/api/boomerang/payment_refunds/1a05d5c7-0475-449f-ae19-4c8b4e061d1d' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "a0309d20-bad6-4dc5-bd44-999690bccfbc",
+        "id": "1a05d5c7-0475-449f-ae19-4c8b4e061d1d",
         "type": "payment_refunds",
         "attributes": {
           "status": "succeeded"
@@ -391,11 +391,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "a0309d20-bad6-4dc5-bd44-999690bccfbc",
+    "id": "1a05d5c7-0475-449f-ae19-4c8b4e061d1d",
     "type": "payment_refunds",
     "attributes": {
-      "created_at": "2024-12-02T09:26:43.989610+00:00",
-      "updated_at": "2024-12-02T09:26:43.989610+00:00",
+      "created_at": "2024-12-02T13:01:49.968777+00:00",
+      "updated_at": "2024-12-02T13:01:49.968777+00:00",
       "status": "succeeded",
       "amount_in_cents": 100,
       "deposit_in_cents": 0,
@@ -408,7 +408,7 @@ This request accepts the following includes:
       "provider_id": null,
       "provider_method": null,
       "provider_secret": null,
-      "succeeded_at": "2024-12-02T09:26:44.015736+00:00",
+      "succeeded_at": "2024-12-02T13:01:50.002143+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,

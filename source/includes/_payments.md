@@ -54,11 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "52eb8023-a38e-4ee9-b60b-483d734f4f07",
+      "id": "af9ecfdd-4396-4263-9f30-0a4c48c0b8a4",
       "type": "payments",
       "attributes": {
-        "created_at": "2024-12-02T09:26:58.425700+00:00",
-        "updated_at": "2024-12-02T09:26:58.425700+00:00",
+        "created_at": "2024-12-02T13:01:51.606685+00:00",
+        "updated_at": "2024-12-02T13:01:51.606685+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -145,7 +145,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payments/7dc4abbd-eb55-49d1-848f-9a1de7c52012' \
+    --url 'https://example.booqable.com/api/boomerang/payments/0a4af0e9-4285-454e-a65e-2b8e5039f426' \
     --header 'content-type: application/json' \
 ```
 
@@ -154,11 +154,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "7dc4abbd-eb55-49d1-848f-9a1de7c52012",
+    "id": "0a4af0e9-4285-454e-a65e-2b8e5039f426",
     "type": "payments",
     "attributes": {
-      "created_at": "2024-12-02T09:26:58.958128+00:00",
-      "updated_at": "2024-12-02T09:26:58.958128+00:00",
+      "created_at": "2024-12-02T13:01:52.300738+00:00",
+      "updated_at": "2024-12-02T13:01:52.300738+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,

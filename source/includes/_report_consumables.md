@@ -42,14 +42,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "32e0b36a-5636-4d37-8560-d01b8e33f4bd",
+      "id": "29352275-068e-4564-8514-ce3e6ee742b2",
       "type": "report_consumables",
       "attributes": {
-        "created_at": "2024-12-02T09:22:52.406467+00:00",
-        "name": "Product 1000016",
+        "created_at": "2024-12-02T13:03:40.429548+00:00",
+        "name": "Product 1000034",
         "sold": 2,
         "turnover_in_cents": 10000,
-        "product_id": "32e0b36a-5636-4d37-8560-d01b8e33f4bd"
+        "product_id": "29352275-068e-4564-8514-ce3e6ee742b2"
       },
       "relationships": {}
     }
