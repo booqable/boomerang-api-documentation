@@ -622,6 +622,17 @@
               </ul>
           </li>
           <li>
+            <a href="#delivery-distance-calculations" class="toc-h1 toc-link" data-title="Delivery distance calculations" title="Delivery distance calculations">Delivery distance calculations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#delivery-distance-calculations-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#delivery-distance-calculations-calculating-delivery-distances" class="toc-h2 toc-link" data-title="Calculating delivery distances" title="Calculating delivery distances">Calculating delivery distances</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#documents" class="toc-h1 toc-link" data-title="Documents" title="Documents">Documents</a>
               <ul class="toc-list-h2">
                   <li>
@@ -8444,6 +8455,138 @@ See the <code>book_bundle</code> action under <a href="#order-fulfilments">Order
 </tr>
 </tbody></table>
 <h3 id='default-properties-deleting-a-default-property-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='delivery-distance-calculations'>Delivery distance calculations</h1>
+<p>It calculates the distance (the route length) between the given locations and the delivery address.</p>
+<h2 id='delivery-distance-calculations-fields'>Fields</h2>
+<p>Every delivery distance calculation has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>distance</code></td>
+<td><strong>Float</strong> <code>readonly</code><br>The distance between the location and the delivery address</td>
+</tr>
+<tr>
+<td><code>distance_unit</code></td>
+<td><strong>String</strong> <code>readonly</code><br>The unit of the distance</td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>The location ID</td>
+</tr>
+</tbody></table>
+<h2 id='delivery-distance-calculations-calculating-delivery-distances'>Calculating delivery distances</h2>
+<blockquote>
+<p>How to fetch a list of delivery distance calculations:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/delivery_distance_calculations?filter%5Bdelivery_address_property_id%5D=ffc7b000-7c91-40b4-8931-d94cbc797e14&amp;filter%5Blocation_ids%5D%5B%5D=cbf9195e-b6d3-4566-9642-948b67912700&amp;filter%5Blocation_ids%5D%5B%5D=5f67ab9c-4d37-4121-bb57-c21de627b22e'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"220a26ae-4e85-425d-8c38-41c8c249b16d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery_distance_calculations"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"distance_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"km"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cbf9195e-b6d3-4566-9642-948b67912700"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a812d200-015b-472f-bcd7-a293b37fc937"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery_distance_calculations"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"distance_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"km"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f67ab9c-4d37-4121-bb57-c21de627b22e"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='delivery-distance-calculations-calculating-delivery-distances-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/delivery_distance_calculations</code></p>
+<h3 id='delivery-distance-calculations-calculating-delivery-distances-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[delivery_distance_calculations]=distance,distance_unit,location_id</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='delivery-distance-calculations-calculating-delivery-distances-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>location_ids</code></td>
+<td><strong>Array</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>delivery_address_property_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='delivery-distance-calculations-calculating-delivery-distances-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='delivery-distance-calculations-calculating-delivery-distances-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='documents'>Documents</h1>
 <p>Documents hold financial and or legal information about an order. There are three types of documents: <code>quote</code>, <code>contract</code>, <code>invoice</code>.</p>

@@ -936,6 +936,49 @@
               </ul>
           </li>
           <li>
+            <a href="#order-delivery-rates" class="toc-h1 toc-link" data-title="Order delivery rates" title="Order delivery rates">Order delivery rates</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-delivery-rates-endpoints" class="toc-h2 toc-link" data-title="Endpoints" title="Endpoints">Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rates-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rates-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rates-fetching-rates-from-all-installed-delivery-apps-for-an-order" class="toc-h2 toc-link" data-title="Fetching rates from all installed delivery apps for an order" title="Fetching rates from all installed delivery apps for an order">Fetching rates from all installed delivery apps for an order</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rates-fetching-an-order-delivery-rate" class="toc-h2 toc-link" data-title="Fetching an order delivery rate" title="Fetching an order delivery rate">Fetching an order delivery rate</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rates-creating-an-order-delivery-rate" class="toc-h2 toc-link" data-title="Creating an order delivery rate" title="Creating an order delivery rate">Creating an order delivery rate</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rates-updating-an-order-delivery-rate" class="toc-h2 toc-link" data-title="Updating an order delivery rate" title="Updating an order delivery rate">Updating an order delivery rate</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rates-deleting-an-order-delivery-rate" class="toc-h2 toc-link" data-title="Deleting an order delivery rate" title="Deleting an order delivery rate">Deleting an order delivery rate</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#order-delivery-rate-recalculations" class="toc-h1 toc-link" data-title="Order delivery rate recalculations" title="Order delivery rate recalculations">Order delivery rate recalculations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-delivery-rate-recalculations-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rate-recalculations-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#order-delivery-rate-recalculations-recalculating-delivery-rates" class="toc-h2 toc-link" data-title="Recalculating delivery rates" title="Recalculating delivery rates">Recalculating delivery rates</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#order-duplications" class="toc-h1 toc-link" data-title="Order duplications" title="Order duplications">Order duplications</a>
               <ul class="toc-list-h2">
                   <li>
@@ -17728,6 +17771,630 @@ Orders with any other status will be ignored.</p>
 
 <p><code>order_delivery_rate</code> =&gt; 
 <code>delivery_address</code></p>
+<h1 id='order-delivery-rates'>Order delivery rates</h1>
+<p>Order delivery rates hold information about the delivery rate associated with a delivery order.
+This data is relevant only for orders that have a <code>delivery</code> fulfillment type.</p>
+<h2 id='order-delivery-rates-endpoints'>Endpoints</h2>
+<p><code>GET /api/boomerang/order_delivery_rates</code></p>
+
+<p><code>GET /api/boomerang/order_delivery_rates/{id}</code></p>
+
+<p><code>POST /api/boomerang/order_delivery_rates</code></p>
+
+<p><code>PUT /api/boomerang/order_delivery_rates/{id}</code></p>
+
+<p><code>DELETE /api/boomerang/order_delivery_rates/{id}</code></p>
+<h2 id='order-delivery-rates-fields'>Fields</h2>
+<p>Every order delivery rate has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <code>readonly</code><br>When the resource was last updated</td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td><strong>String</strong> <br>The identifier of the delivery rate</td>
+</tr>
+<tr>
+<td><code>price_in_cents</code></td>
+<td><strong>Integer</strong> <br>The price of the delivery rate in cents</td>
+</tr>
+<tr>
+<td><code>rate_id</code></td>
+<td><strong>String</strong> <br>The rate id returned by a delivery app</td>
+</tr>
+<tr>
+<td><code>minimum_order_amount_in_cents</code></td>
+<td><strong>Integer</strong> <br>The minimum order amount in cents for this delivery rate&#39;</td>
+</tr>
+<tr>
+<td><code>carrier_id</code></td>
+<td><strong>Uuid</strong> <code>readonly-after-create</code><br>Associated Carrier</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>Uuid</strong> <code>readonly-after-create</code><br>Associated Order</td>
+</tr>
+</tbody></table>
+<h2 id='order-delivery-rates-relationships'>Relationships</h2>
+<p>Order delivery rates have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>carrier</code></td>
+<td><strong><a href="#carriers">Carrier</a></strong> <br>Associated Carrier</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td><strong><a href="#orders">Order</a></strong> <br>Associated Order</td>
+</tr>
+</tbody></table>
+<h2 id='order-delivery-rates-fetching-rates-from-all-installed-delivery-apps-for-an-order'>Fetching rates from all installed delivery apps for an order</h2>
+<blockquote>
+<p>How to fetch a list of rates:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_delivery_rates?order_id=a0d18838-aac7-4e15-be6f-7457df237e80'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"delivery_rates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a92e6b5b-a831-4146-b89a-c09a1985abcb"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flat"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80cdb598-0cb2-4c89-bf6f-1ebeeefb55af"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard_delivery"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 km"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard delivery"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a7a6bf6f-7ff8-4567-bb3b-b82983c2b161"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculated"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80cdb598-0cb2-4c89-bf6f-1ebeeefb55af"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fast_delivery"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8.75 km"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fast delivery"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"under_minimum_order_amount"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-delivery-rates-fetching-rates-from-all-installed-delivery-apps-for-an-order-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/order_delivery_rates</code></p>
+<h3 id='order-delivery-rates-fetching-rates-from-all-installed-delivery-apps-for-an-order-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=carrier,order</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_delivery_rates]=created_at,updated_at,identifier</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>Hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>String</strong> <br>How to sort the data <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>Hash</strong> <br>Metadata to send along <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>String</strong> <br>The page to request</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>String</strong> <br>The amount of items per page (max 100)</td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-fetching-rates-from-all-installed-delivery-apps-for-an-order-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>Datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>price_in_cents</code></td>
+<td><strong>Integer</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>rate_id</code></td>
+<td><strong>String</strong> <br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>minimum_order_amount_in_cents</code></td>
+<td><strong>Integer</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>carrier_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>Uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-fetching-rates-from-all-installed-delivery-apps-for-an-order-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>Array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-fetching-rates-from-all-installed-delivery-apps-for-an-order-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>carrier</code></p>
+
+<p><code>order</code></p>
+<h2 id='order-delivery-rates-fetching-an-order-delivery-rate'>Fetching an order delivery rate</h2>
+<blockquote>
+<p>How to fetch a rate:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> GET <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_delivery_rates/d29daefc-c068-40c3-99e1-5bbfaa62bf15'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d29daefc-c068-40c3-99e1-5bbfaa62bf15"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_delivery_rates"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-02T13:07:12.834731+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-02T13:07:12.834731+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xpress"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1e878ebf-8cc8-49ec-8733-10dd049b8c34"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"463ebf4d-9bcb-414c-8c2b-47dfc5a3159d"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4a49e9f9-f9c5-4042-9e53-a3341d4075ab"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-delivery-rates-fetching-an-order-delivery-rate-http-request'>HTTP Request</h3>
+<p><code>GET /api/boomerang/order_delivery_rates/{id}</code></p>
+<h3 id='order-delivery-rates-fetching-an-order-delivery-rate-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=carrier,order</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_delivery_rates]=created_at,updated_at,identifier</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-fetching-an-order-delivery-rate-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>carrier</code></p>
+
+<p><code>order</code></p>
+<h2 id='order-delivery-rates-creating-an-order-delivery-rate'>Creating an order delivery rate</h2>
+<blockquote>
+<p>How to create an order delivery rate:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_delivery_rates'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_delivery_rates",
+        "attributes": {
+          "identifier": "Custom rate",
+          "price_in_cents": 5000,
+          "rate_id": null,
+          "carrier_id": null,
+          "order_id": "660a78b3-b021-45d4-b7f1-007cf25c304f"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"326ee6a6-2185-4198-a356-604549f532a8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_delivery_rates"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-02T13:07:09.150759+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-02T13:07:09.150759+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom rate"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"660a78b3-b021-45d4-b7f1-007cf25c304f"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-delivery-rates-creating-an-order-delivery-rate-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/order_delivery_rates</code></p>
+<h3 id='order-delivery-rates-creating-an-order-delivery-rate-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=carrier,order</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_delivery_rates]=created_at,updated_at,identifier</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-creating-an-order-delivery-rate-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][identifier]</code></td>
+<td><strong>String</strong> <br>The identifier of the delivery rate</td>
+</tr>
+<tr>
+<td><code>data[attributes][price_in_cents]</code></td>
+<td><strong>Integer</strong> <br>The price of the delivery rate in cents</td>
+</tr>
+<tr>
+<td><code>data[attributes][rate_id]</code></td>
+<td><strong>String</strong> <br>The rate id returned by a delivery app</td>
+</tr>
+<tr>
+<td><code>data[attributes][minimum_order_amount_in_cents]</code></td>
+<td><strong>Integer</strong> <br>The minimum order amount in cents for this delivery rate&#39;</td>
+</tr>
+<tr>
+<td><code>data[attributes][carrier_id]</code></td>
+<td><strong>Uuid</strong> <br>Associated Carrier</td>
+</tr>
+<tr>
+<td><code>data[attributes][order_id]</code></td>
+<td><strong>Uuid</strong> <br>Associated Order</td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-creating-an-order-delivery-rate-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>carrier</code></p>
+
+<p><code>order</code></p>
+<h2 id='order-delivery-rates-updating-an-order-delivery-rate'>Updating an order delivery rate</h2>
+<blockquote>
+<p>How to update an order delivery rate:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> PUT <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_delivery_rates/c6c0e679-854b-44a2-92a8-107648b0cd99'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_delivery_rates",
+        "id": "c6c0e679-854b-44a2-92a8-107648b0cd99",
+        "attributes": {
+          "identifier": "Standard",
+          "price_in_cents": 5000,
+          "rate_id": "4e733d4e-ccbc-4b4a-b38d-de08aa1d1410"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6c0e679-854b-44a2-92a8-107648b0cd99"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_delivery_rates"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-02T13:07:11.333761+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-02T13:07:11.353632+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rate_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4e733d4e-ccbc-4b4a-b38d-de08aa1d1410"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d20ca0dc-570e-4b13-917a-c8e598c6682f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3ff6b1a-7b68-48fd-b721-e4f71cdcdb24"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-delivery-rates-updating-an-order-delivery-rate-http-request'>HTTP Request</h3>
+<p><code>PUT /api/boomerang/order_delivery_rates/{id}</code></p>
+<h3 id='order-delivery-rates-updating-an-order-delivery-rate-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=carrier,order</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_delivery_rates]=created_at,updated_at,identifier</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-updating-an-order-delivery-rate-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][identifier]</code></td>
+<td><strong>String</strong> <br>The identifier of the delivery rate</td>
+</tr>
+<tr>
+<td><code>data[attributes][price_in_cents]</code></td>
+<td><strong>Integer</strong> <br>The price of the delivery rate in cents</td>
+</tr>
+<tr>
+<td><code>data[attributes][rate_id]</code></td>
+<td><strong>String</strong> <br>The rate id returned by a delivery app</td>
+</tr>
+<tr>
+<td><code>data[attributes][minimum_order_amount_in_cents]</code></td>
+<td><strong>Integer</strong> <br>The minimum order amount in cents for this delivery rate&#39;</td>
+</tr>
+<tr>
+<td><code>data[attributes][carrier_id]</code></td>
+<td><strong>Uuid</strong> <br>Associated Carrier</td>
+</tr>
+<tr>
+<td><code>data[attributes][order_id]</code></td>
+<td><strong>Uuid</strong> <br>Associated Order</td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-updating-an-order-delivery-rate-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>carrier</code></p>
+
+<p><code>order</code></p>
+<h2 id='order-delivery-rates-deleting-an-order-delivery-rate'>Deleting an order delivery rate</h2>
+<blockquote>
+<p>How to delete an order delivery rate:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> DELETE <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_delivery_rates/95b2ab80-6dc6-4bac-98a6-f77d1c840627'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{}'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-delivery-rates-deleting-an-order-delivery-rate-http-request'>HTTP Request</h3>
+<p><code>DELETE /api/boomerang/order_delivery_rates/{id}</code></p>
+<h3 id='order-delivery-rates-deleting-an-order-delivery-rate-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=carrier,order</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_delivery_rates]=created_at,updated_at,identifier</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rates-deleting-an-order-delivery-rate-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>carrier</code></p>
+
+<p><code>order</code></p>
+<h1 id='order-delivery-rate-recalculations'>Order delivery rate recalculations</h1>
+<p>It recalculates the delivery rate of a delivery order.</p>
+<h2 id='order-delivery-rate-recalculations-fields'>Fields</h2>
+<p>Every order delivery rate recalculation has the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>Uuid</strong> <code>readonly</code><br>Primary key</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>Uuid</strong> <br>Associated Order</td>
+</tr>
+</tbody></table>
+<h2 id='order-delivery-rate-recalculations-relationships'>Relationships</h2>
+<p>Order delivery rate recalculations have the following relationships:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order</code></td>
+<td><strong><a href="#orders">Order</a></strong> <br>Associated Order</td>
+</tr>
+</tbody></table>
+<h2 id='order-delivery-rate-recalculations-recalculating-delivery-rates'>Recalculating delivery rates</h2>
+<blockquote>
+<p>How to recalculate delivery rates:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/boomerang/order_delivery_rate_recalculations'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+      "data": {
+        "type": "order_delivery_rate_recalculations",
+        "attributes": {
+          "order_id": "5bc3e63e-5f38-4eab-8624-6e8aabdeb55d"
+        }
+      }
+    }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"083f1182-5a1e-5ef5-bd47-d663f558a46e"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_delivery_rate_recalculations"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5bc3e63e-5f38-4eab-8624-6e8aabdeb55d"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-delivery-rate-recalculations-recalculating-delivery-rates-http-request'>HTTP Request</h3>
+<p><code>POST /api/boomerang/order_delivery_rate_recalculations</code></p>
+<h3 id='order-delivery-rate-recalculations-recalculating-delivery-rates-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>include</code></td>
+<td><strong>String</strong> <br>List of comma seperated relationships <code>?include=order</code></td>
+</tr>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>Array</strong> <br>List of comma seperated fields to include <code>?fields[order_delivery_rate_recalculations]=order_id</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rate-recalculations-recalculating-delivery-rates-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][order_id]</code></td>
+<td><strong>Uuid</strong> <br>Associated Order</td>
+</tr>
+</tbody></table>
+<h3 id='order-delivery-rate-recalculations-recalculating-delivery-rates-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<p><code>order</code> =&gt; 
+<code>tax_values</code></p>
+
+<p><code>order_delivery_rate</code></p>
 <h1 id='order-duplications'>Order duplications</h1>
 <p>Duplicates an <code>Order</code> with a selectable subset of fields and associations.</p>
 <h2 id='order-duplications-fields'>Fields</h2>
