@@ -16,7 +16,7 @@ Every order price recalculation has the following fields:
 Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>Primary key
-`order_id` | **Uuid** <br>Order that needs to be recalculated.
+`order_id` | **Uuid** `readonly-after-create`<br>Order that needs to be recalculated.
 
 
 ## Relationships
@@ -24,7 +24,7 @@ Order price recalculations have the following relationships:
 
 Name | Description
 -- | --
-`order` | **Orders** <br>Associated Order
+`order` | **[Order](#orders)** <br>Associated Order
 
 
 ## Recalculate prices
@@ -41,7 +41,7 @@ Name | Description
       "data": {
         "type": "order_price_recalculations",
         "attributes": {
-          "order_id": "aff624a8-2e84-4b62-90b1-cdb703a71e98"
+          "order_id": "780c2975-9037-40df-b7b3-254a7a895086"
         }
       }
     }'
@@ -52,10 +52,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "eb88ee7b-180c-52c4-b3d1-d7af12f5afc4",
+    "id": "f9d466af-67a6-554c-99d5-59074a6ab45f",
     "type": "order_price_recalculations",
     "attributes": {
-      "order_id": "aff624a8-2e84-4b62-90b1-cdb703a71e98"
+      "order_id": "780c2975-9037-40df-b7b3-254a7a895086"
     },
     "relationships": {}
   },

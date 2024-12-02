@@ -24,9 +24,9 @@ Invoice revisions have the following relationships:
 
 Name | Description
 -- | --
-`order` | **Orders** <br>Associated Order
-`revised_invoice` | **Documents** `readonly`<br>Associated Revised invoice
-`revision_invoice` | **Documents** `readonly`<br>Associated Revision invoice
+`order` | **[Order](#orders)** <br>Associated Order
+`revised_invoice` | **[Document](#documents)** <br>Associated Revised invoice
+`revision_invoice` | **[Document](#documents)** <br>Associated Revision invoice
 
 
 ## Revise invoice
@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "invoice_revisions",
         "attributes": {
-          "order_id": "905fbe88-2027-44db-8ac8-bd5cdd8ec552"
+          "order_id": "63df83a3-da51-41fe-9b3b-b6b41fe7ea78"
         }
       }
     }'
@@ -54,12 +54,12 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "1f77812b-cc68-5f6c-8ceb-6804acb23138",
+    "id": "ab4fe8c1-7ca9-509e-a489-02cd2e39f57f",
     "type": "invoice_revisions",
     "attributes": {
-      "order_id": "905fbe88-2027-44db-8ac8-bd5cdd8ec552",
-      "revised_invoice_id": "9099ba1b-aa49-4d2c-b30f-9ca40e70717a",
-      "revision_invoice_id": "d86ee893-ee37-4270-8fa0-3eb9cf64d685"
+      "order_id": "63df83a3-da51-41fe-9b3b-b6b41fe7ea78",
+      "revised_invoice_id": "8dbb0b52-7751-4440-b7a1-89fe3641bec3",
+      "revision_invoice_id": "0af43d14-d0e1-4681-95fd-992ae3a018e5"
     },
     "relationships": {}
   },

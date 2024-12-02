@@ -10,13 +10,13 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`quantity` | **Integer** `readonly`<br>Quantity of items being transfered
-`available_at` | **Datetime** `readonly`<br>Date when item should be available at destination location
-`finalized` | **Boolean** `readonly`<br>Whether or not the transfer has completed
-`item_id` | **Uuid** `readonly`<br>ID of the product being transfered
-`order_id` | **Uuid** `readonly`<br>Order the item is being transfered for
-`source_location_id` | **Uuid** `readonly`<br>Location item is being transfered from
-`destination_location_id` | **Uuid** `readonly`<br>Location item is being transfered to
+`quantity` | **Integer** <br>Quantity of items being transfered
+`available_at` | **Datetime** <br>Date when item should be available at destination location
+`finalized` | **Boolean** <br>Whether or not the transfer has completed
+`item_id` | **Uuid** <br>ID of the product being transfered
+`order_id` | **Uuid** <br>Order the item is being transfered for
+`source_location_id` | **Uuid** <br>Location item is being transfered from
+`destination_location_id` | **Uuid** <br>Location item is being transfered to
 
 
 ## Relationships
@@ -24,10 +24,10 @@ Transfers have the following relationships:
 
 Name | Description
 -- | --
-`destination_location` | **Locations** `readonly`<br>Associated Destination location
-`item` | **Items** `readonly`<br>Associated Item
-`order` | **Orders** `readonly`<br>Associated Order
-`source_location` | **Locations** `readonly`<br>Associated Source location
+`destination_location` | **[Location](#locations)** <br>Associated Destination location
+`item` | **[Item](#items)** <br>Associated Item
+`order` | **[Order](#orders)** <br>Associated Order
+`source_location` | **[Location](#locations)** <br>Associated Source location
 
 
 ## Listing transfers
@@ -48,18 +48,18 @@ Name | Description
   {
   "data": [
     {
-      "id": "8328e67c-0367-410b-9e70-31959f9d5345",
+      "id": "ef7b24e4-b08c-42cc-bd83-ab2b804c8fe2",
       "type": "transfers",
       "attributes": {
-        "created_at": "2024-11-25T09:32:12.165066+00:00",
-        "updated_at": "2024-11-25T09:32:12.165066+00:00",
+        "created_at": "2024-12-02T13:04:04.459824+00:00",
+        "updated_at": "2024-12-02T13:04:04.459824+00:00",
         "quantity": 1,
-        "available_at": "2024-11-23T09:30:00.000000+00:00",
+        "available_at": "2024-11-30T13:00:00.000000+00:00",
         "finalized": false,
-        "item_id": "82329bc3-b261-4812-85fd-68f6ce8e36e0",
-        "order_id": "0162396a-8fd4-4d72-8051-925e9dc08718",
-        "source_location_id": "c3bec89e-7070-4a43-bcb1-c1c49bf08034",
-        "destination_location_id": "c3bec89e-7070-4a43-bcb1-c1c49bf08034"
+        "item_id": "ebc13789-8595-4c2b-baa8-25896557199a",
+        "order_id": "53b5ae39-facf-41a2-8c85-5ee87d0243ee",
+        "source_location_id": "00f73e38-d5b4-4966-8141-8d12797fbf43",
+        "destination_location_id": "00f73e38-d5b4-4966-8141-8d12797fbf43"
       },
       "relationships": {}
     }

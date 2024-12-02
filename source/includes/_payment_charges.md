@@ -19,7 +19,7 @@ Name | Description
 `id` | **Uuid** `readonly`<br>Primary key
 `created_at` | **Datetime** `readonly`<br>When the resource was created
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`
+`status` | **String** <br>Status. One of `created`, `started`, `action_required`, `processing`, `succeeded`, `failed`, `canceled`, `expired`
 `amount_in_cents` | **Integer** <br>Amount in cents
 `deposit_in_cents` | **Integer** <br>Deposit in cents
 `total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
@@ -37,13 +37,15 @@ Name | Description
 `deposit_refunded_in_cents` | **Integer** `readonly`<br>Refunded deposit in cents
 `total_refundable_in_cents` | **Integer** `readonly`<br>Total refundable amount in cents (`amount_refundable + deposit_refundable`)
 `total_refunded_in_cents` | **Integer** `readonly`<br>Total refunded amount in cents (`amount_refunded + deposit_refunded`)
-`succeeded_at` | **Datetime** `readonly`<br>When payment charge succeeded
+`succeeded_at` | **Datetime** <br>When payment charge succeeded
 `failed_at` | **Datetime** `readonly`<br>When payment charge failed
 `canceled_at` | **Datetime** `readonly`<br>When payment charge was canceled
 `expired_at` | **Datetime** `readonly`<br>When payment charge expired
-`employee_id` | **Uuid** <br>Associated Employee
-`order_id` | **Uuid** <br>Associated Order
-`customer_id` | **Uuid** <br>Associated Customer
+`employee_id` | **Uuid** `readonly`<br>Associated Employee
+`order_id` | **Uuid** `readonly-after-create`<br>Associated Order
+`customer_id` | **Uuid** `readonly-after-create`<br>Associated Customer
+`payment_method_id` | **Uuid** <br>Associated Payment method
+`payment_authorization_id` | **Uuid** `readonly-after-create`<br>Associated Payment authorization
 
 
 ## Relationships
@@ -51,9 +53,13 @@ Payment charges have the following relationships:
 
 Name | Description
 -- | --
-`customer` | **Customers** `readonly`<br>Associated Customer
-`employee` | **Employees** `readonly`<br>Associated Employee
-`order` | **Orders** `readonly`<br>Associated Order
+`customer` | **[Customer](#customers)** <br>Associated Customer
+`employee` | **[Employee](#employees)** <br>Associated Employee
+`order` | **[Order](#orders)** <br>Associated Order
+`payment` | **[Payment](#payments)** <br>Associated Payment
+`payment_authorization` | **[Payment authorization](#payment-authorizations)** <br>Associated Payment authorization
+`payment_method` | **[Payment method](#payment-methods)** <br>Associated Payment method
+`payment_refunds` | **[Payment refunds](#payment-refunds)** <br>Associated Payment refunds
 
 
 ## Listing payment charges
@@ -74,11 +80,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "63788898-9d24-45da-986c-ca99d99ea4be",
+      "id": "9fcfbe07-17e3-4a8d-9e94-20e0eea95599",
       "type": "payment_charges",
       "attributes": {
-        "created_at": "2024-11-25T09:28:28.708625+00:00",
-        "updated_at": "2024-11-25T09:28:28.708625+00:00",
+        "created_at": "2024-12-02T13:04:00.537936+00:00",
+        "updated_at": "2024-12-02T13:04:00.537936+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -103,7 +109,9 @@ Name | Description
         "expired_at": null,
         "employee_id": null,
         "order_id": null,
-        "customer_id": null
+        "customer_id": null,
+        "payment_method_id": null,
+        "payment_authorization_id": null
       },
       "relationships": {}
     }
@@ -165,6 +173,8 @@ Name | Description
 `employee_id` | **Uuid** <br>`eq`, `not_eq`
 `order_id` | **Uuid** <br>`eq`, `not_eq`
 `customer_id` | **Uuid** <br>`eq`, `not_eq`
+`payment_method_id` | **Uuid** <br>`eq`, `not_eq`
+`payment_authorization_id` | **Uuid** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -174,6 +184,9 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+`amount_in_cents` | **Array** <br>`sum`
+`deposit_in_cents` | **Array** <br>`sum`
+`total_in_cents` | **Array** <br>`sum`
 
 
 ### Includes
@@ -198,7 +211,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/26883f3b-7f2d-4350-a748-d6ab5c8b1938' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/1f3257eb-1d1c-41fd-a7d3-03eadd3ca934' \
     --header 'content-type: application/json' \
 ```
 
@@ -207,11 +220,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "26883f3b-7f2d-4350-a748-d6ab5c8b1938",
+    "id": "1f3257eb-1d1c-41fd-a7d3-03eadd3ca934",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-25T09:28:29.482507+00:00",
-      "updated_at": "2024-11-25T09:28:29.482507+00:00",
+      "created_at": "2024-12-02T13:04:00.022719+00:00",
+      "updated_at": "2024-12-02T13:04:00.022719+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -236,7 +249,9 @@ This request accepts the following includes:
       "expired_at": null,
       "employee_id": null,
       "order_id": null,
-      "customer_id": null
+      "customer_id": null,
+      "payment_method_id": null,
+      "payment_authorization_id": null
     },
     "relationships": {}
   },
@@ -300,11 +315,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "ea90ee87-49eb-45a9-8304-0414d6aafd25",
+    "id": "ca900739-9a3a-4904-8fe2-6f8c55615d7c",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-25T09:28:27.269094+00:00",
-      "updated_at": "2024-11-25T09:28:27.269094+00:00",
+      "created_at": "2024-12-02T13:04:01.057641+00:00",
+      "updated_at": "2024-12-02T13:04:01.057641+00:00",
       "status": "succeeded",
       "amount_in_cents": 10000,
       "deposit_in_cents": 5000,
@@ -323,13 +338,15 @@ This request accepts the following includes:
       "deposit_refunded_in_cents": 0,
       "total_refundable_in_cents": 15000,
       "total_refunded_in_cents": 0,
-      "succeeded_at": "2024-11-25T09:28:27.266810+00:00",
+      "succeeded_at": "2024-12-02T13:04:01.056055+00:00",
       "failed_at": null,
       "canceled_at": null,
       "expired_at": null,
-      "employee_id": "1b7e476e-888b-472c-9fc8-85b37ab2c52f",
+      "employee_id": "bee71145-29aa-48f2-9343-f38d5a58e990",
       "order_id": null,
-      "customer_id": null
+      "customer_id": null,
+      "payment_method_id": null,
+      "payment_authorization_id": null
     },
     "relationships": {}
   },
@@ -357,7 +374,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`
+`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `processing`, `succeeded`, `failed`, `canceled`, `expired`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency
@@ -366,9 +383,11 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider payment identification
 `data[attributes][provider_method]` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider payment secret
-`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
+`data[attributes][succeeded_at]` | **Datetime** <br>When payment charge succeeded
 `data[attributes][order_id]` | **Uuid** <br>Associated Order
 `data[attributes][customer_id]` | **Uuid** <br>Associated Customer
+`data[attributes][payment_method_id]` | **Uuid** <br>Associated Payment method
+`data[attributes][payment_authorization_id]` | **Uuid** <br>Associated Payment authorization
 
 
 ### Includes
@@ -393,11 +412,11 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/payment_charges/5ac74948-bd26-44d1-b5f9-4e67cd954879' \
+    --url 'https://example.booqable.com/api/boomerang/payment_charges/bc0fd549-b1aa-4df1-9386-52cf06e44158' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "5ac74948-bd26-44d1-b5f9-4e67cd954879",
+        "id": "bc0fd549-b1aa-4df1-9386-52cf06e44158",
         "type": "payment_charges",
         "attributes": {
           "status": "started"
@@ -411,11 +430,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "5ac74948-bd26-44d1-b5f9-4e67cd954879",
+    "id": "bc0fd549-b1aa-4df1-9386-52cf06e44158",
     "type": "payment_charges",
     "attributes": {
-      "created_at": "2024-11-25T09:28:26.624536+00:00",
-      "updated_at": "2024-11-25T09:28:26.624536+00:00",
+      "created_at": "2024-12-02T13:03:59.499229+00:00",
+      "updated_at": "2024-12-02T13:03:59.499229+00:00",
       "status": "started",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,
@@ -440,7 +459,9 @@ This request accepts the following includes:
       "expired_at": null,
       "employee_id": null,
       "order_id": null,
-      "customer_id": null
+      "customer_id": null,
+      "payment_method_id": null,
+      "payment_authorization_id": null
     },
     "relationships": {}
   },
@@ -468,7 +489,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`
+`data[attributes][status]` | **String** <br>Status. One of `created`, `started`, `action_required`, `processing`, `succeeded`, `failed`, `canceled`, `expired`
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount in cents
 `data[attributes][deposit_in_cents]` | **Integer** <br>Deposit in cents
 `data[attributes][currency]` | **String** <br>Currency
@@ -477,9 +498,11 @@ Name | Description
 `data[attributes][provider_id]` | **String** <br>External provider payment identification
 `data[attributes][provider_method]` | **String** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.
 `data[attributes][provider_secret]` | **String** <br>Provider payment secret
-`data[attributes][employee_id]` | **Uuid** <br>Associated Employee
+`data[attributes][succeeded_at]` | **Datetime** <br>When payment charge succeeded
 `data[attributes][order_id]` | **Uuid** <br>Associated Order
 `data[attributes][customer_id]` | **Uuid** <br>Associated Customer
+`data[attributes][payment_method_id]` | **Uuid** <br>Associated Payment method
+`data[attributes][payment_authorization_id]` | **Uuid** <br>Associated Payment authorization
 
 
 ### Includes

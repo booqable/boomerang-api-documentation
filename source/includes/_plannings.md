@@ -28,21 +28,23 @@ Name | Description
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `archived` | **Boolean** `readonly`<br>Whether planning is archived
 `archived_at` | **Datetime** `nullable` `readonly`<br>When the planning was archived
-`quantity` | **Integer** `readonly`<br>Total planned
-`starts_at` | **Datetime** `readonly`<br>When the start action is planned
-`stops_at` | **Datetime** `readonly`<br>When the stop action is planned
-`reserved_from` | **Datetime** `readonly`<br>When the items become unavailable
-`reserved_till` | **Datetime** `readonly`<br>When the items become available again
-`reserved` | **Boolean** `readonly`<br>Wheter items are reserved
-`started` | **Integer** `readonly`<br>Amount of items started. Cannot exceed `quantity`. This attribute is omitted when this is a parent planning for a Bundle. 
-`stopped` | **Integer** `readonly`<br>Amount of items stopped. Cannot exceed `quantity` and `started`. This attribute is omitted when this is a parent planning for a Bundle. 
-`location_shortage_amount` | **Integer** `readonly`<br>Amount of items short. This attribute is omitted when this is a parent planning for a Bundle. 
-`shortage_amount` | **Integer** `readonly`<br>Amount of items short on location (could be there are still available on other locations in the same cluster). This attribute is omitted when this is a parent planning for a Bundle. 
-`order_id` | **Uuid** `readonly`<br>Associated Order
-`item_id` | **Uuid** `readonly`<br>Associated Item
-`start_location_id` | **Uuid** `readonly`<br>Associated Start location
-`stop_location_id` | **Uuid** `readonly`<br>Associated Stop location
-`parent_planning_id` | **Uuid** `readonly`<br>Associated Parent planning
+`quantity` | **Integer** <br>Total planned
+`starts_at` | **Datetime** <br>When the start action is planned
+`stops_at` | **Datetime** <br>When the stop action is planned
+`reserved_from` | **Datetime** <br>When the items become unavailable
+`reserved_till` | **Datetime** <br>When the items become available again
+`reserved` | **Boolean** <br>Wheter items are reserved
+`started` | **Integer** <br>Amount of items started. Cannot exceed `quantity`. This attribute is omitted when this is a parent planning for a Bundle. 
+`stopped` | **Integer** <br>Amount of items stopped. Cannot exceed `quantity` and `started`. This attribute is omitted when this is a parent planning for a Bundle. 
+`location_shortage_amount` | **Integer** <br>Amount of items short. This attribute is omitted when this is a parent planning for a Bundle. 
+`shortage_amount` | **Integer** <br>Amount of items short on location (could be there are still available on other locations in the same cluster). This attribute is omitted when this is a parent planning for a Bundle. 
+`item_name` | **String** `writeonly`<br>Allows sorting plannings by item name
+`order_number` | **Integer** `writeonly`<br>Allows sorting plannings by order number
+`order_id` | **Uuid** <br>Associated Order
+`item_id` | **Uuid** <br>Associated Item
+`start_location_id` | **Uuid** <br>Associated Start location
+`stop_location_id` | **Uuid** <br>Associated Stop location
+`parent_planning_id` | **Uuid** <br>Associated Parent planning
 
 
 ## Relationships
@@ -50,14 +52,14 @@ Plannings have the following relationships:
 
 Name | Description
 -- | --
-`item` | **Items** `readonly`<br>Associated Item
-`nested_plannings` | **Plannings** `readonly`<br>Associated Nested plannings
-`order` | **Orders** `readonly`<br>Associated Order
-`order_line` | **Lines** `readonly`<br>Associated Order line
-`parent_planning` | **Plannings** `readonly`<br>Associated Parent planning
-`start_location` | **Locations** `readonly`<br>Associated Start location
-`stock_item_plannings` | **Stock item plannings** `readonly`<br>Associated Stock item plannings
-`stop_location` | **Locations** `readonly`<br>Associated Stop location
+`item` | **[Item](#items)** <br>Associated Item
+`nested_plannings` | **[Plannings](#plannings)** <br>Associated Nested plannings
+`order` | **[Order](#orders)** <br>Associated Order
+`order_line` | **[Line](#lines)** <br>Associated Order line
+`parent_planning` | **[Planning](#plannings)** <br>Associated Parent planning
+`start_location` | **[Location](#locations)** <br>Associated Start location
+`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** <br>Associated Stock item plannings
+`stop_location` | **[Location](#locations)** <br>Associated Stop location
 
 
 ## Listing plannings
@@ -78,11 +80,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "fb861324-83c3-4e2a-83a5-9027e1fbb57b",
+      "id": "41b1ca6f-8cc3-4241-9b15-4d9c90cff3a5",
       "type": "plannings",
       "attributes": {
-        "created_at": "2024-11-25T09:24:16.935819+00:00",
-        "updated_at": "2024-11-25T09:24:17.713620+00:00",
+        "created_at": "2024-12-02T13:06:38.538968+00:00",
+        "updated_at": "2024-12-02T13:06:38.942854+00:00",
         "archived": false,
         "archived_at": null,
         "quantity": 1,
@@ -95,10 +97,10 @@ Name | Description
         "stopped": 0,
         "location_shortage_amount": 0,
         "shortage_amount": 0,
-        "order_id": "54fd87d7-6aae-4bd4-b085-42e2e85221a2",
-        "item_id": "0d19d0bc-e1a3-4741-8c8b-e6c6ea25b7f7",
-        "start_location_id": "2430e677-4bb9-49e4-b213-13062ab8e800",
-        "stop_location_id": "2430e677-4bb9-49e4-b213-13062ab8e800",
+        "order_id": "10899a76-0407-433b-8e7b-92ecb2902697",
+        "item_id": "aa6f8481-c992-4eb4-ad8d-d164ecbeb6aa",
+        "start_location_id": "d1b491b6-ac56-49f1-9b14-481d251e6665",
+        "stop_location_id": "d1b491b6-ac56-49f1-9b14-481d251e6665",
         "parent_planning_id": null
       },
       "relationships": {}
@@ -217,12 +219,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "starts_at": {
-                    "gte": "2024-11-26T09:24:27Z"
+                    "gte": "2024-12-03T13:06:36Z"
                   }
                 },
                 {
                   "starts_at": {
-                    "lte": "2024-11-29T09:24:27Z"
+                    "lte": "2024-12-06T13:06:36Z"
                   }
                 }
               ]
@@ -232,12 +234,12 @@ Use advanced search to make logical filter groups with and/or operators.
               "attributes": [
                 {
                   "stops_at": {
-                    "gte": "2024-11-26T09:24:27Z"
+                    "gte": "2024-12-03T13:06:36Z"
                   }
                 },
                 {
                   "stops_at": {
-                    "lte": "2024-11-29T09:24:27Z"
+                    "lte": "2024-12-06T13:06:36Z"
                   }
                 }
               ]
@@ -254,10 +256,10 @@ Use advanced search to make logical filter groups with and/or operators.
   {
   "data": [
     {
-      "id": "0e80def8-5e1d-4117-a438-46b8d591a0c0"
+      "id": "f630c913-4680-40c2-a27d-315351c04499"
     },
     {
-      "id": "1c0c1892-d393-4555-8c8c-45f806a0705a"
+      "id": "479d168e-97d4-492a-ad52-bf3d3a696b71"
     }
   ]
 }
@@ -356,7 +358,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/plannings/025eb106-235d-4105-93f2-55be75c1e55a' \
+    --url 'https://example.booqable.com/api/boomerang/plannings/e0488285-56fa-4608-a5e7-77ba700b132c' \
     --header 'content-type: application/json' \
 ```
 
@@ -365,11 +367,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "025eb106-235d-4105-93f2-55be75c1e55a",
+    "id": "e0488285-56fa-4608-a5e7-77ba700b132c",
     "type": "plannings",
     "attributes": {
-      "created_at": "2024-11-25T09:24:21.123855+00:00",
-      "updated_at": "2024-11-25T09:24:21.820686+00:00",
+      "created_at": "2024-12-02T13:06:32.858684+00:00",
+      "updated_at": "2024-12-02T13:06:33.257049+00:00",
       "archived": false,
       "archived_at": null,
       "quantity": 1,
@@ -382,10 +384,10 @@ This request accepts the following includes:
       "stopped": 0,
       "location_shortage_amount": 0,
       "shortage_amount": 0,
-      "order_id": "04bd1ece-7dd8-4512-a582-fb2a2c0b6680",
-      "item_id": "00af26aa-ab77-4ce1-9c7a-a9dbed29bdd9",
-      "start_location_id": "a1891d43-7e34-4d05-ba92-bcbe3c3679de",
-      "stop_location_id": "a1891d43-7e34-4d05-ba92-bcbe3c3679de",
+      "order_id": "090e237e-f97f-4ecb-a446-83e60befa57d",
+      "item_id": "a5dd9d6e-fba1-44aa-85f1-6a27418b6851",
+      "start_location_id": "29ffebe1-68d7-40dc-a82e-b6bc52c72145",
+      "stop_location_id": "29ffebe1-68d7-40dc-a82e-b6bc52c72145",
       "parent_planning_id": null
     },
     "relationships": {}

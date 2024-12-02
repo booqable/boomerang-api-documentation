@@ -11,7 +11,7 @@ Name | Description
 `amount_in_cents` | **Integer** `writeonly`<br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
 `reason` | **String** `writeonly`<br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 `order_id` | **Uuid** <br>Associated Order
-`deposit_line_id` | **Uuid** <br>Associated Deposit line
+`deposit_line_id` | **Uuid** `readonly`<br>Associated Deposit line
 
 
 ## Relationships
@@ -19,8 +19,8 @@ Deposit holds have the following relationships:
 
 Name | Description
 -- | --
-`deposit_line` | **Lines** `readonly`<br>Associated Deposit line
-`order` | **Orders** `readonly`<br>Associated Order
+`deposit_line` | **[Line](#lines)** <br>Associated Deposit line
+`order` | **[Order](#orders)** <br>Associated Order
 
 
 ## Create
@@ -37,7 +37,7 @@ Name | Description
       "data": {
         "type": "deposit_holds",
         "attributes": {
-          "order_id": "53b85767-a916-4667-b362-d85916f15ce2",
+          "order_id": "f6d7e276-f35a-4e62-9af6-1be9737df38b",
           "amount_in_cents": 5000,
           "reason": "damages"
         }
@@ -50,11 +50,11 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "5463fb31-9e42-5382-87a3-4def7c1d2753",
+    "id": "fbdfc314-75b9-5b65-8f4e-5afe30eae8e5",
     "type": "deposit_holds",
     "attributes": {
-      "order_id": "53b85767-a916-4667-b362-d85916f15ce2",
-      "deposit_line_id": "3f9ec23d-4afa-40b3-9f2d-f146ae27f8cd"
+      "order_id": "f6d7e276-f35a-4e62-9af6-1be9737df38b",
+      "deposit_line_id": "bae72d61-c89b-46c1-a475-37870df60076"
     },
     "relationships": {}
   },
@@ -85,7 +85,6 @@ Name | Description
 `data[attributes][amount_in_cents]` | **Integer** <br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
 `data[attributes][reason]` | **String** <br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 `data[attributes][order_id]` | **Uuid** <br>Associated Order
-`data[attributes][deposit_line_id]` | **Uuid** <br>Associated Deposit line
 
 
 ### Includes

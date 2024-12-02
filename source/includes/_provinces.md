@@ -21,7 +21,7 @@ Provinces have the following relationships:
 
 Name | Description
 -- | --
-`country` | **Countries** `readonly`<br>Associated Country
+`country` | **[Country](#countries)** <br>Associated Country
 
 
 ## Listing provinces
@@ -42,15 +42,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "695f68be-9a42-462c-8698-a66c9213be92",
+      "id": "8fd48290-f2b8-4720-bda1-83461ebb46c5",
       "type": "provinces",
       "attributes": {
-        "created_at": "2024-11-25T09:30:47.048063+00:00",
-        "updated_at": "2024-11-25T09:30:47.048063+00:00",
+        "created_at": "2024-12-02T13:01:06.218136+00:00",
+        "updated_at": "2024-12-02T13:01:06.218136+00:00",
         "name": "Friesland",
         "code": "FR",
         "position": 0,
-        "country_id": "1e81f49b-2b41-4746-a454-fa1d4478504a"
+        "country_id": "de2bfd43-e5b3-4ef5-8b14-3d9439889116"
       },
       "relationships": {}
     }

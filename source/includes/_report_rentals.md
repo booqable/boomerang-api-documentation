@@ -23,7 +23,7 @@ Report rentals have the following relationships:
 
 Name | Description
 -- | --
-`product` | **Products** `readonly`<br>Associated Product
+`product` | **[Product](#products)** <br>Associated Product
 
 
 ## Listing performance for rental products
@@ -34,7 +34,7 @@ Name | Description
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-11-20+00%3A00%3A00+UTC&filter%5Btill%5D=2024-11-25+23%3A59%3A59+UTC' \
+    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-11-27+00%3A00%3A00+UTC&filter%5Btill%5D=2024-12-02+23%3A59%3A59+UTC' \
     --header 'content-type: application/json' \
 ```
 
@@ -44,17 +44,17 @@ Name | Description
   {
   "data": [
     {
-      "id": "c8ef2e5d-9bef-4f20-8fa2-6e4892d0dec2",
+      "id": "5e4565b7-da0c-462c-9a7b-f6bc925b3f9f",
       "type": "report_rentals",
       "attributes": {
-        "created_at": "2024-11-25T09:29:51.016035+00:00",
-        "name": "Product 1000074",
+        "created_at": "2024-12-02T13:05:10.515746+00:00",
+        "name": "Product 1000037",
         "charge_duration_in_seconds": 14400,
         "planned_duration_in_seconds": 14400,
         "rented_count": 2,
-        "turnover_in_cents": 0,
+        "turnover_in_cents": 4000,
         "quantity": 10,
-        "product_id": "a035cd54-eedf-4da5-a276-3cfade7d1408"
+        "product_id": "7c360c4b-e1cd-4d9f-8071-7f11a75e0e5d"
       },
       "relationships": {}
     }

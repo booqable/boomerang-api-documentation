@@ -22,8 +22,8 @@ Name | Description
 `currency` | **String** `readonly`<br>Currency
 `owner_id` | **Uuid** <br>Id of the owner
 `owner_type` | **String** <br>Type of the owner
-`cart_id` | **Uuid** `readonly`<br>Associated Cart
-`order_id` | **Uuid** `readonly`<br>Associated Order
+`cart_id` | **Uuid** `readonly-after-create`<br>Associated Cart
+`order_id` | **Uuid** `readonly-after-create`<br>Associated Order
 
 
 ## Relationships
@@ -31,9 +31,9 @@ Payments have the following relationships:
 
 Name | Description
 -- | --
-`cart` | **Carts** `readonly`<br>Associated Cart
-`order` | **Orders** `readonly`<br>Associated Order
-`owner` | **Payment charge, Payment authorization, Payment refund** <br>Associated Owner
+`cart` | **[Cart](#carts)** <br>Associated Cart
+`order` | **[Order](#orders)** <br>Associated Order
+`owner` | **[Payment charge](#payment-charges), [Payment authorization](#payment-authorizations), [Payment refund](#payment-refunds)** <br>Associated Owner
 
 
 ## Listing payments
@@ -54,11 +54,11 @@ Name | Description
   {
   "data": [
     {
-      "id": "1bfaa092-81ce-4f3d-bf93-72f0248b5754",
+      "id": "af9ecfdd-4396-4263-9f30-0a4c48c0b8a4",
       "type": "payments",
       "attributes": {
-        "created_at": "2024-11-25T09:30:58.023961+00:00",
-        "updated_at": "2024-11-25T09:30:58.023961+00:00",
+        "created_at": "2024-12-02T13:01:51.606685+00:00",
+        "updated_at": "2024-12-02T13:01:51.606685+00:00",
         "status": "created",
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
@@ -104,6 +104,7 @@ Name | Description
 `id` | **Uuid** <br>`eq`, `not_eq`
 `created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`owner_id` | **Uuid** <br>`eq`, `not_eq`
 `owner_type` | **String** <br>`eq`, `not_eq`
 
 
@@ -114,6 +115,9 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `total` | **Array** <br>`count`
+`amount_in_cents` | **Array** <br>`sum`
+`deposit_in_cents` | **Array** <br>`sum`
+`total_in_cents` | **Array** <br>`sum`
 
 
 ### Includes
@@ -141,7 +145,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payments/df7c7f08-a176-49c0-aa16-d51ac1420886' \
+    --url 'https://example.booqable.com/api/boomerang/payments/0a4af0e9-4285-454e-a65e-2b8e5039f426' \
     --header 'content-type: application/json' \
 ```
 
@@ -150,11 +154,11 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "df7c7f08-a176-49c0-aa16-d51ac1420886",
+    "id": "0a4af0e9-4285-454e-a65e-2b8e5039f426",
     "type": "payments",
     "attributes": {
-      "created_at": "2024-11-25T09:30:56.919186+00:00",
-      "updated_at": "2024-11-25T09:30:56.919186+00:00",
+      "created_at": "2024-12-02T13:01:52.300738+00:00",
+      "updated_at": "2024-12-02T13:01:52.300738+00:00",
       "status": "created",
       "amount_in_cents": 5000,
       "deposit_in_cents": 0,

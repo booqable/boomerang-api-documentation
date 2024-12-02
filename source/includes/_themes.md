@@ -39,8 +39,8 @@ Themes have the following relationships:
 
 Name | Description
 -- | --
-`assets` | **Assets** `readonly`<br>Associated Assets
-`original_theme` | **Themes** `readonly`<br>Associated Original theme
+`assets` | **[Assets](#assets)** <br>Associated Assets
+`original_theme` | **[Theme](#themes)** <br>Associated Original theme
 
 
 ## Listing themes
@@ -61,15 +61,15 @@ Name | Description
   {
   "data": [
     {
-      "id": "d0be3138-5a49-4889-b552-11bb96544772",
+      "id": "58b7b53c-c23f-4ccd-9f8b-55f0c804d19a",
       "type": "themes",
       "attributes": {
-        "created_at": "2024-11-25T09:30:48.272472+00:00",
-        "updated_at": "2024-11-25T09:30:48.272472+00:00",
-        "name": "Theme 10",
-        "identifier": "55009017-8644-4560-8c02-a4407fce14dc",
+        "created_at": "2024-12-02T13:04:39.835888+00:00",
+        "updated_at": "2024-12-02T13:04:39.835888+00:00",
+        "name": "Theme 9",
+        "identifier": "d4c19b90-0c97-4b26-a4e8-8724d47440b5",
         "version": "1.0",
-        "theme_id": "28801dbe-a8e7-402b-bdf1-cecdee11073d",
+        "theme_id": "232b0a5c-54f0-45a1-9e0b-a3379131cb2b",
         "theme_type": "official",
         "description": "A simple theme for setting up your shop",
         "market": null,
@@ -102,13 +102,13 @@ Name | Description
   {
   "data": [
     {
-      "id": "e5bd39a0-ba8e-4377-87d1-8589dbd4a61b",
+      "id": "d7f8cd56-c636-4386-936e-220718a8c1db",
       "type": "themes",
       "attributes": {
-        "created_at": "2024-11-25T09:30:48.879583+00:00",
-        "updated_at": "2024-11-25T09:30:48.879583+00:00",
+        "created_at": "2024-12-02T13:04:40.358448+00:00",
+        "updated_at": "2024-12-02T13:04:40.358448+00:00",
         "name": "Official theme",
-        "identifier": "01b858f1-d401-49a5-981a-fb5269f30d35",
+        "identifier": "244efb57-2d68-47a4-bd6f-e3b24e451cf0",
         "version": "1.0",
         "theme_id": null,
         "theme_type": "official",
@@ -191,7 +191,7 @@ This request does not accept any includes
         "type": "themes",
         "attributes": {
           "name": "New theme",
-          "theme_id": "ca626da6-9aa6-4854-8bc6-98eef008002f"
+          "theme_id": "5b5172bb-b8c0-4750-a962-1152ba4b1d5c"
         }
       }
     }'
@@ -202,15 +202,15 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "689c9f3d-acf2-4d14-809c-9ec1c00becf4",
+    "id": "a016d26b-1162-4381-9782-55b3b86c00f0",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-11-25T09:30:47.710921+00:00",
-      "updated_at": "2024-11-25T09:30:47.710921+00:00",
+      "created_at": "2024-12-02T13:04:40.930502+00:00",
+      "updated_at": "2024-12-02T13:04:40.930502+00:00",
       "name": "Official theme",
-      "identifier": "23798278-bf2a-4871-8083-43e297fe7f0d",
+      "identifier": "fc6aba7e-d9ee-4b72-b853-a5ea0eba9a9c",
       "version": null,
-      "theme_id": "ca626da6-9aa6-4854-8bc6-98eef008002f",
+      "theme_id": "5b5172bb-b8c0-4750-a962-1152ba4b1d5c",
       "theme_type": "official",
       "description": null,
       "market": null,
@@ -276,7 +276,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/themes/8fc1d3b9-e191-4463-a509-9d555ddd7d44' \
+    --url 'https://example.booqable.com/api/boomerang/themes/55c3490a-4f56-4957-a906-4a773082275c' \
     --header 'content-type: application/json' \
 ```
 
@@ -285,15 +285,15 @@ This request accepts the following includes:
 ```json
   {
   "data": {
-    "id": "8fc1d3b9-e191-4463-a509-9d555ddd7d44",
+    "id": "55c3490a-4f56-4957-a906-4a773082275c",
     "type": "themes",
     "attributes": {
-      "created_at": "2024-11-25T09:30:49.491449+00:00",
-      "updated_at": "2024-11-25T09:30:49.491449+00:00",
+      "created_at": "2024-12-02T13:04:41.432538+00:00",
+      "updated_at": "2024-12-02T13:04:41.432538+00:00",
       "name": "Theme 13",
-      "identifier": "5ab2d810-ae7b-4b26-94fe-de55b78bdaa2",
+      "identifier": "762f87a1-e1f9-4287-b7e5-38bd0dbc22bf",
       "version": "1.0",
-      "theme_id": "d71e23cc-94e7-4c7a-ba9d-b52cf1416243",
+      "theme_id": "937a9bdd-c57b-465a-bb23-d304402e49a3",
       "theme_type": "official",
       "description": null,
       "market": null,

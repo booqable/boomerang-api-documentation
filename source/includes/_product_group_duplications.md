@@ -29,8 +29,8 @@ Product group duplications have the following relationships:
 
 Name | Description
 -- | --
-`new_product_group` | **Product groups** `readonly`<br>Associated New product group
-`original_product_group` | **Product groups** <br>Associated Original product group
+`new_product_group` | **[Product group](#product-groups)** <br>Associated New product group
+`original_product_group` | **[Product group](#product-groups)** <br>Associated Original product group
 
 
 ## Duplicate
@@ -47,7 +47,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_product_group_id": "bf640b45-efd8-48b8-981b-fa180814ed6f",
+          "original_product_group_id": "86de5792-a7df-4b52-912c-dd0307650104",
           "name": "New name",
           "description": "New description",
           "collections": true,
@@ -68,7 +68,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "bcdd7266-b90a-5ed0-89c5-45d22f660bb6",
+    "id": "c050b4ac-5c89-549b-a970-9a9fdbf0d7f2",
     "type": "product_group_duplications",
     "attributes": {
       "name": "New name",
@@ -83,8 +83,8 @@ Name | Description
       "show_in_store": true,
       "photo_base64": null,
       "remote_photo_url": null,
-      "original_product_group_id": "bf640b45-efd8-48b8-981b-fa180814ed6f",
-      "new_product_group_id": "674e6527-57de-4c9f-b6d4-d52cc963aed2"
+      "original_product_group_id": "86de5792-a7df-4b52-912c-dd0307650104",
+      "new_product_group_id": "48fc6df5-cba3-4514-9359-1a32b8e96dfc"
     },
     "relationships": {}
   },

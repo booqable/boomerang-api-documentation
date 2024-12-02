@@ -28,8 +28,8 @@ Tax values have the following relationships:
 
 Name | Description
 -- | --
-`owner` | **Order** <br>Associated Owner
-`tax_rate` | **Tax rates** `readonly`<br>Associated Tax rate
+`owner` | **[Order](#orders)** <br>Associated Owner
+`tax_rate` | **[Tax rate](#tax-rates)** <br>Associated Tax rate
 
 
 ## Listing tax values
@@ -50,16 +50,16 @@ Name | Description
   {
   "data": [
     {
-      "id": "5cabfc91-2cf8-4ca5-aedb-896b93164470",
+      "id": "f1344f53-773d-4683-b458-e9d35b34441e",
       "type": "tax_values",
       "attributes": {
-        "created_at": "2024-11-25T09:26:54.796021+00:00",
-        "updated_at": "2024-11-25T09:26:54.796021+00:00",
+        "created_at": "2024-12-02T13:05:13.913014+00:00",
+        "updated_at": "2024-12-02T13:05:13.913014+00:00",
         "name": "VAT 19%",
         "percentage": 19.0,
         "value_in_cents": 13800,
-        "tax_rate_id": "2e7622a3-e9c7-4772-8a49-2852d9149404",
-        "owner_id": "b7176195-cde9-4779-b979-662e687d806c",
+        "tax_rate_id": "e4f26f4f-7c09-4336-b891-b036f2737e42",
+        "owner_id": "ef8361c7-8a1c-45f9-9f09-26f33efd80f2",
         "owner_type": "orders"
       },
       "relationships": {}
@@ -125,7 +125,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_values/2dc10ca3-580d-479a-930f-a8678dc6fb0d?include=owner' \
+    --url 'https://example.booqable.com/api/boomerang/tax_values/6f8b1091-834e-4720-937b-6b2749c7ca63?include=owner' \
     --header 'content-type: application/json' \
 ```
 
@@ -134,34 +134,34 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "2dc10ca3-580d-479a-930f-a8678dc6fb0d",
+    "id": "6f8b1091-834e-4720-937b-6b2749c7ca63",
     "type": "tax_values",
     "attributes": {
-      "created_at": "2024-11-25T09:26:55.401088+00:00",
-      "updated_at": "2024-11-25T09:26:55.401088+00:00",
+      "created_at": "2024-12-02T13:05:14.500038+00:00",
+      "updated_at": "2024-12-02T13:05:14.500038+00:00",
       "name": "VAT 19%",
       "percentage": 19.0,
       "value_in_cents": 13800,
-      "tax_rate_id": "6ca36220-ef5b-4f24-a1a6-25232f2406b1",
-      "owner_id": "34c16dfa-465a-4962-bf80-5a2419acea25",
+      "tax_rate_id": "1772ddb2-8cc9-4ad9-9be3-1d6a1f96feff",
+      "owner_id": "0bb82a19-45b3-4b66-8c63-68c7ccd426a9",
       "owner_type": "orders"
     },
     "relationships": {
       "owner": {
         "data": {
           "type": "orders",
-          "id": "34c16dfa-465a-4962-bf80-5a2419acea25"
+          "id": "0bb82a19-45b3-4b66-8c63-68c7ccd426a9"
         }
       }
     }
   },
   "included": [
     {
-      "id": "34c16dfa-465a-4962-bf80-5a2419acea25",
+      "id": "0bb82a19-45b3-4b66-8c63-68c7ccd426a9",
       "type": "orders",
       "attributes": {
-        "created_at": "2024-11-25T09:26:55.359494+00:00",
-        "updated_at": "2024-11-25T09:26:55.359494+00:00",
+        "created_at": "2024-12-02T13:05:14.475695+00:00",
+        "updated_at": "2024-12-02T13:05:14.475695+00:00",
         "number": null,
         "status": "new",
         "statuses": [
@@ -174,8 +174,8 @@ This request does not accept any includes
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2024-11-23T09:15:00.000000+00:00",
-        "stops_at": "2024-11-27T09:15:00.000000+00:00",
+        "starts_at": "2024-11-30T13:00:00.000000+00:00",
+        "stops_at": "2024-12-04T13:00:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -204,12 +204,13 @@ This request does not accept any includes
         "discount_type": "percentage",
         "discount_percentage": 0.0,
         "billing_address_property_id": null,
+        "delivery_address_property_id": null,
         "fulfillment_type": "pickup",
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
-        "start_location_id": "bc6d6816-ee3b-4c52-9123-e55d88aad569",
-        "stop_location_id": "bc6d6816-ee3b-4c52-9123-e55d88aad569"
+        "start_location_id": "ad10cf8c-820d-4f97-a367-89794eff1ff5",
+        "stop_location_id": "ad10cf8c-820d-4f97-a367-89794eff1ff5"
       },
       "relationships": {}
     }

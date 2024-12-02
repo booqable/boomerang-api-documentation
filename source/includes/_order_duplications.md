@@ -25,8 +25,8 @@ Order duplications have the following relationships:
 
 Name | Description
 -- | --
-`new_order` | **Orders** `readonly`<br>Associated New order
-`original_order` | **Orders** <br>Associated Original order
+`new_order` | **[Order](#orders)** <br>Associated New order
+`original_order` | **[Order](#orders)** <br>Associated Original order
 
 
 ## Duplicate
@@ -43,7 +43,7 @@ Name | Description
       "data": {
         "type": "order_duplications",
         "attributes": {
-          "original_order_id": "9eb4e6e2-c204-48ac-8ba1-5186a31a8ea1",
+          "original_order_id": "9fd00fab-087f-453d-9ea8-1f59d27b5cf8",
           "custom_lines": true,
           "customer": true,
           "dates": true,
@@ -62,7 +62,7 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "a9bf0ed5-25a2-5ff2-b42d-0545f8474974",
+    "id": "16da73ca-1316-5c87-80cf-66c4fc774267",
     "type": "order_duplications",
     "attributes": {
       "custom_lines": true,
@@ -73,8 +73,8 @@ Name | Description
       "stock_item_plannings": true,
       "tags": true,
       "deposit": "current",
-      "original_order_id": "9eb4e6e2-c204-48ac-8ba1-5186a31a8ea1",
-      "new_order_id": "e631c337-a37b-4e45-a782-4650f6e2a765"
+      "original_order_id": "9fd00fab-087f-453d-9ea8-1f59d27b5cf8",
+      "new_order_id": "0c0a1009-d3e1-4b51-b38c-9a68ff48be7b"
     },
     "relationships": {}
   },

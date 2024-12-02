@@ -23,7 +23,7 @@ Name | Description
 `updated_at` | **Datetime** `readonly`<br>When the resource was last updated
 `name` | **String** <br>Name of the field, will be shown as a field label in the checkout
 `item_type` | **String** <br>What kind of input will be presented to the customer during checkout
-`default_property_id` | **Uuid** <br>The ID of the linked Default field (displayed in UI as Custom field)
+`default_property_id` | **Uuid** `nullable`<br>The ID of the linked Default field (displayed in UI as Custom field)
 `tooltip` | **String** <br>Tooltip for the checkout item
 `required` | **Boolean** <br>Whether the item is required to complete checkout
 `position` | **Integer** <br>Used to determine sorting relative to other checkout items
@@ -42,7 +42,7 @@ Checkout items have the following relationships:
 
 Name | Description
 -- | --
-`default_property` | **Default properties** `readonly`<br>Associated Default property
+`default_property` | **[Default property](#default-properties)** <br>Associated Default property
 
 
 ## Listing checkout items
@@ -63,14 +63,14 @@ Name | Description
   {
   "data": [
     {
-      "id": "1d3b46d5-d0c6-488c-b37f-b0a735f60149",
+      "id": "d1cab24d-76f6-424d-bad4-be0738e69faa",
       "type": "checkout_items",
       "attributes": {
-        "created_at": "2024-11-25T09:30:40.348271+00:00",
-        "updated_at": "2024-11-25T09:30:40.348271+00:00",
+        "created_at": "2024-12-02T13:01:28.155468+00:00",
+        "updated_at": "2024-12-02T13:01:28.155468+00:00",
         "name": "Checkout item 1",
         "item_type": "field",
-        "default_property_id": "439461ac-337a-4ca3-9868-eddd6a759e8f",
+        "default_property_id": "8fdf58bc-21fa-4b98-8acd-ba1705537de2",
         "tooltip": null,
         "required": false,
         "position": 1,
@@ -147,7 +147,7 @@ This request does not accept any includes
 
 ```shell
   curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/e265723e-fd5b-47e5-bb62-3c26fd85a2a5?include=default_property' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/6457abca-3e52-4972-903e-16d646ec1abf?include=default_property' \
     --header 'content-type: application/json' \
 ```
 
@@ -156,14 +156,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "e265723e-fd5b-47e5-bb62-3c26fd85a2a5",
+    "id": "6457abca-3e52-4972-903e-16d646ec1abf",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-25T09:30:41.080532+00:00",
-      "updated_at": "2024-11-25T09:30:41.080532+00:00",
-      "name": "Checkout item 2",
+      "created_at": "2024-12-02T13:01:29.716729+00:00",
+      "updated_at": "2024-12-02T13:01:29.716729+00:00",
+      "name": "Checkout item 4",
       "item_type": "field",
-      "default_property_id": "97f0fa02-ce55-40c9-99e9-440762c1e34a",
+      "default_property_id": "76f18996-c926-4326-83bd-f9e994fd0869",
       "tooltip": null,
       "required": false,
       "position": 1,
@@ -212,7 +212,7 @@ This request does not accept any includes
         "attributes": {
           "name": "Mobile number",
           "item_type": "field",
-          "default_property_id": "82d4e8ca-35e9-454d-a8aa-4a6a830713af"
+          "default_property_id": "2c8ac555-f988-42f7-9ee0-b693c48fc103"
         }
       }
     }'
@@ -223,14 +223,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "80fb297a-b9b5-49df-a782-d0b3928f937f",
+    "id": "47b0b4b5-66d8-4f64-99df-fb508e9525ac",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-25T09:30:42.394894+00:00",
-      "updated_at": "2024-11-25T09:30:42.394894+00:00",
+      "created_at": "2024-12-02T13:01:28.675724+00:00",
+      "updated_at": "2024-12-02T13:01:28.675724+00:00",
       "name": "Mobile number",
       "item_type": "field",
-      "default_property_id": "82d4e8ca-35e9-454d-a8aa-4a6a830713af",
+      "default_property_id": "2c8ac555-f988-42f7-9ee0-b693c48fc103",
       "tooltip": null,
       "required": false,
       "position": 2,
@@ -289,11 +289,11 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/59e5922c-d4ef-4372-9c3c-45811b9e5039' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/b5d1a9f1-841e-4c7c-ad37-dd53cbe667ae' \
     --header 'content-type: application/json' \
     --data '{
       "data": {
-        "id": "59e5922c-d4ef-4372-9c3c-45811b9e5039",
+        "id": "b5d1a9f1-841e-4c7c-ad37-dd53cbe667ae",
         "type": "checkout_items",
         "attributes": {
           "name": "Additional information"
@@ -307,14 +307,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "59e5922c-d4ef-4372-9c3c-45811b9e5039",
+    "id": "b5d1a9f1-841e-4c7c-ad37-dd53cbe667ae",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-25T09:30:41.688325+00:00",
-      "updated_at": "2024-11-25T09:30:41.718882+00:00",
+      "created_at": "2024-12-02T13:01:29.178603+00:00",
+      "updated_at": "2024-12-02T13:01:29.203540+00:00",
       "name": "Additional information",
       "item_type": "field",
-      "default_property_id": "d364dbec-bcc3-45e9-b280-6d8a8cc58b47",
+      "default_property_id": "bb0fc3d8-f0a3-4c8b-a5a2-fec3815e8605",
       "tooltip": null,
       "required": false,
       "position": 1,
@@ -373,7 +373,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/checkout_items/04c8d092-6c67-4e27-b6bc-763889ec2b03' \
+    --url 'https://example.booqable.com/api/boomerang/checkout_items/2a49f17a-695f-49e0-9b17-209e44201637' \
     --header 'content-type: application/json' \
 ```
 
@@ -382,14 +382,14 @@ This request does not accept any includes
 ```json
   {
   "data": {
-    "id": "04c8d092-6c67-4e27-b6bc-763889ec2b03",
+    "id": "2a49f17a-695f-49e0-9b17-209e44201637",
     "type": "checkout_items",
     "attributes": {
-      "created_at": "2024-11-25T09:30:43.052378+00:00",
-      "updated_at": "2024-11-25T09:30:43.052378+00:00",
+      "created_at": "2024-12-02T13:01:30.184605+00:00",
+      "updated_at": "2024-12-02T13:01:30.184605+00:00",
       "name": "Checkout item 5",
       "item_type": "field",
-      "default_property_id": "96567113-7d22-4881-8bef-88d1e837a634",
+      "default_property_id": "ec410b3b-99a4-4712-93bc-5f1386432a74",
       "tooltip": null,
       "required": false,
       "position": 1,

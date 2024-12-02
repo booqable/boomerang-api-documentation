@@ -32,7 +32,7 @@ Name | Description
 -- | --
 `id` | **Uuid** `readonly`<br>Primary key
 `confirm_shortage` | **Boolean** `writeonly`<br>A value of `true` overrides shortage warnings.
-`stock_item_id` | **Uuid** <br>ID of the stock item that needs to be archived.
+`stock_item_id` | **Uuid** `readonly-after-create`<br>ID of the stock item that needs to be archived.
 
 
 ## Relationships
@@ -40,7 +40,7 @@ Stock item archivations have the following relationships:
 
 Name | Description
 -- | --
-`stock_item` | **Stock items** <br>Associated Stock item
+`stock_item` | **[Stock item](#stock-items)** <br>Associated Stock item
 
 
 ## Archive
@@ -57,7 +57,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "a4fd9859-470c-4bb1-95c3-238f47d80dfe"
+          "stock_item_id": "4d5a953f-b2d7-472a-91cb-df7bc01a5d69"
         }
       }
     }'
@@ -68,10 +68,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "c83bd932-6ed0-5527-826a-e96a23e9fbf2",
+    "id": "e4de08ca-be4a-57df-9256-c5b11418853b",
     "type": "stock_item_archivations",
     "attributes": {
-      "stock_item_id": "a4fd9859-470c-4bb1-95c3-238f47d80dfe"
+      "stock_item_id": "4d5a953f-b2d7-472a-91cb-df7bc01a5d69"
     },
     "relationships": {}
   },
@@ -90,7 +90,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "5309b570-30f4-4419-a4a6-811556662ff5"
+          "stock_item_id": "5f58e8e7-3888-432a-8787-c5ce033fad37"
         }
       }
     }'
@@ -123,7 +123,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "50621aeb-a4fc-454f-9989-18409564a9d6"
+          "stock_item_id": "57a544ec-894b-410e-98ff-239745f36809"
         }
       }
     }'
@@ -143,7 +143,7 @@ Name | Description
         "blocking": [
           {
             "order_ids": [
-              "341b18ac-c5a2-497d-89c4-82e8342aea68"
+              "3e40a592-bd93-4016-b2d1-7b3ed4b05305"
             ]
           }
         ]
@@ -164,7 +164,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "7aaaa24b-f3fe-483b-ae9d-a3be05a63c78"
+          "stock_item_id": "8c68be21-0c21-435a-a460-f50439e01952"
         }
       }
     }'
@@ -186,12 +186,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "87505a5a-b58b-46ac-b98f-337023459fd0",
+            "item_id": "01dc6213-0eb6-44d1-ae6a-3c8be3ad0438",
             "mutation": -1,
             "order_ids": [
-              "0666f894-fcc2-4599-a9fd-80e4cf8d7636"
+              "03923f25-c89f-4df8-abaf-3da2b9e96b2e"
             ],
-            "location_id": "d3201564-9180-448f-80ce-e116b8644e53",
+            "location_id": "748cf024-5831-4626-a7d5-e4279ea2e6ab",
             "available": 0,
             "plannable": 0,
             "stock_count": 1,
@@ -221,7 +221,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "41cf50a8-b148-4d40-a212-ea739dd6f160"
+          "stock_item_id": "eb509df6-b2b0-458b-af0b-be549fd82e0a"
         }
       }
     }'
@@ -242,12 +242,12 @@ Name | Description
           {
             "reason": "shortage",
             "shortage": 1,
-            "item_id": "94045f27-722a-4a6e-b82a-cd3e1e5c1fca",
+            "item_id": "6791f7f0-127a-486c-b3c2-3793847cdbf3",
             "mutation": -1,
             "order_ids": [
-              "b166350a-d90e-4d64-a191-804c0cb2f1b4"
+              "f4f45a91-f3fd-4d61-b5a2-7189cd38d44e"
             ],
-            "location_id": "5dce7516-d4ee-4377-8819-f7ffb880f12a",
+            "location_id": "fc820412-e075-4bd8-9738-69770f55eba7",
             "available": 0,
             "plannable": 1,
             "stock_count": 1,
@@ -278,7 +278,7 @@ Name | Description
       "data": {
         "type": "stock_item_archivations",
         "attributes": {
-          "stock_item_id": "f87c536a-3a6a-48c9-9331-a0dda819d1ef",
+          "stock_item_id": "268aa149-a2f1-4e92-9db2-fb36f4a3e463",
           "confirm_shortage": true
         }
       }
@@ -290,10 +290,10 @@ Name | Description
 ```json
   {
   "data": {
-    "id": "7f115f1c-c05d-5762-bc3e-705651ac3e10",
+    "id": "9cd57eae-837b-5b63-862f-61ae852c88a4",
     "type": "stock_item_archivations",
     "attributes": {
-      "stock_item_id": "f87c536a-3a6a-48c9-9331-a0dda819d1ef"
+      "stock_item_id": "268aa149-a2f1-4e92-9db2-fb36f4a3e463"
     },
     "relationships": {}
   },
