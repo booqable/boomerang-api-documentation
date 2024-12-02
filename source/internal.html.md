@@ -24,6 +24,7 @@ includes:
   - coupons
   - customers
   - default_properties
+  - delivery_distance_calculations
   - documents
   - email_templates
   - emails

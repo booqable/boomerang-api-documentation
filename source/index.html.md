@@ -37,6 +37,8 @@ includes:
   - notes
   - operations
   - orders
+  - order_delivery_rates
+  - order_delivery_rate_recalculations
   - order_duplications
   - order_fulfillments
   - order_price_recalculations
