@@ -7,98 +7,116 @@ title: Booqable API documentation
 # toc_footers:
 #   - <a href='#'>Sign Up for a Developer Account</a>
 
-includes:
-  - introduction
-  - authentication
-  - errors
+#
+# Note the custom sorting:
+#  - orders
+#  - order_somethings
+#
 
-  - resources
+includes:
+  - global/introduction
+  - global/authentication
+  - global/errors
+
+  - headers/resources
+  - activity_logs
+  - assets
+  - authentication_methods
   - barcodes
-  - bundle_items
+  - billing_invoices
+  - bulk_upserts
   - bundles
+  - bundle_items
+  - checkout_fields
+  - checkout_items
   - clusters
   - collections
   - collection_items
   - companies
   - countries
+  - counts
   - coupons
+  - currencies
   - customers
   - default_properties
   - delivery_distance_calculations
+  - deposit_holds
+  - device_tokens
   - documents
   - email_templates
   - emails
   - employees
+  - employee_invitations
+  - exports
+  - inventory_breakdowns
+  - inventory_level_intervals
   - inventory_levels
   - invoice_finalizations
   - invoice_revisions
-  - items
+  - ip_addresses
   - item_prices
+  - items
   - lines
   - locations
+  - login_activities
+  - menus
+  - merges
   - notes
+  - notification_subscriptions
+  - operating_rules
   - operations
   - orders
+  - order_delivery_rate_recalculations
+  - order_delivery_rates
   - order_duplications
   - order_fulfillments
   - order_price_recalculations
   - order_status_transitions
-  - payment_methods
   - payments
+  - payment_authorizations
+  - payment_charges
+  - payment_methods
+  - payment_refunds
   - photos
   - plannings
   - price_rules
   - price_rulesets
   - price_structures
   - price_tiles
-  - product_groups
   - products
+  - product_groups
+  - product_group_duplications
+  - product_trackers
   - properties
   - provinces
+  - publications
+  - rendered_emails
   - sessions
   - settings
   - signatures
   - sortings
   - stock_counts
-  - stock_item_plannings
   - stock_items
   - stock_item_archivations
+  - stock_item_plannings
   - stock_item_suggestions
+  - stock_item_trackers
   - tags
   - tax_categories
   - tax_rates
   - tax_regions
   - tax_values
-  - transactions
+  - themes
   - transfers
+  - user_invitations
   - users
+  - webhook_endpoints
 
-  - internal
-  - authentication_methods
-  - assets
-  - billing_invoices
-  - bulk_upserts
-  # - cancellation_requests
-  - checkout_fields
-  - counts
-  - currencies
-  - device_tokens
-  - employee_invitations
-  - inventory_breakdowns
-  - inventory_level_intervals
-  - ip_addresses
-  - menus
-  - merges
-  - notification_subscriptions
-  - login_activities
-  - operating_rules
-  - publications
+  - headers/reports
   - report_consumables
   - report_rental_intervals
   - report_rentals
   - report_stock_items
-  - themes
-  - webhook_endpoints
 
 search: true
 
