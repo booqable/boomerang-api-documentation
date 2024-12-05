@@ -27,7 +27,6 @@ includes:
   - bulk_upserts
   - bundles
   - bundle_items
-  - checkout_fields
   - checkout_items
   - clusters
   - collections
