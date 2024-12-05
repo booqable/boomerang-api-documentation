@@ -25,7 +25,6 @@ includes:
   - barcodes
   - bundles
   - bundle_items
-  - checkout_fields
   - checkout_items
   - clusters
   - collections
