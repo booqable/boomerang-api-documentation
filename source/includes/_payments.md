@@ -1,79 +1,72 @@
 # Payments
 
-A `Payment` holds information about a payment and its type (owner).
-
-## Endpoints
-`GET /api/boomerang/payments`
-
-`GET /api/boomerang/payments/{id}`
-
-## Fields
-Every payment has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** `readonly`<br>Status dependent of the `owner`
-`amount_in_cents` | **Integer** `readonly`<br>Amount in cents
-`deposit_in_cents` | **Integer** `readonly`<br>Deposit in cents
-`total_in_cents` | **Integer** `readonly`<br>Total amount in cents (amount + deposit)
-`currency` | **String** `readonly`<br>Currency
-`owner_id` | **Uuid** <br>Id of the owner
-`owner_type` | **String** <br>Type of the owner
-`cart_id` | **Uuid** `readonly-after-create`<br>Associated Cart
-`order_id` | **Uuid** `readonly-after-create`<br>Associated Order
-
+A Payment holds information about a payment and its type (owner).
 
 ## Relationships
-Payments have the following relationships:
-
 Name | Description
 -- | --
-`cart` | **[Cart](#carts)** <br>Associated Cart
-`order` | **[Order](#orders)** <br>Associated Order
-`owner` | **[Payment charge](#payment-charges), [Payment authorization](#payment-authorizations), [Payment refund](#payment-refunds)** <br>Associated Owner
+`cart` | **[Cart](#carts)** `required`<br>The associated cart.
+`order` | **[Order](#orders)** `required`<br>The associated order.
+`owner` | **[Payment charge](#payment-charges), [Payment authorization](#payment-authorizations), [Payment refund](#payment-refunds)** `required`<br>The resource this payment belongs to.
+
+
+Check matching attributes under [Fields](#payments-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`amount_in_cents` | **integer** `readonly`<br>Amount in cents.
+`cart_id` | **uuid** `readonly-after-create`<br>The associated cart.
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`currency` | **string** `readonly`<br>Currency.
+`deposit_in_cents` | **integer** `readonly`<br>Deposit in cents.
+`id` | **uuid** `readonly`<br>Primary key.
+`order_id` | **uuid** `readonly-after-create`<br>The associated order.
+`owner_id` | **uuid** <br>The resource this payment belongs to.
+`owner_type` | **string** <br>The resource type of the owner.
+`status` | **string** `readonly`<br>Status dependent of the `owner`.
+`total_in_cents` | **integer** `readonly`<br>Total amount in cents (amount + deposit).
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing payments
 
 
-
 > How to fetch a list of payments:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payments' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/payments'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "af9ecfdd-4396-4263-9f30-0a4c48c0b8a4",
-      "type": "payments",
-      "attributes": {
-        "created_at": "2024-12-02T13:01:51.606685+00:00",
-        "updated_at": "2024-12-02T13:01:51.606685+00:00",
-        "status": "created",
-        "amount_in_cents": 5000,
-        "deposit_in_cents": 0,
-        "total_in_cents": 5000,
-        "currency": "usd",
-        "owner_id": null,
-        "owner_type": null,
-        "cart_id": null,
-        "order_id": null
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "d7796fe0-99e9-4f00-858b-eb3f1e28fd8f",
+        "type": "payments",
+        "attributes": {
+          "created_at": "2028-11-19T02:39:01.000000+00:00",
+          "updated_at": "2028-11-19T02:39:01.000000+00:00",
+          "status": "created",
+          "amount_in_cents": 5000,
+          "deposit_in_cents": 0,
+          "total_in_cents": 5000,
+          "currency": "usd",
+          "owner_id": null,
+          "owner_type": null,
+          "cart_id": null,
+          "order_id": null
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -86,13 +79,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner,order,cart`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payments]=created_at,updated_at,status`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payments]=created_at,updated_at,status`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=owner,order,cart`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -101,11 +94,11 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`owner_id` | **Uuid** <br>`eq`, `not_eq`
-`owner_type` | **String** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`owner_id` | **uuid** <br>`eq`, `not_eq`
+`owner_type` | **string** <br>`eq`, `not_eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -114,10 +107,10 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
-`amount_in_cents` | **Array** <br>`sum`
-`deposit_in_cents` | **Array** <br>`sum`
-`total_in_cents` | **Array** <br>`sum`
+`amount_in_cents` | **array** <br>`sum`
+`deposit_in_cents` | **array** <br>`sum`
+`total` | **array** <br>`count`
+`total_in_cents` | **array** <br>`sum`
 
 
 ### Includes
@@ -140,39 +133,37 @@ This request accepts the following includes:
 ## Fetching a payment
 
 
-
 > How to fetch a payment:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payments/0a4af0e9-4285-454e-a65e-2b8e5039f426' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/payments/bf92b7a9-88e9-43e2-85c0-49ff1418a448'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "0a4af0e9-4285-454e-a65e-2b8e5039f426",
-    "type": "payments",
-    "attributes": {
-      "created_at": "2024-12-02T13:01:52.300738+00:00",
-      "updated_at": "2024-12-02T13:01:52.300738+00:00",
-      "status": "created",
-      "amount_in_cents": 5000,
-      "deposit_in_cents": 0,
-      "total_in_cents": 5000,
-      "currency": "usd",
-      "owner_id": null,
-      "owner_type": null,
-      "cart_id": null,
-      "order_id": null
+    "data": {
+      "id": "bf92b7a9-88e9-43e2-85c0-49ff1418a448",
+      "type": "payments",
+      "attributes": {
+        "created_at": "2016-06-23T23:18:00.000000+00:00",
+        "updated_at": "2016-06-23T23:18:00.000000+00:00",
+        "status": "created",
+        "amount_in_cents": 5000,
+        "deposit_in_cents": 0,
+        "total_in_cents": 5000,
+        "currency": "usd",
+        "owner_id": null,
+        "owner_type": null,
+        "cart_id": null,
+        "order_id": null
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -185,8 +176,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner,order,cart`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payments]=created_at,updated_at,status`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payments]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships `?include=owner,order,cart`
 
 
 ### Includes

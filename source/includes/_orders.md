@@ -3,16 +3,18 @@
 Orders are the heart of every rental operation. They hold configuration and information about:
 
 - The customer
+  <br/>When assigning a customer to an order, the order will inherit the tax region and deposit from the customer.
 - Pricing and taxes
 - Deposits
 - Rental period and location
+  <br/>Changing these can lead to shortage, and the update will be blocked by a warning or error.
+  A shortage warning can be confirmed by setting the `confirm_shortage` attribute to `true`.
 - Shortages
-- (Payment) status
-- Additional information
+- Payment status
 
-**An order can have multiple of the following statuses:**
+## Statuses
 
-- `new` Means it's in new state.
+- `new` Means the order is new, and invisible to anyone except the employee who created it.
 - `concept` Does not influence availability.
 - `reserved` Items on the order will be reserved and not available for other orders.
 - `started` Means that the rental has started. In most cases this means items are out with a customer.
@@ -22,193 +24,161 @@ Orders are the heart of every rental operation. They hold configuration and info
 
 To transition an Order to the next status, create an [OrderStatusTransition](#order-status-transition).
 
-The actual status of items and stock items can be found in their respective resource (Planning, StockItemPlanning).
-
-**When assigning a customer to an order the following settings will be persisted to the order:**
-
-- `tax_region_id`
-- `deposit_type`
-- `deposit_value`
-
-**Changing one of the following values can lead to shortages:**
-
-- `starts_at`
-- `stops_at`
-- `start_location_id`
-- `stop_location_id`
-
-A shortage error can be confirmed by setting the `confirm_shortage` attribute to `true`. Only if the shortage is within the limit configured in the product group(s). See the Product group resource for more information.
-
-## Endpoints
-`GET api/boomerang/orders`
-
-`POST api/boomerang/orders/search`
-
-`GET api/boomerang/orders/new`
-
-`GET api/boomerang/orders/{id}`
-
-`POST /api/boomerang/orders`
-
-`PUT api/boomerang/orders/{id}`
-
-## Fields
-Every order has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`number` | **Integer** `readonly`<br>The unique order number
-`status` | **String** `readonly`<br>One of `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`
-`statuses` | **Array** `readonly`<br>Status(es) of planned products
-`status_counts` | **Hash** `readonly`<br>An object containing the status counts of planned products `{ "concept": 0, "reserved": 2, "started": 5, "stopped": 10 }`
-`starts_at` | **Datetime** `nullable`<br>When the items on the order become unavailable
-`stops_at` | **Datetime** `nullable`<br>When the items on the order become available again
-`deposit_type` | **String** `nullable`<br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`deposit_value` | **Float** <br>The value to use for `deposit_type`
-`entirely_started` | **Boolean** `readonly`<br>Whether all items on the order are started
-`entirely_stopped` | **Boolean** `readonly`<br>Whether all items on the order are stopped
-`location_shortage` | **Boolean** `readonly`<br>Whether there is a shortage on the pickup location
-`shortage` | **Boolean** `readonly`<br>Whether there is a shortage for this order
-`payment_status` | **String** `readonly`<br>One of `paid`, `partially_paid`, `overpaid`, `payment_due`, `process_deposit`
-`override_period_restrictions` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
-`confirm_shortage` | **Boolean** `writeonly`<br>Confirm shortage on update
-`has_signed_contract` | **Boolean** `readonly`<br>Whether the order has a signed contract
-`tag_list` | **Array** <br>Case insensitive tag list
-`properties` | **Hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties)
-`properties_attributes` | **Array** `writeonly`<br>The properties of the order
-`order_delivery_rate_attributes` | **Hash** `writeonly`<br>The delivery rate of the order
-`price_in_cents` | **Integer** `readonly`<br>Subtotal excl. taxes (excl. deposit)
-`grand_total_in_cents` | **Integer** `readonly`<br>Total excl. taxes (excl. deposit)
-`grand_total_with_tax_in_cents` | **Integer** `readonly`<br>Amount incl. taxes (excl. deposit)
-`tax_in_cents` | **Integer** `readonly`<br>Total tax
-`discount_in_cents` | **Integer** `readonly`<br>Discount (incl. or excl. taxes based on `tax_strategy`)
-`coupon_discount_in_cents` | **Integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`
-`total_discount_in_cents` | **Integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`
-`deposit_in_cents` | **Integer** `readonly`<br>Deposit
-`deposit_paid_in_cents` | **Integer** `readonly`<br>How much of the deposit is paid
-`deposit_refunded_in_cents` | **Integer** `readonly`<br>How much of the deposit is refunded
-`deposit_held_in_cents` | **Integer** `readonly`<br>Amount of deposit held
-`deposit_to_refund_in_cents` | **Integer** `readonly`<br>Amount of deposit (still) to be refunded
-`to_be_paid_in_cents` | **Integer** `readonly`<br>Amount that (still) has to be paid
-`paid_in_cents` | **Integer** `readonly`<br>How much was paid
-`discount_value` | **Float** `writeonly`<br>The value to use for `discount_type`
-`discount_type` | **String** <br>One of `percentage`, `fixed`
-`discount_percentage` | **Float** `readonly`<br>The discount percentage applied to this order. May update if order amount changes and type is `fixed`
-`billing_address_property_id` | **Uuid** <br>The property id of the billing address
-`delivery_address_property_id` | **Uuid** <br>The property id of the delivery address
-`fulfillment_type` | **String** <br>One of `pickup`, `delivery`
-`customer_id` | **Uuid** `nullable`<br>The associated customer
-`tax_region_id` | **Uuid** `nullable`<br>Associated Tax region
-`coupon_id` | **Uuid** `nullable`<br>Associated Coupon
-`start_location_id` | **Uuid** <br>The location where the customer will pick up the items. 
-`stop_location_id` | **Uuid** <br>The location where the customer will return the items.<br>When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
-
-
 ## Relationships
-Orders have the following relationships:
-
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** <br>Associated Barcode
-`coupon` | **[Coupon](#coupons)** <br>Associated Coupon
-`customer` | **[Customer](#customers)** <br>The associated customer
-`documents` | **[Documents](#documents)** <br>Associated Documents
-`lines` | **[Lines](#lines)** <br>Associated Lines
-`notes` | **[Notes](#notes)** <br>Associated Notes
-`order_delivery_rate` | **[Order delivery rate](#order-delivery-rates)** <br>Associated Order delivery rate
-`plannings` | **[Plannings](#plannings)** <br>Associated Plannings
-`properties` | **[Properties](#properties)** <br>Associated Properties
-`start_location` | **[Location](#locations)** <br>The location where the customer will pick up the items. 
-`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** <br>Associated Stock item plannings
-`stop_location` | **[Location](#locations)** <br>The location where the customer will return the items.<br>When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
-`tax_region` | **[Tax region](#tax-regions)** <br>Associated Tax region
-`tax_values` | **[Tax values](#tax-values)** <br>Associated Tax values
-`transfers` | **[Transfers](#transfers)** <br>Associated Transfers
+`barcode` | **[Barcode](#barcodes)** `optional`<br>The QR code automatically generated for this Order.
+`coupon` | **[Coupon](#coupons)** `optional`<br>The Coupon added to this Order. 
+`customer` | **[Customer](#customers)** `optional`<br>The Customer this Order is for. 
+`documents` | **[Documents](#documents)** `hasmany`<br>Documents (quotes, contracts, invoices) related to this order. 
+`lines` | **[Lines](#lines)** `hasmany`<br>All the Lines of this Order. There is an automatically generated line for every Planning. In addition there can be manually added lines for custom charges, deposit holds and sections. 
+`notes` | **[Notes](#notes)** `hasmany`<br>Notes about this Order. 
+`order_delivery_rate` | **[Order delivery rate](#order-delivery-rates)** `optional`<br>Information about the cost of delivery for this Order. 
+`plannings` | **[Plannings](#plannings)** `hasmany`<br>The Plannings for this Order, containing the booked quantities and current status for all Products on this Order. 
+`properties` | **[Properties](#properties)** `hasmany`<br>Custom but structured data added to this Order. Both Properties linked to [DefaultProperties](#default-properties), and one-off Properties can be added to orders. Properties of Orders can be updated in bulk by writing to the `properties_attributes` attribute. 
+`start_location` | **[Location](#locations)** `required`<br>The Location where the Customer will pick up the items. 
+`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The StockItems planned on this Order, and their current status.
+`stop_location` | **[Location](#locations)** `required`<br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`tax_region` | **[Tax region](#tax-regions)** `optional`<br>TaxRegion applied to this Order. 
+`tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one TaxValue for each applicable TaxRate.
+`transfers` | **[Transfers](#transfers)** `hasmany`<br>Transfers that have been generated to solve shortages on this order.
+
+
+Check matching attributes under [Fields](#orders-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`billing_address_property_id` | **uuid** <br>The property id of the billing address. 
+`confirm_shortage` | **boolean** `writeonly`<br>Confirm shortage on update. 
+`coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`. 
+`coupon_id` | **uuid** `nullable`<br>The Coupon added to this Order. 
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`customer_id` | **uuid** `nullable`<br>The Customer this Order is for. 
+`delivery_address_property_id` | **uuid** <br>The property id of the delivery address. 
+`deposit_held_in_cents` | **integer** `readonly`<br>Amount of deposit held. 
+`deposit_in_cents` | **integer** `readonly`<br>Deposit. 
+`deposit_paid_in_cents` | **integer** `readonly`<br>How much of the deposit is paid. 
+`deposit_refunded_in_cents` | **integer** `readonly`<br>How much of the deposit is refunded. 
+`deposit_to_refund_in_cents` | **integer** `readonly`<br>Amount of deposit (still) to be refunded. 
+`deposit_type` | **enum** `nullable`<br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
+`deposit_value` | **float** <br>The value to use for `deposit_type`. 
+`discount_in_cents` | **integer** `readonly`<br>Discount (incl. or excl. taxes based on `tax_strategy`). 
+`discount_percentage` | **float** `readonly`<br>The discount percentage applied to this order. May update if order amount changes and type is `fixed`. 
+`discount_type` | **string** <br>Type of discount. 
+`discount_value` | **float** `writeonly`<br>The value to use for `discount_type`. 
+`entirely_started` | **boolean** `readonly`<br>Whether all items on the order are started. 
+`entirely_stopped` | **boolean** `readonly`<br>Whether all items on the order are stopped. 
+`fulfillment_type` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
+`grand_total_in_cents` | **integer** `readonly`<br>Total excl. taxes (excl. deposit). 
+`grand_total_with_tax_in_cents` | **integer** `readonly`<br>Amount incl. taxes (excl. deposit). 
+`has_signed_contract` | **boolean** `readonly`<br>Whether the order has a signed contract. 
+`id` | **uuid** `readonly`<br>Primary key.
+`location_shortage` | **boolean** `readonly`<br>Whether there is a shortage on the pickup location. 
+`number` | **integer** `readonly`<br>The unique order number. 
+`order_delivery_rate_attributes` | **hash** `writeonly`<br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
+`override_period_restrictions` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
+`paid_in_cents` | **integer** `readonly`<br>How much was paid. 
+`payment_status` | **enum** `readonly`<br>Indicates next step to take wrt. payment for this order.<br> One of: `paid`, `partially_paid`, `overpaid`, `payment_due`, `process_deposit`.
+`price_in_cents` | **integer** `readonly`<br>Subtotal excl. taxes (excl. deposit). 
+`properties` | **hash** `readonly`<br>A hash containing all property identidiers and values (include the properties relation if you need more detailed information). Properties of orders can be updated in bulk by writing to the `properties_attributes` attribute. 
+`properties_attributes` | **array** `writeonly`<br>Assign this attribute to create/update properties as subresource of order in a single request. 
+`shortage` | **boolean** `readonly`<br>Whether there is a shortage for this order. 
+`start_location_id` | **uuid** <br>The Location where the Customer will pick up the items. 
+`starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. 
+`status` | **enum** `readonly`<br>Simplified status of the order. An order can be in a mixed state. The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "concept": 0, "reserved": 2, "started": 5, "stopped": 10 }`. 
+`statuses` | **array** `readonly`<br>Status(es) of planned products. 
+`stop_location_id` | **uuid** <br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`stops_at` | **datetime** `nullable`<br>When the items on the order become available again. 
+`tag_list` | **array[string]** <br>Case insensitive tag list. 
+`tax_in_cents` | **integer** `readonly`<br>Total tax. 
+`tax_region_id` | **uuid** `nullable`<br>TaxRegion applied to this Order. 
+`to_be_paid_in_cents` | **integer** `readonly`<br>Amount that (still) has to be paid. 
+`total_discount_in_cents` | **integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`. 
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing orders
 
 
-
 > How to fetch a list of orders:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/orders'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "c7b3b63d-192f-45ee-bd21-12ca8b216185",
-      "type": "orders",
-      "attributes": {
-        "created_at": "2024-12-02T13:05:33.206312+00:00",
-        "updated_at": "2024-12-02T13:05:34.754662+00:00",
-        "number": 1,
-        "status": "reserved",
-        "statuses": [
-          "reserved"
-        ],
-        "status_counts": {
-          "concept": 0,
-          "new": 0,
-          "reserved": 1,
-          "started": 0,
-          "stopped": 0
+    "data": [
+      {
+        "id": "3475c076-354c-4870-8326-459b23381f95",
+        "type": "orders",
+        "attributes": {
+          "created_at": "2015-02-09T00:29:01.000000+00:00",
+          "updated_at": "2015-02-09T00:29:01.000000+00:00",
+          "number": 1,
+          "status": "reserved",
+          "statuses": [
+            "reserved"
+          ],
+          "status_counts": {
+            "concept": 0,
+            "new": 0,
+            "reserved": 1,
+            "started": 0,
+            "stopped": 0
+          },
+          "starts_at": "1970-06-02T03:03:01.000000+00:00",
+          "stops_at": "1970-07-02T03:03:01.000000+00:00",
+          "deposit_type": "percentage",
+          "deposit_value": 10.0,
+          "entirely_started": false,
+          "entirely_stopped": false,
+          "location_shortage": false,
+          "shortage": false,
+          "payment_status": "payment_due",
+          "override_period_restrictions": false,
+          "has_signed_contract": false,
+          "tag_list": [
+            "webshop"
+          ],
+          "properties": {},
+          "price_in_cents": 80250,
+          "grand_total_in_cents": 72225,
+          "grand_total_with_tax_in_cents": 87392,
+          "tax_in_cents": 15167,
+          "discount_in_cents": 8025,
+          "coupon_discount_in_cents": 0,
+          "total_discount_in_cents": 8025,
+          "deposit_in_cents": 10000,
+          "deposit_paid_in_cents": 0,
+          "deposit_refunded_in_cents": 0,
+          "deposit_held_in_cents": 0,
+          "deposit_to_refund_in_cents": 0,
+          "to_be_paid_in_cents": 97392,
+          "paid_in_cents": 0,
+          "discount_type": "percentage",
+          "discount_percentage": 10.0,
+          "billing_address_property_id": null,
+          "delivery_address_property_id": null,
+          "fulfillment_type": "pickup",
+          "customer_id": "5e7fb1d5-a69a-4dad-8f6c-0a321ec6da2c",
+          "tax_region_id": null,
+          "coupon_id": null,
+          "start_location_id": "595f65d5-8218-4704-83ae-39aff6d1aeb4",
+          "stop_location_id": "595f65d5-8218-4704-83ae-39aff6d1aeb4"
         },
-        "starts_at": "1980-04-01T12:00:00.000000+00:00",
-        "stops_at": "1980-05-01T12:00:00.000000+00:00",
-        "deposit_type": "percentage",
-        "deposit_value": 10.0,
-        "entirely_started": false,
-        "entirely_stopped": false,
-        "location_shortage": false,
-        "shortage": false,
-        "payment_status": "payment_due",
-        "override_period_restrictions": false,
-        "has_signed_contract": false,
-        "tag_list": [
-          "webshop"
-        ],
-        "properties": {},
-        "price_in_cents": 80250,
-        "grand_total_in_cents": 72225,
-        "grand_total_with_tax_in_cents": 87392,
-        "tax_in_cents": 15167,
-        "discount_in_cents": 8025,
-        "coupon_discount_in_cents": 0,
-        "total_discount_in_cents": 8025,
-        "deposit_in_cents": 10000,
-        "deposit_paid_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "deposit_held_in_cents": 0,
-        "deposit_to_refund_in_cents": 0,
-        "to_be_paid_in_cents": 97392,
-        "paid_in_cents": 0,
-        "discount_type": "percentage",
-        "discount_percentage": 10.0,
-        "billing_address_property_id": null,
-        "delivery_address_property_id": null,
-        "fulfillment_type": "pickup",
-        "customer_id": "4604f80e-c8ef-4709-9536-c0efcab9d654",
-        "tax_region_id": null,
-        "coupon_id": null,
-        "start_location_id": "dd58140f-82a0-4526-99be-c68fec8895d8",
-        "stop_location_id": "dd58140f-82a0-4526-99be-c68fec8895d8"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -221,13 +191,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,coupon,start_location`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=customer,coupon,start_location`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -236,51 +206,51 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`, `gt`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`statuses` | **Array** <br>`eq`, `not_eq`
-`status_counts` | **Hash** <br>`eq`
-`starts_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`stops_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`location_shortage` | **Boolean** <br>`eq`
-`shortage` | **Boolean** <br>`eq`
-`payment_status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`has_signed_contract` | **Boolean** <br>`eq`
-`tag_list` | **String** <br>`eq`
-`price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_with_tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`coupon_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`total_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_held_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_to_refund_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`to_be_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`billing_address_property_id` | **Uuid** <br>`eq`, `not_eq`
-`delivery_address_property_id` | **Uuid** <br>`eq`, `not_eq`
-`fulfillment_type` | **String** <br>`eq`
-`customer_id` | **Uuid** <br>`eq`, `not_eq`
-`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
-`coupon_id` | **Uuid** <br>`eq`, `not_eq`
-`start_location_id` | **Uuid** <br>`eq`, `not_eq`
-`stop_location_id` | **Uuid** <br>`eq`, `not_eq`
-`q` | **String** <br>`eq`
-`item_id` | **Uuid** <br>`eq`
-`stock_item_id` | **Uuid** <br>`eq`
-`start_or_stop_time` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
-`any_shortage` | **Boolean** <br>`eq`
-`conditions` | **Hash** <br>`eq`
+`any_shortage` | **boolean** <br>`eq`
+`billing_address_property_id` | **uuid** <br>`eq`, `not_eq`
+`conditions` | **hash** <br>`eq`
+`coupon_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`coupon_id` | **uuid** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`customer_id` | **uuid** <br>`eq`, `not_eq`
+`delivery_address_property_id` | **uuid** <br>`eq`, `not_eq`
+`deposit_held_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_type` | **string_enum** <br>`eq`
+`discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_value` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`fulfillment_type` | **string** <br>`eq`
+`grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`has_signed_contract` | **boolean** <br>`eq`
+`id` | **uuid** <br>`eq`, `not_eq`, `gt`
+`item_id` | **uuid** <br>`eq`
+`location_shortage` | **boolean** <br>`eq`
+`number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`payment_status` | **string_enum** <br>`eq`
+`price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`q` | **string** <br>`eq`
+`shortage` | **boolean** <br>`eq`
+`start_location_id` | **uuid** <br>`eq`, `not_eq`
+`start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
+`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`status` | **string_enum** <br>`eq`
+`status_counts` | **hash** <br>`eq`
+`statuses` | **array** <br>`eq`, `not_eq`
+`stock_item_id` | **uuid** <br>`eq`
+`stop_location_id` | **uuid** <br>`eq`, `not_eq`
+`stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tag_list` | **string** <br>`eq`
+`tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tax_region_id` | **uuid** <br>`eq`, `not_eq`
+`to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -289,29 +259,29 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
-`payment_status` | **Array** <br>`count`
-`tag_list` | **Array** <br>`count`
-`status` | **Array** <br>`count`
-`statuses` | **Array** <br>`count`
-`shortage` | **Array** <br>`count`
-`location_shortage` | **Array** <br>`count`
-`deposit_type` | **Array** <br>`count`
-`price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_with_tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`coupon_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`total_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_refunded_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_held_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_to_refund_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`to_be_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
+`coupon_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_held_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_refunded_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_to_refund_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_type` | **array** <br>`count`
+`discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
+`grand_total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_with_tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`location_shortage` | **array** <br>`count`
+`paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`payment_status` | **array** <br>`count`
+`price_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`shortage` | **array** <br>`count`
+`status` | **array** <br>`count`
+`statuses` | **array** <br>`count`
+`tag_list` | **array** <br>`count`
+`tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total` | **array** <br>`count`
+`total_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -341,68 +311,67 @@ This request accepts the following includes:
 
 Use advanced search to make logical filter groups with and/or operators.
 
-
 > How to search for orders:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/orders/search' \
-    --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "orders": "id"
-      },
-      "filter": {
-        "conditions": {
-          "operator": "and",
-          "attributes": [
-            {
-              "operator": "or",
-              "attributes": [
-                {
-                  "starts_at": {
-                    "gte": "2024-12-03T13:05:30Z",
-                    "lte": "2024-12-06T13:05:30Z"
-                  }
-                },
-                {
-                  "stops_at": {
-                    "gte": "2024-12-03T13:05:30Z",
-                    "lte": "2024-12-06T13:05:30Z"
-                  }
-                }
-              ]
-            },
-            {
-              "operator": "and",
-              "attributes": [
-                {
-                  "deposit_type": "none"
-                },
-                {
-                  "payment_status": "paid"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/orders/search'
+       --header 'content-type: application/json'
+       --data '{
+         "fields": {
+           "orders": "id"
+         },
+         "filter": {
+           "conditions": {
+             "operator": "and",
+             "attributes": [
+               {
+                 "operator": "or",
+                 "attributes": [
+                   {
+                     "starts_at": {
+                       "gte": "2024-12-10T09:26:36Z",
+                       "lte": "2024-12-13T09:26:36Z"
+                     }
+                   },
+                   {
+                     "stops_at": {
+                       "gte": "2024-12-10T09:26:36Z",
+                       "lte": "2024-12-13T09:26:36Z"
+                     }
+                   }
+                 ]
+               },
+               {
+                 "operator": "and",
+                 "attributes": [
+                   {
+                     "deposit_type": "none"
+                   },
+                   {
+                     "payment_status": "paid"
+                   }
+                 ]
+               }
+             ]
+           }
+         }
+       }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "873b0561-0b39-4dbc-ace6-190be94dbb54"
-    },
-    {
-      "id": "fccf674a-8432-43dd-b722-ad1edec74ceb"
-    }
-  ]
-}
+    "data": [
+      {
+        "id": "b16cd617-07ab-4ca4-87d3-8868952b190e"
+      },
+      {
+        "id": "6021cb4f-601d-47a1-8f99-610793da2ba1"
+      }
+    ]
+  }
 ```
 
 ### HTTP Request
@@ -415,13 +384,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=customer,coupon,start_location`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=customer,coupon,start_location`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -430,51 +399,51 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`, `gt`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`number` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`statuses` | **Array** <br>`eq`, `not_eq`
-`status_counts` | **Hash** <br>`eq`
-`starts_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`stops_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`location_shortage` | **Boolean** <br>`eq`
-`shortage` | **Boolean** <br>`eq`
-`payment_status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`has_signed_contract` | **Boolean** <br>`eq`
-`tag_list` | **String** <br>`eq`
-`price_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`grand_total_with_tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`tax_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`coupon_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`total_discount_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_refunded_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_held_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_to_refund_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`to_be_paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`paid_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_value` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`billing_address_property_id` | **Uuid** <br>`eq`, `not_eq`
-`delivery_address_property_id` | **Uuid** <br>`eq`, `not_eq`
-`fulfillment_type` | **String** <br>`eq`
-`customer_id` | **Uuid** <br>`eq`, `not_eq`
-`tax_region_id` | **Uuid** <br>`eq`, `not_eq`
-`coupon_id` | **Uuid** <br>`eq`, `not_eq`
-`start_location_id` | **Uuid** <br>`eq`, `not_eq`
-`stop_location_id` | **Uuid** <br>`eq`, `not_eq`
-`q` | **String** <br>`eq`
-`item_id` | **Uuid** <br>`eq`
-`stock_item_id` | **Uuid** <br>`eq`
-`start_or_stop_time` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
-`any_shortage` | **Boolean** <br>`eq`
-`conditions` | **Hash** <br>`eq`
+`any_shortage` | **boolean** <br>`eq`
+`billing_address_property_id` | **uuid** <br>`eq`, `not_eq`
+`conditions` | **hash** <br>`eq`
+`coupon_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`coupon_id` | **uuid** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`customer_id` | **uuid** <br>`eq`, `not_eq`
+`delivery_address_property_id` | **uuid** <br>`eq`, `not_eq`
+`deposit_held_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_type` | **string_enum** <br>`eq`
+`discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_value` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`fulfillment_type` | **string** <br>`eq`
+`grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`has_signed_contract` | **boolean** <br>`eq`
+`id` | **uuid** <br>`eq`, `not_eq`, `gt`
+`item_id` | **uuid** <br>`eq`
+`location_shortage` | **boolean** <br>`eq`
+`number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`payment_status` | **string_enum** <br>`eq`
+`price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`q` | **string** <br>`eq`
+`shortage` | **boolean** <br>`eq`
+`start_location_id` | **uuid** <br>`eq`, `not_eq`
+`start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
+`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`status` | **string_enum** <br>`eq`
+`status_counts` | **hash** <br>`eq`
+`statuses` | **array** <br>`eq`, `not_eq`
+`stock_item_id` | **uuid** <br>`eq`
+`stop_location_id` | **uuid** <br>`eq`, `not_eq`
+`stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tag_list` | **string** <br>`eq`
+`tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tax_region_id` | **uuid** <br>`eq`, `not_eq`
+`to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -483,29 +452,29 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
-`payment_status` | **Array** <br>`count`
-`tag_list` | **Array** <br>`count`
-`status` | **Array** <br>`count`
-`statuses` | **Array** <br>`count`
-`shortage` | **Array** <br>`count`
-`location_shortage` | **Array** <br>`count`
-`deposit_type` | **Array** <br>`count`
-`price_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`grand_total_with_tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`tax_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`coupon_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`total_discount_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_refunded_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_held_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`deposit_to_refund_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`to_be_paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`paid_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
-`discount_percentage` | **Array** <br>`maximum`, `minimum`, `average`
+`coupon_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_held_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_refunded_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_to_refund_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_type` | **array** <br>`count`
+`discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
+`grand_total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`grand_total_with_tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`location_shortage` | **array** <br>`count`
+`paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`payment_status` | **array** <br>`count`
+`price_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`shortage` | **array** <br>`count`
+`status` | **array** <br>`count`
+`statuses` | **array** <br>`count`
+`tag_list` | **array** <br>`count`
+`tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total` | **array** <br>`count`
+`total_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -535,79 +504,77 @@ This request accepts the following includes:
 
 Returns an existing or new order for the current employee.
 
-
 > How to fetch a new order:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders/new' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/orders/new'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "dc42b5b3-5cbc-4952-8599-d999c2c066ba",
-    "type": "orders",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:32.633338+00:00",
-      "updated_at": "2024-12-02T13:05:32.642847+00:00",
-      "number": null,
-      "status": "new",
-      "statuses": [
-        "new"
-      ],
-      "status_counts": {
-        "new": 0,
-        "concept": 0,
-        "reserved": 0,
-        "started": 0,
-        "stopped": 0
+    "data": {
+      "id": "952676bb-b830-4efa-8bd4-6b03b23fbe32",
+      "type": "orders",
+      "attributes": {
+        "created_at": "2025-08-08T10:38:00.000000+00:00",
+        "updated_at": "2025-08-08T10:38:00.000000+00:00",
+        "number": null,
+        "status": "new",
+        "statuses": [
+          "new"
+        ],
+        "status_counts": {
+          "new": 0,
+          "concept": 0,
+          "reserved": 0,
+          "started": 0,
+          "stopped": 0
+        },
+        "starts_at": null,
+        "stops_at": null,
+        "deposit_type": "percentage",
+        "deposit_value": 100.0,
+        "entirely_started": true,
+        "entirely_stopped": false,
+        "location_shortage": false,
+        "shortage": false,
+        "payment_status": "paid",
+        "override_period_restrictions": false,
+        "has_signed_contract": false,
+        "tag_list": [],
+        "properties": {},
+        "price_in_cents": 0,
+        "grand_total_in_cents": 0,
+        "grand_total_with_tax_in_cents": 0,
+        "tax_in_cents": 0,
+        "discount_in_cents": 0,
+        "coupon_discount_in_cents": 0,
+        "total_discount_in_cents": 0,
+        "deposit_in_cents": 0,
+        "deposit_paid_in_cents": 0,
+        "deposit_refunded_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "to_be_paid_in_cents": 0,
+        "paid_in_cents": 0,
+        "discount_type": "percentage",
+        "discount_percentage": 0.0,
+        "billing_address_property_id": null,
+        "delivery_address_property_id": null,
+        "fulfillment_type": "pickup",
+        "customer_id": null,
+        "tax_region_id": null,
+        "coupon_id": null,
+        "start_location_id": "a1af9993-17e0-4410-8fd6-a096f9bcdd0d",
+        "stop_location_id": "a1af9993-17e0-4410-8fd6-a096f9bcdd0d"
       },
-      "starts_at": null,
-      "stops_at": null,
-      "deposit_type": "percentage",
-      "deposit_value": 100.0,
-      "entirely_started": true,
-      "entirely_stopped": false,
-      "location_shortage": false,
-      "shortage": false,
-      "payment_status": "paid",
-      "override_period_restrictions": false,
-      "has_signed_contract": false,
-      "tag_list": [],
-      "properties": {},
-      "price_in_cents": 0,
-      "grand_total_in_cents": 0,
-      "grand_total_with_tax_in_cents": 0,
-      "tax_in_cents": 0,
-      "discount_in_cents": 0,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 0,
-      "deposit_in_cents": 0,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 0,
-      "paid_in_cents": 0,
-      "discount_type": "percentage",
-      "discount_percentage": 0.0,
-      "billing_address_property_id": null,
-      "delivery_address_property_id": null,
-      "fulfillment_type": "pickup",
-      "customer_id": null,
-      "tax_region_id": null,
-      "coupon_id": null,
-      "start_location_id": "217a2668-3f8d-4c5a-b59a-14fbd1cd778a",
-      "stop_location_id": "217a2668-3f8d-4c5a-b59a-14fbd1cd778a"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -620,8 +587,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
 
 
 ### Includes
@@ -710,81 +677,79 @@ This request accepts the following includes:
 ## Fetching an order
 
 
-
 > How to fetch an order:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/orders/2c978883-0c2c-479a-8c7a-1c7532d1f6af' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/orders/620766b9-d5c5-4e8d-83cd-c106f1bb148e'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "2c978883-0c2c-479a-8c7a-1c7532d1f6af",
-    "type": "orders",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:35.499987+00:00",
-      "updated_at": "2024-12-02T13:05:37.341136+00:00",
-      "number": 1,
-      "status": "reserved",
-      "statuses": [
-        "reserved"
-      ],
-      "status_counts": {
-        "concept": 0,
-        "new": 0,
-        "reserved": 1,
-        "started": 0,
-        "stopped": 0
+    "data": {
+      "id": "620766b9-d5c5-4e8d-83cd-c106f1bb148e",
+      "type": "orders",
+      "attributes": {
+        "created_at": "2015-07-07T09:48:01.000000+00:00",
+        "updated_at": "2015-07-07T09:48:01.000000+00:00",
+        "number": 1,
+        "status": "reserved",
+        "statuses": [
+          "reserved"
+        ],
+        "status_counts": {
+          "concept": 0,
+          "new": 0,
+          "reserved": 1,
+          "started": 0,
+          "stopped": 0
+        },
+        "starts_at": "1970-10-28T12:22:01.000000+00:00",
+        "stops_at": "1970-11-27T12:22:01.000000+00:00",
+        "deposit_type": "percentage",
+        "deposit_value": 10.0,
+        "entirely_started": false,
+        "entirely_stopped": false,
+        "location_shortage": false,
+        "shortage": false,
+        "payment_status": "payment_due",
+        "override_period_restrictions": false,
+        "has_signed_contract": false,
+        "tag_list": [
+          "webshop"
+        ],
+        "properties": {},
+        "price_in_cents": 80250,
+        "grand_total_in_cents": 72225,
+        "grand_total_with_tax_in_cents": 87392,
+        "tax_in_cents": 15167,
+        "discount_in_cents": 8025,
+        "coupon_discount_in_cents": 0,
+        "total_discount_in_cents": 8025,
+        "deposit_in_cents": 10000,
+        "deposit_paid_in_cents": 0,
+        "deposit_refunded_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "to_be_paid_in_cents": 97392,
+        "paid_in_cents": 0,
+        "discount_type": "percentage",
+        "discount_percentage": 10.0,
+        "billing_address_property_id": null,
+        "delivery_address_property_id": null,
+        "fulfillment_type": "pickup",
+        "customer_id": "af4ff106-fdde-49e2-83ec-57302f00cd68",
+        "tax_region_id": null,
+        "coupon_id": null,
+        "start_location_id": "8a045d6d-cb6a-4ead-8c79-6e7bc659d7d4",
+        "stop_location_id": "8a045d6d-cb6a-4ead-8c79-6e7bc659d7d4"
       },
-      "starts_at": "1980-04-01T12:00:00.000000+00:00",
-      "stops_at": "1980-05-01T12:00:00.000000+00:00",
-      "deposit_type": "percentage",
-      "deposit_value": 10.0,
-      "entirely_started": false,
-      "entirely_stopped": false,
-      "location_shortage": false,
-      "shortage": false,
-      "payment_status": "payment_due",
-      "override_period_restrictions": false,
-      "has_signed_contract": false,
-      "tag_list": [
-        "webshop"
-      ],
-      "properties": {},
-      "price_in_cents": 80250,
-      "grand_total_in_cents": 72225,
-      "grand_total_with_tax_in_cents": 87392,
-      "tax_in_cents": 15167,
-      "discount_in_cents": 8025,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 8025,
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 97392,
-      "paid_in_cents": 0,
-      "discount_type": "percentage",
-      "discount_percentage": 10.0,
-      "billing_address_property_id": null,
-      "delivery_address_property_id": null,
-      "fulfillment_type": "pickup",
-      "customer_id": "a9767f36-bc38-4496-ae14-060cb9b1f109",
-      "tax_region_id": null,
-      "coupon_id": null,
-      "start_location_id": "60dd6e05-1c30-4701-b087-823e79a1f026",
-      "stop_location_id": "60dd6e05-1c30-4701-b087-823e79a1f026"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -797,8 +762,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
 
 
 ### Includes
@@ -893,88 +858,87 @@ When creating an order, and the following fields are left blank, a sensible defa
 - `start_location_id` First location in account.
 - `stop_location_id` First location in account.
 
-
 > How to create an order:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/orders' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "orders",
-        "attributes": {
-          "starts_at": "2024-12-05T13:05:39.975Z",
-          "stops_at": "2025-01-13T13:05:39.975Z"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/orders'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "orders",
+           "attributes": {
+             "starts_at": "2026-09-25T14:40:01.000000+00:00",
+             "stops_at": "2026-11-03T14:40:01.000000+00:00"
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "c04f17d5-3627-49fc-b7cf-b022d05bf8c3",
-    "type": "orders",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:39.993888+00:00",
-      "updated_at": "2024-12-02T13:05:40.003975+00:00",
-      "number": null,
-      "status": "new",
-      "statuses": [
-        "new"
-      ],
-      "status_counts": {
-        "new": 0,
-        "concept": 0,
-        "reserved": 0,
-        "started": 0,
-        "stopped": 0
+    "data": {
+      "id": "2ad70f42-1f86-4a2a-80fd-d3da815fcc0a",
+      "type": "orders",
+      "attributes": {
+        "created_at": "2026-09-22T14:40:01.000000+00:00",
+        "updated_at": "2026-09-22T14:40:01.000000+00:00",
+        "number": null,
+        "status": "new",
+        "statuses": [
+          "new"
+        ],
+        "status_counts": {
+          "new": 0,
+          "concept": 0,
+          "reserved": 0,
+          "started": 0,
+          "stopped": 0
+        },
+        "starts_at": "2026-09-25T14:29:01.000000+00:00",
+        "stops_at": "2026-11-03T14:29:01.000000+00:00",
+        "deposit_type": "percentage",
+        "deposit_value": 100.0,
+        "entirely_started": true,
+        "entirely_stopped": false,
+        "location_shortage": false,
+        "shortage": false,
+        "payment_status": "paid",
+        "override_period_restrictions": false,
+        "has_signed_contract": false,
+        "tag_list": [],
+        "properties": {},
+        "price_in_cents": 0,
+        "grand_total_in_cents": 0,
+        "grand_total_with_tax_in_cents": 0,
+        "tax_in_cents": 0,
+        "discount_in_cents": 0,
+        "coupon_discount_in_cents": 0,
+        "total_discount_in_cents": 0,
+        "deposit_in_cents": 0,
+        "deposit_paid_in_cents": 0,
+        "deposit_refunded_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "to_be_paid_in_cents": 0,
+        "paid_in_cents": 0,
+        "discount_type": "percentage",
+        "discount_percentage": 0.0,
+        "billing_address_property_id": null,
+        "delivery_address_property_id": null,
+        "fulfillment_type": "pickup",
+        "customer_id": null,
+        "tax_region_id": null,
+        "coupon_id": null,
+        "start_location_id": "e425fa84-11b4-48c8-8c41-73bdfabc34d9",
+        "stop_location_id": "e425fa84-11b4-48c8-8c41-73bdfabc34d9"
       },
-      "starts_at": "2024-12-05T13:00:00.000000+00:00",
-      "stops_at": "2025-01-13T13:00:00.000000+00:00",
-      "deposit_type": "percentage",
-      "deposit_value": 100.0,
-      "entirely_started": true,
-      "entirely_stopped": false,
-      "location_shortage": false,
-      "shortage": false,
-      "payment_status": "paid",
-      "override_period_restrictions": false,
-      "has_signed_contract": false,
-      "tag_list": [],
-      "properties": {},
-      "price_in_cents": 0,
-      "grand_total_in_cents": 0,
-      "grand_total_with_tax_in_cents": 0,
-      "tax_in_cents": 0,
-      "discount_in_cents": 0,
-      "coupon_discount_in_cents": 0,
-      "total_discount_in_cents": 0,
-      "deposit_in_cents": 0,
-      "deposit_paid_in_cents": 0,
-      "deposit_refunded_in_cents": 0,
-      "deposit_held_in_cents": 0,
-      "deposit_to_refund_in_cents": 0,
-      "to_be_paid_in_cents": 0,
-      "paid_in_cents": 0,
-      "discount_type": "percentage",
-      "discount_percentage": 0.0,
-      "billing_address_property_id": null,
-      "delivery_address_property_id": null,
-      "fulfillment_type": "pickup",
-      "customer_id": null,
-      "tax_region_id": null,
-      "coupon_id": null,
-      "start_location_id": "66e6e73d-3958-496f-9598-0461eee4a105",
-      "stop_location_id": "66e6e73d-3958-496f-9598-0461eee4a105"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -987,8 +951,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
 
 
 ### Request body
@@ -997,25 +961,25 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][starts_at]` | **Datetime** <br>When the items on the order become unavailable
-`data[attributes][stops_at]` | **Datetime** <br>When the items on the order become available again
-`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
-`data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
-`data[attributes][confirm_shortage]` | **Boolean** <br>Confirm shortage on update
-`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][properties_attributes][]` | **Array** <br>The properties of the order
-`data[attributes][order_delivery_rate_attributes]` | **Hash** <br>The delivery rate of the order
-`data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
-`data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
-`data[attributes][billing_address_property_id]` | **Uuid** <br>The property id of the billing address
-`data[attributes][delivery_address_property_id]` | **Uuid** <br>The property id of the delivery address
-`data[attributes][fulfillment_type]` | **String** <br>One of `pickup`, `delivery`
-`data[attributes][customer_id]` | **Uuid** <br>The associated customer
-`data[attributes][tax_region_id]` | **Uuid** <br>Associated Tax region
-`data[attributes][coupon_id]` | **Uuid** <br>Associated Coupon
-`data[attributes][start_location_id]` | **Uuid** <br>The location where the customer will pick up the items. 
-`data[attributes][stop_location_id]` | **Uuid** <br>The location where the customer will return the items.<br>When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][billing_address_property_id]` | **uuid** <br>The property id of the billing address. 
+`data[attributes][confirm_shortage]` | **boolean** <br>Confirm shortage on update. 
+`data[attributes][coupon_id]` | **uuid** <br>The Coupon added to this Order. 
+`data[attributes][customer_id]` | **uuid** <br>The Customer this Order is for. 
+`data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
+`data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
+`data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
+`data[attributes][discount_type]` | **string** <br>Type of discount. 
+`data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
+`data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
+`data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
+`data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
+`data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
+`data[attributes][start_location_id]` | **uuid** <br>The Location where the Customer will pick up the items. 
+`data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. 
+`data[attributes][stop_location_id]` | **uuid** <br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. 
+`data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
+`data[attributes][tax_region_id]` | **uuid** <br>TaxRegion applied to this Order. 
 
 
 ### Includes
@@ -1110,133 +1074,130 @@ When updating a customer on an order the following settings will be applied and 
 - `deposit_value`
 - `tax_region_id`
 
-
 > How to assign a (new) customer to an order:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/c76a339b-2c68-4c11-b206-0c7011db4202' \
-    --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
-      },
-      "data": {
-        "id": "c76a339b-2c68-4c11-b206-0c7011db4202",
-        "type": "orders",
-        "attributes": {
-          "customer_id": "7cd490b3-21b3-4650-9167-1c9aa4815b4a"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/orders/b7fc4715-4681-4fbf-8786-f911532c94f1'
+       --header 'content-type: application/json'
+       --data '{
+         "fields": {
+           "orders": "customer_id,tax_region_id,price_in_cents,grand_total_with_tax_in_cents,to_be_paid_in_cents"
+         },
+         "data": {
+           "id": "b7fc4715-4681-4fbf-8786-f911532c94f1",
+           "type": "orders",
+           "attributes": {
+             "customer_id": "62778da7-58fa-4717-8474-a9bcd8c003b4"
+           }
+         }
+       }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "c76a339b-2c68-4c11-b206-0c7011db4202",
-    "type": "orders",
-    "attributes": {
-      "price_in_cents": 80250,
-      "grand_total_with_tax_in_cents": 97103,
-      "to_be_paid_in_cents": 197103,
-      "customer_id": "7cd490b3-21b3-4650-9167-1c9aa4815b4a",
-      "tax_region_id": null
+    "data": {
+      "id": "b7fc4715-4681-4fbf-8786-f911532c94f1",
+      "type": "orders",
+      "attributes": {
+        "price_in_cents": 80250,
+        "grand_total_with_tax_in_cents": 97103,
+        "to_be_paid_in_cents": 197103,
+        "customer_id": "62778da7-58fa-4717-8474-a9bcd8c003b4",
+        "tax_region_id": null
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
-
 
 > How to update the deposit_type:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/80e7780f-e9af-445a-8dc6-7f1e580a7eab' \
-    --header 'content-type: application/json' \
-    --data '{
-      "fields": {
-        "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
-      },
-      "data": {
-        "id": "80e7780f-e9af-445a-8dc6-7f1e580a7eab",
-        "type": "orders",
-        "attributes": {
-          "deposit_type": "percentage"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/orders/2508bac9-57f4-4320-8fe5-e3e30186754d'
+       --header 'content-type: application/json'
+       --data '{
+         "fields": {
+           "orders": "deposit_type,deposit_in_cents,to_be_paid_in_cents,deposit_paid_in_cents"
+         },
+         "data": {
+           "id": "2508bac9-57f4-4320-8fe5-e3e30186754d",
+           "type": "orders",
+           "attributes": {
+             "deposit_type": "percentage"
+           }
+         }
+       }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "80e7780f-e9af-445a-8dc6-7f1e580a7eab",
-    "type": "orders",
-    "attributes": {
-      "deposit_type": "percentage",
-      "deposit_in_cents": 10000,
-      "deposit_paid_in_cents": 0,
-      "to_be_paid_in_cents": 97392
+    "data": {
+      "id": "2508bac9-57f4-4320-8fe5-e3e30186754d",
+      "type": "orders",
+      "attributes": {
+        "deposit_type": "percentage",
+        "deposit_in_cents": 10000,
+        "deposit_paid_in_cents": 0,
+        "to_be_paid_in_cents": 97392
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
-
 
 > Updating stops_at resulting in a shortage:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/orders/1eb39c96-2050-46c1-8927-a945c91cd247' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "1eb39c96-2050-46c1-8927-a945c91cd247",
-        "type": "orders",
-        "attributes": {
-          "stops_at": "1980-05-04T12:00:00.000Z"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/orders/93a4240b-dabb-4402-8f6c-bc85a87f922c'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "id": "93a4240b-dabb-4402-8f6c-bc85a87f922c",
+           "type": "orders",
+           "attributes": {
+             "stops_at": "2024-06-14T15:18:00.000000+00:00"
+           }
+         }
+       }'
 ```
 
 > A 422 status response looks like this:
 
 ```json
   {
-  "errors": [
-    {
-      "code": "stock_item_specified",
-      "status": "422",
-      "title": "Stock item specified",
-      "detail": "One or more items are not available",
-      "meta": {
-        "warning": [],
-        "blocking": [
-          {
-            "reason": "stock_item_specified",
-            "item_id": "9c576c9d-c1eb-4e24-b91d-feb3b46e176c",
-            "unavailable": [
-              "6b83a1c1-24cb-4da5-8832-2336f4aa9a69"
-            ],
-            "available": [
-              "1affb8c2-854f-4d64-803a-ce286ec3abce"
-            ]
-          }
-        ]
+    "errors": [
+      {
+        "code": "stock_item_specified",
+        "status": "422",
+        "title": "Stock item specified",
+        "detail": "One or more items are not available",
+        "meta": {
+          "warning": [],
+          "blocking": [
+            {
+              "reason": "stock_item_specified",
+              "item_id": "6b8dcfd1-8b08-4c90-8a27-22ad5a6a3ae9",
+              "unavailable": [
+                "e58fe3d1-2652-4c3c-8432-caf5b7148a09"
+              ],
+              "available": [
+                "05f42f25-5487-40b6-8494-463dcf974a53"
+              ]
+            }
+          ]
+        }
       }
-    }
-  ]
-}
+    ]
+  }
 ```
 
 ### HTTP Request
@@ -1249,8 +1210,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
 
 
 ### Request body
@@ -1259,25 +1220,25 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][starts_at]` | **Datetime** <br>When items become unavailable, changing this value may result in shortages
-`data[attributes][stops_at]` | **Datetime** <br>When items become available, changing this value may result in shortages
-`data[attributes][deposit_type]` | **String** <br>One of `none`, `percentage_total`, `percentage`, `fixed`
-`data[attributes][deposit_value]` | **Float** <br>The value to use for `deposit_type`
-`data[attributes][override_period_restrictions]` | **Boolean** <br>Force free period selection when there are restrictions enabled for the order period picker
-`data[attributes][confirm_shortage]` | **Boolean** <br>Confirm shortage on update
-`data[attributes][tag_list][]` | **Array** <br>Case insensitive tag list
-`data[attributes][properties_attributes][]` | **Array** <br>The properties of the order
-`data[attributes][order_delivery_rate_attributes]` | **Hash** <br>The delivery rate of the order
-`data[attributes][discount_value]` | **Float** <br>The value to use for `discount_type`
-`data[attributes][discount_type]` | **String** <br>One of `percentage`, `fixed`
-`data[attributes][billing_address_property_id]` | **Uuid** <br>The property id of the billing address
-`data[attributes][delivery_address_property_id]` | **Uuid** <br>The property id of the delivery address
-`data[attributes][fulfillment_type]` | **String** <br>One of `pickup`, `delivery`
-`data[attributes][customer_id]` | **Uuid** <br>The associated customer
-`data[attributes][tax_region_id]` | **Uuid** <br>Associated Tax region
-`data[attributes][coupon_id]` | **Uuid** <br>Associated Coupon
-`data[attributes][start_location_id]` | **Uuid** <br>The location where the customer will pick up the items. 
-`data[attributes][stop_location_id]` | **Uuid** <br>The location where the customer will return the items.<br>When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][billing_address_property_id]` | **uuid** <br>The property id of the billing address. 
+`data[attributes][confirm_shortage]` | **boolean** <br>Confirm shortage on update. 
+`data[attributes][coupon_id]` | **uuid** <br>The Coupon added to this Order. 
+`data[attributes][customer_id]` | **uuid** <br>The Customer this Order is for. 
+`data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
+`data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
+`data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
+`data[attributes][discount_type]` | **string** <br>Type of discount. 
+`data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
+`data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
+`data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
+`data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
+`data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
+`data[attributes][start_location_id]` | **uuid** <br>The Location where the Customer will pick up the items. 
+`data[attributes][starts_at]` | **datetime** <br>When items become unavailable, changing this value may result in shortages
+`data[attributes][stop_location_id]` | **uuid** <br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][stops_at]` | **datetime** <br>When items become available, changing this value may result in shortages
+`data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
+`data[attributes][tax_region_id]` | **uuid** <br>TaxRegion applied to this Order. 
 
 
 ### Includes

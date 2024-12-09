@@ -8,65 +8,67 @@ The suggestions are sorted:
   2. Available stock items are sorted before overdue, unavailable and already_booked stock items.
   3. Equally relevant stock items are sorted by the identifier.
 
-## Fields
-Every stock item suggestion has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`stock_item_id` | **Uuid** `readonly`<br>ID of the suggested stock item.
-`item_id` | **Uuid** `readonly`<br>ID of the Product the suggested stock item belongs to.
-`status` | **String_enum** `readonly`<br>Status of the suggested stock item. One of `available_in_location`, `available_in_cluster`, `overdue`, `unavailable`, `already_booked` 
-
-
 ## Relationships
-Stock item suggestions have the following relationships:
-
 Name | Description
 -- | --
-`stock_item` | **[Stock item](#stock-items)** <br>Associated Stock item
+`item` | **[Item](#items)** `required`<br>The Product the suggested stock item belongs to. 
+`stock_item` | **[Stock item](#stock-items)** `required`<br>The suggested stock item. 
+
+
+Check matching attributes under [Fields](#stock-item-suggestions-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`id` | **uuid** `readonly`<br>Primary key.
+`item_id` | **uuid** `readonly`<br>The Product the suggested stock item belongs to. 
+`status` | **enum** `readonly`<br>Status of the suggested stock item.<br> One of: `available_in_location`, `available_in_cluster`, `overdue`, `unavailable`, `already_booked`.
+`stock_item_id` | **uuid** `readonly`<br>The suggested stock item. 
 
 
 ## Listing stock item suggestions
 
 
-
 > Retrieve stock item suggestions for booking:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_suggestions?filter%5Baction%5D=book&filter%5Bitem_id%5D=e0a38592-09fa-478a-8487-6c2b52ae6d4c&filter%5Border_id%5D=ddadf9d2-2acf-4ec0-8dd7-1828caf68c66' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/stock_item_suggestions'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[action]=book'
+       --data-urlencode 'filter[item_id]=402fa5d1-ec05-46ad-85ee-c56564c66946'
+       --data-urlencode 'filter[order_id]=38c7808b-99c9-4b0e-8dbe-dcf731d54ca9'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "898a9d5f-8326-52ca-b53c-1a11f3bb94d9",
-      "type": "stock_item_suggestions",
-      "attributes": {
-        "stock_item_id": "c0cc22e0-e556-4f33-9bae-6acfe47126fb",
-        "item_id": "e0a38592-09fa-478a-8487-6c2b52ae6d4c",
-        "status": "available_in_location"
+    "data": [
+      {
+        "id": "8ce54731-3e9e-48fd-898a-42985159c79a",
+        "type": "stock_item_suggestions",
+        "attributes": {
+          "status": "available_in_location",
+          "item_id": "402fa5d1-ec05-46ad-85ee-c56564c66946",
+          "stock_item_id": "e1ceaec8-5cd6-4097-87ec-77e8e1fe5381"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "1c3f5751-6ef5-5497-b887-844f7bc912d2",
-      "type": "stock_item_suggestions",
-      "attributes": {
-        "stock_item_id": "fc0bf1cb-b34e-415e-a725-ab0e92fab6ff",
-        "item_id": "e0a38592-09fa-478a-8487-6c2b52ae6d4c",
-        "status": "already_booked"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+      {
+        "id": "484c2445-4864-4e9d-87f6-d37086fbae96",
+        "type": "stock_item_suggestions",
+        "attributes": {
+          "status": "already_booked",
+          "item_id": "402fa5d1-ec05-46ad-85ee-c56564c66946",
+          "stock_item_id": "8d913ead-29f6-4cde-8a88-001222806991"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -79,13 +81,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=stock_item`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_suggestions]=stock_item_id,item_id,status`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_item_suggestions]=status,item_id,stock_item_id`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=stock_item`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -94,15 +96,14 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`item_id` | **Uuid** `required`<br>`eq`
-`status` | **String_enum** <br>`eq`
-`order_id` | **Uuid** `required`<br>`eq`
-`action` | **String_enum** `required`<br>`eq`
-`q` | **String** <br>`eq`
-`location_id` | **Uuid** <br>`eq`
-`from` | **Datetime** <br>`eq`
-`till` | **Datetime** <br>`eq`
-`stock_item_id` | **Uuid** <br>`eq`
+`action` | **string_enum** `required`<br>`eq`
+`from` | **datetime** <br>`eq`
+`item_id` | **uuid** `required`<br>`eq`
+`location_id` | **uuid** <br>`eq`
+`order_id` | **uuid** `required`<br>`eq`
+`q` | **string** <br>`eq`
+`status` | **string_enum** <br>`eq`
+`till` | **datetime** <br>`eq`
 
 
 ### Meta
@@ -111,7 +112,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

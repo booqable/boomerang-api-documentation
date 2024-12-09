@@ -2,89 +2,76 @@
 
 Photos are displayed on documents and in the online store to let customers see how products look.
 
-## Endpoints
-`GET /api/boomerang/photos`
-
-`GET /api/boomerang/photos/{id}`
-
-`POST /api/boomerang/photos`
-
-`PUT /api/boomerang/photos/{id}`
-
-`DELETE /api/boomerang/photos/{id}`
-
-## Fields
-Every photo has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`photo_base64` | **String** `writeonly`<br>Base64 encoded photo
-`remote_photo_url` | **String** `writeonly`<br>Url to an image on the web
-`original_url` | **String** `readonly`<br>Url to original stored image
-`large_url` | **String** `readonly`<br>Url to large stored image (max 500x500)
-`xlarge_url` | **String** `readonly`<br>Url to xlarge stored image (max 2000x2000)
-`coordinates` | **Hash** <br>Focalpoint coordinates (`{ x: 10, y: 100 }`). To ensure that a key part of an image stays visible, you can set the image's focal point. The focal point sets the focus of an image, giving you control over where the image is centered.
-`preview` | **String** `readonly`<br>Base64 encoded preview
-`position` | **Integer** <br>Which position the photo has in the album
-`photo` | **Carrierwave_file** <br>An object describing the photo.
-`owner_id` | **Uuid** <br>ID of its owner
-`owner_type` | **String** <br>The resource type of the owner. One of `product_groups`, `bundles`
-
-
 ## Relationships
-Photos have the following relationships:
-
 Name | Description
 -- | --
-`owner` | **[Product group](#product-groups), [Product](#products), [Bundle](#bundles)** <br>Associated Owner
+`owner` | **[Product group](#product-groups), [Product](#products), [Bundle](#bundles)** `required`<br>The thing pictured in this photo. 
+
+
+Check matching attributes under [Fields](#photos-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`coordinates` | **hash** <br>Focalpoint coordinates (`{ x: 10, y: 100 }`). To ensure that a key part of an image stays visible, you can set the image's focal point. The focal point sets the focus of an image, giving you control over where the image is centered. 
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`id` | **uuid** `readonly`<br>Primary key.
+`large_url` | **string** `readonly`<br>Url to large stored image (max 500x500). 
+`original_url` | **string** `readonly`<br>Url to original stored image. 
+`owner_id` | **uuid** <br>The thing pictured in this photo. 
+`owner_type` | **string** <br>The resource type of the owner.
+`photo` | **carrierwave_file** <br>An object describing the photo. 
+`photo_base64` | **string** `writeonly`<br>Base64 encoded photo. 
+`position` | **integer** <br>Which position the photo has in the album. 
+`preview` | **string** `readonly`<br>Base64 encoded preview. 
+`remote_photo_url` | **string** `writeonly`<br>Url to an image on the web. 
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
+`xlarge_url` | **string** `readonly`<br>Url to xlarge stored image (max 2000x2000). 
 
 
 ## Listing photos
 
 
-
 > How to fetch a list of photos:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/photos' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/photos'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "7ac4ba2a-1f6f-4315-8e0c-30721071584c",
-      "type": "photos",
-      "attributes": {
-        "created_at": "2024-12-02T13:01:56.541356+00:00",
-        "updated_at": "2024-12-02T13:01:56.541356+00:00",
-        "original_url": "/uploads/712eeef10b1af9ce9beec3e7a9b91115/photo/photo/7ac4ba2a-1f6f-4315-8e0c-30721071584c/1733144516-715039715998885-0005-0711/upload.png",
-        "large_url": "/uploads/712eeef10b1af9ce9beec3e7a9b91115/photo/photo/7ac4ba2a-1f6f-4315-8e0c-30721071584c/large_1733144516-715039715998885-0005-0711/upload.jpg",
-        "xlarge_url": "/uploads/712eeef10b1af9ce9beec3e7a9b91115/photo/photo/7ac4ba2a-1f6f-4315-8e0c-30721071584c/xlarge_1733144516-715039715998885-0005-0711/upload.jpg",
-        "coordinates": {
-          "x": "0.00",
-          "y": "0.00"
+    "data": [
+      {
+        "id": "1ba0ace1-dcf6-4d18-8296-444c10c904b1",
+        "type": "photos",
+        "attributes": {
+          "created_at": "2015-06-17T07:25:01.000000+00:00",
+          "updated_at": "2015-06-17T07:25:01.000000+00:00",
+          "original_url": "/uploads/fc77ce7e1645f7fe4533f92e2834c43b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/1733736423-225133667318317-0003-8680/upload.png",
+          "large_url": "/uploads/fc77ce7e1645f7fe4533f92e2834c43b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/large_1733736423-225133667318317-0003-8680/upload.jpg",
+          "xlarge_url": "/uploads/fc77ce7e1645f7fe4533f92e2834c43b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/xlarge_1733736423-225133667318317-0003-8680/upload.jpg",
+          "coordinates": {
+            "x": "0.00",
+            "y": "0.00"
+          },
+          "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMCQkbA7HVMGsAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wOVQwOToyNzowMyswMDowMJBYdFYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDlUMDk6Mjc6MDMrMDA6MDDhBczqAAAAAElFTkSuQmCC",
+          "position": 1,
+          "photo": {
+            "url": "/uploads/fc77ce7e1645f7fe4533f92e2834c43b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/1733736423-225133667318317-0003-8680/upload.png"
+          },
+          "owner_id": "182cbf22-6a51-4729-81a3-190d3cbb3c57",
+          "owner_type": "product_groups"
         },
-        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMAg0BOGD7DEkAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wMlQxMzowMTo1NiswMDowMCJ5MP4AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDJUMTM6MDE6NTYrMDA6MDBTJIhCAAAAAElFTkSuQmCC",
-        "position": 1,
-        "photo": {
-          "url": "/uploads/712eeef10b1af9ce9beec3e7a9b91115/photo/photo/7ac4ba2a-1f6f-4315-8e0c-30721071584c/1733144516-715039715998885-0005-0711/upload.png"
-        },
-        "owner_id": "d9b2b2bd-d77b-4b56-8c9f-e9cbe6e0f579",
-        "owner_type": "product_groups"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -97,12 +84,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -111,11 +98,11 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`owner_id` | **Uuid** <br>`eq`, `not_eq`
-`owner_type` | **String** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`owner_id` | **uuid** <br>`eq`, `not_eq`
+`owner_type` | **string** <br>`eq`, `not_eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -124,7 +111,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes
@@ -133,44 +120,42 @@ This request does not accept any includes
 ## Fetching a photo
 
 
-
 > How to fetch a photo:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/photos/7e1bd4c0-c356-4bf8-a7b0-4200db595ab2' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/photos/93237a3f-2869-4ac3-8dbb-fabd864e9f81'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "7e1bd4c0-c356-4bf8-a7b0-4200db595ab2",
-    "type": "photos",
-    "attributes": {
-      "created_at": "2024-12-02T13:01:57.334698+00:00",
-      "updated_at": "2024-12-02T13:01:57.334698+00:00",
-      "original_url": "/uploads/2e2a72b42522633702c780c2c83b212d/photo/photo/7e1bd4c0-c356-4bf8-a7b0-4200db595ab2/1733144517-758581672426136-0006-8280/upload.png",
-      "large_url": "/uploads/2e2a72b42522633702c780c2c83b212d/photo/photo/7e1bd4c0-c356-4bf8-a7b0-4200db595ab2/large_1733144517-758581672426136-0006-8280/upload.jpg",
-      "xlarge_url": "/uploads/2e2a72b42522633702c780c2c83b212d/photo/photo/7e1bd4c0-c356-4bf8-a7b0-4200db595ab2/xlarge_1733144517-758581672426136-0006-8280/upload.jpg",
-      "coordinates": {
-        "x": "0.00",
-        "y": "0.00"
+    "data": {
+      "id": "93237a3f-2869-4ac3-8dbb-fabd864e9f81",
+      "type": "photos",
+      "attributes": {
+        "created_at": "2022-08-01T02:59:00.000000+00:00",
+        "updated_at": "2022-08-01T02:59:00.000000+00:00",
+        "original_url": "/uploads/a2c7510f7529cb637980dc03791cf4eb/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/1733736424-570421041002520-0004-8532/upload.png",
+        "large_url": "/uploads/a2c7510f7529cb637980dc03791cf4eb/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/large_1733736424-570421041002520-0004-8532/upload.jpg",
+        "xlarge_url": "/uploads/a2c7510f7529cb637980dc03791cf4eb/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/xlarge_1733736424-570421041002520-0004-8532/upload.jpg",
+        "coordinates": {
+          "x": "0.00",
+          "y": "0.00"
+        },
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMCQkbBC+xpcgAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wOVQwOToyNzowNCswMDowMFX/StgAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDlUMDk6Mjc6MDQrMDA6MDAkovJkAAAAAElFTkSuQmCC",
+        "position": 1,
+        "photo": {
+          "url": "/uploads/a2c7510f7529cb637980dc03791cf4eb/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/1733736424-570421041002520-0004-8532/upload.png"
+        },
+        "owner_id": "850b4eb4-0a7a-4316-8eef-e66a40d0e055",
+        "owner_type": "product_groups"
       },
-      "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMAg0BORf8PN8AAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wMlQxMzowMTo1NyswMDowMIQOO0oAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDJUMTM6MDE6NTcrMDA6MDD1U4P2AAAAAElFTkSuQmCC",
-      "position": 1,
-      "photo": {
-        "url": "/uploads/2e2a72b42522633702c780c2c83b212d/photo/photo/7e1bd4c0-c356-4bf8-a7b0-4200db595ab2/1733144517-758581672426136-0006-8280/upload.png"
-      },
-      "owner_id": "fdb1707b-31b4-475c-8ee7-b8e1dec04340",
-      "owner_type": "product_groups"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -183,8 +168,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`include` | **string** <br>List of comma seperated relationships `?include=owner`
 
 
 ### Includes
@@ -201,54 +186,53 @@ This request accepts the following includes:
 ## Creating a photo
 
 
-
 > How to create a photo:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/photos' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "photos",
-        "attributes": {
-          "owner_id": "a10e2c8a-f53b-4af0-b2aa-967842916d6c",
-          "owner_type": "product_groups",
-          "photo_base64": "data:image/png;base64,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\n"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/photos'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "photos",
+           "attributes": {
+             "owner_id": "5ef74fb8-c1c9-47af-8fac-bcab35a7a867",
+             "owner_type": "product_groups",
+             "photo_base64": "data:image/png;base64,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\n"
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "783b78f9-ac72-41a0-8724-0e372392b491",
-    "type": "photos",
-    "attributes": {
-      "created_at": "2024-12-02T13:01:53.537413+00:00",
-      "updated_at": "2024-12-02T13:01:53.537413+00:00",
-      "original_url": "/uploads/a77d707c8b07a6b2b74e3e9012d9bf6d/photo/photo/783b78f9-ac72-41a0-8724-0e372392b491/1733144513-520217457315777-0002-5800/upload.png",
-      "large_url": "/uploads/a77d707c8b07a6b2b74e3e9012d9bf6d/photo/photo/783b78f9-ac72-41a0-8724-0e372392b491/large_1733144513-520217457315777-0002-5800/upload.jpg",
-      "xlarge_url": "/uploads/a77d707c8b07a6b2b74e3e9012d9bf6d/photo/photo/783b78f9-ac72-41a0-8724-0e372392b491/xlarge_1733144513-520217457315777-0002-5800/upload.jpg",
-      "coordinates": {
-        "x": 0,
-        "y": 0
+    "data": {
+      "id": "a8eb63bc-693b-4335-865c-8dbf5462fc14",
+      "type": "photos",
+      "attributes": {
+        "created_at": "2024-05-28T22:17:00.000000+00:00",
+        "updated_at": "2024-05-28T22:17:00.000000+00:00",
+        "original_url": "/uploads/1a4d5bfb48343923c97a486322d0460c/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/1733736425-329475976953572-0006-2054/upload.png",
+        "large_url": "/uploads/1a4d5bfb48343923c97a486322d0460c/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/large_1733736425-329475976953572-0006-2054/upload.jpg",
+        "xlarge_url": "/uploads/1a4d5bfb48343923c97a486322d0460c/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/xlarge_1733736425-329475976953572-0006-2054/upload.jpg",
+        "coordinates": {
+          "x": 0,
+          "y": 0
+        },
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMCQkbBVi2lV4AAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wOVQwOToyNzowNSswMDowMPOIQWwAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDlUMDk6Mjc6MDUrMDA6MDCC1fnQAAAAAElFTkSuQmCC",
+        "position": 2,
+        "photo": {
+          "url": "/uploads/1a4d5bfb48343923c97a486322d0460c/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/1733736425-329475976953572-0006-2054/upload.png"
+        },
+        "owner_id": "5ef74fb8-c1c9-47af-8fac-bcab35a7a867",
+        "owner_type": "product_groups"
       },
-      "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMAg0BNR5KcPQAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wMlQxMzowMTo1MyswMDowMHBBH1kAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDJUMTM6MDE6NTMrMDA6MDABHKflAAAAAElFTkSuQmCC",
-      "position": 2,
-      "photo": {
-        "url": "/uploads/a77d707c8b07a6b2b74e3e9012d9bf6d/photo/photo/783b78f9-ac72-41a0-8724-0e372392b491/1733144513-520217457315777-0002-5800/upload.png"
-      },
-      "owner_id": "a10e2c8a-f53b-4af0-b2aa-967842916d6c",
-      "owner_type": "product_groups"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -261,8 +245,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`include` | **string** <br>List of comma seperated relationships `?include=owner`
 
 
 ### Request body
@@ -271,13 +255,13 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo
-`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
-`data[attributes][coordinates]` | **Hash** <br>Focalpoint coordinates (`{ x: 10, y: 100 }`). To ensure that a key part of an image stays visible, you can set the image's focal point. The focal point sets the focus of an image, giving you control over where the image is centered.
-`data[attributes][position]` | **Integer** <br>Which position the photo has in the album
-`data[attributes][photo]` | **Carrierwave_file** <br>An object describing the photo.
-`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
-`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `product_groups`, `bundles`
+`data[attributes][coordinates]` | **hash** <br>Focalpoint coordinates (`{ x: 10, y: 100 }`). To ensure that a key part of an image stays visible, you can set the image's focal point. The focal point sets the focus of an image, giving you control over where the image is centered. 
+`data[attributes][owner_id]` | **uuid** <br>The thing pictured in this photo. 
+`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][photo]` | **carrierwave_file** <br>An object describing the photo. 
+`data[attributes][photo_base64]` | **string** <br>Base64 encoded photo. 
+`data[attributes][position]` | **integer** <br>Which position the photo has in the album. 
+`data[attributes][remote_photo_url]` | **string** <br>Url to an image on the web. 
 
 
 ### Includes
@@ -294,56 +278,55 @@ This request accepts the following includes:
 ## Updating a photo
 
 
-
 > How to update a photo:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/photos/89135313-2a56-45f7-a968-9231d07e0cab' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "89135313-2a56-45f7-a968-9231d07e0cab",
-        "type": "photos",
-        "attributes": {
-          "coordinates": {
-            "x": 10,
-            "y": 100
-          }
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/photos/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "id": "f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0",
+           "type": "photos",
+           "attributes": {
+             "coordinates": {
+               "x": 10,
+               "y": 100
+             }
+           }
+         }
+       }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "89135313-2a56-45f7-a968-9231d07e0cab",
-    "type": "photos",
-    "attributes": {
-      "created_at": "2024-12-02T13:01:54.687202+00:00",
-      "updated_at": "2024-12-02T13:01:54.830072+00:00",
-      "original_url": "/uploads/0f8d97fee0e6249141863d733559579f/photo/photo/89135313-2a56-45f7-a968-9231d07e0cab/1733144514-462765817826130-0003-3838/upload.png",
-      "large_url": "/uploads/0f8d97fee0e6249141863d733559579f/photo/photo/89135313-2a56-45f7-a968-9231d07e0cab/large_1733144514-462765817826130-0003-3838/upload.jpg",
-      "xlarge_url": "/uploads/0f8d97fee0e6249141863d733559579f/photo/photo/89135313-2a56-45f7-a968-9231d07e0cab/xlarge_1733144514-462765817826130-0003-3838/upload.jpg",
-      "coordinates": {
-        "x": 10,
-        "y": 100
+    "data": {
+      "id": "f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0",
+      "type": "photos",
+      "attributes": {
+        "created_at": "2024-12-16T09:31:00.000000+00:00",
+        "updated_at": "2024-12-16T09:31:00.000000+00:00",
+        "original_url": "/uploads/70faafccd246d9eff71d75210c195934/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/1733736425-800259413094230-0007-2778/upload.png",
+        "large_url": "/uploads/70faafccd246d9eff71d75210c195934/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/large_1733736425-800259413094230-0007-2778/upload.jpg",
+        "xlarge_url": "/uploads/70faafccd246d9eff71d75210c195934/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/xlarge_1733736425-800259413094230-0007-2778/upload.jpg",
+        "coordinates": {
+          "x": 10,
+          "y": 100
+        },
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMCQkbBVi2lV4AAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wOVQwOToyNzowNSswMDowMPOIQWwAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDlUMDk6Mjc6MDUrMDA6MDCC1fnQAAAAAElFTkSuQmCC",
+        "position": 1,
+        "photo": {
+          "url": "/uploads/70faafccd246d9eff71d75210c195934/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/1733736425-800259413094230-0007-2778/upload.png"
+        },
+        "owner_id": "266622d8-4266-4054-8c2c-617ae1a4b11e",
+        "owner_type": "product_groups"
       },
-      "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMAg0BNodDIU4AAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wMlQxMzowMTo1NCswMDowMLXmIdcAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDJUMTM6MDE6NTQrMDA6MDDEu5lrAAAAAElFTkSuQmCC",
-      "position": 1,
-      "photo": {
-        "url": "/uploads/0f8d97fee0e6249141863d733559579f/photo/photo/89135313-2a56-45f7-a968-9231d07e0cab/1733144514-462765817826130-0003-3838/upload.png"
-      },
-      "owner_id": "2f969a3d-4afa-4a2d-9dc4-0f46d502e0db",
-      "owner_type": "product_groups"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -356,8 +339,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`include` | **string** <br>List of comma seperated relationships `?include=owner`
 
 
 ### Request body
@@ -366,13 +349,13 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][photo_base64]` | **String** <br>Base64 encoded photo
-`data[attributes][remote_photo_url]` | **String** <br>Url to an image on the web
-`data[attributes][coordinates]` | **Hash** <br>Focalpoint coordinates (`{ x: 10, y: 100 }`). To ensure that a key part of an image stays visible, you can set the image's focal point. The focal point sets the focus of an image, giving you control over where the image is centered.
-`data[attributes][position]` | **Integer** <br>Which position the photo has in the album
-`data[attributes][photo]` | **Carrierwave_file** <br>An object describing the photo.
-`data[attributes][owner_id]` | **Uuid** <br>ID of its owner
-`data[attributes][owner_type]` | **String** <br>The resource type of the owner. One of `product_groups`, `bundles`
+`data[attributes][coordinates]` | **hash** <br>Focalpoint coordinates (`{ x: 10, y: 100 }`). To ensure that a key part of an image stays visible, you can set the image's focal point. The focal point sets the focus of an image, giving you control over where the image is centered. 
+`data[attributes][owner_id]` | **uuid** <br>The thing pictured in this photo. 
+`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][photo]` | **carrierwave_file** <br>An object describing the photo. 
+`data[attributes][photo_base64]` | **string** <br>Base64 encoded photo. 
+`data[attributes][position]` | **integer** <br>Which position the photo has in the album. 
+`data[attributes][remote_photo_url]` | **string** <br>Url to an image on the web. 
 
 
 ### Includes
@@ -389,44 +372,43 @@ This request accepts the following includes:
 ## Deleting a photo
 
 
-
 > How to delete a photo:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/photos/7c446a8c-a70d-4404-b8f2-733bed9b9c2a' \
-    --header 'content-type: application/json' \
+       --url 'https://example.booqable.com/api/boomerang/photos/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "7c446a8c-a70d-4404-b8f2-733bed9b9c2a",
-    "type": "photos",
-    "attributes": {
-      "created_at": "2024-12-02T13:01:55.714691+00:00",
-      "updated_at": "2024-12-02T13:01:55.714691+00:00",
-      "original_url": "/uploads/3bda0576aba9a21d24a3f6fdf23e77bc/photo/photo/7c446a8c-a70d-4404-b8f2-733bed9b9c2a/1733144515-712076486358836-0004-8571/upload.png",
-      "large_url": "/uploads/3bda0576aba9a21d24a3f6fdf23e77bc/photo/photo/7c446a8c-a70d-4404-b8f2-733bed9b9c2a/large_1733144515-712076486358836-0004-8571/upload.jpg",
-      "xlarge_url": "/uploads/3bda0576aba9a21d24a3f6fdf23e77bc/photo/photo/7c446a8c-a70d-4404-b8f2-733bed9b9c2a/xlarge_1733144515-712076486358836-0004-8571/upload.jpg",
-      "coordinates": {
-        "x": "0.00",
-        "y": "0.00"
+    "data": {
+      "id": "d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0",
+      "type": "photos",
+      "attributes": {
+        "created_at": "2025-11-22T09:49:03.000000+00:00",
+        "updated_at": "2025-11-22T09:49:03.000000+00:00",
+        "original_url": "/uploads/a17e6ddcc9be710126807ec1eb9040c1/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/1733736426-778627433963134-0008-9952/upload.png",
+        "large_url": "/uploads/a17e6ddcc9be710126807ec1eb9040c1/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/large_1733736426-778627433963134-0008-9952/upload.jpg",
+        "xlarge_url": "/uploads/a17e6ddcc9be710126807ec1eb9040c1/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/xlarge_1733736426-778627433963134-0008-9952/upload.jpg",
+        "coordinates": {
+          "x": "0.00",
+          "y": "0.00"
+        },
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMCQkbBsG/xOQAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wOVQwOToyNzowNiswMDowMMJgW/EAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDlUMDk6Mjc6MDYrMDA6MDCzPeNNAAAAAElFTkSuQmCC",
+        "position": 1,
+        "photo": {
+          "url": "/uploads/a17e6ddcc9be710126807ec1eb9040c1/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/1733736426-778627433963134-0008-9952/upload.png"
+        },
+        "owner_id": "98ee3afa-9bdc-4ccd-850a-61157c8e2a39",
+        "owner_type": "product_groups"
       },
-      "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+gMAg0BN/BEEdgAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNC0xMi0wMlQxMzowMTo1NSswMDowMBORKmMAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjQtMTItMDJUMTM6MDE6NTUrMDA6MDBizJLfAAAAAElFTkSuQmCC",
-      "position": 1,
-      "photo": {
-        "url": "/uploads/3bda0576aba9a21d24a3f6fdf23e77bc/photo/photo/7c446a8c-a70d-4404-b8f2-733bed9b9c2a/1733144515-712076486358836-0004-8571/upload.png"
-      },
-      "owner_id": "5799f643-baf4-40e6-8f2a-59ba84b2322f",
-      "owner_type": "product_groups"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -439,7 +421,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[photos]=created_at,updated_at,original_url`
 
 
 ### Includes

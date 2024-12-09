@@ -1,96 +1,90 @@
 # Stock items
 
-For trackable products, each stock item is tracked and managed individually. Each stock item has a unique identifier that helps to keep track of it throughout Booqable.
+For trackable products, each stock item is tracked and managed individually.
+Each stock item has a unique identifier that helps to keep track of it throughout Booqable.
 
 **A stock item can have one of the following types:**
 
 - **Regular:** Regular stock item (`from` and `till` dates are not set).
-- **Expected:** Items will become part of your regular inventory once they surpass the available from date, used for "coming soon" products and purchase orders (only `from` date is set).
-- **Temporary:** Temporary items will automatically become unavailable once they exceed the available till date, typically a sub-rental (`from` and `till` are set).
-
-## Endpoints
-`GET /api/boomerang/stock_items`
-
-`GET /api/boomerang/stock_items/{id}`
-
-`POST /api/boomerang/stock_items`
-
-`PUT /api/boomerang/stock_items/{id}`
-
-## Fields
-Every stock item has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`archived` | **Boolean** `readonly`<br>Whether item is archived
-`archived_at` | **Datetime** `nullable` `readonly`<br>When the item was archived
-`identifier` | **String** <br>Unique identifier (like serial number)
-`status` | **String** `readonly`<br>Whether item is out with a customer or in-store/warehouse. One of `archived`, `expected`, `in_stock`, `started`, `overdue`, `expired`
-`from` | **Datetime** `nullable`<br>When the stock item will be available in stock (temporary items or expected arrival date)
-`till` | **Datetime** `nullable`<br>When item will be out of stock (temporary items)
-`stock_item_type` | **String** `readonly`<br>Based on the values of `from` and `till`. One of `regular`, `temporary`
-`product_group_id` | **String** `readonly`<br>Unique identifier of the product group this stock item belongs to
-`properties` | **Hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties)
-`properties_attributes` | **Array** `writeonly`<br>Create or update multiple properties associated with this item
-`confirm_shortage` | **Boolean** `writeonly`<br>Whether to confirm a shortage when updating from, till or location of a stock item
-`product_id` | **Uuid** `readonly-after-create`<br>Associated Product
-`location_id` | **Uuid** <br>Associated Location
-
+- **Expected:** Items will become part of your regular inventory
+  once they surpass the available from date, used for "coming soon"
+  products and purchase orders (only `from` date is set).
+- **Temporary:** Temporary items will automatically become unavailable
+  once they exceed the available till date, typically a sub-rental
+  (`from` and `till` are set).
 
 ## Relationships
-Stock items have the following relationships:
-
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** <br>Associated Barcode
-`location` | **[Location](#locations)** <br>Associated Location
-`product` | **[Product](#products)** <br>Associated Product
-`properties` | **[Properties](#properties)** <br>Associated Properties
+`barcode` | **[Barcode](#barcodes)** `optional`<br>Barcode to quickly identify this StockItem. 
+`location` | **[Location](#locations)** `required`<br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
+`product` | **[Product](#products)** `required`<br>The Product this StockItem is one instance of. 
+`properties` | **[Properties](#properties)** `hasmany`<br>Custom data associated with this StockItem. 
+
+
+Check matching attributes under [Fields](#stock-items-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`archived` | **boolean** `readonly`<br>Whether item is archived. 
+`archived_at` | **datetime** `readonly` `nullable`<br>When the item was archived. 
+`confirm_shortage` | **boolean** `writeonly`<br>Whether to confirm a shortage when updating from, till or location of a stock item. 
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`from` | **datetime** `nullable`<br>When the stock item will be available in stock (temporary items or expected arrival date). 
+`id` | **uuid** `readonly`<br>Primary key.
+`identifier` | **string** <br>Unique identifier (like serial number). 
+`location_id` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
+`product_group_id` | **uuid** `readonly`<br>The ProductGroup this StockItem belongs to. 
+`product_id` | **uuid** `readonly-after-create`<br>The Product this StockItem is one instance of. 
+`properties` | **hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties). 
+`properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this stock item. 
+`status` | **enum** `readonly`<br>Whether item is out with a customer or in-store/warehouse.<br> One of: `archived`, `expected`, `in_stock`, `started`, `overdue`, `expired`.
+`stock_item_type` | **enum** `readonly`<br>Based on the values of `from` and `till`.<br> One of: `regular`, `temporary`.
+`till` | **datetime** `nullable`<br>When item will be out of stock (temporary items). 
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing stock_items
 
 
-
 > How to fetch a list of stock items:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_items' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/stock_items'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "0716ebf4-57e4-4aa6-a50d-54bf164e9d6f",
-      "type": "stock_items",
-      "attributes": {
-        "created_at": "2024-12-02T13:05:40.605359+00:00",
-        "updated_at": "2024-12-02T13:05:40.605359+00:00",
-        "archived": false,
-        "archived_at": null,
-        "identifier": "id1000147",
-        "status": "in_stock",
-        "from": null,
-        "till": null,
-        "stock_item_type": "regular",
-        "product_group_id": "2a79d203-4d34-43e1-9949-0b71cfd4d6d9",
-        "properties": {},
-        "product_id": "11474748-7919-4e19-9c8d-44cabb101d3b",
-        "location_id": "6c8ea85d-8d41-4d4d-92d6-5023c0404e98"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "080ec72f-da7f-4569-8d12-1a6770c8f19f",
+        "type": "stock_items",
+        "attributes": {
+          "created_at": "2025-04-07T23:24:00.000000+00:00",
+          "updated_at": "2025-04-07T23:24:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
+          "identifier": "id1000183",
+          "status": "in_stock",
+          "from": null,
+          "till": null,
+          "stock_item_type": "regular",
+          "product_group_id": "33aa5e86-cf21-4867-8ce8-6ca8000eee14",
+          "properties": {},
+          "product_id": "ab39f2f5-e082-4520-8ba6-57e483d3686a",
+          "location_id": "78ae9e4b-b588-4fb0-845a-99371ba4d69c"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -103,13 +97,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=product,barcode,location`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=product,barcode,location`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -118,20 +112,20 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean** <br>`eq`
-`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`from` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`till` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`stock_item_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`product_group_id` | **Uuid** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`product_id` | **Uuid** <br>`eq`, `not_eq`
-`location_id` | **Uuid** <br>`eq`, `not_eq`
-`q` | **String** <br>`eq`
+`archived` | **boolean** <br>`eq`
+`archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`from` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`location_id` | **uuid** <br>`eq`, `not_eq`
+`product_group_id` | **uuid** <br>`eq`, `not_eq`
+`product_id` | **uuid** <br>`eq`, `not_eq`
+`q` | **string** <br>`eq`
+`status` | **string_enum** <br>`eq`
+`stock_item_type` | **string_enum** <br>`eq`
+`till` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -140,9 +134,9 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
-`stock_item_type` | **Array** <br>`count`
-`status` | **Array** <br>`count`
+`status` | **array** <br>`count`
+`stock_item_type` | **array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes
@@ -168,41 +162,39 @@ This request accepts the following includes:
 ## Fetching a stock_item
 
 
-
 > How to fetch a stock item:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/24fca73e-89b8-4d00-888d-87bc3d5a3b51' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/stock_items/218c1f4b-3124-4718-86e3-fc4646fe5562'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "24fca73e-89b8-4d00-888d-87bc3d5a3b51",
-    "type": "stock_items",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:43.112326+00:00",
-      "updated_at": "2024-12-02T13:05:43.112326+00:00",
-      "archived": false,
-      "archived_at": null,
-      "identifier": "id1000150",
-      "status": "in_stock",
-      "from": null,
-      "till": null,
-      "stock_item_type": "regular",
-      "product_group_id": "39abfb8b-9a25-46f9-a24c-5fa8d9bca652",
-      "properties": {},
-      "product_id": "82e89f62-3444-41e9-aa21-021c63a549da",
-      "location_id": "f3f41c35-a0d6-41a9-84ae-aaf8b9ec0c41"
+    "data": {
+      "id": "218c1f4b-3124-4718-86e3-fc4646fe5562",
+      "type": "stock_items",
+      "attributes": {
+        "created_at": "2020-12-14T17:16:00.000000+00:00",
+        "updated_at": "2020-12-14T17:16:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "identifier": "id1000184",
+        "status": "in_stock",
+        "from": null,
+        "till": null,
+        "stock_item_type": "regular",
+        "product_group_id": "20441cdb-ca45-49d3-887f-91258ef2c191",
+        "properties": {},
+        "product_id": "62127110-28f1-4b13-84de-f7287c9f9691",
+        "location_id": "42f6ee46-44cc-47e4-8775-d2f20612347a"
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -215,8 +207,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships `?include=barcode,location,properties`
 
 
 ### Includes
@@ -245,50 +237,49 @@ This request accepts the following includes:
 ## Creating a stock_item
 
 
-
 > How to create a stock item:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/stock_items' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "stock_items",
-        "attributes": {
-          "identifier": "12345",
-          "product_id": "7901fb61-bcd0-436b-af21-77625f103430"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/stock_items'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "stock_items",
+           "attributes": {
+             "identifier": "12345",
+             "product_id": "8ba34c4e-02e7-46c8-87c1-741102785936"
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "dbcbf7ed-7413-40b4-b406-20f74c367ca7",
-    "type": "stock_items",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:42.175454+00:00",
-      "updated_at": "2024-12-02T13:05:42.175454+00:00",
-      "archived": false,
-      "archived_at": null,
-      "identifier": "12345",
-      "status": "in_stock",
-      "from": null,
-      "till": null,
-      "stock_item_type": "regular",
-      "product_group_id": "6114efbc-386d-4883-8753-0abf1b3ad52d",
-      "properties": {},
-      "product_id": "7901fb61-bcd0-436b-af21-77625f103430",
-      "location_id": "15efd855-07aa-41da-af8e-da139f4e3626"
+    "data": {
+      "id": "63a10585-7a78-4d77-8fc0-04fefeb7b255",
+      "type": "stock_items",
+      "attributes": {
+        "created_at": "2025-07-23T16:54:00.000000+00:00",
+        "updated_at": "2025-07-23T16:54:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "identifier": "12345",
+        "status": "in_stock",
+        "from": null,
+        "till": null,
+        "stock_item_type": "regular",
+        "product_group_id": "d798843c-7589-4a94-85cd-e47efc86c6ab",
+        "properties": {},
+        "product_id": "8ba34c4e-02e7-46c8-87c1-741102785936",
+        "location_id": "216d7c85-e3a6-4f77-809a-a5fb404ea9a4"
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -301,8 +292,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships `?include=barcode,location,properties`
 
 
 ### Request body
@@ -311,13 +302,13 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
-`data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
-`data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
-`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
-`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
-`data[attributes][product_id]` | **Uuid** <br>Associated Product
-`data[attributes][location_id]` | **Uuid** <br>Associated Location
+`data[attributes][confirm_shortage]` | **boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item. 
+`data[attributes][from]` | **datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date). 
+`data[attributes][identifier]` | **string** <br>Unique identifier (like serial number). 
+`data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
+`data[attributes][product_id]` | **uuid** <br>The Product this StockItem is one instance of. 
+`data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
+`data[attributes][till]` | **datetime** <br>When item will be out of stock (temporary items). 
 
 
 ### Includes
@@ -346,50 +337,49 @@ This request accepts the following includes:
 ## Updating a stock_item
 
 
-
 > How to update a stock item:
 
 ```shell
   curl --request PUT \
-    --url 'https://example.booqable.com/api/boomerang/stock_items/ffcf5c8d-d2d5-4669-8426-a401f7279a5f' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "id": "ffcf5c8d-d2d5-4669-8426-a401f7279a5f",
-        "type": "stock_items",
-        "attributes": {
-          "identifier": "12346"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/stock_items/96e16eb3-614f-4a6a-8444-531244376f3a'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "id": "96e16eb3-614f-4a6a-8444-531244376f3a",
+           "type": "stock_items",
+           "attributes": {
+             "identifier": "12346"
+           }
+         }
+       }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "ffcf5c8d-d2d5-4669-8426-a401f7279a5f",
-    "type": "stock_items",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:41.264617+00:00",
-      "updated_at": "2024-12-02T13:05:41.326224+00:00",
-      "archived": false,
-      "archived_at": null,
-      "identifier": "12346",
-      "status": "in_stock",
-      "from": null,
-      "till": null,
-      "stock_item_type": "regular",
-      "product_group_id": "df6af03e-ca6e-4279-8d44-c8c9ac287b53",
-      "properties": {},
-      "product_id": "d10749b4-40a3-40ce-ab69-db9cf025fde6",
-      "location_id": "5761498c-fbe3-4fc1-9fb4-127eff5ea607"
+    "data": {
+      "id": "96e16eb3-614f-4a6a-8444-531244376f3a",
+      "type": "stock_items",
+      "attributes": {
+        "created_at": "2019-01-10T06:59:11.000000+00:00",
+        "updated_at": "2019-01-10T06:59:11.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "identifier": "12346",
+        "status": "in_stock",
+        "from": null,
+        "till": null,
+        "stock_item_type": "regular",
+        "product_group_id": "4fd29b75-0981-44f0-893f-c9e5885ec5f6",
+        "properties": {},
+        "product_id": "797648e2-ccc4-4117-832c-6b0a19709ee5",
+        "location_id": "b10fb7f2-9f8e-4e91-8a52-93585748b5a3"
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -402,8 +392,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=barcode,location,properties`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships `?include=barcode,location,properties`
 
 
 ### Request body
@@ -412,13 +402,13 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][identifier]` | **String** <br>Unique identifier (like serial number)
-`data[attributes][from]` | **Datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date)
-`data[attributes][till]` | **Datetime** <br>When item will be out of stock (temporary items)
-`data[attributes][properties_attributes][]` | **Array** <br>Create or update multiple properties associated with this item
-`data[attributes][confirm_shortage]` | **Boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item
-`data[attributes][product_id]` | **Uuid** <br>Associated Product
-`data[attributes][location_id]` | **Uuid** <br>Associated Location
+`data[attributes][confirm_shortage]` | **boolean** <br>Whether to confirm a shortage when updating from, till or location of a stock item. 
+`data[attributes][from]` | **datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date). 
+`data[attributes][identifier]` | **string** <br>Unique identifier (like serial number). 
+`data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
+`data[attributes][product_id]` | **uuid** <br>The Product this StockItem is one instance of. 
+`data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
+`data[attributes][till]` | **datetime** <br>When item will be out of stock (temporary items). 
 
 
 ### Includes

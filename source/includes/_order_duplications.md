@@ -1,85 +1,84 @@
 # Order duplications
 
-Duplicates an `Order` with a selectable subset of fields and associations.
-
-## Fields
-Every order duplication has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`custom_lines` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
-`customer` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
-`dates` | **Boolean** <br>Indicates if the rental dates should be copied from the original Order.
-`discount` | **Boolean** <br>Indicates if discounts should be copied from the original Order.
-`properties` | **Boolean** <br>Indicates if properties should be copied from the original Order.
-`stock_item_plannings` | **Boolean** <br>Indicates if planned stock items should be copied from the original Order.
-`tags` | **Boolean** <br>Indicates if tags should be copied from the original Order.
-`deposit` | **String** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
-`original_order_id` | **Uuid** <br>ID of the Order to be duplicated.
-`new_order_id` | **Uuid** `readonly`<br>ID of the newly created Order.
-
+Duplicates an Order with a selectable subset of fields and associations.
 
 ## Relationships
-Order duplications have the following relationships:
-
 Name | Description
 -- | --
-`new_order` | **[Order](#orders)** <br>Associated New order
-`original_order` | **[Order](#orders)** <br>Associated Original order
+`new_order` | **[Order](#orders)** `required`<br>The newly created Order. 
+`original_order` | **[Order](#orders)** `required`<br>The Order to be duplicated. 
+
+
+Check matching attributes under [Fields](#order-duplications-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`custom_lines` | **boolean** <br>Indicates if custom Lines should be copied from the original Order. 
+`customer` | **boolean** <br>Indicates if the Customer should be copied from the original Order. 
+`dates` | **boolean** <br>Indicates if the rental dates should be copied from the original Order. 
+`deposit` | **string** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
+`discount` | **boolean** <br>Indicates if discounts should be copied from the original Order. 
+`id` | **uuid** `readonly`<br>Primary key.
+`new_order_id` | **uuid** `readonly`<br>The newly created Order. 
+`original_order_id` | **uuid** <br>The Order to be duplicated. 
+`properties` | **boolean** <br>Indicates if properties should be copied from the original Order. 
+`stock_item_plannings` | **boolean** <br>Indicates if planned stock items should be copied from the original Order. 
+`tags` | **boolean** <br>Indicates if tags should be copied from the original Order. 
 
 
 ## Duplicate
-
 
 
 > Duplicate an Order:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/order_duplications' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "order_duplications",
-        "attributes": {
-          "original_order_id": "9fd00fab-087f-453d-9ea8-1f59d27b5cf8",
-          "custom_lines": true,
-          "customer": true,
-          "dates": true,
-          "deposit": "current",
-          "discount": true,
-          "properties": true,
-          "stock_item_plannings": true,
-          "tags": true
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/order_duplications'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "order_duplications",
+           "attributes": {
+             "original_order_id": "98b169c9-83a5-458d-8632-2f95c87b4189",
+             "custom_lines": true,
+             "customer": true,
+             "dates": true,
+             "deposit": "current",
+             "discount": true,
+             "properties": true,
+             "stock_item_plannings": true,
+             "tags": true
+           }
+         }
+       }'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "16da73ca-1316-5c87-80cf-66c4fc774267",
-    "type": "order_duplications",
-    "attributes": {
-      "custom_lines": true,
-      "customer": true,
-      "dates": true,
-      "discount": true,
-      "properties": true,
-      "stock_item_plannings": true,
-      "tags": true,
-      "deposit": "current",
-      "original_order_id": "9fd00fab-087f-453d-9ea8-1f59d27b5cf8",
-      "new_order_id": "0c0a1009-d3e1-4b51-b38c-9a68ff48be7b"
+    "data": {
+      "id": "bf7bb0d8-adc7-4776-8a85-e70e36ab59ff",
+      "type": "order_duplications",
+      "attributes": {
+        "custom_lines": true,
+        "customer": true,
+        "dates": true,
+        "discount": true,
+        "properties": true,
+        "stock_item_plannings": true,
+        "tags": true,
+        "deposit": "current",
+        "original_order_id": "98b169c9-83a5-458d-8632-2f95c87b4189",
+        "new_order_id": "e026832d-8b0c-45e9-81f7-84832585106b"
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -92,8 +91,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=original_order,new_order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[order_duplications]=custom_lines,customer,dates`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_duplications]=custom_lines,customer,dates`
+`include` | **string** <br>List of comma seperated relationships `?include=original_order,new_order`
 
 
 ### Request body
@@ -102,15 +101,15 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][custom_lines]` | **Boolean** <br>Indicates if custom Lines should be copied from the original Order.
-`data[attributes][customer]` | **Boolean** <br>Indicates if the Customer should be copied from the original Order.
-`data[attributes][dates]` | **Boolean** <br>Indicates if the rental dates should be copied from the original Order.
-`data[attributes][discount]` | **Boolean** <br>Indicates if discounts should be copied from the original Order.
-`data[attributes][properties]` | **Boolean** <br>Indicates if properties should be copied from the original Order.
-`data[attributes][stock_item_plannings]` | **Boolean** <br>Indicates if planned stock items should be copied from the original Order.
-`data[attributes][tags]` | **Boolean** <br>Indicates if tags should be copied from the original Order.
-`data[attributes][deposit]` | **String** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
-`data[attributes][original_order_id]` | **Uuid** <br>ID of the Order to be duplicated.
+`data[attributes][custom_lines]` | **boolean** <br>Indicates if custom Lines should be copied from the original Order. 
+`data[attributes][customer]` | **boolean** <br>Indicates if the Customer should be copied from the original Order. 
+`data[attributes][dates]` | **boolean** <br>Indicates if the rental dates should be copied from the original Order. 
+`data[attributes][deposit]` | **string** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
+`data[attributes][discount]` | **boolean** <br>Indicates if discounts should be copied from the original Order. 
+`data[attributes][original_order_id]` | **uuid** <br>The Order to be duplicated. 
+`data[attributes][properties]` | **boolean** <br>Indicates if properties should be copied from the original Order. 
+`data[attributes][stock_item_plannings]` | **boolean** <br>Indicates if planned stock items should be copied from the original Order. 
+`data[attributes][tags]` | **boolean** <br>Indicates if tags should be copied from the original Order. 
 
 
 ### Includes

@@ -12,222 +12,234 @@ Fetch quantitive information about product inventory compared to the current tim
 - Examining what the current inventory looks, and will look, like for products
 - Performing an inventory count (total in stock vs. out with a customer)
 
-## Fields
-Every inventory breakdown has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`from` | **Datetime** <br>When the amount of items will be available (only for status `expected`)
-`till` | **Datetime** <br>When the amount of items will become unavailable (only for type `temporary` and/or status `expired`)
-`stock_count` | **Integer** <br>The total amount of stock for product and location
-`started` | **Integer** <br>The amount if items that are started for product and location. Only rendered when applicable
-`status` | **String** <br>One of `expected`, `in_stock`, `expired`
-`inventory_breakdown_type` | **String** <br>One of `regular`, `temporary`
-`location_id` | **Uuid** `readonly`<br>Associated Location
-`product_id` | **Uuid** `readonly`<br>Associated Product
-
-
 ## Relationships
-Inventory breakdowns have the following relationships:
-
 Name | Description
 -- | --
-`location` | **[Location](#locations)** <br>Associated Location
-`product` | **[Product](#products)** <br>Associated Product
+`location` | **[Location](#locations)** `required`<br>The location to which this breakdown record applies.
+`product` | **[Product](#products)** `required`<br>The product whose availability this breakdown record describes.
+
+
+Check matching attributes under [Fields](#inventory-breakdowns-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`from` | **datetime** <br>When the amount of items will be available (only for status `expected`).
+`id` | **uuid** `readonly`<br>Primary key.
+`inventory_breakdown_type` | **string** <br>One of `regular`, `temporary`.
+`location_id` | **uuid** `readonly`<br>The location to which this breakdown record applies.
+`product_id` | **uuid** `readonly`<br>The product whose availability this breakdown record describes.
+`started` | **integer** <br>The amount if items that are started for product and location. Only rendered when applicable.
+`status` | **string** <br>One of `expected`, `in_stock`, `expired`.
+`stock_count` | **integer** <br>The total amount of stock for product and location.
+`till` | **datetime** <br>When the amount of items will become unavailable (only for type `temporary` and/or status `expired`).
 
 
 ## Listing inventory breakdowns
 
 
-
 > How to fetch a breakdown of all items in stock:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=970587cc-26e9-40e2-8d54-4ac0e5b6b5c5&filter%5Bstatus%5D=in_stock&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/inventory_breakdowns'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[product_group_id]=fc4bfed6-545d-4ffe-8b66-81e8dbde9d4e'
+       --data-urlencode 'filter[status]=in_stock'
+       --data-urlencode 'stats[inventory_breakdown_type][]=sum'
+       --data-urlencode 'stats[started][]=sum'
+       --data-urlencode 'stats[status][]=sum'
+       --data-urlencode 'stats[stock_count][]=sum'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "a7c66a38-8d0b-4599-a541-94d4e83c276c",
-      "type": "inventory_breakdowns",
-      "attributes": {
-        "stock_count": 100,
-        "started": 50,
-        "status": "in_stock",
-        "inventory_breakdown_type": "regular",
-        "location_id": "1330d71a-03d2-4721-b8f7-78c3698f2d76",
-        "product_id": "7d05ad47-dbdd-44ee-8061-4999566fb8f2"
+    "data": [
+      {
+        "id": "4d112455-70ef-47ab-8e13-317982d7a785",
+        "type": "inventory_breakdowns",
+        "attributes": {
+          "stock_count": 100,
+          "started": 50,
+          "status": "in_stock",
+          "inventory_breakdown_type": "regular",
+          "location_id": "93539676-0eec-4298-8221-d37c766028c4",
+          "product_id": "856d3a4c-8f1c-4392-8837-b1033d097162"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "b81002b6-b3a6-4bdc-b733-e3d104bdfd57",
-      "type": "inventory_breakdowns",
-      "attributes": {
-        "till": "1988-09-11T20:00:00.000000+00:00",
-        "stock_count": 5,
-        "started": 0,
-        "status": "in_stock",
-        "inventory_breakdown_type": "temporary",
-        "location_id": "1330d71a-03d2-4721-b8f7-78c3698f2d76",
-        "product_id": "7d05ad47-dbdd-44ee-8061-4999566fb8f2"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {
-    "stats": {
-      "inventory_breakdown_type": {
-        "sum": {
-          "regular": 100,
-          "temporary": 5
+      {
+        "id": "cfc74ef9-ca0f-4337-8020-dc4ecddbde48",
+        "type": "inventory_breakdowns",
+        "attributes": {
+          "till": "2020-08-15T02:26:01.000000+00:00",
+          "stock_count": 5,
+          "started": 0,
+          "status": "in_stock",
+          "inventory_breakdown_type": "temporary",
+          "location_id": "93539676-0eec-4298-8221-d37c766028c4",
+          "product_id": "856d3a4c-8f1c-4392-8837-b1033d097162"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {
+      "stats": {
+        "inventory_breakdown_type": {
+          "sum": {
+            "regular": 100,
+            "temporary": 5
+          }
+        },
+        "started": {
+          "sum": 50
+        },
+        "status": {
+          "sum": {
+            "in_stock": 105,
+            "expected": 17,
+            "expired": 22
+          }
+        },
+        "stock_count": {
+          "sum": 105
         }
-      },
-      "started": {
-        "sum": 50
-      },
-      "status": {
-        "sum": {
-          "in_stock": 105,
-          "expected": 17,
-          "expired": 22
-        }
-      },
-      "stock_count": {
-        "sum": 105
       }
     }
   }
-}
 ```
-
 
 > How to fetch a breakdown of all expected items:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=e4c68c6b-245e-4f88-8a48-006a2bdae958&filter%5Bstatus%5D=expected&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/inventory_breakdowns'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[product_group_id]=3142a9c7-40c2-4dff-8a3d-61aef93400cf'
+       --data-urlencode 'filter[status]=expected'
+       --data-urlencode 'stats[inventory_breakdown_type][]=sum'
+       --data-urlencode 'stats[started][]=sum'
+       --data-urlencode 'stats[status][]=sum'
+       --data-urlencode 'stats[stock_count][]=sum'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "ccb85dfa-46a1-49b9-a46c-0e3f8db6ce16",
-      "type": "inventory_breakdowns",
-      "attributes": {
-        "from": "1989-03-11T20:00:00.000000+00:00",
-        "stock_count": 12,
-        "status": "expected",
-        "inventory_breakdown_type": "regular",
-        "location_id": "38533f71-c1a9-4bb8-9898-d847d22b1830",
-        "product_id": "c52d6be8-1ed0-4e0f-bf73-3eb19a85d36a"
+    "data": [
+      {
+        "id": "d6f88a18-89e5-409d-84ae-8e3e2af10659",
+        "type": "inventory_breakdowns",
+        "attributes": {
+          "from": "2017-11-18T03:35:00.000000+00:00",
+          "stock_count": 12,
+          "status": "expected",
+          "inventory_breakdown_type": "regular",
+          "location_id": "53f12674-6a2f-4878-804c-eb4dd3aa204f",
+          "product_id": "11b3f75f-518c-4e76-8979-2efbc4019818"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "8963e70e-9633-4f04-babb-19e0eec3e1ff",
-      "type": "inventory_breakdowns",
-      "attributes": {
-        "from": "1989-03-11T20:00:00.000000+00:00",
-        "till": "1989-04-11T20:00:00.000000+00:00",
-        "stock_count": 5,
-        "status": "expected",
-        "inventory_breakdown_type": "temporary",
-        "location_id": "38533f71-c1a9-4bb8-9898-d847d22b1830",
-        "product_id": "c52d6be8-1ed0-4e0f-bf73-3eb19a85d36a"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {
-    "stats": {
-      "inventory_breakdown_type": {
-        "sum": {
-          "regular": 12,
-          "temporary": 5
+      {
+        "id": "7f3caf33-119d-43b7-8bd5-8c7bd5de639a",
+        "type": "inventory_breakdowns",
+        "attributes": {
+          "from": "2017-11-18T03:35:00.000000+00:00",
+          "till": "2017-12-19T03:35:00.000000+00:00",
+          "stock_count": 5,
+          "status": "expected",
+          "inventory_breakdown_type": "temporary",
+          "location_id": "53f12674-6a2f-4878-804c-eb4dd3aa204f",
+          "product_id": "11b3f75f-518c-4e76-8979-2efbc4019818"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {
+      "stats": {
+        "inventory_breakdown_type": {
+          "sum": {
+            "regular": 12,
+            "temporary": 5
+          }
+        },
+        "started": {
+          "sum": 0
+        },
+        "status": {
+          "sum": {
+            "in_stock": 105,
+            "expected": 17,
+            "expired": 22
+          }
+        },
+        "stock_count": {
+          "sum": 17
         }
-      },
-      "started": {
-        "sum": 0
-      },
-      "status": {
-        "sum": {
-          "in_stock": 105,
-          "expected": 17,
-          "expired": 22
-        }
-      },
-      "stock_count": {
-        "sum": 17
       }
     }
   }
-}
 ```
-
 
 > How to fetch a breakdown of all expired items:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_breakdowns?filter%5Bproduct_group_id%5D=e7d5680a-cffb-483e-a4fa-427bcd724017&filter%5Bstatus%5D=expired&stats%5Binventory_breakdown_type%5D%5B%5D=sum&stats%5Bstarted%5D%5B%5D=sum&stats%5Bstatus%5D%5B%5D=sum&stats%5Bstock_count%5D%5B%5D=sum' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/inventory_breakdowns'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[product_group_id]=8d1d8d66-b01e-4300-83da-7418f5acaaea'
+       --data-urlencode 'filter[status]=expired'
+       --data-urlencode 'stats[inventory_breakdown_type][]=sum'
+       --data-urlencode 'stats[started][]=sum'
+       --data-urlencode 'stats[status][]=sum'
+       --data-urlencode 'stats[stock_count][]=sum'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "d357f55e-0e36-4cca-8335-1fa24de1f63a",
-      "type": "inventory_breakdowns",
-      "attributes": {
-        "till": "1988-02-11T20:00:00.000000+00:00",
-        "stock_count": 22,
-        "status": "expired",
-        "inventory_breakdown_type": "temporary",
-        "location_id": "feb5b159-4343-4c17-bd97-f293ecbbe33c",
-        "product_id": "a4c05aa7-b291-4bd7-aec3-b8d366683588"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {
-    "stats": {
-      "inventory_breakdown_type": {
-        "sum": {
-          "regular": 0,
-          "temporary": 22
+    "data": [
+      {
+        "id": "b5e5064e-831e-4883-8a71-2e612ddbb495",
+        "type": "inventory_breakdowns",
+        "attributes": {
+          "till": "2022-08-20T18:59:00.000000+00:00",
+          "stock_count": 22,
+          "status": "expired",
+          "inventory_breakdown_type": "temporary",
+          "location_id": "8a5cbdf6-c713-419f-868e-14208fd6df91",
+          "product_id": "243a8fd8-a17c-4b5e-878c-3e0646778c26"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {
+      "stats": {
+        "inventory_breakdown_type": {
+          "sum": {
+            "regular": 0,
+            "temporary": 22
+          }
+        },
+        "started": {
+          "sum": 0
+        },
+        "status": {
+          "sum": {
+            "in_stock": 105,
+            "expected": 17,
+            "expired": 22
+          }
+        },
+        "stock_count": {
+          "sum": 22
         }
-      },
-      "started": {
-        "sum": 0
-      },
-      "status": {
-        "sum": {
-          "in_stock": 105,
-          "expected": 17,
-          "expired": 22
-        }
-      },
-      "stock_count": {
-        "sum": 22
       }
     }
   }
-}
 ```
 
 ### HTTP Request
@@ -240,13 +252,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=location,product`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[inventory_breakdowns]=from,till,stock_count`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[inventory_breakdowns]=from,till,stock_count`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=location,product`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -255,11 +267,11 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`status` | **String** `required`<br>`eq`
-`inventory_breakdown_type` | **String** <br>`eq`
-`location_id` | **Uuid** <br>`eq`
-`product_id` | **Uuid** <br>`eq`
-`product_group_id` | **Uuid** <br>`eq`
+`inventory_breakdown_type` | **string** <br>`eq`
+`location_id` | **uuid** <br>`eq`
+`product_group_id` | **uuid** <br>`eq`
+`product_id` | **uuid** <br>`eq`
+`status` | **string** `required`<br>`eq`
 
 
 ### Meta
@@ -268,11 +280,11 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
-`status` | **Array** <br>`sum`
-`inventory_breakdown_type` | **Array** <br>`sum`
-`stock_count` | **Array** <br>`sum`, `count`
-`started` | **Array** <br>`sum`
+`inventory_breakdown_type` | **array** <br>`sum`
+`started` | **array** <br>`sum`
+`status` | **array** <br>`sum`
+`stock_count` | **array** <br>`sum`, `count`
+`total` | **array** <br>`count`
 
 
 ### Includes

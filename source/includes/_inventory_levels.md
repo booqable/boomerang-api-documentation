@@ -1,79 +1,80 @@
 # Inventory levels
 
-Inventory levels provide information on item availability. It describes availability, stock counts, and planned quantities for given items.
-## Endpoints
-`GET /api/boomerang/inventory_levels`
-
-## Fields
-Every inventory level has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`item_id` | **Uuid** `readonly`<br>ID of the item to return data for, this can be a single ID or an array of multiple IDs
-`order_id` | **Uuid** `readonly`<br>Return data for all items on an order
-`location_id` | **Uuid** `readonly`<br>ID of the location to filter for
-`location_available` | **Integer** `readonly`<br>The available quantity for the given location
-`location_stock_count` | **Integer** `readonly`<br>The quantity of stock present for the given the location
-`location_plannable` | **Integer** `readonly`<br>The number of products that can be planned for the given location
-`location_planned` | **Integer** `readonly`<br>The planned quantity for the given location
-`location_needed` | **Integer** `readonly`<br>The needed quantity for the given location. This quantity does not contain what has already been returned for an order (`planned - stopped`)
-`cluster_available` | **Integer** `readonly`<br>The available quantity for the cluster the given location is part of
-`cluster_stock_count` | **Integer** `readonly`<br>The stock count for the cluster the given location is part of
-`cluster_plannable` | **Integer** `readonly`<br>The planned quantity for the cluster the given location is part of
-`cluster_planned` | **Integer** `readonly`<br>The planned quantity for the cluster the given location is part of
-`cluster_needed` | **Integer** `readonly`<br>The needed quantity for the cluster the given location is part of. This quantity does not contain what has already been returned for an order (`planned - stopped`)
-
+Inventory levels provide information on item availability.
+It describes availability, stock counts, and planned quantities for given items.
 
 ## Relationships
-Inventory levels have the following relationships:
-
 Name | Description
 -- | --
-`item` | **[Item](#items)** <br>Associated Item
-`location` | **[Location](#locations)** <br>Associated Location
+`item` | **[Item](#items)** `required`<br>The item to return data for, this can be a single ID or an array of multiple IDs. 
+`location` | **[Location](#locations)** `required`<br>The location to filter on. 
+`order` | **[Order](#orders)** `required`<br>The order to filter on. 
+
+
+Check matching attributes under [Fields](#inventory-levels-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`cluster_available` | **integer** `readonly`<br>The available quantity for the cluster the given location is part of. 
+`cluster_needed` | **integer** `readonly`<br>The needed quantity for the cluster the given location is part of. This quantity does not contain what has already been returned for an order (`planned - stopped`). 
+`cluster_plannable` | **integer** `readonly`<br>The planned quantity for the cluster the given location is part of. 
+`cluster_planned` | **integer** `readonly`<br>The planned quantity for the cluster the given location is part of. 
+`cluster_stock_count` | **integer** `readonly`<br>The stock count for the cluster the given location is part of. 
+`id` | **uuid** `readonly`<br>Primary key.
+`item_id` | **uuid** `readonly`<br>The item to return data for, this can be a single ID or an array of multiple IDs. 
+`location_available` | **integer** `readonly`<br>The available quantity for the given location. 
+`location_id` | **uuid** `readonly`<br>The location to filter on. 
+`location_needed` | **integer** `readonly`<br>The needed quantity for the given location. This quantity does not contain what has already been returned for an order (`planned - stopped`). 
+`location_plannable` | **integer** `readonly`<br>The number of products that can be planned for the given location. 
+`location_planned` | **integer** `readonly`<br>The planned quantity for the given location. 
+`location_stock_count` | **integer** `readonly`<br>The quantity of stock present for the given the location. 
+`order_id` | **uuid** `readonly`<br>The order to filter on. 
 
 
 ## Obtaining inventory levels for a product
 
 
-
 > How to fetch inventory levels for a product:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=4a1ef848-22cf-424a-88ae-1bc49c9af893&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/inventory_levels'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[from]=2022-01-01 09:00:00'
+       --data-urlencode 'filter[item_id]=d4ef30b8-8959-4262-8dcd-d90c23a4ee8a'
+       --data-urlencode 'filter[till]=2022-01-02 09:00:00'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "daa824e0-afbf-5b06-accb-22a8e5d354dc",
-      "type": "inventory_levels",
-      "attributes": {
-        "item_id": "4a1ef848-22cf-424a-88ae-1bc49c9af893",
-        "order_id": null,
-        "location_id": "1a28aaea-114f-44e3-89c6-f0d08ca00b36",
-        "location_available": 0,
-        "location_stock_count": 0,
-        "location_plannable": 0,
-        "location_planned": 0,
-        "location_needed": 0,
-        "cluster_available": 0,
-        "cluster_stock_count": 0,
-        "cluster_plannable": 0,
-        "cluster_planned": 0,
-        "cluster_needed": 0
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "72684141-dea4-42b5-8c69-080d056a0e8c",
+        "type": "inventory_levels",
+        "attributes": {
+          "location_available": 0,
+          "location_stock_count": 0,
+          "location_plannable": 0,
+          "location_planned": 0,
+          "location_needed": 0,
+          "cluster_available": 0,
+          "cluster_stock_count": 0,
+          "cluster_plannable": 0,
+          "cluster_planned": 0,
+          "cluster_needed": 0,
+          "item_id": "d4ef30b8-8959-4262-8dcd-d90c23a4ee8a",
+          "location_id": "95c73381-5770-48e8-8a43-af7513a32ed9",
+          "order_id": null
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -86,13 +87,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=item,location`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[inventory_levels]=item_id,order_id,location_id`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[inventory_levels]=location_available,location_stock_count,location_plannable`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=item,location`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -101,11 +102,11 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`item_id` | **Uuid** <br>`eq`
-`order_id` | **Uuid** <br>`eq`
-`location_id` | **Uuid** <br>`eq`
-`from` | **Datetime** `required`<br>`eq`
-`till` | **Datetime** `required`<br>`eq`
+`from` | **datetime** `required`<br>`eq`
+`item_id` | **uuid** <br>`eq`
+`location_id` | **uuid** <br>`eq`
+`order_id` | **uuid** <br>`eq`
+`till` | **datetime** `required`<br>`eq`
 
 
 ### Meta
@@ -114,7 +115,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes
@@ -134,43 +135,45 @@ This request accepts the following includes:
 ## Obtaining inventory levels for a product for a specific location
 
 
-
 > How to fetch inventory levels for a product for a specific location:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/inventory_levels?filter%5Bfrom%5D=2022-01-01+09%3A00%3A00&filter%5Bitem_id%5D=84fdb483-7695-4fad-afed-5c0f917bb10d&filter%5Blocation_id%5D=9333eac5-a9e7-4e27-8401-0e5b11c96aa9&filter%5Btill%5D=2022-01-02+09%3A00%3A00' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/inventory_levels'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[from]=2022-01-01 09:00:00'
+       --data-urlencode 'filter[item_id]=f13f0c48-b1bd-48ef-81be-94aba9cee2fc'
+       --data-urlencode 'filter[location_id]=fcf25ba2-1c63-4cf3-842b-be17908108c4'
+       --data-urlencode 'filter[till]=2022-01-02 09:00:00'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "956973c7-adbe-5690-b519-8be793a7435a",
-      "type": "inventory_levels",
-      "attributes": {
-        "item_id": "84fdb483-7695-4fad-afed-5c0f917bb10d",
-        "order_id": null,
-        "location_id": "9333eac5-a9e7-4e27-8401-0e5b11c96aa9",
-        "location_available": 0,
-        "location_stock_count": 0,
-        "location_plannable": 0,
-        "location_planned": 0,
-        "location_needed": 0,
-        "cluster_available": 0,
-        "cluster_stock_count": 0,
-        "cluster_plannable": 0,
-        "cluster_planned": 0,
-        "cluster_needed": 0
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "7f66e4b6-37f8-4f22-8c62-e35634c5ebb5",
+        "type": "inventory_levels",
+        "attributes": {
+          "location_available": 0,
+          "location_stock_count": 0,
+          "location_plannable": 0,
+          "location_planned": 0,
+          "location_needed": 0,
+          "cluster_available": 0,
+          "cluster_stock_count": 0,
+          "cluster_plannable": 0,
+          "cluster_planned": 0,
+          "cluster_needed": 0,
+          "item_id": "f13f0c48-b1bd-48ef-81be-94aba9cee2fc",
+          "location_id": "fcf25ba2-1c63-4cf3-842b-be17908108c4",
+          "order_id": null
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -183,13 +186,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=item,location`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[inventory_levels]=item_id,order_id,location_id`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[inventory_levels]=location_available,location_stock_count,location_plannable`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=item,location`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -198,11 +201,11 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`item_id` | **Uuid** <br>`eq`
-`order_id` | **Uuid** <br>`eq`
-`location_id` | **Uuid** <br>`eq`
-`from` | **Datetime** `required`<br>`eq`
-`till` | **Datetime** `required`<br>`eq`
+`from` | **datetime** `required`<br>`eq`
+`item_id` | **uuid** <br>`eq`
+`location_id` | **uuid** <br>`eq`
+`order_id` | **uuid** <br>`eq`
+`till` | **datetime** `required`<br>`eq`
 
 
 ### Meta
@@ -211,7 +214,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

@@ -1,60 +1,56 @@
 # Tags
 
-Tags are designed to find specific resources faster. They can be added to the following resources by supplying a `tag_list`.
+Tags allow users to label and quickly identify customers, orders and products.
 
-- [Order](#orders)
-- [Customer](#customers)
-- [Product group](#product_groups)
-- [Bundle](#bundles)
-- [Document](#documents)
+Tags are assigned by writing the `tag_list` attribute on resources that support tags.
+
+The Tag resource allows to gather names and usage counts of tags that are being used.
 
 ## Fields
-Every tag has the following fields:
 
-Name | Description
+ Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`for` | **String** `writeonly`<br>The resource to show the tag counts for. One of `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`
-`name` | **String** <br>Name of the tag
-`count` | **Integer** <br>Total count
+`count` | **integer** <br>How often this tag is used.
+`for` | **enum** `writeonly`<br>The resource to show the tag counts for.<br>One of: `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`.
+`id` | **uuid** `readonly`<br>Primary key.
+`name` | **string** <br>Name of the tag.
 
 
 ## Listing tags
 
 
-
 > How to fetch a list of tags with their counts:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tags?filter%5Bfor%5D=Order' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/tags'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[for]=Order'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "39d77a57-9db7-4afb-ada4-869f55ce8826",
-      "type": "tags",
-      "attributes": {
-        "name": "vip",
-        "count": 1
+    "data": [
+      {
+        "id": "9ab5867e-6bcc-497d-800a-17a81435dca3",
+        "type": "tags",
+        "attributes": {
+          "name": "vip",
+          "count": 1
+        }
+      },
+      {
+        "id": "e15b75d1-c447-4d47-87a5-24e44dfac6a4",
+        "type": "tags",
+        "attributes": {
+          "name": "webshop",
+          "count": 3
+        }
       }
-    },
-    {
-      "id": "5aa01729-4b79-49d8-9dac-68effc6a3214",
-      "type": "tags",
-      "attributes": {
-        "name": "webshop",
-        "count": 3
-      }
-    }
-  ],
-  "meta": {}
-}
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -67,12 +63,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tags]=name,count`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tags]=name,count`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -81,7 +77,7 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`for` | **String** <br>`eq`
+`for` | **string_enum** `required`<br>`eq`
 
 
 ### Meta
@@ -90,7 +86,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

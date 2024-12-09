@@ -2,91 +2,88 @@
 
 StockItemTrackers describe the history of pickups and returns of a StockItem.
 
-Check the associated ProductTracker for additional information
-about product, order, etc.
-
-## Fields
-Every stock item tracker has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`quantity` | **Integer** `readonly`<br>Either 1 (pickup) or -1 (return). 
-`product_tracker_id` | **Uuid** `readonly`<br>The associated product tracker. 
-`stock_item_id` | **Uuid** `readonly`<br>Associated Stock item
-
-
 ## Relationships
-Stock item trackers have the following relationships:
-
 Name | Description
 -- | --
-`product_tracker` | **[Product tracker](#product-trackers)** <br>Associated Product tracker
-`stock_item` | **[Stock item](#stock-items)** <br>Associated Stock item
+`product_tracker` | **[Product tracker](#product-trackers)** `required`<br>The associated ProductTracker, which contains links to the product, and order this pickup/return is done for. 
+`stock_item` | **[Stock item](#stock-items)** `required`<br>The StockItem being tracked. 
+
+
+Check matching attributes under [Fields](#stock-item-trackers-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`id` | **uuid** `readonly`<br>Primary key.
+`product_tracker_id` | **uuid** `readonly`<br>The associated ProductTracker, which contains links to the product, and order this pickup/return is done for. 
+`quantity` | **integer** `readonly`<br>Either 1 (pickup) or -1 (return). 
+`stock_item_id` | **uuid** `readonly`<br>The StockItem being tracked. 
 
 
 ## Listing stock item trackers
 
 
-
 > How to fetch StockItemTrackers for a ProductGroup:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_trackers?filter%5Bproduct_group_id%5D%5B%5D=6519c404-453a-453f-b9f8-9817f4bdf962&include=stock_item' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/stock_item_trackers'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[product_group_id][]=7acf92e9-02ae-4343-8ffa-f074055db051'
+       --data-urlencode 'include=stock_item'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "93d90492-ddc3-430a-8b53-11c0c50395d6",
-      "type": "stock_item_trackers",
-      "attributes": {
-        "created_at": "2024-12-02T13:04:17.863367+00:00",
-        "updated_at": "2024-12-02T13:04:17.863367+00:00",
-        "quantity": 1,
-        "product_tracker_id": "1888f31c-1299-49b9-b5a1-c3dc1e3c2732",
-        "stock_item_id": "91d94c6c-e1fb-4b32-99fa-5078cdb5aa99"
-      },
-      "relationships": {
-        "stock_item": {
-          "data": {
-            "type": "stock_items",
-            "id": "91d94c6c-e1fb-4b32-99fa-5078cdb5aa99"
+    "data": [
+      {
+        "id": "5b3fc0de-c150-4f2e-85fd-c245689d467d",
+        "type": "stock_item_trackers",
+        "attributes": {
+          "created_at": "2028-12-11T13:35:01.000000+00:00",
+          "updated_at": "2028-12-11T13:35:01.000000+00:00",
+          "quantity": 1,
+          "product_tracker_id": "8dace30b-0c62-4a74-89ff-c8129adcb4a4",
+          "stock_item_id": "0ae288b0-b7ff-4dbd-88dc-1fd225fd8e64"
+        },
+        "relationships": {
+          "stock_item": {
+            "data": {
+              "type": "stock_items",
+              "id": "0ae288b0-b7ff-4dbd-88dc-1fd225fd8e64"
+            }
           }
         }
       }
-    }
-  ],
-  "included": [
-    {
-      "id": "91d94c6c-e1fb-4b32-99fa-5078cdb5aa99",
-      "type": "stock_items",
-      "attributes": {
-        "created_at": "2024-12-02T13:04:17.776666+00:00",
-        "updated_at": "2024-12-02T13:04:17.776666+00:00",
-        "archived": false,
-        "archived_at": null,
-        "identifier": "id1000056",
-        "status": "in_stock",
-        "from": null,
-        "till": null,
-        "stock_item_type": "regular",
-        "product_group_id": "6519c404-453a-453f-b9f8-9817f4bdf962",
-        "properties": {},
-        "product_id": "075bb5f0-71a4-4460-acf8-f38ac6c14c2a",
-        "location_id": "d708dc14-80ee-4918-9fc3-24934d222dd0"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    ],
+    "included": [
+      {
+        "id": "0ae288b0-b7ff-4dbd-88dc-1fd225fd8e64",
+        "type": "stock_items",
+        "attributes": {
+          "created_at": "2028-12-11T13:35:01.000000+00:00",
+          "updated_at": "2028-12-11T13:35:01.000000+00:00",
+          "archived": false,
+          "archived_at": null,
+          "identifier": "id1000182",
+          "status": "in_stock",
+          "from": null,
+          "till": null,
+          "stock_item_type": "regular",
+          "product_group_id": "7acf92e9-02ae-4343-8ffa-f074055db051",
+          "properties": {},
+          "product_id": "7cf5c623-5550-475a-845d-6a9e218d7343",
+          "location_id": "62e2159d-723d-407b-8741-9a07fde0f950"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -99,13 +96,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=product_tracker,stock_item`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_trackers]=created_at,quantity,product_tracker_id`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_item_trackers]=created_at,quantity,product_tracker_id`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=product_tracker,stock_item`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -114,10 +111,10 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`product_id` | **String** <br>`eq`, `not_eq`
-`product_group_id` | **String** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`product_group_id` | **string** <br>`eq`, `not_eq`
+`product_id` | **string** <br>`eq`, `not_eq`
 
 
 ### Meta
@@ -126,7 +123,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

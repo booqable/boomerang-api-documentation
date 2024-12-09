@@ -2,156 +2,161 @@
 
 Breakdown of how many times a product was rented during a specific period.
 
-## Fields
-Every report rental interval has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`date` | **Date** <br>Interval date
-`rented_count` | **Integer** <br>Times the product was rented
-`interval` | **String** <br>The interval of the breakdown
-`product_id` | **Uuid** <br>Associated Product
-
+<aside class="notice">
+  Availability of this report depends on the current pricing plan.
+</aside>
 
 ## Relationships
-Report rental intervals have the following relationships:
-
 Name | Description
 -- | --
-`product` | **[Product](#products)** <br>Associated Product
+`product` | **[Product](#products)** `required`<br>The product whose rental performance is reported.
+
+
+Check matching attributes under [Fields](#report-rental-intervals-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`date` | **date** <br>Interval date.
+`id` | **uuid** `readonly`<br>Primary key.
+`interval` | **string** <br>The interval of the breakdown.
+`product_id` | **uuid** <br>The product whose rental performance is reported.
+`rented_count` | **integer** <br>Times the product was rented.
 
 
 ## Listing performance for a rental product per interval
 
 
-
 > How to fetch performance per interval for a product:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rental_intervals?filter%5Bfrom%5D=2024-11-22+00%3A00%3A00+UTC&filter%5Bproduct_id%5D=c783dd21-74e8-4158-9619-8d8e895462ad&filter%5Btill%5D=2024-12-01+23%3A59%3A59+UTC' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/report_rental_intervals'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[from]=2024-11-29 00:00:00 UTC'
+       --data-urlencode 'filter[product_id]=11b593b2-23b2-4a0d-8630-f08bdc6a363f'
+       --data-urlencode 'filter[till]=2024-12-08 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "4d923fff-6670-43bc-a0bd-6aed4ee68f06",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-22",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+    "data": [
+      {
+        "id": "f0ceb5ce-caa0-40d5-8c27-fd4607e62568",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-11-29",
+          "rented_count": 0,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "8179d237-6f73-47df-a625-5b7e7492cfcf",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-23",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "6d2b8548-3a4f-41c4-8e33-f88cab6ed721",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-11-30",
+          "rented_count": 0,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "15aa5c45-07a9-4e45-b0c2-1d2226f3cfc1",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-24",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "ccd4c262-738d-415e-8388-832ee4be4870",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-01",
+          "rented_count": 0,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "177142e2-f5f6-4e0e-bd87-8732ac3e0196",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-25",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "cb0cd33c-98ec-4f6a-81e4-3450cfe6c7bd",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-02",
+          "rented_count": 0,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "b3f5b638-ce3b-4cde-9cdd-6a6ec81c70e5",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-26",
-        "rented_count": 1,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "85422c5f-f84a-4fc1-870c-24f6f3762c41",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-03",
+          "rented_count": 1,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "239a40e2-7a43-4c75-a024-9d7a9d5a313f",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-27",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "c344a030-1398-4dc8-8066-90f990c9d65f",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-04",
+          "rented_count": 0,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "6b2107bc-f94b-4121-b1f9-0d4a1b08477d",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-28",
-        "rented_count": 1,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "0d56a56a-529b-419e-834d-b8a2316f15a8",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-05",
+          "rented_count": 1,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "1449de72-bf50-4b18-9e5a-6b237e775efa",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-29",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "8a916c0a-b234-4b15-8df7-1f4f2d325746",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-06",
+          "rented_count": 0,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "82fcd679-ec39-455c-a9cd-4d9cedcb4543",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-11-30",
-        "rented_count": 1,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
+      {
+        "id": "894bfe67-ec44-49cb-801b-dd2525745c92",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-07",
+          "rented_count": 1,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "74edece7-72c1-4685-8148-66aada0e35cd",
-      "type": "report_rental_intervals",
-      "attributes": {
-        "date": "2024-12-01",
-        "rented_count": 0,
-        "interval": "day",
-        "product_id": "c783dd21-74e8-4158-9619-8d8e895462ad"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+      {
+        "id": "947020ed-c624-4f6f-8c35-ab29ccbc48b6",
+        "type": "report_rental_intervals",
+        "attributes": {
+          "date": "2024-12-08",
+          "rented_count": 0,
+          "interval": "day",
+          "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -164,13 +169,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=product`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rental_intervals]=date,rented_count,interval`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[report_rental_intervals]=date,rented_count,interval`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=product`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -179,9 +184,9 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`product_id` | **Uuid** `required`<br>`eq`
-`from` | **Datetime** <br>`eq`
-`till` | **Datetime** <br>`eq`
+`from` | **datetime** <br>`eq`
+`product_id` | **uuid** `required`<br>`eq`
+`till` | **datetime** <br>`eq`
 
 
 ### Meta
@@ -190,7 +195,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

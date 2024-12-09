@@ -1,66 +1,72 @@
 # Report rentals
 
-Report on how rental products are performing. The report is filterable by date and can be requested by one of the following turnover types: `invoices`, `orders`.
+Report on how rental products are performing. The report is filterable by date
+and can be requested by one of the following turnover types:
+`invoices`, `orders`.
 
-## Fields
-Every report rental has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`name` | **String** `readonly`<br>Product name
-`charge_duration_in_seconds` | **Integer** `readonly`<br>How many seconds were charged
-`planned_duration_in_seconds` | **Integer** `readonly`<br>How many seconds the product was planned
-`rented_count` | **Integer** `readonly`<br>How many times the product was rented out
-`turnover_in_cents` | **Integer** `readonly`<br>Turnover during period
-`quantity` | **Integer** `readonly`<br>Quantity in stock during period
-`product_id` | **Uuid** <br>Associated Product
-
+<aside class="notice">
+  Availability of this report depends on the current pricing plan.
+</aside>
 
 ## Relationships
-Report rentals have the following relationships:
-
 Name | Description
 -- | --
-`product` | **[Product](#products)** <br>Associated Product
+`product` | **[Product](#products)** `required`<br>The rental product whose performance is reported.
+
+
+Check matching attributes under [Fields](#report-rentals-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`charge_duration_in_seconds` | **integer** `readonly`<br>How many seconds were charged.
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`id` | **uuid** `readonly`<br>Primary key.
+`name` | **string** `readonly`<br>Product name.
+`planned_duration_in_seconds` | **integer** `readonly`<br>How many seconds the product was planned.
+`product_id` | **uuid** <br>The rental product whose performance is reported.
+`quantity` | **integer** `readonly`<br>Quantity in stock during period.
+`rented_count` | **integer** `readonly`<br>How many times the product was rented out.
+`turnover_in_cents` | **integer** `readonly`<br>Turnover during period.
 
 
 ## Listing performance for rental products
 
 
-
 > How to fetch performance for products:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_rentals?filter%5Bfrom%5D=2024-11-27+00%3A00%3A00+UTC&filter%5Btill%5D=2024-12-02+23%3A59%3A59+UTC' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/report_rentals'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[from]=2024-12-04 00:00:00 UTC'
+       --data-urlencode 'filter[till]=2024-12-09 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "5e4565b7-da0c-462c-9a7b-f6bc925b3f9f",
-      "type": "report_rentals",
-      "attributes": {
-        "created_at": "2024-12-02T13:05:10.515746+00:00",
-        "name": "Product 1000037",
-        "charge_duration_in_seconds": 14400,
-        "planned_duration_in_seconds": 14400,
-        "rented_count": 2,
-        "turnover_in_cents": 4000,
-        "quantity": 10,
-        "product_id": "7c360c4b-e1cd-4d9f-8071-7f11a75e0e5d"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
+        "type": "report_rentals",
+        "attributes": {
+          "created_at": "2019-11-20T14:14:00.000000+00:00",
+          "name": "Product 1000055",
+          "charge_duration_in_seconds": 14400,
+          "planned_duration_in_seconds": 14400,
+          "rented_count": 2,
+          "turnover_in_cents": 4000,
+          "quantity": 10,
+          "product_id": "c71a94f5-ca5b-4748-8f7a-ce7f18b4bb8a"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -73,13 +79,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=product`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_rentals]=created_at,name,charge_duration_in_seconds`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[report_rentals]=created_at,name,charge_duration_in_seconds`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=product`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -88,15 +94,15 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`q` | **String** <br>`eq`
-`product_id` | **Uuid** <br>`eq`
-`from` | **Datetime** <br>`eq`
-`till` | **Datetime** <br>`eq`
-`turnover_type` | **String** <br>`eq`
-`tag_list` | **Array** <br>`eq`
-`location_id` | **Uuid** <br>`eq`
-`archived` | **Boolean** <br>`eq`
-`tracking_type` | **String** <br>`eq`
+`archived` | **boolean** <br>`eq`
+`from` | **datetime** <br>`eq`
+`location_id` | **uuid** <br>`eq`
+`product_id` | **uuid** <br>`eq`
+`q` | **string** <br>`eq`
+`tag_list` | **array** <br>`eq`
+`till` | **datetime** <br>`eq`
+`tracking_type` | **string** <br>`eq`
+`turnover_type` | **string** <br>`eq`
 
 
 ### Meta
@@ -105,9 +111,9 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
-`tag_list` | **Array** <br>`count`
-`tracking_type` | **Array** <br>`count`
+`tag_list` | **array** <br>`count`
+`total` | **array** <br>`count`
+`tracking_type` | **array** <br>`count`
 
 
 ### Includes

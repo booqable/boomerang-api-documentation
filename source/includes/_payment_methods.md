@@ -2,72 +2,63 @@
 
 Re-usable payment methods stored on file.
 
-## Endpoints
-`GET /api/boomerang/payment_methods`
-
-`POST /api/boomerang/payment_methods`
-
-`DELETE /api/boomerang/payment_methods/{id}`
-
-## Fields
-Every payment method has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`label` | **String** <br>Label of the payment method
-`provider` | **String** <br>Provider of the payment method. Can be one of `stripe`, `app`, `none`
-`identifier` | **String** <br>Provider identifier of the payment method
-`method_type` | **String** <br>Provider method type
-`details` | **Hash** <br>Method details
-`customer_id` | **Uuid** `readonly-after-create`<br>Associated Customer
-
-
 ## Relationships
-Payment methods have the following relationships:
-
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** <br>Associated Customer
+`customer` | **[Customer](#customers)** `optional`<br>The customer who owns this payment method. Becomes `null` after detaching a payment method.
+
+
+Check matching attributes under [Fields](#payment-methods-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`customer_id` | **uuid** `readonly-after-create` `nullable`<br>The customer who owns this payment method. Becomes `null` after detaching a payment method.
+`details` | **hash** `readonly-after-create`<br>Method details. 
+`id` | **uuid** `readonly`<br>Primary key.
+`identifier` | **string** `readonly-after-create`<br>Provider identifier of the payment method. 
+`label` | **string** `readonly-after-create`<br>Label of the payment method. 
+`method_type` | **string** `readonly-after-create`<br>Provider method type. 
+`provider` | **enum** `readonly-after-create`<br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing payment methods
 
 
-
 > How to fetch a list of payment methods:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/payment_methods'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "e2349e0f-e367-4e6c-a654-7f2ab11d9668",
-      "type": "payment_methods",
-      "attributes": {
-        "created_at": "2024-12-02T13:04:45.293465+00:00",
-        "updated_at": "2024-12-02T13:04:45.293465+00:00",
-        "label": "Visa XXX1234",
-        "provider": "stripe",
-        "identifier": "pm_1234567890",
-        "method_type": null,
-        "details": {},
-        "customer_id": "193e545c-82bc-45f2-a82a-5659fde49521"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "eb25bad2-c1b1-45c1-8526-2085a293c457",
+        "type": "payment_methods",
+        "attributes": {
+          "created_at": "2017-06-03T16:17:00.000000+00:00",
+          "updated_at": "2017-06-03T16:17:00.000000+00:00",
+          "label": "Visa XXX1234",
+          "provider": "stripe",
+          "identifier": "pm_1234567890",
+          "method_type": null,
+          "details": {},
+          "customer_id": "b0815afc-9d5d-405b-8ef8-fd5373dad3e5"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -80,12 +71,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -94,14 +85,14 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`label` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`provider` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`identifier` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`method_type` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`customer_id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`customer_id` | **uuid** <br>`eq`, `not_eq`
+`id` | **uuid** <br>`eq`, `not_eq`
+`identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`label` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`method_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`provider` | **string_enum** <br>`eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -110,7 +101,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes
@@ -119,47 +110,46 @@ This request does not accept any includes
 ## Creating a payment method
 
 
-
 > How to create a payment method:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "payment_methods",
-        "attributes": {
-          "provider": "stripe",
-          "identifier": "pm_123",
-          "customer_id": "52b816f6-29b0-4ff5-8fa5-d4413685f1f3",
-          "label": "Test card"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/payment_methods'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "payment_methods",
+           "attributes": {
+             "provider": "stripe",
+             "identifier": "pm_123",
+             "customer_id": "e1f17238-83d4-4660-8f3b-5e95b67094df",
+             "label": "Test card"
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "454d3f56-0ca7-4435-9a12-4a65f364c726",
-    "type": "payment_methods",
-    "attributes": {
-      "created_at": "2024-12-02T13:04:45.951469+00:00",
-      "updated_at": "2024-12-02T13:04:45.951469+00:00",
-      "label": "Test card",
-      "provider": "stripe",
-      "identifier": "pm_123",
-      "method_type": null,
-      "details": {},
-      "customer_id": "52b816f6-29b0-4ff5-8fa5-d4413685f1f3"
+    "data": {
+      "id": "395900e5-12f7-4449-8212-a7dc4c52edf3",
+      "type": "payment_methods",
+      "attributes": {
+        "created_at": "2019-01-15T14:37:00.000000+00:00",
+        "updated_at": "2019-01-15T14:37:00.000000+00:00",
+        "label": "Test card",
+        "provider": "stripe",
+        "identifier": "pm_123",
+        "method_type": null,
+        "details": {},
+        "customer_id": "e1f17238-83d4-4660-8f3b-5e95b67094df"
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -172,7 +162,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
 
 
 ### Request body
@@ -181,12 +171,12 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][label]` | **String** <br>Label of the payment method
-`data[attributes][provider]` | **String** <br>Provider of the payment method. Can be one of `stripe`, `app`, `none`
-`data[attributes][identifier]` | **String** <br>Provider identifier of the payment method
-`data[attributes][method_type]` | **String** <br>Provider method type
-`data[attributes][details]` | **Hash** <br>Method details
-`data[attributes][customer_id]` | **Uuid** <br>Associated Customer
+`data[attributes][customer_id]` | **uuid** <br>The customer who owns this payment method. Becomes `null` after detaching a payment method.
+`data[attributes][details]` | **hash** <br>Method details. 
+`data[attributes][identifier]` | **string** <br>Provider identifier of the payment method. 
+`data[attributes][label]` | **string** <br>Label of the payment method. 
+`data[attributes][method_type]` | **string** <br>Provider method type. 
+`data[attributes][provider]` | **enum** <br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
 
 
 ### Includes
@@ -195,36 +185,35 @@ This request does not accept any includes
 ## Detach a payment method
 
 
-
 > How to detach a payment method from customer:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/payment_methods/879dd920-7921-4c1c-a98a-30b5f591a746' \
-    --header 'content-type: application/json' \
+       --url 'https://example.booqable.com/api/boomerang/payment_methods/116b5701-21a0-41af-8a36-ca8d5e8767d6'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "879dd920-7921-4c1c-a98a-30b5f591a746",
-    "type": "payment_methods",
-    "attributes": {
-      "created_at": "2024-12-02T13:04:44.768557+00:00",
-      "updated_at": "2024-12-02T13:04:44.815074+00:00",
-      "label": "Visa XXX1234",
-      "provider": "stripe",
-      "identifier": "pm_1234567890",
-      "method_type": null,
-      "details": {},
-      "customer_id": null
+    "data": {
+      "id": "116b5701-21a0-41af-8a36-ca8d5e8767d6",
+      "type": "payment_methods",
+      "attributes": {
+        "created_at": "2016-08-19T20:26:00.000000+00:00",
+        "updated_at": "2016-08-19T20:26:00.000000+00:00",
+        "label": "Visa XXX1234",
+        "provider": "stripe",
+        "identifier": "pm_1234567890",
+        "method_type": null,
+        "details": {},
+        "customer_id": null
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -237,7 +226,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
 
 
 ### Includes

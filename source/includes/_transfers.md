@@ -1,71 +1,70 @@
 # Transfers
 
-When an order causes a shortage for a location and that shortage can be solved by the inventory in the cluster, one or multiple transfers are created.
-
-## Fields
-Every transfer has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`quantity` | **Integer** <br>Quantity of items being transfered
-`available_at` | **Datetime** <br>Date when item should be available at destination location
-`finalized` | **Boolean** <br>Whether or not the transfer has completed
-`item_id` | **Uuid** <br>ID of the product being transfered
-`order_id` | **Uuid** <br>Order the item is being transfered for
-`source_location_id` | **Uuid** <br>Location item is being transfered from
-`destination_location_id` | **Uuid** <br>Location item is being transfered to
-
+When an order causes a shortage for a location and that shortage can be
+solved by the inventory in the cluster, one or multiple transfers are created.
 
 ## Relationships
-Transfers have the following relationships:
-
 Name | Description
 -- | --
-`destination_location` | **[Location](#locations)** <br>Associated Destination location
-`item` | **[Item](#items)** <br>Associated Item
-`order` | **[Order](#orders)** <br>Associated Order
-`source_location` | **[Location](#locations)** <br>Associated Source location
+`destination_location` | **[Location](#locations)** `required`<br>Location to which the product need to be transfered to.
+`item` | **[Item](#items)** `required`<br>The product that needs to be transferred.
+`order` | **[Order](#orders)** `required`<br>The order for which the product is required.
+`source_location` | **[Location](#locations)** `required`<br>Location from which the product needs to be transfered.
+
+
+Check matching attributes under [Fields](#transfers-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`available_at` | **datetime** <br>Date when item should be available at destination location.
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`destination_location_id` | **uuid** <br>Location to which the product need to be transfered to.
+`finalized` | **boolean** <br>Whether or not the transfer has completed.
+`id` | **uuid** `readonly`<br>Primary key.
+`item_id` | **uuid** <br>The product that needs to be transferred.
+`order_id` | **uuid** <br>The order for which the product is required.
+`quantity` | **integer** <br>Quantity of items being transfered.
+`source_location_id` | **uuid** <br>Location from which the product needs to be transfered.
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing transfers
 
 
-
 > How to fetch a list of transfers:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/transfers' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/transfers'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "ef7b24e4-b08c-42cc-bd83-ab2b804c8fe2",
-      "type": "transfers",
-      "attributes": {
-        "created_at": "2024-12-02T13:04:04.459824+00:00",
-        "updated_at": "2024-12-02T13:04:04.459824+00:00",
-        "quantity": 1,
-        "available_at": "2024-11-30T13:00:00.000000+00:00",
-        "finalized": false,
-        "item_id": "ebc13789-8595-4c2b-baa8-25896557199a",
-        "order_id": "53b5ae39-facf-41a2-8c85-5ee87d0243ee",
-        "source_location_id": "00f73e38-d5b4-4966-8141-8d12797fbf43",
-        "destination_location_id": "00f73e38-d5b4-4966-8141-8d12797fbf43"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "6f5d421b-37d1-4f12-8170-d8bb4b8ce0b8",
+        "type": "transfers",
+        "attributes": {
+          "created_at": "2028-08-08T18:28:00.000000+00:00",
+          "updated_at": "2028-08-08T18:28:00.000000+00:00",
+          "quantity": 1,
+          "available_at": "2028-08-06T18:15:00.000000+00:00",
+          "finalized": false,
+          "item_id": "672d6735-92fa-4198-8145-116e1191847d",
+          "order_id": "058a8f0f-d1ac-4363-8778-a6c4476ee292",
+          "source_location_id": "1773d662-6eb3-4dae-8736-31948f79df75",
+          "destination_location_id": "1773d662-6eb3-4dae-8736-31948f79df75"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -78,13 +77,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=order,item,source_location`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[transfers]=created_at,updated_at,quantity`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[transfers]=created_at,updated_at,quantity`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=order,item,source_location`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -93,17 +92,17 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`q` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`quantity` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`available_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`finalized` | **Boolean** <br>`eq`
-`item_id` | **Uuid** <br>`eq`, `not_eq`
-`order_id` | **Uuid** <br>`eq`, `not_eq`
-`source_location_id` | **Uuid** <br>`eq`, `not_eq`
-`destination_location_id` | **Uuid** <br>`eq`, `not_eq`
+`available_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`destination_location_id` | **uuid** <br>`eq`, `not_eq`
+`finalized` | **boolean** <br>`eq`
+`id` | **uuid** <br>`eq`, `not_eq`
+`item_id` | **uuid** <br>`eq`, `not_eq`
+`order_id` | **uuid** <br>`eq`, `not_eq`
+`q` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`source_location_id` | **uuid** <br>`eq`, `not_eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -112,7 +111,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

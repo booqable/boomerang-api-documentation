@@ -2,64 +2,63 @@
 
 A deposit hold is the resource responsible for managing the held deposit on an order.
 
-## Fields
-Every deposit hold has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`amount_in_cents` | **Integer** `writeonly`<br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
-`reason` | **String** `writeonly`<br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
-`order_id` | **Uuid** <br>Associated Order
-`deposit_line_id` | **Uuid** `readonly`<br>Associated Deposit line
-
-
 ## Relationships
-Deposit holds have the following relationships:
-
 Name | Description
 -- | --
-`deposit_line` | **[Line](#lines)** <br>Associated Deposit line
-`order` | **[Order](#orders)** <br>Associated Order
+`deposit_line` | **[Line](#lines)** `required`<br>The [Line](#lines) that was created or updated to hold the deppsit. 
+`order` | **[Order](#orders)** `required`<br>The order a new deposit needs to be added to. 
+
+
+Check matching attributes under [Fields](#deposit-holds-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`amount_in_cents` | **integer** `writeonly`<br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
+`deposit_line_id` | **uuid** `readonly`<br>The [Line](#lines) that was created or updated to hold the deppsit. 
+`id` | **uuid** `readonly`<br>Primary key.
+`order_id` | **uuid** <br>The order a new deposit needs to be added to. 
+`reason` | **string** `writeonly`<br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 
 
 ## Create
-
 
 
 > Holding a deposit:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/deposit_holds' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "deposit_holds",
-        "attributes": {
-          "order_id": "f6d7e276-f35a-4e62-9af6-1be9737df38b",
-          "amount_in_cents": 5000,
-          "reason": "damages"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/deposit_holds'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "deposit_holds",
+           "attributes": {
+             "order_id": "f9863002-224c-4c7c-896e-d5331e84930b",
+             "amount_in_cents": 5000,
+             "reason": "damages"
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "fbdfc314-75b9-5b65-8f4e-5afe30eae8e5",
-    "type": "deposit_holds",
-    "attributes": {
-      "order_id": "f6d7e276-f35a-4e62-9af6-1be9737df38b",
-      "deposit_line_id": "bae72d61-c89b-46c1-a475-37870df60076"
+    "data": {
+      "id": "7603bbc7-4fbe-49cf-8555-b6930fc55411",
+      "type": "deposit_holds",
+      "attributes": {
+        "order_id": "f9863002-224c-4c7c-896e-d5331e84930b",
+        "deposit_line_id": "1cad0b8d-3f2f-47c0-85ba-84fbbbd0d05e"
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -72,8 +71,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=deposit_line,order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[deposit_holds]=order_id,deposit_line_id`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[deposit_holds]=order_id,deposit_line_id`
+`include` | **string** <br>List of comma seperated relationships `?include=deposit_line,order`
 
 
 ### Request body
@@ -82,9 +81,9 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][amount_in_cents]` | **Integer** <br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
-`data[attributes][reason]` | **String** <br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
-`data[attributes][order_id]` | **Uuid** <br>Associated Order
+`data[attributes][amount_in_cents]` | **integer** <br>Amount to hold. If the order already has a hold, the amount will added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
+`data[attributes][order_id]` | **uuid** <br>The order a new deposit needs to be added to. 
+`data[attributes][reason]` | **string** <br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 
 
 ### Includes

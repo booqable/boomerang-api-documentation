@@ -21,13 +21,13 @@ data object has required keys, depending on the type of the operation.
 
 The following operation types are supported:
 
-  - `archive`
-  - `generate_barcode`
-  - `generate_document`
-  - `update_collections`
-  - `update_tag`
-  - `export`
-  - `update`
+  - [`archive`](#operations-archive)
+  - [`generate_barcode`](#operations-generate-barcode)
+  - [`generate_document`](#operations-generate-document)
+  - [`update_collections`](#operations-update-collections)
+  - [`update_tag`](#operations-update-tag)
+  - [`export`](#operations-export)
+  - [`update`](#operations-update)
 
 ## Archive
 
@@ -51,9 +51,9 @@ Orders with any other status will be ignored.
 
 | Key                | Type          | Possible values         | Description                                                                                 |
 |--------------------|---------------|-------------------------|---------------------------------------------------------------------------------------------|
-| `type`             | String        | `archive`               | Required to start this specific operation.                                                  |
-| `data.target_type` | String        | `customers`, `orders`   | The type of resource that should be archived. Only one resource per operation is supported. |
-| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`          | An array of primary keys for the entities that should be archived.                          |
+| `type`             | string        | `archive`               | Required to start this specific operation.                                                  |
+| `data.target_type` | string        | `customers`, `orders`   | The type of resource that should be archived. Only one resource per operation is supported. |
+| `data.target_ids`  | array[uuid]   | `[{id}, {id}]`          | An array of primary keys for the entities that should be archived.                          |
 
 **Artifact**
 
@@ -81,11 +81,11 @@ Generates a barcode for all entities that do not have a barcode. Entities that a
 
 | Key                    | Type            | Possible values                                                | Description                                                                                              |
 |------------------------|-----------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| `type`                 | String          | `generate_barcode`                                             | Required to start this specific operation.                                                               |
-| `data.target_type`     | String          | `customers`, `product_groups`                                  | The type of resource that barcodes should be generated for.                                              |
-| `data.for`             | String          | `stock_items`, `products`                                      | For `product_groups` only, this indicates whether to add barcodes to either `products` or `stock_items`. |
-| `data.target_ids`      | Array\<Uuid\>   | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                       |
-| `data.barcode_type`    | String          | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                                              |
+| `type`                 | string          | `generate_barcode`                                             | Required to start this specific operation.                                                               |
+| `data.target_type`     | string          | `customers`, `product_groups`                                  | The type of resource that barcodes should be generated for.                                              |
+| `data.for`             | string          | `stock_items`, `products`                                      | For `product_groups` only, this indicates whether to add barcodes to either `products` or `stock_items`. |
+| `data.target_ids`      | array[uuid]     | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                       |
+| `data.barcode_type`    | string          | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                                              |
 
 **Artifact**
 
@@ -114,11 +114,11 @@ Generates documents in bulk, either by a list of documents or all documents for 
 
 | Key                       | Type          | Possible values                                    | Description                                                                                                     |
 |---------------------------|---------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| `type`                    | String        | `generate_document`                                | Required to start this specific operation.                                                                      |
-| `data.target_type`        | String        | `orders`, `documents`                              | The type of resource that should have its documents generated. Only one resource per operation is supported.    |
-| `data.target_ids`         | Array\<Uuid\> | `[{id}, {id}]`                                     | An array of primary keys for the entities that should have its documents generated.                             |
-| `data.document_type`      | String        | `packing_slip`, `invoice`, `quote`, `contract`     | The document type that should be generated for all entities. Only one document type per operation is supported. |
-| `data.document_extension` | String        | `"pdf"`                                            | The filetype for the generated document.                                                                        |
+| `type`                    | string        | `generate_document`                                | Required to start this specific operation.                                                                      |
+| `data.target_type`        | string        | `orders`, `documents`                              | The type of resource that should have its documents generated. Only one resource per operation is supported.    |
+| `data.target_ids`         | array[uuid]   | `[{id}, {id}]`                                     | An array of primary keys for the entities that should have its documents generated.                             |
+| `data.document_type`      | string        | `packing_slip`, `invoice`, `quote`, `contract`     | The document type that should be generated for all entities. Only one document type per operation is supported. |
+| `data.document_extension` | string        | `"pdf"`                                            | The filetype for the generated document.                                                                        |
 
 **Artifact**
 
@@ -150,11 +150,11 @@ Updates the collections associated to the entities by mutating them with the act
 
 | Key                   | Type          | Possible values                       | Description                                                                                                             |
 |-----------------------|---------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `type`                | String        | `update_collections`                  | Required to start this specific operation.                                                                              |
-| `data.target_type`    | String        | `product_groups`                      | The type of resource that should have the associated collections updated. Only one resource per operation is supported. |
-| `data.target_ids`     | Array\<Uuid\> | `[{id}, {id}]`                        | An array of primary keys for the entities that should have the associated collections updated.                          |
-| `data.action`         | String        | `add_entities`, `remove_entities`     | The action that should be executed on the collections of the entities.                                                  |
-| `data.collection_ids` | Array\<Uuid\> | `[{id}, {id}]`                        | The primary keys of the collections that should be used with the action.                                                |
+| `type`                | string        | `update_collections`                  | Required to start this specific operation.                                                                              |
+| `data.target_type`    | string        | `product_groups`                      | The type of resource that should have the associated collections updated. Only one resource per operation is supported. |
+| `data.target_ids`     | array[uuid]   | `[{id}, {id}]`                        | An array of primary keys for the entities that should have the associated collections updated.                          |
+| `data.action`         | string        | `add_entities`, `remove_entities`     | The action that should be executed on the collections of the entities.                                                  |
+| `data.collection_ids` | array[uuid]   | `[{id}, {id}]`                        | The primary keys of the collections that should be used with the action.                                                |
 
 **Artifact**
 
@@ -186,11 +186,11 @@ Updates the tags associated to the entities by mutating them with the action.
 
 | Key                 | Type          | Possible values                              | Description                                                                                                      |
 |---------------------|---------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| `type`              | String        | `update_tag`                                 | Required to start this specific operation.                                                                       |
-| `data.target_type`  | String        | `product_groups`, `customers`, `orders`      | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
-| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                               | An array of primary keys for the entities that should have the associated tags updated.                          |
-| `data.action`       | String        | `add`, `replace`, `remove`, `remove_all`     | The action that should be executed on the tags of the entities.                                                  |
-| `data.tags`         | Array<String> | `[{tag}, {tag}]`                             | The tags that should be used with the action.                                                                    |
+| `type`              | string        | `update_tag`                                 | Required to start this specific operation.                                                                       |
+| `data.target_type`  | string        | `product_groups`, `customers`, `orders`      | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
+| `data.target_ids`   | array[uuid]   | `[{id}, {id}]`                               | An array of primary keys for the entities that should have the associated tags updated.                          |
+| `data.action`       | string        | `add`, `replace`, `remove`, `remove_all`     | The action that should be executed on the tags of the entities.                                                  |
+| `data.tags`         | array[string] | `[{tag}, {tag}]`                             | The tags that should be used with the action.                                                                    |
 
 **Artifact**
 
@@ -217,9 +217,9 @@ Exports data as CSV.
 
 | Key                 | Type          | Possible values                                                                                                               | Description                                                                                                      |
 |---------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| `type`              | String        | `export`                                                                                                                      | Required to start this specific operation.                                                                       |
-| `data.target_type`  | String        | `product_groups`, `bundles`, `customers`, `orders`, `documents`, `report_rentals`, `report_consumables`, 'report_stock_items' | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
-| `data.target_ids`   | Array\<Uuid\> | `[{id}, {id}]`                                                                                                                | An array of primary keys for the entities that should have the associated tags updated.                          |
+| `type`              | string        | `export`                                                                                                                      | Required to start this specific operation.                                                                       |
+| `data.target_type`  | string        | `product_groups`, `bundles`, `customers`, `orders`, `documents`, `report_rentals`, `report_consumables`, 'report_stock_items' | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
+| `data.target_ids`   | array[uuid]   | `[{id}, {id}]`                                                                                                                | An array of primary keys for the entities that should have the associated tags updated.                          |
 
 **Artifact**
 
@@ -250,10 +250,10 @@ Updates the attribute of all the entities with the new value(s).
 
 | Key                | Type          | Possible values                 | Description                                                                                 |
 |--------------------|---------------|---------------------------------|---------------------------------------------------------------------------------------------|
-| `type`             | String        | `update`                        | Required to start this specific operation.                                                  |
-| `data.target_type` | String        | `product_groups`, `customers`   | The type of resource that should be updated. Only one resource per operation is supported.  |
-| `data.target_ids`  | Array\<Uuid\> | `[{id}, {id}]`                  | An array of primary keys for the entities that should be updated.                           |
-| `data.attributes`  | Object        | `{}`                            | The allowed keys for the attributes are listed below.                                       |
+| `type`             | string        | `update`                        | Required to start this specific operation.                                                  |
+| `data.target_type` | string        | `product_groups`, `customers`   | The type of resource that should be updated. Only one resource per operation is supported.  |
+| `data.target_ids`  | array[uuid]   | `[{id}, {id}]`                  | An array of primary keys for the entities that should be updated.                           |
+| `data.attributes`  | hash          | `{}`                            | The allowed keys for the attributes are listed below.                                       |
 
 Allowed attribute keys:
 
@@ -284,79 +284,70 @@ Allowed attribute keys:
 
 _No artifacts are generated when bullk updating resources._
 
-## Endpoints
-`GET /api/boomerang/operations`
-
-`GET /api/boomerang/operations/{id}`
-
-`POST /api/boomerang/operations`
-
-## Fields
-Every operation has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`status` | **String** `readonly`<br>One of `scheduled`, `in_progress`, `finished`, `failed`
-`status_message` | **String** `readonly`<br>A UI-friendly string explaining the status & progress of the operation for the user.
-`finished_at` | **Datetime** `readonly`<br>The moment when the operation is finished executing.
-`description` | **String** `readonly`<br>Explains what the operation is doing in a short sentence.
-`artifact` | **Hash** `readonly`<br>An object that returns an optional artifact of the operation. E.g. a file if the operation generates a report.
-`error_data` | **Array** `readonly`<br>An array of strings with errors that happened during execution of the operation.
-`error_count` | **Integer** `readonly`<br>The number of errors that happened during the execution. See `error_data`.
-`employee_id` | **Uuid** `readonly`<br>Associated Employee
-`operation_data` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
-
-
 ## Relationships
-Operations have the following relationships:
-
 Name | Description
 -- | --
-`employee` | **[Employee](#employees)** <br>Associated Employee
+`employee` | **[Employee](#employees)** `required`<br>Employee who started this operation.
+
+
+Check matching attributes under [Fields](#operations-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`artifact` | **hash** `readonly`<br>An object that returns an optional artifact of the operation. E.g. a file if the operation generates a report.
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`description` | **string** `readonly`<br>Explains what the operation is doing in a short sentence.
+`employee_id` | **uuid** `readonly`<br>Employee who started this operation.
+`error_count` | **integer** `readonly`<br>The number of errors that happened during the execution. See `error_data`.
+`error_data` | **array** `readonly`<br>An array of strings with errors that happened during execution of the operation.
+`finished_at` | **datetime** `readonly`<br>The moment when the operation is finished executing.
+`id` | **uuid** `readonly`<br>Primary key.
+`operation_data` | **hash** <br>An object with the params used to initiate the operation. See the description of the operation.
+`status` | **enum** `readonly`<br>Status of the operation.<br>One of: `scheduled`, `in_progress`, `finished`, `failed`.
+`status_message` | **string** `readonly`<br>A UI-friendly string explaining the status & progress of the operation for the user.
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing operations
 
 
-
 > How to fetch a list of operations:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/operations'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "6a9dfb9d-307e-4b1c-a52a-aff4884f8668",
-      "type": "operations",
-      "attributes": {
-        "created_at": "2024-12-02T13:05:51.641318+00:00",
-        "updated_at": "2024-12-02T13:05:51.641318+00:00",
-        "status": "scheduled",
-        "status_message": null,
-        "finished_at": null,
-        "description": null,
-        "artifact": {
-          "url": null
+    "data": [
+      {
+        "id": "9743db3e-9ee4-4698-8b36-271c5cce0cae",
+        "type": "operations",
+        "attributes": {
+          "created_at": "2028-06-20T00:46:03.000000+00:00",
+          "updated_at": "2028-06-20T00:46:03.000000+00:00",
+          "status": "scheduled",
+          "status_message": null,
+          "finished_at": null,
+          "description": null,
+          "artifact": {
+            "url": null
+          },
+          "error_data": [],
+          "error_count": 0,
+          "employee_id": "1f72296c-c318-4620-876c-04ded6372403"
         },
-        "error_data": [],
-        "error_count": 0,
-        "employee_id": "4a422ed9-495f-4058-a71a-1b0447c3c316"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -369,13 +360,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=employee`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -384,12 +375,12 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`finished_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`employee_id` | **Uuid** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`employee_id` | **uuid** <br>`eq`, `not_eq`
+`finished_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`status` | **string_enum** <br>`eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -398,7 +389,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes
@@ -415,40 +406,38 @@ This request accepts the following includes:
 ## Fetching an operation
 
 
-
 > How to fetch an operation:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/operations/b52b3d27-14cc-4463-bdf4-dd42c2e252f0' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/operations/21cd9837-0ca6-4027-8d44-f8d6cddf837a'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "b52b3d27-14cc-4463-bdf4-dd42c2e252f0",
-    "type": "operations",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:52.083598+00:00",
-      "updated_at": "2024-12-02T13:05:52.083598+00:00",
-      "status": "scheduled",
-      "status_message": null,
-      "finished_at": null,
-      "description": null,
-      "artifact": {
-        "url": null
+    "data": {
+      "id": "21cd9837-0ca6-4027-8d44-f8d6cddf837a",
+      "type": "operations",
+      "attributes": {
+        "created_at": "2025-05-06T18:20:02.000000+00:00",
+        "updated_at": "2025-05-06T18:20:02.000000+00:00",
+        "status": "scheduled",
+        "status_message": null,
+        "finished_at": null,
+        "description": null,
+        "artifact": {
+          "url": null
+        },
+        "error_data": [],
+        "error_count": 0,
+        "employee_id": "d34a229e-27f9-4c09-8713-c9953f649dec"
       },
-      "error_data": [],
-      "error_count": 0,
-      "employee_id": "91187788-3c89-416b-8ea0-9b20f39781ab"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -461,8 +450,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships `?include=employee`
 
 
 ### Includes
@@ -479,56 +468,55 @@ This request accepts the following includes:
 ## Creating an operation
 
 
-
 > How to create an operation:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/operations' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "operations",
-        "attributes": {
-          "operation_data": {
-            "type": "archive",
-            "data": {
-              "target_type": "customers",
-              "target_ids": [
-                "123"
-              ]
-            }
-          }
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/operations'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "operations",
+           "attributes": {
+             "operation_data": {
+               "type": "archive",
+               "data": {
+                 "target_type": "customers",
+                 "target_ids": [
+                   "123"
+                 ]
+               }
+             }
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "6d3fbdd2-1150-42a9-b655-e3ee46b8649d",
-    "type": "operations",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:52.575365+00:00",
-      "updated_at": "2024-12-02T13:05:52.575365+00:00",
-      "status": "scheduled",
-      "status_message": null,
-      "finished_at": null,
-      "description": "Archiving customers",
-      "artifact": {
-        "url": null
+    "data": {
+      "id": "d7d16a03-4906-49e1-86d5-3fb510a8faa2",
+      "type": "operations",
+      "attributes": {
+        "created_at": "2027-06-06T03:49:00.000000+00:00",
+        "updated_at": "2027-06-06T03:49:00.000000+00:00",
+        "status": "scheduled",
+        "status_message": null,
+        "finished_at": null,
+        "description": "Archiving customers",
+        "artifact": {
+          "url": null
+        },
+        "error_data": [],
+        "error_count": 0,
+        "employee_id": "828bf697-dcfa-4f1f-8d73-6a0f62925dce"
       },
-      "error_data": [],
-      "error_count": 0,
-      "employee_id": "40d428fd-391e-444d-af0c-56e494581af3"
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -541,8 +529,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=employee`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships `?include=employee`
 
 
 ### Request body
@@ -551,7 +539,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][operation_data]` | **Hash** <br>An object with the params used to initiate the operation. See the description of the operation.
+`data[attributes][operation_data]` | **hash** <br>An object with the params used to initiate the operation. See the description of the operation.
 
 
 ### Includes

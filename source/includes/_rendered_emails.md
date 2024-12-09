@@ -2,98 +2,108 @@
 
 A quick and simple way to fill out an email template with order data.
 
-## Fields
-Every rendered email has the following fields:
-
+## Relationships
 Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`email_template_id` | **Uuid** <br>Email template to render
-`order_id` | **Uuid** <br>Order data to use when rendering
-`document_id` | **Uuid** <br>Document data to use when rendering
-`subject` | **String** `readonly`<br>Rendered email subject
-`body` | **String** <br>Rendered email body
-`full_body` | **String** `readonly`<br>Email body wrapped with email layout
+`document` | **[Document](#documents)** `required`<br>Document data to use when rendering.
+`email_template` | **[Email template](#email-templates)** `required`<br>Email template to render.
+`order` | **[Order](#orders)** `required`<br>Order data to use when rendering.
+
+
+Check matching attributes under [Fields](#rendered-emails-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`body` | **string** <br>Rendered email body.
+`document_id` | **uuid** <br>Document data to use when rendering.
+`email_template_id` | **uuid** <br>Email template to render.
+`full_body` | **string** `readonly`<br>Email body wrapped with email layout.
+`id` | **uuid** `readonly`<br>Primary key.
+`order_id` | **uuid** <br>Order data to use when rendering.
+`subject` | **string** `readonly`<br>Rendered email subject.
 
 
 ## Rendering email content
-
 
 
 > How to render an email from a template:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/rendered_emails' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "rendered_emails",
-        "attributes": {
-          "order_id": "844cf804-aee0-4a10-9490-d3dfd3d8c20c",
-          "email_template_id": "f02e81ec-0df6-4ae8-a4c9-ba8d0c9db894"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/rendered_emails'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "rendered_emails",
+           "attributes": {
+             "order_id": "e2e0efcc-a93b-40eb-8392-8d7948ec4efd",
+             "email_template_id": "c8ab9cb9-1c86-4d0b-8699-672fa548d9a6"
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "89cb9cb6-6f81-5501-85a1-71a31334c936",
-    "type": "rendered_emails",
-    "attributes": {
-      "email_template_id": "f02e81ec-0df6-4ae8-a4c9-ba8d0c9db894",
-      "order_id": "844cf804-aee0-4a10-9490-d3dfd3d8c20c",
-      "document_id": null,
-      "subject": "Order number 1",
-      "body": "<p>Thank you for ordering with us!</p>\n",
-      "full_body": null
-    }
-  },
-  "meta": {}
-}
+    "data": {
+      "id": "069de8af-2ec5-4651-8c67-f2a46265f5da",
+      "type": "rendered_emails",
+      "attributes": {
+        "subject": "Order number 1",
+        "body": "<p>Thank you for ordering with us!</p>\n",
+        "full_body": null,
+        "email_template_id": "c8ab9cb9-1c86-4d0b-8699-672fa548d9a6",
+        "order_id": "e2e0efcc-a93b-40eb-8392-8d7948ec4efd",
+        "document_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
 ```
-
 
 > How to render an email with layout for preview:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/rendered_emails' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "rendered_emails",
-        "attributes": {
-          "order_id": "2162fd3f-22db-4e0c-b2ab-faeb0452c203",
-          "email_template_id": "1131043f-5420-4d63-a245-348dc511f3e6",
-          "body": "<p>Thank you for ordering with us!</p>\n"
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/rendered_emails'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "rendered_emails",
+           "attributes": {
+             "order_id": "2fa9613f-a388-41e7-80fb-0a6964a7b930",
+             "email_template_id": "0d3355b0-d437-4476-8d54-fa2cc6c4af88",
+             "body": "<p>Thank you for ordering with us!</p>\n"
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "ef47476e-f49d-5e2e-9517-b97bb2010c8c",
-    "type": "rendered_emails",
-    "attributes": {
-      "email_template_id": "1131043f-5420-4d63-a245-348dc511f3e6",
-      "order_id": "2162fd3f-22db-4e0c-b2ab-faeb0452c203",
-      "document_id": null,
-      "subject": "Order number 1",
-      "body": "<p>Thank you for ordering with us!</p>\n",
-      "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 294</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 294</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail297@company.com'>mail297@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='www.booqable.com'>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n"
-    }
-  },
-  "meta": {}
-}
+    "data": {
+      "id": "d3b9eaf9-f7ed-441a-8695-a539084b7776",
+      "type": "rendered_emails",
+      "attributes": {
+        "subject": "Order number 1",
+        "body": "<p>Thank you for ordering with us!</p>\n",
+        "full_body": "<!DOCTYPE html>\n<html mailer='company'>\n<head>\n<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>\n</head>\n<body class='wrapper'>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content' role='presentation' width='100%'>\n<tr>\n<td>\n<h1>Company name 263</h1>\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content body' role='presentation' width='100%'>\n<tr>\n<td>\n<p>Thank you for ordering with us!</p>\n\n</td>\n</tr>\n</table>\n<table align='center' border='0' cellpadding='0' cellspacing='0' class='content footer' role='presentation' width='100%'>\n<tr>\n<td>\n<h3>Company name 263</h3>\n</td>\n</tr>\n<tr>\n<td>\n<a href='mailto:mail266@company.com'>mail266@company.com</a>\n</td>\n</tr>\n<tr>\n<td>\n<a href='www.booqable.com'>www.booqable.com</a>\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\nBlokhuispoort\n</td>\n</tr>\n<tr>\n<td>\nLeeuwarden\n</td>\n</tr>\n<tr>\n<td>\n8900AB Leeuwarden\n</td>\n</tr>\n<tr>\n<td>\nthe Netherlands\n</td>\n</tr>\n</table>\n</body>\n</html>\n",
+        "email_template_id": "0d3355b0-d437-4476-8d54-fa2cc6c4af88",
+        "order_id": "2fa9613f-a388-41e7-80fb-0a6964a7b930",
+        "document_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -106,7 +116,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[rendered_emails]=email_template_id,order_id,document_id`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[rendered_emails]=subject,body,full_body`
 
 
 ### Request body
@@ -115,10 +125,10 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][email_template_id]` | **Uuid** <br>Email template to render
-`data[attributes][order_id]` | **Uuid** <br>Order data to use when rendering
-`data[attributes][document_id]` | **Uuid** <br>Document data to use when rendering
-`data[attributes][body]` | **String** <br>Rendered email body
+`data[attributes][body]` | **string** <br>Rendered email body.
+`data[attributes][document_id]` | **uuid** <br>Document data to use when rendering.
+`data[attributes][email_template_id]` | **uuid** <br>Email template to render.
+`data[attributes][order_id]` | **uuid** <br>Order data to use when rendering.
 
 
 ### Includes

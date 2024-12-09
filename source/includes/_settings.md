@@ -206,200 +206,197 @@ Name | Description
 `bcc` | **String**<br>BCC addresses to use for all emails
 
 ## Fields
-Every setting has the following fields:
 
-Name | Description
+ Name | Description
 -- | --
-`id` | **Uuid** <br>Primary key
-`currency` | **Hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource)
-`defaults` | **Hash** `readonly`<br>Defaults derived from other resources
-`pricing` | **Hash** <br>Configuration on how to handle and display pricing
-`dates` | **Hash** <br>Information on how to display dates
-`orders` | **Hash** <br>Configuration for [orders](#orders) (these settings also apply to the online store)
-`security` | **Hash** <br>Global security settings
-`address` | **Hash** <br>Settings on how to display addresses
-`store` | **Hash** <br>Settings for the online store
-`user` | **Hash** <br>Settings that apply to [user](#users) accounts
-`documents` | **Hash** <br>Settings that apply to all [document](#documents) types
-`invoices` | **Hash** <br>Settings that apply to invoices
-`quotes` | **Hash** <br>Settings that apply to quotes
-`contracts` | **Hash** <br>Settings that apply to contracts
-`labels` | **Hash** <br>Customization settings for labels
-`emails` | **Hash** <br>Settings for emails
-`deliveries` | **Hash** <br>Settings for deliveries
-`dashboard` | **Hash** <br>Dashboard settings (Used internally by Booqable)
-`setup_checklist` | **Hash** <br>Setup checklist settings (Used internally by Booqable)
-`onboarding` | **Hash** <br>Onboarding settings (Used internally by Booqable)
-`instructions` | **Hash** <br>Settings for in app instructions (Used internally by Booqable)
-`tracking` | **Hash** <br>Tracking settings (Used internally by Booqable)
-`feature_enrollments` | **Hash** <br>Feature enrollments settings (Used internally by Booqable)
+`address` | **hash** <br>Settings on how to display addresses.
+`contracts` | **hash** <br>Settings that apply to contracts.
+`currency` | **hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource).
+`dashboard` | **hash** <br>Dashboard settings (Used internally by Booqable).
+`dates` | **hash** <br>Information on how to display dates.
+`defaults` | **hash** `readonly`<br>Defaults derived from other resources.
+`deliveries` | **hash** <br>Settings for deliveries.
+`documents` | **hash** <br>Settings that apply to all [document](#documents) types.
+`emails` | **hash** <br>Settings for emails.
+`feature_enrollments` | **hash** <br>Feature enrollments settings (Used internally by Booqable).
+`id` | **uuid** <br>Primary key.
+`instructions` | **hash** <br>Settings for in app instructions (Used internally by Booqable).
+`invoices` | **hash** <br>Settings that apply to invoices.
+`labels` | **hash** <br>Customization settings for labels.
+`onboarding` | **hash** <br>Onboarding settings (Used internally by Booqable).
+`orders` | **hash** <br>Configuration for [orders](#orders) (these settings also apply to the online store).
+`pricing` | **hash** <br>Configuration on how to handle and display pricing.
+`quotes` | **hash** <br>Settings that apply to quotes.
+`security` | **hash** <br>Global security settings.
+`setup_checklist` | **hash** <br>Setup checklist settings (Used internally by Booqable).
+`store` | **hash** <br>Settings for the online store.
+`tracking` | **hash** <br>Tracking settings (Used internally by Booqable).
+`user` | **hash** <br>Settings that apply to [user](#users) accounts.
 
 
 ## Fetching settings
 
 
-
 > How to fetch settings:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/settings/current' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/settings/current'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "6722d72b-dc11-5e96-95eb-4b811f54b709",
-    "type": "settings",
-    "attributes": {
-      "updated_at": "2024-12-02T13:02:27.439054+00:00",
-      "currency": {
-        "name": "USD",
-        "decimal": ".",
-        "thousand": ",",
-        "symbol": "$",
-        "precision": 2,
-        "format": "%s%v"
-      },
-      "defaults": {
-        "timezone": "UTC",
-        "timezone_offset": 0,
-        "tax_category_id": "fcf435b8-6ccf-4708-91b2-69f0cb3980cd",
-        "tax_region_id": "726d90f7-603b-4249-93b2-2b2b90fc8b9a",
-        "shop_start_location_id": null,
-        "shop_stop_location_id": null
-      },
-      "pricing": {
-        "enabled": true,
-        "tax_strategy": "exclusive",
-        "deposit_type": "percentage",
-        "deposit_value": 100,
-        "currency_format": "symbol",
-        "currency_position": "left"
-      },
-      "dates": {
-        "format": "DD-MM-YYYY",
-        "use_am_pm": false,
-        "first_day_of_week": 0
-      },
-      "orders": {
-        "use_times": true,
-        "start_type": "fixed",
-        "start_relative_offset": 0,
-        "start_fixed_at": "09:00",
-        "stop_type": "fixed",
-        "stop_relative_offset": 48,
-        "stop_fixed_at": "15:00"
-      },
-      "security": {
-        "sso_forced": false,
-        "2fa_forced": false,
-        "iprestrictions_enabled": false
-      },
-      "address": {
-        "fields_order": [
-          "zipcode",
-          "city",
-          "region"
-        ]
-      },
-      "store": {
-        "enabled": true,
-        "public": true,
-        "send_order_confirmation": true,
-        "brand_color": "#136DEB",
-        "use_availability": true,
-        "use_prices": true,
-        "display_price": "period",
-        "show_powered_by": true,
-        "use_order_lag_time": false,
-        "order_lag_time_value": null,
-        "order_lag_time_interval": null,
-        "behaviors.add_button": "show_cart",
-        "behaviors.location_picker": "start_stop",
-        "payment_strategy": "none",
-        "payment_strategy_value": 30,
-        "payment_deposit": false,
-        "payment_methods": [],
-        "use_toc": false,
-        "toc_label": "",
-        "toc_content": "",
-        "use_business_hours": false,
-        "use_away_mode": false,
-        "period_type": "freely",
-        "use_times": true,
-        "use_coupons_in_checkout": true,
-        "time_increment": 60,
-        "show_product_availability": true,
-        "hide_product_availability_quantities": false,
-        "show_cart_availability": true,
-        "website": null,
-        "checkout_scripts": "",
-        "google_analytics_id": null,
-        "google_anlaytics_options": "{}",
-        "facebook_pixel_id": null,
-        "facebook_domain_verification": null
-      },
-      "user": {
-        "auth_enabled": false,
-        "allow_signup": true,
-        "allow_guest_checkout": true,
-        "require_verification": true
-      },
-      "documents": {
-        "show_tax_column": true,
-        "css": "",
-        "scss": "",
-        "scope_numbering_to_prefix": false,
-        "page_size": "a4"
-      },
-      "invoices": {
-        "footer": "",
-        "show_product_photos": true,
-        "show_stock_identifiers": false,
-        "show_free_lines": true,
-        "hide_section_lines": false,
-        "prefix": "{{year}}-{{order_number}}",
-        "default_due_period": null
-      },
-      "quotes": {
-        "footer": "",
-        "body": "",
-        "show_product_photos": true,
-        "show_stock_identifiers": false,
-        "show_free_lines": true,
-        "hide_section_lines": false,
-        "prefix": "{{year}}-{{customer_number}}"
-      },
-      "contracts": {
-        "footer": "",
-        "body": "",
-        "show_product_photos": true,
-        "show_stock_identifiers": false,
-        "show_free_lines": true,
-        "hide_section_lines": false,
-        "prefix": null
-      },
-      "labels": {
-        "customer": "customer",
-        "order": "order",
-        "quote": "quote",
-        "contract": "contract",
-        "packing_slip": "packing_slip",
-        "start": "pick_up",
-        "stop": "return"
-      },
-      "emails": {},
-      "deliveries": {
-        "distance_unit": "metric"
+    "data": {
+      "id": "7ed00443-a502-4b1a-88ae-d8b726190682",
+      "type": "settings",
+      "attributes": {
+        "updated_at": "2017-11-19T10:18:02.000000+00:00",
+        "currency": {
+          "name": "USD",
+          "decimal": ".",
+          "thousand": ",",
+          "symbol": "$",
+          "precision": 2,
+          "format": "%s%v"
+        },
+        "defaults": {
+          "timezone": "UTC",
+          "timezone_offset": 0,
+          "tax_category_id": "7d25ac45-0c83-4217-8fbd-76ec66f71228",
+          "tax_region_id": "7ab2a037-7829-4476-8a65-17b89e83a6f5",
+          "shop_start_location_id": null,
+          "shop_stop_location_id": null
+        },
+        "pricing": {
+          "enabled": true,
+          "tax_strategy": "exclusive",
+          "deposit_type": "percentage",
+          "deposit_value": 100,
+          "currency_format": "symbol",
+          "currency_position": "left"
+        },
+        "dates": {
+          "format": "DD-MM-YYYY",
+          "use_am_pm": false,
+          "first_day_of_week": 0
+        },
+        "orders": {
+          "use_times": true,
+          "start_type": "fixed",
+          "start_relative_offset": 0,
+          "start_fixed_at": "09:00",
+          "stop_type": "fixed",
+          "stop_relative_offset": 48,
+          "stop_fixed_at": "15:00"
+        },
+        "security": {
+          "sso_forced": false,
+          "2fa_forced": false,
+          "iprestrictions_enabled": false
+        },
+        "address": {
+          "fields_order": [
+            "zipcode",
+            "city",
+            "region"
+          ]
+        },
+        "store": {
+          "enabled": true,
+          "public": true,
+          "send_order_confirmation": true,
+          "brand_color": "#136DEB",
+          "use_availability": true,
+          "use_prices": true,
+          "display_price": "period",
+          "show_powered_by": true,
+          "use_order_lag_time": false,
+          "order_lag_time_value": null,
+          "order_lag_time_interval": null,
+          "behaviors.add_button": "show_cart",
+          "behaviors.location_picker": "start_stop",
+          "payment_strategy": "none",
+          "payment_strategy_value": 30,
+          "payment_deposit": false,
+          "payment_methods": [],
+          "use_toc": false,
+          "toc_label": "",
+          "toc_content": "",
+          "use_business_hours": false,
+          "use_away_mode": false,
+          "period_type": "freely",
+          "use_times": true,
+          "use_coupons_in_checkout": true,
+          "time_increment": 60,
+          "show_product_availability": true,
+          "hide_product_availability_quantities": false,
+          "show_cart_availability": true,
+          "website": null,
+          "checkout_scripts": "",
+          "google_analytics_id": null,
+          "google_anlaytics_options": "{}",
+          "facebook_pixel_id": null,
+          "facebook_domain_verification": null
+        },
+        "user": {
+          "auth_enabled": false,
+          "allow_signup": true,
+          "allow_guest_checkout": true,
+          "require_verification": true
+        },
+        "documents": {
+          "show_tax_column": true,
+          "css": "",
+          "scss": "",
+          "scope_numbering_to_prefix": false,
+          "page_size": "a4"
+        },
+        "invoices": {
+          "footer": "",
+          "show_product_photos": true,
+          "show_stock_identifiers": false,
+          "show_free_lines": true,
+          "hide_section_lines": false,
+          "prefix": "{{year}}-{{order_number}}",
+          "default_due_period": null
+        },
+        "quotes": {
+          "footer": "",
+          "body": "",
+          "show_product_photos": true,
+          "show_stock_identifiers": false,
+          "show_free_lines": true,
+          "hide_section_lines": false,
+          "prefix": "{{year}}-{{customer_number}}"
+        },
+        "contracts": {
+          "footer": "",
+          "body": "",
+          "show_product_photos": true,
+          "show_stock_identifiers": false,
+          "show_free_lines": true,
+          "hide_section_lines": false,
+          "prefix": null
+        },
+        "labels": {
+          "customer": "customer",
+          "order": "order",
+          "quote": "quote",
+          "contract": "contract",
+          "packing_slip": "packing_slip",
+          "start": "pick_up",
+          "stop": "return"
+        },
+        "emails": {},
+        "deliveries": {
+          "distance_unit": "metric"
+        }
       }
-    }
-  },
-  "meta": {}
-}
+    },
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -412,7 +409,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[settings]=currency,defaults,pricing`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[settings]=currency,defaults,pricing`
 
 
 ### Includes

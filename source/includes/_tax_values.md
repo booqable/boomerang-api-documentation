@@ -1,72 +1,66 @@
 # Tax values
 
-Tax values are always generated automatically by price calculations for `orders` and `carts`. They hold information about the amount taxed for a specific rate.
-
-## Endpoints
-`GET api/boomerang/tax_values`
-
-`GET /api/boomerang/tax_values/{id}`
-
-## Fields
-Every tax value has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String** `readonly`<br>Name of the tax rate
-`percentage` | **Float** `readonly`<br>The percentage taxed
-`value_in_cents` | **Integer** `readonly`<br>Amount of tax in cents
-`tax_rate_id` | **Uuid** `readonly`<br>Associated Tax rate
-`owner_id` | **Uuid** `readonly`<br>ID of its owner
-`owner_type` | **String** `readonly`<br>The resource type of the owner. One of `orders`, `documents`, `carts`, `lines`
-
+Tax values are generated automatically by price calculations for Orders and Carts.
+They hold information about the amount taxed for a specific rate.
 
 ## Relationships
-Tax values have the following relationships:
-
 Name | Description
 -- | --
-`owner` | **[Order](#orders)** <br>Associated Owner
-`tax_rate` | **[Tax rate](#tax-rates)** <br>Associated Tax rate
+`owner` | **[Order](#orders)** `required`<br>The order or cart.
+`tax_rate` | **[Tax rate](#tax-rates)** `required`<br>The rate used to calculated this tax.
+
+
+Check matching attributes under [Fields](#tax-values-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`id` | **uuid** `readonly`<br>Primary key.
+`name` | **string** `readonly`<br>Name of the tax rate.
+`owner_id` | **uuid** `readonly`<br>The order or cart.
+`owner_type` | **string** `readonly`<br>The resource type of the owner.
+`percentage` | **float** `readonly`<br>The percentage taxed.
+`tax_rate_id` | **uuid** `readonly`<br>The rate used to calculated this tax.
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
+`value_in_cents` | **integer** `readonly`<br>Amount of tax in cents.
 
 
 ## Listing tax values
 
 
-
 > How to fetch a list of tax values:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_values' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/tax_values'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "f1344f53-773d-4683-b458-e9d35b34441e",
-      "type": "tax_values",
-      "attributes": {
-        "created_at": "2024-12-02T13:05:13.913014+00:00",
-        "updated_at": "2024-12-02T13:05:13.913014+00:00",
-        "name": "VAT 19%",
-        "percentage": 19.0,
-        "value_in_cents": 13800,
-        "tax_rate_id": "e4f26f4f-7c09-4336-b891-b036f2737e42",
-        "owner_id": "ef8361c7-8a1c-45f9-9f09-26f33efd80f2",
-        "owner_type": "orders"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "806d7c35-3f4c-4c1b-8766-11c9f012e6f2",
+        "type": "tax_values",
+        "attributes": {
+          "created_at": "2018-04-23T02:36:00.000000+00:00",
+          "updated_at": "2018-04-23T02:36:00.000000+00:00",
+          "name": "VAT 19%",
+          "percentage": 19.0,
+          "value_in_cents": 13800,
+          "tax_rate_id": "67d4d696-b147-4a30-8f26-413641077ca6",
+          "owner_id": "bc39e751-ea2e-4f5c-879d-4bc23d403698",
+          "owner_type": "orders"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -79,12 +73,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_values]=created_at,updated_at,name`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tax_values]=created_at,updated_at,name`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -93,15 +87,15 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`name` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`percentage` | **Float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`value_in_cents` | **Integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`tax_rate_id` | **Uuid** <br>`eq`, `not_eq`
-`owner_id` | **Uuid** <br>`eq`, `not_eq`
-`owner_type` | **String** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`owner_id` | **uuid** <br>`eq`, `not_eq`
+`owner_type` | **string** <br>`eq`, `not_eq`
+`percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tax_rate_id` | **uuid** <br>`eq`, `not_eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`value_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -110,8 +104,8 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
-`value_in_cents` | **Array** <br>`sum`, `maximum`, `minimum`, `average`
+`total` | **array** <br>`count`
+`value_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -120,103 +114,102 @@ This request does not accept any includes
 ## Fetching a tax value
 
 
-
 > How to fetch a tax value:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/tax_values/6f8b1091-834e-4720-937b-6b2749c7ca63?include=owner' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/tax_values/af3a48e5-050f-4556-89e6-e863b75c268a'
+       --header 'content-type: application/json'
+       --data-urlencode 'include=owner'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "6f8b1091-834e-4720-937b-6b2749c7ca63",
-    "type": "tax_values",
-    "attributes": {
-      "created_at": "2024-12-02T13:05:14.500038+00:00",
-      "updated_at": "2024-12-02T13:05:14.500038+00:00",
-      "name": "VAT 19%",
-      "percentage": 19.0,
-      "value_in_cents": 13800,
-      "tax_rate_id": "1772ddb2-8cc9-4ad9-9be3-1d6a1f96feff",
-      "owner_id": "0bb82a19-45b3-4b66-8c63-68c7ccd426a9",
-      "owner_type": "orders"
-    },
-    "relationships": {
-      "owner": {
-        "data": {
-          "type": "orders",
-          "id": "0bb82a19-45b3-4b66-8c63-68c7ccd426a9"
+    "data": {
+      "id": "af3a48e5-050f-4556-89e6-e863b75c268a",
+      "type": "tax_values",
+      "attributes": {
+        "created_at": "2018-02-01T17:33:00.000000+00:00",
+        "updated_at": "2018-02-01T17:33:00.000000+00:00",
+        "name": "VAT 19%",
+        "percentage": 19.0,
+        "value_in_cents": 13800,
+        "tax_rate_id": "badc9624-dce0-4222-87c1-62dd12ef84f4",
+        "owner_id": "fb0af3c4-01e8-4dce-8fa4-b5e184c08a33",
+        "owner_type": "orders"
+      },
+      "relationships": {
+        "owner": {
+          "data": {
+            "type": "orders",
+            "id": "fb0af3c4-01e8-4dce-8fa4-b5e184c08a33"
+          }
         }
       }
-    }
-  },
-  "included": [
-    {
-      "id": "0bb82a19-45b3-4b66-8c63-68c7ccd426a9",
-      "type": "orders",
-      "attributes": {
-        "created_at": "2024-12-02T13:05:14.475695+00:00",
-        "updated_at": "2024-12-02T13:05:14.475695+00:00",
-        "number": null,
-        "status": "new",
-        "statuses": [
-          "new"
-        ],
-        "status_counts": {
-          "new": 0,
-          "concept": 0,
-          "reserved": 0,
-          "started": 0,
-          "stopped": 0
+    },
+    "included": [
+      {
+        "id": "fb0af3c4-01e8-4dce-8fa4-b5e184c08a33",
+        "type": "orders",
+        "attributes": {
+          "created_at": "2018-02-01T17:33:00.000000+00:00",
+          "updated_at": "2018-02-01T17:33:00.000000+00:00",
+          "number": null,
+          "status": "new",
+          "statuses": [
+            "new"
+          ],
+          "status_counts": {
+            "new": 0,
+            "concept": 0,
+            "reserved": 0,
+            "started": 0,
+            "stopped": 0
+          },
+          "starts_at": "2018-01-30T17:20:00.000000+00:00",
+          "stops_at": "2018-02-03T17:20:00.000000+00:00",
+          "deposit_type": "percentage",
+          "deposit_value": 100.0,
+          "entirely_started": true,
+          "entirely_stopped": false,
+          "location_shortage": false,
+          "shortage": false,
+          "payment_status": "paid",
+          "override_period_restrictions": false,
+          "has_signed_contract": false,
+          "tag_list": [],
+          "properties": {},
+          "price_in_cents": 0,
+          "grand_total_in_cents": 0,
+          "grand_total_with_tax_in_cents": 0,
+          "tax_in_cents": 0,
+          "discount_in_cents": 0,
+          "coupon_discount_in_cents": 0,
+          "total_discount_in_cents": 0,
+          "deposit_in_cents": 0,
+          "deposit_paid_in_cents": 0,
+          "deposit_refunded_in_cents": 0,
+          "deposit_held_in_cents": 0,
+          "deposit_to_refund_in_cents": 0,
+          "to_be_paid_in_cents": 0,
+          "paid_in_cents": 0,
+          "discount_type": "percentage",
+          "discount_percentage": 0.0,
+          "billing_address_property_id": null,
+          "delivery_address_property_id": null,
+          "fulfillment_type": "pickup",
+          "customer_id": null,
+          "tax_region_id": null,
+          "coupon_id": null,
+          "start_location_id": "85f56930-46f4-40f6-8df3-e14cb405b347",
+          "stop_location_id": "85f56930-46f4-40f6-8df3-e14cb405b347"
         },
-        "starts_at": "2024-11-30T13:00:00.000000+00:00",
-        "stops_at": "2024-12-04T13:00:00.000000+00:00",
-        "deposit_type": "percentage",
-        "deposit_value": 100.0,
-        "entirely_started": true,
-        "entirely_stopped": false,
-        "location_shortage": false,
-        "shortage": false,
-        "payment_status": "paid",
-        "override_period_restrictions": false,
-        "has_signed_contract": false,
-        "tag_list": [],
-        "properties": {},
-        "price_in_cents": 0,
-        "grand_total_in_cents": 0,
-        "grand_total_with_tax_in_cents": 0,
-        "tax_in_cents": 0,
-        "discount_in_cents": 0,
-        "coupon_discount_in_cents": 0,
-        "total_discount_in_cents": 0,
-        "deposit_in_cents": 0,
-        "deposit_paid_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "deposit_held_in_cents": 0,
-        "deposit_to_refund_in_cents": 0,
-        "to_be_paid_in_cents": 0,
-        "paid_in_cents": 0,
-        "discount_type": "percentage",
-        "discount_percentage": 0.0,
-        "billing_address_property_id": null,
-        "delivery_address_property_id": null,
-        "fulfillment_type": "pickup",
-        "customer_id": null,
-        "tax_region_id": null,
-        "coupon_id": null,
-        "start_location_id": "ad10cf8c-820d-4f97-a367-89794eff1ff5",
-        "stop_location_id": "ad10cf8c-820d-4f97-a367-89794eff1ff5"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -229,8 +222,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=owner`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[tax_values]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tax_values]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships `?include=owner`
 
 
 ### Includes

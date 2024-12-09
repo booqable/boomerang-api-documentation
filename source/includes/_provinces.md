@@ -2,61 +2,59 @@
 
 The `Province` resource describes provinces/states etc. in a country.
 
-## Fields
-Every province has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`name` | **String** `readonly`<br>The name of the province/state.
-`code` | **String** `readonly`<br>The code of the province/state.
-`position` | **Integer** `readonly`<br>The position of the province/state in the list.
-`country_id` | **Uuid** `readonly`<br>The ID of the country the province/state belongs to.
-
-
 ## Relationships
-Provinces have the following relationships:
-
 Name | Description
 -- | --
-`country` | **[Country](#countries)** <br>Associated Country
+`country` | **[Country](#countries)** `required`<br>The country the province/state belongs to.
+
+
+Check matching attributes under [Fields](#provinces-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`code` | **string** `readonly`<br>The code of the province/state.
+`country_id` | **uuid** `readonly`<br>The country the province/state belongs to.
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`id` | **uuid** `readonly`<br>Primary key.
+`name` | **string** `readonly`<br>The name of the province/state.
+`position` | **integer** `readonly`<br>The position of the province/state in the list.
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing provinces
 
 
-
 > How to fetch a list of provinces.:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/provinces' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/provinces'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "8fd48290-f2b8-4720-bda1-83461ebb46c5",
-      "type": "provinces",
-      "attributes": {
-        "created_at": "2024-12-02T13:01:06.218136+00:00",
-        "updated_at": "2024-12-02T13:01:06.218136+00:00",
-        "name": "Friesland",
-        "code": "FR",
-        "position": 0,
-        "country_id": "de2bfd43-e5b3-4ef5-8b14-3d9439889116"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "695e28de-b6d9-4ce0-8ffc-d378ee5b2cf1",
+        "type": "provinces",
+        "attributes": {
+          "created_at": "2019-09-03T09:03:01.000000+00:00",
+          "updated_at": "2019-09-03T09:03:01.000000+00:00",
+          "name": "Friesland",
+          "code": "FR",
+          "position": 0,
+          "country_id": "7709b9d0-c541-46c6-8ce8-847eebcf162d"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -69,12 +67,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[provinces]=created_at,updated_at,name`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[provinces]=created_at,updated_at,name`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -83,10 +81,10 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`country_id` | **Uuid** <br>`eq`, `not_eq`
+`country_id` | **uuid** <br>`eq`, `not_eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -95,7 +93,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

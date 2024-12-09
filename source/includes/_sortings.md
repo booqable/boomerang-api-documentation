@@ -1,54 +1,52 @@
 # Sortings
 
-A convienient way to bulk update positions for supported models.
+A convienient way to bulk update positions for supported resources.
 
 ## Fields
-Every sorting has the following fields:
 
-Name | Description
+ Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`type` | **String_enum** `writeonly`<br>Type of model to update. Any of `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
-`ids` | **Array_of_strings** `writeonly`<br>Array of ids, positions are determined by the order of the array
+`id` | **uuid** `readonly`<br>Primary key.
+`ids` | **array[string]** `writeonly`<br>Array of ids, positions are determined by the order of the array.
+`type` | **enum** `writeonly`<br>Type of resource to update.<br>One of: `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`.
 
 
 ## Sorting a resource
-
 
 
 > How to update positions:
 
 ```shell
   curl --request POST \
-    --url 'https://example.booqable.com/api/boomerang/sortings' \
-    --header 'content-type: application/json' \
-    --data '{
-      "data": {
-        "type": "sorting",
-        "attributes": {
-          "type": "default_properties",
-          "ids": [
-            "214da8f9-ece9-44f0-b34f-7e1345bd135d",
-            "43cc6176-6ba4-495c-81c0-1ac73e800f83",
-            "a272c56c-bad2-4dc0-baf0-a143d7ed809f",
-            "08eecc32-7e68-4b5d-981c-2d7a7fb6a0ea",
-            "5651c84a-3273-4cbd-9538-b7a135dabc0f"
-          ]
-        }
-      }
-    }'
+       --url 'https://example.booqable.com/api/boomerang/sortings'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "sorting",
+           "attributes": {
+             "type": "default_properties",
+             "ids": [
+               "92950914-7942-4ac7-83fd-60fcc23ca62c",
+               "0a54d6ed-02ea-4119-8d81-e4224c738b6d",
+               "7fa7f4d7-2ac5-4a46-8d3c-f38791ce0c37",
+               "388cf5f9-972d-43bf-872d-d4a4fdde8388",
+               "c25ec89c-dd19-40c8-828b-b5b8e205adf2"
+             ]
+           }
+         }
+       }'
 ```
 
 > A 201 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "ea0e60f4-8ad7-5e71-898f-28b7b9a44df0",
-    "type": "sortings"
-  },
-  "meta": {}
-}
+    "data": {
+      "id": "2ec8d847-5901-422b-8464-aab5bf268709",
+      "type": "sortings"
+    },
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -61,8 +59,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][type]` | **String_enum** <br>Type of model to update. Any of `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`
-`data[attributes][ids]` | **Array_of_strings** <br>Array of ids, positions are determined by the order of the array
+`data[attributes][ids]` | **array[string]** <br>Array of ids, positions are determined by the order of the array.
+`data[attributes][type]` | **enum** <br>Type of resource to update.<br>One of: `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`.
 
 
 ### Includes

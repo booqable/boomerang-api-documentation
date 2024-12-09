@@ -1,59 +1,57 @@
 # Login activities
 
 A list of all login attempts for the current employee.
-## Fields
-Every login activity has the following fields:
 
-Name | Description
+## Fields
+
+ Name | Description
 -- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>The time at which the login was attempted.
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`ip` | **String** `readonly`<br>IP address of the login attempt
-`strategy` | **String** `readonly`<br>One of `saml`, `token`, `single_use`, `database_authenticatable`, `rememberable`, `BooqableApp-iOS`
-`success` | **Boolean** `readonly`<br>Whether attempt was succesful
-`failure_reason` | **String** `nullable` `readonly`<br>Why the login failed, One of `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`
-`user_agent` | **String** `readonly`<br>Client application identifier
-`city` | **String** `nullable` `readonly`<br>City where login attempt was performed
-`region` | **String** `nullable` `readonly`<br>Region where login attempt was performed
-`country` | **String** `nullable` `readonly`<br>Country where login attempt was performed
+`city` | **string** `readonly` `nullable`<br>City from where login attempt was performed.
+`country` | **string** `readonly` `nullable`<br>Country from where login attempt was performed.
+`created_at` | **datetime** `readonly`<br>The time at which the login was attempted.
+`failure_reason` | **enum** `readonly` `nullable`<br>Why the login failed.<br>One of: `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`.
+`id` | **uuid** `readonly`<br>Primary key.
+`ip` | **string** `readonly`<br>IP address of the login attempt.
+`region` | **string** `readonly` `nullable`<br>Region from where login attempt was performed.
+`strategy` | **enum** `readonly`<br>Indicates which login mechanism was used.<br>One of: `saml`, `token`, `single_use`, `database_authenticatable`, `rememberable`, `BooqableApp-iOS`.
+`success` | **boolean** `readonly`<br>Whether attempt was succesful.
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
+`user_agent` | **string** `readonly` `nullable`<br>Client application identifier.
 
 
 ## Listing login activities
 
 
-
 > How to fetch a list of login activities:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/login_activities' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/login_activities'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "79451ab7-7c91-4ed3-8510-225e6be59ecc",
-      "type": "login_activities",
-      "attributes": {
-        "created_at": "2024-12-02T13:04:16.924225+00:00",
-        "ip": "192.168.1.28",
-        "strategy": "saml",
-        "success": false,
-        "failure_reason": "inactive",
-        "user_agent": "Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion",
-        "city": "Almere",
-        "region": "Flevoland",
-        "country": "Netherlands"
+    "data": [
+      {
+        "id": "e1a2d455-15aa-48cc-8314-e5db20769dbf",
+        "type": "login_activities",
+        "attributes": {
+          "created_at": "2016-08-08T16:25:27.000000+00:00",
+          "ip": "192.168.1.28",
+          "strategy": "saml",
+          "success": false,
+          "failure_reason": "inactive",
+          "user_agent": "Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion",
+          "city": "Almere",
+          "region": "Flevoland",
+          "country": "Netherlands"
+        }
       }
-    }
-  ],
-  "meta": {}
-}
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -66,12 +64,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[login_activities]=created_at,updated_at,ip`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[login_activities]=created_at,updated_at,ip`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -80,12 +78,9 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`ip` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`strategy` | **String** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`success` | **Boolean** <br>`eq`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -94,7 +89,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes

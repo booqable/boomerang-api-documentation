@@ -6,79 +6,72 @@ during a given period.
 
 Stock item plannings are never directly created or updated through their resource;
 instead they are created by booking or specifying stock items; they are updated by
-starting or stoppinmg them. See the [OrderFulfilments](#order-fulfilments) resource
+starting or stoppinmg them. See the [OrderFulfillments](#order-fulfillments) resource
 for examples.
 
-## Endpoints
-`GET /api/boomerang/stock_item_plannings`
-
-`DELETE /api/boomerang/stock_item_plannings/{id}`
-
-## Fields
-Every stock item planning has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`updated_at` | **Datetime** `readonly`<br>When the resource was last updated
-`archived` | **Boolean** `readonly`<br>Whether stock item planning is archived
-`archived_at` | **Datetime** `nullable` `readonly`<br>When the stock item planning was archived
-`reserved` | **Boolean** <br>Wheter stock item is reserved, meaning it's unavailable for other orders
-`started` | **Boolean** <br>Wheter stock item is started
-`stopped` | **Boolean** <br>Wheter stock item is stopped. Meaning it's available again
-`stock_item_id` | **Uuid** <br>Associated Stock item
-`planning_id` | **Uuid** <br>Associated Planning
-`order_id` | **Uuid** <br>Associated Order
-
-
 ## Relationships
-Stock item plannings have the following relationships:
-
 Name | Description
 -- | --
-`order` | **[Order](#orders)** <br>Associated Order
-`planning` | **[Planning](#plannings)** <br>Associated Planning
-`stock_item` | **[Stock item](#stock-items)** <br>Associated Stock item
+`order` | **[Order](#orders)** `required`<br>The Order this StockItemPlanning is part of. 
+`planning` | **[Planning](#plannings)** `required`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
+`stock_item` | **[Stock item](#stock-items)** `required`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
+
+
+Check matching attributes under [Fields](#stock-item-plannings-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`archived` | **boolean** `readonly`<br>Whether stock item planning is archived. 
+`archived_at` | **datetime** `readonly` `nullable`<br>When the stock item planning was archived. 
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`id` | **uuid** `readonly`<br>Primary key.
+`order_id` | **uuid** <br>The Order this StockItemPlanning is part of. 
+`planning_id` | **uuid** <br>The Planning for which this StockItemPlanning specifies a StockItem. 
+`reserved` | **boolean** <br>Wheter stock item is reserved, meaning it's unavailable for other orders. 
+`started` | **boolean** <br>Wheter stock item is started. 
+`stock_item_id` | **uuid** <br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
+`stopped` | **boolean** <br>Wheter stock item is stopped. Meaning it's available again. 
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Listing stock item plannings
 
 
-
 > How to fetch a list of stock item plannings:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/stock_item_plannings'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "ee7a8dd2-0056-44a6-8661-8bf53bb9988e",
-      "type": "stock_item_plannings",
-      "attributes": {
-        "created_at": "2024-12-02T13:01:19.612671+00:00",
-        "updated_at": "2024-12-02T13:01:19.612671+00:00",
-        "archived": false,
-        "archived_at": null,
-        "reserved": false,
-        "started": false,
-        "stopped": false,
-        "stock_item_id": "09212106-7e3f-452f-a06e-ded8ef1663ed",
-        "planning_id": "19340edf-e55f-47dd-a4e8-09474ad27f02",
-        "order_id": "9ccd8f75-bf17-431d-8749-405761515888"
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+    "data": [
+      {
+        "id": "76e3b6a9-a2ef-48f7-813b-a183307e38ce",
+        "type": "stock_item_plannings",
+        "attributes": {
+          "created_at": "2021-11-26T13:55:00.000000+00:00",
+          "updated_at": "2021-11-26T13:55:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
+          "reserved": false,
+          "started": false,
+          "stopped": false,
+          "stock_item_id": "cb6d24a2-3cdf-47ad-8b45-e484a3447f07",
+          "planning_id": "a0d6b272-7ad6-4a19-8c78-7a77546685b6",
+          "order_id": "a7840ea8-9a1c-473b-8218-df29c7e23ae3"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -91,13 +84,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=stock_item,planning,order`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=stock_item,planning,order`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -106,17 +99,17 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`id` | **Uuid** <br>`eq`, `not_eq`
-`created_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`updated_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`archived` | **Boolean** <br>`eq`
-`archived_at` | **Datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`reserved` | **Boolean** <br>`eq`
-`started` | **Boolean** <br>`eq`
-`stopped` | **Boolean** <br>`eq`
-`stock_item_id` | **Uuid** <br>`eq`, `not_eq`
-`planning_id` | **Uuid** <br>`eq`, `not_eq`
-`order_id` | **Uuid** <br>`eq`, `not_eq`
+`archived` | **boolean** <br>`eq`
+`archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`order_id` | **uuid** <br>`eq`, `not_eq`
+`planning_id` | **uuid** <br>`eq`, `not_eq`
+`reserved` | **boolean** <br>`eq`
+`started` | **boolean** <br>`eq`
+`stock_item_id` | **uuid** <br>`eq`, `not_eq`
+`stopped` | **boolean** <br>`eq`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta
@@ -125,7 +118,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes
@@ -154,38 +147,37 @@ This request accepts the following includes:
 ## Archiving a stock_item planning
 
 
-
 > How to archive a stock item planning:
 
 ```shell
   curl --request DELETE \
-    --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/742ef676-8bbc-4f39-b6bc-48c9b8920fc4' \
-    --header 'content-type: application/json' \
+       --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/68bb0a74-3b6a-479a-8db0-851ae0d77511'
+       --header 'content-type: application/json'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": {
-    "id": "742ef676-8bbc-4f39-b6bc-48c9b8920fc4",
-    "type": "stock_item_plannings",
-    "attributes": {
-      "created_at": "2024-12-02T13:01:20.678871+00:00",
-      "updated_at": "2024-12-02T13:01:20.678871+00:00",
-      "archived": false,
-      "archived_at": null,
-      "reserved": false,
-      "started": false,
-      "stopped": false,
-      "stock_item_id": "69002c92-9c19-4ba4-a1bf-10339111c67d",
-      "planning_id": "ad127a7e-b83e-4f36-a6ed-06ed7e3daa9c",
-      "order_id": "aef7efc8-f614-43b2-9ddf-79484ef3afaa"
+    "data": {
+      "id": "68bb0a74-3b6a-479a-8db0-851ae0d77511",
+      "type": "stock_item_plannings",
+      "attributes": {
+        "created_at": "2020-03-22T01:19:28.000000+00:00",
+        "updated_at": "2020-03-22T01:19:28.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "reserved": false,
+        "started": false,
+        "stopped": false,
+        "stock_item_id": "c0063ec0-3366-4182-8cd6-209e7aa5f8df",
+        "planning_id": "2e914ecb-75f6-445d-8016-d168dd39ae4a",
+        "order_id": "88e2c331-8b9c-4d53-8297-c0bdab76db52"
+      },
+      "relationships": {}
     },
-    "relationships": {}
-  },
-  "meta": {}
-}
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -198,7 +190,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_item_plannings]=created_at,updated_at,archived`
 
 
 ### Includes

@@ -1,90 +1,96 @@
 # Report stock items
 
-Report on how stock items are performing. The report is filterable by date and can be requested by one of the following turnover types: `invoices`, `orders`.
+Report on how stock items are performing. The report is filterable by date
+and can be requested by one of the following turnover types:
+`invoices`, `orders`.
 
-## Fields
-Every report stock item has the following fields:
-
-Name | Description
--- | --
-`id` | **Uuid** `readonly`<br>Primary key
-`created_at` | **Datetime** `readonly`<br>When the resource was created
-`q` | **String** `writeonly`<br>Query for a specific stock item
-`product_name` | **String** <br>Product name
-`identifier` | **String** <br>Stock item identifier
-`charge_duration_in_seconds` | **Integer** <br>How many seconds were charged
-`planned_duration_in_seconds` | **Integer** <br>How many seconds the product was planned
-`rented_count` | **Integer** <br>How many times the product was rented out
-`turnover_in_cents` | **Integer** <br>Turnover during period
-`stock_item_id` | **Uuid** <br>Associated Stock item
-`product_id` | **Uuid** <br>Associated Product
-`location_id` | **Uuid** <br>Associated Location
-
+<aside class="notice">
+  Availability of this report depends on the current pricing plan.
+</aside>
 
 ## Relationships
-Report stock items have the following relationships:
-
 Name | Description
 -- | --
-`location` | **[Location](#locations)** <br>Associated Location
-`product` | **[Product](#products)** <br>Associated Product
-`stock_item` | **[Report stock item](#report-stock-items)** <br>Associated Stock item
+`location` | **[Location](#locations)** `required`<br>Location.
+`product` | **[Product](#products)** `required`<br>The product whose performance is reported.
+`stock_item` | **[Report stock item](#report-stock-items)** `required`<br>The stock item whose performance is reported.
+
+
+Check matching attributes under [Fields](#report-stock-items-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
+## Fields
+
+ Name | Description
+-- | --
+`charge_duration_in_seconds` | **integer** <br>How many seconds were charged.
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`id` | **uuid** `readonly`<br>Primary key.
+`identifier` | **string** <br>Stock item identifier.
+`location_id` | **uuid** <br>Location.
+`planned_duration_in_seconds` | **integer** <br>How many seconds the product was planned.
+`product_id` | **uuid** <br>The product whose performance is reported.
+`product_name` | **string** <br>Product name.
+`q` | **string** `writeonly`<br>Query for a specific stock item.
+`rented_count` | **integer** <br>How many times the product was rented out.
+`stock_item_id` | **uuid** <br>The stock item whose performance is reported.
+`turnover_in_cents` | **integer** <br>Turnover during period.
 
 
 ## Listing performance for stock items
 
 
-
 > How to fetch performance for stock items:
 
 ```shell
-  curl --request GET \
-    --url 'https://example.booqable.com/api/boomerang/report_stock_items?filter%5Bfrom%5D=2024-11-27+00%3A00%3A00+UTC&filter%5Btill%5D=2024-12-02+23%3A59%3A59+UTC' \
-    --header 'content-type: application/json' \
+  curl --get 'https://example.booqable.com/api/boomerang/report_stock_items'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[from]=2024-12-04 00:00:00 UTC'
+       --data-urlencode 'filter[till]=2024-12-09 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:
 
 ```json
   {
-  "data": [
-    {
-      "id": "6c4685c6-ac2a-417c-8057-4eb366e7aaa0",
-      "type": "report_stock_items",
-      "attributes": {
-        "created_at": "2024-12-02T13:07:04.464708+00:00",
-        "product_name": "Product 1000081",
-        "identifier": "id1000185",
-        "charge_duration_in_seconds": 7200,
-        "planned_duration_in_seconds": 7200,
-        "rented_count": 1,
-        "turnover_in_cents": 2000,
-        "stock_item_id": "5685a83f-2670-4aa1-bf12-53e8899f1784",
-        "product_id": "c3f25ec8-5146-4986-b1f5-9fd5aa49b158",
-        "location_id": null
+    "data": [
+      {
+        "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
+        "type": "report_stock_items",
+        "attributes": {
+          "created_at": "2028-06-10T02:07:00.000000+00:00",
+          "product_name": "Product 1000056",
+          "identifier": "id1000172",
+          "charge_duration_in_seconds": 7200,
+          "planned_duration_in_seconds": 7200,
+          "rented_count": 1,
+          "turnover_in_cents": 2000,
+          "stock_item_id": "900e48a7-b2af-464c-830a-b2f0a09aebf5",
+          "product_id": "2e16282a-9ed0-48f3-8810-cb74f0570bc0",
+          "location_id": null
+        },
+        "relationships": {}
       },
-      "relationships": {}
-    },
-    {
-      "id": "ef95abac-ad09-49fd-8c6f-42c28d852a68",
-      "type": "report_stock_items",
-      "attributes": {
-        "created_at": "2024-12-02T13:07:04.486915+00:00",
-        "product_name": "Product 1000081",
-        "identifier": "id1000186",
-        "charge_duration_in_seconds": 0,
-        "planned_duration_in_seconds": 0,
-        "rented_count": 0,
-        "turnover_in_cents": 2000,
-        "stock_item_id": "77c4a427-a3e2-4b70-bd6d-19c7d9db62c0",
-        "product_id": "c3f25ec8-5146-4986-b1f5-9fd5aa49b158",
-        "location_id": null
-      },
-      "relationships": {}
-    }
-  ],
-  "meta": {}
-}
+      {
+        "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
+        "type": "report_stock_items",
+        "attributes": {
+          "created_at": "2028-06-10T02:07:00.000000+00:00",
+          "product_name": "Product 1000056",
+          "identifier": "id1000173",
+          "charge_duration_in_seconds": 0,
+          "planned_duration_in_seconds": 0,
+          "rented_count": 0,
+          "turnover_in_cents": 2000,
+          "stock_item_id": "6ce9ed33-92eb-48b1-8528-75f4d4503cc9",
+          "product_id": "2e16282a-9ed0-48f3-8810-cb74f0570bc0",
+          "location_id": null
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
 ```
 
 ### HTTP Request
@@ -97,13 +103,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **String** <br>List of comma seperated relationships `?include=stock_item,product`
-`fields[]` | **Array** <br>List of comma seperated fields to include `?fields[report_stock_items]=created_at,product_name,identifier`
-`filter` | **Hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`sort` | **String** <br>How to sort the data `?sort=attribute1,-attribute2`
-`meta` | **Hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **String** <br>The page to request
-`page[size]` | **String** <br>The amount of items per page (max 100)
+`fields[]` | **array** <br>List of comma seperated fields to include `?fields[report_stock_items]=created_at,product_name,identifier`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships `?include=stock_item,product`
+`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request
+`page[size]` | **string** <br>The amount of items per page (max 100)
+`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -112,13 +118,13 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`q` | **String** <br>`eq`
-`stock_item_id` | **Uuid** <br>`eq`
-`product_id` | **Uuid** <br>`eq`
-`location_id` | **Uuid** <br>`eq`
-`from` | **Datetime** <br>`eq`
-`till` | **Datetime** <br>`eq`
-`turnover_type` | **String** <br>`eq`
+`from` | **datetime** <br>`eq`
+`location_id` | **uuid** <br>`eq`
+`product_id` | **uuid** <br>`eq`
+`q` | **string** <br>`eq`
+`stock_item_id` | **uuid** <br>`eq`
+`till` | **datetime** <br>`eq`
+`turnover_type` | **string** <br>`eq`
 
 
 ### Meta
@@ -127,7 +133,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
-`total` | **Array** <br>`count`
+`total` | **array** <br>`count`
 
 
 ### Includes
