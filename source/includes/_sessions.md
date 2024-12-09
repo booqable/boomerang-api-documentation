@@ -139,7 +139,7 @@ Check each individual operation to see which relations can be included as a side
           "installed_online_store": false,
           "source": null,
           "medium": null,
-          "tenant_token": "0062ae53c33e79d976a742b11d60f723",
+          "tenant_token": "dad8880b09cecc26034dfb5970bc1e32",
           "pending_subscription": false,
           "team_size": null,
           "revenue_last_year": null,

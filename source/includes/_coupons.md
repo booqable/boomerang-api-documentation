@@ -255,7 +255,7 @@ When updating a coupon the existing one is archived and a new one gets created:
       "type": "coupons",
       "attributes": {
         "created_at": "2021-03-12T23:40:01.000000+00:00",
-        "updated_at": "2021-03-12T23:40:01.000000+00:00",
+        "updated_at": "2021-03-12T23:41:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "SUMMER30OFF",

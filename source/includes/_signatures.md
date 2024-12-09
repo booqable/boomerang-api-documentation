@@ -101,7 +101,7 @@ Check each individual operation to see which relations can be included as a side
           "sent": false,
           "confirmed": true,
           "status": "confirmed",
-          "signature_url": "/uploads/f296f017554575fd7c8dc9d70f2bba53/document/contract/signature/6ea8048b-b423-4dfb-8076-da8361155b47/fd41339f-7791-4cad-8f8f-47650ac6fbba.png",
+          "signature_url": "/uploads/68f7306559c70897ae83dea214e5c1c1/document/contract/signature/6ea8048b-b423-4dfb-8076-da8361155b47/fd41339f-7791-4cad-8f8f-47650ac6fbba.png",
           "deposit_type": "none",
           "deposit_value": 0.0,
           "tag_list": [],

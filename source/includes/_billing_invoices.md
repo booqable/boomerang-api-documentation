@@ -69,7 +69,7 @@ Invoices received from Booqable
           "ending_balance_in_cents": null,
           "next_payment_attempt_at": null,
           "coupon": null,
-          "url": "http://billing.lvh.me:/invoices/049bbf8ad539cb3878a3c466452f6c80/47ff2e96d1b7485024f8648305842440"
+          "url": "http://billing.lvh.me:/invoices/af5fe1cdc12f7f5dea72345c99e66690/fd3839f1f3f26424d9419bbf1090c6ae"
         }
       }
     ],
@@ -163,7 +163,7 @@ This request does not accept any includes
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/0d2204c48e0f4bc2b9592a88250001ee/831d93c203c1037c20fe70b532fe491b"
+        "url": "http://billing.lvh.me:/invoices/31157f3842f0caefa129066354bdebdb/c2eb55d19dae34807cab027c6db73b58"
       }
     },
     "meta": {}
