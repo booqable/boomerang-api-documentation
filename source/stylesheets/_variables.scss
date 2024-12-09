@@ -35,9 +35,9 @@ $lang-select-bg: #1E2224 !default;
 $lang-select-active-bg: $examples-bg !default; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111 !default; // color of language tab bg when mouse is pressed
 $main-bg: #fff !default;
-$aside-notice-bg: lighten(#000, 90%) !default;
-$aside-warning-bg: lighten(#FF7632, 35%) !default;
-$aside-success-bg: lighten(#74CC20, 40%) !default;
+$aside-notice-bg: hsl(54deg,  85%, 94%) !default;
+$aside-warning-bg: hsl(18deg, 85%, 94%) !default;
+$aside-success-bg: hsl(91deg, 85%, 94%) !default;
 $search-notice-bg: lighten(#FF7632, 35%) !default;
 
 
