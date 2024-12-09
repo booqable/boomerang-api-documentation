@@ -568,12 +568,15 @@ ul#toc {
   }
 
   aside {
+    position: relative;
+    width: calc(50% - 52px);
+    margin: 1.5em $main-padding;
     padding-top: 1em;
     padding-bottom: 1em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
+    padding-left: 1.2 * $main-padding;
     background: $aside-notice-bg;
     line-height: 1.6;
+    border-radius: 8px;
 
     &.warning {
       background-color: $aside-warning-bg;
@@ -584,10 +587,19 @@ ul#toc {
     }
   }
 
-  aside:before {
-    vertical-align: middle;
-    padding-right: 0.5em;
-    font-size: 15px;
+  aside.notice:before,
+  aside.warning:before,
+  aside.success:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1.5 * $main-padding;
+
+    text-align: center;
+    padding-top: inherit;
+    font-size: inherit;
+    line-height: 1.6;
   }
 
   aside.notice:before {
