@@ -31,6 +31,7 @@ includes:
   - clusters
   - collections
   - collection_items
+  - collection_trees
   - companies
   - countries
   - counts
