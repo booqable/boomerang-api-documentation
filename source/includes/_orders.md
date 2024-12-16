@@ -134,8 +134,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-06-02T01:31:01.000000+00:00",
-          "stops_at": "1970-07-02T01:31:01.000000+00:00",
+          "starts_at": "1970-05-26T03:01:01.000000+00:00",
+          "stops_at": "1970-06-25T03:01:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -191,13 +191,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[orders]=created_at,updated_at,number`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,coupon,start_location`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,coupon,start_location`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -314,7 +314,7 @@ Use advanced search to make logical filter groups with and/or operators.
 > How to search for orders:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/orders/search'
        --header 'content-type: application/json'
        --data '{
@@ -330,14 +330,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2024-12-10T10:58:47Z",
-                       "lte": "2024-12-13T10:58:47Z"
+                       "gte": "2024-12-17T09:28:30Z",
+                       "lte": "2024-12-20T09:28:30Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2024-12-10T10:58:47Z",
-                       "lte": "2024-12-13T10:58:47Z"
+                       "gte": "2024-12-17T09:28:30Z",
+                       "lte": "2024-12-20T09:28:30Z"
                      }
                    }
                  ]
@@ -384,13 +384,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[orders]=created_at,updated_at,number`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,coupon,start_location`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,coupon,start_location`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -587,8 +587,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,coupon,customer`
 
 
 ### Includes
@@ -706,8 +706,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-10-28T10:50:01.000000+00:00",
-        "stops_at": "1970-11-27T10:50:01.000000+00:00",
+        "starts_at": "1970-10-21T12:20:01.000000+00:00",
+        "stops_at": "1970-11-20T12:20:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -762,8 +762,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,coupon,customer`
 
 
 ### Includes
@@ -861,7 +861,7 @@ When creating an order, and the following fields are left blank, a sensible defa
 > How to create an order:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/orders'
        --header 'content-type: application/json'
        --data '{
@@ -951,8 +951,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,coupon,customer`
 
 
 ### Request body
@@ -1077,7 +1077,7 @@ When updating a customer on an order the following settings will be applied and 
 > How to assign a (new) customer to an order:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/orders/b7fc4715-4681-4fbf-8786-f911532c94f1'
        --header 'content-type: application/json'
        --data '{
@@ -1117,7 +1117,7 @@ When updating a customer on an order the following settings will be applied and 
 > How to update the deposit_type:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/orders/2508bac9-57f4-4320-8fe5-e3e30186754d'
        --header 'content-type: application/json'
        --data '{
@@ -1156,7 +1156,7 @@ When updating a customer on an order the following settings will be applied and 
 > Updating stops_at resulting in a shortage:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/orders/93a4240b-dabb-4402-8f6c-bc85a87f922c'
        --header 'content-type: application/json'
        --data '{
@@ -1210,8 +1210,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[orders]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,coupon,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[orders]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,coupon,customer`
 
 
 ### Request body

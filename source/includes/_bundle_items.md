@@ -88,13 +88,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=bundle,product,product_group`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -189,8 +189,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
-`include` | **string** <br>List of comma seperated relationships `?include=bundle,product,product_group`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
 
 
 ### Includes
@@ -222,7 +222,7 @@ This request accepts the following includes:
 > How to create a bundle item:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/bundle_items'
        --header 'content-type: application/json'
        --data '{
@@ -272,8 +272,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
-`include` | **string** <br>List of comma seperated relationships `?include=bundle,product,product_group`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
 
 
 ### Request body
@@ -319,7 +319,7 @@ This request accepts the following includes:
 > How to update a bundle item:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/bundle_items/b19d7917-4360-464c-8add-3d8003786467'
        --header 'content-type: application/json'
        --data '{
@@ -367,8 +367,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
-`include` | **string** <br>List of comma seperated relationships `?include=bundle,product,product_group`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
 
 
 ### Request body
@@ -414,7 +414,7 @@ This request accepts the following includes:
 > How to delete a bundle item:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/bundle_items/791f0c17-84d2-4362-8ad5-b097d71cf9e6'
        --header 'content-type: application/json'
 ```
@@ -452,7 +452,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundle_items]=created_at,updated_at,quantity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
 
 
 ### Includes

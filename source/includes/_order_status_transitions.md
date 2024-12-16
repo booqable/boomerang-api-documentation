@@ -67,7 +67,7 @@ Check each individual operation to see which relations can be included as a side
 > Save a new Order as concept:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -107,7 +107,7 @@ Check each individual operation to see which relations can be included as a side
 > Reserve a concept Order:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -147,7 +147,7 @@ Check each individual operation to see which relations can be included as a side
 > Reserve a concept Order, causing a blocking shortage error:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -195,7 +195,7 @@ Check each individual operation to see which relations can be included as a side
 > Reserve a concept Order, causing a shortage warning:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -243,7 +243,7 @@ Check each individual operation to see which relations can be included as a side
 > Reserve a concept Order, and override the shortage warning:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -283,7 +283,7 @@ Check each individual operation to see which relations can be included as a side
 > Reserve a concept Order, causing a stock item specified error:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -333,7 +333,7 @@ Check each individual operation to see which relations can be included as a side
 > Archive a reserved Order:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -369,7 +369,7 @@ Check each individual operation to see which relations can be included as a side
 > Archive a stopped Order:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -409,7 +409,7 @@ Check each individual operation to see which relations can be included as a side
 > Revert a reserved Order to 'concept':
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
@@ -456,8 +456,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_status_transitions]=order_id,transition_from,transition_to`
-`include` | **string** <br>List of comma seperated relationships `?include=order`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_status_transitions]=order_id,transition_from,transition_to`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order`
 
 
 ### Request body

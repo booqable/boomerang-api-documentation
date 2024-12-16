@@ -41,7 +41,7 @@ Check each individual operation to see which relations can be included as a side
 `address` | **string** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order. 
 `archived` | **boolean** `readonly`<br>Whether document is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the document was archived. 
-`body` | **string** `readonly`<br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document. 
+`body` | **string** <br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document. 
 `confirmed` | **boolean** <br>Whether document is confirmed, applies to `quote` and `contract`. 
 `coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`. 
 `coupon_id` | **uuid** `nullable`<br>The associated coupon. 
@@ -60,7 +60,7 @@ Check each individual operation to see which relations can be included as a side
 `document_type` | **enum** `readonly-after-create`<br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `due_date` | **date** <br>The latest date by which the invoice must be fully paid. 
 `finalized` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
-`footer` | **string** `readonly`<br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document. 
+`footer` | **string** <br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document. 
 `grand_total_in_cents` | **integer** `readonly`<br>Total excl. taxes (excl. deposit). 
 `grand_total_with_tax_in_cents` | **integer** `readonly`<br>Amount incl. taxes (excl. deposit). 
 `id` | **uuid** `readonly`<br>Primary key.
@@ -115,6 +115,8 @@ Check each individual operation to see which relations can be included as a side
           "due_date": null,
           "name": "John Doe",
           "address": null,
+          "body": null,
+          "footer": "",
           "reference": null,
           "revised": false,
           "finalized": false,
@@ -162,13 +164,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,order`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -271,7 +273,7 @@ Use advanced search to make logical filter groups with and/or operators.
 > How to search for documents:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/documents/search'
        --header 'content-type: application/json'
        --data '{
@@ -339,13 +341,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,order`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -471,6 +473,8 @@ This request accepts the following includes:
         "due_date": null,
         "name": "John Doe",
         "address": null,
+        "body": null,
+        "footer": "",
         "reference": null,
         "revised": false,
         "finalized": false,
@@ -517,8 +521,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order,tax_region`
 
 
 ### Includes
@@ -559,7 +563,7 @@ This request accepts the following includes:
 > How to create a contract:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/documents'
        --header 'content-type: application/json'
        --data '{
@@ -589,10 +593,12 @@ This request accepts the following includes:
         "number": 1,
         "prefix": null,
         "prefix_with_number": "1",
-        "date": "2024-12-09",
+        "date": "2024-12-16",
         "due_date": null,
         "name": "John Doe",
         "address": "",
+        "body": "",
+        "footer": "",
         "reference": null,
         "revised": false,
         "finalized": true,
@@ -639,8 +645,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order,tax_region`
 
 
 ### Request body
@@ -650,6 +656,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][address]` | **string** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order. 
+`data[attributes][body]` | **string** <br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document. 
 `data[attributes][confirmed]` | **boolean** <br>Whether document is confirmed, applies to `quote` and `contract`. 
 `data[attributes][coupon_id]` | **uuid** <br>The associated coupon. 
 `data[attributes][customer_id]` | **uuid** <br>The associated customer. 
@@ -660,6 +667,7 @@ Name | Description
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
+`data[attributes][footer]` | **string** <br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document. 
 `data[attributes][name]` | **string** <br>Customer name. If left blank, automatically populated with the customer name of the associated order. 
 `data[attributes][number]` | **integer** <br>The document number, must be unique per type. Automatically generated if left blank. 
 `data[attributes][order_id]` | **uuid** <br>The order this document is for. 
@@ -710,7 +718,7 @@ This request accepts the following includes:
 > How to update a document:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/documents/6b8e0c59-4b01-42e6-8477-bbfa4cea11f3'
        --header 'content-type: application/json'
        --data '{
@@ -744,6 +752,8 @@ This request accepts the following includes:
         "due_date": null,
         "name": "Jane Doe",
         "address": null,
+        "body": null,
+        "footer": "",
         "reference": null,
         "revised": false,
         "finalized": false,
@@ -790,8 +800,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,order,tax_region`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order,tax_region`
 
 
 ### Request body
@@ -801,6 +811,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][address]` | **string** <br>Customer Address. If left blank, automatically populated with the customer address of the associated order. 
+`data[attributes][body]` | **string** <br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document. 
 `data[attributes][confirmed]` | **boolean** <br>Whether document is confirmed, applies to `quote` and `contract`. 
 `data[attributes][coupon_id]` | **uuid** <br>The associated coupon. 
 `data[attributes][customer_id]` | **uuid** <br>The associated customer. 
@@ -811,6 +822,7 @@ Name | Description
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
+`data[attributes][footer]` | **string** <br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document. 
 `data[attributes][name]` | **string** <br>Customer name. If left blank, automatically populated with the customer name of the associated order. 
 `data[attributes][number]` | **integer** <br>The document number, must be unique per type. Automatically generated if left blank. 
 `data[attributes][order_id]` | **uuid** <br>The order this document is for. 
@@ -862,7 +874,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 > How to archive a document:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/documents/e00df330-8241-466f-8706-d2db3d03494d'
        --header 'content-type: application/json'
 ```
@@ -887,6 +899,8 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
         "due_date": null,
         "name": "John Doe",
         "address": null,
+        "body": null,
+        "footer": "",
         "reference": null,
         "revised": false,
         "finalized": false,
@@ -933,7 +947,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[documents]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
 
 
 ### Includes

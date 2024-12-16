@@ -17,7 +17,7 @@ A convienient way to bulk update positions for supported resources.
 > How to update positions:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/sortings'
        --header 'content-type: application/json'
        --data '{

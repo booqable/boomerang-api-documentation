@@ -65,13 +65,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[clusters]=created_at,updated_at,name`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=locations`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=locations`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -146,8 +146,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[clusters]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=locations`
 
 
 ### Includes
@@ -167,7 +167,7 @@ This request accepts the following includes:
 > How to create a cluster:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/clusters'
        --header 'content-type: application/json'
        --data '{
@@ -209,8 +209,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[clusters]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=locations`
 
 
 ### Request body
@@ -240,7 +240,7 @@ This request accepts the following includes:
 > How to update a cluster:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/clusters/df280d1c-34d7-4b2d-89d8-289bf254f317'
        --header 'content-type: application/json'
        --data '{
@@ -283,8 +283,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[clusters]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=locations`
 
 
 ### Request body
@@ -315,7 +315,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 > How to delete a cluster:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/clusters/79f093e1-f668-4a70-8e91-6f10c351314a'
        --header 'content-type: application/json'
 ```
@@ -342,7 +342,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 > A failure due to a cluster still being associated with locations:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/clusters/475d542a-ad19-4eea-87be-bdc3a2726baf'
        --header 'content-type: application/json'
 ```
@@ -377,8 +377,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[clusters]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=locations`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[clusters]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=locations`
 
 
 ### Includes

@@ -26,7 +26,7 @@ Name | Description
 `price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The price ruleset to use for advanced price calculations. This is inherited from the product group this product belongs to. 
 `price_structure` | **[Price structure](#price-structures)** `optional`<br>The price strucure to use when this product uses tiered pricing. This is inherited from the product group this product belongs to. 
 `product_group` | **[Product group](#product-groups)** `required`<br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this product, based on [DefaultProperties](#default-properties). These are inherited from the product group this product belongs to. 
+`properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this product, based on [DefaultProperties](#default-properties). These are inherited from the product group this product belongs to. While it is possible to sideload properties for products, it is not possible to assign them. 
 `tax_category` | **[Tax category](#tax-categories)** `optional`<br>Tax category for tax calculations. 
 
 
@@ -73,7 +73,7 @@ Check each individual operation to see which relations can be included as a side
 `price_structure_id` | **uuid** `readonly` `nullable`<br>The price strucure to use when this product uses tiered pricing. This is inherited from the product group this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `product_type` | **enum** `readonly`<br>Type of product.<br> One of: `rental`, `consumable`, `service`.
-`properties` | **hash** `readonly`<br>Key value pairs of associated properties. 
+`properties` | **hash** `readonly`<br>Key value pairs of associated properties. This is the same data as provided by the properties relation, but without information about type and position. 
 `seo_description` | **string** `readonly` `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `readonly` `nullable`<br>SEO title tag. 
 `shortage_limit` | **integer** `readonly`<br>The maximum allowed shortage for any date range. 
@@ -163,7 +163,7 @@ Check each individual operation to see which relations can be included as a side
           "name": "iPad Pro - blue",
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
-          "sku": "PRODUCT 1000050",
+          "sku": "PRODUCT 1000051",
           "lead_time": 0,
           "lag_time": 0,
           "product_type": "rental",
@@ -215,13 +215,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,inventory_levels,photo`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -332,7 +332,7 @@ Use advanced search to make logical filter groups with and/or operators.
 > How to search for products:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/products/search'
        --header 'content-type: application/json'
        --data '{
@@ -402,13 +402,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,inventory_levels,photo`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -589,8 +589,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[products]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,inventory_levels,photo`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 
 
 ### Includes
@@ -631,7 +631,7 @@ This request accepts the following includes:
 > How to create a product:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/products'
        --header 'content-type: application/json'
        --data '{
@@ -714,8 +714,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[products]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,inventory_levels,photo`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 
 
 ### Request body
@@ -771,7 +771,7 @@ This request accepts the following includes:
 > How to update a product:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/products/d2da581f-c48e-4b27-8d9d-9fc0d8b00c8f'
        --header 'content-type: application/json'
        --data '{
@@ -854,8 +854,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[products]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,inventory_levels,photo`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 
 
 ### Request body
@@ -911,7 +911,7 @@ This request accepts the following includes:
 > How to delete a product:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/products/5fe125ba-4a82-4fad-8a18-03ea09db75a3'
        --header 'content-type: application/json'
 ```
@@ -983,7 +983,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
 
 
 ### Includes

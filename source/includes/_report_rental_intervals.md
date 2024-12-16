@@ -34,9 +34,9 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/report_rental_intervals'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[from]=2024-11-29 00:00:00 UTC'
+       --data-urlencode 'filter[from]=2024-12-06 00:00:00 UTC'
        --data-urlencode 'filter[product_id]=11b593b2-23b2-4a0d-8630-f08bdc6a363f'
-       --data-urlencode 'filter[till]=2024-12-08 23:59:59 UTC'
+       --data-urlencode 'filter[till]=2024-12-15 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:
@@ -48,7 +48,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "f0ceb5ce-caa0-40d5-8c27-fd4607e62568",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-11-29",
+          "date": "2024-12-06",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -59,7 +59,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "6d2b8548-3a4f-41c4-8e33-f88cab6ed721",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-11-30",
+          "date": "2024-12-07",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -70,7 +70,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "ccd4c262-738d-415e-8388-832ee4be4870",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-01",
+          "date": "2024-12-08",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -81,7 +81,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "cb0cd33c-98ec-4f6a-81e4-3450cfe6c7bd",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-02",
+          "date": "2024-12-09",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -92,7 +92,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "85422c5f-f84a-4fc1-870c-24f6f3762c41",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-03",
+          "date": "2024-12-10",
           "rented_count": 1,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -103,7 +103,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "c344a030-1398-4dc8-8066-90f990c9d65f",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-04",
+          "date": "2024-12-11",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -114,7 +114,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "0d56a56a-529b-419e-834d-b8a2316f15a8",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-05",
+          "date": "2024-12-12",
           "rented_count": 1,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -125,7 +125,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "8a916c0a-b234-4b15-8df7-1f4f2d325746",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-06",
+          "date": "2024-12-13",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -136,7 +136,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "894bfe67-ec44-49cb-801b-dd2525745c92",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-07",
+          "date": "2024-12-14",
           "rented_count": 1,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -147,7 +147,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "947020ed-c624-4f6f-8c35-ab29ccbc48b6",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2024-12-08",
+          "date": "2024-12-15",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -169,13 +169,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[report_rental_intervals]=date,rented_count,interval`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[report_rental_intervals]=date,rented_count,interval`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=product`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=product`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters

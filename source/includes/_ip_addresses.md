@@ -58,12 +58,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[ip_addresses]=created_at,updated_at,label`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -129,7 +129,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Includes
@@ -141,7 +141,7 @@ This request does not accept any includes
 > How to create a restricted IP address:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/ip_addresses'
        --header 'content-type: application/json'
        --data '{
@@ -183,7 +183,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Request body
@@ -205,7 +205,7 @@ This request does not accept any includes
 > How to update a restricted IP address:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/ip_addresses/c5fee425-e443-4e0a-8fb7-7ec6a623c577'
        --header 'content-type: application/json'
        --data '{
@@ -248,7 +248,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Request body
@@ -270,7 +270,7 @@ This request does not accept any includes
 > How to delete a restricted IP address:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/ip_addresses/d0fa7dac-507f-4565-8815-4323b15d02ba'
        --header 'content-type: application/json'
 ```
@@ -303,7 +303,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[ip_addresses]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[ip_addresses]=created_at,updated_at,label`
 
 
 ### Includes

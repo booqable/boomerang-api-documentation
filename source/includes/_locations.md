@@ -114,13 +114,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=clusters,carriers`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=clusters,carriers`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -233,8 +233,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=clusters,carriers`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=clusters,carriers`
 
 
 ### Includes
@@ -257,7 +257,7 @@ This request accepts the following includes:
 > How to create a location and assign it to a cluster:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/locations'
        --header 'content-type: application/json'
        --data '{
@@ -367,8 +367,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=clusters,carriers`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=clusters,carriers`
 
 
 ### Request body
@@ -414,7 +414,7 @@ Note that disassociating clusters may result in a shortage error.
 > How to update a location and assign it to multiple clusters:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/locations/620301be-6eb5-4f1f-8fdd-7d1539cbcfc2'
        --header 'content-type: application/json'
        --data '{
@@ -529,7 +529,7 @@ Note that disassociating clusters may result in a shortage error.
 > Disassociating cluster resulting in shortage error:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/locations/f224137a-3275-466e-8502-c1e66ea8444c'
        --header 'content-type: application/json'
        --data '{
@@ -595,8 +595,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=clusters,carriers`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=clusters,carriers`
 
 
 ### Request body
@@ -646,7 +646,7 @@ To archive a location make sure that:
 > How to archive a location:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/locations/3f258b5c-005d-4808-81c2-954da48df0cb'
        --header 'content-type: application/json'
 ```
@@ -703,7 +703,7 @@ To archive a location make sure that:
 > Failure due to a future order:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/locations/0b51712b-bd56-43d4-8e58-08b818262a12'
        --header 'content-type: application/json'
 ```
@@ -731,7 +731,7 @@ To archive a location make sure that:
 > Failure due to active stock at location:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/locations/d5edee8a-8801-48cd-8087-14b1d659a294'
        --header 'content-type: application/json'
 ```
@@ -766,7 +766,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[locations]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
 
 
 ### Includes

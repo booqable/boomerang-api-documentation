@@ -130,12 +130,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[themes]=created_at,updated_at,name`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -174,7 +174,7 @@ This request does not accept any includes
 > How to fork a theme to create a new theme:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/themes'
        --header 'content-type: application/json'
        --data '{
@@ -228,8 +228,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=assets`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[themes]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=assets`
 
 
 ### Request body
@@ -265,7 +265,7 @@ This request accepts the following includes:
 > How to delete a theme:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/themes/e89e2806-1fa0-4dba-8df6-5728b48387cd'
        --header 'content-type: application/json'
 ```
@@ -310,7 +310,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[themes]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[themes]=created_at,updated_at,name`
 
 
 ### Includes

@@ -8,8 +8,8 @@ See [Authentication](#authentication) for more information on authenticating wit
 ## Relationships
 Name | Description
 -- | --
-`company` | **[Company](#companies)** `required`<br>The company this authentication method belongs to.
-`employee` | **[Employee](#employees)** `required`<br>The employee this authentication method belongs to.
+`company` | **[Company](#companies)** `required`<br>The company this authentication method belongs to. 
+`employee` | **[Employee](#employees)** `required`<br>The employee this authentication method belongs to. 
 
 
 Check matching attributes under [Fields](#authentication-methods-fields) to see which relations can be written.
@@ -19,14 +19,14 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`algorithm` | **enum** <br>Algorithm used for signing.<br>One of: `ES256`, `RS256`, `HS256`.
-`company_id` | **uuid** `readonly`<br>The company this authentication method belongs to.
-`created_at` | **datetime** `readonly`<br>When this authentication method was created.
-`employee_id` | **uuid** `readonly`<br>The employee this authentication method belongs to.
+`algorithm` | **enum** <br>Algorithm used for signing.<br> One of: `ES256`, `RS256`, `HS256`.
+`company_id` | **uuid** `readonly`<br>The company this authentication method belongs to. 
+`created_at` | **datetime** `readonly`<br>When this authentication method was created. 
+`employee_id` | **uuid** `readonly`<br>The employee this authentication method belongs to. 
 `id` | **uuid** `readonly`<br>Primary key.
-`key` | **string** <br>Key that is being used for authentication strategy.
-`kind` | **enum** <br>Kind of strategy used for authentication.<br>One of: `token`, `single_use`, `oauth`.
-`name` | **string** <br>Name of the key (for identification by user).
+`key` | **string** `extra`<br>Key that is being used for authentication strategy. Because this key is supposed to be kept secret (depending on `kind`), its value is only returned when explicitly requested. 
+`kind` | **enum** <br>Kind of strategy used for authentication.<br> One of: `token`, `single_use`, `oauth`.
+`name` | **string** <br>Name of the key (for identification by user). 
 
 
 ## Listing authentication methods
@@ -73,12 +73,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,name,kind`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[authentication_methods]=key`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[authentication_methods]=created_at,name,kind`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -129,9 +130,9 @@ This request does not accept any includes
         "created_at": "2014-12-11T10:59:01.000000+00:00",
         "updated_at": "2014-12-11T10:59:01.000000+00:00",
         "name": "Segment integration",
-        "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
         "kind": "single_use",
         "algorithm": "ES256",
+        "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
         "employee_id": "24cc151b-daa4-48f0-8535-f63d7ec20fe7",
         "company_id": "84e60c43-023a-4c37-809c-a941cbac102a"
       },
@@ -151,7 +152,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,name,kind`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[authentication_methods]=key`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[authentication_methods]=created_at,name,kind`
 
 
 ### Includes
@@ -163,7 +165,7 @@ This request does not accept any includes
 > How to create a token authentication method:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/authentication_methods'
        --header 'content-type: application/json'
        --data '{
@@ -187,9 +189,9 @@ This request does not accept any includes
         "created_at": "2027-11-18T02:17:01.000000+00:00",
         "updated_at": "2027-11-18T02:17:01.000000+00:00",
         "name": "Segment integration",
-        "key": "b18325fa7c11a05cbb490e84fba675a22cf729b76cf07a8f67e2c82e5cfa378f",
         "kind": "token",
         "algorithm": null,
+        "key": "b18325fa7c11a05cbb490e84fba675a22cf729b76cf07a8f67e2c82e5cfa378f",
         "employee_id": "d6313cd4-52d0-4f71-87e9-0a5fbd855b19",
         "company_id": "d79aa57f-76cb-483a-8e40-c25404c26a5d"
       },
@@ -202,7 +204,7 @@ This request does not accept any includes
 > How to create a single_use authentication method (with ES256 strategy):
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/authentication_methods'
        --header 'content-type: application/json'
        --data '{
@@ -229,9 +231,9 @@ This request does not accept any includes
         "created_at": "2021-04-10T18:40:01.000000+00:00",
         "updated_at": "2021-04-10T18:40:01.000000+00:00",
         "name": "Segment integration",
-        "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
         "kind": "single_use",
         "algorithm": "ES256",
+        "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
         "employee_id": "75a59189-d0d6-4668-8c8b-83903cf22d08",
         "company_id": "031ece0d-d2c2-4b5a-86ac-e2eb24560de5"
       },
@@ -244,7 +246,7 @@ This request does not accept any includes
 > How to create a single_use authentication method (with RS256 strategy):
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/authentication_methods'
        --header 'content-type: application/json'
        --data '{
@@ -271,9 +273,9 @@ This request does not accept any includes
         "created_at": "2014-10-08T04:38:01.000000+00:00",
         "updated_at": "2014-10-08T04:38:01.000000+00:00",
         "name": "Segment integration",
-        "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtRuZD4X3MhIz1ntbxpkp\njVFUTdH7mspUNXmE0bcQ3bJrgWYZmtPm64+lpo7KWqQIL28dhtNAjImJmzcr04ve\nRAxxyQT0f0uwe3zUBEqaxKim1aCJV60c71cPKJVfhXElnjhMkBW6ftIEgf7J4bwe\n7kPCK/NfdiOuFlMjfaY+5WmaA1lAZ/SSetwglSaHPPQKaix3LW4ocHtHUd7OBKNC\nIU/DO3baUDAkymF7ZCnMaf3F9Le9sGSpgUA8Fof69rH1EdagQFmIkftflj/IlJiC\nPDEoc1x7b4opEuGp287S+DsRRgr6vzVZi4CPQcJJsG+07jZQN5K3wboBlx8LW2jT\nfQIDAQAB\n-----END PUBLIC KEY-----\n",
         "kind": "single_use",
         "algorithm": "RS256",
+        "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtRuZD4X3MhIz1ntbxpkp\njVFUTdH7mspUNXmE0bcQ3bJrgWYZmtPm64+lpo7KWqQIL28dhtNAjImJmzcr04ve\nRAxxyQT0f0uwe3zUBEqaxKim1aCJV60c71cPKJVfhXElnjhMkBW6ftIEgf7J4bwe\n7kPCK/NfdiOuFlMjfaY+5WmaA1lAZ/SSetwglSaHPPQKaix3LW4ocHtHUd7OBKNC\nIU/DO3baUDAkymF7ZCnMaf3F9Le9sGSpgUA8Fof69rH1EdagQFmIkftflj/IlJiC\nPDEoc1x7b4opEuGp287S+DsRRgr6vzVZi4CPQcJJsG+07jZQN5K3wboBlx8LW2jT\nfQIDAQAB\n-----END PUBLIC KEY-----\n",
         "employee_id": "bc3373ee-ee17-4d83-8c01-3b200bf8bdb3",
         "company_id": "faf47d6b-8d0b-4ac5-8892-c0590faa0054"
       },
@@ -286,7 +288,7 @@ This request does not accept any includes
 > How to create a single_use authentication method (with HS256 strategy):
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/authentication_methods'
        --header 'content-type: application/json'
        --data '{
@@ -312,9 +314,9 @@ This request does not accept any includes
         "created_at": "2028-10-03T00:29:01.000000+00:00",
         "updated_at": "2028-10-03T00:29:01.000000+00:00",
         "name": "Segment integration",
-        "key": "1edf5b834e40d61ca8d10a8ca758954e2f05f33fd1c1a47bb18dfc3493433357",
         "kind": "single_use",
         "algorithm": "HS256",
+        "key": "1edf5b834e40d61ca8d10a8ca758954e2f05f33fd1c1a47bb18dfc3493433357",
         "employee_id": "777ef44e-2bce-40e3-85dc-63792f9f0c22",
         "company_id": "61df6c42-088c-4fa3-8860-b75b9c114770"
       },
@@ -334,8 +336,9 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,name,kind`
-`include` | **string** <br>List of comma seperated relationships `?include=employee,company`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[authentication_methods]=key`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[authentication_methods]=created_at,name,kind`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee,company`
 
 
 ### Request body
@@ -344,10 +347,10 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][algorithm]` | **enum** <br>Algorithm used for signing.<br>One of: `ES256`, `RS256`, `HS256`.
-`data[attributes][key]` | **string** <br>Key that is being used for authentication strategy.
-`data[attributes][kind]` | **enum** <br>Kind of strategy used for authentication.<br>One of: `token`, `single_use`, `oauth`.
-`data[attributes][name]` | **string** <br>Name of the key (for identification by user).
+`data[attributes][algorithm]` | **enum** <br>Algorithm used for signing.<br> One of: `ES256`, `RS256`, `HS256`.
+`data[attributes][key]` | **string** <br>Key that is being used for authentication strategy. Because this key is supposed to be kept secret (depending on `kind`), its value is only returned when explicitly requested. 
+`data[attributes][kind]` | **enum** <br>Kind of strategy used for authentication.<br> One of: `token`, `single_use`, `oauth`.
+`data[attributes][name]` | **string** <br>Name of the key (for identification by user). 
 
 
 ### Includes
@@ -370,7 +373,7 @@ This request accepts the following includes:
 > How to delete an authentication method:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/authentication_methods/ef2b6529-43ac-4e66-8ab9-bd2950729b50'
        --header 'content-type: application/json'
 ```
@@ -386,9 +389,9 @@ This request accepts the following includes:
         "created_at": "2021-11-06T06:35:01.000000+00:00",
         "updated_at": "2021-11-06T06:35:01.000000+00:00",
         "name": "Segment integration",
-        "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
         "kind": "single_use",
         "algorithm": "ES256",
+        "key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEDRq3Sua6NyUU0WusNISEcchCLBL\nShY0rPpRLfU+Y96OcMiSWaKazYmQDKq4zyIVLlnGiHjv4lwEfhe3Psr39A==\n-----END PUBLIC KEY-----\n",
         "employee_id": "792a5596-9c55-46ab-8317-6c0651512e04",
         "company_id": "5da72e2c-3b67-4d80-88c1-6e96acba5c58"
       },
@@ -408,7 +411,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[authentication_methods]=created_at,name,kind`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[authentication_methods]=key`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[authentication_methods]=created_at,name,kind`
 
 
 ### Includes

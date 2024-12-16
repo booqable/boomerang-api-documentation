@@ -21,7 +21,7 @@ Use device tokens to register devices to receive push notifications.
 > How to create a device_token:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/device_tokens'
        --header 'content-type: application/json'
        --data '{
@@ -65,7 +65,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[device_tokens]=created_at,updated_at,kind`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[device_tokens]=created_at,updated_at,kind`
 
 
 ### Request body
@@ -89,7 +89,7 @@ This request does not accept any includes
 > How to delete a device_token:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/device_tokens/ab5436fd-0efe-4f10-8a1d-f1feca62c9e9'
        --header 'content-type: application/json'
 ```
@@ -123,7 +123,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[device_tokens]=created_at,updated_at,kind`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[device_tokens]=created_at,updated_at,kind`
 
 
 ### Includes

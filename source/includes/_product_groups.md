@@ -173,13 +173,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[product_groups]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,properties`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,properties`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -274,7 +274,7 @@ Use advanced search to make logical filter groups with and/or operators.
 > How to search for product groups:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/product_groups/search'
        --header 'content-type: application/json'
        --data '{
@@ -341,13 +341,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[product_groups]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,properties`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,properties`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -512,8 +512,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[product_groups]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,properties,tax_category`
 
 
 ### Includes
@@ -551,7 +551,7 @@ This request accepts the following includes:
 > How to create a product group:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/product_groups'
        --header 'content-type: application/json'
        --data '{
@@ -642,8 +642,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[product_groups]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,properties,tax_category`
 
 
 ### Request body
@@ -720,7 +720,7 @@ This request accepts the following includes:
 > How to update a product group:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/product_groups/a32d904d-cb11-4b83-80c4-5974eff77dc8'
        --header 'content-type: application/json'
        --data '{
@@ -801,8 +801,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,properties,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[product_groups]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,properties,tax_category`
 
 
 ### Request body
@@ -879,7 +879,7 @@ This request accepts the following includes:
 > How to delete a product group:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/product_groups/0845ee1b-c095-41c8-8179-28d5fe7fd2f3'
        --header 'content-type: application/json'
 ```
@@ -951,7 +951,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[product_groups]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[product_groups]=created_at,updated_at,archived`
 
 
 ### Includes

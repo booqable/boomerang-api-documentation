@@ -121,13 +121,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundles]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundles]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,inventory_levels`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,inventory_levels`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -197,7 +197,7 @@ Use advanced search to make logical filter groups with and/or operators.
 > How to search for bundles:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/bundles/search'
        --header 'content-type: application/json'
        --data '{
@@ -264,13 +264,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundles]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundles]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,inventory_levels`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,inventory_levels`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -389,8 +389,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundles]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,bundle_items,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundles]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,bundle_items,tax_category`
 
 
 ### Includes
@@ -434,7 +434,7 @@ This request accepts the following includes:
 > How to create a bundle with bundle items:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/bundles'
        --header 'content-type: application/json'
        --data '{
@@ -591,8 +591,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundles]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,bundle_items,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundles]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,bundle_items,tax_category`
 
 
 ### Request body
@@ -653,7 +653,7 @@ This request accepts the following includes:
 > How to update a bundle with bundle items:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/bundles/ed81707b-f578-4a6e-82e8-062f3b5ae2d9'
        --header 'content-type: application/json'
        --data '{
@@ -771,8 +771,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundles]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=photo,bundle_items,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundles]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=photo,bundle_items,tax_category`
 
 
 ### Request body
@@ -833,7 +833,7 @@ This request accepts the following includes:
 > How to delete a bundle:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/bundles/ec090d58-5e64-4db7-89ae-80f6bcdd3d22'
        --header 'content-type: application/json'
 ```
@@ -884,7 +884,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[bundles]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundles]=created_at,updated_at,archived`
 
 
 ### Includes

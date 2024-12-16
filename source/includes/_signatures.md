@@ -33,7 +33,7 @@ Check each individual operation to see which relations can be included as a side
 > Confirm and add a signature to a contract:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/signatures'
        --header 'content-type: application/json'
        --data '{
@@ -91,17 +91,19 @@ Check each individual operation to see which relations can be included as a side
           "number": 1,
           "prefix": null,
           "prefix_with_number": "1",
-          "date": "2024-12-09",
+          "date": "2024-12-16",
           "due_date": null,
           "name": "John Doe",
           "address": null,
+          "body": null,
+          "footer": null,
           "reference": null,
           "revised": false,
           "finalized": true,
           "sent": false,
           "confirmed": true,
           "status": "confirmed",
-          "signature_url": "/uploads/68f7306559c70897ae83dea214e5c1c1/document/contract/signature/6ea8048b-b423-4dfb-8076-da8361155b47/fd41339f-7791-4cad-8f8f-47650ac6fbba.png",
+          "signature_url": "/uploads/c6df64b3833145961da6abc754836218/document/contract/signature/6ea8048b-b423-4dfb-8076-da8361155b47/fd41339f-7791-4cad-8f8f-47650ac6fbba.png",
           "deposit_type": "none",
           "deposit_value": 0.0,
           "tag_list": [],
@@ -150,8 +152,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[signatures]=document_id,order_id,customer_id`
-`include` | **string** <br>List of comma seperated relationships `?include=document,order,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[signatures]=document_id,order_id,customer_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=document,order,customer`
 
 
 ### Request body

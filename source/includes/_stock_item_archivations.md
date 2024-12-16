@@ -49,7 +49,7 @@ Check each individual operation to see which relations can be included as a side
 > When the StockItem is not used, it can be archived:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/stock_item_archivations'
        --header 'content-type: application/json'
        --data '{
@@ -81,7 +81,7 @@ Check each individual operation to see which relations can be included as a side
 > When the StockItem was already archived:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/stock_item_archivations'
        --header 'content-type: application/json'
        --data '{
@@ -113,7 +113,7 @@ Check each individual operation to see which relations can be included as a side
 > When the StockItem is specified on a reserved Order:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/stock_item_archivations'
        --header 'content-type: application/json'
        --data '{
@@ -153,7 +153,7 @@ Check each individual operation to see which relations can be included as a side
 > When archival would create unallowed shortage:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/stock_item_archivations'
        --header 'content-type: application/json'
        --data '{
@@ -209,7 +209,7 @@ Check each individual operation to see which relations can be included as a side
 > When archival would create allowed shortage, but confirm_shortage is unspecified:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/stock_item_archivations'
        --header 'content-type: application/json'
        --data '{
@@ -265,7 +265,7 @@ Check each individual operation to see which relations can be included as a side
 > When archival would create allowed shortage, and confirm_shortage is true:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/stock_item_archivations'
        --header 'content-type: application/json'
        --data '{
@@ -305,8 +305,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_item_archivations]=stock_item_id`
-`include` | **string** <br>List of comma seperated relationships `?include=stock_item`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_item_archivations]=stock_item_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=stock_item`
 
 
 ### Request body

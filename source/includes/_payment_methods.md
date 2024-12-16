@@ -71,12 +71,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -113,7 +113,7 @@ This request does not accept any includes
 > How to create a payment method:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/payment_methods'
        --header 'content-type: application/json'
        --data '{
@@ -162,7 +162,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label`
 
 
 ### Request body
@@ -188,7 +188,7 @@ This request does not accept any includes
 > How to detach a payment method from customer:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/payment_methods/116b5701-21a0-41af-8a36-ca8d5e8767d6'
        --header 'content-type: application/json'
 ```
@@ -226,7 +226,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label`
 
 
 ### Includes

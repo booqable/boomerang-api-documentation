@@ -39,7 +39,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
 `password_confirmation` | **string** `writeonly`<br>Confirm new password. 
 `permissions` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
 `remove_avatar` | **boolean** `writeonly`<br>Remove current avatar. 
-`third_party_id` | **string** `readonly`<br>ID used for third party tools. 
+`third_party_id` | **string** <br>ID used for third party tools. 
 `time_to_confirm` | **integer** `readonly`<br>Time in days left to confirm. 
 `unconfirmed_email` | **string** `readonly`<br>Unconfirmed e-mail address if present. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -93,7 +93,8 @@ and accounting, it wouldn't need to manage your products and stock levels.
           ],
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
+          "third_party_id": "9e27ff9f-0909-42c7-81b2-3bb9f34ad507-1734341131"
         }
       }
     ],
@@ -111,12 +112,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[employees]=created_at,updated_at,name`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -133,6 +134,7 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `locale` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `owner` | **boolean** <br>`eq`
+`third_party_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -194,7 +196,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+        "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
+        "third_party_id": "4c367dac-4839-49f3-89e4-ff584a1f30e0-1734341132"
       }
     },
     "meta": {}
@@ -211,7 +214,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[employees]=created_at,updated_at,name`
 
 
 ### Includes
@@ -223,7 +226,7 @@ This request does not accept any includes
 > How to update an employee:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/employees/cebcf411-1b2a-402f-8d77-43c67daf282f'
        --header 'content-type: application/json'
        --data '{
@@ -273,7 +276,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200",
+        "third_party_id": "cebcf411-1b2a-402f-8d77-43c67daf282f-1734341133"
       }
     },
     "meta": {}
@@ -283,7 +287,7 @@ This request does not accept any includes
 > How to de-activate an employee:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/employees/b40a7c1c-5190-4d54-8cea-405d36944a87'
        --header 'content-type: application/json'
        --data '{
@@ -333,7 +337,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200",
+        "third_party_id": "b40a7c1c-5190-4d54-8cea-405d36944a87-1734341134"
       }
     },
     "meta": {}
@@ -343,7 +348,7 @@ This request does not accept any includes
 > How to set permissions:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/employees/94b3f0ff-ef32-49be-8f5f-7aa6916cc901'
        --header 'content-type: application/json'
        --data '{
@@ -387,7 +392,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200",
+        "third_party_id": "94b3f0ff-ef32-49be-8f5f-7aa6916cc901-1734341135"
       }
     },
     "meta": {}
@@ -404,7 +410,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[employees]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[employees]=created_at,updated_at,name`
 
 
 ### Request body
@@ -425,6 +431,7 @@ Name | Description
 `data[attributes][password_confirmation]` | **string** <br>Confirm new password. 
 `data[attributes][permissions][]` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
 `data[attributes][remove_avatar]` | **boolean** <br>Remove current avatar. 
+`data[attributes][third_party_id]` | **string** <br>ID used for third party tools. 
 `data[attributes][viewed_whats_new_at]` | **datetime** <br>Date when this employee viewed product updates for the last time. 
 
 

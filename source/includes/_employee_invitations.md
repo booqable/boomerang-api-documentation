@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 > How to create an invitation:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/employee_invitations'
        --header 'content-type: application/json'
        --data '{
@@ -90,7 +90,8 @@ Check each individual operation to see which relations can be included as a side
           "permissions": [],
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
+          "third_party_id": "1ccdaa36-f317-4feb-8a06-003668fc0c59-1734341130"
         }
       }
     ],
@@ -102,7 +103,7 @@ Check each individual operation to see which relations can be included as a side
 Note that you can also update other fields.:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/employee_invitations'
        --header 'content-type: application/json'
        --data '{
@@ -169,7 +170,8 @@ Note that you can also update other fields.:
           ],
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200"
+          "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200",
+          "third_party_id": "a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1734341131"
         }
       }
     ],
@@ -187,8 +189,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[employee_invitations]=employee_id`
-`include` | **string** <br>List of comma seperated relationships `?include=employee`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[employee_invitations]=employee_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee`
 
 
 ### Request body

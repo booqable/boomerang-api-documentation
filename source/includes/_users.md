@@ -116,12 +116,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[users]=created_at,updated_at,first_name`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -196,8 +196,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[users]=created_at,updated_at,first_name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,disabled_by,notes`
 
 
 ### Includes
@@ -223,7 +223,7 @@ This request accepts the following includes:
 > How to invite a user:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/users'
        --header 'content-type: application/json'
        --data '{
@@ -272,8 +272,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[users]=created_at,updated_at,first_name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,disabled_by,notes`
 
 
 ### Request body
@@ -313,7 +313,7 @@ This request accepts the following includes:
 > How to update a user:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/users/c7e240ef-31fa-4e38-8cb7-cafd7719304c'
        --header 'content-type: application/json'
        --data '{
@@ -360,8 +360,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[users]=created_at,updated_at,first_name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,disabled_by,notes`
 
 
 ### Request body
@@ -401,7 +401,7 @@ This request accepts the following includes:
 > How to enable a user:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/users/b20174a8-b59e-4d8b-8ae1-af97052ceaae'
        --header 'content-type: application/json'
        --data '{
@@ -448,8 +448,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[users]=created_at,updated_at,first_name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,disabled_by,notes`
 
 
 ### Request body
@@ -489,7 +489,7 @@ This request accepts the following includes:
 > How to disable a user:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/users/bf3a537d-192a-4df8-8a92-594008521fef'
        --header 'content-type: application/json'
        --data '{
@@ -536,8 +536,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[users]=created_at,updated_at,first_name`
-`include` | **string** <br>List of comma seperated relationships `?include=customer,disabled_by,notes`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[users]=created_at,updated_at,first_name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,disabled_by,notes`
 
 
 ### Request body

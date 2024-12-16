@@ -66,12 +66,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[coupons]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -145,7 +145,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[coupons]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
 
 
 ### Includes
@@ -157,7 +157,7 @@ This request does not accept any includes
 > How to create a coupon:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/coupons'
        --header 'content-type: application/json'
        --data '{
@@ -205,7 +205,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[coupons]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -230,7 +230,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 > How to update a coupon:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/coupons/90aa7e25-800f-4f23-84c2-1f077eaea4dd'
        --header 'content-type: application/json'
        --data '{
@@ -255,7 +255,7 @@ When updating a coupon the existing one is archived and a new one gets created:
       "type": "coupons",
       "attributes": {
         "created_at": "2021-03-12T23:40:01.000000+00:00",
-        "updated_at": "2021-03-12T23:41:01.000000+00:00",
+        "updated_at": "2021-03-12T23:40:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "SUMMER30OFF",
@@ -271,7 +271,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 > How to deativate a coupon:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/coupons/65932103-4890-471f-8735-ec479064aa87'
        --header 'content-type: application/json'
        --data '{
@@ -317,7 +317,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[coupons]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
 
 
 ### Request body
@@ -341,7 +341,7 @@ This request does not accept any includes
 > How to archive a coupon:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/coupons/48f7032a-1017-4616-82e3-be69134a1685'
        --header 'content-type: application/json'
 ```
@@ -378,7 +378,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[coupons]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
 
 
 ### Includes

@@ -88,13 +88,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_delivery_rates]=created_at,updated_at,identifier`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=carrier,order`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -180,8 +180,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships `?include=carrier,order`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
 
 
 ### Includes
@@ -204,7 +204,7 @@ This request accepts the following includes:
 > How to create an order delivery rate:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_delivery_rates'
        --header 'content-type: application/json'
        --data '{
@@ -254,8 +254,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships `?include=carrier,order`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
 
 
 ### Request body
@@ -292,7 +292,7 @@ This request accepts the following includes:
 > How to update an order delivery rate:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/00380853-f61f-4ade-8d98-f1cbcbfe2d7f'
        --header 'content-type: application/json'
        --data '{
@@ -341,8 +341,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships `?include=carrier,order`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
 
 
 ### Request body
@@ -379,7 +379,7 @@ This request accepts the following includes:
 > How to delete an order delivery rate:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/e1bbed39-2b7f-4c41-806e-4d3259929112'
        --header 'content-type: application/json'
 ```
@@ -402,8 +402,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships `?include=carrier,order`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
 
 
 ### Includes

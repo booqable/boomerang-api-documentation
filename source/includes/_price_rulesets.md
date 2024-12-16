@@ -73,12 +73,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rulesets]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rulesets]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2032-11-10T21:55:05.000000+00:00",
-          "till": "2033-01-10T21:55:05.000000+00:00",
+          "from": "2032-11-03T23:25:05.000000+00:00",
+          "till": "2033-01-03T23:25:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -187,8 +187,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rulesets]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=price_rules`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rulesets]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_rules`
 
 
 ### Includes
@@ -208,7 +208,7 @@ This request accepts the following includes:
 > How to create a price ruleset with price rules:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/price_rulesets'
        --header 'content-type: application/json'
        --data '{
@@ -300,8 +300,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rulesets]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=price_rules`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rulesets]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_rules`
 
 
 ### Request body
@@ -332,7 +332,7 @@ This request accepts the following includes:
 > How to update a price ruleset:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/price_rulesets/f45fa6ef-5ccc-4a37-89b6-5701c9c8f77b'
        --header 'content-type: application/json'
        --data '{
@@ -370,7 +370,7 @@ This request accepts the following includes:
 > Updating a price ruleset's price rules:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/price_rulesets/8fdd2e80-1ce2-4bf8-8e01-df9e6925b595'
        --header 'content-type: application/json'
        --data '{
@@ -428,8 +428,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2029-03-23T11:08:00.000000+00:00",
-          "till": "2029-05-23T11:08:00.000000+00:00",
+          "from": "2029-03-16T12:38:00.000000+00:00",
+          "till": "2029-05-16T12:38:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -458,8 +458,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rulesets]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=price_rules`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rulesets]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_rules`
 
 
 ### Request body
@@ -490,7 +490,7 @@ This request accepts the following includes:
 > How to archive a price ruleset:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/price_rulesets/dcba05ea-7016-4ed4-8034-a823d01f4d26'
        --header 'content-type: application/json'
 ```
@@ -526,7 +526,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rulesets]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rulesets]=created_at,updated_at,archived`
 
 
 ### Includes

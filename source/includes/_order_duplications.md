@@ -35,7 +35,7 @@ Check each individual operation to see which relations can be included as a side
 > Duplicate an Order:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_duplications'
        --header 'content-type: application/json'
        --data '{
@@ -91,8 +91,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_duplications]=custom_lines,customer,dates`
-`include` | **string** <br>List of comma seperated relationships `?include=original_order,new_order`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_duplications]=custom_lines,customer,dates`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=original_order,new_order`
 
 
 ### Request body

@@ -78,10 +78,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-07-12T06:18:00.000000+00:00",
-          "stops_at": "1973-08-11T06:18:00.000000+00:00",
-          "reserved_from": "1973-07-12T06:18:00.000000+00:00",
-          "reserved_till": "1973-08-11T06:18:00.000000+00:00",
+          "starts_at": "1973-07-05T07:48:00.000000+00:00",
+          "stops_at": "1973-08-04T07:48:00.000000+00:00",
+          "reserved_from": "1973-07-05T07:48:00.000000+00:00",
+          "reserved_till": "1973-08-04T07:48:00.000000+00:00",
           "reserved": true,
           "started": 0,
           "stopped": 0,
@@ -110,13 +110,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[plannings]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[plannings]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=order,item,order_line`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,order_line`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -192,7 +192,7 @@ Use advanced search to make logical filter groups with and/or operators.
 > How to search for plannings:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/plannings/search'
        --header 'content-type: application/json'
        --data '{
@@ -208,12 +208,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2024-12-10T10:59:30Z"
+                       "gte": "2024-12-17T09:29:26Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2024-12-13T10:59:30Z"
+                       "lte": "2024-12-20T09:29:26Z"
                      }
                    }
                  ]
@@ -223,12 +223,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2024-12-10T10:59:30Z"
+                       "gte": "2024-12-17T09:29:26Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2024-12-13T10:59:30Z"
+                       "lte": "2024-12-20T09:29:26Z"
                      }
                    }
                  ]
@@ -264,13 +264,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[plannings]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[plannings]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=order,item,order_line`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,order_line`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -362,10 +362,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-08-05T02:43:01.000000+00:00",
-        "stops_at": "1978-09-04T02:43:01.000000+00:00",
-        "reserved_from": "1978-08-05T02:43:01.000000+00:00",
-        "reserved_till": "1978-09-04T02:43:01.000000+00:00",
+        "starts_at": "1978-07-29T04:13:01.000000+00:00",
+        "stops_at": "1978-08-28T04:13:01.000000+00:00",
+        "reserved_from": "1978-07-29T04:13:01.000000+00:00",
+        "reserved_till": "1978-08-28T04:13:01.000000+00:00",
         "reserved": true,
         "started": 0,
         "stopped": 0,
@@ -393,8 +393,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[plannings]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=order,item,order_line`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[plannings]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,order_line`
 
 
 ### Includes

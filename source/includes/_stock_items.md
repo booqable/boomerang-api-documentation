@@ -97,13 +97,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_items]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=product,barcode,location`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=product,barcode,location`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -207,8 +207,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,location,properties`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_items]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,location,properties`
 
 
 ### Includes
@@ -240,7 +240,7 @@ This request accepts the following includes:
 > How to create a stock item:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/stock_items'
        --header 'content-type: application/json'
        --data '{
@@ -292,8 +292,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,location,properties`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_items]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,location,properties`
 
 
 ### Request body
@@ -340,7 +340,7 @@ This request accepts the following includes:
 > How to update a stock item:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/stock_items/96e16eb3-614f-4a6a-8444-531244376f3a'
        --header 'content-type: application/json'
        --data '{
@@ -392,8 +392,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[stock_items]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=barcode,location,properties`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_items]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,location,properties`
 
 
 ### Request body

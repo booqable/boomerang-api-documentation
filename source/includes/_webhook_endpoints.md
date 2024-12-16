@@ -54,12 +54,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[webhook_endpoints]=created_at,updated_at,url`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -92,7 +92,7 @@ This request does not accept any includes
 > How to subscribe to webhook events:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/webhook_endpoints'
        --header 'content-type: application/json'
        --data '{
@@ -140,7 +140,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[webhook_endpoints]=created_at,updated_at,url`
 
 
 ### Request body
@@ -162,7 +162,7 @@ This request does not accept any includes
 > How to update webhook events:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/a2f71717-53b5-45ba-85c6-3eadcf6cb09f'
        --header 'content-type: application/json'
        --data '{
@@ -209,7 +209,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[webhook_endpoints]=created_at,updated_at,url`
 
 
 ### Request body
@@ -231,7 +231,7 @@ This request does not accept any includes
 > How to unsubscribe from webhook events:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/fd2f4709-67d8-441e-8206-213a900ef683'
        --header 'content-type: application/json'
 ```
@@ -264,7 +264,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[webhook_endpoints]=created_at,updated_at,url`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[webhook_endpoints]=created_at,updated_at,url`
 
 
 ### Includes

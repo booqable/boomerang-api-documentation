@@ -68,13 +68,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[notes]=created_at,updated_at,body`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=employee,owner`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee,owner`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -155,8 +155,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
-`include` | **string** <br>List of comma seperated relationships `?include=employee,owner`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[notes]=created_at,updated_at,body`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee,owner`
 
 
 ### Includes
@@ -179,7 +179,7 @@ This request accepts the following includes:
 > How to create a note:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/notes'
        --header 'content-type: application/json'
        --data '{
@@ -225,8 +225,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
-`include` | **string** <br>List of comma seperated relationships `?include=employee,owner`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[notes]=created_at,updated_at,body`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee,owner`
 
 
 ### Request body
@@ -260,7 +260,7 @@ This request accepts the following includes:
 > How to delete a note:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/notes/32ad49c4-5673-460c-84fd-a5852a0e4d35'
        --header 'content-type: application/json'
 ```
@@ -296,8 +296,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[notes]=created_at,updated_at,body`
-`include` | **string** <br>List of comma seperated relationships `?include=employee,owner`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[notes]=created_at,updated_at,body`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee,owner`
 
 
 ### Includes

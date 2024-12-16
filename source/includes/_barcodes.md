@@ -151,7 +151,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNzZiZDYxM2MtOGNhNy00ODBkLTlmZTYtMDFjMDI1MzUzYjM5'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNmNhZWQyYzgtYThlYi00NzU1LTgwNjQtY2U2OTc5N2JjZTA2'
        --data-urlencode 'include=owner'
 ```
 
@@ -222,13 +222,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[barcodes]=created_at,updated_at,number`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=owner`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -351,8 +351,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[barcodes]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 
 
 ### Includes
@@ -381,7 +381,7 @@ This request accepts the following includes:
 > How to create a barcode:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/barcodes'
        --header 'content-type: application/json'
        --data '{
@@ -428,8 +428,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[barcodes]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 
 
 ### Request body
@@ -470,7 +470,7 @@ This request accepts the following includes:
 > How to update a barcode:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/barcodes/d4f58d8f-2318-44f4-8097-9dbe2a9ddaf2'
        --header 'content-type: application/json'
        --data '{
@@ -516,8 +516,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[barcodes]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 
 
 ### Request body
@@ -558,7 +558,7 @@ This request accepts the following includes:
 > How to delete a barcode:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/barcodes/ac988a7e-ebdc-45af-8638-9783aeb4594e'
        --header 'content-type: application/json'
 ```
@@ -595,8 +595,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[barcodes]=created_at,updated_at,number`
-`include` | **string** <br>List of comma seperated relationships `?include=owner`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[barcodes]=created_at,updated_at,number`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 
 
 ### Includes

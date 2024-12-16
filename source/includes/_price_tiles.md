@@ -74,12 +74,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_tiles]=created_at,updated_at,name`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -150,8 +150,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=price_structure`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_tiles]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_structure`
 
 
 ### Includes
@@ -171,7 +171,7 @@ This request accepts the following includes:
 > How to create a price tile:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/price_tiles'
        --header 'content-type: application/json'
        --data '{
@@ -221,8 +221,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=price_structure`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_tiles]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_structure`
 
 
 ### Request body
@@ -255,7 +255,7 @@ This request accepts the following includes:
 > How to update a price tile:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/price_tiles/37e5319a-6e66-49a9-8d18-9d98fef25147'
        --header 'content-type: application/json'
        --data '{
@@ -305,8 +305,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=price_structure`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_tiles]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_structure`
 
 
 ### Request body
@@ -339,7 +339,7 @@ This request accepts the following includes:
 > How to delete a price tile:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/price_tiles/46af1ccd-943e-408c-8de5-d7b51faf300b'
        --header 'content-type: application/json'
 ```
@@ -377,7 +377,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_tiles]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_tiles]=created_at,updated_at,name`
 
 
 ### Includes

@@ -213,7 +213,7 @@ Check each individual operation to see which relations can be included as a side
 > Book a Product (on a new Planning):
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -254,7 +254,7 @@ Check each individual operation to see which relations can be included as a side
 > Book a Product (on an existing Planning if there is any):
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -296,7 +296,7 @@ Check each individual operation to see which relations can be included as a side
 > Book a Product (on a specified Planning):
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -338,7 +338,7 @@ Check each individual operation to see which relations can be included as a side
 > Book StockItems:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -382,7 +382,7 @@ Check each individual operation to see which relations can be included as a side
 > Book a Bundle:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -435,8 +435,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_fulfillments]=order_id`
-`include` | **string** <br>List of comma seperated relationships `?include=order,changed_lines,changed_plannings`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_fulfillments]=order_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,changed_lines,changed_plannings`
 
 
 ### Request body
@@ -491,7 +491,7 @@ This request accepts the following includes:
 > Add a StockItem:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -534,7 +534,7 @@ This request accepts the following includes:
 > Remove a StockItem:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -613,8 +613,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_fulfillments]=order_id`
-`include` | **string** <br>List of comma seperated relationships `?include=order,changed_lines,changed_plannings`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_fulfillments]=order_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,changed_lines,changed_plannings`
 
 
 ### Request body
@@ -669,7 +669,7 @@ This request accepts the following includes:
 > Start a Product:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -710,7 +710,7 @@ This request accepts the following includes:
 > Start StockItems:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -760,8 +760,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_fulfillments]=order_id`
-`include` | **string** <br>List of comma seperated relationships `?include=order,changed_lines,changed_plannings`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_fulfillments]=order_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,changed_lines,changed_plannings`
 
 
 ### Request body
@@ -816,7 +816,7 @@ This request accepts the following includes:
 > Stop a Product:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -856,7 +856,7 @@ This request accepts the following includes:
 > Stop StockItems:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
@@ -905,8 +905,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_fulfillments]=order_id`
-`include` | **string** <br>List of comma seperated relationships `?include=order,changed_lines,changed_plannings`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_fulfillments]=order_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,changed_lines,changed_plannings`
 
 
 ### Request body

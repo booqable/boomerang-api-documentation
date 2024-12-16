@@ -128,8 +128,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-11-30T04:10:00.000000+00:00",
-              "till": "1978-12-29T04:10:00.000000+00:00",
+              "from": "1978-11-23T05:40:00.000000+00:00",
+              "till": "1978-12-22T05:40:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -147,8 +147,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-12-13T16:10:00.000000+00:00",
-                    "till": "1978-12-29T04:10:00.000000+00:00",
+                    "from": "1978-12-06T17:40:00.000000+00:00",
+                    "till": "1978-12-22T05:40:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -189,13 +189,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[lines]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=order,owner,tax_category`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,owner,tax_category`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -297,8 +297,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1978-02-01T10:45:02.000000+00:00",
-            "till": "1978-03-02T10:45:02.000000+00:00",
+            "from": "1978-01-25T12:15:02.000000+00:00",
+            "till": "1978-02-23T12:15:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -316,8 +316,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1978-02-14T22:45:02.000000+00:00",
-                  "till": "1978-03-02T10:45:02.000000+00:00",
+                  "from": "1978-02-08T00:15:02.000000+00:00",
+                  "till": "1978-02-23T12:15:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -357,8 +357,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=order,owner,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[lines]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,owner,tax_category`
 
 
 ### Includes
@@ -413,7 +413,7 @@ Order totals are automatically re-calculated after the creation of a new line an
 > How to create a line:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/lines'
        --header 'content-type: application/json'
        --data '{
@@ -483,8 +483,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=order,owner,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[lines]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,owner,tax_category`
 
 
 ### Request body
@@ -562,7 +562,7 @@ Order totals are automatically re-calculated after updating a line and an invoic
 > How to update a line:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/lines/fc2e8815-5ad2-4d0b-8a28-777a6b57d933'
        --header 'content-type: application/json'
        --data '{
@@ -631,8 +631,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=order,owner,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[lines]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,owner,tax_category`
 
 
 ### Request body
@@ -707,7 +707,7 @@ This request accepts the following includes:
 > How to delete a line:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/lines/4ad8090f-0878-4fb1-8e5e-2dea58fd8ef6'
        --header 'content-type: application/json'
 ```
@@ -738,8 +738,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1974-03-24T21:20:02.000000+00:00",
-            "till": "1974-04-22T21:20:02.000000+00:00",
+            "from": "1974-03-17T22:51:02.000000+00:00",
+            "till": "1974-04-15T22:51:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -757,8 +757,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1974-04-07T09:20:02.000000+00:00",
-                  "till": "1974-04-22T21:20:02.000000+00:00",
+                  "from": "1974-03-31T10:51:02.000000+00:00",
+                  "till": "1974-04-15T22:51:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -798,8 +798,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[lines]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=order,owner,tax_category`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[lines]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,owner,tax_category`
 
 
 ### Includes

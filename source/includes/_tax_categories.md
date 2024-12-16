@@ -70,13 +70,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_categories]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=tax_rates`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=tax_rates`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -180,8 +180,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_categories]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=tax_rates`
 
 
 ### Includes
@@ -201,7 +201,7 @@ This request accepts the following includes:
 > How to create a tax category with tax rates:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/tax_categories'
        --header 'content-type: application/json'
        --data '{
@@ -277,8 +277,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_categories]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=tax_rates`
 
 
 ### Request body
@@ -309,7 +309,7 @@ This request accepts the following includes:
 > How to update a tax category with tax rates:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/tax_categories/e3d7ddaf-e57a-47bb-8eef-839b7f1a4bfd'
        --header 'content-type: application/json'
        --data '{
@@ -390,8 +390,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships `?include=tax_rates`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_categories]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=tax_rates`
 
 
 ### Request body
@@ -422,7 +422,7 @@ This request accepts the following includes:
 > How to delete a tax category with tax rates:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/tax_categories/c7095ef4-6e5b-42f7-8675-6fd1e233106f'
        --header 'content-type: application/json'
 ```
@@ -458,7 +458,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[tax_categories]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_categories]=created_at,updated_at,archived`
 
 
 ### Includes

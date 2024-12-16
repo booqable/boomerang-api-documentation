@@ -32,12 +32,13 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** `readonly-after-create`<br>The associated order. 
 `payment_charge_id` | **uuid** `readonly-after-create`<br>The charge being refunded. 
+`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment charge. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider refund identification. 
 `provider_method` | **string** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc... 
 `provider_secret` | **string** <br>Provider refund secret. 
 `reason` | **string** <br>Reason. 
-`status` | **enum** <br>Status.<br> One of: `created`, `pending`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`.
+`status` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
 `succeeded_at` | **datetime** <br>When payment refund succeeded. 
 `total_in_cents` | **integer** `readonly`<br>Total amount in cents (`amount + deposit`). 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -80,6 +81,9 @@ Check each individual operation to see which relations can be included as a side
           "failed_at": null,
           "canceled_at": null,
           "expired_at": null,
+          "possible_actions": [
+            "cancel"
+          ],
           "employee_id": null,
           "order_id": null,
           "customer_id": null,
@@ -102,13 +106,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,status`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -204,6 +208,9 @@ This request accepts the following includes:
         "failed_at": null,
         "canceled_at": null,
         "expired_at": null,
+        "possible_actions": [
+          "cancel"
+        ],
         "employee_id": null,
         "order_id": null,
         "customer_id": null,
@@ -225,8 +232,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
 
 
 ### Includes
@@ -249,7 +256,7 @@ This request accepts the following includes:
 > How to create a payment refund:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/payment_refunds'
        --header 'content-type: application/json'
        --data '{
@@ -290,6 +297,7 @@ This request accepts the following includes:
         "failed_at": null,
         "canceled_at": null,
         "expired_at": null,
+        "possible_actions": [],
         "employee_id": "a169cc22-50a0-4bf6-8a15-1516035f6501",
         "order_id": null,
         "customer_id": null,
@@ -311,8 +319,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
 
 
 ### Request body
@@ -333,7 +341,7 @@ Name | Description
 `data[attributes][provider_method]` | **string** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc... 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`.
+`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
 `data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
 
 
@@ -357,7 +365,7 @@ This request accepts the following includes:
 > How to update a payment refund:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/payment_refunds/d296895a-e933-4609-8b59-6850e2d29497'
        --header 'content-type: application/json'
        --data '{
@@ -397,6 +405,7 @@ This request accepts the following includes:
         "failed_at": null,
         "canceled_at": null,
         "expired_at": null,
+        "possible_actions": [],
         "employee_id": null,
         "order_id": null,
         "customer_id": null,
@@ -418,8 +427,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_refunds]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
 
 
 ### Request body
@@ -440,7 +449,7 @@ Name | Description
 `data[attributes][provider_method]` | **string** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc... 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`.
+`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
 `data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
 
 

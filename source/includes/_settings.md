@@ -212,25 +212,25 @@ Name | Description
 `address` | **hash** <br>Settings on how to display addresses.
 `contracts` | **hash** <br>Settings that apply to contracts.
 `currency` | **hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource).
-`dashboard` | **hash** <br>Dashboard settings (Used internally by Booqable).
+`dashboard` | **hash** `extra`<br>Dashboard settings (Used internally by Booqable).
 `dates` | **hash** <br>Information on how to display dates.
 `defaults` | **hash** `readonly`<br>Defaults derived from other resources.
 `deliveries` | **hash** <br>Settings for deliveries.
 `documents` | **hash** <br>Settings that apply to all [document](#documents) types.
 `emails` | **hash** <br>Settings for emails.
-`feature_enrollments` | **hash** <br>Feature enrollments settings (Used internally by Booqable).
+`feature_enrollments` | **hash** `extra`<br>Feature enrollments settings (Used internally by Booqable).
 `id` | **uuid** <br>Primary key.
-`instructions` | **hash** <br>Settings for in app instructions (Used internally by Booqable).
+`instructions` | **hash** `extra`<br>Settings for in app instructions (Used internally by Booqable).
 `invoices` | **hash** <br>Settings that apply to invoices.
 `labels` | **hash** <br>Customization settings for labels.
-`onboarding` | **hash** <br>Onboarding settings (Used internally by Booqable).
+`onboarding` | **hash** `extra`<br>Onboarding settings (Used internally by Booqable).
 `orders` | **hash** <br>Configuration for [orders](#orders) (these settings also apply to the online store).
 `pricing` | **hash** <br>Configuration on how to handle and display pricing.
 `quotes` | **hash** <br>Settings that apply to quotes.
 `security` | **hash** <br>Global security settings.
-`setup_checklist` | **hash** <br>Setup checklist settings (Used internally by Booqable).
+`setup_checklist` | **hash** `extra`<br>Setup checklist settings (Used internally by Booqable).
 `store` | **hash** <br>Settings for the online store.
-`tracking` | **hash** <br>Tracking settings (Used internally by Booqable).
+`tracking` | **hash** `extra`<br>Tracking settings (Used internally by Booqable).
 `user` | **hash** <br>Settings that apply to [user](#users) accounts.
 
 
@@ -409,7 +409,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[settings]=currency,defaults,pricing`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[settings]=dashboard,setup_checklist,onboarding`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[settings]=currency,defaults,pricing`
 
 
 ### Includes

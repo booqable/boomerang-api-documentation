@@ -119,15 +119,15 @@ Check each individual operation to see which relations can be included as a side
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2023-03-03T09:07:00.000000+00:00",
-          "updated_at": "2023-03-03T09:07:00.000000+00:00",
+          "created_at": "2023-03-10T07:37:00.000000+00:00",
+          "updated_at": "2023-03-10T07:37:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "type": "products",
-          "name": "Product 1000003",
-          "group_name": "Product 1000003",
-          "slug": "product-1000003",
-          "sku": "PRODUCT 1000005",
+          "name": "Product 1000004",
+          "group_name": "Product 1000004",
+          "slug": "product-1000004",
+          "sku": "PRODUCT 1000006",
           "lead_time": 0,
           "lag_time": 0,
           "product_type": "rental",
@@ -166,15 +166,15 @@ Check each individual operation to see which relations can be included as a side
         "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
         "type": "products",
         "attributes": {
-          "created_at": "2023-03-03T09:07:00.000000+00:00",
-          "updated_at": "2023-03-03T09:07:00.000000+00:00",
+          "created_at": "2023-03-10T07:37:00.000000+00:00",
+          "updated_at": "2023-03-10T07:37:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "type": "products",
-          "name": "Product 1000004",
-          "group_name": "Product 1000004",
-          "slug": "product-1000004",
-          "sku": "PRODUCT 1000006",
+          "name": "Product 1000005",
+          "group_name": "Product 1000005",
+          "slug": "product-1000005",
+          "sku": "PRODUCT 1000007",
           "lead_time": 0,
           "lag_time": 0,
           "product_type": "rental",
@@ -267,10 +267,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "type": "products",
-          "name": "Product 1000005",
-          "group_name": "Product 1000005",
-          "slug": "product-1000005",
-          "sku": "PRODUCT 1000007",
+          "name": "Product 1000006",
+          "group_name": "Product 1000006",
+          "slug": "product-1000006",
+          "sku": "PRODUCT 1000008",
           "lead_time": 0,
           "lag_time": 0,
           "product_type": "rental",
@@ -320,13 +320,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[item_prices]=item_id,from,till`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[item_prices]=item_id,from,till`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=price_tile,price_structure,item`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_tile,price_structure,item`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters

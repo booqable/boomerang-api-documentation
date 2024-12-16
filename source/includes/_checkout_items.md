@@ -85,12 +85,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[checkout_items]=created_at,updated_at,name`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -174,7 +174,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[checkout_items]=created_at,updated_at,name`
 
 
 ### Includes
@@ -186,7 +186,7 @@ This request does not accept any includes
 > How to create a checkout item:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/checkout_items'
        --header 'content-type: application/json'
        --data '{
@@ -240,7 +240,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[checkout_items]=created_at,updated_at,name`
 
 
 ### Request body
@@ -270,7 +270,7 @@ This request does not accept any includes
 > How to update a checkout item:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/checkout_items/4fe050ea-f471-4aaa-8533-5170a76ab162'
        --header 'content-type: application/json'
        --data '{
@@ -323,7 +323,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[checkout_items]=created_at,updated_at,name`
 
 
 ### Request body
@@ -353,7 +353,7 @@ This request does not accept any includes
 > How to delete a checkout item:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/checkout_items/f91ba73e-38f1-4d23-805e-4a9cc57bada6'
        --header 'content-type: application/json'
 ```
@@ -397,7 +397,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[checkout_items]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[checkout_items]=created_at,updated_at,name`
 
 
 ### Includes

@@ -42,7 +42,7 @@ The currency object encapsulates all information about a monetary unit.
       "attributes": {
         "decimal_mark": ",",
         "disambiguate_symbol": null,
-        "html_entity": "&#x20AC;",
+        "html_entity": "€",
         "iso_code": "EUR",
         "iso_numeric": "978",
         "name": "Euro",
@@ -69,7 +69,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[currencies]=decimal_mark,disambiguate_symbol,html_entity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[currencies]=decimal_mark,disambiguate_symbol,html_entity`
 
 
 ### Includes

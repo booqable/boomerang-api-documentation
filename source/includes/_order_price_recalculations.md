@@ -33,7 +33,7 @@ Check each individual operation to see which relations can be included as a side
 > Recalculate prices when rental period has changed:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/order_price_recalculations'
        --header 'content-type: application/json'
        --data '{
@@ -72,8 +72,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[order_price_recalculations]=order_id`
-`include` | **string** <br>List of comma seperated relationships `?include=order`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_price_recalculations]=order_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order`
 
 
 ### Request body

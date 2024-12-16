@@ -45,8 +45,8 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/report_stock_items'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[from]=2024-12-04 00:00:00 UTC'
-       --data-urlencode 'filter[till]=2024-12-09 23:59:59 UTC'
+       --data-urlencode 'filter[from]=2024-12-11 00:00:00 UTC'
+       --data-urlencode 'filter[till]=2024-12-16 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:
@@ -59,7 +59,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "report_stock_items",
         "attributes": {
           "created_at": "2028-06-10T02:07:00.000000+00:00",
-          "product_name": "Product 1000056",
+          "product_name": "Product 1000057",
           "identifier": "id1000172",
           "charge_duration_in_seconds": 7200,
           "planned_duration_in_seconds": 7200,
@@ -76,7 +76,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "report_stock_items",
         "attributes": {
           "created_at": "2028-06-10T02:07:00.000000+00:00",
-          "product_name": "Product 1000056",
+          "product_name": "Product 1000057",
           "identifier": "id1000173",
           "charge_duration_in_seconds": 0,
           "planned_duration_in_seconds": 0,
@@ -103,13 +103,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[report_stock_items]=created_at,product_name,identifier`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[report_stock_items]=created_at,product_name,identifier`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=stock_item,product`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=stock_item,product`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters

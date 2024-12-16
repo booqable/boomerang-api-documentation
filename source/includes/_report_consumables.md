@@ -38,8 +38,8 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/report_consumables'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[from]=2024-12-04 00:00:00 UTC'
-       --data-urlencode 'filter[till]=2024-12-09 23:59:59 UTC'
+       --data-urlencode 'filter[from]=2024-12-11 00:00:00 UTC'
+       --data-urlencode 'filter[till]=2024-12-16 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:
@@ -52,7 +52,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "report_consumables",
         "attributes": {
           "created_at": "2017-08-15T03:42:01.000000+00:00",
-          "name": "Product 1000053",
+          "name": "Product 1000054",
           "sold": 2,
           "turnover_in_cents": 10000,
           "product_id": "9f5e212f-8f15-4b27-8d57-7820f511ad8e"
@@ -74,13 +74,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[report_consumables]=created_at,name,sold`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[report_consumables]=created_at,name,sold`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=product`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=product`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters

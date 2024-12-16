@@ -27,7 +27,7 @@ Check each individual operation to see which relations can be included as a side
 > How to re-invite a user:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/user_invitations'
        --header 'content-type: application/json'
        --data '{
@@ -66,7 +66,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[user_invitations]=user_id`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[user_invitations]=user_id`
 
 
 ### Request body

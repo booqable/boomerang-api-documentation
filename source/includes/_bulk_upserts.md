@@ -36,7 +36,7 @@ Check each individual operation to see which relations can be included as a side
 > How to create operating rules in bulk:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/bulk_upserts'
        --header 'content-type: application/json'
        --data '{
@@ -131,7 +131,7 @@ Check each individual operation to see which relations can be included as a side
 > How to create coupons in bulk:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/bulk_upserts'
        --header 'content-type: application/json'
        --data '{
@@ -181,7 +181,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`include` | **string** <br>List of comma seperated relationships `?include=results`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=results`
 
 
 ### Request body

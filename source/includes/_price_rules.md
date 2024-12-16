@@ -65,7 +65,7 @@ Check each individual operation to see which relations can be included as a side
 > How to create a price rule:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/price_rules'
        --header 'content-type: application/json'
        --data '{
@@ -129,8 +129,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rules]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=price_ruleset`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rules]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_ruleset`
 
 
 ### Request body
@@ -178,7 +178,7 @@ This request accepts the following includes:
 > How to update a price rule:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/price_rules/03a98195-fad9-4128-8b3d-f8fca9458b1e'
        --header 'content-type: application/json'
        --data '{
@@ -207,8 +207,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 10.0,
-        "from": "2028-06-15T13:42:07.000000+00:00",
-        "till": "2028-08-15T13:42:07.000000+00:00",
+        "from": "2028-06-08T15:12:07.000000+00:00",
+        "till": "2028-08-08T15:12:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -229,7 +229,7 @@ This request accepts the following includes:
 > Updating a price rule:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/price_rules/ad06b6c5-c179-4a32-8260-11b998f79946'
        --header 'content-type: application/json'
        --data '{
@@ -259,8 +259,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-09-03T17:00:01.000000+00:00",
-        "till": "2026-11-03T17:00:01.000000+00:00",
+        "from": "2026-08-27T18:30:01.000000+00:00",
+        "till": "2026-10-27T18:30:01.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -288,8 +288,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rules]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=price_ruleset`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rules]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_ruleset`
 
 
 ### Request body
@@ -337,7 +337,7 @@ This request accepts the following includes:
 > How to archive a price ruleset:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/price_rules/dcba05ea-7016-4ed4-8034-a823d01f4d26'
        --header 'content-type: application/json'
 ```
@@ -357,8 +357,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-12-09T18:53:07.000000+00:00",
-        "till": "2027-02-08T18:53:07.000000+00:00",
+        "from": "2026-12-02T20:23:07.000000+00:00",
+        "till": "2027-02-01T20:23:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -386,8 +386,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[price_rules]=created_at,updated_at,name`
-`include` | **string** <br>List of comma seperated relationships `?include=price_ruleset`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[price_rules]=created_at,updated_at,name`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_ruleset`
 
 
 ### Includes

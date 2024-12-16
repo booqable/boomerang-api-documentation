@@ -35,7 +35,7 @@ Check each individual operation to see which relations can be included as a side
 > Revise a finalized invoice:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/invoice_revisions'
        --header 'content-type: application/json'
        --data '{
@@ -76,8 +76,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[invoice_revisions]=order_id,revised_invoice_id,revision_invoice_id`
-`include` | **string** <br>List of comma seperated relationships `?include=order,revised_invoice,revision_invoice`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[invoice_revisions]=order_id,revised_invoice_id,revision_invoice_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,revised_invoice,revision_invoice`
 
 
 ### Request body

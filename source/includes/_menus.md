@@ -64,13 +64,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[menus]=created_at,updated_at,title`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=menu_items`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=menu_items`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -225,8 +225,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
-`include` | **string** <br>List of comma seperated relationships `?include=menu_items`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[menus]=created_at,updated_at,title`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=menu_items`
 
 
 ### Includes
@@ -246,7 +246,7 @@ This request accepts the following includes:
 > How to create a menu with menu items:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/menus'
        --header 'content-type: application/json'
        --data '{
@@ -316,8 +316,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
-`include` | **string** <br>List of comma seperated relationships `?include=menu_items`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[menus]=created_at,updated_at,title`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=menu_items`
 
 
 ### Request body
@@ -354,7 +354,7 @@ This request accepts the following includes:
 > How to update a menu with nested menu items:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/menus/dc0609dc-2052-4f73-8ea2-6297fd7fff67'
        --header 'content-type: application/json'
        --data '{
@@ -485,8 +485,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
-`include` | **string** <br>List of comma seperated relationships `?include=menu_items`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[menus]=created_at,updated_at,title`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=menu_items`
 
 
 ### Request body
@@ -523,7 +523,7 @@ This request accepts the following includes:
 > How to delete a menu:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/menus/79334335-bb00-454a-83cb-280735693ac0'
        --header 'content-type: application/json'
 ```
@@ -557,7 +557,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[menus]=created_at,updated_at,title`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[menus]=created_at,updated_at,title`
 
 
 ### Includes

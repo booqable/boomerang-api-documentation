@@ -53,10 +53,10 @@ A company holds information and configuration about an account.
 `shop_theme_id` | **uuid** <br>ID of installed shop theme. 
 `slug` | **string** `readonly`<br>Company's slug, the part of the domainname before `booqable.com`. 
 `source` | **string** `readonly`<br>UTM source present during signup. 
-`subscription` | **hash** `readonly`<br>Details about the subscription. 
+`subscription` | **hash** `readonly` `extra`<br>Details about the subscription. 
 `team_size` | **string** `readonly`<br>Team size given during signup. 
 `tenant_token` | **string** `readonly`<br>Token. 
-`third_party_id` | **string** `readonly`<br>ID used for third party tools. 
+`third_party_id` | **string** <br>ID used for third party tools. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `use_billing_address` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
 `vat_number` | **string** <br>Company's vat number, used in customer communication and to define tax exempts. 
@@ -87,7 +87,7 @@ A company holds information and configuration about an account.
         "updated_at": "2027-04-23T17:28:01.000000+00:00",
         "name": "iRent",
         "slug": "irent",
-        "email": "mail51@company.com",
+        "email": "mail60@company.com",
         "billing_email": null,
         "phone": null,
         "website": "www.booqable.com",
@@ -113,6 +113,8 @@ A company holds information and configuration about an account.
         "financial_line_1": "Blokhuispoort",
         "financial_line_2": "Leeuwarden",
         "vat_number": null,
+        "in_europe": null,
+        "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,
         "development": false,
@@ -120,7 +122,7 @@ A company holds information and configuration about an account.
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "f31b163dc56c7d6ea47c76b84e429da5",
+        "tenant_token": "4aa029679778d3cb7c585b50d0f3aa4b",
         "pending_subscription": false,
         "team_size": null,
         "revenue_last_year": null,
@@ -142,7 +144,8 @@ A company holds information and configuration about an account.
           "longitude": null,
           "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
         },
-        "billing_address": null
+        "billing_address": null,
+        "third_party_id": "2e881705-4faf-47fa-8a6a-422d1e753157"
       }
     },
     "meta": {}
@@ -159,7 +162,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[companies]=subscription`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[companies]=created_at,updated_at,name`
 
 
 ### Includes
@@ -286,7 +290,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[companies]=subscription`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[companies]=created_at,updated_at,name`
 
 
 ### Includes
@@ -298,7 +303,7 @@ This request does not accept any includes
 > How to update a company:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/companies/current'
        --header 'content-type: application/json'
        --data '{
@@ -324,7 +329,7 @@ This request does not accept any includes
         "updated_at": "2020-02-19T10:28:01.000000+00:00",
         "name": "iRent LLC",
         "slug": "irent",
-        "email": "mail53@company.com",
+        "email": "mail62@company.com",
         "billing_email": null,
         "phone": null,
         "website": "www.booqable.com",
@@ -350,6 +355,8 @@ This request does not accept any includes
         "financial_line_1": "Blokhuispoort",
         "financial_line_2": "Leeuwarden",
         "vat_number": null,
+        "in_europe": null,
+        "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,
         "development": false,
@@ -357,7 +364,7 @@ This request does not accept any includes
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "e2e097bc5a5b346bbbacea64015c8673",
+        "tenant_token": "c48d3db1faa06a28eb0088390f786fab",
         "pending_subscription": false,
         "team_size": null,
         "revenue_last_year": null,
@@ -379,7 +386,8 @@ This request does not accept any includes
           "longitude": null,
           "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
         },
-        "billing_address": null
+        "billing_address": null,
+        "third_party_id": "39b6d9bd-03cc-4869-8a7a-9e3ca8f59712"
       }
     },
     "meta": {}
@@ -396,7 +404,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[companies]=created_at,updated_at,name`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[companies]=subscription`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[companies]=created_at,updated_at,name`
 
 
 ### Request body
@@ -435,6 +444,7 @@ Name | Description
 `data[attributes][remove_favicon]` | **boolean** <br>Remove current favicon. 
 `data[attributes][remove_logo]` | **boolean** <br>Remove current logo. 
 `data[attributes][shop_theme_id]` | **uuid** <br>ID of installed shop theme. 
+`data[attributes][third_party_id]` | **string** <br>ID used for third party tools. 
 `data[attributes][use_billing_address]` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
 `data[attributes][vat_number]` | **string** <br>Company's vat number, used in customer communication and to define tax exempts. 
 `data[attributes][website]` | **string** <br>Website. 

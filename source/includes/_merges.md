@@ -28,7 +28,7 @@ Check each individual operation to see which relations can be included as a side
 > How to merge one customer's data into another customer:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/merges'
        --header 'content-type: application/json'
        --data '{
@@ -105,8 +105,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[merges]=type,source_id,target_id`
-`include` | **string** <br>List of comma seperated relationships `?include=target`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[merges]=type,source_id,target_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=target`
 
 
 ### Request body

@@ -69,13 +69,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[assets]=created_at,updated_at,key`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[assets]=created_at,updated_at,key`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=theme`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=theme`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -123,7 +123,7 @@ This request accepts the following includes:
 > How to create a new asset:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/assets'
        --header 'content-type: application/json'
        --data '{
@@ -174,8 +174,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[assets]=created_at,updated_at,key`
-`include` | **string** <br>List of comma seperated relationships `?include=theme`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[assets]=created_at,updated_at,key`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=theme`
 
 
 ### Request body
@@ -209,7 +209,7 @@ This request accepts the following includes:
 > How to create an asset and upload a file:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/assets'
        --header 'content-type: application/json'
        --data '{
@@ -260,8 +260,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[assets]=created_at,updated_at,key`
-`include` | **string** <br>List of comma seperated relationships `?include=theme`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[assets]=created_at,updated_at,key`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=theme`
 
 
 ### Request body
@@ -295,7 +295,7 @@ This request accepts the following includes:
 > How to delete an asset:
 
 ```shell
-  curl --request DELETE \
+  curl --request DELETE
        --url 'https://example.booqable.com/api/boomerang/assets/1fb579d5-22d0-4cd1-8e59-5c4e552d755e'
        --header 'content-type: application/json'
 ```
@@ -336,8 +336,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[assets]=created_at,updated_at,key`
-`include` | **string** <br>List of comma seperated relationships `?include=theme`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[assets]=created_at,updated_at,key`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=theme`
 
 
 ### Includes

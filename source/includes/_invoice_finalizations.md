@@ -29,7 +29,7 @@ Check each individual operation to see which relations can be included as a side
 > Finalize a pro forma invoice:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/invoice_finalizations'
        --header 'content-type: application/json'
        --data '{
@@ -68,8 +68,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[invoice_finalizations]=document_id`
-`include` | **string** <br>List of comma seperated relationships `?include=document`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[invoice_finalizations]=document_id`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=document`
 
 
 ### Request body

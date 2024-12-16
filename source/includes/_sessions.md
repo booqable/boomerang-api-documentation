@@ -104,9 +104,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 268",
-          "slug": "company-name-268",
-          "email": "mail271@company.com",
+          "name": "Company name 277",
+          "slug": "company-name-277",
+          "email": "mail280@company.com",
           "billing_email": null,
           "phone": null,
           "website": "www.booqable.com",
@@ -132,6 +132,8 @@ Check each individual operation to see which relations can be included as a side
           "financial_line_1": "Blokhuispoort",
           "financial_line_2": "Leeuwarden",
           "vat_number": null,
+          "in_europe": null,
+          "continent": null,
           "custom_domain": null,
           "custom_domain_validation": null,
           "development": false,
@@ -139,7 +141,7 @@ Check each individual operation to see which relations can be included as a side
           "installed_online_store": false,
           "source": null,
           "medium": null,
-          "tenant_token": "dad8880b09cecc26034dfb5970bc1e32",
+          "tenant_token": "d1ae131a0ff853f7cab4185ffedfa7ae",
           "pending_subscription": false,
           "team_size": null,
           "revenue_last_year": null,
@@ -215,7 +217,8 @@ Check each individual operation to see which relations can be included as a side
               "locations": 3
             },
             "can_try_plan": true
-          }
+          },
+          "third_party_id": "59b0823e-3949-4963-8088-2c23b460c183"
         }
       },
       {
@@ -250,7 +253,8 @@ Check each individual operation to see which relations can be included as a side
           ],
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200"
+          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1734341436"
         }
       },
       {
@@ -414,8 +418,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[sessions]=company_id,employee_id,locations_updated_at`
-`include` | **string** <br>List of comma seperated relationships `?include=app_subscriptions,clusters,company`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[sessions]=company_id,employee_id,locations_updated_at`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,clusters,company`
 
 
 ### Includes

@@ -40,8 +40,8 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/report_rentals'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[from]=2024-12-04 00:00:00 UTC'
-       --data-urlencode 'filter[till]=2024-12-09 23:59:59 UTC'
+       --data-urlencode 'filter[from]=2024-12-11 00:00:00 UTC'
+       --data-urlencode 'filter[till]=2024-12-16 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:
@@ -54,7 +54,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "report_rentals",
         "attributes": {
           "created_at": "2019-11-20T14:14:00.000000+00:00",
-          "name": "Product 1000055",
+          "name": "Product 1000056",
           "charge_duration_in_seconds": 14400,
           "planned_duration_in_seconds": 14400,
           "rented_count": 2,
@@ -79,13 +79,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[report_rentals]=created_at,name,charge_duration_in_seconds`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[report_rentals]=created_at,name,charge_duration_in_seconds`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=product`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=product`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters

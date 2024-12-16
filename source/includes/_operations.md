@@ -305,7 +305,7 @@ Check each individual operation to see which relations can be included as a side
 `error_data` | **array** `readonly`<br>An array of strings with errors that happened during execution of the operation.
 `finished_at` | **datetime** `readonly`<br>The moment when the operation is finished executing.
 `id` | **uuid** `readonly`<br>Primary key.
-`operation_data` | **hash** <br>An object with the params used to initiate the operation. See the description of the operation.
+`operation_data` | **hash** `extra`<br>An object with the params used to initiate the operation. See the description of the operation.
 `status` | **enum** `readonly`<br>Status of the operation.<br>One of: `scheduled`, `in_progress`, `finished`, `failed`.
 `status_message` | **string** `readonly`<br>A UI-friendly string explaining the status & progress of the operation for the user.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -360,13 +360,14 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[operations]=operation_data`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[operations]=created_at,updated_at,status`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=employee`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -450,8 +451,9 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=employee`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[operations]=operation_data`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[operations]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee`
 
 
 ### Includes
@@ -471,7 +473,7 @@ This request accepts the following includes:
 > How to create an operation:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/operations'
        --header 'content-type: application/json'
        --data '{
@@ -529,8 +531,9 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[operations]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=employee`
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[operations]=operation_data`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[operations]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=employee`
 
 
 ### Request body

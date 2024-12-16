@@ -63,13 +63,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[publications]=created_at,updated_at,published_at`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[publications]=created_at,updated_at,published_at`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=theme`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=theme`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -111,7 +111,7 @@ This request accepts the following includes:
 > How to create a new publication:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/publications'
        --header 'content-type: application/json'
        --data '{
@@ -153,8 +153,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[publications]=created_at,updated_at,published_at`
-`include` | **string** <br>List of comma seperated relationships `?include=theme,assets`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[publications]=created_at,updated_at,published_at`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=theme,assets`
 
 
 ### Request body

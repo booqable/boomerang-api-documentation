@@ -40,6 +40,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `readonly-after-create`<br>The associated order. 
 `payment_authorization_id` | **uuid** `readonly-after-create`<br>The authorization under which this charge is made. 
 `payment_method_id` | **uuid** <br>The payment method. 
+`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment charge. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider payment identification. 
 `provider_method` | **string** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.. 
@@ -98,6 +99,9 @@ Check each individual operation to see which relations can be included as a side
           "failed_at": null,
           "canceled_at": null,
           "expired_at": null,
+          "possible_actions": [
+            "cancel"
+          ],
           "employee_id": null,
           "order_id": null,
           "customer_id": null,
@@ -121,13 +125,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_charges]=created_at,updated_at,status`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -238,6 +242,9 @@ This request accepts the following includes:
         "failed_at": null,
         "canceled_at": null,
         "expired_at": null,
+        "possible_actions": [
+          "cancel"
+        ],
         "employee_id": null,
         "order_id": null,
         "customer_id": null,
@@ -260,8 +267,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_charges]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
 
 
 ### Includes
@@ -284,7 +291,7 @@ This request accepts the following includes:
 > How to create a payment charge:
 
 ```shell
-  curl --request POST \
+  curl --request POST
        --url 'https://example.booqable.com/api/boomerang/payment_charges'
        --header 'content-type: application/json'
        --data '{
@@ -333,6 +340,7 @@ This request accepts the following includes:
         "failed_at": null,
         "canceled_at": null,
         "expired_at": null,
+        "possible_actions": [],
         "employee_id": "7dd1d262-ea22-442d-8f2b-551256cde93a",
         "order_id": null,
         "customer_id": null,
@@ -355,8 +363,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_charges]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
 
 
 ### Request body
@@ -402,7 +410,7 @@ This request accepts the following includes:
 > How to update a payment charge:
 
 ```shell
-  curl --request PUT \
+  curl --request PUT
        --url 'https://example.booqable.com/api/boomerang/payment_charges/04972b14-5348-4e61-8896-e61e346e3001'
        --header 'content-type: application/json'
        --data '{
@@ -451,6 +459,7 @@ This request accepts the following includes:
         "failed_at": null,
         "canceled_at": null,
         "expired_at": null,
+        "possible_actions": [],
         "employee_id": null,
         "order_id": null,
         "customer_id": null,
@@ -473,8 +482,8 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[payment_charges]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships `?include=order,customer`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_charges]=created_at,updated_at,status`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
 
 
 ### Request body

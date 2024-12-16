@@ -69,7 +69,7 @@ Invoices received from Booqable
           "ending_balance_in_cents": null,
           "next_payment_attempt_at": null,
           "coupon": null,
-          "url": "http://billing.lvh.me:/invoices/af5fe1cdc12f7f5dea72345c99e66690/fd3839f1f3f26424d9419bbf1090c6ae"
+          "url": "http://billing.lvh.me:/invoices/64958891c42639e71d96b1f7170492bc/a8202c18711e5fdde63187d495b0f9dd"
         }
       }
     ],
@@ -87,12 +87,12 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[billing_invoices]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[billing_invoices]=created_at,updated_at,number`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`meta` | **hash** <br>Metadata to send along `?meta[total][]=count`
-`page[number]` | **string** <br>The page to request
-`page[size]` | **string** <br>The amount of items per page (max 100)
-`sort` | **string** <br>How to sort the data `?sort=attribute1,-attribute2`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
 
 
 ### Filters
@@ -163,7 +163,7 @@ This request does not accept any includes
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/31157f3842f0caefa129066354bdebdb/c2eb55d19dae34807cab027c6db73b58"
+        "url": "http://billing.lvh.me:/invoices/572f00334ac93c93bd56d0e7d2b9fb8c/92dc380e2d56c72924c012883106ef17"
       }
     },
     "meta": {}
@@ -180,7 +180,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma seperated fields to include `?fields[billing_invoices]=created_at,updated_at,number`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[billing_invoices]=created_at,updated_at,number`
 
 
 ### Includes
