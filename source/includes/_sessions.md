@@ -141,7 +141,7 @@ Check each individual operation to see which relations can be included as a side
           "installed_online_store": false,
           "source": null,
           "medium": null,
-          "tenant_token": "d1ae131a0ff853f7cab4185ffedfa7ae",
+          "tenant_token": "38ad8e05d9ae5f306d75edbd6b42ba7e",
           "pending_subscription": false,
           "team_size": null,
           "revenue_last_year": null,
@@ -252,9 +252,10 @@ Check each individual operation to see which relations can be included as a side
             "override_rental_period"
           ],
           "has_two_factor_autentication": false,
+          "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1734341436"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1734946092"
         }
       },
       {

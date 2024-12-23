@@ -23,6 +23,7 @@ Check each individual operation to see which relations can be included as a side
 `label` | **string** `readonly-after-create`<br>Label of the payment method. 
 `method_type` | **string** `readonly-after-create`<br>Provider method type. 
 `provider` | **enum** `readonly-after-create`<br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
+`status` | **enum** `readonly`<br>Payment method status. Payment method becomes `ready` after a successful charge.<br> One of: `created`, `ready`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -48,6 +49,7 @@ Check each individual operation to see which relations can be included as a side
           "created_at": "2017-06-03T16:17:00.000000+00:00",
           "updated_at": "2017-06-03T16:17:00.000000+00:00",
           "label": "Visa XXX1234",
+          "status": "created",
           "provider": "stripe",
           "identifier": "pm_1234567890",
           "method_type": null,
@@ -140,6 +142,7 @@ This request does not accept any includes
         "created_at": "2019-01-15T14:37:00.000000+00:00",
         "updated_at": "2019-01-15T14:37:00.000000+00:00",
         "label": "Test card",
+        "status": "created",
         "provider": "stripe",
         "identifier": "pm_123",
         "method_type": null,
@@ -204,6 +207,7 @@ This request does not accept any includes
         "created_at": "2016-08-19T20:26:00.000000+00:00",
         "updated_at": "2016-08-19T20:26:00.000000+00:00",
         "label": "Visa XXX1234",
+        "status": "created",
         "provider": "stripe",
         "identifier": "pm_1234567890",
         "method_type": null,

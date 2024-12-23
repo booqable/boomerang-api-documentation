@@ -311,7 +311,7 @@ This request accepts the following includes:
         "created_at": "2028-11-25T07:52:00.000000+00:00",
         "updated_at": "2028-11-25T07:52:00.000000+00:00",
         "key": "templates/index.json",
-        "custom": false,
+        "custom": true,
         "checksum": "74b5b91c79f3099a43573f152554e8d82d55efe4039fe9c2d67246950750f61e",
         "content_type": "application/json",
         "value": "{ \"name\": \"index\" }",

@@ -1,7 +1,7 @@
 # Operating rules
 
 Operating rules control which dates and times a customer can select
-in the online webshop, or an employee in the backoffice.
+in the online webshop, or an employee in the back office.
 
 Each type of rule has a corresponding setting that must be enabled
 before the rules of that type are enforced.

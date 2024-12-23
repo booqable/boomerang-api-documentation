@@ -1,7 +1,7 @@
 # Coupons
 
 Create codes to discount orders by a fixed amount or a percentage.
-Customers can redeem the codes online at checkout. Coupons can also be added to orders in the backoffice.
+Customers can redeem the codes online at checkout. Coupons can also be added to orders in the back office.
 
 <aside class="notice">
   Availability of the coupons feature depends on the current pricing plan.
