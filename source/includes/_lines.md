@@ -7,7 +7,7 @@ Lines can only be created for orders. On invoices, lines are automatically gener
 based on price changes of the order. For quotes and contracts, lines are generated through
 the [Document](#documents) resource.
 
-**There are two kinds of lines:**
+## Kinds of Lines
 
 1. **Planning lines** Lines that have an associated Planning. These lines can not be created through
    the Line resource but are created by submitting a `book_*` action to [OrderFulfilments](#order-fulfillments-actions).
@@ -16,7 +16,7 @@ the [Document](#documents) resource.
 2. **Custom lines** Lines created through the resource that don't have a planning associated with it.
    Can be of one of type `charge`, `section`.
 
-**A line can have one of the following types:**
+### Types of Lines
 
 - `charge` Regular charge line which contains price information.
   These lines are automatically generatef for each Planning, but they can also
@@ -30,11 +30,35 @@ the [Document](#documents) resource.
 - `legacy_migration` Proration bundled as one line. This lines appear on
   invoices that were made before Booqable was able to sync invoices automatically.
 
-**Bundles**
+### Bundles
 
 Nested lines contain information about individual items in a bundle; for these lines,
 the quantity and price information can not be updated directly but should be updated
 through the parent line instead.
+
+### Sorting Lines
+
+```
+# example of lines when using bundles
+(position=1) Product A
+(position=2) Product B
+(position=3) Bundle
+  (position=1) Product C
+  (position=2) Product D
+```
+
+When using Bundles, the `line.position` attribute is not unique. Special care needs
+to be taken to sort all lines correctly.
+
+When booking a bundle:
+
+- The parent line is assigned a `position` based on the other lines already on the order.
+- The child lines are assigned a `position` based on how the bundle is configured.
+
+To correctly sort all lines so they appear as they do within Booqable:
+
+- Child lines should be sorted relative to their siblings of the same parent.
+  To do this, child lines need to be grouped by the `parent_line_id` attribute.
 
 ## Relationships
 Name | Description
@@ -77,14 +101,14 @@ Check each individual operation to see which relations can be included as a side
 `owner_type` | **string** `readonly-after-create`<br>The resource type of the owner.
 `parent_line_id` | **uuid** `readonly` `nullable`<br>When present, then this Line is part of a Bundle, and corresponds to a BundleItem. Inverse of `nested_lines` relation. 
 `planning_id` | **uuid** `readonly` `nullable`<br>The Planning for which this Lines was created. that contains the logistical information related to this Line. 
-`position` | **integer** `nullable`<br>Which position the line has. 
+`position` | **integer** `nullable`<br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `price_each_in_cents` | **integer** <br>Price of each line. 
 `price_in_cents` | **integer** `readonly`<br>Price of each line x quantity. 
 `price_rule_values` | **hash** `readonly` `nullable`<br>Breakdown of applied price rules. 
 `price_structure_id` | **uuid** `nullable`<br>The PriceStructure used to calculate the price. 
 `price_tile_id` | **uuid** `nullable`<br>The PriceTile that was selected to calculate the price. 
 `quantity` | **integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error. 
-`relevant` | **boolean** `readonly`<br>Whether line is relevant. When `false`, line has no visible change, it's only used for reporting. 
+`relevant` | **boolean** `readonly`<br>When `false` this line should not be shown to users. It is only needed for calculation of prorations. 
 `tax_category_id` | **uuid** `nullable`<br>TaxCategory applied to this Line. 
 `taxable` | **boolean** <br>Whether line is taxable. 
 `title` | **string** `nullable`<br>Title of the line. 
@@ -128,8 +152,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-11-16T05:41:00.000000+00:00",
-              "till": "1978-12-15T05:41:00.000000+00:00",
+              "from": "1978-11-09T05:42:00.000000+00:00",
+              "till": "1978-12-08T05:42:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -147,8 +171,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-11-29T17:41:00.000000+00:00",
-                    "till": "1978-12-15T05:41:00.000000+00:00",
+                    "from": "1978-11-22T17:42:00.000000+00:00",
+                    "till": "1978-12-08T05:42:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -297,8 +321,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1978-01-18T12:16:02.000000+00:00",
-            "till": "1978-02-16T12:16:02.000000+00:00",
+            "from": "1978-01-11T12:17:02.000000+00:00",
+            "till": "1978-02-09T12:17:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -316,8 +340,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1978-02-01T00:16:02.000000+00:00",
-                  "till": "1978-02-16T12:16:02.000000+00:00",
+                  "from": "1978-01-25T00:17:02.000000+00:00",
+                  "till": "1978-02-09T12:17:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -502,7 +526,7 @@ Name | Description
 `data[attributes][original_charge_label]` | **string** <br>The original charge label of the product (without price rule adjustments). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the Order directly, or a Document. 
 `data[attributes][owner_type]` | **string** <br>The resource type of the owner.
-`data[attributes][position]` | **integer** <br>Which position the line has. 
+`data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
 `data[attributes][price_structure_id]` | **uuid** <br>The PriceStructure used to calculate the price. 
 `data[attributes][price_tile_id]` | **uuid** <br>The PriceTile that was selected to calculate the price. 
@@ -650,7 +674,7 @@ Name | Description
 `data[attributes][original_charge_label]` | **string** <br>The original charge label of the product (without price rule adjustments). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the Order directly, or a Document. 
 `data[attributes][owner_type]` | **string** <br>The resource type of the owner.
-`data[attributes][position]` | **integer** <br>Which position the line has. 
+`data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
 `data[attributes][price_structure_id]` | **uuid** <br>The PriceStructure used to calculate the price. 
 `data[attributes][price_tile_id]` | **uuid** <br>The PriceTile that was selected to calculate the price. 
@@ -738,8 +762,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1974-03-10T22:52:02.000000+00:00",
-            "till": "1974-04-08T22:52:02.000000+00:00",
+            "from": "1974-03-03T22:53:02.000000+00:00",
+            "till": "1974-04-01T22:53:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -757,8 +781,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1974-03-24T10:52:02.000000+00:00",
-                  "till": "1974-04-08T22:52:02.000000+00:00",
+                  "from": "1974-03-17T10:53:02.000000+00:00",
+                  "till": "1974-04-01T22:53:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

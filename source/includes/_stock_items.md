@@ -3,7 +3,7 @@
 For trackable products, each stock item is tracked and managed individually.
 Each stock item has a unique identifier that helps to keep track of it throughout Booqable.
 
-**A stock item can have one of the following types:**
+## Statuses
 
 - **Regular:** Regular stock item (`from` and `till` dates are not set).
 - **Expected:** Items will become part of your regular inventory

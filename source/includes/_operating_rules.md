@@ -6,7 +6,7 @@ in the online webshop, or an employee in the back office.
 Each type of rule has a corresponding setting that must be enabled
 before the rules of that type are enforced.
 
-**Types of rules available:**
+## Types of rules
 
   - `hours` Sets opening hours key in data determines what days these hours apply to,
     data must have this format `{ weekday: { from: 'HH:mm', till: 'HH:mm' } }`,

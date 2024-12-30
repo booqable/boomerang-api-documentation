@@ -6,19 +6,21 @@ enabled to have variations, it can have multiple products.
 
 Product groups are not plannable on orders. Products are the resource that is planned.
 
-**A product group supports the following product types:**
+## Product Types
 
 - **Rental:** Rental products are your main products that you rent out. Even if your main product is officially a service, in Booqable you will want to add it as a rental product.
 - **Consumable:** Consumable products are products that you do not plan on getting back. These are meant to be small items that you plan on selling along with a rental but do not expect to be returned with the rest of the order.
 - **Service:** Service Item or Service Products are the optional extra services (or items) your want to offer to your products. These are not trackable, therefore they do not have an instock number.
 
-**The following tracking types can be defined:**
+## Tracking Types
+
+The tracking type determines how the product is tracked.
 
 - **None:** Products are not tracked (only for product_type `service`, `consumable`)
 - **Trackable:** Trackable Products tend to be the larger ticket items; the products you want to know specifically who has what stock item of what product and when. With trackable products, every stock item is has its own identifier so you can assign and track the individual products (only for product_type `rental`).
 - **Bulk:** Bulk products are for those products you don't necessarily need to track each specific stock item but rather you just need to know how many you have in stock. These tend to be your smaller ticket items or items that are quicker to replace in bulk if some are lost (only for product_type `rental`, `consumable`).
 
-**Pricing can be configured by setting one of the following price types:**
+### Pricing Types
 
 - **None:** Products are free (applies to all product types)
 - **Fixed:** Charge a fixed price (applies to all product types).

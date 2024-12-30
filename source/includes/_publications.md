@@ -1,6 +1,6 @@
 # Publications
 
-A publication marks a moment from which all previously persisted Assets in a Theme are released.
+A Publication marks a moment from which all previously persisted Assets in a Theme are released.
 
 ## Relationships
 Name | Description

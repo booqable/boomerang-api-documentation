@@ -12,7 +12,7 @@ It is however possible to revert to the `started` or the `stopped` status.
 It is not possible to resurrect a canceled order.
 [Duplicating](#order-duplications) a canceled order is possible.
 
-**Errors**
+### Errors
 
 When the Order can not be transitioned, and `error.code` is `items_not_available`,
 then the `error.meta.blocking.*.reason` or `error.meta.warning.*.reason`
@@ -35,7 +35,7 @@ attribute contains one of the following reasons:
 Note that is is possible to get multiple warnings and errors of different
 types at the same time.
 
-**Permissions**
+### Permissions
 
 - Canceling an Order requires the `cancel_orders` permission.
 - Reverting an Order requires the `revert_orders` permission.

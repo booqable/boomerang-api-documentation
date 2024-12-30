@@ -7,7 +7,7 @@ Fetch quantitive information about product inventory compared to the current tim
 - Type
 - Mutation date(s)
 
-**Useful for:**
+### Useful for
 
 - Examining what the current inventory looks, and will look, like for products
 - Performing an inventory count (total in stock vs. out with a customer)

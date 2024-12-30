@@ -34,7 +34,7 @@ The following operation types are supported:
 Only orders that have the status `stopped` can be archived.
 Orders with any other status will be ignored.
 
-**Params**
+### Params
 
 ```json
 "operation_data": {
@@ -55,7 +55,7 @@ Orders with any other status will be ignored.
 | `data.target_type` | string        | `customers`, `orders`   | The type of resource that should be archived. Only one resource per operation is supported. |
 | `data.target_ids`  | array[uuid]   | `[{id}, {id}]`          | An array of primary keys for the entities that should be archived.                          |
 
-**Artifact**
+### Artifact
 
 _No artifacts are generated when archiving._
 
@@ -63,7 +63,7 @@ _No artifacts are generated when archiving._
 
 Generates a barcode for all entities that do not have a barcode. Entities that already have a barcode are skipped.
 
-**Params**
+### Params
 
 ```json
 "operation_data": {
@@ -87,7 +87,7 @@ Generates a barcode for all entities that do not have a barcode. Entities that a
 | `data.target_ids`      | array[uuid]     | `[{id}, {id}]`                                                 | An array of primary keys for the entities that should have its barcodes generated.                       |
 | `data.barcode_type`    | string          | `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`     | The barcode type that should be generated for all entities.                                              |
 
-**Artifact**
+### Artifact
 
 _No artifacts are generated when generating barcodes._
 
@@ -95,7 +95,7 @@ _No artifacts are generated when generating barcodes._
 
 Generates documents in bulk, either by a list of documents or all documents for specific orders.
 
-**Params**
+### Params
 
 ```json
 "operation_data":{
@@ -120,7 +120,7 @@ Generates documents in bulk, either by a list of documents or all documents for 
 | `data.document_type`      | string        | `packing_slip`, `invoice`, `quote`, `contract`     | The document type that should be generated for all entities. Only one document type per operation is supported. |
 | `data.document_extension` | string        | `"pdf"`                                            | The filetype for the generated document.                                                                        |
 
-**Artifact**
+### Artifact
 
 A zip file with the generated documents of type <document_extension>.
 
@@ -128,7 +128,7 @@ A zip file with the generated documents of type <document_extension>.
 
 Updates the collections associated to the entities by mutating them with the action. Other collections already associated to the entity are not modified.
 
-**Params**
+### Params
 
 ```json
 "operation_data": {
@@ -156,7 +156,7 @@ Updates the collections associated to the entities by mutating them with the act
 | `data.action`         | string        | `add_entities`, `remove_entities`     | The action that should be executed on the collections of the entities.                                                  |
 | `data.collection_ids` | array[uuid]   | `[{id}, {id}]`                        | The primary keys of the collections that should be used with the action.                                                |
 
-**Artifact**
+### Artifact
 
 _No artifacts are generated when updating collections._
 
@@ -164,7 +164,7 @@ _No artifacts are generated when updating collections._
 
 Updates the tags associated to the entities by mutating them with the action.
 
-**Params**
+### Params
 
 ```json
 "operation_data": {
@@ -192,7 +192,7 @@ Updates the tags associated to the entities by mutating them with the action.
 | `data.action`       | string        | `add`, `replace`, `remove`, `remove_all`     | The action that should be executed on the tags of the entities.                                                  |
 | `data.tags`         | array[string] | `[{tag}, {tag}]`                             | The tags that should be used with the action.                                                                    |
 
-**Artifact**
+### Artifact
 
 _No artifacts are generated when updating tags._
 
@@ -200,7 +200,7 @@ _No artifacts are generated when updating tags._
 
 Exports data as CSV.
 
-**Params**
+### Params
 
 ```json
 "operation_data": {
@@ -221,7 +221,7 @@ Exports data as CSV.
 | `data.target_type`  | string        | `product_groups`, `bundles`, `customers`, `orders`, `documents`, `report_rentals`, `report_consumables`, 'report_stock_items' | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
 | `data.target_ids`   | array[uuid]   | `[{id}, {id}]`                                                                                                                | An array of primary keys for the entities that should have the associated tags updated.                          |
 
-**Artifact**
+### Artifact
 
 A CSV file containing the exported data.
 
@@ -229,7 +229,7 @@ A CSV file containing the exported data.
 
 Updates the attribute of all the entities with the new value(s).
 
-**Params**
+### Params
 
 ```json
 "operation_data": {
@@ -257,7 +257,7 @@ Updates the attribute of all the entities with the new value(s).
 
 Allowed attribute keys:
 
-**Product group**
+### Product group
 
 - `taxable`
 - `tax_category_id`
@@ -273,14 +273,14 @@ Allowed attribute keys:
 - `discountable`
 - `price_ruleset_id`
 
-**Customer**
+### Customer
 
 - `deposit_type`
 - `deposit_value`
 - `tax_region_id`
 - `discount_percentage`
 
-**Artifacts**
+### Artifacts
 
 _No artifacts are generated when bullk updating resources._
 

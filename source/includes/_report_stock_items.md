@@ -45,8 +45,8 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/report_stock_items'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[from]=2024-12-18 00:00:00 UTC'
-       --data-urlencode 'filter[till]=2024-12-23 23:59:59 UTC'
+       --data-urlencode 'filter[from]=2024-12-25 00:00:00 UTC'
+       --data-urlencode 'filter[till]=2024-12-30 23:59:59 UTC'
 ```
 
 > A 200 status response looks like this:

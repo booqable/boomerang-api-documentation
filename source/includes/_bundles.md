@@ -20,6 +20,11 @@ There are two types of bundles:
   Availability of the bundles feature depends on the current pricing plan.
 </aside>
 
+<aside class="warning">
+  When Bundles are in use sorting of lines on orders and documents becomes non-trivial.
+  See the <a href="#lines">Line</a> resource for details.
+</aside>
+
 ## Relationships
 Name | Description
 -- | --

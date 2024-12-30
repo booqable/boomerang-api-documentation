@@ -4,8 +4,10 @@ Archives a stock item.
 
 Archivation is final and can not be undone.
 
-**When the request fails, the `error.code` attribute can have the
-following values:**
+## Errors
+
+When the request fails, the `error.code` attribute can have the
+following values:
 
 - `stock_item_archived`
   The stock item was already archived before.
