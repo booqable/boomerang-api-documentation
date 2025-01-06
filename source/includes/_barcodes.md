@@ -46,7 +46,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing barcodes
+## List barcodes
 
 
 > How to fetch a list of barcodes:
@@ -151,7 +151,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvMDQyNDI2NjEtY2UxNi00YTdjLThhYWUtYjAyOTkyZThmNWJi'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNWFiYzFmZWQtMWFkZi00YTljLThmMTctNzhiMTIzNWQ1N2Ji'
        --data-urlencode 'include=owner'
 ```
 
@@ -275,7 +275,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a barcode
+## Fetch a barcode
 
 
 > How to fetch a barcode:
@@ -375,7 +375,7 @@ This request accepts the following includes:
 
 
 
-## Creating a barcode
+## Create a barcode
 
 
 > How to create a barcode:
@@ -464,7 +464,7 @@ This request accepts the following includes:
 
 
 
-## Updating a barcode
+## Update a barcode
 
 
 > How to update a barcode:
@@ -552,7 +552,7 @@ This request accepts the following includes:
 
 
 
-## Destroying a barcode
+## Destroy a barcode
 
 
 > How to delete a barcode:

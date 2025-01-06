@@ -47,7 +47,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
 `viewed_whats_new_at` | **datetime** <br>Date when this employee viewed product updates for the last time. 
 
 
-## Listing employees
+## List employees
 
 
 > How to fetch a list of employees:
@@ -67,14 +67,14 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2021-09-07T07:00:00.000000+00:00",
+          "updated_at": "2023-06-24T03:50:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
           "locale": null,
           "email": "john@doe.com",
           "unconfirmed_email": null,
-          "viewed_whats_new_at": "2021-09-07T07:00:00.000000+00:00",
+          "viewed_whats_new_at": "2023-06-07T12:19:00.000000+00:00",
           "active": true,
           "owner": true,
           "confirmed": true,
@@ -94,9 +94,9 @@ and accounting, it wouldn't need to manage your products and stock levels.
           ],
           "has_two_factor_autentication": false,
           "allowed_session_id": null,
-          "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
-          "third_party_id": "9e27ff9f-0909-42c7-81b2-3bb9f34ad507-1735550614"
+          "avatar_url": "https://gravatar.com/avatar/f3eb64211cf620aa291957f1f66d5f39.png?d=404",
+          "large_avatar_url": "https://gravatar.com/avatar/f3eb64211cf620aa291957f1f66d5f39.png?d=mm&size=200",
+          "third_party_id": "9e27ff9f-0909-42c7-81b2-3bb9f34ad507-1679574840"
         }
       }
     ],
@@ -152,7 +152,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching an employee
+## Fetch an employee
 
 
 > How to fetch a employee:
@@ -171,14 +171,14 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2015-05-14T01:40:00.000000+00:00",
-        "updated_at": "2015-05-14T01:40:00.000000+00:00",
+        "updated_at": "2017-01-20T23:07:00.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "john@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2015-05-14T01:40:00.000000+00:00",
+        "viewed_whats_new_at": "2017-02-10T06:59:00.000000+00:00",
         "active": true,
         "owner": true,
         "confirmed": true,
@@ -198,9 +198,9 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "allowed_session_id": null,
-        "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
-        "third_party_id": "4c367dac-4839-49f3-89e4-ff584a1f30e0-1735550614"
+        "avatar_url": "https://gravatar.com/avatar/b9e4d02e55a6d091223dfb568620be4b.png?d=404",
+        "large_avatar_url": "https://gravatar.com/avatar/b9e4d02e55a6d091223dfb568620be4b.png?d=mm&size=200",
+        "third_party_id": "4c367dac-4839-49f3-89e4-ff584a1f30e0-1679574840"
       }
     },
     "meta": {}
@@ -223,7 +223,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating an employee
+## Update an employee
 
 
 > How to update an employee:
@@ -252,14 +252,14 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2016-10-03T04:30:00.000000+00:00",
+        "updated_at": "2021-09-18T16:20:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
         "locale": null,
         "email": "jane@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2016-10-03T04:30:00.000000+00:00",
+        "viewed_whats_new_at": "2021-07-24T23:16:00.000000+00:00",
         "active": true,
         "owner": false,
         "confirmed": true,
@@ -279,9 +279,9 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "allowed_session_id": null,
-        "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200",
-        "third_party_id": "cebcf411-1b2a-402f-8d77-43c67daf282f-1735550615"
+        "avatar_url": "https://gravatar.com/avatar/716558eb15f1e4801c770410e3eed8fe.png?d=404",
+        "large_avatar_url": "https://gravatar.com/avatar/716558eb15f1e4801c770410e3eed8fe.png?d=mm&size=200",
+        "third_party_id": "cebcf411-1b2a-402f-8d77-43c67daf282f-1579642440"
       }
     },
     "meta": {}
@@ -314,14 +314,14 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2014-10-16T17:49:01.000000+00:00",
+        "updated_at": "2019-10-02T05:39:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "jane@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2014-10-16T17:49:01.000000+00:00",
+        "viewed_whats_new_at": "2019-08-07T12:35:01.000000+00:00",
         "active": false,
         "owner": false,
         "confirmed": true,
@@ -341,9 +341,9 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "allowed_session_id": null,
-        "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200",
-        "third_party_id": "b40a7c1c-5190-4d54-8cea-405d36944a87-1735550615"
+        "avatar_url": "https://gravatar.com/avatar/8a0e879db54c50c14de0c4203a4e7a93.png?d=404",
+        "large_avatar_url": "https://gravatar.com/avatar/8a0e879db54c50c14de0c4203a4e7a93.png?d=mm&size=200",
+        "third_party_id": "b40a7c1c-5190-4d54-8cea-405d36944a87-1579642440"
       }
     },
     "meta": {}
@@ -379,14 +379,14 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2027-04-16T02:37:01.000000+00:00",
+        "updated_at": "2032-03-31T14:27:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
         "locale": null,
         "email": "jane@doe.com",
         "unconfirmed_email": null,
-        "viewed_whats_new_at": "2027-04-16T02:37:01.000000+00:00",
+        "viewed_whats_new_at": "2032-02-04T21:23:01.000000+00:00",
         "active": true,
         "owner": false,
         "confirmed": true,
@@ -397,9 +397,9 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "allowed_session_id": null,
-        "avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/35f5782642e9fa0f6cfff5a552e2ae97.png?d=mm&size=200",
-        "third_party_id": "94b3f0ff-ef32-49be-8f5f-7aa6916cc901-1735550616"
+        "avatar_url": "https://gravatar.com/avatar/ae75ea2be6c7d7aa987d98145aa7618c.png?d=404",
+        "large_avatar_url": "https://gravatar.com/avatar/ae75ea2be6c7d7aa987d98145aa7618c.png?d=mm&size=200",
+        "third_party_id": "94b3f0ff-ef32-49be-8f5f-7aa6916cc901-1579642440"
       }
     },
     "meta": {}

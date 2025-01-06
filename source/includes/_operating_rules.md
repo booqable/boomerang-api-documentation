@@ -36,7 +36,7 @@ before the rules of that type are enforced.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing operating rules
+## List operating rules
 
 
 > How to fetch a list of operating rules:
@@ -113,7 +113,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating an operating rule
+## Create an operating rule
 
 
 > How to create an operating rule:
@@ -361,7 +361,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating an operating rule
+## Update an operating rule
 
 
 > How to update an operating rule:
@@ -435,7 +435,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting an operating rule
+## Delete an operating rule
 
 
 > How to delete an operating rule:

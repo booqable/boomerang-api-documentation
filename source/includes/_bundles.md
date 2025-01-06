@@ -68,7 +68,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing bundles
+## List bundles
 
 
 > How to fetch a list of bundles:
@@ -195,7 +195,7 @@ This request accepts the following includes:
 
 
 
-## Searching bundles
+## Search bundles
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -338,7 +338,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a bundle
+## Fetch a bundle
 
 
 > How to fetch a bundle:
@@ -433,7 +433,7 @@ This request accepts the following includes:
 
 
 
-## Creating a bundle
+## Create a bundle
 
 
 > How to create a bundle with bundle items:
@@ -652,7 +652,7 @@ This request accepts the following includes:
 
 
 
-## Updating a bundle
+## Update a bundle
 
 
 > How to update a bundle with bundle items:
@@ -832,7 +832,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a bundle
+## Archive a bundle
 
 
 > How to delete a bundle:

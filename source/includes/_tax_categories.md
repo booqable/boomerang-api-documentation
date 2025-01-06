@@ -27,7 +27,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing tax categories
+## List tax categories
 
 
 > How to fetch a list of tax categories:
@@ -113,7 +113,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a tax category
+## Fetch a tax category
 
 
 > How to fetch a tax categories with it's tax rates:
@@ -195,7 +195,7 @@ This request accepts the following includes:
 
 
 
-## Creating a tax category
+## Create a tax category
 
 
 > How to create a tax category with tax rates:
@@ -303,7 +303,7 @@ This request accepts the following includes:
 
 
 
-## Updating a tax category
+## Update a tax category
 
 
 > How to update a tax category with tax rates:
@@ -416,7 +416,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a tax category
+## Delete a tax category
 
 
 > How to delete a tax category with tax rates:

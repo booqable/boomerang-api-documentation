@@ -27,7 +27,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing payment methods
+## List payment methods
 
 
 > How to fetch a list of payment methods:
@@ -109,7 +109,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a payment method
+## Create a payment method
 
 
 > How to create a payment method:

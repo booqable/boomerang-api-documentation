@@ -101,7 +101,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing orders
+## List orders
 
 
 > How to fetch a list of orders:
@@ -134,8 +134,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-05-12T03:04:01.000000+00:00",
-          "stops_at": "1970-06-11T03:04:01.000000+00:00",
+          "starts_at": "1970-05-05T03:02:01.000000+00:00",
+          "stops_at": "1970-06-04T03:02:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -307,7 +307,7 @@ This request accepts the following includes:
 
 
 
-## Searching orders
+## Search orders
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -330,14 +330,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2024-12-31T09:26:01Z",
-                       "lte": "2025-01-03T09:26:01Z"
+                       "gte": "2025-01-07T09:27:13Z",
+                       "lte": "2025-01-10T09:27:13Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2024-12-31T09:26:01Z",
-                       "lte": "2025-01-03T09:26:01Z"
+                       "gte": "2025-01-07T09:27:13Z",
+                       "lte": "2025-01-10T09:27:13Z"
                      }
                    }
                  ]
@@ -674,7 +674,7 @@ This request accepts the following includes:
 
 
 
-## Fetching an order
+## Fetch an order
 
 
 > How to fetch an order:
@@ -706,8 +706,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-10-07T12:22:01.000000+00:00",
-        "stops_at": "1970-11-06T12:22:01.000000+00:00",
+        "starts_at": "1970-09-30T12:21:01.000000+00:00",
+        "stops_at": "1970-10-30T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -849,7 +849,7 @@ This request accepts the following includes:
 
 
 
-## Creating an order
+## Create an order
 
 When creating an order, and the following fields are left blank, a sensible default will be picked:
 
@@ -897,8 +897,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:29:01.000000+00:00",
-        "stops_at": "2026-11-03T14:29:01.000000+00:00",
+        "starts_at": "2026-09-25T14:28:01.000000+00:00",
+        "stops_at": "2026-11-03T14:28:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1065,7 +1065,7 @@ This request accepts the following includes:
 
 
 
-## Updating an order
+## Update an order
 
 When updating a customer on an order the following settings will be applied and prices will be calculated accordingly:
 

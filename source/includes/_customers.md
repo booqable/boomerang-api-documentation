@@ -44,7 +44,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing customers
+## List customers
 
 
 > How to fetch a list of customers:
@@ -163,7 +163,7 @@ This request accepts the following includes:
 
 
 
-## Searching customers
+## Search customers
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -301,7 +301,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a customer
+## Fetch a customer
 
 
 > How to fetch a customers:
@@ -382,7 +382,7 @@ This request accepts the following includes:
 
 
 
-## Creating a customer
+## Create a customer
 
 
 > How to create a customer:
@@ -484,7 +484,7 @@ This request accepts the following includes:
 
 
 
-## Updating a customer
+## Update a customer
 
 
 > How to update a customer:
@@ -586,7 +586,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a customer
+## Archive a customer
 
 
 > How to archive a customer:

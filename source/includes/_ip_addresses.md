@@ -18,7 +18,7 @@ Both IPv4 and IPv6 addresses are supported.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing restricted IP addresses
+## List restricted IP addresses
 
 
 > How to fetch a list of restricted IP addresses:
@@ -91,7 +91,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching restricted IP address
+## Fetch restricted IP address
 
 
 > How to fetch a restricted IP address:
@@ -135,7 +135,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating restricted IP address
+## Create restricted IP address
 
 
 > How to create a restricted IP address:
@@ -199,7 +199,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating restricted IP address
+## Update restricted IP address
 
 
 > How to update a restricted IP address:
@@ -264,7 +264,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting restricted IP address
+## Delete restricted IP address
 
 
 > How to delete a restricted IP address:

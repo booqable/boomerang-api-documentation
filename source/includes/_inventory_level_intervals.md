@@ -40,7 +40,7 @@ Check each individual operation to see which relations can be included as a side
 `till` | **datetime** `readonly`<br>End of the period to list inventory levels for. 
 
 
-## Listing inventory level intervals
+## List inventory level intervals
 
 
 > How to fetch a list of inventory level intervals:

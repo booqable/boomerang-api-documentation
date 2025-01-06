@@ -26,7 +26,7 @@ Check each individual operation to see which relations can be included as a side
 `subject` | **string** `readonly`<br>Rendered email subject.
 
 
-## Rendering email content
+## Render email content
 
 
 > How to render an email from a template:

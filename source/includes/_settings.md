@@ -234,7 +234,7 @@ Name | Description
 `user` | **hash** <br>Settings that apply to [user](#users) accounts.
 
 
-## Fetching settings
+## Fetch settings
 
 
 > How to fetch settings:

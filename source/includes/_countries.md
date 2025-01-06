@@ -33,7 +33,7 @@ Check each individual operation to see which relations can be included as a side
 `zipcode_type` | **string** `readonly`<br>The zipcode type of this country. 
 
 
-## Listing countries
+## List countries
 
 
 > How to fetch a list of countries:

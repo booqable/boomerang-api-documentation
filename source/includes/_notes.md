@@ -25,7 +25,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing notes
+## List notes
 
 
 > How to fetch a list of notes:
@@ -114,7 +114,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a note
+## Fetch a note
 
 
 > How to fetch a note:
@@ -173,7 +173,7 @@ This request accepts the following includes:
 
 
 
-## Creating a note
+## Create a note
 
 
 > How to create a note:
@@ -254,7 +254,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a note
+## Delete a note
 
 
 > How to delete a note:

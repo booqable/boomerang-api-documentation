@@ -46,7 +46,7 @@ Check each individual operation to see which relations can be included as a side
 `operating_rules_updated_at` | **datetime** <br>When the operating rules were last updated.
 
 
-## Fetching the session
+## Fetch the session
 
 
 > How to fetch the session:
@@ -141,7 +141,7 @@ Check each individual operation to see which relations can be included as a side
           "installed_online_store": false,
           "source": null,
           "medium": null,
-          "tenant_token": "8125ff2f1818ddc287328fed7c14e860",
+          "tenant_token": "32af84390e700e5f1863434446a4a235",
           "pending_subscription": false,
           "team_size": null,
           "revenue_last_year": null,
@@ -253,9 +253,9 @@ Check each individual operation to see which relations can be included as a side
           ],
           "has_two_factor_autentication": false,
           "allowed_session_id": null,
-          "avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/6a6c19fea4a3676970167ce51f39e6ee.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1735550869"
+          "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
+          "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1736155719"
         }
       },
       {

@@ -43,7 +43,7 @@ Check each individual operation to see which relations can be included as a side
 `zipcode` | **string** <br>Address zipcode. 
 
 
-## Listing locations
+## List locations
 
 
 > How to fetch locations:
@@ -164,7 +164,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a location
+## Fetch a location
 
 
 > How to fetch a single location:
@@ -251,7 +251,7 @@ This request accepts the following includes:
 
 
 
-## Creating a location
+## Create a location
 
 
 > How to create a location and assign it to a cluster:
@@ -407,7 +407,7 @@ This request accepts the following includes:
 
 
 
-## Updating a location
+## Update a location
 
 Note that disassociating clusters may result in a shortage error.
 
@@ -635,7 +635,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a location
+## Archive a location
 
 To archive a location make sure that:
 

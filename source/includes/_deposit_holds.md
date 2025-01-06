@@ -26,7 +26,7 @@ Check each individual operation to see which relations can be included as a side
 ## Create
 
 
-> Holding a deposit:
+> Hold a deposit:
 
 ```shell
   curl --request POST
@@ -36,7 +36,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "deposit_holds",
            "attributes": {
-             "order_id": "f9863002-224c-4c7c-896e-d5331e84930b",
+             "order_id": "f20704d5-8868-46c8-8d43-4eb95a96ec2e",
              "amount_in_cents": 5000,
              "reason": "damages"
            }
@@ -49,11 +49,11 @@ Check each individual operation to see which relations can be included as a side
 ```json
   {
     "data": {
-      "id": "7603bbc7-4fbe-49cf-8555-b6930fc55411",
+      "id": "d785af99-53ec-4230-819f-c65f4fb7da9d",
       "type": "deposit_holds",
       "attributes": {
-        "order_id": "f9863002-224c-4c7c-896e-d5331e84930b",
-        "deposit_line_id": "1cad0b8d-3f2f-47c0-85ba-84fbbbd0d05e"
+        "order_id": "f20704d5-8868-46c8-8d43-4eb95a96ec2e",
+        "deposit_line_id": "e98315a1-7fbe-48ac-810a-c0823f8a663a"
       },
       "relationships": {}
     },

@@ -31,7 +31,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing payments
+## List payments
 
 
 > How to fetch a list of payments:
@@ -130,7 +130,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a payment
+## Fetch a payment
 
 
 > How to fetch a payment:

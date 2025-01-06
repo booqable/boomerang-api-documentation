@@ -30,7 +30,7 @@ Check each individual operation to see which relations can be included as a side
 `turnover_in_cents` | **integer** <br>Turnover during period.
 
 
-## Listing performance for consumables products
+## List performance for consumables products
 
 
 > How to fetch performance for consumables:
@@ -38,8 +38,8 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/report_consumables'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[from]=2024-12-25 00:00:00 UTC'
-       --data-urlencode 'filter[till]=2024-12-30 23:59:59 UTC'
+       --data-urlencode 'filter[from]=2017-08-15T03:42:01.000000+00:00'
+       --data-urlencode 'filter[till]=2017-08-21T03:41:01.000000+00:00'
 ```
 
 > A 200 status response looks like this:
@@ -51,7 +51,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "9f5e212f-8f15-4b27-8d57-7820f511ad8e",
         "type": "report_consumables",
         "attributes": {
-          "created_at": "2017-08-15T03:42:01.000000+00:00",
+          "created_at": "2017-08-20T13:10:01.000000+00:00",
           "name": "Product 1000054",
           "sold": 2,
           "turnover_in_cents": 10000,

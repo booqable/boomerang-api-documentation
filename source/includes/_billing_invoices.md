@@ -30,7 +30,7 @@ Invoices received from Booqable
 `vat_in_cents` | **integer** `readonly`<br>Tax in cents.
 
 
-## Listing billing invoices
+## List billing invoices
 
 
 > How to fetch a list of billing invoices:
@@ -69,7 +69,7 @@ Invoices received from Booqable
           "ending_balance_in_cents": null,
           "next_payment_attempt_at": null,
           "coupon": null,
-          "url": "http://billing.lvh.me:/invoices/2ae5b1f2e6c95b0fdd8da8ffa7f4af47/9b5eed172df4cfad5943f546fbf3a0d2"
+          "url": "http://billing.lvh.me:/invoices/bafa6d2a3e8b9b3465b0e13f8fb99ad7/6f0d4e15ba9aaaded564e226878c6282"
         }
       }
     ],
@@ -125,7 +125,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching billing invoice
+## Fetch billing invoice
 
 
 > How to fetch a billing invoice:
@@ -163,7 +163,7 @@ This request does not accept any includes
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/09b276fa2608e22a3f106a8dbdf951e9/694889a502bc7bc10d815da0492c555b"
+        "url": "http://billing.lvh.me:/invoices/9e70fd43d310a37d8ffdf8304c22eab2/4e1d21ac302d121a2fdbb6210b3302b6"
       }
     },
     "meta": {}

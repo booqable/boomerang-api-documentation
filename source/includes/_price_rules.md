@@ -59,7 +59,7 @@ Check each individual operation to see which relations can be included as a side
 `value` | **float** <br>Adjustment value in percent. 
 
 
-## Creating a price rule
+## Create a price rule
 
 
 > How to create a price rule:
@@ -78,7 +78,7 @@ Check each individual operation to see which relations can be included as a side
              "match_strategy": "span",
              "value": 25,
              "from": "2014-12-05T04:39:00.000000+00:00",
-             "till": "2015-02-04T04:39:00.000000+00:00"
+             "till": "2015-02-05T04:39:00.000000+00:00"
            }
          },
          "include": "price_rules"
@@ -93,15 +93,15 @@ Check each individual operation to see which relations can be included as a side
       "id": "496355f5-1c79-4b05-86e8-fb9f00c27d78",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2015-01-04T04:39:00.000000+00:00",
-        "updated_at": "2015-01-04T04:39:00.000000+00:00",
+        "created_at": "2015-01-05T04:39:00.000000+00:00",
+        "updated_at": "2015-01-05T04:39:00.000000+00:00",
         "name": "Off season",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 25.0,
         "from": "2014-12-05T04:39:00.000000+00:00",
-        "till": "2015-02-04T04:39:00.000000+00:00",
+        "till": "2015-02-05T04:39:00.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -172,7 +172,7 @@ This request accepts the following includes:
 
 
 
-## Updating a price rule
+## Update a price rule
 
 
 > How to update a price rule:
@@ -207,8 +207,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 10.0,
-        "from": "2028-05-25T15:15:07.000000+00:00",
-        "till": "2028-07-25T15:15:07.000000+00:00",
+        "from": "2028-05-18T15:14:07.000000+00:00",
+        "till": "2028-07-18T15:14:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -259,8 +259,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-08-13T18:33:01.000000+00:00",
-        "till": "2026-10-13T18:33:01.000000+00:00",
+        "from": "2026-08-06T18:32:01.000000+00:00",
+        "till": "2026-10-06T18:32:01.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -331,7 +331,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a price rule
+## Archive a price rule
 
 
 > How to archive a price ruleset:
@@ -357,8 +357,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-11-18T20:26:07.000000+00:00",
-        "till": "2027-01-18T20:26:07.000000+00:00",
+        "from": "2026-11-11T20:25:07.000000+00:00",
+        "till": "2027-01-11T20:25:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,

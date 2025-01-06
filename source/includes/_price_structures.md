@@ -45,7 +45,7 @@ Check each individual operation to see which relations can be included as a side
 `year` | **float** <br>Multiplier for every year outside of its tiles. 
 
 
-## Listing price structures
+## List price structures
 
 
 > How to fetch a list of price structures:
@@ -128,7 +128,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a price structure
+## Fetch a price structure
 
 
 > How to fetch a price structure with it's tiles:
@@ -217,7 +217,7 @@ This request accepts the following includes:
 
 
 
-## Creating a price structure
+## Create a price structure
 
 
 > How to create a price structure with price tiles:
@@ -339,7 +339,7 @@ This request accepts the following includes:
 
 
 
-## Updating a price structure
+## Update a price structure
 
 
 > How to update a price structure with price tiles:
@@ -509,7 +509,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a price structure
+## Delete a price structure
 
 
 > How to delete a price structure with tax rates:

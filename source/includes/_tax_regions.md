@@ -31,7 +31,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing tax regions
+## List tax regions
 
 
 > How to fetch a list of tax regions:
@@ -115,7 +115,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a tax region
+## Fetch a tax region
 
 
 > How to fetch a tax regions with it's tax rates:
@@ -180,7 +180,7 @@ This request accepts the following includes:
 
 
 
-## Creating a tax region
+## Create a tax region
 
 
 > How to create a tax region with tax rates:
@@ -291,7 +291,7 @@ This request accepts the following includes:
 
 
 
-## Updating a tax region
+## Update a tax region
 
 
 > How to update a tax region with tax rates:
@@ -406,14 +406,14 @@ This request accepts the following includes:
 
 
 
-## Deleting a tax region
+## Delete a tax region
 
 
-> How to delete a tax region with tax rates:
+> How to delete a tax region:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/tax_regions/e692e29e-ab82-42d7-8347-cb4aa2d665ab'
+       --url 'https://example.booqable.com/api/boomerang/tax_regions/68a1ae1a-245f-45d0-8494-0502c65f562e'
        --header 'content-type: application/json'
 ```
 
@@ -422,13 +422,13 @@ This request accepts the following includes:
 ```json
   {
     "data": {
-      "id": "e692e29e-ab82-42d7-8347-cb4aa2d665ab",
+      "id": "68a1ae1a-245f-45d0-8494-0502c65f562e",
       "type": "tax_regions",
       "attributes": {
-        "created_at": "2016-07-01T20:19:06.000000+00:00",
-        "updated_at": "2016-07-01T20:19:06.000000+00:00",
+        "created_at": "2021-03-28T15:14:00.000000+00:00",
+        "updated_at": "2021-03-28T15:14:00.000000+00:00",
         "archived": true,
-        "archived_at": "2016-07-01T20:19:06.000000+00:00",
+        "archived_at": "2021-03-28T15:14:00.000000+00:00",
         "name": "Sales Tax (Deleted)",
         "strategy": "add_to",
         "default": false

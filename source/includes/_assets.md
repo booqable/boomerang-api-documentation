@@ -21,7 +21,7 @@ Theme assets are the individual files that make up a shop's theme.
 `value` | **string** <br>The text content of the asset, such as the HTML and Liquid markup of a template file. 
 
 
-## Listing assets
+## List assets
 
 
 > How to fetch a list of assets:
@@ -44,7 +44,7 @@ Theme assets are the individual files that make up a shop's theme.
           "updated_at": "2016-03-17T09:25:00.000000+00:00",
           "key": "templates/index.json",
           "custom": false,
-          "checksum": "74b5b91c79f3099a43573f152554e8d82d55efe4039fe9c2d67246950750f61e",
+          "checksum": "8fbe792f3b0933738a24b860fa480002ebf42d3d579ba4f6a8fae769336d2d0c",
           "content_type": "application/json",
           "value": "{ \"name\": \"index\" }",
           "published_at": "2016-03-10T09:25:00.000000+00:00",
@@ -117,7 +117,7 @@ This request accepts the following includes:
 
 
 
-## Creating an asset
+## Create an asset
 
 
 > How to create a new asset:
@@ -150,7 +150,7 @@ This request accepts the following includes:
         "updated_at": "2024-04-27T02:25:00.000000+00:00",
         "key": "templates/index.json",
         "custom": false,
-        "checksum": "74b5b91c79f3099a43573f152554e8d82d55efe4039fe9c2d67246950750f61e",
+        "checksum": "2c3e28e537a27448c59ac4b3f71504cfcd560c97ac6ee9ff11aab829648922aa",
         "content_type": "application/json",
         "value": "{ \"name\": \"index\" }",
         "published_at": null,
@@ -203,7 +203,7 @@ This request accepts the following includes:
 
 
 
-## Uploading a file
+## Upload a file
 
 
 > How to create an asset and upload a file:
@@ -236,13 +236,13 @@ This request accepts the following includes:
         "updated_at": "2016-02-10T12:38:01.000000+00:00",
         "key": "assets/image.png",
         "custom": true,
-        "checksum": "d6c8d6c485714758ae033483d6773831e27bd7393c141bb73e8e96c14f35e1ad",
+        "checksum": "380807d0615bf1eeea5078c22d1a77756fe1a819362cb86cd38a41be4cbd37f7",
         "content_type": "image/png",
         "value": null,
         "published_at": null,
         "theme_id": "c0f3f9bf-c690-48ad-8d70-5c8f0dc9838e",
         "file": {
-          "url": "/assets/c0f3f9bf-c690-48ad-8d70-5c8f0dc9838e/image-d6c8d6c485714758ae033483d6773831e27bd7393c141bb73e8e96c14f35e1ad(2).png"
+          "url": "/assets/c0f3f9bf-c690-48ad-8d70-5c8f0dc9838e/image-380807d0615bf1eeea5078c22d1a77756fe1a819362cb86cd38a41be4cbd37f7(2).png"
         }
       }
     },
@@ -289,7 +289,7 @@ This request accepts the following includes:
 
 
 
-## Deleting an asset
+## Delete an asset
 
 
 > How to delete an asset:
@@ -312,7 +312,7 @@ This request accepts the following includes:
         "updated_at": "2028-11-25T07:52:00.000000+00:00",
         "key": "templates/index.json",
         "custom": true,
-        "checksum": "74b5b91c79f3099a43573f152554e8d82d55efe4039fe9c2d67246950750f61e",
+        "checksum": "6bc685376bb26a66c9997e528aef845e579cf014f954eb0e72f610fd50419d7a",
         "content_type": "application/json",
         "value": "{ \"name\": \"index\" }",
         "published_at": "2028-11-18T07:52:00.000000+00:00",

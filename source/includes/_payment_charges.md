@@ -55,7 +55,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing payment charges
+## List payment charges
 
 
 > How to fetch a list of payment charges:
@@ -199,7 +199,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a payment charge
+## Fetch a payment charge
 
 
 > How to fetch a payment charge:
@@ -285,7 +285,7 @@ This request accepts the following includes:
 
 
 
-## Creating a payment charge
+## Create a payment charge
 
 
 > How to create a payment charge:
@@ -404,7 +404,7 @@ This request accepts the following includes:
 
 
 
-## Updating a payment charge
+## Update a payment charge
 
 
 > How to update a payment charge:

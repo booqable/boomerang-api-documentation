@@ -15,7 +15,7 @@ Use device tokens to register devices to receive push notifications.
 `version` | **integer** <br>The API version to use.
 
 
-## Creating a device_token
+## Create a device_token
 
 
 > How to create a device_token:
@@ -83,7 +83,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting a device_token
+## Delete a device_token
 
 
 > How to delete a device_token:

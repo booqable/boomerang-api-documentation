@@ -29,7 +29,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing price tiles
+## List price tiles
 
 
 > How to fetch a list of price tiles:
@@ -106,7 +106,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a price tile
+## Fetch a price tile
 
 
 > How to fetch a price tile:
@@ -165,7 +165,7 @@ This request accepts the following includes:
 
 
 
-## Creating a price tile
+## Create a price tile
 
 
 > How to create a price tile:
@@ -249,7 +249,7 @@ This request accepts the following includes:
 
 
 
-## Updating a price tile
+## Update a price tile
 
 
 > How to update a price tile:
@@ -333,7 +333,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a price tile
+## Delete a price tile
 
 
 > How to delete a price tile:

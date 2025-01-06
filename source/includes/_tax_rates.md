@@ -27,7 +27,7 @@ Check each individual operation to see which relations can be included as a side
 `value` | **float** <br>The percentage value of the rate.
 
 
-## Listing tax rates
+## List tax rates
 
 
 > How to fetch a list of tax rates:
@@ -113,7 +113,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a tax rate
+## Fetch a tax rate
 
 
 > How to fetch a tax rate:
@@ -194,7 +194,7 @@ This request accepts the following includes:
 
 
 
-## Creating a tax rate
+## Create a tax rate
 
 
 > How to create a tax rate and associate it with an owner:
@@ -299,7 +299,7 @@ This request accepts the following includes:
 
 
 
-## Updating a tax rate
+## Update a tax rate
 
 
 > How to update a tax rate:
@@ -401,7 +401,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a tax rate
+## Delete a tax rate
 
 
 > How to delete a tax rate:

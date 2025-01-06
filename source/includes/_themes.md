@@ -38,7 +38,7 @@ Check each individual operation to see which relations can be included as a side
 `version` | **string** <br>Theme version. 
 
 
-## Listing themes
+## List themes
 
 
 > How to fetch a list of installed themes:
@@ -168,7 +168,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a theme
+## Create a theme
 
 
 > How to fork a theme to create a new theme:
@@ -259,7 +259,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a theme
+## Delete a theme
 
 
 > How to delete a theme:

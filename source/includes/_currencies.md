@@ -22,7 +22,7 @@ The currency object encapsulates all information about a monetary unit.
 `thousands_separator` | **string** `readonly`<br>Character between each thousands place.
 
 
-## Fetching a currency
+## Fetch a currency
 
 
 > How to fetch a currency:

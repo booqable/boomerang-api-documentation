@@ -37,7 +37,7 @@ Check each individual operation to see which relations can be included as a side
 `till` | **datetime** <br>When the amount of items will become unavailable (only for type `temporary` and/or status `expired`).
 
 
-## Listing inventory breakdowns
+## List inventory breakdowns
 
 
 > How to fetch a breakdown of all items in stock:

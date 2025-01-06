@@ -40,13 +40,11 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether item is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the item was archived. 
 `base_price_in_cents` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`confirm_shortage` | **boolean** `writeonly`<br>Whether to confirm the shortage (over limit by changing `shortage_limit`). 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `photo_id` | **uuid** `nullable`<br>Main photo. 
 `photo_url` | **string** `readonly` `nullable`<br>Main photo url. 
 `product_group_id` | **uuid** `readonly-after-create`<br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
-`sku` | **string** <br>Stock keeping unit. 
 `sorting_weight` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `type` | **string** `readonly`<br>Always `product`. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -78,6 +76,7 @@ Check each individual operation to see which relations can be included as a side
 `seo_title` | **string** `readonly` `nullable`<br>SEO title tag. 
 `shortage_limit` | **integer** `readonly`<br>The maximum allowed shortage for any date range. 
 `show_in_store` | **boolean** `readonly`<br>Whether to show this item in the online. 
+`sku` | **string** `readonly`<br>Stock keeping unit. 
 `slug` | **string** `readonly`<br>Slug of the product. 
 `tag_list` | **array** `readonly`<br>List of tags. 
 `tax_category_id` | **uuid** `readonly` `nullable`<br>Tax category for tax calculations. 
@@ -87,7 +86,7 @@ Check each individual operation to see which relations can be included as a side
 `variation` | **boolean** `readonly`<br>Whether this Item is a variation in a product group. 
 
 
-## Listing products
+## List products
 
 
 > How to fetch a list of products:
@@ -325,7 +324,7 @@ This request accepts the following includes:
 
 
 
-## Searching products
+## Search products
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -512,7 +511,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a product
+## Fetch a product
 
 
 > How to fetch a product:
@@ -625,7 +624,7 @@ This request accepts the following includes:
 
 
 
-## Creating a product
+## Create a product
 
 
 > How to create a product:
@@ -725,10 +724,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][confirm_shortage]` | **boolean** <br>Whether to confirm the shortage (over limit by changing `shortage_limit`). 
 `data[attributes][photo_id]` | **uuid** <br>Main photo. 
 `data[attributes][product_group_id]` | **uuid** <br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
-`data[attributes][sku]` | **string** <br>Stock keeping unit. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 
@@ -765,7 +762,7 @@ This request accepts the following includes:
 
 
 
-## Updating a product
+## Update a product
 
 
 > How to update a product:
@@ -865,10 +862,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][confirm_shortage]` | **boolean** <br>Whether to confirm the shortage (over limit by changing `shortage_limit`). 
 `data[attributes][photo_id]` | **uuid** <br>Main photo. 
 `data[attributes][product_group_id]` | **uuid** <br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
-`data[attributes][sku]` | **string** <br>Stock keeping unit. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 
@@ -905,7 +900,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a product
+## Archive a product
 
 
 > How to delete a product:

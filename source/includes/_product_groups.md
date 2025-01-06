@@ -96,7 +96,7 @@ Check each individual operation to see which relations can be included as a side
 `variation_fields` | **array** <br>Array of fields that distinguish variations (e.g. color or size). `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 
 
-## Listing product groups
+## List product groups
 
 
 > How to fetch a list of product groups:
@@ -269,7 +269,7 @@ This request accepts the following includes:
 
 
 
-## Searching product groups
+## Search product groups
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -437,7 +437,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a product group
+## Fetch a product group
 
 
 > How to fetch a product group:
@@ -547,7 +547,7 @@ This request accepts the following includes:
 
 
 
-## Creating a product group
+## Create a product group
 
 
 > How to create a product group:
@@ -716,7 +716,7 @@ This request accepts the following includes:
 
 
 
-## Updating a product group
+## Update a product group
 
 
 > How to update a product group:
@@ -875,7 +875,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a product group
+## Archive a product group
 
 
 > How to delete a product group:

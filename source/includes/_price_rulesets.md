@@ -30,7 +30,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing price rulesets
+## List price rulesets
 
 
 > How to fetch price rulesets:
@@ -108,7 +108,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a price ruleset
+## Fetch a price ruleset
 
 
 > How to fetch a single price ruleset with related price rules:
@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2032-10-20T23:28:05.000000+00:00",
-          "till": "2032-12-20T23:28:05.000000+00:00",
+          "from": "2032-10-13T23:27:05.000000+00:00",
+          "till": "2032-12-13T23:27:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -202,7 +202,7 @@ This request accepts the following includes:
 
 
 
-## Creating a price ruleset
+## Create a price ruleset
 
 
 > How to create a price ruleset with price rules:
@@ -223,7 +223,7 @@ This request accepts the following includes:
                  "match_strategy": "span",
                  "value": 25,
                  "from": "2014-09-24T15:02:01.000000+00:00",
-                 "till": "2014-11-24T15:02:01.000000+00:00"
+                 "till": "2014-11-25T15:02:01.000000+00:00"
                }
              ]
            }
@@ -240,8 +240,8 @@ This request accepts the following includes:
       "id": "e4fe0b61-208f-4525-8281-39ceec698804",
       "type": "price_rulesets",
       "attributes": {
-        "created_at": "2014-10-24T15:02:01.000000+00:00",
-        "updated_at": "2014-10-24T15:02:01.000000+00:00",
+        "created_at": "2014-10-25T15:02:01.000000+00:00",
+        "updated_at": "2014-10-25T15:02:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Seasonal ruleset",
@@ -263,15 +263,15 @@ This request accepts the following includes:
         "id": "fe521f82-f68d-479c-843d-7420dbcf18ae",
         "type": "price_rules",
         "attributes": {
-          "created_at": "2014-10-24T15:02:01.000000+00:00",
-          "updated_at": "2014-10-24T15:02:01.000000+00:00",
+          "created_at": "2014-10-25T15:02:01.000000+00:00",
+          "updated_at": "2014-10-25T15:02:01.000000+00:00",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 25.0,
           "from": "2014-09-24T15:02:01.000000+00:00",
-          "till": "2014-11-24T15:02:01.000000+00:00",
+          "till": "2014-11-25T15:02:01.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -326,7 +326,7 @@ This request accepts the following includes:
 
 
 
-## Updating a price ruleset
+## Update a price ruleset
 
 
 > How to update a price ruleset:
@@ -428,8 +428,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2029-03-02T12:41:00.000000+00:00",
-          "till": "2029-05-02T12:41:00.000000+00:00",
+          "from": "2029-02-23T12:40:00.000000+00:00",
+          "till": "2029-04-25T12:40:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -484,7 +484,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a price ruleset
+## Archive a price ruleset
 
 
 > How to archive a price ruleset:

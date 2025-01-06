@@ -37,7 +37,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing stock item plannings
+## List stock item plannings
 
 
 > How to fetch a list of stock item plannings:
@@ -144,7 +144,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a stock_item planning
+## Archive a stock_item planning
 
 
 > How to archive a stock item planning:

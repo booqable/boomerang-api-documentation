@@ -11,10 +11,10 @@ A convienient way to bulk update positions for supported resources.
 `type` | **enum** `writeonly`<br>Type of resource to update.<br>One of: `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`.
 
 
-## Sorting a resource
+## Sort resources
 
 
-> How to update positions:
+> How to update ordering of lines on an order:
 
 ```shell
   curl --request POST
@@ -24,13 +24,11 @@ A convienient way to bulk update positions for supported resources.
          "data": {
            "type": "sorting",
            "attributes": {
-             "type": "default_properties",
+             "type": "lines",
              "ids": [
-               "92950914-7942-4ac7-83fd-60fcc23ca62c",
-               "0a54d6ed-02ea-4119-8d81-e4224c738b6d",
-               "7fa7f4d7-2ac5-4a46-8d3c-f38791ce0c37",
-               "388cf5f9-972d-43bf-872d-d4a4fdde8388",
-               "c25ec89c-dd19-40c8-828b-b5b8e205adf2"
+               "dd7704d6-92af-433f-8307-1580c222b45b",
+               "f07a772a-99b8-42a9-80cf-ae5f022c3a88",
+               "0b8285b3-8cc6-4091-8484-0ae26045348e"
              ]
            }
          }
@@ -42,7 +40,42 @@ A convienient way to bulk update positions for supported resources.
 ```json
   {
     "data": {
-      "id": "2ec8d847-5901-422b-8464-aab5bf268709",
+      "id": "c9141d6a-4138-42f9-8b9b-ec969ca14eb7",
+      "type": "sortings"
+    },
+    "meta": {}
+  }
+```
+
+> How to update the order in which default properties are displayed:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/boomerang/sortings'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "sorting",
+           "attributes": {
+             "type": "default_properties",
+             "ids": [
+               "b4bc1f68-037d-4910-8c66-87497dd24491",
+               "0bd669a0-51bf-4493-8ce1-22c9ca11fce7",
+               "e54e6ae1-8288-4ffd-8e7a-f3450abfc7ba",
+               "41c3e709-3062-4040-8862-3f5c87890671",
+               "2033f2d9-8300-4554-8070-08271971674b"
+             ]
+           }
+         }
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "09ef6bf7-74e3-4276-8064-c916d9e88fac",
       "type": "sortings"
     },
     "meta": {}

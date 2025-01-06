@@ -27,7 +27,7 @@ Check each individual operation to see which relations can be included as a side
 `signature_base64` | **string** `writeonly` `required`<br>Base64 encoded signature, use this field to store a signature.
 
 
-## Confirm a contract
+## Sign a contract
 
 
 > Confirm and add a signature to a contract:
@@ -91,7 +91,7 @@ Check each individual operation to see which relations can be included as a side
           "number": 1,
           "prefix": null,
           "prefix_with_number": "1",
-          "date": "2024-12-30",
+          "date": "2025-01-06",
           "due_date": null,
           "name": "John Doe",
           "address": null,
@@ -103,7 +103,7 @@ Check each individual operation to see which relations can be included as a side
           "sent": false,
           "confirmed": true,
           "status": "confirmed",
-          "signature_url": "/uploads/669d1ffc33697dec21bffe91da144f6e/document/contract/signature/6ea8048b-b423-4dfb-8076-da8361155b47/fd41339f-7791-4cad-8f8f-47650ac6fbba.png",
+          "signature_url": "/uploads/6ec35b15c20e2b83d46f922e40351a06/document/contract/signature/6ea8048b-b423-4dfb-8076-da8361155b47/fd41339f-7791-4cad-8f8f-47650ac6fbba.png",
           "deposit_type": "none",
           "deposit_value": 0.0,
           "tag_list": [],

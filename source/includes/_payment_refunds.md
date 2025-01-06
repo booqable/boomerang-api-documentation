@@ -44,7 +44,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing payment refunds
+## List payment refunds
 
 
 > How to fetch a list of payment refunds:
@@ -172,7 +172,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a payment refund
+## Fetch a payment refund
 
 
 > How to fetch a payment refund:
@@ -250,7 +250,7 @@ This request accepts the following includes:
 
 
 
-## Creating a payment refund
+## Create a payment refund
 
 
 > How to create a payment refund:
@@ -359,7 +359,7 @@ This request accepts the following includes:
 
 
 
-## Updating a payment refund
+## Update a payment refund
 
 
 > How to update a payment refund:

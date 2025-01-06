@@ -22,7 +22,7 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
 `value` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`.
 
 
-## Listing coupons
+## List coupons
 
 
 > How to fetch a list of coupons:
@@ -103,7 +103,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a coupon
+## Fetch a coupon
 
 
 > How to fetch a coupon:
@@ -151,7 +151,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a coupon
+## Create a coupon
 
 
 > How to create a coupon:
@@ -223,7 +223,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a coupon
+## Update a coupon
 
 When updating a coupon the existing one is archived and a new one gets created:
 
@@ -268,15 +268,15 @@ When updating a coupon the existing one is archived and a new one gets created:
   }
 ```
 
-> How to deativate a coupon:
+> How to deactivate a coupon:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/coupons/65932103-4890-471f-8735-ec479064aa87'
+       --url 'https://example.booqable.com/api/boomerang/coupons/8c0f8005-b948-4ddc-855b-6825e4159246'
        --header 'content-type: application/json'
        --data '{
          "data": {
-           "id": "65932103-4890-471f-8735-ec479064aa87",
+           "id": "8c0f8005-b948-4ddc-855b-6825e4159246",
            "type": "coupons",
            "attributes": {
              "active": false
@@ -290,11 +290,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
     "data": {
-      "id": "3f4b1251-8ce2-48c0-8a32-006aa7e5c0a8",
+      "id": "aa069e77-af42-4e2c-862a-53a56308bcc0",
       "type": "coupons",
       "attributes": {
-        "created_at": "2021-02-10T20:58:01.000000+00:00",
-        "updated_at": "2021-02-10T20:58:01.000000+00:00",
+        "created_at": "2022-08-10T18:19:00.000000+00:00",
+        "updated_at": "2022-08-10T18:19:00.000000+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "SUMMER20OFF",
@@ -335,7 +335,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Archiving a coupon
+## Archive a coupon
 
 
 > How to archive a coupon:

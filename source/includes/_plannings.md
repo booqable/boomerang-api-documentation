@@ -54,7 +54,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing plannings
+## List plannings
 
 
 > How to fetch a list of plannings:
@@ -78,10 +78,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-06-21T07:51:00.000000+00:00",
-          "stops_at": "1973-07-21T07:51:00.000000+00:00",
-          "reserved_from": "1973-06-21T07:51:00.000000+00:00",
-          "reserved_till": "1973-07-21T07:51:00.000000+00:00",
+          "starts_at": "1973-06-14T07:50:00.000000+00:00",
+          "stops_at": "1973-07-14T07:50:00.000000+00:00",
+          "reserved_from": "1973-06-14T07:50:00.000000+00:00",
+          "reserved_till": "1973-07-14T07:50:00.000000+00:00",
           "reserved": true,
           "started": 0,
           "stopped": 0,
@@ -185,7 +185,7 @@ This request accepts the following includes:
 
 
 
-## Searching plannings
+## Search plannings
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -208,12 +208,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2024-12-31T09:26:49Z"
+                       "gte": "2025-01-07T09:27:49Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-01-03T09:26:49Z"
+                       "lte": "2025-01-10T09:27:49Z"
                      }
                    }
                  ]
@@ -223,12 +223,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2024-12-31T09:26:49Z"
+                       "gte": "2025-01-07T09:27:49Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-01-03T09:26:49Z"
+                       "lte": "2025-01-10T09:27:49Z"
                      }
                    }
                  ]
@@ -339,7 +339,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a planning
+## Fetch a planning
 
 
 > How to fetch a planning:
@@ -362,10 +362,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-07-15T04:16:01.000000+00:00",
-        "stops_at": "1978-08-14T04:16:01.000000+00:00",
-        "reserved_from": "1978-07-15T04:16:01.000000+00:00",
-        "reserved_till": "1978-08-14T04:16:01.000000+00:00",
+        "starts_at": "1978-07-08T04:15:01.000000+00:00",
+        "stops_at": "1978-08-07T04:15:01.000000+00:00",
+        "reserved_from": "1978-07-08T04:15:01.000000+00:00",
+        "reserved_till": "1978-08-07T04:15:01.000000+00:00",
         "reserved": true,
         "started": 0,
         "stopped": 0,

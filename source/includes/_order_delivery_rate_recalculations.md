@@ -19,7 +19,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** <br>Order that needs recalculation of its rates.
 
 
-## Recalculating delivery rates
+## Recalculate delivery rates
 
 
 > How to recalculate delivery rates:

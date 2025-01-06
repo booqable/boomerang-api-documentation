@@ -23,7 +23,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing menus
+## List menus
 
 
 > How to fetch a list of menus:
@@ -112,7 +112,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a menu
+## Fetch a menu
 
 
 > How to fetch a menu with it's items:
@@ -240,7 +240,7 @@ This request accepts the following includes:
 
 
 
-## Creating a menu with items
+## Create a menu with items
 
 
 > How to create a menu with menu items:
@@ -348,7 +348,7 @@ This request accepts the following includes:
 
 
 
-## Updating a menu and it's items
+## Update a menu and its items
 
 
 > How to update a menu with nested menu items:
@@ -517,7 +517,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a menu
+## Delete a menu
 
 
 > How to delete a menu:

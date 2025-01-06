@@ -33,7 +33,7 @@ When creating properties they are connected with their default when one of the f
 `validation_required` | **boolean** <br>Whether this property has to be validated. 
 
 
-## Listing default properties
+## List default properties
 
 
 > How to fetch a list of default properties:
@@ -117,13 +117,13 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a default property
+## Fetch a default property
 
 
-> How to fetch a default properties:
+> How to fetch a default property:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/default_properties/a9824b50-539e-4ee7-8b4f-afe76bef3f64'
+  curl --get 'https://example.booqable.com/api/boomerang/default_properties/e579fd95-e66a-48b3-8954-a1303f0d4543'
        --header 'content-type: application/json'
        --data-urlencode 'include=owner'
 ```
@@ -133,11 +133,11 @@ This request does not accept any includes
 ```json
   {
     "data": {
-      "id": "a9824b50-539e-4ee7-8b4f-afe76bef3f64",
+      "id": "e579fd95-e66a-48b3-8954-a1303f0d4543",
       "type": "default_properties",
       "attributes": {
-        "created_at": "2015-06-21T17:03:01.000000+00:00",
-        "updated_at": "2015-06-21T17:03:01.000000+00:00",
+        "created_at": "2016-06-28T12:50:01.000000+00:00",
+        "updated_at": "2016-06-28T12:50:01.000000+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,
@@ -169,7 +169,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a default property
+## Create a default property
 
 
 > How to create a default property and assign it to an owner:
@@ -247,7 +247,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a default property
+## Update a default property
 
 
 > How to update a default property:
@@ -324,7 +324,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting a default property
+## Delete a default property
 
 
 > How to delete a default property:

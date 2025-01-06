@@ -111,7 +111,7 @@ Check each individual operation to see which relations can be included as a side
 `property_type` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `province_id` | **string** <br>For property_type `address`. 
 `region` | **string** <br>For property_type `address`. 
-`show_on` | **array[string]** <br>Array of items to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. 
+`show_on` | **array[string]** <br>Array of document types to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. For properties that are linked to a default property, always the value from the default property will be used and the `show_on` attribute of the individual property is ignored. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `validation_required` | **boolean** <br>Whether this property has to be validated. 
 `value` | **string** <br>For property_type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`. 
@@ -127,7 +127,7 @@ by setting the `properties_attribute` attribute:
 - Product groups
 - Orders
 
-> Creating properties that correspond with an existing default property (assuming a default phone property exists):
+> Create a property that corresponds with an existing default property (assuming a default phone property exists):
 
 ```shell
   curl --request 
@@ -154,11 +154,11 @@ by setting the `properties_attribute` attribute:
 ```json
   {
     "data": {
-      "id": "acca028c-2611-4f03-8e5f-5b4b878883f1",
+      "id": "78172414-b6f5-44e3-874c-3ca4eafe1a02",
       "type": "customers",
       "attributes": {
-        "created_at": "2022-11-23T21:22:01.000000+00:00",
-        "updated_at": "2022-11-23T21:22:01.000000+00:00",
+        "created_at": "2027-08-03T07:47:02.000000+00:00",
+        "updated_at": "2027-08-03T07:47:02.000000+00:00",
         "archived": false,
         "archived_at": null,
         "number": 2,
@@ -183,7 +183,7 @@ by setting the `properties_attribute` attribute:
   }
 ```
 
-> Creating one-off properties (no corresponding default property):
+> Create a one-off property (no corresponding default property):
 
 ```shell
   curl --request 
@@ -211,11 +211,11 @@ by setting the `properties_attribute` attribute:
 ```json
   {
     "data": {
-      "id": "cd10348e-02f9-4463-8ccb-91cab20a4957",
+      "id": "48b9cace-e329-4be8-809a-d997d34eb388",
       "type": "customers",
       "attributes": {
-        "created_at": "2026-07-15T11:51:02.000000+00:00",
-        "updated_at": "2026-07-15T11:51:02.000000+00:00",
+        "created_at": "2026-04-01T06:11:06.000000+00:00",
+        "updated_at": "2026-04-01T06:11:06.000000+00:00",
         "archived": false,
         "archived_at": null,
         "number": 2,
@@ -281,7 +281,7 @@ by setting the `properties_attribute` attribute:
         "archived_at": null,
         "number": 2,
         "name": "John Doe",
-        "email": "john-72@doe.test",
+        "email": "john-71@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -356,7 +356,7 @@ by setting the `properties_attribute` attribute:
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-73@doe.test",
+          "email": "john-72@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -485,7 +485,7 @@ This request accepts the following includes:
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-74@doe.test",
+          "email": "john-73@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -597,7 +597,7 @@ This request accepts the following includes:
           "archived_at": null,
           "number": 2,
           "name": "Jane Doe",
-          "email": "john-76@doe.test",
+          "email": "john-75@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -657,7 +657,7 @@ Name | Description
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `data[attributes][province_id]` | **string** <br>For property_type `address`. 
 `data[attributes][region]` | **string** <br>For property_type `address`. 
-`data[attributes][show_on]` | **array[string]** <br>Array of items to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. 
+`data[attributes][show_on]` | **array[string]** <br>Array of document types to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. For properties that are linked to a default property, always the value from the default property will be used and the `show_on` attribute of the individual property is ignored. 
 `data[attributes][validation_required]` | **boolean** <br>Whether this property has to be validated. 
 `data[attributes][value]` | **string** <br>For property_type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`. 
 `data[attributes][zipcode]` | **string** <br>For property_type `address`. 
@@ -761,7 +761,7 @@ Name | Description
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `data[attributes][province_id]` | **string** <br>For property_type `address`. 
 `data[attributes][region]` | **string** <br>For property_type `address`. 
-`data[attributes][show_on]` | **array[string]** <br>Array of items to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. 
+`data[attributes][show_on]` | **array[string]** <br>Array of document types to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. For properties that are linked to a default property, always the value from the default property will be used and the `show_on` attribute of the individual property is ignored. 
 `data[attributes][validation_required]` | **boolean** <br>Whether this property has to be validated. 
 `data[attributes][value]` | **string** <br>For property_type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`. 
 `data[attributes][zipcode]` | **string** <br>For property_type `address`. 

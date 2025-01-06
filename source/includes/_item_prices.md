@@ -39,7 +39,7 @@ Check each individual operation to see which relations can be included as a side
 `till` | **datetime** <br>End of charge period. 
 
 
-## Calcuating the price of products and/or bundles
+## Calculate the price of products and/or bundles
 
 
 > Calculating price for a period:
@@ -119,8 +119,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2023-03-24T07:35:00.000000+00:00",
-          "updated_at": "2023-03-24T07:35:00.000000+00:00",
+          "created_at": "2023-03-31T07:36:00.000000+00:00",
+          "updated_at": "2023-03-31T07:36:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "type": "products",
@@ -166,8 +166,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
         "type": "products",
         "attributes": {
-          "created_at": "2023-03-24T07:35:00.000000+00:00",
-          "updated_at": "2023-03-24T07:35:00.000000+00:00",
+          "created_at": "2023-03-31T07:36:00.000000+00:00",
+          "updated_at": "2023-03-31T07:36:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "type": "products",

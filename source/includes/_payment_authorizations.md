@@ -55,7 +55,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing payment authorizations
+## List payment authorizations
 
 
 > How to fetch a list of payment authorizations:
@@ -204,7 +204,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a payment authorization
+## Fetch a payment authorization
 
 
 > How to fetch a payment authorization:
@@ -294,7 +294,7 @@ This request accepts the following includes:
 
 
 
-## Creating a payment authorization
+## Create a payment authorization
 
 
 > How to create a payment authorization:
@@ -416,7 +416,7 @@ This request accepts the following includes:
 
 
 
-## Updating a payment authorization
+## Update a payment authorization
 
 
 > How to update a payment authorization:

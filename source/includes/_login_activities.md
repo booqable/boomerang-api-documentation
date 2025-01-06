@@ -19,7 +19,7 @@ A list of all login attempts for the current employee.
 `user_agent` | **string** `readonly` `nullable`<br>Client application identifier.
 
 
-## Listing login activities
+## List login activities
 
 
 > How to fetch a list of login activities:

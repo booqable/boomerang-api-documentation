@@ -21,7 +21,7 @@ Check each individual operation to see which relations can be included as a side
 `user_id` | **uuid** <br>The user to send the invitation to.
 
 
-## Re-inviting a user
+## Re-invite a user
 
 
 > How to re-invite a user:

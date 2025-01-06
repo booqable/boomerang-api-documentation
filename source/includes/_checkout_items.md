@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing checkout items
+## List checkout items
 
 
 > How to fetch a list of checkout items:
@@ -124,7 +124,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a checkout item
+## Fetch a checkout item
 
 
 > How to fetch a checkout item:
@@ -180,7 +180,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a checkout item
+## Create a checkout item
 
 
 > How to create a checkout item:
@@ -264,7 +264,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a checkout item
+## Update a checkout item
 
 
 > How to update a checkout item:
@@ -347,7 +347,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Destroying a checkout item
+## Destroy a checkout item
 
 
 > How to delete a checkout item:

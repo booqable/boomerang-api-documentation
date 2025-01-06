@@ -29,7 +29,7 @@ Check each individual operation to see which relations can be included as a side
 `name` | **string** <br>Name of the key (for identification by user). 
 
 
-## Listing authentication methods
+## List authentication methods
 
 
 > How to fetch a list of authentication methods:
@@ -109,7 +109,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching an authentication method
+## Fetch an authentication method
 
 
 > How to fetch an authentication method:
@@ -159,7 +159,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating an authentication method
+## Create an authentication method
 
 
 > How to create a token authentication method:
@@ -191,7 +191,7 @@ This request does not accept any includes
         "name": "Segment integration",
         "kind": "token",
         "algorithm": null,
-        "key": "b18325fa7c11a05cbb490e84fba675a22cf729b76cf07a8f67e2c82e5cfa378f",
+        "key": "821465b1c39ad8d8584eee99c158868d986e7291281dfbedf3855cc9142c197a",
         "employee_id": "d6313cd4-52d0-4f71-87e9-0a5fbd855b19",
         "company_id": "d79aa57f-76cb-483a-8e40-c25404c26a5d"
       },
@@ -316,7 +316,7 @@ This request does not accept any includes
         "name": "Segment integration",
         "kind": "single_use",
         "algorithm": "HS256",
-        "key": "1edf5b834e40d61ca8d10a8ca758954e2f05f33fd1c1a47bb18dfc3493433357",
+        "key": "cb991b0f11304f313a1487b2cb22a067eb4b03da8499bd2f833df79d83045110",
         "employee_id": "777ef44e-2bce-40e3-85dc-63792f9f0c22",
         "company_id": "61df6c42-088c-4fa3-8860-b75b9c114770"
       },
@@ -367,7 +367,7 @@ This request accepts the following includes:
 
 
 
-## Deleting an authentication method
+## Delete an authentication method
 
 
 > How to delete an authentication method:

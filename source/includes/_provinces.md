@@ -24,10 +24,10 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing provinces
+## List provinces
 
 
-> How to fetch a list of provinces.:
+> How to fetch a list of provinces:
 
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/provinces'
@@ -40,15 +40,15 @@ Check each individual operation to see which relations can be included as a side
   {
     "data": [
       {
-        "id": "695e28de-b6d9-4ce0-8ffc-d378ee5b2cf1",
+        "id": "3026cccd-b110-4086-805e-a014d51387c0",
         "type": "provinces",
         "attributes": {
-          "created_at": "2019-09-03T09:03:01.000000+00:00",
-          "updated_at": "2019-09-03T09:03:01.000000+00:00",
+          "created_at": "2027-04-07T00:26:00.000000+00:00",
+          "updated_at": "2027-04-07T00:26:00.000000+00:00",
           "name": "Friesland",
           "code": "FR",
           "position": 0,
-          "country_id": "7709b9d0-c541-46c6-8ce8-847eebcf162d"
+          "country_id": "f5f75fb6-0967-4cc7-862d-b277d7a5bd44"
         },
         "relationships": {}
       }

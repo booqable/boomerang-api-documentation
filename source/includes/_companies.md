@@ -65,10 +65,10 @@ A company holds information and configuration about an account.
 `zipcode` | **string** <br>Zipcode. 
 
 
-## Fetching a company
+## Fetch a company
 
 
-> How to fetch a companies:
+> How to fetch a company:
 
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/companies/current'
@@ -80,11 +80,11 @@ A company holds information and configuration about an account.
 ```json
   {
     "data": {
-      "id": "2e881705-4faf-47fa-8a6a-422d1e753157",
+      "id": "9391cc27-0209-4fb5-8077-0e7af94f571d",
       "type": "companies",
       "attributes": {
-        "created_at": "2027-04-23T17:28:01.000000+00:00",
-        "updated_at": "2027-04-23T17:28:01.000000+00:00",
+        "created_at": "2025-12-03T02:00:00.000000+00:00",
+        "updated_at": "2025-12-03T02:00:00.000000+00:00",
         "name": "iRent",
         "slug": "irent",
         "email": "mail60@company.com",
@@ -122,7 +122,7 @@ A company holds information and configuration about an account.
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "c62fe1bba18c24302e916e4359b61293",
+        "tenant_token": "e08844f444c33fcafbe78fef211e194c",
         "pending_subscription": false,
         "team_size": null,
         "revenue_last_year": null,
@@ -145,7 +145,7 @@ A company holds information and configuration about an account.
           "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
         },
         "billing_address": null,
-        "third_party_id": "2e881705-4faf-47fa-8a6a-422d1e753157"
+        "third_party_id": "9391cc27-0209-4fb5-8077-0e7af94f571d"
       }
     },
     "meta": {}
@@ -169,7 +169,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching subscription details
+## Fetch subscription details
 
 The subscription has the following fields:
 
@@ -297,7 +297,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating a company
+## Update a company
 
 
 > How to update a company:
@@ -364,7 +364,7 @@ This request does not accept any includes
         "installed_online_store": false,
         "source": null,
         "medium": null,
-        "tenant_token": "d456ff306d0cc4f50f5e74429dc3c20a",
+        "tenant_token": "7a1067c6345a05d4627e8ec7bdeadbe6",
         "pending_subscription": false,
         "team_size": null,
         "revenue_last_year": null,

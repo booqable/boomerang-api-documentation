@@ -47,7 +47,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing stock_items
+## List stock_items
 
 
 > How to fetch a list of stock items:
@@ -159,7 +159,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a stock_item
+## Fetch a stock_item
 
 
 > How to fetch a stock item:
@@ -234,7 +234,7 @@ This request accepts the following includes:
 
 
 
-## Creating a stock_item
+## Create a stock_item
 
 
 > How to create a stock item:
@@ -334,7 +334,7 @@ This request accepts the following includes:
 
 
 
-## Updating a stock_item
+## Update a stock_item
 
 
 > How to update a stock item:

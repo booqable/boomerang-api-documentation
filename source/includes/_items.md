@@ -8,7 +8,7 @@ The Item resource makes it possible to fetch (and search!) the following resourc
 
 The description of the relationships and attributes of these resources can be found in their respective sections
 
-## Listing items
+## List items
 
 
 > How to fetch a list of items:
@@ -265,7 +265,7 @@ This request accepts the following includes:
 
 
 
-## Searching items
+## Search items
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -439,7 +439,7 @@ This request accepts the following includes:
 
 
 
-## Fetching an item
+## Fetch an item
 
 
 > How to fetch an item:

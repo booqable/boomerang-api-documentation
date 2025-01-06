@@ -28,7 +28,7 @@ Check each individual operation to see which relations can be included as a side
 `stock_item_id` | **uuid** `readonly`<br>The suggested stock item. 
 
 
-## Listing stock item suggestions
+## List stock item suggestions
 
 
 > Retrieve stock item suggestions for booking:

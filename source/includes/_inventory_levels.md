@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `readonly`<br>The order to filter on. 
 
 
-## Obtaining inventory levels for a product
+## Fetch inventory levels for a product
 
 
 > How to fetch inventory levels for a product:
@@ -132,7 +132,7 @@ This request accepts the following includes:
 
 
 
-## Obtaining inventory levels for a product for a specific location
+## Fetch inventory levels for a product for a specific location
 
 
 > How to fetch inventory levels for a product for a specific location:

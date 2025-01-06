@@ -37,7 +37,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing users
+## List users
 
 
 > How to fetch a list of users:
@@ -153,7 +153,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a user
+## Fetch a user
 
 
 > How to fetch a user:
@@ -217,7 +217,7 @@ This request accepts the following includes:
 
 
 
-## Inviting a user
+## Invite a user
 
 
 > How to invite a user:
@@ -307,7 +307,7 @@ This request accepts the following includes:
 
 
 
-## Updating a user
+## Update a user
 
 
 > How to update a user:
@@ -395,7 +395,7 @@ This request accepts the following includes:
 
 
 
-## Enabling a user
+## Enable a user
 
 
 > How to enable a user:
@@ -483,7 +483,7 @@ This request accepts the following includes:
 
 
 
-## Disabling a user
+## Disable a user
 
 
 > How to disable a user:

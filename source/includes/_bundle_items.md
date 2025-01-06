@@ -42,7 +42,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing bundle items
+## List bundle items
 
 
 > How to fetch a list of bundle items:
@@ -146,7 +146,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a bundle item
+## Fetch a bundle item
 
 
 > How to fetch a bundle item:
@@ -216,7 +216,7 @@ This request accepts the following includes:
 
 
 
-## Creating a bundle item
+## Create a bundle item
 
 
 > How to create a bundle item:
@@ -313,7 +313,7 @@ This request accepts the following includes:
 
 
 
-## Updating a bundle item
+## Update a bundle item
 
 
 > How to update a bundle item:
@@ -408,7 +408,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a bundle item
+## Delete a bundle item
 
 
 > How to delete a bundle item:

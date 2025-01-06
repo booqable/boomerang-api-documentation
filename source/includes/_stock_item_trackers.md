@@ -23,7 +23,7 @@ Check each individual operation to see which relations can be included as a side
 `stock_item_id` | **uuid** `readonly`<br>The StockItem being tracked. 
 
 
-## Listing stock item trackers
+## List stock item trackers
 
 
 > How to fetch StockItemTrackers for a ProductGroup:

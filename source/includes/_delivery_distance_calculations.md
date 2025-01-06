@@ -12,7 +12,7 @@ It calculates the distance (the route length) between the given locations and th
 `location_id` | **uuid** `readonly`<br>The location ID.
 
 
-## Calculating delivery distances
+## Calculate delivery distances
 
 
 > How to fetch a list of delivery distance calculations:

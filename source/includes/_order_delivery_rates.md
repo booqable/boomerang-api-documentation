@@ -28,7 +28,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Fetching rates from all installed delivery apps for an order
+## Fetch rates from all installed delivery apps for an order
 
 
 > How to fetch a list of rates:
@@ -137,7 +137,7 @@ This request accepts the following includes:
 
 
 
-## Fetching an order delivery rate
+## Fetch an order delivery rate
 
 
 > How to fetch a rate:
@@ -198,7 +198,7 @@ This request accepts the following includes:
 
 
 
-## Creating an order delivery rate
+## Create an order delivery rate
 
 
 > How to create an order delivery rate:
@@ -286,7 +286,7 @@ This request accepts the following includes:
 
 
 
-## Updating an order delivery rate
+## Update an order delivery rate
 
 
 > How to update an order delivery rate:
@@ -373,7 +373,7 @@ This request accepts the following includes:
 
 
 
-## Deleting an order delivery rate
+## Delete an order delivery rate
 
 
 > How to delete an order delivery rate:

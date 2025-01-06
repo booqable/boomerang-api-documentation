@@ -22,7 +22,7 @@ see [our help center](https://help.booqable.com/en/articles/3832164-emails-types
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing email templates
+## List email templates
 
 
 > How to fetch a list of email templates:
@@ -103,13 +103,13 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching an email template
+## Fetch an email template
 
 
-> How to fetch an email templates:
+> How to fetch an email template:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/email_templates/96060ea2-bce0-4867-8f1d-f9b5478855e8'
+  curl --get 'https://example.booqable.com/api/boomerang/email_templates/95b3a72d-9c05-4c26-8679-d2ecd5ff2739'
        --header 'content-type: application/json'
 ```
 
@@ -118,11 +118,11 @@ This request does not accept any includes
 ```json
   {
     "data": {
-      "id": "96060ea2-bce0-4867-8f1d-f9b5478855e8",
+      "id": "95b3a72d-9c05-4c26-8679-d2ecd5ff2739",
       "type": "email_templates",
       "attributes": {
-        "created_at": "2014-07-23T02:00:00.000000+00:00",
-        "updated_at": "2014-07-23T02:00:00.000000+00:00",
+        "created_at": "2023-09-05T22:46:01.000000+00:00",
+        "updated_at": "2023-09-05T22:46:01.000000+00:00",
         "name": "Webshop confirmation",
         "identifier": "webshop_confirmation",
         "subject": "We received your order",
@@ -161,7 +161,7 @@ This request accepts the following includes:
 
 
 
-## Creating an email template
+## Create an email template
 
 
 > How to create a email template:
@@ -234,7 +234,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating an email template
+## Update an email template
 
 
 > How to update an email template:
@@ -345,7 +345,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting an email template
+## Delete an email template
 
 
 > How to delete a email template:

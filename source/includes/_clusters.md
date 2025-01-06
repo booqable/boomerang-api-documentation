@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing clusters
+## List clusters
 
 
 > How to fetch clusters:
@@ -107,7 +107,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a cluster
+## Fetch a cluster
 
 
 > How to fetch a single cluster:
@@ -161,7 +161,7 @@ This request accepts the following includes:
 
 
 
-## Creating a cluster
+## Create a cluster
 
 
 > How to create a cluster:
@@ -234,7 +234,7 @@ This request accepts the following includes:
 
 
 
-## Updating a cluster
+## Update a cluster
 
 
 > How to update a cluster:
@@ -308,7 +308,7 @@ This request accepts the following includes:
 
 
 
-## Deleting a cluster
+## Delete a cluster
 
 To delete a cluster make sure no active locations are associated with it anymore.
 

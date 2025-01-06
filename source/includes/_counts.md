@@ -24,10 +24,10 @@ Get the counts for resources in an account.
 `webshop_order_count` | **integer** `readonly`<br>Amount of orders via the webshop. 
 
 
-## Fetching counts
+## Fetch counts
 
 
-> How to fetch counts for an account:
+> How to fetch counts for a company:
 
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/counts/current'
@@ -39,10 +39,10 @@ Get the counts for resources in an account.
 ```json
   {
     "data": {
-      "id": "4651bb45-1e0e-4a0d-8f2b-12f4a4c8d236",
+      "id": "c8a2104d-e9a4-4333-833f-6a3082c0795d",
       "type": "counts",
       "attributes": {
-        "created_at": "2016-06-24T02:24:02.000000+00:00",
+        "created_at": "2020-03-20T16:31:02.000000+00:00",
         "product_group_count": 1,
         "product_count": 1,
         "tax_rate_count": 1,

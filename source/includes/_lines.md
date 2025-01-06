@@ -115,7 +115,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing lines
+## List lines
 
 
 > How to fetch a list of lines:
@@ -152,8 +152,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-11-09T05:42:00.000000+00:00",
-              "till": "1978-12-08T05:42:00.000000+00:00",
+              "from": "1978-11-02T05:41:00.000000+00:00",
+              "till": "1978-12-01T05:41:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -171,8 +171,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-11-22T17:42:00.000000+00:00",
-                    "till": "1978-12-08T05:42:00.000000+00:00",
+                    "from": "1978-11-15T17:41:00.000000+00:00",
+                    "till": "1978-12-01T05:41:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -285,7 +285,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a line
+## Fetch a line
 
 
 > How to fetch a line:
@@ -321,8 +321,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1978-01-11T12:17:02.000000+00:00",
-            "till": "1978-02-09T12:17:02.000000+00:00",
+            "from": "1978-01-04T12:16:02.000000+00:00",
+            "till": "1978-02-02T12:16:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -340,8 +340,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1978-01-25T00:17:02.000000+00:00",
-                  "till": "1978-02-09T12:17:02.000000+00:00",
+                  "from": "1978-01-18T00:16:02.000000+00:00",
+                  "till": "1978-02-02T12:16:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -426,7 +426,7 @@ This request accepts the following includes:
 
 
 
-## Creating a line
+## Create a line
 
 Lines created through this endpoint, so-called custom lines, can only have the type `charge` or `section`.
 Custom `charge` lines enable you to add charges not (directly) connected to a product to an order.
@@ -577,7 +577,7 @@ This request accepts the following includes:
 
 
 
-## Updating a line
+## Update a line
 
 Change information, pricing, or increase the quantity of a line. Note that when updating the quantity of a line associated with a planning, the quantity of the planninig will also be updated, which may result in a shortage error.
 
@@ -725,7 +725,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a line
+## Archive a line
 
 
 > How to delete a line:
@@ -762,8 +762,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1974-03-03T22:53:02.000000+00:00",
-            "till": "1974-04-01T22:53:02.000000+00:00",
+            "from": "1974-02-24T22:52:02.000000+00:00",
+            "till": "1974-03-25T22:52:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -781,8 +781,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1974-03-17T10:53:02.000000+00:00",
-                  "till": "1974-04-01T22:53:02.000000+00:00",
+                  "from": "1974-03-10T10:52:02.000000+00:00",
+                  "till": "1974-03-25T22:52:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

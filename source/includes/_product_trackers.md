@@ -32,7 +32,7 @@ Check each individual operation to see which relations can be included as a side
 `quantity` | **integer** `readonly`<br>The quantitiy of the product being picked up or returned. Positive values are pickups, negative values are returns. 
 
 
-## Listing product trackers
+## List product trackers
 
 
 > How to fetch ProductTrackers for a ProductGroup:

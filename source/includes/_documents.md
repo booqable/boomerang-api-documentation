@@ -84,7 +84,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing documents
+## List documents
 
 
 > How to fetch a list of documents:
@@ -266,7 +266,7 @@ This request accepts the following includes:
 
 
 
-## Searching documents
+## Search documents
 
 Use advanced search to make logical filter groups with and/or operators.
 
@@ -443,7 +443,7 @@ This request accepts the following includes:
 
 
 
-## Fetching a document
+## Fetch a document
 
 
 > How to fetch a documents:
@@ -557,7 +557,7 @@ This request accepts the following includes:
 
 
 
-## Creating a document
+## Create a document
 
 
 > How to create a contract:
@@ -593,7 +593,7 @@ This request accepts the following includes:
         "number": 1,
         "prefix": null,
         "prefix_with_number": "1",
-        "date": "2024-12-30",
+        "date": "2025-01-06",
         "due_date": null,
         "name": "John Doe",
         "address": "",
@@ -712,7 +712,7 @@ This request accepts the following includes:
 
 
 
-## Updating a document
+## Update a document
 
 
 > How to update a document:
@@ -867,7 +867,7 @@ This request accepts the following includes:
 
 
 
-## Archiving a document
+## Archive a document
 
 When archiving an invoice make sure `delete_invoices` permission is enabled.
 

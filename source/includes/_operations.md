@@ -311,7 +311,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing operations
+## List operations
 
 
 > How to fetch a list of operations:
@@ -404,7 +404,7 @@ This request accepts the following includes:
 
 
 
-## Fetching an operation
+## Fetch an operation
 
 
 > How to fetch an operation:
@@ -467,7 +467,7 @@ This request accepts the following includes:
 
 
 
-## Creating an operation
+## Create an operation
 
 
 > How to create an operation:

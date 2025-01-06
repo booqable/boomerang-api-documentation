@@ -22,7 +22,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing publications
+## List publications
 
 
 > How to fetch a list of publications:
@@ -105,7 +105,7 @@ This request accepts the following includes:
 
 
 
-## Creating a publication
+## Create a publication
 
 
 > How to create a new publication:

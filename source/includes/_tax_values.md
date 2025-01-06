@@ -28,7 +28,7 @@ Check each individual operation to see which relations can be included as a side
 `value_in_cents` | **integer** `readonly`<br>Amount of tax in cents.
 
 
-## Listing tax values
+## List tax values
 
 
 > How to fetch a list of tax values:
@@ -111,7 +111,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a tax value
+## Fetch a tax value
 
 
 > How to fetch a tax value:
@@ -167,8 +167,8 @@ This request does not accept any includes
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-01-30T17:20:00.000000+00:00",
-          "stops_at": "2018-02-03T17:20:00.000000+00:00",
+          "starts_at": "2018-01-30T17:19:00.000000+00:00",
+          "stops_at": "2018-02-03T17:19:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,

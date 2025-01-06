@@ -30,7 +30,7 @@ Check each individual operation to see which relations can be included as a side
 `type` | **enum** `writeonly`<br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`.
 
 
-## Creating a bulk upsert
+## Upsert bulk data
 
 
 > How to create operating rules in bulk:

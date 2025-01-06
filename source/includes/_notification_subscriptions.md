@@ -42,7 +42,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Listing notification subscriptions
+## List notification subscriptions
 
 
 > How to fetch a list of notification subscriptions:
@@ -159,7 +159,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Listing global notification subscriptions
+## List global notification subscriptions
 
 
 > How to fetch a list of global notification subscriptions:
@@ -264,7 +264,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Listing non-global/ owned notification subscriptions
+## List non-global/ owned notification subscriptions
 
 
 > How to fetch a list of non-global/owned notification subscriptions:
@@ -343,7 +343,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Fetching a notification subscription
+## Fetch a notification subscription
 
 
 > How to fetch a notification subscription:
@@ -390,7 +390,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Creating a notification subscription
+## Create a notification subscription
 
 
 > How to create a notification_subscription:
@@ -459,7 +459,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Deleting a notification subscription
+## Delete a notification subscription
 
 
 > How to delete a notification subscription:

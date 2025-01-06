@@ -16,7 +16,7 @@ a new record.
 `url` | **string** <br>The URL that will receive the webhook payload. 
 
 
-## Listing webhook endpoints
+## List webhook endpoints
 
 
 > How to fetch a list of webhook endpoints:
@@ -86,7 +86,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Subscribing to webhook events
+## Subscribe to webhook events
 
 
 > How to subscribe to webhook events:
@@ -156,7 +156,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Updating webhook events
+## Update webhook events
 
 
 > How to update webhook events:
@@ -225,7 +225,7 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
-## Unsubscribing from webhook events
+## Unsubscrib from webhook events
 
 
 > How to unsubscribe from webhook events:

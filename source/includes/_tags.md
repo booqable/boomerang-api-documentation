@@ -16,7 +16,7 @@ The Tag resource allows to gather names and usage counts of tags that are being 
 `name` | **string** <br>Name of the tag.
 
 
-## Listing tags
+## List tags
 
 
 > How to fetch a list of tags with their counts:

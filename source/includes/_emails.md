@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 `updated_at` | **datetime** `readonly`<br>The last time the email was updated. Typically this is updated after a delivery attempt has failed. 
 
 
-## Listing emails
+## List emails
 
 
 > How to fetch a list of emails:
@@ -170,7 +170,7 @@ This request accepts the following includes:
 
 
 
-## Creating and sending an email
+## Create and sending an email
 
 
 > How to create and send an email:
