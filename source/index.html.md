@@ -24,6 +24,7 @@ includes:
   - barcodes
   - bundles
   - bundle_items
+  - clusters
   - collections
   - collection_items
   - collection_trees
