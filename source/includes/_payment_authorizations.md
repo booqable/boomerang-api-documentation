@@ -430,7 +430,9 @@ This request accepts the following includes:
            "id": "1ed150c8-95c1-4995-84f1-2d34064f48ed",
            "type": "payment_authorizations",
            "attributes": {
-             "status": "started"
+             "status": "started",
+             "provider": "stripe",
+             "provider_method": "card"
            }
          }
        }'
@@ -456,7 +458,7 @@ This request accepts the following includes:
         "redirect_url": null,
         "provider": "stripe",
         "provider_id": null,
-        "provider_method": null,
+        "provider_method": "card",
         "provider_secret": null,
         "capturable": true,
         "amount_capturable_in_cents": 100,

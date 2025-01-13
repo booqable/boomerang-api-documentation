@@ -36,7 +36,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/order_delivery_rates'
        --header 'content-type: application/json'
-       --data-urlencode 'order_id=511097b6-24a3-4291-8141-095dcff3eb32'
+       --data-urlencode 'filter[order_id]=511097b6-24a3-4291-8141-095dcff3eb32'
 ```
 
 > A 200 status response looks like this:
