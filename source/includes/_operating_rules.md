@@ -96,7 +96,7 @@ This request can be filtered on:
 Name | Description
 -- | --
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`data_type` | **string_enum** <br>`eq`
+`data_type` | **enum** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 

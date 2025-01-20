@@ -1,10 +1,14 @@
 # Barcodes
 
-You can assign barcodes to products (or their variations), individually tracked stock items,
-and customers (for use on a customer card, for example).
+You can assign Barcodes to Product (variations), individually tracked StockItems,
+and Customers (for use on a customer card, for example).
 
-An QR code is always generated for each order. This QR code is included in emails for speedy
-pickup and printed on packing slips for easier logistics.
+An QR code is always generated for each Order. This QR code can be included in emails
+for speedy pickup and printed on packing slips for easier logistics.
+
+Barcodes cannot be added to ProductGroups. Instead Barcodes can be added to individual
+Products within the ProductGroup. This is also true when a ProductGroup does not have
+variations enabled. In that case a Barcode is added to the single Product in the group.
 
 <aside class="notice">
   Availability of barcodes and barcode-scanning depends on the current pricing plan.
@@ -26,7 +30,7 @@ Note that when using URLs as numbers, it's advised to base64 encode the number b
 ## Relationships
 Name | Description
 -- | --
-`owner` | **[Customer](#customers), [Product](#products), [Order](#orders), [Stock item](#stock-items)** `required`<br>The resource pointed to by this barcode. 
+`owner` | **[Customer](#customers), [Product](#products), [Order](#orders), [Stock item](#stock-items)** `required`<br>The resource pointed to by this Barcode. 
 
 
 Check matching attributes under [Fields](#barcodes-fields) to see which relations can be written.
@@ -39,10 +43,10 @@ Check each individual operation to see which relations can be included as a side
 `barcode_type` | **enum** <br>Barcode format. See resource description above for pros/cons of each format.<br> One of: `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`image_url` | **string** `readonly`<br>A link to an image of the barcode. 
+`image_url` | **string** `readonly`<br>A link to an image of the Barcode. 
 `number` | **string** <br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one. When using a URL, it's advised to base64 encode the number before filtering. 
-`owner_id` | **uuid** <br>The resource pointed to by this barcode. 
-`owner_type` | **string** <br>The resource type of the owner.
+`owner_id` | **uuid** `readonly-after-create`<br>The resource pointed to by this Barcode. 
+`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `products`, `orders`, `stock_items`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -151,7 +155,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNzkyY2JmNWYtMWYwOS00ZjFjLWFhZTUtODExOTMwY2I0MGIw'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvMzQ5MTUxOGQtN2FhMi00ZjNlLWI3NDItMWVjNDUzNjBjMjlm'
        --data-urlencode 'include=owner'
 ```
 
@@ -237,12 +241,12 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`barcode_type` | **string_enum** <br>`eq`
+`barcode_type` | **enum** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
 `number` | **string** <br>`eq`
 `owner_id` | **uuid** <br>`eq`, `not_eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -440,8 +444,8 @@ Name | Description
 -- | --
 `data[attributes][barcode_type]` | **enum** <br>Barcode format. See resource description above for pros/cons of each format.<br> One of: `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`.
 `data[attributes][number]` | **string** <br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one. When using a URL, it's advised to base64 encode the number before filtering. 
-`data[attributes][owner_id]` | **uuid** <br>The resource pointed to by this barcode. 
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_id]` | **uuid** <br>The resource pointed to by this Barcode. 
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `products`, `orders`, `stock_items`.
 
 
 ### Includes
@@ -528,8 +532,8 @@ Name | Description
 -- | --
 `data[attributes][barcode_type]` | **enum** <br>Barcode format. See resource description above for pros/cons of each format.<br> One of: `code39`, `code93`, `code128`, `ean8`, `ean13`, `qr_code`.
 `data[attributes][number]` | **string** <br>The barcode data, can be a number, code or url. Leave blank to let Booqable create one. When using a URL, it's advised to base64 encode the number before filtering. 
-`data[attributes][owner_id]` | **uuid** <br>The resource pointed to by this barcode. 
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_id]` | **uuid** <br>The resource pointed to by this Barcode. 
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `products`, `orders`, `stock_items`.
 
 
 ### Includes

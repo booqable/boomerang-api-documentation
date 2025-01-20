@@ -173,7 +173,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle_items,inventory_levels,photo`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,bundle_items,inventory_levels`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -204,12 +204,12 @@ Name | Description
 `lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`price_period` | **string_enum** <br>`eq`
+`price_period` | **enum** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
-`price_type` | **string_enum** <br>`eq`
+`price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -221,7 +221,7 @@ Name | Description
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
-`tracking_type` | **string_enum** <br>`eq`
+`tracking_type` | **enum** <br>`eq`
 `type` | **string** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `variation` | **boolean** <br>`eq`
@@ -252,6 +252,9 @@ Name | Description
 
 This request accepts the following includes:
 
+`barcode`
+
+
 `bundle_items`
 
 
@@ -259,6 +262,9 @@ This request accepts the following includes:
 
 
 `photo`
+
+
+`properties`
 
 
 
@@ -347,7 +353,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle_items,inventory_levels,photo`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,bundle_items,inventory_levels`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -378,12 +384,12 @@ Name | Description
 `lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`price_period` | **string_enum** <br>`eq`
+`price_period` | **enum** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
-`price_type` | **string_enum** <br>`eq`
+`price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -395,7 +401,7 @@ Name | Description
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
-`tracking_type` | **string_enum** <br>`eq`
+`tracking_type` | **enum** <br>`eq`
 `type` | **string** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `variation` | **boolean** <br>`eq`
@@ -426,6 +432,9 @@ Name | Description
 
 This request accepts the following includes:
 
+`barcode`
+
+
 `bundle_items`
 
 
@@ -433,6 +442,9 @@ This request accepts the following includes:
 
 
 `photo`
+
+
+`properties`
 
 
 
@@ -520,12 +532,15 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle_items,inventory_levels,photo`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,bundle_items,inventory_levels`
 
 
 ### Includes
 
 This request accepts the following includes:
+
+`barcode`
+
 
 `bundle_items`
 
@@ -534,6 +549,9 @@ This request accepts the following includes:
 
 
 `photo`
+
+
+`properties`
 
 
 

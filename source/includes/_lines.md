@@ -66,7 +66,7 @@ Name | Description
 `item` | **[Item](#items)** `optional`<br>The Product or Bundle that was booked, when this Line has an associated Planning. 
 `nested_lines` | **[Lines](#lines)** `hasmany`<br>When `item` is a Bundle, then there is a `nested_line` that corresponds for each BundleItem. 
 `order` | **[Order](#orders)** `required`<br>The Order this Line belongs to. 
-`owner` | **[Order](#orders)** `required`<br>The resource this Line belongs to. Either the Order directly, or a Document. 
+`owner` | **[Order](#orders), [Document](#documents)** `required`<br>The resource this Line belongs to. Either the Order directly, or a Document. 
 `parent_line` | **[Line](#lines)** `optional`<br>When present, then this Line is part of a Bundle, and corresponds to a BundleItem. Inverse of `nested_lines` relation. 
 `planning` | **[Planning](#plannings)** `optional`<br>The Planning for which this Lines was created. that contains the logistical information related to this Line. 
 `price_structure` | **[Price structure](#price-structures)** `optional`<br>The PriceStructure used to calculate the price. 
@@ -98,7 +98,7 @@ Check each individual operation to see which relations can be included as a side
 `original_charge_length` | **integer** `readonly`<br>The original charge length of the product (without price rule adjustments). 
 `original_price_each_in_cents` | **integer** `readonly`<br>The original price of the product (without price rule adjustments). 
 `owner_id` | **uuid** `readonly-after-create`<br>The resource this Line belongs to. Either the Order directly, or a Document. 
-`owner_type` | **string** `readonly-after-create`<br>The resource type of the owner.
+`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `orders`, `documents`.
 `parent_line_id` | **uuid** `readonly` `nullable`<br>When present, then this Line is part of a Bundle, and corresponds to a BundleItem. Inverse of `nested_lines` relation. 
 `planning_id` | **uuid** `readonly` `nullable`<br>The Planning for which this Lines was created. that contains the logistical information related to this Line. 
 `position` | **integer** `nullable`<br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
@@ -152,8 +152,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-10-26T05:42:00.000000+00:00",
-              "till": "1978-11-24T05:42:00.000000+00:00",
+              "from": "1978-10-19T05:42:00.000000+00:00",
+              "till": "1978-11-17T05:42:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -171,8 +171,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-11-08T17:42:00.000000+00:00",
-                    "till": "1978-11-24T05:42:00.000000+00:00",
+                    "from": "1978-11-01T17:42:00.000000+00:00",
+                    "till": "1978-11-17T05:42:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -234,10 +234,10 @@ Name | Description
 `discountable` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `item_id` | **uuid** <br>`eq`, `not_eq`
-`line_type` | **string_enum** <br>`eq`
+`line_type` | **enum** <br>`eq`
 `order_id` | **uuid** <br>`eq`
 `owner_id` | **uuid** <br>`eq`, `not_eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `parent_line_id` | **uuid** <br>`eq`, `not_eq`
 `planning_id` | **uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
@@ -321,8 +321,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1977-12-28T12:17:02.000000+00:00",
-            "till": "1978-01-26T12:17:02.000000+00:00",
+            "from": "1977-12-21T12:17:02.000000+00:00",
+            "till": "1978-01-19T12:17:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -340,8 +340,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1978-01-11T00:17:02.000000+00:00",
-                  "till": "1978-01-26T12:17:02.000000+00:00",
+                  "from": "1978-01-04T00:17:02.000000+00:00",
+                  "till": "1978-01-19T12:17:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -525,7 +525,7 @@ Name | Description
 `data[attributes][line_type]` | **enum** <br>Type of line.<br> One of: `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`, `delivery_rate`.
 `data[attributes][original_charge_label]` | **string** <br>The original charge label of the product (without price rule adjustments). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the Order directly, or a Document. 
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `orders`, `documents`.
 `data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
 `data[attributes][price_structure_id]` | **uuid** <br>The PriceStructure used to calculate the price. 
@@ -673,7 +673,7 @@ Name | Description
 `data[attributes][line_type]` | **enum** <br>Type of line.<br> One of: `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`, `delivery_rate`.
 `data[attributes][original_charge_label]` | **string** <br>The original charge label of the product (without price rule adjustments). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the Order directly, or a Document. 
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `orders`, `documents`.
 `data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
 `data[attributes][price_structure_id]` | **uuid** <br>The PriceStructure used to calculate the price. 
@@ -745,9 +745,9 @@ This request accepts the following includes:
       "type": "lines",
       "attributes": {
         "created_at": "2018-12-01T08:17:02.000000+00:00",
-        "updated_at": "2018-12-01T08:17:02.000000+00:00",
+        "updated_at": "2018-12-01T08:18:02.000000+00:00",
         "archived": true,
-        "archived_at": "2018-12-01T08:17:02.000000+00:00",
+        "archived_at": "2018-12-01T08:18:02.000000+00:00",
         "title": "Macbook Pro",
         "extra_information": "Comes with a mouse",
         "quantity": 1,
@@ -762,8 +762,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1974-02-17T22:53:02.000000+00:00",
-            "till": "1974-03-18T22:53:02.000000+00:00",
+            "from": "1974-02-10T22:53:02.000000+00:00",
+            "till": "1974-03-11T22:53:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -781,8 +781,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1974-03-03T10:53:02.000000+00:00",
-                  "till": "1974-03-18T22:53:02.000000+00:00",
+                  "from": "1974-02-24T10:53:02.000000+00:00",
+                  "till": "1974-03-11T22:53:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

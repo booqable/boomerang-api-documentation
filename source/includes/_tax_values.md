@@ -21,9 +21,9 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** `readonly`<br>Name of the tax rate.
 `owner_id` | **uuid** `readonly`<br>The order or cart.
-`owner_type` | **string** `readonly`<br>The resource type of the owner.
+`owner_type` | **enum** `readonly`<br>The resource type of the owner.<br>Always `orders`
 `percentage` | **float** `readonly`<br>The percentage taxed.
-`tax_rate_id` | **uuid** `readonly`<br>The rate used to calculated this tax.
+`tax_rate_id` | **uuid** <br>The rate used to calculated this tax.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `value_in_cents` | **integer** `readonly`<br>Amount of tax in cents.
 
@@ -91,7 +91,7 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `owner_id` | **uuid** <br>`eq`, `not_eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tax_rate_id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`

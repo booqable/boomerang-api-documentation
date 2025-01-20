@@ -93,7 +93,7 @@ Name | Description
 `identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `label` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `method_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`provider` | **string_enum** <br>`eq`
+`provider` | **enum** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -122,7 +122,7 @@ This request does not accept any includes
          "data": {
            "type": "payment_methods",
            "attributes": {
-             "provider": "stripe",
+             "provider": "app",
              "identifier": "pm_123",
              "customer_id": "e1f17238-83d4-4660-8f3b-5e95b67094df",
              "label": "Test card"
@@ -143,7 +143,7 @@ This request does not accept any includes
         "updated_at": "2019-01-15T14:37:00.000000+00:00",
         "label": "Test card",
         "status": "created",
-        "provider": "stripe",
+        "provider": "app",
         "identifier": "pm_123",
         "method_type": null,
         "details": {},

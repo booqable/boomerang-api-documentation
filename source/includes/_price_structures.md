@@ -111,7 +111,7 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
-`price_structure_type` | **string_enum** <br>`eq`, `not_eq`
+`price_structure_type` | **enum** <br>`eq`, `not_eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 

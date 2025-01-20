@@ -1,35 +1,12 @@
 # Payments
 
-A Payment holds information about a payment and its type (owner).
+The Payment resource makes it possible to fetch the following resources in a single request:
 
-## Relationships
-Name | Description
--- | --
-`cart` | **[Cart](#carts)** `required`<br>The associated cart.
-`order` | **[Order](#orders)** `required`<br>The associated order.
-`owner` | **[Payment charge](#payment-charges), [Payment authorization](#payment-authorizations), [Payment refund](#payment-refunds)** `required`<br>The resource this payment belongs to.
+- [Payment Charges](#payment-charges)
+- [Payment Authorizations](#payment-authorizations)
+- [Payment Refunds](#payment-refunds)
 
-
-Check matching attributes under [Fields](#payments-fields) to see which relations can be written.
-<br/ >
-Check each individual operation to see which relations can be included as a sideload.
-## Fields
-
- Name | Description
--- | --
-`amount_in_cents` | **integer** `readonly`<br>Amount in cents.
-`cart_id` | **uuid** `readonly-after-create`<br>The associated cart.
-`created_at` | **datetime** `readonly`<br>When the resource was created.
-`currency` | **string** `readonly`<br>Currency.
-`deposit_in_cents` | **integer** `readonly`<br>Deposit in cents.
-`id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>The associated order.
-`owner_id` | **uuid** <br>The resource this payment belongs to.
-`owner_type` | **string** <br>The resource type of the owner.
-`status` | **string** `readonly`<br>Status dependent of the `owner`.
-`total_in_cents` | **integer** `readonly`<br>Total amount in cents (amount + deposit).
-`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
-
+The description of the relationships and attributes of these resources can be found in their respective sections
 
 ## List payments
 
@@ -48,19 +25,120 @@ Check each individual operation to see which relations can be included as a side
     "data": [
       {
         "id": "d7796fe0-99e9-4f00-858b-eb3f1e28fd8f",
-        "type": "payments",
+        "type": "payment_refunds",
         "attributes": {
           "created_at": "2028-11-19T02:39:01.000000+00:00",
           "updated_at": "2028-11-19T02:39:01.000000+00:00",
-          "status": "created",
+          "type": "payment_refunds",
+          "possible_actions": [
+            "cancel"
+          ],
+          "provider": "none",
+          "provider_id": null,
+          "provider_method": null,
+          "provider_secret": null,
           "amount_in_cents": 5000,
           "deposit_in_cents": 0,
           "total_in_cents": 5000,
           "currency": "usd",
-          "owner_id": null,
-          "owner_type": null,
+          "succeeded_at": null,
+          "failed_at": null,
+          "canceled_at": null,
+          "expired_at": null,
           "cart_id": null,
-          "order_id": null
+          "order_id": null,
+          "employee_id": null,
+          "customer_id": null,
+          "status": "created",
+          "description": null,
+          "failure_reason": null,
+          "reason": null,
+          "payment_charge_id": null
+        },
+        "relationships": {}
+      },
+      {
+        "id": "d7d97872-e34d-4c76-8452-be23af13a699",
+        "type": "payment_authorizations",
+        "attributes": {
+          "created_at": "2028-11-19T02:39:01.000000+00:00",
+          "updated_at": "2028-11-19T02:39:01.000000+00:00",
+          "type": "payment_authorizations",
+          "possible_actions": [
+            "cancel"
+          ],
+          "provider": "stripe",
+          "provider_id": null,
+          "provider_method": null,
+          "provider_secret": null,
+          "amount_in_cents": 5000,
+          "deposit_in_cents": 0,
+          "total_in_cents": 5000,
+          "currency": "usd",
+          "succeeded_at": null,
+          "failed_at": null,
+          "canceled_at": null,
+          "expired_at": null,
+          "cart_id": null,
+          "order_id": null,
+          "employee_id": null,
+          "customer_id": null,
+          "status": "created",
+          "mode": "request",
+          "description": null,
+          "redirect_url": null,
+          "capturable": true,
+          "amount_capturable_in_cents": 5000,
+          "deposit_capturable_in_cents": 0,
+          "total_capturable_in_cents": 5000,
+          "amount_captured_in_cents": 0,
+          "deposit_captured_in_cents": 0,
+          "total_captured_in_cents": 0,
+          "captured_at": null,
+          "capture_before": null,
+          "payment_method_id": null
+        },
+        "relationships": {}
+      },
+      {
+        "id": "829cbadd-91ff-44e3-850b-28fb5b5dd16f",
+        "type": "payment_charges",
+        "attributes": {
+          "created_at": "2028-11-19T02:39:01.000000+00:00",
+          "updated_at": "2028-11-19T02:39:01.000000+00:00",
+          "type": "payment_charges",
+          "possible_actions": [
+            "cancel"
+          ],
+          "provider": "stripe",
+          "provider_id": null,
+          "provider_method": null,
+          "provider_secret": null,
+          "amount_in_cents": 5000,
+          "deposit_in_cents": 0,
+          "total_in_cents": 5000,
+          "currency": "usd",
+          "succeeded_at": null,
+          "failed_at": null,
+          "canceled_at": null,
+          "expired_at": null,
+          "cart_id": null,
+          "order_id": null,
+          "employee_id": null,
+          "customer_id": null,
+          "status": "created",
+          "mode": "request",
+          "description": null,
+          "redirect_url": null,
+          "refundable": true,
+          "amount_refundable_in_cents": 5000,
+          "amount_refunded_in_cents": 0,
+          "deposit_refundable_in_cents": 0,
+          "deposit_refunded_in_cents": 0,
+          "total_refundable_in_cents": 5000,
+          "total_refunded_in_cents": 0,
+          "payment_method_id": null,
+          "payment_authorization_id": null
         },
         "relationships": {}
       }
@@ -79,9 +157,9 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payments]=created_at,updated_at,status`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payments]=created_at,updated_at,type`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner,order,cart`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -94,10 +172,25 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`amount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`canceled_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`cart_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`currency` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`customer_id` | **uuid** <br>`eq`, `not_eq`
+`deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`employee_id` | **uuid** <br>`eq`, `not_eq`
+`expired_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`failed_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
-`owner_id` | **uuid** <br>`eq`, `not_eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`order_id` | **uuid** <br>`eq`, `not_eq`
+`provider` | **enum** <br>`eq`
+`provider_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`provider_method` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`provider_secret` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`succeeded_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`type` | **string** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -116,9 +209,6 @@ Name | Description
 ### Includes
 
 This request accepts the following includes:
-
-`owner`
-
 
 `order`
 
@@ -146,19 +236,43 @@ This request accepts the following includes:
   {
     "data": {
       "id": "bf92b7a9-88e9-43e2-85c0-49ff1418a448",
-      "type": "payments",
+      "type": "payment_charges",
       "attributes": {
         "created_at": "2016-06-23T23:18:00.000000+00:00",
         "updated_at": "2016-06-23T23:18:00.000000+00:00",
-        "status": "created",
+        "type": "payment_charges",
+        "possible_actions": [
+          "cancel"
+        ],
+        "provider": "stripe",
+        "provider_id": null,
+        "provider_method": null,
+        "provider_secret": null,
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
         "total_in_cents": 5000,
         "currency": "usd",
-        "owner_id": null,
-        "owner_type": null,
+        "succeeded_at": null,
+        "failed_at": null,
+        "canceled_at": null,
+        "expired_at": null,
         "cart_id": null,
-        "order_id": null
+        "order_id": null,
+        "employee_id": null,
+        "customer_id": null,
+        "status": "created",
+        "mode": "request",
+        "description": null,
+        "redirect_url": null,
+        "refundable": true,
+        "amount_refundable_in_cents": 5000,
+        "amount_refunded_in_cents": 0,
+        "deposit_refundable_in_cents": 0,
+        "deposit_refunded_in_cents": 0,
+        "total_refundable_in_cents": 5000,
+        "total_refunded_in_cents": 0,
+        "payment_method_id": null,
+        "payment_authorization_id": null
       },
       "relationships": {}
     },
@@ -176,16 +290,13 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payments]=created_at,updated_at,status`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner,order,cart`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payments]=created_at,updated_at,type`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart`
 
 
 ### Includes
 
 This request accepts the following includes:
-
-`owner`
-
 
 `order`
 

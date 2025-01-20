@@ -41,46 +41,46 @@ Properties can have different types and behave differently. These are the `value
 
 | **text_field** | Renders a text field |
 | :------ | :-------- |
-| `value` | String |
+| `value` | **string** |
 
 | **text_area** | Renders a text area |
 | :------ | :-------- |
-|`value` | String |
+|`value` | **string** |
 
 | **phone** | Renders a phone field |
 | :------ | :-------- |
-| `value` | String |
+| `value` | **string** |
 
 | **email** | Renders an email field |
 | :------ | :-------- |
-| `value` | String |
+| `value` | **string** |
 
 | **date_field** | Renders a date picker |
 | :------ | :-------- |
-| `value` | String |
+| `value` | **string** |
 
 | **select** | Renders a dropdown select |
 | :------ | :-------- |
-| `value` | String |
+| `value` | **string** |
 
 | **address** | Renders multiple fields |
 | :------ | :-------- |
-| `first_name`| String |
-| `last_name` | String |
-| `address1` | String |
-| `address2` | String |
-| `city` | String |
-| `region` | String |
-| `zipcode` | String |
-| `country` | String |
-| `country_id` | UUID |
-| `province_id` | UUID |
+| `first_name`| **string** |
+| `last_name` | **string** |
+| `address1` | **string** |
+| `address2` | **string** |
+| `city` | **string** |
+| `region` | **string** |
+| `zipcode` | **string** |
+| `country` | **string** |
+| `country_id` | **uuid** |
+| `province_id` | **uuid** |
 
 ## Relationships
 Name | Description
 -- | --
 `default_property` | **[Default property](#default-properties)** `optional`<br>The default property this property is linked to. Properties without default property are called "one-off" properties. 
-`owner` | **[Customer](#customers), [Order](#orders), [Product group](#product-groups), [Stock item](#stock-items), [Order delivery rate](#order-delivery-rates)** `required`<br>The resource this property is about. 
+`owner` | **[Customer](#customers), [Order](#orders), [Product group](#product-groups), [Stock item](#stock-items)** `required`<br>The resource this property is about. 
 
 
 Check matching attributes under [Fields](#properties-fields) to see which relations can be written.
@@ -105,8 +105,8 @@ Check each individual operation to see which relations can be included as a side
 `longitude` | **string** <br>For property_type `address`. 
 `meets_validation_requirements` | **boolean** <br>Whether this property meets the validation requirements. 
 `name` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
-`owner_id` | **uuid** <br>The resource this property is about. 
-`owner_type` | **string** <br>The resource type of the owner.
+`owner_id` | **uuid** `readonly-after-create`<br>The resource this property is about. 
+`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
 `position` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `property_type` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `province_id` | **string** <br>For property_type `address`. 
@@ -281,7 +281,7 @@ by setting the `properties_attribute` attribute:
         "archived_at": null,
         "number": 2,
         "name": "John Doe",
-        "email": "john-71@doe.test",
+        "email": "john-72@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -356,7 +356,7 @@ by setting the `properties_attribute` attribute:
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-72@doe.test",
+          "email": "john-73@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -408,7 +408,7 @@ Name | Description
 `identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `owner_id` | **uuid** <br>`eq`, `not_eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -485,7 +485,7 @@ This request accepts the following includes:
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-73@doe.test",
+          "email": "john-74@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -597,7 +597,7 @@ This request accepts the following includes:
           "archived_at": null,
           "number": 2,
           "name": "Jane Doe",
-          "email": "john-75@doe.test",
+          "email": "john-76@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -652,7 +652,7 @@ Name | Description
 `data[attributes][meets_validation_requirements]` | **boolean** <br>Whether this property meets the validation requirements. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
 `data[attributes][position]` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `data[attributes][province_id]` | **string** <br>For property_type `address`. 
@@ -756,7 +756,7 @@ Name | Description
 `data[attributes][meets_validation_requirements]` | **boolean** <br>Whether this property meets the validation requirements. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
 `data[attributes][position]` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `data[attributes][province_id]` | **string** <br>For property_type `address`. 

@@ -122,8 +122,8 @@ Name | Description
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
 `product_id` | **uuid** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`
-`status` | **string_enum** <br>`eq`
-`stock_item_type` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
+`stock_item_type` | **enum** <br>`eq`
 `till` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 

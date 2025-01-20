@@ -51,7 +51,7 @@ Invoices received from Booqable
         "attributes": {
           "created_at": "2025-09-24T14:18:02.000000+00:00",
           "updated_at": "2025-09-24T14:18:02.000000+00:00",
-          "number": 10002,
+          "number": 10001,
           "status": "open",
           "billing_reason": "subscription_cycle",
           "strategy": "charge_automatically",
@@ -101,12 +101,12 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`billing_reason` | **string_enum** <br>`eq`
+`billing_reason` | **enum** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
-`status` | **string_enum** <br>`eq`
-`strategy` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
+`strategy` | **enum** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -145,7 +145,7 @@ This request does not accept any includes
       "attributes": {
         "created_at": "2025-12-25T08:20:01.000000+00:00",
         "updated_at": "2025-12-25T08:20:01.000000+00:00",
-        "number": 10002,
+        "number": 10001,
         "status": "open",
         "billing_reason": "subscription_cycle",
         "strategy": "charge_automatically",

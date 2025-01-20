@@ -308,6 +308,7 @@ Check each individual operation to see which relations can be included as a side
 `operation_data` | **hash** `extra`<br>An object with the params used to initiate the operation. See the description of the operation.
 `status` | **enum** `readonly`<br>Status of the operation.<br>One of: `scheduled`, `in_progress`, `finished`, `failed`.
 `status_message` | **string** `readonly`<br>A UI-friendly string explaining the status & progress of the operation for the user.
+`target_type` | **string** `readonly`<br>The type of resource that the operation is targeting.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -341,6 +342,7 @@ Check each individual operation to see which relations can be included as a side
           },
           "error_data": [],
           "error_count": 0,
+          "target_type": null,
           "employee_id": "1f72296c-c318-4620-876c-04ded6372403"
         },
         "relationships": {}
@@ -380,7 +382,7 @@ Name | Description
 `employee_id` | **uuid** <br>`eq`, `not_eq`
 `finished_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
-`status` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -433,6 +435,7 @@ This request accepts the following includes:
         },
         "error_data": [],
         "error_count": 0,
+        "target_type": null,
         "employee_id": "d34a229e-27f9-4c09-8713-c9953f649dec"
       },
       "relationships": {}
@@ -513,6 +516,7 @@ This request accepts the following includes:
         },
         "error_data": [],
         "error_count": 0,
+        "target_type": "customers",
         "employee_id": "828bf697-dcfa-4f1f-8d73-6a0f62925dce"
       },
       "relationships": {}

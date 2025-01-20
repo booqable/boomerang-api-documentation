@@ -82,7 +82,7 @@ This request can be filtered on:
 Name | Description
 -- | --
 `automated` | **boolean** <br>`eq`
-`context` | **string_enum** <br>`eq`
+`context` | **enum** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `default` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`

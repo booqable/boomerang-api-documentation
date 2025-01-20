@@ -279,7 +279,7 @@ This request can be filtered on:
 Name | Description
 -- | --
 `from` | **datetime** `required`<br>`eq`
-`interval` | **string_enum** `required`<br>`eq`
+`interval` | **enum** `required`<br>`eq`
 `item_id` | **uuid** <br>`eq`
 `location_id` | **uuid** <br>`eq`
 `till` | **datetime** `required`<br>`eq`

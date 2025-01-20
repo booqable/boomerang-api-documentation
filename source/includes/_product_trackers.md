@@ -105,9 +105,12 @@ This request can be filtered on:
 Name | Description
 -- | --
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`employee_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
+`order_id` | **uuid** <br>`eq`, `not_eq`
 `product_group_id` | **string** <br>`eq`, `not_eq`
 `product_id` | **string** <br>`eq`, `not_eq`
+`quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
 ### Meta

@@ -109,7 +109,7 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`collection_type` | **string_enum** <br>`eq`
+`collection_type` | **enum** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `depth` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`

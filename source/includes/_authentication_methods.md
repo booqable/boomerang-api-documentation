@@ -88,12 +88,12 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`algorithm` | **string_enum** <br>`eq`
+`algorithm` | **enum** <br>`eq`
 `company_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `employee_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
-`kind` | **string_enum** <br>`eq`
+`kind` | **enum** <br>`eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 
 

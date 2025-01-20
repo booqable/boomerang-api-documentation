@@ -22,7 +22,7 @@ Name | Description
 -- | --
 `barcode` | **[Barcode](#barcodes)** `optional`<br>The barcode that points to this product. 
 `inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this product. 
-`photo` | **[Photo](#photos)** `optional`<br>Main photo. 
+`photo` | **[Photo](#photos)** `optional`<br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
 `price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The price ruleset to use for advanced price calculations. This is inherited from the product group this product belongs to. 
 `price_structure` | **[Price structure](#price-structures)** `optional`<br>The price strucure to use when this product uses tiered pricing. This is inherited from the product group this product belongs to. 
 `product_group` | **[Product group](#product-groups)** `required`<br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
@@ -42,7 +42,7 @@ Check each individual operation to see which relations can be included as a side
 `base_price_in_cents` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`photo_id` | **uuid** `nullable`<br>Main photo. 
+`photo_id` | **uuid** `nullable`<br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
 `photo_url` | **string** `readonly` `nullable`<br>Main photo url. 
 `product_group_id` | **uuid** `readonly-after-create`<br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
 `sorting_weight` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
@@ -247,12 +247,12 @@ Name | Description
 `lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`price_period` | **string_enum** <br>`eq`
+`price_period` | **enum** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
-`price_type` | **string_enum** <br>`eq`
+`price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -265,7 +265,7 @@ Name | Description
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
-`tracking_type` | **string_enum** <br>`eq`
+`tracking_type` | **enum** <br>`eq`
 `type` | **string** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `variation` | **boolean** <br>`eq`
@@ -434,12 +434,12 @@ Name | Description
 `lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`price_period` | **string_enum** <br>`eq`
+`price_period` | **enum** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
-`price_type` | **string_enum** <br>`eq`
+`price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -452,7 +452,7 @@ Name | Description
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
-`tracking_type` | **string_enum** <br>`eq`
+`tracking_type` | **enum** <br>`eq`
 `type` | **string** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `variation` | **boolean** <br>`eq`
@@ -724,7 +724,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][photo_id]` | **uuid** <br>Main photo. 
+`data[attributes][photo_id]` | **uuid** <br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
 `data[attributes][product_group_id]` | **uuid** <br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
@@ -862,7 +862,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][photo_id]` | **uuid** <br>Main photo. 
+`data[attributes][photo_id]` | **uuid** <br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
 `data[attributes][product_group_id]` | **uuid** <br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 

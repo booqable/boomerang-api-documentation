@@ -19,7 +19,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `source_id` | **uuid** <br>Resource from which data is taken, this resource gets archived or destroyed.
 `target_id` | **uuid** <br>Resource to which data is saved.
-`type` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.
+`type` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.<br>Always `customers`
 
 
 ## Merge customers
@@ -117,7 +117,7 @@ Name | Description
 -- | --
 `data[attributes][source_id]` | **uuid** <br>Resource from which data is taken, this resource gets archived or destroyed.
 `data[attributes][target_id]` | **uuid** <br>Resource to which data is saved.
-`data[attributes][type]` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.
+`data[attributes][type]` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.<br>Always `customers`
 
 
 ### Includes

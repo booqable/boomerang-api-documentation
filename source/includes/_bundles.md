@@ -30,7 +30,8 @@ Name | Description
 -- | --
 `bundle_items` | **[Bundle items](#bundle-items)** `hasmany`<br>The bundle items that make up this bundle. 
 `inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this bundle. Because bundles do not exist on a physical level (they are a collection of products), the returned availability will be the maximum number of bundles that can be made from the available products (bundle availability is restricted by the least available product). 
-`photo` | **[Photo](#photos)** `optional`<br>Main photo. 
+`photo` | **[Photo](#photos)** `optional`<br>Primary photo of this bundle. 
+`photos` | **[Photos](#photos)** `hasmany`<br>All photos of this bundle. The primary `photo` must be selected from this set. 
 `tax_category` | **[Tax category](#tax-categories)** `optional`<br>Tax category for tax calculations. When present, this tax category overrides the tax category of the individual products. 
 
 
@@ -52,9 +53,9 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** <br>Name of the bundle. 
 `photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
-`photo_id` | **uuid** `readonly` `nullable`<br>Main photo. 
+`photo_id` | **uuid** `readonly` `nullable`<br>Primary photo of this bundle. 
 `photo_url` | **string** `readonly`<br>Main photo url. 
-`product_type` | **enum** `readonly`<br>Always `bundle`. This attribute exists because bundles are a kind of [Item](#items). 
+`product_type` | **enum** `readonly`<br>Always `bundle`. This attribute exists because bundles are a kind of [Item](#items).<br> Always `bundle`
 `remote_photo_url` | **string** `writeonly`<br>Url to an image on the web. 
 `seo_description` | **string** `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `nullable`<br>SEO title tag. 
@@ -151,7 +152,7 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -294,7 +295,7 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`

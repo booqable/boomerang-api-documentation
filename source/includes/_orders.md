@@ -134,8 +134,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-04-28T03:03:01.000000+00:00",
-          "stops_at": "1970-05-28T03:03:01.000000+00:00",
+          "starts_at": "1970-04-21T03:03:01.000000+00:00",
+          "stops_at": "1970-05-21T03:03:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -219,7 +219,7 @@ Name | Description
 `deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_type` | **string_enum** <br>`eq`
+`deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_value` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -232,14 +232,14 @@ Name | Description
 `location_shortage` | **boolean** <br>`eq`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`payment_status` | **string_enum** <br>`eq`
+`payment_status` | **enum** <br>`eq`
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **string** <br>`eq`
 `shortage` | **boolean** <br>`eq`
 `start_location_id` | **uuid** <br>`eq`, `not_eq`
 `start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
 `status_counts` | **hash** <br>`eq`
 `statuses` | **array** <br>`eq`, `not_eq`
 `stock_item_id` | **uuid** <br>`eq`
@@ -330,14 +330,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-01-14T09:26:27Z",
-                       "lte": "2025-01-17T09:26:27Z"
+                       "gte": "2025-01-21T09:26:44Z",
+                       "lte": "2025-01-24T09:26:44Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-01-14T09:26:27Z",
-                       "lte": "2025-01-17T09:26:27Z"
+                       "gte": "2025-01-21T09:26:44Z",
+                       "lte": "2025-01-24T09:26:44Z"
                      }
                    }
                  ]
@@ -412,7 +412,7 @@ Name | Description
 `deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_type` | **string_enum** <br>`eq`
+`deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_value` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -425,14 +425,14 @@ Name | Description
 `location_shortage` | **boolean** <br>`eq`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`payment_status` | **string_enum** <br>`eq`
+`payment_status` | **enum** <br>`eq`
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **string** <br>`eq`
 `shortage` | **boolean** <br>`eq`
 `start_location_id` | **uuid** <br>`eq`, `not_eq`
 `start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
 `status_counts` | **hash** <br>`eq`
 `statuses` | **array** <br>`eq`, `not_eq`
 `stock_item_id` | **uuid** <br>`eq`
@@ -706,8 +706,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-09-23T12:22:01.000000+00:00",
-        "stops_at": "1970-10-23T12:22:01.000000+00:00",
+        "starts_at": "1970-09-16T12:22:01.000000+00:00",
+        "stops_at": "1970-10-16T12:22:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,

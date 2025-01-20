@@ -1,8 +1,12 @@
 # Activity logs
 
 Activity logs describe an event where changes took place in our database.
+
 Examples of such events can be an order that was created or placed,
 a product name that changed, a customer that was added or an e-mail that got sent.
+
+Most activities are related to multiple subjects. Use the `relation_id`
+filter to search for activities about any subject.
 
 ## Relationships
 Name | Description
@@ -18,11 +22,11 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `action_args` | **hash** `readonly`<br>Hash of arguments that can be interpolated into `action_key` to enrich the summary of the web client with details, such as a product name. 
-`action_key` | **string** `readonly`<br>The name of the activity that the activity log describes. This determines which translated summary line will be displayed in the web client. Examples are "product.created" or "order.updated". 
+`action_key` | **string** `readonly`<br>The name of the activity that the activity log describes. This determines which translated summary line will be displayed in the web client. 
 `created_at` | **datetime** `readonly`<br>When the activity happened. 
-`data` | **hash** `readonly` `extra`<br>Hash containing many more details about the subjects of this activity and the changed data. 
+`data` | **hash** `readonly` `extra`<br>Hash containing details about the subjects of this activity and the changed data. 
 `employee_id` | **uuid** `readonly` `nullable`<br>The employee who performed the action. 
-`has_data` | **boolean** `readonly`<br>Boolean value flag indicating whether the `data` attribnute is non-empty. 
+`has_data` | **boolean** `readonly`<br>Indicates whether the `data` attribute is non-empty. 
 `id` | **uuid** `readonly`<br>Primary key.
 
 
@@ -154,6 +158,7 @@ Name | Description
 -- | --
 `action_key` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`employee_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `relation_id` | **uuid** <br>`eq`, `not_eq`
 

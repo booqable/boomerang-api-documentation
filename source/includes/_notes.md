@@ -6,7 +6,7 @@ Allows you to leave notes attached to other resources.
 Name | Description
 -- | --
 `employee` | **[Employee](#employees)** `required`<br>The employee who created this note.
-`owner` | **[Customer](#customers), [Product](#products), [Product group](#product-groups), [Stock item](#stock-items), [Bundle](#bundles), [Order](#orders), [Document](#documents), [User](#users)** `required`<br>The resource this note is about.
+`owner` | **[Customer](#customers), [Product group](#product-groups), [Stock item](#stock-items), [Bundle](#bundles), [Order](#orders), [Document](#documents), [User](#users)** `required`<br>The resource this note is about.
 
 
 Check matching attributes under [Fields](#notes-fields) to see which relations can be written.
@@ -20,8 +20,8 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `employee_id` | **uuid** `readonly`<br>The employee who created this note.
 `id` | **uuid** `readonly`<br>Primary key.
-`owner_id` | **uuid** <br>The resource this note is about.
-`owner_type` | **string** <br>The resource type of the owner.
+`owner_id` | **uuid** `readonly-after-create`<br>The resource this note is about.
+`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `product_groups`, `stock_items`, `bundles`, `orders`, `documents`, `users`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -47,9 +47,9 @@ Check each individual operation to see which relations can be included as a side
           "created_at": "2022-10-23T23:24:01.000000+00:00",
           "updated_at": "2022-10-23T23:24:01.000000+00:00",
           "body": "Agreed to give this customer a 20% discount on the next order",
-          "owner_id": "6e9725e6-9cd5-4743-8021-afe1b305c3f2",
-          "owner_type": "customers",
-          "employee_id": "4ef2de9b-a05c-49a2-8d8d-3690843a43a8"
+          "employee_id": "6e9725e6-9cd5-4743-8021-afe1b305c3f2",
+          "owner_id": "4ef2de9b-a05c-49a2-8d8d-3690843a43a8",
+          "owner_type": "customers"
         },
         "relationships": {}
       }
@@ -87,7 +87,7 @@ Name | Description
 `employee_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `owner_id` | **uuid** <br>`eq`, `not_eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -135,9 +135,9 @@ This request accepts the following includes:
         "created_at": "2028-07-04T15:39:01.000000+00:00",
         "updated_at": "2028-07-04T15:39:01.000000+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "8e17846d-a01b-4743-8d9b-a1ef2884c506",
-        "owner_type": "customers",
-        "employee_id": "e1d2d7e1-879d-4864-8f80-b42ba923ab58"
+        "employee_id": "8e17846d-a01b-4743-8d9b-a1ef2884c506",
+        "owner_id": "e1d2d7e1-879d-4864-8f80-b42ba923ab58",
+        "owner_type": "customers"
       },
       "relationships": {}
     },
@@ -205,9 +205,9 @@ This request accepts the following includes:
         "created_at": "2020-07-03T13:01:01.000000+00:00",
         "updated_at": "2020-07-03T13:01:01.000000+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
+        "employee_id": "1eb997c6-a419-482c-8414-606eef3b8f04",
         "owner_id": "1a7b6819-6c11-4eee-892a-9d87bee21d50",
-        "owner_type": "customers",
-        "employee_id": "1eb997c6-a419-482c-8414-606eef3b8f04"
+        "owner_type": "customers"
       },
       "relationships": {}
     },
@@ -237,7 +237,7 @@ Name | Description
 -- | --
 `data[attributes][body]` | **string** <br>The content of the note.
 `data[attributes][owner_id]` | **uuid** <br>The resource this note is about.
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `product_groups`, `stock_items`, `bundles`, `orders`, `documents`, `users`.
 
 
 ### Includes
@@ -276,9 +276,9 @@ This request accepts the following includes:
         "created_at": "2023-07-14T18:36:01.000000+00:00",
         "updated_at": "2023-07-14T18:36:01.000000+00:00",
         "body": "Agreed to give this customer a 20% discount on the next order",
-        "owner_id": "654e2ccf-f66b-4cd2-85d2-c446291c11a9",
-        "owner_type": "customers",
-        "employee_id": "45351704-f8df-4523-8ff0-d5d2b77ecaa4"
+        "employee_id": "654e2ccf-f66b-4cd2-85d2-c446291c11a9",
+        "owner_id": "45351704-f8df-4523-8ff0-d5d2b77ecaa4",
+        "owner_type": "customers"
       },
       "relationships": {}
     },

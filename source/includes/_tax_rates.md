@@ -20,8 +20,8 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** <br>The name of the tax rate.
-`owner_id` | **uuid** <br>The TaxRegion or TaxCategory this TaxRate is part of.
-`owner_type` | **string** <br>The resource type of the owner.
+`owner_id` | **uuid** `readonly-after-create`<br>The TaxRegion or TaxCategory this TaxRate is part of.
+`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `tax_categories`, `tax_regions`.
 `position` | **integer** `readonly`<br>Position of the tax rate.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `value` | **float** <br>The percentage value of the rate.
@@ -89,7 +89,7 @@ Name | Description
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
 `owner_id` | **uuid** <br>`eq`, `not_eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -284,7 +284,7 @@ Name | Description
 -- | --
 `data[attributes][name]` | **string** <br>The name of the tax rate.
 `data[attributes][owner_id]` | **uuid** <br>The TaxRegion or TaxCategory this TaxRate is part of.
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `tax_categories`, `tax_regions`.
 `data[attributes][value]` | **float** <br>The percentage value of the rate.
 
 
@@ -386,7 +386,7 @@ Name | Description
 -- | --
 `data[attributes][name]` | **string** <br>The name of the tax rate.
 `data[attributes][owner_id]` | **uuid** <br>The TaxRegion or TaxCategory this TaxRate is part of.
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `tax_categories`, `tax_regions`.
 `data[attributes][value]` | **float** <br>The percentage value of the rate.
 
 

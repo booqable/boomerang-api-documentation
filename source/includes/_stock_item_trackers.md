@@ -115,6 +115,9 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `product_group_id` | **string** <br>`eq`, `not_eq`
 `product_id` | **string** <br>`eq`, `not_eq`
+`product_tracker_id` | **uuid** <br>`eq`, `not_eq`
+`quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`stock_item_id` | **uuid** <br>`eq`, `not_eq`
 
 
 ### Meta

@@ -96,13 +96,13 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`action` | **string_enum** `required`<br>`eq`
+`action` | **enum** `required`<br>`eq`
 `from` | **datetime** <br>`eq`
 `item_id` | **uuid** `required`<br>`eq`
 `location_id` | **uuid** <br>`eq`
 `order_id` | **uuid** `required`<br>`eq`
 `q` | **string** <br>`eq`
-`status` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
 `till` | **datetime** <br>`eq`
 
 

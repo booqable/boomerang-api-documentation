@@ -32,7 +32,8 @@ The tracking type determines how the product is tracked.
 Name | Description
 -- | --
 `inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this item. 
-`photo` | **[Photo](#photos)** `optional`<br>Main photo. 
+`photo` | **[Photo](#photos)** `optional`<br>Primary photo of this product group. 
+`photos` | **[Photos](#photos)** `hasmany`<br>All photos of this product group. The primary `photo` must be selected from this set. 
 `price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The price ruleset used for advanced price calculations. 
 `price_structure` | **[Price structure](#price-structures)** `optional`<br>The price strucure to use when this product group uses tiered pricing. 
 `products` | **[Products](#products)** `hasmany`<br>When this product group does **not** have variations: there will be exactly one product. When this product group **does** have variations: one or more products. These products can be distinquished by their `variation_values`. 
@@ -66,7 +67,7 @@ Check each individual operation to see which relations can be included as a side
 `lead_time` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
 `name` | **string** <br>Name of the item. 
 `photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
-`photo_id` | **uuid** `readonly` `nullable`<br>Main photo. 
+`photo_id` | **uuid** `readonly` `nullable`<br>Primary photo of this product group. 
 `photo_url` | **string** `readonly`<br>Main photo url. 
 `price_period` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
 `price_ruleset_id` | **uuid** `nullable`<br>The price ruleset used for advanced price calculations. 
@@ -209,12 +210,12 @@ Name | Description
 `lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`price_period` | **string_enum** <br>`eq`
+`price_period` | **enum** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
-`price_type` | **string_enum** <br>`eq`
+`price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -228,7 +229,7 @@ Name | Description
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
-`tracking_type` | **string_enum** <br>`eq`
+`tracking_type` | **enum** <br>`eq`
 `type` | **string** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `variation` | **boolean** <br>`eq`
@@ -377,12 +378,12 @@ Name | Description
 `lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
-`price_period` | **string_enum** <br>`eq`
+`price_period` | **enum** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`, `not_eq`
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
-`price_type` | **string_enum** <br>`eq`
+`price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **string_enum** <br>`eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -396,7 +397,7 @@ Name | Description
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
-`tracking_type` | **string_enum** <br>`eq`
+`tracking_type` | **enum** <br>`eq`
 `type` | **string** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `variation` | **boolean** <br>`eq`

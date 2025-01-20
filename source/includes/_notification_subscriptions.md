@@ -37,8 +37,8 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `global` | **boolean** `readonly` `nullable`<br>Will be set true when the subscription is not associated with any owner, false otherwise. 
 `id` | **uuid** `readonly`<br>Primary key.
-`owner_id` | **uuid** <br>When present, only notifications for this specific resource will be fired. Currently only Orders are supported. 
-`owner_type` | **string** <br>The resource type of the owner.
+`owner_id` | **uuid** `readonly-after-create`<br>When present, only notifications for this specific resource will be fired. Currently only Orders are supported. 
+`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>Always `orders`
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -66,7 +66,7 @@ Check each individual operation to see which relations can be included as a side
           "category": "order_started",
           "global": true,
           "owner_id": null,
-          "owner_type": null
+          "owner_type": ""
         },
         "relationships": {}
       },
@@ -92,7 +92,7 @@ Check each individual operation to see which relations can be included as a side
           "category": "note_created",
           "global": true,
           "owner_id": null,
-          "owner_type": null
+          "owner_type": ""
         },
         "relationships": {}
       },
@@ -105,7 +105,7 @@ Check each individual operation to see which relations can be included as a side
           "category": "webshop_order_created",
           "global": true,
           "owner_id": null,
-          "owner_type": null
+          "owner_type": ""
         },
         "relationships": {}
       }
@@ -143,7 +143,7 @@ Name | Description
 `global` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `owner_id` | **uuid** <br>`eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -184,7 +184,7 @@ This request does not accept any includes
           "category": "order_started",
           "global": true,
           "owner_id": null,
-          "owner_type": null
+          "owner_type": ""
         },
         "relationships": {}
       },
@@ -197,7 +197,7 @@ This request does not accept any includes
           "category": "note_created",
           "global": true,
           "owner_id": null,
-          "owner_type": null
+          "owner_type": ""
         },
         "relationships": {}
       },
@@ -210,7 +210,7 @@ This request does not accept any includes
           "category": "webshop_order_created",
           "global": true,
           "owner_id": null,
-          "owner_type": null
+          "owner_type": ""
         },
         "relationships": {}
       }
@@ -248,7 +248,7 @@ Name | Description
 `global` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `owner_id` | **uuid** <br>`eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -327,7 +327,7 @@ Name | Description
 `global` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `owner_id` | **uuid** <br>`eq`
-`owner_type` | **string** <br>`eq`, `not_eq`
+`owner_type` | **enum** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -453,7 +453,7 @@ Name | Description
 -- | --
 `data[attributes][category]` | **enum** <br>The category of notifications subscribing to.<br> One of: `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`.
 `data[attributes][owner_id]` | **uuid** <br>When present, only notifications for this specific resource will be fired. Currently only Orders are supported. 
-`data[attributes][owner_type]` | **string** <br>The resource type of the owner.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>Always `orders`
 
 
 ### Includes

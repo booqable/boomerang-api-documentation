@@ -91,7 +91,7 @@ Name | Description
 `default` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`strategy` | **string_enum** <br>`eq`
+`strategy` | **enum** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 

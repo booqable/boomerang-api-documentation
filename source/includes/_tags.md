@@ -77,7 +77,7 @@ This request can be filtered on:
 
 Name | Description
 -- | --
-`for` | **string_enum** `required`<br>`eq`
+`for` | **enum** `required`<br>`eq`
 
 
 ### Meta

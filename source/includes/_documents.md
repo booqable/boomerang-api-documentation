@@ -195,10 +195,10 @@ Name | Description
 `deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_type` | **string_enum** <br>`eq`
+`deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`document_type` | **string_enum** <br>`eq`, `not_eq`
+`document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -214,7 +214,7 @@ Name | Description
 `q` | **string** <br>`eq`
 `revised` | **boolean** <br>`eq`
 `sent` | **boolean** <br>`eq`
-`status` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
 `tag_list` | **string** <br>`eq`
 `tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
@@ -372,10 +372,10 @@ Name | Description
 `deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`deposit_type` | **string_enum** <br>`eq`
+`deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`document_type` | **string_enum** <br>`eq`, `not_eq`
+`document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -391,7 +391,7 @@ Name | Description
 `q` | **string** <br>`eq`
 `revised` | **boolean** <br>`eq`
 `sent` | **boolean** <br>`eq`
-`status` | **string_enum** <br>`eq`
+`status` | **enum** <br>`eq`
 `tag_list` | **string** <br>`eq`
 `tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
@@ -593,7 +593,7 @@ This request accepts the following includes:
         "number": 1,
         "prefix": null,
         "prefix_with_number": "1",
-        "date": "2025-01-13",
+        "date": "2025-01-20",
         "due_date": null,
         "name": "John Doe",
         "address": "",
