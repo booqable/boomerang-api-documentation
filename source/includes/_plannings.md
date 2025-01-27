@@ -34,21 +34,21 @@ Check each individual operation to see which relations can be included as a side
 `archived_at` | **datetime** `readonly` `nullable`<br>When the planning was archived. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** <br>The product or Bundle that was booked. 
+`item_id` | **uuid** `readonly`<br>The product or Bundle that was booked. 
 `item_name` | **string** `writeonly`<br>Allows sorting plannings by item name. 
 `location_shortage_amount` | **integer** <br>Amount of items short. This attribute is omitted when this is a parent planning for a Bundle. 
-`order_id` | **uuid** <br>The Order this planning belongs to. 
+`order_id` | **uuid** `readonly`<br>The Order this planning belongs to. 
 `order_number` | **integer** `writeonly`<br>Allows sorting plannings by order number. 
-`parent_planning_id` | **uuid** <br>When present, then this Planning is part of a Bundle, and corresponds to a BundleItem. Inverse of `nested_plannings` relation. 
+`parent_planning_id` | **uuid** `readonly`<br>When present, then this Planning is part of a Bundle, and corresponds to a BundleItem. Inverse of `nested_plannings` relation. 
 `quantity` | **integer** <br>Total planned. 
 `reserved` | **boolean** <br>Wheter items are reserved.
 `reserved_from` | **datetime** <br>When the items become unavailable. 
 `reserved_till` | **datetime** <br>When the items become available again. 
 `shortage_amount` | **integer** <br>Amount of items short on location (could be there are still available on other locations in the same cluster). This attribute is omitted when this is a parent planning for a Bundle. 
-`start_location_id` | **uuid** <br>The Location where the Customer will pick up the Item. 
+`start_location_id` | **uuid** `readonly`<br>The Location where the Customer will pick up the Item. 
 `started` | **integer** <br>Amount of items started. Cannot exceed `quantity`. This attribute is omitted when this is a parent planning for a Bundle. 
 `starts_at` | **datetime** <br>When the start action is planned. 
-`stop_location_id` | **uuid** <br>The Location where the Customer will return the Item. 
+`stop_location_id` | **uuid** `readonly`<br>The Location where the Customer will return the Item. 
 `stopped` | **integer** <br>Amount of items stopped. Cannot exceed `quantity` and `started`. This attribute is omitted when this is a parent planning for a Bundle. 
 `stops_at` | **datetime** <br>When the stop action is planned. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -78,10 +78,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-05-31T07:50:00.000000+00:00",
-          "stops_at": "1973-06-30T07:50:00.000000+00:00",
-          "reserved_from": "1973-05-31T07:50:00.000000+00:00",
-          "reserved_till": "1973-06-30T07:50:00.000000+00:00",
+          "starts_at": "1973-05-24T07:50:00.000000+00:00",
+          "stops_at": "1973-06-23T07:50:00.000000+00:00",
+          "reserved_from": "1973-05-24T07:50:00.000000+00:00",
+          "reserved_till": "1973-06-23T07:50:00.000000+00:00",
           "reserved": true,
           "started": 0,
           "stopped": 0,
@@ -208,12 +208,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-01-21T09:27:21Z"
+                       "gte": "2025-01-28T09:27:09Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-01-24T09:27:21Z"
+                       "lte": "2025-01-31T09:27:09Z"
                      }
                    }
                  ]
@@ -223,12 +223,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-01-21T09:27:21Z"
+                       "gte": "2025-01-28T09:27:09Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-01-24T09:27:21Z"
+                       "lte": "2025-01-31T09:27:09Z"
                      }
                    }
                  ]
@@ -362,10 +362,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-06-24T04:15:01.000000+00:00",
-        "stops_at": "1978-07-24T04:15:01.000000+00:00",
-        "reserved_from": "1978-06-24T04:15:01.000000+00:00",
-        "reserved_till": "1978-07-24T04:15:01.000000+00:00",
+        "starts_at": "1978-06-17T04:15:01.000000+00:00",
+        "stops_at": "1978-07-17T04:15:01.000000+00:00",
+        "reserved_from": "1978-06-17T04:15:01.000000+00:00",
+        "reserved_till": "1978-07-17T04:15:01.000000+00:00",
         "reserved": true,
         "started": 0,
         "stopped": 0,

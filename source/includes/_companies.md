@@ -96,7 +96,7 @@ A company holds information and configuration about an account.
         "zipcode": "8900AB",
         "city": "Leeuwarden",
         "region": null,
-        "country": "the Netherlands",
+        "country": "Netherlands",
         "market": "AV / Camera",
         "use_billing_address": false,
         "billing_company": null,
@@ -127,7 +127,7 @@ A company holds information and configuration about an account.
         "team_size": null,
         "revenue_last_year": null,
         "year_business_start": null,
-        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands",
         "main_address": {
           "meets_validation_requirements": false,
           "first_name": null,
@@ -137,12 +137,12 @@ A company holds information and configuration about an account.
           "city": "Leeuwarden",
           "region": null,
           "zipcode": "8900AB",
-          "country": "the Netherlands",
+          "country": "Netherlands",
           "country_id": null,
           "province_id": null,
           "latitude": null,
           "longitude": null,
-          "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+          "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands"
         },
         "billing_address": null,
         "third_party_id": "9391cc27-0209-4fb5-8077-0e7af94f571d"
@@ -338,7 +338,7 @@ This request does not accept any includes
         "zipcode": "8900AB",
         "city": "Leeuwarden",
         "region": null,
-        "country": "the Netherlands",
+        "country": "Netherlands",
         "market": "AV / Camera",
         "use_billing_address": false,
         "billing_company": null,
@@ -369,7 +369,7 @@ This request does not accept any includes
         "team_size": null,
         "revenue_last_year": null,
         "year_business_start": null,
-        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+        "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands",
         "main_address": {
           "meets_validation_requirements": false,
           "first_name": null,
@@ -379,12 +379,12 @@ This request does not accept any includes
           "city": "Leeuwarden",
           "region": null,
           "zipcode": "8900AB",
-          "country": "the Netherlands",
+          "country": "Netherlands",
           "country_id": null,
           "province_id": null,
           "latitude": null,
           "longitude": null,
-          "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+          "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands"
         },
         "billing_address": null,
         "third_party_id": "39b6d9bd-03cc-4869-8a7a-9e3ca8f59712"

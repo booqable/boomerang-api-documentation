@@ -27,21 +27,22 @@ To transition an Order to the next status, create an [OrderStatusTransition](#or
 ## Relationships
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** `optional`<br>The QR code automatically generated for this Order.
+`barcode` | **[Barcode](#barcodes)** `optional`<br>The QR code automatically generated for this Order. 
 `coupon` | **[Coupon](#coupons)** `optional`<br>The Coupon added to this Order. 
 `customer` | **[Customer](#customers)** `optional`<br>The Customer this Order is for. 
 `documents` | **[Documents](#documents)** `hasmany`<br>Documents (quotes, contracts, invoices) related to this order. 
 `lines` | **[Lines](#lines)** `hasmany`<br>All the Lines of this Order. There is an automatically generated line for every Planning. In addition there can be manually added lines for custom charges, deposit holds and sections. 
 `notes` | **[Notes](#notes)** `hasmany`<br>Notes about this Order. 
 `order_delivery_rate` | **[Order delivery rate](#order-delivery-rates)** `optional`<br>Information about the cost of delivery for this Order. 
+`payments` | **[Payments](#payments)** `hasmany`<br>Payments (charges, authorizations, refunds) related to this order. 
 `plannings` | **[Plannings](#plannings)** `hasmany`<br>The Plannings for this Order, containing the booked quantities and current status for all Products on this Order. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom but structured data added to this Order. Both Properties linked to [DefaultProperties](#default-properties), and one-off Properties can be added to orders. Properties of Orders can be updated in bulk by writing to the `properties_attributes` attribute. 
 `start_location` | **[Location](#locations)** `required`<br>The Location where the Customer will pick up the items. 
-`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The StockItems planned on this Order, and their current status.
+`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The StockItems planned on this Order, and their current status. 
 `stop_location` | **[Location](#locations)** `required`<br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
 `tax_region` | **[Tax region](#tax-regions)** `optional`<br>TaxRegion applied to this Order. 
-`tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one TaxValue for each applicable TaxRate.
-`transfers` | **[Transfers](#transfers)** `hasmany`<br>Transfers that have been generated to solve shortages on this order.
+`tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one TaxValue for each applicable TaxRate. 
+`transfers` | **[Transfers](#transfers)** `hasmany`<br>Transfers that have been generated to solve shortages on this order. 
 
 
 Check matching attributes under [Fields](#orders-fields) to see which relations can be written.
@@ -134,8 +135,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-04-21T03:03:01.000000+00:00",
-          "stops_at": "1970-05-21T03:03:01.000000+00:00",
+          "starts_at": "1970-04-14T03:03:01.000000+00:00",
+          "stops_at": "1970-05-14T03:03:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -330,14 +331,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-01-21T09:26:44Z",
-                       "lte": "2025-01-24T09:26:44Z"
+                       "gte": "2025-01-28T09:26:29Z",
+                       "lte": "2025-01-31T09:26:29Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-01-21T09:26:44Z",
-                       "lte": "2025-01-24T09:26:44Z"
+                       "gte": "2025-01-28T09:26:29Z",
+                       "lte": "2025-01-31T09:26:29Z"
                      }
                    }
                  ]
@@ -646,6 +647,9 @@ This request accepts the following includes:
 `notes`
 
 
+`payments`
+
+
 `properties`
 
 
@@ -706,8 +710,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-09-16T12:22:01.000000+00:00",
-        "stops_at": "1970-10-16T12:22:01.000000+00:00",
+        "starts_at": "1970-09-09T12:22:01.000000+00:00",
+        "stops_at": "1970-10-09T12:22:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -819,6 +823,9 @@ This request accepts the following includes:
 
 
 `notes`
+
+
+`payments`
 
 
 `properties`
@@ -1035,6 +1042,9 @@ This request accepts the following includes:
 
 
 `notes`
+
+
+`payments`
 
 
 `properties`
@@ -1294,6 +1304,9 @@ This request accepts the following includes:
 
 
 `notes`
+
+
+`payments`
 
 
 `properties`

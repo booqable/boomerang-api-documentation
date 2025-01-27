@@ -152,8 +152,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-10-19T05:42:00.000000+00:00",
-              "till": "1978-11-17T05:42:00.000000+00:00",
+              "from": "1978-10-12T05:42:00.000000+00:00",
+              "till": "1978-11-10T05:42:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -171,8 +171,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-11-01T17:42:00.000000+00:00",
-                    "till": "1978-11-17T05:42:00.000000+00:00",
+                    "from": "1978-10-25T17:42:00.000000+00:00",
+                    "till": "1978-11-10T05:42:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -321,8 +321,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1977-12-21T12:17:02.000000+00:00",
-            "till": "1978-01-19T12:17:02.000000+00:00",
+            "from": "1977-12-14T12:17:02.000000+00:00",
+            "till": "1978-01-12T12:17:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -340,8 +340,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1978-01-04T00:17:02.000000+00:00",
-                  "till": "1978-01-19T12:17:02.000000+00:00",
+                  "from": "1977-12-28T00:17:02.000000+00:00",
+                  "till": "1978-01-12T12:17:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -745,9 +745,9 @@ This request accepts the following includes:
       "type": "lines",
       "attributes": {
         "created_at": "2018-12-01T08:17:02.000000+00:00",
-        "updated_at": "2018-12-01T08:18:02.000000+00:00",
+        "updated_at": "2018-12-01T08:17:02.000000+00:00",
         "archived": true,
-        "archived_at": "2018-12-01T08:18:02.000000+00:00",
+        "archived_at": "2018-12-01T08:17:02.000000+00:00",
         "title": "Macbook Pro",
         "extra_information": "Comes with a mouse",
         "quantity": 1,
@@ -762,8 +762,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1974-02-10T22:53:02.000000+00:00",
-            "till": "1974-03-11T22:53:02.000000+00:00",
+            "from": "1974-02-03T22:53:02.000000+00:00",
+            "till": "1974-03-04T22:53:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -781,8 +781,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1974-02-24T10:53:02.000000+00:00",
-                  "till": "1974-03-11T22:53:02.000000+00:00",
+                  "from": "1974-02-17T10:53:02.000000+00:00",
+                  "till": "1974-03-04T22:53:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

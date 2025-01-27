@@ -32,7 +32,7 @@ Check each individual operation to see which relations can be included as a side
 `preview_image_long_url` | **string** `readonly`<br>Theme rectangle image preview image url. 
 `preview_image_medium_url` | **string** `readonly`<br>Theme medium image preview image url. 
 `preview_url` | **string** <br>The URL where the theme could be previewed. 
-`theme_id` | **uuid** <br>Either the installed theme, or the original theme. 
+`theme_id` | **uuid** `readonly-after-create`<br>Either the installed theme, or the original theme. 
 `theme_type` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `version` | **string** <br>Theme version. 

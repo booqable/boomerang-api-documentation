@@ -23,7 +23,7 @@ Check each individual operation to see which relations can be included as a side
 `owner_id` | **uuid** `readonly`<br>The order or cart.
 `owner_type` | **enum** `readonly`<br>The resource type of the owner.<br>Always `orders`
 `percentage` | **float** `readonly`<br>The percentage taxed.
-`tax_rate_id` | **uuid** <br>The rate used to calculated this tax.
+`tax_rate_id` | **uuid** `readonly`<br>The rate used to calculated this tax.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `value_in_cents` | **integer** `readonly`<br>Amount of tax in cents.
 

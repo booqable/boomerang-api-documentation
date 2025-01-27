@@ -115,7 +115,7 @@ Check each individual operation to see which relations can be included as a side
           "zipcode": "8900AB",
           "city": "Leeuwarden",
           "region": null,
-          "country": "the Netherlands",
+          "country": "Netherlands",
           "market": "AV / Camera",
           "use_billing_address": false,
           "billing_company": null,
@@ -146,7 +146,7 @@ Check each individual operation to see which relations can be included as a side
           "team_size": null,
           "revenue_last_year": null,
           "year_business_start": null,
-          "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands",
+          "address": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands",
           "main_address": {
             "meets_validation_requirements": false,
             "first_name": null,
@@ -156,12 +156,12 @@ Check each individual operation to see which relations can be included as a side
             "city": "Leeuwarden",
             "region": null,
             "zipcode": "8900AB",
-            "country": "the Netherlands",
+            "country": "Netherlands",
             "country_id": null,
             "province_id": null,
             "latitude": null,
             "longitude": null,
-            "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nthe Netherlands"
+            "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands"
           },
           "billing_address": null,
           "subscription": {
@@ -255,7 +255,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1737365300"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1737970100"
         }
       },
       {

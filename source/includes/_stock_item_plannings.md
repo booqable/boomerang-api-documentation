@@ -28,11 +28,11 @@ Check each individual operation to see which relations can be included as a side
 `archived_at` | **datetime** `readonly` `nullable`<br>When the stock item planning was archived. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** <br>The Order this StockItemPlanning is part of. 
-`planning_id` | **uuid** <br>The Planning for which this StockItemPlanning specifies a StockItem. 
+`order_id` | **uuid** `readonly`<br>The Order this StockItemPlanning is part of. 
+`planning_id` | **uuid** `readonly`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
 `reserved` | **boolean** <br>Wheter stock item is reserved, meaning it's unavailable for other orders. 
 `started` | **boolean** <br>Wheter stock item is started. 
-`stock_item_id` | **uuid** <br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
+`stock_item_id` | **uuid** `readonly`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
 `stopped` | **boolean** <br>Wheter stock item is stopped. Meaning it's available again. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 

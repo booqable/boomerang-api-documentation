@@ -33,7 +33,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`category` | **enum** <br>The category of notifications subscribing to.<br> One of: `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`.
+`category` | **enum** `readonly-after-create`<br>The category of notifications subscribing to.<br> One of: `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `global` | **boolean** `readonly` `nullable`<br>Will be set true when the subscription is not associated with any owner, false otherwise. 
 `id` | **uuid** `readonly`<br>Primary key.

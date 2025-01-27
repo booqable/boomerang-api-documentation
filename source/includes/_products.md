@@ -926,7 +926,7 @@ This request accepts the following includes:
         "type": "products",
         "name": "iPad Pro",
         "group_name": "iPad Pro",
-        "slug": "ipad-pro",
+        "slug": "5fe125ba-4a82-4fad-8a18-03ea09db75a3",
         "sku": null,
         "lead_time": 0,
         "lag_time": 0,

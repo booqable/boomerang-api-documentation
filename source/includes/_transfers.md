@@ -21,13 +21,13 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `available_at` | **datetime** <br>Date when item should be available at destination location.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`destination_location_id` | **uuid** <br>Location to which the product need to be transfered to.
+`destination_location_id` | **uuid** `readonly`<br>Location to which the product need to be transfered to.
 `finalized` | **boolean** <br>Whether or not the transfer has completed.
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** <br>The product that needs to be transferred.
-`order_id` | **uuid** <br>The order for which the product is required.
+`item_id` | **uuid** `readonly`<br>The product that needs to be transferred.
+`order_id` | **uuid** `readonly`<br>The order for which the product is required.
 `quantity` | **integer** <br>Quantity of items being transfered.
-`source_location_id` | **uuid** <br>Location from which the product needs to be transfered.
+`source_location_id` | **uuid** `readonly`<br>Location from which the product needs to be transfered.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
