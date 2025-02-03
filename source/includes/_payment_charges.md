@@ -90,7 +90,9 @@ Check each individual operation to see which relations can be included as a side
         "created_at": "2023-02-26T05:02:01.000000+00:00",
         "updated_at": "2023-02-26T05:02:01.000000+00:00",
         "type": "payment_charges",
-        "possible_actions": [],
+        "possible_actions": [
+          "refund"
+        ],
         "provider": "none",
         "provider_id": null,
         "provider_method": "bank",

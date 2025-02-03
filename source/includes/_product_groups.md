@@ -48,53 +48,59 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`allow_shortage` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availablity, and can trigger a shortage warning. 
 `archived` | **boolean** `readonly`<br>Whether product group is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the product group was archived. 
 `base_price_in_cents` | **integer** `readonly`<br>The value that is being calculated with (based on the current `price_type`). 
 `confirm_shortage` | **boolean** `writeonly`<br>Set this to `true` to override certain shortage warnings. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`flat_fee_price_in_cents` | **integer** <br>Use this value when price type is `simple`. 
+`id` | **uuid** `readonly`<br>Primary key.
+`photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
+`photo_id` | **uuid** `readonly` `nullable`<br>Primary photo of this product group. 
+`photo_url` | **string** `readonly` `nullable`<br>Main photo url. 
+`properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this product group. 
+`remote_photo_url` | **string** `writeonly`<br>Url to an image on the web. 
+`sorting_weight` | **integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists. 
+`stock_item_properties` | **array[string]** <br>Names of custom properties for stock items of this product group. 
+`structure_price_in_cents` | **integer** <br>Use this value when price type is `structure` or `private_structure`. 
+`type` | **string** `readonly`<br>Always product group. 
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
+`variation_fields` | **array** <br>Array of fields that distinguish variations (e.g. color or size). `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
+
+
+## Inherited Fields
+
+ Name | Description
+-- | --
+`allow_shortage` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availablity, and can trigger a shortage warning. 
 `deposit_in_cents` | **integer** <br>The value to use for deposit calculations. 
 `description` | **string** `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `excerpt` | **string** `nullable`<br>Excerpt used in the online store. 
 `extra_information` | **string** `nullable`<br>Extra information about the product group, shown on orders and documents. 
-`flat_fee_price_in_cents` | **integer** <br>Use this value when price type is `simple`. 
 `group_name` | **string** `readonly`<br>Same as `name`. 
 `has_variations` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations can not be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
-`id` | **uuid** `readonly`<br>Primary key.
 `lag_time` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
 `lead_time` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
 `name` | **string** <br>Name of the item. 
-`photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
-`photo_id` | **uuid** `readonly` `nullable`<br>Primary photo of this product group. 
-`photo_url` | **string** `readonly`<br>Main photo url. 
 `price_period` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
 `price_ruleset_id` | **uuid** `nullable`<br>The price ruleset used for advanced price calculations. 
 `price_structure_id` | **uuid** `nullable`<br>The price strucure to use when this product group uses tiered pricing. 
 `price_type` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `product_type` | **enum** `readonly-after-create`<br>Type of product. Can only be set when creating a ProductGroup.<br> One of: `bundle`, `rental`, `consumable`, `service`.
 `properties` | **hash** `readonly`<br>Hash of properties. Sideload the properties relation when more information is needed. 
-`properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this product group. 
-`remote_photo_url` | **string** `writeonly`<br>Url to an image on the web. 
 `seo_description` | **string** `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `nullable`<br>SEO title tag. 
 `shortage_limit` | **integer** <br>The maximum allowed shortage for any date range. Changing this setting affects availablity, and can trigger a shortage warning. 
 `show_in_store` | **boolean** <br>Whether to show this product group in the online store. 
 `sku` | **string** <br>Stock keeping unit. 
 `slug` | **string** <br>Slug of the item. 
-`sorting_weight` | **integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists. 
-`stock_item_properties` | **array[string]** <br>Names of custom properties for stock items of this product group. 
-`structure_price_in_cents` | **integer** <br>Use this value when price type is `structure` or `private_structure`. 
 `tag_list` | **array[string]** <br>List of tags. 
 `tax_category_id` | **uuid** `nullable`<br>Tax category for tax calculations. 
 `taxable` | **boolean** <br>Whether this product group is taxable. 
 `trackable` | **boolean** `readonly-after-create`<br>Whether stock items are tracked. 
 `tracking_type` | **enum** `readonly-after-create`<br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.
-`type` | **string** `readonly`<br>Always product group. 
-`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `variation` | **boolean** `readonly`<br>Whether this Item is a variation in a ProductGroup.. 
-`variation_fields` | **array** <br>Array of fields that distinguish variations (e.g. color or size). `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 
 
 ## List product groups

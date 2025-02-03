@@ -20,7 +20,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `archived` | **boolean** `readonly`<br>Whether price ruleset is archived.
-`archived_at` | **datetime** `readonly`<br>When the price ruleset was archived.
+`archived_at` | **datetime** `readonly` `nullable`<br>When the price ruleset was archived.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `description` | **string** <br>Description of the ruleset.
 `id` | **uuid** `readonly`<br>Primary key.
@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2032-09-22T23:27:05.000000+00:00",
-          "till": "2032-11-22T23:27:05.000000+00:00",
+          "from": "2032-09-15T23:19:05.000000+00:00",
+          "till": "2032-11-15T23:19:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -223,7 +223,7 @@ This request accepts the following includes:
                  "match_strategy": "span",
                  "value": 25,
                  "from": "2014-09-24T15:02:01.000000+00:00",
-                 "till": "2014-11-25T15:02:01.000000+00:00"
+                 "till": "2014-11-22T15:02:01.000000+00:00"
                }
              ]
            }
@@ -271,7 +271,7 @@ This request accepts the following includes:
           "adjustment_strategy": "percentage",
           "value": 25.0,
           "from": "2014-09-24T15:02:01.000000+00:00",
-          "till": "2014-11-25T15:02:01.000000+00:00",
+          "till": "2014-11-22T15:02:01.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -428,8 +428,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2029-02-02T12:40:00.000000+00:00",
-          "till": "2029-04-04T12:40:00.000000+00:00",
+          "from": "2029-01-26T12:32:00.000000+00:00",
+          "till": "2029-03-28T12:32:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,

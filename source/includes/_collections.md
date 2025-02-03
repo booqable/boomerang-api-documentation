@@ -33,6 +33,7 @@ Check each individual operation to see which relations can be included as a side
 `parent_id` | **uuid** <br>The ID of the parent collection. 
 `position` | **integer** `readonly`<br>Relative position of this collection among its siblings within the same parent collection. 
 `remote_image_url` | **string** `writeonly`<br>Url to an image on the web, use this field to add a photo. 
+`remove_image` | **boolean** `writeonly`<br>Remove the current image. 
 `seo_description` | **string** <br>SEO description. 
 `seo_title` | **string** <br>SEO title. 
 `show_in_store` | **boolean** <br>Whether to show this collection in the online store. 
@@ -289,6 +290,7 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of this collection. 
 `data[attributes][parent_id]` | **uuid** <br>The ID of the parent collection. 
 `data[attributes][remote_image_url]` | **string** <br>Url to an image on the web, use this field to add a photo. 
+`data[attributes][remove_image]` | **boolean** <br>Remove the current image. 
 `data[attributes][seo_description]` | **string** <br>SEO description. 
 `data[attributes][seo_title]` | **string** <br>SEO title. 
 `data[attributes][show_in_store]` | **boolean** <br>Whether to show this collection in the online store. 
@@ -391,6 +393,7 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of this collection. 
 `data[attributes][parent_id]` | **uuid** <br>The ID of the parent collection. 
 `data[attributes][remote_image_url]` | **string** <br>Url to an image on the web, use this field to add a photo. 
+`data[attributes][remove_image]` | **boolean** <br>Remove the current image. 
 `data[attributes][seo_description]` | **string** <br>SEO description. 
 `data[attributes][seo_title]` | **string** <br>SEO title. 
 `data[attributes][show_in_store]` | **boolean** <br>Whether to show this collection in the online store. 

@@ -30,7 +30,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `archived` | **boolean** `readonly`<br>Whether price structure is archived. 
-`archived_at` | **datetime** `readonly`<br>When the price structure was archived. 
+`archived_at` | **datetime** `readonly` `nullable`<br>When the price structure was archived. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `day` | **float** <br>Multiplier for every day outside of its tiles. 
 `hour` | **float** <br>Multiplier for every hour outside of its tiles. 

@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
 `document_id` | **uuid** `readonly-after-create`<br>The associated contract or quote.
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** `readonly`<br>The associated order.
-`signature_base64` | **string** `writeonly` `required`<br>Base64 encoded signature, use this field to store a signature.
+`signature_base64` | **string** `writeonly`<br>Base64 encoded signature, use this field to store a signature.
 
 
 ## Sign a contract
@@ -91,7 +91,7 @@ Check each individual operation to see which relations can be included as a side
           "number": 1,
           "prefix": null,
           "prefix_with_number": "1",
-          "date": "2025-01-27",
+          "date": "2025-02-03",
           "due_date": null,
           "name": "John Doe",
           "address": null,

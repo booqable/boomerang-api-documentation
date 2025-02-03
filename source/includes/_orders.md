@@ -68,7 +68,7 @@ Check each individual operation to see which relations can be included as a side
 `deposit_value` | **float** <br>The value to use for `deposit_type`. 
 `discount_in_cents` | **integer** `readonly`<br>Discount (incl. or excl. taxes based on `tax_strategy`). 
 `discount_percentage` | **float** `readonly`<br>The discount percentage applied to this order. May update if order amount changes and type is `fixed`. 
-`discount_type` | **string** <br>Type of discount. 
+`discount_type` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `discount_value` | **float** `writeonly`<br>The value to use for `discount_type`. 
 `entirely_started` | **boolean** `readonly`<br>Whether all items on the order are started. 
 `entirely_stopped` | **boolean** `readonly`<br>Whether all items on the order are stopped. 
@@ -135,8 +135,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-04-14T03:03:01.000000+00:00",
-          "stops_at": "1970-05-14T03:03:01.000000+00:00",
+          "starts_at": "1970-04-07T02:55:01.000000+00:00",
+          "stops_at": "1970-05-07T02:55:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -223,6 +223,7 @@ Name | Description
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_type` | **enum** <br>`eq`
 `discount_value` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `fulfillment_type` | **string** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -331,14 +332,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-01-28T09:26:29Z",
-                       "lte": "2025-01-31T09:26:29Z"
+                       "gte": "2025-02-04T09:34:53Z",
+                       "lte": "2025-02-07T09:34:53Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-01-28T09:26:29Z",
-                       "lte": "2025-01-31T09:26:29Z"
+                       "gte": "2025-02-04T09:34:53Z",
+                       "lte": "2025-02-07T09:34:53Z"
                      }
                    }
                  ]
@@ -416,6 +417,7 @@ Name | Description
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_type` | **enum** <br>`eq`
 `discount_value` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `fulfillment_type` | **string** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -697,7 +699,7 @@ This request accepts the following includes:
       "type": "orders",
       "attributes": {
         "created_at": "2015-07-07T09:48:01.000000+00:00",
-        "updated_at": "2015-07-07T09:48:01.000000+00:00",
+        "updated_at": "2015-07-07T09:49:01.000000+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -710,8 +712,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-09-09T12:22:01.000000+00:00",
-        "stops_at": "1970-10-09T12:22:01.000000+00:00",
+        "starts_at": "1970-09-02T12:14:01.000000+00:00",
+        "stops_at": "1970-10-02T12:14:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -904,8 +906,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:29:01.000000+00:00",
-        "stops_at": "2026-11-03T14:29:01.000000+00:00",
+        "starts_at": "2026-09-25T14:35:01.000000+00:00",
+        "stops_at": "2026-11-03T14:35:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -975,7 +977,7 @@ Name | Description
 `data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
-`data[attributes][discount_type]` | **string** <br>Type of discount. 
+`data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
 `data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
@@ -1237,7 +1239,7 @@ Name | Description
 `data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
-`data[attributes][discount_type]` | **string** <br>Type of discount. 
+`data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
 `data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
