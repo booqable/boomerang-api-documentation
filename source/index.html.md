@@ -73,6 +73,7 @@ includes:
   - settings
   - signatures
   - sortings
+  - stock_adjustments
   - stock_counts
   - stock_items
   - stock_item_archivations
