@@ -135,8 +135,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-04-07T02:55:01.000000+00:00",
-          "stops_at": "1970-05-07T02:55:01.000000+00:00",
+          "starts_at": "1970-03-31T03:02:01.000000+00:00",
+          "stops_at": "1970-04-30T03:02:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -332,14 +332,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-02-04T09:34:53Z",
-                       "lte": "2025-02-07T09:34:53Z"
+                       "gte": "2025-02-11T09:27:08Z",
+                       "lte": "2025-02-14T09:27:08Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-02-04T09:34:53Z",
-                       "lte": "2025-02-07T09:34:53Z"
+                       "gte": "2025-02-11T09:27:08Z",
+                       "lte": "2025-02-14T09:27:08Z"
                      }
                    }
                  ]
@@ -649,7 +649,10 @@ This request accepts the following includes:
 `notes`
 
 
-`payments`
+`payments` => 
+`payment_method`
+
+
 
 
 `properties`
@@ -699,7 +702,7 @@ This request accepts the following includes:
       "type": "orders",
       "attributes": {
         "created_at": "2015-07-07T09:48:01.000000+00:00",
-        "updated_at": "2015-07-07T09:49:01.000000+00:00",
+        "updated_at": "2015-07-07T09:48:01.000000+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -712,8 +715,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-09-02T12:14:01.000000+00:00",
-        "stops_at": "1970-10-02T12:14:01.000000+00:00",
+        "starts_at": "1970-08-26T12:21:01.000000+00:00",
+        "stops_at": "1970-09-25T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -827,7 +830,10 @@ This request accepts the following includes:
 `notes`
 
 
-`payments`
+`payments` => 
+`payment_method`
+
+
 
 
 `properties`
@@ -906,8 +912,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:35:01.000000+00:00",
-        "stops_at": "2026-11-03T14:35:01.000000+00:00",
+        "starts_at": "2026-09-25T14:28:01.000000+00:00",
+        "stops_at": "2026-11-03T14:28:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1046,7 +1052,10 @@ This request accepts the following includes:
 `notes`
 
 
-`payments`
+`payments` => 
+`payment_method`
+
+
 
 
 `properties`
@@ -1308,7 +1317,10 @@ This request accepts the following includes:
 `notes`
 
 
-`payments`
+`payments` => 
+`payment_method`
+
+
 
 
 `properties`

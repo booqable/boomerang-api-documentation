@@ -40,9 +40,9 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`confirm_shortage` | **boolean** `writeonly`<br>A value of `true` overrides shortage warnings.
+`confirm_shortage` | **boolean** <br>A value of `true` overrides shortage warnings.
 `id` | **uuid** `readonly`<br>Primary key.
-`stock_item_id` | **uuid** `readonly-after-create`<br>The stock item that needs to be archived.
+`stock_item_id` | **uuid** <br>The stock item that needs to be archived.
 
 
 ## Archive
@@ -72,6 +72,7 @@ Check each individual operation to see which relations can be included as a side
       "id": "16f1d062-5ca2-4e3d-86ef-07d906b31fcf",
       "type": "stock_item_archivations",
       "attributes": {
+        "confirm_shortage": null,
         "stock_item_id": "37f0c3fc-b2bf-4966-8eb5-d78dd973ed78"
       },
       "relationships": {}
@@ -289,6 +290,7 @@ Check each individual operation to see which relations can be included as a side
       "id": "2adbd074-8788-4a4c-85e1-3043bd4d878a",
       "type": "stock_item_archivations",
       "attributes": {
+        "confirm_shortage": true,
         "stock_item_id": "b899b3e7-5c23-4e22-8859-325956852bea"
       },
       "relationships": {}
@@ -307,7 +309,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_item_archivations]=stock_item_id`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_item_archivations]=confirm_shortage,stock_item_id`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=stock_item`
 
 
