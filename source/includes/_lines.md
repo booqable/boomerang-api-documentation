@@ -105,7 +105,7 @@ Check each individual operation to see which relations can be included as a side
 `price_each_in_cents` | **integer** <br>Price of each line. 
 `price_in_cents` | **integer** `readonly`<br>Price of each line x quantity. 
 `price_rule_values` | **hash** `readonly` `nullable`<br>Breakdown of applied price rules. 
-`price_structure_id` | **uuid** `nullable`<br>The PriceStructure used to calculate the price. 
+`price_structure_id` | **uuid** `readonly` `nullable`<br>The PriceStructure used to calculate the price. 
 `price_tile_id` | **uuid** `nullable`<br>The PriceTile that was selected to calculate the price. 
 `quantity` | **integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error. 
 `relevant` | **boolean** `readonly`<br>When `false` this line should not be shown to users. It is only needed for calculation of prorations. 
@@ -152,8 +152,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-09-28T05:41:00.000000+00:00",
-              "till": "1978-10-27T05:41:00.000000+00:00",
+              "from": "1978-09-21T05:41:00.000000+00:00",
+              "till": "1978-10-20T05:41:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -171,8 +171,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-10-11T17:41:00.000000+00:00",
-                    "till": "1978-10-27T05:41:00.000000+00:00",
+                    "from": "1978-10-04T17:41:00.000000+00:00",
+                    "till": "1978-10-20T05:41:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -321,8 +321,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1977-11-30T12:16:02.000000+00:00",
-            "till": "1977-12-29T12:16:02.000000+00:00",
+            "from": "1977-11-23T12:16:02.000000+00:00",
+            "till": "1977-12-22T12:16:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -340,8 +340,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1977-12-14T00:16:02.000000+00:00",
-                  "till": "1977-12-29T12:16:02.000000+00:00",
+                  "from": "1977-12-07T00:16:02.000000+00:00",
+                  "till": "1977-12-22T12:16:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -528,7 +528,6 @@ Name | Description
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `orders`, `documents`.
 `data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
-`data[attributes][price_structure_id]` | **uuid** <br>The PriceStructure used to calculate the price. 
 `data[attributes][price_tile_id]` | **uuid** <br>The PriceTile that was selected to calculate the price. 
 `data[attributes][quantity]` | **integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error. 
 `data[attributes][tax_category_id]` | **uuid** <br>TaxCategory applied to this Line. 
@@ -676,7 +675,6 @@ Name | Description
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `orders`, `documents`.
 `data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
-`data[attributes][price_structure_id]` | **uuid** <br>The PriceStructure used to calculate the price. 
 `data[attributes][price_tile_id]` | **uuid** <br>The PriceTile that was selected to calculate the price. 
 `data[attributes][quantity]` | **integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error. 
 `data[attributes][tax_category_id]` | **uuid** <br>TaxCategory applied to this Line. 
@@ -762,8 +760,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1974-01-20T22:52:02.000000+00:00",
-            "till": "1974-02-18T22:52:02.000000+00:00",
+            "from": "1974-01-13T22:51:02.000000+00:00",
+            "till": "1974-02-11T22:51:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -781,8 +779,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1974-02-03T10:52:02.000000+00:00",
-                  "till": "1974-02-18T22:52:02.000000+00:00",
+                  "from": "1974-01-27T10:51:02.000000+00:00",
+                  "till": "1974-02-11T22:51:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

@@ -58,7 +58,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** <br>The order whose status is changed. 
 `revert` | **boolean** <br>Indicates if this transition reverts the Order back to an earlier status. "Earlier status" does not require this specific Order to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of Orders in general. 
 `transition_from` | **enum** <br>The current status of the Order.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
-`transition_to` | **enum** <br>The new status of the Order. It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `archived`, `canceled`.
+`transition_to` | **enum** <br>The new status of the Order. It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ## Transition
@@ -470,7 +470,7 @@ Name | Description
 `data[attributes][order_id]` | **uuid** <br>The order whose status is changed. 
 `data[attributes][revert]` | **boolean** <br>Indicates if this transition reverts the Order back to an earlier status. "Earlier status" does not require this specific Order to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of Orders in general. 
 `data[attributes][transition_from]` | **enum** <br>The current status of the Order.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
-`data[attributes][transition_to]` | **enum** <br>The new status of the Order. It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `archived`, `canceled`.
+`data[attributes][transition_to]` | **enum** <br>The new status of the Order. It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ### Includes

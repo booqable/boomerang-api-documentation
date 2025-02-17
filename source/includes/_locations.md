@@ -134,6 +134,7 @@ Name | Description
 `cluster_id` | **uuid** <br>`eq`, `not_eq`
 `code` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`fulfillment_capabilities` | **array[string]** <br>`any_of`
 `id` | **uuid** <br>`eq`, `not_eq`
 `location_type` | **enum** <br>`eq`
 `main_address` | **hash** <br>`eq`

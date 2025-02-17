@@ -103,7 +103,7 @@ Check each individual operation to see which relations can be included as a side
 `last_name` | **string** <br>For type `address`. 
 `latitude` | **string** <br>For property_type `address`. 
 `longitude` | **string** <br>For property_type `address`. 
-`meets_validation_requirements` | **boolean** <br>Whether this property meets the validation requirements. 
+`meets_validation_requirements` | **boolean** `readonly`<br>Whether this property meets the validation requirements. 
 `name` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `owner_id` | **uuid** `readonly-after-create`<br>The resource this property is about. 
 `owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
@@ -649,7 +649,6 @@ Name | Description
 `data[attributes][last_name]` | **string** <br>For type `address`. 
 `data[attributes][latitude]` | **string** <br>For property_type `address`. 
 `data[attributes][longitude]` | **string** <br>For property_type `address`. 
-`data[attributes][meets_validation_requirements]` | **boolean** <br>Whether this property meets the validation requirements. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
@@ -753,7 +752,6 @@ Name | Description
 `data[attributes][last_name]` | **string** <br>For type `address`. 
 `data[attributes][latitude]` | **string** <br>For property_type `address`. 
 `data[attributes][longitude]` | **string** <br>For property_type `address`. 
-`data[attributes][meets_validation_requirements]` | **boolean** <br>Whether this property meets the validation requirements. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.

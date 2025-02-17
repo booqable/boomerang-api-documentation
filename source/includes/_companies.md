@@ -230,7 +230,7 @@ Name | Description
           "on_hold": false,
           "needs_activation": false,
           "product": "Premium",
-          "plan_id": "premium_monthly",
+          "plan_id": null,
           "interval": "month",
           "current_period_end": null,
           "extra_employees": 0,

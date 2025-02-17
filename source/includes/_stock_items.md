@@ -3,6 +3,8 @@
 For trackable products, each stock item is tracked and managed individually.
 Each stock item has a unique identifier that helps to keep track of it throughout Booqable.
 
+To create multiple StockItems in a single request, use the [StockAdjustment](#stock-adjustments) resource.
+
 ## Statuses
 
 - **Regular:** Regular stock item (`from` and `till` dates are not set).

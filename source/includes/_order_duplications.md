@@ -19,7 +19,7 @@ Check each individual operation to see which relations can be included as a side
 `custom_lines` | **boolean** <br>Indicates if custom Lines should be copied from the original Order. 
 `customer` | **boolean** <br>Indicates if the Customer should be copied from the original Order. 
 `dates` | **boolean** <br>Indicates if the rental dates should be copied from the original Order. 
-`deposit` | **string** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
+`deposit` | **enum** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit.<br> One of: `current`, `default`, `none`.
 `discount` | **boolean** <br>Indicates if discounts should be copied from the original Order. 
 `id` | **uuid** `readonly`<br>Primary key.
 `new_order_id` | **uuid** `readonly`<br>The newly created Order. 
@@ -104,7 +104,7 @@ Name | Description
 `data[attributes][custom_lines]` | **boolean** <br>Indicates if custom Lines should be copied from the original Order. 
 `data[attributes][customer]` | **boolean** <br>Indicates if the Customer should be copied from the original Order. 
 `data[attributes][dates]` | **boolean** <br>Indicates if the rental dates should be copied from the original Order. 
-`data[attributes][deposit]` | **string** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit. 
+`data[attributes][deposit]` | **enum** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit.<br> One of: `current`, `default`, `none`.
 `data[attributes][discount]` | **boolean** <br>Indicates if discounts should be copied from the original Order. 
 `data[attributes][original_order_id]` | **uuid** <br>The Order to be duplicated. 
 `data[attributes][properties]` | **boolean** <br>Indicates if properties should be copied from the original Order. 
