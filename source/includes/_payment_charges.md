@@ -171,7 +171,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
+`order` => 
+`payments`
+
+
 
 
 `customer`
@@ -293,7 +296,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
+`order` => 
+`payments`
+
+
 
 
 `customer`

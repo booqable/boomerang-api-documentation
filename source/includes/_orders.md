@@ -122,7 +122,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "orders",
         "attributes": {
           "created_at": "2015-02-09T00:29:01.000000+00:00",
-          "updated_at": "2015-02-09T00:29:01.000000+00:00",
+          "updated_at": "2015-02-09T00:30:01.000000+00:00",
           "number": 1,
           "status": "reserved",
           "statuses": [
@@ -135,8 +135,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-03-24T03:01:01.000000+00:00",
-          "stops_at": "1970-04-23T03:01:01.000000+00:00",
+          "starts_at": "1970-03-17T03:03:01.000000+00:00",
+          "stops_at": "1970-04-16T03:03:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -332,14 +332,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-02-18T09:28:18Z",
-                       "lte": "2025-02-21T09:28:18Z"
+                       "gte": "2025-02-25T09:27:03Z",
+                       "lte": "2025-02-28T09:27:03Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-02-18T09:28:18Z",
-                       "lte": "2025-02-21T09:28:18Z"
+                       "gte": "2025-02-25T09:27:03Z",
+                       "lte": "2025-02-28T09:27:03Z"
                      }
                    }
                  ]
@@ -673,10 +673,7 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate` => 
-`delivery_address`
-
-
+`order_delivery_rate`
 
 
 
@@ -715,8 +712,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-08-19T12:20:01.000000+00:00",
-        "stops_at": "1970-09-18T12:20:01.000000+00:00",
+        "starts_at": "1970-08-12T12:21:01.000000+00:00",
+        "stops_at": "1970-09-11T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -854,10 +851,7 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate` => 
-`delivery_address`
-
-
+`order_delivery_rate`
 
 
 
@@ -912,8 +906,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:27:01.000000+00:00",
-        "stops_at": "2026-11-03T14:27:01.000000+00:00",
+        "starts_at": "2026-09-25T14:28:01.000000+00:00",
+        "stops_at": "2026-11-03T14:28:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1076,10 +1070,7 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate` => 
-`delivery_address`
-
-
+`order_delivery_rate`
 
 
 
@@ -1341,10 +1332,7 @@ This request accepts the following includes:
 `transfers`
 
 
-`order_delivery_rate` => 
-`delivery_address`
-
-
+`order_delivery_rate`
 
 
 
