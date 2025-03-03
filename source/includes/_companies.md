@@ -266,13 +266,13 @@ Name | Description
             "remove_powered_by"
           ],
           "restrictions": {
-            "employees": 15,
-            "email_max_recipients": 2000,
-            "rate_limit_max": 250,
+            "employees": 5,
+            "email_max_recipients": 20,
+            "rate_limit_max": 50,
             "rate_limit_period": 60,
-            "locations": 3,
+            "locations": 1,
             "allow_extra_locations": true,
-            "allow_extra_employees": true
+            "allow_extra_employees": false
           },
           "can_try_plan": true
         }
