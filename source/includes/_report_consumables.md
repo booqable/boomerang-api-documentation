@@ -51,7 +51,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "9f5e212f-8f15-4b27-8d57-7820f511ad8e",
         "type": "report_consumables",
         "attributes": {
-          "created_at": "2017-08-20T13:09:01.000000+00:00",
+          "created_at": "2017-08-20T14:12:01.000000+00:00",
           "name": "Product 1000054",
           "sold": 2,
           "turnover_in_cents": 10000,
