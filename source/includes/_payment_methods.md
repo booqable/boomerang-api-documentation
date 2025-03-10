@@ -20,7 +20,8 @@ Check each individual operation to see which relations can be included as a side
 `details` | **hash** `readonly-after-create`<br>Method details. 
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** `readonly-after-create`<br>Provider identifier of the payment method. 
-`label` | **string** `readonly-after-create`<br>Label of the payment method. 
+`label_primary` | **string** <br>Primary label of the payment method. 
+`label_secondary` | **string** <br>Secondary label of the payment method. 
 `method_type` | **string** `readonly-after-create`<br>Provider method type. 
 `provider` | **enum** `readonly-after-create`<br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
 `status` | **enum** `readonly`<br>Payment method status. Payment method becomes `ready` after a successful charge.<br> One of: `created`, `ready`.
@@ -48,7 +49,8 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2017-06-03T16:17:00.000000+00:00",
           "updated_at": "2017-06-03T16:17:00.000000+00:00",
-          "label": "Visa XXX1234",
+          "label_primary": "Visa XXXX1234",
+          "label_secondary": "12/25",
           "status": "created",
           "provider": "stripe",
           "identifier": "pm_1234567890",
@@ -73,7 +75,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label_primary`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
@@ -91,7 +93,8 @@ Name | Description
 `customer_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
-`label` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`label_primary` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`label_secondary` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `method_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider` | **enum** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -125,7 +128,7 @@ This request does not accept any includes
              "provider": "app",
              "identifier": "pm_123",
              "customer_id": "e1f17238-83d4-4660-8f3b-5e95b67094df",
-             "label": "Test card"
+             "label_primary": "Test card"
            }
          }
        }'
@@ -141,7 +144,8 @@ This request does not accept any includes
       "attributes": {
         "created_at": "2019-01-15T14:37:00.000000+00:00",
         "updated_at": "2019-01-15T14:37:00.000000+00:00",
-        "label": "Test card",
+        "label_primary": "Test card",
+        "label_secondary": null,
         "status": "created",
         "provider": "app",
         "identifier": "pm_123",
@@ -165,7 +169,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label_primary`
 
 
 ### Request body
@@ -177,7 +181,8 @@ Name | Description
 `data[attributes][customer_id]` | **uuid** <br>The customer who owns this payment method. Becomes `null` after detaching a payment method.
 `data[attributes][details]` | **hash** <br>Method details. 
 `data[attributes][identifier]` | **string** <br>Provider identifier of the payment method. 
-`data[attributes][label]` | **string** <br>Label of the payment method. 
+`data[attributes][label_primary]` | **string** <br>Primary label of the payment method. 
+`data[attributes][label_secondary]` | **string** <br>Secondary label of the payment method. 
 `data[attributes][method_type]` | **string** <br>Provider method type. 
 `data[attributes][provider]` | **enum** <br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
 
@@ -206,7 +211,8 @@ This request does not accept any includes
       "attributes": {
         "created_at": "2016-08-19T20:26:00.000000+00:00",
         "updated_at": "2016-08-19T20:26:00.000000+00:00",
-        "label": "Visa XXX1234",
+        "label_primary": "Visa XXXX1234",
+        "label_secondary": "12/25",
         "status": "created",
         "provider": "stripe",
         "identifier": "pm_1234567890",
@@ -230,7 +236,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_methods]=created_at,updated_at,label_primary`
 
 
 ### Includes
