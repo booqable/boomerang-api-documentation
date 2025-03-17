@@ -6,7 +6,7 @@ This data is relevant only for orders that have a `delivery` fulfillment type.
 ## Relationships
 Name | Description
 -- | --
-`carrier` | **[Carrier](#carriers)** `required`<br>The selected carrier for this order.
+`carrier` | **[App carrier](#app-carriers)** `required`<br>The selected carrier for this order.
 `order` | **[Order](#orders)** `required`<br>The delivery order this rate is for.
 
 

@@ -12,6 +12,7 @@ Name | Description
 `barcode` | **[Barcode](#barcodes)** `optional`<br>The barcode pointing to this customer. 
 `merge_suggestion_customer` | **[Customer](#customers)** `required`<br>Holds the customer this customer is a possible duplicate of. 
 `notes` | **[Notes](#notes)** `hasmany`<br>Notes added about (and invisible for) customers. 
+`payment_methods` | **[Payment methods](#payment-methods)** `hasmany`<br>Payment methods associated with the customer. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this customer, based on [DefaultProperties](#default-properties). Properties of customers can be updated in bulk by writing to the `properties_attributes` attribute. 
 `tax_region` | **[Tax region](#tax-regions)** `optional`<br>Tax region assigned to new orders for this customer. 
 
@@ -159,6 +160,9 @@ This request accepts the following includes:
 `tax_region`
 
 
+`payment_methods`
+
+
 
 
 
@@ -297,6 +301,9 @@ This request accepts the following includes:
 `tax_region`
 
 
+`payment_methods`
+
+
 
 
 
@@ -376,6 +383,9 @@ This request accepts the following includes:
 
 
 `tax_region`
+
+
+`payment_methods`
 
 
 
@@ -480,6 +490,9 @@ This request accepts the following includes:
 `tax_region`
 
 
+`payment_methods`
+
+
 
 
 
@@ -580,6 +593,9 @@ This request accepts the following includes:
 
 
 `tax_region`
+
+
+`payment_methods`
 
 
 

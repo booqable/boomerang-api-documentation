@@ -10,7 +10,7 @@ and return orders or a warehouse that only stocks inventory.
 ## Relationships
 Name | Description
 -- | --
-`carriers` | **[Carriers](#carriers)** `hasmany`<br>The carriers that can do delivery from this location. 
+`carriers` | **[App carriers](#app-carriers)** `hasmany`<br>The carriers that can do delivery from this location. 
 `clusters` | **[Clusters](#clusters)** `hasmany`<br>The clusters this location is part of. 
 
 

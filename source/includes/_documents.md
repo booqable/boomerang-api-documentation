@@ -48,6 +48,10 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `customer_id` | **uuid** `nullable`<br>The associated customer. 
 `date` | **date** <br>Date the document was finalized. 
+`delivery_address` | **string** `readonly`<br>Delivery address. 
+`delivery_carrier_name` | **string** `readonly`<br>Name of the delivery carrier. 
+`delivery_label` | **string** `readonly`<br>Label for delivery. 
+`delivery_price_in_cents` | **integer** `readonly`<br>Delivery price. 
 `deposit_held_in_cents` | **integer** `readonly`<br>Amount of deposit held. 
 `deposit_in_cents` | **integer** `readonly`<br>Deposit. 
 `deposit_paid_in_cents` | **integer** `readonly`<br>How much of the deposit is paid. 
@@ -61,6 +65,7 @@ Check each individual operation to see which relations can be included as a side
 `due_date` | **date** <br>The latest date by which the invoice must be fully paid. 
 `finalized` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
 `footer` | **string** <br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document. 
+`fulfillment_type` | **enum** `readonly-after-create` `nullable`<br>Type of fulfillment.<br> One of: `pickup`, `delivery`.
 `grand_total_in_cents` | **integer** `readonly`<br>Total excl. taxes (excl. deposit). 
 `grand_total_with_tax_in_cents` | **integer** `readonly`<br>Amount incl. taxes (excl. deposit). 
 `id` | **uuid** `readonly`<br>Primary key.
@@ -142,6 +147,11 @@ Check each individual operation to see which relations can be included as a side
           "paid_in_cents": 0,
           "tax_in_cents": 15167,
           "discount_percentage": 10.0,
+          "fulfillment_type": "pickup",
+          "delivery_label": null,
+          "delivery_price_in_cents": 0,
+          "delivery_carrier_name": null,
+          "delivery_address": null,
           "order_id": "e10da0d6-7881-4991-851f-ef302c712dea",
           "customer_id": "6b39f922-ebba-4e73-841c-563dd37107d7",
           "tax_region_id": null,
@@ -201,6 +211,7 @@ Name | Description
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
+`fulfillment_type` | **enum** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
@@ -378,6 +389,7 @@ Name | Description
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
+`fulfillment_type` | **enum** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
@@ -500,6 +512,11 @@ This request accepts the following includes:
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
+        "fulfillment_type": "pickup",
+        "delivery_label": null,
+        "delivery_price_in_cents": 0,
+        "delivery_carrier_name": null,
+        "delivery_address": null,
         "order_id": "9c1a27c9-93ab-45fc-810c-ad69b9ab9617",
         "customer_id": "35578b5e-ed35-40b4-8e46-6d218d036c42",
         "tax_region_id": null,
@@ -593,7 +610,7 @@ This request accepts the following includes:
         "number": 1,
         "prefix": null,
         "prefix_with_number": "1",
-        "date": "2025-03-10",
+        "date": "2025-03-17",
         "due_date": null,
         "name": "John Doe",
         "address": null,
@@ -624,6 +641,11 @@ This request accepts the following includes:
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
+        "fulfillment_type": "pickup",
+        "delivery_label": null,
+        "delivery_price_in_cents": 0,
+        "delivery_carrier_name": null,
+        "delivery_address": null,
         "order_id": "c7d596a9-f29d-4dd8-8f81-dac3bef16c03",
         "customer_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "tax_region_id": null,
@@ -668,6 +690,7 @@ Name | Description
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
 `data[attributes][footer]` | **string** <br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document. 
+`data[attributes][fulfillment_type]` | **enum** <br>Type of fulfillment.<br> One of: `pickup`, `delivery`.
 `data[attributes][name]` | **string** <br>Customer name. If left blank, automatically populated with the customer name of the associated order. 
 `data[attributes][number]` | **integer** <br>The document number, must be unique per type. Automatically generated if left blank. 
 `data[attributes][order_id]` | **uuid** <br>The order this document is for. 
@@ -779,6 +802,11 @@ This request accepts the following includes:
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
+        "fulfillment_type": "pickup",
+        "delivery_label": null,
+        "delivery_price_in_cents": 0,
+        "delivery_carrier_name": null,
+        "delivery_address": null,
         "order_id": "6952ae61-0c41-4a20-8379-52f56e41884c",
         "customer_id": "da876af0-82ef-4a18-8e51-86680fba81bc",
         "tax_region_id": null,
@@ -823,6 +851,7 @@ Name | Description
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
 `data[attributes][footer]` | **string** <br>The footer of a document. Populated with setting `{document_type}.footer`, but can also be overridden for a specific document. 
+`data[attributes][fulfillment_type]` | **enum** <br>Type of fulfillment.<br> One of: `pickup`, `delivery`.
 `data[attributes][name]` | **string** <br>Customer name. If left blank, automatically populated with the customer name of the associated order. 
 `data[attributes][number]` | **integer** <br>The document number, must be unique per type. Automatically generated if left blank. 
 `data[attributes][order_id]` | **uuid** <br>The order this document is for. 
@@ -926,6 +955,11 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
         "discount_percentage": 10.0,
+        "fulfillment_type": "pickup",
+        "delivery_label": null,
+        "delivery_price_in_cents": 0,
+        "delivery_carrier_name": null,
+        "delivery_address": null,
         "order_id": "9253db70-5ed8-44a6-8d0b-f1af78e021fe",
         "customer_id": "3af62bd7-4635-4714-8680-79d8e23ec549",
         "tax_region_id": null,

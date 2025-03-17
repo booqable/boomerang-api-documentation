@@ -167,8 +167,8 @@ This request does not accept any includes
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-01-30T17:32:00.000000+00:00",
-          "stops_at": "2018-02-03T17:32:00.000000+00:00",
+          "starts_at": "2018-01-30T17:19:00.000000+00:00",
+          "stops_at": "2018-02-03T17:19:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,
@@ -199,6 +199,7 @@ This request does not accept any includes
           "billing_address_property_id": null,
           "delivery_address_property_id": null,
           "fulfillment_type": "pickup",
+          "delivery_address": null,
           "customer_id": null,
           "tax_region_id": null,
           "coupon_id": null,

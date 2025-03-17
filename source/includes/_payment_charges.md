@@ -40,7 +40,7 @@ Check each individual operation to see which relations can be included as a side
 `mode` | **enum** <br>Mode. `checkout` mode is reserved for checkout payments, not available for API.<br> One of: `manual`, `off_session`, `request`, `terminal`, `capture`.
 `order_id` | **uuid** `readonly-after-create`<br>The associated order.
 `payment_authorization_id` | **uuid** `readonly-after-create`<br>The authorization under which this charge is made. 
-`payment_method_id` | **uuid** `readonly`<br>The payment method. 
+`payment_method_id` | **uuid** `readonly-after-create`<br>The payment method. 
 `possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment charge. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider payment identification. 
@@ -157,6 +157,7 @@ Name | Description
 `data[attributes][mode]` | **enum** <br>Mode. `checkout` mode is reserved for checkout payments, not available for API.<br> One of: `manual`, `off_session`, `request`, `terminal`, `capture`.
 `data[attributes][order_id]` | **uuid** <br>The associated order.
 `data[attributes][payment_authorization_id]` | **uuid** <br>The authorization under which this charge is made. 
+`data[attributes][payment_method_id]` | **uuid** <br>The payment method. 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider payment identification. 
 `data[attributes][provider_method]` | **string** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.. 
@@ -282,6 +283,7 @@ Name | Description
 `data[attributes][mode]` | **enum** <br>Mode. `checkout` mode is reserved for checkout payments, not available for API.<br> One of: `manual`, `off_session`, `request`, `terminal`, `capture`.
 `data[attributes][order_id]` | **uuid** <br>The associated order.
 `data[attributes][payment_authorization_id]` | **uuid** <br>The authorization under which this charge is made. 
+`data[attributes][payment_method_id]` | **uuid** <br>The payment method. 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider payment identification. 
 `data[attributes][provider_method]` | **string** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.. 

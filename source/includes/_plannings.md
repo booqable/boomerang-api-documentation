@@ -78,10 +78,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-04-12T06:48:00.000000+00:00",
-          "stops_at": "1973-05-12T06:48:00.000000+00:00",
-          "reserved_from": "1973-04-12T06:48:00.000000+00:00",
-          "reserved_till": "1973-05-12T06:48:00.000000+00:00",
+          "starts_at": "1973-04-05T07:50:00.000000+00:00",
+          "stops_at": "1973-05-05T07:50:00.000000+00:00",
+          "reserved_from": "1973-04-05T07:50:00.000000+00:00",
+          "reserved_till": "1973-05-05T07:50:00.000000+00:00",
           "reserved": true,
           "started": 0,
           "stopped": 0,
@@ -208,12 +208,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-03-11T10:29:59Z"
+                       "gte": "2025-03-18T09:27:51Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-03-14T10:29:59Z"
+                       "lte": "2025-03-21T09:27:51Z"
                      }
                    }
                  ]
@@ -223,12 +223,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-03-11T10:29:59Z"
+                       "gte": "2025-03-18T09:27:51Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-03-14T10:29:59Z"
+                       "lte": "2025-03-21T09:27:51Z"
                      }
                    }
                  ]
@@ -362,10 +362,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-05-06T03:12:01.000000+00:00",
-        "stops_at": "1978-06-05T03:12:01.000000+00:00",
-        "reserved_from": "1978-05-06T03:12:01.000000+00:00",
-        "reserved_till": "1978-06-05T03:12:01.000000+00:00",
+        "starts_at": "1978-04-29T04:15:01.000000+00:00",
+        "stops_at": "1978-05-29T04:15:01.000000+00:00",
+        "reserved_from": "1978-04-29T04:15:01.000000+00:00",
+        "reserved_till": "1978-05-29T04:15:01.000000+00:00",
         "reserved": true,
         "started": 0,
         "stopped": 0,

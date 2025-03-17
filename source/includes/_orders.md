@@ -58,6 +58,7 @@ Check each individual operation to see which relations can be included as a side
 `coupon_id` | **uuid** `nullable`<br>The Coupon added to this Order. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `customer_id` | **uuid** `nullable`<br>The Customer this Order is for. 
+`delivery_address` | **string** <br>The delivery address. 
 `delivery_address_property_id` | **uuid** <br>The property id of the delivery address. 
 `deposit_held_in_cents` | **integer** `readonly`<br>Amount of deposit held. 
 `deposit_in_cents` | **integer** `readonly`<br>Deposit. 
@@ -135,8 +136,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-03-03T02:00:01.000000+00:00",
-          "stops_at": "1970-04-02T02:00:01.000000+00:00",
+          "starts_at": "1970-02-24T03:02:01.000000+00:00",
+          "stops_at": "1970-03-26T03:02:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -169,6 +170,7 @@ Check each individual operation to see which relations can be included as a side
           "billing_address_property_id": null,
           "delivery_address_property_id": null,
           "fulfillment_type": "pickup",
+          "delivery_address": null,
           "customer_id": "5e7fb1d5-a69a-4dad-8f6c-0a321ec6da2c",
           "tax_region_id": null,
           "coupon_id": null,
@@ -333,14 +335,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-03-11T10:29:14Z",
-                       "lte": "2025-03-14T10:29:14Z"
+                       "gte": "2025-03-18T09:27:12Z",
+                       "lte": "2025-03-21T09:27:12Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-03-11T10:29:14Z",
-                       "lte": "2025-03-14T10:29:14Z"
+                       "gte": "2025-03-18T09:27:12Z",
+                       "lte": "2025-03-21T09:27:12Z"
                      }
                    }
                  ]
@@ -570,6 +572,7 @@ Returns an existing or new order for the current employee.
         "billing_address_property_id": null,
         "delivery_address_property_id": null,
         "fulfillment_type": "pickup",
+        "delivery_address": null,
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
@@ -611,6 +614,9 @@ This request accepts the following includes:
 
 
 `properties`
+
+
+`payment_methods`
 
 
 
@@ -714,8 +720,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-07-29T11:19:01.000000+00:00",
-        "stops_at": "1970-08-28T11:19:01.000000+00:00",
+        "starts_at": "1970-07-22T12:21:01.000000+00:00",
+        "stops_at": "1970-08-21T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -748,6 +754,7 @@ This request accepts the following includes:
         "billing_address_property_id": null,
         "delivery_address_property_id": null,
         "fulfillment_type": "pickup",
+        "delivery_address": null,
         "customer_id": "af4ff106-fdde-49e2-83ec-57302f00cd68",
         "tax_region_id": null,
         "coupon_id": null,
@@ -789,6 +796,9 @@ This request accepts the following includes:
 
 
 `properties`
+
+
+`payment_methods`
 
 
 
@@ -908,8 +918,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:26:01.000000+00:00",
-        "stops_at": "2026-11-03T14:26:01.000000+00:00",
+        "starts_at": "2026-09-25T14:28:01.000000+00:00",
+        "stops_at": "2026-11-03T14:28:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -940,6 +950,7 @@ When creating an order, and the following fields are left blank, a sensible defa
         "billing_address_property_id": null,
         "delivery_address_property_id": null,
         "fulfillment_type": "pickup",
+        "delivery_address": null,
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
@@ -976,6 +987,7 @@ Name | Description
 `data[attributes][confirm_shortage]` | **boolean** <br>Confirm shortage on update. 
 `data[attributes][coupon_id]` | **uuid** <br>The Coupon added to this Order. 
 `data[attributes][customer_id]` | **uuid** <br>The Customer this Order is for. 
+`data[attributes][delivery_address]` | **string** <br>The delivery address. 
 `data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
@@ -1008,6 +1020,9 @@ This request accepts the following includes:
 
 
 `properties`
+
+
+`payment_methods`
 
 
 
@@ -1238,6 +1253,7 @@ Name | Description
 `data[attributes][confirm_shortage]` | **boolean** <br>Confirm shortage on update. 
 `data[attributes][coupon_id]` | **uuid** <br>The Coupon added to this Order. 
 `data[attributes][customer_id]` | **uuid** <br>The Customer this Order is for. 
+`data[attributes][delivery_address]` | **string** <br>The delivery address. 
 `data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
@@ -1270,6 +1286,9 @@ This request accepts the following includes:
 
 
 `properties`
+
+
+`payment_methods`
 
 
 
