@@ -5,8 +5,8 @@ Allows you to leave notes attached to other resources.
 ## Relationships
 Name | Description
 -- | --
-`employee` | **[Employee](#employees)** `required`<br>The employee who created this note.
-`owner` | **[Customer](#customers), [Product group](#product-groups), [Stock item](#stock-items), [Bundle](#bundles), [Order](#orders), [Document](#documents), [User](#users)** `required`<br>The resource this note is about.
+`employee` | **[Employee](#employees)** `required`<br>The [Employee](#employees) who created this note. 
+`owner` | **[Customer](#customers), [Product group](#product-groups), [Stock item](#stock-items), [Bundle](#bundles), [Order](#orders), [Document](#documents), [User](#users)** `required`<br>The resource this note is about. 
 
 
 Check matching attributes under [Fields](#notes-fields) to see which relations can be written.
@@ -16,11 +16,11 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`body` | **string** <br>The content of the note.
+`body` | **string** <br>The content of the note. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`employee_id` | **uuid** `readonly`<br>The employee who created this note.
+`employee_id` | **uuid** `readonly`<br>The [Employee](#employees) who created this note. 
 `id` | **uuid** `readonly`<br>Primary key.
-`owner_id` | **uuid** `readonly-after-create`<br>The resource this note is about.
+`owner_id` | **uuid** `readonly-after-create`<br>The resource this note is about. 
 `owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `product_groups`, `stock_items`, `bundles`, `orders`, `documents`, `users`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
@@ -235,8 +235,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][body]` | **string** <br>The content of the note.
-`data[attributes][owner_id]` | **uuid** <br>The resource this note is about.
+`data[attributes][body]` | **string** <br>The content of the note. 
+`data[attributes][owner_id]` | **uuid** <br>The resource this note is about. 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `product_groups`, `stock_items`, `bundles`, `orders`, `documents`, `users`.
 
 

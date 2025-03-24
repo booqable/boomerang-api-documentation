@@ -1,15 +1,15 @@
 # Payment refunds
 
-A PaymentRefund is a record of refund to the User that is used to track the refund status and details.
+A payment refund is a record of refund to the user that is used to track the refund status and details.
 
 ## Relationships
 Name | Description
 -- | --
-`cart` | **[Cart](#carts)** `required`<br>The associated cart.
-`customer` | **[Customer](#customers)** `required`<br>The associated customer.
-`employee` | **[Employee](#employees)** `required`<br>The associated employee.
-`order` | **[Order](#orders)** `required`<br>The associated order.
-`payment_charge` | **[Payment charge](#payment-charges)** `required`<br>The charge being refunded. 
+`cart` | **[Cart](#carts)** `required`<br>The associated cart. 
+`customer` | **[Customer](#customers)** `required`<br>The associated [Customer](#customers). 
+`employee` | **[Employee](#employees)** `required`<br>The associated [Employee](#employees). 
+`order` | **[Order](#orders)** `required`<br>The associated [Order](#orders). 
+`payment_charge` | **[Payment charge](#payment-charges)** `required`<br>The [PaymentCharge](#payment-charges) being refunded. 
 
 
 Check matching attributes under [Fields](#payment-refunds-fields) to see which relations can be written.
@@ -21,23 +21,23 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `amount_in_cents` | **integer** <br>Amount in cents. 
 `canceled_at` | **datetime** `readonly`<br>When payment refund was canceled. 
-`cart_id` | **uuid** `readonly-after-create`<br>The associated cart.
+`cart_id` | **uuid** `readonly-after-create`<br>The associated cart. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** <br>Currency. 
-`customer_id` | **uuid** `readonly-after-create`<br>The associated customer.
+`customer_id` | **uuid** `readonly-after-create`<br>The associated [Customer](#customers). 
 `deposit_in_cents` | **integer** <br>Deposit in cents. 
 `description` | **string** <br>Description. 
-`employee_id` | **uuid** `readonly`<br>The associated employee.
+`employee_id` | **uuid** `readonly`<br>The associated [Employee](#employees). 
 `expired_at` | **datetime** `readonly`<br>When payment refund expired. 
 `failed_at` | **datetime** `readonly`<br>When payment refund failed. 
 `failure_reason` | **string** <br>Failure reason. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>The associated order.
-`payment_charge_id` | **uuid** `readonly-after-create`<br>The charge being refunded. 
-`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment charge. 
+`order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
+`payment_charge_id` | **uuid** `readonly-after-create`<br>The [PaymentCharge](#payment-charges) being refunded. 
+`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment refund. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider refund identification. 
-`provider_method` | **string** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc... 
+`provider_method` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `provider_secret` | **string** <br>Provider refund secret. 
 `reason` | **string** <br>Reason. 
 `status` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
@@ -129,16 +129,16 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart.
+`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
 `data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated customer.
+`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
 `data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
 `data[attributes][failure_reason]` | **string** <br>Failure reason. 
-`data[attributes][order_id]` | **uuid** <br>The associated order.
-`data[attributes][payment_charge_id]` | **uuid** <br>The charge being refunded. 
+`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
+`data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) being refunded. 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider refund identification. 
-`data[attributes][provider_method]` | **string** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc... 
+`data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
 `data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
@@ -150,7 +150,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
+`order` => 
+`payments`
+
+
 
 
 `customer`
@@ -241,16 +244,16 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart.
+`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
 `data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated customer.
+`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
 `data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
 `data[attributes][failure_reason]` | **string** <br>Failure reason. 
-`data[attributes][order_id]` | **uuid** <br>The associated order.
-`data[attributes][payment_charge_id]` | **uuid** <br>The charge being refunded. 
+`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
+`data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) being refunded. 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider refund identification. 
-`data[attributes][provider_method]` | **string** <br>Provider refund method. Ex: credit_card, boleto, cash, bank, etc... 
+`data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
 `data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
@@ -262,7 +265,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
+`order` => 
+`payments`
+
+
 
 
 `customer`

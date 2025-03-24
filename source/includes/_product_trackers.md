@@ -1,9 +1,9 @@
 # Product trackers
 
-ProductTrackers describe the history of pickups and returns of a Product.
+ProductTrackers describe the history of pickups and returns of a [Product](#products).
 
-For trackable products, the StockItemTracker resource
-provides additional details about individual StockItems.
+For trackable products, the [StockItemTracker](#stock-item-trackers) resource
+provides additional details about individual [StockItems](#stock-items).
 
 For products with multiple variations, the `product_group_id`
 filter can be used to get the history for all variations at once.
@@ -11,10 +11,10 @@ filter can be used to get the history for all variations at once.
 ## Relationships
 Name | Description
 -- | --
-`employee` | **[Employee](#employees)** `required`<br>The employee who handled the pickup/return. 
-`order` | **[Order](#orders)** `required`<br>The order the pickup/return was part of. 
-`product` | **[Product](#products)** `required`<br>The product that was picked up/returned. 
-`stock_item_trackers` | **[Stock item trackers](#stock-item-trackers)** `hasmany`<br>The StockItems that were picked up/returned. 
+`employee` | **[Employee](#employees)** `required`<br>The [Employee](#employees) who handled the pickup/return. 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) the pickup/return was part of. 
+`product` | **[Product](#products)** `required`<br>The [Product](#products) that was picked up/returned. 
+`stock_item_trackers` | **[Stock item trackers](#stock-item-trackers)** `hasmany`<br>The [StockItems](#stock-items) that were picked up/returned. 
 
 
 Check matching attributes under [Fields](#product-trackers-fields) to see which relations can be written.
@@ -24,12 +24,12 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`created_at` | **datetime** `readonly`<br>When the pickup/returned happenend. 
-`employee_id` | **uuid** `readonly`<br>The employee who handled the pickup/return. 
+`created_at` | **datetime** `readonly`<br>When the pickup/return happened. 
+`employee_id` | **uuid** `readonly`<br>The [Employee](#employees) who handled the pickup/return. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly`<br>The order the pickup/return was part of. 
-`product_id` | **uuid** `readonly`<br>The product whose history is recorded. 
-`quantity` | **integer** `readonly`<br>The quantitiy of the product being picked up or returned. Positive values are pickups, negative values are returns. 
+`order_id` | **uuid** `readonly`<br>The [Order](#orders) the pickup/return was part of. 
+`product_id` | **uuid** `readonly`<br>The [Product](#products) whose history is recorded. 
+`quantity` | **integer** `readonly`<br>The quantity of the product being picked up or returned. Positive values are pickups, negative values are returns. 
 
 
 ## List product trackers

@@ -1,12 +1,12 @@
 # Order duplications
 
-Duplicates an Order with a selectable subset of fields and associations.
+Duplicates an [Order](#orders) with a selectable subset of fields and associations.
 
 ## Relationships
 Name | Description
 -- | --
-`new_order` | **[Order](#orders)** `required`<br>The newly created Order. 
-`original_order` | **[Order](#orders)** `required`<br>The Order to be duplicated. 
+`new_order` | **[Order](#orders)** `required`<br>The newly created [Order](#orders). 
+`original_order` | **[Order](#orders)** `required`<br>The [Order](#orders) to be duplicated. 
 
 
 Check matching attributes under [Fields](#order-duplications-fields) to see which relations can be written.
@@ -16,17 +16,17 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`custom_lines` | **boolean** <br>Indicates if custom Lines should be copied from the original Order. 
-`customer` | **boolean** <br>Indicates if the Customer should be copied from the original Order. 
-`dates` | **boolean** <br>Indicates if the rental dates should be copied from the original Order. 
-`deposit` | **enum** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit.<br> One of: `current`, `default`, `none`.
-`discount` | **boolean** <br>Indicates if discounts should be copied from the original Order. 
+`custom_lines` | **boolean** <br>Indicates if custom [Lines](#lines) should be copied from the original [Order](#orders). 
+`customer` | **boolean** <br>Indicates if the [Customer](#customers) should be copied from the original [Order](#orders). 
+`dates` | **boolean** <br>Indicates if the rental dates should be copied from the original [Order](#orders). 
+`deposit` | **enum** <br>`current` copies the deposit from the original [Order](#orders), `default` resets the deposit to the default for the company or customer, `none` removes the deposit.<br> One of: `current`, `default`, `none`.
+`discount` | **boolean** <br>Indicates if discounts should be copied from the original [Order](#orders). 
 `id` | **uuid** `readonly`<br>Primary key.
-`new_order_id` | **uuid** `readonly`<br>The newly created Order. 
-`original_order_id` | **uuid** <br>The Order to be duplicated. 
-`properties` | **boolean** <br>Indicates if properties should be copied from the original Order. 
-`stock_item_plannings` | **boolean** <br>Indicates if planned stock items should be copied from the original Order. 
-`tags` | **boolean** <br>Indicates if tags should be copied from the original Order. 
+`new_order_id` | **uuid** `readonly`<br>The newly created [Order](#orders). 
+`original_order_id` | **uuid** <br>The [Order](#orders) to be duplicated. 
+`properties` | **boolean** <br>Indicates if [Properties](#properties) should be copied from the original [Order](#orders). 
+`stock_item_plannings` | **boolean** <br>Indicates if planned [StockItems](#stock-items) should be copied from the original [Order](#orders). 
+`tags` | **boolean** <br>Indicates if tags should be copied from the original [Order](#orders). 
 
 
 ## Duplicate
@@ -101,15 +101,15 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][custom_lines]` | **boolean** <br>Indicates if custom Lines should be copied from the original Order. 
-`data[attributes][customer]` | **boolean** <br>Indicates if the Customer should be copied from the original Order. 
-`data[attributes][dates]` | **boolean** <br>Indicates if the rental dates should be copied from the original Order. 
-`data[attributes][deposit]` | **enum** <br>`current` copies the desposit from the original Order, `default` resets the deposit to the default for the company or customer, `none` removes the deposit.<br> One of: `current`, `default`, `none`.
-`data[attributes][discount]` | **boolean** <br>Indicates if discounts should be copied from the original Order. 
-`data[attributes][original_order_id]` | **uuid** <br>The Order to be duplicated. 
-`data[attributes][properties]` | **boolean** <br>Indicates if properties should be copied from the original Order. 
-`data[attributes][stock_item_plannings]` | **boolean** <br>Indicates if planned stock items should be copied from the original Order. 
-`data[attributes][tags]` | **boolean** <br>Indicates if tags should be copied from the original Order. 
+`data[attributes][custom_lines]` | **boolean** <br>Indicates if custom [Lines](#lines) should be copied from the original [Order](#orders). 
+`data[attributes][customer]` | **boolean** <br>Indicates if the [Customer](#customers) should be copied from the original [Order](#orders). 
+`data[attributes][dates]` | **boolean** <br>Indicates if the rental dates should be copied from the original [Order](#orders). 
+`data[attributes][deposit]` | **enum** <br>`current` copies the deposit from the original [Order](#orders), `default` resets the deposit to the default for the company or customer, `none` removes the deposit.<br> One of: `current`, `default`, `none`.
+`data[attributes][discount]` | **boolean** <br>Indicates if discounts should be copied from the original [Order](#orders). 
+`data[attributes][original_order_id]` | **uuid** <br>The [Order](#orders) to be duplicated. 
+`data[attributes][properties]` | **boolean** <br>Indicates if [Properties](#properties) should be copied from the original [Order](#orders). 
+`data[attributes][stock_item_plannings]` | **boolean** <br>Indicates if planned [StockItems](#stock-items) should be copied from the original [Order](#orders). 
+`data[attributes][tags]` | **boolean** <br>Indicates if tags should be copied from the original [Order](#orders). 
 
 
 ### Includes

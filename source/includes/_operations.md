@@ -2,8 +2,8 @@
 
 Operations are long running tasks that are used to mutate data in bulk
 or to generate artifacts like exports or documents. Once an operation
-has been started it cannot be paused or cancelled. However, the status of an
-operation status can be requested.
+has been started it cannot be paused or canceled. However, the status of an
+operation can be requested.
 
 An operation requires the `operation_data` object to be set during creation.
 It contains the parameters required for initiating the operation and is validated
@@ -282,12 +282,12 @@ Allowed attribute keys:
 
 ### Artifacts
 
-_No artifacts are generated when bullk updating resources._
+_No artifacts are generated when bulk updating resources._
 
 ## Relationships
 Name | Description
 -- | --
-`employee` | **[Employee](#employees)** `required`<br>Employee who started this operation.
+`employee` | **[Employee](#employees)** `required`<br>[Employee](#employees) who started this operation. 
 
 
 Check matching attributes under [Fields](#operations-fields) to see which relations can be written.
@@ -297,18 +297,18 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`artifact` | **hash** `readonly`<br>An object that returns an optional artifact of the operation. E.g. a file if the operation generates a report.
+`artifact` | **hash** `readonly`<br>An object that returns an optional artifact of the operation. E.g. a file if the operation generates a report. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`description` | **string** `readonly`<br>Explains what the operation is doing in a short sentence.
-`employee_id` | **uuid** `readonly`<br>Employee who started this operation.
-`error_count` | **integer** `readonly`<br>The number of errors that happened during the execution. See `error_data`.
-`error_data` | **array** `readonly`<br>An array of strings with errors that happened during execution of the operation.
-`finished_at` | **datetime** `readonly`<br>The moment when the operation is finished executing.
+`description` | **string** `readonly`<br>Explains what the operation is doing in a short sentence. 
+`employee_id` | **uuid** `readonly`<br>[Employee](#employees) who started this operation. 
+`error_count` | **integer** `readonly`<br>The number of errors that happened during the execution. See `error_data`. 
+`error_data` | **array** `readonly`<br>An array of strings with errors that happened during execution of the operation. 
+`finished_at` | **datetime** `readonly`<br>The moment when the operation is finished executing. 
 `id` | **uuid** `readonly`<br>Primary key.
-`operation_data` | **hash** `extra`<br>An object with the params used to initiate the operation. See the description of the operation.
-`status` | **enum** `readonly`<br>Status of the operation.<br>One of: `scheduled`, `in_progress`, `finished`, `failed`.
-`status_message` | **string** `readonly`<br>A UI-friendly string explaining the status & progress of the operation for the user.
-`target_type` | **string** `readonly`<br>The type of resource that the operation is targeting.
+`operation_data` | **hash** `extra`<br>An object with the params used to initiate the operation. See the description of the operation. 
+`status` | **enum** `readonly`<br>Status of the operation.<br> One of: `scheduled`, `in_progress`, `finished`, `failed`.
+`status_message` | **string** `readonly`<br>A UI-friendly string explaining the status & progress of the operation for the user. 
+`target_type` | **string** `readonly`<br>The type of resource that the operation is targeting. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -546,7 +546,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][operation_data]` | **hash** <br>An object with the params used to initiate the operation. See the description of the operation.
+`data[attributes][operation_data]` | **hash** <br>An object with the params used to initiate the operation. See the description of the operation. 
 
 
 ### Includes

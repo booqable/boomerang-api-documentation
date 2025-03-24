@@ -6,17 +6,17 @@ A list of all login attempts for the current employee.
 
  Name | Description
 -- | --
-`city` | **string** `readonly` `nullable`<br>City from where login attempt was performed.
-`country` | **string** `readonly` `nullable`<br>Country from where login attempt was performed.
-`created_at` | **datetime** `readonly`<br>The time at which the login was attempted.
-`failure_reason` | **enum** `readonly` `nullable`<br>Why the login failed.<br>One of: `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`.
+`city` | **string** `readonly` `nullable`<br>City from where login attempt was performed. 
+`country` | **string** `readonly` `nullable`<br>Country from where login attempt was performed. 
+`created_at` | **datetime** `readonly`<br>The time at which the login was attempted. 
+`failure_reason` | **enum** `readonly` `nullable`<br>Why the login failed.<br> One of: `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`.
 `id` | **uuid** `readonly`<br>Primary key.
-`ip` | **string** `readonly`<br>IP address of the login attempt.
-`region` | **string** `readonly` `nullable`<br>Region from where login attempt was performed.
-`strategy` | **enum** `readonly`<br>Indicates which login mechanism was used.<br>One of: `saml`, `token`, `single_use`, `database_authenticatable`, `rememberable`, `BooqableApp-iOS`.
-`success` | **boolean** `readonly`<br>Whether attempt was succesful.
+`ip` | **string** `readonly`<br>IP address of the login attempt. 
+`region` | **string** `readonly` `nullable`<br>Region from where login attempt was performed. 
+`strategy` | **enum** `readonly`<br>Indicates which login mechanism was used.<br> One of: `saml`, `token`, `single_use`, `database_authenticatable`, `rememberable`, `BooqableApp-iOS`.
+`success` | **boolean** `readonly`<br>Whether attempt was successful. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
-`user_agent` | **string** `readonly` `nullable`<br>Client application identifier.
+`user_agent` | **string** `readonly` `nullable`<br>Client application identifier. 
 
 
 ## List login activities

@@ -5,9 +5,9 @@ A quick and simple way to fill out an email template with order data.
 ## Relationships
 Name | Description
 -- | --
-`document` | **[Document](#documents)** `required`<br>Document data to use when rendering.
-`email_template` | **[Email template](#email-templates)** `required`<br>Email template to render.
-`order` | **[Order](#orders)** `required`<br>Order data to use when rendering.
+`document` | **[Document](#documents)** `required`<br>[Document](#documents) data to use when rendering. 
+`email_template` | **[Email template](#email-templates)** `required`<br>[EmailTemplate](#email-templates) to render. 
+`order` | **[Order](#orders)** `required`<br>[Order](#orders) data to use when rendering. 
 
 
 Check matching attributes under [Fields](#rendered-emails-fields) to see which relations can be written.
@@ -18,11 +18,11 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `body` | **string** <br>Rendered email body.
-`document_id` | **uuid** <br>Document data to use when rendering.
-`email_template_id` | **uuid** <br>Email template to render.
+`document_id` | **uuid** <br>[Document](#documents) data to use when rendering. 
+`email_template_id` | **uuid** <br>[EmailTemplate](#email-templates) to render. 
 `full_body` | **string** `readonly`<br>Email body wrapped with email layout.
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** <br>Order data to use when rendering.
+`order_id` | **uuid** <br>[Order](#orders) data to use when rendering. 
 `subject` | **string** `readonly`<br>Rendered email subject.
 
 
@@ -126,9 +126,9 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][body]` | **string** <br>Rendered email body.
-`data[attributes][document_id]` | **uuid** <br>Document data to use when rendering.
-`data[attributes][email_template_id]` | **uuid** <br>Email template to render.
-`data[attributes][order_id]` | **uuid** <br>Order data to use when rendering.
+`data[attributes][document_id]` | **uuid** <br>[Document](#documents) data to use when rendering. 
+`data[attributes][email_template_id]` | **uuid** <br>[EmailTemplate](#email-templates) to render. 
+`data[attributes][order_id]` | **uuid** <br>[Order](#orders) data to use when rendering. 
 
 
 ### Includes

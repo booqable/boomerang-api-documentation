@@ -3,7 +3,7 @@
 You can assign Barcodes to Product (variations), individually tracked StockItems,
 and Customers (for use on a customer card, for example).
 
-An QR code is always generated for each Order. This QR code can be included in emails
+A QR code is always generated for each Order. This QR code can be included in emails
 for speedy pickup and printed on packing slips for easier logistics.
 
 Barcodes cannot be added to ProductGroups. Instead Barcodes can be added to individual
@@ -155,7 +155,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/boomerang/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvOTdlZGU3ZTItMGEwYi00NWQ4LTk3MDYtNGFhNjY0N2Q0NDc2'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvMjgzNDZlMTItNjlhMC00YWY2LWI3NTUtN2YwZDE3MjlkOGYx'
        --data-urlencode 'include=owner'
 ```
 

@@ -2,7 +2,7 @@
 
 Archives a stock item.
 
-Archivation is final and can not be undone.
+Archiving is final and cannot be undone.
 
 ## Errors
 
@@ -23,14 +23,14 @@ following values:
   an (un)acceptable shortage of the product for current or future orders.
   When the shortage is within the shortage limit of the product,
   a warning is returned. Otherwise a blocking error is returned.
-  A warning can be overriden by setting `confirm_shortage` to `true`.
+  A warning can be overridden by setting `confirm_shortage` to `true`.
   The orders that would be affected by the shortage can be found in
   either `meta.blocking[0].order_ids` or `meta.warning[0].order_ids`.
 
 ## Relationships
 Name | Description
 -- | --
-`stock_item` | **[Stock item](#stock-items)** `required`<br>The stock item that needs to be archived.
+`stock_item` | **[Stock item](#stock-items)** `required`<br>The [StockItem](#stock-items) that needs to be archived.
 
 
 Check matching attributes under [Fields](#stock-item-archivations-fields) to see which relations can be written.
@@ -42,7 +42,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `confirm_shortage` | **boolean** <br>A value of `true` overrides shortage warnings.
 `id` | **uuid** `readonly`<br>Primary key.
-`stock_item_id` | **uuid** <br>The stock item that needs to be archived.
+`stock_item_id` | **uuid** <br>The [StockItem](#stock-items) that needs to be archived.
 
 
 ## Archive
@@ -320,7 +320,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings.
-`data[attributes][stock_item_id]` | **uuid** <br>The stock item that needs to be archived.
+`data[attributes][stock_item_id]` | **uuid** <br>The [StockItem](#stock-items) that needs to be archived.
 
 
 ### Includes

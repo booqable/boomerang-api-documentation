@@ -9,8 +9,8 @@ Information on how to display and handle the currency.
 Name | Description
 -- | --
 `name` | **String** `readonly`<br>Currency code
-`decimal` | **String** `readonly`<br>Decimal seperator
-`thousand` | **String** `readonly`<br>Thousand seperator
+`decimal` | **String** `readonly`<br>Decimal separator
+`thousand` | **String** `readonly`<br>Thousand separator
 `symbol` | **String** `readonly`<br>Currency symbol
 `precision` | **String** `readonly`<br>Precision
 `format` | **String** `readonly`<br>The format
@@ -102,7 +102,7 @@ Name | Description
 `payment_strategy_value` | **Integer**<br>Percentage to be paid at checkout (for payment_strategy `partial`)
 `payment_deposit` | **Boolean**<br>Whether deposit should be paid during checkout
 `payment_methods` | **Array**<br>List of enabled payment methods, any of `ideal`, `bancontact`, `eps`, `alipay`, `p24`, `creditcard`, `paypal`
-`use_toc` | **Boolean**<br>Wheter the agreement should be accepted during checkout
+`use_toc` | **Boolean**<br>Whether the agreement should be accepted during checkout
 `toc_label` | **String**<br>The label of the agreement checkbox
 `toc_content` | **String**<br>The contents of the actual agreement
 `use_business_hours` | **Boolean**<br>Whether to take opening hours into account while selecting a period (see [operating rules](#operating-rules) for more information)
@@ -129,7 +129,7 @@ Name | Description
 `auth_enabled` | **Boolean**<br>Whether user accounts are enabled
 `allow_signup` | **Boolean**<br>Whether signup during checkout is allowed
 `allow_guest_checkout` | **Boolean**<br>Whether to allow guest checkouts
-`require_verification` | **Boolean**<br>Whether e-mail addresses need to be verified
+`require_verification` | **Boolean**<br>Whether email addresses need to be verified
 
 #### Documents
 

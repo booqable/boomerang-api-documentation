@@ -19,7 +19,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`archived` | **boolean** `readonly`<br>Whether price ruleset is archived.
+`archived` | **boolean** `readonly`<br>Whether the price ruleset is archived.
 `archived_at` | **datetime** `readonly` `nullable`<br>When the price ruleset was archived.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `description` | **string** <br>Description of the ruleset.
@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2032-08-04T23:27:05.000000+00:00",
-          "till": "2032-10-04T23:27:05.000000+00:00",
+          "from": "2032-07-28T23:26:05.000000+00:00",
+          "till": "2032-09-27T23:26:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -428,8 +428,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2028-12-15T12:40:00.000000+00:00",
-          "till": "2029-02-14T12:40:00.000000+00:00",
+          "from": "2028-12-08T12:39:00.000000+00:00",
+          "till": "2029-02-07T12:39:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,

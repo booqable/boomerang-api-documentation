@@ -1,35 +1,35 @@
 # Order status transitions
 
-Transitions an Order from one status to another status.
+Transitions an [Order](#orders) from one status to another status.
 
 See [Order](#orders-statuses) for a description of the different statuses.
 
-Note that you can not transition to `started` or to `stopped`.
-The Order will transition to those statuses automatically when
-starting or stopping items through the [OrderFulfillment](#fulfillments) resource.
+Note that you cannot transition to `started` or to `stopped`.
+The [Order](#orders) will transition to those statuses automatically when
+starting or stopping items through the [OrderFulfillment](#order-fulfillments) resource.
 It is however possible to revert to the `started` or the `stopped` status.
 
-It is not possible to resurrect a canceled order.
-[Duplicating](#order-duplications) a canceled order is possible.
+It is not possible to resurrect a canceled [Order](#orders).
+[Duplicating](#order-duplications) a canceled [Order](#orders) is possible.
 
 ### Errors
 
-When the Order can not be transitioned, and `error.code` is `items_not_available`,
+When the [Order](#orders) cannot be transitioned, and `error.code` is `items_not_available`,
 then the `error.meta.blocking.*.reason` or `error.meta.warning.*.reason`
 attribute contains one of the following reasons:
 
 - `stock_item_specified`
-  One or more of the StockItems on this Order have also been planned
-  for other current or future `Orders`. The Product is specified in
+  One or more of the [StockItems](#stock-items) on this [Order](#orders) have also been planned
+  for other current or future [Orders](#orders). The [Product](#products) is specified in
   the `error.meta.blocking.*.item_id` attribute
-  and `error.meta.blocking.*.unavailable` contains the problematic StockItems.
+  and `error.meta.blocking.*.unavailable` contains the problematic [StockItems](#stock-items).
 
 - `shortage`
-  A shortage would be created for one or more of the Products on this Order.
-  When the shortages would within the shortage limits of the products,
+  A shortage would be created for one or more of the [Products](#products) on this [Order](#orders).
+  When the shortages would be within the shortage limits of the products,
   a warning is returned. Otherwise a blocking error is returned.
-  When reserving an Order, a warning can be overriden by setting `confirm_shortage` to `true`.
-  The Product is specified in the `error.meta.warning.*.item_id` or
+  When reserving an [Order](#orders), a warning can be overridden by setting `confirm_shortage` to `true`.
+  The [Product](#products) is specified in the `error.meta.warning.*.item_id` or
   `error.meta.blocking.*.item_id` attribute.
 
 Note that is is possible to get multiple warnings and errors of different
@@ -37,13 +37,13 @@ types at the same time.
 
 ### Permissions
 
-- Canceling an Order requires the `cancel_orders` permission.
-- Reverting an Order requires the `revert_orders` permission.
+- Canceling an [Order](#orders) requires the `cancel_orders` permission.
+- Reverting an [Order](#orders) requires the `revert_orders` permission.
 
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>The order whose status is changed. 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) whose status is changed. 
 
 
 Check matching attributes under [Fields](#order-status-transitions-fields) to see which relations can be written.
@@ -53,12 +53,12 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`confirm_shortage` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an Order. 
+`confirm_shortage` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](#orders). 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** <br>The order whose status is changed. 
-`revert` | **boolean** <br>Indicates if this transition reverts the Order back to an earlier status. "Earlier status" does not require this specific Order to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of Orders in general. 
-`transition_from` | **enum** <br>The current status of the Order.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
-`transition_to` | **enum** <br>The new status of the Order. It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`order_id` | **uuid** <br>The [Order](#orders) whose status is changed. 
+`revert` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
+`transition_from` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
+`transition_to` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ## Transition
@@ -466,11 +466,11 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an Order. 
-`data[attributes][order_id]` | **uuid** <br>The order whose status is changed. 
-`data[attributes][revert]` | **boolean** <br>Indicates if this transition reverts the Order back to an earlier status. "Earlier status" does not require this specific Order to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of Orders in general. 
-`data[attributes][transition_from]` | **enum** <br>The current status of the Order.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
-`data[attributes][transition_to]` | **enum** <br>The new status of the Order. It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) whose status is changed. 
+`data[attributes][revert]` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
+`data[attributes][transition_from]` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
+`data[attributes][transition_to]` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ### Includes

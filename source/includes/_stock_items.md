@@ -20,7 +20,7 @@ Name | Description
 -- | --
 `barcode` | **[Barcode](#barcodes)** `optional`<br>Barcode to quickly identify this StockItem. 
 `location` | **[Location](#locations)** `required`<br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`product` | **[Product](#products)** `required`<br>The Product this StockItem is one instance of. 
+`product` | **[Product](#products)** `required`<br>The [Product](#products) this StockItem is one instance of. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom data associated with this StockItem. 
 
 
@@ -39,8 +39,8 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>Unique identifier (like serial number). 
 `location_id` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`product_group_id` | **uuid** `readonly`<br>The ProductGroup this StockItem belongs to. 
-`product_id` | **uuid** `readonly-after-create`<br>The Product this StockItem is one instance of. 
+`product_group_id` | **uuid** `readonly`<br>The [ProductGroup](#product-groups) this StockItem belongs to. 
+`product_id` | **uuid** `readonly-after-create`<br>The [Product](#products) this StockItem is one instance of. 
 `properties` | **hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties). 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this stock item. 
 `status` | **enum** `readonly`<br>Whether item is out with a customer or in-store/warehouse.<br> One of: `archived`, `expected`, `in_stock`, `started`, `overdue`, `expired`.
@@ -308,7 +308,7 @@ Name | Description
 `data[attributes][from]` | **datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date). 
 `data[attributes][identifier]` | **string** <br>Unique identifier (like serial number). 
 `data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`data[attributes][product_id]` | **uuid** <br>The Product this StockItem is one instance of. 
+`data[attributes][product_id]` | **uuid** <br>The [Product](#products) this StockItem is one instance of. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
 `data[attributes][till]` | **datetime** <br>When item will be out of stock (temporary items). 
 
@@ -408,7 +408,7 @@ Name | Description
 `data[attributes][from]` | **datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date). 
 `data[attributes][identifier]` | **string** <br>Unique identifier (like serial number). 
 `data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`data[attributes][product_id]` | **uuid** <br>The Product this StockItem is one instance of. 
+`data[attributes][product_id]` | **uuid** <br>The [Product](#products) this StockItem is one instance of. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
 `data[attributes][till]` | **datetime** <br>When item will be out of stock (temporary items). 
 

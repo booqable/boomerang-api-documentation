@@ -1,7 +1,7 @@
 # Themes
 
 Themes are the basis for creating advanced custom online stores.
-They organise custom assets and enable quick switching between different designs and content.
+They organize custom assets and enable quick switching between different designs and content.
 A company can 'install' a theme from the available themes, this creates a local copy which
 allows customizing the theme to your needs.
 
@@ -28,9 +28,9 @@ Check each individual operation to see which relations can be included as a side
 `installed` | **boolean** `readonly`<br>Whether or not this theme is installed. 
 `market` | **string** <br>The market (industry) which fits best for the theme. 
 `name` | **string** <br>Name of the theme. 
-`preview_image_large_url` | **string** `readonly`<br>Theme large image preview image url. 
-`preview_image_long_url` | **string** `readonly`<br>Theme rectangle image preview image url. 
-`preview_image_medium_url` | **string** `readonly`<br>Theme medium image preview image url. 
+`preview_image_large_url` | **string** `readonly`<br>Theme large image preview image URL. 
+`preview_image_long_url` | **string** `readonly`<br>Theme rectangle image preview image URL. 
+`preview_image_medium_url` | **string** `readonly`<br>Theme medium image preview image URL. 
 `preview_url` | **string** <br>The URL where the theme could be previewed. 
 `theme_id` | **uuid** `readonly-after-create`<br>Either the installed theme, or the original theme. 
 `theme_type` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`.

@@ -8,8 +8,8 @@ through the [Sortings](#sortings) resource.
 ## Relationships
 Name | Description
 -- | --
-`collection` | **[Collection](#collections)** `required`<br>The Collection this CollectionItem is part of.
-`item` | **[Item](#items)** `required`<br>The item. Can be a ProductGroup or a Bundle. 
+`collection` | **[Collection](#collections)** `required`<br>The [Collection](#collections) this CollectionItem is part of. 
+`item` | **[Item](#items)** `required`<br>The item. Can be a [ProductGroup](#product-groups) or a [Bundle](#bundles). 
 
 
 Check matching attributes under [Fields](#collection-items-fields) to see which relations can be written.
@@ -19,13 +19,13 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`collection_id` | **uuid** `readonly-after-create`<br>The Collection this CollectionItem is part of.
+`collection_id` | **uuid** `readonly-after-create`<br>The [Collection](#collections) this CollectionItem is part of. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `implicit` | **boolean** `readonly`<br>A value of `true` indicates that this item was not added explicitly, but instead is included in one of the child Collections. 
-`item_id` | **uuid** `readonly-after-create`<br>The item. Can be a ProductGroup or a Bundle. 
+`item_id` | **uuid** `readonly-after-create`<br>The item. Can be a [ProductGroup](#product-groups) or a [Bundle](#bundles). 
 `position` | **integer** `readonly`<br>Position of this item within the Collection. I.e sorting relative to other CollectionItems. 
-`source_collections` | **array** `readonly` `extra`<br>The child Collection(s) which explicitly include the ProductGroup/Bundle, and are the source(s) for this CollectionItem. 
+`source_collections` | **array** `readonly` `extra`<br>The child [Collection](#collections)(s) which explicitly include the [ProductGroup](#product-groups)/[Bundle](#bundles), and are the source(s) for this CollectionItem. 
 
 
 ## List collection items
@@ -183,8 +183,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][collection_id]` | **uuid** <br>The Collection this CollectionItem is part of.
-`data[attributes][item_id]` | **uuid** <br>The item. Can be a ProductGroup or a Bundle. 
+`data[attributes][collection_id]` | **uuid** <br>The [Collection](#collections) this CollectionItem is part of. 
+`data[attributes][item_id]` | **uuid** <br>The item. Can be a [ProductGroup](#product-groups) or a [Bundle](#bundles). 
 
 
 ### Includes

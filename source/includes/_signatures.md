@@ -8,9 +8,9 @@ be set accordingly on the associated order.
 ## Relationships
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** `required`<br>The associated customer.
-`document` | **[Document](#documents)** `required`<br>The associated contract or quote.
-`order` | **[Order](#orders)** `required`<br>The associated order.
+`customer` | **[Customer](#customers)** `required`<br>The associated [Customer](#customers).
+`document` | **[Document](#documents)** `required`<br>The associated contract or quote [Document](#documents).
+`order` | **[Order](#orders)** `required`<br>The associated [Order](#orders).
 
 
 Check matching attributes under [Fields](#signatures-fields) to see which relations can be written.
@@ -20,10 +20,10 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`customer_id` | **uuid** `readonly`<br>The associated customer.
-`document_id` | **uuid** `readonly-after-create`<br>The associated contract or quote.
+`customer_id` | **uuid** `readonly`<br>The associated [Customer](#customers).
+`document_id` | **uuid** `readonly-after-create`<br>The associated contract or quote [Document](#documents).
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly`<br>The associated order.
+`order_id` | **uuid** `readonly`<br>The associated [Order](#orders).
 `signature_base64` | **string** `writeonly`<br>Base64 encoded signature, use this field to store a signature.
 
 
@@ -91,7 +91,7 @@ Check each individual operation to see which relations can be included as a side
           "number": 1,
           "prefix": null,
           "prefix_with_number": "1",
-          "date": "2025-03-17",
+          "date": "2025-03-24",
           "due_date": null,
           "name": "John Doe",
           "address": null,
@@ -167,7 +167,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][document_id]` | **uuid** <br>The associated contract or quote.
+`data[attributes][document_id]` | **uuid** <br>The associated contract or quote [Document](#documents).
 `data[attributes][signature_base64]` | **string** <br>Base64 encoded signature, use this field to store a signature.
 
 

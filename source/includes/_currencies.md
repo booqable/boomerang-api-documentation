@@ -6,20 +6,20 @@ The currency object encapsulates all information about a monetary unit.
 
  Name | Description
 -- | --
-`decimal_mark` | **string** `readonly`<br>Character between the whole and fraction amounts.
-`disambiguate_symbol` | **string** `readonly`<br>Alternative currency used if symbol is ambiguous.
-`html_entity` | **string** `readonly`<br>The html entity for the currency symbol.
-`id` | **string** `readonly`<br>The ISO code of the currency you want to fetch.
-`iso_code` | **string** `readonly`<br>The international 3-letter code as defined by the ISO 4217 standard.
-`iso_numeric` | **string** `readonly`<br>The international 3-digit code as defined by the ISO 4217 standard.
-`name` | **string** `readonly`<br>The currency name.
-`priority` | **integer** `readonly`<br>A numerical value you can use to sort/group the currency list.
-`smallest_denomination` | **integer** `readonly`<br>Smallest amount of cash possible (in the subunit of this currency).
-`subunit` | **string** `readonly`<br>The name of the fractional monetary unit.
-`subunit_to_unit` | **integer** `readonly`<br>The proportion between the unit and the subunit.
-`symbol` | **string** `readonly`<br>The currency symbol (UTF-8 encoded).
-`symbol_first` | **boolean** `readonly`<br>States if the currency symbol should be shown before or after the moneyary value.
-`thousands_separator` | **string** `readonly`<br>Character between each thousands place.
+`decimal_mark` | **string** `readonly`<br>Character between the whole and fraction amounts. 
+`disambiguate_symbol` | **string** `readonly`<br>Alternative currency used if symbol is ambiguous. 
+`html_entity` | **string** `readonly`<br>The HTML entity for the currency symbol. 
+`id` | **string** `readonly`<br>The ISO code of the currency you want to fetch. 
+`iso_code` | **string** `readonly`<br>The international 3-letter code as defined by the ISO 4217 standard. 
+`iso_numeric` | **string** `readonly`<br>The international 3-digit code as defined by the ISO 4217 standard. 
+`name` | **string** `readonly`<br>The currency name. 
+`priority` | **integer** `readonly`<br>A numerical value you can use to sort/group the currency list. 
+`smallest_denomination` | **integer** `readonly`<br>Smallest amount of cash possible (in the subunit of this currency). 
+`subunit` | **string** `readonly`<br>The name of the fractional monetary unit. 
+`subunit_to_unit` | **integer** `readonly`<br>The proportion between the unit and the subunit. 
+`symbol` | **string** `readonly`<br>The currency symbol (UTF-8 encoded). 
+`symbol_first` | **boolean** `readonly`<br>States if the currency symbol should be shown before or after the monetary value. 
+`thousands_separator` | **string** `readonly`<br>Character between each thousands place. 
 
 
 ## Fetch a currency

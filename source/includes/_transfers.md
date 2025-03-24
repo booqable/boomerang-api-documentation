@@ -6,10 +6,10 @@ solved by the inventory in the cluster, one or multiple transfers are created.
 ## Relationships
 Name | Description
 -- | --
-`destination_location` | **[Location](#locations)** `required`<br>Location to which the product need to be transfered to.
-`item` | **[Item](#items)** `required`<br>The product that needs to be transferred.
-`order` | **[Order](#orders)** `required`<br>The order for which the product is required.
-`source_location` | **[Location](#locations)** `required`<br>Location from which the product needs to be transfered.
+`destination_location` | **[Location](#locations)** `required`<br>[Location](#locations) to which the product needs to be transferred to. 
+`item` | **[Item](#items)** `required`<br>The [Product](#products) that needs to be transferred. 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) for which the product is required. 
+`source_location` | **[Location](#locations)** `required`<br>[Location](#locations) from which the product needs to be transferred. 
 
 
 Check matching attributes under [Fields](#transfers-fields) to see which relations can be written.
@@ -19,15 +19,15 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`available_at` | **datetime** <br>Date when item should be available at destination location.
+`available_at` | **datetime** <br>Date when item should be available at destination location. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`destination_location_id` | **uuid** `readonly`<br>Location to which the product need to be transfered to.
-`finalized` | **boolean** <br>Whether or not the transfer has completed.
+`destination_location_id` | **uuid** `readonly`<br>[Location](#locations) to which the product needs to be transferred to. 
+`finalized` | **boolean** <br>Whether or not the transfer has completed. 
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** `readonly`<br>The product that needs to be transferred.
-`order_id` | **uuid** `readonly`<br>The order for which the product is required.
-`quantity` | **integer** <br>Quantity of items being transfered.
-`source_location_id` | **uuid** `readonly`<br>Location from which the product needs to be transfered.
+`item_id` | **uuid** `readonly`<br>The [Product](#products) that needs to be transferred. 
+`order_id` | **uuid** `readonly`<br>The [Order](#orders) for which the product is required. 
+`quantity` | **integer** <br>Quantity of items being transferred. 
+`source_location_id` | **uuid** `readonly`<br>[Location](#locations) from which the product needs to be transferred. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -53,7 +53,7 @@ Check each individual operation to see which relations can be included as a side
           "created_at": "2028-08-08T18:28:00.000000+00:00",
           "updated_at": "2028-08-08T18:28:00.000000+00:00",
           "quantity": 1,
-          "available_at": "2028-08-06T18:14:00.000000+00:00",
+          "available_at": "2028-08-06T18:28:00.000000+00:00",
           "finalized": false,
           "item_id": "672d6735-92fa-4198-8145-116e1191847d",
           "order_id": "058a8f0f-d1ac-4363-8778-a6c4476ee292",

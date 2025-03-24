@@ -13,7 +13,7 @@ line to `null` as described [here](#lines-fields).
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>Order that needs to be recalculated.
+`order` | **[Order](#orders)** `required`<br>[Order](#orders) that needs to be recalculated. 
 
 
 Check matching attributes under [Fields](#order-price-recalculations-fields) to see which relations can be written.
@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>Order that needs to be recalculated.
+`order_id` | **uuid** `readonly-after-create`<br>[Order](#orders) that needs to be recalculated. 
 
 
 ## Recalculate prices
@@ -82,7 +82,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][order_id]` | **uuid** <br>Order that needs to be recalculated.
+`data[attributes][order_id]` | **uuid** <br>[Order](#orders) that needs to be recalculated. 
 
 
 ### Includes

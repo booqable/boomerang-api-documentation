@@ -12,7 +12,7 @@ Name | Description
 `barcode` | **[Barcode](#barcodes)** `optional`<br>The barcode pointing to this customer. 
 `merge_suggestion_customer` | **[Customer](#customers)** `required`<br>Holds the customer this customer is a possible duplicate of. 
 `notes` | **[Notes](#notes)** `hasmany`<br>Notes added about (and invisible for) customers. 
-`payment_methods` | **[Payment methods](#payment-methods)** `hasmany`<br>Payment methods associated with the customer. 
+`payment_methods` | **[Payment methods](#payment-methods)** `hasmany`<br>[PaymentMethods](#payment-methods) associated with the customer. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this customer, based on [DefaultProperties](#default-properties). Properties of customers can be updated in bulk by writing to the `properties_attributes` attribute. 
 `tax_region` | **[Tax region](#tax-regions)** `optional`<br>Tax region assigned to new orders for this customer. 
 
@@ -30,7 +30,7 @@ Check each individual operation to see which relations can be included as a side
 `deposit_type` | **string** <br>The deposit added to new orders of this customer by default. 
 `deposit_value` | **float** <br>The value to use for `deposit_type`. 
 `discount_percentage` | **float** <br>Default discount applied to each new order for this customer. 
-`email` | **string** `nullable`<br>E-mail address used for communication. 
+`email` | **string** `nullable`<br>Email address used for communication. 
 `email_marketing_consent_updated_at` | **datetime** `readonly`<br>When the email marketing consent was last updated. 
 `email_marketing_consented` | **boolean** <br>Whether the customer has consented to receive email marketing. 
 `id` | **uuid** `readonly`<br>Primary key.
@@ -38,7 +38,7 @@ Check each individual operation to see which relations can be included as a side
 `merge_suggestion_customer_id` | **uuid** <br>Holds the customer this customer is a possible duplicate of. 
 `name` | **string** <br>Person or Company name. 
 `number` | **integer** `readonly`<br>The assigned number. 
-`properties` | **hash** `readonly`<br>A hash containing all basic property values. This is a simplified representation; sideload the properties relation if you need more detailed information of propertoes. 
+`properties` | **hash** `readonly`<br>A hash containing all basic property values. This is a simplified representation; sideload the properties relation if you need more detailed information of properties. 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties to be associated with this customer. 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
 `tax_region_id` | **uuid** `nullable`<br>Tax region assigned to new orders for this customer. 
@@ -467,7 +467,7 @@ Name | Description
 `data[attributes][deposit_type]` | **string** <br>The deposit added to new orders of this customer by default. 
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>Default discount applied to each new order for this customer. 
-`data[attributes][email]` | **string** <br>E-mail address used for communication. 
+`data[attributes][email]` | **string** <br>Email address used for communication. 
 `data[attributes][email_marketing_consented]` | **boolean** <br>Whether the customer has consented to receive email marketing. 
 `data[attributes][legal_type]` | **string** <br>Either `person` or `commercial`. 
 `data[attributes][merge_suggestion_customer_id]` | **uuid** <br>Holds the customer this customer is a possible duplicate of. 
@@ -572,7 +572,7 @@ Name | Description
 `data[attributes][deposit_type]` | **string** <br>The deposit added to new orders of this customer by default. 
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>Default discount applied to each new order for this customer. 
-`data[attributes][email]` | **string** <br>E-mail address used for communication. 
+`data[attributes][email]` | **string** <br>Email address used for communication. 
 `data[attributes][email_marketing_consented]` | **boolean** <br>Whether the customer has consented to receive email marketing. 
 `data[attributes][legal_type]` | **string** <br>Either `person` or `commercial`. 
 `data[attributes][merge_suggestion_customer_id]` | **uuid** <br>Holds the customer this customer is a possible duplicate of. 

@@ -1,26 +1,52 @@
 # Plannings
 
-Plannings contain information about the quantitative planning of an Item.
-The Item can either be a Product or a Bundle. Plannings define when an item
+Plannings contain information about the quantitative planning of an item.
+The item can either be a [Product](#products) or a [Bundle](#bundles). Plannings define when an item
 is available during a given period. Plannings are never directly created or
 updated through their resource; instead, they are always managed by booking
-Items to an Order, updating or deleting its associated Line, or transitioning status.
+items to an [Order](#orders), updating or deleting its associated [Line](#lines), or transitioning status.
 
-Nested Plannings contain information about individual Items in a Bundle.
-Note that nested Plannings can not be deleted directly, the parent Line
+## Product Plannings vs Bundle Plannings
+
+There are two types of Plannings:
+
+1. **Product Plannings**: These represent the planning of a single [Product](#products).
+
+2. **Bundle Plannings**: These represent the planning of a [Bundle](#bundles) (a group of [Products](#products)). Some attributes
+   are omitted for Bundle Plannings because they don't apply at the [Bundle](#bundles) level.
+
+## Nested Plannings
+
+Nested Plannings contain information about individual [Products](#products) in a [Bundle](#bundles).
+Note that nested Plannings cannot be deleted directly; the parent [Line](#lines)
 should be deleted instead.
+
+When a [Bundle](#bundles) is booked:
+- A parent Planning is created for the [Bundle](#bundles) itself
+- Nested Plannings are created for each [Product](#products) within the [Bundle](#bundles)
+- The nested Plannings have their `parent_planning_id` set to the ID of the parent Planning
+
+## Reservation vs Planning Dates
+
+Plannings use two sets of dates that serve different purposes:
+
+- `starts_at`/`stops_at`: When actions (pickup/return) are planned to occur. These are typically
+  shown to customers and staff as the scheduled dates.
+
+- `reserved_from`/`reserved_till`: When items are actually unavailable/available in the system.
+  These may differ from the planned dates due to buffer times.
 
 ## Relationships
 Name | Description
 -- | --
-`item` | **[Item](#items)** `required`<br>The product or Bundle that was booked. 
-`nested_plannings` | **[Plannings](#plannings)** `hasmany`<br>When `item` is a Bundle, then there is a `nested_planning` that corresponds for each BundleItem. 
-`order` | **[Order](#orders)** `required`<br>The Order this planning belongs to. 
-`order_line` | **[Line](#lines)** `optional`<br>The Line which holds financial information for this planning. 
-`parent_planning` | **[Planning](#plannings)** `required`<br>When present, then this Planning is part of a Bundle, and corresponds to a BundleItem. Inverse of `nested_plannings` relation. 
-`start_location` | **[Location](#locations)** `required`<br>The Location where the Customer will pick up the Item. 
-`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The StockItems specified for this Planning, and their current status. <br/> The number ot StockItemPlannings can be less than `planning.quantity`. 
-`stop_location` | **[Location](#locations)** `required`<br>The Location where the Customer will return the Item. 
+`item` | **[Item](#items)** `required`<br>The [Product](#products) or [Bundle](#bundles) that was booked. 
+`nested_plannings` | **[Plannings](#plannings)** `hasmany`<br>When `item` is a [Bundle](#bundles), then there is a nested planning that corresponds for each [BundleItem](#bundle-items). 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) this Planning belongs to. 
+`order_line` | **[Line](#lines)** `optional`<br>The [Line](#lines) which holds financial information for this Planning. 
+`parent_planning` | **[Planning](#plannings)** `required`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
+`start_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will pick up the item. 
+`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItems](#stock-items) specified for this Planning, and their current status. For trackable products, this association contains the specific inventory items assigned to this planning. <br/> The number of StockItemPlannings can be less than `planning.quantity`. This is because stock items may not yet be specified (assigned) for this planning.<br>Stock items are typically specified through the [OrderFulfillments](#order-fulfillments) resource, which creates the corresponding StockItemPlannings linking specific inventory items to this planning. 
+`stop_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will return the product. 
 
 
 Check matching attributes under [Fields](#plannings-fields) to see which relations can be written.
@@ -33,24 +59,25 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether planning is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the planning was archived. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`fulfillment_type` | **string** `writeonly`<br>The type of fulfillment for this planning. 
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** `readonly`<br>The product or Bundle that was booked. 
+`item_id` | **uuid** `readonly`<br>The [Product](#products) or [Bundle](#bundles) that was booked. 
 `item_name` | **string** `writeonly`<br>Allows sorting plannings by item name. 
-`location_shortage_amount` | **integer** <br>Amount of items short. This attribute is omitted when this is a parent planning for a Bundle. 
-`order_id` | **uuid** `readonly`<br>The Order this planning belongs to. 
+`location_shortage_amount` | **integer** <br>Amount of items short at the specific location. This represents how many more items would be needed at the `start_location` to fully satisfy this planning. A value greater than zero indicates a location shortage. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
+`order_id` | **uuid** `readonly`<br>The [Order](#orders) this Planning belongs to. 
 `order_number` | **integer** `writeonly`<br>Allows sorting plannings by order number. 
-`parent_planning_id` | **uuid** `readonly`<br>When present, then this Planning is part of a Bundle, and corresponds to a BundleItem. Inverse of `nested_plannings` relation. 
-`quantity` | **integer** <br>Total planned. 
-`reserved` | **boolean** <br>Wheter items are reserved.
-`reserved_from` | **datetime** <br>When the items become unavailable. 
-`reserved_till` | **datetime** <br>When the items become available again. 
-`shortage_amount` | **integer** <br>Amount of items short on location (could be there are still available on other locations in the same cluster). This attribute is omitted when this is a parent planning for a Bundle. 
-`start_location_id` | **uuid** `readonly`<br>The Location where the Customer will pick up the Item. 
-`started` | **integer** <br>Amount of items started. Cannot exceed `quantity`. This attribute is omitted when this is a parent planning for a Bundle. 
-`starts_at` | **datetime** <br>When the start action is planned. 
-`stop_location_id` | **uuid** `readonly`<br>The Location where the Customer will return the Item. 
-`stopped` | **integer** <br>Amount of items stopped. Cannot exceed `quantity` and `started`. This attribute is omitted when this is a parent planning for a Bundle. 
-`stops_at` | **datetime** <br>When the stop action is planned. 
+`parent_planning_id` | **uuid** `readonly`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
+`quantity` | **integer** <br>Total planned quantity of items. This affects availability calculations and represents how many items are being booked/reserved. Changing this value may result in shortages if additional items are not available for the rental period. 
+`reserved` | **boolean** <br>Whether items are reserved. When `true`, this Planning affects availability calculations and the items are not available for other orders during the reserved period. This is set to `true` when an Order transitions from `concept` to `reserved` status. 
+`reserved_from` | **datetime** <br>When the items actually become unavailable in the system. May differ from `starts_at` due to buffer time. This is the actual time used for availability calculations. 
+`reserved_till` | **datetime** <br>When the items actually become available again in the system. May differ from `stops_at` due to buffer time. This is the actual time used for availability calculations. 
+`shortage_amount` | **integer** <br>Amount of items short across all locations in the same cluster. This represents how many more items would be needed in total to satisfy this planning. A value greater than zero indicates a system-wide shortage that can't be solved by transfers between locations. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
+`start_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the customer will pick up the item. 
+`started` | **integer** <br>Amount of items started (picked up or delivered to the customer). This value increases when staff performs start actions through the [OrderFulfillments](#order-fulfillments) resource. Cannot exceed `quantity`. When all items are started (`started` equals `quantity`), the Planning is considered fully started. This attribute is omitted when this is a parent planning for a Bundle. 
+`starts_at` | **datetime** <br>When the start action (pickup/delivery) is planned to occur. This is the scheduled date/time shown to staff and customers for the beginning of the rental. 
+`stop_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the customer will return the product. 
+`stopped` | **integer** <br>Amount of items stopped (returned by the customer). This value increases when staff performs stop actions through the [OrderFulfillments](#order-fulfillments) resource. Cannot exceed `quantity` and `started` (items must be started before they can be stopped). When all items are stopped (`stopped` equals `quantity`), the Planning is considered fully completed.<br>[Products](#products) with `product_type == consumable` are never returned, and the `stopped` attribute will always remain zero.<br>This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
+`stops_at` | **datetime** <br>When the stop action (return) is planned to occur. This is the scheduled date/time shown to staff and customers for the end of the rental. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -78,10 +105,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-04-05T07:50:00.000000+00:00",
-          "stops_at": "1973-05-05T07:50:00.000000+00:00",
-          "reserved_from": "1973-04-05T07:50:00.000000+00:00",
-          "reserved_till": "1973-05-05T07:50:00.000000+00:00",
+          "starts_at": "1973-03-29T07:50:00.000000+00:00",
+          "stops_at": "1973-04-28T07:50:00.000000+00:00",
+          "reserved_from": "1973-03-29T07:50:00.000000+00:00",
+          "reserved_till": "1973-04-28T07:50:00.000000+00:00",
           "reserved": true,
           "started": 0,
           "stopped": 0,
@@ -208,12 +235,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-03-18T09:27:51Z"
+                       "gte": "2025-03-25T09:28:03Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-03-21T09:27:51Z"
+                       "lte": "2025-03-28T09:28:03Z"
                      }
                    }
                  ]
@@ -223,12 +250,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-03-18T09:27:51Z"
+                       "gte": "2025-03-25T09:28:03Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-03-21T09:27:51Z"
+                       "lte": "2025-03-28T09:28:03Z"
                      }
                    }
                  ]
@@ -362,10 +389,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-04-29T04:15:01.000000+00:00",
-        "stops_at": "1978-05-29T04:15:01.000000+00:00",
-        "reserved_from": "1978-04-29T04:15:01.000000+00:00",
-        "reserved_till": "1978-05-29T04:15:01.000000+00:00",
+        "starts_at": "1978-04-22T04:14:01.000000+00:00",
+        "stops_at": "1978-05-22T04:14:01.000000+00:00",
+        "reserved_from": "1978-04-22T04:14:01.000000+00:00",
+        "reserved_till": "1978-05-22T04:14:01.000000+00:00",
         "reserved": true,
         "started": 0,
         "stopped": 0,

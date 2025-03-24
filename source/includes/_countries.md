@@ -26,11 +26,11 @@ Check each individual operation to see which relations can be included as a side
 `province_type` | **string** `readonly`<br>The province type of this country. 
 `show_layout` | **string** `readonly`<br>The layout of the address when shown. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
-`zipcode_autofill` | **string** `readonly`<br>The value to use for the zipcode when autofilling. 
-`zipcode_format` | **string** `readonly`<br>The format of the zipcode, as a regular expression. 
-`zipcode_placeholder` | **string** `readonly`<br>The placeholder to use for the zipcode. 
-`zipcode_required` | **boolean** `readonly`<br>Whether a zipcode is required for addresses in this country. 
-`zipcode_type` | **string** `readonly`<br>The zipcode type of this country. 
+`zipcode_autofill` | **string** `readonly`<br>The value to use for the ZIP code when autofilling. 
+`zipcode_format` | **string** `readonly`<br>The format of the ZIP code, as a regular expression. 
+`zipcode_placeholder` | **string** `readonly`<br>The placeholder to use for the ZIP code. 
+`zipcode_required` | **boolean** `readonly`<br>Whether a ZIP code is required for addresses in this country. 
+`zipcode_type` | **string** `readonly`<br>The ZIP code type of this country. 
 
 
 ## List countries

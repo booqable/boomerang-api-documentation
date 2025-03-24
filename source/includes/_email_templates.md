@@ -3,22 +3,22 @@
 Email templates allow for creating pre-filled emails with dynamic data.
 Booqable comes with a couple of default templates which can be updated but not deleted.
 
-For more information about using variables for dynamic data in e-mail templates
+For more information about using variables for dynamic data in email templates
 see [our help center](https://help.booqable.com/en/articles/3832164-emails-types-and-templates)
 
 ## Fields
 
  Name | Description
 -- | --
-`automated` | **boolean** `readonly`<br>When `true`, this template is used by built-in features and can not be deleted. Updating is possible.
-`body` | **string** <br>Email body template.
-`context` | **enum** <br>Which resource or process the template applies to.<br>One of: `order`, `invoice`, `document`, `all`, `payment`, `user`.
+`automated` | **boolean** `readonly`<br>When `true`, this template is used by built-in features and cannot be deleted. Updating is possible. 
+`body` | **string** <br>Email body template. 
+`context` | **enum** <br>Which resource or process the template applies to.<br> One of: `order`, `invoice`, `document`, `all`, `payment`, `user`.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`default` | **boolean** `readonly`<br>Whether this is a system default template.
+`default` | **boolean** `readonly`<br>Whether this is a system default template. 
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** `readonly`<br>A unique identifier assigned to this template.
-`name` | **string** <br>Name of the template.
-`subject` | **string** <br>Email subject line template.
+`identifier` | **string** `readonly`<br>A unique identifier assigned to this template. 
+`name` | **string** <br>Name of the template. 
+`subject` | **string** <br>Email subject line template. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -225,10 +225,10 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][body]` | **string** <br>Email body template.
-`data[attributes][context]` | **enum** <br>Which resource or process the template applies to.<br>One of: `order`, `invoice`, `document`, `all`, `payment`, `user`.
-`data[attributes][name]` | **string** <br>Name of the template.
-`data[attributes][subject]` | **string** <br>Email subject line template.
+`data[attributes][body]` | **string** <br>Email body template. 
+`data[attributes][context]` | **enum** <br>Which resource or process the template applies to.<br> One of: `order`, `invoice`, `document`, `all`, `payment`, `user`.
+`data[attributes][name]` | **string** <br>Name of the template. 
+`data[attributes][subject]` | **string** <br>Email subject line template. 
 
 
 ### Includes
@@ -336,10 +336,10 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][body]` | **string** <br>Email body template.
-`data[attributes][context]` | **enum** <br>Which resource or process the template applies to.<br>One of: `order`, `invoice`, `document`, `all`, `payment`, `user`.
-`data[attributes][name]` | **string** <br>Name of the template.
-`data[attributes][subject]` | **string** <br>Email subject line template.
+`data[attributes][body]` | **string** <br>Email body template. 
+`data[attributes][context]` | **enum** <br>Which resource or process the template applies to.<br> One of: `order`, `invoice`, `document`, `all`, `payment`, `user`.
+`data[attributes][name]` | **string** <br>Name of the template. 
+`data[attributes][subject]` | **string** <br>Email subject line template. 
 
 
 ### Includes

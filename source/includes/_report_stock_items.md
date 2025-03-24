@@ -11,9 +11,9 @@ and can be requested by one of the following turnover types:
 ## Relationships
 Name | Description
 -- | --
-`location` | **[Location](#locations)** `required`<br>Location.
-`product` | **[Product](#products)** `required`<br>The product whose performance is reported.
-`stock_item` | **[Report stock item](#report-stock-items)** `required`<br>The stock item whose performance is reported.
+`location` | **[Location](#locations)** `required`<br>[Location](#locations) where the stock item is stored. 
+`product` | **[Product](#products)** `required`<br>The [Product](#products) whose performance is reported. 
+`stock_item` | **[Report stock item](#report-stock-items)** `required`<br>The [StockItem](#stock-items) whose performance is reported. 
 
 
 Check matching attributes under [Fields](#report-stock-items-fields) to see which relations can be written.
@@ -23,18 +23,18 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`charge_duration_in_seconds` | **integer** <br>How many seconds were charged.
+`charge_duration_in_seconds` | **integer** <br>How many seconds were charged. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** <br>Stock item identifier.
-`location_id` | **uuid** <br>Location.
-`planned_duration_in_seconds` | **integer** <br>How many seconds the product was planned.
-`product_id` | **uuid** <br>The product whose performance is reported.
-`product_name` | **string** <br>Product name.
-`q` | **string** `writeonly`<br>Query for a specific stock item.
-`rented_count` | **integer** <br>How many times the product was rented out.
-`stock_item_id` | **uuid** <br>The stock item whose performance is reported.
-`turnover_in_cents` | **integer** <br>Turnover during period.
+`identifier` | **string** <br>Stock item identifier. 
+`location_id` | **uuid** <br>[Location](#locations) where the stock item is stored. 
+`planned_duration_in_seconds` | **integer** <br>How many seconds the product was planned. 
+`product_id` | **uuid** <br>The [Product](#products) whose performance is reported. 
+`product_name` | **string** <br>Product name. 
+`q` | **string** `writeonly`<br>Query for a specific stock item. 
+`rented_count` | **integer** <br>How many times the product was rented out. 
+`stock_item_id` | **uuid** <br>The [StockItem](#stock-items) whose performance is reported. 
+`turnover_in_cents` | **integer** <br>Turnover during period. 
 
 
 ## List performance for stock items
@@ -58,7 +58,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:35:00.000000+00:00",
+          "created_at": "2028-06-15T11:36:00.000000+00:00",
           "product_name": "Product 1000057",
           "identifier": "id1000172",
           "charge_duration_in_seconds": 7200,
@@ -75,7 +75,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:35:00.000000+00:00",
+          "created_at": "2028-06-15T11:36:00.000000+00:00",
           "product_name": "Product 1000057",
           "identifier": "id1000173",
           "charge_duration_in_seconds": 0,

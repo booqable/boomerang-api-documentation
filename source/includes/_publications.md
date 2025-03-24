@@ -5,7 +5,7 @@ A Publication marks a moment from which all previously persisted Assets in a The
 ## Relationships
 Name | Description
 -- | --
-`theme` | **[Theme](#themes)** `required`<br>The Theme that the Publication belongs to.
+`theme` | **[Theme](#themes)** `required`<br>The [Theme](#themes) that the Publication belongs to.
 
 
 Check matching attributes under [Fields](#publications-fields) to see which relations can be written.
@@ -18,7 +18,7 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `published_at` | **datetime** `readonly`<br>The date and time (ISO 8601 format) the Publication uses to filter all released Assets by.
-`theme_id` | **uuid** `readonly-after-create`<br>The Theme that the Publication belongs to.
+`theme_id` | **uuid** `readonly-after-create`<br>The [Theme](#themes) that the Publication belongs to.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -163,7 +163,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][theme_id]` | **uuid** <br>The Theme that the Publication belongs to.
+`data[attributes][theme_id]` | **uuid** <br>The [Theme](#themes) that the Publication belongs to.
 
 
 ### Includes

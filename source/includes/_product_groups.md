@@ -10,14 +10,14 @@ Product groups are not plannable on orders. Products are the resource that is pl
 
 - **Rental:** Rental products are your main products that you rent out. Even if your main product is officially a service, in Booqable you will want to add it as a rental product.
 - **Consumable:** Consumable products are products that you do not plan on getting back. These are meant to be small items that you plan on selling along with a rental but do not expect to be returned with the rest of the order.
-- **Service:** Service Item or Service Products are the optional extra services (or items) your want to offer to your products. These are not trackable, therefore they do not have an instock number.
+- **Service:** Service Item or Service Products are the optional extra services (or items) you want to offer to your products. These are not trackable, therefore they do not have an instock number.
 
 ## Tracking Types
 
 The tracking type determines how the product is tracked.
 
 - **None:** Products are not tracked (only for product_type `service`, `consumable`)
-- **Trackable:** Trackable Products tend to be the larger ticket items; the products you want to know specifically who has what stock item of what product and when. With trackable products, every stock item is has its own identifier so you can assign and track the individual products (only for product_type `rental`).
+- **Trackable:** Trackable Products tend to be the larger ticket items; the products you want to know specifically who has what stock item of what product and when. With trackable products, every stock item has its own identifier so you can assign and track the individual products (only for product_type `rental`).
 - **Bulk:** Bulk products are for those products you don't necessarily need to track each specific stock item but rather you just need to know how many you have in stock. These tend to be your smaller ticket items or items that are quicker to replace in bulk if some are lost (only for product_type `rental`, `consumable`).
 
 ### Pricing Types
@@ -32,13 +32,13 @@ The tracking type determines how the product is tracked.
 Name | Description
 -- | --
 `inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this item. 
-`photo` | **[Photo](#photos)** `optional`<br>Primary photo of this product group. 
-`photos` | **[Photos](#photos)** `hasmany`<br>All photos of this product group. The primary `photo` must be selected from this set. 
-`price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The price ruleset used for advanced price calculations. 
-`price_structure` | **[Price structure](#price-structures)** `optional`<br>The price strucure to use when this product group uses tiered pricing. 
-`products` | **[Products](#products)** `hasmany`<br>When this product group does **not** have variations: there will be exactly one product. When this product group **does** have variations: one or more products. These products can be distinquished by their `variation_values`. 
+`photo` | **[Photo](#photos)** `optional`<br>Primary [Photo](#photos) of this product group. 
+`photos` | **[Photos](#photos)** `hasmany`<br>All [Photos](#photos) of this product group. The primary `photo` must be selected from this set. 
+`price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
+`price_structure` | **[Price structure](#price-structures)** `optional`<br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
+`products` | **[Products](#products)** `hasmany`<br>When this product group does **not** have variations: there will be exactly one product. When this product group **does** have variations: one or more products. These products can be distinguished by their `variation_values`. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this product group, based on [DefaultProperties](#default-properties). These properties apply to all products in the same product group. 
-`tax_category` | **[Tax category](#tax-categories)** `optional`<br>Tax category for tax calculations. 
+`tax_category` | **[Tax category](#tax-categories)** `optional`<br>[TaxCategory](#tax-categories) for tax calculations. 
 
 
 Check matching attributes under [Fields](#product-groups-fields) to see which relations can be written.
@@ -48,7 +48,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`archived` | **boolean** `readonly`<br>Whether product group is archived. 
+`archived` | **boolean** `readonly`<br>Whether the product group is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the product group was archived. 
 `base_price_in_cents` | **integer** `readonly`<br>The value that is being calculated with (based on the current `price_type`). 
 `confirm_shortage` | **boolean** `writeonly`<br>Set this to `true` to override certain shortage warnings. 
@@ -56,10 +56,10 @@ Check each individual operation to see which relations can be included as a side
 `flat_fee_price_in_cents` | **integer** <br>Use this value when price type is `simple`. 
 `id` | **uuid** `readonly`<br>Primary key.
 `photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
-`photo_id` | **uuid** `readonly` `nullable`<br>Primary photo of this product group. 
-`photo_url` | **string** `readonly` `nullable`<br>Main photo url. 
+`photo_id` | **uuid** `readonly` `nullable`<br>Primary [Photo](#photos) of this product group. 
+`photo_url` | **string** `readonly` `nullable`<br>Main photo URL. 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this product group. 
-`remote_photo_url` | **string** `writeonly`<br>Url to an image on the web. 
+`remote_photo_url` | **string** `writeonly`<br>URL to an image on the web. 
 `sorting_weight` | **integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists. 
 `stock_item_properties` | **array[string]** <br>Names of custom properties for stock items of this product group. 
 `structure_price_in_cents` | **integer** <br>Use this value when price type is `structure` or `private_structure`. 
@@ -72,35 +72,35 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`allow_shortage` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availablity, and can trigger a shortage warning. 
+`allow_shortage` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
 `deposit_in_cents` | **integer** <br>The value to use for deposit calculations. 
 `description` | **string** `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `excerpt` | **string** `nullable`<br>Excerpt used in the online store. 
 `extra_information` | **string** `nullable`<br>Extra information about the product group, shown on orders and documents. 
 `group_name` | **string** `readonly`<br>Same as `name`. 
-`has_variations` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations can not be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
-`lag_time` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
-`lead_time` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
+`has_variations` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
+`lag_time` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning. 
+`lead_time` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning. 
 `name` | **string** <br>Name of the item. 
 `price_period` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
-`price_ruleset_id` | **uuid** `nullable`<br>The price ruleset used for advanced price calculations. 
-`price_structure_id` | **uuid** `nullable`<br>The price strucure to use when this product group uses tiered pricing. 
+`price_ruleset_id` | **uuid** `nullable`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
+`price_structure_id` | **uuid** `nullable`<br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `price_type` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `product_type` | **enum** `readonly-after-create`<br>Type of product. Can only be set when creating a ProductGroup.<br> One of: `bundle`, `rental`, `consumable`, `service`.
 `properties` | **hash** `readonly`<br>Hash of properties. Sideload the properties relation when more information is needed. 
 `seo_description` | **string** `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `nullable`<br>SEO title tag. 
-`shortage_limit` | **integer** <br>The maximum allowed shortage for any date range. Changing this setting affects availablity, and can trigger a shortage warning. 
+`shortage_limit` | **integer** <br>The maximum allowed shortage for any date range. Changing this setting affects availability, and can trigger a shortage warning. 
 `show_in_store` | **boolean** <br>Whether to show this product group in the online store. 
 `sku` | **string** <br>Stock keeping unit. 
 `slug` | **string** <br>Slug of the item. 
 `tag_list` | **array[string]** <br>List of tags. 
-`tax_category_id` | **uuid** `nullable`<br>Tax category for tax calculations. 
+`tax_category_id` | **uuid** `nullable`<br>[TaxCategory](#tax-categories) for tax calculations. 
 `taxable` | **boolean** <br>Whether this product group is taxable. 
 `trackable` | **boolean** `readonly-after-create`<br>Whether stock items are tracked. 
 `tracking_type` | **enum** `readonly-after-create`<br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.
-`variation` | **boolean** `readonly`<br>Whether this Item is a variation in a ProductGroup.. 
+`variation` | **boolean** `readonly`<br>Whether this Item is a variation in a [ProductGroup](#product-groups). 
 
 
 ## List product groups
@@ -661,28 +661,28 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availablity, and can trigger a shortage warning. 
+`data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 
 `data[attributes][extra_information]` | **string** <br>Extra information about the product group, shown on orders and documents. 
 `data[attributes][flat_fee_price_in_cents]` | **integer** <br>Use this value when price type is `simple`. 
-`data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations can not be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
-`data[attributes][lag_time]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
-`data[attributes][lead_time]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
+`data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
+`data[attributes][lag_time]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning. 
+`data[attributes][lead_time]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning. 
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
 `data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
-`data[attributes][price_ruleset_id]` | **uuid** <br>The price ruleset used for advanced price calculations. 
-`data[attributes][price_structure_id]` | **uuid** <br>The price strucure to use when this product group uses tiered pricing. 
+`data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
+`data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br> One of: `bundle`, `rental`, `consumable`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
-`data[attributes][remote_photo_url]` | **string** <br>Url to an image on the web. 
+`data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 
 `data[attributes][seo_title]` | **string** <br>SEO title tag. 
-`data[attributes][shortage_limit]` | **integer** <br>The maximum allowed shortage for any date range. Changing this setting affects availablity, and can trigger a shortage warning. 
+`data[attributes][shortage_limit]` | **integer** <br>The maximum allowed shortage for any date range. Changing this setting affects availability, and can trigger a shortage warning. 
 `data[attributes][show_in_store]` | **boolean** <br>Whether to show this product group in the online store. 
 `data[attributes][sku]` | **string** <br>Stock keeping unit. 
 `data[attributes][slug]` | **string** <br>Slug of the item. 
@@ -690,7 +690,7 @@ Name | Description
 `data[attributes][stock_item_properties]` | **array[string]** <br>Names of custom properties for stock items of this product group. 
 `data[attributes][structure_price_in_cents]` | **integer** <br>Use this value when price type is `structure` or `private_structure`. 
 `data[attributes][tag_list]` | **array[string]** <br>List of tags. 
-`data[attributes][tax_category_id]` | **uuid** <br>Tax category for tax calculations. 
+`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](#tax-categories) for tax calculations. 
 `data[attributes][taxable]` | **boolean** <br>Whether this product group is taxable. 
 `data[attributes][trackable]` | **boolean** <br>Whether stock items are tracked. 
 `data[attributes][tracking_type]` | **enum** <br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.
@@ -820,28 +820,28 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availablity, and can trigger a shortage warning. 
+`data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 
 `data[attributes][extra_information]` | **string** <br>Extra information about the product group, shown on orders and documents. 
 `data[attributes][flat_fee_price_in_cents]` | **integer** <br>Use this value when price type is `simple`. 
-`data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations can not be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
-`data[attributes][lag_time]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
-`data[attributes][lead_time]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availablity, and can trigger a shortage warning. 
+`data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
+`data[attributes][lag_time]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning. 
+`data[attributes][lead_time]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning. 
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
 `data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
-`data[attributes][price_ruleset_id]` | **uuid** <br>The price ruleset used for advanced price calculations. 
-`data[attributes][price_structure_id]` | **uuid** <br>The price strucure to use when this product group uses tiered pricing. 
+`data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
+`data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br> One of: `bundle`, `rental`, `consumable`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
-`data[attributes][remote_photo_url]` | **string** <br>Url to an image on the web. 
+`data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 
 `data[attributes][seo_title]` | **string** <br>SEO title tag. 
-`data[attributes][shortage_limit]` | **integer** <br>The maximum allowed shortage for any date range. Changing this setting affects availablity, and can trigger a shortage warning. 
+`data[attributes][shortage_limit]` | **integer** <br>The maximum allowed shortage for any date range. Changing this setting affects availability, and can trigger a shortage warning. 
 `data[attributes][show_in_store]` | **boolean** <br>Whether to show this product group in the online store. 
 `data[attributes][sku]` | **string** <br>Stock keeping unit. 
 `data[attributes][slug]` | **string** <br>Slug of the item. 
@@ -849,7 +849,7 @@ Name | Description
 `data[attributes][stock_item_properties]` | **array[string]** <br>Names of custom properties for stock items of this product group. 
 `data[attributes][structure_price_in_cents]` | **integer** <br>Use this value when price type is `structure` or `private_structure`. 
 `data[attributes][tag_list]` | **array[string]** <br>List of tags. 
-`data[attributes][tax_category_id]` | **uuid** <br>Tax category for tax calculations. 
+`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](#tax-categories) for tax calculations. 
 `data[attributes][taxable]` | **boolean** <br>Whether this product group is taxable. 
 `data[attributes][trackable]` | **boolean** <br>Whether stock items are tracked. 
 `data[attributes][tracking_type]` | **enum** <br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.

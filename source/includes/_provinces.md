@@ -5,7 +5,7 @@ The `Province` resource describes provinces/states etc. in a country.
 ## Relationships
 Name | Description
 -- | --
-`country` | **[Country](#countries)** `required`<br>The country the province/state belongs to.
+`country` | **[Country](#countries)** `required`<br>The [Country](#countries) the province/state belongs to.
 
 
 Check matching attributes under [Fields](#provinces-fields) to see which relations can be written.
@@ -16,7 +16,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `code` | **string** `readonly`<br>The code of the province/state.
-`country_id` | **uuid** `readonly`<br>The country the province/state belongs to.
+`country_id` | **uuid** `readonly`<br>The [Country](#countries) the province/state belongs to.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** `readonly`<br>The name of the province/state.

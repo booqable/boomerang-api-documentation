@@ -11,15 +11,15 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
 
  Name | Description
 -- | --
-`active` | **boolean** <br>Whether coupon can be redeemed at the moment.
-`archived` | **boolean** `readonly`<br>Whether coupon is archived.
-`archived_at` | **datetime** `readonly` `nullable`<br>When the coupon was archived.
-`coupon_type` | **string** <br>How the discount is calculated.
+`active` | **boolean** <br>Whether coupon can be redeemed at the moment. 
+`archived` | **boolean** `readonly`<br>Whether coupon is archived. 
+`archived_at` | **datetime** `readonly` `nullable`<br>When the coupon was archived. 
+`coupon_type` | **string** <br>How the discount is calculated. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** <br>The code that customers need to type in.
+`identifier` | **string** <br>The code that customers need to type in. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
-`value` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`.
+`value` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
 
 ## List coupons
@@ -214,10 +214,10 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment.
-`data[attributes][coupon_type]` | **string** <br>How the discount is calculated.
-`data[attributes][identifier]` | **string** <br>The code that customers need to type in.
-`data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`.
+`data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment. 
+`data[attributes][coupon_type]` | **string** <br>How the discount is calculated. 
+`data[attributes][identifier]` | **string** <br>The code that customers need to type in. 
+`data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
 
 ### Includes
@@ -326,10 +326,10 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment.
-`data[attributes][coupon_type]` | **string** <br>How the discount is calculated.
-`data[attributes][identifier]` | **string** <br>The code that customers need to type in.
-`data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`.
+`data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment. 
+`data[attributes][coupon_type]` | **string** <br>How the discount is calculated. 
+`data[attributes][identifier]` | **string** <br>The code that customers need to type in. 
+`data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
 
 ### Includes

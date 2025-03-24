@@ -5,7 +5,7 @@ Re-usable payment methods stored on file.
 ## Relationships
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** `optional`<br>The customer who owns this payment method. Becomes `null` after detaching a payment method.
+`customer` | **[Customer](#customers)** `optional`<br>The [Customer](#customers) who owns this payment method. Becomes `null` after detaching a payment method. 
 
 
 Check matching attributes under [Fields](#payment-methods-fields) to see which relations can be written.
@@ -16,7 +16,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`customer_id` | **uuid** `readonly-after-create` `nullable`<br>The customer who owns this payment method. Becomes `null` after detaching a payment method.
+`customer_id` | **uuid** `readonly-after-create` `nullable`<br>The [Customer](#customers) who owns this payment method. Becomes `null` after detaching a payment method. 
 `details` | **hash** `readonly-after-create`<br>Method details. 
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** `readonly-after-create`<br>Provider identifier of the payment method. 
@@ -178,7 +178,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][customer_id]` | **uuid** <br>The customer who owns this payment method. Becomes `null` after detaching a payment method.
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) who owns this payment method. Becomes `null` after detaching a payment method. 
 `data[attributes][details]` | **hash** <br>Method details. 
 `data[attributes][identifier]` | **string** <br>Provider identifier of the payment method. 
 `data[attributes][label_primary]` | **string** <br>Primary label of the payment method. 

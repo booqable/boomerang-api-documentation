@@ -11,7 +11,7 @@ by date and can be requested by one of the following turnover types:
 ## Relationships
 Name | Description
 -- | --
-`product` | **[Product](#products)** `required`<br>The consumable product whose performance is reported.
+`product` | **[Product](#products)** `required`<br>The consumable [Product](#products) whose performance is reported.
 
 
 Check matching attributes under [Fields](#report-consumables-fields) to see which relations can be written.
@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** <br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** <br>Product name.
-`product_id` | **uuid** <br>The consumable product whose performance is reported.
+`product_id` | **uuid** <br>The consumable [Product](#products) whose performance is reported.
 `q` | **string** `writeonly`<br>Query for a specific product.
 `sold` | **integer** <br>Amount of times the product was sold.
 `turnover_in_cents` | **integer** <br>Turnover during period.

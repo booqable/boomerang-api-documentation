@@ -6,8 +6,8 @@ It returns data about availability, stock counts, and what is planned on orders.
 ## Relationships
 Name | Description
 -- | --
-`item` | **[Item](#items)** `required`<br>The item whose availability this record describes.
-`location` | **[Location](#locations)** `required`<br>The location to which this record applies.
+`item` | **[Item](#items)** `required`<br>The [Item](#items) whose availability this record describes. 
+`location` | **[Location](#locations)** `required`<br>The [Location](#locations) to which this record applies. 
 
 
 Check matching attributes under [Fields](#inventory-level-intervals-fields) to see which relations can be written.
@@ -27,7 +27,7 @@ Check each individual operation to see which relations can be included as a side
 `cluster_stock_count` | **integer** `readonly`<br>The minimum stock count for the cluster within the interval. 
 `from` | **datetime** `readonly`<br>Start of the period to list inventory levels for. 
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** `readonly`<br>ID of the item to return data for, this can a single ID or an array of multiple IDs. 
+`item_id` | **uuid** `readonly`<br>ID of the item to return data for, this can be a single ID or an array of multiple IDs. 
 `location_available` | **integer** `readonly`<br>The minimum available quantity for the location within the interval. 
 `location_id` | **uuid** `readonly`<br>ID of the location to filter for. 
 `location_max_available` | **integer** `readonly`<br>The maximum available quantity for the location within the interval. 

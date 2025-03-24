@@ -21,7 +21,7 @@ Get the counts for resources in an account.
 `started_order_count` | **integer** `readonly`<br>Amount of orders with the status started. 
 `stopped_order_count` | **integer** `readonly`<br>Amount of orders with the status stopped. 
 `tax_rate_count` | **integer** `readonly`<br>Amount of tax rates in an account. 
-`webshop_order_count` | **integer** `readonly`<br>Amount of orders via the webshop. 
+`webshop_order_count` | **integer** `readonly`<br>Amount of orders via the online store. 
 
 
 ## Fetch counts

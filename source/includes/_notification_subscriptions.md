@@ -4,16 +4,16 @@ Notification subscriptions can be used to subscribe an employee to a specific ca
 of notifications. Booqable offers several categories of notifications:
 
 1. `note_created` for when a new note is created.
-2. `webshop_order_created` for when a new order was create via the webshop.
+2. `webshop_order_created` for when a new order was created via the online store.
 3. `order_reserved` for when an order first transitions into the reserved state.
 4. `order_updated` for any update to an order
 5. `order_started` for when an order started plannings
 6. `order_stopped` for when an order stopped plannings
 
 All categories, except for `webshop_order_created`, can be associated with an owner.
-At the time of this writing the owner must be an Order.
+At the time of this writing the owner must be an [Order](#orders).
 
-When a notification subscriptions is associated with an owner,
+When a notification subscription is associated with an owner,
 the notification will only be fired for the given owner.
 
 Multiple owned notification subscriptions can be created for any employee.
@@ -23,7 +23,7 @@ subscription for the same category, a single notification will send for the asso
 ## Relationships
 Name | Description
 -- | --
-`owner` | **[Order](#orders)** `required`<br>When present, only notifications for this specific resource will be fired. Currently only Orders are supported. 
+`owner` | **[Order](#orders)** `required`<br>When present, only notifications for this specific resource will be fired. Currently only [Orders](#orders) are supported. 
 
 
 Check matching attributes under [Fields](#notification-subscriptions-fields) to see which relations can be written.
@@ -33,11 +33,11 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`category` | **enum** `readonly-after-create`<br>The category of notifications subscribing to.<br> One of: `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`.
+`category` | **enum** `readonly-after-create`<br>The category of notifications to subscribe to.<br> One of: `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`global` | **boolean** `readonly`<br>Will be set true when the subscription is not associated with any owner, false otherwise. 
+`global` | **boolean** `readonly`<br>Will be set to `true` when the subscription is not associated with any owner, `false` otherwise. 
 `id` | **uuid** `readonly`<br>Primary key.
-`owner_id` | **uuid** `readonly-after-create`<br>When present, only notifications for this specific resource will be fired. Currently only Orders are supported. 
+`owner_id` | **uuid** `readonly-after-create`<br>When present, only notifications for this specific resource will be fired. Currently only [Orders](#orders) are supported. 
 `owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>Always `orders`
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
@@ -451,8 +451,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][category]` | **enum** <br>The category of notifications subscribing to.<br> One of: `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`.
-`data[attributes][owner_id]` | **uuid** <br>When present, only notifications for this specific resource will be fired. Currently only Orders are supported. 
+`data[attributes][category]` | **enum** <br>The category of notifications to subscribe to.<br> One of: `note_created`, `webshop_order_created`, `order_updated`, `order_reserved`, `order_started`, `order_stopped`.
+`data[attributes][owner_id]` | **uuid** <br>When present, only notifications for this specific resource will be fired. Currently only [Orders](#orders) are supported. 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>Always `orders`
 
 

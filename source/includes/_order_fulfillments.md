@@ -1,6 +1,6 @@
 # Order fulfillments
 
-Takes an Order through the fulfillment process.
+Takes an [Order](#orders) through the fulfillment process.
 
 ## Actions
 
@@ -11,15 +11,15 @@ be combined in the same request.
 
 #### Book a Bundle
 
-Books a Bundle on an Order.
+Books a [Bundle](#bundles) on an [Order](#orders).
 
-For each unspecified BundleItem a product variation needs to be selected.
-Specified BundleItems are automatically booked. These must not be included
-in the request. When a Bundle only contains specified BundleItems, an empty
+For each unspecified [BundleItem](#bundle-items) a product variation needs to be selected.
+Specified [BundleItems](#bundle-items) are automatically booked. These must not be included
+in the request. When a [Bundle](#bundles) only contains specified [BundleItems](#bundle-items), an empty
 list of product variations must be provided.
 
-The `quantity` attribute sets the quantity of the Bundle itself,
-and multiplies the quantities of all products in the Bundle.
+The `quantity` attribute sets the quantity of the [Bundle](#bundles) itself,
+and multiplies the quantities of all products in the [Bundle](#bundles).
 
 The `confirm_shortage` attribute (on the resource, not on the action),
 overrides shortage warnings when booking on a reserved or started order.
@@ -99,7 +99,7 @@ Adds or removes one or more StockItems from an existing Planning.
 
 It is not possible to specify more StockItems than there is
 remaining quantity left on the Planning.
-StockItems that have already been started can not be removed.
+[StockItems](#stock-items) that have already been started cannot be removed.
 
 ```json
 {
@@ -155,7 +155,7 @@ product needs to have started. The quantity can
 be the same as the started quantity, or less when
 a subset of items is returned.
 
-Consumables and services can not be stopped.
+Consumables and Services cannot be stopped.
 
 ```json
 {
@@ -188,10 +188,10 @@ errors and other kinds of inventory errors.
 ## Relationships
 Name | Description
 -- | --
-`changed_lines` | **[Lines](#lines)** `hasmany`<br>The lines that have (indirectly) been created or changed by the fulfillment actions. 
-`changed_plannings` | **[Plannings](#plannings)** `hasmany`<br>The plannings that have (indirectly) been created or changed by the fulfillment actions. 
-`changed_stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The stock item plannings that have (indirectly) been created or changed by the fulfillment actions. 
-`order` | **[Order](#orders)** `required`<br>The order to be fulfilled. 
+`changed_lines` | **[Lines](#lines)** `hasmany`<br>The [Lines](#lines) that have (indirectly) been created or changed by the fulfillment actions. 
+`changed_plannings` | **[Plannings](#plannings)** `hasmany`<br>The [Plannings](#plannings) that have (indirectly) been created or changed by the fulfillment actions. 
+`changed_stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](#stock-item-plannings) that have (indirectly) been created or changed by the fulfillment actions. 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) to be fulfilled. 
 
 
 Check matching attributes under [Fields](#order-fulfillments-fields) to see which relations can be written.
@@ -202,9 +202,9 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `actions` | **array** `writeonly`<br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`confirm_shortage` | **boolean** `writeonly`<br>A value of `true` overrides shortage warnings when booking products on a reserved or started Order. 
+`confirm_shortage` | **boolean** `writeonly`<br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>The order to be fulfilled. 
+`order_id` | **uuid** `readonly-after-create`<br>The [Order](#orders) to be fulfilled. 
 
 
 ## Book
@@ -446,8 +446,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started Order. 
-`data[attributes][order_id]` | **uuid** <br>The order to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
 
 
 ### Includes
@@ -624,8 +624,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started Order. 
-`data[attributes][order_id]` | **uuid** <br>The order to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
 
 
 ### Includes
@@ -771,8 +771,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started Order. 
-`data[attributes][order_id]` | **uuid** <br>The order to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
 
 
 ### Includes
@@ -916,8 +916,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started Order. 
-`data[attributes][order_id]` | **uuid** <br>The order to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
 
 
 ### Includes

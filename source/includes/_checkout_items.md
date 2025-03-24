@@ -29,7 +29,7 @@ Check each individual operation to see which relations can be included as a side
 `position` | **integer** <br>Used to determine sorting relative to other checkout items. 
 `remove_image` | **boolean** `writeonly`<br>Set to true to remove existing image from checkout item. 
 `required` | **boolean** <br>Whether the item is required to complete checkout. 
-`system` | **boolean** `readonly`<br>System checkout item name can not be changed or deleted. 
+`system` | **boolean** `readonly`<br>System checkout item name cannot be changed or deleted. 
 `tooltip` | **string** <br>Tooltip to describe purpose of the field to the user. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 

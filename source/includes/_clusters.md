@@ -7,7 +7,7 @@ picked up at one location and returned to another.
 ## Relationships
 Name | Description
 -- | --
-`locations` | **[Locations](#locations)** `hasmany`<br>The locations that make up this cluster.
+`locations` | **[Locations](#locations)** `hasmany`<br>The [Locations](#locations) that make up this cluster. 
 
 
 Check matching attributes under [Fields](#clusters-fields) to see which relations can be written.
@@ -19,8 +19,8 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`location_ids` | **array** `readonly-after-create`<br>The locations that belong to this cluster.
-`name` | **string** <br>Name of the cluster.
+`location_ids` | **array** `readonly-after-create`<br>The [Locations](#locations) that belong to this cluster. 
+`name` | **string** <br>Name of the cluster. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -219,8 +219,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][location_ids][]` | **array** <br>The locations that belong to this cluster.
-`data[attributes][name]` | **string** <br>Name of the cluster.
+`data[attributes][location_ids][]` | **array** <br>The [Locations](#locations) that belong to this cluster. 
+`data[attributes][name]` | **string** <br>Name of the cluster. 
 
 
 ### Includes
@@ -293,8 +293,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][location_ids][]` | **array** <br>The locations that belong to this cluster.
-`data[attributes][name]` | **string** <br>Name of the cluster.
+`data[attributes][location_ids][]` | **array** <br>The [Locations](#locations) that belong to this cluster. 
+`data[attributes][name]` | **string** <br>Name of the cluster. 
 
 
 ### Includes

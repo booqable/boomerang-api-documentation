@@ -7,12 +7,12 @@ Use device tokens to register devices to receive push notifications.
  Name | Description
 -- | --
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`environment` | **enum** <br>The enviroment to use.<br>One of: `development`, `production`.
+`environment` | **enum** <br>The environment to use.<br> One of: `development`, `production`.
 `id` | **uuid** `readonly`<br>Primary key.
-`kind` | **enum** <br>Kind of token.<br>One of: `apn`, `fcm`.
-`token` | **string** `writeonly`<br>The token to register.
+`kind` | **enum** <br>Kind of token.<br> One of: `apn`, `fcm`.
+`token` | **string** `writeonly`<br>The token to register. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
-`version` | **integer** <br>The API version to use.
+`version` | **integer** <br>The API version to use. 
 
 
 ## Create a device_token
@@ -74,10 +74,10 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][environment]` | **enum** <br>The enviroment to use.<br>One of: `development`, `production`.
-`data[attributes][kind]` | **enum** <br>Kind of token.<br>One of: `apn`, `fcm`.
-`data[attributes][token]` | **string** <br>The token to register.
-`data[attributes][version]` | **integer** <br>The API version to use.
+`data[attributes][environment]` | **enum** <br>The environment to use.<br> One of: `development`, `production`.
+`data[attributes][kind]` | **enum** <br>Kind of token.<br> One of: `apn`, `fcm`.
+`data[attributes][token]` | **string** <br>The token to register. 
+`data[attributes][version]` | **integer** <br>The API version to use. 
 
 
 ### Includes

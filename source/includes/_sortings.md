@@ -1,6 +1,6 @@
 # Sortings
 
-A convienient way to bulk update positions for supported resources.
+A convenient way to bulk update positions for supported resources.
 
 ## Fields
 

@@ -11,9 +11,9 @@ You can calculate a price in a couple ways:
 Name | Description
 -- | --
 `item` | **[Item](#items)** `required`<br>Required, the item or items to calculate price for. 
-`price_ruleset` | **[Price ruleset](#price-rulesets)** `required`<br>The advanced pricing rules the apply. 
+`price_ruleset` | **[Price ruleset](#price-rulesets)** `required`<br>The advanced pricing rules that apply. 
 `price_structure` | **[Price structure](#price-structures)** `required`<br>Optional price structure to use, if the item has a price structure associated with it that will be used by default. 
-`price_tile` | **[Price tile](#price-tiles)** `required`<br>The price tile that was selected from the price strucure. 
+`price_tile` | **[Price tile](#price-tiles)** `required`<br>The price tile that was selected from the price structure. 
 
 
 Check matching attributes under [Fields](#item-prices-fields) to see which relations can be written.
@@ -33,9 +33,9 @@ Check each individual operation to see which relations can be included as a side
 `original_price_each_in_cents` | **integer** `readonly`<br>Price per item before charge rules are applied. 
 `price_each_in_cents` | **integer** `readonly`<br>Final price per item. 
 `price_rule_values` | **hash** `readonly`<br>What price rules were applied. 
-`price_ruleset_id` | **uuid** <br>The advanced pricing rules the apply. 
+`price_ruleset_id` | **uuid** <br>The advanced pricing rules that apply. 
 `price_structure_id` | **uuid** <br>Optional price structure to use, if the item has a price structure associated with it that will be used by default. 
-`price_tile_id` | **uuid** `readonly`<br>The price tile that was selected from the price strucure. 
+`price_tile_id` | **uuid** `readonly`<br>The price tile that was selected from the price structure. 
 `till` | **datetime** <br>End of charge period. 
 
 
@@ -119,8 +119,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2023-06-09T07:36:00.000000+00:00",
-          "updated_at": "2023-06-09T07:36:00.000000+00:00",
+          "created_at": "2023-06-16T07:36:00.000000+00:00",
+          "updated_at": "2023-06-16T07:36:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "type": "products",
@@ -166,8 +166,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
         "type": "products",
         "attributes": {
-          "created_at": "2023-06-09T07:36:00.000000+00:00",
-          "updated_at": "2023-06-09T07:36:00.000000+00:00",
+          "created_at": "2023-06-16T07:36:00.000000+00:00",
+          "updated_at": "2023-06-16T07:36:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "type": "products",

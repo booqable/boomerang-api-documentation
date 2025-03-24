@@ -1,21 +1,21 @@
 # Operating rules
 
 Operating rules control which dates and times a customer can select
-in the online webshop, or an employee in the back office.
+in the online store, or an employee in the back office.
 
 Each type of rule has a corresponding setting that must be enabled
 before the rules of that type are enforced.
 
 ## Types of rules
 
-  - `hours` Sets opening hours key in data determines what days these hours apply to,
+  - `hours` Sets opening hours. The key in data determines what days these hours apply to,
     data must have this format `{ weekday: { from: 'HH:mm', till: 'HH:mm' } }`,
     days without applicable opening hours are considered closed.
-    Settting that enables this type of rule: `store.use_business_hours`.
+    Setting that enables this type of rule: `store.use_business_hours`.
 
   - `away` Sets away mode disabling overlapping days in the period picker,
     data must have a `from` and `till` with dates: { away: { from: 'YYYY-MM-DD', till: 'YYYY-MM-DD' } }.
-    Settting that enables this type of rule: `store.use_away_mode`.
+    Setting that enables this type of rule: `store.use_away_mode`.
 
   - `timeslot_fixed` Sets a fixed timeslot, used when datepicker is in fixed time slots mode.
     Same format as hours: `{ weekday: { from: 'HH:mm', till: 'HH:mm' } }`.

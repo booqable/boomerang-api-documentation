@@ -22,27 +22,74 @@ Orders are the heart of every rental operation. They hold configuration and info
 - `canceled` The order is canceled. Items will be available for other rentals.
 - `archived` The order won't show up in default search results.
 
-To transition an Order to the next status, create an [OrderStatusTransition](#order-status-transition).
+To transition an Order to the next status, create an [OrderStatusTransition](#order-status-transitions).
+
+## Status Transitions and Workflow
+
+Orders typically follow this workflow:
+1. `new` → `concept` through [OrderStatusTransition](#order-status-transitions)
+2. `concept` → `reserved` through [OrderStatusTransition](#order-status-transitions)
+3. `reserved` → `started` (pickup/delivery) through [OrderFulfillment](#order-fulfillments)
+4. `started` → `stopped` (return/completion) through [OrderFulfillment](#order-fulfillments)
+5. `stopped` → `archived` through [OrderStatusTransition](#order-status-transitions)
+
+Note that `concept` and `reserved` states can be skipped.
+An order can go from `new` to `started` directly when items are picked up.
+
+## Shortage Handling
+
+There are two types of shortage indicators:
+- `shortage`: Indicates there's a shortage anywhere in the system
+- `location_shortage`: Indicates there's a shortage specifically at the pickup location
+
+When updating an order causes a shortage, you'll receive an error response with details about the shortage. To confirm and proceed despite the shortage, include `confirm_shortage: true` in your update request.
+
+## Fulfillment Types
+
+Orders can have different fulfillment types that define how items are provided to customers:
+- `pickup`: Customer collects items from a location
+- `delivery`: Items are delivered to the customer
+
+The fulfillment type affects address requirements, delivery costs, and order processing.
+
+## Payment Statuses
+
+The `payment_status` field indicates the current payment state:
+- `paid`: All order amounts have been paid
+- `partially_paid`: Some payments have been made but the full amount is not yet paid
+- `overpaid`: More has been paid than required
+- `payment_due`: Payment is still required
+- `process_deposit`: A deposit needs to be processed
+
+## Deposit Handling
+
+Deposits can be calculated and applied in different ways:
+- `none`: No deposit is required
+- `percentage`: Deposit is a percentage of the item prices
+- `percentage_total`: Deposit is a percentage of the total order amount
+- `fixed`: Deposit is a fixed amount
+
+The `deposit_value` field determines the percentage or fixed amount, and various deposit-related fields track payment and refund status.
 
 ## Relationships
 Name | Description
 -- | --
 `barcode` | **[Barcode](#barcodes)** `optional`<br>The QR code automatically generated for this Order. 
-`coupon` | **[Coupon](#coupons)** `optional`<br>The Coupon added to this Order. 
-`customer` | **[Customer](#customers)** `optional`<br>The Customer this Order is for. 
-`documents` | **[Documents](#documents)** `hasmany`<br>Documents (quotes, contracts, invoices) related to this order. 
-`lines` | **[Lines](#lines)** `hasmany`<br>All the Lines of this Order. There is an automatically generated line for every Planning. In addition there can be manually added lines for custom charges, deposit holds and sections. 
-`notes` | **[Notes](#notes)** `hasmany`<br>Notes about this Order. 
+`coupon` | **[Coupon](#coupons)** `optional`<br>The [Coupon](#coupons) added to this Order. 
+`customer` | **[Customer](#customers)** `optional`<br>The [Customer](#customers) this Order is for. 
+`documents` | **[Documents](#documents)** `hasmany`<br>[Documents](#documents) (quotes, contracts, invoices) related to this order. 
+`lines` | **[Lines](#lines)** `hasmany`<br>All the [Lines](#lines) of this Order. There is an automatically generated line for every Planning. In addition there can be manually added lines for custom charges, deposit holds and sections. 
+`notes` | **[Notes](#notes)** `hasmany`<br>[Notes](#notes) about this Order. 
 `order_delivery_rate` | **[Order delivery rate](#order-delivery-rates)** `optional`<br>Information about the cost of delivery for this Order. 
-`payments` | **[Payments](#payments)** `hasmany`<br>Payments (charges, authorizations, refunds) related to this order. 
-`plannings` | **[Plannings](#plannings)** `hasmany`<br>The Plannings for this Order, containing the booked quantities and current status for all Products on this Order. 
+`payments` | **[Payments](#payments)** `hasmany`<br>[Payments](#payments) (charges, authorizations, refunds) related to this order. 
+`plannings` | **[Plannings](#plannings)** `hasmany`<br>The [Plannings](#plannings) for this Order, containing the booked quantities and current status for all Products on this Order. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom but structured data added to this Order. Both Properties linked to [DefaultProperties](#default-properties), and one-off Properties can be added to orders. Properties of Orders can be updated in bulk by writing to the `properties_attributes` attribute. 
-`start_location` | **[Location](#locations)** `required`<br>The Location where the Customer will pick up the items. 
-`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The StockItems planned on this Order, and their current status. 
-`stop_location` | **[Location](#locations)** `required`<br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
-`tax_region` | **[Tax region](#tax-regions)** `optional`<br>TaxRegion applied to this Order. 
-`tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one TaxValue for each applicable TaxRate. 
-`transfers` | **[Transfers](#transfers)** `hasmany`<br>Transfers that have been generated to solve shortages on this order. 
+`start_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will pick up the items. 
+`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](#stock-item-plannings) planned on this Order, and their current status. 
+`stop_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`tax_region` | **[Tax region](#tax-regions)** `optional`<br>[TaxRegion](#tax-regions) applied to this Order. 
+`tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one [TaxValue](#tax-values) for each applicable [TaxRate](#tax-rates). 
+`transfers` | **[Transfers](#transfers)** `hasmany`<br>[Transfers](#transfers) that have been generated to solve shortages on this order. 
 
 
 Check matching attributes under [Fields](#orders-fields) to see which relations can be written.
@@ -53,11 +100,11 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `billing_address_property_id` | **uuid** <br>The property id of the billing address. 
-`confirm_shortage` | **boolean** `writeonly`<br>Confirm shortage on update. 
-`coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`. 
-`coupon_id` | **uuid** `nullable`<br>The Coupon added to this Order. 
+`confirm_shortage` | **boolean** `writeonly`<br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
+`coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`). 
+`coupon_id` | **uuid** `nullable`<br>The [Coupon](#coupons) added to this Order. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`customer_id` | **uuid** `nullable`<br>The Customer this Order is for. 
+`customer_id` | **uuid** `nullable`<br>The [Customer](#customers) this Order is for. 
 `delivery_address` | **string** <br>The delivery address. 
 `delivery_address_property_id` | **uuid** <br>The property id of the delivery address. 
 `deposit_held_in_cents` | **integer** `readonly`<br>Amount of deposit held. 
@@ -73,33 +120,33 @@ Check each individual operation to see which relations can be included as a side
 `discount_value` | **float** `writeonly`<br>The value to use for `discount_type`. 
 `entirely_started` | **boolean** `readonly`<br>Whether all items on the order are started. 
 `entirely_stopped` | **boolean** `readonly`<br>Whether all items on the order are stopped. 
-`fulfillment_type` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
+`fulfillment_type` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
 `grand_total_in_cents` | **integer** `readonly`<br>Total excl. taxes (excl. deposit). 
 `grand_total_with_tax_in_cents` | **integer** `readonly`<br>Amount incl. taxes (excl. deposit). 
 `has_signed_contract` | **boolean** `readonly`<br>Whether the order has a signed contract. 
 `id` | **uuid** `readonly`<br>Primary key.
-`location_shortage` | **boolean** `readonly`<br>Whether there is a shortage on the pickup location. 
+`location_shortage` | **boolean** `readonly`<br>Whether there is a shortage on the pickup location. This is `true` when the requested items are not available at the specific `start_location` selected for the order, even if they might be available at other locations in the same cluster. 
 `number` | **integer** `readonly`<br>The unique order number. 
 `order_delivery_rate_attributes` | **hash** `writeonly`<br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `override_period_restrictions` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
 `paid_in_cents` | **integer** `readonly`<br>How much was paid. 
-`payment_status` | **enum** `readonly`<br>Indicates next step to take wrt. payment for this order.<br> One of: `paid`, `partially_paid`, `overpaid`, `payment_due`, `process_deposit`.
+`payment_status` | **enum** `readonly`<br>Indicates next step to take with respect to payment for this order. Values include `paid` (fully paid), `partially_paid` (some payments made), `overpaid` (more paid than required), `payment_due` (balance still due), or `process_deposit` (deposit needs processing).<br> One of: `paid`, `partially_paid`, `overpaid`, `payment_due`, `process_deposit`.
 `price_in_cents` | **integer** `readonly`<br>Subtotal excl. taxes (excl. deposit). 
-`properties` | **hash** `readonly`<br>A hash containing all property identidiers and values (include the properties relation if you need more detailed information). Properties of orders can be updated in bulk by writing to the `properties_attributes` attribute. 
+`properties` | **hash** `readonly`<br>A hash containing all property identifiers and values (include the properties relation if you need more detailed information). Properties of orders can be updated in bulk by writing to the `properties_attributes` attribute. 
 `properties_attributes` | **array** `writeonly`<br>Assign this attribute to create/update properties as subresource of order in a single request. 
-`shortage` | **boolean** `readonly`<br>Whether there is a shortage for this order. 
-`start_location_id` | **uuid** <br>The Location where the Customer will pick up the items. 
-`starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. 
+`shortage` | **boolean** `readonly`<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
+`start_location_id` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
+`starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
 `status` | **enum** `readonly`<br>Simplified status of the order. An order can be in a mixed state. The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "concept": 0, "reserved": 2, "started": 5, "stopped": 10 }`. 
 `statuses` | **array** `readonly`<br>Status(es) of planned products. 
-`stop_location_id` | **uuid** <br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
-`stops_at` | **datetime** `nullable`<br>When the items on the order become available again. 
+`stop_location_id` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`stops_at` | **datetime** `nullable`<br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
 `tax_in_cents` | **integer** `readonly`<br>Total tax. 
-`tax_region_id` | **uuid** `nullable`<br>TaxRegion applied to this Order. 
+`tax_region_id` | **uuid** `nullable`<br>[TaxRegion](#tax-regions) applied to this Order. 
 `to_be_paid_in_cents` | **integer** `readonly`<br>Amount that (still) has to be paid. 
-`total_discount_in_cents` | **integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`. 
+`total_discount_in_cents` | **integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`). 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -136,8 +183,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-02-24T03:02:01.000000+00:00",
-          "stops_at": "1970-03-26T03:02:01.000000+00:00",
+          "starts_at": "1970-02-17T03:02:01.000000+00:00",
+          "stops_at": "1970-03-19T03:02:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -335,14 +382,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-03-18T09:27:12Z",
-                       "lte": "2025-03-21T09:27:12Z"
+                       "gte": "2025-03-25T09:27:17Z",
+                       "lte": "2025-03-28T09:27:17Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-03-18T09:27:12Z",
-                       "lte": "2025-03-21T09:27:12Z"
+                       "gte": "2025-03-25T09:27:17Z",
+                       "lte": "2025-03-28T09:27:17Z"
                      }
                    }
                  ]
@@ -720,8 +767,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-07-22T12:21:01.000000+00:00",
-        "stops_at": "1970-08-21T12:21:01.000000+00:00",
+        "starts_at": "1970-07-15T12:21:01.000000+00:00",
+        "stops_at": "1970-08-14T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -984,25 +1031,25 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][billing_address_property_id]` | **uuid** <br>The property id of the billing address. 
-`data[attributes][confirm_shortage]` | **boolean** <br>Confirm shortage on update. 
-`data[attributes][coupon_id]` | **uuid** <br>The Coupon added to this Order. 
-`data[attributes][customer_id]` | **uuid** <br>The Customer this Order is for. 
+`data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
+`data[attributes][coupon_id]` | **uuid** <br>The [Coupon](#coupons) added to this Order. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this Order is for. 
 `data[attributes][delivery_address]` | **string** <br>The delivery address. 
 `data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
-`data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
+`data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
 `data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
-`data[attributes][start_location_id]` | **uuid** <br>The Location where the Customer will pick up the items. 
-`data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. 
-`data[attributes][stop_location_id]` | **uuid** <br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
-`data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. 
+`data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
+`data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
+`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
-`data[attributes][tax_region_id]` | **uuid** <br>TaxRegion applied to this Order. 
+`data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](#tax-regions) applied to this Order. 
 
 
 ### Includes
@@ -1250,25 +1297,25 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][billing_address_property_id]` | **uuid** <br>The property id of the billing address. 
-`data[attributes][confirm_shortage]` | **boolean** <br>Confirm shortage on update. 
-`data[attributes][coupon_id]` | **uuid** <br>The Coupon added to this Order. 
-`data[attributes][customer_id]` | **uuid** <br>The Customer this Order is for. 
+`data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
+`data[attributes][coupon_id]` | **uuid** <br>The [Coupon](#coupons) added to this Order. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this Order is for. 
 `data[attributes][delivery_address]` | **string** <br>The delivery address. 
 `data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
-`data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order.<br> One of: `pickup`, `delivery`.
+`data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
 `data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
-`data[attributes][start_location_id]` | **uuid** <br>The Location where the Customer will pick up the items. 
+`data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When items become unavailable, changing this value may result in shortages
-`data[attributes][stop_location_id]` | **uuid** <br>The Location where the Customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
 `data[attributes][stops_at]` | **datetime** <br>When items become available, changing this value may result in shortages
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
-`data[attributes][tax_region_id]` | **uuid** <br>TaxRegion applied to this Order. 
+`data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](#tax-regions) applied to this Order. 
 
 
 ### Includes

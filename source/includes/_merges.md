@@ -5,8 +5,8 @@ Merging enables you to merge the data of two records.
 ## Relationships
 Name | Description
 -- | --
-`source` | **[Customer](#customers)** `required`<br>Resource from which data is taken, this resource gets archived or destroyed.
-`target` | **[Customer](#customers)** `required`<br>Resource to which data is saved.
+`source` | **[Customer](#customers)** `required`<br>Resource from which data is taken, this resource gets archived or destroyed. 
+`target` | **[Customer](#customers)** `required`<br>Resource to which data is saved. 
 
 
 Check matching attributes under [Fields](#merges-fields) to see which relations can be written.
@@ -17,9 +17,9 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `id` | **uuid** `readonly`<br>Primary key.
-`source_id` | **uuid** <br>Resource from which data is taken, this resource gets archived or destroyed.
-`target_id` | **uuid** <br>Resource to which data is saved.
-`type` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.<br>Always `customers`
+`source_id` | **uuid** <br>Resource from which data is taken, this resource gets archived or destroyed. 
+`target_id` | **uuid** <br>Resource to which data is saved. 
+`type` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.<br> Always `customers`
 
 
 ## Merge customers
@@ -115,9 +115,9 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][source_id]` | **uuid** <br>Resource from which data is taken, this resource gets archived or destroyed.
-`data[attributes][target_id]` | **uuid** <br>Resource to which data is saved.
-`data[attributes][type]` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.<br>Always `customers`
+`data[attributes][source_id]` | **uuid** <br>Resource from which data is taken, this resource gets archived or destroyed. 
+`data[attributes][target_id]` | **uuid** <br>Resource to which data is saved. 
+`data[attributes][type]` | **enum** <br>Type of resource to merge. Only merging `customers` is supported.<br> Always `customers`
 
 
 ### Includes

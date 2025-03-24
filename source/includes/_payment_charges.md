@@ -1,17 +1,17 @@
 # Payment charges
 
-A PaymentCharge is a record of payment of an User that is used to track the payment status and details.
+A payment charge is a record of payment of a user that is used to track the payment status and details.
 
 ## Relationships
 Name | Description
 -- | --
-`cart` | **[Cart](#carts)** `required`<br>The associated cart.
-`customer` | **[Customer](#customers)** `required`<br>The associated customer.
-`employee` | **[Employee](#employees)** `required`<br>The associated employee.
-`order` | **[Order](#orders)** `required`<br>The associated order.
-`payment_authorization` | **[Payment authorization](#payment-authorizations)** `required`<br>The authorization under which this charge is made. 
-`payment_method` | **[Payment method](#payment-methods)** `required`<br>The payment method. 
-`payment_refunds` | **[Payment refunds](#payment-refunds)** `hasmany`<br>The associated refunds. 
+`cart` | **[Cart](#carts)** `required`<br>The associated cart. 
+`customer` | **[Customer](#customers)** `required`<br>The associated [Customer](#customers). 
+`employee` | **[Employee](#employees)** `required`<br>The associated [Employee](#employees). 
+`order` | **[Order](#orders)** `required`<br>The associated [Order](#orders). 
+`payment_authorization` | **[Payment authorization](#payment-authorizations)** `required`<br>The [PaymentAuthorization](#payment-authorizations) under which this charge is made. 
+`payment_method` | **[Payment method](#payment-methods)** `required`<br>The [PaymentMethod](#payment-methods). 
+`payment_refunds` | **[Payment refunds](#payment-refunds)** `hasmany`<br>The associated [PaymentRefunds](#payment-refunds). 
 
 
 Check matching attributes under [Fields](#payment-charges-fields) to see which relations can be written.
@@ -25,26 +25,26 @@ Check each individual operation to see which relations can be included as a side
 `amount_refundable_in_cents` | **integer** `readonly`<br>Refundable amount in cents. 
 `amount_refunded_in_cents` | **integer** `readonly`<br>Refunded amount in cents. 
 `canceled_at` | **datetime** `readonly`<br>When payment charge was canceled. 
-`cart_id` | **uuid** `readonly-after-create`<br>The associated cart.
+`cart_id` | **uuid** `readonly-after-create`<br>The associated cart. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** <br>Currency. 
-`customer_id` | **uuid** `readonly-after-create`<br>The associated customer.
+`customer_id` | **uuid** `readonly-after-create`<br>The associated [Customer](#customers). 
 `deposit_in_cents` | **integer** <br>Deposit in cents. 
 `deposit_refundable_in_cents` | **integer** `readonly`<br>Refundable deposit in cents. 
 `deposit_refunded_in_cents` | **integer** `readonly`<br>Refunded deposit in cents. 
 `description` | **string** <br>Description. 
-`employee_id` | **uuid** `readonly`<br>The associated employee.
+`employee_id` | **uuid** `readonly`<br>The associated [Employee](#employees). 
 `expired_at` | **datetime** `readonly`<br>When payment charge expired. 
 `failed_at` | **datetime** `readonly`<br>When payment charge failed. 
 `id` | **uuid** `readonly`<br>Primary key.
 `mode` | **enum** <br>Mode. `checkout` mode is reserved for checkout payments, not available for API.<br> One of: `manual`, `off_session`, `request`, `terminal`, `capture`.
-`order_id` | **uuid** `readonly-after-create`<br>The associated order.
-`payment_authorization_id` | **uuid** `readonly-after-create`<br>The authorization under which this charge is made. 
-`payment_method_id` | **uuid** `readonly-after-create`<br>The payment method. 
+`order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
+`payment_authorization_id` | **uuid** `readonly-after-create`<br>The [PaymentAuthorization](#payment-authorizations) under which this charge is made. 
+`payment_method_id` | **uuid** `readonly-after-create`<br>The [PaymentMethod](#payment-methods). 
 `possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment charge. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider payment identification. 
-`provider_method` | **string** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.. 
+`provider_method` | **string** <br>Provider payment method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `provider_secret` | **string** <br>Provider payment secret. 
 `redirect_url` | **string** <br>Redirect URL to redirect to external payment provider. 
 `refundable` | **boolean** `readonly`<br>Whether the payment is refundable. 
@@ -150,17 +150,17 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart.
+`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
 `data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated customer.
+`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
 `data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
 `data[attributes][mode]` | **enum** <br>Mode. `checkout` mode is reserved for checkout payments, not available for API.<br> One of: `manual`, `off_session`, `request`, `terminal`, `capture`.
-`data[attributes][order_id]` | **uuid** <br>The associated order.
-`data[attributes][payment_authorization_id]` | **uuid** <br>The authorization under which this charge is made. 
-`data[attributes][payment_method_id]` | **uuid** <br>The payment method. 
+`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
+`data[attributes][payment_authorization_id]` | **uuid** <br>The [PaymentAuthorization](#payment-authorizations) under which this charge is made. 
+`data[attributes][payment_method_id]` | **uuid** <br>The [PaymentMethod](#payment-methods). 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider payment identification. 
-`data[attributes][provider_method]` | **string** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.. 
+`data[attributes][provider_method]` | **string** <br>Provider payment method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider payment secret. 
 `data[attributes][redirect_url]` | **string** <br>Redirect URL to redirect to external payment provider. 
 `data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `started`, `action_required`, `processing`, `succeeded`, `failed`, `canceled`, `expired`.
@@ -276,17 +276,17 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart.
+`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
 `data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated customer.
+`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
 `data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
 `data[attributes][mode]` | **enum** <br>Mode. `checkout` mode is reserved for checkout payments, not available for API.<br> One of: `manual`, `off_session`, `request`, `terminal`, `capture`.
-`data[attributes][order_id]` | **uuid** <br>The associated order.
-`data[attributes][payment_authorization_id]` | **uuid** <br>The authorization under which this charge is made. 
-`data[attributes][payment_method_id]` | **uuid** <br>The payment method. 
+`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
+`data[attributes][payment_authorization_id]` | **uuid** <br>The [PaymentAuthorization](#payment-authorizations) under which this charge is made. 
+`data[attributes][payment_method_id]` | **uuid** <br>The [PaymentMethod](#payment-methods). 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider payment identification. 
-`data[attributes][provider_method]` | **string** <br>Provider payment method. Ex: credit_card, boleto, cash, bank, etc.. 
+`data[attributes][provider_method]` | **string** <br>Provider payment method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider payment secret. 
 `data[attributes][redirect_url]` | **string** <br>Redirect URL to redirect to external payment provider. 
 `data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `started`, `action_required`, `processing`, `succeeded`, `failed`, `canceled`, `expired`.

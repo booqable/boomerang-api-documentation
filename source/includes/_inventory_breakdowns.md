@@ -1,6 +1,6 @@
 # Inventory breakdowns
 
-Fetch quantitive information about product inventory compared to the current time, broken down by:
+Fetch quantitative information about product inventory compared to the current time, broken down by:
 
 - Location
 - Product
@@ -15,8 +15,8 @@ Fetch quantitive information about product inventory compared to the current tim
 ## Relationships
 Name | Description
 -- | --
-`location` | **[Location](#locations)** `required`<br>The location to which this breakdown record applies.
-`product` | **[Product](#products)** `required`<br>The product whose availability this breakdown record describes.
+`location` | **[Location](#locations)** `required`<br>The [Location](#locations) to which this breakdown record applies. 
+`product` | **[Product](#products)** `required`<br>The [Product](#products) whose availability this breakdown record describes. 
 
 
 Check matching attributes under [Fields](#inventory-breakdowns-fields) to see which relations can be written.
@@ -26,15 +26,15 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`from` | **datetime** <br>When the amount of items will be available (only for status `expected`).
+`from` | **datetime** <br>When the amount of items will be available (only for status `expected`). 
 `id` | **uuid** `readonly`<br>Primary key.
-`inventory_breakdown_type` | **string** <br>One of `regular`, `temporary`.
-`location_id` | **uuid** `readonly`<br>The location to which this breakdown record applies.
-`product_id` | **uuid** `readonly`<br>The product whose availability this breakdown record describes.
-`started` | **integer** <br>The amount if items that are started for product and location. Only rendered when applicable.
-`status` | **string** <br>One of `expected`, `in_stock`, `expired`.
-`stock_count` | **integer** <br>The total amount of stock for product and location.
-`till` | **datetime** <br>When the amount of items will become unavailable (only for type `temporary` and/or status `expired`).
+`inventory_breakdown_type` | **string** <br>One of `regular` or `temporary`. 
+`location_id` | **uuid** `readonly`<br>The [Location](#locations) to which this breakdown record applies. 
+`product_id` | **uuid** `readonly`<br>The [Product](#products) whose availability this breakdown record describes. 
+`started` | **integer** <br>The amount of items that are started for product and location. Only rendered when applicable. 
+`status` | **string** <br>One of `expected`, `in_stock`, or `expired`. 
+`stock_count` | **integer** <br>The total amount of stock for product and location. 
+`till` | **datetime** <br>When the amount of items will become unavailable (only for type `temporary` and/or status `expired`). 
 
 
 ## List inventory breakdowns

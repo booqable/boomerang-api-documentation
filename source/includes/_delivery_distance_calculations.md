@@ -6,10 +6,10 @@ It calculates the distance (the route length) between the given locations and th
 
  Name | Description
 -- | --
-`distance` | **float** `readonly`<br>The distance between the location and the delivery address.
-`distance_unit` | **enum** `readonly`<br>The unit of the distance.<br>One of: `metric`, `imperial`.
+`distance` | **float** `readonly`<br>The distance between the location and the delivery address. 
+`distance_unit` | **enum** `readonly`<br>The unit of the distance.<br> One of: `metric`, `imperial`.
 `id` | **uuid** `readonly`<br>Primary key.
-`location_id` | **uuid** `readonly`<br>The location ID.
+`location_id` | **uuid** `readonly`<br>The location ID. 
 
 
 ## Calculate delivery distances

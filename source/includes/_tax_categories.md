@@ -7,7 +7,7 @@ an order. An order's total tax rate is the sum of all product taxes on that orde
 ## Relationships
 Name | Description
 -- | --
-`tax_rates` | **[Tax rates](#tax-rates)** `hasmany`<br>The different rates that need to be charged. <br/> Rates can be created/updated through the TaxRate resource by writing the `tax_rates_attributes` attrinute. 
+`tax_rates` | **[Tax rates](#tax-rates)** `hasmany`<br>The different rates that need to be charged. <br/> Rates can be created/updated through the TaxRate resource by writing the `tax_rates_attributes` attribute. 
 
 
 Check matching attributes under [Fields](#tax-categories-fields) to see which relations can be written.
@@ -17,7 +17,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`archived` | **boolean** `readonly`<br>Whether tax category is archived.
+`archived` | **boolean** `readonly`<br>Whether the tax category is archived.
 `archived_at` | **datetime** `readonly` `nullable`<br>When the tax category was archived.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `default` | **boolean** <br>Whether this is the default tax category. Setting this value to `true` will set other tax categories to `false`.

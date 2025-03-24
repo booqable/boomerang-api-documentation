@@ -6,28 +6,28 @@ Invoices received from Booqable
 
  Name | Description
 -- | --
-`amount_due_in_cents` | **integer** `readonly`<br>Amount that still needs to be paid.
-`attempt_count` | **integer** `readonly`<br>Amount of attempts for auto collection.
-`attempted` | **boolean** `readonly`<br>Whether automatic collection was attempted.
-`billing_reason` | **enum** `readonly`<br>Why the invoice is billed.<br>One of: `subscription`, `manual`, `subscription_cycle`, `refund`, `uncollectible`, `subscription_update`, `subscription_create`.
-`coupon` | **string** `readonly`<br>Applied coupon.
+`amount_due_in_cents` | **integer** `readonly`<br>Amount that still needs to be paid. 
+`attempt_count` | **integer** `readonly`<br>Amount of attempts for auto collection. 
+`attempted` | **boolean** `readonly`<br>Whether automatic collection was attempted. 
+`billing_reason` | **enum** `readonly`<br>Why the invoice is billed.<br> One of: `subscription`, `manual`, `subscription_cycle`, `refund`, `uncollectible`, `subscription_update`, `subscription_create`.
+`coupon` | **string** `readonly`<br>Applied coupon. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`currency` | **string** `readonly`<br>Currency.
-`date` | **date** `readonly`<br>Invoice date.
-`ending_balance_in_cents` | **integer** `readonly`<br>Ending balance in cents (if credit was used).
+`currency` | **string** `readonly`<br>Currency. 
+`date` | **date** `readonly`<br>Invoice date. 
+`ending_balance_in_cents` | **integer** `readonly`<br>Ending balance in cents (if credit was used). 
 `id` | **uuid** `readonly`<br>Primary key.
-`next_payment_attempt_at` | **datetime** `readonly`<br>When the next charge will be attempted to charge.
-`number` | **integer** `readonly`<br>Unique number.
-`period_end_at` | **date** `readonly`<br>Period end date.
-`period_start_at` | **date** `readonly`<br>Period start date.
-`starting_balance_in_cents` | **integer** `readonly`<br>Starting balance in cents (if credit was used).
-`status` | **enum** `readonly`<br>Status of the invoice.<br>One of: `refunded`, `credit`, `paid`, `forgiven`, `voided`, `overdue`, `open`.
-`strategy` | **enum** `readonly`<br>How the invoice is billed.<br>One of: `send_invoice`, `charge_automatically`.
-`subtotal_in_cents` | **integer** `readonly`<br>Subtotal in cents (without discount and taxes).
-`total_in_cents` | **integer** `readonly`<br>Total in cents.
+`next_payment_attempt_at` | **datetime** `readonly`<br>When the next payment attempt will be made. 
+`number` | **integer** `readonly`<br>Unique number. 
+`period_end_at` | **date** `readonly`<br>Period end date. 
+`period_start_at` | **date** `readonly`<br>Period start date. 
+`starting_balance_in_cents` | **integer** `readonly`<br>Starting balance in cents (if credit was used). 
+`status` | **enum** `readonly`<br>Status of the invoice.<br> One of: `refunded`, `credit`, `paid`, `forgiven`, `voided`, `overdue`, `open`.
+`strategy` | **enum** `readonly`<br>How the invoice is billed.<br> One of: `send_invoice`, `charge_automatically`.
+`subtotal_in_cents` | **integer** `readonly`<br>Subtotal in cents (without discount and taxes). 
+`total_in_cents` | **integer** `readonly`<br>Total in cents. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
-`url` | **string** `readonly`<br>Url to view the invoice.
-`vat_in_cents` | **integer** `readonly`<br>Tax in cents.
+`url` | **string** `readonly`<br>URL to view the invoice. 
+`vat_in_cents` | **integer** `readonly`<br>Tax in cents. 
 
 
 ## List billing invoices

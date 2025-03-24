@@ -31,16 +31,16 @@ Check each individual operation to see which relations can be included as a side
 `confirm_has_orders` | **boolean** `writeonly`<br>A flag to confirm an address update when the location has orders. 
 `country` | **string** <br>Address country. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`fulfillment_capabilities` | **array[string]** `readonly`<br>The fulfillment process optios available from this location.<br>Zero or more from: `delivery`, `pickup`. 
+`fulfillment_capabilities` | **array[string]** `readonly`<br>The fulfillment process options available from this location.<br>Zero or more from: `delivery`, `pickup`. 
 `id` | **uuid** `readonly`<br>Primary key.
-`location_type` | **enum** <br>Determines if the location can be seen in the online webshop.<br> One of: `rental`, `internal`.
+`location_type` | **enum** <br>Determines if the location can be seen in the online store.<br> One of: `rental`, `internal`.
 `main_address` | **hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information. 
 `main_address_attributes` | **hash** `writeonly`<br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information. 
 `name` | **string** <br>Name of the location. 
 `pickup_enabled` | **boolean** <br>Whether the location supports pickup. 
 `region` | **string** <br>Address region. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
-`zipcode` | **string** <br>Address zipcode. 
+`zipcode` | **string** <br>Address ZIP code. 
 
 
 ## List locations
@@ -385,13 +385,13 @@ Name | Description
 `data[attributes][code]` | **string** <br>Code used to identify the location. 
 `data[attributes][confirm_has_orders]` | **boolean** <br>A flag to confirm an address update when the location has orders. 
 `data[attributes][country]` | **string** <br>Address country. 
-`data[attributes][location_type]` | **enum** <br>Determines if the location can be seen in the online webshop.<br> One of: `rental`, `internal`.
+`data[attributes][location_type]` | **enum** <br>Determines if the location can be seen in the online store.<br> One of: `rental`, `internal`.
 `data[attributes][main_address]` | **hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information. 
 `data[attributes][main_address_attributes]` | **hash** <br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information. 
 `data[attributes][name]` | **string** <br>Name of the location. 
 `data[attributes][pickup_enabled]` | **boolean** <br>Whether the location supports pickup. 
 `data[attributes][region]` | **string** <br>Address region. 
-`data[attributes][zipcode]` | **string** <br>Address zipcode. 
+`data[attributes][zipcode]` | **string** <br>Address ZIP code. 
 
 
 ### Includes
@@ -613,13 +613,13 @@ Name | Description
 `data[attributes][code]` | **string** <br>Code used to identify the location. 
 `data[attributes][confirm_has_orders]` | **boolean** <br>A flag to confirm an address update when the location has orders. 
 `data[attributes][country]` | **string** <br>Address country. 
-`data[attributes][location_type]` | **enum** <br>Determines if the location can be seen in the online webshop.<br> One of: `rental`, `internal`.
+`data[attributes][location_type]` | **enum** <br>Determines if the location can be seen in the online store.<br> One of: `rental`, `internal`.
 `data[attributes][main_address]` | **hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information. 
 `data[attributes][main_address_attributes]` | **hash** <br>A hash with the address fields. Use it when creating or updating a location. See `address` property type for more information. 
 `data[attributes][name]` | **string** <br>Name of the location. 
 `data[attributes][pickup_enabled]` | **boolean** <br>Whether the location supports pickup. 
 `data[attributes][region]` | **string** <br>Address region. 
-`data[attributes][zipcode]` | **string** <br>Address zipcode. 
+`data[attributes][zipcode]` | **string** <br>Address ZIP code. 
 
 
 ### Includes

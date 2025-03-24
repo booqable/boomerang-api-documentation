@@ -1,6 +1,6 @@
 # Price rules
 
-A price rule contains a single pricing adjustment rule and belongs to a price ruleset.
+A price rule contains a single pricing adjustment rule and belongs to a [PriceRuleset](#price-rulesets).
 
 A price rule can have one of these types:
 
@@ -37,7 +37,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`adjustment_strategy` | **enum** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts.<br> One of: `percentage`, `charge`.
+`adjustment_strategy` | **enum** <br>Determines whether a price rule adjusts prices by percentage or exact cent amounts.<br> One of: `percentage`, `charge`.
 `charge` | **boolean** <br>Determines effect of rules using charge attribute. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `from` | **datetime** <br>Defines start of period, used by `range_of_dates` rule type. 
@@ -139,7 +139,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][adjustment_strategy]` | **enum** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts.<br> One of: `percentage`, `charge`.
+`data[attributes][adjustment_strategy]` | **enum** <br>Determines whether a price rule adjusts prices by percentage or exact cent amounts.<br> One of: `percentage`, `charge`.
 `data[attributes][charge]` | **boolean** <br>Determines effect of rules using charge attribute. 
 `data[attributes][from]` | **datetime** <br>Defines start of period, used by `range_of_dates` rule type. 
 `data[attributes][from_day]` | **integer** <br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type. 
@@ -207,8 +207,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 10.0,
-        "from": "2028-03-09T15:14:07.000000+00:00",
-        "till": "2028-05-09T15:14:07.000000+00:00",
+        "from": "2028-03-02T15:13:07.000000+00:00",
+        "till": "2028-05-02T15:13:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -259,8 +259,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-05-28T18:32:01.000000+00:00",
-        "till": "2026-07-28T18:32:01.000000+00:00",
+        "from": "2026-05-21T18:31:01.000000+00:00",
+        "till": "2026-07-21T18:31:01.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -298,7 +298,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][adjustment_strategy]` | **enum** <br>Determines wether a price rule adjusts prices by percentage or exact cent ammounts.<br> One of: `percentage`, `charge`.
+`data[attributes][adjustment_strategy]` | **enum** <br>Determines whether a price rule adjusts prices by percentage or exact cent amounts.<br> One of: `percentage`, `charge`.
 `data[attributes][charge]` | **boolean** <br>Determines effect of rules using charge attribute. 
 `data[attributes][from]` | **datetime** <br>Defines start of period, used by `range_of_dates` rule type. 
 `data[attributes][from_day]` | **integer** <br>Defines start of period in weekdays, 0 is monday, used by `range_of_days` rule type. 
@@ -357,8 +357,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-09-02T20:25:07.000000+00:00",
-        "till": "2026-11-02T20:25:07.000000+00:00",
+        "from": "2026-08-26T20:24:07.000000+00:00",
+        "till": "2026-10-26T20:24:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,

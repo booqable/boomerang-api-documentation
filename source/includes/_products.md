@@ -20,14 +20,14 @@ products when variations are enabled:
 ## Relationships
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** `optional`<br>The barcode that points to this product. 
+`barcode` | **[Barcode](#barcodes)** `optional`<br>The [Barcode](#barcodes) that points to this product. 
 `inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this product. 
-`photo` | **[Photo](#photos)** `optional`<br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
-`price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The price ruleset to use for advanced price calculations. This is inherited from the product group this product belongs to. 
-`price_structure` | **[Price structure](#price-structures)** `optional`<br>The price strucure to use when this product uses tiered pricing. This is inherited from the product group this product belongs to. 
-`product_group` | **[Product group](#product-groups)** `required`<br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this product, based on [DefaultProperties](#default-properties). These are inherited from the product group this product belongs to. While it is possible to sideload properties for products, it is not possible to assign them. 
-`tax_category` | **[Tax category](#tax-categories)** `optional`<br>Tax category for tax calculations. 
+`photo` | **[Photo](#photos)** `optional`<br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
+`price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
+`price_structure` | **[Price structure](#price-structures)** `optional`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
+`product_group` | **[Product group](#product-groups)** `required`<br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
+`properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this product, based on [DefaultProperties](#default-properties). These are inherited from the [ProductGroup](#product-groups) this product belongs to. While it is possible to sideload properties for products, it is not possible to assign them. 
+`tax_category` | **[Tax category](#tax-categories)** `optional`<br>[TaxCategory](#tax-categories) for tax calculations. 
 
 
 Check matching attributes under [Fields](#products-fields) to see which relations can be written.
@@ -37,14 +37,14 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`archived` | **boolean** `readonly`<br>Whether item is archived. 
+`archived` | **boolean** `readonly`<br>Whether the item is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the item was archived. 
 `base_price_in_cents` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`photo_id` | **uuid** `nullable`<br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
-`photo_url` | **string** `readonly` `nullable`<br>Main photo url. 
-`product_group_id` | **uuid** `readonly-after-create`<br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
+`photo_id` | **uuid** `nullable`<br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
+`photo_url` | **string** `readonly` `nullable`<br>Main photo URL. 
+`product_group_id` | **uuid** `readonly-after-create`<br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `sorting_weight` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `type` | **string** `readonly`<br>Always `product`. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -67,20 +67,20 @@ Check each individual operation to see which relations can be included as a side
 `lead_time` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. 
 `name` | **string** `readonly`<br>Name of the item (based on product group and `variations_values`). 
 `price_period` | **enum** `readonly`<br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
-`price_ruleset_id` | **uuid** `readonly` `nullable`<br>The price ruleset to use for advanced price calculations. This is inherited from the product group this product belongs to. 
-`price_structure_id` | **uuid** `readonly` `nullable`<br>The price strucure to use when this product uses tiered pricing. This is inherited from the product group this product belongs to. 
+`price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
+`price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `product_type` | **enum** `readonly`<br>Type of product.<br> One of: `rental`, `consumable`, `service`.
 `properties` | **hash** `readonly`<br>Key value pairs of associated properties. This is the same data as provided by the properties relation, but without information about type and position. 
 `seo_description` | **string** `readonly` `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `readonly` `nullable`<br>SEO title tag. 
 `shortage_limit` | **integer** `readonly`<br>The maximum allowed shortage for any date range. 
-`show_in_store` | **boolean** `readonly`<br>Whether to show this item in the online. 
+`show_in_store` | **boolean** `readonly`<br>Whether to show this item in the online store. 
 `sku` | **string** `readonly`<br>Stock keeping unit. 
 `slug` | **string** `readonly`<br>Slug of the product. 
 `tag_list` | **array** `readonly`<br>List of tags. 
-`tax_category_id` | **uuid** `readonly` `nullable`<br>Tax category for tax calculations. 
-`taxable` | **boolean** `readonly`<br>Whether item is taxable. 
+`tax_category_id` | **uuid** `readonly` `nullable`<br>[TaxCategory](#tax-categories) for tax calculations. 
+`taxable` | **boolean** `readonly`<br>Whether the item is taxable. 
 `trackable` | **boolean** `readonly`<br>Whether stock items are tracked. 
 `tracking_type` | **enum** `readonly`<br>How the product is tracked.<br> One of: `none`, `bulk`, `trackable`.
 `variation` | **boolean** `readonly`<br>Whether this Item is a variation in a product group. 
@@ -724,8 +724,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][photo_id]` | **uuid** <br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
-`data[attributes][product_group_id]` | **uuid** <br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
+`data[attributes][photo_id]` | **uuid** <br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
+`data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 
@@ -862,8 +862,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][photo_id]` | **uuid** <br>Photo of this Product variation. This must be one of the photos associated with the ProductGroup. It is not possible to assign a Photo to a Product variation that is not part of the Photos of the ProductGroup. 
-`data[attributes][product_group_id]` | **uuid** <br>The product group this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When there variations are enabled, then there can be multiple product records. 
+`data[attributes][photo_id]` | **uuid** <br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
+`data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 

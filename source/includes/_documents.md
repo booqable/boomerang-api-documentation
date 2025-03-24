@@ -43,7 +43,7 @@ Check each individual operation to see which relations can be included as a side
 `archived_at` | **datetime** `readonly` `nullable`<br>When the document was archived. 
 `body` | **string** <br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document. 
 `confirmed` | **boolean** <br>Whether document is confirmed, applies to `quote` and `contract`. 
-`coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`. 
+`coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`). 
 `coupon_id` | **uuid** `nullable`<br>The associated coupon. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `customer_id` | **uuid** `nullable`<br>The associated customer. 
@@ -57,9 +57,9 @@ Check each individual operation to see which relations can be included as a side
 `deposit_paid_in_cents` | **integer** `readonly`<br>How much of the deposit is paid. 
 `deposit_refunded_in_cents` | **integer** `readonly`<br>How much of the deposit is refunded. 
 `deposit_to_refund_in_cents` | **integer** `readonly`<br>Amount of deposit (still) to be refunded. 
-`deposit_type` | **enum** `nullable`<br>Kind of deposit added.<br>One of: `none`, `percentage_total`, `percentage`, `fixed`.
+`deposit_type` | **enum** `nullable`<br>Kind of deposit added.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `deposit_value` | **float** <br>The value to use for `deposit_type`. 
-`discount_in_cents` | **integer** `readonly`<br>Discount (incl. or excl. taxes based on `tax_strategy`. 
+`discount_in_cents` | **integer** `readonly`<br>Discount (incl. or excl. taxes based on `tax_strategy`). 
 `discount_percentage` | **float** <br>The discount percentage applied to this order. 
 `document_type` | **enum** `readonly-after-create`<br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `due_date` | **date** <br>The latest date by which the invoice must be fully paid. 
@@ -79,13 +79,13 @@ Check each individual operation to see which relations can be included as a side
 `reference` | **string** <br>A project number or other reference. 
 `revised` | **boolean** <br>Whether document is revised (applies only to `invoice`). 
 `sent` | **boolean** <br>Whether document is sent (with Booqable). 
-`signature_url` | **string** `readonly`<br>Url where the signature is stored. 
+`signature_url` | **string** `readonly`<br>URL where the signature is stored. 
 `status` | **enum** <br>Status (possible values depend on document type).<br> One of: `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`.
 `tag_list` | **array** <br>Case insensitive tag list. 
 `tax_in_cents` | **integer** `readonly`<br>Total tax. 
 `tax_region_id` | **uuid** `nullable`<br>The associated tax region. 
 `to_be_paid_in_cents` | **integer** `readonly`<br>Amount that (still) has to be paid. 
-`total_discount_in_cents` | **integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`. 
+`total_discount_in_cents` | **integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`). 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -610,7 +610,7 @@ This request accepts the following includes:
         "number": 1,
         "prefix": null,
         "prefix_with_number": "1",
-        "date": "2025-03-17",
+        "date": "2025-03-24",
         "due_date": null,
         "name": "John Doe",
         "address": null,
@@ -683,7 +683,7 @@ Name | Description
 `data[attributes][coupon_id]` | **uuid** <br>The associated coupon. 
 `data[attributes][customer_id]` | **uuid** <br>The associated customer. 
 `data[attributes][date]` | **date** <br>Date the document was finalized. 
-`data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br>One of: `none`, `percentage_total`, `percentage`, `fixed`.
+`data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage applied to this order. 
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
@@ -844,7 +844,7 @@ Name | Description
 `data[attributes][coupon_id]` | **uuid** <br>The associated coupon. 
 `data[attributes][customer_id]` | **uuid** <br>The associated customer. 
 `data[attributes][date]` | **date** <br>Date the document was finalized. 
-`data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br>One of: `none`, `percentage_total`, `percentage`, `fixed`.
+`data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage applied to this order. 
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.

@@ -31,14 +31,14 @@ A company holds information and configuration about an account.
 `development` | **boolean** `readonly`<br>Whether this is a development account. 
 `email` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
 `favicon_base64` | **string** `writeonly`<br>To upload a favicon send it as a base64 encoded string. 
-`favicon_url` | **string** `readonly`<br>Company favicon url. 
-`financial_line_1` | **string** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent. 
-`financial_line_2` | **string** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent. 
+`favicon_url` | **string** `readonly`<br>Company favicon URL. 
+`financial_line_1` | **string** <br>First extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
+`financial_line_2` | **string** <br>Second extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
 `id` | **uuid** `readonly`<br>Primary key.
-`in_europe` | **boolean** `readonly`<br>Whether company is situated in europe. 
+`in_europe` | **boolean** `readonly`<br>Whether company is situated in Europe. 
 `installed_online_store` | **boolean** `readonly`<br>If the online store is installed, this boolean will return true. 
 `logo_base64` | **string** `writeonly`<br>To update a logo send it as base64 encoded string. 
-`logo_url` | **string** `readonly`<br>Url of the uploaded logo. 
+`logo_url` | **string** `readonly`<br>URL of the uploaded logo. 
 `main_address` | **hash** `readonly`<br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information. 
 `main_address_attributes` | **hash** `writeonly`<br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information. 
 `market` | **string** <br>The market the company operates in. 
@@ -51,7 +51,7 @@ A company holds information and configuration about an account.
 `remove_logo` | **boolean** `writeonly`<br>Remove current logo. 
 `revenue_last_year` | **string** `readonly`<br>Revenue last year given during signup. 
 `shop_theme_id` | **uuid** <br>ID of installed shop theme. 
-`slug` | **string** `readonly`<br>Company's slug, the part of the domainname before `booqable.com`. 
+`slug` | **string** `readonly`<br>Company's slug, the part of the domain name before `booqable.com`. 
 `source` | **string** `readonly`<br>UTM source present during signup. 
 `subscription` | **hash** `readonly` `extra`<br>Details about the subscription. 
 `team_size` | **string** `readonly`<br>Team size given during signup. 
@@ -59,7 +59,7 @@ A company holds information and configuration about an account.
 `third_party_id` | **string** <br>ID used for third party tools. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `use_billing_address` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
-`vat_number` | **string** <br>Company's vat number, used in customer communication and to define tax exempts. 
+`vat_number` | **string** <br>Company's VAT number, used in customer communication and to define tax exempts. 
 `website` | **string** <br>Website. 
 `year_business_start` | **string** `readonly`<br>Year when company started, given during signup. 
 `zipcode` | **string** <br>Zipcode. 
@@ -437,8 +437,8 @@ Name | Description
 `data[attributes][default_timezone]` | **string** <br>Company's default timezone. 
 `data[attributes][email]` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
 `data[attributes][favicon_base64]` | **string** <br>To upload a favicon send it as a base64 encoded string. 
-`data[attributes][financial_line_1]` | **string** <br>First extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent. 
-`data[attributes][financial_line_2]` | **string** <br>Second extra financial information line (line bank account) used in customer communication, on documents and as the reply-to address for emails that are being sent. 
+`data[attributes][financial_line_1]` | **string** <br>First extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
+`data[attributes][financial_line_2]` | **string** <br>Second extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
 `data[attributes][logo_base64]` | **string** <br>To update a logo send it as base64 encoded string. 
 `data[attributes][main_address_attributes]` | **hash** <br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information. 
 `data[attributes][market]` | **string** <br>The market the company operates in. 
@@ -450,7 +450,7 @@ Name | Description
 `data[attributes][shop_theme_id]` | **uuid** <br>ID of installed shop theme. 
 `data[attributes][third_party_id]` | **string** <br>ID used for third party tools. 
 `data[attributes][use_billing_address]` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
-`data[attributes][vat_number]` | **string** <br>Company's vat number, used in customer communication and to define tax exempts. 
+`data[attributes][vat_number]` | **string** <br>Company's VAT number, used in customer communication and to define tax exempts. 
 `data[attributes][website]` | **string** <br>Website. 
 `data[attributes][zipcode]` | **string** <br>Zipcode. 
 

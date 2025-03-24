@@ -1,16 +1,16 @@
 # Payment authorizations
 
-A PaymentAuthorization is a record of payment authorization that is used to track the authorization status and details.
+A payment authorization is a record of payment authorization that is used to track the authorization status and details.
 
 ## Relationships
 Name | Description
 -- | --
-`cart` | **[Cart](#carts)** `required`<br>The associated cart.
-`customer` | **[Customer](#customers)** `required`<br>The associated customer.
-`employee` | **[Employee](#employees)** `required`<br>The associated employee.
-`order` | **[Order](#orders)** `required`<br>The associated order.
-`payment_charges` | **[Payment charges](#payment-charges)** `hasmany`<br>The associated charges. 
-`payment_method` | **[Payment method](#payment-methods)** `required`<br>The payment method. 
+`cart` | **[Cart](#carts)** `required`<br>The associated cart. 
+`customer` | **[Customer](#customers)** `required`<br>The associated [Customer](#customers). 
+`employee` | **[Employee](#employees)** `required`<br>The associated [Employee](#employees). 
+`order` | **[Order](#orders)** `required`<br>The associated [Order](#orders). 
+`payment_charges` | **[Payment charges](#payment-charges)** `hasmany`<br>The associated [PaymentCharges](#payment-charges). 
+`payment_method` | **[Payment method](#payment-methods)** `required`<br>The [PaymentMethod](#payment-methods). 
 
 
 Check matching attributes under [Fields](#payment-authorizations-fields) to see which relations can be written.
@@ -27,25 +27,25 @@ Check each individual operation to see which relations can be included as a side
 `capturable` | **boolean** `readonly`<br>Whether the authorization is capturable. 
 `capture_before` | **datetime** `readonly`<br>When payment authorization needs to be captured before. 
 `captured_at` | **datetime** `readonly`<br>When payment authorization was captured. 
-`cart_id` | **uuid** `readonly-after-create`<br>The associated cart.
+`cart_id` | **uuid** `readonly-after-create`<br>The associated cart. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** <br>Currency. 
-`customer_id` | **uuid** `readonly-after-create`<br>The associated customer.
+`customer_id` | **uuid** `readonly-after-create`<br>The associated [Customer](#customers). 
 `deposit_capturable_in_cents` | **integer** `readonly`<br>Capturable deposit in cents. 
 `deposit_captured_in_cents` | **integer** `readonly`<br>Captured deposit in cents. 
 `deposit_in_cents` | **integer** <br>Deposit in cents. 
 `description` | **string** <br>Description. 
-`employee_id` | **uuid** `readonly`<br>The associated employee.
+`employee_id` | **uuid** `readonly`<br>The associated [Employee](#employees). 
 `expired_at` | **datetime** `readonly`<br>When payment authorization expired. 
 `failed_at` | **datetime** `readonly`<br>When payment authorization failed. 
 `id` | **uuid** `readonly`<br>Primary key.
 `mode` | **enum** <br>Mode.<br> One of: `off_session`, `checkout`, `request`, `terminal`.
-`order_id` | **uuid** `readonly-after-create`<br>The associated order.
-`payment_method_id` | **uuid** `readonly-after-create`<br>The payment method. 
-`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment charge. 
+`order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
+`payment_method_id` | **uuid** `readonly-after-create`<br>The [PaymentMethod](#payment-methods). 
+`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment authorization. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider authorization identification. 
-`provider_method` | **string** <br>Provider authorization method. Ex: credit_card, boleto, cash, bank, etc... 
+`provider_method` | **string** <br>Provider authorization method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `provider_secret` | **string** <br>Provider authorization secret. 
 `redirect_url` | **string** <br>Redirect URL to redirect to external payment provider. 
 `status` | **enum** <br>Status.<br> One of: `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`, `captured`.
@@ -150,16 +150,16 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart.
+`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
 `data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated customer.
+`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
 `data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
 `data[attributes][mode]` | **enum** <br>Mode.<br> One of: `off_session`, `checkout`, `request`, `terminal`.
-`data[attributes][order_id]` | **uuid** <br>The associated order.
-`data[attributes][payment_method_id]` | **uuid** <br>The payment method. 
+`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
+`data[attributes][payment_method_id]` | **uuid** <br>The [PaymentMethod](#payment-methods). 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider authorization identification. 
-`data[attributes][provider_method]` | **string** <br>Provider authorization method. Ex: credit_card, boleto, cash, bank, etc... 
+`data[attributes][provider_method]` | **string** <br>Provider authorization method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider authorization secret. 
 `data[attributes][redirect_url]` | **string** <br>Redirect URL to redirect to external payment provider. 
 `data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`, `captured`.
@@ -279,16 +279,16 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart.
+`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
 `data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated customer.
+`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
 `data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
 `data[attributes][mode]` | **enum** <br>Mode.<br> One of: `off_session`, `checkout`, `request`, `terminal`.
-`data[attributes][order_id]` | **uuid** <br>The associated order.
-`data[attributes][payment_method_id]` | **uuid** <br>The payment method. 
+`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
+`data[attributes][payment_method_id]` | **uuid** <br>The [PaymentMethod](#payment-methods). 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider authorization identification. 
-`data[attributes][provider_method]` | **string** <br>Provider authorization method. Ex: credit_card, boleto, cash, bank, etc... 
+`data[attributes][provider_method]` | **string** <br>Provider authorization method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider authorization secret. 
 `data[attributes][redirect_url]` | **string** <br>Redirect URL to redirect to external payment provider. 
 `data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `started`, `action_required`, `succeeded`, `failed`, `canceled`, `expired`, `captured`.

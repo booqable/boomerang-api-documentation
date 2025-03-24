@@ -6,8 +6,8 @@ This data is relevant only for orders that have a `delivery` fulfillment type.
 ## Relationships
 Name | Description
 -- | --
-`carrier` | **[App carrier](#app-carriers)** `required`<br>The selected carrier for this order.
-`order` | **[Order](#orders)** `required`<br>The delivery order this rate is for.
+`carrier` | **[App carrier](#app-carriers)** `required`<br>The selected carrier for this order. 
+`order` | **[Order](#orders)** `required`<br>The delivery [Order](#orders) this rate is for. 
 
 
 Check matching attributes under [Fields](#order-delivery-rates-fields) to see which relations can be written.
@@ -17,14 +17,14 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`carrier_id` | **uuid** `readonly-after-create`<br>The selected carrier for this order.
+`carrier_id` | **uuid** `readonly-after-create`<br>The selected carrier for this order. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** <br>The identifier of the delivery rate.
-`minimum_order_amount_in_cents` | **integer** <br>The minimum order amount in cents for this delivery rate.
-`order_id` | **uuid** `readonly-after-create`<br>The delivery order this rate is for.
-`price_in_cents` | **integer** <br>The price of the delivery rate in cents.
-`rate_id` | **string** <br>The rate id returned by a delivery app.
+`identifier` | **string** <br>The identifier of the delivery rate. 
+`minimum_order_amount_in_cents` | **integer** <br>The minimum order amount in cents for this delivery rate. 
+`order_id` | **uuid** `readonly-after-create`<br>The delivery [Order](#orders) this rate is for. 
+`price_in_cents` | **integer** <br>The price of the delivery rate in cents. 
+`rate_id` | **string** <br>The rate ID returned by a delivery app. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -264,12 +264,12 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][carrier_id]` | **uuid** <br>The selected carrier for this order.
-`data[attributes][identifier]` | **string** <br>The identifier of the delivery rate.
-`data[attributes][minimum_order_amount_in_cents]` | **integer** <br>The minimum order amount in cents for this delivery rate.
-`data[attributes][order_id]` | **uuid** <br>The delivery order this rate is for.
-`data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents.
-`data[attributes][rate_id]` | **string** <br>The rate id returned by a delivery app.
+`data[attributes][carrier_id]` | **uuid** <br>The selected carrier for this order. 
+`data[attributes][identifier]` | **string** <br>The identifier of the delivery rate. 
+`data[attributes][minimum_order_amount_in_cents]` | **integer** <br>The minimum order amount in cents for this delivery rate. 
+`data[attributes][order_id]` | **uuid** <br>The delivery [Order](#orders) this rate is for. 
+`data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
+`data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
 
 
 ### Includes
@@ -351,12 +351,12 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][carrier_id]` | **uuid** <br>The selected carrier for this order.
-`data[attributes][identifier]` | **string** <br>The identifier of the delivery rate.
-`data[attributes][minimum_order_amount_in_cents]` | **integer** <br>The minimum order amount in cents for this delivery rate.
-`data[attributes][order_id]` | **uuid** <br>The delivery order this rate is for.
-`data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents.
-`data[attributes][rate_id]` | **string** <br>The rate id returned by a delivery app.
+`data[attributes][carrier_id]` | **uuid** <br>The selected carrier for this order. 
+`data[attributes][identifier]` | **string** <br>The identifier of the delivery rate. 
+`data[attributes][minimum_order_amount_in_cents]` | **integer** <br>The minimum order amount in cents for this delivery rate. 
+`data[attributes][order_id]` | **uuid** <br>The delivery [Order](#orders) this rate is for. 
+`data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
+`data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
 
 
 ### Includes

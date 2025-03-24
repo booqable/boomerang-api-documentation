@@ -1,7 +1,7 @@
 # Emails
 
 Emails allow you to easily communicate with your customers by using optional templates.
-Booqable keeps a history of e-mail being sent for orders or customers.
+Booqable keeps a history of emails being sent for orders or customers.
 
 ## Relationships
 Name | Description
@@ -25,10 +25,10 @@ Check each individual operation to see which relations can be included as a side
 `document_ids` | **array** <br>Documents to send as attachments to the email. 
 `email_template_id` | **uuid** `readonly-after-create`<br>The template used to generate this email. 
 `employee_id` | **uuid** `readonly`<br>Employee who sent the email. 
-`has_error` | **boolean** `readonly`<br>Whether any errors occur when sending this email. 
+`has_error` | **boolean** `readonly`<br>Whether any errors occurred when sending this email. 
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** `readonly-after-create`<br>The order this email is associated with. Attributes from this order are available when rendering the template. 
-`recipients` | **string** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send. 
+`recipients` | **string** <br>Comma separated list of recipient email addresses, all addresses must be valid for the email to send. 
 `sent` | **boolean** `readonly`<br>Whether the email was sent successfully. 
 `subject` | **string** <br>Email subject. 
 `updated_at` | **datetime** `readonly`<br>The last time the email was updated. Typically this is updated after a delivery attempt has failed. 
@@ -251,7 +251,7 @@ Name | Description
 `data[attributes][document_ids][]` | **array** <br>Documents to send as attachments to the email. 
 `data[attributes][email_template_id]` | **uuid** <br>The template used to generate this email. 
 `data[attributes][order_id]` | **uuid** <br>The order this email is associated with. Attributes from this order are available when rendering the template. 
-`data[attributes][recipients]` | **string** <br>Comma seperated list of recipient email addresses, all addresses must be valid for the email to send. 
+`data[attributes][recipients]` | **string** <br>Comma separated list of recipient email addresses, all addresses must be valid for the email to send. 
 `data[attributes][subject]` | **string** <br>Email subject. 
 
 

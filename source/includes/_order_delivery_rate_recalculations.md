@@ -5,7 +5,7 @@ Recalculates the delivery rate of a delivery order.
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>Order that needs recalculation of its rates.
+`order` | **[Order](#orders)** `required`<br>[Order](#orders) that needs recalculation of its rates. 
 
 
 Check matching attributes under [Fields](#order-delivery-rate-recalculations-fields) to see which relations can be written.
@@ -16,7 +16,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** <br>Order that needs recalculation of its rates.
+`order_id` | **uuid** <br>[Order](#orders) that needs recalculation of its rates. 
 
 
 ## Recalculate delivery rates
@@ -74,7 +74,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][order_id]` | **uuid** <br>Order that needs recalculation of its rates.
+`data[attributes][order_id]` | **uuid** <br>[Order](#orders) that needs recalculation of its rates. 
 
 
 ### Includes

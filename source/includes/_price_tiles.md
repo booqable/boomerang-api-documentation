@@ -8,7 +8,7 @@ The base price of a product is multiplied by the `multiplier`.
 ## Relationships
 Name | Description
 -- | --
-`price_structure` | **[Price structure](#price-structures)** `required`<br>Price structure this price tile is part of.
+`price_structure` | **[Price structure](#price-structures)** `required`<br>[PriceStructure](#price-structure) this price tile is part of. 
 
 
 Check matching attributes under [Fields](#price-tiles-fields) to see which relations can be written.
@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
 `multiplier` | **float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
 `name` | **string** <br>Name of the tile, which will be used as charge label in the store and on lines.
 `period` | **enum** <br>Period.<br>One of: `hours`, `days`, `weeks`, `months`, `years`.
-`price_structure_id` | **uuid** `readonly-after-create`<br>Price structure this price tile is part of.
+`price_structure_id` | **uuid** `readonly-after-create`<br>[PriceStructure](#price-structure) this price tile is part of. 
 `quantity` | **integer** <br>Used in combination with period (e.g. `3` with period `days`).
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
@@ -234,7 +234,7 @@ Name | Description
 `data[attributes][multiplier]` | **float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
 `data[attributes][name]` | **string** <br>Name of the tile, which will be used as charge label in the store and on lines.
 `data[attributes][period]` | **enum** <br>Period.<br>One of: `hours`, `days`, `weeks`, `months`, `years`.
-`data[attributes][price_structure_id]` | **uuid** <br>Price structure this price tile is part of.
+`data[attributes][price_structure_id]` | **uuid** <br>[PriceStructure](#price-structure) this price tile is part of. 
 `data[attributes][quantity]` | **integer** <br>Used in combination with period (e.g. `3` with period `days`).
 
 
@@ -318,7 +318,7 @@ Name | Description
 `data[attributes][multiplier]` | **float** <br>The amount to multiply a product's base price with (e.g. `2.8` for three days).
 `data[attributes][name]` | **string** <br>Name of the tile, which will be used as charge label in the store and on lines.
 `data[attributes][period]` | **enum** <br>Period.<br>One of: `hours`, `days`, `weeks`, `months`, `years`.
-`data[attributes][price_structure_id]` | **uuid** <br>Price structure this price tile is part of.
+`data[attributes][price_structure_id]` | **uuid** <br>[PriceStructure](#price-structure) this price tile is part of. 
 `data[attributes][quantity]` | **integer** <br>Used in combination with period (e.g. `3` with period `days`).
 
 

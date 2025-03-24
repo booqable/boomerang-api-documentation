@@ -1,13 +1,13 @@
 # Tax rates
 
-Tax rates are always assigned to either a [TaxRegion](#tax_regions)
-or [TaxCategory](#tax_categories). Tax rates define the individual
+Tax rates are always assigned to either a [TaxRegion](#tax-regions)
+or [TaxCategory](#tax-categories). Tax rates define the individual
 rates that will be taxed.
 
 ## Relationships
 Name | Description
 -- | --
-`owner` | **[Tax category](#tax-categories), [Tax region](#tax-regions)** `required`<br>The TaxRegion or TaxCategory this TaxRate is part of.
+`owner` | **[Tax category](#tax-categories), [Tax region](#tax-regions)** `required`<br>The [TaxRegion](#tax-regions) or [TaxCategory](#tax-categories) this TaxRate is part of.
 
 
 Check matching attributes under [Fields](#tax-rates-fields) to see which relations can be written.
@@ -20,7 +20,7 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** <br>The name of the tax rate.
-`owner_id` | **uuid** `readonly-after-create`<br>The TaxRegion or TaxCategory this TaxRate is part of.
+`owner_id` | **uuid** `readonly-after-create`<br>The [TaxRegion](#tax-regions) or [TaxCategory](#tax-categories) this TaxRate is part of.
 `owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `tax_categories`, `tax_regions`.
 `position` | **integer** `readonly`<br>Position of the tax rate.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -283,7 +283,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][name]` | **string** <br>The name of the tax rate.
-`data[attributes][owner_id]` | **uuid** <br>The TaxRegion or TaxCategory this TaxRate is part of.
+`data[attributes][owner_id]` | **uuid** <br>The [TaxRegion](#tax-regions) or [TaxCategory](#tax-categories) this TaxRate is part of.
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `tax_categories`, `tax_regions`.
 `data[attributes][value]` | **float** <br>The percentage value of the rate.
 
@@ -385,7 +385,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][name]` | **string** <br>The name of the tax rate.
-`data[attributes][owner_id]` | **uuid** <br>The TaxRegion or TaxCategory this TaxRate is part of.
+`data[attributes][owner_id]` | **uuid** <br>The [TaxRegion](#tax-regions) or [TaxCategory](#tax-categories) this TaxRate is part of.
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `tax_categories`, `tax_regions`.
 `data[attributes][value]` | **float** <br>The percentage value of the rate.
 

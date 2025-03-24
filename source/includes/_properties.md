@@ -41,45 +41,45 @@ Properties can have different types and behave differently. These are the `value
 
 | **text_field** | Renders a text field |
 | :------ | :-------- |
-| `value` | **string** |
+| `value` | **`string`** |
 
 | **text_area** | Renders a text area |
 | :------ | :-------- |
-|`value` | **string** |
+|`value` | **`string`** |
 
 | **phone** | Renders a phone field |
 | :------ | :-------- |
-| `value` | **string** |
+| `value` | **`string`** |
 
 | **email** | Renders an email field |
 | :------ | :-------- |
-| `value` | **string** |
+| `value` | **`string`** |
 
 | **date_field** | Renders a date picker |
 | :------ | :-------- |
-| `value` | **string** |
+| `value` | **`string`** |
 
 | **select** | Renders a dropdown select |
 | :------ | :-------- |
-| `value` | **string** |
+| `value` | **`string`** |
 
 | **address** | Renders multiple fields |
 | :------ | :-------- |
-| `first_name`| **string** |
-| `last_name` | **string** |
-| `address1` | **string** |
-| `address2` | **string** |
-| `city` | **string** |
-| `region` | **string** |
-| `zipcode` | **string** |
-| `country` | **string** |
-| `country_id` | **uuid** |
-| `province_id` | **uuid** |
+| `first_name`| **`string`** |
+| `last_name` | **`string`** |
+| `address1` | **`string`** |
+| `address2` | **`string`** |
+| `city` | **`string`** |
+| `region` | **`string`** |
+| `zipcode` | **`string`** |
+| `country` | **`string`** |
+| `country_id` | **`uuid`** |
+| `province_id` | **`uuid`** |
 
 ## Relationships
 Name | Description
 -- | --
-`default_property` | **[Default property](#default-properties)** `optional`<br>The default property this property is linked to. Properties without default property are called "one-off" properties. 
+`default_property` | **[Default property](#default-properties)** `optional`<br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
 `owner` | **[Customer](#customers), [Order](#orders), [Product group](#product-groups), [Stock item](#stock-items)** `required`<br>The resource this property is about. 
 
 
@@ -93,29 +93,29 @@ Check each individual operation to see which relations can be included as a side
 `address1` | **string** <br>For type `address`. 
 `address2` | **string** <br>For type `address`. 
 `city` | **string** <br>For type `address`. 
-`country` | **string** <br>For property_type `address`. 
-`country_id` | **string** <br>For property_type `address`. 
+`country` | **string** <br>For type `address`. 
+`country_id` | **string** <br>For type `address`. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`default_property_id` | **uuid** `nullable`<br>The default property this property is linked to. Properties without default property are called "one-off" properties. 
+`default_property_id` | **uuid** `nullable`<br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
 `first_name` | **string** <br>For type `address`. 
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>Key that will be used in exports, responses and custom field variables in templates. 
 `last_name` | **string** <br>For type `address`. 
-`latitude` | **string** <br>For property_type `address`. 
-`longitude` | **string** <br>For property_type `address`. 
+`latitude` | **string** <br>For type `address`. 
+`longitude` | **string** <br>For type `address`. 
 `meets_validation_requirements` | **boolean** `readonly`<br>Whether this property meets the validation requirements. 
 `name` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `owner_id` | **uuid** `readonly-after-create`<br>The resource this property is about. 
 `owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
 `position` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `property_type` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
-`province_id` | **string** <br>For property_type `address`. 
-`region` | **string** <br>For property_type `address`. 
+`province_id` | **string** <br>For type `address`. 
+`region` | **string** <br>For type `address`. 
 `show_on` | **array[string]** <br>Array of document types to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. For properties that are linked to a default property, always the value from the default property will be used and the `show_on` attribute of the individual property is ignored. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `validation_required` | **boolean** <br>Whether this property has to be validated. 
-`value` | **string** <br>For property_type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`. 
-`zipcode` | **string** <br>For property_type `address`. 
+`value` | **string** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, or `select`. 
+`zipcode` | **string** <br>For type `address`. 
 
 
 ## Manage properties through their owner
@@ -641,25 +641,25 @@ Name | Description
 `data[attributes][address1]` | **string** <br>For type `address`. 
 `data[attributes][address2]` | **string** <br>For type `address`. 
 `data[attributes][city]` | **string** <br>For type `address`. 
-`data[attributes][country]` | **string** <br>For property_type `address`. 
-`data[attributes][country_id]` | **string** <br>For property_type `address`. 
-`data[attributes][default_property_id]` | **uuid** <br>The default property this property is linked to. Properties without default property are called "one-off" properties. 
+`data[attributes][country]` | **string** <br>For type `address`. 
+`data[attributes][country_id]` | **string** <br>For type `address`. 
+`data[attributes][default_property_id]` | **uuid** <br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
 `data[attributes][first_name]` | **string** <br>For type `address`. 
 `data[attributes][identifier]` | **string** <br>Key that will be used in exports, responses and custom field variables in templates. 
 `data[attributes][last_name]` | **string** <br>For type `address`. 
-`data[attributes][latitude]` | **string** <br>For property_type `address`. 
-`data[attributes][longitude]` | **string** <br>For property_type `address`. 
+`data[attributes][latitude]` | **string** <br>For type `address`. 
+`data[attributes][longitude]` | **string** <br>For type `address`. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
 `data[attributes][position]` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
-`data[attributes][province_id]` | **string** <br>For property_type `address`. 
-`data[attributes][region]` | **string** <br>For property_type `address`. 
+`data[attributes][province_id]` | **string** <br>For type `address`. 
+`data[attributes][region]` | **string** <br>For type `address`. 
 `data[attributes][show_on]` | **array[string]** <br>Array of document types to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. For properties that are linked to a default property, always the value from the default property will be used and the `show_on` attribute of the individual property is ignored. 
 `data[attributes][validation_required]` | **boolean** <br>Whether this property has to be validated. 
-`data[attributes][value]` | **string** <br>For property_type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`. 
-`data[attributes][zipcode]` | **string** <br>For property_type `address`. 
+`data[attributes][value]` | **string** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, or `select`. 
+`data[attributes][zipcode]` | **string** <br>For type `address`. 
 
 
 ### Includes
@@ -744,25 +744,25 @@ Name | Description
 `data[attributes][address1]` | **string** <br>For type `address`. 
 `data[attributes][address2]` | **string** <br>For type `address`. 
 `data[attributes][city]` | **string** <br>For type `address`. 
-`data[attributes][country]` | **string** <br>For property_type `address`. 
-`data[attributes][country_id]` | **string** <br>For property_type `address`. 
-`data[attributes][default_property_id]` | **uuid** <br>The default property this property is linked to. Properties without default property are called "one-off" properties. 
+`data[attributes][country]` | **string** <br>For type `address`. 
+`data[attributes][country_id]` | **string** <br>For type `address`. 
+`data[attributes][default_property_id]` | **uuid** <br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
 `data[attributes][first_name]` | **string** <br>For type `address`. 
 `data[attributes][identifier]` | **string** <br>Key that will be used in exports, responses and custom field variables in templates. 
 `data[attributes][last_name]` | **string** <br>For type `address`. 
-`data[attributes][latitude]` | **string** <br>For property_type `address`. 
-`data[attributes][longitude]` | **string** <br>For property_type `address`. 
+`data[attributes][latitude]` | **string** <br>For type `address`. 
+`data[attributes][longitude]` | **string** <br>For type `address`. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
 `data[attributes][position]` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
-`data[attributes][province_id]` | **string** <br>For property_type `address`. 
-`data[attributes][region]` | **string** <br>For property_type `address`. 
+`data[attributes][province_id]` | **string** <br>For type `address`. 
+`data[attributes][region]` | **string** <br>For type `address`. 
 `data[attributes][show_on]` | **array[string]** <br>Array of document types to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. For properties that are linked to a default property, always the value from the default property will be used and the `show_on` attribute of the individual property is ignored. 
 `data[attributes][validation_required]` | **boolean** <br>Whether this property has to be validated. 
-`data[attributes][value]` | **string** <br>For property_type `text_field`, `text_area`, `phone`, `email`, `date_field`, `select`. 
-`data[attributes][zipcode]` | **string** <br>For property_type `address`. 
+`data[attributes][value]` | **string** <br>For type `text_field`, `text_area`, `phone`, `email`, `date_field`, or `select`. 
+`data[attributes][zipcode]` | **string** <br>For type `address`. 
 
 
 ### Includes

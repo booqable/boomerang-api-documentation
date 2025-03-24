@@ -19,13 +19,13 @@ When there's an ID mismatch, it's advised to fetch the session again to reload t
 Name | Description
 -- | --
 `app_subscriptions` | **[App subscriptions](#app-subscriptions)** `hasmany`<br>All app subscriptions of the company.
-`clusters` | **[Clusters](#clusters)** `hasmany`<br>All clusters of the company.
-`company` | **[Company](#companies)** `required`<br>The company.
-`default_properties` | **[Default properties](#default-properties)** `hasmany`<br>All default properties of the company.
-`employee` | **[Employee](#employees)** `required`<br>The current employee.
-`locations` | **[Locations](#locations)** `hasmany`<br>All locations of the company.
-`operating_rules` | **[Operating rules](#operating-rules)** `hasmany`<br>All operating rules of the company.
-`settings` | **[Setting](#settings)** `required`<br>All settings of the company.
+`clusters` | **[Clusters](#clusters)** `hasmany`<br>All [Clusters](#clusters) of the company.
+`company` | **[Company](#companies)** `required`<br>The [Company](#companies).
+`default_properties` | **[Default properties](#default-properties)** `hasmany`<br>All [DefaultProperties](#default-properties) of the company.
+`employee` | **[Employee](#employees)** `required`<br>The current [Employee](#employees).
+`locations` | **[Locations](#locations)** `hasmany`<br>All [Locations](#locations) of the company.
+`operating_rules` | **[Operating rules](#operating-rules)** `hasmany`<br>All [OperatingRules](#operating-rules) of the company.
+`settings` | **[Setting](#settings)** `required`<br>All [Settings](#settings) of the company.
 
 
 Check matching attributes under [Fields](#sessions-fields) to see which relations can be written.
@@ -36,10 +36,10 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `clusters_updated_at` | **datetime** <br>When the clusters were last updated.
-`company_id` | **uuid** <br>The company.
+`company_id` | **uuid** <br>The [Company](#companies).
 `countries_updated_at` | **datetime** <br>When the countries were last updated.
 `default_properties_updated_at` | **datetime** <br>When the default properties were last updated.
-`employee_id` | **uuid** <br>The current employee.
+`employee_id` | **uuid** <br>The current [Employee](#employees).
 `id` | **uuid** <br>Primary key.
 `locations_updated_at` | **datetime** <br>When locations were last updated.
 `notification_subscriptions_updated_at` | **datetime** <br>When the employee last made a change to their notification subscriptions.
@@ -259,7 +259,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1742203734"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1742808554"
         }
       },
       {

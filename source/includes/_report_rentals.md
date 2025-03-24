@@ -11,7 +11,7 @@ and can be requested by one of the following turnover types:
 ## Relationships
 Name | Description
 -- | --
-`product` | **[Product](#products)** `required`<br>The rental product whose performance is reported.
+`product` | **[Product](#products)** `required`<br>The rental [Product](#products) whose performance is reported.
 
 
 Check matching attributes under [Fields](#report-rentals-fields) to see which relations can be written.
@@ -26,7 +26,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** `readonly`<br>Product name.
 `planned_duration_in_seconds` | **integer** `readonly`<br>How many seconds the product was planned.
-`product_id` | **uuid** <br>The rental product whose performance is reported.
+`product_id` | **uuid** <br>The rental [Product](#products) whose performance is reported.
 `quantity` | **integer** `readonly`<br>Quantity in stock during period.
 `rented_count` | **integer** `readonly`<br>How many times the product was rented out.
 `turnover_in_cents` | **integer** `readonly`<br>Turnover during period.
@@ -53,7 +53,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
         "type": "report_rentals",
         "attributes": {
-          "created_at": "2019-11-25T23:42:00.000000+00:00",
+          "created_at": "2019-11-25T23:43:00.000000+00:00",
           "name": "Product 1000056",
           "charge_duration_in_seconds": 14400,
           "planned_duration_in_seconds": 14400,

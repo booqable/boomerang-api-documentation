@@ -3,7 +3,7 @@
 Booqable comes with standard fields but you can also add custom properties to capture additional data.
 
 Default properties show up in forms within Booqable and can be connected
-to [checkout fields](https://help.booqable.com/en/articles/2170728-can-i-create-custom-checkout-fields). 0
+to [checkout fields](https://help.booqable.com/en/articles/2170728-can-i-create-custom-checkout-fields).
 
 Default properties are searchable, show up in exports and can be used in email templates.
 The actual values of those properties are stored in the [Property](#properties) resource.
@@ -27,7 +27,7 @@ When creating properties they are connected with their default when one of the f
 `owner_type` | **string** `readonly-after-create`<br>The type of resource this default property is intended for and derived properties can be added to. 
 `position` | **integer** <br>Which position the property has. 
 `property_type` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
-`select_options` | **array** <br>For type `select`. The select options as array.. 
+`select_options` | **array** <br>For type `select`. The select options as array. 
 `show_on` | **array[string]** <br>Array of items to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `validation_required` | **boolean** <br>Whether this property has to be validated. 
@@ -239,7 +239,7 @@ Name | Description
 `data[attributes][owner_type]` | **string** <br>The type of resource this default property is intended for and derived properties can be added to. 
 `data[attributes][position]` | **integer** <br>Which position the property has. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
-`data[attributes][select_options][]` | **array** <br>For type `select`. The select options as array.. 
+`data[attributes][select_options][]` | **array** <br>For type `select`. The select options as array. 
 `data[attributes][show_on]` | **array[string]** <br>Array of items to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. 
 `data[attributes][validation_required]` | **boolean** <br>Whether this property has to be validated. 
 
@@ -316,7 +316,7 @@ Name | Description
 `data[attributes][owner_type]` | **string** <br>The type of resource this default property is intended for and derived properties can be added to. 
 `data[attributes][position]` | **integer** <br>Which position the property has. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
-`data[attributes][select_options][]` | **array** <br>For type `select`. The select options as array.. 
+`data[attributes][select_options][]` | **array** <br>For type `select`. The select options as array. 
 `data[attributes][show_on]` | **array[string]** <br>Array of items to show this custom field on. Zero or more from `contract`, `invoice`, `packing`, `quote`. 
 `data[attributes][validation_required]` | **boolean** <br>Whether this property has to be validated. 
 

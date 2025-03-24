@@ -54,12 +54,12 @@ Check each individual operation to see which relations can be included as a side
 `name` | **string** <br>Name of the bundle. 
 `photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
 `photo_id` | **uuid** `readonly` `nullable`<br>Primary photo of this bundle. 
-`photo_url` | **string** `readonly`<br>Main photo url. 
+`photo_url` | **string** `readonly`<br>Main photo URL. 
 `product_type` | **enum** `readonly`<br>Always `bundle`. This attribute exists because bundles are a kind of [Item](#items).<br> Always `bundle`
-`remote_photo_url` | **string** `writeonly`<br>Url to an image on the web. 
+`remote_photo_url` | **string** `writeonly`<br>URL to an image on the web. 
 `seo_description` | **string** `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `nullable`<br>SEO title tag. 
-`show_in_store` | **boolean** <br>Whether to show this item in the online. 
+`show_in_store` | **boolean** <br>Whether to show this item in the online store. 
 `slug` | **string** <br>Slug of the bundle. 
 `sorting_weight` | **integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists. 
 `tag_list` | **array** <br>List of tags. 
@@ -613,10 +613,10 @@ Name | Description
 `data[attributes][extra_information]` | **string** <br>Extra information about the bundle, shown on orders and documents. 
 `data[attributes][name]` | **string** <br>Name of the bundle. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
-`data[attributes][remote_photo_url]` | **string** <br>Url to an image on the web. 
+`data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 
 `data[attributes][seo_title]` | **string** <br>SEO title tag. 
-`data[attributes][show_in_store]` | **boolean** <br>Whether to show this item in the online. 
+`data[attributes][show_in_store]` | **boolean** <br>Whether to show this item in the online store. 
 `data[attributes][slug]` | **string** <br>Slug of the bundle. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists. 
 `data[attributes][tag_list][]` | **array** <br>List of tags. 
@@ -793,10 +793,10 @@ Name | Description
 `data[attributes][extra_information]` | **string** <br>Extra information about the bundle, shown on orders and documents. 
 `data[attributes][name]` | **string** <br>Name of the bundle. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
-`data[attributes][remote_photo_url]` | **string** <br>Url to an image on the web. 
+`data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 
 `data[attributes][seo_title]` | **string** <br>SEO title tag. 
-`data[attributes][show_in_store]` | **boolean** <br>Whether to show this item in the online. 
+`data[attributes][show_in_store]` | **boolean** <br>Whether to show this item in the online store. 
 `data[attributes][slug]` | **string** <br>Slug of the bundle. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sort order in the online store, the lower the weight - the higher it shows up in lists. 
 `data[attributes][tag_list][]` | **array** <br>List of tags. 

@@ -6,15 +6,43 @@ during a given period.
 
 Stock item plannings are never directly created or updated through their resource;
 instead they are created by booking or specifying stock items; they are updated by
-starting or stoppinmg them. See the [OrderFulfillments](#order-fulfillments) resource
+starting or stopping them. See the [OrderFulfillments](#order-fulfillments) resource
 for examples.
+
+## Purpose and Relationship to Plannings
+
+While a [Planning](#plannings) represents the quantitative planning of items (how many), a StockItemPlanning
+represents the specific trackable items assigned to fulfill that planning. The relationship is:
+
+- A Planning may have multiple StockItemPlannings (one for each trackable item)
+- The number of StockItemPlannings may be less than `Planning.quantity` when not all StockItems have been specified yet.
+
+## Lifecycle Management
+
+StockItemPlannings follow a specific lifecycle:
+
+1. **Creation**: They are created when stock items are specified for a planning via [OrderFulfillments](#order-fulfillments)
+2. **Reservation**: When reserved, the specific stock item becomes unavailable for other orders
+3. **Start**: When the stock item is marked as started (picked up or delivered)
+4. **Stop**: When the stock item is marked as stopped (returned)
+
+The status of each stock item is tracked independently, allowing partial pickups and returns.
+
+## Tracking Benefits
+
+Stock item plannings provide several key benefits:
+
+- Precise inventory tracking for each individual item
+- Ability to track item history (which customers used which specific items)
+- Support for partial pickups and returns
+- Detailed audit trail of item movements
 
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>The Order this StockItemPlanning is part of. 
-`planning` | **[Planning](#plannings)** `required`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
-`stock_item` | **[Stock item](#stock-items)** `required`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) this StockItemPlanning is part of. 
+`planning` | **[Planning](#plannings)** `required`<br>The [Planning](#plannings) for which this StockItemPlanning specifies a StockItem. 
+`stock_item` | **[Stock item](#stock-items)** `required`<br>The [StockItem](#stock-items) being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
 
 
 Check matching attributes under [Fields](#stock-item-plannings-fields) to see which relations can be written.
@@ -25,15 +53,15 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `archived` | **boolean** `readonly`<br>Whether stock item planning is archived. 
-`archived_at` | **datetime** `readonly` `nullable`<br>When the stock item planning was archived. 
+`archived_at` | **datetime** `readonly` `nullable`<br>When the stock item planning was archived. This timestamp records when the stock item was unassigned from the planning. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly`<br>The Order this StockItemPlanning is part of. 
-`planning_id` | **uuid** `readonly`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
-`reserved` | **boolean** <br>Wheter stock item is reserved, meaning it's unavailable for other orders. 
-`started` | **boolean** <br>Wheter stock item is started. 
-`stock_item_id` | **uuid** `readonly`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
-`stopped` | **boolean** <br>Wheter stock item is stopped. Meaning it's available again. 
+`order_id` | **uuid** `readonly`<br>The [Order](#orders) this StockItemPlanning is part of. 
+`planning_id` | **uuid** `readonly`<br>The [Planning](#plannings) for which this StockItemPlanning specifies a StockItem. 
+`reserved` | **boolean** <br>Whether stock item is reserved, meaning it's unavailable for other orders. This is set to `true` when the order status is changed to "reserved" or when the stock item is specifically assigned to the planning. When reserved, the item cannot be booked for other orders during the same period. 
+`started` | **boolean** <br>Whether the stock item is started, meaning it has been picked up by the customer or delivered. This is set to `true` when staff performs a "Start" action through the [OrderFulfillments](#order-fulfillments) resource. Once started, the item is physically out with the customer and its status can be tracked independently of other items on the same order. 
+`stock_item_id` | **uuid** `readonly`<br>The [StockItem](#stock-items) being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
+`stopped` | **boolean** <br>Whether the stock item is stopped, meaning it has been returned by the customer and is available again for other rentals. This is set to `true` when staff performs a "Stop" action through the [OrderFulfillments](#order-fulfillments) resource. A stock item must be started before it can be stopped. Once stopped, the item becomes available for other bookings. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 

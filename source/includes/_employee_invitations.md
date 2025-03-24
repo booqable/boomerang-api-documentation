@@ -20,7 +20,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`email` | **string** `writeonly`<br>Employee's e-mail address. 
+`email` | **string** `writeonly`<br>Employee's email address. 
 `employee_id` | **uuid** `nullable`<br>The employee that is invited. 
 `firstname` | **string** `writeonly`<br>First name of the employee. 
 `id` | **uuid** <br>Specify employee ID to re-send invitation. 
@@ -92,7 +92,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=mm&size=200",
-          "third_party_id": "1ccdaa36-f317-4feb-8a06-003668fc0c59-1742203482"
+          "third_party_id": "1ccdaa36-f317-4feb-8a06-003668fc0c59-1742808283"
         }
       }
     ],
@@ -173,7 +173,7 @@ Note that you can also update other fields.:
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=mm&size=200",
-          "third_party_id": "a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1742203483"
+          "third_party_id": "a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1742808283"
         }
       }
     ],
@@ -201,7 +201,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][email]` | **string** <br>Employee's e-mail address. 
+`data[attributes][email]` | **string** <br>Employee's email address. 
 `data[attributes][employee_id]` | **uuid** <br>The employee that is invited. 
 `data[attributes][firstname]` | **string** <br>First name of the employee. 
 `data[attributes][id]` | **uuid** <br>Specify employee ID to re-send invitation. 

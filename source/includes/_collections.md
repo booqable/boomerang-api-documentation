@@ -7,7 +7,7 @@ To change the ordering of items within a collection, use [Sortings](#sortings).
 ## Relationships
 Name | Description
 -- | --
-`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>All items that make up this collection. Each collection item adds either a product group or a bundle to this collection. 
+`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>All items that make up this collection. Each collection item adds either a [ProductGroup](#product-groups) or a [Bundle](#bundles) to this collection. 
 
 
 Check matching attributes under [Fields](#collections-fields) to see which relations can be written.
@@ -21,18 +21,18 @@ Check each individual operation to see which relations can be included as a side
 `all_parents` | **array** `readonly` `extra`<br>All parent collections. 
 `collection_type` | **enum** `readonly-after-create`<br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: `static`, `dynamic`.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`depth` | **integer** `readonly`<br>How deep this collection sits in the hierarchy. Depth 1 are the top-level collection, depth 2 are the children, and depth 3 the grandchildren. Nesting is limited to 3 levels. 
+`depth` | **integer** `readonly`<br>How deep this collection sits in the hierarchy. Depth 1 represents top-level collections, depth 2 represents children, and depth 3 represents grandchildren. Nesting is limited to 3 levels. 
 `description` | **string** <br>A description of this collection. 
 `hierarchical_name` | **array[string]** `readonly` `extra`<br>Names of all parents, with the name of this collection as last. 
 `id` | **uuid** `readonly`<br>Primary key.
 `image_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to add a photo. 
 `image_large_url` | **string** `readonly`<br>URL of the large image for this collection. 
 `image_url` | **string** `readonly`<br>URL of the image for this collection. 
-`item_count` | **integer** <br>Number of collection items in this collection. Does (not?) include nested collections?. 
+`item_count` | **integer** <br>Number of collection items in this collection. Includes collection items in this collection, but not in nested collections. 
 `name` | **string** <br>Name of this collection. 
 `parent_id` | **uuid** <br>The ID of the parent collection. 
 `position` | **integer** `readonly`<br>Relative position of this collection among its siblings within the same parent collection. 
-`remote_image_url` | **string** `writeonly`<br>Url to an image on the web, use this field to add a photo. 
+`remote_image_url` | **string** `writeonly`<br>URL to an image on the web, use this field to add a photo. 
 `remove_image` | **boolean** `writeonly`<br>Remove the current image. 
 `seo_description` | **string** <br>SEO description. 
 `seo_title` | **string** <br>SEO title. 
@@ -286,10 +286,10 @@ Name | Description
 -- | --
 `data[attributes][collection_type]` | **enum** <br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: `static`, `dynamic`.
 `data[attributes][image_base64]` | **string** <br>Base64 encoded photo, use this field to add a photo. 
-`data[attributes][item_count]` | **integer** <br>Number of collection items in this collection. Does (not?) include nested collections?. 
+`data[attributes][item_count]` | **integer** <br>Number of collection items in this collection. Includes collection items in this collection, but not in nested collections. 
 `data[attributes][name]` | **string** <br>Name of this collection. 
 `data[attributes][parent_id]` | **uuid** <br>The ID of the parent collection. 
-`data[attributes][remote_image_url]` | **string** <br>Url to an image on the web, use this field to add a photo. 
+`data[attributes][remote_image_url]` | **string** <br>URL to an image on the web, use this field to add a photo. 
 `data[attributes][remove_image]` | **boolean** <br>Remove the current image. 
 `data[attributes][seo_description]` | **string** <br>SEO description. 
 `data[attributes][seo_title]` | **string** <br>SEO title. 
@@ -389,10 +389,10 @@ Name | Description
 -- | --
 `data[attributes][collection_type]` | **enum** <br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: `static`, `dynamic`.
 `data[attributes][image_base64]` | **string** <br>Base64 encoded photo, use this field to add a photo. 
-`data[attributes][item_count]` | **integer** <br>Number of collection items in this collection. Does (not?) include nested collections?. 
+`data[attributes][item_count]` | **integer** <br>Number of collection items in this collection. Includes collection items in this collection, but not in nested collections. 
 `data[attributes][name]` | **string** <br>Name of this collection. 
 `data[attributes][parent_id]` | **uuid** <br>The ID of the parent collection. 
-`data[attributes][remote_image_url]` | **string** <br>Url to an image on the web, use this field to add a photo. 
+`data[attributes][remote_image_url]` | **string** <br>URL to an image on the web, use this field to add a photo. 
 `data[attributes][remove_image]` | **boolean** <br>Remove the current image. 
 `data[attributes][seo_description]` | **string** <br>SEO description. 
 `data[attributes][seo_title]` | **string** <br>SEO title. 

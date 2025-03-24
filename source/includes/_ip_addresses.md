@@ -11,10 +11,10 @@ Both IPv4 and IPv6 addresses are supported.
 
  Name | Description
 -- | --
-`address` | **string** <br>Restricted IP address.
+`address` | **string** <br>Restricted IP address. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`label` | **string** <br>Label for the restricted IP address.
+`label` | **string** <br>Label for the restricted IP address. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -192,8 +192,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][address]` | **string** <br>Restricted IP address.
-`data[attributes][label]` | **string** <br>Label for the restricted IP address.
+`data[attributes][address]` | **string** <br>Restricted IP address. 
+`data[attributes][label]` | **string** <br>Label for the restricted IP address. 
 
 
 ### Includes
@@ -257,8 +257,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][address]` | **string** <br>Restricted IP address.
-`data[attributes][label]` | **string** <br>Label for the restricted IP address.
+`data[attributes][address]` | **string** <br>Restricted IP address. 
+`data[attributes][label]` | **string** <br>Label for the restricted IP address. 
 
 
 ### Includes
