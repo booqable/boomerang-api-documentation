@@ -157,6 +157,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2021-02-06T21:30:00.000000+00:00",
           "updated_at": "2021-02-06T21:30:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "name": "VAT",
           "value": 21.0,
           "position": 1,
@@ -254,6 +256,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2022-01-08T11:51:00.000000+00:00",
           "updated_at": "2022-01-08T11:51:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "name": "VAT",
           "value": 21.0,
           "position": 1,
@@ -355,6 +359,10 @@ This request accepts the following includes:
             {
               "type": "tax_rates",
               "id": "a9588059-d21e-4093-8059-b130c575b763"
+            },
+            {
+              "type": "tax_rates",
+              "id": "3341f09b-efc4-4586-8c73-2125fbb05896"
             }
           ]
         }
@@ -367,9 +375,27 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2021-11-08T05:22:00.000000+00:00",
           "updated_at": "2021-11-08T05:22:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "name": "VAT",
           "value": 9.0,
           "position": 2,
+          "owner_id": "e3d7ddaf-e57a-47bb-8eef-839b7f1a4bfd",
+          "owner_type": "tax_categories"
+        },
+        "relationships": {}
+      },
+      {
+        "id": "3341f09b-efc4-4586-8c73-2125fbb05896",
+        "type": "tax_rates",
+        "attributes": {
+          "created_at": "2021-11-08T05:22:00.000000+00:00",
+          "updated_at": "2021-11-08T05:22:00.000000+00:00",
+          "archived": true,
+          "archived_at": "2021-11-08T05:22:00.000000+00:00",
+          "name": "Vat",
+          "value": 21.0,
+          "position": 1,
           "owner_id": "e3d7ddaf-e57a-47bb-8eef-839b7f1a4bfd",
           "owner_type": "tax_categories"
         },

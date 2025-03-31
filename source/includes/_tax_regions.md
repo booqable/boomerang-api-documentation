@@ -144,6 +144,8 @@ This request accepts the following includes:
           "id": "b78c7a18-26c4-4611-8323-3396afeafcb3",
           "created_at": "2026-01-16T23:41:03.000000+00:00",
           "updated_at": "2026-01-16T23:41:03.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "name": "VAT",
           "value": 21.0,
           "position": 1,
@@ -241,6 +243,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2023-02-08T01:43:00.000000+00:00",
           "updated_at": "2023-02-08T01:43:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "name": "VAT",
           "value": 21.0,
           "position": 1,
@@ -344,6 +348,10 @@ This request accepts the following includes:
             {
               "type": "tax_rates",
               "id": "a5b06e94-dc8d-4b81-81e6-f2ef5d7de6ed"
+            },
+            {
+              "type": "tax_rates",
+              "id": "7da9f478-a463-4ff7-847a-e00d08c59d05"
             }
           ]
         }
@@ -356,9 +364,27 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2016-06-23T04:51:02.000000+00:00",
           "updated_at": "2016-06-23T04:51:02.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "name": "VAT",
           "value": 9.0,
           "position": 2,
+          "owner_id": "88245673-247e-4ecb-80c3-8d7cb31b5e27",
+          "owner_type": "tax_regions"
+        },
+        "relationships": {}
+      },
+      {
+        "id": "7da9f478-a463-4ff7-847a-e00d08c59d05",
+        "type": "tax_rates",
+        "attributes": {
+          "created_at": "2016-06-23T04:51:02.000000+00:00",
+          "updated_at": "2016-06-23T04:51:02.000000+00:00",
+          "archived": true,
+          "archived_at": "2016-06-23T04:51:02.000000+00:00",
+          "name": "Vat",
+          "value": 21.0,
+          "position": 1,
           "owner_id": "88245673-247e-4ecb-80c3-8d7cb31b5e27",
           "owner_type": "tax_regions"
         },

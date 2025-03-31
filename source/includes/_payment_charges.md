@@ -41,7 +41,6 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
 `payment_authorization_id` | **uuid** `readonly-after-create`<br>The [PaymentAuthorization](#payment-authorizations) under which this charge is made. 
 `payment_method_id` | **uuid** `readonly-after-create`<br>The [PaymentMethod](#payment-methods). 
-`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment charge. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider payment identification. 
 `provider_method` | **string** <br>Provider payment method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
@@ -90,9 +89,6 @@ Check each individual operation to see which relations can be included as a side
         "created_at": "2023-02-26T05:02:01.000000+00:00",
         "updated_at": "2023-02-26T05:02:01.000000+00:00",
         "type": "payment_charges",
-        "possible_actions": [
-          "refund"
-        ],
         "provider": "none",
         "provider_id": null,
         "provider_method": "bank",
@@ -218,7 +214,6 @@ This request accepts the following includes:
         "created_at": "2015-05-19T14:36:00.000000+00:00",
         "updated_at": "2015-05-19T14:36:00.000000+00:00",
         "type": "payment_charges",
-        "possible_actions": [],
         "provider": "stripe",
         "provider_id": null,
         "provider_method": "card",

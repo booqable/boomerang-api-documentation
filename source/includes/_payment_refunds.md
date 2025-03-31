@@ -34,7 +34,6 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
 `payment_charge_id` | **uuid** `readonly-after-create`<br>The [PaymentCharge](#payment-charges) being refunded. 
-`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment refund. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider refund identification. 
 `provider_method` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
@@ -79,7 +78,6 @@ Check each individual operation to see which relations can be included as a side
         "created_at": "2014-04-24T08:32:00.000000+00:00",
         "updated_at": "2014-04-24T08:32:00.000000+00:00",
         "type": "payment_refunds",
-        "possible_actions": [],
         "provider": "none",
         "provider_id": null,
         "provider_method": null,
@@ -194,7 +192,6 @@ This request accepts the following includes:
         "created_at": "2020-11-02T14:47:07.000000+00:00",
         "updated_at": "2020-11-02T14:47:07.000000+00:00",
         "type": "payment_refunds",
-        "possible_actions": [],
         "provider": "none",
         "provider_id": null,
         "provider_method": null,

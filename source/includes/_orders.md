@@ -99,6 +99,9 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`amount_in_cents` | **integer** `readonly`<br>The rental amount excluding taxes. 
+`amount_paid_in_cents` | **integer** `readonly`<br>The portion of the rental amount that has been paid. 
+`amount_to_be_paid_in_cents` | **integer** `readonly`<br>The portion of the rental amount that still needs to be paid. 
 `billing_address_property_id` | **uuid** <br>The property id of the billing address. 
 `confirm_shortage` | **boolean** `writeonly`<br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
 `coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`). 
@@ -111,6 +114,7 @@ Check each individual operation to see which relations can be included as a side
 `deposit_in_cents` | **integer** `readonly`<br>Deposit. 
 `deposit_paid_in_cents` | **integer** `readonly`<br>How much of the deposit is paid. 
 `deposit_refunded_in_cents` | **integer** `readonly`<br>How much of the deposit is refunded. 
+`deposit_to_be_paid_in_cents` | **integer** `readonly`<br>The portion of the deposit that still needs to be paid. 
 `deposit_to_refund_in_cents` | **integer** `readonly`<br>Amount of deposit (still) to be refunded. 
 `deposit_type` | **enum** `nullable`<br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `deposit_value` | **float** <br>The value to use for `deposit_type`. 
@@ -147,6 +151,9 @@ Check each individual operation to see which relations can be included as a side
 `tax_region_id` | **uuid** `nullable`<br>[TaxRegion](#tax-regions) applied to this Order. 
 `to_be_paid_in_cents` | **integer** `readonly`<br>Amount that (still) has to be paid. 
 `total_discount_in_cents` | **integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`). 
+`total_in_cents` | **integer** `readonly`<br>The total order amount including rental amount, taxes, and deposit. 
+`total_paid_in_cents` | **integer** `readonly`<br>The total amount that has been paid for this order. 
+`total_to_be_paid_in_cents` | **integer** `readonly`<br>The total amount remaining to be paid for this order. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -183,8 +190,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-02-17T03:02:01.000000+00:00",
-          "stops_at": "1970-03-19T03:02:01.000000+00:00",
+          "starts_at": "1970-02-10T03:03:01.000000+00:00",
+          "stops_at": "1970-03-12T03:03:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -198,20 +205,27 @@ Check each individual operation to see which relations can be included as a side
             "webshop"
           ],
           "properties": {},
-          "price_in_cents": 80250,
+          "amount_in_cents": 0,
+          "amount_paid_in_cents": 0,
+          "amount_to_be_paid_in_cents": null,
+          "deposit_in_cents": 10000,
+          "deposit_held_in_cents": 0,
+          "deposit_paid_in_cents": 0,
+          "deposit_to_be_paid_in_cents": null,
+          "deposit_refunded_in_cents": 0,
+          "deposit_to_refund_in_cents": 0,
+          "total_in_cents": 0,
+          "total_paid_in_cents": 0,
+          "total_to_be_paid_in_cents": 0,
+          "total_discount_in_cents": 8025,
+          "coupon_discount_in_cents": 0,
+          "discount_in_cents": 8025,
           "grand_total_in_cents": 72225,
           "grand_total_with_tax_in_cents": 87392,
-          "tax_in_cents": 15167,
-          "discount_in_cents": 8025,
-          "coupon_discount_in_cents": 0,
-          "total_discount_in_cents": 8025,
-          "deposit_in_cents": 10000,
-          "deposit_paid_in_cents": 0,
-          "deposit_refunded_in_cents": 0,
-          "deposit_held_in_cents": 0,
-          "deposit_to_refund_in_cents": 0,
-          "to_be_paid_in_cents": 97392,
           "paid_in_cents": 0,
+          "price_in_cents": 80250,
+          "tax_in_cents": 15167,
+          "to_be_paid_in_cents": 97392,
           "discount_type": "percentage",
           "discount_percentage": 10.0,
           "billing_address_property_id": null,
@@ -256,6 +270,9 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`amount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`amount_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`amount_to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `any_shortage` | **boolean** <br>`eq`
 `billing_address_property_id` | **uuid** <br>`eq`, `not_eq`
 `conditions` | **hash** <br>`eq`
@@ -268,6 +285,7 @@ Name | Description
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -301,6 +319,9 @@ Name | Description
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
 `to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `total_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -310,11 +331,15 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`amount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`amount_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`amount_to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `coupon_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_held_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_refunded_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_to_refund_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_type` | **array** <br>`count`
 `discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
@@ -334,6 +359,9 @@ Name | Description
 `to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `total` | **array** <br>`count`
 `total_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -382,14 +410,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-03-25T09:27:17Z",
-                       "lte": "2025-03-28T09:27:17Z"
+                       "gte": "2025-04-01T09:26:42Z",
+                       "lte": "2025-04-04T09:26:42Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-03-25T09:27:17Z",
-                       "lte": "2025-03-28T09:27:17Z"
+                       "gte": "2025-04-01T09:26:42Z",
+                       "lte": "2025-04-04T09:26:42Z"
                      }
                    }
                  ]
@@ -451,6 +479,9 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`amount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`amount_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`amount_to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `any_shortage` | **boolean** <br>`eq`
 `billing_address_property_id` | **uuid** <br>`eq`, `not_eq`
 `conditions` | **hash** <br>`eq`
@@ -463,6 +494,7 @@ Name | Description
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_refunded_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`deposit_to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_to_refund_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -496,6 +528,9 @@ Name | Description
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
 `to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `total_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`total_to_be_paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -505,11 +540,15 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`amount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`amount_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`amount_to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `coupon_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_held_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_refunded_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`deposit_to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_to_refund_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_type` | **array** <br>`count`
 `discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
@@ -529,6 +568,9 @@ Name | Description
 `to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `total` | **array** <br>`count`
 `total_discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`total_to_be_paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 
 
 ### Includes
@@ -600,20 +642,27 @@ Returns an existing or new order for the current employee.
         "has_signed_contract": false,
         "tag_list": [],
         "properties": {},
-        "price_in_cents": 0,
+        "amount_in_cents": 0,
+        "amount_paid_in_cents": 0,
+        "amount_to_be_paid_in_cents": null,
+        "deposit_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_paid_in_cents": 0,
+        "deposit_to_be_paid_in_cents": null,
+        "deposit_refunded_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "total_in_cents": 0,
+        "total_paid_in_cents": 0,
+        "total_to_be_paid_in_cents": 0,
+        "total_discount_in_cents": 0,
+        "coupon_discount_in_cents": 0,
+        "discount_in_cents": 0,
         "grand_total_in_cents": 0,
         "grand_total_with_tax_in_cents": 0,
-        "tax_in_cents": 0,
-        "discount_in_cents": 0,
-        "coupon_discount_in_cents": 0,
-        "total_discount_in_cents": 0,
-        "deposit_in_cents": 0,
-        "deposit_paid_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "deposit_held_in_cents": 0,
-        "deposit_to_refund_in_cents": 0,
-        "to_be_paid_in_cents": 0,
         "paid_in_cents": 0,
+        "price_in_cents": 0,
+        "tax_in_cents": 0,
+        "to_be_paid_in_cents": 0,
         "discount_type": "percentage",
         "discount_percentage": 0.0,
         "billing_address_property_id": null,
@@ -767,8 +816,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-07-15T12:21:01.000000+00:00",
-        "stops_at": "1970-08-14T12:21:01.000000+00:00",
+        "starts_at": "1970-07-08T12:22:01.000000+00:00",
+        "stops_at": "1970-08-07T12:22:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -782,20 +831,27 @@ This request accepts the following includes:
           "webshop"
         ],
         "properties": {},
-        "price_in_cents": 80250,
+        "amount_in_cents": 0,
+        "amount_paid_in_cents": 0,
+        "amount_to_be_paid_in_cents": null,
+        "deposit_in_cents": 10000,
+        "deposit_held_in_cents": 0,
+        "deposit_paid_in_cents": 0,
+        "deposit_to_be_paid_in_cents": null,
+        "deposit_refunded_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "total_in_cents": 0,
+        "total_paid_in_cents": 0,
+        "total_to_be_paid_in_cents": 0,
+        "total_discount_in_cents": 8025,
+        "coupon_discount_in_cents": 0,
+        "discount_in_cents": 8025,
         "grand_total_in_cents": 72225,
         "grand_total_with_tax_in_cents": 87392,
-        "tax_in_cents": 15167,
-        "discount_in_cents": 8025,
-        "coupon_discount_in_cents": 0,
-        "total_discount_in_cents": 8025,
-        "deposit_in_cents": 10000,
-        "deposit_paid_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "deposit_held_in_cents": 0,
-        "deposit_to_refund_in_cents": 0,
-        "to_be_paid_in_cents": 97392,
         "paid_in_cents": 0,
+        "price_in_cents": 80250,
+        "tax_in_cents": 15167,
+        "to_be_paid_in_cents": 97392,
         "discount_type": "percentage",
         "discount_percentage": 10.0,
         "billing_address_property_id": null,
@@ -965,8 +1021,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:28:01.000000+00:00",
-        "stops_at": "2026-11-03T14:28:01.000000+00:00",
+        "starts_at": "2026-09-25T14:29:01.000000+00:00",
+        "stops_at": "2026-11-03T14:29:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -978,20 +1034,27 @@ When creating an order, and the following fields are left blank, a sensible defa
         "has_signed_contract": false,
         "tag_list": [],
         "properties": {},
-        "price_in_cents": 0,
+        "amount_in_cents": 0,
+        "amount_paid_in_cents": 0,
+        "amount_to_be_paid_in_cents": null,
+        "deposit_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_paid_in_cents": 0,
+        "deposit_to_be_paid_in_cents": null,
+        "deposit_refunded_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "total_in_cents": 0,
+        "total_paid_in_cents": 0,
+        "total_to_be_paid_in_cents": 0,
+        "total_discount_in_cents": 0,
+        "coupon_discount_in_cents": 0,
+        "discount_in_cents": 0,
         "grand_total_in_cents": 0,
         "grand_total_with_tax_in_cents": 0,
-        "tax_in_cents": 0,
-        "discount_in_cents": 0,
-        "coupon_discount_in_cents": 0,
-        "total_discount_in_cents": 0,
-        "deposit_in_cents": 0,
-        "deposit_paid_in_cents": 0,
-        "deposit_refunded_in_cents": 0,
-        "deposit_held_in_cents": 0,
-        "deposit_to_refund_in_cents": 0,
-        "to_be_paid_in_cents": 0,
         "paid_in_cents": 0,
+        "price_in_cents": 0,
+        "tax_in_cents": 0,
+        "to_be_paid_in_cents": 0,
         "discount_type": "percentage",
         "discount_percentage": 0.0,
         "billing_address_property_id": null,
@@ -1178,8 +1241,8 @@ When updating a customer on an order the following settings will be applied and 
       "id": "b7fc4715-4681-4fbf-8786-f911532c94f1",
       "type": "orders",
       "attributes": {
-        "price_in_cents": 80250,
         "grand_total_with_tax_in_cents": 97103,
+        "price_in_cents": 80250,
         "to_be_paid_in_cents": 197103,
         "customer_id": "62778da7-58fa-4717-8474-a9bcd8c003b4",
         "tax_region_id": null

@@ -30,9 +30,6 @@ The description of the relationships and attributes of these resources can be fo
           "created_at": "2028-11-19T02:39:01.000000+00:00",
           "updated_at": "2028-11-19T02:39:01.000000+00:00",
           "type": "payment_refunds",
-          "possible_actions": [
-            "cancel"
-          ],
           "provider": "none",
           "provider_id": null,
           "provider_method": null,
@@ -64,9 +61,6 @@ The description of the relationships and attributes of these resources can be fo
           "created_at": "2028-11-19T02:39:01.000000+00:00",
           "updated_at": "2028-11-19T02:39:01.000000+00:00",
           "type": "payment_authorizations",
-          "possible_actions": [
-            "cancel"
-          ],
           "provider": "stripe",
           "provider_id": null,
           "provider_method": null,
@@ -107,9 +101,6 @@ The description of the relationships and attributes of these resources can be fo
           "created_at": "2028-11-19T02:39:01.000000+00:00",
           "updated_at": "2028-11-19T02:39:01.000000+00:00",
           "type": "payment_charges",
-          "possible_actions": [
-            "cancel"
-          ],
           "provider": "stripe",
           "provider_id": null,
           "provider_method": null,
@@ -241,9 +232,6 @@ This request accepts the following includes:
         "created_at": "2016-06-23T23:18:00.000000+00:00",
         "updated_at": "2016-06-23T23:18:00.000000+00:00",
         "type": "payment_charges",
-        "possible_actions": [
-          "cancel"
-        ],
         "provider": "stripe",
         "provider_id": null,
         "provider_method": null,

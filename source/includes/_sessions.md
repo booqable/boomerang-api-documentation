@@ -44,6 +44,7 @@ Check each individual operation to see which relations can be included as a side
 `locations_updated_at` | **datetime** <br>When locations were last updated.
 `notification_subscriptions_updated_at` | **datetime** <br>When the employee last made a change to their notification subscriptions.
 `operating_rules_updated_at` | **datetime** <br>When the operating rules were last updated.
+`supported_fulfillment_types` | **array[string]** <br>Currently supported fulfillment types by the company's locations.
 
 
 ## Fetch the session
@@ -74,7 +75,8 @@ Check each individual operation to see which relations can be included as a side
         "default_properties_updated_at": null,
         "notification_subscriptions_updated_at": "2022-08-21T05:03:01.000000+00:00",
         "countries_updated_at": null,
-        "operating_rules_updated_at": null
+        "operating_rules_updated_at": null,
+        "supported_fulfillment_types": []
       },
       "relationships": {
         "company": {
@@ -192,14 +194,29 @@ Check each individual operation to see which relations can be included as a side
             "source": null,
             "enabled_features": [],
             "allowed_features": [
-              "bundles",
-              "multiple_locations",
+              "online_bookings",
               "advanced_pricing",
               "api",
-              "custom_fields",
               "overbookings",
               "customer_auth",
               "custom_domain",
+              "custom_fields",
+              "sales_items",
+              "bundles",
+              "buffer_times",
+              "prevent_last_minute_reservations",
+              "pricing_rules",
+              "packing_slips",
+              "notes",
+              "revenue_report",
+              "custom_email_templates",
+              "shortage_limits",
+              "custom_tags",
+              "product_history",
+              "away_mode",
+              "customer_discount_percentage",
+              "mobile_app",
+              "product_security_deposit",
               "barcodes",
               "reports",
               "permissions",
@@ -218,7 +235,9 @@ Check each individual operation to see which relations can be included as a side
               "rate_limit_period": 60,
               "locations": 1,
               "allow_extra_locations": true,
-              "allow_extra_employees": false
+              "allow_extra_employees": false,
+              "manual_email_templates": null,
+              "custom_fields": null
             },
             "can_try_plan": true
           },
@@ -259,7 +278,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1742808554"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1743413286"
         }
       },
       {

@@ -42,7 +42,6 @@ Check each individual operation to see which relations can be included as a side
 `mode` | **enum** <br>Mode.<br> One of: `off_session`, `checkout`, `request`, `terminal`.
 `order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
 `payment_method_id` | **uuid** `readonly-after-create`<br>The [PaymentMethod](#payment-methods). 
-`possible_actions` | **array** `readonly`<br>Possible actions to be taken on the payment authorization. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider authorization identification. 
 `provider_method` | **string** <br>Provider authorization method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
@@ -89,9 +88,6 @@ Check each individual operation to see which relations can be included as a side
         "created_at": "2018-07-05T22:55:03.000000+00:00",
         "updated_at": "2018-07-05T22:55:03.000000+00:00",
         "type": "payment_authorizations",
-        "possible_actions": [
-          "cancel"
-        ],
         "provider": null,
         "provider_id": null,
         "provider_method": null,
@@ -220,7 +216,6 @@ This request accepts the following includes:
         "created_at": "2018-11-07T01:48:04.000000+00:00",
         "updated_at": "2018-11-07T01:48:04.000000+00:00",
         "type": "payment_authorizations",
-        "possible_actions": [],
         "provider": "stripe",
         "provider_id": null,
         "provider_method": "card",

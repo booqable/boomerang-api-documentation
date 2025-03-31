@@ -17,6 +17,8 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`archived` | **boolean** `readonly`<br>Whether the tax rate is archived.
+`archived_at` | **datetime** `readonly` `nullable`<br>When the tax rate was archived.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** <br>The name of the tax rate.
@@ -48,6 +50,8 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2016-01-22T07:05:01.000000+00:00",
           "updated_at": "2016-01-22T07:05:01.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "name": "VAT",
           "value": 21.0,
           "position": 1,
@@ -71,7 +75,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -86,6 +90,8 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`archived` | **boolean** <br>`eq`
+`archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
 `owner_id` | **uuid** <br>`eq`, `not_eq`
@@ -134,6 +140,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2028-12-26T07:19:00.000000+00:00",
         "updated_at": "2028-12-26T07:19:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
         "name": "VAT",
         "value": 21.0,
         "position": 1,
@@ -179,7 +187,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,archived`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 
 
@@ -227,6 +235,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2021-02-16T04:50:00.000000+00:00",
         "updated_at": "2021-02-16T04:50:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
         "name": "VAT",
         "value": 21.0,
         "position": 1,
@@ -272,7 +282,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,archived`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 
 
@@ -330,6 +340,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2020-08-24T18:48:00.000000+00:00",
         "updated_at": "2020-08-24T18:48:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
         "name": "Vat",
         "value": 9.0,
         "position": 1,
@@ -374,7 +386,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,archived`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=owner`
 
 
@@ -422,6 +434,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2026-11-02T15:14:02.000000+00:00",
         "updated_at": "2026-11-02T15:14:02.000000+00:00",
+        "archived": true,
+        "archived_at": "2026-11-02T15:14:02.000000+00:00",
         "name": "VAT",
         "value": 21.0,
         "position": 1,
@@ -444,7 +458,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[tax_rates]=created_at,updated_at,archived`
 
 
 ### Includes
