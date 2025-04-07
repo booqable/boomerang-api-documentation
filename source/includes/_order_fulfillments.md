@@ -589,9 +589,12 @@ This request accepts the following includes:
           "updated_at": "2016-07-05T01:17:01.000000+00:00",
           "archived": true,
           "archived_at": "2016-07-05T01:17:01.000000+00:00",
+          "starts_at": null,
+          "stops_at": null,
           "reserved": false,
           "started": false,
           "stopped": false,
+          "status": "concept",
           "stock_item_id": "1cf99ea9-3582-4711-8d60-f289187d90b5",
           "planning_id": "efda8344-0d43-4bf2-8360-2eaf863301df",
           "order_id": "fd750947-416c-4da3-8158-cf456b81dc87"

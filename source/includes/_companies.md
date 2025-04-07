@@ -264,7 +264,7 @@ Name | Description
             "notes",
             "revenue_report",
             "custom_email_templates",
-            "shortage_limits",
+            "product_shortage_limits",
             "custom_tags",
             "product_history",
             "away_mode",
@@ -292,8 +292,7 @@ Name | Description
             "allow_extra_employees": false,
             "manual_email_templates": null,
             "custom_fields": null
-          },
-          "can_try_plan": true
+          }
         }
       }
     },
