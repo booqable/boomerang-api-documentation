@@ -7,7 +7,7 @@ This data is relevant only for orders that have a `delivery` fulfillment type.
 Name | Description
 -- | --
 `carrier` | **[App carrier](#app-carriers)** `required`<br>The selected carrier for this order. 
-`order` | **[Order](#orders)** `required`<br>The delivery [Order](#orders) this rate is for. 
+`order` | **[Order](#orders)** `optional`<br>The delivery [Order](#orders) this rate is for. 
 
 
 Check matching attributes under [Fields](#order-delivery-rates-fields) to see which relations can be written.
@@ -22,7 +22,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>The identifier of the delivery rate. 
 `minimum_order_amount_in_cents` | **integer** <br>The minimum order amount in cents for this delivery rate. 
-`order_id` | **uuid** `readonly-after-create`<br>The delivery [Order](#orders) this rate is for. 
+`order_id` | **uuid** `writeonly`<br>The delivery [Order](#orders) this rate is for. 
 `price_in_cents` | **integer** <br>The price of the delivery rate in cents. 
 `rate_id` | **string** <br>The rate ID returned by a delivery app. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -108,7 +108,6 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `minimum_order_amount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`order_id` | **uuid** <br>`eq`, `not_eq`
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `rate_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -161,8 +160,7 @@ This request accepts the following includes:
         "price_in_cents": 10000,
         "rate_id": "5d74673e-ac2b-4853-8a69-66982a001b26",
         "minimum_order_amount_in_cents": 0,
-        "carrier_id": "02745660-23b2-4aea-84e5-d7b8dab1c31d",
-        "order_id": "0dfa2277-bb9f-48aa-8d5a-eeba5ff88cc6"
+        "carrier_id": "02745660-23b2-4aea-84e5-d7b8dab1c31d"
       },
       "relationships": {}
     },
@@ -211,11 +209,12 @@ This request accepts the following includes:
          "data": {
            "type": "order_delivery_rates",
            "attributes": {
+             "order_id": "614e2067-a249-44aa-899c-e0e493f52f34",
              "identifier": "Custom rate",
              "price_in_cents": 5000,
              "rate_id": null,
-             "carrier_id": null,
-             "order_id": "614e2067-a249-44aa-899c-e0e493f52f34"
+             "carrier_id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060",
+             "minimum_order_amount_in_cents": 1000
            }
          }
        }'
@@ -226,7 +225,7 @@ This request accepts the following includes:
 ```json
   {
     "data": {
-      "id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060",
+      "id": "d5e985e9-1327-4fc2-8068-736295a1ec1f",
       "type": "order_delivery_rates",
       "attributes": {
         "created_at": "2026-03-19T10:24:00.000000+00:00",
@@ -234,9 +233,8 @@ This request accepts the following includes:
         "identifier": "Custom rate",
         "price_in_cents": 5000,
         "rate_id": null,
-        "minimum_order_amount_in_cents": null,
-        "carrier_id": null,
-        "order_id": "614e2067-a249-44aa-899c-e0e493f52f34"
+        "minimum_order_amount_in_cents": 1000,
+        "carrier_id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060"
       },
       "relationships": {}
     },
@@ -322,8 +320,7 @@ This request accepts the following includes:
         "price_in_cents": 5000,
         "rate_id": "02309205-57de-4518-85c4-551531c6aba6",
         "minimum_order_amount_in_cents": 0,
-        "carrier_id": "3bc89c75-2f3e-410c-8254-8676ee3430e1",
-        "order_id": "0c1a8b23-fb1a-4f8f-8a73-f9ac40f80aa7"
+        "carrier_id": "3bc89c75-2f3e-410c-8254-8676ee3430e1"
       },
       "relationships": {}
     },

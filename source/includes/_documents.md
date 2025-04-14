@@ -61,6 +61,7 @@ Check each individual operation to see which relations can be included as a side
 `deposit_value` | **float** <br>The value to use for `deposit_type`. 
 `discount_in_cents` | **integer** `readonly`<br>Discount (incl. or excl. taxes based on `tax_strategy`). 
 `discount_percentage` | **float** <br>The discount percentage applied to this order. 
+`discount_type` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `document_type` | **enum** `readonly-after-create`<br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `due_date` | **date** <br>The latest date by which the invoice must be fully paid. 
 `finalized` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
@@ -146,6 +147,7 @@ Check each individual operation to see which relations can be included as a side
           "to_be_paid_in_cents": 97392,
           "paid_in_cents": 0,
           "tax_in_cents": 15167,
+          "discount_type": "percentage",
           "discount_percentage": 10.0,
           "fulfillment_type": "pickup",
           "delivery_label": null,
@@ -208,6 +210,7 @@ Name | Description
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_type` | **enum** <br>`eq`
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
@@ -386,6 +389,7 @@ Name | Description
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`discount_type` | **enum** <br>`eq`
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
@@ -511,6 +515,7 @@ This request accepts the following includes:
         "to_be_paid_in_cents": 97392,
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
+        "discount_type": "percentage",
         "discount_percentage": 10.0,
         "fulfillment_type": "pickup",
         "delivery_label": null,
@@ -539,17 +544,35 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order,tax_region`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,customer,order`
 
 
 ### Includes
 
 This request accepts the following includes:
 
-`customer`
+`coupon`
 
 
-`order`
+`customer` => 
+`properties`
+
+
+
+
+`order` => 
+`coupon`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+`properties`
+
+
 
 
 `tax_region`
@@ -560,14 +583,26 @@ This request accepts the following includes:
 `photo`
 
 
+`properties`
+
+
+
+
+`planning` => 
+`stock_item_plannings` => 
+`stock_item`
+
+
+
+
+
+
+`tax_category`
 
 
 
 
 `tax_values`
-
-
-`coupon`
 
 
 
@@ -610,7 +645,7 @@ This request accepts the following includes:
         "number": 1,
         "prefix": null,
         "prefix_with_number": "1",
-        "date": "2025-04-07",
+        "date": "2025-04-14",
         "due_date": null,
         "name": "John Doe",
         "address": null,
@@ -640,6 +675,7 @@ This request accepts the following includes:
         "to_be_paid_in_cents": 0,
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
+        "discount_type": "percentage",
         "discount_percentage": 10.0,
         "fulfillment_type": "pickup",
         "delivery_label": null,
@@ -668,7 +704,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order,tax_region`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,customer,order`
 
 
 ### Request body
@@ -686,6 +722,7 @@ Name | Description
 `data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage applied to this order. 
+`data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
@@ -707,10 +744,28 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
+`coupon`
 
 
-`order`
+`customer` => 
+`properties`
+
+
+
+
+`order` => 
+`coupon`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+`properties`
+
+
 
 
 `tax_region`
@@ -721,14 +776,26 @@ This request accepts the following includes:
 `photo`
 
 
+`properties`
+
+
+
+
+`planning` => 
+`stock_item_plannings` => 
+`stock_item`
+
+
+
+
+
+
+`tax_category`
 
 
 
 
 `tax_values`
-
-
-`coupon`
 
 
 
@@ -801,6 +868,7 @@ This request accepts the following includes:
         "to_be_paid_in_cents": 97392,
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
+        "discount_type": "percentage",
         "discount_percentage": 10.0,
         "fulfillment_type": "pickup",
         "delivery_label": null,
@@ -829,7 +897,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=customer,order,tax_region`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,customer,order`
 
 
 ### Request body
@@ -847,6 +915,7 @@ Name | Description
 `data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage applied to this order. 
+`data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
@@ -868,10 +937,28 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
+`coupon`
 
 
-`order`
+`customer` => 
+`properties`
+
+
+
+
+`order` => 
+`coupon`
+
+
+`start_location`
+
+
+`stop_location`
+
+
+`properties`
+
+
 
 
 `tax_region`
@@ -882,14 +969,26 @@ This request accepts the following includes:
 `photo`
 
 
+`properties`
+
+
+
+
+`planning` => 
+`stock_item_plannings` => 
+`stock_item`
+
+
+
+
+
+
+`tax_category`
 
 
 
 
 `tax_values`
-
-
-`coupon`
 
 
 
@@ -954,6 +1053,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
         "to_be_paid_in_cents": 97392,
         "paid_in_cents": 0,
         "tax_in_cents": 15167,
+        "discount_type": "percentage",
         "discount_percentage": 10.0,
         "fulfillment_type": "pickup",
         "delivery_label": null,

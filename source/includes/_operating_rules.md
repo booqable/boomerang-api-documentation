@@ -308,7 +308,8 @@ This request does not accept any includes
            "attributes": {
              "data_type": "timeslot_duration",
              "data": {
-               "length": 86000
+               "duration": 1,
+               "period": "week"
              }
            }
          }
@@ -327,7 +328,8 @@ This request does not accept any includes
         "updated_at": "2022-03-08T14:51:01.000000+00:00",
         "data_type": "timeslot_duration",
         "data": {
-          "length": 86000
+          "duration": 1,
+          "period": "week"
         }
       }
     },

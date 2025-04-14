@@ -35,6 +35,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`addons` | **array** <br>The available addons for billing plans.
 `billing_plans` | **array** <br>The available billing plans.
 `clusters_updated_at` | **datetime** <br>When the clusters were last updated.
 `company_id` | **uuid** <br>The [Company](#companies).
@@ -81,8 +82,8 @@ Check each individual operation to see which relations can be included as a side
         "billing_plans": [
           {
             "name": "small",
-            "month_price": 30,
-            "year_price": 288,
+            "month_price": 27,
+            "year_price": 252,
             "restrictions": {
               "employees": 1,
               "email_max_recipients": 500,
@@ -103,10 +104,10 @@ Check each individual operation to see which relations can be included as a side
           },
           {
             "name": "medium",
-            "month_price": 80,
-            "year_price": 768,
+            "month_price": 74,
+            "year_price": 708,
             "restrictions": {
-              "employees": 3,
+              "employees": 2,
               "email_max_recipients": 500,
               "rate_limit_max": 100,
               "rate_limit_period": 60,
@@ -131,7 +132,7 @@ Check each individual operation to see which relations can be included as a side
               "packing_slips",
               "notes",
               "revenue_report",
-              "custom_email_templates",
+              "manual_email_templates",
               "custom_tags",
               "away_mode",
               "customer_discount_percentage",
@@ -141,8 +142,8 @@ Check each individual operation to see which relations can be included as a side
           },
           {
             "name": "large",
-            "month_price": 218,
-            "year_price": 2088,
+            "month_price": 212,
+            "year_price": 2028,
             "restrictions": {
               "employees": 5,
               "email_max_recipients": 2000,
@@ -169,7 +170,7 @@ Check each individual operation to see which relations can be included as a side
               "packing_slips",
               "notes",
               "revenue_report",
-              "custom_email_templates",
+              "manual_email_templates",
               "custom_tags",
               "away_mode",
               "customer_discount_percentage",
@@ -213,7 +214,7 @@ Check each individual operation to see which relations can be included as a side
               "packing_slips",
               "notes",
               "revenue_report",
-              "custom_email_templates",
+              "manual_email_templates",
               "custom_tags",
               "away_mode",
               "customer_discount_percentage",
@@ -258,7 +259,7 @@ Check each individual operation to see which relations can be included as a side
               "packing_slips",
               "notes",
               "revenue_report",
-              "custom_email_templates",
+              "manual_email_templates",
               "product_shortage_limits",
               "custom_tags",
               "product_history",
@@ -299,7 +300,7 @@ Check each individual operation to see which relations can be included as a side
               "packing_slips",
               "notes",
               "revenue_report",
-              "custom_email_templates",
+              "manual_email_templates",
               "product_shortage_limits",
               "custom_tags",
               "product_history",
@@ -345,7 +346,7 @@ Check each individual operation to see which relations can be included as a side
               "packing_slips",
               "notes",
               "revenue_report",
-              "custom_email_templates",
+              "manual_email_templates",
               "product_shortage_limits",
               "custom_tags",
               "product_history",
@@ -364,6 +365,38 @@ Check each individual operation to see which relations can be included as a side
               "2fa_enforcing",
               "remove_powered_by"
             ]
+          }
+        ],
+        "addons": [
+          {
+            "name": "online_bookings",
+            "month_price": 24,
+            "year_price": 228
+          },
+          {
+            "name": "mobile_app",
+            "month_price": 24,
+            "year_price": 228
+          },
+          {
+            "name": "sso",
+            "month_price": 7,
+            "year_price": 60
+          },
+          {
+            "name": "ip_restrictions",
+            "month_price": 7,
+            "year_price": 60
+          },
+          {
+            "name": "2fa_enforcing",
+            "month_price": 7,
+            "year_price": 60
+          },
+          {
+            "name": "barcodes",
+            "month_price": 12,
+            "year_price": 108
           }
         ]
       },
@@ -395,9 +428,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 271",
-          "slug": "company-name-271",
-          "email": "mail274@company.com",
+          "name": "Company name 272",
+          "slug": "company-name-272",
+          "email": "mail275@company.com",
           "billing_email": null,
           "phone": null,
           "website": "www.booqable.com",
@@ -472,6 +505,7 @@ Check each individual operation to see which relations can be included as a side
             "extra_employees_left": 4,
             "extra_locations": 0,
             "addons": [],
+            "checkout_settings": {},
             "amount_in_cents": 29900,
             "discount_in_cents": 0,
             "balance_in_cents": 0,
@@ -498,7 +532,7 @@ Check each individual operation to see which relations can be included as a side
               "packing_slips",
               "notes",
               "revenue_report",
-              "custom_email_templates",
+              "manual_email_templates",
               "product_shortage_limits",
               "custom_tags",
               "product_history",
@@ -566,7 +600,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1744018195"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1744622988"
         }
       },
       {

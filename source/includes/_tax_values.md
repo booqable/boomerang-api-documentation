@@ -6,7 +6,7 @@ They hold information about the amount taxed for a specific rate.
 ## Relationships
 Name | Description
 -- | --
-`owner` | **[Order](#orders)** `required`<br>The order or cart.
+`owner` | **[Order](#orders), [Document](#documents)** `required`<br>The order or cart.
 `tax_rate` | **[Tax rate](#tax-rates)** `required`<br>The rate used to calculated this tax.
 
 
@@ -21,7 +21,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** `readonly`<br>Name of the tax rate.
 `owner_id` | **uuid** `readonly`<br>The order or cart.
-`owner_type` | **enum** `readonly`<br>The resource type of the owner.<br>Always `orders`
+`owner_type` | **enum** `readonly`<br>The resource type of the owner.<br>One of: `orders`, `documents`.
 `percentage` | **float** `readonly`<br>The percentage taxed.
 `tax_rate_id` | **uuid** `readonly`<br>The rate used to calculated this tax.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -211,7 +211,8 @@ This request does not accept any includes
           "tax_region_id": null,
           "coupon_id": null,
           "start_location_id": "85f56930-46f4-40f6-8df3-e14cb405b347",
-          "stop_location_id": "85f56930-46f4-40f6-8df3-e14cb405b347"
+          "stop_location_id": "85f56930-46f4-40f6-8df3-e14cb405b347",
+          "order_delivery_rate_id": null
         },
         "relationships": {}
       }

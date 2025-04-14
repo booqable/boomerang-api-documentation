@@ -132,6 +132,7 @@ Check each individual operation to see which relations can be included as a side
 `location_shortage` | **boolean** `readonly`<br>Whether there is a shortage on the pickup location. This is `true` when the requested items are not available at the specific `start_location` selected for the order, even if they might be available at other locations in the same cluster. 
 `number` | **integer** `readonly`<br>The unique order number. 
 `order_delivery_rate_attributes` | **hash** `writeonly`<br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
+`order_delivery_rate_id` | **uuid** `nullable`<br>The id of the order delivery rate. 
 `override_period_restrictions` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
 `paid_in_cents` | **integer** `readonly`<br>How much was paid. 
 `payment_status` | **enum** `readonly`<br>Indicates next step to take with respect to payment for this order. Values include `paid` (fully paid), `partially_paid` (some payments made), `overpaid` (more paid than required), `payment_due` (balance still due), or `process_deposit` (deposit needs processing).<br> One of: `paid`, `partially_paid`, `overpaid`, `payment_due`, `process_deposit`.
@@ -190,8 +191,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-02-03T03:01:01.000000+00:00",
-          "stops_at": "1970-03-05T03:01:01.000000+00:00",
+          "starts_at": "1970-01-27T03:01:01.000000+00:00",
+          "stops_at": "1970-02-26T03:01:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -205,18 +206,18 @@ Check each individual operation to see which relations can be included as a side
             "webshop"
           ],
           "properties": {},
-          "amount_in_cents": 0,
+          "amount_in_cents": 87392,
           "amount_paid_in_cents": 0,
-          "amount_to_be_paid_in_cents": null,
+          "amount_to_be_paid_in_cents": 87392,
           "deposit_in_cents": 10000,
           "deposit_held_in_cents": 0,
           "deposit_paid_in_cents": 0,
-          "deposit_to_be_paid_in_cents": null,
+          "deposit_to_be_paid_in_cents": 10000,
           "deposit_refunded_in_cents": 0,
           "deposit_to_refund_in_cents": 0,
-          "total_in_cents": 0,
+          "total_in_cents": 97392,
           "total_paid_in_cents": 0,
-          "total_to_be_paid_in_cents": 0,
+          "total_to_be_paid_in_cents": 97392,
           "total_discount_in_cents": 8025,
           "coupon_discount_in_cents": 0,
           "discount_in_cents": 8025,
@@ -236,7 +237,8 @@ Check each individual operation to see which relations can be included as a side
           "tax_region_id": null,
           "coupon_id": null,
           "start_location_id": "595f65d5-8218-4704-83ae-39aff6d1aeb4",
-          "stop_location_id": "595f65d5-8218-4704-83ae-39aff6d1aeb4"
+          "stop_location_id": "595f65d5-8218-4704-83ae-39aff6d1aeb4",
+          "order_delivery_rate_id": null
         },
         "relationships": {}
       }
@@ -300,6 +302,7 @@ Name | Description
 `item_id` | **uuid** <br>`eq`
 `location_shortage` | **boolean** <br>`eq`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`order_delivery_rate_id` | **uuid** <br>`eq`, `not_eq`
 `paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `payment_status` | **enum** <br>`eq`
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -410,14 +413,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-04-08T09:28:08Z",
-                       "lte": "2025-04-11T09:28:08Z"
+                       "gte": "2025-04-15T09:28:15Z",
+                       "lte": "2025-04-18T09:28:15Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-04-08T09:28:08Z",
-                       "lte": "2025-04-11T09:28:08Z"
+                       "gte": "2025-04-15T09:28:15Z",
+                       "lte": "2025-04-18T09:28:15Z"
                      }
                    }
                  ]
@@ -509,6 +512,7 @@ Name | Description
 `item_id` | **uuid** <br>`eq`
 `location_shortage` | **boolean** <br>`eq`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`order_delivery_rate_id` | **uuid** <br>`eq`, `not_eq`
 `paid_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `payment_status` | **enum** <br>`eq`
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -673,7 +677,8 @@ Returns an existing or new order for the current employee.
         "tax_region_id": null,
         "coupon_id": null,
         "start_location_id": "a1af9993-17e0-4410-8fd6-a096f9bcdd0d",
-        "stop_location_id": "a1af9993-17e0-4410-8fd6-a096f9bcdd0d"
+        "stop_location_id": "a1af9993-17e0-4410-8fd6-a096f9bcdd0d",
+        "order_delivery_rate_id": null
       },
       "relationships": {}
     },
@@ -816,8 +821,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-07-01T12:20:01.000000+00:00",
-        "stops_at": "1970-07-31T12:20:01.000000+00:00",
+        "starts_at": "1970-06-24T12:20:01.000000+00:00",
+        "stops_at": "1970-07-24T12:20:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -831,18 +836,18 @@ This request accepts the following includes:
           "webshop"
         ],
         "properties": {},
-        "amount_in_cents": 0,
+        "amount_in_cents": 87392,
         "amount_paid_in_cents": 0,
-        "amount_to_be_paid_in_cents": null,
+        "amount_to_be_paid_in_cents": 87392,
         "deposit_in_cents": 10000,
         "deposit_held_in_cents": 0,
         "deposit_paid_in_cents": 0,
-        "deposit_to_be_paid_in_cents": null,
+        "deposit_to_be_paid_in_cents": 10000,
         "deposit_refunded_in_cents": 0,
         "deposit_to_refund_in_cents": 0,
-        "total_in_cents": 0,
+        "total_in_cents": 97392,
         "total_paid_in_cents": 0,
-        "total_to_be_paid_in_cents": 0,
+        "total_to_be_paid_in_cents": 97392,
         "total_discount_in_cents": 8025,
         "coupon_discount_in_cents": 0,
         "discount_in_cents": 8025,
@@ -862,7 +867,8 @@ This request accepts the following includes:
         "tax_region_id": null,
         "coupon_id": null,
         "start_location_id": "8a045d6d-cb6a-4ead-8c79-6e7bc659d7d4",
-        "stop_location_id": "8a045d6d-cb6a-4ead-8c79-6e7bc659d7d4"
+        "stop_location_id": "8a045d6d-cb6a-4ead-8c79-6e7bc659d7d4",
+        "order_delivery_rate_id": null
       },
       "relationships": {}
     },
@@ -1065,7 +1071,8 @@ When creating an order, and the following fields are left blank, a sensible defa
         "tax_region_id": null,
         "coupon_id": null,
         "start_location_id": "e425fa84-11b4-48c8-8c41-73bdfabc34d9",
-        "stop_location_id": "e425fa84-11b4-48c8-8c41-73bdfabc34d9"
+        "stop_location_id": "e425fa84-11b4-48c8-8c41-73bdfabc34d9",
+        "order_delivery_rate_id": null
       },
       "relationships": {}
     },
@@ -1105,6 +1112,7 @@ Name | Description
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
 `data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
+`data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
 `data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
@@ -1371,6 +1379,7 @@ Name | Description
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
 `data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
+`data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
 `data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
