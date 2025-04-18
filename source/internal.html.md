@@ -112,6 +112,7 @@ includes:
   - user_invitations
   - users
   - webhook_endpoints
+  - webhooks
 
   - headers/reports
   - report_consumables

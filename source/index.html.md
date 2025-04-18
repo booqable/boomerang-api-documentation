@@ -88,6 +88,7 @@ includes:
   - user_invitations
   - users
   - webhook_endpoints
+  - webhooks
 
 search: true
 
