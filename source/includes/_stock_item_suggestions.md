@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 > Retrieve stock item suggestions for booking:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/stock_item_suggestions'
+  curl --get 'https://example.booqable.com/api/4/stock_item_suggestions'
        --header 'content-type: application/json'
        --data-urlencode 'filter[action]=book'
        --data-urlencode 'filter[item_id]=402fa5d1-ec05-46ad-85ee-c56564c66946'

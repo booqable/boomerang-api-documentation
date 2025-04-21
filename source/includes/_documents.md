@@ -79,6 +79,7 @@ Check each individual operation to see which relations can be included as a side
 `price_in_cents` | **integer** `readonly`<br>Subtotal excl. taxes (excl. deposit). 
 `reference` | **string** <br>A project number or other reference. 
 `revised` | **boolean** <br>Whether document is revised (applies only to `invoice`). 
+`revision` | **string** `readonly`<br>Revision number. Only applicable to invoices. Automatically generated when revising an invoice. 
 `sent` | **boolean** <br>Whether document is sent (with Booqable). 
 `signature_url` | **string** `readonly`<br>URL where the signature is stored. 
 `status` | **enum** <br>Status (possible values depend on document type).<br> One of: `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`.
@@ -96,7 +97,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of documents:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/documents'
+  curl --get 'https://example.booqable.com/api/4/documents'
        --header 'content-type: application/json'
 ```
 
@@ -117,6 +118,7 @@ Check each individual operation to see which relations can be included as a side
           "number": null,
           "prefix": null,
           "prefix_with_number": null,
+          "revision": null,
           "date": null,
           "due_date": null,
           "name": "John Doe",
@@ -227,6 +229,7 @@ Name | Description
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **string** <br>`eq`
 `revised` | **boolean** <br>`eq`
+`revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
 `status` | **enum** <br>`eq`
 `tag_list` | **string** <br>`eq`
@@ -288,7 +291,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/documents/search'
+       --url 'https://example.booqable.com/api/4/documents/search'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -406,6 +409,7 @@ Name | Description
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **string** <br>`eq`
 `revised` | **boolean** <br>`eq`
+`revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
 `status` | **enum** <br>`eq`
 `tag_list` | **string** <br>`eq`
@@ -465,7 +469,7 @@ This request accepts the following includes:
 > How to fetch a documents:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/documents/9c32036d-e60c-47b1-8ff2-7e28343dac1b'
+  curl --get 'https://example.booqable.com/api/4/documents/9c32036d-e60c-47b1-8ff2-7e28343dac1b'
        --header 'content-type: application/json'
 ```
 
@@ -485,6 +489,7 @@ This request accepts the following includes:
         "number": null,
         "prefix": null,
         "prefix_with_number": null,
+        "revision": null,
         "date": null,
         "due_date": null,
         "name": "John Doe",
@@ -616,7 +621,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/documents'
+       --url 'https://example.booqable.com/api/4/documents'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -645,7 +650,8 @@ This request accepts the following includes:
         "number": 1,
         "prefix": null,
         "prefix_with_number": "1",
-        "date": "2025-04-14",
+        "revision": null,
+        "date": "2025-04-21",
         "due_date": null,
         "name": "John Doe",
         "address": null,
@@ -809,7 +815,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/documents/6b8e0c59-4b01-42e6-8477-bbfa4cea11f3'
+       --url 'https://example.booqable.com/api/4/documents/6b8e0c59-4b01-42e6-8477-bbfa4cea11f3'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -838,6 +844,7 @@ This request accepts the following includes:
         "number": null,
         "prefix": null,
         "prefix_with_number": null,
+        "revision": null,
         "date": null,
         "due_date": null,
         "name": "Jane Doe",
@@ -1003,7 +1010,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/documents/e00df330-8241-466f-8706-d2db3d03494d'
+       --url 'https://example.booqable.com/api/4/documents/e00df330-8241-466f-8706-d2db3d03494d'
        --header 'content-type: application/json'
 ```
 
@@ -1023,6 +1030,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
         "number": null,
         "prefix": null,
         "prefix_with_number": null,
+        "revision": null,
         "date": null,
         "due_date": null,
         "name": "John Doe",

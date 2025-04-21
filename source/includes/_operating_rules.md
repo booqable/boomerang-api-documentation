@@ -42,7 +42,7 @@ before the rules of that type are enforced.
 > How to fetch a list of operating rules:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/operating_rules'
+  curl --get 'https://example.booqable.com/api/4/operating_rules'
        --header 'content-type: application/json'
 ```
 
@@ -120,7 +120,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/operating_rules'
+       --url 'https://example.booqable.com/api/4/operating_rules'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -165,7 +165,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/operating_rules'
+       --url 'https://example.booqable.com/api/4/operating_rules'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -210,7 +210,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/operating_rules'
+       --url 'https://example.booqable.com/api/4/operating_rules'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -255,7 +255,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/operating_rules'
+       --url 'https://example.booqable.com/api/4/operating_rules'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -300,7 +300,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/operating_rules'
+       --url 'https://example.booqable.com/api/4/operating_rules'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -370,7 +370,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/operating_rules/89ad3c36-9f82-4c85-88aa-a39bf3289d46'
+       --url 'https://example.booqable.com/api/4/operating_rules/89ad3c36-9f82-4c85-88aa-a39bf3289d46'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -444,7 +444,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/operating_rules/32f66c8c-d911-43ce-8dd6-bda4a82b795f'
+       --url 'https://example.booqable.com/api/4/operating_rules/32f66c8c-d911-43ce-8dd6-bda4a82b795f'
        --header 'content-type: application/json'
 ```
 

@@ -35,7 +35,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of authentication methods:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/authentication_methods'
+  curl --get 'https://example.booqable.com/api/4/authentication_methods'
        --header 'content-type: application/json'
 ```
 
@@ -115,7 +115,7 @@ This request does not accept any includes
 > How to fetch an authentication method:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/authentication_methods/874482c4-c602-4605-8e8f-bdd68bc4e0fe'
+  curl --get 'https://example.booqable.com/api/4/authentication_methods/874482c4-c602-4605-8e8f-bdd68bc4e0fe'
        --header 'content-type: application/json'
 ```
 
@@ -166,7 +166,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/authentication_methods'
+       --url 'https://example.booqable.com/api/4/authentication_methods'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -205,7 +205,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/authentication_methods'
+       --url 'https://example.booqable.com/api/4/authentication_methods'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -247,7 +247,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/authentication_methods'
+       --url 'https://example.booqable.com/api/4/authentication_methods'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -289,7 +289,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/authentication_methods'
+       --url 'https://example.booqable.com/api/4/authentication_methods'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -374,7 +374,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/authentication_methods/ef2b6529-43ac-4e66-8ab9-bd2950729b50'
+       --url 'https://example.booqable.com/api/4/authentication_methods/ef2b6529-43ac-4e66-8ab9-bd2950729b50'
        --header 'content-type: application/json'
 ```
 

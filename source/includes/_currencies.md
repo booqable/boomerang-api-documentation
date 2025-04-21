@@ -28,7 +28,7 @@ The currency object encapsulates all information about a monetary unit.
 > How to fetch a currency:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/currencies/eur'
+  curl --get 'https://example.booqable.com/api/4/currencies/eur'
        --header 'content-type: application/json'
 ```
 

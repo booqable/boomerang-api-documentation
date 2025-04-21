@@ -55,7 +55,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of stock items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/stock_items'
+  curl --get 'https://example.booqable.com/api/4/stock_items'
        --header 'content-type: application/json'
 ```
 
@@ -167,7 +167,7 @@ This request accepts the following includes:
 > How to fetch a stock item:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/stock_items/218c1f4b-3124-4718-86e3-fc4646fe5562'
+  curl --get 'https://example.booqable.com/api/4/stock_items/218c1f4b-3124-4718-86e3-fc4646fe5562'
        --header 'content-type: application/json'
 ```
 
@@ -243,7 +243,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/stock_items'
+       --url 'https://example.booqable.com/api/4/stock_items'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -343,7 +343,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/stock_items/96e16eb3-614f-4a6a-8444-531244376f3a'
+       --url 'https://example.booqable.com/api/4/stock_items/96e16eb3-614f-4a6a-8444-531244376f3a'
        --header 'content-type: application/json'
        --data '{
          "data": {

@@ -71,7 +71,7 @@ A company holds information and configuration about an account.
 > How to fetch a company:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/companies/current'
+  curl --get 'https://example.booqable.com/api/4/companies/current'
        --header 'content-type: application/json'
 ```
 
@@ -206,7 +206,7 @@ Name | Description
 > How to fetch details about the company its subscription:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/companies/current'
+  curl --get 'https://example.booqable.com/api/4/companies/current'
        --header 'content-type: application/json'
        --data-urlencode 'extra_fields[companies]=subscription'
        --data-urlencode 'fields[companies]=subscription'
@@ -325,7 +325,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/companies/current'
+       --url 'https://example.booqable.com/api/4/companies/current'
        --header 'content-type: application/json'
        --data '{
          "data": {

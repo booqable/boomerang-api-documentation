@@ -39,7 +39,7 @@ When creating properties they are connected with their default when one of the f
 > How to fetch a list of default properties:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/default_properties'
+  curl --get 'https://example.booqable.com/api/4/default_properties'
        --header 'content-type: application/json'
        --data-urlencode 'include=owner'
 ```
@@ -123,7 +123,7 @@ This request does not accept any includes
 > How to fetch a default property:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/default_properties/e579fd95-e66a-48b3-8954-a1303f0d4543'
+  curl --get 'https://example.booqable.com/api/4/default_properties/e579fd95-e66a-48b3-8954-a1303f0d4543'
        --header 'content-type: application/json'
        --data-urlencode 'include=owner'
 ```
@@ -176,7 +176,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/default_properties'
+       --url 'https://example.booqable.com/api/4/default_properties'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -254,7 +254,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/default_properties/1d9d3f48-7bac-4b62-8f42-8018003cc95b'
+       --url 'https://example.booqable.com/api/4/default_properties/1d9d3f48-7bac-4b62-8f42-8018003cc95b'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -331,7 +331,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/default_properties/8d8ff086-4c54-40aa-84dd-28fc56d8b3dd'
+       --url 'https://example.booqable.com/api/4/default_properties/8d8ff086-4c54-40aa-84dd-28fc56d8b3dd'
        --header 'content-type: application/json'
 ```
 

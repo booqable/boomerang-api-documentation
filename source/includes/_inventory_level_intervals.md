@@ -46,7 +46,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of inventory level intervals:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/inventory_level_intervals'
+  curl --get 'https://example.booqable.com/api/4/inventory_level_intervals'
        --header 'content-type: application/json'
        --data-urlencode 'filter[from]=2022-01-01'
        --data-urlencode 'filter[interval]=day'

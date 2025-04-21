@@ -51,7 +51,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of customers:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/customers'
+  curl --get 'https://example.booqable.com/api/4/customers'
        --header 'content-type: application/json'
 ```
 
@@ -175,7 +175,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/customers/search'
+       --url 'https://example.booqable.com/api/4/customers/search'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -314,7 +314,7 @@ This request accepts the following includes:
 > How to fetch a customers:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/customers/2270a849-1797-436e-8b18-ef3fd6058a01'
+  curl --get 'https://example.booqable.com/api/4/customers/2270a849-1797-436e-8b18-ef3fd6058a01'
        --header 'content-type: application/json'
        --data-urlencode 'include=barcode,properties'
 ```
@@ -399,7 +399,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/customers'
+       --url 'https://example.booqable.com/api/4/customers'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -504,7 +504,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/customers/7eaf3c75-3143-4090-8ccf-32b899f324c9'
+       --url 'https://example.booqable.com/api/4/customers/7eaf3c75-3143-4090-8ccf-32b899f324c9'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -609,7 +609,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/customers/7a496d55-729c-43e0-8a6b-8d505e0f3c70'
+       --url 'https://example.booqable.com/api/4/customers/7a496d55-729c-43e0-8a6b-8d505e0f3c70'
        --header 'content-type: application/json'
 ```
 

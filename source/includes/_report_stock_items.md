@@ -43,7 +43,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch performance for stock items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/report_stock_items'
+  curl --get 'https://example.booqable.com/api/4/report_stock_items'
        --header 'content-type: application/json'
        --data-urlencode 'filter[from]=2028-06-10T02:07:00.000000+00:00'
        --data-urlencode 'filter[till]=2028-06-16T02:06:00.000000+00:00'
@@ -58,7 +58,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:36:00.000000+00:00",
+          "created_at": "2028-06-15T11:35:00.000000+00:00",
           "product_name": "Product 1000057",
           "identifier": "id1000172",
           "charge_duration_in_seconds": 7200,
@@ -75,7 +75,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:36:00.000000+00:00",
+          "created_at": "2028-06-15T11:35:00.000000+00:00",
           "product_name": "Product 1000057",
           "identifier": "id1000173",
           "charge_duration_in_seconds": 0,

@@ -14,7 +14,7 @@ The description of the relationships and attributes of these resources can be fo
 > How to fetch a list of items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/items'
+  curl --get 'https://example.booqable.com/api/4/items'
        --header 'content-type: application/json'
 ```
 
@@ -60,9 +60,9 @@ The description of the relationships and attributes of these resources can be fo
         "attributes": {
           "created_at": "2027-05-05T08:14:00.000000+00:00",
           "updated_at": "2027-05-05T08:14:00.000000+00:00",
+          "type": "product_groups",
           "archived": false,
           "archived_at": null,
-          "type": "product_groups",
           "name": "iPad Pro",
           "group_name": null,
           "slug": "ipad-pro",
@@ -112,9 +112,9 @@ The description of the relationships and attributes of these resources can be fo
         "attributes": {
           "created_at": "2027-05-05T08:14:00.000000+00:00",
           "updated_at": "2027-05-05T08:14:00.000000+00:00",
+          "type": "products",
           "archived": false,
           "archived_at": null,
-          "type": "products",
           "name": "iPad Pro",
           "group_name": "iPad Pro",
           "slug": "ipad-pro",
@@ -171,7 +171,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,type`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,bundle_items,inventory_levels`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -279,7 +279,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/items/search'
+       --url 'https://example.booqable.com/api/4/items/search'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -351,7 +351,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,type`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,bundle_items,inventory_levels`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -457,7 +457,7 @@ This request accepts the following includes:
 > How to fetch an item:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/items/15cd96a9-f5ba-4fb6-8ca3-16b2581f1385'
+  curl --get 'https://example.booqable.com/api/4/items/15cd96a9-f5ba-4fb6-8ca3-16b2581f1385'
        --header 'content-type: application/json'
 ```
 
@@ -471,9 +471,9 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2015-07-22T22:42:00.000000+00:00",
         "updated_at": "2015-07-22T22:42:00.000000+00:00",
+        "type": "product_groups",
         "archived": false,
         "archived_at": null,
-        "type": "product_groups",
         "name": "iPad Pro",
         "group_name": null,
         "slug": "ipad-pro",
@@ -531,7 +531,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[items]=created_at,updated_at,type`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,bundle_items,inventory_levels`
 
 

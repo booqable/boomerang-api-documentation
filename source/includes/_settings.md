@@ -240,7 +240,7 @@ Name | Description
 > How to fetch settings:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/settings/current'
+  curl --get 'https://example.booqable.com/api/4/settings/current'
        --header 'content-type: application/json'
 ```
 

@@ -43,7 +43,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of users:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/users'
+  curl --get 'https://example.booqable.com/api/4/users'
        --header 'content-type: application/json'
 ```
 
@@ -75,7 +75,7 @@ Check each individual operation to see which relations can be included as a side
 > How to find users belonging to a customer:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/users'
+  curl --get 'https://example.booqable.com/api/4/users'
        --header 'content-type: application/json'
        --data-urlencode 'filter[customer_id]=fe7b81ca-a0ac-425d-8618-2e1929b46bc8'
        --data-urlencode 'include=customer'
@@ -159,7 +159,7 @@ This request does not accept any includes
 > How to fetch a user:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/users/c92780ab-5df7-4cbd-8435-a2c09cee05e8'
+  curl --get 'https://example.booqable.com/api/4/users/c92780ab-5df7-4cbd-8435-a2c09cee05e8'
        --header 'content-type: application/json'
 ```
 
@@ -224,7 +224,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/users'
+       --url 'https://example.booqable.com/api/4/users'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -314,7 +314,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/users/c7e240ef-31fa-4e38-8cb7-cafd7719304c'
+       --url 'https://example.booqable.com/api/4/users/c7e240ef-31fa-4e38-8cb7-cafd7719304c'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -402,7 +402,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/users/b20174a8-b59e-4d8b-8ae1-af97052ceaae'
+       --url 'https://example.booqable.com/api/4/users/b20174a8-b59e-4d8b-8ae1-af97052ceaae'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -490,7 +490,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/users/bf3a537d-192a-4df8-8a92-594008521fef'
+       --url 'https://example.booqable.com/api/4/users/bf3a537d-192a-4df8-8a92-594008521fef'
        --header 'content-type: application/json'
        --data '{
          "data": {

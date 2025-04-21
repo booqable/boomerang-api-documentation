@@ -28,7 +28,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of publications:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/publications'
+  curl --get 'https://example.booqable.com/api/4/publications'
        --header 'content-type: application/json'
 ```
 
@@ -112,7 +112,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/publications'
+       --url 'https://example.booqable.com/api/4/publications'
        --header 'content-type: application/json'
        --data '{
          "data": {

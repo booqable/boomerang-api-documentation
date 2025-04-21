@@ -38,7 +38,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch ProductTrackers for a ProductGroup:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/product_trackers'
+  curl --get 'https://example.booqable.com/api/4/product_trackers'
        --header 'content-type: application/json'
        --data-urlencode 'filter[product_group_id][]=d7a52ec8-61c4-4405-8bdd-3911ff7ba281'
 ```

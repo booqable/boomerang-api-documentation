@@ -40,7 +40,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of checkout items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/checkout_items'
+  curl --get 'https://example.booqable.com/api/4/checkout_items'
        --header 'content-type: application/json'
 ```
 
@@ -130,7 +130,7 @@ This request does not accept any includes
 > How to fetch a checkout item:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/checkout_items/43d84523-90f9-4381-80f1-9e3503301a03'
+  curl --get 'https://example.booqable.com/api/4/checkout_items/43d84523-90f9-4381-80f1-9e3503301a03'
        --header 'content-type: application/json'
        --data-urlencode 'include=default_property'
 ```
@@ -187,7 +187,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/checkout_items'
+       --url 'https://example.booqable.com/api/4/checkout_items'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -271,7 +271,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/checkout_items/4fe050ea-f471-4aaa-8533-5170a76ab162'
+       --url 'https://example.booqable.com/api/4/checkout_items/4fe050ea-f471-4aaa-8533-5170a76ab162'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -354,7 +354,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/checkout_items/f91ba73e-38f1-4d23-805e-4a9cc57bada6'
+       --url 'https://example.booqable.com/api/4/checkout_items/f91ba73e-38f1-4d23-805e-4a9cc57bada6'
        --header 'content-type: application/json'
 ```
 

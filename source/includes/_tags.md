@@ -22,7 +22,7 @@ The Tag resource allows to gather names and usage counts of tags that are being 
 > How to fetch a list of tags with their counts:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/tags'
+  curl --get 'https://example.booqable.com/api/4/tags'
        --header 'content-type: application/json'
        --data-urlencode 'filter[for]=Order'
 ```

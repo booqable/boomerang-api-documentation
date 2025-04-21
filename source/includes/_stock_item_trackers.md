@@ -29,7 +29,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch StockItemTrackers for a ProductGroup:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/stock_item_trackers'
+  curl --get 'https://example.booqable.com/api/4/stock_item_trackers'
        --header 'content-type: application/json'
        --data-urlencode 'filter[product_group_id][]=7acf92e9-02ae-4343-8ffa-f074055db051'
        --data-urlencode 'include=stock_item'

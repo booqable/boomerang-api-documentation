@@ -51,7 +51,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of price structures:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/price_structures'
+  curl --get 'https://example.booqable.com/api/4/price_structures'
        --header 'content-type: application/json'
 ```
 
@@ -134,7 +134,7 @@ This request does not accept any includes
 > How to fetch a price structure with it's tiles:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/price_structures/1eefd0fa-08d5-4e02-8267-c2db07cb35a0'
+  curl --get 'https://example.booqable.com/api/4/price_structures/1eefd0fa-08d5-4e02-8267-c2db07cb35a0'
        --header 'content-type: application/json'
        --data-urlencode 'include=price_tiles'
 ```
@@ -224,7 +224,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/price_structures'
+       --url 'https://example.booqable.com/api/4/price_structures'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -346,7 +346,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/price_structures/bbc6913e-a6dd-4ab4-8c78-a004643a9cad'
+       --url 'https://example.booqable.com/api/4/price_structures/bbc6913e-a6dd-4ab4-8c78-a004643a9cad'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -516,7 +516,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/price_structures/787c6191-4590-4d80-8b25-2675dd775bb1'
+       --url 'https://example.booqable.com/api/4/price_structures/787c6191-4590-4d80-8b25-2675dd775bb1'
        --header 'content-type: application/json'
 ```
 

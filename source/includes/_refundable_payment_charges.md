@@ -24,7 +24,7 @@ considering the amount, deposit, and various business rules.
 > How to retrieve prioritized refundable payment charges:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/refundable_payment_charges'
+  curl --get 'https://example.booqable.com/api/4/refundable_payment_charges'
        --header 'content-type: application/json'
        --data-urlencode 'filter[amount_in_cents]=10000'
        --data-urlencode 'filter[deposit_in_cents]=5000'

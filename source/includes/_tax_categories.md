@@ -33,7 +33,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of tax categories:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/tax_categories'
+  curl --get 'https://example.booqable.com/api/4/tax_categories'
        --header 'content-type: application/json'
 ```
 
@@ -119,7 +119,7 @@ This request accepts the following includes:
 > How to fetch a tax categories with it's tax rates:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/tax_categories/471739b4-dc9f-404d-8324-c61a3de5e2da'
+  curl --get 'https://example.booqable.com/api/4/tax_categories/471739b4-dc9f-404d-8324-c61a3de5e2da'
        --header 'content-type: application/json'
        --data-urlencode 'include=tax_rates'
 ```
@@ -204,7 +204,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/tax_categories'
+       --url 'https://example.booqable.com/api/4/tax_categories'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -314,7 +314,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/tax_categories/e3d7ddaf-e57a-47bb-8eef-839b7f1a4bfd'
+       --url 'https://example.booqable.com/api/4/tax_categories/e3d7ddaf-e57a-47bb-8eef-839b7f1a4bfd'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -449,7 +449,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/tax_categories/c7095ef4-6e5b-42f7-8675-6fd1e233106f'
+       --url 'https://example.booqable.com/api/4/tax_categories/c7095ef4-6e5b-42f7-8675-6fd1e233106f'
        --header 'content-type: application/json'
 ```
 

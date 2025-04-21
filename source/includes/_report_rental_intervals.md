@@ -32,7 +32,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch performance per interval for a product:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/report_rental_intervals'
+  curl --get 'https://example.booqable.com/api/4/report_rental_intervals'
        --header 'content-type: application/json'
        --data-urlencode 'filter[from]=2028-12-12T19:20:04.000000+00:00'
        --data-urlencode 'filter[product_id]=11b593b2-23b2-4a0d-8630-f08bdc6a363f'
@@ -48,7 +48,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "f0ceb5ce-caa0-40d5-8c27-fd4607e62568",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-04",
+          "date": "2025-04-11",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -59,7 +59,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "6d2b8548-3a4f-41c4-8e33-f88cab6ed721",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-05",
+          "date": "2025-04-12",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -70,7 +70,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "ccd4c262-738d-415e-8388-832ee4be4870",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-06",
+          "date": "2025-04-13",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -81,7 +81,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "cb0cd33c-98ec-4f6a-81e4-3450cfe6c7bd",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-07",
+          "date": "2025-04-14",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -92,7 +92,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "85422c5f-f84a-4fc1-870c-24f6f3762c41",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-08",
+          "date": "2025-04-15",
           "rented_count": 1,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -103,7 +103,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "c344a030-1398-4dc8-8066-90f990c9d65f",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-09",
+          "date": "2025-04-16",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -114,7 +114,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "0d56a56a-529b-419e-834d-b8a2316f15a8",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-10",
+          "date": "2025-04-17",
           "rented_count": 1,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -125,7 +125,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "8a916c0a-b234-4b15-8df7-1f4f2d325746",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-11",
+          "date": "2025-04-18",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -136,7 +136,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "894bfe67-ec44-49cb-801b-dd2525745c92",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-12",
+          "date": "2025-04-19",
           "rented_count": 1,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
@@ -147,7 +147,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "947020ed-c624-4f6f-8c35-ab29ccbc48b6",
         "type": "report_rental_intervals",
         "attributes": {
-          "date": "2025-04-13",
+          "date": "2025-04-20",
           "rented_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"

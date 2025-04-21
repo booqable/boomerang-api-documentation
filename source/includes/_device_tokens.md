@@ -22,7 +22,7 @@ Use device tokens to register devices to receive push notifications.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/device_tokens'
+       --url 'https://example.booqable.com/api/4/device_tokens'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -90,7 +90,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/device_tokens/ab5436fd-0efe-4f10-8a1d-f1feca62c9e9'
+       --url 'https://example.booqable.com/api/4/device_tokens/ab5436fd-0efe-4f10-8a1d-f1feca62c9e9'
        --header 'content-type: application/json'
 ```
 

@@ -14,7 +14,7 @@ The description of the relationships and attributes of these resources can be fo
 > How to fetch a list of payments:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/payments'
+  curl --get 'https://example.booqable.com/api/4/payments'
        --header 'content-type: application/json'
 ```
 
@@ -217,7 +217,7 @@ This request accepts the following includes:
 > How to fetch a payment:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/payments/bf92b7a9-88e9-43e2-85c0-49ff1418a448'
+  curl --get 'https://example.booqable.com/api/4/payments/bf92b7a9-88e9-43e2-85c0-49ff1418a448'
        --header 'content-type: application/json'
 ```
 

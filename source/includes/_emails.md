@@ -40,7 +40,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of emails:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/emails'
+  curl --get 'https://example.booqable.com/api/4/emails'
        --header 'content-type: application/json'
 ```
 
@@ -76,7 +76,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of emails for a specific order:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/emails'
+  curl --get 'https://example.booqable.com/api/4/emails'
        --header 'content-type: application/json'
        --data-urlencode 'filter[order_id]=f97ca4a9-7d59-46d9-8df1-6cc7dae11393'
 ```
@@ -177,7 +177,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/emails'
+       --url 'https://example.booqable.com/api/4/emails'
        --header 'content-type: application/json'
        --data '{
          "data": {

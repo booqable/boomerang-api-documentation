@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/signatures'
+       --url 'https://example.booqable.com/api/4/signatures'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -91,7 +91,8 @@ Check each individual operation to see which relations can be included as a side
           "number": 1,
           "prefix": null,
           "prefix_with_number": "1",
-          "date": "2025-04-14",
+          "revision": null,
+          "date": "2025-04-21",
           "due_date": null,
           "name": "John Doe",
           "address": null,

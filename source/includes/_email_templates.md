@@ -28,7 +28,7 @@ see [our help center](https://help.booqable.com/en/articles/3832164-emails-types
 > How to fetch a list of email templates:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/email_templates'
+  curl --get 'https://example.booqable.com/api/4/email_templates'
        --header 'content-type: application/json'
 ```
 
@@ -109,7 +109,7 @@ This request does not accept any includes
 > How to fetch an email template:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/email_templates/95b3a72d-9c05-4c26-8679-d2ecd5ff2739'
+  curl --get 'https://example.booqable.com/api/4/email_templates/95b3a72d-9c05-4c26-8679-d2ecd5ff2739'
        --header 'content-type: application/json'
 ```
 
@@ -168,7 +168,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/email_templates'
+       --url 'https://example.booqable.com/api/4/email_templates'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -241,7 +241,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/email_templates/8cc919ef-bada-48fa-8d22-1ee523f0e88f'
+       --url 'https://example.booqable.com/api/4/email_templates/8cc919ef-bada-48fa-8d22-1ee523f0e88f'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -281,7 +281,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/email_templates/f4304c84-6349-470c-875b-7bc8ac0dd626'
+       --url 'https://example.booqable.com/api/4/email_templates/f4304c84-6349-470c-875b-7bc8ac0dd626'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -352,7 +352,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/email_templates/1353d9c3-b214-4b45-8153-505e3ab4d573'
+       --url 'https://example.booqable.com/api/4/email_templates/1353d9c3-b214-4b45-8153-505e3ab4d573'
        --header 'content-type: application/json'
 ```
 

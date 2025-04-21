@@ -17,7 +17,7 @@ Allows making multiple changes to the tree of collections at once.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/collection_trees'
+       --url 'https://example.booqable.com/api/4/collection_trees'
        --header 'content-type: application/json'
        --data '{
          "data": {

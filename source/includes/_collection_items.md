@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch collection items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/collection_items'
+  curl --get 'https://example.booqable.com/api/4/collection_items'
        --header 'content-type: application/json'
 ```
 
@@ -129,7 +129,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/collection_items'
+       --url 'https://example.booqable.com/api/4/collection_items'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -197,7 +197,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/collection_items/ec034cc0-89e0-42f0-8a00-b2a59de8c98a'
+       --url 'https://example.booqable.com/api/4/collection_items/ec034cc0-89e0-42f0-8a00-b2a59de8c98a'
        --header 'content-type: application/json'
 ```
 

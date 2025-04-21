@@ -27,7 +27,7 @@ Theme assets are the individual files that make up a shop's theme.
 > How to fetch a list of assets:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/assets'
+  curl --get 'https://example.booqable.com/api/4/assets'
        --header 'content-type: application/json'
 ```
 
@@ -124,7 +124,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/assets'
+       --url 'https://example.booqable.com/api/4/assets'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -210,7 +210,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/assets'
+       --url 'https://example.booqable.com/api/4/assets'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -296,7 +296,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/assets/1fb579d5-22d0-4cd1-8e59-5c4e552d755e'
+       --url 'https://example.booqable.com/api/4/assets/1fb579d5-22d0-4cd1-8e59-5c4e552d755e'
        --header 'content-type: application/json'
 ```
 

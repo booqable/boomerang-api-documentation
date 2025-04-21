@@ -43,7 +43,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a breakdown of all items in stock:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/inventory_breakdowns'
+  curl --get 'https://example.booqable.com/api/4/inventory_breakdowns'
        --header 'content-type: application/json'
        --data-urlencode 'filter[product_group_id]=fc4bfed6-545d-4ffe-8b66-81e8dbde9d4e'
        --data-urlencode 'filter[status]=in_stock'
@@ -115,7 +115,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a breakdown of all expected items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/inventory_breakdowns'
+  curl --get 'https://example.booqable.com/api/4/inventory_breakdowns'
        --header 'content-type: application/json'
        --data-urlencode 'filter[product_group_id]=3142a9c7-40c2-4dff-8a3d-61aef93400cf'
        --data-urlencode 'filter[status]=expected'
@@ -187,7 +187,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a breakdown of all expired items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/inventory_breakdowns'
+  curl --get 'https://example.booqable.com/api/4/inventory_breakdowns'
        --header 'content-type: application/json'
        --data-urlencode 'filter[product_group_id]=8d1d8d66-b01e-4300-83da-7418f5acaaea'
        --data-urlencode 'filter[status]=expired'

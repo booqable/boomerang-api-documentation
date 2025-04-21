@@ -24,7 +24,7 @@ Both IPv4 and IPv6 addresses are supported.
 > How to fetch a list of restricted IP addresses:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/ip_addresses'
+  curl --get 'https://example.booqable.com/api/4/ip_addresses'
        --header 'content-type: application/json'
 ```
 
@@ -97,7 +97,7 @@ This request does not accept any includes
 > How to fetch a restricted IP address:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/ip_addresses/fa72089f-0fe9-40f4-8c62-f6b1933a6621'
+  curl --get 'https://example.booqable.com/api/4/ip_addresses/fa72089f-0fe9-40f4-8c62-f6b1933a6621'
        --header 'content-type: application/json'
 ```
 
@@ -142,7 +142,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/ip_addresses'
+       --url 'https://example.booqable.com/api/4/ip_addresses'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -206,7 +206,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/ip_addresses/c5fee425-e443-4e0a-8fb7-7ec6a623c577'
+       --url 'https://example.booqable.com/api/4/ip_addresses/c5fee425-e443-4e0a-8fb7-7ec6a623c577'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -271,7 +271,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/ip_addresses/d0fa7dac-507f-4565-8815-4323b15d02ba'
+       --url 'https://example.booqable.com/api/4/ip_addresses/d0fa7dac-507f-4565-8815-4323b15d02ba'
        --header 'content-type: application/json'
 ```
 

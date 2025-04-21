@@ -318,7 +318,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of operations:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/operations'
+  curl --get 'https://example.booqable.com/api/4/operations'
        --header 'content-type: application/json'
 ```
 
@@ -412,7 +412,7 @@ This request accepts the following includes:
 > How to fetch an operation:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/operations/21cd9837-0ca6-4027-8d44-f8d6cddf837a'
+  curl --get 'https://example.booqable.com/api/4/operations/21cd9837-0ca6-4027-8d44-f8d6cddf837a'
        --header 'content-type: application/json'
 ```
 
@@ -477,7 +477,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/operations'
+       --url 'https://example.booqable.com/api/4/operations'
        --header 'content-type: application/json'
        --data '{
          "data": {

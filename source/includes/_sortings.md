@@ -18,7 +18,7 @@ A convenient way to bulk update positions for supported resources.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/sortings'
+       --url 'https://example.booqable.com/api/4/sortings'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -51,7 +51,7 @@ A convenient way to bulk update positions for supported resources.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/sortings'
+       --url 'https://example.booqable.com/api/4/sortings'
        --header 'content-type: application/json'
        --data '{
          "data": {

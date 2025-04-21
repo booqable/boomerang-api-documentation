@@ -74,7 +74,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of stock item plannings:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/stock_item_plannings'
+  curl --get 'https://example.booqable.com/api/4/stock_item_plannings'
        --header 'content-type: application/json'
 ```
 
@@ -189,7 +189,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/stock_item_plannings/68bb0a74-3b6a-479a-8db0-851ae0d77511'
+       --url 'https://example.booqable.com/api/4/stock_item_plannings/68bb0a74-3b6a-479a-8db0-851ae0d77511'
        --header 'content-type: application/json'
 ```
 

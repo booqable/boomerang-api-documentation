@@ -29,7 +29,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of menus:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/menus'
+  curl --get 'https://example.booqable.com/api/4/menus'
        --header 'content-type: application/json'
 ```
 
@@ -118,7 +118,7 @@ This request accepts the following includes:
 > How to fetch a menu with it's items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/menus/2eb56457-180f-43b7-8c3f-a98b59a2c2f8'
+  curl --get 'https://example.booqable.com/api/4/menus/2eb56457-180f-43b7-8c3f-a98b59a2c2f8'
        --header 'content-type: application/json'
        --data-urlencode 'include=menu_items'
 ```
@@ -247,7 +247,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/menus'
+       --url 'https://example.booqable.com/api/4/menus'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -355,7 +355,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/menus/dc0609dc-2052-4f73-8ea2-6297fd7fff67'
+       --url 'https://example.booqable.com/api/4/menus/dc0609dc-2052-4f73-8ea2-6297fd7fff67'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -524,7 +524,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/menus/79334335-bb00-454a-83cb-280735693ac0'
+       --url 'https://example.booqable.com/api/4/menus/79334335-bb00-454a-83cb-280735693ac0'
        --header 'content-type: application/json'
 ```
 

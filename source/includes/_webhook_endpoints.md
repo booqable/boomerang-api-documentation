@@ -22,7 +22,7 @@ a new record.
 > How to fetch a list of webhook endpoints:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/webhook_endpoints'
+  curl --get 'https://example.booqable.com/api/4/webhook_endpoints'
        --header 'content-type: application/json'
 ```
 
@@ -93,7 +93,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/webhook_endpoints'
+       --url 'https://example.booqable.com/api/4/webhook_endpoints'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -163,7 +163,7 @@ This request does not accept any includes
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/a2f71717-53b5-45ba-85c6-3eadcf6cb09f'
+       --url 'https://example.booqable.com/api/4/webhook_endpoints/a2f71717-53b5-45ba-85c6-3eadcf6cb09f'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -232,7 +232,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/webhook_endpoints/fd2f4709-67d8-441e-8206-213a900ef683'
+       --url 'https://example.booqable.com/api/4/webhook_endpoints/fd2f4709-67d8-441e-8206-213a900ef683'
        --header 'content-type: application/json'
 ```
 

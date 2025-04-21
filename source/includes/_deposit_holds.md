@@ -30,7 +30,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/deposit_holds'
+       --url 'https://example.booqable.com/api/4/deposit_holds'
        --header 'content-type: application/json'
        --data '{
          "data": {

@@ -18,7 +18,7 @@ It calculates the distance (the route length) between the given locations and th
 > How to fetch a list of delivery distance calculations:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/delivery_distance_calculations'
+  curl --get 'https://example.booqable.com/api/4/delivery_distance_calculations'
        --header 'content-type: application/json'
        --data-urlencode 'filter[delivery_address_property_id]=2e70e73b-04ee-4e00-835e-13ad1d52e6fc'
        --data-urlencode 'filter[location_ids][]=df2395bd-72f3-4078-8c07-4c1f636a1a03'

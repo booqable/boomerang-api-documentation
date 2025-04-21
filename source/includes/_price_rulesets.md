@@ -36,7 +36,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch price rulesets:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/price_rulesets'
+  curl --get 'https://example.booqable.com/api/4/price_rulesets'
        --header 'content-type: application/json'
 ```
 
@@ -114,7 +114,7 @@ This request does not accept any includes
 > How to fetch a single price ruleset with related price rules:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/price_rulesets/ca85320f-4ffc-496c-855e-77a3d0f4a40a'
+  curl --get 'https://example.booqable.com/api/4/price_rulesets/ca85320f-4ffc-496c-855e-77a3d0f4a40a'
        --header 'content-type: application/json'
        --data-urlencode 'include=price_rules'
 ```
@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2032-07-07T23:26:05.000000+00:00",
-          "till": "2032-09-06T23:26:05.000000+00:00",
+          "from": "2032-06-30T23:27:05.000000+00:00",
+          "till": "2032-08-30T23:27:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -209,7 +209,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/price_rulesets'
+       --url 'https://example.booqable.com/api/4/price_rulesets'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -333,7 +333,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/price_rulesets/f45fa6ef-5ccc-4a37-89b6-5701c9c8f77b'
+       --url 'https://example.booqable.com/api/4/price_rulesets/f45fa6ef-5ccc-4a37-89b6-5701c9c8f77b'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -371,7 +371,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/price_rulesets/8fdd2e80-1ce2-4bf8-8e01-df9e6925b595'
+       --url 'https://example.booqable.com/api/4/price_rulesets/8fdd2e80-1ce2-4bf8-8e01-df9e6925b595'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -428,8 +428,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2028-11-17T12:39:00.000000+00:00",
-          "till": "2029-01-17T12:39:00.000000+00:00",
+          "from": "2028-11-10T12:40:00.000000+00:00",
+          "till": "2029-01-10T12:40:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -491,7 +491,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/price_rulesets/dcba05ea-7016-4ed4-8034-a823d01f4d26'
+       --url 'https://example.booqable.com/api/4/price_rulesets/dcba05ea-7016-4ed4-8034-a823d01f4d26'
        --header 'content-type: application/json'
 ```
 

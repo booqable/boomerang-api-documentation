@@ -92,7 +92,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of products:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/products'
+  curl --get 'https://example.booqable.com/api/4/products'
        --header 'content-type: application/json'
 ```
 
@@ -107,9 +107,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2017-02-21T06:58:03.000000+00:00",
           "updated_at": "2017-02-21T06:58:03.000000+00:00",
+          "type": "products",
           "archived": false,
           "archived_at": null,
-          "type": "products",
           "name": "iPad Pro",
           "group_name": "iPad Pro",
           "slug": "ipad-pro",
@@ -156,9 +156,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2017-02-21T06:58:03.000000+00:00",
           "updated_at": "2017-02-21T06:58:03.000000+00:00",
+          "type": "products",
           "archived": false,
           "archived_at": null,
-          "type": "products",
           "name": "iPad Pro - blue",
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
@@ -214,7 +214,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,type`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -332,7 +332,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/products/search'
+       --url 'https://example.booqable.com/api/4/products/search'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -401,7 +401,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,type`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -517,7 +517,7 @@ This request accepts the following includes:
 > How to fetch a product:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/products/8f191698-6a00-445a-8b40-3f5449981539'
+  curl --get 'https://example.booqable.com/api/4/products/8f191698-6a00-445a-8b40-3f5449981539'
        --header 'content-type: application/json'
 ```
 
@@ -531,9 +531,9 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2022-10-14T09:41:00.000000+00:00",
         "updated_at": "2022-10-14T09:41:00.000000+00:00",
+        "type": "products",
         "archived": false,
         "archived_at": null,
-        "type": "products",
         "name": "iPad Pro",
         "group_name": "iPad Pro",
         "slug": "ipad-pro",
@@ -588,7 +588,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,type`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 
 
@@ -631,7 +631,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/products'
+       --url 'https://example.booqable.com/api/4/products'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -656,9 +656,9 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2017-11-22T20:35:01.000000+00:00",
         "updated_at": "2017-11-22T20:35:01.000000+00:00",
+        "type": "products",
         "archived": false,
         "archived_at": null,
-        "type": "products",
         "name": "iPad Pro - red",
         "group_name": "iPad Pro",
         "slug": "ipad-pro-red",
@@ -713,7 +713,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,type`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 
 
@@ -769,7 +769,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/products/d2da581f-c48e-4b27-8d9d-9fc0d8b00c8f'
+       --url 'https://example.booqable.com/api/4/products/d2da581f-c48e-4b27-8d9d-9fc0d8b00c8f'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -794,9 +794,9 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2027-05-05T21:58:04.000000+00:00",
         "updated_at": "2027-05-05T21:58:04.000000+00:00",
+        "type": "products",
         "archived": false,
         "archived_at": null,
-        "type": "products",
         "name": "iPad Pro - red",
         "group_name": "iPad Pro",
         "slug": "ipad-pro",
@@ -851,7 +851,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,type`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=barcode,inventory_levels,photo`
 
 
@@ -907,7 +907,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/products/5fe125ba-4a82-4fad-8a18-03ea09db75a3'
+       --url 'https://example.booqable.com/api/4/products/5fe125ba-4a82-4fad-8a18-03ea09db75a3'
        --header 'content-type: application/json'
 ```
 
@@ -921,9 +921,9 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2021-02-18T21:58:00.000000+00:00",
         "updated_at": "2021-02-18T21:58:00.000000+00:00",
+        "type": "products",
         "archived": true,
         "archived_at": "2021-02-18T21:58:00.000000+00:00",
-        "type": "products",
         "name": "iPad Pro",
         "group_name": "iPad Pro",
         "slug": "5fe125ba-4a82-4fad-8a18-03ea09db75a3",
@@ -978,7 +978,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,archived`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[products]=created_at,updated_at,type`
 
 
 ### Includes

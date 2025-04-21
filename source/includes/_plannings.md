@@ -88,7 +88,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of plannings:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/plannings'
+  curl --get 'https://example.booqable.com/api/4/plannings'
        --header 'content-type: application/json'
 ```
 
@@ -106,10 +106,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-03-08T07:49:00.000000+00:00",
-          "stops_at": "1973-04-07T07:49:00.000000+00:00",
-          "reserved_from": "1973-03-08T07:49:00.000000+00:00",
-          "reserved_till": "1973-04-07T07:49:00.000000+00:00",
+          "starts_at": "1973-03-01T07:50:00.000000+00:00",
+          "stops_at": "1973-03-31T07:50:00.000000+00:00",
+          "reserved_from": "1973-03-01T07:50:00.000000+00:00",
+          "reserved_till": "1973-03-31T07:50:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -227,7 +227,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/plannings/search'
+       --url 'https://example.booqable.com/api/4/plannings/search'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -242,12 +242,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-04-15T09:28:52Z"
+                       "gte": "2025-04-22T09:27:45Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-04-18T09:28:52Z"
+                       "lte": "2025-04-25T09:27:45Z"
                      }
                    }
                  ]
@@ -257,12 +257,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-04-15T09:28:52Z"
+                       "gte": "2025-04-22T09:27:45Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-04-18T09:28:52Z"
+                       "lte": "2025-04-25T09:27:45Z"
                      }
                    }
                  ]
@@ -384,7 +384,7 @@ This request accepts the following includes:
 > How to fetch a planning:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/plannings/7ab088ea-e88a-4452-8ab3-d8593ea31603'
+  curl --get 'https://example.booqable.com/api/4/plannings/7ab088ea-e88a-4452-8ab3-d8593ea31603'
        --header 'content-type: application/json'
 ```
 
@@ -401,10 +401,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-04-01T04:14:01.000000+00:00",
-        "stops_at": "1978-05-01T04:14:01.000000+00:00",
-        "reserved_from": "1978-04-01T04:14:01.000000+00:00",
-        "reserved_till": "1978-05-01T04:14:01.000000+00:00",
+        "starts_at": "1978-03-25T04:15:01.000000+00:00",
+        "stops_at": "1978-04-24T04:15:01.000000+00:00",
+        "reserved_from": "1978-03-25T04:15:01.000000+00:00",
+        "reserved_till": "1978-04-24T04:15:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,

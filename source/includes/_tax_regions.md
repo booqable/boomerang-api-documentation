@@ -37,7 +37,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of tax regions:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/tax_regions'
+  curl --get 'https://example.booqable.com/api/4/tax_regions'
        --header 'content-type: application/json'
 ```
 
@@ -121,7 +121,7 @@ This request accepts the following includes:
 > How to fetch a tax regions with it's tax rates:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/tax_regions/d6cde3c4-b601-40af-8657-a4f48cf21302'
+  curl --get 'https://example.booqable.com/api/4/tax_regions/d6cde3c4-b601-40af-8657-a4f48cf21302'
        --header 'content-type: application/json'
        --data-urlencode 'include=tax_rates'
 ```
@@ -189,7 +189,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/tax_regions'
+       --url 'https://example.booqable.com/api/4/tax_regions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -302,7 +302,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/tax_regions/88245673-247e-4ecb-80c3-8d7cb31b5e27'
+       --url 'https://example.booqable.com/api/4/tax_regions/88245673-247e-4ecb-80c3-8d7cb31b5e27'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -439,7 +439,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/tax_regions/68a1ae1a-245f-45d0-8494-0502c65f562e'
+       --url 'https://example.booqable.com/api/4/tax_regions/68a1ae1a-245f-45d0-8494-0502c65f562e'
        --header 'content-type: application/json'
 ```
 

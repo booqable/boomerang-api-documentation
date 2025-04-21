@@ -44,7 +44,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of installed themes:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/themes'
+  curl --get 'https://example.booqable.com/api/4/themes'
        --header 'content-type: application/json'
 ```
 
@@ -83,7 +83,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of themes which are available for installation:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/themes'
+  curl --get 'https://example.booqable.com/api/4/themes'
        --header 'content-type: application/json'
        --data-urlencode 'filter[available_for_installation]=true'
 ```
@@ -175,7 +175,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/themes'
+       --url 'https://example.booqable.com/api/4/themes'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -266,7 +266,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/themes/e89e2806-1fa0-4dba-8df6-5728b48387cd'
+       --url 'https://example.booqable.com/api/4/themes/e89e2806-1fa0-4dba-8df6-5728b48387cd'
        --header 'content-type: application/json'
 ```
 

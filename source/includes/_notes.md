@@ -31,7 +31,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of notes:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/notes'
+  curl --get 'https://example.booqable.com/api/4/notes'
        --header 'content-type: application/json'
 ```
 
@@ -120,7 +120,7 @@ This request accepts the following includes:
 > How to fetch a note:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/notes/629a61d1-1b50-41fd-867f-b7882b29d2f6'
+  curl --get 'https://example.booqable.com/api/4/notes/629a61d1-1b50-41fd-867f-b7882b29d2f6'
        --header 'content-type: application/json'
 ```
 
@@ -180,7 +180,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/notes'
+       --url 'https://example.booqable.com/api/4/notes'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -261,7 +261,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/notes/32ad49c4-5673-460c-84fd-a5852a0e4d35'
+       --url 'https://example.booqable.com/api/4/notes/32ad49c4-5673-460c-84fd-a5852a0e4d35'
        --header 'content-type: application/json'
 ```
 

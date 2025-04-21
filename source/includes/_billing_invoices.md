@@ -36,7 +36,7 @@ Invoices received from Booqable
 > How to fetch a list of billing invoices:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/billing_invoices'
+  curl --get 'https://example.booqable.com/api/4/billing_invoices'
        --header 'content-type: application/json'
 ```
 
@@ -131,7 +131,7 @@ This request does not accept any includes
 > How to fetch a billing invoice:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/billing_invoices/7fbd37a3-96ff-4e1d-8651-1480d51594c0'
+  curl --get 'https://example.booqable.com/api/4/billing_invoices/7fbd37a3-96ff-4e1d-8651-1480d51594c0'
        --header 'content-type: application/json'
 ```
 

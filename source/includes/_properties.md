@@ -131,7 +131,7 @@ by setting the `properties_attribute` attribute:
 
 ```shell
   curl --request 
-       --url 'https://example.booqable.com/api/boomerang/customers'
+       --url 'https://example.booqable.com/api/4/customers'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -187,7 +187,7 @@ by setting the `properties_attribute` attribute:
 
 ```shell
   curl --request 
-       --url 'https://example.booqable.com/api/boomerang/customers'
+       --url 'https://example.booqable.com/api/4/customers'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -244,7 +244,7 @@ by setting the `properties_attribute` attribute:
 
 ```shell
   curl --request 
-       --url 'https://example.booqable.com/api/boomerang/customers/273e87b8-f7db-4315-8d74-4371f489b516'
+       --url 'https://example.booqable.com/api/4/customers/273e87b8-f7db-4315-8d74-4371f489b516'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -307,7 +307,7 @@ by setting the `properties_attribute` attribute:
 > How to fetch a list of properties:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/properties'
+  curl --get 'https://example.booqable.com/api/4/properties'
        --header 'content-type: application/json'
        --data-urlencode 'include=owner'
 ```
@@ -438,7 +438,7 @@ This request accepts the following includes:
 > How to fetch a property:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/properties/65f05300-83b5-4cd8-8a15-36bc907ecfe1'
+  curl --get 'https://example.booqable.com/api/4/properties/65f05300-83b5-4cd8-8a15-36bc907ecfe1'
        --header 'content-type: application/json'
        --data-urlencode 'include=owner'
 ```
@@ -538,7 +538,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/properties'
+       --url 'https://example.booqable.com/api/4/properties'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -680,7 +680,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/properties/a08be1e9-e4aa-4b1e-8a1c-ac9d6fa79d78'
+       --url 'https://example.booqable.com/api/4/properties/a08be1e9-e4aa-4b1e-8a1c-ac9d6fa79d78'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -783,7 +783,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/properties/eab99cab-3fac-4afa-88a3-1ce18a98889e'
+       --url 'https://example.booqable.com/api/4/properties/eab99cab-3fac-4afa-88a3-1ce18a98889e'
        --header 'content-type: application/json'
 ```
 

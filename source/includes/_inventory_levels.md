@@ -40,7 +40,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch inventory levels for a product:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/inventory_levels'
+  curl --get 'https://example.booqable.com/api/4/inventory_levels'
        --header 'content-type: application/json'
        --data-urlencode 'filter[from]=2022-01-01 09:00:00'
        --data-urlencode 'filter[item_id]=d4ef30b8-8959-4262-8dcd-d90c23a4ee8a'
@@ -138,7 +138,7 @@ This request accepts the following includes:
 > How to fetch inventory levels for a product for a specific location:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/inventory_levels'
+  curl --get 'https://example.booqable.com/api/4/inventory_levels'
        --header 'content-type: application/json'
        --data-urlencode 'filter[from]=2022-01-01 09:00:00'
        --data-urlencode 'filter[item_id]=f13f0c48-b1bd-48ef-81be-94aba9cee2fc'

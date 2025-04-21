@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of payment methods:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/payment_methods'
+  curl --get 'https://example.booqable.com/api/4/payment_methods'
        --header 'content-type: application/json'
 ```
 
@@ -119,7 +119,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/payment_methods'
+       --url 'https://example.booqable.com/api/4/payment_methods'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -197,7 +197,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/payment_methods/116b5701-21a0-41af-8a36-ca8d5e8767d6'
+       --url 'https://example.booqable.com/api/4/payment_methods/116b5701-21a0-41af-8a36-ca8d5e8767d6'
        --header 'content-type: application/json'
 ```
 

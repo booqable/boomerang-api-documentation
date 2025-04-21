@@ -39,7 +39,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of countries:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/countries'
+  curl --get 'https://example.booqable.com/api/4/countries'
        --header 'content-type: application/json'
 ```
 

@@ -47,7 +47,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/stock_adjustments'
+       --url 'https://example.booqable.com/api/4/stock_adjustments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -135,7 +135,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/stock_adjustments'
+       --url 'https://example.booqable.com/api/4/stock_adjustments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -278,7 +278,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/stock_adjustments'
+       --url 'https://example.booqable.com/api/4/stock_adjustments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -318,7 +318,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/stock_adjustments'
+       --url 'https://example.booqable.com/api/4/stock_adjustments'
        --header 'content-type: application/json'
        --data '{
          "data": {

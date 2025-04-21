@@ -48,7 +48,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch collections:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/collections'
+  curl --get 'https://example.booqable.com/api/4/collections'
        --header 'content-type: application/json'
 ```
 
@@ -146,7 +146,7 @@ This request does not accept any includes
 > How to fetch a single collection:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/collections/e747596e-eb84-4e15-8b4e-9b160d64633c'
+  curl --get 'https://example.booqable.com/api/4/collections/e747596e-eb84-4e15-8b4e-9b160d64633c'
        --header 'content-type: application/json'
 ```
 
@@ -220,7 +220,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/collections'
+       --url 'https://example.booqable.com/api/4/collections'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -322,7 +322,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/collections/6ee95651-79a3-47df-875d-6bceb66cb4e6'
+       --url 'https://example.booqable.com/api/4/collections/6ee95651-79a3-47df-875d-6bceb66cb4e6'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -426,7 +426,7 @@ To delete a collection make sure there are no nested collections anymore.
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/collections/df45847d-b793-411a-82a7-2344685a75df'
+       --url 'https://example.booqable.com/api/4/collections/df45847d-b793-411a-82a7-2344685a75df'
        --header 'content-type: application/json'
 ```
 

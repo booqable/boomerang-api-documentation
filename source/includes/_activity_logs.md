@@ -36,7 +36,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch an activity log:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/activity_logs/e69af64b-a3d5-437c-83bd-e54a6d3873ca'
+  curl --get 'https://example.booqable.com/api/4/activity_logs/e69af64b-a3d5-437c-83bd-e54a6d3873ca'
        --header 'content-type: application/json'
 ```
 
@@ -97,7 +97,7 @@ This request accepts the following includes:
 > How to filter activity logs by relation and action type:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/activity_logs'
+  curl --get 'https://example.booqable.com/api/4/activity_logs'
        --header 'content-type: application/json'
        --data-urlencode 'filter[action_key]=change_price_settings_for_product_group'
        --data-urlencode 'filter[relation_id]=bacff37a-326a-44ed-8227-751a2c95d42f'

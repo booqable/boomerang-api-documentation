@@ -38,7 +38,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch performance for products:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/report_rentals'
+  curl --get 'https://example.booqable.com/api/4/report_rentals'
        --header 'content-type: application/json'
        --data-urlencode 'filter[from]=2019-11-20T14:14:00.000000+00:00'
        --data-urlencode 'filter[till]=2019-11-26T14:13:00.000000+00:00'
@@ -53,7 +53,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
         "type": "report_rentals",
         "attributes": {
-          "created_at": "2019-11-25T23:43:00.000000+00:00",
+          "created_at": "2019-11-25T23:42:00.000000+00:00",
           "name": "Product 1000056",
           "charge_duration_in_seconds": 14400,
           "planned_duration_in_seconds": 14400,

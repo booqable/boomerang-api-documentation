@@ -129,6 +129,7 @@ Check each individual operation to see which relations can be included as a side
 `grand_total_with_tax_in_cents` | **integer** `readonly`<br>Amount incl. taxes (excl. deposit). 
 `has_signed_contract` | **boolean** `readonly`<br>Whether the order has a signed contract. 
 `id` | **uuid** `readonly`<br>Primary key.
+`item_count` | **integer** `readonly`<br>The number of items on the order. 
 `location_shortage` | **boolean** `readonly`<br>Whether there is a shortage on the pickup location. This is `true` when the requested items are not available at the specific `start_location` selected for the order, even if they might be available at other locations in the same cluster. 
 `number` | **integer** `readonly`<br>The unique order number. 
 `order_delivery_rate_attributes` | **hash** `writeonly`<br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
@@ -164,7 +165,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of orders:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/orders'
+  curl --get 'https://example.booqable.com/api/4/orders'
        --header 'content-type: application/json'
 ```
 
@@ -191,8 +192,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-01-27T03:01:01.000000+00:00",
-          "stops_at": "1970-02-26T03:01:01.000000+00:00",
+          "starts_at": "1970-01-20T03:02:01.000000+00:00",
+          "stops_at": "1970-02-19T03:02:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -202,6 +203,7 @@ Check each individual operation to see which relations can be included as a side
           "payment_status": "payment_due",
           "override_period_restrictions": false,
           "has_signed_contract": false,
+          "item_count": 1,
           "tag_list": [
             "webshop"
           ],
@@ -299,6 +301,7 @@ Name | Description
 `grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `has_signed_contract` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
+`item_count` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `item_id` | **uuid** <br>`eq`
 `location_shortage` | **boolean** <br>`eq`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -350,6 +353,7 @@ Name | Description
 `fulfillment_type` | **array** <br>`count`
 `grand_total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `grand_total_with_tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`item_count` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `location_shortage` | **array** <br>`count`
 `paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `payment_status` | **array** <br>`count`
@@ -398,7 +402,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/orders/search'
+       --url 'https://example.booqable.com/api/4/orders/search'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -413,14 +417,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-04-15T09:28:15Z",
-                       "lte": "2025-04-18T09:28:15Z"
+                       "gte": "2025-04-22T09:27:07Z",
+                       "lte": "2025-04-25T09:27:07Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-04-15T09:28:15Z",
-                       "lte": "2025-04-18T09:28:15Z"
+                       "gte": "2025-04-22T09:27:07Z",
+                       "lte": "2025-04-25T09:27:07Z"
                      }
                    }
                  ]
@@ -509,6 +513,7 @@ Name | Description
 `grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `has_signed_contract` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
+`item_count` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `item_id` | **uuid** <br>`eq`
 `location_shortage` | **boolean** <br>`eq`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -560,6 +565,7 @@ Name | Description
 `fulfillment_type` | **array** <br>`count`
 `grand_total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `grand_total_with_tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`item_count` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `location_shortage` | **array** <br>`count`
 `paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `payment_status` | **array** <br>`count`
@@ -607,7 +613,7 @@ Returns an existing or new order for the current employee.
 > How to fetch a new order:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/orders/new'
+  curl --get 'https://example.booqable.com/api/4/orders/new'
        --header 'content-type: application/json'
 ```
 
@@ -644,6 +650,7 @@ Returns an existing or new order for the current employee.
         "payment_status": "paid",
         "override_period_restrictions": false,
         "has_signed_contract": false,
+        "item_count": 0,
         "tag_list": [],
         "properties": {},
         "amount_in_cents": 0,
@@ -795,7 +802,7 @@ This request accepts the following includes:
 > How to fetch an order:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/orders/620766b9-d5c5-4e8d-83cd-c106f1bb148e'
+  curl --get 'https://example.booqable.com/api/4/orders/620766b9-d5c5-4e8d-83cd-c106f1bb148e'
        --header 'content-type: application/json'
 ```
 
@@ -821,8 +828,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-06-24T12:20:01.000000+00:00",
-        "stops_at": "1970-07-24T12:20:01.000000+00:00",
+        "starts_at": "1970-06-17T12:21:01.000000+00:00",
+        "stops_at": "1970-07-17T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -832,6 +839,7 @@ This request accepts the following includes:
         "payment_status": "payment_due",
         "override_period_restrictions": false,
         "has_signed_contract": false,
+        "item_count": 1,
         "tag_list": [
           "webshop"
         ],
@@ -992,7 +1000,7 @@ When creating an order, and the following fields are left blank, a sensible defa
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/orders'
+       --url 'https://example.booqable.com/api/4/orders'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -1027,8 +1035,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:27:01.000000+00:00",
-        "stops_at": "2026-11-03T14:27:01.000000+00:00",
+        "starts_at": "2026-09-25T14:28:01.000000+00:00",
+        "stops_at": "2026-11-03T14:28:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1038,6 +1046,7 @@ When creating an order, and the following fields are left blank, a sensible defa
         "payment_status": "paid",
         "override_period_restrictions": false,
         "has_signed_contract": false,
+        "item_count": 0,
         "tag_list": [],
         "properties": {},
         "amount_in_cents": 0,
@@ -1225,7 +1234,7 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/orders/b7fc4715-4681-4fbf-8786-f911532c94f1'
+       --url 'https://example.booqable.com/api/4/orders/b7fc4715-4681-4fbf-8786-f911532c94f1'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -1265,7 +1274,7 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/orders/2508bac9-57f4-4320-8fe5-e3e30186754d'
+       --url 'https://example.booqable.com/api/4/orders/2508bac9-57f4-4320-8fe5-e3e30186754d'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -1304,7 +1313,7 @@ When updating a customer on an order the following settings will be applied and 
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/orders/93a4240b-dabb-4402-8f6c-bc85a87f922c'
+       --url 'https://example.booqable.com/api/4/orders/93a4240b-dabb-4402-8f6c-bc85a87f922c'
        --header 'content-type: application/json'
        --data '{
          "data": {

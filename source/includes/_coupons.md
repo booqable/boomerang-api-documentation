@@ -28,7 +28,7 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
 > How to fetch a list of coupons:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/coupons'
+  curl --get 'https://example.booqable.com/api/4/coupons'
        --header 'content-type: application/json'
 ```
 
@@ -109,7 +109,7 @@ This request does not accept any includes
 > How to fetch a coupon:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/coupons/2a057098-ccb5-4179-800a-0d295431eaa3'
+  curl --get 'https://example.booqable.com/api/4/coupons/2a057098-ccb5-4179-800a-0d295431eaa3'
        --header 'content-type: application/json'
 ```
 
@@ -158,7 +158,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/coupons'
+       --url 'https://example.booqable.com/api/4/coupons'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -231,7 +231,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/coupons/90aa7e25-800f-4f23-84c2-1f077eaea4dd'
+       --url 'https://example.booqable.com/api/4/coupons/90aa7e25-800f-4f23-84c2-1f077eaea4dd'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -272,7 +272,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/coupons/8c0f8005-b948-4ddc-855b-6825e4159246'
+       --url 'https://example.booqable.com/api/4/coupons/8c0f8005-b948-4ddc-855b-6825e4159246'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -342,7 +342,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/coupons/48f7032a-1017-4616-82e3-be69134a1685'
+       --url 'https://example.booqable.com/api/4/coupons/48f7032a-1017-4616-82e3-be69134a1685'
        --header 'content-type: application/json'
 ```
 

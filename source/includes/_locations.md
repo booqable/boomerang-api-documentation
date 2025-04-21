@@ -49,7 +49,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch locations:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/locations'
+  curl --get 'https://example.booqable.com/api/4/locations'
        --header 'content-type: application/json'
 ```
 
@@ -171,7 +171,7 @@ This request accepts the following includes:
 > How to fetch a single location:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/locations/954bf312-7f80-4c5a-8547-8626943b877c'
+  curl --get 'https://example.booqable.com/api/4/locations/954bf312-7f80-4c5a-8547-8626943b877c'
        --header 'content-type: application/json'
 ```
 
@@ -259,7 +259,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/locations'
+       --url 'https://example.booqable.com/api/4/locations'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -416,7 +416,7 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/locations/620301be-6eb5-4f1f-8fdd-7d1539cbcfc2'
+       --url 'https://example.booqable.com/api/4/locations/620301be-6eb5-4f1f-8fdd-7d1539cbcfc2'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -531,7 +531,7 @@ Note that disassociating clusters may result in a shortage error.
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/locations/f224137a-3275-466e-8502-c1e66ea8444c'
+       --url 'https://example.booqable.com/api/4/locations/f224137a-3275-466e-8502-c1e66ea8444c'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -648,7 +648,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/locations/3f258b5c-005d-4808-81c2-954da48df0cb'
+       --url 'https://example.booqable.com/api/4/locations/3f258b5c-005d-4808-81c2-954da48df0cb'
        --header 'content-type: application/json'
 ```
 
@@ -705,7 +705,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/locations/0b51712b-bd56-43d4-8e58-08b818262a12'
+       --url 'https://example.booqable.com/api/4/locations/0b51712b-bd56-43d4-8e58-08b818262a12'
        --header 'content-type: application/json'
 ```
 
@@ -733,7 +733,7 @@ To archive a location make sure that:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/locations/d5edee8a-8801-48cd-8087-14b1d659a294'
+       --url 'https://example.booqable.com/api/4/locations/d5edee8a-8801-48cd-8087-14b1d659a294'
        --header 'content-type: application/json'
 ```
 

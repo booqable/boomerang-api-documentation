@@ -25,7 +25,7 @@ A list of all login attempts for the current employee.
 > How to fetch a list of login activities:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/login_activities'
+  curl --get 'https://example.booqable.com/api/4/login_activities'
        --header 'content-type: application/json'
 ```
 

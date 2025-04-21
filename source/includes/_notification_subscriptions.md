@@ -48,7 +48,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of notification subscriptions:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/notification_subscriptions'
+  curl --get 'https://example.booqable.com/api/4/notification_subscriptions'
        --header 'content-type: application/json'
 ```
 
@@ -165,7 +165,7 @@ This request does not accept any includes
 > How to fetch a list of global notification subscriptions:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/notification_subscriptions'
+  curl --get 'https://example.booqable.com/api/4/notification_subscriptions'
        --header 'content-type: application/json'
        --data-urlencode 'filter[global]=true'
 ```
@@ -270,7 +270,7 @@ This request does not accept any includes
 > How to fetch a list of non-global/owned notification subscriptions:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/notification_subscriptions'
+  curl --get 'https://example.booqable.com/api/4/notification_subscriptions'
        --header 'content-type: application/json'
        --data-urlencode 'filter[global]=false'
 ```
@@ -349,7 +349,7 @@ This request does not accept any includes
 > How to fetch a notification subscription:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/notification_subscriptions/14a99f09-8eb2-468e-8247-8d74e95b1ce6'
+  curl --get 'https://example.booqable.com/api/4/notification_subscriptions/14a99f09-8eb2-468e-8247-8d74e95b1ce6'
        --header 'content-type: application/json'
 ```
 
@@ -397,7 +397,7 @@ This request does not accept any includes
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/notification_subscriptions'
+       --url 'https://example.booqable.com/api/4/notification_subscriptions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -466,7 +466,7 @@ This request does not accept any includes
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/notification_subscriptions/c876c994-c34e-4f04-89db-1daaa7299ec5'
+       --url 'https://example.booqable.com/api/4/notification_subscriptions/c876c994-c34e-4f04-89db-1daaa7299ec5'
        --header 'content-type: application/json'
 ```
 

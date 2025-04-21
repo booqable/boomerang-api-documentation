@@ -45,7 +45,7 @@ Check each individual operation to see which relations can be included as a side
 > Calculating price for a period:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/item_prices'
+  curl --get 'https://example.booqable.com/api/4/item_prices'
        --header 'content-type: application/json'
        --data-urlencode 'filter[from]=2030-01-01 12:00:00 UTC'
        --data-urlencode 'filter[item_id][]=6a8292cc-4002-4f8e-8da2-1e182dbacc08'
@@ -119,11 +119,11 @@ Check each individual operation to see which relations can be included as a side
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2023-07-07T07:37:00.000000+00:00",
-          "updated_at": "2023-07-07T07:37:00.000000+00:00",
+          "created_at": "2023-07-14T07:36:00.000000+00:00",
+          "updated_at": "2023-07-14T07:36:00.000000+00:00",
+          "type": "products",
           "archived": false,
           "archived_at": null,
-          "type": "products",
           "name": "Product 1000004",
           "group_name": "Product 1000004",
           "slug": "product-1000004",
@@ -166,11 +166,11 @@ Check each individual operation to see which relations can be included as a side
         "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
         "type": "products",
         "attributes": {
-          "created_at": "2023-07-07T07:37:00.000000+00:00",
-          "updated_at": "2023-07-07T07:37:00.000000+00:00",
+          "created_at": "2023-07-14T07:36:00.000000+00:00",
+          "updated_at": "2023-07-14T07:36:00.000000+00:00",
+          "type": "products",
           "archived": false,
           "archived_at": null,
-          "type": "products",
           "name": "Product 1000005",
           "group_name": "Product 1000005",
           "slug": "product-1000005",
@@ -217,7 +217,7 @@ Check each individual operation to see which relations can be included as a side
 > Calculating price charge length:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/item_prices'
+  curl --get 'https://example.booqable.com/api/4/item_prices'
        --header 'content-type: application/json'
        --data-urlencode 'filter[charge_length]=36000'
        --data-urlencode 'filter[item_id]=f513ca7d-c6b0-432c-84fa-1b60f29a4cfa'
@@ -264,9 +264,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2023-06-13T08:19:05.000000+00:00",
           "updated_at": "2023-06-13T08:19:05.000000+00:00",
+          "type": "products",
           "archived": false,
           "archived_at": null,
-          "type": "products",
           "name": "Product 1000006",
           "group_name": "Product 1000006",
           "slug": "product-1000006",

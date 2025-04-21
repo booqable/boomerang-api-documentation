@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of rates:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/order_delivery_rates'
+  curl --get 'https://example.booqable.com/api/4/order_delivery_rates'
        --header 'content-type: application/json'
        --data-urlencode 'filter[order_id]=511097b6-24a3-4291-8141-095dcff3eb32'
 ```
@@ -142,7 +142,7 @@ This request accepts the following includes:
 > How to fetch a rate:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/order_delivery_rates/92882618-2029-4da8-84ce-00546ba482bf'
+  curl --get 'https://example.booqable.com/api/4/order_delivery_rates/92882618-2029-4da8-84ce-00546ba482bf'
        --header 'content-type: application/json'
 ```
 
@@ -203,7 +203,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_delivery_rates'
+       --url 'https://example.booqable.com/api/4/order_delivery_rates'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -291,7 +291,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/00380853-f61f-4ade-8d98-f1cbcbfe2d7f'
+       --url 'https://example.booqable.com/api/4/order_delivery_rates/00380853-f61f-4ade-8d98-f1cbcbfe2d7f'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -377,7 +377,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/order_delivery_rates/e1bbed39-2b7f-4c41-806e-4d3259929112'
+       --url 'https://example.booqable.com/api/4/order_delivery_rates/e1bbed39-2b7f-4c41-806e-4d3259929112'
        --header 'content-type: application/json'
 ```
 

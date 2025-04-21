@@ -30,7 +30,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch clusters:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/clusters'
+  curl --get 'https://example.booqable.com/api/4/clusters'
        --header 'content-type: application/json'
 ```
 
@@ -113,7 +113,7 @@ This request accepts the following includes:
 > How to fetch a single cluster:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/clusters/242d27bb-1ff5-41ca-80d5-dd4a2c675525'
+  curl --get 'https://example.booqable.com/api/4/clusters/242d27bb-1ff5-41ca-80d5-dd4a2c675525'
        --header 'content-type: application/json'
 ```
 
@@ -168,7 +168,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/clusters'
+       --url 'https://example.booqable.com/api/4/clusters'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -241,7 +241,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/clusters/df280d1c-34d7-4b2d-89d8-289bf254f317'
+       --url 'https://example.booqable.com/api/4/clusters/df280d1c-34d7-4b2d-89d8-289bf254f317'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -316,7 +316,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/clusters/79f093e1-f668-4a70-8e91-6f10c351314a'
+       --url 'https://example.booqable.com/api/4/clusters/79f093e1-f668-4a70-8e91-6f10c351314a'
        --header 'content-type: application/json'
 ```
 
@@ -343,7 +343,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/clusters/475d542a-ad19-4eea-87be-bdc3a2726baf'
+       --url 'https://example.booqable.com/api/4/clusters/475d542a-ad19-4eea-87be-bdc3a2726baf'
        --header 'content-type: application/json'
 ```
 

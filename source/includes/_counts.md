@@ -30,7 +30,7 @@ Get the counts for resources in an account.
 > How to fetch counts for a company:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/counts/current'
+  curl --get 'https://example.booqable.com/api/4/counts/current'
        --header 'content-type: application/json'
 ```
 

@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of tax values:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/tax_values'
+  curl --get 'https://example.booqable.com/api/4/tax_values'
        --header 'content-type: application/json'
 ```
 
@@ -117,7 +117,7 @@ This request does not accept any includes
 > How to fetch a tax value:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/tax_values/af3a48e5-050f-4556-89e6-e863b75c268a'
+  curl --get 'https://example.booqable.com/api/4/tax_values/af3a48e5-050f-4556-89e6-e863b75c268a'
        --header 'content-type: application/json'
        --data-urlencode 'include=owner'
 ```
@@ -167,8 +167,8 @@ This request does not accept any includes
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-01-30T17:33:00.000000+00:00",
-          "stops_at": "2018-02-03T17:33:00.000000+00:00",
+          "starts_at": "2018-01-30T17:19:00.000000+00:00",
+          "stops_at": "2018-02-03T17:19:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,
@@ -178,6 +178,7 @@ This request does not accept any includes
           "payment_status": "paid",
           "override_period_restrictions": false,
           "has_signed_contract": false,
+          "item_count": 0,
           "tag_list": [],
           "properties": {},
           "amount_in_cents": 0,

@@ -55,7 +55,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch the session:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/sessions/current'
+  curl --get 'https://example.booqable.com/api/4/sessions/current'
        --header 'content-type: application/json'
        --data-urlencode 'extra_fields[companies]=subscription'
        --data-urlencode 'include=company,employee,settings'
@@ -600,7 +600,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1744622988"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1745227728"
         }
       },
       {

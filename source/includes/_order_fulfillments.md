@@ -214,7 +214,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -255,7 +255,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -297,7 +297,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -339,7 +339,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -383,7 +383,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -492,7 +492,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -535,7 +535,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -673,7 +673,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -714,7 +714,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -820,7 +820,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -860,7 +860,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_fulfillments'
+       --url 'https://example.booqable.com/api/4/order_fulfillments'
        --header 'content-type: application/json'
        --data '{
          "data": {

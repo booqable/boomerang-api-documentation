@@ -75,7 +75,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of bundles:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/bundles'
+  curl --get 'https://example.booqable.com/api/4/bundles'
        --header 'content-type: application/json'
 ```
 
@@ -204,7 +204,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/bundles/search'
+       --url 'https://example.booqable.com/api/4/bundles/search'
        --header 'content-type: application/json'
        --data '{
          "fields": {
@@ -345,7 +345,7 @@ This request accepts the following includes:
 > How to fetch a bundle:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/bundles/7a7aeed9-35dd-40fe-8ece-5551e24ce953'
+  curl --get 'https://example.booqable.com/api/4/bundles/7a7aeed9-35dd-40fe-8ece-5551e24ce953'
        --header 'content-type: application/json'
 ```
 
@@ -441,7 +441,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/bundles'
+       --url 'https://example.booqable.com/api/4/bundles'
        --header 'content-type: application/json'
        --data '{
          "include": "bundle_items",
@@ -660,7 +660,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/bundles/ed81707b-f578-4a6e-82e8-062f3b5ae2d9'
+       --url 'https://example.booqable.com/api/4/bundles/ed81707b-f578-4a6e-82e8-062f3b5ae2d9'
        --header 'content-type: application/json'
        --data '{
          "include": "bundle_items",
@@ -840,7 +840,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/bundles/ec090d58-5e64-4db7-89ae-80f6bcdd3d22'
+       --url 'https://example.booqable.com/api/4/bundles/ec090d58-5e64-4db7-89ae-80f6bcdd3d22'
        --header 'content-type: application/json'
 ```
 

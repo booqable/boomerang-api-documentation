@@ -68,7 +68,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -108,7 +108,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -148,7 +148,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -196,7 +196,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -244,7 +244,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -284,7 +284,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -334,7 +334,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -370,7 +370,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -410,7 +410,7 @@ Check each individual operation to see which relations can be included as a side
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/order_status_transitions'
+       --url 'https://example.booqable.com/api/4/order_status_transitions'
        --header 'content-type: application/json'
        --data '{
          "data": {

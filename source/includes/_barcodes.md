@@ -56,7 +56,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of barcodes:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/barcodes'
+  curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
 ```
 
@@ -87,7 +87,7 @@ Check each individual operation to see which relations can be included as a side
 > How to find an owner by a barcode number:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/barcodes'
+  curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
        --data-urlencode 'filter[number]=http://bqbl.it/9882a0de-d425-4c34-8a53-f65dd35dd375'
        --data-urlencode 'include=owner'
@@ -153,9 +153,9 @@ Check each individual operation to see which relations can be included as a side
 > How to find an owner by a barcode number containing a url:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/barcodes'
+  curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNzNiZGNjMmQtNGIxMS00MzQzLThhNTMtNzA5NGVjMjI1MDMw'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNTNjYzUyMGItMzFlMy00NWNlLWI4ZmItOTNlMjkyNGZjOGNi'
        --data-urlencode 'include=owner'
 ```
 
@@ -285,7 +285,7 @@ This request accepts the following includes:
 > How to fetch a barcode:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/barcodes/60d46666-056c-4072-8fd0-cae57d7a90ff'
+  curl --get 'https://example.booqable.com/api/4/barcodes/60d46666-056c-4072-8fd0-cae57d7a90ff'
        --header 'content-type: application/json'
        --data-urlencode 'include=owner'
 ```
@@ -386,7 +386,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/barcodes'
+       --url 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -475,7 +475,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/barcodes/d4f58d8f-2318-44f4-8097-9dbe2a9ddaf2'
+       --url 'https://example.booqable.com/api/4/barcodes/d4f58d8f-2318-44f4-8097-9dbe2a9ddaf2'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -563,7 +563,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/barcodes/ac988a7e-ebdc-45af-8638-9783aeb4594e'
+       --url 'https://example.booqable.com/api/4/barcodes/ac988a7e-ebdc-45af-8638-9783aeb4594e'
        --header 'content-type: application/json'
 ```
 

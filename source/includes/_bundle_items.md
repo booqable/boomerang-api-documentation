@@ -48,7 +48,7 @@ Check each individual operation to see which relations can be included as a side
 > How to fetch a list of bundle items:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/bundle_items'
+  curl --get 'https://example.booqable.com/api/4/bundle_items'
        --header 'content-type: application/json'
        --data-urlencode 'filter[bundle_id]=b484afb9-abf3-4598-8fce-44d5d5c62784'
 ```
@@ -152,7 +152,7 @@ This request accepts the following includes:
 > How to fetch a bundle item:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/boomerang/bundle_items/613a8167-828e-4728-8f62-810a41cd2ba5'
+  curl --get 'https://example.booqable.com/api/4/bundle_items/613a8167-828e-4728-8f62-810a41cd2ba5'
        --header 'content-type: application/json'
 ```
 
@@ -223,7 +223,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request POST
-       --url 'https://example.booqable.com/api/boomerang/bundle_items'
+       --url 'https://example.booqable.com/api/4/bundle_items'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -320,7 +320,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/boomerang/bundle_items/b19d7917-4360-464c-8add-3d8003786467'
+       --url 'https://example.booqable.com/api/4/bundle_items/b19d7917-4360-464c-8add-3d8003786467'
        --header 'content-type: application/json'
        --data '{
          "data": {
@@ -415,7 +415,7 @@ This request accepts the following includes:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/boomerang/bundle_items/791f0c17-84d2-4362-8ad5-b097d71cf9e6'
+       --url 'https://example.booqable.com/api/4/bundle_items/791f0c17-84d2-4362-8ad5-b097d71cf9e6'
        --header 'content-type: application/json'
 ```
 
