@@ -28,7 +28,7 @@ You can manage your Access Tokens from your account. You can have multiple Acces
 
 ```shell
 curl --request GET \
-  --url 'https://example.booqable.com/api/boomerang/customers' \
+  --url 'https://example.booqable.com/api/4/customers' \
   --header 'Authorization: Bearer 9bcabeaa827810ad6383d2e15feab2d0c7d039093e22fdd955f11fe83437a32a'
 ```
 
@@ -68,7 +68,7 @@ You can have multiple authentication methods active at one time.
 request_method = 'POST'
 
 # Encoded request params
-fullpath = '/api/boomerang/orders/?filter%5Bcreated_at%5D%5Bgte%5D%3D1231232131132'
+fullpath = '/api/4/orders/?filter%5Bcreated_at%5D%5Bgte%5D%3D1231232131132'
 
 # Base64 encoded SHA256 body
 body = '{"note":"Let me in!"}'
@@ -118,7 +118,7 @@ Base64(
 
 ```shell
 curl --request GET \
-  --url 'https://example.booqable.com/api/boomerang/customers' \
+  --url 'https://example.booqable.com/api/4/customers' \
   --header 'Authorization: Bearer eyJraWQiOiIwZTJkM2I2YS00OTU0LTQyZTItYTAyNS1kYjMzODE1ZDU2YzUiLCJraW5kIjoic2luZ2xlX3VzZSIsImFsZyI6IkVTMjU2In0.eyJpc3MiOiJodHRwOi8vY29tcGFueS1uYW1lLmJvb3FhYmxlLmNvbSIsInN1YiI6IjVlMWViZmFmLWM5YmEtNDMyOC1hM2U1LThlNzNmZGQ1NGNiOSIsImF1ZCI6IjE4ZGI4YTE0LThhYzctNDE1OS05NmJkLTMxMzI0NmRhYTExMCIsImV4cCI6MTYzNTk0ODk3MiwiaWF0IjoxNjM1OTQ4MzcyLCJqdGkiOiJmMTNkZjNlOC0zMWNjLTQxYTUtOWVlNy1mZjgzMTdmNWQ0Y2EuVUU5VFZDNHZQMlpwYkhSbGNpVTFRbU55WldGMFpXUmZZWFFsTlVRbE5VSm5kR1VsTlVRbE0wUXhNak14TWpNeU1UTXhNVE15TGpWemNGcEhSak5IZFdVeVoycFZRVVZ3ZUhsVll6VTVVbTlIZW5sb2NHMXNWbVo0WlVGNVRrSlZUazA5In0.7S2eI3R6meFPPgZ5iyZQOsTDBHRCihKozKMjvIrNHeYoEsxzKltQhGjb2rnfSlpGrCL38-ub-FTs5EXP39rJfw
 ```
 

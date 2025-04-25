@@ -15,7 +15,7 @@ The Booqable API is a RESTful [JSON API](https://jsonapi.org/) as such is design
 All API requests need to be directed to the correct company-specific endpoint.
 The format is as follows:
 
-`https://{company_slug}.booqable.com/api/boomerang/`
+`https://{company_slug}.booqable.com/api/4/`
 
 <aside class="notice">
   You must replace <code>{company_slug}</code> with the name of your company.
@@ -33,7 +33,7 @@ You can, however, also request data in nested structure by appending `.json` to 
 > A typical JSON API response:
 
 ```
-GET /api/boomerang/orders?include=customer
+GET /api/4/orders?include=customer
 ```
 
 ```json
@@ -49,7 +49,7 @@ GET /api/boomerang/orders?include=customer
       "relationships": {
         "customer": {
           "links": {
-            "related": "api/boomerang/customers/24e54970-7473-49a9-a71a-8c07eb97e510"
+            "related": "api/4/customers/24e54970-7473-49a9-a71a-8c07eb97e510"
           },
           "data": {
             "type": "customers",
@@ -69,16 +69,16 @@ GET /api/boomerang/orders?include=customer
       "relationships": {
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=24e54970-7473-49a9-a71a-8c07eb97e510&filter[owner_type]=Customer"
+            "related": "api/4/properties?filter[owner_id]=24e54970-7473-49a9-a71a-8c07eb97e510&filter[owner_type]=Customer"
           }
         }
       }
     }
   ],
   "links": {
-    "self": "api/boomerang/orders?fields%5Bcustomer%5D=name&fields%5Borders%5D=starts_at%2Cstops_at&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "first": "api/boomerang/orders?fields%5Bcustomer%5D=name&fields%5Borders%5D=starts_at%2Cstops_at&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
-    "last": "api/boomerang/orders?fields%5Bcustomer%5D=name&fields%5Borders%5D=starts_at%2Cstops_at&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    "self": "api/4/orders?fields%5Bcustomer%5D=name&fields%5Borders%5D=starts_at%2Cstops_at&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "first": "api/4/orders?fields%5Bcustomer%5D=name&fields%5Borders%5D=starts_at%2Cstops_at&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "api/4/orders?fields%5Bcustomer%5D=name&fields%5Borders%5D=starts_at%2Cstops_at&include=customer&page%5Bnumber%5D=1&page%5Bsize%5D=25"
   },
   "meta": {}
 }
@@ -87,7 +87,7 @@ GET /api/boomerang/orders?include=customer
 > A JSON response:
 
 ```
-GET /api/boomerang/orders.json?include=customer
+GET /api/4/orders.json?include=customer
 ```
 
 ```json
@@ -146,7 +146,7 @@ Collections returned in list requests can be filtered on specific fields; filter
 > How to filter a request:
 
 ```
-/api/boomerang/orders?filter[starts_at][gte]=1980-11-16T09:00:00+00:00&filter[starts_at][lte]=1990-11-16T09:00:00+00:00&filter[status]=reserved
+/api/4/orders?filter[starts_at][gte]=1980-11-16T09:00:00+00:00&filter[starts_at][lte]=1990-11-16T09:00:00+00:00&filter[status]=reserved
 ```
 
 
@@ -161,7 +161,7 @@ The Booqable API consists of many resources related to each other. Therefore the
 > Including associated data:
 
 ```
-GET api/boomerang/orders?include=customer,customer.properties
+GET api/4/orders?include=customer,customer.properties
 ```
 
 ```json
@@ -176,7 +176,7 @@ GET api/boomerang/orders?include=customer,customer.properties
     "relationships": {
       "customer": {
         "links": {
-          "related": "api/boomerang/customers/404021af-c889-4d72-9296-481640f4c750"
+          "related": "api/4/customers/404021af-c889-4d72-9296-481640f4c750"
         },
         "data": {
           "type": "customers",
@@ -195,7 +195,7 @@ GET api/boomerang/orders?include=customer,customer.properties
       "relationships": {
         "properties": {
           "links": {
-            "related": "api/boomerang/properties?filter[owner_id]=404021af-c889-4d72-9296-481640f4c750&filter[owner_type]=Customer"
+            "related": "api/4/properties?filter[owner_id]=404021af-c889-4d72-9296-481640f4c750&filter[owner_type]=Customer"
           },
           "data": [
             {
@@ -216,7 +216,7 @@ GET api/boomerang/orders?include=customer,customer.properties
       "relationships": {
         "owner": {
           "links": {
-            "related": "api/boomerang/customers/404021af-c889-4d72-9296-481640f4c750"
+            "related": "api/4/customers/404021af-c889-4d72-9296-481640f4c750"
           }
         }
       }
