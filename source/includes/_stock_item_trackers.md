@@ -133,24 +133,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`product_tracker` => 
-`employee`
-
-
-`order` => 
-`customer`
-
-
-
-
-`product`
-
-
-
-
-`stock_item`
-
-
-
-
+<ul>
+  <li>
+    <code>product_tracker</code>
+    <ul>
+      <li><code>employee</code></li>
+      <li>
+          <code>order</code>
+          <ul>
+            <li><code>customer</code></li>
+          </ul>
+      </li>
+      <li><code>product</code></li>
+    </ul>
+  </li>
+  <li><code>stock_item</code></li>
+</ul>
 

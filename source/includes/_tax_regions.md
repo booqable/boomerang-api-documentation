@@ -108,11 +108,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Fetch a tax region
@@ -175,11 +173,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Create a tax region
@@ -288,11 +284,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Update a tax region
@@ -425,11 +419,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Delete a tax region

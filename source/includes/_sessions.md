@@ -35,14 +35,15 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`addons` | **array** <br>The available addons for billing plans.
 `billing_plans` | **array** <br>The available billing plans.
 `clusters_updated_at` | **datetime** <br>When the clusters were last updated.
 `company_id` | **uuid** <br>The [Company](#companies).
 `countries_updated_at` | **datetime** <br>When the countries were last updated.
 `default_properties_updated_at` | **datetime** <br>When the default properties were last updated.
 `employee_id` | **uuid** <br>The current [Employee](#employees).
+`extra_charges` | **array** <br>The available extra charges for billing plans (like addons and extra employees/locations).
 `id` | **uuid** <br>Primary key.
+`legacy_paypal_enabled` | **boolean** <br>Whether the legacy PayPal integration should be displayed.
 `locations_updated_at` | **datetime** <br>When locations were last updated.
 `notification_subscriptions_updated_at` | **datetime** <br>When the employee last made a change to their notification subscriptions.
 `operating_rules_updated_at` | **datetime** <br>When the operating rules were last updated.
@@ -367,36 +368,101 @@ Check each individual operation to see which relations can be included as a side
             ]
           }
         ],
-        "addons": [
+        "legacy_paypal_enabled": true,
+        "extra_charges": [
+          {
+            "name": "extra_employee_expiring",
+            "month_price": 20,
+            "year_price": 200,
+            "per_employee": null,
+            "features": null,
+            "default": null
+          },
+          {
+            "name": "extra_location_expiring",
+            "month_price": 25,
+            "year_price": 240,
+            "per_employee": null,
+            "features": null,
+            "default": null
+          },
+          {
+            "name": "extra_employee",
+            "month_price": 44,
+            "year_price": 420,
+            "per_employee": null,
+            "features": null,
+            "default": null
+          },
+          {
+            "name": "extra_location",
+            "month_price": 37,
+            "year_price": 348,
+            "per_employee": null,
+            "features": null,
+            "default": null
+          },
           {
             "name": "online_bookings",
             "month_price": 24,
-            "year_price": 228
+            "year_price": 228,
+            "per_employee": false,
+            "features": [
+              "online_bookings",
+              "custom_domain",
+              "shop_tracking"
+            ],
+            "default": true
           },
           {
             "name": "mobile_app",
             "month_price": 24,
-            "year_price": 228
+            "year_price": 228,
+            "per_employee": false,
+            "features": [
+              "mobile_app"
+            ],
+            "default": true
           },
           {
             "name": "sso",
             "month_price": 7,
-            "year_price": 60
+            "year_price": 60,
+            "per_employee": true,
+            "features": [
+              "sso"
+            ],
+            "default": null
           },
           {
             "name": "ip_restrictions",
             "month_price": 7,
-            "year_price": 60
+            "year_price": 60,
+            "per_employee": true,
+            "features": [
+              "iprestrictions"
+            ],
+            "default": null
           },
           {
             "name": "2fa_enforcing",
             "month_price": 7,
-            "year_price": 60
+            "year_price": 60,
+            "per_employee": true,
+            "features": [
+              "2fa_enforcing"
+            ],
+            "default": null
           },
           {
             "name": "barcodes",
             "month_price": 12,
-            "year_price": 108
+            "year_price": 108,
+            "per_employee": true,
+            "features": [
+              "barcodes"
+            ],
+            "default": null
           }
         ]
       },
@@ -600,7 +666,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1745227728"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1745832689"
         }
       },
       {
@@ -772,30 +838,14 @@ Name | Description
 
 This request accepts the following includes:
 
-`app_subscriptions`
-
-
-`clusters`
-
-
-`company`
-
-
-`default_properties`
-
-
-`employee`
-
-
-`locations`
-
-
-`operating_rules`
-
-
-`settings`
-
-
-
-
+<ul>
+  <li><code>app_subscriptions</code></li>
+  <li><code>clusters</code></li>
+  <li><code>company</code></li>
+  <li><code>default_properties</code></li>
+  <li><code>employee</code></li>
+  <li><code>locations</code></li>
+  <li><code>operating_rules</code></li>
+  <li><code>settings</code></li>
+</ul>
 

@@ -100,11 +100,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`locations`
-
-
-
-
+<ul>
+  <li><code>locations</code></li>
+</ul>
 
 
 ## Fetch a cluster
@@ -154,11 +152,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`locations`
-
-
-
-
+<ul>
+  <li><code>locations</code></li>
+</ul>
 
 
 ## Create a cluster
@@ -227,11 +223,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`locations`
-
-
-
-
+<ul>
+  <li><code>locations</code></li>
+</ul>
 
 
 ## Update a cluster
@@ -301,11 +295,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`locations`
-
-
-
-
+<ul>
+  <li><code>locations</code></li>
+</ul>
 
 
 ## Delete a cluster
@@ -385,9 +377,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`locations`
-
-
-
-
+<ul>
+  <li><code>locations</code></li>
+</ul>
 

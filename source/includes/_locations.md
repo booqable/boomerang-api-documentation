@@ -155,14 +155,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`clusters`
-
-
-`carriers`
-
-
-
-
+<ul>
+  <li><code>carriers</code></li>
+  <li><code>clusters</code></li>
+</ul>
 
 
 ## Fetch a location
@@ -242,14 +238,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`clusters`
-
-
-`carriers`
-
-
-
-
+<ul>
+  <li><code>carriers</code></li>
+  <li><code>clusters</code></li>
+</ul>
 
 
 ## Create a location
@@ -398,14 +390,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`clusters`
-
-
-`carriers`
-
-
-
-
+<ul>
+  <li><code>carriers</code></li>
+  <li><code>clusters</code></li>
+</ul>
 
 
 ## Update a location
@@ -626,14 +614,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`clusters`
-
-
-`carriers`
-
-
-
-
+<ul>
+  <li><code>carriers</code></li>
+  <li><code>clusters</code></li>
+</ul>
 
 
 ## Archive a location

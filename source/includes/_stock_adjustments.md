@@ -118,14 +118,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`product`
-
-
-`stock_items`
-
-
-
-
+<ul>
+  <li><code>product</code></li>
+  <li><code>stock_items</code></li>
+</ul>
 
 
 ## Add stock (trackable)
@@ -261,14 +257,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`product`
-
-
-`stock_items`
-
-
-
-
+<ul>
+  <li><code>product</code></li>
+  <li><code>stock_items</code></li>
+</ul>
 
 
 ## Remove stock (bulk)
@@ -405,12 +397,8 @@ Name | Description
 
 This request accepts the following includes:
 
-`product`
-
-
-`stock_items`
-
-
-
-
+<ul>
+  <li><code>product</code></li>
+  <li><code>stock_items</code></li>
+</ul>
 

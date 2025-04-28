@@ -99,17 +99,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`menu_items` => 
-`menu_items` => 
-`menu_items`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>menu_items</code>
+    <ul>
+      <li>
+          <code>menu_items</code>
+          <ul>
+            <li><code>menu_items</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Fetch a menu
@@ -233,11 +235,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`menu_items`
-
-
-
-
+<ul>
+  <li><code>menu_items</code></li>
+</ul>
 
 
 ## Create a menu with items
@@ -335,17 +335,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`menu_items` => 
-`menu_items` => 
-`menu_items`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>menu_items</code>
+    <ul>
+      <li>
+          <code>menu_items</code>
+          <ul>
+            <li><code>menu_items</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Update a menu and its items
@@ -504,17 +506,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`menu_items` => 
-`menu_items` => 
-`menu_items`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>menu_items</code>
+    <ul>
+      <li>
+          <code>menu_items</code>
+          <ul>
+            <li><code>menu_items</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Delete a menu

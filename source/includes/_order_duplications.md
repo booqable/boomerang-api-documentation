@@ -116,12 +116,8 @@ Name | Description
 
 This request accepts the following includes:
 
-`original_order`
-
-
-`new_order`
-
-
-
-
+<ul>
+  <li><code>new_order</code></li>
+  <li><code>original_order</code></li>
+</ul>
 

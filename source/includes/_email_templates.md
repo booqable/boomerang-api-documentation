@@ -154,11 +154,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`emails`
-
-
-
-
+<ul>
+  <li><code>emails</code></li>
+</ul>
 
 
 ## Create an email template

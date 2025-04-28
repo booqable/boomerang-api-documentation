@@ -126,14 +126,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`carrier`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>carrier</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Fetch an order delivery rate
@@ -156,7 +152,7 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2025-11-19T18:45:00.000000+00:00",
         "updated_at": "2025-11-19T18:45:00.000000+00:00",
-        "identifier": "Xpress",
+        "identifier": "Custom",
         "price_in_cents": 10000,
         "rate_id": "5d74673e-ac2b-4853-8a69-66982a001b26",
         "minimum_order_amount_in_cents": 0,
@@ -186,14 +182,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`carrier`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>carrier</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Create an order delivery rate
@@ -274,14 +266,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`carrier`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>carrier</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Update an order delivery rate
@@ -360,14 +348,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`carrier`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>carrier</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Delete an order delivery rate
@@ -407,12 +391,8 @@ Name | Description
 
 This request accepts the following includes:
 
-`carrier`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>carrier</code></li>
+  <li><code>order</code></li>
+</ul>
 

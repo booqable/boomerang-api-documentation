@@ -477,15 +477,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`plannings`
-
-
-`stock_item_plannings`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>plannings</code></li>
+      <li><code>stock_item_plannings</code></li>
+    </ul>
+  </li>
+</ul>
 

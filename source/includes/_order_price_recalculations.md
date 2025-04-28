@@ -89,15 +89,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`lines`
-
-
-`tax_values`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>lines</code></li>
+      <li><code>tax_values</code></li>
+    </ul>
+  </li>
+</ul>
 

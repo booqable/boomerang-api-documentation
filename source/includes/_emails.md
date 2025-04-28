@@ -160,14 +160,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Create and sending an email
@@ -259,15 +255,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`order`
-
-
-`email_template`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>email_template</code></li>
+  <li><code>order</code></li>
+</ul>
 

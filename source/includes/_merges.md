@@ -124,9 +124,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`target`
-
-
-
-
+<ul>
+  <li><code>target</code></li>
+</ul>
 

@@ -34,6 +34,7 @@ The description of the relationships and attributes of these resources can be fo
           "provider_id": null,
           "provider_method": null,
           "provider_secret": null,
+          "provider_link": null,
           "amount_in_cents": 5000,
           "deposit_in_cents": 0,
           "total_in_cents": 5000,
@@ -65,6 +66,7 @@ The description of the relationships and attributes of these resources can be fo
           "provider_id": null,
           "provider_method": null,
           "provider_secret": null,
+          "provider_link": null,
           "amount_in_cents": 5000,
           "deposit_in_cents": 0,
           "total_in_cents": 5000,
@@ -105,6 +107,7 @@ The description of the relationships and attributes of these resources can be fo
           "provider_id": null,
           "provider_method": null,
           "provider_secret": null,
+          "provider_link": null,
           "amount_in_cents": 5000,
           "deposit_in_cents": 0,
           "total_in_cents": 5000,
@@ -177,6 +180,7 @@ Name | Description
 `order_id` | **uuid** <br>`eq`, `not_eq`
 `provider` | **enum** <br>`eq`
 `provider_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`provider_link` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider_method` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider_secret` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `succeeded_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -201,14 +205,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
-
-
-`cart`
-
-
-
-
+<ul>
+  <li><code>cart</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Fetch a payment
@@ -236,6 +236,7 @@ This request accepts the following includes:
         "provider_id": null,
         "provider_method": null,
         "provider_secret": null,
+        "provider_link": null,
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
         "total_in_cents": 5000,
@@ -286,12 +287,8 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
-
-
-`cart`
-
-
-
-
+<ul>
+  <li><code>cart</code></li>
+  <li><code>order</code></li>
+</ul>
 

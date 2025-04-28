@@ -186,14 +186,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`inventory_levels`
-
-
-
-
+<ul>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+</ul>
 
 
 ## Search bundles
@@ -329,14 +325,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`inventory_levels`
-
-
-
-
+<ul>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+</ul>
 
 
 ## Fetch a bundle
@@ -403,35 +395,33 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`bundle_items` => 
-`product_group` => 
-`photo`
-
-
-`products` => 
-`photo`
-
-
-
-
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li>
+    <code>bundle_items</code>
+    <ul>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>product_group</code>
+          <ul>
+            <li><code>photo</code></li>
+            <li>
+                  <code>products</code>
+                  <ul>
+                    <li><code>photo</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>photo</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Create a bundle
@@ -628,29 +618,27 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`bundle_items` => 
-`product_group` => 
-`photo`
-
-
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li>
+    <code>bundle_items</code>
+    <ul>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>product_group</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>photo</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Update a bundle
@@ -808,29 +796,27 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`bundle_items` => 
-`product_group` => 
-`photo`
-
-
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li>
+    <code>bundle_items</code>
+    <ul>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>product_group</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>photo</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Archive a bundle

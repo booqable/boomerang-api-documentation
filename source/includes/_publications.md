@@ -98,11 +98,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`theme`
-
-
-
-
+<ul>
+  <li><code>theme</code></li>
+</ul>
 
 
 ## Create a publication
@@ -170,12 +168,8 @@ Name | Description
 
 This request accepts the following includes:
 
-`theme`
-
-
-`assets`
-
-
-
-
+<ul>
+  <li><code>assets</code></li>
+  <li><code>theme</code></li>
+</ul>
 

@@ -155,7 +155,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNTNjYzUyMGItMzFlMy00NWNlLWI4ZmItOTNlMjkyNGZjOGNi'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNzM1ZGZlMTgtNGFlZS00N2U0LTk4ZjAtNjhlMjc0ODRlNzJl'
        --data-urlencode 'include=owner'
 ```
 
@@ -263,20 +263,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner` => 
-`photo`
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>owner</code>
+    <ul>
+      <li><code>photo</code></li>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Fetch a barcode
@@ -363,20 +363,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner` => 
-`photo`
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>owner</code>
+    <ul>
+      <li><code>photo</code></li>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Create a barcode
@@ -452,20 +452,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner` => 
-`photo`
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>owner</code>
+    <ul>
+      <li><code>photo</code></li>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Update a barcode
@@ -540,20 +540,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner` => 
-`photo`
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>owner</code>
+    <ul>
+      <li><code>photo</code></li>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Destroy a barcode
@@ -607,18 +607,18 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner` => 
-`photo`
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>owner</code>
+    <ul>
+      <li><code>photo</code></li>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 

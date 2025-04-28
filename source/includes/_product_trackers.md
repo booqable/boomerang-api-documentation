@@ -126,18 +126,14 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-`order` => 
-`customer`
-
-
-
-
-`product`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>customer</code></li>
+    </ul>
+  </li>
+  <li><code>product</code></li>
+</ul>
 

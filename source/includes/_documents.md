@@ -273,14 +273,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Search documents
@@ -453,14 +449,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>order</code></li>
+</ul>
 
 
 ## Fetch a document
@@ -556,62 +548,50 @@ Name | Description
 
 This request accepts the following includes:
 
-`coupon`
-
-
-`customer` => 
-`properties`
-
-
-
-
-`order` => 
-`coupon`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-`properties`
-
-
-
-
-`tax_region`
-
-
-`lines` => 
-`item` => 
-`photo`
-
-
-`properties`
-
-
-
-
-`planning` => 
-`stock_item_plannings` => 
-`stock_item`
-
-
-
-
-
-
-`tax_category`
-
-
-
-
-`tax_values`
-
-
-
-
+<ul>
+  <li><code>coupon</code></li>
+  <li>
+    <code>customer</code>
+    <ul>
+      <li><code>properties</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>lines</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+            <li><code>properties</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>planning</code>
+          <ul>
+            <li>
+                  <code>stock_item_plannings</code>
+                  <ul>
+                    <li><code>stock_item</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
+      <li><code>tax_category</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>coupon</code></li>
+      <li><code>properties</code></li>
+      <li><code>start_location</code></li>
+      <li><code>stop_location</code></li>
+    </ul>
+  </li>
+  <li><code>tax_region</code></li>
+  <li><code>tax_values</code></li>
+</ul>
 
 
 ## Create a document
@@ -651,7 +631,7 @@ This request accepts the following includes:
         "prefix": null,
         "prefix_with_number": "1",
         "revision": null,
-        "date": "2025-04-21",
+        "date": "2025-04-28",
         "due_date": null,
         "name": "John Doe",
         "address": null,
@@ -750,62 +730,50 @@ Name | Description
 
 This request accepts the following includes:
 
-`coupon`
-
-
-`customer` => 
-`properties`
-
-
-
-
-`order` => 
-`coupon`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-`properties`
-
-
-
-
-`tax_region`
-
-
-`lines` => 
-`item` => 
-`photo`
-
-
-`properties`
-
-
-
-
-`planning` => 
-`stock_item_plannings` => 
-`stock_item`
-
-
-
-
-
-
-`tax_category`
-
-
-
-
-`tax_values`
-
-
-
-
+<ul>
+  <li><code>coupon</code></li>
+  <li>
+    <code>customer</code>
+    <ul>
+      <li><code>properties</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>lines</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+            <li><code>properties</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>planning</code>
+          <ul>
+            <li>
+                  <code>stock_item_plannings</code>
+                  <ul>
+                    <li><code>stock_item</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
+      <li><code>tax_category</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>coupon</code></li>
+      <li><code>properties</code></li>
+      <li><code>start_location</code></li>
+      <li><code>stop_location</code></li>
+    </ul>
+  </li>
+  <li><code>tax_region</code></li>
+  <li><code>tax_values</code></li>
+</ul>
 
 
 ## Update a document
@@ -944,62 +912,50 @@ Name | Description
 
 This request accepts the following includes:
 
-`coupon`
-
-
-`customer` => 
-`properties`
-
-
-
-
-`order` => 
-`coupon`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-`properties`
-
-
-
-
-`tax_region`
-
-
-`lines` => 
-`item` => 
-`photo`
-
-
-`properties`
-
-
-
-
-`planning` => 
-`stock_item_plannings` => 
-`stock_item`
-
-
-
-
-
-
-`tax_category`
-
-
-
-
-`tax_values`
-
-
-
-
+<ul>
+  <li><code>coupon</code></li>
+  <li>
+    <code>customer</code>
+    <ul>
+      <li><code>properties</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>lines</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+            <li><code>properties</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>planning</code>
+          <ul>
+            <li>
+                  <code>stock_item_plannings</code>
+                  <ul>
+                    <li><code>stock_item</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
+      <li><code>tax_category</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>coupon</code></li>
+      <li><code>properties</code></li>
+      <li><code>start_location</code></li>
+      <li><code>stop_location</code></li>
+    </ul>
+  </li>
+  <li><code>tax_region</code></li>
+  <li><code>tax_values</code></li>
+</ul>
 
 
 ## Archive a document

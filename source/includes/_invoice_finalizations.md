@@ -85,15 +85,17 @@ Name | Description
 
 This request accepts the following includes:
 
-`document` => 
-`order` => 
-`documents`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>document</code>
+    <ul>
+      <li>
+          <code>order</code>
+          <ul>
+            <li><code>documents</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 

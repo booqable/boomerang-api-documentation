@@ -200,17 +200,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`collection_items` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>collection_items</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Create a collection
@@ -302,17 +304,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`collection_items` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>collection_items</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Update a collection
@@ -405,17 +409,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`collection_items` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>collection_items</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Delete a collection

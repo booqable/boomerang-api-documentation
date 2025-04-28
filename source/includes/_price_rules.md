@@ -162,14 +162,14 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_ruleset` => 
-`price_rules`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>price_ruleset</code>
+    <ul>
+      <li><code>price_rules</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Update a price rule
@@ -207,8 +207,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 10.0,
-        "from": "2028-02-03T15:14:07.000000+00:00",
-        "till": "2028-04-04T15:14:07.000000+00:00",
+        "from": "2028-01-27T15:11:07.000000+00:00",
+        "till": "2028-03-28T15:11:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -259,8 +259,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-04-23T18:32:01.000000+00:00",
-        "till": "2026-06-23T18:32:01.000000+00:00",
+        "from": "2026-04-16T18:29:01.000000+00:00",
+        "till": "2026-06-16T18:29:01.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -321,14 +321,14 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_ruleset` => 
-`price_rules`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>price_ruleset</code>
+    <ul>
+      <li><code>price_rules</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Archive a price rule
@@ -357,8 +357,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-07-29T20:25:07.000000+00:00",
-        "till": "2026-09-28T20:25:07.000000+00:00",
+        "from": "2026-07-22T20:22:07.000000+00:00",
+        "till": "2026-09-21T20:22:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -394,12 +394,12 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_ruleset` => 
-`price_rules`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>price_ruleset</code>
+    <ul>
+      <li><code>price_rules</code></li>
+    </ul>
+  </li>
+</ul>
 

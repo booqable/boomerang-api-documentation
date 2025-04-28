@@ -90,21 +90,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`deposit_line` => 
-`tax_category`
-
-
-`tax_values`
-
-
-
-
-`order` => 
-`tax_values`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>deposit_line</code>
+    <ul>
+      <li><code>tax_category</code></li>
+      <li><code>tax_values</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>tax_values</code></li>
+    </ul>
+  </li>
+</ul>
 

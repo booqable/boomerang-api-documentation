@@ -327,9 +327,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`stock_item`
-
-
-
-
+<ul>
+  <li><code>stock_item</code></li>
+</ul>
 

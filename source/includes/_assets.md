@@ -110,11 +110,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`theme`
-
-
-
-
+<ul>
+  <li><code>theme</code></li>
+</ul>
 
 
 ## Create an asset
@@ -196,11 +194,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`theme`
-
-
-
-
+<ul>
+  <li><code>theme</code></li>
+</ul>
 
 
 ## Upload a file
@@ -282,11 +278,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`theme`
-
-
-
-
+<ul>
+  <li><code>theme</code></li>
+</ul>
 
 
 ## Delete an asset
@@ -344,9 +338,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`theme`
-
-
-
-
+<ul>
+  <li><code>theme</code></li>
+</ul>
 

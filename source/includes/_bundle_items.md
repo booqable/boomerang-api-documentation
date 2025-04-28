@@ -127,23 +127,21 @@ Name | Description
 
 This request accepts the following includes:
 
-`bundle`
-
-
-`product` => 
-`photo`
-
-
-
-
-`product_group` => 
-`photo`
-
-
-
-
-
-
+<ul>
+  <li><code>bundle</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>product_group</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Fetch a bundle item
@@ -197,23 +195,21 @@ Name | Description
 
 This request accepts the following includes:
 
-`bundle`
-
-
-`product` => 
-`photo`
-
-
-
-
-`product_group` => 
-`photo`
-
-
-
-
-
-
+<ul>
+  <li><code>bundle</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>product_group</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Create a bundle item
@@ -294,23 +290,21 @@ Name | Description
 
 This request accepts the following includes:
 
-`bundle`
-
-
-`product` => 
-`photo`
-
-
-
-
-`product_group` => 
-`photo`
-
-
-
-
-
-
+<ul>
+  <li><code>bundle</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>product_group</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Update a bundle item
@@ -389,23 +383,21 @@ Name | Description
 
 This request accepts the following includes:
 
-`bundle`
-
-
-`product` => 
-`photo`
-
-
-
-
-`product_group` => 
-`photo`
-
-
-
-
-
-
+<ul>
+  <li><code>bundle</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>product_group</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Delete a bundle item

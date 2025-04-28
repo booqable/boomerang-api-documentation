@@ -36,6 +36,7 @@ Check each individual operation to see which relations can be included as a side
 `payment_charge_id` | **uuid** `readonly-after-create`<br>The [PaymentCharge](#payment-charges) being refunded. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider refund identification. 
+`provider_link` | **string** <br>Provider refund link. 
 `provider_method` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `provider_secret` | **string** <br>Provider refund secret. 
 `reason` | **string** <br>Reason. 
@@ -82,6 +83,7 @@ Check each individual operation to see which relations can be included as a side
         "provider_id": null,
         "provider_method": null,
         "provider_secret": null,
+        "provider_link": null,
         "amount_in_cents": 10000,
         "deposit_in_cents": 5000,
         "total_in_cents": 15000,
@@ -136,6 +138,7 @@ Name | Description
 `data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) being refunded. 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider refund identification. 
+`data[attributes][provider_link]` | **string** <br>Provider refund link. 
 `data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
@@ -148,17 +151,15 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`payments`
-
-
-
-
-`customer`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>payments</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Update a payment refund
@@ -196,6 +197,7 @@ This request accepts the following includes:
         "provider_id": null,
         "provider_method": null,
         "provider_secret": null,
+        "provider_link": null,
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
         "total_in_cents": 5000,
@@ -250,6 +252,7 @@ Name | Description
 `data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) being refunded. 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider refund identification. 
+`data[attributes][provider_link]` | **string** <br>Provider refund link. 
 `data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
@@ -262,15 +265,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`payments`
-
-
-
-
-`customer`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>payments</code></li>
+    </ul>
+  </li>
+</ul>
 

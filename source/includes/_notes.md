@@ -104,14 +104,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-`owner`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Fetch a note
@@ -163,14 +159,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-`owner`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Create a note
@@ -244,14 +236,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-`owner`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Delete a note
@@ -304,12 +292,8 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-`owner`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+  <li><code>owner</code></li>
+</ul>
 

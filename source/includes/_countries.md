@@ -129,9 +129,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`provinces`
-
-
-
-
+<ul>
+  <li><code>provinces</code></li>
+</ul>
 

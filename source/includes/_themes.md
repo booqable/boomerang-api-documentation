@@ -252,11 +252,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`assets`
-
-
-
-
+<ul>
+  <li><code>assets</code></li>
+</ul>
 
 
 ## Delete a theme

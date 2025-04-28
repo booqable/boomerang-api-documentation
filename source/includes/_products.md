@@ -296,32 +296,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-`product_group`
-
-
-`properties`
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>product_group</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Search products
@@ -483,32 +471,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-`product_group`
-
-
-`properties`
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>product_group</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Fetch a product
@@ -596,32 +572,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-`product_group`
-
-
-`properties`
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>product_group</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Create a product
@@ -734,32 +698,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-`product_group`
-
-
-`properties`
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>product_group</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Update a product
@@ -872,32 +824,20 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-`product_group`
-
-
-`properties`
-
-
-`tax_category`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>product_group</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Archive a product

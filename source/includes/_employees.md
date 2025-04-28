@@ -67,7 +67,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2023-10-07T03:50:00.000000+00:00",
+          "updated_at": "2023-10-14T03:52:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
@@ -252,7 +252,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2022-01-01T16:20:00.000000+00:00",
+        "updated_at": "2022-01-08T16:22:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
@@ -314,7 +314,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2020-01-15T05:39:01.000000+00:00",
+        "updated_at": "2020-01-22T05:41:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -379,7 +379,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2032-07-14T14:27:01.000000+00:00",
+        "updated_at": "2032-07-21T14:29:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",

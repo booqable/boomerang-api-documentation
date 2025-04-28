@@ -198,9 +198,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`results`
-
-
-
-
+<ul>
+  <li><code>results</code></li>
+</ul>
 

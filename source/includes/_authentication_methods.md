@@ -357,14 +357,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-`company`
-
-
-
-
+<ul>
+  <li><code>company</code></li>
+  <li><code>employee</code></li>
+</ul>
 
 
 ## Delete an authentication method

@@ -210,11 +210,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_tiles`
-
-
-
-
+<ul>
+  <li><code>price_tiles</code></li>
+</ul>
 
 
 ## Create a price structure
@@ -332,11 +330,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_tiles`
-
-
-
-
+<ul>
+  <li><code>price_tiles</code></li>
+</ul>
 
 
 ## Update a price structure
@@ -502,11 +498,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_tiles`
-
-
-
-
+<ul>
+  <li><code>price_tiles</code></li>
+</ul>
 
 
 ## Delete a price structure

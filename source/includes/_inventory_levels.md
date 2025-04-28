@@ -122,14 +122,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`item`
-
-
-`location`
-
-
-
-
+<ul>
+  <li><code>item</code></li>
+  <li><code>location</code></li>
+</ul>
 
 
 ## Fetch inventory levels for a product for a specific location
@@ -221,12 +217,8 @@ Name | Description
 
 This request accepts the following includes:
 
-`item`
-
-
-`location`
-
-
-
-
+<ul>
+  <li><code>item</code></li>
+  <li><code>location</code></li>
+</ul>
 

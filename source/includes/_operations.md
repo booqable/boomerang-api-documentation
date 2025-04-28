@@ -399,11 +399,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+</ul>
 
 
 ## Fetch an operation
@@ -463,11 +461,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+</ul>
 
 
 ## Create an operation
@@ -553,9 +549,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+</ul>
 

@@ -44,6 +44,7 @@ Check each individual operation to see which relations can be included as a side
 `payment_method_id` | **uuid** `readonly-after-create`<br>The [PaymentMethod](#payment-methods). 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider authorization identification. 
+`provider_link` | **string** <br>Provider payment link. 
 `provider_method` | **string** <br>Provider authorization method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `provider_secret` | **string** <br>Provider authorization secret. 
 `redirect_url` | **string** <br>Redirect URL to redirect to external payment provider. 
@@ -92,6 +93,7 @@ Check each individual operation to see which relations can be included as a side
         "provider_id": null,
         "provider_method": null,
         "provider_secret": null,
+        "provider_link": null,
         "amount_in_cents": 10000,
         "deposit_in_cents": 5000,
         "total_in_cents": 15000,
@@ -155,6 +157,7 @@ Name | Description
 `data[attributes][payment_method_id]` | **uuid** <br>The [PaymentMethod](#payment-methods). 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider authorization identification. 
+`data[attributes][provider_link]` | **string** <br>Provider payment link. 
 `data[attributes][provider_method]` | **string** <br>Provider authorization method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider authorization secret. 
 `data[attributes][redirect_url]` | **string** <br>Redirect URL to redirect to external payment provider. 
@@ -167,20 +170,16 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`payments`
-
-
-
-
-`customer`
-
-
-`payment_method`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>payments</code></li>
+    </ul>
+  </li>
+  <li><code>payment_method</code></li>
+</ul>
 
 
 ## Update a payment authorization
@@ -220,6 +219,7 @@ This request accepts the following includes:
         "provider_id": null,
         "provider_method": "card",
         "provider_secret": null,
+        "provider_link": null,
         "amount_in_cents": 5000,
         "deposit_in_cents": 0,
         "total_in_cents": 5000,
@@ -283,6 +283,7 @@ Name | Description
 `data[attributes][payment_method_id]` | **uuid** <br>The [PaymentMethod](#payment-methods). 
 `data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `data[attributes][provider_id]` | **string** <br>External provider authorization identification. 
+`data[attributes][provider_link]` | **string** <br>Provider payment link. 
 `data[attributes][provider_method]` | **string** <br>Provider authorization method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider authorization secret. 
 `data[attributes][redirect_url]` | **string** <br>Redirect URL to redirect to external payment provider. 
@@ -295,18 +296,14 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`payments`
-
-
-
-
-`customer`
-
-
-`payment_method`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>payments</code></li>
+    </ul>
+  </li>
+  <li><code>payment_method</code></li>
+</ul>
 

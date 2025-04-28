@@ -252,23 +252,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`bundle_items`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`properties`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>bundle_items</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li><code>properties</code></li>
+</ul>
 
 
 ## Search items
@@ -432,23 +422,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`bundle_items`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`properties`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>bundle_items</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li><code>properties</code></li>
+</ul>
 
 
 ## Fetch an item
@@ -539,21 +519,11 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`bundle_items`
-
-
-`inventory_levels`
-
-
-`photo`
-
-
-`properties`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>bundle_items</code></li>
+  <li><code>inventory_levels</code></li>
+  <li><code>photo</code></li>
+  <li><code>properties</code></li>
+</ul>
 

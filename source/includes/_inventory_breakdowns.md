@@ -291,15 +291,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`location`
-
-
-`product` => 
-`photo`
-
-
-
-
-
-
+<ul>
+  <li><code>location</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
 

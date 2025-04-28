@@ -204,17 +204,11 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>disabled_by</code></li>
+  <li><code>notes</code></li>
+</ul>
 
 
 ## Invite a user
@@ -294,17 +288,11 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>disabled_by</code></li>
+  <li><code>notes</code></li>
+</ul>
 
 
 ## Update a user
@@ -382,17 +370,11 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>disabled_by</code></li>
+  <li><code>notes</code></li>
+</ul>
 
 
 ## Enable a user
@@ -470,17 +452,11 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>disabled_by</code></li>
+  <li><code>notes</code></li>
+</ul>
 
 
 ## Disable a user
@@ -558,15 +534,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`customer`
-
-
-`disabled_by`
-
-
-`notes`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>disabled_by</code></li>
+  <li><code>notes</code></li>
+</ul>
 

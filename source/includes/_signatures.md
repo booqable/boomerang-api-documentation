@@ -92,7 +92,7 @@ Check each individual operation to see which relations can be included as a side
           "prefix": null,
           "prefix_with_number": "1",
           "revision": null,
-          "date": "2025-04-21",
+          "date": "2025-04-28",
           "due_date": null,
           "name": "John Doe",
           "address": null,
@@ -177,15 +177,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`document`
-
-
-`order`
-
-
-`customer`
-
-
-
-
+<ul>
+  <li><code>customer</code></li>
+  <li><code>document</code></li>
+  <li><code>order</code></li>
+</ul>
 

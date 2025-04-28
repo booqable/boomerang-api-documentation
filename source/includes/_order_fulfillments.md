@@ -454,35 +454,33 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`tax_values`
-
-
-`transfers`
-
-
-
-
-`changed_lines` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-`changed_plannings`
-
-
-`changed_stock_item_plannings` => 
-`stock_item`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>changed_lines</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>changed_plannings</code></li>
+  <li>
+    <code>changed_stock_item_plannings</code>
+    <ul>
+      <li><code>stock_item</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>tax_values</code></li>
+      <li><code>transfers</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Specify
@@ -635,35 +633,33 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`tax_values`
-
-
-`transfers`
-
-
-
-
-`changed_lines` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-`changed_plannings`
-
-
-`changed_stock_item_plannings` => 
-`stock_item`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>changed_lines</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>changed_plannings</code></li>
+  <li>
+    <code>changed_stock_item_plannings</code>
+    <ul>
+      <li><code>stock_item</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>tax_values</code></li>
+      <li><code>transfers</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Start
@@ -782,35 +778,33 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`tax_values`
-
-
-`transfers`
-
-
-
-
-`changed_lines` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-`changed_plannings`
-
-
-`changed_stock_item_plannings` => 
-`stock_item`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>changed_lines</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>changed_plannings</code></li>
+  <li>
+    <code>changed_stock_item_plannings</code>
+    <ul>
+      <li><code>stock_item</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>tax_values</code></li>
+      <li><code>transfers</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Stop
@@ -927,33 +921,31 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`tax_values`
-
-
-`transfers`
-
-
-
-
-`changed_lines` => 
-`item` => 
-`photo`
-
-
-
-
-
-
-`changed_plannings`
-
-
-`changed_stock_item_plannings` => 
-`stock_item`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>changed_lines</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+  <li><code>changed_plannings</code></li>
+  <li>
+    <code>changed_stock_item_plannings</code>
+    <ul>
+      <li><code>stock_item</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>tax_values</code></li>
+      <li><code>transfers</code></li>
+    </ul>
+  </li>
+</ul>
 

@@ -145,20 +145,12 @@ Name | Description
 
 This request accepts the following includes:
 
-`product`
-
-
-`barcode`
-
-
-`location`
-
-
-`properties`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>location</code></li>
+  <li><code>product</code></li>
+  <li><code>properties</code></li>
+</ul>
 
 
 ## Fetch a stock_item
@@ -217,23 +209,17 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`location`
-
-
-`properties`
-
-
-`product` => 
-`product_group`
-
-
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>location</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>product_group</code></li>
+    </ul>
+  </li>
+  <li><code>properties</code></li>
+</ul>
 
 
 ## Create a stock_item
@@ -317,23 +303,17 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`location`
-
-
-`properties`
-
-
-`product` => 
-`product_group`
-
-
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>location</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>product_group</code></li>
+    </ul>
+  </li>
+  <li><code>properties</code></li>
+</ul>
 
 
 ## Update a stock_item
@@ -417,21 +397,15 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`location`
-
-
-`properties`
-
-
-`product` => 
-`product_group`
-
-
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>location</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>product_group</code></li>
+    </ul>
+  </li>
+  <li><code>properties</code></li>
+</ul>
 

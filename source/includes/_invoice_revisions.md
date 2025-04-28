@@ -93,15 +93,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
-
-
-`revised_invoice`
-
-
-`revision_invoice`
-
-
-
-
+<ul>
+  <li><code>order</code></li>
+  <li><code>revised_invoice</code></li>
+  <li><code>revision_invoice</code></li>
+</ul>
 

@@ -266,14 +266,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`properties`
-
-
-
-
+<ul>
+  <li><code>photo</code></li>
+  <li><code>properties</code></li>
+</ul>
 
 
 ## Search product groups
@@ -434,14 +430,10 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`properties`
-
-
-
-
+<ul>
+  <li><code>photo</code></li>
+  <li><code>properties</code></li>
+</ul>
 
 
 ## Fetch a product group
@@ -529,29 +521,19 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`properties`
-
-
-`tax_category`
-
-
-`barcode`
-
-
-`products`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>products</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Create a product group
@@ -701,26 +683,18 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`properties`
-
-
-`tax_category`
-
-
-`barcode`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Update a product group
@@ -860,26 +834,18 @@ Name | Description
 
 This request accepts the following includes:
 
-`photo`
-
-
-`properties`
-
-
-`tax_category`
-
-
-`barcode`
-
-
-`price_structure` => 
-`price_tiles`
-
-
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>photo</code></li>
+  <li>
+    <code>price_structure</code>
+    <ul>
+      <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li><code>properties</code></li>
+  <li><code>tax_category</code></li>
+</ul>
 
 
 ## Archive a product group

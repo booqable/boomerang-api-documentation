@@ -81,15 +81,13 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`tax_values`
-
-
-`order_delivery_rate`
-
-
-
-
-
-
+<ul>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>order_delivery_rate</code></li>
+      <li><code>tax_values</code></li>
+    </ul>
+  </li>
+</ul>
 

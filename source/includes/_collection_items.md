@@ -109,17 +109,15 @@ Name | Description
 
 This request accepts the following includes:
 
-`item` => 
-`photo`
-
-
-
-
-`collection`
-
-
-
-
+<ul>
+  <li><code>collection</code></li>
+  <li>
+    <code>item</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Create a collection item

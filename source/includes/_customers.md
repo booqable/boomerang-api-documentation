@@ -151,20 +151,12 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-`payment_methods`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>payment_methods</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_region</code></li>
+</ul>
 
 
 ## Search customers
@@ -292,20 +284,12 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-`payment_methods`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>payment_methods</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_region</code></li>
+</ul>
 
 
 ## Fetch a customer
@@ -376,20 +360,12 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-`payment_methods`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>payment_methods</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_region</code></li>
+</ul>
 
 
 ## Create a customer
@@ -481,20 +457,12 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-`payment_methods`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>payment_methods</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_region</code></li>
+</ul>
 
 
 ## Update a customer
@@ -586,20 +554,12 @@ Name | Description
 
 This request accepts the following includes:
 
-`barcode`
-
-
-`properties`
-
-
-`tax_region`
-
-
-`payment_methods`
-
-
-
-
+<ul>
+  <li><code>barcode</code></li>
+  <li><code>payment_methods</code></li>
+  <li><code>properties</code></li>
+  <li><code>tax_region</code></li>
+</ul>
 
 
 ## Archive a customer

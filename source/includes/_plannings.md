@@ -106,10 +106,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-03-01T07:50:00.000000+00:00",
-          "stops_at": "1973-03-31T07:50:00.000000+00:00",
-          "reserved_from": "1973-03-01T07:50:00.000000+00:00",
-          "reserved_till": "1973-03-31T07:50:00.000000+00:00",
+          "starts_at": "1973-02-22T07:47:00.000000+00:00",
+          "stops_at": "1973-03-24T07:47:00.000000+00:00",
+          "reserved_from": "1973-02-22T07:47:00.000000+00:00",
+          "reserved_till": "1973-03-24T07:47:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -194,29 +194,23 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`customer`
-
-
-
-
-`item` => 
-`photo`
-
-
-
-
-`order_line`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-
-
+<ul>
+  <li>
+    <code>item</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>customer</code></li>
+    </ul>
+  </li>
+  <li><code>order_line</code></li>
+  <li><code>start_location</code></li>
+  <li><code>stop_location</code></li>
+</ul>
 
 
 ## Search plannings
@@ -242,12 +236,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-04-22T09:27:45Z"
+                       "gte": "2025-04-29T09:30:06Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-04-25T09:27:45Z"
+                       "lte": "2025-05-02T09:30:06Z"
                      }
                    }
                  ]
@@ -257,12 +251,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-04-22T09:27:45Z"
+                       "gte": "2025-04-29T09:30:06Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-04-25T09:27:45Z"
+                       "lte": "2025-05-02T09:30:06Z"
                      }
                    }
                  ]
@@ -353,29 +347,23 @@ Name | Description
 
 This request accepts the following includes:
 
-`order` => 
-`customer`
-
-
-
-
-`item` => 
-`photo`
-
-
-
-
-`order_line`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-
-
+<ul>
+  <li>
+    <code>item</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>customer</code></li>
+    </ul>
+  </li>
+  <li><code>order_line</code></li>
+  <li><code>start_location</code></li>
+  <li><code>stop_location</code></li>
+</ul>
 
 
 ## Fetch a planning
@@ -401,10 +389,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-03-25T04:15:01.000000+00:00",
-        "stops_at": "1978-04-24T04:15:01.000000+00:00",
-        "reserved_from": "1978-03-25T04:15:01.000000+00:00",
-        "reserved_till": "1978-04-24T04:15:01.000000+00:00",
+        "starts_at": "1978-03-18T04:12:01.000000+00:00",
+        "stops_at": "1978-04-17T04:12:01.000000+00:00",
+        "reserved_from": "1978-03-18T04:12:01.000000+00:00",
+        "reserved_till": "1978-04-17T04:12:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,
@@ -441,30 +429,18 @@ Name | Description
 
 This request accepts the following includes:
 
-`order`
-
-
-`item` => 
-`photo`
-
-
-
-
-`order_line`
-
-
-`start_location`
-
-
-`stop_location`
-
-
-`parent_planning`
-
-
-`nested_plannings`
-
-
-
-
+<ul>
+  <li>
+    <code>item</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li><code>nested_plannings</code></li>
+  <li><code>order</code></li>
+  <li><code>order_line</code></li>
+  <li><code>parent_planning</code></li>
+  <li><code>start_location</code></li>
+  <li><code>stop_location</code></li>
+</ul>
 

@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2032-06-30T23:27:05.000000+00:00",
-          "till": "2032-08-30T23:27:05.000000+00:00",
+          "from": "2032-06-23T23:24:05.000000+00:00",
+          "till": "2032-08-23T23:24:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -195,11 +195,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_rules`
-
-
-
-
+<ul>
+  <li><code>price_rules</code></li>
+</ul>
 
 
 ## Create a price ruleset
@@ -319,11 +317,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_rules`
-
-
-
-
+<ul>
+  <li><code>price_rules</code></li>
+</ul>
 
 
 ## Update a price ruleset
@@ -428,8 +424,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2028-11-10T12:40:00.000000+00:00",
-          "till": "2029-01-10T12:40:00.000000+00:00",
+          "from": "2028-11-03T12:37:00.000000+00:00",
+          "till": "2029-01-03T12:37:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -477,11 +473,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_rules`
-
-
-
-
+<ul>
+  <li><code>price_rules</code></li>
+</ul>
 
 
 ## Archive a price ruleset

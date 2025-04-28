@@ -106,11 +106,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Fetch a tax category
@@ -190,11 +188,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Create a tax category
@@ -300,11 +296,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Update a tax category
@@ -435,11 +429,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`tax_rates`
-
-
-
-
+<ul>
+  <li><code>tax_rates</code></li>
+</ul>
 
 
 ## Delete a tax category

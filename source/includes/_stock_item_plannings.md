@@ -163,23 +163,21 @@ Name | Description
 
 This request accepts the following includes:
 
-`stock_item` => 
-`product` => 
-`photo`
-
-
-
-
-
-
-`planning`
-
-
-`order`
-
-
-
-
+<ul>
+  <li><code>order</code></li>
+  <li><code>planning</code></li>
+  <li>
+    <code>stock_item</code>
+    <ul>
+      <li>
+          <code>product</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 
 ## Archive a stock_item planning

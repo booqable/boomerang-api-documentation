@@ -301,6 +301,9 @@ by setting the `properties_attribute` attribute:
   }
 ```
 
+### Includes
+
+This request does not accept any includes
 ## List properties
 
 
@@ -425,11 +428,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Fetch a property
@@ -524,11 +525,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Create a property
@@ -666,11 +665,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Update a property
@@ -769,11 +766,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Delete a property
@@ -833,9 +828,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 

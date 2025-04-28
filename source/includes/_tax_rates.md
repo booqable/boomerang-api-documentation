@@ -112,11 +112,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Fetch a tax rate
@@ -195,11 +193,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Create a tax rate
@@ -302,11 +298,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Update a tax rate
@@ -406,11 +400,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`owner`
-
-
-
-
+<ul>
+  <li><code>owner</code></li>
+</ul>
 
 
 ## Delete a tax rate

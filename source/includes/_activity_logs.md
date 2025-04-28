@@ -84,11 +84,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+</ul>
 
 
 ## Filter activity logs
@@ -176,9 +174,7 @@ Name | Description
 
 This request accepts the following includes:
 
-`employee`
-
-
-
-
+<ul>
+  <li><code>employee</code></li>
+</ul>
 

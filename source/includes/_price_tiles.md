@@ -158,11 +158,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_structure`
-
-
-
-
+<ul>
+  <li><code>price_structure</code></li>
+</ul>
 
 
 ## Create a price tile
@@ -242,11 +240,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_structure`
-
-
-
-
+<ul>
+  <li><code>price_structure</code></li>
+</ul>
 
 
 ## Update a price tile
@@ -326,11 +322,9 @@ Name | Description
 
 This request accepts the following includes:
 
-`price_structure`
-
-
-
-
+<ul>
+  <li><code>price_structure</code></li>
+</ul>
 
 
 ## Delete a price tile
