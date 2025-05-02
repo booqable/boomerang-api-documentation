@@ -192,8 +192,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1970-01-13T03:00:01.000000+00:00",
-          "stops_at": "1970-02-12T03:00:01.000000+00:00",
+          "starts_at": "1970-01-08T23:06:01.000000+00:00",
+          "stops_at": "1970-02-07T23:06:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -251,7 +251,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET api/boomerang/orders`
+`GET /api/4/orders`
 
 ### Request params
 
@@ -407,14 +407,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-04-29T09:29:21Z",
-                       "lte": "2025-05-02T09:29:21Z"
+                       "gte": "2025-05-03T13:23:55Z",
+                       "lte": "2025-05-06T13:23:55Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-04-29T09:29:21Z",
-                       "lte": "2025-05-02T09:29:21Z"
+                       "gte": "2025-05-03T13:23:55Z",
+                       "lte": "2025-05-06T13:23:55Z"
                      }
                    }
                  ]
@@ -453,7 +453,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ### HTTP Request
 
-`POST api/boomerang/orders/search`
+`POST /api/4/orders/search`
 
 ### Request params
 
@@ -675,7 +675,7 @@ Returns an existing or new order for the current employee.
 
 ### HTTP Request
 
-`GET api/boomerang/orders/new`
+`GET /api/4/orders/new`
 
 ### Request params
 
@@ -769,7 +769,7 @@ This request accepts the following includes:
       "type": "orders",
       "attributes": {
         "created_at": "2015-07-07T09:48:01.000000+00:00",
-        "updated_at": "2015-07-07T09:48:01.000000+00:00",
+        "updated_at": "2015-07-07T09:49:01.000000+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -782,8 +782,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-06-10T12:19:01.000000+00:00",
-        "stops_at": "1970-07-10T12:19:01.000000+00:00",
+        "starts_at": "1970-06-06T08:25:01.000000+00:00",
+        "stops_at": "1970-07-06T08:25:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -840,7 +840,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET api/boomerang/orders/{id}`
+`GET /api/4/orders/{id}`
 
 ### Request params
 
@@ -963,8 +963,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:26:01.000000+00:00",
-        "stops_at": "2026-11-03T14:26:01.000000+00:00",
+        "starts_at": "2026-09-25T14:31:01.000000+00:00",
+        "stops_at": "2026-11-03T14:31:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1019,7 +1019,7 @@ When creating an order, and the following fields are left blank, a sensible defa
 
 ### HTTP Request
 
-`POST /api/boomerang/orders`
+`POST /api/4/orders`
 
 ### Request params
 
@@ -1260,7 +1260,7 @@ When updating a customer on an order the following settings will be applied and 
 
 ### HTTP Request
 
-`PUT api/boomerang/orders/{id}`
+`PUT /api/4/orders/{id}`
 
 ### Request params
 

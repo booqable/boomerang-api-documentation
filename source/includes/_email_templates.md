@@ -59,7 +59,7 @@ see [our help center](https://help.booqable.com/en/articles/3832164-emails-types
 
 ### HTTP Request
 
-`GET /api/boomerang/email_templates`
+`GET /api/4/email_templates`
 
 ### Request params
 
@@ -138,7 +138,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/email_templates/{id}`
+`GET /api/4/email_templates/{id}`
 
 ### Request params
 
@@ -206,7 +206,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/email_templates`
+`POST /api/4/email_templates`
 
 ### Request params
 
@@ -317,7 +317,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/email_templates/{id}`
+`PUT /api/4/email_templates/{id}`
 
 ### Request params
 
@@ -379,7 +379,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/email_templates/{id}`
+`DELETE /api/4/email_templates/{id}`
 
 ### Request params
 

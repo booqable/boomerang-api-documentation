@@ -55,7 +55,7 @@ considering the amount, deposit, and various business rules.
 
 ### HTTP Request
 
-`GET /api/boomerang/refundable_payment_charges`
+`GET /api/4/refundable_payment_charges`
 
 ### Request params
 

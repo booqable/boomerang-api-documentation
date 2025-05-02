@@ -66,7 +66,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/price_tiles`
+`GET /api/4/price_tiles`
 
 ### Request params
 
@@ -142,7 +142,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/price_tiles/{id}`
+`GET /api/4/price_tiles/{id}`
 
 ### Request params
 
@@ -211,7 +211,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/price_tiles`
+`POST /api/4/price_tiles`
 
 ### Request params
 
@@ -293,7 +293,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/price_tiles/{id}`
+`PUT /api/4/price_tiles/{id}`
 
 ### Request params
 
@@ -363,7 +363,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/price_tiles/{id}`
+`DELETE /api/4/price_tiles/{id}`
 
 ### Request params
 

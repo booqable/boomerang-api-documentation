@@ -60,7 +60,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/invoice_finalizations`
+`POST /api/4/invoice_finalizations`
 
 ### Request params
 

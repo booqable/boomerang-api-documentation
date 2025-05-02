@@ -93,7 +93,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/product_group_duplications`
+`POST /api/4/product_group_duplications`
 
 ### Request params
 

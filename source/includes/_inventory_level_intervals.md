@@ -255,7 +255,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/inventory_level_intervals`
+`GET /api/4/inventory_level_intervals`
 
 ### Request params
 

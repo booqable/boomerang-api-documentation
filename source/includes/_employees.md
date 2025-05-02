@@ -67,7 +67,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2023-10-14T03:52:00.000000+00:00",
+          "updated_at": "2023-10-18T07:47:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
@@ -106,7 +106,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
 
 ### HTTP Request
 
-`GET /api/boomerang/employees`
+`GET /api/4/employees`
 
 ### Request params
 
@@ -209,7 +209,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/employees/{id}`
+`GET /api/4/employees/{id}`
 
 ### Request params
 
@@ -252,7 +252,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2022-01-08T16:22:00.000000+00:00",
+        "updated_at": "2022-01-12T20:17:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
@@ -314,7 +314,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2020-01-22T05:41:01.000000+00:00",
+        "updated_at": "2020-01-26T09:36:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -379,7 +379,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2032-07-21T14:29:01.000000+00:00",
+        "updated_at": "2032-07-25T18:24:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -408,7 +408,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/employees/{id}`
+`PUT /api/4/employees/{id}`
 
 ### Request params
 

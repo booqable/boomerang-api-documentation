@@ -5,15 +5,67 @@ occur in your Booqable account. You can use these events to trigger actions
 in your application, such as sending an email, updating a record, or creating
 a new record.
 
+### Version 1 (default)
+
+```js
+// v1 payload
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "created_at": "2021-01-01T00:00:00Z",
+  "event": "customer.created",
+  "object": "Customer",
+  "data": {
+    // same attributes and relations as returned by /api/1/customers/:id
+  }
+}
+```
+
+Resources included in the payload are delivered in the same format as
+the resource's v1 JSON format. Documentation for this format can be
+found at [https://boomerang.booqable.com/v1.html](https://boomerang.booqable.com/v1.html).
+
+### Version 4 (opt-in)
+
+```js
+// v4 payload
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "created_at": "2021-01-01T00:00:00Z",
+  "event": "customer.created",
+  "resource_type": "customers",
+  "data": {
+    // same attributes as returned by /api/4/customers/:id,
+    // plus a subset of the relations as nested JSON objects
+  }
+}
+```
+
+Resources included in the payload are delivered in the same format as
+the resource's v4 (aka Boomerang) JSON format. This is the documentation
+you are looking at.
+
+Note that the payload is in JSON format, not JSON API format. Relations of the
+resource are delivered as nested JSON objects, not as JSON API relationships.
+
+| Resource | Relations included in webhook payload |
+| -- | -- |
+| `cart` | `customer`, `lines`, `lines.item`, `order` |
+| `contract`/`invoice`/`quote` | `coupon`, `customer`, `lines`, `order`, `tax_values` |
+| `customer` | `barcode`, `tax_region` |
+| `order` | `barcode`, `coupon`, `customer`, `lines`, `notes`, `plannings`, `properties`, `start_location`, `stop_location`, `tax_values` |
+| `product_group` | `photo`, `price_ruleset`, `price_structure`, `tax_category` |
+| `product` | `barcode` |
+
 ## Fields
 
  Name | Description
 -- | --
 `created_at` | **datetime** `readonly`<br>When the webhook endpoint was first registered. 
-`events` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`, `app.installed`, `app.configured`, `app.plan_changed`, `app.uninstalled`'. 
+`events` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.reserved`, `order.saved_as_concept`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
 `id` | **uuid** `readonly`<br>Primary key.
 `updated_at` | **datetime** `readonly`<br>When the webhook endpoint was last updated. 
 `url` | **string** <br>The URL that will receive the webhook payload. 
+`version` | **enum** <br>The version of the webhook payload.<br> One of: `1`, `4`.
 
 
 ## List webhook endpoints
@@ -38,7 +90,8 @@ a new record.
         "url": "https://example.com/hooks",
         "events": [
           "invoice.finalized"
-        ]
+        ],
+        "version": 1
       }
     ]
   }
@@ -46,7 +99,7 @@ a new record.
 
 ### HTTP Request
 
-`GET /api/boomerang/webhook_endpoints`
+`GET /api/4/webhook_endpoints`
 
 ### Request params
 
@@ -72,6 +125,7 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `url` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`version` | **enum** <br>`eq`
 
 
 ### Meta
@@ -89,7 +143,7 @@ This request does not accept any includes
 ## Subscribe to webhook events
 
 
-> How to subscribe to webhook events:
+> How to subscribe to webhook events and receive v1 payloads:
 
 ```shell
   curl --request POST
@@ -100,6 +154,7 @@ This request does not accept any includes
            "type": "webhook_endpoints",
            "attributes": {
              "url": "https://example.com/hooks",
+             "version": 1,
              "events": [
                "customer.created",
                "customer.updated"
@@ -114,16 +169,60 @@ This request does not accept any includes
 ```json
   {
     "data": {
-      "id": "f4855386-6094-4340-8096-0c6911a116cb",
+      "id": "bd50478f-3de1-4432-847f-f7da90859fde",
       "type": "webhook_endpoints",
       "attributes": {
-        "created_at": "2027-08-01T20:14:01.000000+00:00",
-        "updated_at": "2027-08-01T20:14:01.000000+00:00",
+        "created_at": "2019-07-24T05:22:00.000000+00:00",
+        "updated_at": "2019-07-24T05:22:00.000000+00:00",
         "url": "https://example.com/hooks",
         "events": [
           "customer.created",
           "customer.updated"
-        ]
+        ],
+        "version": 1
+      }
+    },
+    "meta": {}
+  }
+```
+
+> How to subscribe to webhook events and receive v4 payloads:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/webhook_endpoints'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "webhook_endpoints",
+           "attributes": {
+             "url": "https://example.com/hooks",
+             "version": 4,
+             "events": [
+               "customer.created",
+               "customer.updated"
+             ]
+           }
+         }
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "be43f04f-01e8-44d9-86ae-1fc1376bdea0",
+      "type": "webhook_endpoints",
+      "attributes": {
+        "created_at": "2021-11-16T09:32:00.000000+00:00",
+        "updated_at": "2021-11-16T09:32:00.000000+00:00",
+        "url": "https://example.com/hooks",
+        "events": [
+          "customer.created",
+          "customer.updated"
+        ],
+        "version": 4
       }
     },
     "meta": {}
@@ -132,7 +231,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`POST /api/boomerang/webhook_endpoints`
+`POST /api/4/webhook_endpoints`
 
 ### Request params
 
@@ -149,8 +248,9 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`, `app.installed`, `app.configured`, `app.plan_changed`, `app.uninstalled`'. 
+`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.reserved`, `order.saved_as_concept`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
 `data[attributes][url]` | **string** <br>The URL that will receive the webhook payload. 
+`data[attributes][version]` | **enum** <br>The version of the webhook payload.<br> One of: `1`, `4`.
 
 
 ### Includes
@@ -171,6 +271,7 @@ This request does not accept any includes
            "id": "a2f71717-53b5-45ba-85c6-3eadcf6cb09f",
            "attributes": {
              "url": "https://example.com/hooks",
+             "version": 4,
              "events": [
                "customer.created"
              ]
@@ -192,7 +293,8 @@ This request does not accept any includes
         "url": "https://example.com/hooks",
         "events": [
           "customer.created"
-        ]
+        ],
+        "version": 4
       }
     },
     "meta": {}
@@ -201,7 +303,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/webhook_endpoints/{id}`
+`PUT /api/4/webhook_endpoints/{id}`
 
 ### Request params
 
@@ -218,14 +320,15 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_concept`, `order.reserved`, `order.started`, `order.stopped`, `payment.completed`, `cart.completed_checkout`, `app.installed`, `app.configured`, `app.plan_changed`, `app.uninstalled`'. 
+`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.reserved`, `order.saved_as_concept`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
 `data[attributes][url]` | **string** <br>The URL that will receive the webhook payload. 
+`data[attributes][version]` | **enum** <br>The version of the webhook payload.<br> One of: `1`, `4`.
 
 
 ### Includes
 
 This request does not accept any includes
-## Unsubscrib from webhook events
+## Unsubscribe from webhook events
 
 
 > How to unsubscribe from webhook events:
@@ -247,7 +350,8 @@ This request does not accept any includes
         "created_at": "2020-12-01T19:32:01.000000+00:00",
         "updated_at": "2020-12-01T19:32:01.000000+00:00",
         "url": "https://example.com/hooks",
-        "events": []
+        "events": [],
+        "version": 1
       }
     },
     "meta": {}
@@ -256,7 +360,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/webhook_endpoints/{id}`
+`DELETE /api/4/webhook_endpoints/{id}`
 
 ### Request params
 

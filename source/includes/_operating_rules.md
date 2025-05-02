@@ -60,8 +60,8 @@ before the rules of that type are enforced.
           "data_type": "away",
           "data": {
             "away": {
-              "from": "2020-01-01",
-              "till": "2021-12-31"
+              "from": "2016-01-15",
+              "till": "2018-01-14"
             }
           }
         }
@@ -73,7 +73,7 @@ before the rules of that type are enforced.
 
 ### HTTP Request
 
-`GET /api/boomerang/operating_rules`
+`GET /api/4/operating_rules`
 
 ### Request params
 
@@ -219,8 +219,8 @@ This request does not accept any includes
              "data_type": "away",
              "data": {
                "away": {
-                 "from": "2030-01-01",
-                 "till": "2040-01-01"
+                 "from": "2030-07-13",
+                 "till": "2040-07-12"
                }
              }
            }
@@ -241,8 +241,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2030-01-01",
-            "till": "2040-01-01"
+            "from": "2030-07-13",
+            "till": "2040-07-12"
           }
         }
       }
@@ -339,7 +339,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`POST /api/boomerang/operating_rules`
+`POST /api/4/operating_rules`
 
 ### Request params
 
@@ -379,8 +379,8 @@ This request does not accept any includes
            "attributes": {
              "data": {
                "away": {
-                 "from": "2020-04-01",
-                 "till": "2021-12-31"
+                 "from": "2011-08-08",
+                 "till": "2013-05-08"
                }
              }
            }
@@ -401,8 +401,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2020-04-01",
-            "till": "2021-12-31"
+            "from": "2011-08-08",
+            "till": "2013-05-08"
           }
         }
       }
@@ -413,7 +413,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/operating_rules/{id}`
+`PUT /api/4/operating_rules/{id}`
 
 ### Request params
 
@@ -461,8 +461,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2020-01-01",
-            "till": "2021-12-31"
+            "from": "2009-11-14",
+            "till": "2011-11-14"
           }
         }
       }
@@ -473,7 +473,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/operating_rules/{id}`
+`DELETE /api/4/operating_rules/{id}`
 
 ### Request params
 

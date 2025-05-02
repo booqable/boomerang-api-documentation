@@ -93,8 +93,8 @@ Check each individual operation to see which relations can be included as a side
       "id": "496355f5-1c79-4b05-86e8-fb9f00c27d78",
       "type": "price_rules",
       "attributes": {
-        "created_at": "2015-01-05T04:39:00.000000+00:00",
-        "updated_at": "2015-01-05T04:39:00.000000+00:00",
+        "created_at": "2015-01-04T04:39:00.000000+00:00",
+        "updated_at": "2015-01-04T04:39:00.000000+00:00",
         "name": "Off season",
         "rule_type": "range_of_dates",
         "match_strategy": "span",
@@ -121,7 +121,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/price_rules`
+`POST /api/4/price_rules`
 
 ### Request params
 
@@ -207,8 +207,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 10.0,
-        "from": "2028-01-27T15:11:07.000000+00:00",
-        "till": "2028-03-28T15:11:07.000000+00:00",
+        "from": "2028-01-23T11:17:07.000000+00:00",
+        "till": "2028-03-24T11:17:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -259,8 +259,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-04-16T18:29:01.000000+00:00",
-        "till": "2026-06-16T18:29:01.000000+00:00",
+        "from": "2026-04-12T14:35:01.000000+00:00",
+        "till": "2026-06-12T14:35:01.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -280,7 +280,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/price_rules/{id}`
+`PUT /api/4/price_rules/{id}`
 
 ### Request params
 
@@ -357,8 +357,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2026-07-22T20:22:07.000000+00:00",
-        "till": "2026-09-21T20:22:07.000000+00:00",
+        "from": "2026-07-18T16:28:07.000000+00:00",
+        "till": "2026-09-17T16:28:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -378,7 +378,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/price_rules/{id}`
+`DELETE /api/4/price_rules/{id}`
 
 ### Request params
 

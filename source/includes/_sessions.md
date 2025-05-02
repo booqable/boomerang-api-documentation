@@ -18,6 +18,7 @@ When there's an ID mismatch, it's advised to fetch the session again to reload t
 ## Relationships
 Name | Description
 -- | --
+`app_payment_options` | **[App payment options](#app-payment-options)** `hasmany`<br>All active payment options from app integrations.
 `app_subscriptions` | **[App subscriptions](#app-subscriptions)** `hasmany`<br>All app subscriptions of the company.
 `clusters` | **[Clusters](#clusters)** `hasmany`<br>All [Clusters](#clusters) of the company.
 `company` | **[Company](#companies)** `required`<br>The [Company](#companies).
@@ -666,7 +667,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1745832689"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1746192352"
         }
       },
       {
@@ -822,7 +823,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/sessions/current`
+`GET /api/4/sessions/current`
 
 ### Request params
 
@@ -831,7 +832,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[sessions]=company_id,employee_id,locations_updated_at`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,clusters,company`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,app_payment_options,clusters`
 
 
 ### Includes
@@ -839,6 +840,7 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>app_payment_options</code></li>
   <li><code>app_subscriptions</code></li>
   <li><code>clusters</code></li>
   <li><code>company</code></li>

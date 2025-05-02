@@ -50,7 +50,7 @@ Both IPv4 and IPv6 addresses are supported.
 
 ### HTTP Request
 
-`GET /api/boomerang/ip_addresses`
+`GET /api/4/ip_addresses`
 
 ### Request params
 
@@ -121,7 +121,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/ip_addresses/{id}`
+`GET /api/4/ip_addresses/{id}`
 
 ### Request params
 
@@ -175,7 +175,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`POST /api/boomerang/ip_addresses`
+`POST /api/4/ip_addresses`
 
 ### Request params
 
@@ -240,7 +240,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/ip_addresses/{id}`
+`PUT /api/4/ip_addresses/{id}`
 
 ### Request params
 
@@ -295,7 +295,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/ip_addresses/{id}`
+`DELETE /api/4/ip_addresses/{id}`
 
 ### Request params
 

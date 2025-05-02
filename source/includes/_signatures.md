@@ -92,7 +92,7 @@ Check each individual operation to see which relations can be included as a side
           "prefix": null,
           "prefix_with_number": "1",
           "revision": null,
-          "date": "2025-04-28",
+          "date": "2025-10-31",
           "due_date": null,
           "name": "John Doe",
           "address": null,
@@ -151,7 +151,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/signatures`
+`POST /api/4/signatures`
 
 ### Request params
 

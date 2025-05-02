@@ -63,7 +63,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/collection_items`
+`GET /api/4/collection_items`
 
 ### Request params
 
@@ -163,7 +163,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/collection_items`
+`POST /api/4/collection_items`
 
 ### Request params
 
@@ -222,7 +222,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/collection_items/{id}`
+`DELETE /api/4/collection_items/{id}`
 
 ### Request params
 

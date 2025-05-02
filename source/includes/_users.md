@@ -108,7 +108,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/users`
+`GET /api/4/users`
 
 ### Request params
 
@@ -188,7 +188,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/users/{id}`
+`GET /api/4/users/{id}`
 
 ### Request params
 
@@ -258,7 +258,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/users`
+`POST /api/4/users`
 
 ### Request params
 
@@ -340,7 +340,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/users/{id}`
+`PUT /api/4/users/{id}`
 
 ### Request params
 
@@ -422,7 +422,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/users/{id}`
+`PUT /api/4/users/{id}`
 
 ### Request params
 
@@ -504,7 +504,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/users/{id}`
+`PUT /api/4/users/{id}`
 
 ### Request params
 

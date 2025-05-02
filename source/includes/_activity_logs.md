@@ -67,7 +67,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/activity_logs/{id}`
+`GET /api/4/activity_logs/{id}`
 
 ### Request params
 
@@ -130,7 +130,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/activity_logs`
+`GET /api/4/activity_logs`
 
 ### Request params
 

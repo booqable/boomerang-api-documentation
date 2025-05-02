@@ -57,7 +57,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/clusters`
+`GET /api/4/clusters`
 
 ### Request params
 
@@ -136,7 +136,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/clusters/{id}`
+`GET /api/4/clusters/{id}`
 
 ### Request params
 
@@ -197,7 +197,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/clusters`
+`POST /api/4/clusters`
 
 ### Request params
 
@@ -269,7 +269,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/clusters/{id}`
+`PUT /api/4/clusters/{id}`
 
 ### Request params
 
@@ -361,7 +361,7 @@ To delete a cluster make sure no active locations are associated with it anymore
 
 ### HTTP Request
 
-`DELETE /api/boomerang/clusters/{id}`
+`DELETE /api/4/clusters/{id}`
 
 ### Request params
 

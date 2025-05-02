@@ -60,7 +60,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/notes`
+`GET /api/4/notes`
 
 ### Request params
 
@@ -143,7 +143,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/notes/{id}`
+`GET /api/4/notes/{id}`
 
 ### Request params
 
@@ -209,7 +209,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/notes`
+`POST /api/4/notes`
 
 ### Request params
 
@@ -276,7 +276,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/notes/{id}`
+`DELETE /api/4/notes/{id}`
 
 ### Request params
 

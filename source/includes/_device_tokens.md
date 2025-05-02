@@ -57,7 +57,7 @@ Use device tokens to register devices to receive push notifications.
 
 ### HTTP Request
 
-`POST /api/boomerang/device_tokens`
+`POST /api/4/device_tokens`
 
 ### Request params
 
@@ -115,7 +115,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/device_tokens/{id}`
+`DELETE /api/4/device_tokens/{id}`
 
 ### Request params
 

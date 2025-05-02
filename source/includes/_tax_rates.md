@@ -67,7 +67,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET api/boomerang/tax_rates`
+`GET /api/4/tax_rates`
 
 ### Request params
 
@@ -177,7 +177,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/tax_rates/{id}`
+`GET /api/4/tax_rates/{id}`
 
 ### Request params
 
@@ -270,7 +270,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/tax_rates`
+`POST /api/4/tax_rates`
 
 ### Request params
 
@@ -372,7 +372,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/tax_rates/{id}`
+`PUT /api/4/tax_rates/{id}`
 
 ### Request params
 
@@ -442,7 +442,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/tax_rates/{id}`
+`DELETE /api/4/tax_rates/{id}`
 
 ### Request params
 

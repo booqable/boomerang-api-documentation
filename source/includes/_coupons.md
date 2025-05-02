@@ -58,7 +58,7 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
 
 ### HTTP Request
 
-`GET /api/boomerang/coupons`
+`GET /api/4/coupons`
 
 ### Request params
 
@@ -137,7 +137,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/coupons/{id}`
+`GET /api/4/coupons/{id}`
 
 ### Request params
 
@@ -197,7 +197,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`POST /api/boomerang/coupons`
+`POST /api/4/coupons`
 
 ### Request params
 
@@ -309,7 +309,7 @@ When updating a coupon the existing one is archived and a new one gets created:
 
 ### HTTP Request
 
-`PUT /api/boomerang/coupons/{id}`
+`PUT /api/4/coupons/{id}`
 
 ### Request params
 
@@ -370,7 +370,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/coupons/{id}`
+`DELETE /api/4/coupons/{id}`
 
 ### Request params
 

@@ -155,7 +155,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNzM1ZGZlMTgtNGFlZS00N2U0LTk4ZjAtNjhlMjc0ODRlNzJl'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvZDhlYjE3ZWYtOGI1YS00ZTNjLWIwMzMtMmE4M2YzNjc5ZTU3'
        --data-urlencode 'include=owner'
 ```
 
@@ -218,7 +218,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/barcodes`
+`GET /api/4/barcodes`
 
 ### Request params
 
@@ -347,7 +347,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/barcodes/{id}`
+`GET /api/4/barcodes/{id}`
 
 ### Request params
 
@@ -424,7 +424,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/barcodes`
+`POST /api/4/barcodes`
 
 ### Request params
 
@@ -512,7 +512,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/barcodes/{id}`
+`PUT /api/4/barcodes/{id}`
 
 ### Request params
 
@@ -591,7 +591,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/barcodes/{id}`
+`DELETE /api/4/barcodes/{id}`
 
 ### Request params
 

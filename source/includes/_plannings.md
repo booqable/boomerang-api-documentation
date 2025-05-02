@@ -106,10 +106,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-02-22T07:47:00.000000+00:00",
-          "stops_at": "1973-03-24T07:47:00.000000+00:00",
-          "reserved_from": "1973-02-22T07:47:00.000000+00:00",
-          "reserved_till": "1973-03-24T07:47:00.000000+00:00",
+          "starts_at": "1973-02-18T03:53:00.000000+00:00",
+          "stops_at": "1973-03-20T03:53:00.000000+00:00",
+          "reserved_from": "1973-02-18T03:53:00.000000+00:00",
+          "reserved_till": "1973-03-20T03:53:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -131,7 +131,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/plannings`
+`GET /api/4/plannings`
 
 ### Request params
 
@@ -236,12 +236,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-04-29T09:30:06Z"
+                       "gte": "2025-05-03T13:24:39Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-05-02T09:30:06Z"
+                       "lte": "2025-05-06T13:24:39Z"
                      }
                    }
                  ]
@@ -251,12 +251,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-04-29T09:30:06Z"
+                       "gte": "2025-05-03T13:24:39Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-05-02T09:30:06Z"
+                       "lte": "2025-05-06T13:24:39Z"
                      }
                    }
                  ]
@@ -284,7 +284,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ### HTTP Request
 
-`POST api/boomerang/plannings/search`
+`POST /api/4/plannings/search`
 
 ### Request params
 
@@ -389,10 +389,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-03-18T04:12:01.000000+00:00",
-        "stops_at": "1978-04-17T04:12:01.000000+00:00",
-        "reserved_from": "1978-03-18T04:12:01.000000+00:00",
-        "reserved_till": "1978-04-17T04:12:01.000000+00:00",
+        "starts_at": "1978-03-14T00:18:01.000000+00:00",
+        "stops_at": "1978-04-13T00:18:01.000000+00:00",
+        "reserved_from": "1978-03-14T00:18:01.000000+00:00",
+        "reserved_till": "1978-04-13T00:18:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,
@@ -413,7 +413,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/plannings/{id}`
+`GET /api/4/plannings/{id}`
 
 ### Request params
 

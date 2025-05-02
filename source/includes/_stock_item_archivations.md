@@ -301,7 +301,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/stock_item_archivations`
+`POST /api/4/stock_item_archivations`
 
 ### Request params
 

@@ -55,7 +55,7 @@ It calculates the distance (the route length) between the given locations and th
 
 ### HTTP Request
 
-`GET /api/boomerang/delivery_distance_calculations`
+`GET /api/4/delivery_distance_calculations`
 
 ### Request params
 

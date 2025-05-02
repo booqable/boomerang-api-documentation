@@ -179,8 +179,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-07-13T05:39:00.000000+00:00",
-              "till": "1978-08-11T05:39:00.000000+00:00",
+              "from": "1978-07-09T01:44:00.000000+00:00",
+              "till": "1978-08-07T01:44:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -198,8 +198,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-07-26T17:39:00.000000+00:00",
-                    "till": "1978-08-11T05:39:00.000000+00:00",
+                    "from": "1978-07-22T13:44:00.000000+00:00",
+                    "till": "1978-08-07T01:44:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -232,7 +232,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/lines`
+`GET /api/4/lines`
 
 ### Request params
 
@@ -344,8 +344,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1977-09-14T12:14:02.000000+00:00",
-            "till": "1977-10-13T12:14:02.000000+00:00",
+            "from": "1977-09-10T08:19:02.000000+00:00",
+            "till": "1977-10-09T08:19:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -363,8 +363,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1977-09-28T00:14:02.000000+00:00",
-                  "till": "1977-10-13T12:14:02.000000+00:00",
+                  "from": "1977-09-23T20:19:02.000000+00:00",
+                  "till": "1977-10-09T08:19:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -396,7 +396,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/lines/{id}`
+`GET /api/4/lines/{id}`
 
 ### Request params
 
@@ -520,7 +520,7 @@ Order totals are automatically re-calculated after the creation of a new line an
 
 ### HTTP Request
 
-`POST /api/boomerang/lines`
+`POST /api/4/lines`
 
 ### Request params
 
@@ -665,7 +665,7 @@ Order totals are automatically re-calculated after updating a line and an invoic
 
 ### HTTP Request
 
-`PUT /api/boomerang/lines/{id}`
+`PUT /api/4/lines/{id}`
 
 ### Request params
 
@@ -777,8 +777,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1973-11-04T22:50:02.000000+00:00",
-            "till": "1973-12-03T22:50:02.000000+00:00",
+            "from": "1973-10-31T18:55:02.000000+00:00",
+            "till": "1973-11-29T18:55:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -796,8 +796,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1973-11-18T10:50:02.000000+00:00",
-                  "till": "1973-12-03T22:50:02.000000+00:00",
+                  "from": "1973-11-14T06:55:02.000000+00:00",
+                  "till": "1973-11-29T18:55:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -829,7 +829,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/lines/{id}`
+`DELETE /api/4/lines/{id}`
 
 ### Request params
 

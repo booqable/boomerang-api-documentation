@@ -448,7 +448,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/order_status_transitions`
+`POST /api/4/order_status_transitions`
 
 ### Request params
 

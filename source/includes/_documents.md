@@ -170,7 +170,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/documents`
+`GET /api/4/documents`
 
 ### Request params
 
@@ -346,7 +346,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ### HTTP Request
 
-`POST api/boomerang/documents/search`
+`POST /api/4/documents/search`
 
 ### Request params
 
@@ -532,7 +532,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/documents/{id}`
+`GET /api/4/documents/{id}`
 
 ### Request params
 
@@ -631,7 +631,7 @@ This request accepts the following includes:
         "prefix": null,
         "prefix_with_number": "1",
         "revision": null,
-        "date": "2025-04-28",
+        "date": "2022-10-17",
         "due_date": null,
         "name": "John Doe",
         "address": null,
@@ -681,7 +681,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/documents`
+`POST /api/4/documents`
 
 ### Request params
 
@@ -863,7 +863,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/documents/{id}`
+`PUT /api/4/documents/{id}`
 
 ### Request params
 
@@ -1037,7 +1037,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
 
 ### HTTP Request
 
-`DELETE /api/boomerang/documents/{id}`
+`DELETE /api/4/documents/{id}`
 
 ### Request params
 

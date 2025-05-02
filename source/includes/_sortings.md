@@ -84,7 +84,7 @@ A convenient way to bulk update positions for supported resources.
 
 ### HTTP Request
 
-`POST /api/boomerang/sortings`
+`POST /api/4/sortings`
 
 ### Request body
 

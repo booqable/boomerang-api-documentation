@@ -25,6 +25,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `writeonly`<br>The delivery [Order](#orders) this rate is for. 
 `price_in_cents` | **integer** <br>The price of the delivery rate in cents. 
 `rate_id` | **string** <br>The rate ID returned by a delivery app. 
+`signed_attributes` | **string** <br>The signed attributes returned by a delivery app. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -80,7 +81,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/order_delivery_rates`
+`GET /api/4/order_delivery_rates`
 
 ### Request params
 
@@ -110,6 +111,7 @@ Name | Description
 `minimum_order_amount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `rate_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`signed_attributes` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -154,9 +156,10 @@ This request accepts the following includes:
         "updated_at": "2025-11-19T18:45:00.000000+00:00",
         "identifier": "Custom",
         "price_in_cents": 10000,
-        "rate_id": "5d74673e-ac2b-4853-8a69-66982a001b26",
+        "rate_id": null,
         "minimum_order_amount_in_cents": 0,
-        "carrier_id": "02745660-23b2-4aea-84e5-d7b8dab1c31d"
+        "signed_attributes": null,
+        "carrier_id": null
       },
       "relationships": {}
     },
@@ -166,7 +169,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/order_delivery_rates/{id}`
+`GET /api/4/order_delivery_rates/{id}`
 
 ### Request params
 
@@ -204,8 +207,6 @@ This request accepts the following includes:
              "order_id": "614e2067-a249-44aa-899c-e0e493f52f34",
              "identifier": "Custom rate",
              "price_in_cents": 5000,
-             "rate_id": null,
-             "carrier_id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060",
              "minimum_order_amount_in_cents": 1000
            }
          }
@@ -217,7 +218,7 @@ This request accepts the following includes:
 ```json
   {
     "data": {
-      "id": "d5e985e9-1327-4fc2-8068-736295a1ec1f",
+      "id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060",
       "type": "order_delivery_rates",
       "attributes": {
         "created_at": "2026-03-19T10:24:00.000000+00:00",
@@ -226,7 +227,8 @@ This request accepts the following includes:
         "price_in_cents": 5000,
         "rate_id": null,
         "minimum_order_amount_in_cents": 1000,
-        "carrier_id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060"
+        "signed_attributes": null,
+        "carrier_id": null
       },
       "relationships": {}
     },
@@ -236,7 +238,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/order_delivery_rates`
+`POST /api/4/order_delivery_rates`
 
 ### Request params
 
@@ -260,6 +262,7 @@ Name | Description
 `data[attributes][order_id]` | **uuid** <br>The delivery [Order](#orders) this rate is for. 
 `data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
 `data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
+`data[attributes][signed_attributes]` | **string** <br>The signed attributes returned by a delivery app. 
 
 
 ### Includes
@@ -287,8 +290,7 @@ This request accepts the following includes:
            "id": "00380853-f61f-4ade-8d98-f1cbcbfe2d7f",
            "attributes": {
              "identifier": "Standard",
-             "price_in_cents": 5000,
-             "rate_id": "02309205-57de-4518-85c4-551531c6aba6"
+             "price_in_cents": 5000
            }
          }
        }'
@@ -306,9 +308,10 @@ This request accepts the following includes:
         "updated_at": "2016-08-26T07:41:01.000000+00:00",
         "identifier": "Standard",
         "price_in_cents": 5000,
-        "rate_id": "02309205-57de-4518-85c4-551531c6aba6",
+        "rate_id": null,
         "minimum_order_amount_in_cents": 0,
-        "carrier_id": "3bc89c75-2f3e-410c-8254-8676ee3430e1"
+        "signed_attributes": null,
+        "carrier_id": null
       },
       "relationships": {}
     },
@@ -318,7 +321,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/order_delivery_rates/{id}`
+`PUT /api/4/order_delivery_rates/{id}`
 
 ### Request params
 
@@ -342,6 +345,7 @@ Name | Description
 `data[attributes][order_id]` | **uuid** <br>The delivery [Order](#orders) this rate is for. 
 `data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
 `data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
+`data[attributes][signed_attributes]` | **string** <br>The signed attributes returned by a delivery app. 
 
 
 ### Includes
@@ -375,7 +379,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/order_delivery_rates/{id}`
+`DELETE /api/4/order_delivery_rates/{id}`
 
 ### Request params
 

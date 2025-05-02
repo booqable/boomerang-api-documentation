@@ -79,7 +79,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/inventory_levels`
+`GET /api/4/inventory_levels`
 
 ### Request params
 
@@ -174,7 +174,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/inventory_levels`
+`GET /api/4/inventory_levels`
 
 ### Request params
 

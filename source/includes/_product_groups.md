@@ -174,7 +174,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/product_groups`
+`GET /api/4/product_groups`
 
 ### Request params
 
@@ -338,7 +338,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ### HTTP Request
 
-`POST api/boomerang/product_groups/search`
+`POST /api/4/product_groups/search`
 
 ### Request params
 
@@ -505,7 +505,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/product_groups/{id}`
+`GET /api/4/product_groups/{id}`
 
 ### Request params
 
@@ -625,7 +625,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/product_groups`
+`POST /api/4/product_groups`
 
 ### Request params
 
@@ -776,7 +776,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/product_groups/{id}`
+`PUT /api/4/product_groups/{id}`
 
 ### Request params
 
@@ -918,7 +918,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/product_groups/{id}`
+`DELETE /api/4/product_groups/{id}`
 
 ### Request params
 

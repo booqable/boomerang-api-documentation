@@ -129,7 +129,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/payment_charges`
+`POST /api/4/payment_charges`
 
 ### Request params
 
@@ -254,7 +254,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/payment_charges/{id}`
+`PUT /api/4/payment_charges/{id}`
 
 ### Request params
 

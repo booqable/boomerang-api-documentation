@@ -143,7 +143,7 @@ The description of the relationships and attributes of these resources can be fo
 
 ### HTTP Request
 
-`GET /api/boomerang/payments`
+`GET /api/4/payments`
 
 ### Request params
 
@@ -271,7 +271,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/payments/{id}`
+`GET /api/4/payments/{id}`
 
 ### Request params
 

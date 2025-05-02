@@ -87,7 +87,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/collections`
+`GET /api/4/collections`
 
 ### Request params
 
@@ -183,7 +183,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/collections/{id}`
+`GET /api/4/collections/{id}`
 
 ### Request params
 
@@ -267,7 +267,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/collections`
+`POST /api/4/collections`
 
 ### Request params
 
@@ -372,7 +372,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/collections/{id}`
+`PUT /api/4/collections/{id}`
 
 ### Request params
 
@@ -469,7 +469,7 @@ To delete a collection make sure there are no nested collections anymore.
 
 ### HTTP Request
 
-`DELETE /api/boomerang/collections/{id}`
+`DELETE /api/4/collections/{id}`
 
 ### Request params
 

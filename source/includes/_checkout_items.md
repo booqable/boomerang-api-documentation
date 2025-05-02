@@ -77,7 +77,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/checkout_items`
+`GET /api/4/checkout_items`
 
 ### Request params
 
@@ -166,7 +166,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/checkout_items/{id}`
+`GET /api/4/checkout_items/{id}`
 
 ### Request params
 
@@ -232,7 +232,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`POST /api/boomerang/checkout_items`
+`POST /api/4/checkout_items`
 
 ### Request params
 
@@ -315,7 +315,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/checkout_items/{id}`
+`PUT /api/4/checkout_items/{id}`
 
 ### Request params
 
@@ -389,7 +389,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/checkout_items/{id}`
+`DELETE /api/4/checkout_items/{id}`
 
 ### Request params
 

@@ -116,7 +116,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/notification_subscriptions`
+`GET /api/4/notification_subscriptions`
 
 ### Request params
 
@@ -221,7 +221,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/notification_subscriptions`
+`GET /api/4/notification_subscriptions`
 
 ### Request params
 
@@ -300,7 +300,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/notification_subscriptions`
+`GET /api/4/notification_subscriptions`
 
 ### Request params
 
@@ -376,7 +376,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/notification_subscriptions/{id}`
+`GET /api/4/notification_subscriptions/{id}`
 
 ### Request params
 
@@ -434,7 +434,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`POST /api/boomerang/notification_subscriptions`
+`POST /api/4/notification_subscriptions`
 
 ### Request params
 
@@ -493,7 +493,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/notification_subscriptions/{id}`
+`DELETE /api/4/notification_subscriptions/{id}`
 
 ### Request params
 

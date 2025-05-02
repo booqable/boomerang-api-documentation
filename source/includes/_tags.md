@@ -55,7 +55,7 @@ The Tag resource allows to gather names and usage counts of tags that are being 
 
 ### HTTP Request
 
-`GET /api/boomerang/tags`
+`GET /api/4/tags`
 
 ### Request params
 

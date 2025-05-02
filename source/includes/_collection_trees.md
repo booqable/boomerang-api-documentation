@@ -54,7 +54,7 @@ Allows making multiple changes to the tree of collections at once.
 
 ### HTTP Request
 
-`POST /api/boomerang/collection_trees`
+`POST /api/4/collection_trees`
 
 ### Request body
 

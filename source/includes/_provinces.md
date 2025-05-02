@@ -59,7 +59,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/provinces`
+`GET /api/4/provinces`
 
 ### Request params
 

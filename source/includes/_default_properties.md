@@ -73,7 +73,7 @@ When creating properties they are connected with their default when one of the f
 
 ### HTTP Request
 
-`GET /api/boomerang/default_properties`
+`GET /api/4/default_properties`
 
 ### Request params
 
@@ -155,7 +155,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/default_properties/{id}`
+`GET /api/4/default_properties/{id}`
 
 ### Request params
 
@@ -217,7 +217,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`POST /api/boomerang/default_properties`
+`POST /api/4/default_properties`
 
 ### Request params
 
@@ -294,7 +294,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/default_properties/{id}`
+`PUT /api/4/default_properties/{id}`
 
 ### Request params
 
@@ -362,7 +362,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`DELETE /api/boomerang/default_properties/{id}`
+`DELETE /api/4/default_properties/{id}`
 
 ### Request params
 

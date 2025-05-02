@@ -61,7 +61,7 @@ Theme assets are the individual files that make up a shop's theme.
 
 ### HTTP Request
 
-`GET /api/boomerang/assets`
+`GET /api/4/assets`
 
 ### Request params
 
@@ -164,7 +164,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/assets`
+`POST /api/4/assets`
 
 ### Request params
 
@@ -248,7 +248,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/assets`
+`POST /api/4/assets`
 
 ### Request params
 
@@ -322,7 +322,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/assets/{id}`
+`DELETE /api/4/assets/{id}`
 
 ### Request params
 

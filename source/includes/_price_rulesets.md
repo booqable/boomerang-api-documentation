@@ -65,7 +65,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/price_rulesets`
+`GET /api/4/price_rulesets`
 
 ### Request params
 
@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2032-06-23T23:24:05.000000+00:00",
-          "till": "2032-08-23T23:24:05.000000+00:00",
+          "from": "2032-06-19T19:30:05.000000+00:00",
+          "till": "2032-08-19T19:30:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -179,7 +179,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/price_rulesets/{id}`
+`GET /api/4/price_rulesets/{id}`
 
 ### Request params
 
@@ -238,8 +238,8 @@ This request accepts the following includes:
       "id": "e4fe0b61-208f-4525-8281-39ceec698804",
       "type": "price_rulesets",
       "attributes": {
-        "created_at": "2014-10-25T15:02:01.000000+00:00",
-        "updated_at": "2014-10-25T15:02:01.000000+00:00",
+        "created_at": "2014-10-24T15:02:01.000000+00:00",
+        "updated_at": "2014-10-24T15:02:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Seasonal ruleset",
@@ -261,8 +261,8 @@ This request accepts the following includes:
         "id": "fe521f82-f68d-479c-843d-7420dbcf18ae",
         "type": "price_rules",
         "attributes": {
-          "created_at": "2014-10-25T15:02:01.000000+00:00",
-          "updated_at": "2014-10-25T15:02:01.000000+00:00",
+          "created_at": "2014-10-24T15:02:01.000000+00:00",
+          "updated_at": "2014-10-24T15:02:01.000000+00:00",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
@@ -290,7 +290,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/price_rulesets`
+`POST /api/4/price_rulesets`
 
 ### Request params
 
@@ -424,8 +424,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2028-11-03T12:37:00.000000+00:00",
-          "till": "2029-01-03T12:37:00.000000+00:00",
+          "from": "2028-10-30T08:43:00.000000+00:00",
+          "till": "2028-12-30T08:43:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -446,7 +446,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/price_rulesets/{id}`
+`PUT /api/4/price_rulesets/{id}`
 
 ### Request params
 
@@ -512,7 +512,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/price_rulesets/{id}`
+`DELETE /api/4/price_rulesets/{id}`
 
 ### Request params
 

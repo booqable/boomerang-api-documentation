@@ -382,7 +382,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/properties`
+`GET /api/4/properties`
 
 ### Request params
 
@@ -509,7 +509,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/properties/{id}`
+`GET /api/4/properties/{id}`
 
 ### Request params
 
@@ -619,7 +619,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/properties`
+`POST /api/4/properties`
 
 ### Request params
 
@@ -720,7 +720,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/properties/{id}`
+`PUT /api/4/properties/{id}`
 
 ### Request params
 
@@ -812,7 +812,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/properties/{id}`
+`DELETE /api/4/properties/{id}`
 
 ### Request params
 

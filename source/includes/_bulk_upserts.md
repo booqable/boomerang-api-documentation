@@ -173,7 +173,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/bulk_upserts`
+`POST /api/4/bulk_upserts`
 
 ### Request params
 

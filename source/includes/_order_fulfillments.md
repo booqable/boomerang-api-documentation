@@ -427,7 +427,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/order_fulfillments`
+`POST /api/4/order_fulfillments`
 
 ### Request params
 
@@ -606,7 +606,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/order_fulfillments`
+`POST /api/4/order_fulfillments`
 
 ### Request params
 
@@ -751,7 +751,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/order_fulfillments`
+`POST /api/4/order_fulfillments`
 
 ### Request params
 
@@ -894,7 +894,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/order_fulfillments`
+`POST /api/4/order_fulfillments`
 
 ### Request params
 

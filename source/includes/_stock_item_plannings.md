@@ -110,7 +110,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/stock_item_plannings`
+`GET /api/4/stock_item_plannings`
 
 ### Request params
 
@@ -221,7 +221,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/stock_item_plannings/{id}`
+`DELETE /api/4/stock_item_plannings/{id}`
 
 ### Request params
 

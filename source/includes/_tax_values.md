@@ -65,7 +65,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET api/boomerang/tax_values`
+`GET /api/4/tax_values`
 
 ### Request params
 
@@ -167,8 +167,8 @@ This request does not accept any includes
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-01-30T17:31:00.000000+00:00",
-          "stops_at": "2018-02-03T17:31:00.000000+00:00",
+          "starts_at": "2018-01-30T17:22:00.000000+00:00",
+          "stops_at": "2018-02-03T17:22:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,
@@ -224,7 +224,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/tax_values/{id}`
+`GET /api/4/tax_values/{id}`
 
 ### Request params
 

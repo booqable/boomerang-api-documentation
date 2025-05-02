@@ -163,7 +163,7 @@ The description of the relationships and attributes of these resources can be fo
 
 ### HTTP Request
 
-`GET /api/boomerang/items`
+`GET /api/4/items`
 
 ### Request params
 
@@ -333,7 +333,7 @@ Use advanced search to make logical filter groups with and/or operators.
 
 ### HTTP Request
 
-`POST api/boomerang/items/search`
+`POST /api/4/items/search`
 
 ### Request params
 
@@ -503,7 +503,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/items/{id}`
+`GET /api/4/items/{id}`
 
 ### Request params
 

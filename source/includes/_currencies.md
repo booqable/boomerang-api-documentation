@@ -61,7 +61,7 @@ The currency object encapsulates all information about a monetary unit.
 
 ### HTTP Request
 
-`GET /api/boomerang/currencies/{id}`
+`GET /api/4/currencies/{id}`
 
 ### Request params
 

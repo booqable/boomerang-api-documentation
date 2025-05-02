@@ -88,7 +88,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/stock_item_trackers`
+`GET /api/4/stock_item_trackers`
 
 ### Request params
 

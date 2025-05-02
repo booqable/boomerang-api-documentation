@@ -56,7 +56,7 @@ A list of all login attempts for the current employee.
 
 ### HTTP Request
 
-`GET /api/boomerang/login_activities`
+`GET /api/4/login_activities`
 
 ### Request params
 

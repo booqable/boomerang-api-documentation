@@ -79,7 +79,7 @@ Invoices received from Booqable
 
 ### HTTP Request
 
-`GET /api/boomerang/billing_invoices`
+`GET /api/4/billing_invoices`
 
 ### Request params
 
@@ -172,7 +172,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`GET /api/boomerang/billing_invoices/{id}`
+`GET /api/4/billing_invoices/{id}`
 
 ### Request params
 

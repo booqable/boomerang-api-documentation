@@ -401,7 +401,7 @@ Name | Description
 
 ### HTTP Request
 
-`GET /api/boomerang/settings/current`
+`GET /api/4/settings/current`
 
 ### Request params
 

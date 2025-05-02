@@ -65,7 +65,7 @@ Get the counts for resources in an account.
 
 ### HTTP Request
 
-`GET /api/boomerang/counts/current`
+`GET /api/4/counts/current`
 
 ### Request params
 

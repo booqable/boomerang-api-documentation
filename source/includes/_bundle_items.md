@@ -80,7 +80,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/bundle_items`
+`GET /api/4/bundle_items`
 
 ### Request params
 
@@ -179,7 +179,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/bundle_items/{id}`
+`GET /api/4/bundle_items/{id}`
 
 ### Request params
 
@@ -260,7 +260,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/bundle_items`
+`POST /api/4/bundle_items`
 
 ### Request params
 
@@ -353,7 +353,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/bundle_items/{id}`
+`PUT /api/4/bundle_items/{id}`
 
 ### Request params
 
@@ -436,7 +436,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/bundle_items/{id}`
+`DELETE /api/4/bundle_items/{id}`
 
 ### Request params
 

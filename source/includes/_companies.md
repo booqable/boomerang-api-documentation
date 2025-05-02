@@ -154,7 +154,7 @@ A company holds information and configuration about an account.
 
 ### HTTP Request
 
-`GET /api/boomerang/companies/current`
+`GET /api/4/companies/current`
 
 ### Request params
 
@@ -303,7 +303,7 @@ Name | Description
 
 ### HTTP Request
 
-`GET /api/boomerang/companies/current`
+`GET /api/4/companies/current`
 
 ### Request params
 
@@ -417,7 +417,7 @@ This request does not accept any includes
 
 ### HTTP Request
 
-`PUT /api/boomerang/companies/current`
+`PUT /api/4/companies/current`
 
 ### Request params
 

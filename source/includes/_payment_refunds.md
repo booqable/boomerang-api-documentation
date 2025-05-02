@@ -40,7 +40,7 @@ Check each individual operation to see which relations can be included as a side
 `provider_method` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `provider_secret` | **string** <br>Provider refund secret. 
 `reason` | **string** <br>Reason. 
-`status` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
+`status` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`, `action_required`.
 `succeeded_at` | **datetime** <br>When payment refund succeeded. 
 `total_in_cents` | **integer** <br>Total amount in cents (`amount + deposit`). 
 `type` | **string** `readonly`<br>Always `payment_refunds`. 
@@ -110,7 +110,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`POST /api/boomerang/payment_refunds`
+`POST /api/4/payment_refunds`
 
 ### Request params
 
@@ -142,7 +142,7 @@ Name | Description
 `data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
+`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`, `action_required`.
 `data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
 `data[attributes][total_in_cents]` | **integer** <br>Total amount in cents (`amount + deposit`). 
 
@@ -224,7 +224,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`PUT /api/boomerang/payment_refunds/{id}`
+`PUT /api/4/payment_refunds/{id}`
 
 ### Request params
 
@@ -256,7 +256,7 @@ Name | Description
 `data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`.
+`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`, `action_required`.
 `data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
 `data[attributes][total_in_cents]` | **integer** <br>Total amount in cents (`amount + deposit`). 
 

@@ -106,7 +106,7 @@ Check each individual operation to see which relations can be included as a side
 
 ### HTTP Request
 
-`GET /api/boomerang/locations`
+`GET /api/4/locations`
 
 ### Request params
 
@@ -222,7 +222,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`GET /api/boomerang/locations/{id}`
+`GET /api/4/locations/{id}`
 
 ### Request params
 
@@ -352,7 +352,7 @@ This request accepts the following includes:
 
 ### HTTP Request
 
-`POST /api/boomerang/locations`
+`POST /api/4/locations`
 
 ### Request params
 
@@ -576,7 +576,7 @@ Note that disassociating clusters may result in a shortage error.
 
 ### HTTP Request
 
-`PUT /api/boomerang/locations/{id}`
+`PUT /api/4/locations/{id}`
 
 ### Request params
 
@@ -743,7 +743,7 @@ To archive a location make sure that:
 
 ### HTTP Request
 
-`DELETE /api/boomerang/locations/{id}`
+`DELETE /api/4/locations/{id}`
 
 ### Request params
 
