@@ -152,32 +152,6 @@ curl --request PATCH \
 	Sending a <code>PUT</code> request will return the resource with any changes that were made, but sending a <code>PATCH</code> request will always return a <code>204 NO CONTENT</code>
 </aside>
 
-## Update line positions
-
-> Example request
-
-```shell
-curl --request POST \
-  --url 'https://company.booqable.com/api/1/orders/ea024c26-c322-485b-85ad-f67b890e5346/lines/update_positions?ids[]=24fdbdf2-290e-423d-864b-7214a3ae96b3&ids[]=80879b22-5355-4902-88b2-b6c0f3e5dca5
-```
-
-Updates the order of lines in an order.
-
-
-
-### HTTP Request
-
-`POST /orders/:order_id/lines/update_positions?ids[]=:id1&ids[]=:id2...`
-
-### Query Parameters
-
-| Parameter | Description                                                                                  |
-| --------- | -------------------------------------------------------------------------------------------- |
-| **ids[]** | Line id, each line id needs it's own `ids[]` and their order determines the update positions |
-
-Required in **bold**
-
-
 ## Remove a line
 
 > Example request
