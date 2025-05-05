@@ -60,8 +60,8 @@ before the rules of that type are enforced.
           "data_type": "away",
           "data": {
             "away": {
-              "from": "2016-01-15",
-              "till": "2018-01-14"
+              "from": "2016-01-12",
+              "till": "2018-01-11"
             }
           }
         }
@@ -219,8 +219,8 @@ This request does not accept any includes
              "data_type": "away",
              "data": {
                "away": {
-                 "from": "2030-07-13",
-                 "till": "2040-07-12"
+                 "from": "2030-07-11",
+                 "till": "2040-07-10"
                }
              }
            }
@@ -241,8 +241,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2030-07-13",
-            "till": "2040-07-12"
+            "from": "2030-07-11",
+            "till": "2040-07-10"
           }
         }
       }
@@ -379,8 +379,8 @@ This request does not accept any includes
            "attributes": {
              "data": {
                "away": {
-                 "from": "2011-08-08",
-                 "till": "2013-05-08"
+                 "from": "2011-08-05",
+                 "till": "2013-05-05"
                }
              }
            }
@@ -401,8 +401,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2011-08-08",
-            "till": "2013-05-08"
+            "from": "2011-08-05",
+            "till": "2013-05-05"
           }
         }
       }
@@ -461,8 +461,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2009-11-14",
-            "till": "2011-11-14"
+            "from": "2009-11-11",
+            "till": "2011-11-11"
           }
         }
       }
