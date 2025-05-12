@@ -448,11 +448,6 @@
           </li>
           <li>
             <a href="#planning" class="toc-h1 toc-link" data-title="Planning" title="Planning">Planning</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#planning-delete-a-planning" class="toc-h2 toc-link" data-title="Delete a planning" title="Delete a planning">Delete a planning</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#order-lines" class="toc-h1 toc-link" data-title="Order Lines" title="Order Lines">Order Lines</a>
@@ -2250,16 +2245,6 @@ Canceling a reserved order will free all the products that were reserved with it
 <td><code>Readonly</code> When the planning was last updated</td>
 </tr>
 </tbody></table>
-<h2 id='planning-delete-a-planning'>Delete a planning</h2>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> DELETE <span class="se">\</span>
-  <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/1/orders/ea024c26-c322-485b-85ad-f67b890e5346/plannings/b649dcc8-2c93-45bd-88f3-35e1a8be8356'</span>
-</code></pre></div>
-<p>Deletes a planning from an order.</p>
-<h3 id='planning-delete-a-planning-http-request'>HTTP Request</h3>
-<p><code>DELETE /orders/:order_id/plannings/:id</code></p>
 <h1 id='order-lines'>Order Lines</h1>
 <table><thead>
 <tr>
