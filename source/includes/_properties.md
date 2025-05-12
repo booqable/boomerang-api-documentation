@@ -80,7 +80,7 @@ Properties can have different types and behave differently. These are the `value
 Name | Description
 -- | --
 `default_property` | **[Default property](#default-properties)** `optional`<br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
-`owner` | **[Customer](#customers), [Order](#orders), [Product group](#product-groups), [Stock item](#stock-items)** `required`<br>The resource this property is about. 
+`owner` | **[Customer](#customers), [Document](#documents), [Order](#orders), [Product group](#product-groups), [Stock item](#stock-items)** `required`<br>The resource this property is about. 
 
 
 Check matching attributes under [Fields](#properties-fields) to see which relations can be written.
@@ -106,7 +106,7 @@ Check each individual operation to see which relations can be included as a side
 `meets_validation_requirements` | **boolean** `readonly`<br>Whether this property meets the validation requirements. 
 `name` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `owner_id` | **uuid** `readonly-after-create`<br>The resource this property is about. 
-`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
+`owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `documents`, `orders`, `product_groups`, `stock_items`.
 `position` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `property_type` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `province_id` | **string** <br>For type `address`. 
@@ -127,17 +127,25 @@ by setting the `properties_attribute` attribute:
 - Product groups
 - Orders
 
+The `properties_attributes` attribute is an array of hashes,
+each representing a property.
+
+Properties can be managed alongside other attributes
+when creating or updating an owner.
+
+To delete a property, set the `_destroy` attribute to `true`.
+
 > Create a property that corresponds with an existing default property (assuming a default phone property exists):
 
 ```shell
   curl --request 
-       --url 'https://example.booqable.com/api/4/customers'
+       --url 'https://example.booqable.com/api/4/customers/78172414-b6f5-44e3-874c-3ca4eafe1a02'
        --header 'content-type: application/json'
        --data '{
          "data": {
+           "id": "78172414-b6f5-44e3-874c-3ca4eafe1a02",
            "type": "customers",
            "attributes": {
-             "name": "John Doe",
              "properties_attributes": [
                {
                  "identifier": "phone",
@@ -149,7 +157,7 @@ by setting the `properties_attribute` attribute:
        }'
 ```
 
-> A 201 status response looks like this:
+> A 200 status response looks like this:
 
 ```json
   {
@@ -161,9 +169,9 @@ by setting the `properties_attribute` attribute:
         "updated_at": "2027-08-03T07:47:02.000000+00:00",
         "archived": false,
         "archived_at": null,
-        "number": 2,
+        "number": 1,
         "name": "John Doe",
-        "email": null,
+        "email": "john@doe.com",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -187,13 +195,13 @@ by setting the `properties_attribute` attribute:
 
 ```shell
   curl --request 
-       --url 'https://example.booqable.com/api/4/customers'
+       --url 'https://example.booqable.com/api/4/customers/48b9cace-e329-4be8-809a-d997d34eb388'
        --header 'content-type: application/json'
        --data '{
          "data": {
+           "id": "48b9cace-e329-4be8-809a-d997d34eb388",
            "type": "customers",
            "attributes": {
-             "name": "John Doe",
              "properties_attributes": [
                {
                  "name": "Phone",
@@ -206,7 +214,7 @@ by setting the `properties_attribute` attribute:
        }'
 ```
 
-> A 201 status response looks like this:
+> A 200 status response looks like this:
 
 ```json
   {
@@ -218,9 +226,9 @@ by setting the `properties_attribute` attribute:
         "updated_at": "2026-04-01T06:11:06.000000+00:00",
         "archived": false,
         "archived_at": null,
-        "number": 2,
+        "number": 1,
         "name": "John Doe",
-        "email": null,
+        "email": "john@doe.com",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -251,7 +259,6 @@ by setting the `properties_attribute` attribute:
            "type": "customers",
            "id": "273e87b8-f7db-4315-8d74-4371f489b516",
            "attributes": {
-             "name": "John Doe",
              "properties_attributes": [
                {
                  "identifier": "phone",
@@ -279,9 +286,9 @@ by setting the `properties_attribute` attribute:
         "updated_at": "2022-01-05T06:05:01.000000+00:00",
         "archived": false,
         "archived_at": null,
-        "number": 2,
+        "number": 1,
         "name": "John Doe",
-        "email": "john-72@doe.test",
+        "email": "john-69@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -327,7 +334,7 @@ This request does not accept any includes
           "created_at": "2015-06-08T16:26:00.000000+00:00",
           "updated_at": "2015-06-08T16:26:00.000000+00:00",
           "name": "Phone",
-          "identifier": "property_12",
+          "identifier": "phone",
           "position": 0,
           "property_type": "phone",
           "show_on": [],
@@ -359,7 +366,7 @@ This request does not accept any includes
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-73@doe.test",
+          "email": "john-70@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -367,7 +374,7 @@ This request does not accept any includes
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
           "properties": {
-            "property_12": "+316000000"
+            "phone": "+316000000"
           },
           "tag_list": [],
           "merge_suggestion_customer_id": null,
@@ -455,7 +462,7 @@ This request accepts the following includes:
         "created_at": "2026-04-19T17:00:00.000000+00:00",
         "updated_at": "2026-04-19T17:00:00.000000+00:00",
         "name": "Phone",
-        "identifier": "property_13",
+        "identifier": "phone",
         "position": 0,
         "property_type": "phone",
         "show_on": [],
@@ -486,7 +493,7 @@ This request accepts the following includes:
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-74@doe.test",
+          "email": "john-71@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -494,7 +501,7 @@ This request accepts the following includes:
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
           "properties": {
-            "property_13": "+316000000"
+            "phone": "+316000000"
           },
           "tag_list": [],
           "merge_suggestion_customer_id": null,
@@ -594,9 +601,9 @@ This request accepts the following includes:
           "updated_at": "2023-03-09T00:06:01.000000+00:00",
           "archived": false,
           "archived_at": null,
-          "number": 2,
+          "number": 1,
           "name": "Jane Doe",
-          "email": "john-76@doe.test",
+          "email": "jane@doe.com",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -650,7 +657,7 @@ Name | Description
 `data[attributes][longitude]` | **string** <br>For type `address`. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
-`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `documents`, `orders`, `product_groups`, `stock_items`.
 `data[attributes][position]` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `data[attributes][province_id]` | **string** <br>For type `address`. 
@@ -701,7 +708,7 @@ This request accepts the following includes:
         "created_at": "2028-10-19T14:18:00.000000+00:00",
         "updated_at": "2028-10-19T14:18:00.000000+00:00",
         "name": "Phone",
-        "identifier": "property_15",
+        "identifier": "phone",
         "position": 0,
         "property_type": "phone",
         "show_on": [],
@@ -751,7 +758,7 @@ Name | Description
 `data[attributes][longitude]` | **string** <br>For type `address`. 
 `data[attributes][name]` | **string** <br>Name of the property (used as label and to compute identifier if left blank). 
 `data[attributes][owner_id]` | **uuid** <br>The resource this property is about. 
-`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `orders`, `product_groups`, `stock_items`.
+`data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `customers`, `documents`, `orders`, `product_groups`, `stock_items`.
 `data[attributes][position]` | **integer** <br>Which position the property has relative to other properties of the same owner. This determines the sorting of properties when they are displayed. 
 `data[attributes][property_type]` | **enum** <br>Determines how the data is rendered and the kind of input shown to the user.<br> One of: `address`, `date_field`, `email`, `phone`, `select`, `text_area`, `text_field`.
 `data[attributes][province_id]` | **string** <br>For type `address`. 
@@ -793,7 +800,7 @@ This request accepts the following includes:
         "created_at": "2023-03-23T09:40:01.000000+00:00",
         "updated_at": "2023-03-23T09:40:01.000000+00:00",
         "name": "Phone",
-        "identifier": "property_16",
+        "identifier": "phone",
         "position": 0,
         "property_type": "phone",
         "show_on": [],

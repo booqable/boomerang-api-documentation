@@ -18,7 +18,6 @@ When there's an ID mismatch, it's advised to fetch the session again to reload t
 ## Relationships
 Name | Description
 -- | --
-`app_payment_options` | **[App payment options](#app-payment-options)** `hasmany`<br>All active payment options from app integrations.
 `app_subscriptions` | **[App subscriptions](#app-subscriptions)** `hasmany`<br>All app subscriptions of the company.
 `clusters` | **[Clusters](#clusters)** `hasmany`<br>All [Clusters](#clusters) of the company.
 `company` | **[Company](#companies)** `required`<br>The [Company](#companies).
@@ -26,6 +25,7 @@ Name | Description
 `employee` | **[Employee](#employees)** `required`<br>The current [Employee](#employees).
 `locations` | **[Locations](#locations)** `hasmany`<br>All [Locations](#locations) of the company.
 `operating_rules` | **[Operating rules](#operating-rules)** `hasmany`<br>All [OperatingRules](#operating-rules) of the company.
+`payment_profiles` | **[Payment profiles](#payment-profiles)** `hasmany`<br>All [PaymentProfiles](#payment-profiles) of the company.
 `settings` | **[Setting](#settings)** `required`<br>All [Settings](#settings) of the company.
 
 
@@ -36,6 +36,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`app_payment_options_available` | **boolean** <br>Whether the app payment options are available in the checkout.
 `billing_plans` | **array** <br>The available billing plans.
 `clusters_updated_at` | **datetime** <br>When the clusters were last updated.
 `company_id` | **uuid** <br>The [Company](#companies).
@@ -95,13 +96,11 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": false,
               "allow_extra_employees": false,
               "manual_email_templates": 0,
-              "custom_fields": 3
+              "custom_fields": 3,
+              "tags": 5
             },
             "features": [
-              "multiple_locations",
-              "api",
-              "overbookings",
-              "customer_auth"
+              "api"
             ]
           },
           {
@@ -117,25 +116,21 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": false,
               "allow_extra_employees": false,
               "manual_email_templates": 3,
-              "custom_fields": null
+              "custom_fields": null,
+              "tags": null
             },
             "features": [
-              "multiple_locations",
               "api",
-              "overbookings",
-              "customer_auth",
               "advanced_pricing",
               "custom_fields",
               "sales_items",
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
-              "pricing_rules",
               "packing_slips",
               "notes",
               "revenue_report",
               "manual_email_templates",
-              "custom_tags",
               "away_mode",
               "customer_discount_percentage",
               "product_security_deposit",
@@ -155,25 +150,21 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": true,
               "allow_extra_employees": true,
               "manual_email_templates": null,
-              "custom_fields": null
+              "custom_fields": null,
+              "tags": null
             },
             "features": [
-              "multiple_locations",
               "api",
-              "overbookings",
-              "customer_auth",
               "advanced_pricing",
               "custom_fields",
               "sales_items",
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
-              "pricing_rules",
               "packing_slips",
               "notes",
               "revenue_report",
               "manual_email_templates",
-              "custom_tags",
               "away_mode",
               "customer_discount_percentage",
               "product_security_deposit",
@@ -199,25 +190,21 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": true,
               "allow_extra_employees": true,
               "manual_email_templates": null,
-              "custom_fields": null
+              "custom_fields": null,
+              "tags": null
             },
             "features": [
-              "multiple_locations",
               "api",
-              "overbookings",
-              "customer_auth",
               "advanced_pricing",
               "custom_fields",
               "sales_items",
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
-              "pricing_rules",
               "packing_slips",
               "notes",
               "revenue_report",
               "manual_email_templates",
-              "custom_tags",
               "away_mode",
               "customer_discount_percentage",
               "product_security_deposit",
@@ -243,14 +230,13 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": true,
               "allow_extra_employees": true,
               "manual_email_templates": null,
-              "custom_fields": null
+              "custom_fields": null,
+              "tags": null
             },
             "features": [
               "online_bookings",
               "advanced_pricing",
               "api",
-              "overbookings",
-              "customer_auth",
               "custom_domain",
               "custom_fields",
               "sales_items",
@@ -263,7 +249,6 @@ Check each individual operation to see which relations can be included as a side
               "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
-              "custom_tags",
               "product_history",
               "away_mode",
               "customer_discount_percentage",
@@ -284,14 +269,13 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": true,
               "allow_extra_employees": true,
               "manual_email_templates": null,
-              "custom_fields": null
+              "custom_fields": null,
+              "tags": null
             },
             "features": [
               "online_bookings",
               "advanced_pricing",
               "api",
-              "overbookings",
-              "customer_auth",
               "custom_domain",
               "custom_fields",
               "sales_items",
@@ -304,7 +288,6 @@ Check each individual operation to see which relations can be included as a side
               "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
-              "custom_tags",
               "product_history",
               "away_mode",
               "customer_discount_percentage",
@@ -330,14 +313,13 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": true,
               "allow_extra_employees": true,
               "manual_email_templates": null,
-              "custom_fields": null
+              "custom_fields": null,
+              "tags": null
             },
             "features": [
               "online_bookings",
               "advanced_pricing",
               "api",
-              "overbookings",
-              "customer_auth",
               "custom_domain",
               "custom_fields",
               "sales_items",
@@ -350,7 +332,6 @@ Check each individual operation to see which relations can be included as a side
               "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
-              "custom_tags",
               "product_history",
               "away_mode",
               "customer_discount_percentage",
@@ -370,6 +351,7 @@ Check each individual operation to see which relations can be included as a side
           }
         ],
         "legacy_paypal_enabled": true,
+        "app_payment_options_available": false,
         "extra_charges": [
           {
             "name": "extra_employee_expiring",
@@ -495,9 +477,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 272",
-          "slug": "company-name-272",
-          "email": "mail275@company.com",
+          "name": "Company name 275",
+          "slug": "company-name-275",
+          "email": "mail278@company.com",
           "billing_email": null,
           "phone": null,
           "website": "www.booqable.com",
@@ -587,8 +569,6 @@ Check each individual operation to see which relations can be included as a side
               "online_bookings",
               "advanced_pricing",
               "api",
-              "overbookings",
-              "customer_auth",
               "custom_domain",
               "custom_fields",
               "sales_items",
@@ -601,7 +581,6 @@ Check each individual operation to see which relations can be included as a side
               "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
-              "custom_tags",
               "product_history",
               "away_mode",
               "customer_discount_percentage",
@@ -627,7 +606,8 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": true,
               "allow_extra_employees": false,
               "manual_email_templates": null,
-              "custom_fields": null
+              "custom_fields": null,
+              "tags": null
             }
           },
           "third_party_id": "59b0823e-3949-4963-8088-2c23b460c183"
@@ -667,7 +647,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1746437266"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1747042154"
         }
       },
       {
@@ -832,7 +812,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[sessions]=company_id,employee_id,locations_updated_at`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,app_payment_options,clusters`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,clusters,company`
 
 
 ### Includes
@@ -840,7 +820,6 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
-  <li><code>app_payment_options</code></li>
   <li><code>app_subscriptions</code></li>
   <li><code>clusters</code></li>
   <li><code>company</code></li>
@@ -848,6 +827,7 @@ This request accepts the following includes:
   <li><code>employee</code></li>
   <li><code>locations</code></li>
   <li><code>operating_rules</code></li>
+  <li><code>payment_profiles</code></li>
   <li><code>settings</code></li>
 </ul>
 

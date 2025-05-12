@@ -9,6 +9,8 @@ from the current state of the order:
 - Customer information (when present)
 - Pricing and deposit
 - Lines
+- Rental dates (starts_at, stops_at)
+- Pickup and return locations
 
 Quotes and contracts are always finalized; to make a revision,
 archive the document, make changes to the order, and create a new one.
@@ -27,6 +29,7 @@ Name | Description
 `customer` | **[Customer](#customers)** `optional`<br>The associated customer. 
 `lines` | **[Lines](#lines)** `hasmany`<br>The lines of this document. 
 `order` | **[Order](#orders)** `required`<br>The order this document is for. 
+`properties` | **[Properties](#properties)** `hasmany`<br>Custom properties associated with this document. 
 `tax_region` | **[Tax region](#tax-regions)** `optional`<br>The associated tax region. 
 `tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The calculated taxes, one value for each applicable tax rate. 
 
@@ -61,7 +64,7 @@ Check each individual operation to see which relations can be included as a side
 `deposit_value` | **float** <br>The value to use for `deposit_type`. 
 `discount_in_cents` | **integer** `readonly`<br>Discount (incl. or excl. taxes based on `tax_strategy`). 
 `discount_percentage` | **float** <br>The discount percentage applied to this order. 
-`discount_type` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
+`discount_type` | **string** `readonly`<br>Type of discount. 
 `document_type` | **enum** `readonly-after-create`<br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `due_date` | **date** <br>The latest date by which the invoice must be fully paid. 
 `finalized` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
@@ -82,7 +85,11 @@ Check each individual operation to see which relations can be included as a side
 `revision` | **string** `readonly`<br>Revision number. Only applicable to invoices. Automatically generated when revising an invoice. 
 `sent` | **boolean** <br>Whether document is sent (with Booqable). 
 `signature_url` | **string** `readonly`<br>URL where the signature is stored. 
+`start_location_id` | **uuid** `readonly`<br>The ID of the pickup location. 
+`starts_at` | **datetime** `readonly`<br>The start date and time of the rental. 
 `status` | **enum** <br>Status (possible values depend on document type).<br> One of: `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`.
+`stop_location_id` | **uuid** `readonly`<br>The ID of the return location. 
+`stops_at` | **datetime** `readonly`<br>The end date and time of the rental. 
 `tag_list` | **array** <br>Case insensitive tag list. 
 `tax_in_cents` | **integer** `readonly`<br>Total tax. 
 `tax_region_id` | **uuid** `nullable`<br>The associated tax region. 
@@ -126,6 +133,10 @@ Check each individual operation to see which relations can be included as a side
           "body": null,
           "footer": "",
           "reference": null,
+          "starts_at": null,
+          "stops_at": null,
+          "start_location_id": null,
+          "stop_location_id": null,
           "revised": false,
           "finalized": false,
           "sent": false,
@@ -212,7 +223,7 @@ Name | Description
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_type` | **enum** <br>`eq`
+`discount_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
@@ -231,7 +242,11 @@ Name | Description
 `revised` | **boolean** <br>`eq`
 `revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
+`start_location_id` | **uuid** <br>`eq`, `not_eq`
+`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `status` | **enum** <br>`eq`
+`stop_location_id` | **uuid** <br>`eq`, `not_eq`
+`stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tag_list` | **string** <br>`eq`
 `tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
@@ -388,7 +403,7 @@ Name | Description
 `deposit_type` | **enum** <br>`eq`
 `discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`discount_type` | **enum** <br>`eq`
+`discount_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
@@ -407,7 +422,11 @@ Name | Description
 `revised` | **boolean** <br>`eq`
 `revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
+`start_location_id` | **uuid** <br>`eq`, `not_eq`
+`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `status` | **enum** <br>`eq`
+`stop_location_id` | **uuid** <br>`eq`, `not_eq`
+`stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tag_list` | **string** <br>`eq`
 `tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
@@ -489,6 +508,10 @@ This request accepts the following includes:
         "body": null,
         "footer": "",
         "reference": null,
+        "starts_at": null,
+        "stops_at": null,
+        "start_location_id": null,
+        "stop_location_id": null,
         "revised": false,
         "finalized": false,
         "sent": false,
@@ -541,7 +564,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,customer,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,properties,customer`
 
 
 ### Includes
@@ -589,6 +612,7 @@ This request accepts the following includes:
       <li><code>stop_location</code></li>
     </ul>
   </li>
+  <li><code>properties</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
 </ul>
@@ -638,6 +662,10 @@ This request accepts the following includes:
         "body": "",
         "footer": "",
         "reference": null,
+        "starts_at": "1977-09-07T14:03:01.000000+00:00",
+        "stops_at": "1977-10-07T14:03:01.000000+00:00",
+        "start_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
+        "stop_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "revised": false,
         "finalized": true,
         "sent": false,
@@ -669,7 +697,7 @@ This request accepts the following includes:
         "delivery_carrier_name": null,
         "delivery_address": null,
         "order_id": "c7d596a9-f29d-4dd8-8f81-dac3bef16c03",
-        "customer_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
+        "customer_id": "a937f30c-8af4-4171-89b6-fd40de388cf1",
         "tax_region_id": null,
         "coupon_id": null
       },
@@ -690,7 +718,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,customer,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,properties,customer`
 
 
 ### Request body
@@ -708,7 +736,6 @@ Name | Description
 `data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage applied to this order. 
-`data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
@@ -771,6 +798,7 @@ This request accepts the following includes:
       <li><code>stop_location</code></li>
     </ul>
   </li>
+  <li><code>properties</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
 </ul>
@@ -820,6 +848,10 @@ This request accepts the following includes:
         "body": null,
         "footer": "",
         "reference": null,
+        "starts_at": null,
+        "stops_at": null,
+        "start_location_id": null,
+        "stop_location_id": null,
         "revised": false,
         "finalized": false,
         "sent": false,
@@ -872,7 +904,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,customer,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,properties,customer`
 
 
 ### Request body
@@ -890,7 +922,6 @@ Name | Description
 `data[attributes][deposit_type]` | **enum** <br>Kind of deposit added.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage applied to this order. 
-`data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][document_type]` | **enum** <br>Type of document.<br> One of: `invoice`, `contract`, `quote`.
 `data[attributes][due_date]` | **date** <br>The latest date by which the invoice must be fully paid. 
 `data[attributes][finalized]` | **boolean** <br>Whether document is finalized (`quote` and `contract` are always finalized). 
@@ -953,6 +984,7 @@ This request accepts the following includes:
       <li><code>stop_location</code></li>
     </ul>
   </li>
+  <li><code>properties</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
 </ul>
@@ -994,6 +1026,10 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
         "body": null,
         "footer": "",
         "reference": null,
+        "starts_at": null,
+        "stops_at": null,
+        "start_location_id": null,
+        "stop_location_id": null,
         "revised": false,
         "finalized": false,
         "sent": false,

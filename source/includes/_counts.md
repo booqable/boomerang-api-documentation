@@ -20,6 +20,7 @@ Get the counts for resources in an account.
 `product_group_count` | **integer** `readonly`<br>Amount of product groups in an account. 
 `started_order_count` | **integer** `readonly`<br>Amount of orders with the status started. 
 `stopped_order_count` | **integer** `readonly`<br>Amount of orders with the status stopped. 
+`tag_count` | **integer** `readonly`<br>Amount of unique active tags. 
 `tax_rate_count` | **integer** `readonly`<br>Amount of tax rates in an account. 
 `webshop_order_count` | **integer** `readonly`<br>Amount of orders via the online store. 
 
@@ -46,6 +47,7 @@ Get the counts for resources in an account.
         "product_group_count": 1,
         "product_count": 1,
         "tax_rate_count": 1,
+        "tag_count": 0,
         "note_count": 0,
         "location_count": 0,
         "employee_count": 1,

@@ -732,7 +732,7 @@ This request accepts the following includes:
         "archived_at": null,
         "name": "iPad mini",
         "group_name": null,
-        "slug": "ipad-mini",
+        "slug": "ipad-pro",
         "sku": "SKU",
         "lead_time": 0,
         "lag_time": 0,

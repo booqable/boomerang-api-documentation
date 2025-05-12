@@ -8,6 +8,7 @@ The currency object encapsulates all information about a monetary unit.
 -- | --
 `decimal_mark` | **string** `readonly`<br>Character between the whole and fraction amounts. 
 `disambiguate_symbol` | **string** `readonly`<br>Alternative currency used if symbol is ambiguous. 
+`exponent` | **integer** `readonly`<br>The number of digits after the decimal separator. 
 `html_entity` | **string** `readonly`<br>The HTML entity for the currency symbol. 
 `id` | **string** `readonly`<br>The ISO code of the currency you want to fetch. 
 `iso_code` | **string** `readonly`<br>The international 3-letter code as defined by the ISO 4217 standard. 
@@ -42,6 +43,7 @@ The currency object encapsulates all information about a monetary unit.
       "attributes": {
         "decimal_mark": ",",
         "disambiguate_symbol": null,
+        "exponent": 2,
         "html_entity": "€",
         "iso_code": "EUR",
         "iso_numeric": "978",
@@ -69,7 +71,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[currencies]=decimal_mark,disambiguate_symbol,html_entity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[currencies]=decimal_mark,disambiguate_symbol,exponent`
 
 
 ### Includes

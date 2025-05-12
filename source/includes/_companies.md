@@ -252,8 +252,6 @@ Name | Description
             "online_bookings",
             "advanced_pricing",
             "api",
-            "overbookings",
-            "customer_auth",
             "custom_domain",
             "custom_fields",
             "sales_items",
@@ -266,7 +264,6 @@ Name | Description
             "revenue_report",
             "manual_email_templates",
             "product_shortage_limits",
-            "custom_tags",
             "product_history",
             "away_mode",
             "customer_discount_percentage",
@@ -292,7 +289,8 @@ Name | Description
             "allow_extra_locations": true,
             "allow_extra_employees": false,
             "manual_email_templates": null,
-            "custom_fields": null
+            "custom_fields": null,
+            "tags": null
           }
         }
       }

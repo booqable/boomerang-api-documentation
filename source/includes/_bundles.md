@@ -688,7 +688,7 @@ This request accepts the following includes:
         "archived_at": null,
         "type": "bundles",
         "name": "iPad Pro Bundle",
-        "slug": "ipad-pro-bundle",
+        "slug": "ipad-bundle",
         "product_type": "bundle",
         "extra_information": null,
         "photo_url": null,
