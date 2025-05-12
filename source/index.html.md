@@ -47,6 +47,7 @@ includes:
   - item_prices
   - items
   - lines
+  - line_charge_suggestions
   - locations
   - notes
   - orders
