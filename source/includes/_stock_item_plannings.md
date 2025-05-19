@@ -180,14 +180,20 @@ This request accepts the following includes:
 </ul>
 
 
-## Archive a stock_item planning
+## Archive a stock item planning (DEPRECATED)
 
+<aside class="warning">
+  <b>This operation is deprecated and will be removed in a future version.</b>
+  Use the <code>specify_stock_items</code> action of the
+  <a href="#order-fulfillments">OrderFulfillments</a> resource
+  to remove a specific StockItem from an Order.
+</aside>
 
-> How to archive a stock item planning:
+> (DEPRECATED) How to archive a stock item planning:
 
 ```shell
   curl --request DELETE
-       --url 'https://example.booqable.com/api/4/stock_item_plannings/68bb0a74-3b6a-479a-8db0-851ae0d77511'
+       --url 'https://example.booqable.com/api/4/stock_item_plannings/de7107aa-a6f6-4267-8d25-0900853fa86e'
        --header 'content-type: application/json'
 ```
 
@@ -196,11 +202,11 @@ This request accepts the following includes:
 ```json
   {
     "data": {
-      "id": "68bb0a74-3b6a-479a-8db0-851ae0d77511",
+      "id": "de7107aa-a6f6-4267-8d25-0900853fa86e",
       "type": "stock_item_plannings",
       "attributes": {
-        "created_at": "2020-03-22T01:19:28.000000+00:00",
-        "updated_at": "2020-03-22T01:19:28.000000+00:00",
+        "created_at": "2017-02-23T21:35:01.000000+00:00",
+        "updated_at": "2017-02-23T21:35:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "starts_at": null,
@@ -209,9 +215,9 @@ This request accepts the following includes:
         "started": false,
         "stopped": false,
         "status": "concept",
-        "stock_item_id": "c0063ec0-3366-4182-8cd6-209e7aa5f8df",
-        "planning_id": "2e914ecb-75f6-445d-8016-d168dd39ae4a",
-        "order_id": "88e2c331-8b9c-4d53-8297-c0bdab76db52"
+        "stock_item_id": "43333d08-17a4-4fba-8d4e-d72ca065b58e",
+        "planning_id": "1d924e5e-e519-4099-8a55-2bb0ad9b1658",
+        "order_id": "a14b0c0b-28ec-40a9-8731-70f3e67ba44e"
       },
       "relationships": {}
     },

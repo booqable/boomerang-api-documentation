@@ -31,7 +31,8 @@ Check each individual operation to see which relations can be included as a side
 `confirm_has_orders` | **boolean** `writeonly`<br>A flag to confirm an address update when the location has orders. 
 `country` | **string** <br>Address country. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`fulfillment_capabilities` | **array[string]** `readonly`<br>The fulfillment process options available from this location.<br>Zero or more from: `delivery`, `pickup`. 
+`delivery_enabled` | **boolean** `readonly`<br>Whether the location supports delivery. 
+`fulfillment_capabilities` | **array[string]** `readonly`<br>The fulfillment process options available from this location.<br>At least one from: `delivery`, `pickup`. 
 `id` | **uuid** `readonly`<br>Primary key.
 `location_type` | **enum** <br>Determines if the location can be seen in the online store.<br> One of: `rental`, `internal`.
 `main_address` | **hash** <br>A hash with the address fields. Use it when fetching a location. See `address` property type for more information. 
@@ -67,7 +68,7 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "name": "Warehouse",
-          "code": "LOC1000024",
+          "code": "LOC1000025",
           "location_type": "rental",
           "address_line_1": "Blokhuisplein 40",
           "address_line_2": "Department II",
@@ -77,6 +78,7 @@ Check each individual operation to see which relations can be included as a side
           "country": "Netherlands",
           "cluster_ids": [],
           "pickup_enabled": true,
+          "delivery_enabled": false,
           "fulfillment_capabilities": [
             "pickup"
           ],
@@ -184,7 +186,7 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "name": "Warehouse",
-        "code": "LOC1000025",
+        "code": "LOC1000026",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -194,6 +196,7 @@ This request accepts the following includes:
         "country": "Netherlands",
         "cluster_ids": [],
         "pickup_enabled": true,
+        "delivery_enabled": false,
         "fulfillment_capabilities": [
           "pickup"
         ],
@@ -300,6 +303,7 @@ This request accepts the following includes:
           "b6b7e9ad-3c95-41ca-897a-d2bd4270d323"
         ],
         "pickup_enabled": true,
+        "delivery_enabled": false,
         "fulfillment_capabilities": [
           "pickup"
         ],
@@ -435,7 +439,7 @@ Note that disassociating clusters may result in a shortage error.
         "archived": false,
         "archived_at": null,
         "name": "Old warehouse",
-        "code": "LOC1000027",
+        "code": "LOC1000028",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -448,6 +452,7 @@ Note that disassociating clusters may result in a shortage error.
           "23d4e910-0ff5-4c29-8d01-1aa63a1b974d"
         ],
         "pickup_enabled": true,
+        "delivery_enabled": false,
         "fulfillment_capabilities": [
           "pickup"
         ],
@@ -649,7 +654,7 @@ To archive a location make sure that:
         "archived": true,
         "archived_at": "2020-03-03T14:31:02.000000+00:00",
         "name": "Warehouse",
-        "code": "LOC1000030",
+        "code": "LOC1000031",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -659,6 +664,7 @@ To archive a location make sure that:
         "country": "Netherlands",
         "cluster_ids": [],
         "pickup_enabled": true,
+        "delivery_enabled": false,
         "fulfillment_capabilities": [
           "pickup"
         ],

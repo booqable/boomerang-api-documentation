@@ -48,11 +48,12 @@ Books a quantity of a Product on an Order. This can be any
 type of Product, including trackable Products.
 
 This action supports 3 modes:
-- `create_new`, a new Planning and Line are created.
-- `update_existing`, the quantity is added to an existing Planning/Line
-- `infer_planning`, behaves as `update_existing` when a Planning for
-  the same Product exists. Behaves as `create_new` when there is no
-  existing Planning for the Product.
+
+  - `create_new`, a new Planning and Line are created.
+  - `update_existing`, the quantity is added to an existing Planning/Line
+  - `infer_planning`, behaves as `update_existing` when a Planning for
+    the same Product exists. Behaves as `create_new` when there is no
+    existing Planning for the Product.
 
 The `confirm_shortage` attribute (on the resource, not on the action),
 overrides shortage warnings when booking on a reserved or started order.
@@ -72,13 +73,14 @@ overrides shortage warnings when booking on a reserved or started order.
 Books one or more StockItems of a trackable Product on an Order.
 
 This action supports 3 modes:
-- `create_new`, a new Planning and Line are created.
-- `update_existing`, the StockItems are booked on an existing Planning/Line.
-  If needed, the quantity of the Planning is increased to accomodate all
-  newly booked StockItems.
-- `infer_planning`, behaves as `update_existing` when a Planning for
-  the same Product exists. Behaves as `create_new` when there is no
-  existing Planning for the Product.
+
+  - `create_new`, a new Planning and Line are created.
+  - `update_existing`, the StockItems are booked on an existing Planning/Line.
+    If needed, the quantity of the Planning is increased to accommodate all
+    newly booked StockItems.
+  - `infer_planning`, behaves as `update_existing` when a Planning for
+    the same Product exists. Behaves as `create_new` when there is no
+    existing Planning for the Product.
 
 The `confirm_shortage` attribute (on the resource, not on the action),
 overrides shortage warnings when booking on a reserved or started order.

@@ -253,7 +253,6 @@ Name | Description
             "advanced_pricing",
             "api",
             "custom_domain",
-            "custom_fields",
             "sales_items",
             "bundles",
             "buffer_times",
