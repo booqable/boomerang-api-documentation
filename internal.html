@@ -1466,6 +1466,17 @@
               </ul>
           </li>
           <li>
+            <a href="#refundable-payment-charges" class="toc-h1 toc-link" data-title="Refundable payment charges" title="Refundable payment charges">Refundable payment charges</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#refundable-payment-charges-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#refundable-payment-charges-retrieve-prioritized-refundable-payment-charges" class="toc-h2 toc-link" data-title="Retrieve prioritized refundable payment charges" title="Retrieve prioritized refundable payment charges">Retrieve prioritized refundable payment charges</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#payments" class="toc-h1 toc-link" data-title="Payments" title="Payments">Payments</a>
               <ul class="toc-list-h2">
                   <li>
@@ -30059,6 +30070,175 @@ Check each individual operation to see which relations can be included as a side
     </ul>
   </li>
 </ul>
+<h1 id='refundable-payment-charges'>Refundable payment charges</h1>
+<p>Refundable Payment Charges provide a prioritized list of payment charges that can be refunded for a specific order.</p>
+
+<p>This virtual resource analyzes all charges associated with an order and determines the optimal charges to refund,
+considering the amount, deposit, and various business rules.</p>
+<h2 id='refundable-payment-charges-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>max_refundable_amount_in_cents</code></td>
+<td><strong>integer</strong> <br>The maximum amount in cents that can be refunded from this charge.<br>This represents the refundable portion of the regular amount (not deposit).</td>
+</tr>
+<tr>
+<td><code>max_refundable_deposit_in_cents</code></td>
+<td><strong>integer</strong> <br>The maximum deposit amount in cents that can be refunded from this charge.<br>This represents the refundable portion of the deposit.</td>
+</tr>
+<tr>
+<td><code>max_refundable_total_in_cents</code></td>
+<td><strong>integer</strong> <br>The total amount in cents that can be refunded from this charge.<br>This is the sum of <code>max_refundable_amount_in_cents</code> and <code>max_refundable_deposit_in_cents</code>.</td>
+</tr>
+<tr>
+<td><code>payment_id</code></td>
+<td><strong>string</strong> <br>The ID of the payment charge that this refundable charge represents.<br>Use this ID to reference the actual payment when processing the refund.</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><strong>integer</strong> <br>The sequential position (1..n) of this charge in the prioritized list.<br>Lower positions (starting at 1) indicate higher priority charges that should be considered first for refunding. The positions are assigned based on the sorting of charges by priority type, refundable amount, and timestamp.</td>
+</tr>
+<tr>
+<td><code>priority_type</code></td>
+<td><strong>string</strong> <br>A string indicating the priority category of this charge.<br>Possible values: - <code>optimal</code>: Can cover both amount and deposit in a single refund - highest priority. - <code>full_amount</code>: Can cover the full amount to be refunded. - <code>full_deposit</code>: Can cover the full deposit to be refunded. - <code>partial_amount</code>: Can partially cover the amount to be refunded. - <code>partial_deposit</code>: Can partially cover the deposit to be refunded. - <code>partial</code>: Can cover some part of the refund but not the full amount or deposit.</td>
+</tr>
+</tbody></table>
+<h2 id='refundable-payment-charges-retrieve-prioritized-refundable-payment-charges'>Retrieve prioritized refundable payment charges</h2>
+<blockquote>
+<p>How to retrieve prioritized refundable payment charges:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/refundable_payment_charges'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[amount_in_cents]=10000'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[deposit_in_cents]=5000'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[order_id]=d93eb469-fa75-4544-87c6-87a74339bc75'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fdcfc3c-eaea-47b5-845c-72e48194b5a2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refundable_payment_charges"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"priority_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"optimal"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"367e21a5-6799-497b-892c-c7412f0d6184"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"max_refundable_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"max_refundable_deposit_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">7500</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"max_refundable_total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">22500</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='refundable-payment-charges-retrieve-prioritized-refundable-payment-charges-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/refundable_payment_charges</code></p>
+<h3 id='refundable-payment-charges-retrieve-prioritized-refundable-payment-charges-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[refundable_payment_charges]=position,priority_type,payment_id</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='refundable-payment-charges-retrieve-prioritized-refundable-payment-charges-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>amount_in_cents</code></td>
+<td><strong>integer</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>deposit_in_cents</code></td>
+<td><strong>integer</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>max_refundable_amount_in_cents</code></td>
+<td><strong>integer</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>max_refundable_deposit_in_cents</code></td>
+<td><strong>integer</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>max_refundable_total_in_cents</code></td>
+<td><strong>integer</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>string</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>payment_id</code></td>
+<td><strong>string</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><strong>integer</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>priority_type</code></td>
+<td><strong>string</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='refundable-payment-charges-retrieve-prioritized-refundable-payment-charges-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='refundable-payment-charges-retrieve-prioritized-refundable-payment-charges-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 <h1 id='payments'>Payments</h1>
 <p>The Payment resource makes it possible to fetch the following resources in a single request:</p>
 
