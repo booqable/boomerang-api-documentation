@@ -73,6 +73,7 @@ includes:
   - order_fulfillments
   - order_price_recalculations
   - order_status_transitions
+  - refundable_payment_charges
   - payments
   - payment_authorizations
   - payment_charges
