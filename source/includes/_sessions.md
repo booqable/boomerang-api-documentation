@@ -18,6 +18,7 @@ When there's an ID mismatch, it's advised to fetch the session again to reload t
 ## Relationships
 Name | Description
 -- | --
+`app_payment_options` | **[App payment options](#app-payment-options)** `hasmany`<br>All app payment options of the company.
 `app_subscriptions` | **[App subscriptions](#app-subscriptions)** `hasmany`<br>All app subscriptions of the company.
 `clusters` | **[Clusters](#clusters)** `hasmany`<br>All [Clusters](#clusters) of the company.
 `company` | **[Company](#companies)** `required`<br>The [Company](#companies).
@@ -85,8 +86,8 @@ Check each individual operation to see which relations can be included as a side
         "billing_plans": [
           {
             "name": "small",
-            "month_price": 27,
-            "year_price": 252,
+            "month_price": 34,
+            "year_price": 324,
             "restrictions": {
               "employees": 1,
               "email_max_recipients": 500,
@@ -99,14 +100,12 @@ Check each individual operation to see which relations can be included as a side
               "custom_fields": 3,
               "tags": 5
             },
-            "features": [
-              "api"
-            ]
+            "features": []
           },
           {
             "name": "medium",
-            "month_price": 74,
-            "year_price": 708,
+            "month_price": 87,
+            "year_price": 828,
             "restrictions": {
               "employees": 2,
               "email_max_recipients": 500,
@@ -120,7 +119,6 @@ Check each individual operation to see which relations can be included as a side
               "tags": null
             },
             "features": [
-              "api",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -138,8 +136,8 @@ Check each individual operation to see which relations can be included as a side
           },
           {
             "name": "large",
-            "month_price": 212,
-            "year_price": 2028,
+            "month_price": 189,
+            "year_price": 1788,
             "restrictions": {
               "employees": 5,
               "email_max_recipients": 2000,
@@ -153,7 +151,6 @@ Check each individual operation to see which relations can be included as a side
               "tags": null
             },
             "features": [
-              "api",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -167,6 +164,7 @@ Check each individual operation to see which relations can be included as a side
               "customer_discount_percentage",
               "product_security_deposit",
               "coupons",
+              "api",
               "permissions",
               "product_shortage_limits",
               "product_history",
@@ -192,7 +190,6 @@ Check each individual operation to see which relations can be included as a side
               "tags": null
             },
             "features": [
-              "api",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -206,6 +203,7 @@ Check each individual operation to see which relations can be included as a side
               "customer_discount_percentage",
               "product_security_deposit",
               "coupons",
+              "api",
               "permissions",
               "product_shortage_limits",
               "product_history",
@@ -365,8 +363,8 @@ Check each individual operation to see which relations can be included as a side
           },
           {
             "name": "extra_employee",
-            "month_price": 44,
-            "year_price": 420,
+            "month_price": 37,
+            "year_price": 348,
             "per_employee": null,
             "features": null,
             "default": null
@@ -640,7 +638,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1747646970"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1748856518"
         }
       },
       {
@@ -727,6 +725,8 @@ Check each individual operation to see which relations can be included as a side
             "show_product_availability": true,
             "hide_product_availability_quantities": false,
             "show_cart_availability": true,
+            "require_delivery_address_when_selecting_rental_period": true,
+            "delivery_country_names": [],
             "website": null,
             "checkout_scripts": "",
             "google_analytics_id": null,
@@ -805,7 +805,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[sessions]=company_id,employee_id,locations_updated_at`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,clusters,company`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,app_payment_options,clusters`
 
 
 ### Includes
@@ -813,6 +813,7 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>app_payment_options</code></li>
   <li><code>app_subscriptions</code></li>
   <li><code>clusters</code></li>
   <li><code>company</code></li>

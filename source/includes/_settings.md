@@ -333,6 +333,8 @@ Name | Description
           "show_product_availability": true,
           "hide_product_availability_quantities": false,
           "show_cart_availability": true,
+          "require_delivery_address_when_selecting_rental_period": true,
+          "delivery_country_names": [],
           "website": null,
           "checkout_scripts": "",
           "google_analytics_id": null,

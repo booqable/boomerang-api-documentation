@@ -192,8 +192,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-12-23T03:02:01.000000+00:00",
-          "stops_at": "1970-01-22T03:02:01.000000+00:00",
+          "starts_at": "1969-12-09T03:02:01.000000+00:00",
+          "stops_at": "1970-01-08T03:02:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -407,14 +407,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-05-20T09:27:54Z",
-                       "lte": "2025-05-23T09:27:54Z"
+                       "gte": "2025-06-03T09:27:10Z",
+                       "lte": "2025-06-06T09:27:10Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-05-20T09:27:54Z",
-                       "lte": "2025-05-23T09:27:54Z"
+                       "gte": "2025-06-03T09:27:10Z",
+                       "lte": "2025-06-06T09:27:10Z"
                      }
                    }
                  ]
@@ -769,7 +769,7 @@ This request accepts the following includes:
       "type": "orders",
       "attributes": {
         "created_at": "2015-07-07T09:48:01.000000+00:00",
-        "updated_at": "2015-07-07T09:49:01.000000+00:00",
+        "updated_at": "2015-07-07T09:48:01.000000+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -782,8 +782,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-05-20T12:21:01.000000+00:00",
-        "stops_at": "1970-06-19T12:21:01.000000+00:00",
+        "starts_at": "1970-05-06T12:21:01.000000+00:00",
+        "stops_at": "1970-06-05T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -963,8 +963,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:27:01.000000+00:00",
-        "stops_at": "2026-11-03T14:27:01.000000+00:00",
+        "starts_at": "2026-09-25T14:28:01.000000+00:00",
+        "stops_at": "2026-11-03T14:28:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,

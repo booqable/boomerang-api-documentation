@@ -95,6 +95,7 @@ This request accepts the following includes:
             <li><code>documents</code></li>
           </ul>
       </li>
+      <li><code>properties</code></li>
     </ul>
   </li>
 </ul>

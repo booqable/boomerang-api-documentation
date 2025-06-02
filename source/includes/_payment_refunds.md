@@ -40,7 +40,7 @@ Check each individual operation to see which relations can be included as a side
 `provider_method` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `provider_secret` | **string** <br>Provider refund secret. 
 `reason` | **string** <br>Reason. 
-`status` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`, `action_required`.
+`status` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `action_required`.
 `succeeded_at` | **datetime** <br>When payment refund succeeded. 
 `total_in_cents` | **integer** <br>Total amount in cents (`amount + deposit`). 
 `type` | **string** `readonly`<br>Always `payment_refunds`. 
@@ -142,7 +142,7 @@ Name | Description
 `data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`, `action_required`.
+`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `action_required`.
 `data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
 `data[attributes][total_in_cents]` | **integer** <br>Total amount in cents (`amount + deposit`). 
 
@@ -256,7 +256,7 @@ Name | Description
 `data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
 `data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
 `data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `expired`, `action_required`.
+`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `action_required`.
 `data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
 `data[attributes][total_in_cents]` | **integer** <br>Total amount in cents (`amount + deposit`). 
 

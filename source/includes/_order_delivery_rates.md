@@ -6,8 +6,9 @@ This data is relevant only for orders that have a `delivery` fulfillment type.
 ## Relationships
 Name | Description
 -- | --
-`carrier` | **[App carrier](#app-carriers)** `required`<br>The selected carrier for this order. 
+`carrier` | **[App carrier](#app-carriers)** `optional`<br>The selected carrier for this order. 
 `order` | **[Order](#orders)** `optional`<br>The delivery [Order](#orders) this rate is for. 
+`tax_category` | **[Tax category](#tax-categories)** `optional`<br>The tax category for custom delivery rates. When a carrier is selected, the carrier's tax category is used instead. 
 
 
 Check matching attributes under [Fields](#order-delivery-rates-fields) to see which relations can be written.
@@ -17,7 +18,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`carrier_id` | **uuid** `readonly-after-create`<br>The selected carrier for this order. 
+`carrier_id` | **uuid** `readonly-after-create` `nullable`<br>The selected carrier for this order. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>The identifier of the delivery rate. 
@@ -26,6 +27,7 @@ Check each individual operation to see which relations can be included as a side
 `price_in_cents` | **integer** <br>The price of the delivery rate in cents. 
 `rate_id` | **string** <br>The rate ID returned by a delivery app. 
 `signed_attributes` | **string** <br>The signed attributes returned by a delivery app. 
+`tax_category_id` | **uuid** `nullable`<br>The tax category for custom delivery rates. When a carrier is selected, the carrier's tax category is used instead. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -91,7 +93,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,tax_category,order`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -112,6 +114,7 @@ Name | Description
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `rate_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `signed_attributes` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -131,6 +134,7 @@ This request accepts the following includes:
 <ul>
   <li><code>carrier</code></li>
   <li><code>order</code></li>
+  <li><code>tax_category</code></li>
 </ul>
 
 
@@ -158,8 +162,9 @@ This request accepts the following includes:
         "price_in_cents": 10000,
         "rate_id": null,
         "minimum_order_amount_in_cents": 0,
+        "tax_category_id": null,
         "signed_attributes": null,
-        "carrier_id": null
+        "carrier_id": "5d74673e-ac2b-4853-8a69-66982a001b26"
       },
       "relationships": {}
     },
@@ -178,7 +183,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,tax_category,order`
 
 
 ### Includes
@@ -188,6 +193,7 @@ This request accepts the following includes:
 <ul>
   <li><code>carrier</code></li>
   <li><code>order</code></li>
+  <li><code>tax_category</code></li>
 </ul>
 
 
@@ -207,7 +213,8 @@ This request accepts the following includes:
              "order_id": "614e2067-a249-44aa-899c-e0e493f52f34",
              "identifier": "Custom rate",
              "price_in_cents": 5000,
-             "minimum_order_amount_in_cents": 1000
+             "minimum_order_amount_in_cents": 1000,
+             "tax_category_id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060"
            }
          }
        }'
@@ -218,7 +225,7 @@ This request accepts the following includes:
 ```json
   {
     "data": {
-      "id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060",
+      "id": "d5e985e9-1327-4fc2-8068-736295a1ec1f",
       "type": "order_delivery_rates",
       "attributes": {
         "created_at": "2026-03-19T10:24:00.000000+00:00",
@@ -227,6 +234,7 @@ This request accepts the following includes:
         "price_in_cents": 5000,
         "rate_id": null,
         "minimum_order_amount_in_cents": 1000,
+        "tax_category_id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060",
         "signed_attributes": null,
         "carrier_id": null
       },
@@ -247,7 +255,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,tax_category,order`
 
 
 ### Request body
@@ -263,6 +271,7 @@ Name | Description
 `data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
 `data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
 `data[attributes][signed_attributes]` | **string** <br>The signed attributes returned by a delivery app. 
+`data[attributes][tax_category_id]` | **uuid** <br>The tax category for custom delivery rates. When a carrier is selected, the carrier's tax category is used instead. 
 
 
 ### Includes
@@ -272,6 +281,7 @@ This request accepts the following includes:
 <ul>
   <li><code>carrier</code></li>
   <li><code>order</code></li>
+  <li><code>tax_category</code></li>
 </ul>
 
 
@@ -310,8 +320,9 @@ This request accepts the following includes:
         "price_in_cents": 5000,
         "rate_id": null,
         "minimum_order_amount_in_cents": 0,
+        "tax_category_id": null,
         "signed_attributes": null,
-        "carrier_id": null
+        "carrier_id": "02309205-57de-4518-85c4-551531c6aba6"
       },
       "relationships": {}
     },
@@ -330,7 +341,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,tax_category,order`
 
 
 ### Request body
@@ -346,6 +357,7 @@ Name | Description
 `data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
 `data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
 `data[attributes][signed_attributes]` | **string** <br>The signed attributes returned by a delivery app. 
+`data[attributes][tax_category_id]` | **uuid** <br>The tax category for custom delivery rates. When a carrier is selected, the carrier's tax category is used instead. 
 
 
 ### Includes
@@ -355,6 +367,7 @@ This request accepts the following includes:
 <ul>
   <li><code>carrier</code></li>
   <li><code>order</code></li>
+  <li><code>tax_category</code></li>
 </ul>
 
 
@@ -388,7 +401,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[order_delivery_rates]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,order`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carrier,tax_category,order`
 
 
 ### Includes
@@ -398,5 +411,6 @@ This request accepts the following includes:
 <ul>
   <li><code>carrier</code></li>
   <li><code>order</code></li>
+  <li><code>tax_category</code></li>
 </ul>
 
