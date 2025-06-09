@@ -227,7 +227,7 @@ Name | Description
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
-`fulfillment_type` | **enum** <br>`eq`
+`fulfillment_type` | **string** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
@@ -271,6 +271,7 @@ Name | Description
 `deposit_type` | **array** <br>`count`
 `discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
+`fulfillment_type` | **array** <br>`count`
 `grand_total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `grand_total_with_tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
@@ -407,7 +408,7 @@ Name | Description
 `document_type` | **enum** <br>`eq`, `not_eq`
 `due_date` | **date** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `finalized` | **boolean** <br>`eq`
-`fulfillment_type` | **enum** <br>`eq`
+`fulfillment_type` | **string** <br>`eq`
 `grand_total_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `grand_total_with_tax_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
@@ -451,6 +452,7 @@ Name | Description
 `deposit_type` | **array** <br>`count`
 `discount_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
+`fulfillment_type` | **array** <br>`count`
 `grand_total_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `grand_total_with_tax_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `paid_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
@@ -662,8 +664,8 @@ This request accepts the following includes:
         "body": "",
         "footer": "",
         "reference": null,
-        "starts_at": "1977-08-17T14:04:01.000000+00:00",
-        "stops_at": "1977-09-16T14:04:01.000000+00:00",
+        "starts_at": "1977-08-10T14:04:01.000000+00:00",
+        "stops_at": "1977-09-09T14:04:01.000000+00:00",
         "start_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "stop_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "revised": false,

@@ -153,7 +153,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payments]=created_at,updated_at,type`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart,payment_method`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -208,6 +208,7 @@ This request accepts the following includes:
 <ul>
   <li><code>cart</code></li>
   <li><code>order</code></li>
+  <li><code>payment_method</code></li>
 </ul>
 
 
@@ -280,7 +281,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payments]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart,payment_method`
 
 
 ### Includes
@@ -290,5 +291,6 @@ This request accepts the following includes:
 <ul>
   <li><code>cart</code></li>
   <li><code>order</code></li>
+  <li><code>payment_method</code></li>
 </ul>
 

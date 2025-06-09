@@ -1,7 +1,7 @@
 # Report stock items
 
 Report on how stock items are performing. The report is filterable by date
-and can be requested by one of the following turnover types:
+and can be requested by one of the following revenue types:
 `invoices`, `orders`.
 
 <aside class="notice">
@@ -33,8 +33,8 @@ Check each individual operation to see which relations can be included as a side
 `product_name` | **string** <br>Product name. 
 `q` | **string** `writeonly`<br>Query for a specific stock item. 
 `rented_count` | **integer** <br>How many times the product was rented out. 
+`revenue_in_cents` | **integer** <br>Revenue during period. 
 `stock_item_id` | **uuid** <br>The [StockItem](#stock-items) whose performance is reported. 
-`turnover_in_cents` | **integer** <br>Turnover during period. 
 
 
 ## List performance for stock items
@@ -58,13 +58,13 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:35:00.000000+00:00",
+          "created_at": "2028-06-15T11:36:00.000000+00:00",
           "product_name": "Product 1000058",
           "identifier": "id1000172",
           "charge_duration_in_seconds": 7200,
           "planned_duration_in_seconds": 7200,
           "rented_count": 1,
-          "turnover_in_cents": 2000,
+          "revenue_in_cents": 2000,
           "stock_item_id": "900e48a7-b2af-464c-830a-b2f0a09aebf5",
           "product_id": "2e16282a-9ed0-48f3-8810-cb74f0570bc0",
           "location_id": null
@@ -75,13 +75,13 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:35:00.000000+00:00",
+          "created_at": "2028-06-15T11:36:00.000000+00:00",
           "product_name": "Product 1000058",
           "identifier": "id1000173",
           "charge_duration_in_seconds": 0,
           "planned_duration_in_seconds": 0,
           "rented_count": 0,
-          "turnover_in_cents": 2000,
+          "revenue_in_cents": 2000,
           "stock_item_id": "6ce9ed33-92eb-48b1-8528-75f4d4503cc9",
           "product_id": "2e16282a-9ed0-48f3-8810-cb74f0570bc0",
           "location_id": null
@@ -122,9 +122,9 @@ Name | Description
 `location_id` | **uuid** <br>`eq`
 `product_id` | **uuid** <br>`eq`
 `q` | **string** <br>`eq`
+`revenue_type` | **string** <br>`eq`
 `stock_item_id` | **uuid** <br>`eq`
 `till` | **datetime** <br>`eq`
-`turnover_type` | **string** <br>`eq`
 
 
 ### Meta

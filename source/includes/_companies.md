@@ -23,6 +23,7 @@ A company holds information and configuration about an account.
 `city` | **string** <br>City. 
 `continent` | **string** `readonly`<br>Continent the company is situated. 
 `country` | **string** <br>Country. 
+`country_code` | **string** <br>Two-letter country code (ISO 3166-1 alpha-2). 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** <br>Currency of the company. 
 `custom_domain` | **string** <br>Custom domain to use for hosted store and checkout. 
@@ -97,6 +98,7 @@ A company holds information and configuration about an account.
         "city": "Leeuwarden",
         "region": null,
         "country": "Netherlands",
+        "country_code": null,
         "market": "AV / Camera",
         "use_billing_address": false,
         "billing_company": null,
@@ -357,6 +359,7 @@ This request does not accept any includes
         "city": "Leeuwarden",
         "region": null,
         "country": "Netherlands",
+        "country_code": null,
         "market": "AV / Camera",
         "use_billing_address": false,
         "billing_company": null,
@@ -445,6 +448,7 @@ Name | Description
 `data[attributes][billing_email]` | **string** <br>Used to send billing emails to. 
 `data[attributes][city]` | **string** <br>City. 
 `data[attributes][country]` | **string** <br>Country. 
+`data[attributes][country_code]` | **string** <br>Two-letter country code (ISO 3166-1 alpha-2). 
 `data[attributes][currency]` | **string** <br>Currency of the company. 
 `data[attributes][custom_domain]` | **string** <br>Custom domain to use for hosted store and checkout. 
 `data[attributes][custom_domain_validation]` | **hash** <br>Validation details for the custom domain. 

@@ -13,7 +13,7 @@ A list of all login attempts for the current employee.
 `id` | **uuid** `readonly`<br>Primary key.
 `ip` | **string** `readonly`<br>IP address of the login attempt. 
 `region` | **string** `readonly` `nullable`<br>Region from where login attempt was performed. 
-`strategy` | **enum** `readonly`<br>Indicates which login mechanism was used.<br> One of: `database_authenticatable`, `oauth`, `rememberable`, `saml`, `single_use`, `support`, `token`, `BooqableApp-iOS`.
+`strategy` | **enum** `readonly`<br>Indicates which login mechanism was used.<br> One of: `database_authenticatable`, `oauth`, `rememberable`, `saml`, `single_use`, `support`, `token`.
 `success` | **boolean** `readonly`<br>Whether attempt was successful. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `user_agent` | **string** `readonly` `nullable`<br>Client application identifier. 

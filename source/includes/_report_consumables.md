@@ -1,7 +1,7 @@
 # Report consumables
 
 Report on how consumable products are performing. The report is filterable
-by date and can be requested by one of the following turnover types:
+by date and can be requested by one of the following revenue types:
 `invoices`, `orders`.
 
 <aside class="notice">
@@ -26,8 +26,8 @@ Check each individual operation to see which relations can be included as a side
 `name` | **string** <br>Product name.
 `product_id` | **uuid** <br>The consumable [Product](#products) whose performance is reported.
 `q` | **string** `writeonly`<br>Query for a specific product.
+`revenue_in_cents` | **integer** <br>Revenue during period.
 `sold` | **integer** <br>Amount of times the product was sold.
-`turnover_in_cents` | **integer** <br>Turnover during period.
 
 
 ## List performance for consumables products
@@ -51,11 +51,11 @@ Check each individual operation to see which relations can be included as a side
         "id": "9f5e212f-8f15-4b27-8d57-7820f511ad8e",
         "type": "report_consumables",
         "attributes": {
-          "created_at": "2017-08-20T13:10:01.000000+00:00",
+          "created_at": "2017-08-20T13:11:01.000000+00:00",
           "name": "Product 1000055",
           "sold": 2,
-          "turnover_in_cents": 10000,
-          "product_id": "9f5e212f-8f15-4b27-8d57-7820f511ad8e"
+          "revenue_in_cents": 10000,
+          "product_id": "83f0b899-c46e-43cc-819f-97d525a814aa"
         },
         "relationships": {}
       }
@@ -92,9 +92,9 @@ Name | Description
 `from` | **datetime** <br>`eq`
 `product_id` | **uuid** <br>`eq`
 `q` | **string** <br>`eq`
+`revenue_type` | **string** <br>`eq`
 `tag_list` | **array** <br>`eq`
 `till` | **datetime** <br>`eq`
-`turnover_type` | **string** <br>`eq`
 
 
 ### Meta
