@@ -32,6 +32,7 @@ Check each individual operation to see which relations can be included as a side
 `preview_image_long_url` | **string** `readonly`<br>Theme rectangle image preview image URL. 
 `preview_image_medium_url` | **string** `readonly`<br>Theme medium image preview image URL. 
 `preview_url` | **string** <br>The URL where the theme could be previewed. 
+`root_theme` | **string** `readonly` `extra`<br>The root theme name. 
 `theme_id` | **uuid** `readonly-after-create`<br>Either the installed theme, or the original theme. 
 `theme_type` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -130,6 +131,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[themes]=root_theme`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[themes]=created_at,updated_at,name`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -151,6 +153,7 @@ Name | Description
 `installed` | **boolean** <br>`eq`
 `market` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`root_theme` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `theme_type` | **enum** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `version` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -228,6 +231,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[themes]=root_theme`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[themes]=created_at,updated_at,name`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=assets`
 
@@ -308,6 +312,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[themes]=root_theme`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[themes]=created_at,updated_at,name`
 
 
