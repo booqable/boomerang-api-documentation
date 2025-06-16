@@ -117,9 +117,9 @@ includes:
   - webhooks
 
   - headers/reports
-  - report_consumables
   - report_rental_intervals
   - report_rentals
+  - report_sales_items
   - report_stock_items
 
 search: true
