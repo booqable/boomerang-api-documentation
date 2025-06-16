@@ -2286,20 +2286,6 @@
             <a href="#reports" class="toc-h1 toc-link" data-title="Reports" title="Reports"><strong>Reports</strong></a>
           </li>
           <li>
-            <a href="#report-consumables" class="toc-h1 toc-link" data-title="Report consumables" title="Report consumables">Report consumables</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#report-consumables-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
-                  </li>
-                  <li>
-                    <a href="#report-consumables-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
-                  </li>
-                  <li>
-                    <a href="#report-consumables-list-performance-for-consumables-products" class="toc-h2 toc-link" data-title="List performance for consumables products" title="List performance for consumables products">List performance for consumables products</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#report-rental-intervals" class="toc-h1 toc-link" data-title="Report rental intervals" title="Report rental intervals">Report rental intervals</a>
               <ul class="toc-list-h2">
                   <li>
@@ -2324,6 +2310,20 @@
                   </li>
                   <li>
                     <a href="#report-rentals-list-performance-for-rental-products" class="toc-h2 toc-link" data-title="List performance for rental products" title="List performance for rental products">List performance for rental products</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#report-sales-items" class="toc-h1 toc-link" data-title="Report sales items" title="Report sales items">Report sales items</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#report-sales-items-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#report-sales-items-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#report-sales-items-list-performance-for-sales-items" class="toc-h2 toc-link" data-title="List performance for sales items" title="List performance for sales items">List performance for sales items</a>
                   </li>
               </ul>
           </li>
@@ -50235,199 +50235,7 @@ and the data payload that was sent.</p>
 </tbody></table>
 <h3 id='webhooks-fetch-a-webhook-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
-<h1 id='reports'><strong>Reports</strong></h1><h1 id='report-consumables'>Report consumables</h1>
-<p>Report on how consumable products are performing. The report is filterable
-by date and can be requested by one of the following revenue types:
-<code>invoices</code>, <code>orders</code>.</p>
-
-<aside class="notice">
-  Availability of this report depends on the current pricing plan.
-</aside>
-<h2 id='report-consumables-relationships'>Relationships</h2>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>product</code></td>
-<td><strong><a href="#products">Product</a></strong> <code>required</code><br>The consumable <a href="#products">Product</a> whose performance is reported.</td>
-</tr>
-</tbody></table>
-
-<p>Check matching attributes under <a href="#report-consumables-fields">Fields</a> to see which relations can be written.
-<br/ >
-Check each individual operation to see which relations can be included as a sideload.</p>
-<h2 id='report-consumables-fields'>Fields</h2>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>created_at</code></td>
-<td><strong>datetime</strong> <br>When the resource was created.</td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td><strong>string</strong> <br>Product name.</td>
-</tr>
-<tr>
-<td><code>product_id</code></td>
-<td><strong>uuid</strong> <br>The consumable <a href="#products">Product</a> whose performance is reported.</td>
-</tr>
-<tr>
-<td><code>q</code></td>
-<td><strong>string</strong> <code>writeonly</code><br>Query for a specific product.</td>
-</tr>
-<tr>
-<td><code>revenue_in_cents</code></td>
-<td><strong>integer</strong> <br>Revenue during period.</td>
-</tr>
-<tr>
-<td><code>sold</code></td>
-<td><strong>integer</strong> <br>Amount of times the product was sold.</td>
-</tr>
-</tbody></table>
-<h2 id='report-consumables-list-performance-for-consumables-products'>List performance for consumables products</h2>
-<blockquote>
-<p>How to fetch performance for consumables:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/report_consumables'</span>
-       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
-       <span class="nt">--data-urlencode</span> <span class="s1">'filter[from]=2017-08-15T03:42:01.000000+00:00'</span>
-       <span class="nt">--data-urlencode</span> <span class="s1">'filter[till]=2017-08-21T03:41:01.000000+00:00'</span>
-</code></pre></div>
-<blockquote>
-<p>A 200 status response looks like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f5e212f-8f15-4b27-8d57-7820f511ad8e"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_consumables"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-20T13:11:01.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1000055"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"revenue_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83f0b899-c46e-43cc-819f-97d525a814aa"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='report-consumables-list-performance-for-consumables-products-http-request'>HTTP Request</h3>
-<p><code>GET /api/4/report_consumables</code></p>
-<h3 id='report-consumables-list-performance-for-consumables-products-request-params'>Request params</h3>
-<p>This request accepts the following parameters:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>fields[]</code></td>
-<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[report_consumables]=created_at,name,sold</code></td>
-</tr>
-<tr>
-<td><code>filter</code></td>
-<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
-</tr>
-<tr>
-<td><code>include</code></td>
-<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=product</code></td>
-</tr>
-<tr>
-<td><code>meta</code></td>
-<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
-</tr>
-<tr>
-<td><code>page[number]</code></td>
-<td><strong>string</strong> <br>The page to request.</td>
-</tr>
-<tr>
-<td><code>page[size]</code></td>
-<td><strong>string</strong> <br>The amount of items per page.</td>
-</tr>
-<tr>
-<td><code>sort</code></td>
-<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
-</tr>
-</tbody></table>
-<h3 id='report-consumables-list-performance-for-consumables-products-filters'>Filters</h3>
-<p>This request can be filtered on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>from</code></td>
-<td><strong>datetime</strong> <br><code>eq</code></td>
-</tr>
-<tr>
-<td><code>product_id</code></td>
-<td><strong>uuid</strong> <br><code>eq</code></td>
-</tr>
-<tr>
-<td><code>q</code></td>
-<td><strong>string</strong> <br><code>eq</code></td>
-</tr>
-<tr>
-<td><code>revenue_type</code></td>
-<td><strong>string</strong> <br><code>eq</code></td>
-</tr>
-<tr>
-<td><code>tag_list</code></td>
-<td><strong>array</strong> <br><code>eq</code></td>
-</tr>
-<tr>
-<td><code>till</code></td>
-<td><strong>datetime</strong> <br><code>eq</code></td>
-</tr>
-</tbody></table>
-<h3 id='report-consumables-list-performance-for-consumables-products-meta'>Meta</h3>
-<p>Results can be aggregated on:</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>tag_list</code></td>
-<td><strong>array</strong> <br><code>count</code></td>
-</tr>
-<tr>
-<td><code>total</code></td>
-<td><strong>array</strong> <br><code>count</code></td>
-</tr>
-</tbody></table>
-<h3 id='report-consumables-list-performance-for-consumables-products-includes'>Includes</h3>
-<p>This request accepts the following includes:</p>
-
-<ul>
-  <li>
-    <code>product</code>
-    <ul>
-      <li><code>photo</code></li>
-    </ul>
-  </li>
-</ul>
-<h1 id='report-rental-intervals'>Report rental intervals</h1>
+<h1 id='reports'><strong>Reports</strong></h1><h1 id='report-rental-intervals'>Report rental intervals</h1>
 <p>Breakdown of how many times a product was rented during a specific period.</p>
 
 <aside class="notice">
@@ -50901,6 +50709,198 @@ Check each individual operation to see which relations can be included as a side
 </tr>
 </tbody></table>
 <h3 id='report-rentals-list-performance-for-rental-products-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
+<h1 id='report-sales-items'>Report sales items</h1>
+<p>Report on how sales items are performing. The report is filterable
+by date and can be requested by one of the following revenue types:
+<code>invoices</code>, <code>orders</code>.</p>
+
+<aside class="notice">
+  Availability of this report depends on the current pricing plan.
+</aside>
+<h2 id='report-sales-items-relationships'>Relationships</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>product</code></td>
+<td><strong><a href="#products">Product</a></strong> <code>required</code><br>The sales item <a href="#products">Product</a> whose performance is reported.</td>
+</tr>
+</tbody></table>
+
+<p>Check matching attributes under <a href="#report-sales-items-fields">Fields</a> to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.</p>
+<h2 id='report-sales-items-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <br>When the resource was created.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>string</strong> <br>Product name.</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>uuid</strong> <br>The sales item <a href="#products">Product</a> whose performance is reported.</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><strong>string</strong> <code>writeonly</code><br>Query for a specific product.</td>
+</tr>
+<tr>
+<td><code>revenue_in_cents</code></td>
+<td><strong>integer</strong> <br>Revenue during period.</td>
+</tr>
+<tr>
+<td><code>sold</code></td>
+<td><strong>integer</strong> <br>Amount of times the product was sold.</td>
+</tr>
+</tbody></table>
+<h2 id='report-sales-items-list-performance-for-sales-items'>List performance for sales items</h2>
+<blockquote>
+<p>How to fetch performance for sales items:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/report_sales_items'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[from]=2024-01-22T11:37:50.000000+00:00'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[till]=2024-01-28T11:36:50.000000+00:00'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d363f2a-947b-4b3e-87d7-4b872034c7e5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"report_sales_items"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-27T21:07:50.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product 1000057"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"revenue_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9383693-1d72-4916-828c-315b2662eaf4"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='report-sales-items-list-performance-for-sales-items-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/report_sales_items</code></p>
+<h3 id='report-sales-items-list-performance-for-sales-items-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[report_sales_items]=created_at,name,sold</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=product</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-sales-items-list-performance-for-sales-items-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>from</code></td>
+<td><strong>datetime</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><strong>string</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>revenue_type</code></td>
+<td><strong>string</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>tag_list</code></td>
+<td><strong>array</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>datetime</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-sales-items-list-performance-for-sales-items-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>tag_list</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='report-sales-items-list-performance-for-sales-items-includes'>Includes</h3>
 <p>This request accepts the following includes:</p>
 
 <ul>
