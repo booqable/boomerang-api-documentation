@@ -83,7 +83,6 @@ includes:
   - tags
   - tax_categories
   - tax_rates
-  - tax_regions
   - tax_values
   - transfers
   - user_invitations
