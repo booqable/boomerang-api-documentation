@@ -24,9 +24,14 @@ Orders are the heart of every rental operation. They hold configuration and info
 
 To transition an Order to the next status, create an [OrderStatusTransition](#order-status-transitions).
 
+<aside class="warning">
+  The <code>concept</code> status will be renamed to <code>draft</code> in the near future.
+</aside>
+
 ## Status Transitions and Workflow
 
 Orders typically follow this workflow:
+
 1. `new` → `concept` through [OrderStatusTransition](#order-status-transitions)
 2. `concept` → `reserved` through [OrderStatusTransition](#order-status-transitions)
 3. `reserved` → `started` (pickup/delivery) through [OrderFulfillment](#order-fulfillments)
@@ -143,9 +148,9 @@ Check each individual operation to see which relations can be included as a side
 `shortage` | **boolean** `readonly`<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
 `start_location_id` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
-`status` | **enum** `readonly`<br>Simplified status of the order. An order can be in a mixed state. The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
-`status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "concept": 0, "reserved": 2, "started": 5, "stopped": 10 }`. 
-`statuses` | **array** `readonly`<br>Status(es) of planned products. 
+`status` | **enum** `readonly`<br>Simplified status of the order. An order can be in a mixed state.<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "concept": 0, "reserved": 2, "started": 5, "stopped": 10 }`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside> 
+`statuses` | **array** `readonly`<br>Status(es) of planned products.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside> 
 `stop_location_id` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
 `stops_at` | **datetime** `nullable`<br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
@@ -192,8 +197,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-11-25T03:01:01.000000+00:00",
-          "stops_at": "1969-12-25T03:01:01.000000+00:00",
+          "starts_at": "1969-11-21T20:44:01.000000+00:00",
+          "stops_at": "1969-12-21T20:44:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -407,14 +412,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-06-17T09:29:04Z",
-                       "lte": "2025-06-20T09:29:04Z"
+                       "gte": "2025-06-20T15:45:29Z",
+                       "lte": "2025-06-23T15:45:29Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-06-17T09:29:04Z",
-                       "lte": "2025-06-20T09:29:04Z"
+                       "gte": "2025-06-20T15:45:29Z",
+                       "lte": "2025-06-23T15:45:29Z"
                      }
                    }
                  ]
@@ -782,8 +787,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-04-22T12:19:01.000000+00:00",
-        "stops_at": "1970-05-22T12:19:01.000000+00:00",
+        "starts_at": "1970-04-19T06:03:01.000000+00:00",
+        "stops_at": "1970-05-19T06:03:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -963,8 +968,8 @@ When creating an order, and the following fields are left blank, a sensible defa
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:26:01.000000+00:00",
-        "stops_at": "2026-11-03T14:26:01.000000+00:00",
+        "starts_at": "2026-09-25T14:40:01.000000+00:00",
+        "stops_at": "2026-11-03T14:40:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,

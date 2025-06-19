@@ -51,7 +51,8 @@ The description of the relationships and attributes of these resources can be fo
           "description": null,
           "failure_reason": null,
           "reason": null,
-          "payment_charge_id": null
+          "payment_charge_id": null,
+          "payment_method_id": null
         },
         "relationships": {}
       },

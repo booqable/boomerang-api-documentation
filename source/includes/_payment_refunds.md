@@ -10,6 +10,7 @@ Name | Description
 `employee` | **[Employee](#employees)** `required`<br>The associated [Employee](#employees). 
 `order` | **[Order](#orders)** `required`<br>The associated [Order](#orders). 
 `payment_charge` | **[Payment charge](#payment-charges)** `required`<br>The [PaymentCharge](#payment-charges) being refunded. 
+`payment_method` | **[Payment method](#payment-methods)** `required`<br>The [PaymentMethod](#payment-methods) used to refund the payment. This is the same as the payment method of the payment charge attached to this refund. 
 
 
 Check matching attributes under [Fields](#payment-refunds-fields) to see which relations can be written.
@@ -34,6 +35,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
 `payment_charge_id` | **uuid** `readonly-after-create`<br>The [PaymentCharge](#payment-charges) being refunded. 
+`payment_method_id` | **uuid** `readonly`<br>The [PaymentMethod](#payment-methods) used to refund the payment. This is the same as the payment method of the payment charge attached to this refund. 
 `provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
 `provider_id` | **string** <br>External provider refund identification. 
 `provider_link` | **string** <br>Provider refund link. 
@@ -100,7 +102,8 @@ Check each individual operation to see which relations can be included as a side
         "description": null,
         "failure_reason": null,
         "reason": null,
-        "payment_charge_id": null
+        "payment_charge_id": null,
+        "payment_method_id": null
       },
       "relationships": {}
     },
@@ -119,7 +122,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,payment_method`
 
 
 ### Request body
@@ -159,6 +162,7 @@ This request accepts the following includes:
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_method</code></li>
 </ul>
 
 
@@ -214,7 +218,8 @@ This request accepts the following includes:
         "description": null,
         "failure_reason": null,
         "reason": null,
-        "payment_charge_id": null
+        "payment_charge_id": null,
+        "payment_method_id": null
       },
       "relationships": {}
     },
@@ -233,7 +238,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,payment_method`
 
 
 ### Request body
@@ -273,5 +278,6 @@ This request accepts the following includes:
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_method</code></li>
 </ul>
 

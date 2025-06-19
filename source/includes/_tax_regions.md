@@ -3,14 +3,18 @@
 You can create tax regions for specific customers. Booqable's tax system supports adding, replacing and compounding rates.
 A tax region can have one of the following strategies:
 
-- **Add to**: Each tax rate is calculated over the order total and individually added or substracted to/from the order total.
+- **Add to**: Each tax rate is calculated over the order total and individually added or subtracted to/from the order total.
 - **Compound**: The tax is calculated over the order total, including product taxes (tax over tax). This method is used in some countries like Canada.
 - **Replace**: Removes product taxes and calculates tax over the order total.
+
+<aside class="warning">
+  <code>TaxRegion</code> will be deprecated in the near future.
+</aside>
 
 ## Relationships
 Name | Description
 -- | --
-`tax_rates` | **[Tax rates](#tax-rates)** `hasmany`<br>The different rates that need to be charged. <br/> Rates can be created/updated through the TaxRegion resource by writing the `tax_rates_attributes` attrinute. 
+`tax_rates` | **[Tax rates](#tax-rates)** `hasmany`<br>The different rates that need to be charged. <br/> Rates can be created/updated through the TaxRegion resource by writing the `tax_rates_attributes` attribute. 
 
 
 Check matching attributes under [Fields](#tax-regions-fields) to see which relations can be written.

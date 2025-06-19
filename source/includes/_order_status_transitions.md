@@ -12,6 +12,11 @@ It is however possible to revert to the `started` or the `stopped` status.
 It is not possible to resurrect a canceled [Order](#orders).
 [Duplicating](#order-duplications) a canceled [Order](#orders) is possible.
 
+<aside class="warning">
+  The <code>concept</code> status will be renamed to <code>draft</code> in the near future.
+  OrderStatusTransition will support both statuses for a while.
+</aside>
+
 ### Errors
 
 When the [Order](#orders) cannot be transitioned, and `error.code` is `items_not_available`,
@@ -64,7 +69,7 @@ Check each individual operation to see which relations can be included as a side
 ## Transition
 
 
-> Save a new Order as concept:
+> Save a new Order as draft:
 
 ```shell
   curl --request POST
@@ -74,7 +79,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "order_status_transitions",
            "attributes": {
-             "order_id": "62131d2f-0b4a-45c7-86b9-1ad5fa771371",
+             "order_id": "c0856c50-99cb-4cf4-87c4-39a873d65531",
              "transition_from": "new",
              "transition_to": "concept",
              "confirm_shortage": null,
@@ -89,10 +94,10 @@ Check each individual operation to see which relations can be included as a side
 ```json
   {
     "data": {
-      "id": "1fa8da73-0d9d-433a-804e-2a196a6bf1a9",
+      "id": "1d7c16ec-67b9-4c6b-894d-8f412f350115",
       "type": "order_status_transitions",
       "attributes": {
-        "order_id": "62131d2f-0b4a-45c7-86b9-1ad5fa771371",
+        "order_id": "c0856c50-99cb-4cf4-87c4-39a873d65531",
         "transition_from": "new",
         "transition_to": "concept",
         "revert": null,
@@ -104,7 +109,7 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
-> Reserve a concept Order:
+> Reserve a draft Order:
 
 ```shell
   curl --request POST
@@ -114,7 +119,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "order_status_transitions",
            "attributes": {
-             "order_id": "7dbb33d6-22c9-446f-89d0-66f6220a9d65",
+             "order_id": "e0f4a042-6327-407a-87b1-809014212e7b",
              "transition_from": "concept",
              "transition_to": "reserved",
              "confirm_shortage": null,
@@ -129,10 +134,10 @@ Check each individual operation to see which relations can be included as a side
 ```json
   {
     "data": {
-      "id": "5ef4d6e7-b7b6-49e8-853b-391f288a55eb",
+      "id": "caee0b5f-30b4-4c86-8986-e56a2e47011a",
       "type": "order_status_transitions",
       "attributes": {
-        "order_id": "7dbb33d6-22c9-446f-89d0-66f6220a9d65",
+        "order_id": "e0f4a042-6327-407a-87b1-809014212e7b",
         "transition_from": "concept",
         "transition_to": "reserved",
         "revert": null,
@@ -144,7 +149,7 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
-> Reserve a concept Order, causing a blocking shortage error:
+> Reserve a draft Order, causing a blocking shortage error:
 
 ```shell
   curl --request POST
@@ -154,7 +159,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "order_status_transitions",
            "attributes": {
-             "order_id": "2399cd14-2f8a-4ebb-8366-714552f1e32b",
+             "order_id": "1911dd15-db4b-4cad-8a18-6ff0723bd1d0",
              "transition_from": "concept",
              "transition_to": "reserved",
              "confirm_shortage": null,
@@ -179,7 +184,7 @@ Check each individual operation to see which relations can be included as a side
           "blocking": [
             {
               "reason": "shortage",
-              "item_id": "63849ebc-fadc-4dd3-8611-21c03eacb114",
+              "item_id": "2759b345-6595-442a-8a84-03f156100879",
               "stock_count": 1,
               "reserved": 0,
               "needed": 2,
@@ -192,7 +197,7 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
-> Reserve a concept Order, causing a shortage warning:
+> Reserve a draft Order, causing a shortage warning:
 
 ```shell
   curl --request POST
@@ -202,7 +207,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "order_status_transitions",
            "attributes": {
-             "order_id": "c0d42a57-6fb6-4727-8434-e9dea5e2810f",
+             "order_id": "3b1ac92c-8d34-4b57-8578-40a3bf8834c7",
              "transition_from": "concept",
              "transition_to": "reserved",
              "confirm_shortage": null,
@@ -226,7 +231,7 @@ Check each individual operation to see which relations can be included as a side
           "warning": [
             {
               "reason": "shortage",
-              "item_id": "64959486-4cff-4185-8698-fbebc82a4b0a",
+              "item_id": "4da5b0fd-58ca-4e60-8277-261000848262",
               "stock_count": 1,
               "reserved": 0,
               "needed": 2,
@@ -240,7 +245,7 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
-> Reserve a concept Order, and override the shortage warning:
+> Reserve a draft Order, and override the shortage warning:
 
 ```shell
   curl --request POST
@@ -250,7 +255,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "order_status_transitions",
            "attributes": {
-             "order_id": "ef64f4c5-c58f-4eac-87dd-0e2aaf793449",
+             "order_id": "1f2ef20f-c7d8-410c-89c2-9b5e8a2e037b",
              "transition_from": "concept",
              "transition_to": "reserved",
              "confirm_shortage": true,
@@ -265,10 +270,10 @@ Check each individual operation to see which relations can be included as a side
 ```json
   {
     "data": {
-      "id": "fab25b98-897a-498a-86f7-6bfa4924a705",
+      "id": "1b9ed0f6-277b-4cfd-85bd-2ea4f039dd5e",
       "type": "order_status_transitions",
       "attributes": {
-        "order_id": "ef64f4c5-c58f-4eac-87dd-0e2aaf793449",
+        "order_id": "1f2ef20f-c7d8-410c-89c2-9b5e8a2e037b",
         "transition_from": "concept",
         "transition_to": "reserved",
         "revert": null,
@@ -280,7 +285,7 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
-> Reserve a concept Order, causing a stock item specified error:
+> Reserve a draft Order, causing a stock item specified error:
 
 ```shell
   curl --request POST
@@ -290,7 +295,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "order_status_transitions",
            "attributes": {
-             "order_id": "89b5f18e-b5b8-453a-8cb8-a4e79f99c9d0",
+             "order_id": "5e038686-7768-4d36-8832-725442f49cc6",
              "transition_from": "concept",
              "transition_to": "reserved",
              "confirm_shortage": null,
@@ -315,12 +320,12 @@ Check each individual operation to see which relations can be included as a side
           "blocking": [
             {
               "reason": "stock_item_specified",
-              "item_id": "baae48c1-e963-41f1-8a93-0f81328d655c",
+              "item_id": "75bcb083-8a52-4212-814f-90b18421d198",
               "unavailable": [
-                "26a12ea9-faa5-4459-8bb4-6caf9defd51b"
+                "c5c86b0e-7898-4c3d-8c33-425011f8ed0b"
               ],
               "available": [
-                "ca78a0ea-16b3-4fdc-8c92-ddb1caff31d5"
+                "c18a3863-071f-467f-8a25-d6b087473135"
               ]
             }
           ]
@@ -406,7 +411,7 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
-> Revert a reserved Order to 'concept':
+> Revert a reserved Order to 'draft':
 
 ```shell
   curl --request POST
@@ -416,7 +421,7 @@ Check each individual operation to see which relations can be included as a side
          "data": {
            "type": "order_status_transitions",
            "attributes": {
-             "order_id": "4c006f3f-83ed-40c6-896c-d90896be4b70",
+             "order_id": "0c9cf30c-2afc-4972-8f6b-b1bc417fccb6",
              "transition_from": "reserved",
              "transition_to": "concept",
              "confirm_shortage": null,
@@ -431,10 +436,10 @@ Check each individual operation to see which relations can be included as a side
 ```json
   {
     "data": {
-      "id": "2c60e84f-cbcb-411d-8ef9-47385236371f",
+      "id": "9fa0c885-f33d-40d2-85f7-711a671cfe6a",
       "type": "order_status_transitions",
       "attributes": {
-        "order_id": "4c006f3f-83ed-40c6-896c-d90896be4b70",
+        "order_id": "0c9cf30c-2afc-4972-8f6b-b1bc417fccb6",
         "transition_from": "reserved",
         "transition_to": "concept",
         "revert": true,

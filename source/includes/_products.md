@@ -63,14 +63,14 @@ Check each individual operation to see which relations can be included as a side
 `extra_information` | **string** `readonly` `nullable`<br>Extra information about the item, shown on orders and documents. 
 `group_name` | **string** `readonly`<br>The name of the product group. 
 `has_variations` | **boolean** `readonly`<br>Whether variations are enabled. Not applicable for product_type `service`. 
-`lag_time` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation. 
-`lead_time` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. 
+`lag_time` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation.<br><aside class="warning inline">   The <code>lag_time</code> attribute will be renamed to <code>buffer_time_after</code> in the near future. </aside> 
+`lead_time` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation.<br><aside class="warning inline">   The <code>lead_time</code> attribute will be renamed to <code>buffer_time_before</code> in the near future. </aside> 
 `name` | **string** `readonly`<br>Name of the item (based on product group and `variations_values`). 
 `price_period` | **enum** `readonly`<br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
 `price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`product_type` | **enum** `readonly`<br>Type of product.<br> One of: `rental`, `consumable`, `service`.
+`product_type` | **enum** `readonly`<br>Type of product.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future. </aside><br> One of: `rental`, `consumable`, `service`.
 `properties` | **hash** `readonly`<br>Key value pairs of associated properties. This is the same data as provided by the properties relation, but without information about type and position. 
 `seo_description` | **string** `readonly` `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `readonly` `nullable`<br>SEO title tag. 
