@@ -614,6 +614,15 @@ ul#toc {
     @extend %icon-ok-sign;
   }
 
+  aside.inline {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    margin: 1ex 0;
+    padding: 0.5ex;
+    padding-left: 1.2 * $main-padding;
+  }
+
   .search-highlight {
     padding: 2px;
     margin: -3px;
