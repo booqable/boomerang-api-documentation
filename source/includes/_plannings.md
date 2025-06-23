@@ -75,7 +75,7 @@ Check each individual operation to see which relations can be included as a side
 `start_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the customer will pick up the item. 
 `started` | **integer** <br>Amount of items started (picked up or delivered to the customer). This value increases when staff performs start actions through the [OrderFulfillments](#order-fulfillments) resource. Cannot exceed `quantity`. When all items are started (`started` equals `quantity`), the Planning is considered fully started. This attribute is omitted when this is a parent planning for a Bundle. 
 `starts_at` | **datetime** `readonly`<br>When the start action (pickup/delivery) is planned to occur. This is the scheduled date/time shown to staff and customers for the beginning of the rental. 
-`status` | **enum** `readonly`<br>Status of this planning. A planning can become "stopped" before the order it belongs to is stopped. Otherwise, the status mostly follows the status of the order.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a Planning is removed from an Order through the Lines resource. When an Order is archived, `status` of Plannings is set to `archived`, but the `archived` attribute remains false.<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`status` | **enum** `readonly`<br>Status of this planning. A planning can become "stopped" before the order it belongs to is stopped. Otherwise, the status mostly follows the status of the order.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a Planning is removed from an Order through the Lines resource. When an Order is archived, `status` of Plannings is set to `archived`, but the `archived` attribute remains false.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `stop_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the customer will return the product. 
 `stopped` | **integer** <br>Amount of items stopped (returned by the customer). This value increases when staff performs stop actions through the [OrderFulfillments](#order-fulfillments) resource. Cannot exceed `quantity` and `started` (items must be started before they can be stopped). When all items are stopped (`stopped` equals `quantity`), the Planning is considered fully completed.<br>[Products](#products) with `product_type == consumable` are never returned, and the `stopped` attribute will always remain zero.<br>This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
 `stops_at` | **datetime** `readonly`<br>When the stop action (return) is planned to occur. This is the scheduled date/time shown to staff and customers for the end of the rental. 
@@ -106,10 +106,10 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "quantity": 1,
-          "starts_at": "1973-01-01T01:31:00.000000+00:00",
-          "stops_at": "1973-01-31T01:31:00.000000+00:00",
-          "reserved_from": "1973-01-01T01:31:00.000000+00:00",
-          "reserved_till": "1973-01-31T01:31:00.000000+00:00",
+          "starts_at": "1972-12-28T07:49:00.000000+00:00",
+          "stops_at": "1973-01-27T07:49:00.000000+00:00",
+          "reserved_from": "1972-12-28T07:49:00.000000+00:00",
+          "reserved_till": "1973-01-27T07:49:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -236,12 +236,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-06-20T15:46:09Z"
+                       "gte": "2025-06-24T09:28:31Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-06-23T15:46:09Z"
+                       "lte": "2025-06-27T09:28:31Z"
                      }
                    }
                  ]
@@ -251,12 +251,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-06-20T15:46:09Z"
+                       "gte": "2025-06-24T09:28:31Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-06-23T15:46:09Z"
+                       "lte": "2025-06-27T09:28:31Z"
                      }
                    }
                  ]
@@ -389,10 +389,10 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "quantity": 1,
-        "starts_at": "1978-01-24T21:56:01.000000+00:00",
-        "stops_at": "1978-02-23T21:56:01.000000+00:00",
-        "reserved_from": "1978-01-24T21:56:01.000000+00:00",
-        "reserved_till": "1978-02-23T21:56:01.000000+00:00",
+        "starts_at": "1978-01-21T04:14:01.000000+00:00",
+        "stops_at": "1978-02-20T04:14:01.000000+00:00",
+        "reserved_from": "1978-01-21T04:14:01.000000+00:00",
+        "reserved_till": "1978-02-20T04:14:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,

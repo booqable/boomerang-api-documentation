@@ -13,8 +13,8 @@ It is not possible to resurrect a canceled [Order](#orders).
 [Duplicating](#order-duplications) a canceled [Order](#orders) is possible.
 
 <aside class="warning">
-  The <code>concept</code> status will be renamed to <code>draft</code> in the near future.
-  OrderStatusTransition will support both statuses for a while.
+  The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.
+  For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible.
 </aside>
 
 ### Errors
@@ -62,8 +62,8 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** <br>The [Order](#orders) whose status is changed. 
 `revert` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
-`transition_from` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
-`transition_to` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`transition_from` | **enum** <br>The current status of the [Order](#orders).<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `draft`.
+`transition_to` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `draft`.
 
 
 ## Transition
@@ -81,7 +81,7 @@ Check each individual operation to see which relations can be included as a side
            "attributes": {
              "order_id": "c0856c50-99cb-4cf4-87c4-39a873d65531",
              "transition_from": "new",
-             "transition_to": "concept",
+             "transition_to": "draft",
              "confirm_shortage": null,
              "revert": null
            }
@@ -99,7 +99,7 @@ Check each individual operation to see which relations can be included as a side
       "attributes": {
         "order_id": "c0856c50-99cb-4cf4-87c4-39a873d65531",
         "transition_from": "new",
-        "transition_to": "concept",
+        "transition_to": "draft",
         "revert": null,
         "confirm_shortage": null
       },
@@ -120,7 +120,7 @@ Check each individual operation to see which relations can be included as a side
            "type": "order_status_transitions",
            "attributes": {
              "order_id": "e0f4a042-6327-407a-87b1-809014212e7b",
-             "transition_from": "concept",
+             "transition_from": "draft",
              "transition_to": "reserved",
              "confirm_shortage": null,
              "revert": null
@@ -138,7 +138,7 @@ Check each individual operation to see which relations can be included as a side
       "type": "order_status_transitions",
       "attributes": {
         "order_id": "e0f4a042-6327-407a-87b1-809014212e7b",
-        "transition_from": "concept",
+        "transition_from": "draft",
         "transition_to": "reserved",
         "revert": null,
         "confirm_shortage": null
@@ -160,7 +160,7 @@ Check each individual operation to see which relations can be included as a side
            "type": "order_status_transitions",
            "attributes": {
              "order_id": "1911dd15-db4b-4cad-8a18-6ff0723bd1d0",
-             "transition_from": "concept",
+             "transition_from": "draft",
              "transition_to": "reserved",
              "confirm_shortage": null,
              "revert": null
@@ -208,7 +208,7 @@ Check each individual operation to see which relations can be included as a side
            "type": "order_status_transitions",
            "attributes": {
              "order_id": "3b1ac92c-8d34-4b57-8578-40a3bf8834c7",
-             "transition_from": "concept",
+             "transition_from": "draft",
              "transition_to": "reserved",
              "confirm_shortage": null,
              "revert": null
@@ -256,7 +256,7 @@ Check each individual operation to see which relations can be included as a side
            "type": "order_status_transitions",
            "attributes": {
              "order_id": "1f2ef20f-c7d8-410c-89c2-9b5e8a2e037b",
-             "transition_from": "concept",
+             "transition_from": "draft",
              "transition_to": "reserved",
              "confirm_shortage": true,
              "revert": null
@@ -274,7 +274,7 @@ Check each individual operation to see which relations can be included as a side
       "type": "order_status_transitions",
       "attributes": {
         "order_id": "1f2ef20f-c7d8-410c-89c2-9b5e8a2e037b",
-        "transition_from": "concept",
+        "transition_from": "draft",
         "transition_to": "reserved",
         "revert": null,
         "confirm_shortage": true
@@ -296,7 +296,7 @@ Check each individual operation to see which relations can be included as a side
            "type": "order_status_transitions",
            "attributes": {
              "order_id": "5e038686-7768-4d36-8832-725442f49cc6",
-             "transition_from": "concept",
+             "transition_from": "draft",
              "transition_to": "reserved",
              "confirm_shortage": null,
              "revert": null
@@ -423,7 +423,7 @@ Check each individual operation to see which relations can be included as a side
            "attributes": {
              "order_id": "0c9cf30c-2afc-4972-8f6b-b1bc417fccb6",
              "transition_from": "reserved",
-             "transition_to": "concept",
+             "transition_to": "draft",
              "confirm_shortage": null,
              "revert": true
            }
@@ -441,7 +441,7 @@ Check each individual operation to see which relations can be included as a side
       "attributes": {
         "order_id": "0c9cf30c-2afc-4972-8f6b-b1bc417fccb6",
         "transition_from": "reserved",
-        "transition_to": "concept",
+        "transition_to": "draft",
         "revert": true,
         "confirm_shortage": null
       },
@@ -474,8 +474,8 @@ Name | Description
 `data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](#orders). 
 `data[attributes][order_id]` | **uuid** <br>The [Order](#orders) whose status is changed. 
 `data[attributes][revert]` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `concept` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
-`data[attributes][transition_from]` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`.
-`data[attributes][transition_to]` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`data[attributes][transition_from]` | **enum** <br>The current status of the [Order](#orders).<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `draft`.
+`data[attributes][transition_to]` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `draft`.
 
 
 ### Includes
