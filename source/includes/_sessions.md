@@ -237,7 +237,6 @@ Check each individual operation to see which relations can be included as a side
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
-              "pricing_rules",
               "packing_slips",
               "notes",
               "revenue_report",
@@ -275,7 +274,6 @@ Check each individual operation to see which relations can be included as a side
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
-              "pricing_rules",
               "packing_slips",
               "notes",
               "revenue_report",
@@ -318,7 +316,6 @@ Check each individual operation to see which relations can be included as a side
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
-              "pricing_rules",
               "packing_slips",
               "notes",
               "revenue_report",
@@ -567,7 +564,6 @@ Check each individual operation to see which relations can be included as a side
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
-              "pricing_rules",
               "packing_slips",
               "notes",
               "revenue_report",
@@ -639,7 +635,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1750670989"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1751275652"
         }
       },
       {
@@ -784,7 +780,10 @@ Check each individual operation to see which relations can be included as a side
             "start": "pick_up",
             "stop": "return"
           },
-          "emails": {},
+          "emails": {
+            "header_content": "{{#company.logo_url}}\n![{{company.name}}]({{company.logo_url}} =x80)\n{{/company.logo_url}}\n{{^company.logo_url}}\n# {{company.name}}\n{{/company.logo_url}}\n",
+            "footer_content": "### {{company.name}}\n{{#company.email}}[{{company.email}}](mailto:{{company.email}}){{/company.email}}\n{{#company.phone}}[{{company.phone}}](tel:{{company.phone}}){{/company.phone}}\n{{#company.website}}[{{company.website}}]({{company.website}}){{/company.website}}\n{{#company.financialLine1}}{{company.financialLine1}}{{/company.financialLine1}}\n{{#company.financialLine2}}{{company.financialLine2}}{{/company.financialLine2}}\n{{company.address}}\n"
+          },
           "deliveries": {
             "distance_unit": "metric"
           }

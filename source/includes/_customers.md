@@ -582,9 +582,9 @@ This request accepts the following includes:
       "type": "customers",
       "attributes": {
         "created_at": "2020-05-21T12:16:00.000000+00:00",
-        "updated_at": "2020-05-21T12:17:00.000000+00:00",
+        "updated_at": "2020-05-21T12:16:00.000000+00:00",
         "archived": true,
-        "archived_at": "2020-05-21T12:17:00.000000+00:00",
+        "archived_at": "2020-05-21T12:16:00.000000+00:00",
         "number": 1,
         "name": "John Doe",
         "email": "john-20@doe.test",

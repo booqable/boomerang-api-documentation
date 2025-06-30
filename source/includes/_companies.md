@@ -259,7 +259,6 @@ Name | Description
             "bundles",
             "buffer_times",
             "prevent_last_minute_reservations",
-            "pricing_rules",
             "packing_slips",
             "notes",
             "revenue_report",
