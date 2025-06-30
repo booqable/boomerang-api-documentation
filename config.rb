@@ -61,3 +61,22 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 end
+
+# Automatically generate reference markdown documentation from JSON schemas
+require './lib/jsonschema_to_markdown.rb'
+output_dir = 'source/includes/schemas'
+
+if build?
+  # The extension is more reliable during a build since the live collection might
+  # not generate the markdown files in time.
+  ::Middleman::Extensions.register(:jsonschema_to_markdown, JSONSchemaMarkdownGeneratorExtension)
+  activate :jsonschema_to_markdown, output_dir:
+else
+  # Live collection so the markdown files are generated automatically during development.
+  md_generator = JSONSchemaMarkdownGenerator.new(output_dir:)
+  live {
+    Dir["source/schemas/**/*.json"]
+  }.each do |relative_path|
+    md_generator.generate_markdown_for_json_schema(relative_path)
+  end
+end

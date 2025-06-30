@@ -423,6 +423,10 @@ ul#toc {
     font-weight: 500;
     border-top: 1px solid #e9edf5;
     text-transform: 'capitalize';
+
+    code {
+      font-size: 26px;
+    }
   }
 
   h1:first-child, div:first-child + h1 {
@@ -450,6 +454,10 @@ ul#toc {
     border-top: 1px solid #e9edf5;
     padding-top: 2em;
     padding-bottom: 1.2em;
+
+    code {
+      font-size: 16px;
+    }
   }
 
   // h2s right after h1s should bump right up
@@ -464,6 +472,10 @@ ul#toc {
     font-size: 15px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
+
+    code {
+      font-size: 13px;
+    }
   }
 
   p {
