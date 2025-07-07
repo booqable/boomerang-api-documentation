@@ -70,8 +70,18 @@ Webhooks are only available for a limited time after the event occurred.
           "to_be_paid_in_cents": 0,
           "number": null,
           "status": "new",
-          "starts_at": "2014-03-25T17:50:01.000000+00:00",
-          "stops_at": "2014-03-29T17:50:01.000000+00:00",
+          "statuses": [
+            "new"
+          ],
+          "status_counts": {
+            "new": 0,
+            "concept": 0,
+            "reserved": 0,
+            "started": 0,
+            "stopped": 0
+          },
+          "starts_at": "2014-03-25T17:49:01.000000+00:00",
+          "stops_at": "2014-03-29T17:49:01.000000+00:00",
           "customer_id": null,
           "discount_type": "percentage",
           "discount_percentage": 0.0,
@@ -88,16 +98,6 @@ Webhooks are only available for a limited time after the event occurred.
           "payment_status": "Paid",
           "start_location_id": "843df6b3-61fc-4f12-8b0b-62ab93d41e6e",
           "stop_location_id": "843df6b3-61fc-4f12-8b0b-62ab93d41e6e",
-          "statuses": [
-            "new"
-          ],
-          "status_counts": {
-            "new": 0,
-            "concept": 0,
-            "reserved": 0,
-            "started": 0,
-            "stopped": 0
-          },
           "entirely_started": true,
           "entirely_stopped": false,
           "coupon_code": null,
@@ -233,8 +233,8 @@ Webhooks are only available for a limited time after the event occurred.
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-06-23T17:25:00.000000+00:00",
-          "stops_at": "2018-06-27T17:25:00.000000+00:00",
+          "starts_at": "2018-06-23T17:24:00.000000+00:00",
+          "stops_at": "2018-06-27T17:24:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,
@@ -246,7 +246,10 @@ Webhooks are only available for a limited time after the event occurred.
           "has_signed_contract": false,
           "item_count": 0,
           "tag_list": [],
-          "properties": {},
+          "properties": {
+            "delivery_address": null,
+            "billing_address": null
+          },
           "amount_in_cents": 0,
           "amount_paid_in_cents": 0,
           "amount_to_be_paid_in_cents": null,

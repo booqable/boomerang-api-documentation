@@ -140,6 +140,7 @@ Check each individual operation to see which relations can be included as a side
           "email_marketing_consent_updated_at": null,
           "properties": {},
           "tag_list": [],
+          "stripe_id": null,
           "merge_suggestion_customer_id": null,
           "tax_region_id": null
         },
@@ -155,7 +156,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNjA3MGNjZDAtYzI1NC00YjExLWE3MTMtMjI3MmQ5MTRmMGU2'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvNjA5YTE1MDEtN2MwMi00NmFlLThmYjUtNjg4ODUwZDNlM2U5'
        --data-urlencode 'include=owner'
 ```
 
@@ -206,6 +207,7 @@ Check each individual operation to see which relations can be included as a side
           "email_marketing_consent_updated_at": null,
           "properties": {},
           "tag_list": [],
+          "stripe_id": null,
           "merge_suggestion_customer_id": null,
           "tax_region_id": null
         },
@@ -335,6 +337,7 @@ This request accepts the following includes:
           "email_marketing_consent_updated_at": null,
           "properties": {},
           "tag_list": [],
+          "stripe_id": null,
           "merge_suggestion_customer_id": null,
           "tax_region_id": null
         },

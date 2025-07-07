@@ -142,8 +142,8 @@ A company holds information and configuration about an account.
           "country": "Netherlands",
           "country_id": null,
           "province_id": null,
-          "latitude": null,
-          "longitude": null,
+          "latitude": "52.521918",
+          "longitude": "13.413215",
           "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands"
         },
         "billing_address": null,
@@ -402,8 +402,8 @@ This request does not accept any includes
           "country": "Netherlands",
           "country_id": null,
           "province_id": null,
-          "latitude": null,
-          "longitude": null,
+          "latitude": "52.521918",
+          "longitude": "13.413215",
           "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands"
         },
         "billing_address": null,

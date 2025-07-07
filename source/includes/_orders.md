@@ -148,7 +148,7 @@ Check each individual operation to see which relations can be included as a side
 `shortage` | **boolean** `readonly`<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
 `start_location_id` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
-`status` | **enum** `readonly-after-create`<br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `draft`.
+`status` | **enum** `readonly-after-create`<br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "concept": 0, "reserved": 2, "started": 5, "stopped": 10 }`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside> 
 `statuses` | **array** `readonly`<br>Status(es) of planned products.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside> 
 `stop_location_id` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
@@ -197,8 +197,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-11-11T03:03:01.000000+00:00",
-          "stops_at": "1969-12-11T03:03:01.000000+00:00",
+          "starts_at": "1969-11-04T03:03:01.000000+00:00",
+          "stops_at": "1969-12-04T03:03:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -212,7 +212,10 @@ Check each individual operation to see which relations can be included as a side
           "tag_list": [
             "webshop"
           ],
-          "properties": {},
+          "properties": {
+            "delivery_address": null,
+            "billing_address": null
+          },
           "amount_in_cents": 87392,
           "amount_paid_in_cents": 0,
           "amount_to_be_paid_in_cents": 87392,
@@ -412,14 +415,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-07-01T09:26:07Z",
-                       "lte": "2025-07-04T09:26:07Z"
+                       "gte": "2025-07-08T09:26:45Z",
+                       "lte": "2025-07-11T09:26:45Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-07-01T09:26:07Z",
-                       "lte": "2025-07-04T09:26:07Z"
+                       "gte": "2025-07-08T09:26:45Z",
+                       "lte": "2025-07-11T09:26:45Z"
                      }
                    }
                  ]
@@ -637,7 +640,10 @@ Returns an existing or new order for the current employee.
         "has_signed_contract": false,
         "item_count": 0,
         "tag_list": [],
-        "properties": {},
+        "properties": {
+          "delivery_address": null,
+          "billing_address": null
+        },
         "amount_in_cents": 0,
         "amount_paid_in_cents": 0,
         "amount_to_be_paid_in_cents": null,
@@ -787,8 +793,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-04-08T12:22:01.000000+00:00",
-        "stops_at": "1970-05-08T12:22:01.000000+00:00",
+        "starts_at": "1970-04-01T12:22:01.000000+00:00",
+        "stops_at": "1970-05-01T12:22:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -802,7 +808,10 @@ This request accepts the following includes:
         "tag_list": [
           "webshop"
         ],
-        "properties": {},
+        "properties": {
+          "delivery_address": null,
+          "billing_address": null
+        },
         "amount_in_cents": 87392,
         "amount_paid_in_cents": 0,
         "amount_to_be_paid_in_cents": 87392,
@@ -992,7 +1001,10 @@ When the following attributes are not specified, a sensible default will be pick
         "has_signed_contract": false,
         "item_count": 0,
         "tag_list": [],
-        "properties": {},
+        "properties": {
+          "delivery_address": null,
+          "billing_address": null
+        },
         "amount_in_cents": 0,
         "amount_paid_in_cents": 0,
         "amount_to_be_paid_in_cents": null,
@@ -1070,7 +1082,7 @@ Name | Description
 `data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
-`data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `draft`.
+`data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
 `data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
@@ -1312,7 +1324,7 @@ Name | Description
 `data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When items become unavailable, changing this value may result in shortages
-`data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `draft`.
+`data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
 `data[attributes][stops_at]` | **datetime** <br>When items become available, changing this value may result in shortages
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 

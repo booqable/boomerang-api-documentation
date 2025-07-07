@@ -321,6 +321,7 @@ Name | Description
           "payment_strategy_value": 30,
           "payment_deposit": false,
           "payment_methods": [],
+          "security_deposit_explanation": "",
           "use_toc": false,
           "toc_label": "",
           "toc_content": "",

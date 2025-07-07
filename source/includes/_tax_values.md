@@ -167,8 +167,8 @@ This request does not accept any includes
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-01-30T17:20:00.000000+00:00",
-          "stops_at": "2018-02-03T17:20:00.000000+00:00",
+          "starts_at": "2018-01-30T17:19:00.000000+00:00",
+          "stops_at": "2018-02-03T17:19:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,
@@ -180,7 +180,10 @@ This request does not accept any includes
           "has_signed_contract": false,
           "item_count": 0,
           "tag_list": [],
-          "properties": {},
+          "properties": {
+            "delivery_address": null,
+            "billing_address": null
+          },
           "amount_in_cents": 0,
           "amount_paid_in_cents": 0,
           "amount_to_be_paid_in_cents": null,

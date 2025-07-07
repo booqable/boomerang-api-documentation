@@ -40,6 +40,7 @@ Check each individual operation to see which relations can be included as a side
 `number` | **integer** `readonly`<br>The assigned number. 
 `properties` | **hash** `readonly`<br>A hash containing all basic property values. This is a simplified representation; sideload the properties relation if you need more detailed information of properties. 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties to be associated with this customer. 
+`stripe_id` | **string** <br>The Stripe customer ID. 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
 `tax_region_id` | **uuid** `nullable`<br>Tax region assigned to new orders for this customer. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -79,6 +80,7 @@ Check each individual operation to see which relations can be included as a side
           "email_marketing_consent_updated_at": null,
           "properties": {},
           "tag_list": [],
+          "stripe_id": null,
           "merge_suggestion_customer_id": null,
           "tax_region_id": null
         },
@@ -129,6 +131,7 @@ Name | Description
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **string** <br>`eq`
+`stripe_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **string** <br>`eq`
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -262,6 +265,7 @@ Name | Description
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **string** <br>`eq`
+`stripe_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **string** <br>`eq`
 `tax_region_id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -326,6 +330,7 @@ This request accepts the following includes:
         "email_marketing_consent_updated_at": null,
         "properties": {},
         "tag_list": [],
+        "stripe_id": null,
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
@@ -411,6 +416,7 @@ This request accepts the following includes:
         "email_marketing_consent_updated_at": null,
         "properties": {},
         "tag_list": [],
+        "stripe_id": null,
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
@@ -449,6 +455,7 @@ Name | Description
 `data[attributes][merge_suggestion_customer_id]` | **uuid** <br>Holds the customer this customer is a possible duplicate of. 
 `data[attributes][name]` | **string** <br>Person or Company name. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties to be associated with this customer. 
+`data[attributes][stripe_id]` | **string** <br>The Stripe customer ID. 
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
 `data[attributes][tax_region_id]` | **uuid** <br>Tax region assigned to new orders for this customer. 
 
@@ -508,6 +515,7 @@ This request accepts the following includes:
         "email_marketing_consent_updated_at": null,
         "properties": {},
         "tag_list": [],
+        "stripe_id": null,
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
@@ -546,6 +554,7 @@ Name | Description
 `data[attributes][merge_suggestion_customer_id]` | **uuid** <br>Holds the customer this customer is a possible duplicate of. 
 `data[attributes][name]` | **string** <br>Person or Company name. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties to be associated with this customer. 
+`data[attributes][stripe_id]` | **string** <br>The Stripe customer ID. 
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
 `data[attributes][tax_region_id]` | **uuid** <br>Tax region assigned to new orders for this customer. 
 
@@ -596,6 +605,7 @@ This request accepts the following includes:
         "email_marketing_consent_updated_at": null,
         "properties": {},
         "tag_list": [],
+        "stripe_id": null,
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },

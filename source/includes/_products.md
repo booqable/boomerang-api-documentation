@@ -56,6 +56,8 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `allow_shortage` | **boolean** `readonly`<br>Whether shortages are allowed. 
+`buffer_time_after` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_after</code> is the replacement for <code>lag_time</code>. </aside> 
+`buffer_time_before` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_before</code> is the replacement for <code>lead_time</code>. </aside> 
 `deposit_in_cents` | **integer** `readonly`<br>The value to use for deposit calculations. 
 `description` | **string** `readonly` `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** `readonly`<br>Whether discounts should be applied to this item (note that price rules will still apply). 
@@ -70,7 +72,7 @@ Check each individual operation to see which relations can be included as a side
 `price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`product_type` | **enum** `readonly`<br>Type of product.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future. </aside><br> One of: `rental`, `consumable`, `service`.
+`product_type` | **enum** `readonly`<br>Type of product.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future. </aside><br> One of: `rental`, `consumable`, `sales_item`, `service`.
 `properties` | **hash** `readonly`<br>Key value pairs of associated properties. This is the same data as provided by the properties relation, but without information about type and position. 
 `seo_description` | **string** `readonly` `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `readonly` `nullable`<br>SEO title tag. 
@@ -116,6 +118,8 @@ Check each individual operation to see which relations can be included as a side
           "sku": null,
           "lead_time": 0,
           "lag_time": 0,
+          "buffer_time_before": 0,
+          "buffer_time_after": 0,
           "product_type": "rental",
           "tracking_type": "bulk",
           "trackable": false,
@@ -165,6 +169,8 @@ Check each individual operation to see which relations can be included as a side
           "sku": "PRODUCT 1000052",
           "lead_time": 0,
           "lag_time": 0,
+          "buffer_time_before": 0,
+          "buffer_time_after": 0,
           "product_type": "rental",
           "tracking_type": "bulk",
           "trackable": false,
@@ -233,6 +239,8 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_after` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -408,6 +416,8 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_after` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -516,6 +526,8 @@ This request accepts the following includes:
         "sku": null,
         "lead_time": 0,
         "lag_time": 0,
+        "buffer_time_before": 0,
+        "buffer_time_after": 0,
         "product_type": "rental",
         "tracking_type": "bulk",
         "trackable": false,
@@ -629,6 +641,8 @@ This request accepts the following includes:
         "sku": null,
         "lead_time": 0,
         "lag_time": 0,
+        "buffer_time_before": 0,
+        "buffer_time_after": 0,
         "product_type": "rental",
         "tracking_type": "bulk",
         "trackable": false,
@@ -755,6 +769,8 @@ This request accepts the following includes:
         "sku": null,
         "lead_time": 0,
         "lag_time": 0,
+        "buffer_time_before": 0,
+        "buffer_time_after": 0,
         "product_type": "rental",
         "tracking_type": "bulk",
         "trackable": false,
@@ -870,6 +886,8 @@ This request accepts the following includes:
         "sku": null,
         "lead_time": 0,
         "lag_time": 0,
+        "buffer_time_before": 0,
+        "buffer_time_after": 0,
         "product_type": "rental",
         "tracking_type": "bulk",
         "trackable": false,

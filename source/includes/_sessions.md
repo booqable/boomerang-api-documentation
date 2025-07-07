@@ -90,7 +90,7 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 324,
             "restrictions": {
               "employees": 1,
-              "email_max_recipients": 500,
+              "email_max_recipients": 100,
               "rate_limit_max": 50,
               "rate_limit_period": 60,
               "locations": 1,
@@ -108,7 +108,7 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 828,
             "restrictions": {
               "employees": 2,
-              "email_max_recipients": 500,
+              "email_max_recipients": 200,
               "rate_limit_max": 100,
               "rate_limit_period": 60,
               "locations": 1,
@@ -140,7 +140,7 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 1788,
             "restrictions": {
               "employees": 5,
-              "email_max_recipients": 2000,
+              "email_max_recipients": 500,
               "rate_limit_max": 250,
               "rate_limit_period": 60,
               "locations": 1,
@@ -218,7 +218,7 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 348,
             "restrictions": {
               "employees": 2,
-              "email_max_recipients": 500,
+              "email_max_recipients": 100,
               "rate_limit_max": 50,
               "rate_limit_period": 60,
               "locations": 1,
@@ -255,7 +255,7 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 948,
             "restrictions": {
               "employees": 5,
-              "email_max_recipients": 500,
+              "email_max_recipients": 200,
               "rate_limit_max": 100,
               "rate_limit_period": 60,
               "locations": 1,
@@ -297,7 +297,7 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 2988,
             "restrictions": {
               "employees": 15,
-              "email_max_recipients": 2000,
+              "email_max_recipients": 500,
               "rate_limit_max": 250,
               "rate_limit_period": 60,
               "locations": 3,
@@ -522,8 +522,8 @@ Check each individual operation to see which relations can be included as a side
             "country": "Netherlands",
             "country_id": null,
             "province_id": null,
-            "latitude": null,
-            "longitude": null,
+            "latitude": "52.521918",
+            "longitude": "13.413215",
             "value": "Blokhuispoort\nLeeuwarden\n8900AB Leeuwarden\nNetherlands"
           },
           "billing_address": null,
@@ -635,7 +635,7 @@ Check each individual operation to see which relations can be included as a side
           "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1751275652"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1751880519"
         }
       },
       {
@@ -710,6 +710,7 @@ Check each individual operation to see which relations can be included as a side
             "payment_strategy_value": 30,
             "payment_deposit": false,
             "payment_methods": [],
+            "security_deposit_explanation": "",
             "use_toc": false,
             "toc_label": "",
             "toc_content": "",
