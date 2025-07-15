@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
 `label_secondary` | **string** <br>Secondary label of the payment method. 
 `method_type` | **string** `readonly-after-create`<br>Provider method type. 
 `provider` | **enum** `readonly-after-create`<br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
-`status` | **enum** `readonly`<br>Payment method status. Payment method becomes `ready` after a successful charge.<br> One of: `created`, `ready`.
+`status` | **enum** <br>Payment method status. Payment method becomes `ready` after a successful charge.<br> One of: `created`, `ready`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -97,6 +97,7 @@ Name | Description
 `label_secondary` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `method_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `provider` | **enum** <br>`eq`
+`status` | **enum** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -128,7 +129,8 @@ This request does not accept any includes
              "provider": "app",
              "identifier": "pm_123",
              "customer_id": "e1f17238-83d4-4660-8f3b-5e95b67094df",
-             "label_primary": "Test card"
+             "label_primary": "Test card",
+             "status": "ready"
            }
          }
        }'
@@ -146,7 +148,7 @@ This request does not accept any includes
         "updated_at": "2019-01-15T14:37:00.000000+00:00",
         "label_primary": "Test card",
         "label_secondary": null,
-        "status": "created",
+        "status": "ready",
         "provider": "app",
         "identifier": "pm_123",
         "method_type": null,
@@ -185,6 +187,7 @@ Name | Description
 `data[attributes][label_secondary]` | **string** <br>Secondary label of the payment method. 
 `data[attributes][method_type]` | **string** <br>Provider method type. 
 `data[attributes][provider]` | **enum** <br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
+`data[attributes][status]` | **enum** <br>Payment method status. Payment method becomes `ready` after a successful charge.<br> One of: `created`, `ready`.
 
 
 ### Includes

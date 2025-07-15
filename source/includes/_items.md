@@ -69,6 +69,8 @@ The description of the relationships and attributes of these resources can be fo
           "sku": "SKU",
           "lead_time": 0,
           "lag_time": 0,
+          "buffer_time_before": 0,
+          "buffer_time_after": 0,
           "product_type": "rental",
           "tracking_type": "trackable",
           "trackable": true,
@@ -121,6 +123,8 @@ The description of the relationships and attributes of these resources can be fo
           "sku": "SKU",
           "lead_time": 0,
           "lag_time": 0,
+          "buffer_time_before": 0,
+          "buffer_time_after": 0,
           "product_type": "rental",
           "tracking_type": "trackable",
           "trackable": true,
@@ -189,6 +193,8 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_after` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `conditions` | **hash** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -359,6 +365,8 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `base_price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_after` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `conditions` | **hash** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -460,6 +468,8 @@ This request accepts the following includes:
         "sku": "SKU",
         "lead_time": 0,
         "lag_time": 0,
+        "buffer_time_before": 0,
+        "buffer_time_after": 0,
         "product_type": "rental",
         "tracking_type": "trackable",
         "trackable": true,

@@ -182,6 +182,7 @@ To delete a property, set the `_destroy` attribute to `true`.
           "phone": "+316000000"
         },
         "tag_list": [],
+        "stripe_id": null,
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
@@ -239,6 +240,7 @@ To delete a property, set the `_destroy` attribute to `true`.
           "phone": "+316000000"
         },
         "tag_list": [],
+        "stripe_id": null,
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
@@ -299,6 +301,7 @@ To delete a property, set the `_destroy` attribute to `true`.
           "birthday": "01-01-1970"
         },
         "tag_list": [],
+        "stripe_id": null,
         "merge_suggestion_customer_id": null,
         "tax_region_id": null
       },
@@ -377,6 +380,7 @@ This request does not accept any includes
             "phone": "+316000000"
           },
           "tag_list": [],
+          "stripe_id": null,
           "merge_suggestion_customer_id": null,
           "tax_region_id": null
         },
@@ -504,6 +508,7 @@ This request accepts the following includes:
             "phone": "+316000000"
           },
           "tag_list": [],
+          "stripe_id": null,
           "merge_suggestion_customer_id": null,
           "tax_region_id": null
         },
@@ -614,6 +619,7 @@ This request accepts the following includes:
             "phone": "+316000000"
           },
           "tag_list": [],
+          "stripe_id": null,
           "merge_suggestion_customer_id": null,
           "tax_region_id": null
         },
