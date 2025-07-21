@@ -276,7 +276,7 @@ This request does not accept any includes
       "type": "default_properties",
       "attributes": {
         "created_at": "2014-07-12T02:01:00.000000+00:00",
-        "updated_at": "2014-07-12T02:02:00.000000+00:00",
+        "updated_at": "2014-07-12T02:01:00.000000+00:00",
         "name": "Phone",
         "identifier": "phone",
         "position": 1,

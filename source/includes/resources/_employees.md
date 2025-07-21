@@ -20,7 +20,6 @@ and accounting, it wouldn't need to manage your products and stock levels.
  Name | Description
 -- | --
 `active` | **boolean** <br>Whether this employee is active (counts towards billing). 
-`allowed_session_id` | **string** <br>Allowed session id. 
 `avatar_base64` | **string** `writeonly`<br>Base64 encoded avatar. 
 `avatar_url` | **string** `readonly`<br>Url to avatar. 
 `confirmed` | **boolean** `readonly`<br>Whether this employee confirmed it's email address. 
@@ -67,7 +66,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2023-12-23T03:50:00.000000+00:00",
+          "updated_at": "2024-01-06T03:50:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
@@ -93,7 +92,6 @@ and accounting, it wouldn't need to manage your products and stock levels.
             "override_rental_period"
           ],
           "has_two_factor_autentication": false,
-          "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/f3eb64211cf620aa291957f1f66d5f39.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/f3eb64211cf620aa291957f1f66d5f39.png?d=mm&size=200",
           "third_party_id": "9e27ff9f-0909-42c7-81b2-3bb9f34ad507-1679574840"
@@ -197,7 +195,6 @@ This request does not accept any includes
           "override_rental_period"
         ],
         "has_two_factor_autentication": false,
-        "allowed_session_id": null,
         "avatar_url": "https://gravatar.com/avatar/b9e4d02e55a6d091223dfb568620be4b.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/b9e4d02e55a6d091223dfb568620be4b.png?d=mm&size=200",
         "third_party_id": "4c367dac-4839-49f3-89e4-ff584a1f30e0-1679574840"
@@ -252,7 +249,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2022-03-19T16:20:00.000000+00:00",
+        "updated_at": "2022-04-02T16:20:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
@@ -278,7 +275,6 @@ This request does not accept any includes
           "override_rental_period"
         ],
         "has_two_factor_autentication": false,
-        "allowed_session_id": null,
         "avatar_url": "https://gravatar.com/avatar/716558eb15f1e4801c770410e3eed8fe.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/716558eb15f1e4801c770410e3eed8fe.png?d=mm&size=200",
         "third_party_id": "cebcf411-1b2a-402f-8d77-43c67daf282f-1579642440"
@@ -314,7 +310,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2020-04-01T05:39:01.000000+00:00",
+        "updated_at": "2020-04-15T05:39:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -340,7 +336,6 @@ This request does not accept any includes
           "override_rental_period"
         ],
         "has_two_factor_autentication": false,
-        "allowed_session_id": null,
         "avatar_url": "https://gravatar.com/avatar/8a0e879db54c50c14de0c4203a4e7a93.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/8a0e879db54c50c14de0c4203a4e7a93.png?d=mm&size=200",
         "third_party_id": "b40a7c1c-5190-4d54-8cea-405d36944a87-1579642440"
@@ -379,7 +374,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2032-09-29T14:27:01.000000+00:00",
+        "updated_at": "2032-10-13T14:27:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -396,7 +391,6 @@ This request does not accept any includes
           "settings"
         ],
         "has_two_factor_autentication": false,
-        "allowed_session_id": null,
         "avatar_url": "https://gravatar.com/avatar/ae75ea2be6c7d7aa987d98145aa7618c.png?d=404",
         "large_avatar_url": "https://gravatar.com/avatar/ae75ea2be6c7d7aa987d98145aa7618c.png?d=mm&size=200",
         "third_party_id": "94b3f0ff-ef32-49be-8f5f-7aa6916cc901-1579642440"
@@ -426,7 +420,6 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][active]` | **boolean** <br>Whether this employee is active (counts towards billing). 
-`data[attributes][allowed_session_id]` | **string** <br>Allowed session id. 
 `data[attributes][avatar_base64]` | **string** <br>Base64 encoded avatar. 
 `data[attributes][current_password]` | **string** <br>Current password, needed to update password or email address. 
 `data[attributes][deactivated_at]` | **datetime** <br>Employee deactivation date. 

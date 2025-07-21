@@ -98,7 +98,8 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_employees": false,
               "manual_email_templates": 0,
               "custom_fields": 3,
-              "tags": 5
+              "tags": 5,
+              "away_modes": 0
             },
             "features": []
           },
@@ -116,7 +117,8 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_employees": false,
               "manual_email_templates": 3,
               "custom_fields": null,
-              "tags": null
+              "tags": null,
+              "away_modes": 2
             },
             "features": [
               "advanced_pricing",
@@ -126,12 +128,13 @@ Check each individual operation to see which relations can be included as a side
               "prevent_last_minute_reservations",
               "packing_slips",
               "notes",
-              "revenue_report",
               "manual_email_templates",
               "away_mode",
               "customer_discount_percentage",
               "product_security_deposit",
-              "coupons"
+              "coupons",
+              "invoice_due_dates",
+              "reports"
             ]
           },
           {
@@ -148,7 +151,8 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_employees": true,
               "manual_email_templates": null,
               "custom_fields": null,
-              "tags": null
+              "tags": null,
+              "away_modes": null
             },
             "features": [
               "advanced_pricing",
@@ -158,17 +162,17 @@ Check each individual operation to see which relations can be included as a side
               "prevent_last_minute_reservations",
               "packing_slips",
               "notes",
-              "revenue_report",
               "manual_email_templates",
               "away_mode",
               "customer_discount_percentage",
               "product_security_deposit",
               "coupons",
+              "invoice_due_dates",
+              "reports",
               "api",
               "permissions",
               "product_shortage_limits",
               "product_history",
-              "reports",
               "exports",
               "remove_powered_by"
             ]
@@ -187,7 +191,8 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_employees": true,
               "manual_email_templates": null,
               "custom_fields": null,
-              "tags": null
+              "tags": null,
+              "away_modes": null
             },
             "features": [
               "advanced_pricing",
@@ -197,17 +202,17 @@ Check each individual operation to see which relations can be included as a side
               "prevent_last_minute_reservations",
               "packing_slips",
               "notes",
-              "revenue_report",
               "manual_email_templates",
               "away_mode",
               "customer_discount_percentage",
               "product_security_deposit",
               "coupons",
+              "invoice_due_dates",
+              "reports",
               "api",
               "permissions",
               "product_shortage_limits",
               "product_history",
-              "reports",
               "exports",
               "remove_powered_by"
             ]
@@ -239,14 +244,14 @@ Check each individual operation to see which relations can be included as a side
               "prevent_last_minute_reservations",
               "packing_slips",
               "notes",
-              "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
               "product_history",
               "away_mode",
               "customer_discount_percentage",
               "mobile_app",
-              "product_security_deposit"
+              "product_security_deposit",
+              "invoice_due_dates"
             ]
           },
           {
@@ -276,7 +281,6 @@ Check each individual operation to see which relations can be included as a side
               "prevent_last_minute_reservations",
               "packing_slips",
               "notes",
-              "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
               "product_history",
@@ -284,6 +288,7 @@ Check each individual operation to see which relations can be included as a side
               "customer_discount_percentage",
               "mobile_app",
               "product_security_deposit",
+              "invoice_due_dates",
               "barcodes",
               "reports",
               "permissions",
@@ -318,7 +323,6 @@ Check each individual operation to see which relations can be included as a side
               "prevent_last_minute_reservations",
               "packing_slips",
               "notes",
-              "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
               "product_history",
@@ -326,6 +330,7 @@ Check each individual operation to see which relations can be included as a side
               "customer_discount_percentage",
               "mobile_app",
               "product_security_deposit",
+              "invoice_due_dates",
               "barcodes",
               "reports",
               "permissions",
@@ -466,9 +471,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 276",
-          "slug": "company-name-276",
-          "email": "mail279@company.com",
+          "name": "Company name 278",
+          "slug": "company-name-278",
+          "email": "mail281@company.com",
           "billing_email": null,
           "phone": null,
           "website": "www.booqable.com",
@@ -566,7 +571,6 @@ Check each individual operation to see which relations can be included as a side
               "prevent_last_minute_reservations",
               "packing_slips",
               "notes",
-              "revenue_report",
               "manual_email_templates",
               "product_shortage_limits",
               "product_history",
@@ -574,6 +578,7 @@ Check each individual operation to see which relations can be included as a side
               "customer_discount_percentage",
               "mobile_app",
               "product_security_deposit",
+              "invoice_due_dates",
               "barcodes",
               "reports",
               "permissions",
@@ -595,7 +600,8 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_employees": false,
               "manual_email_templates": null,
               "custom_fields": null,
-              "tags": null
+              "tags": null,
+              "away_modes": null
             }
           },
           "third_party_id": "59b0823e-3949-4963-8088-2c23b460c183"
@@ -632,10 +638,9 @@ Check each individual operation to see which relations can be included as a side
             "override_rental_period"
           ],
           "has_two_factor_autentication": false,
-          "allowed_session_id": null,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1751880519"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1753090170"
         }
       },
       {

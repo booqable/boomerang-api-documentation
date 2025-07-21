@@ -164,7 +164,12 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
-  <li><code>order</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>customer</code></li>
+    </ul>
+  </li>
   <li><code>planning</code></li>
   <li>
     <code>stock_item</code>

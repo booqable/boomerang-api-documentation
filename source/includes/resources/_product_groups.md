@@ -97,7 +97,7 @@ Check each individual operation to see which relations can be included as a side
 `price_ruleset_id` | **uuid** `nullable`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `price_structure_id` | **uuid** `nullable`<br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `price_type` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`product_type` | **enum** `readonly-after-create`<br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `bundle`, `rental`, `consumable`, `sales_item`, `service`.
+`product_type` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `rental`, `consumable`, `sales_item`, `service`.
 `properties` | **hash** `readonly`<br>Hash of properties. Sideload the properties relation when more information is needed. 
 `seo_description` | **string** `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `nullable`<br>SEO title tag. 
@@ -235,7 +235,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **enum** <br>`eq`
+`product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -401,7 +401,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **enum** <br>`eq`
+`product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -681,7 +681,7 @@ Name | Description
 `data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `bundle`, `rental`, `consumable`, `sales_item`, `service`.
+`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `rental`, `consumable`, `sales_item`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
 `data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 
@@ -836,7 +836,7 @@ Name | Description
 `data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `bundle`, `rental`, `consumable`, `sales_item`, `service`.
+`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `rental`, `consumable`, `sales_item`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
 `data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 

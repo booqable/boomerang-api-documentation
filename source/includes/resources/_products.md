@@ -260,7 +260,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **enum** <br>`eq`
+`product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -437,7 +437,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **enum** <br>`eq`
+`product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`

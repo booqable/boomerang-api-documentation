@@ -138,7 +138,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_charges]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart,customer`
 
 
 ### Request body
@@ -172,13 +172,18 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>cart</code></li>
   <li><code>customer</code></li>
+  <li><code>employee</code></li>
   <li>
     <code>order</code>
     <ul>
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_authorization</code></li>
+  <li><code>payment_method</code></li>
+  <li><code>payment_refunds</code></li>
 </ul>
 
 
@@ -263,7 +268,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_charges]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart,customer`
 
 
 ### Request body
@@ -297,12 +302,110 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>cart</code></li>
   <li><code>customer</code></li>
+  <li><code>employee</code></li>
   <li>
     <code>order</code>
     <ul>
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_authorization</code></li>
+  <li><code>payment_method</code></li>
+  <li><code>payment_refunds</code></li>
+</ul>
+
+
+## Delete a payment charge
+
+
+> How to delete a payment charge:
+
+```shell
+  curl --request DELETE
+       --url 'https://example.booqable.com/api/4/payment_charges/06860f88-3205-482e-82da-5ef680030bd4'
+       --header 'content-type: application/json'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "06860f88-3205-482e-82da-5ef680030bd4",
+      "type": "payment_charges",
+      "attributes": {
+        "created_at": "2025-12-21T22:55:00.000000+00:00",
+        "updated_at": "2025-12-21T22:55:00.000000+00:00",
+        "type": "payment_charges",
+        "provider": "stripe",
+        "provider_id": null,
+        "provider_method": null,
+        "provider_secret": null,
+        "provider_link": null,
+        "amount_in_cents": 5000,
+        "deposit_in_cents": 0,
+        "total_in_cents": 5000,
+        "currency": "usd",
+        "succeeded_at": null,
+        "failed_at": null,
+        "canceled_at": null,
+        "expired_at": null,
+        "cart_id": null,
+        "order_id": null,
+        "employee_id": null,
+        "customer_id": null,
+        "status": "created",
+        "mode": "manual",
+        "description": null,
+        "redirect_url": null,
+        "refundable": true,
+        "amount_refundable_in_cents": 5000,
+        "amount_refunded_in_cents": 0,
+        "deposit_refundable_in_cents": 0,
+        "deposit_refunded_in_cents": 0,
+        "total_refundable_in_cents": 5000,
+        "total_refunded_in_cents": 0,
+        "payment_method_id": null,
+        "payment_authorization_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`DELETE /api/4/payment_charges/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_charges]=created_at,updated_at,type`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,cart,customer`
+
+
+### Includes
+
+This request accepts the following includes:
+
+<ul>
+  <li><code>cart</code></li>
+  <li><code>customer</code></li>
+  <li><code>employee</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>payments</code></li>
+    </ul>
+  </li>
+  <li><code>payment_authorization</code></li>
+  <li><code>payment_method</code></li>
+  <li><code>payment_refunds</code></li>
 </ul>
 

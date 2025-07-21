@@ -122,7 +122,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,payment_method`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,employee`
 
 
 ### Request body
@@ -156,12 +156,14 @@ This request accepts the following includes:
 
 <ul>
   <li><code>customer</code></li>
+  <li><code>employee</code></li>
   <li>
     <code>order</code>
     <ul>
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_charge</code></li>
   <li><code>payment_method</code></li>
 </ul>
 
@@ -238,7 +240,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,payment_method`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,employee`
 
 
 ### Request body
@@ -272,12 +274,98 @@ This request accepts the following includes:
 
 <ul>
   <li><code>customer</code></li>
+  <li><code>employee</code></li>
   <li>
     <code>order</code>
     <ul>
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_charge</code></li>
+  <li><code>payment_method</code></li>
+</ul>
+
+
+## Delete a payment refund
+
+
+> How to delete a payment refund:
+
+```shell
+  curl --request DELETE
+       --url 'https://example.booqable.com/api/4/payment_refunds/4e0fcade-0031-4482-8298-8812aef4a22f'
+       --header 'content-type: application/json'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "4e0fcade-0031-4482-8298-8812aef4a22f",
+      "type": "payment_refunds",
+      "attributes": {
+        "created_at": "2014-08-09T02:36:03.000000+00:00",
+        "updated_at": "2014-08-09T02:36:03.000000+00:00",
+        "type": "payment_refunds",
+        "provider": "none",
+        "provider_id": null,
+        "provider_method": null,
+        "provider_secret": null,
+        "provider_link": null,
+        "amount_in_cents": 5000,
+        "deposit_in_cents": 0,
+        "total_in_cents": 5000,
+        "currency": "usd",
+        "succeeded_at": null,
+        "failed_at": null,
+        "canceled_at": null,
+        "expired_at": null,
+        "cart_id": null,
+        "order_id": null,
+        "employee_id": null,
+        "customer_id": null,
+        "status": "pending",
+        "description": null,
+        "failure_reason": null,
+        "reason": null,
+        "payment_charge_id": null,
+        "payment_method_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`DELETE /api/4/payment_refunds/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_refunds]=created_at,updated_at,type`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,employee`
+
+
+### Includes
+
+This request accepts the following includes:
+
+<ul>
+  <li><code>customer</code></li>
+  <li><code>employee</code></li>
+  <li>
+    <code>order</code>
+    <ul>
+      <li><code>payments</code></li>
+    </ul>
+  </li>
+  <li><code>payment_charge</code></li>
   <li><code>payment_method</code></li>
 </ul>
 

@@ -138,7 +138,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_authorizations]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,payment_method`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,employee`
 
 
 ### Request body
@@ -172,12 +172,14 @@ This request accepts the following includes:
 
 <ul>
   <li><code>customer</code></li>
+  <li><code>employee</code></li>
   <li>
     <code>order</code>
     <ul>
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_charges</code></li>
   <li><code>payment_method</code></li>
 </ul>
 
@@ -264,7 +266,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[payment_authorizations]=created_at,updated_at,type`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,payment_method`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,customer,employee`
 
 
 ### Request body
@@ -298,12 +300,14 @@ This request accepts the following includes:
 
 <ul>
   <li><code>customer</code></li>
+  <li><code>employee</code></li>
   <li>
     <code>order</code>
     <ul>
       <li><code>payments</code></li>
     </ul>
   </li>
+  <li><code>payment_charges</code></li>
   <li><code>payment_method</code></li>
 </ul>
 

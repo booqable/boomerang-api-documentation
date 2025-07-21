@@ -5,6 +5,15 @@ Refundable Payment Charges provide a prioritized list of payment charges that ca
 This virtual resource analyzes all charges associated with an order and determines the optimal charges to refund,
 considering the amount, deposit, and various business rules.
 
+## Relationships
+Name | Description
+-- | --
+`payment_charge` | **[Payment charge](#payment-charges)** `required`<br>The [PaymentCharge](#payment-charges) that this refundable charge represents. 
+
+
+Check matching attributes under [Fields](#refundable-payment-charges-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
 ## Fields
 
  Name | Description
@@ -13,7 +22,7 @@ considering the amount, deposit, and various business rules.
 `max_refundable_amount_in_cents` | **integer** <br>The maximum amount in cents that can be refunded from this charge.<br>This represents the refundable portion of the regular amount (not deposit). 
 `max_refundable_deposit_in_cents` | **integer** <br>The maximum deposit amount in cents that can be refunded from this charge.<br>This represents the refundable portion of the deposit. 
 `max_refundable_total_in_cents` | **integer** <br>The total amount in cents that can be refunded from this charge.<br>This is the sum of `max_refundable_amount_in_cents` and `max_refundable_deposit_in_cents`. 
-`payment_id` | **string** <br>The ID of the payment charge that this refundable charge represents.<br>Use this ID to reference the actual payment when processing the refund. 
+`payment_charge_id` | **uuid** <br>The [PaymentCharge](#payment-charges) that this refundable charge represents. 
 `position` | **integer** <br>The sequential position (1..n) of this charge in the prioritized list.<br>Lower positions (starting at 1) indicate higher priority charges that should be considered first for refunding. The positions are assigned based on the sorting of charges by priority type, refundable amount, and timestamp. 
 `priority_type` | **string** <br>A string indicating the priority category of this charge.<br>Possible values: - `optimal`: Can cover both amount and deposit in a single refund - highest priority. - `full_amount`: Can cover the full amount to be refunded. - `full_deposit`: Can cover the full deposit to be refunded. - `partial_amount`: Can partially cover the amount to be refunded. - `partial_deposit`: Can partially cover the deposit to be refunded. - `partial`: Can cover some part of the refund but not the full amount or deposit. 
 
@@ -42,11 +51,12 @@ considering the amount, deposit, and various business rules.
         "attributes": {
           "position": 1,
           "priority_type": "optimal",
-          "payment_id": "367e21a5-6799-497b-892c-c7412f0d6184",
           "max_refundable_amount_in_cents": 15000,
           "max_refundable_deposit_in_cents": 7500,
-          "max_refundable_total_in_cents": 22500
-        }
+          "max_refundable_total_in_cents": 22500,
+          "payment_charge_id": "367e21a5-6799-497b-892c-c7412f0d6184"
+        },
+        "relationships": {}
       }
     ],
     "meta": {}
@@ -63,8 +73,9 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[refundable_payment_charges]=position,priority_type,payment_id`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[refundable_payment_charges]=position,priority_type,max_refundable_amount_in_cents`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=payment_charge`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -83,7 +94,7 @@ Name | Description
 `max_refundable_deposit_in_cents` | **integer** <br>`eq`
 `max_refundable_total_in_cents` | **integer** <br>`eq`
 `order_id` | **string** `required`<br>`eq`
-`payment_id` | **string** <br>`eq`
+`payment_charge_id` | **uuid** <br>`eq`
 `position` | **integer** <br>`eq`
 `priority_type` | **string** <br>`eq`
 
@@ -99,4 +110,14 @@ Name | Description
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+<ul>
+  <li>
+    <code>payment_charge</code>
+    <ul>
+      <li><code>payment_method</code></li>
+    </ul>
+  </li>
+</ul>
+

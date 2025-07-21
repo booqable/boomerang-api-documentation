@@ -261,7 +261,6 @@ Name | Description
             "prevent_last_minute_reservations",
             "packing_slips",
             "notes",
-            "revenue_report",
             "manual_email_templates",
             "product_shortage_limits",
             "product_history",
@@ -269,6 +268,7 @@ Name | Description
             "customer_discount_percentage",
             "mobile_app",
             "product_security_deposit",
+            "invoice_due_dates",
             "barcodes",
             "reports",
             "permissions",
@@ -290,7 +290,8 @@ Name | Description
             "allow_extra_employees": false,
             "manual_email_templates": null,
             "custom_fields": null,
-            "tags": null
+            "tags": null,
+            "away_modes": null
           }
         }
       }
