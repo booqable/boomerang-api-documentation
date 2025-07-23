@@ -1,0 +1,325 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Booqable App Configuration Schema",
+  "description": "Schema for configuration file used by Booqable apps.",
+  "type": "object",
+  "required": ["$schema", "id", "name", "category", "author", "version", "icon", "image"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema version for the app configuration.",
+      "const": "https://developers.booqable.com/schemas/app-0-1-0.json#"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the app, used internally.",
+      "pattern": "^[a-z_]+$",
+      "examples": ["acme_app"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the app as shown to users.",
+      "examples": ["ACME App"]
+    },
+    "category": {
+      "type": "string",
+      "description": "Category classification for organizing apps in the app store.",
+      "enum": ["tracking", "payment", "translation", "maps", "marketing", "social"]
+    },
+    "author": {
+      "type": "string",
+      "description": "Name of the app developer or company.",
+      "examples": ["ACME Corp."]
+    },
+    "version": {
+      "type": "string",
+      "description": "Version number or status of the app.",
+      "examples": ["1.0.0", "2.1.3", "beta"]
+    },
+    "icon": {
+      "type": "string",
+      "description": "URL or path to the app's icon/logo image.",
+      "examples": ["https://example.com/app-icon.png"]
+    },
+    "image": {
+      "type": "string",
+      "description": "URL or path to the app's cover/feature image displayed in the app store.",
+      "examples": ["https://example.com/app-image.png"]
+    },
+    "cookies_required": {
+      "type": "boolean",
+      "description": "Whether the app installs cookies in the user's browser.",
+      "default": false
+    },
+    "support": {
+      "$ref": "#/definitions/SupportData"
+    },
+    "pay_button": {
+      "type": "string",
+      "description": "URL or path to a custom payment button image (used by payment apps).",
+      "examples": ["https://example.com/pay-button.png"]
+    },
+    "base_url": {
+      "$ref": "#/definitions/BaseURL"
+    },
+    "oauth": {
+      "$ref": "#/definitions/OAuthSettings"
+    },
+    "config_url": {
+      "type": "string",
+      "description": "URL path for the app's configuration/settings page.",
+      "examples": ["/settings/integrations", "/admin/apps/my-app/config"]
+    },
+    "routes": {
+      "$ref": "#/definitions/Routes"
+    },
+    "ui_extension": {
+      "$ref": "#/definitions/UIExtensions"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "SupportData": {
+      "type": "object",
+      "description": "Support contact information for the app.",
+      "required": ["email", "website"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Support email address for the app.",
+          "format": "email",
+          "examples": ["support@example.com"]
+        },
+        "website": {
+          "type": "string",
+          "description": "Support website or documentation URL.",
+          "format": "uri",
+          "examples": ["https://help.example.com"]
+        }
+      }
+    },
+    "BaseURL": {
+      "type": "object",
+      "description": "Base URLs for different environments where the app is hosted.",
+      "required": ["development", "production"],
+      "properties": {
+        "development": {
+          "type": "string",
+          "description": "URL for development environment.",
+          "format": "uri",
+          "examples": ["http://localhost:3000"]
+        },
+        "staging": {
+          "type": "string",
+          "description": "URL for staging environment.",
+          "format": "uri",
+          "examples": ["https://staging-api.example.com"]
+        },
+        "production": {
+          "type": "string",
+          "description": "URL for production environment.",
+          "format": "uri",
+          "examples": ["https://api.example.com"]
+        }
+      }
+    },
+    "OAuthSettings": {
+      "type": "object",
+      "description": "OAuth configuration for apps that require authentication.",
+      "required": ["redirect_url", "scopes"],
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "description": "OAuth client ID for the third-party service.",
+          "examples": ["123456789.apps.googleusercontent.com"]
+        },
+        "client_secret": {
+          "type": "string",
+          "description": "OAuth client secret for the third-party service.",
+          "examples": ["secret456abc"]
+        },
+        "redirect_url": {
+          "type": "string",
+          "description": "OAuth redirect URL for handling authentication callbacks.",
+          "examples": ["https://app.example.com/oauth/callback"]
+        },
+        "scopes": {
+          "type": "array",
+          "description": "OAuth scopes required by the app.",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["full_access"]]
+        }
+      }
+    },
+    "Routes": {
+      "type": "object",
+      "description": "API route endpoints for payment processing apps.",
+      "properties": {
+        "charge_url": {
+          "type": "string",
+          "description": "URL endpoint for processing charges.",
+          "examples": ["https://api.example.com/charge"]
+        },
+        "authorization_url": {
+          "type": "string",
+          "description": "URL endpoint for payment authorization.",
+          "examples": ["https://api.example.com/auth"]
+        },
+        "refund_url": {
+          "type": "string",
+          "description": "URL endpoint for processing refunds.",
+          "examples": ["https://api.example.com/refund"]
+        },
+        "payment_profile_url": {
+          "type": "string",
+          "description": "URL endpoint for payment profile management.",
+          "examples": ["https://api.example.com/profile"]
+        },
+        "install_url": {
+          "type": "string",
+          "description": "URL endpoint for app installation.",
+          "examples": ["https://api.example.com/install"]
+        }
+      }
+    },
+    "UIExtensions": {
+      "type": "object",
+      "description": "UI extension configuration for iframe and theme apps.",
+      "properties": {
+        "frames": {
+          "$ref": "#/definitions/FrameSettings"
+        },
+        "themes": {
+          "$ref": "#/definitions/ThemeSettings"
+        },
+        "tracking_script": {
+          "$ref": "#/definitions/TrackingScriptSettings"
+        }
+      }
+    },
+    "FrameSettings": {
+      "type": "object",
+      "description": "Configuration for iframe-based UI extensions.",
+      "properties": {
+        "app_config": {
+          "type": "string",
+          "description": "URL path for the app configuration iframe.",
+          "examples": ["/admin/apps/my-app/config"]
+        }
+      }
+    },
+    "TrackingScriptSettings": {
+      "type": "object",
+      "description": "Settings for apps that provide tracking scripts, like Google Analytics or Meta Pixel.",
+      "required": ["template"],
+      "properties": {
+        "template": {
+          "type": "string",
+          "description": "Path to the JavaScript template file for the tracking script.",
+          "examples": ["templates/index.js.liquid"]
+        }
+      }
+    },
+    "ThemeSettings": {
+      "type": "object",
+      "description": "Configuration for theme-based UI extensions.",
+      "properties": {
+        "blocks": {
+          "type": "array",
+          "description": "Array of theme blocks that can be added to the store.",
+          "items": {
+            "$ref": "#/definitions/ThemeBlockSettings"
+          }
+        }
+      }
+    },
+    "ThemeBlockSettings": {
+      "type": "object",
+      "required": ["name", "template", "allowed_sections"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name of the theme block.",
+          "examples": ["Signup Form", "Social Feed"]
+        },
+        "template": {
+          "type": "string",
+          "description": "Path to the Liquid template file for the block.",
+          "examples": ["templates/signup-form.liquid", "templates/social-feed.liquid"]
+        },
+        "allowed_sections": {
+          "type": "array",
+          "description": "List of sections where the block can be placed.",
+          "items": {
+            "type": "string",
+            "enum": ["header", "footer", "app"]
+          },
+          "examples": [["header", "footer"], ["app"]]
+        },
+        "settings": {
+          "type": "object",
+          "description": "Configuration settings for the theme block.",
+          "additionalProperties": {
+            "$ref": "#/definitions/ThemeBlockSetting"
+          }
+        }
+      }
+    },
+    "ThemeBlockSetting": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Type of the setting field.",
+          "enum": ["text", "number", "select", "header"]
+        },
+        "label": {
+          "type": "string",
+          "description": "Display label for the setting.",
+          "examples": ["Title", "Height", "Font Size"]
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder text for text inputs.",
+          "examples": ["Enter title here", "Height in pixels"]
+        },
+        "default": {
+          "type": "string",
+          "description": "Default value for the setting.",
+          "examples": ["Default Title", "60"]
+        },
+        "content": {
+          "type": "string",
+          "description": "Content for header type settings.",
+          "examples": ["Mobile Settings", "Desktop Settings"]
+        },
+        "options": {
+          "type": "array",
+          "description": "Options for select type settings.",
+          "items": {
+            "$ref": "#/definitions/SelectOption"
+          }
+        }
+      }
+    },
+    "SelectOption": {
+      "type": "object",
+      "required": ["value", "label"],
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "Value of the option.",
+          "examples": ["left", "center", "right"]
+        },
+        "label": {
+          "type": "string",
+          "description": "Display label for the option.",
+          "examples": ["Left", "Center", "Right"]
+        }
+      }
+    }
+  }
+}
