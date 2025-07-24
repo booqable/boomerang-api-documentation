@@ -75,6 +75,13 @@
     },
     "ui_extension": {
       "$ref": "#/definitions/UIExtensions"
+    },
+    "global_settings": {
+      "type": "object",
+      "description": "Global, user-configurable settings for the app.",
+      "additionalProperties": {
+        "$ref": "#/definitions/GlobalSetting"
+      }
     }
   },
   "additionalProperties": false,
@@ -101,7 +108,6 @@
     "BaseURL": {
       "type": "object",
       "description": "Base URLs for different environments where the app is hosted.",
-      "required": ["development", "production"],
       "properties": {
         "development": {
           "type": "string",
@@ -263,6 +269,39 @@
           "description": "Configuration settings for the theme block.",
           "additionalProperties": {
             "$ref": "#/definitions/ThemeBlockSetting"
+          }
+        }
+      }
+    },
+    "GlobalSetting": {
+      "type": "object",
+      "description": "App-level configuration options.",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Type of the setting field.",
+          "enum": ["text", "number", "textarea", "select", "header"]
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Whether this setting is required for the app to function.",
+          "default": false
+        },
+        "default": {
+          "description": "Default value for the setting.",
+          "examples": ["Default Title", 60, true]
+        },
+        "pattern": {
+          "type": "string",
+          "description": "Regex pattern for validation of text/textarea fields.",
+          "examples": [".*\\.mydomain\\.com/.*"]
+        },
+        "options": {
+          "type": "array",
+          "description": "Options for select type settings.",
+          "items": {
+            "$ref": "#/definitions/SelectOption"
           }
         }
       }
