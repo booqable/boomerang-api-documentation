@@ -126,8 +126,11 @@ module MarkdownGenerator
       when "object"
         buffer.write "{ /* ... */ }"
       else
-        puts property.inspect
-        raise "Don't know how to generate example value for #{property.type}"
+        if example_value
+          buffer.write example_value.inspect
+        else
+          raise "Don't know how to generate example value for #{property.type} (#{property.inspect})"
+        end
       end
     end
   end
@@ -230,7 +233,12 @@ class JSONSchemaMarkdownGeneratorExtension < Middleman::Extension
   def generate_markdown_for_json_schemas
     json_schemas.each do |resource|
       schema_path = Pathname("source").join(resource.path)
-      @generator.generate_markdown_for_json_schema(schema_path)
+      begin
+        @generator.generate_markdown_for_json_schema(schema_path)
+      rescue => error
+        $stderr.puts "       ERROR  failed to generate markdown for #{schema_path}: #{error.class}: #{error.message}"
+        $stderr.puts error.backtrace
+      end
     end
   end
 
