@@ -1,5 +1,5 @@
 ---
-title: Booqable API documentation
+title: Booqable API v4 documentation
 
 # language_tabs: # must be one of https://git.io/vQNgJ
 #   - shell
@@ -9,118 +9,118 @@ title: Booqable API documentation
 
 #
 # Note the custom sorting:
-#  - orders
-#  - order_somethings
+#  - v4/resources/orders
+#  - v4/resources/order_somethings
 #
 
 includes:
-  - global/introduction
-  - global/authentication
-  - global/errors
+  - v4/introduction
+  - v4/authentication
+  - v4/errors
 
-  - headers/resources
-  - resources/activity_logs
-  - resources/assets
-  - resources/authentication_methods
-  - resources/barcodes
-  - resources/billing_invoices
-  - resources/bulk_upserts
-  - resources/bundles
-  - resources/bundle_items
-  - resources/checkout_items
-  - resources/clusters
-  - resources/collections
-  - resources/collection_items
-  - resources/collection_trees
-  - resources/companies
-  - resources/countries
-  - resources/counts
-  - resources/coupons
-  - resources/currencies
-  - resources/customers
-  - resources/default_properties
-  - resources/delivery_distance_calculations
-  - resources/deposit_holds
-  - resources/device_tokens
-  - resources/documents
-  - resources/email_templates
-  - resources/emails
-  - resources/employees
-  - resources/employee_invitations
-  - resources/exports
-  - resources/inventory_breakdowns
-  - resources/inventory_level_intervals
-  - resources/inventory_levels
-  - resources/invoice_finalizations
-  - resources/invoice_revisions
-  - resources/ip_addresses
-  - resources/item_prices
-  - resources/items
-  - resources/lines
-  - resources/line_charge_suggestions
-  - resources/locations
-  - resources/login_activities
-  - resources/menus
-  - resources/merges
-  - resources/notes
-  - resources/notification_subscriptions
-  - resources/operating_rules
-  - resources/operations
-  - resources/orders
-  - resources/order_delivery_rate_recalculations
-  - resources/order_delivery_rates
-  - resources/order_duplications
-  - resources/order_fulfillments
-  - resources/order_price_recalculations
-  - resources/order_status_transitions
-  - resources/refundable_payment_charges
-  - resources/payments
-  - resources/payment_authorizations
-  - resources/payment_charges
-  - resources/payment_methods
-  - resources/payment_refunds
-  - resources/photos
-  - resources/plannings
-  - resources/price_rules
-  - resources/price_rulesets
-  - resources/price_structures
-  - resources/price_tiles
-  - resources/products
-  - resources/product_groups
-  - resources/product_group_duplications
-  - resources/product_trackers
-  - resources/properties
-  - resources/provinces
-  - resources/publications
-  - resources/rendered_emails
-  - resources/sessions
-  - resources/settings
-  - resources/signatures
-  - resources/sortings
-  - resources/stock_adjustments
-  - resources/stock_counts
-  - resources/stock_items
-  - resources/stock_item_archivations
-  - resources/stock_item_plannings
-  - resources/stock_item_suggestions
-  - resources/stock_item_trackers
-  - resources/tags
-  - resources/tax_categories
-  - resources/tax_rates
-  - resources/tax_regions
-  - resources/tax_values
-  - resources/themes
-  - resources/transfers
-  - resources/user_invitations
-  - resources/users
-  - resources/webhook_endpoints
-  - resources/webhooks
+  - v4/headers/resources
+  - v4/resources/activity_logs
+  - v4/resources/assets
+  - v4/resources/authentication_methods
+  - v4/resources/barcodes
+  - v4/resources/billing_invoices
+  - v4/resources/bulk_upserts
+  - v4/resources/bundles
+  - v4/resources/bundle_items
+  - v4/resources/checkout_items
+  - v4/resources/clusters
+  - v4/resources/collections
+  - v4/resources/collection_items
+  - v4/resources/collection_trees
+  - v4/resources/companies
+  - v4/resources/countries
+  - v4/resources/counts
+  - v4/resources/coupons
+  - v4/resources/currencies
+  - v4/resources/customers
+  - v4/resources/default_properties
+  - v4/resources/delivery_distance_calculations
+  - v4/resources/deposit_holds
+  - v4/resources/device_tokens
+  - v4/resources/documents
+  - v4/resources/email_templates
+  - v4/resources/emails
+  - v4/resources/employees
+  - v4/resources/employee_invitations
+  - v4/resources/exports
+  - v4/resources/inventory_breakdowns
+  - v4/resources/inventory_level_intervals
+  - v4/resources/inventory_levels
+  - v4/resources/invoice_finalizations
+  - v4/resources/invoice_revisions
+  - v4/resources/ip_addresses
+  - v4/resources/item_prices
+  - v4/resources/items
+  - v4/resources/lines
+  - v4/resources/line_charge_suggestions
+  - v4/resources/locations
+  - v4/resources/login_activities
+  - v4/resources/menus
+  - v4/resources/merges
+  - v4/resources/notes
+  - v4/resources/notification_subscriptions
+  - v4/resources/operating_rules
+  - v4/resources/operations
+  - v4/resources/orders
+  - v4/resources/order_delivery_rate_recalculations
+  - v4/resources/order_delivery_rates
+  - v4/resources/order_duplications
+  - v4/resources/order_fulfillments
+  - v4/resources/order_price_recalculations
+  - v4/resources/order_status_transitions
+  - v4/resources/refundable_payment_charges
+  - v4/resources/payments
+  - v4/resources/payment_authorizations
+  - v4/resources/payment_charges
+  - v4/resources/payment_methods
+  - v4/resources/payment_refunds
+  - v4/resources/photos
+  - v4/resources/plannings
+  - v4/resources/price_rules
+  - v4/resources/price_rulesets
+  - v4/resources/price_structures
+  - v4/resources/price_tiles
+  - v4/resources/products
+  - v4/resources/product_groups
+  - v4/resources/product_group_duplications
+  - v4/resources/product_trackers
+  - v4/resources/properties
+  - v4/resources/provinces
+  - v4/resources/publications
+  - v4/resources/rendered_emails
+  - v4/resources/sessions
+  - v4/resources/settings
+  - v4/resources/signatures
+  - v4/resources/sortings
+  - v4/resources/stock_adjustments
+  - v4/resources/stock_counts
+  - v4/resources/stock_items
+  - v4/resources/stock_item_archivations
+  - v4/resources/stock_item_plannings
+  - v4/resources/stock_item_suggestions
+  - v4/resources/stock_item_trackers
+  - v4/resources/tags
+  - v4/resources/tax_categories
+  - v4/resources/tax_rates
+  - v4/resources/tax_regions
+  - v4/resources/tax_values
+  - v4/resources/themes
+  - v4/resources/transfers
+  - v4/resources/user_invitations
+  - v4/resources/users
+  - v4/resources/webhook_endpoints
+  - v4/resources/webhooks
 
-  - headers/reports
-  - resources/report_rental_intervals
-  - resources/report_rentals
-  - resources/report_sales_items
-  - resources/report_stock_items
+  - v4/headers/reports
+  - v4/resources/report_rental_intervals
+  - v4/resources/report_rentals
+  - v4/resources/report_sales_items
+  - v4/resources/report_stock_items
 
 search: true
 
@@ -128,5 +128,5 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Developer documentation for the Booqable API
+    content: Developer documentation for the Booqable API v4
 ---
