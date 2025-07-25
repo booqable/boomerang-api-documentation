@@ -40,6 +40,10 @@ under the License.
     <% end %>
     <title><%= current_page.data.title || "API Documentation" %></title>
 
+    <% if current_page.data.canonical_url %>
+    <link rel="canonical" href="<%= current_page.data.canonical_url %>">
+    <% end %>
+
     <link rel="stylesheet" href="https://use.typekit.net/slm5iks.css">
     <style media="screen">
       <%= Rouge::Themes::Molokai.render(:scope => '.highlight') %>
