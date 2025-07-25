@@ -1,0 +1,534 @@
+<h1 id='reference'>Reference</h1><h2 id='reference-config-meta-json'><code>/config/meta.json</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-1-0.json#"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme_app"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME App"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME Corp."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/app-icon.png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/app-image.png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cookies_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">SupportData</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pay_button"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/pay-button.png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BaseURL</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">OAuthSettings</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"config_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/settings/integrations"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Routes</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"ui_extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">UIExtensions</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"global_settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>$schema</code></td>
+<td>string</td>
+<td>true</td>
+<td>Schema version for the app configuration.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>true</td>
+<td>Unique identifier for the app, used internally.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>true</td>
+<td>Display name of the app as shown to users.</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>one of: <code>tracking</code>, <code>payment</code>, <code>translation</code>, <code>maps</code>, <code>marketing</code>, <code>social</code></td>
+<td>true</td>
+<td>Category classification for organizing apps in the app store.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>string</td>
+<td>true</td>
+<td>Name of the app developer or company.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>true</td>
+<td>Version number or status of the app.</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>string</td>
+<td>true</td>
+<td>URL or path to the app&#39;s icon/logo image.</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>string</td>
+<td>true</td>
+<td>URL or path to the app&#39;s cover/feature image displayed in the app store.</td>
+</tr>
+<tr>
+<td><code>cookies_required</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Whether the app installs cookies in the user&#39;s browser.</td>
+</tr>
+<tr>
+<td><code>support</code></td>
+<td><a href="#reference-supportdata"><code>SupportData</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pay_button</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL or path to a custom payment button image (used by payment apps).</td>
+</tr>
+<tr>
+<td><code>base_url</code></td>
+<td><a href="#reference-baseurl"><code>BaseURL</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>oauth</code></td>
+<td><a href="#reference-oauthsettings"><code>OAuthSettings</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>config_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL path for the app&#39;s configuration/settings page.</td>
+</tr>
+<tr>
+<td><code>routes</code></td>
+<td><a href="#reference-routes"><code>Routes</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ui_extension</code></td>
+<td><a href="#reference-uiextensions"><code>UIExtensions</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>global_settings</code></td>
+<td>object</td>
+<td>false</td>
+<td>Global, user-configurable settings for the app.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-supportdata'><code>SupportData</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://help.example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>true</td>
+<td>Support email address for the app.</td>
+</tr>
+<tr>
+<td><code>website</code></td>
+<td>string</td>
+<td>true</td>
+<td>Support website or documentation URL.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-baseurl'><code>BaseURL</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"development"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"staging"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://staging-api.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"production"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>development</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL for development environment.</td>
+</tr>
+<tr>
+<td><code>staging</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL for staging environment.</td>
+</tr>
+<tr>
+<td><code>production</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL for production environment.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-oauthsettings'><code>OAuthSettings</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789.apps.googleusercontent.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret456abc"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"redirect_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.example.com/oauth/callback"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>client_id</code></td>
+<td>string</td>
+<td>false</td>
+<td>OAuth client ID for the third-party service.</td>
+</tr>
+<tr>
+<td><code>client_secret</code></td>
+<td>string</td>
+<td>false</td>
+<td>OAuth client secret for the third-party service.</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td>string</td>
+<td>true</td>
+<td>OAuth redirect URL for handling authentication callbacks.</td>
+</tr>
+<tr>
+<td><code>scopes</code></td>
+<td>array of string</td>
+<td>true</td>
+<td>OAuth scopes required by the app.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-routes'><code>Routes</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com/charge"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com/auth"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com/refund"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_profile_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com/profile"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"install_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.example.com/install"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>charge_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL endpoint for processing charges.</td>
+</tr>
+<tr>
+<td><code>authorization_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL endpoint for payment authorization.</td>
+</tr>
+<tr>
+<td><code>refund_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL endpoint for processing refunds.</td>
+</tr>
+<tr>
+<td><code>payment_profile_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL endpoint for payment profile management.</td>
+</tr>
+<tr>
+<td><code>install_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL endpoint for app installation.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-uiextensions'><code>UIExtensions</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"frames"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">FrameSettings</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"themes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">ThemeSettings</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">TrackingScriptSettings</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>frames</code></td>
+<td><a href="#reference-framesettings"><code>FrameSettings</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>themes</code></td>
+<td><a href="#reference-themesettings"><code>ThemeSettings</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tracking_script</code></td>
+<td><a href="#reference-trackingscriptsettings"><code>TrackingScriptSettings</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-framesettings'><code>FrameSettings</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"app_config"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/admin/apps/my-app/config"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>app_config</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL path for the app configuration iframe.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-trackingscriptsettings'><code>TrackingScriptSettings</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/index.js.liquid"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>template</code></td>
+<td>string</td>
+<td>true</td>
+<td>Path to the JavaScript template file for the tracking script.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-themesettings'><code>ThemeSettings</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>blocks</code></td>
+<td>array of <a href="#themeblocksettings"><code>ThemeBlockSettings</code></a></td>
+<td>false</td>
+<td>Array of theme blocks that can be added to the store.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-themeblocksettings'><code>ThemeBlockSettings</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Signup Form"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/signup-form.liquid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>true</td>
+<td>Display name of the theme block.</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td>string</td>
+<td>true</td>
+<td>Path to the Liquid template file for the block.</td>
+</tr>
+<tr>
+<td><code>allowed_sections</code></td>
+<td>array of string</td>
+<td>true</td>
+<td>List of sections where the block can be placed.</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td>object</td>
+<td>false</td>
+<td>Configuration settings for the theme block.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-globalsetting'><code>GlobalSetting</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">".*</span><span class="se">\.</span><span class="s2">mydomain</span><span class="se">\.</span><span class="s2">com/.*"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>one of: <code>text</code>, <code>number</code>, <code>textarea</code>, <code>select</code>, <code>header</code></td>
+<td>true</td>
+<td>Type of the setting field.</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Whether this setting is required for the app to function.</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td></td>
+<td>false</td>
+<td>Default value for the setting.</td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>string</td>
+<td>false</td>
+<td>Regex pattern for validation of text/textarea fields.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>array of <a href="#selectoption"><code>SelectOption</code></a></td>
+<td>false</td>
+<td>Options for select type settings.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-themeblocksetting'><code>ThemeBlockSetting</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enter title here"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default Title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile Settings"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>one of: <code>text</code>, <code>number</code>, <code>select</code>, <code>header</code></td>
+<td>true</td>
+<td>Type of the setting field.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>string</td>
+<td>false</td>
+<td>Display label for the setting.</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>string</td>
+<td>false</td>
+<td>Placeholder text for text inputs.</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>string</td>
+<td>false</td>
+<td>Default value for the setting.</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>string</td>
+<td>false</td>
+<td>Content for header type settings.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>array of <a href="#selectoption"><code>SelectOption</code></a></td>
+<td>false</td>
+<td>Options for select type settings.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-selectoption'><code>SelectOption</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"left"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Left"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>value</code></td>
+<td>string</td>
+<td>true</td>
+<td>Value of the option.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>string</td>
+<td>true</td>
+<td>Display label for the option.</td>
+</tr>
+</tbody></table>
