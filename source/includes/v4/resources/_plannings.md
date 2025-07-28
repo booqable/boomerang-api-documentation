@@ -67,6 +67,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `readonly`<br>The [Order](#orders) this Planning belongs to. 
 `order_number` | **integer** `writeonly`<br>Allows sorting plannings by order number. 
 `parent_planning_id` | **uuid** `readonly`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
+`planning_type` | **enum** `readonly`<br>Type of planning. Can be `order` for regular rental plannings created through [Orders](#orders), or `downtime` for operational periods when items are unavailable due to maintenance, repairs, or other reasons. Downtime plannings don't belong to an order and are managed separately.<br> One of: `order`, `downtime`.
 `quantity` | **integer** `readonly`<br>Total planned quantity of items. This affects availability calculations and represents how many items are being booked/reserved. Changing this value may result in shortages if additional items are not available for the rental period. 
 `reserved` | **boolean** `readonly`<br>Whether items are reserved. When `true`, this Planning affects availability calculations and the items are not available for other orders during the reserved period. This is set to `true` when an Order transitions from `concept` to `reserved` status. 
 `reserved_from` | **datetime** `readonly`<br>When the items actually become unavailable in the system. May differ from `starts_at` due to buffer time. This is the actual time used for availability calculations. 
@@ -105,11 +106,12 @@ Check each individual operation to see which relations can be included as a side
           "updated_at": "2018-03-21T05:17:00.000000+00:00",
           "archived": false,
           "archived_at": null,
+          "planning_type": "order",
           "quantity": 1,
-          "starts_at": "1972-11-27T06:23:00.000000+00:00",
-          "stops_at": "1972-12-27T06:23:00.000000+00:00",
-          "reserved_from": "1972-11-27T06:23:00.000000+00:00",
-          "reserved_till": "1972-12-27T06:23:00.000000+00:00",
+          "starts_at": "1972-11-23T07:46:00.000000+00:00",
+          "stops_at": "1972-12-23T07:46:00.000000+00:00",
+          "reserved_from": "1972-11-23T07:46:00.000000+00:00",
+          "reserved_till": "1972-12-23T07:46:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -163,6 +165,7 @@ Name | Description
 `location_shortage_amount` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `order_id` | **uuid** <br>`eq`, `not_eq`
 `parent_planning_id` | **uuid** <br>`eq`, `not_eq`
+`planning_type` | **enum** <br>`eq`
 `product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -236,12 +239,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-07-25T10:54:40Z"
+                       "gte": "2025-07-29T09:31:08Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-07-28T10:54:40Z"
+                       "lte": "2025-08-01T09:31:08Z"
                      }
                    }
                  ]
@@ -251,12 +254,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-07-25T10:54:40Z"
+                       "gte": "2025-07-29T09:31:08Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-07-28T10:54:40Z"
+                       "lte": "2025-08-01T09:31:08Z"
                      }
                    }
                  ]
@@ -316,6 +319,7 @@ Name | Description
 `location_shortage_amount` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `order_id` | **uuid** <br>`eq`, `not_eq`
 `parent_planning_id` | **uuid** <br>`eq`, `not_eq`
+`planning_type` | **enum** <br>`eq`
 `product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -388,11 +392,12 @@ This request accepts the following includes:
         "updated_at": "2023-04-14T01:42:01.000000+00:00",
         "archived": false,
         "archived_at": null,
+        "planning_type": "order",
         "quantity": 1,
-        "starts_at": "1977-12-21T02:48:01.000000+00:00",
-        "stops_at": "1978-01-20T02:48:01.000000+00:00",
-        "reserved_from": "1977-12-21T02:48:01.000000+00:00",
-        "reserved_till": "1978-01-20T02:48:01.000000+00:00",
+        "starts_at": "1977-12-17T04:11:01.000000+00:00",
+        "stops_at": "1978-01-16T04:11:01.000000+00:00",
+        "reserved_from": "1977-12-17T04:11:01.000000+00:00",
+        "reserved_till": "1978-01-16T04:11:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,
