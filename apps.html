@@ -343,30 +343,45 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction" title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#folder-structure" class="toc-h1 toc-link" data-title="Folder structure" title="Folder structure">Folder structure</a>
+            <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start" title="Quick Start">Quick Start</a>
           </li>
           <li>
-            <a href="#configuration-files" class="toc-h1 toc-link" data-title="Configuration files" title="Configuration files">Configuration files</a>
+            <a href="#how-apps-work" class="toc-h1 toc-link" data-title="How Apps Work" title="How Apps Work">How Apps Work</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#configuration-files-config-meta-json" class="toc-h2 toc-link" data-title="/config/meta.json" title="/config/meta.json"><code>/config/meta.json</code></a>
+                    <a href="#how-apps-work-configuration" class="toc-h2 toc-link" data-title="Configuration" title="Configuration">Configuration</a>
                   </li>
                   <li>
-                    <a href="#configuration-files-config-plans-json" class="toc-h2 toc-link" data-title="/config/plans.json" title="/config/plans.json"><code>/config/plans.json</code></a>
+                    <a href="#how-apps-work-installation" class="toc-h2 toc-link" data-title="Installation" title="Installation">Installation</a>
                   </li>
                   <li>
-                    <a href="#configuration-files-config-settings-json" class="toc-h2 toc-link" data-title="/config/settings.json" title="/config/settings.json"><code>/config/settings.json</code></a>
+                    <a href="#how-apps-work-iframe-page" class="toc-h2 toc-link" data-title="Iframe Page" title="Iframe Page">Iframe Page</a>
+                  </li>
+                  <li>
+                    <a href="#how-apps-work-user-settings" class="toc-h2 toc-link" data-title="User Settings" title="User Settings">User Settings</a>
+                  </li>
+                  <li>
+                    <a href="#how-apps-work-webhooks" class="toc-h2 toc-link" data-title="Webhooks" title="Webhooks">Webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#how-apps-work-oauth2-authentication" class="toc-h2 toc-link" data-title="OAuth2 Authentication" title="OAuth2 Authentication">OAuth2 Authentication</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#locale-files" class="toc-h1 toc-link" data-title="Locale files" title="Locale files">Locale files</a>
+            <a href="#capabilities" class="toc-h1 toc-link" data-title="Capabilities" title="Capabilities">Capabilities</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#locale-files-guides" class="toc-h2 toc-link" data-title="Guides" title="Guides">Guides</a>
+                    <a href="#capabilities-tracking-scripts" class="toc-h2 toc-link" data-title="Tracking Scripts" title="Tracking Scripts">Tracking Scripts</a>
                   </li>
                   <li>
-                    <a href="#locale-files-form-field-translations" class="toc-h2 toc-link" data-title="Form field translations" title="Form field translations">Form field translations</a>
+                    <a href="#capabilities-theme-blocks" class="toc-h2 toc-link" data-title="Theme Blocks" title="Theme Blocks">Theme Blocks</a>
+                  </li>
+                  <li>
+                    <a href="#capabilities-delivery-carriers" class="toc-h2 toc-link" data-title="Delivery Carriers" title="Delivery Carriers">Delivery Carriers</a>
+                  </li>
+                  <li>
+                    <a href="#capabilities-payment-options" class="toc-h2 toc-link" data-title="Payment Options" title="Payment Options">Payment Options</a>
                   </li>
               </ul>
           </li>
@@ -421,7 +436,20 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>TODO</p>
-<h1 id='folder-structure'>Folder structure</h1><div class="highlight"><pre class="highlight plaintext"><code>app-name/
+<h1 id='quick-start'>Quick Start</h1>
+<p>TODO summary</p>
+
+<ul>
+<li>how to create a tracking pixel app</li>
+<li>how to create a custom content block app</li>
+<li>how to create a delivery carrier app</li>
+<li>how to create a payment option app</li>
+</ul>
+<h1 id='how-apps-work'>How Apps Work</h1>
+<p>TODO summary</p>
+<h2 id='how-apps-work-configuration'>Configuration</h2>
+<p>TODO summary</p>
+<h3 id='how-apps-work-configuration-app-folder-structure'>App Folder Structure</h3><div class="highlight"><pre class="highlight plaintext"><code>app-name/
 ├── assets/              # Static assets (images, icons, etc.)
 ├── config/              # Configuration files
 │   └── locales/         # Localization files
@@ -435,39 +463,116 @@
 <li><code>config/locales/</code> — Files containing localized strings used in the app.</li>
 <li><code>templates/</code> — Template files rendered as part of the app&#39;s UI.</li>
 </ul>
-<h1 id='configuration-files'>Configuration files</h1><h2 id='configuration-files-config-meta-json'><code>/config/meta.json</code></h2>
-<p>This is the main configuration file for Booqable apps. It follows a JSON schema:</p>
-
+<h3 id='how-apps-work-configuration-config-meta-json'><code>/config/meta.json</code></h3>
 <p><a href="schemas/app-0-1-0.json">JSON Schema 0.1.0</a></p>
-<h3 id='configuration-files-code-config-meta-json-code-minimum-viable-configuration'>Minimum viable configuration</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-1-0.json#"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_app"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My App"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pixel"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://acme-files.s3.amazonaws.com/app-my-app-visual.png"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://acme-files.s3.amazonaws.com/app-my-app-logo.png"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACME Corp."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@acme.example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://help.acme.example.com"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>To the right is a minimum viable configuration for a Booqable app. You can copy this configuration as a starting point and adjust it to your needs.</p>
-<h2 id='configuration-files-config-plans-json'><code>/config/plans.json</code></h2>
+
 <p>TODO</p>
-<h2 id='configuration-files-config-settings-json'><code>/config/settings.json</code></h2>
+
+<ul>
+<li>link to reference</li>
+</ul>
+<h4 id='how-apps-work-configuration-code-config-meta-json-code-capabilities'>Capabilities</h4>
+<p>TODO brief summary with links to the relevant sections in the docs</p>
+<h3 id='how-apps-work-configuration-config-plans-json'><code>/config/plans.json</code></h3>
 <p>TODO</p>
-<h1 id='locale-files'>Locale files</h1><h2 id='locale-files-guides'>Guides</h2>
+<h3 id='how-apps-work-configuration-locale-files'>Locale files</h3><h4 id='how-apps-work-configuration-locale-files-guides'>Guides</h4>
 <p>These are pulled from the localization files. Depends on whether certain keys are present or not.</p>
 
-<p>TODO</p>
-<h2 id='locale-files-form-field-translations'>Form field translations</h2>
+<p>TODO brief summary and links</p>
+<h4 id='how-apps-work-configuration-locale-files-form-field-translations'>Form field translations</h4>
 <p>Also pulled from the localization files, using implicit keys.</p>
 
+<p>TODO brief summary and links</p>
+<h2 id='how-apps-work-installation'>Installation</h2>
+<p>TODO summary</p>
+
+<ul>
+<li>which content goes where
+
+<ul>
+<li>icon</li>
+<li>banner</li>
+<li>what the whole thing looks like</li>
+</ul></li>
+<li>installation flow?</li>
+</ul>
+<h2 id='how-apps-work-iframe-page'>Iframe Page</h2>
 <p>TODO</p>
+
+<ul>
+<li>the postMessage protocol available to iframes</li>
+<li>token in iframe url (to identify current company)</li>
+</ul>
+<h2 id='how-apps-work-user-settings'>User Settings</h2>
+<p>TODO summary</p>
+<h3 id='how-apps-work-user-settings-forms'>Forms</h3>
+<p>TODO</p>
+
+<ul>
+<li>set through locale files</li>
+<li>how to access the global data they provide</li>
+</ul>
+<h3 id='how-apps-work-user-settings-guide'>Guide</h3>
+<p>TODO</p>
+
+<ul>
+<li>it&#39;s possible to display a guide, steps are pulled from the locale files</li>
+</ul>
+<h2 id='how-apps-work-webhooks'>Webhooks</h2>
+<p>TODO</p>
+
+<ul>
+<li>there are webhooks for app install and uninstall events you can subscribe to</li>
+</ul>
+<h2 id='how-apps-work-oauth2-authentication'>OAuth2 Authentication</h2>
+<p>TODO</p>
+
+<ul>
+<li>how to configure in meta.json</li>
+</ul>
+<h1 id='capabilities'>Capabilities</h1>
+<p>TODO summary</p>
+<h2 id='capabilities-tracking-scripts'>Tracking Scripts</h2>
+<p>TODO</p>
+
+<ul>
+<li>how to configure in meta.json</li>
+<li>only JS templates are allowed</li>
+<li>how to integrate with consent manager</li>
+<li>mention user framework</li>
+<li>getting configuration from global settings</li>
+</ul>
+<h2 id='capabilities-theme-blocks'>Theme Blocks</h2>
+<p>TODO</p>
+
+<ul>
+<li>how to configure in meta.json</li>
+<li>how to integrate with consent manager</li>
+<li>mention user framework</li>
+<li>getting configuration from global settings</li>
+</ul>
+<h2 id='capabilities-delivery-carriers'>Delivery Carriers</h2>
+<p>TODO</p>
+
+<ul>
+<li>how to configure in meta.json</li>
+<li>the rates url is called when selecting a rate in the order screen and the checkout
+
+<ul>
+<li>document the data we send to the rates url (like distance, addresses and products)</li>
+<li>it expects rates to be returned in a fixed format</li>
+<li>we need to document errors you can return on the rates_url response</li>
+</ul></li>
+<li>your app should respond within 3000ms</li>
+<li>mention scoping</li>
+</ul>
+<h2 id='capabilities-payment-options'>Payment Options</h2>
+<p>TODO</p>
+
+<ul>
+<li>how to configure in meta.json</li>
+<li>TBD</li>
+</ul>
 <h1 id='reference'>Reference</h1><h2 id='reference-config-meta-json'><code>/config/meta.json</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-1-0.json#"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme_app"</span><span class="p">,</span><span class="w">
