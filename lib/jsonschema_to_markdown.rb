@@ -202,6 +202,7 @@ class JSONSchemaMarkdownGenerator
     else
       markdown_text = MarkdownGenerator.generate_from(schema_text)
 
+      markdown_absolute_path.dirname.mkpath
       markdown_absolute_path.write(markdown_text)
       @cache[cache_key] = Digest::MD5.hexdigest(markdown_text)
       @log.puts "   📝 generated #{markdown_relative_path}"
@@ -224,7 +225,7 @@ class JSONSchemaMarkdownGeneratorExtension < Middleman::Extension
     @generator = JSONSchemaMarkdownGenerator.new(output_dir: options.output_dir)
   end
 
-  def ready
+  def before_build
     generate_markdown_for_json_schemas
   end
 
