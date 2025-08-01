@@ -159,22 +159,53 @@ To the right is an example of a configuration interface.
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>App Configuration</title>
 </head>
 <body>
-  <div id="config-form">
-    <h1>Configure Your App</h1>
-    <form id="settings-form">
-      <input type="text" name="api_key" placeholder="API Key" />
-      <button type="submit">Save Configuration</button>
-    </form>
-  </div>
+  <h1>Configure Your App</h1>
+  <form id="settings-form">
+    <label for="api_key">API Key</label>
+    <input type="password" id="api_key" name="api_key" required>
+    <div id="api_key_error" style="display: none; color: red;"></div>
+
+    <button type="submit">Save Configuration</button>
+  </form>
 
   <script>
+    // Security: Validate message origin
+    const ALLOWED_ORIGINS = ['booqable.com'];
+
+    function isValidOrigin(origin) {
+      try {
+        const hostname = new URL(origin).hostname;
+        return ALLOWED_ORIGINS.some(allowed => hostname.endsWith(allowed));
+      } catch {
+        return false;
+      }
+    }
+
+    function showError(fieldId, message) {
+      document.getElementById(fieldId + '_error').textContent = message;
+      document.getElementById(fieldId + '_error').style.display = 'block';
+    }
+
+    function adjustHeight() {
+      window.parent.postMessage({
+        eventName: 'SET_IFRAME_HEIGHT',
+        payload: { height: document.body.scrollHeight }
+      }, '*');
+    }
+
     // Listen for messages from Booqable
     window.addEventListener('message', function(event) {
+      if (!isValidOrigin(event.origin)) {
+        console.warn('Unauthorized origin:', event.origin);
+        return;
+      }
+
       if (event.data.eventName === 'SET_AVATAR') {
-        displayAvatar(event.data.payload.avatar);
+        console.log('Received avatar:', event.data.payload.avatar);
       }
     });
 
@@ -182,7 +213,15 @@ To the right is an example of a configuration interface.
     document.getElementById('settings-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      saveConfiguration().then(() => {
+      const apiKey = document.getElementById('api_key').value.trim();
+      if (!apiKey) {
+        showError('api_key', 'API key is required');
+        return;
+      }
+
+      // Save configuration (replace with actual API call)
+      setTimeout(() => {
+        // Notify Booqable of success
         window.parent.postMessage({
           eventName: 'SET_FLASH_MESSAGE',
           payload: {
@@ -197,10 +236,11 @@ To the right is an example of a configuration interface.
           eventName: 'REFRESH_SUBSCRIPTION',
           payload: {}
         }, '*');
-      });
+      }, 1000);
     });
 
-    adjustHeight();
+    // Adjust height on load
+    window.addEventListener('load', adjustHeight);
   </script>
 </body>
 </html>
