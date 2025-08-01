@@ -9,7 +9,6 @@ includes:
   - apps/general/intro
   - apps/general/configuration
   - apps/general/installation
-  - apps/general/user_settings
   - apps/general/iframe
   - apps/general/webhooks
   - apps/general/oauth2
