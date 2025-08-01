@@ -88,7 +88,7 @@ en:
       - 1000 API requests per month
 ```
 
-The title, description and features of each plan are configurable through the locale files. These are shown to users in the app's store detail page and as part of the [installation flow](#how-apps-work-app-store). Each plan must have a unique key under the `<locale>.plans` key, such as `free`, `basic`, `pro`, etc.
+The title, description and features of each plan are configurable through the locale files. These are shown to users in the app's store detail page and as part of the [installation flow](#how-apps-work-app-store). Each plan must have a unique key under the `<locale>.plans` key, such as `free`, `basic`, `pro`, etc. When a plan is no longer available, you should still keep the translation keys for existing customers.
 
 
 #### Forms
@@ -166,3 +166,37 @@ Additionaly, you can define a step by step guide for users to follow after insta
   </figcaption>
 </figure>
 
+
+#### Summary
+
+There are several keys that are required or have special meaning in the locale file for Booqable apps. The following is a condensed list of the most important keys:
+
+- `title`:
+  Required. The app's title.
+
+- `description.short`:
+  Required. A short description of the app for the app listings page.
+
+- `description.long`:
+  Required. A longer description of the app for the detail page.
+
+- `plans`:
+  Localized strings for app plans.
+
+- `form.title`:
+  The title of the app's global settings form.
+
+- `form.description`:
+  The description of the global settings form.
+
+- `unconfigured.description`:
+  A string shown in an instruction box when required global settings are missing.
+
+- `unconfigured.link.text`:
+  The text for a link shown in the instruction box.
+
+- `unconfigured.link.url`:
+  The URL for the link in the instruction box.
+
+- `unconfigured.guide`:
+  A list of steps (each with `title`, `description`, and `asset`) to guide users through configuration or setup.
