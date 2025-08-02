@@ -309,7 +309,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-f6e287bb.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-dbdae6eb.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-7f861aa6.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-b12a2749.js"></script>
 
@@ -352,13 +352,10 @@
                     <a href="#how-apps-work-configuration" class="toc-h2 toc-link" data-title="Configuration" title="Configuration">Configuration</a>
                   </li>
                   <li>
-                    <a href="#how-apps-work-installation" class="toc-h2 toc-link" data-title="Installation" title="Installation">Installation</a>
+                    <a href="#how-apps-work-app-store" class="toc-h2 toc-link" data-title="App Store" title="App Store">App Store</a>
                   </li>
                   <li>
                     <a href="#how-apps-work-iframe-page" class="toc-h2 toc-link" data-title="Iframe Page" title="Iframe Page">Iframe Page</a>
-                  </li>
-                  <li>
-                    <a href="#how-apps-work-user-settings" class="toc-h2 toc-link" data-title="User Settings" title="User Settings">User Settings</a>
                   </li>
                   <li>
                     <a href="#how-apps-work-webhooks" class="toc-h2 toc-link" data-title="Webhooks" title="Webhooks">Webhooks</a>
@@ -448,8 +445,8 @@
 <h1 id='how-apps-work'>How Apps Work</h1>
 <p>TODO summary</p>
 <h2 id='how-apps-work-configuration'>Configuration</h2>
-<p>TODO summary</p>
-<h3 id='how-apps-work-configuration-app-folder-structure'>App Folder Structure</h3><div class="highlight"><pre class="highlight plaintext"><code>app-name/
+<p>Booqable apps are simply a folder with a few files in it. Some files are configuration files, some are templates, and some are static assets.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>app-name/
 ├── assets/              # Static assets (images, icons, etc.)
 ├── config/              # Configuration files
 │   └── locales/         # Localization files
@@ -464,59 +461,200 @@
 <li><code>templates/</code> — Template files rendered as part of the app&#39;s UI.</li>
 </ul>
 <h3 id='how-apps-work-configuration-config-meta-json'><code>/config/meta.json</code></h3>
-<p><a href="schemas/app-0-1-0.json">JSON Schema 0.1.0</a></p>
+<p>This is the main configuration file for the app. It defines the app&#39;s metadata, capabilities, and plans. It is required for every app and is validated against a JSON schema.</p>
 
-<p>TODO</p>
-
-<ul>
-<li>link to reference</li>
-</ul>
+<p>Latest: <a href="schemas/app-0-1-0.json">0.1.0 JSON Schema</a> / <a href="#reference">0.1.0 Reference</a></p>
 <h4 id='how-apps-work-configuration-code-config-meta-json-code-capabilities'>Capabilities</h4>
-<p>TODO brief summary with links to the relevant sections in the docs</p>
-<h3 id='how-apps-work-configuration-config-plans-json'><code>/config/plans.json</code></h3>
-<p>TODO</p>
-<h3 id='how-apps-work-configuration-locale-files'>Locale files</h3><h4 id='how-apps-work-configuration-locale-files-guides'>Guides</h4>
-<p>These are pulled from the localization files. Depends on whether certain keys are present or not.</p>
-
-<p>TODO brief summary and links</p>
-<h4 id='how-apps-work-configuration-locale-files-form-field-translations'>Form field translations</h4>
-<p>Also pulled from the localization files, using implicit keys.</p>
-
-<p>TODO brief summary and links</p>
-<h2 id='how-apps-work-installation'>Installation</h2>
-<p>TODO summary</p>
+<p>In your app&#39;s <code>meta.json</code> file, you can define the capabilities of your app. These are the main tasks your app can perform inside Booqable, such as:</p>
 
 <ul>
-<li>which content goes where
-
-<ul>
-<li>icon</li>
-<li>banner</li>
-<li>what the whole thing looks like</li>
-</ul></li>
-<li>installation flow?</li>
+<li><strong>Tracking scripts:</strong> Let users add analytics scripts to their website to track user behavior.</li>
+<li><strong>Theme blocks:</strong> Allow users to install new content blocks in their website.</li>
+<li><strong>Delivery carriers:</strong> Define new carriers that can be used to ship orders.</li>
+<li><strong>Payment options:</strong> Define new payment methods that can be used to pay for orders.</li>
 </ul>
+
+<p>For more information see the <a href="apps.html#capabilities">Capabilities section</a>.</p>
+<h3 id='how-apps-work-configuration-config-plans-json'><code>/config/plans.json</code></h3>
+<p>This file is where you define the plans your app offers. Each plan has a title, description, and a list of features presented to the user when they are installing the app.</p>
+
+<p>TODO</p>
+<h3 id='how-apps-work-configuration-locale-files'>Locale files</h3>
+<p>Locale files contain the localized strings used throughout the Booqable UI such as the app title and descriptions as well forms for user settings and post-installation guides.</p>
+
+<p>They must be in YAML format and are stored in the <code>locales</code> folder. The file name must be the locale language code, such as <code>en.yaml</code> or <code>pt-BR.yaml</code>. The top-level of the file should contain only a single key which matches the locale&#39;s code, so <code>en</code> or <code>pt_BR</code>.</p>
+<h4 id='how-apps-work-configuration-locale-files-app-metadata'>App metadata</h4><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">en</span><span class="pi">:</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Gizmo</span><span class="nv"> </span><span class="s">App"</span>
+  <span class="na">description</span><span class="pi">:</span>
+    <span class="na">short</span><span class="pi">:</span> <span class="s2">"</span><span class="s">A</span><span class="nv"> </span><span class="s">simple</span><span class="nv"> </span><span class="s">app</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">manage</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">gizmos."</span>
+    <span class="na">long</span><span class="pi">:</span> <span class="s2">"</span><span class="s">This</span><span class="nv"> </span><span class="s">app</span><span class="nv"> </span><span class="s">allows</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">manage</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">gizmos.</span><span class="nv"> </span><span class="s">You</span><span class="nv"> </span><span class="s">can</span><span class="nv"> </span><span class="s">add,</span><span class="nv"> </span><span class="s">edit,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">delete</span><span class="nv"> </span><span class="s">gizmos.</span><span class="nv"> </span><span class="s">Delight</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">customers</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">gizmos</span><span class="nv"> </span><span class="s">every</span><span class="nv"> </span><span class="s">month!"</span>
+</code></pre></div>
+<p>The app&#39;s title and descriptions are configurable through the locale files. The short description is mainly used in the app store listings page, while the long description is used in the app store detail page.</p>
+<h4 id='how-apps-work-configuration-locale-files-app-plans'>App Plans</h4><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">en</span><span class="pi">:</span>
+  <span class="na">plans</span><span class="pi">:</span>
+    <span class="na">free</span><span class="pi">:</span>
+      <span class="na">title</span><span class="pi">:</span> <span class="s">Gizmo Free</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">A free plan to get you started with the Gizmo App.</span>
+      <span class="na">features</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">10 gizmos</span>
+      <span class="pi">-</span> <span class="s">100 notifications per month</span>
+      <span class="pi">-</span> <span class="s">100 API requests per month</span>
+    <span class="na">pro</span><span class="pi">:</span>
+      <span class="na">title</span><span class="pi">:</span> <span class="s">Gizmo Pro</span>
+      <span class="na">description</span><span class="pi">:</span> <span class="s">10x the fun with the Gizmo Pro plan.</span>
+      <span class="na">features</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">100 gizmos</span>
+      <span class="pi">-</span> <span class="s">1000 notifications per month</span>
+      <span class="pi">-</span> <span class="s">1000 API requests per month</span>
+</code></pre></div>
+<p>The title, description and features of each plan are configurable through the locale files. These are shown to users in the app&#39;s store detail page and as part of the <a href="#how-apps-work-app-store">installation flow</a>. Each plan must have a unique key under the <code>&lt;locale&gt;.plans</code> key, such as <code>free</code>, <code>basic</code>, <code>pro</code>, etc. When a plan is no longer available, you should still keep the translation keys for existing customers.</p>
+<h4 id='how-apps-work-configuration-locale-files-forms'>Forms</h4><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">en</span><span class="pi">:</span>
+  <span class="na">form</span><span class="pi">:</span>
+    <span class="na">title</span><span class="pi">:</span> <span class="s">Configure your Weglot widget</span>
+    <span class="na">description</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">To get started, enter your Weglot API key below. If you don't have an API key</span>
+        <span class="s">yet, you can get one by creating an account on the Weglot website.</span>
+    <span class="na">api_key</span><span class="pi">:</span>
+      <span class="na">label</span><span class="pi">:</span> <span class="s">Api Key</span>
+    <span class="na">dropdown_direction</span><span class="pi">:</span>
+      <span class="na">label</span><span class="pi">:</span> <span class="s">Dropdown Direction</span>
+</code></pre></div>
+<p>Apps can define <a href="#how-apps-work-user-settings">global settings</a> that Booqable renders as a form where users can provide information to the app. The forms are shown to users after installation or when they visit the app&#39;s settings page. You can provide localized strings for the form&#39;s title, description and fields.</p>
+
+<p>If you&#39;re <a href="#capabilities-theme-blocks">using theme blocks</a> and those blocks have their own settings, you can also define localized labels for them here.</p>
+<h4 id='how-apps-work-configuration-locale-files-guides'>Guides</h4>
+<p>You can configure your app to show a post-installation guide to users. This is a good way to help users get started with your app or ask for additional information required to operate the app, such as API keys.</p>
+<div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">en</span><span class="pi">:</span>
+  <span class="na">unconfigured</span><span class="pi">:</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">To get started, you need to configure your Weglot widget.</span>
+      <span class="s">You can do this by entering your Weglot API key below.</span>
+      <span class="s">If you don't have an API key yet, you can get one by creating an account on the Weglot website.</span>
+    <span class="na">link</span><span class="pi">:</span>
+      <span class="na">text</span><span class="pi">:</span> <span class="s">Weglot dashboard</span>
+      <span class="na">url</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://dashboard.weglot.com/register?fp_ref=booqable'</span>
+</code></pre></div>
+<p>If you require some global settings to be present you show a simple instruction box using the <code>unconfigured.description</code> and <code>unconfigured.link</code> keys.</p>
+
+<figure>
+  <img src="images/apps/unconfigured-app-instruction-box-c83c076c.png" alt="Example of an instruction box shown to users when the app is not yet configured" style="max-width: 100%;">
+  <figcaption>
+    Example of the instruction box shown to users when required global settings are missing.
+  </figcaption>
+</figure>
+<div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">en</span><span class="pi">:</span>
+  <span class="na">unconfigured</span><span class="pi">:</span>
+    <span class="na">guide</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">1. Create a Weglot account</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">Go to the Weglot website and sign up for a new account.</span>
+        <span class="na">asset</span><span class="pi">:</span> <span class="s">step_1.png</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">2. Select Booqable as your website technology</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">In the setup process, choose "Booqable" when asked for your website technology.</span>
+        <span class="na">asset</span><span class="pi">:</span> <span class="s">step_2.png</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">3. Set the original language and add translated languages</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">Set "English" as your original language and add any additional languages you want to offer to your visitors.</span>
+        <span class="na">asset</span><span class="pi">:</span> <span class="s">step_3.png</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">4. Add your website details and connect Weglot</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">In the "Add your website details" section, click on "Connect Weglot to your website without it."</span>
+        <span class="na">asset</span><span class="pi">:</span> <span class="s">step_4.png</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">5. Copy the API key from the Weglot snippet</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">Copy the API key provided in the Weglot snippet. You will need this to configure the app in Booqable.</span>
+        <span class="na">asset</span><span class="pi">:</span> <span class="s">step_5.png</span>
+</code></pre></div>
+<p>Additionaly, you can define a step by step guide for users to follow after installation. This is a good way to instruct users on how to get required API keys from third-party services, for example. The guide must be specified under the <code>unconfigured.guide</code> key and consists of a list of steps, each with a title, description and an image.</p>
+
+<figure>
+  <img src="images/apps/unconfigured-app-guide-64f4fbc5.png" alt="Example of a step by step guide" style="max-width: 100%;">
+  <figcaption>
+    Example of a step by step guide.
+  </figcaption>
+</figure>
+<h4 id='how-apps-work-configuration-locale-files-summary'>Summary</h4>
+<p>There are several keys that are required or have special meaning in the locale file for Booqable apps. The following is a condensed list of the most important keys:</p>
+
+<ul>
+<li><p><code>title</code>:
+Required. The app&#39;s title.</p></li>
+<li><p><code>description.short</code>:
+Required. A short description of the app for the app listings page.</p></li>
+<li><p><code>description.long</code>:
+Required. A longer description of the app for the detail page.</p></li>
+<li><p><code>plans</code>:
+Localized strings for app plans.</p></li>
+<li><p><code>form.title</code>:
+The title of the app&#39;s global settings form.</p></li>
+<li><p><code>form.description</code>:
+The description of the global settings form.</p></li>
+<li><p><code>unconfigured.description</code>:
+A string shown in an instruction box when required global settings are missing.</p></li>
+<li><p><code>unconfigured.link.text</code>:
+The text for a link shown in the instruction box.</p></li>
+<li><p><code>unconfigured.link.url</code>:
+The URL for the link in the instruction box.</p></li>
+<li><p><code>unconfigured.guide</code>:
+A list of steps (each with <code>title</code>, <code>description</code>, and <code>asset</code>) to guide users through configuration or setup.</p></li>
+</ul>
+<h2 id='how-apps-work-app-store'>App Store</h2>
+<p>The Booqable App Store is the first place where users will meet your app. App authors can provide an app title, description and images to control how the app is displayed in the store.</p>
+
+<figure>
+  <img src="images/apps/app-store-listings-3abd998a.png" alt="App store listings" style="max-width: 100%;">
+  <figcaption>
+    How apps are displayed in the app store listings page.
+  </figcaption>
+</figure>
+
+<p>If a user clicks on your app listing, they will be taken to the app store detail page.</p>
+
+<figure>
+  <img src="images/apps/app-store-detail-page-ce1035f3.png" alt="Example of an app detail page in the Booqable App Store" style="max-width: 100%;">
+  <figcaption>
+    Example of how your app might look in the app store detail page.
+  </figcaption>
+</figure>
+
+<p>And when users choose to install your app, they are guided through the installation process.</p>
+
+<figure>
+  <img src="images/apps/app-install-step-1-652e0d1c.png" alt="Step 1: Choose app plan" style="max-width: 100%;">
+  <figcaption>
+    <strong>Step 1:</strong> The user chooses the app plan they want to install.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="images/apps/app-install-step-2-a29ef06f.png" alt="Step 2: Review and confirm" style="max-width: 100%;">
+  <figcaption>
+    <strong>Step 2:</strong> The user reviews the app plan and confirms the installation.
+  </figcaption>
+</figure>
+
+<p>The full list of customizable app store elements is:</p>
+
+<ul>
+<li><strong>Title:</strong> The title of your app and it is displayed in several spots throughout the app store and the Booqable UI. Configured in <a href="#TODO">locale files</a>.</li>
+<li><strong>Author:</strong> A byline for the app. It&#39;s displayed mainly in the app store. Configured in <a href="#TODO"><code>meta.json</code></a>.</li>
+<li><strong>Banner:</strong> A banner image to make your app stand out in the app store listings. Configured in <a href="#TODO"><code>meta.json</code></a>.</li>
+<li><strong>Icon:</strong> A small icon to represent your app in the app store and few other places in the Booqable UI. Configured in <a href="#TODO"><code>meta.json</code></a>.</li>
+<li><strong>Synopsis:</strong> A short summary of your app, mainly for users to quickly understand what the app does when browsing the app store. Configured in <a href="#TODO">locale files</a>.</li>
+<li><strong>Description:</strong> Your app&#39;s description is displayed in the app store detail page, after users clicked through from the app store listings. Configured in <a href="#TODO">locale files</a>.</li>
+</ul>
+
+<p>Additionally, each app plan has its own set of customizable elements:</p>
+
+<ul>
+<li><strong>Title:</strong> The title of the plan. Configured in <a href="#TODO">locale files</a>.</li>
+<li><strong>Description:</strong> The description of the plan. Configured in <a href="#TODO">locale files</a>.</li>
+<li><strong>Features:</strong> A list of the plan&#39;s key features. Configured in <a href="#TODO">locale files</a>.</li>
+</ul>
+
+<p>TODO some apps have an extra step right after installation for asking permissions.</p>
 <h2 id='how-apps-work-iframe-page'>Iframe Page</h2>
 <p>TODO</p>
 
 <ul>
 <li>the postMessage protocol available to iframes</li>
 <li>token in iframe url (to identify current company)</li>
-</ul>
-<h2 id='how-apps-work-user-settings'>User Settings</h2>
-<p>TODO summary</p>
-<h3 id='how-apps-work-user-settings-forms'>Forms</h3>
-<p>TODO</p>
-
-<ul>
-<li>set through locale files</li>
-<li>how to access the global data they provide</li>
-</ul>
-<h3 id='how-apps-work-user-settings-guide'>Guide</h3>
-<p>TODO</p>
-
-<ul>
-<li>it&#39;s possible to display a guide, steps are pulled from the locale files</li>
 </ul>
 <h2 id='how-apps-work-webhooks'>Webhooks</h2>
 <p>TODO</p>
