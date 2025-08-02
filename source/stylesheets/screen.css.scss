@@ -405,6 +405,18 @@ ul#toc {
     @extend %left-col;
   }
 
+  &>figure {
+    margin-right: $examples-width + 5%;
+    padding-block-end: 2rem;
+
+    figcaption {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+  }
+
   &>ul, &>ol {
     padding-left: $main-padding + 15px;
   }
