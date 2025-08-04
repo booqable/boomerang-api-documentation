@@ -861,11 +861,57 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div><h2 id='how-apps-work-webhooks'>Webhooks</h2>
-<p>TODO</p>
+<p>Apps can subscribe to webhook events to receive real-time notifications when certain actions occur in Booqable. This allows your app to respond to user actions and maintain synchronization with the platform.</p>
 
-<ul>
-<li>there are webhooks for app install and uninstall events you can subscribe to</li>
-</ul>
+<p>To learn more about how to use webhooks see the <a href="v4.html#webhook-endpoints">Webhook Endpoints documentation</a>.</p>
+<h3 id='how-apps-work-webhooks-available-app-events'>Available app events</h3>
+<p>There are four webhook events specifically related to app lifecycle:</p>
+<h4 id='how-apps-work-webhooks-available-app-events-app-installed'><code>app.installed</code></h4>
+<p>Triggered when a user installs your app from the Booqable App Store.</p>
+<h4 id='how-apps-work-webhooks-available-app-events-app-configured'><code>app.configured</code></h4>
+<p>Triggered when all required app settings have been configured and the app becomes fully functional.</p>
+<h4 id='how-apps-work-webhooks-available-app-events-app-plan_changed'><code>app.plan_changed</code></h4>
+<p>Triggered when a user upgrades or downgrades their app subscription plan.</p>
+<h4 id='how-apps-work-webhooks-available-app-events-app-uninstalled'><code>app.uninstalled</code></h4>
+<p>Triggered when a user removes your app from their Booqable account.</p>
+<h3 id='how-apps-work-webhooks-webhook-payload-example'>Webhook payload example</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22799991-8bc7-4823-a4d1-7eb6329d21b2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-08-02T11:12:18.145359+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-08-02T11:12:18.145359+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mailchimp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2a94184-00f3-424f-bc36-c46a84eb1461"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18ad296f-16af-4172-a3de-44bd1218543f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marketing"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon_cropped_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"free_during_beta"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"configured"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mailchimp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Booqable"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"API key"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UA-12345678-1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"settings_values"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"config_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@booqable.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://help.booqable.com"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"oauth_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"frames"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To the right is an example of a payload for the app installation event.</p>
+
+<p>All app webhook events use the same payload structure with only the <code>event</code> field value varying between <code>app.installed</code>, <code>app.configured</code>, <code>app.plan_changed</code>, and <code>app.uninstalled</code>.</p>
 <h2 id='how-apps-work-oauth2-authentication'>OAuth2 Authentication</h2>
 <p>TODO</p>
 
