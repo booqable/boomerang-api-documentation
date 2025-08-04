@@ -53,7 +53,7 @@ Check each individual operation to see which relations can be included as a side
           "created_at": "2028-08-08T18:28:00.000000+00:00",
           "updated_at": "2028-08-08T18:28:00.000000+00:00",
           "quantity": 1,
-          "available_at": "2028-08-06T18:26:00.000000+00:00",
+          "available_at": "2028-08-06T18:27:00.000000+00:00",
           "finalized": false,
           "item_id": "672d6735-92fa-4198-8145-116e1191847d",
           "order_id": "058a8f0f-d1ac-4363-8778-a6c4476ee292",

@@ -1,26 +1,18 @@
 # Downtimes
 
-Downtimes represent periods when bulk or tracked items are unavailable for rental due to maintenance,
-repairs, or other operational reasons. This allows you to block item availability outside of regular
+Downtimes represent periods when products are unavailable for rental due to maintenance,
+repairs, or other operational reasons. This allows you to block product availability outside of regular
 rental bookings, ensuring accurate inventory management and scheduling.
 
-Use downtimes to:
-- Schedule maintenance periods for equipment
-- Mark items as temporarily unavailable due to repairs
-- Handle missing or misplaced items
-- Block availability for operational reasons
-
-## Downtime Reasons
-
-Each downtime must specify one of the following reasons:
-- `maintenance`: Regular maintenance or servicing
-- `repair`: Item requires repair work
-- `missing`: Item is missing or misplaced
+Downtimes can be used to schedule maintenance periods for equipment, mark products as temporarily unavailable
+due to repairs, handle missing or misplaced products, or block availability for operational reasons.
 
 ## Relationships
 Name | Description
 -- | --
-`item` | **[Item](#items)** `required`<br>The bulk or tracked item that is unavailable during the downtime period. 
+`location` | **[Location](#locations)** `required`<br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`product` | **[Product](#products)** `required`<br>The product that is affected by the downtime. 
+`stock_item` | **[Stock item](#stock-items)** `optional`<br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
 
 
 Check matching attributes under [Fields](#downtimes-fields) to see which relations can be written.
@@ -31,12 +23,14 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`downtime_reason` | **enum** <br>The reason why the item is unavailable. Must be one of: `maintenance`, `repair`, or `missing`. This helps categorize and track different types of operational issues.<br> One of: `maintenance`, `repair`, `missing`.
-`from` | **datetime** <br>When the downtime period begins. The item becomes unavailable for rental from this date/time. 
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** `readonly`<br>The bulk or tracked item that is unavailable during the downtime period. 
-`location_id` | **uuid** <br>The UUID of the [Location](#locations) where the downtime occurs. This helps track where maintenance or repairs are taking place. For simplicity, items remain at the same location throughout the downtime period. 
-`till` | **datetime** <br>When the downtime period ends. The item becomes available for rental again after this date/time. 
+`location_id` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`product_id` | **uuid** <br>The product that is affected by the downtime. 
+`quantity` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
+`reason` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
+`starts_at` | **datetime** <br>When the downtime period begins. The product becomes unavailable for rental from this date/time. 
+`stock_item_id` | **uuid** `nullable`<br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
+`stops_at` | **datetime** <br>When the downtime period ends. The product becomes available for rental again after this date/time. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -61,11 +55,13 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2020-11-22T16:53:01.000000+00:00",
           "updated_at": "2020-11-22T16:53:01.000000+00:00",
-          "downtime_reason": "maintenance",
-          "from": "2020-11-24T16:53:01.000000+00:00",
-          "till": "2020-11-27T16:53:01.000000+00:00",
+          "reason": "maintenance",
+          "quantity": 1,
+          "starts_at": "2020-11-24T16:53:01.000000+00:00",
+          "stops_at": "2020-11-27T16:53:01.000000+00:00",
           "location_id": "f10a87a6-8788-42b0-88db-615bf92db1f2",
-          "item_id": "7deebeb2-e361-43f5-8209-64fb69710a8a"
+          "product_id": "7deebeb2-e361-43f5-8209-64fb69710a8a",
+          "stock_item_id": null
         },
         "relationships": {}
       }
@@ -84,9 +80,9 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[downtimes]=created_at,updated_at,downtime_reason`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[downtimes]=created_at,updated_at,reason`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=item`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=location,product,stock_item`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -100,12 +96,14 @@ This request can be filtered on:
 Name | Description
 -- | --
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`downtime_reason` | **enum** <br>`eq`
-`from` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
-`item_id` | **uuid** <br>`eq`, `not_eq`
 `location_id` | **uuid** <br>`eq`, `not_eq`
-`till` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`product_id` | **uuid** <br>`eq`, `not_eq`
+`quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`reason` | **enum** <br>`eq`
+`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`stock_item_id` | **uuid** <br>`eq`, `not_eq`
+`stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -123,11 +121,8 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
-  <li>
-    <code>item</code>
-    <ul>
-      <li><code>photo</code></li>
-    </ul>
-  </li>
+  <li><code>location</code></li>
+  <li><code>product</code></li>
+  <li><code>stock_item</code></li>
 </ul>
 

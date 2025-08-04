@@ -354,7 +354,8 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 200,
             "per_employee": null,
             "features": null,
-            "default": null
+            "default": null,
+            "available_on": null
           },
           {
             "name": "extra_location_expiring",
@@ -362,7 +363,8 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 240,
             "per_employee": null,
             "features": null,
-            "default": null
+            "default": null,
+            "available_on": null
           },
           {
             "name": "extra_employee",
@@ -370,7 +372,8 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 348,
             "per_employee": null,
             "features": null,
-            "default": null
+            "default": null,
+            "available_on": null
           },
           {
             "name": "extra_location",
@@ -378,7 +381,8 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 348,
             "per_employee": null,
             "features": null,
-            "default": null
+            "default": null,
+            "available_on": null
           },
           {
             "name": "online_bookings",
@@ -390,7 +394,13 @@ Check each individual operation to see which relations can be included as a side
               "custom_domain",
               "shop_tracking"
             ],
-            "default": true
+            "default": true,
+            "available_on": [
+              "small",
+              "medium",
+              "large",
+              "scale"
+            ]
           },
           {
             "name": "mobile_app",
@@ -400,7 +410,13 @@ Check each individual operation to see which relations can be included as a side
             "features": [
               "mobile_app"
             ],
-            "default": true
+            "default": null,
+            "available_on": [
+              "small",
+              "medium",
+              "large",
+              "scale"
+            ]
           },
           {
             "name": "sso",
@@ -410,7 +426,10 @@ Check each individual operation to see which relations can be included as a side
             "features": [
               "sso"
             ],
-            "default": null
+            "default": null,
+            "available_on": [
+              "scale"
+            ]
           },
           {
             "name": "ip_restrictions",
@@ -420,7 +439,10 @@ Check each individual operation to see which relations can be included as a side
             "features": [
               "iprestrictions"
             ],
-            "default": null
+            "default": null,
+            "available_on": [
+              "scale"
+            ]
           },
           {
             "name": "2fa_enforcing",
@@ -430,7 +452,10 @@ Check each individual operation to see which relations can be included as a side
             "features": [
               "2fa_enforcing"
             ],
-            "default": null
+            "default": null,
+            "available_on": [
+              "scale"
+            ]
           },
           {
             "name": "barcodes",
@@ -440,7 +465,11 @@ Check each individual operation to see which relations can be included as a side
             "features": [
               "barcodes"
             ],
-            "default": null
+            "default": true,
+            "available_on": [
+              "large",
+              "scale"
+            ]
           }
         ]
       },
@@ -603,7 +632,8 @@ Check each individual operation to see which relations can be included as a side
               "custom_fields": null,
               "tags": null,
               "away_modes": null
-            }
+            },
+            "currency": "usd"
           },
           "third_party_id": "59b0823e-3949-4963-8088-2c23b460c183"
         }
@@ -641,7 +671,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1753695131"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1754299814"
         }
       },
       {

@@ -13,6 +13,7 @@ Invoices received from Booqable
 `coupon` | **string** `readonly`<br>Applied coupon. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** `readonly`<br>Currency. 
+`currency_object` | **hash** `readonly`<br>Currency object with details about the currency. 
 `date` | **date** `readonly`<br>Invoice date. 
 `ending_balance_in_cents` | **integer** `readonly`<br>Ending balance in cents (if credit was used). 
 `id` | **uuid** `readonly`<br>Primary key.
@@ -64,7 +65,15 @@ Invoices received from Booqable
           "amount_due_in_cents": null,
           "attempted": null,
           "attempt_count": null,
-          "currency": null,
+          "currency": "usd",
+          "currency_object": {
+            "name": "USD",
+            "decimal": ".",
+            "thousand": ",",
+            "symbol": "$",
+            "precision": 2,
+            "format": "%s%v"
+          },
           "starting_balance_in_cents": null,
           "ending_balance_in_cents": null,
           "next_payment_attempt_at": null,
@@ -158,7 +167,15 @@ This request does not accept any includes
         "amount_due_in_cents": null,
         "attempted": null,
         "attempt_count": null,
-        "currency": null,
+        "currency": "usd",
+        "currency_object": {
+          "name": "USD",
+          "decimal": ".",
+          "thousand": ",",
+          "symbol": "$",
+          "precision": 2,
+          "format": "%s%v"
+        },
         "starting_balance_in_cents": null,
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,

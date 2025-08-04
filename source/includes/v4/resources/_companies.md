@@ -292,7 +292,8 @@ Name | Description
             "custom_fields": null,
             "tags": null,
             "away_modes": null
-          }
+          },
+          "currency": "usd"
         }
       }
     },
