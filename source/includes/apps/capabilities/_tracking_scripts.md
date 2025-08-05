@@ -1,6 +1,6 @@
 ## Tracking Scripts
 
-Tracking scripts allow your app to inject JavaScript code into the customer-facing website to track user behavior and integrate with analytics services like Google Analytics, Meta Pixel and others.
+Tracking scripts allow your app to inject JavaScript code into the customer-facing websites to track user behavior and integrate with analytics services like Google Analytics, Meta Pixel and others.
 
 ### Configuration
 
@@ -16,52 +16,60 @@ Tracking scripts allow your app to inject JavaScript code into the customer-faci
 
 To enable tracking scripts in your app you need to configure the [`tracking_script`](#reference-trackingscriptsettings) settings in your `meta.json` file. The `template` property specifies the path to your JavaScript template file that will be rendered and injected into the customer's website.
 
-**Only JavaScript templates are allowed for tracking scripts.** Your template must be a `.js.liquid` file that contains only valid JavaScript code after processing.
-
-### Consent management
-
-TODO
+**Only JavaScript templates are allowed for tracking scripts.** Your template must be a [Liquid](https://shopify.github.io/liquid/) file that contains only valid JavaScript code after rendering.
 
 ### Global settings integration
 
-```json
+```jsonc
+// meta.json
 {
+  // ...
   "global_settings": {
     "api_key": {
       "type": "text",
       "required": true
     },
-    "domain_verification": {
-      "type": "text",
-      "required": false
+  }
+}
+```
+
+```javascript
+// Global app settings are available as template variables
+const apiKey = '{{ api_key }}'
+this.initializeTracking(apiKey)
+```
+
+You can access your app's global settings in the app templates using Liquid syntax. When rendering templates all global settings defined in your `meta.json` are available as template variables.
+
+
+### User framework
+
+Inside your app's templates you can write Javascript code that uses the Booqable User Framework to load custom scripts and respond to events like `viewProduct`, `addToCart` and more. See the [User framework documentation](#how-apps-work-user-framework) for more details.
+
+
+### Consent management
+
+If your app installs cookies in the user's browser (for example, for analytics, marketing, or personalization), you **must** integrate with Booqable's consent management framework. This is done via the User Framework by using [`Booqable.registerApp`](#how-apps-work-user-framework-implementation-example-app-registration).
+
+When you register your app using `registerApp`, Booqable will automatically manage when your tracking scripts are allowed to set cookies, based on the user's consent preferences.
+
+
+### Example implementation
+
+```jsonc
+// meta.json
+{
+  // ...
+  "ui_extension": {
+    "tracking_script": {
+      "template": "templates/index.js.liquid"
     }
   }
 }
 ```
 
 ```javascript
-// Access global settings
-const apiKey = '{{ api_key }}'
-const domainVerification = '{{ domain_verification }}'
-
-// Use in your tracking script
-this.initializeTracking(apiKey, domainVerification)
-```
-
-Access your app's global settings in your template using Liquid syntax. Settings defined in your `meta.json` are available as template variables.
-
-TODO expand
-
-### Booqable framework
-
-TODO link to user framework
-
-### Example implementation
-
-To the right is a complete example of a Google Analytics tracking script, based on our own [Google Analytics app](https://green-snow.booqable.com/app-store/2f66048a-1e3b-4dae-b152-11b3fa98039d).
-
-```javascript
-/* global Booqable */
+// templates/index.js.liquid
 Booqable.registerApp('marketing', {
   name: "Google Analytics",
   description: "Track user behavior with Google Analytics",
@@ -132,3 +140,7 @@ Booqable.registerApp('marketing', {
   }
 })
 ```
+
+To the right is an example implementation of app that integrates with Google Analytics.
+
+This example is just for demonstration purposes. If you wish to integrate Google Analytics into your Booqable account you can use our Google Analytics app already available in the Booqable App Store.

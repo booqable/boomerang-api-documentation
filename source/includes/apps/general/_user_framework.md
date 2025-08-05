@@ -1,10 +1,10 @@
 ## User Framework
 
-The Booqable User Framework is a collection of Javascript APIs that app developers can use in their app templates. It provides a standardized way to interact with the Booqable platform, handle events, manage scripts, and integrate with third-party services.
+The Booqable User Framework is a collection of Javascript APIs that app developers can use inside templates. It provides a standardized way to interact with the Booqable platform, handle events, manage scripts, and integrate with third-party services.
 
-The framework is available globally as the `Booqable` object and provides several categories of functionality:
+The framework is available globally as the `Booqable` object and provides several categories of functionality.
 
-#### App registration
+### App registration
 
 **`Booqable.registerApp(category, appConfig)`**
 
@@ -32,7 +32,7 @@ Allows you to register your app with Booqable's cookie consent manager.
 
 **Parameters:**
 
-- `category` - App category (`'marketing'` or `'essential'`).
+- `category` - What is roughly the purpose of the app.
 - `appConfig` - Configuration object with app details and callbacks.
 
 **Available categories:**
@@ -40,7 +40,7 @@ Allows you to register your app with Booqable's cookie consent manager.
 - `marketing` - Marketing and analytics apps.
 - `essential` - Core functionality apps.
 
-#### Event system
+### Event system
 
 **`Booqable.on(event, callback, context)`**
 
@@ -84,7 +84,9 @@ Booqable.off('viewProduct', myCallback)
 - `payment` - User reaches checkout payment step.
 - `completed` - User completes a purchase.
 
-#### Script management
+TODO what's in the payload for each of these events?
+
+### Script management
 
 **`Booqable.loadScript(src)`**
 
@@ -113,11 +115,11 @@ Booqable.jQuery(function() {
 })
 ```
 
-#### Cart data
+### Cart data
 
 **`Booqable.cartData`**
 
-Access current cart information. Available properties:
+Access current cart information.
 
 ```javascript
 Booqable.cartData = {
@@ -137,26 +139,7 @@ Booqable.cartData = {
 }
 ```
 
-#### Location and origin
-
-**`Booqable.location`**
-
-Get the current page path.
-
-```javascript
-console.log(Booqable.location) // "/products/123"
-```
-
-**`Booqable.origin`**
-
-Get or set the origin value stored in localStorage.
-
-```javascript
-Booqable.origin = "https://example.com"
-console.log(Booqable.origin) // "https://example.com"
-```
-
-#### Utility functions
+### Utility functions
 
 **`Booqable._once(func)`**
 
@@ -180,15 +163,6 @@ Booqable._defer(
   function() { return window.myLibrary !== undefined },
   function() { console.log('Library loaded!') }
 )
-```
-
-**`Booqable._prependChild(parentElement, element)`**
-
-Insert an element at the beginning of a parent element.
-
-```javascript
-const newElement = document.createElement('div')
-Booqable._prependChild(document.body, newElement)
 ```
 
 ### Example implementation
