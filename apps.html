@@ -358,6 +358,9 @@
                     <a href="#how-apps-work-iframe-page" class="toc-h2 toc-link" data-title="Iframe Page" title="Iframe Page">Iframe Page</a>
                   </li>
                   <li>
+                    <a href="#how-apps-work-user-framework" class="toc-h2 toc-link" data-title="User Framework" title="User Framework">User Framework</a>
+                  </li>
+                  <li>
                     <a href="#how-apps-work-webhooks" class="toc-h2 toc-link" data-title="Webhooks" title="Webhooks">Webhooks</a>
                   </li>
                   <li>
@@ -860,6 +863,185 @@ Provides avatar information in response to a GET_AVATAR request.</p>
   <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
+</code></pre></div><h2 id='how-apps-work-user-framework'>User Framework</h2>
+<p>The Booqable User Framework is a collection of Javascript APIs that app developers can use inside templates. It provides a standardized way to interact with the Booqable platform, handle events, manage scripts, and integrate with third-party services.</p>
+
+<p>The framework is available globally as the <code>Booqable</code> object and provides several categories of functionality.</p>
+<h3 id='how-apps-work-user-framework-app-registration'>App registration</h3>
+<p><strong><code>Booqable.registerApp(category, appConfig)</code></strong></p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">registerApp</span><span class="p">(</span><span class="dl">'</span><span class="s1">marketing</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Your App Name</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Description of your app</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">domain</span><span class="p">:</span> <span class="dl">"</span><span class="s2">your-domain.com</span><span class="dl">"</span><span class="p">,</span>
+
+  <span class="na">init</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Called when the page loads</span>
+  <span class="p">},</span>
+
+  <span class="na">onConsent</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Called when user grants consent</span>
+  <span class="p">},</span>
+
+  <span class="na">onDeny</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Called when user denies consent</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>Allows you to register your app with Booqable&#39;s cookie consent manager.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><code>category</code> - What is roughly the purpose of the app.</li>
+<li><code>appConfig</code> - Configuration object with app details and callbacks.</li>
+</ul>
+
+<p><strong>Available categories:</strong></p>
+
+<ul>
+<li><code>marketing</code> - Marketing and analytics apps.</li>
+<li><code>essential</code> - Core functionality apps.</li>
+</ul>
+<h3 id='how-apps-work-user-framework-event-system'>Event system</h3>
+<p><strong><code>Booqable.on(event, callback, context)</code></strong></p>
+
+<p>Listen to Booqable events to track user interactions and page changes.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// Track page views</span>
+<span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">page-change</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">User navigated to a new page</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c1">// Track product views</span>
+<span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">viewProduct</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">User viewed product:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c1">// Track cart interactions</span>
+<span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">addToCart</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">User added item to cart:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div>
+<p><strong><code>Booqable.off(event, callback)</code></strong></p>
+
+<p>Remove an event listener.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">myCallback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">viewProduct</span><span class="dl">'</span><span class="p">,</span> <span class="nx">myCallback</span><span class="p">)</span>
+<span class="nx">Booqable</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="dl">'</span><span class="s1">viewProduct</span><span class="dl">'</span><span class="p">,</span> <span class="nx">myCallback</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Available events:</strong></p>
+
+<ul>
+<li><code>page-change</code> - User navigates to a different page.</li>
+<li><code>viewProduct</code> - User views a product page.</li>
+<li><code>addToCart</code> - User adds an item to cart.</li>
+<li><code>removeFromCart</code> - User removes an item from cart.</li>
+<li><code>viewCart</code> - User views the cart page.</li>
+<li><code>information</code> - User reaches checkout information step.</li>
+<li><code>payment</code> - User reaches checkout payment step.</li>
+<li><code>completed</code> - User completes a purchase.</li>
+</ul>
+
+<p>TODO what&#39;s in the payload for each of these events?</p>
+<h3 id='how-apps-work-user-framework-script-management'>Script management</h3>
+<p><strong><code>Booqable.loadScript(src)</code></strong></p>
+
+<p>Dynamically load external JavaScript files.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://cdn.example.com/script.js</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong><code>Booqable.unloadScript(src)</code></strong></p>
+
+<p>Remove previously loaded scripts.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">unloadScript</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://cdn.example.com/script.js</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong><code>Booqable.jQuery(callback)</code></strong></p>
+
+<p>Load jQuery and execute a callback when ready.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// jQuery is now available</span>
+  <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.my-element</span><span class="dl">'</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div><h3 id='how-apps-work-user-framework-cart-data'>Cart data</h3>
+<p><strong><code>Booqable.cartData</code></strong></p>
+
+<p>Access current cart information.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">cartData</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">cartId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cart_123</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">currency</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USD</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">grandTotalWithTax</span><span class="p">:</span> <span class="mf">99.99</span><span class="p">,</span>
+  <span class="na">tax</span><span class="p">:</span> <span class="mf">8.99</span><span class="p">,</span>
+  <span class="na">coupon</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SAVE10</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">items</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">item_id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">prod_123</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">item_name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Product Name</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">quantity</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="na">price</span><span class="p">:</span> <span class="mf">89.99</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='how-apps-work-user-framework-utility-functions'>Utility functions</h3>
+<p><strong><code>Booqable._once(func)</code></strong></p>
+
+<p>Ensure a function runs only once.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">setupApp</span> <span class="o">=</span> <span class="nx">Booqable</span><span class="p">.</span><span class="nx">_once</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">App setup completed</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">setupApp</span><span class="p">()</span> <span class="c1">// Runs</span>
+<span class="nx">setupApp</span><span class="p">()</span> <span class="c1">// Ignored</span>
+</code></pre></div>
+<p><strong><code>Booqable._defer(condition, method, attempt)</code></strong></p>
+
+<p>Execute a method when a condition is met, with retry logic.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">_defer</span><span class="p">(</span>
+  <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">myLibrary</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="p">},</span>
+  <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Library loaded!</span><span class="dl">'</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div><h3 id='how-apps-work-user-framework-example-implementation'>Example implementation</h3>
+<p>To the right is an example of a app might do when using the user framework to track shopping behavior.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="cm">/* global Booqable */</span>
+<span class="nx">Booqable</span><span class="p">.</span><span class="nx">registerApp</span><span class="p">(</span><span class="dl">'</span><span class="s1">marketing</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My Tracking App</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Track shopping behavior with the MTA custom analytics platform.</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">domain</span><span class="p">:</span> <span class="dl">"</span><span class="s2">mytrackingapp.example.com</span><span class="dl">"</span><span class="p">,</span>
+
+  <span class="na">init</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize when page loads</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">My tracking app initialized</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+
+  <span class="na">onConsent</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Load tracking script when user consents</span>
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://cdn.mytrackingapp.example.com/tracker.js</span><span class="dl">'</span><span class="p">)</span>
+
+    <span class="c1">// Track page views</span>
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">page-change</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">trackPageView</span><span class="p">()</span>
+    <span class="p">})</span>
+
+    <span class="c1">// Track ecommerce events</span>
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">viewProduct</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">trackProductView</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">completed</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">trackPurchase</span><span class="p">()</span>
+    <span class="p">})</span>
+  <span class="p">},</span>
+
+  <span class="na">trackPageView</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Custom tracking implementation</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Page view tracked</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+
+  <span class="na">trackProductView</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Product view tracked:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+  <span class="p">},</span>
+
+  <span class="na">trackPurchase</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Purchase tracked:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Booqable</span><span class="p">.</span><span class="nx">cartData</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 </code></pre></div><h2 id='how-apps-work-webhooks'>Webhooks</h2>
 <p>Apps can subscribe to webhook events to receive real-time notifications when certain actions occur in Booqable. This allows your app to respond to user actions and maintain synchronization with the platform.</p>
 
@@ -952,15 +1134,122 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <h1 id='capabilities'>Capabilities</h1>
 <p>TODO summary</p>
 <h2 id='capabilities-tracking-scripts'>Tracking Scripts</h2>
-<p>TODO</p>
+<p>Tracking scripts allow your app to inject JavaScript code into the customer-facing websites to track user behavior and integrate with analytics services like Google Analytics, Meta Pixel and others.</p>
+<h3 id='capabilities-tracking-scripts-configuration'>Configuration</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ui_extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/index.js.liquid"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To enable tracking scripts in your app you need to configure the <a href="#reference-trackingscriptsettings"><code>tracking_script</code></a> settings in your <code>meta.json</code> file. The <code>template</code> property specifies the path to your JavaScript template file that will be rendered and injected into the customer&#39;s website.</p>
 
-<ul>
-<li>how to configure in meta.json</li>
-<li>only JS templates are allowed</li>
-<li>how to integrate with consent manager</li>
-<li>mention user framework</li>
-<li>getting configuration from global settings</li>
-</ul>
+<p><strong>Only JavaScript templates are allowed for tracking scripts.</strong> Your template must be a <a href="https://shopify.github.io/liquid/">Liquid</a> file that contains only valid JavaScript code after rendering.</p>
+<h3 id='capabilities-tracking-scripts-global-settings-integration'>Global settings integration</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// meta.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="c1">// ...</span><span class="w">
+  </span><span class="nl">"global_settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// Global app settings are available as template variables</span>
+<span class="kd">const</span> <span class="nx">apiKey</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{{ api_key }}</span><span class="dl">'</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">initializeTracking</span><span class="p">(</span><span class="nx">apiKey</span><span class="p">)</span>
+</code></pre></div>
+<p>You can access your app&#39;s global settings in the app templates using Liquid syntax. When rendering templates all global settings defined in your <code>meta.json</code> are available as template variables.</p>
+<h3 id='capabilities-tracking-scripts-user-framework'>User framework</h3>
+<p>Inside your app&#39;s templates you can write Javascript code that uses the Booqable User Framework to load custom scripts and respond to events like <code>viewProduct</code>, <code>addToCart</code> and more. See the <a href="#how-apps-work-user-framework">User framework documentation</a> for more details.</p>
+<h3 id='capabilities-tracking-scripts-consent-management'>Consent management</h3>
+<p>If your app installs cookies in the user&#39;s browser (for example, for analytics, marketing, or personalization), you <strong>must</strong> integrate with Booqable&#39;s consent management framework. This is done via the User Framework by using <a href="#how-apps-work-user-framework-implementation-example-app-registration"><code>Booqable.registerApp</code></a>.</p>
+
+<p>When you register your app using <code>registerApp</code>, Booqable will automatically manage when your tracking scripts are allowed to set cookies, based on the user&#39;s consent preferences.</p>
+<h3 id='capabilities-tracking-scripts-example-implementation'>Example implementation</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// meta.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="c1">// ...</span><span class="w">
+  </span><span class="nl">"ui_extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/index.js.liquid"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// templates/index.js.liquid</span>
+<span class="nx">Booqable</span><span class="p">.</span><span class="nx">registerApp</span><span class="p">(</span><span class="dl">'</span><span class="s1">marketing</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Google Analytics</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Track user behavior with Google Analytics</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">domain</span><span class="p">:</span> <span class="dl">"</span><span class="s2">googletagmanager.com</span><span class="dl">"</span><span class="p">,</span>
+
+  <span class="na">onConsent</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Update consent settings</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">consent</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">update</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">ad_storage</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">granted</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">analytics_storage</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">granted</span><span class="dl">'</span>
+    <span class="p">})</span>
+
+    <span class="c1">// Load Google Analytics</span>
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">loadScript</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://www.googletagmanager.com/gtag/js?id=</span><span class="dl">'</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">{{ api_key }}</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+
+  <span class="na">onDeny</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Update consent settings</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">consent</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">update</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">ad_storage</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">denied</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">analytics_storage</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">denied</span><span class="dl">'</span>
+    <span class="p">})</span>
+
+    <span class="c1">// Remove Google Analytics</span>
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">unloadScript</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://www.googletagmanager.com/gtag/js?id=</span><span class="dl">'</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">{{ api_key }}</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+
+  <span class="na">init</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">trackingId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{{ api_key }}</span><span class="dl">'</span>
+
+    <span class="c1">// Initialize Google Analytics</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span> <span class="o">||</span> <span class="p">[]</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nb">window</span><span class="p">.</span><span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">consent</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">default</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">ad_storage</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">denied</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">analytics_storage</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">denied</span><span class="dl">'</span>
+    <span class="p">})</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">js</span><span class="dl">'</span><span class="p">,</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">())</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">config</span><span class="dl">'</span><span class="p">,</span> <span class="nx">trackingId</span><span class="p">)</span>
+
+    <span class="c1">// Track ecommerce events</span>
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">viewProduct</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">event</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">view_item</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">currency</span><span class="p">,</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">items</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">items</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">addToCart</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">event</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">add_to_cart</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">currency</span><span class="p">,</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">items</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">items</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+
+    <span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">completed</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">event</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">purchase</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">transaction_id</span><span class="p">:</span> <span class="nx">Booqable</span><span class="p">.</span><span class="nx">cartData</span><span class="p">.</span><span class="nx">cartId</span><span class="p">,</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">Booqable</span><span class="p">.</span><span class="nx">cartData</span><span class="p">.</span><span class="nx">grandTotalWithTax</span><span class="p">,</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="nx">Booqable</span><span class="p">.</span><span class="nx">cartData</span><span class="p">.</span><span class="nx">currency</span><span class="p">,</span>
+        <span class="na">items</span><span class="p">:</span> <span class="nx">Booqable</span><span class="p">.</span><span class="nx">cartData</span><span class="p">.</span><span class="nx">items</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>To the right is an example implementation of app that integrates with Google Analytics.</p>
+
+<p>This example is just for demonstration purposes. If you wish to integrate Google Analytics into your Booqable account you can use our Google Analytics app already available in the Booqable App Store.</p>
 <h2 id='capabilities-theme-blocks'>Theme Blocks</h2>
 <p>TODO</p>
 
