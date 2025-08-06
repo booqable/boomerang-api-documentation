@@ -361,7 +361,7 @@
                     <a href="#how-apps-work-webhooks" class="toc-h2 toc-link" data-title="Webhooks" title="Webhooks">Webhooks</a>
                   </li>
                   <li>
-                    <a href="#how-apps-work-oauth2-authentication" class="toc-h2 toc-link" data-title="OAuth2 Authentication" title="OAuth2 Authentication">OAuth2 Authentication</a>
+                    <a href="#how-apps-work-oauth-authentication" class="toc-h2 toc-link" data-title="OAuth Authentication" title="OAuth Authentication">OAuth Authentication</a>
                   </li>
               </ul>
           </li>
@@ -912,12 +912,43 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <p>To the right is an example of a payload for the app installation event.</p>
 
 <p>All app webhook events use the same payload structure with only the <code>event</code> field value varying between <code>app.installed</code>, <code>app.configured</code>, <code>app.plan_changed</code>, and <code>app.uninstalled</code>.</p>
-<h2 id='how-apps-work-oauth2-authentication'>OAuth2 Authentication</h2>
-<p>TODO</p>
+<h2 id='how-apps-work-oauth-authentication'>OAuth Authentication</h2>
+<p>Booqable apps can use OAuth authentication to securely connect with <a href="v4.html">Booqable&#39;s API</a> on behalf of the user without requiring them to share their credentials directly.</p>
+<h3 id='how-apps-work-oauth-authentication-how-oauth-works-in-booqable-apps'>How OAuth works in Booqable apps</h3>
+<p>When an app has OAuth authentication enabled, Booqable handles the OAuth flow on behalf of the app. The process works as follows:</p>
+
+<ol>
+<li>The user clicks to install the app.</li>
+<li>Booqable asks the user to grant the app permissions to use Booqable on user&#39;s behalf.</li>
+<li>If the access is granted, Booqable redirects to app&#39;s <code>redirect_url</code> with the authorization code.</li>
+<li>The app exchanges the authorization code for an access and refresh tokens and can then make API calls to Booqable&#39;s API.</li>
+</ol>
+<h3 id='how-apps-work-oauth-authentication-configuring-oauth-in-your-app'>Configuring OAuth in your app</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-client-id.apps.service.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-client-secret"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"redirect_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/oauth/callback"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"full_access"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To enable OAuth authentication for your app, you need to <a href="#reference-oauthsettings">configure the <code>oauth</code> object in your app&#39;s <code>meta.json</code></a> file.</p>
 
 <ul>
-<li>how to configure in meta.json</li>
+<li><strong><code>client_id</code></strong>: An OAuth client ID that identifies your app to Booqable&#39;s API endpoints. Must follow the format <code>{32-random-characters}.public.apps.{app_identifier}</code>.</li>
+<li><strong><code>client_secret</code></strong>: An OAuth client secret that Booqable uses to authenticate your app. Must follow the format <code>{64-random-characters}.private.apps.{app_identifier}</code>.</li>
+<li><strong><code>redirect_url</code></strong>: The URL path where Booqable will redirect to after authorization. This should be a relative path that will be prefixed with your app&#39;s base URL.</li>
+<li><strong><code>scopes</code></strong>: An array of OAuth scopes that your app requires. These define what permissions your app needs from Booqable&#39;s API. Currently the only scope available is <code>full_access</code>.</li>
 </ul>
+<h3 id='how-apps-work-oauth-authentication-oauth-flow-in-the-user-interface'>OAuth flow in the user interface</h3>
+<p>When a user installs an app that has OAuth authentication enabled, they will see an additional step in the installation process:</p>
+
+<ol>
+<li><strong>App installation</strong> - User installs the app from the app store.</li>
+<li><strong>OAuth authorization</strong> - User is redirected to the app to grant permissions.</li>
+<li><strong>Configuration</strong> - User configures any additional app settings.</li>
+<li><strong>App ready</strong> - The app is now connected and ready to use.</li>
+</ol>
 <h1 id='capabilities'>Capabilities</h1>
 <p>TODO summary</p>
 <h2 id='capabilities-tracking-scripts'>Tracking Scripts</h2>
