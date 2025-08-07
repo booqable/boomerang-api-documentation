@@ -1,12 +1,38 @@
 # Payments
 
-The Payment resource makes it possible to fetch the following resources in a single request:
+Payments represent financial transactions in Booqable, including charges, authorizations, and refunds. This is a polymorphic resource that encompasses three distinct payment types, each with its own workflow and purpose.
 
-- [Payment Charges](#payment-charges)
-- [Payment Authorizations](#payment-authorizations)
-- [Payment Refunds](#payment-refunds)
+The three payment types are:
 
-The description of the relationships and attributes of these resources can be found in their respective sections
+- **[PaymentCharges](#payment-charges)**: Direct charges for orders or carts
+- **[PaymentAuthorizations](#payment-authorizations)**: Pre-authorizations that can be captured later
+- **[PaymentRefunds](#payment-refunds)**: Refunds for previously charged amounts
+
+Payments can be processed through various providers:
+
+- `stripe`: Stripe payment processing (credit cards, etc.)
+- `app`: Third-party payment apps integrated via Booqable Apps
+- `none`: Manual payments (cash, bank transfer, etc.)
+
+Each payment tracks comprehensive financial information including the main amount, deposit amount, and total. All amounts are stored in cents to avoid floating-point precision issues.
+
+## Payment Statuses
+
+While each payment type has its own specific statuses, common concepts include:
+
+- Initial states like `created` indicate setup phase
+- Processing states like `started`, `action_required`, or `processing`
+- Terminal states like `succeeded`, `failed`, `canceled`, or `expired`
+
+## Financial Tracking
+
+All payment records maintain:
+
+- `amount_in_cents`: The main payment amount (e.g., rental charges)
+- `deposit_in_cents`: The deposit portion
+- `total_in_cents`: Always equals amount + deposit
+
+These amounts are immutable once set to maintain financial integrity.
 
 ## List payments
 
@@ -91,6 +117,9 @@ The description of the relationships and attributes of these resources can be fo
           "amount_captured_in_cents": 0,
           "deposit_captured_in_cents": 0,
           "total_captured_in_cents": 0,
+          "amount_released_in_cents": 0,
+          "deposit_released_in_cents": 0,
+          "total_released_in_cents": 0,
           "captured_at": null,
           "capture_before": null,
           "payment_method_id": null

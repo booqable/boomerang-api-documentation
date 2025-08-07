@@ -1,11 +1,53 @@
 # Payment methods
 
-Re-usable payment methods stored on file.
+PaymentMethods represent stored payment details that can be used for charging customers. They store
+tokenized payment information from providers like Stripe, enabling secure off-session payments without
+requiring customers to re-enter payment details.
+
+PaymentMethods are typically created when customers save their payment information during checkout or
+through payment provider flows. They maintain a secure reference to the actual payment details stored
+with the payment provider, never storing sensitive card numbers or bank details directly.
+
+## Provider Integration
+
+PaymentMethods work with different payment providers:
+
+- **Stripe**: Tokenized cards and other Stripe payment methods
+- **App**: Internal payment methods managed by the application (not currently supported)
+
+Each PaymentMethod stores provider-specific details and identifiers that allow Booqable to charge
+the payment method through the provider's API.
+
+## Status Management
+
+PaymentMethods have a status indicating their readiness:
+
+- `created`: Initial state when first created
+- `ready`: Verified and ready for use in payments
+
+The status typically transitions to `ready` after provider verification or when explicitly marked
+as ready by the payment flow.
+
+## Customer Association
+
+PaymentMethods belong to [Customers](#customers) and represent payment options available for that
+specific customer. A customer can have multiple PaymentMethods, allowing them to choose between
+different cards or payment options when paying.
+
+## Labels and Display
+
+PaymentMethods include customizable labels:
+
+- `label_primary`: Main display label (e.g., "Visa ending in 4242")
+- `label_secondary`: Additional information (e.g., "Expires 12/2025")
+
+These labels help customers identify their saved payment methods in the interface. If not provided,
+they may be automatically generated based on the payment method details.
 
 ## Relationships
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** `optional`<br>The [Customer](#customers) who owns this payment method. Becomes `null` after detaching a payment method. 
+`customer` | **[Customer](#customers)** `optional`<br>The [Customer](#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
 
 
 Check matching attributes under [Fields](#payment-methods-fields) to see which relations can be written.
@@ -16,15 +58,15 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`customer_id` | **uuid** `readonly-after-create` `nullable`<br>The [Customer](#customers) who owns this payment method. Becomes `null` after detaching a payment method. 
-`details` | **hash** `readonly-after-create`<br>Method details. 
+`customer_id` | **uuid** `readonly-after-create` `nullable`<br>The [Customer](#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
+`details` | **hash** `readonly-after-create`<br>Provider-specific details about the payment method stored as a JSON object. The structure and contents vary by provider and method type. For cards, this might include card brand, last four digits, expiration date, and card network metadata.<br>This data is typically populated automatically from provider webhooks or API responses and provides additional context about the payment method without containing sensitive data. 
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** `readonly-after-create`<br>Provider identifier of the payment method. 
-`label_primary` | **string** <br>Primary label of the payment method. 
-`label_secondary` | **string** <br>Secondary label of the payment method. 
-`method_type` | **string** `readonly-after-create`<br>Provider method type. 
-`provider` | **enum** `readonly-after-create`<br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
-`status` | **enum** <br>Payment method status. Payment method becomes `ready` after a successful charge.<br> One of: `created`, `ready`.
+`identifier` | **string** `readonly-after-create`<br>Unique identifier for the payment method from the provider's system. For Stripe, this would be the Stripe payment method ID (e.g., "pm_1234567890"). For app payment methods, this could be an internal reference.<br>This identifier is used to reference the actual payment details stored securely with the provider and cannot be changed after creation. 
+`label_primary` | **string** <br>Primary label for displaying the payment method to customers. This is typically the card brand and last four digits (e.g., "Visa •••• 4242") or a custom name given by the customer.<br>If not provided during creation, this may be automatically generated based on the payment method details from the provider. Can be updated after creation to provide custom labeling. 
+`label_secondary` | **string** <br>Secondary label providing additional information about the payment method. Often contains the expiration date for cards (e.g., "Expires 12/2025") or other relevant details.<br>Like the primary label, this can be automatically generated or customized. Useful for helping customers distinguish between multiple similar payment methods. 
+`method_type` | **string** `readonly-after-create`<br>The type of payment method, indicating what kind of payment instrument this represents. Common values include `card` for credit/debit cards, though the specific values depend on the provider's supported payment types.<br>This helps determine what kind of payment flow and validations apply. Cannot be changed after creation as it represents the fundamental type of the payment instrument. 
+`provider` | **enum** `readonly-after-create`<br>The payment service provider for this payment method. Determines how the payment method will be processed and which provider-specific features are available.<br>One of: `stripe`, `app`, `none`.<br>`stripe` - Stripe payment method using tokenized card or bank details<br>`app` - Internal application-managed payment method<br>`none` - No provider, used for manual payment tracking<br>This value cannot be changed after creation as it fundamentally determines how the payment method integrates with external services. 
+`status` | **enum** <br>Current status of the payment method indicating its readiness for use.<br>One of: `created`, `ready`.<br>`created` - Initial state when the payment method is first created<br>`ready` - Payment method is verified and can be used for charges<br>The status typically changes to `ready` after successful provider verification or when the payment method is confirmed through the payment flow. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -180,14 +222,14 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) who owns this payment method. Becomes `null` after detaching a payment method. 
-`data[attributes][details]` | **hash** <br>Method details. 
-`data[attributes][identifier]` | **string** <br>Provider identifier of the payment method. 
-`data[attributes][label_primary]` | **string** <br>Primary label of the payment method. 
-`data[attributes][label_secondary]` | **string** <br>Secondary label of the payment method. 
-`data[attributes][method_type]` | **string** <br>Provider method type. 
-`data[attributes][provider]` | **enum** <br>Provider of the payment method.<br> One of: `stripe`, `app`, `none`.
-`data[attributes][status]` | **enum** <br>Payment method status. Payment method becomes `ready` after a successful charge.<br> One of: `created`, `ready`.
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
+`data[attributes][details]` | **hash** <br>Provider-specific details about the payment method stored as a JSON object. The structure and contents vary by provider and method type. For cards, this might include card brand, last four digits, expiration date, and card network metadata.<br>This data is typically populated automatically from provider webhooks or API responses and provides additional context about the payment method without containing sensitive data. 
+`data[attributes][identifier]` | **string** <br>Unique identifier for the payment method from the provider's system. For Stripe, this would be the Stripe payment method ID (e.g., "pm_1234567890"). For app payment methods, this could be an internal reference.<br>This identifier is used to reference the actual payment details stored securely with the provider and cannot be changed after creation. 
+`data[attributes][label_primary]` | **string** <br>Primary label for displaying the payment method to customers. This is typically the card brand and last four digits (e.g., "Visa •••• 4242") or a custom name given by the customer.<br>If not provided during creation, this may be automatically generated based on the payment method details from the provider. Can be updated after creation to provide custom labeling. 
+`data[attributes][label_secondary]` | **string** <br>Secondary label providing additional information about the payment method. Often contains the expiration date for cards (e.g., "Expires 12/2025") or other relevant details.<br>Like the primary label, this can be automatically generated or customized. Useful for helping customers distinguish between multiple similar payment methods. 
+`data[attributes][method_type]` | **string** <br>The type of payment method, indicating what kind of payment instrument this represents. Common values include `card` for credit/debit cards, though the specific values depend on the provider's supported payment types.<br>This helps determine what kind of payment flow and validations apply. Cannot be changed after creation as it represents the fundamental type of the payment instrument. 
+`data[attributes][provider]` | **enum** <br>The payment service provider for this payment method. Determines how the payment method will be processed and which provider-specific features are available.<br>One of: `stripe`, `app`, `none`.<br>`stripe` - Stripe payment method using tokenized card or bank details<br>`app` - Internal application-managed payment method<br>`none` - No provider, used for manual payment tracking<br>This value cannot be changed after creation as it fundamentally determines how the payment method integrates with external services. 
+`data[attributes][status]` | **enum** <br>Current status of the payment method indicating its readiness for use.<br>One of: `created`, `ready`.<br>`created` - Initial state when the payment method is first created<br>`ready` - Payment method is verified and can be used for charges<br>The status typically changes to `ready` after successful provider verification or when the payment method is confirmed through the payment flow. 
 
 
 ### Includes

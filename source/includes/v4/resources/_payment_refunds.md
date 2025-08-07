@@ -1,16 +1,82 @@
 # Payment refunds
 
-A payment refund is a record of refund to the user that is used to track the refund status and details.
+PaymentRefunds represent refund transactions in Booqable. They are used to return funds to customers
+for previously successful [PaymentCharges](#payment-charges), either partially or in full.
+
+PaymentRefunds are one of three payment types in Booqable's payment system, alongside
+[PaymentCharges](#payment-charges) (direct charges) and [PaymentAuthorizations](#payment-authorizations)
+(pre-authorizations). While charges collect payment and authorizations reserve funds, refunds reverse
+successful charges by returning money to the customer.
+
+## Refund Capabilities
+
+PaymentRefunds support several refund scenarios:
+
+- **Full Refunds**: Return the entire charge amount to the customer
+- **Partial Refunds**: Return only a portion of the original charge
+- **Split Refunds**: Separately refund rental amounts and deposits
+- **Manual Refunds**: Record cash or external refunds against any charge
+
+## Status Lifecycle
+
+PaymentRefunds follow a specific status lifecycle:
+
+1. **created** → Initial state when a refund is created
+   - Can transition to: `pending`, `canceled`, `succeeded`, `failed`
+   - Set during creation based on provider type
+   - For manual refunds, may transition directly to `succeeded`
+
+2. **pending** → Refund is being processed by provider
+   - Can transition to: `action_required`, `succeeded`, `failed`
+   - Indicates the refund has been submitted to the payment provider
+   - Typically a brief transitional state
+
+3. **action_required** → Additional action needed to complete refund
+   - Can transition to: `pending`, `canceled`, `succeeded`, `failed`
+   - Rare for refunds but possible with some payment methods
+   - May require manual intervention or verification
+
+4. **succeeded** → Refund successfully processed
+   - Can transition to: `failed`, `canceled` (for corrections only)
+   - Funds have been returned to the customer
+   - Updates the original charge's refunded amounts
+
+5. **failed** → Refund attempt failed
+   - Can transition to: `pending`, `succeeded` (recovery paths)
+   - May occur due to provider issues or invalid payment methods
+   - Allows retry by transitioning back to pending
+
+6. **canceled** → Refund was canceled before completion
+   - Can transition to: `succeeded`, `failed` (for late completions)
+   - Prevents the refund from being processed
+   - Cannot cancel after refund has succeeded
+
+## Provider Support
+
+Refunds can be processed through various providers:
+
+- **Matching Provider**: Refund through the same provider as the original charge
+- **Manual Provider**: Record manual refunds (cash, bank transfer) against any charge type
+- **Mixed Refunds**: Combine provider and manual refunds for flexibility
+
+## Refund Validation
+
+The system enforces several rules to ensure refund integrity:
+
+- Cannot refund more than the original charge amount
+- Cannot refund more than the remaining refundable amount
+- Provider must match the charge provider or be `none` for manual refunds
+- Currency must match the original charge currency
 
 ## Relationships
 Name | Description
 -- | --
-`cart` | **[Cart](#carts)** `required`<br>The associated cart. 
-`customer` | **[Customer](#customers)** `required`<br>The associated [Customer](#customers). 
-`employee` | **[Employee](#employees)** `required`<br>The associated [Employee](#employees). 
-`order` | **[Order](#orders)** `required`<br>The associated [Order](#orders). 
-`payment_charge` | **[Payment charge](#payment-charges)** `required`<br>The [PaymentCharge](#payment-charges) being refunded. 
-`payment_method` | **[Payment method](#payment-methods)** `required`<br>The [PaymentMethod](#payment-methods) used to refund the payment. This is the same as the payment method of the payment charge attached to this refund. 
+`cart` | **[Cart](#carts)** `required`<br>The [Cart](#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
+`customer` | **[Customer](#customers)** `required`<br>The [Customer](#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
+`employee` | **[Employee](#employees)** `required`<br>The [Employee](#employees) who created or processed this payment.<br>Automatically set by the system and cannot be modified through the API. 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) this payment is associated with. Most payments are order-related.<br>Can only be set during payment creation. Either `order` or `cart` should be specified, not both. 
+`payment_charge` | **[Payment charge](#payment-charges)** `required`<br>The [PaymentCharge](#payment-charges) this refund is applied to.<br>Links the refund to the original successful charge being refunded. This relationship is required for connected refunds but optional for standalone manual refunds. The charge tracks cumulative refunded amounts across all associated refunds.<br>When a refund succeeds, it automatically updates the charge's refunded and refundable amounts. 
+`payment_method` | **[Payment method](#payment-methods)** `required`<br>The [PaymentMethod](#payment-methods) used for this refund.<br>Typically inherited from the original charge, representing where the refund will be sent. For card payments, refunds go back to the original card. For manual refunds, this may be `null`.<br>The payment method determines how the customer receives their refund and may affect processing time. 
 
 
 Check matching attributes under [Fields](#payment-refunds-fields) to see which relations can be written.
@@ -20,32 +86,32 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`amount_in_cents` | **integer** <br>Amount in cents. 
-`canceled_at` | **datetime** `readonly`<br>When payment refund was canceled. 
-`cart_id` | **uuid** `readonly-after-create`<br>The associated cart. 
+`amount_in_cents` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge. 
+`canceled_at` | **datetime** `readonly`<br>Timestamp when the refund was canceled.<br>Will be `null` for refunds that haven't been canceled. Refunds can only be canceled before they succeed. 
+`cart_id` | **uuid** `readonly-after-create`<br>The [Cart](#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`currency` | **string** <br>Currency. 
-`customer_id` | **uuid** `readonly-after-create`<br>The associated [Customer](#customers). 
-`deposit_in_cents` | **integer** <br>Deposit in cents. 
-`description` | **string** <br>Description. 
-`employee_id` | **uuid** `readonly`<br>The associated [Employee](#employees). 
-`expired_at` | **datetime** `readonly`<br>When payment refund expired. 
-`failed_at` | **datetime** `readonly`<br>When payment refund failed. 
-`failure_reason` | **string** <br>Failure reason. 
+`currency` | **string** <br>Three-letter ISO 4217 currency code (e.g., `USD`, `EUR`).<br>Always matches the currency of the original charge. Cannot be changed as refunds must be in the same currency as the original payment. 
+`customer_id` | **uuid** `readonly-after-create`<br>The [Customer](#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
+`deposit_in_cents` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge. 
+`description` | **string** <br>Human-readable description of the refund reason or details.<br>Use this to provide context about why the refund was issued, special circumstances, or internal notes. This description may be visible to customers on receipts or statements depending on provider configuration. 
+`employee_id` | **uuid** `readonly`<br>The [Employee](#employees) who created or processed this payment.<br>Automatically set by the system and cannot be modified through the API. 
+`expired_at` | **datetime** `readonly`<br>Timestamp when the refund expired.<br>Most refunds don't expire, but this field is available for consistency with other payment types. Typically remains `null`. 
+`failed_at` | **datetime** `readonly`<br>Timestamp when the refund attempt failed.<br>Will be `null` for refunds that haven't failed. Failed refunds can be retried by transitioning back to `pending` status. 
+`failure_reason` | **string** <br>Detailed explanation of why the refund failed.<br>Contains provider-specific error messages or codes that help diagnose the failure. Only populated when status is `failed`. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>The associated [Order](#orders). 
-`payment_charge_id` | **uuid** `readonly-after-create`<br>The [PaymentCharge](#payment-charges) being refunded. 
-`payment_method_id` | **uuid** `readonly`<br>The [PaymentMethod](#payment-methods) used to refund the payment. This is the same as the payment method of the payment charge attached to this refund. 
-`provider` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
-`provider_id` | **string** <br>External provider refund identification. 
-`provider_link` | **string** <br>Provider refund link. 
-`provider_method` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
-`provider_secret` | **string** <br>Provider refund secret. 
-`reason` | **string** <br>Reason. 
-`status` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `action_required`.
-`succeeded_at` | **datetime** <br>When payment refund succeeded. 
-`total_in_cents` | **integer** <br>Total amount in cents (`amount + deposit`). 
-`type` | **string** `readonly`<br>Always `payment_refunds`. 
+`order_id` | **uuid** `readonly-after-create`<br>The [Order](#orders) this payment is associated with. Most payments are order-related.<br>Can only be set during payment creation. Either `order` or `cart` should be specified, not both. 
+`payment_charge_id` | **uuid** `readonly-after-create`<br>The [PaymentCharge](#payment-charges) this refund is applied to.<br>Links the refund to the original successful charge being refunded. This relationship is required for connected refunds but optional for standalone manual refunds. The charge tracks cumulative refunded amounts across all associated refunds.<br>When a refund succeeds, it automatically updates the charge's refunded and refundable amounts. 
+`payment_method_id` | **uuid** `readonly`<br>The [PaymentMethod](#payment-methods) used for this refund.<br>Typically inherited from the original charge, representing where the refund will be sent. For card payments, refunds go back to the original card. For manual refunds, this may be `null`.<br>The payment method determines how the customer receives their refund and may affect processing time. 
+`provider` | **enum** <br>The payment service provider processing this refund.<br>One of: `stripe`, `app`, `none`.<br>`stripe` - Processed through Stripe<br>`app` - Processed through a third-party payment app<br>`none` - Manual refund (cash, bank transfer, etc.)<br>For connected refunds, this usually matches the original charge provider. Manual refunds always use `none` regardless of the original charge provider. 
+`provider_id` | **string** <br>Unique identifier from the payment provider for this refund.<br>For Stripe refunds, this contains the Refund ID. Use this to reconcile with external payment systems or for support inquiries with the payment provider. 
+`provider_link` | **string** <br>Direct link to view this refund in the provider's dashboard.<br>Useful for support staff to quickly access refund details in the external payment system. Only available for provider-processed refunds. 
+`provider_method` | **string** <br>The payment method type used for this refund.<br>Typically matches the original charge's payment method (e.g., `card`, `ideal`, `bancontact`). For manual refunds, this may indicate the refund method (e.g., `cash`, `bank_transfer`). 
+`provider_secret` | **string** <br>Secret token used for client-side refund processing, if applicable.<br>Most refunds are processed server-side and don't require client secrets. This field is rarely used but maintained for consistency with other payment types. 
+`reason` | **string** <br>The reason code for this refund, used for reporting and analysis.<br>Common values include `requested_by_customer`, `duplicate`, `fraudulent`. The specific values available may depend on your payment provider configuration. 
+`status` | **enum** <br>Current status of the refund in its lifecycle.<br>One of: `created`, `pending`, `action_required`, `succeeded`, `failed`, `canceled`.<br>Status transitions follow specific rules - for example, a refund cannot be canceled after it has succeeded. 
+`succeeded_at` | **datetime** <br>Timestamp when the refund was successfully processed.<br>Will be `null` for refunds that haven't succeeded yet. Once set, the refund is complete and funds have been returned to the customer. 
+`total_in_cents` | **integer** <br>Total refund amount in cents.<br>Always equals `amount_in_cents` + `deposit_in_cents`. This is the total amount being returned to the customer. 
+`type` | **string** `readonly`<br>Always returns `payment_refunds`.<br>To retrieve refunds along with other payment types, use the [Payments](#payments) endpoint which returns all payment types. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -131,23 +197,23 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
-`data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
-`data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
-`data[attributes][failure_reason]` | **string** <br>Failure reason. 
-`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
-`data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) being refunded. 
-`data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
-`data[attributes][provider_id]` | **string** <br>External provider refund identification. 
-`data[attributes][provider_link]` | **string** <br>Provider refund link. 
-`data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
-`data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
-`data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `action_required`.
-`data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
-`data[attributes][total_in_cents]` | **integer** <br>Total amount in cents (`amount + deposit`). 
+`data[attributes][amount_in_cents]` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge. 
+`data[attributes][cart_id]` | **uuid** <br>The [Cart](#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
+`data[attributes][currency]` | **string** <br>Three-letter ISO 4217 currency code (e.g., `USD`, `EUR`).<br>Always matches the currency of the original charge. Cannot be changed as refunds must be in the same currency as the original payment. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
+`data[attributes][deposit_in_cents]` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge. 
+`data[attributes][failure_reason]` | **string** <br>Detailed explanation of why the refund failed.<br>Contains provider-specific error messages or codes that help diagnose the failure. Only populated when status is `failed`. 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) this payment is associated with. Most payments are order-related.<br>Can only be set during payment creation. Either `order` or `cart` should be specified, not both. 
+`data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) this refund is applied to.<br>Links the refund to the original successful charge being refunded. This relationship is required for connected refunds but optional for standalone manual refunds. The charge tracks cumulative refunded amounts across all associated refunds.<br>When a refund succeeds, it automatically updates the charge's refunded and refundable amounts. 
+`data[attributes][provider]` | **enum** <br>The payment service provider processing this refund.<br>One of: `stripe`, `app`, `none`.<br>`stripe` - Processed through Stripe<br>`app` - Processed through a third-party payment app<br>`none` - Manual refund (cash, bank transfer, etc.)<br>For connected refunds, this usually matches the original charge provider. Manual refunds always use `none` regardless of the original charge provider. 
+`data[attributes][provider_id]` | **string** <br>Unique identifier from the payment provider for this refund.<br>For Stripe refunds, this contains the Refund ID. Use this to reconcile with external payment systems or for support inquiries with the payment provider. 
+`data[attributes][provider_link]` | **string** <br>Direct link to view this refund in the provider's dashboard.<br>Useful for support staff to quickly access refund details in the external payment system. Only available for provider-processed refunds. 
+`data[attributes][provider_method]` | **string** <br>The payment method type used for this refund.<br>Typically matches the original charge's payment method (e.g., `card`, `ideal`, `bancontact`). For manual refunds, this may indicate the refund method (e.g., `cash`, `bank_transfer`). 
+`data[attributes][provider_secret]` | **string** <br>Secret token used for client-side refund processing, if applicable.<br>Most refunds are processed server-side and don't require client secrets. This field is rarely used but maintained for consistency with other payment types. 
+`data[attributes][reason]` | **string** <br>The reason code for this refund, used for reporting and analysis.<br>Common values include `requested_by_customer`, `duplicate`, `fraudulent`. The specific values available may depend on your payment provider configuration. 
+`data[attributes][status]` | **enum** <br>Current status of the refund in its lifecycle.<br>One of: `created`, `pending`, `action_required`, `succeeded`, `failed`, `canceled`.<br>Status transitions follow specific rules - for example, a refund cannot be canceled after it has succeeded. 
+`data[attributes][succeeded_at]` | **datetime** <br>Timestamp when the refund was successfully processed.<br>Will be `null` for refunds that haven't succeeded yet. Once set, the refund is complete and funds have been returned to the customer. 
+`data[attributes][total_in_cents]` | **integer** <br>Total refund amount in cents.<br>Always equals `amount_in_cents` + `deposit_in_cents`. This is the total amount being returned to the customer. 
 
 
 ### Includes
@@ -249,23 +315,23 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][amount_in_cents]` | **integer** <br>Amount in cents. 
-`data[attributes][cart_id]` | **uuid** <br>The associated cart. 
-`data[attributes][currency]` | **string** <br>Currency. 
-`data[attributes][customer_id]` | **uuid** <br>The associated [Customer](#customers). 
-`data[attributes][deposit_in_cents]` | **integer** <br>Deposit in cents. 
-`data[attributes][failure_reason]` | **string** <br>Failure reason. 
-`data[attributes][order_id]` | **uuid** <br>The associated [Order](#orders). 
-`data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) being refunded. 
-`data[attributes][provider]` | **enum** <br>Provider.<br> One of: `stripe`, `app`, `none`.
-`data[attributes][provider_id]` | **string** <br>External provider refund identification. 
-`data[attributes][provider_link]` | **string** <br>Provider refund link. 
-`data[attributes][provider_method]` | **string** <br>Provider refund method. For example: `credit_card`, `boleto`, `cash`, `bank`, etc. 
-`data[attributes][provider_secret]` | **string** <br>Provider refund secret. 
-`data[attributes][reason]` | **string** <br>Reason. 
-`data[attributes][status]` | **enum** <br>Status.<br> One of: `created`, `pending`, `succeeded`, `failed`, `canceled`, `action_required`.
-`data[attributes][succeeded_at]` | **datetime** <br>When payment refund succeeded. 
-`data[attributes][total_in_cents]` | **integer** <br>Total amount in cents (`amount + deposit`). 
+`data[attributes][amount_in_cents]` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge. 
+`data[attributes][cart_id]` | **uuid** <br>The [Cart](#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
+`data[attributes][currency]` | **string** <br>Three-letter ISO 4217 currency code (e.g., `USD`, `EUR`).<br>Always matches the currency of the original charge. Cannot be changed as refunds must be in the same currency as the original payment. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
+`data[attributes][deposit_in_cents]` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge. 
+`data[attributes][failure_reason]` | **string** <br>Detailed explanation of why the refund failed.<br>Contains provider-specific error messages or codes that help diagnose the failure. Only populated when status is `failed`. 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) this payment is associated with. Most payments are order-related.<br>Can only be set during payment creation. Either `order` or `cart` should be specified, not both. 
+`data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) this refund is applied to.<br>Links the refund to the original successful charge being refunded. This relationship is required for connected refunds but optional for standalone manual refunds. The charge tracks cumulative refunded amounts across all associated refunds.<br>When a refund succeeds, it automatically updates the charge's refunded and refundable amounts. 
+`data[attributes][provider]` | **enum** <br>The payment service provider processing this refund.<br>One of: `stripe`, `app`, `none`.<br>`stripe` - Processed through Stripe<br>`app` - Processed through a third-party payment app<br>`none` - Manual refund (cash, bank transfer, etc.)<br>For connected refunds, this usually matches the original charge provider. Manual refunds always use `none` regardless of the original charge provider. 
+`data[attributes][provider_id]` | **string** <br>Unique identifier from the payment provider for this refund.<br>For Stripe refunds, this contains the Refund ID. Use this to reconcile with external payment systems or for support inquiries with the payment provider. 
+`data[attributes][provider_link]` | **string** <br>Direct link to view this refund in the provider's dashboard.<br>Useful for support staff to quickly access refund details in the external payment system. Only available for provider-processed refunds. 
+`data[attributes][provider_method]` | **string** <br>The payment method type used for this refund.<br>Typically matches the original charge's payment method (e.g., `card`, `ideal`, `bancontact`). For manual refunds, this may indicate the refund method (e.g., `cash`, `bank_transfer`). 
+`data[attributes][provider_secret]` | **string** <br>Secret token used for client-side refund processing, if applicable.<br>Most refunds are processed server-side and don't require client secrets. This field is rarely used but maintained for consistency with other payment types. 
+`data[attributes][reason]` | **string** <br>The reason code for this refund, used for reporting and analysis.<br>Common values include `requested_by_customer`, `duplicate`, `fraudulent`. The specific values available may depend on your payment provider configuration. 
+`data[attributes][status]` | **enum** <br>Current status of the refund in its lifecycle.<br>One of: `created`, `pending`, `action_required`, `succeeded`, `failed`, `canceled`.<br>Status transitions follow specific rules - for example, a refund cannot be canceled after it has succeeded. 
+`data[attributes][succeeded_at]` | **datetime** <br>Timestamp when the refund was successfully processed.<br>Will be `null` for refunds that haven't succeeded yet. Once set, the refund is complete and funds have been returned to the customer. 
+`data[attributes][total_in_cents]` | **integer** <br>Total refund amount in cents.<br>Always equals `amount_in_cents` + `deposit_in_cents`. This is the total amount being returned to the customer. 
 
 
 ### Includes

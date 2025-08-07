@@ -29,6 +29,7 @@ Check each individual operation to see which relations can be included as a side
 `quantity` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
 `reason` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
 `starts_at` | **datetime** <br>When the downtime period begins. The product becomes unavailable for rental from this date/time. 
+`status` | **enum** <br>The current status of the downtime period. Can be scheduled, started, stopped, or canceled. Defaults to scheduled when created.<br> One of: `scheduled`, `started`, `stopped`, `canceled`.
 `stock_item_id` | **uuid** `nullable`<br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
 `stops_at` | **datetime** <br>When the downtime period ends. The product becomes available for rental again after this date/time. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -56,6 +57,7 @@ Check each individual operation to see which relations can be included as a side
           "created_at": "2020-11-22T16:53:01.000000+00:00",
           "updated_at": "2020-11-22T16:53:01.000000+00:00",
           "reason": "maintenance",
+          "status": "scheduled",
           "quantity": 1,
           "starts_at": "2020-11-24T16:53:01.000000+00:00",
           "stops_at": "2020-11-27T16:53:01.000000+00:00",
@@ -102,6 +104,7 @@ Name | Description
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `reason` | **enum** <br>`eq`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`status` | **enum** <br>`eq`
 `stock_item_id` | **uuid** <br>`eq`, `not_eq`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`

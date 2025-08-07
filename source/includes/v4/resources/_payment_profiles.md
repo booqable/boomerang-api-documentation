@@ -1,15 +1,38 @@
 # Payment profiles
 
-Represents a connection to a payment provider configured for the company.
+PaymentProfiles represent payment provider configurations for a company. Each profile contains the necessary settings
+and credentials to process payments through a specific provider like Stripe or PayPal.
+
+PaymentProfiles are automatically created when connecting a payment provider through the Booqable interface. They
+store provider-specific configuration data and maintain the connection status with the external payment service.
+
+A company can have multiple PaymentProfiles for different providers, but typically only one profile per provider
+is active at any time. When a profile is disconnected, it's marked as inactive rather than deleted, preserving
+the historical record.
+
+## Accessing PaymentProfiles
+
+PaymentProfiles can be listed and retrieved through the API, but they cannot be created or updated directly.
+Creation and updates happen through provider-specific connection flows in the Booqable interface.
+
+## Disconnecting Profiles
+
+Disconnecting a PaymentProfile:
+
+- Marks the profile as inactive
+- Updates the company's payment strategy if no profiles remain active
+- Triggers security notifications about the disconnection
+- Preserves all historical payment data
+
 ## Fields
 
  Name | Description
 -- | --
-`active` | **boolean** <br>Whether this payment profile is currently active and can be used for payments.
-`config` | **hash** <br>Provider-specific configuration details. Contents vary by provider.
+`active` | **boolean** <br>Whether this payment profile is currently active and can process payments. Inactive profiles are preserved for historical reference but cannot be used for new transactions.<br>When a profile is disconnected, this is set to `false` rather than deleting the record. 
+`config` | **hash** <br>Provider-specific configuration data stored as key-value pairs. This includes settings like API keys, webhook endpoints, and provider-specific options. The exact contents depend on the provider type.<br>This field is write-only and cannot be retrieved through the API for security reasons. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`provider` | **string** <br>The name of the payment provider (e.g., 'stripe', 'paypal').
+`provider` | **string** <br>The payment service provider for this profile. Determines which external service is used for processing payments and what configuration options are available.<br>One of: `stripe`, `paypal`.<br>`stripe` is the only supported provider.<br>`paypal` is a legacy provider and is no longer supported. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
