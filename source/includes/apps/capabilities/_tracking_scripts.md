@@ -49,7 +49,7 @@ Inside your app's templates you can write Javascript code that uses the Booqable
 
 ### Consent management
 
-If your app installs cookies in the user's browser (for example, for analytics, marketing, or personalization), you **must** integrate with Booqable's consent management framework. This is done via the User Framework by using [`Booqable.registerApp`](#how-apps-work-user-framework-implementation-example-app-registration).
+If your app installs cookies in the user's browser (for example, for analytics, marketing, or personalization), you **must** integrate with Booqable's consent management framework. This is done via the User Framework by using [`Booqable.registerApp`](#how-apps-work-user-framework-app-registration).
 
 When you register your app using `registerApp`, Booqable will automatically manage when your tracking scripts are allowed to set cookies, based on the user's consent preferences.
 
