@@ -55,6 +55,10 @@ Each [`theme block`](#reference-themeblocksettings) requires the following confi
       "label": "Title",
       "default": "Default Title"
     },
+    "_display_settings_": {
+      "type": "header",
+      "content": "Display Settings"
+    },
     "height": {
       "type": "number",
       "label": "Height",
@@ -68,10 +72,6 @@ Each [`theme block`](#reference-themeblocksettings) requires the following confi
         { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
       ]
-    },
-    "_desktop_settings_": {
-      "type": "header",
-      "content": "Desktop Settings"
     }
   }
 }
@@ -85,6 +85,14 @@ Theme blocks can have [configurable settings](#reference-themeblocksetting) that
 - **`number`** - Numeric input.
 - **`select`** - Dropdown with predefined options.
 - **`header`** - Section divider in the settings panel.
+
+<figure>
+  <img src="/images/apps/theme-block-settings-example.png" alt="Theme block settings example" style="max-width: 100%; max-height: 400px;">
+  <figcaption>
+    Example of a theme block settings as viewed in the website builder.
+  </figcaption>
+</figure>
+
 
 
 ### Global settings integration
