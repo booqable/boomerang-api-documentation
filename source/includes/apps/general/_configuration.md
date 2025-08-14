@@ -41,9 +41,47 @@ For more information see the [Capabilities section](/apps.html#capabilities).
 
 ### `/config/plans.json`
 
-This file is where you define the plans your app offers. Each plan has a title, description, and a list of features presented to the user when they are installing the app.
+```json
+{
+  "free": {
+    "price_in_cents": 0,
+    "features": {
+      "default": { "enabled": true },
+      "track_pages": { "enabled": true },
+      "track_events": { "enabled": true }
+    }
+  },
+  "pro": {
+    "price_in_cents": 700,
+    "features": {
+      "default": { "enabled": true },
+      "track_pages": { "enabled": true },
+      "track_events": { "enabled": true },
+      "advanced_analytics": { "enabled": true }
+    },
+    "stripe_id_month": "price_8QZkaLXY12pgrsMvWJfnbcTR",
+    "stripe_id_year": "price_7PLqwmAB98xjskQvLybUiKzR5"
+  }
+}
+```
 
-TODO
+This file defines the pricing plans your app offers. Each plan specifies pricing, features, and billing configuration that users see during installation.
+
+#### Plan Configuration
+
+- **`price_in_cents`** - Plan price in cents (e.g., 700 = $7.00). Required for all plans.
+- **`features`** - Object defining which app capabilities are enabled for this plan.
+- **`stripe_id_month`** - Stripe price ID for monthly billing (optional, for paid plans).
+- **`stripe_id_year`** - Stripe price ID for yearly billing (optional, for paid plans).
+- **`paid_during_beta`** - If Booqable should charge users for the plan even during the beta program (optional).
+
+#### Features
+
+Each feature in the `features` object can be enabled/disabled per plan. The `default` feature is typically enabled for all plans and represents basic app functionality. Additional features can be specific to your app's capabilities.
+
+#### Plan Display
+
+The plan titles, descriptions, and feature lists shown to users are configured in your [locale files](#how-apps-work-configuration-locale-files) under the `plans` key, not in this JSON file. This file only controls the technical configuration and pricing.
 
 
 

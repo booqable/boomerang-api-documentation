@@ -36,17 +36,33 @@ And when users choose to install your app, they are guided through the installat
 
 The full list of customizable app store elements is:
 
-* **Title:** The title of your app and it is displayed in several spots throughout the app store and the Booqable UI. Configured in [locale files](#TODO).
-* **Author:** A byline for the app. It's displayed mainly in the app store. Configured in [`meta.json`](#TODO).
-* **Banner:** A banner image to make your app stand out in the app store listings. Configured in [`meta.json`](#TODO).
-* **Icon:** A small icon to represent your app in the app store and few other places in the Booqable UI. Configured in [`meta.json`](#TODO).
-* **Synopsis:** A short summary of your app, mainly for users to quickly understand what the app does when browsing the app store. Configured in [locale files](#TODO).
-* **Description:** Your app's description is displayed in the app store detail page, after users clicked through from the app store listings. Configured in [locale files](#TODO).
+* **Title:** The title of your app and it is displayed in several spots throughout the app store and the Booqable UI. Configured in [locale files](#how-apps-work-configuration-locale-files).
+* **Author:** A byline for the app. It's displayed mainly in the app store. Configured in [`meta.json`](#reference-config-meta-json).
+* **Banner:** A banner image to make your app stand out in the app store listings. Configured in [`meta.json`](#reference-config-meta-json).
+* **Icon:** A small icon to represent your app in the app store and few other places in the Booqable UI. Configured in [`meta.json`](#reference-config-meta-json).
+* **Short description:** A short summary of your app, mainly for users to quickly understand what the app does when browsing the app store. Configured in [locale files](#how-apps-work-configuration-locale-files).
+* **Long description:** Your app's description is displayed in the app store detail page, after users clicked through from the app store listings. Configured in [locale files](#how-apps-work-configuration-locale-files).
 
 Additionally, each app plan has its own set of customizable elements:
 
-* **Title:** The title of the plan. Configured in [locale files](#TODO).
-* **Description:** The description of the plan. Configured in [locale files](#TODO).
-* **Features:** A list of the plan's key features. Configured in [locale files](#TODO).
+* **Title:** The title of the plan. Configured in [locale files](#how-apps-work-configuration-locale-files).
+* **Description:** The description of the plan. Configured in [locale files](#how-apps-work-configuration-locale-files).
+* **Features:** A list of the plan's key features. Configured in [locale files](#how-apps-work-configuration-locale-files).
 
-TODO some apps have an extra step right after installation for asking permissions.
+Some apps show an additional step immediately after installation to request permissions from the user. This step appears only for apps that are configured to use OAuth, and it prompts the user to grant the app access to Booqable's API. If your app requires OAuth, users will see a permissions screen after confirming installation where they can review and approve the requested scopes.
+
+<figure>
+  <img src="/images/apps/app-permissions-screen.png" alt="Example of the app permissions screen in Booqable" style="max-width: 100%;">
+  <figcaption>
+    Example of the permissions screen shown to users when an app requests access to Booqable's API.
+  </figcaption>
+</figure>
+
+For more information on configuring OAuth and permission requests, see the [OAuth documentation](#how-apps-work-oauth-authentication).
+
+
+
+
+
+
+
