@@ -19,31 +19,12 @@ curl --request POST \
   }'
 ```
 
-When a user installs your delivery carrier app, you must create a delivery carrier record using Booqable's [Carriers API endpoint](/v4.html#app-carriers). The carrier requires:
+After a user installs your delivery carrier app, you must create a delivery carrier record using Booqable's [Carriers API endpoint](/v4.html#app-carriers). The carrier requires:
 
 * `identifier` - A unique identifier for your carrier.
 * `rates_url` - The URL where Booqable will send rate calculation requests.
-* `app_subscription_id` - The ID of the app subscription (provided during installation).
 
-#### App installation flow
-
-1. **User installs app** - User selects your app from the Booqable App Store.
-2. **App subscription created** - Booqable creates an app subscription and sends webhook notification.
-3. **Carrier configuration** - Your app receives the `app.installed` webhook and creates the carrier.
-4. **Carrier ready** - The delivery carrier is now available for users to select in orders.
-
-```json
-{
-  "event": "app.installed",
-  "data": {
-    "id": "a2a94184-00f3-424f-bc36-c46a84eb1461",
-    "identifier": "my_delivery_app",
-    "app_subscription_id": "18ad296f-16af-4172-a3de-44bd1218543f"
-  }
-}
-```
-
-Listen for the `app.installed` webhook to automatically configure your carrier. Use the `app_subscription_id` from the webhook to create your carrier record.
+A good way to accomplish this is to configure OAuth authentication for your app and create the carrier right after the app exchanges the authorization code for an access token.
 
 ### How it works
 
