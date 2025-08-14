@@ -446,7 +446,7 @@
 <li>how to create a payment option app</li>
 </ul>
 <h1 id='how-apps-work'>How Apps Work</h1>
-<p>TODO summary</p>
+<p>Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They&#39;re distributed through the Booqable App Store, where users can discover and manage them. Configuration is managed through a file tree and allows you to control store listings and app details.</p>
 <h2 id='how-apps-work-configuration'>Configuration</h2>
 <p>Booqable apps are simply a folder with a few files in it. Some files are configuration files, some are templates, and some are static assets.</p>
 <div class="highlight"><pre class="highlight plaintext"><code>app-name/
@@ -478,10 +478,41 @@
 </ul>
 
 <p>For more information see the <a href="apps.html#capabilities">Capabilities section</a>.</p>
-<h3 id='how-apps-work-configuration-config-plans-json'><code>/config/plans.json</code></h3>
-<p>This file is where you define the plans your app offers. Each plan has a title, description, and a list of features presented to the user when they are installing the app.</p>
-
-<p>TODO</p>
+<h3 id='how-apps-work-configuration-config-plans-json'><code>/config/plans.json</code></h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"free"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"track_pages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"track_events"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pro"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"track_pages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"track_events"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"advanced_analytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"stripe_id_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"price_8QZkaLXY12pgrsMvWJfnbcTR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stripe_id_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"price_7PLqwmAB98xjskQvLybUiKzR5"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This file defines the pricing plans your app offers. Each plan specifies pricing, features, and billing configuration that users see during installation.</p>
+<h4 id='how-apps-work-configuration-code-config-plans-json-code-plan-configuration'>Plan Configuration</h4>
+<ul>
+<li><strong><code>price_in_cents</code></strong> - Plan price in cents (e.g., 700 = $7.00). Required for all plans.</li>
+<li><strong><code>features</code></strong> - Object defining which app capabilities are enabled for this plan.</li>
+<li><strong><code>stripe_id_month</code></strong> - Stripe price ID for monthly billing (optional, for paid plans).</li>
+<li><strong><code>stripe_id_year</code></strong> - Stripe price ID for yearly billing (optional, for paid plans).</li>
+<li><strong><code>paid_during_beta</code></strong> - If Booqable should charge users for the plan even during the beta program (optional).</li>
+</ul>
+<h4 id='how-apps-work-configuration-code-config-plans-json-code-features'>Features</h4>
+<p>Each feature in the <code>features</code> object can be enabled/disabled per plan. The <code>default</code> feature is typically enabled for all plans and represents basic app functionality. Additional features can be specific to your app&#39;s capabilities.</p>
+<h4 id='how-apps-work-configuration-code-config-plans-json-code-plan-display'>Plan Display</h4>
+<p>The plan titles, descriptions, and feature lists shown to users are configured in your <a href="#how-apps-work-configuration-locale-files">locale files</a> under the <code>plans</code> key, not in this JSON file. This file only controls the technical configuration and pricing.</p>
 <h3 id='how-apps-work-configuration-locale-files'>Locale files</h3>
 <p>Locale files contain the localized strings used throughout the Booqable UI such as the app title and descriptions as well forms for user settings and post-installation guides.</p>
 
@@ -635,23 +666,32 @@ A list of steps (each with <code>title</code>, <code>description</code>, and <co
 <p>The full list of customizable app store elements is:</p>
 
 <ul>
-<li><strong>Title:</strong> The title of your app and it is displayed in several spots throughout the app store and the Booqable UI. Configured in <a href="#TODO">locale files</a>.</li>
-<li><strong>Author:</strong> A byline for the app. It&#39;s displayed mainly in the app store. Configured in <a href="#TODO"><code>meta.json</code></a>.</li>
-<li><strong>Banner:</strong> A banner image to make your app stand out in the app store listings. Configured in <a href="#TODO"><code>meta.json</code></a>.</li>
-<li><strong>Icon:</strong> A small icon to represent your app in the app store and few other places in the Booqable UI. Configured in <a href="#TODO"><code>meta.json</code></a>.</li>
-<li><strong>Synopsis:</strong> A short summary of your app, mainly for users to quickly understand what the app does when browsing the app store. Configured in <a href="#TODO">locale files</a>.</li>
-<li><strong>Description:</strong> Your app&#39;s description is displayed in the app store detail page, after users clicked through from the app store listings. Configured in <a href="#TODO">locale files</a>.</li>
+<li><strong>Title:</strong> The title of your app and it is displayed in several spots throughout the app store and the Booqable UI. Configured in <a href="#how-apps-work-configuration-locale-files">locale files</a>.</li>
+<li><strong>Author:</strong> A byline for the app. It&#39;s displayed mainly in the app store. Configured in <a href="#reference-config-meta-json"><code>meta.json</code></a>.</li>
+<li><strong>Banner:</strong> A banner image to make your app stand out in the app store listings. Configured in <a href="#reference-config-meta-json"><code>meta.json</code></a>.</li>
+<li><strong>Icon:</strong> A small icon to represent your app in the app store and few other places in the Booqable UI. Configured in <a href="#reference-config-meta-json"><code>meta.json</code></a>.</li>
+<li><strong>Short description:</strong> A short summary of your app, mainly for users to quickly understand what the app does when browsing the app store. Configured in <a href="#how-apps-work-configuration-locale-files">locale files</a>.</li>
+<li><strong>Long description:</strong> Your app&#39;s description is displayed in the app store detail page, after users clicked through from the app store listings. Configured in <a href="#how-apps-work-configuration-locale-files">locale files</a>.</li>
 </ul>
 
 <p>Additionally, each app plan has its own set of customizable elements:</p>
 
 <ul>
-<li><strong>Title:</strong> The title of the plan. Configured in <a href="#TODO">locale files</a>.</li>
-<li><strong>Description:</strong> The description of the plan. Configured in <a href="#TODO">locale files</a>.</li>
-<li><strong>Features:</strong> A list of the plan&#39;s key features. Configured in <a href="#TODO">locale files</a>.</li>
+<li><strong>Title:</strong> The title of the plan. Configured in <a href="#how-apps-work-configuration-locale-files">locale files</a>.</li>
+<li><strong>Description:</strong> The description of the plan. Configured in <a href="#how-apps-work-configuration-locale-files">locale files</a>.</li>
+<li><strong>Features:</strong> A list of the plan&#39;s key features. Configured in <a href="#how-apps-work-configuration-locale-files">locale files</a>.</li>
 </ul>
 
-<p>TODO some apps have an extra step right after installation for asking permissions.</p>
+<p>Some apps show an additional step immediately after installation to request permissions from the user. This step appears only for apps that are configured to use OAuth, and it prompts the user to grant the app access to Booqable&#39;s API. If your app requires OAuth, users will see a permissions screen after confirming installation where they can review and approve the requested scopes.</p>
+
+<figure>
+  <img src="images/apps/app-permissions-screen-21b31fdd.png" alt="Example of the app permissions screen in Booqable" style="max-width: 100%;">
+  <figcaption>
+    Example of the permissions screen shown to users when an app requests access to Booqable's API.
+  </figcaption>
+</figure>
+
+<p>For more information on configuring OAuth and permission requests, see the <a href="#how-apps-work-oauth-authentication">OAuth documentation</a>.</p>
 <h2 id='how-apps-work-iframe-page'>Iframe Page</h2>
 <p>App iframe pages allow developers to create custom interfaces that are embedded directly within the Booqable UI. This provides a seamless user experience where app functionality feels like a native part of the Booqable platform, while allowing developers to build rich, interactive interfaces using their own technology stack.</p>
 
