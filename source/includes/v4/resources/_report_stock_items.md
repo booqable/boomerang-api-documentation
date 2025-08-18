@@ -59,7 +59,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "report_stock_items",
         "attributes": {
           "created_at": "2028-06-15T11:38:00.000000+00:00",
-          "product_name": "Product 1000059",
+          "product_name": "Product 1000061",
           "identifier": "id1000172",
           "charge_duration_in_seconds": 7200,
           "planned_duration_in_seconds": 7200,
@@ -76,7 +76,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "report_stock_items",
         "attributes": {
           "created_at": "2028-06-15T11:38:00.000000+00:00",
-          "product_name": "Product 1000059",
+          "product_name": "Product 1000061",
           "identifier": "id1000173",
           "charge_duration_in_seconds": 0,
           "planned_duration_in_seconds": 0,

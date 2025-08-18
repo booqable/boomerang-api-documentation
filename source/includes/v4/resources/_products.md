@@ -166,7 +166,7 @@ Check each individual operation to see which relations can be included as a side
           "name": "iPad Pro - blue",
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
-          "sku": "PRODUCT 1000053",
+          "sku": "PRODUCT 1000055",
           "lead_time": 0,
           "lag_time": 0,
           "buffer_time_before": 0,

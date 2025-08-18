@@ -129,3 +129,171 @@ This request accepts the following includes:
   <li><code>stock_item</code></li>
 </ul>
 
+
+## Create a downtime
+
+
+> How to create a downtime:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/downtimes'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "downtimes",
+           "attributes": {
+             "reason": "maintenance",
+             "quantity": 2,
+             "starts_at": "2025-03-04T00:50:00.000000+00:00",
+             "stops_at": "2025-03-07T00:50:00.000000+00:00",
+             "location_id": "b6dd4e89-cdf4-4fce-8f25-c5250d0d3abf",
+             "product_id": "fede9ba2-69e2-4bca-8507-1b90260ccadc"
+           }
+         }
+       }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "f6e632f2-c8ab-4755-8331-04c9b1a082a9",
+      "type": "downtimes",
+      "attributes": {
+        "created_at": "2025-03-02T00:50:00.000000+00:00",
+        "updated_at": "2025-03-02T00:50:00.000000+00:00",
+        "reason": "maintenance",
+        "status": "scheduled",
+        "quantity": 2,
+        "starts_at": "2025-03-04T00:50:00.000000+00:00",
+        "stops_at": "2025-03-07T00:50:00.000000+00:00",
+        "location_id": "b6dd4e89-cdf4-4fce-8f25-c5250d0d3abf",
+        "product_id": "fede9ba2-69e2-4bca-8507-1b90260ccadc",
+        "stock_item_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`POST /api/4/downtimes`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[downtimes]=created_at,updated_at,reason`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=location,product,stock_item`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][location_id]` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. 
+`data[attributes][quantity]` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
+`data[attributes][reason]` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
+`data[attributes][starts_at]` | **datetime** <br>When the downtime period begins. The product becomes unavailable for rental from this date/time. 
+`data[attributes][status]` | **enum** <br>The current status of the downtime period. Can be scheduled, started, stopped, or canceled. Defaults to scheduled when created.<br> One of: `scheduled`, `started`, `stopped`, `canceled`.
+`data[attributes][stock_item_id]` | **uuid** <br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
+`data[attributes][stops_at]` | **datetime** <br>When the downtime period ends. The product becomes available for rental again after this date/time. 
+
+
+### Includes
+
+This request accepts the following includes:
+
+<ul>
+  <li><code>location</code></li>
+  <li><code>product</code></li>
+  <li><code>stock_item</code></li>
+</ul>
+
+
+## Update a downtime
+
+
+> How to update a downtime:
+
+```shell
+  curl --request PUT
+       --url 'https://example.booqable.com/api/4/downtimes/ba7609ab-6b5d-46ef-84c8-2f55f2cff204'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "downtimes",
+           "id": "ba7609ab-6b5d-46ef-84c8-2f55f2cff204",
+           "attributes": {
+             "status": "started"
+           }
+         }
+       }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "ba7609ab-6b5d-46ef-84c8-2f55f2cff204",
+      "type": "downtimes",
+      "attributes": {
+        "created_at": "2024-09-06T18:37:01.000000+00:00",
+        "updated_at": "2024-09-06T18:37:01.000000+00:00",
+        "reason": "maintenance",
+        "status": "started",
+        "quantity": 1,
+        "starts_at": "2024-09-06T18:37:01.000000+00:00",
+        "stops_at": "2024-09-11T18:37:01.000000+00:00",
+        "location_id": "5ca11407-358f-410f-83d0-4f3b4fb235b1",
+        "product_id": "59f0c994-63f5-4e25-878d-ced2a7e51ab9",
+        "stock_item_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`PUT /api/4/downtimes/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[downtimes]=created_at,updated_at,reason`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][location_id]` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. 
+`data[attributes][quantity]` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
+`data[attributes][reason]` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
+`data[attributes][starts_at]` | **datetime** <br>When the downtime period begins. The product becomes unavailable for rental from this date/time. 
+`data[attributes][status]` | **enum** <br>The current status of the downtime period. Can be scheduled, started, stopped, or canceled. Defaults to scheduled when created.<br> One of: `scheduled`, `started`, `stopped`, `canceled`.
+`data[attributes][stock_item_id]` | **uuid** <br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
+`data[attributes][stops_at]` | **datetime** <br>When the downtime period ends. The product becomes available for rental again after this date/time. 
+
+
+### Includes
+
+This request does not accept any includes
