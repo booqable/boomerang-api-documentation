@@ -1520,20 +1520,102 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <li>Scopes CSS styles to the block using <code>app_id</code></li>
 </ul>
 <h2 id='capabilities-delivery-carriers'>Delivery Carriers</h2>
-<p>TODO</p>
+<p>This capability allows your app to add custom delivery carriers to provide shipping rates for orders.</p>
+<h3 id='capabilities-delivery-carriers-configuration'>Configuration</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/app_carriers'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{
+    "data": {
+      "type": "app_carriers",
+      "attributes": {
+        "identifier": "my_delivery_service",
+        "rates_url": "https://my-app.com/api/v1/rates"
+      }
+    }
+  }'</span>
+</code></pre></div>
+<p>After a user installs your delivery carrier app, you must create a delivery carrier record using Booqable&#39;s <a href="v4.html#app-carriers">Carriers API endpoint</a>. The carrier requires:</p>
 
 <ul>
-<li>how to configure in meta.json</li>
-<li>the rates url is called when selecting a rate in the order screen and the checkout
-
-<ul>
-<li>document the data we send to the rates url (like distance, addresses and products)</li>
-<li>it expects rates to be returned in a fixed format</li>
-<li>we need to document errors you can return on the rates_url response</li>
-</ul></li>
-<li>your app should respond within 3000ms</li>
-<li>mention scoping</li>
+<li><code>identifier</code> - A unique identifier for your carrier.</li>
+<li><code>rates_url</code> - The URL where Booqable will send rate calculation requests.</li>
 </ul>
+
+<p>A good way to accomplish this is to configure OAuth authentication for your app and create the carrier right after the app exchanges the authorization code for an access token.</p>
+<h3 id='capabilities-delivery-carriers-how-it-works'>How it works</h3>
+<p>Delivery carriers must provide a <code>rates_url</code>. When a user selects a rate in the order screen or during checkout we issue a <code>POST</code> request to this URL with several query parameters that can be used to calculate the shipping rate. They are:</p>
+
+<ul>
+<li><code>distance</code> - The distance between the origin and destination in the unit specified by <code>distance_unit</code>.</li>
+<li><code>distance_unit</code> - The unit of the distance. One of <code>metric</code> or <code>imperial</code>.</li>
+<li><code>order_amount_in_cents</code> - The total order amount in cents.</li>
+<li><code>origin_address</code> - The order origin address in the format <code>address_line_1,address_line_2,zipcode,city,region,country_name</code>.</li>
+<li><code>origin_coordinates</code> - The order origin coordinates in the format <code>longitude,latitude</code>.</li>
+<li><code>destination_address</code> - The order destination address in the same format as <code>origin_address</code>.</li>
+<li><code>destination_coordinates</code> - The order destination coordinates in the same format as <code>origin_coordinates</code>.</li>
+<li><code>starts_at</code> - The start date and time of the order.</li>
+<li><code>stops_at</code> - The end date and time of the order.</li>
+<li><code>products</code> - An array of products in the order, with the <code>id</code>, <code>title</code>, <code>price_in_cents</code> and <code>quantity</code> for each product.</li>
+<li><code>token</code> - A JWT token that can be used to verify the request came from Booqable.</li>
+</ul>
+<div class="highlight"><pre class="highlight plaintext"><code>POST /api/v1/rates
+
+distance=3.317
+distance_unit=metric
+order_amount_in_cents=60000
+origin_address=Rua de Belem 84,,1300-085,Lisboa,Lisbon,Portugal
+origin_coordinates=-9.20301506928,38.697395054265
+destination_address=Av. Brasília,,1400-038,Lisboa,Lisbon,Portugal
+destination_coordinates=-9.2057249,38.6937838
+starts_at=2025-08-15T09:00:00Z
+stops_at=2025-08-16T15:00:00Z
+products[][id]=1938440d-49c2-499a-83f1-a276927d5d6c
+products[][title]=Batavus male bike
+products[][price_in_cents]=45000.0
+products[][quantity]=1.0
+products[][id]=c07d6a9e-1def-4933-bc2a-dfd663c09656
+products[][title]=Bike helmet
+products[][price_in_cents]=15000.0
+products[][quantity]=1.0
+token=&lt;JWT token&gt;
+</code></pre></div>
+<p>Your rates endpoint must respond within 3000ms or the request will be considered failed. The endpoint must return a 200 status code with a JSON response containing an array of rates in the following format:</p>
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a6236947-a671-4d16-ae21-8efcc388994f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery_rates"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard Rate"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My rate description."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flat"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50 km"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"free_delivery_threshold_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eaccc770-dOda-4dla-8201-b596b79a2f97"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard Rate"</span><span class="p">,</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="c1">// ... other rates here ...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><code>id</code> — Unique identifier for the rate, as an UUID.</li>
+<li><code>type</code> — Fixed constant. Must be the string <code>&quot;delivery_rates&quot;</code>.</li>
+<li><code>attributes.identifier</code> — Human readable identifier for the rate.</li>
+<li><code>attributes.label</code> — Additional label for the rate.</li>
+<li><code>attributes.description</code> — Extra context for the rate.</li>
+<li><code>attributes.type</code> — Rate type, either <code>&quot;flat&quot;</code> or <code>&quot;calculated&quot;</code>.</li>
+<li><code>attributes.range</code> — Delivery range.</li>
+<li><code>attributes.price_in_cents</code> — Delivery cost in cents.</li>
+<li><code>attributes.minimum_order_amount_in_cents</code> — Minimum order value required.</li>
+<li><code>attributes.free_delivery_threshold_in_cents</code> — Threshold for free delivery.</li>
+<li><code>attributes.carrier_id</code> — ID of the delivery carrier.</li>
+</ul>
+
+<p>If any other status code is returned or if the response does not follow the above format the request will be considered failed and no rates will be shown to users.</p>
 <h2 id='capabilities-payment-options'>Payment Options</h2>
 <p>TODO</p>
 
