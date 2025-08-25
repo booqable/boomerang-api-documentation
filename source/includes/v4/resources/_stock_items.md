@@ -22,6 +22,7 @@ Name | Description
 `location` | **[Location](#locations)** `required`<br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
 `product` | **[Product](#products)** `required`<br>The [Product](#products) this StockItem is one instance of. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom data associated with this StockItem. 
+`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](#stock-item-plannings) that represent the planning and reservation history of this specific StockItem. This includes both rental orders and downtime periods assigned to this StockItem. 
 
 
 Check matching attributes under [Fields](#stock-items-fields) to see which relations can be written.
@@ -43,7 +44,7 @@ Check each individual operation to see which relations can be included as a side
 `product_id` | **uuid** `readonly-after-create`<br>The [Product](#products) this StockItem is one instance of. 
 `properties` | **hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties). 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this stock item. 
-`status` | **enum** `readonly`<br>Whether item is out with a customer or in-store/warehouse.<br> One of: `archived`, `expected`, `in_stock`, `started`, `overdue`, `expired`.
+`status` | **enum** `readonly`<br>Whether item is out with a customer or in-store/warehouse.<br> One of: `archived`, `expected`, `in_stock`, `started`, `overdue`, `expired`, `in_downtime`.
 `stock_item_type` | **enum** `readonly`<br>Based on the values of `from` and `till`.<br> One of: `regular`, `temporary`.
 `till` | **datetime** `nullable`<br>When item will be out of stock (temporary items). 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -150,6 +151,12 @@ This request accepts the following includes:
   <li><code>location</code></li>
   <li><code>product</code></li>
   <li><code>properties</code></li>
+  <li>
+    <code>stock_item_plannings</code>
+    <ul>
+      <li><code>downtime</code></li>
+    </ul>
+  </li>
 </ul>
 
 
@@ -219,6 +226,12 @@ This request accepts the following includes:
     </ul>
   </li>
   <li><code>properties</code></li>
+  <li>
+    <code>stock_item_plannings</code>
+    <ul>
+      <li><code>downtime</code></li>
+    </ul>
+  </li>
 </ul>
 
 

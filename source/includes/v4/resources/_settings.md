@@ -350,6 +350,7 @@ Name | Description
           "auth_enabled": false,
           "allow_signup": true,
           "allow_guest_checkout": true,
+          "require_login_to_browse": false,
           "require_verification": true
         },
         "documents": {

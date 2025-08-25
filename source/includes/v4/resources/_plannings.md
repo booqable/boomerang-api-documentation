@@ -39,9 +39,10 @@ Plannings use two sets of dates that serve different purposes:
 ## Relationships
 Name | Description
 -- | --
+`downtime` | **[Downtime](#downtimes)** `optional`<br>The [Downtime](#downtimes) this Planning belongs to. This association is present when `planning_type: "downtime"`. A downtime represents a period when items are unavailable for rental due to maintenance, repairs, or other operational reasons. It is not associated with a customer order. 
 `item` | **[Item](#items)** `required`<br>The [Product](#products) or [Bundle](#bundles) that was booked. 
 `nested_plannings` | **[Plannings](#plannings)** `hasmany`<br>When `item` is a [Bundle](#bundles), then there is a nested planning that corresponds for each [BundleItem](#bundle-items). 
-`order` | **[Order](#orders)** `required`<br>The [Order](#orders) this Planning belongs to. 
+`order` | **[Order](#orders)** `optional`<br>The [Order](#orders) this Planning belongs to. 
 `order_line` | **[Line](#lines)** `optional`<br>The [Line](#lines) which holds financial information for this Planning. 
 `parent_planning` | **[Planning](#plannings)** `required`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
 `start_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will pick up the item. 
@@ -59,12 +60,13 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether planning is archived.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a Planning is removed from an Order through the Lines resource. When an Order is archived, `status` of Plannings is set to `archived`, but the `archived` attribute remains false. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the planning was archived. Indicates when the `archived` attribute was set to true. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`downtime_id` | **uuid** `readonly` `nullable`<br>The [Downtime](#downtimes) this Planning belongs to. This association is present when `planning_type: "downtime"`. A downtime represents a period when items are unavailable for rental due to maintenance, repairs, or other operational reasons. It is not associated with a customer order. 
 `fulfillment_type` | **string** `writeonly`<br>The type of fulfillment for this planning. 
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly`<br>The [Product](#products) or [Bundle](#bundles) that was booked. 
 `item_name` | **string** `writeonly`<br>Allows sorting plannings by item name. 
 `location_shortage_amount` | **integer** <br>Amount of items short at the specific location. This represents how many more items would be needed at the `start_location` to fully satisfy this planning. A value greater than zero indicates a location shortage. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
-`order_id` | **uuid** `readonly`<br>The [Order](#orders) this Planning belongs to. 
+`order_id` | **uuid** `readonly` `nullable`<br>The [Order](#orders) this Planning belongs to. 
 `order_number` | **integer** `writeonly`<br>Allows sorting plannings by order number. 
 `parent_planning_id` | **uuid** `readonly`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
 `planning_type` | **enum** `readonly`<br>Type of planning. Can be `order` for regular rental plannings created through [Orders](#orders), or `downtime` for operational periods when items are unavailable due to maintenance, repairs, or other reasons. Downtime plannings don't belong to an order and are managed separately.<br> One of: `order`, `downtime`.
@@ -108,10 +110,10 @@ Check each individual operation to see which relations can be included as a side
           "archived_at": null,
           "planning_type": "order",
           "quantity": 1,
-          "starts_at": "1972-11-02T07:47:00.000000+00:00",
-          "stops_at": "1972-12-02T07:47:00.000000+00:00",
-          "reserved_from": "1972-11-02T07:47:00.000000+00:00",
-          "reserved_till": "1972-12-02T07:47:00.000000+00:00",
+          "starts_at": "1972-10-26T07:49:00.000000+00:00",
+          "stops_at": "1972-11-25T07:49:00.000000+00:00",
+          "reserved_from": "1972-10-26T07:49:00.000000+00:00",
+          "reserved_till": "1972-11-25T07:49:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -119,6 +121,7 @@ Check each individual operation to see which relations can be included as a side
           "location_shortage_amount": 0,
           "shortage_amount": 0,
           "order_id": "ead6ad3f-bdc9-47c1-86d3-7f825d8f0769",
+          "downtime_id": null,
           "item_id": "bc366da1-7df4-4bc5-846b-8d94a52be19b",
           "start_location_id": "91d91031-83d2-483b-8d80-12ce62a11b4f",
           "stop_location_id": "91d91031-83d2-483b-8d80-12ce62a11b4f",
@@ -143,7 +146,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[plannings]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,order_line`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,downtime`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -159,6 +162,7 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`downtime_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `item_id` | **uuid** <br>`eq`, `not_eq`
 `item_type` | **string** <br>`eq`, `not_eq`
@@ -198,6 +202,7 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>downtime</code></li>
   <li>
     <code>item</code>
     <ul>
@@ -239,12 +244,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-08-19T09:30:44Z"
+                       "gte": "2025-08-26T09:28:32Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-08-22T09:30:44Z"
+                       "lte": "2025-08-29T09:28:32Z"
                      }
                    }
                  ]
@@ -254,12 +259,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-08-19T09:30:44Z"
+                       "gte": "2025-08-26T09:28:32Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-08-22T09:30:44Z"
+                       "lte": "2025-08-29T09:28:32Z"
                      }
                    }
                  ]
@@ -297,7 +302,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[plannings]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,order_line`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,downtime`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -313,6 +318,7 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`downtime_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `item_id` | **uuid** <br>`eq`, `not_eq`
 `item_type` | **string** <br>`eq`, `not_eq`
@@ -352,6 +358,7 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>downtime</code></li>
   <li>
     <code>item</code>
     <ul>
@@ -394,10 +401,10 @@ This request accepts the following includes:
         "archived_at": null,
         "planning_type": "order",
         "quantity": 1,
-        "starts_at": "1977-11-26T04:12:01.000000+00:00",
-        "stops_at": "1977-12-26T04:12:01.000000+00:00",
-        "reserved_from": "1977-11-26T04:12:01.000000+00:00",
-        "reserved_till": "1977-12-26T04:12:01.000000+00:00",
+        "starts_at": "1977-11-19T04:14:01.000000+00:00",
+        "stops_at": "1977-12-19T04:14:01.000000+00:00",
+        "reserved_from": "1977-11-19T04:14:01.000000+00:00",
+        "reserved_till": "1977-12-19T04:14:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,
@@ -405,6 +412,7 @@ This request accepts the following includes:
         "location_shortage_amount": 0,
         "shortage_amount": 0,
         "order_id": "73a043aa-a655-48a0-8936-f1c8ded729d7",
+        "downtime_id": null,
         "item_id": "ab4d2f98-31a4-4d84-8750-a8b3c4408a4a",
         "start_location_id": "090a3ed2-c86a-468d-8d55-d59c162f9276",
         "stop_location_id": "090a3ed2-c86a-468d-8d55-d59c162f9276",
@@ -427,7 +435,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[plannings]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,order_line`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=order,item,downtime`
 
 
 ### Includes
@@ -435,6 +443,7 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>downtime</code></li>
   <li>
     <code>item</code>
     <ul>

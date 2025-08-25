@@ -40,7 +40,8 @@ StockItemPlannings provide several key benefits:
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>The Order this StockItemPlanning is part of. 
+`downtime` | **[Downtime](#downtimes)** `optional`<br>The Downtime this StockItemPlanning is associated with when the planning is for downtime rather than an order. Either order or downtime will be present, but not both. 
+`order` | **[Order](#orders)** `optional`<br>The Order this StockItemPlanning is part of. 
 `planning` | **[Planning](#plannings)** `required`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
 `stock_item` | **[Stock item](#stock-items)** `required`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
 
@@ -55,8 +56,9 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether this StockItemPlanning has been archived. There are two distinct archiving mechanisms:<br>1. **Unspecifying (Unassigning) a StockItem**: When a StockItem is "unspecified" from an Order through the OrderFulfillment API,    the `archived` attribute is set to `true`. This indicates that the StockItem is no longer assigned to this Planning.    The `archived_at` timestamp is updated to record when this occurred. This mechanism allows users to change the StockItems    assigned to a Planning without losing the historical record of which StockItems were assigned.<br>2. **Archive an Order**: When an Order is archived, the `status` of its StockItemPlannings is set to `archived`,    but the `archived` attribute remains `false`. This preserves the historical record of which StockItems were    assigned to the Order while marking the entire Order as archived. This mechanism allows users to archive Orders    to have a clear overview of current and future Orders without cluttering the UI with historical Orders. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the StockItemPlanning was archived through StockItem unspecified archiving. This timestamp records when the StockItem was unassigned from the Planning. This field is only updated when the `archived` attribute is set to `true` through the StockItem unspecified archiving mechanism. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`downtime_id` | **uuid** `readonly` `nullable`<br>The Downtime this StockItemPlanning is associated with when the planning is for downtime rather than an order. Either order or downtime will be present, but not both. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly`<br>The Order this StockItemPlanning is part of. 
+`order_id` | **uuid** `readonly` `nullable`<br>The Order this StockItemPlanning is part of. 
 `planning_id` | **uuid** `readonly`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
 `reserved` | **boolean** <br>Whether StockItem is reserved, meaning it's unavailable for other orders. This is set to `true` when the order status is changed to "reserved" or when the StockItem is specifically assigned to the planning. When reserved, the item cannot be booked for other orders during the same period. 
 `started` | **boolean** <br>Whether the StockItem is started, meaning it has been picked up by the customer or delivered. This is set to `true` when staff performs a "Start" action through the [OrderFulfillments](#order-fulfillments) resource. Once started, the item is physically out with the customer and its status can be tracked independently of other items on the same order. 
@@ -99,7 +101,8 @@ Check each individual operation to see which relations can be included as a side
           "status": "concept",
           "stock_item_id": "cb6d24a2-3cdf-47ad-8b45-e484a3447f07",
           "planning_id": "a0d6b272-7ad6-4a19-8c78-7a77546685b6",
-          "order_id": "a7840ea8-9a1c-473b-8218-df29c7e23ae3"
+          "order_id": "a7840ea8-9a1c-473b-8218-df29c7e23ae3",
+          "downtime_id": null
         },
         "relationships": {}
       }
@@ -136,6 +139,7 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`downtime_id` | **uuid** <br>`eq`, `not_eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `order_id` | **uuid** <br>`eq`, `not_eq`
 `planning_id` | **uuid** <br>`eq`, `not_eq`
@@ -164,6 +168,7 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
+  <li><code>downtime</code></li>
   <li>
     <code>order</code>
     <ul>
@@ -222,7 +227,8 @@ This request accepts the following includes:
         "status": "concept",
         "stock_item_id": "43333d08-17a4-4fba-8d4e-d72ca065b58e",
         "planning_id": "1d924e5e-e519-4099-8a55-2bb0ad9b1658",
-        "order_id": "a14b0c0b-28ec-40a9-8731-70f3e67ba44e"
+        "order_id": "a14b0c0b-28ec-40a9-8731-70f3e67ba44e",
+        "downtime_id": null
       },
       "relationships": {}
     },

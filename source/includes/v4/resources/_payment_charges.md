@@ -261,6 +261,7 @@ This request accepts the following includes:
   <li>
     <code>order</code>
     <ul>
+      <li><code>documents</code></li>
       <li><code>payments</code></li>
     </ul>
   </li>
@@ -391,6 +392,7 @@ This request accepts the following includes:
   <li>
     <code>order</code>
     <ul>
+      <li><code>documents</code></li>
       <li><code>payments</code></li>
     </ul>
   </li>
@@ -484,6 +486,7 @@ This request accepts the following includes:
   <li>
     <code>order</code>
     <ul>
+      <li><code>documents</code></li>
       <li><code>payments</code></li>
     </ul>
   </li>
