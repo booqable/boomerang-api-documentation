@@ -53,8 +53,14 @@ you are looking at.
 Note that the payload is in JSON format, not JSON API format. Relations of the
 resource are delivered as nested JSON objects, not as JSON API relationships.
 
+The table below shows which relations are included in the payload for each resource.
+The included relations are always the same for a resource and do not depend on the
+event. Includes are not recursive (ie. `bundle.updated` will NOT include `bundle_item.product.barcode`).
+
 | Resource | Relations included in webhook payload |
 | -- | -- |
+| `bundles` | `bundle_items`, `bundle_items.product`, `bundle_items.product_group` |
+| `bundle_items` | `bundle`, `product`, `product_group` |
 | `cart` | `customer`, `lines`, `lines.item`, `order` |
 | `contract`/`invoice`/`quote` | `coupon`, `customer`, `lines`, `order`, `tax_values` |
 | `customer` | `barcode`, `tax_region` |
@@ -67,7 +73,7 @@ resource are delivered as nested JSON objects, not as JSON API relationships.
  Name | Description
 -- | --
 `created_at` | **datetime** `readonly`<br>When the webhook endpoint was first registered. 
-`events` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.saved_as_concept`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
+`events` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `bundle.archived`, `bundle.created`, `bundle.updated`, `bundle_item.archived`, `bundle_item.created`, `bundle_item.updated`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.saved_as_concept`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
 `id` | **uuid** `readonly`<br>Primary key.
 `updated_at` | **datetime** `readonly`<br>When the webhook endpoint was last updated. 
 `url` | **string** <br>The URL that will receive the webhook payload. 
@@ -254,7 +260,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.saved_as_concept`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
+`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `bundle.archived`, `bundle.created`, `bundle.updated`, `bundle_item.archived`, `bundle_item.created`, `bundle_item.updated`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.saved_as_concept`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
 `data[attributes][url]` | **string** <br>The URL that will receive the webhook payload. 
 `data[attributes][version]` | **enum** <br>The version of the webhook payload.<br> One of: `1`, `4`.
 
@@ -326,7 +332,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.saved_as_concept`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
+`data[attributes][events]` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `bundle.archived`, `bundle.created`, `bundle.updated`, `bundle_item.archived`, `bundle_item.created`, `bundle_item.updated`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.saved_as_concept`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
 `data[attributes][url]` | **string** <br>The URL that will receive the webhook payload. 
 `data[attributes][version]` | **enum** <br>The version of the webhook payload.<br> One of: `1`, `4`.
 

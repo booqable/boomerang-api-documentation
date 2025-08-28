@@ -12,7 +12,7 @@ Webhooks are only available for a limited time after the event occurred.
 -- | --
 `created_at` | **datetime** `readonly`<br>When this webhook notification was created. This is the timestamp of the original event. 
 `data` | **hash** `readonly`<br>The payload data that was sent with this webhook notification.<br>The format and included attributes depend on the `version` subscribed to. 
-`event` | **enum** `readonly`<br>The type of event that triggered this webhook.<br> One of: `customer.created`, `customer.updated`, `customer.archived`, `product_group.created`, `product_group.updated`, `product_group.archived`, `product.created`, `invoice.created`, `invoice.finalized`, `invoice.updated`, `invoice.revised`, `invoice.archived`, `contract.created`, `contract.signed`, `contract.confirmed`, `contract.updated`, `contract.archived`, `quote.created`, `quote.signed`, `quote.confirmed`, `quote.updated`, `quote.archived`, `order.updated`, `order.saved_as_draft`, `order.reserved`, `order.started`, `order.stopped`, `order.canceled`, `order.archived`, `payment.completed`, `cart.completed_checkout`, `app.installed`, `app.configured`, `app.plan_changed`, `app.uninstalled`.
+`event` | **enum** `readonly`<br>The type of event that triggered this webhook.<br> One of: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `bundle_item.archived`, `bundle_item.created`, `bundle_item.updated`, `bundle.archived`, `bundle.created`, `bundle.updated`, `cart.completed_checkout`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product_group.archived`, `product_group.created`, `product_group.updated`, `product.created`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`.
 `id` | **uuid** `readonly`<br>The unique identifier for this webhook notification. 
 `resource_type` | **string** `readonly`<br>The JSON API resource type of the resource this webhook notification is about. Examples: `orders`, `products`, `customers`, `bundles`, `invoices`, etc. 
 `updated_at` | **datetime** `readonly`<br>When this webhook notification was last updated. This is the timestamp of the last attempt to send the webhook. 
@@ -80,8 +80,8 @@ Webhooks are only available for a limited time after the event occurred.
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2014-03-25T18:03:01.000000+00:00",
-          "stops_at": "2014-03-29T18:03:01.000000+00:00",
+          "starts_at": "2014-03-25T17:49:01.000000+00:00",
+          "stops_at": "2014-03-29T17:49:01.000000+00:00",
           "customer_id": null,
           "discount_type": "percentage",
           "discount_percentage": 0.0,
@@ -233,8 +233,8 @@ Webhooks are only available for a limited time after the event occurred.
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-06-23T17:38:00.000000+00:00",
-          "stops_at": "2018-06-27T17:38:00.000000+00:00",
+          "starts_at": "2018-06-23T17:24:00.000000+00:00",
+          "stops_at": "2018-06-27T17:24:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,

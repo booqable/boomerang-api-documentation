@@ -244,6 +244,8 @@ Name | Description
           "discount_in_cents": 0,
           "balance_in_cents": 0,
           "coupon": null,
+          "coupon_intervals": null,
+          "coupon_plans": null,
           "coupon_percent_off": null,
           "coupon_duration": null,
           "coupon_duration_in_months": null,

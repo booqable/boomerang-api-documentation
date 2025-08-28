@@ -31,6 +31,8 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`archived` | **boolean** `readonly`<br>Whether the bundle item is archived. 
+`archived_at` | **datetime** `readonly` `nullable`<br>When the bundle item was archived. 
 `bundle_id` | **uuid** `readonly-after-create`<br>The Bundle this BundleItem is part of. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `discount_percentage` | **float** <br>The discount percentage for this product when rented out as part of a bundle. 
@@ -64,6 +66,8 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2019-11-14T16:12:00.000000+00:00",
           "updated_at": "2019-11-14T16:12:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 1,
@@ -88,7 +92,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -103,6 +107,8 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`archived` | **boolean** <br>`eq`
+`archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `bundle_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -164,6 +170,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2015-08-13T03:51:01.000000+00:00",
         "updated_at": "2015-08-13T03:51:01.000000+00:00",
+        "archived": false,
+        "archived_at": null,
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 1,
@@ -187,7 +195,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,archived`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
 
 
@@ -245,6 +253,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2018-09-16T12:53:01.000000+00:00",
         "updated_at": "2018-09-16T12:53:01.000000+00:00",
+        "archived": false,
+        "archived_at": null,
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 2,
@@ -268,7 +278,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,archived`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
 
 
@@ -338,6 +348,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2015-01-21T01:26:00.000000+00:00",
         "updated_at": "2015-01-21T01:26:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
         "quantity": 3,
         "discount_percentage": 20.0,
         "position": 1,
@@ -361,7 +373,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,archived`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=bundle,product,product_group`
 
 
@@ -421,6 +433,8 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2021-05-16T17:50:00.000000+00:00",
         "updated_at": "2021-05-16T17:50:00.000000+00:00",
+        "archived": true,
+        "archived_at": "2021-05-16T17:50:00.000000+00:00",
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 1,
@@ -444,7 +458,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,quantity`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[bundle_items]=created_at,updated_at,archived`
 
 
 ### Includes

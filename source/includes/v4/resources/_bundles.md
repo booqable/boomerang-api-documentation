@@ -518,6 +518,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2020-05-21T17:38:00.000000+00:00",
           "updated_at": "2020-05-21T17:38:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "quantity": 2,
           "discount_percentage": 10.0,
           "position": 1,
@@ -533,6 +535,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2020-05-21T17:38:00.000000+00:00",
           "updated_at": "2020-05-21T17:38:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 2,
@@ -548,6 +552,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2020-05-21T17:38:00.000000+00:00",
           "updated_at": "2020-05-21T17:38:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "quantity": 2,
           "discount_percentage": 10.0,
           "position": 3,
@@ -563,6 +569,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2020-05-21T17:38:00.000000+00:00",
           "updated_at": "2020-05-21T17:38:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 4,
@@ -726,6 +734,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2023-01-20T01:56:00.000000+00:00",
           "updated_at": "2023-01-20T01:56:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 2,
@@ -741,6 +751,8 @@ This request accepts the following includes:
         "attributes": {
           "created_at": "2023-01-20T01:56:00.000000+00:00",
           "updated_at": "2023-01-20T01:56:00.000000+00:00",
+          "archived": false,
+          "archived_at": null,
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 3,
