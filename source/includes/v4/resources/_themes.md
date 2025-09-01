@@ -34,7 +34,7 @@ Check each individual operation to see which relations can be included as a side
 `preview_url` | **string** <br>The URL where the theme could be previewed. 
 `root_theme` | **string** `readonly` `extra`<br>The root theme name. 
 `theme_id` | **uuid** `readonly-after-create`<br>Either the installed theme, or the original theme. 
-`theme_type` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`.
+`theme_type` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`, `simple_store`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `version` | **string** <br>Theme version. 
 
@@ -248,7 +248,7 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of the theme. 
 `data[attributes][preview_url]` | **string** <br>The URL where the theme could be previewed. 
 `data[attributes][theme_id]` | **uuid** <br>Either the installed theme, or the original theme. 
-`data[attributes][theme_type]` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`.
+`data[attributes][theme_type]` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`, `simple_store`.
 `data[attributes][version]` | **string** <br>Theme version. 
 
 
