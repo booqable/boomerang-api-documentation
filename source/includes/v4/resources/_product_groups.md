@@ -81,8 +81,8 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `allow_shortage` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
-`buffer_time_after` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_after</code> is the replacement for <code>lag_time</code>.   For a short while, both attributes will be accepted and returned. </aside> 
-`buffer_time_before` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_before</code> is the replacement for <code>lead_time</code>.   For a short while, both attributes will be accepted and returned. </aside> 
+`buffer_time_after` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
+`buffer_time_before` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
 `deposit_in_cents` | **integer** <br>The value to use for deposit calculations. 
 `description` | **string** `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
@@ -90,8 +90,6 @@ Check each individual operation to see which relations can be included as a side
 `extra_information` | **string** `nullable`<br>Extra information about the product group, shown on orders and documents. 
 `group_name` | **string** `readonly`<br>Same as `name`. 
 `has_variations` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
-`lag_time` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   The <code>lag_time</code> attribute will be renamed to <code>buffer_time_after</code> in the near future.   For a short while, both attributes will be accepted and returned. </aside> 
-`lead_time` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   The <code>lead_time</code> attribute will be renamed to <code>buffer_time_before</code> in the near future.   For a short while, both attributes will be accepted and returned. </aside> 
 `name` | **string** <br>Name of the item. 
 `price_period` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
 `price_ruleset_id` | **uuid** `nullable`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
@@ -141,8 +139,6 @@ Check each individual operation to see which relations can be included as a side
           "group_name": null,
           "slug": "ipad-pro",
           "sku": "SKU",
-          "lead_time": 0,
-          "lag_time": 0,
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",
@@ -226,8 +222,6 @@ Name | Description
 `group_name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `has_variations` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`lag_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
 `price_period` | **enum** <br>`eq`
@@ -392,8 +386,6 @@ Name | Description
 `group_name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `has_variations` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`lag_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
 `price_period` | **enum** <br>`eq`
@@ -479,8 +471,6 @@ This request accepts the following includes:
         "group_name": null,
         "slug": "ipad-pro",
         "sku": "SKU",
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",
@@ -598,8 +588,6 @@ This request accepts the following includes:
         "group_name": null,
         "slug": "ipad-mini",
         "sku": "IPAD_MINI",
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",
@@ -664,8 +652,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
-`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_after</code> is the replacement for <code>lag_time</code>.   For a short while, both attributes will be accepted and returned. </aside> 
-`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_before</code> is the replacement for <code>lead_time</code>.   For a short while, both attributes will be accepted and returned. </aside> 
+`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
+`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
@@ -673,8 +661,6 @@ Name | Description
 `data[attributes][extra_information]` | **string** <br>Extra information about the product group, shown on orders and documents. 
 `data[attributes][flat_fee_price_in_cents]` | **integer** <br>Use this value when price type is `simple`. 
 `data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
-`data[attributes][lag_time]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   The <code>lag_time</code> attribute will be renamed to <code>buffer_time_after</code> in the near future.   For a short while, both attributes will be accepted and returned. </aside> 
-`data[attributes][lead_time]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   The <code>lead_time</code> attribute will be renamed to <code>buffer_time_before</code> in the near future.   For a short while, both attributes will be accepted and returned. </aside> 
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
 `data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
@@ -756,8 +742,6 @@ This request accepts the following includes:
         "group_name": null,
         "slug": "ipad-pro",
         "sku": "SKU",
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",
@@ -819,8 +803,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
-`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_after</code> is the replacement for <code>lag_time</code>.   For a short while, both attributes will be accepted and returned. </aside> 
-`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_before</code> is the replacement for <code>lead_time</code>.   For a short while, both attributes will be accepted and returned. </aside> 
+`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
+`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
@@ -828,8 +812,6 @@ Name | Description
 `data[attributes][extra_information]` | **string** <br>Extra information about the product group, shown on orders and documents. 
 `data[attributes][flat_fee_price_in_cents]` | **integer** <br>Use this value when price type is `simple`. 
 `data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
-`data[attributes][lag_time]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   The <code>lag_time</code> attribute will be renamed to <code>buffer_time_after</code> in the near future.   For a short while, both attributes will be accepted and returned. </aside> 
-`data[attributes][lead_time]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   The <code>lead_time</code> attribute will be renamed to <code>buffer_time_before</code> in the near future.   For a short while, both attributes will be accepted and returned. </aside> 
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
 `data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
@@ -902,8 +884,6 @@ This request accepts the following includes:
         "group_name": null,
         "slug": "0845ee1b-c095-41c8-8179-28d5fe7fd2f3",
         "sku": "SKU",
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",

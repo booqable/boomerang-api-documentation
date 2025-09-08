@@ -16,6 +16,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`buffer_times` | **boolean** <br>Indicates if buffer_time_before and buffer_time_after settings should be copied from the original ProductGroup.
 `collections` | **boolean** <br>Indicates if collections should be copied from the original ProductGroup.
 `custom_fields` | **boolean** <br>Indicates if custom fields should be copied from the original ProductGroup.
 `description` | **string** <br>Description used in the online store.
@@ -23,7 +24,6 @@ Check each individual operation to see which relations can be included as a side
 `name` | **string** <br>Name of the newly created [ProductGroup](#product-groups).
 `new_product_group_id` | **uuid** `readonly`<br>The newly created [ProductGroup](#product-groups).
 `original_product_group_id` | **uuid** <br>The [ProductGroup](#product-groups) to be duplicated.
-`padding_time` | **boolean** <br>Indicates if lead and lag time settings should be copied from the original ProductGroup.
 `photo_base64` | **string** <br>Base64 encoded photo, use this field to store a main photo.
 `price_settings` | **boolean** <br>Indicates if price settings should be copied from the original ProductGroup.
 `remote_photo_url` | **string** <br>URL to an image on the web.
@@ -51,7 +51,7 @@ Check each individual operation to see which relations can be included as a side
              "description": "New description",
              "collections": true,
              "custom_fields": true,
-             "padding_time": true,
+             "buffer_times": true,
              "price_settings": true,
              "shortage_settings": true,
              "tags": true,
@@ -74,7 +74,7 @@ Check each individual operation to see which relations can be included as a side
         "description": "New description",
         "collections": true,
         "custom_fields": true,
-        "padding_time": true,
+        "buffer_times": true,
         "price_settings": true,
         "shortage_settings": true,
         "tags": true,
@@ -111,11 +111,11 @@ This request accepts the following body:
 
 Name | Description
 -- | --
+`data[attributes][buffer_times]` | **boolean** <br>Indicates if buffer_time_before and buffer_time_after settings should be copied from the original ProductGroup.
 `data[attributes][collections]` | **boolean** <br>Indicates if collections should be copied from the original ProductGroup.
 `data[attributes][custom_fields]` | **boolean** <br>Indicates if custom fields should be copied from the original ProductGroup.
 `data[attributes][name]` | **string** <br>Name of the newly created [ProductGroup](#product-groups).
 `data[attributes][original_product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) to be duplicated.
-`data[attributes][padding_time]` | **boolean** <br>Indicates if lead and lag time settings should be copied from the original ProductGroup.
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo.
 `data[attributes][price_settings]` | **boolean** <br>Indicates if price settings should be copied from the original ProductGroup.
 `data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web.

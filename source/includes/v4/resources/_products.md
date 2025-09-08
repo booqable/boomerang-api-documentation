@@ -56,8 +56,8 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `allow_shortage` | **boolean** `readonly`<br>Whether shortages are allowed. 
-`buffer_time_after` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_after</code> is the replacement for <code>lag_time</code>. </aside> 
-`buffer_time_before` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br><aside class="warning inline">   <code>buffer_time_before</code> is the replacement for <code>lead_time</code>. </aside> 
+`buffer_time_after` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
+`buffer_time_before` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
 `deposit_in_cents` | **integer** `readonly`<br>The value to use for deposit calculations. 
 `description` | **string** `readonly` `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** `readonly`<br>Whether discounts should be applied to this item (note that price rules will still apply). 
@@ -65,8 +65,6 @@ Check each individual operation to see which relations can be included as a side
 `extra_information` | **string** `readonly` `nullable`<br>Extra information about the item, shown on orders and documents. 
 `group_name` | **string** `readonly`<br>The name of the product group. 
 `has_variations` | **boolean** `readonly`<br>Whether variations are enabled. Not applicable for product_type `service`. 
-`lag_time` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation.<br><aside class="warning inline">   The <code>lag_time</code> attribute will be renamed to <code>buffer_time_after</code> in the near future. </aside> 
-`lead_time` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation.<br><aside class="warning inline">   The <code>lead_time</code> attribute will be renamed to <code>buffer_time_before</code> in the near future. </aside> 
 `name` | **string** `readonly`<br>Name of the item (based on product group and `variations_values`). 
 `price_period` | **enum** `readonly`<br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
 `price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
@@ -116,8 +114,6 @@ Check each individual operation to see which relations can be included as a side
           "group_name": "iPad Pro",
           "slug": "ipad-pro",
           "sku": null,
-          "lead_time": 0,
-          "lag_time": 0,
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",
@@ -167,8 +163,6 @@ Check each individual operation to see which relations can be included as a side
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
           "sku": "PRODUCT 1000055",
-          "lead_time": 0,
-          "lag_time": 0,
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",
@@ -251,8 +245,6 @@ Name | Description
 `group_name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `has_variations` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`lag_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
 `price_period` | **enum** <br>`eq`
@@ -428,8 +420,6 @@ Name | Description
 `group_name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `has_variations` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`lag_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
 `price_period` | **enum** <br>`eq`
@@ -524,8 +514,6 @@ This request accepts the following includes:
         "group_name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": null,
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",
@@ -639,8 +627,6 @@ This request accepts the following includes:
         "group_name": "iPad Pro",
         "slug": "ipad-pro-red",
         "sku": null,
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",
@@ -767,8 +753,6 @@ This request accepts the following includes:
         "group_name": "iPad Pro",
         "slug": "ipad-pro",
         "sku": null,
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",
@@ -884,8 +868,6 @@ This request accepts the following includes:
         "group_name": "iPad Pro",
         "slug": "5fe125ba-4a82-4fad-8a18-03ea09db75a3",
         "sku": null,
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",

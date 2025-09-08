@@ -67,8 +67,6 @@ The description of the relationships and attributes of these resources can be fo
           "group_name": null,
           "slug": "ipad-pro",
           "sku": "SKU",
-          "lead_time": 0,
-          "lag_time": 0,
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",
@@ -121,8 +119,6 @@ The description of the relationships and attributes of these resources can be fo
           "group_name": "iPad Pro",
           "slug": "ipad-pro",
           "sku": "SKU",
-          "lead_time": 0,
-          "lag_time": 0,
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",
@@ -206,8 +202,6 @@ Name | Description
 `group_name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `has_variations` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`lag_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
 `price_period` | **enum** <br>`eq`
@@ -378,8 +372,6 @@ Name | Description
 `group_name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `has_variations` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`lag_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`lead_time` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `photo_id` | **uuid** <br>`eq`, `not_eq`
 `price_period` | **enum** <br>`eq`
@@ -466,8 +458,6 @@ This request accepts the following includes:
         "group_name": null,
         "slug": "ipad-pro",
         "sku": "SKU",
-        "lead_time": 0,
-        "lag_time": 0,
         "buffer_time_before": 0,
         "buffer_time_after": 0,
         "product_type": "rental",
