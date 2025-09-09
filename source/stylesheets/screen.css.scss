@@ -405,6 +405,10 @@ ul#toc {
     @extend %left-col;
   }
 
+  &>h3, &>h4, &>h5, &>h6 {
+    clear: right;
+  }
+
   &>figure {
     margin-right: $examples-width + 5%;
     padding-block-end: 2rem;
