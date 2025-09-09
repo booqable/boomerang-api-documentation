@@ -1617,12 +1617,284 @@ token=&lt;JWT token&gt;
 
 <p>If any other status code is returned or if the response does not follow the above format the request will be considered failed and no rates will be shown to users.</p>
 <h2 id='capabilities-payment-options'>Payment Options</h2>
-<p>TODO</p>
+<p>This capability allows your app to add custom payment options for users during checkout.</p>
+<h3 id='capabilities-payment-options-routes'>Routes</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/paypal/charge"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/paypal/charge/:id/cancel"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/paypal/auth"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/paypal/auth/:id/capture"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/paypal/auth/:id/void"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/paypal/refund"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Payment apps define their API routes in the <a href="#reference-routes"><code>routes</code> section of their <code>meta.json</code> file</a>. These routes tell Booqable where to send requests for different payment operations.</p>
+
+<p>There are a total of 6 routes available:</p>
 
 <ul>
-<li>how to configure in meta.json</li>
-<li>TBD</li>
+<li><a href="#capabilities-payment-options-configuration-available-routes-charge_url"><code>charge_url</code></a></li>
+<li><a href="#capabilities-payment-options-configuration-available-routes-cancel_charge_url"><code>cancel_charge_url</code></a></li>
+<li><a href="#capabilities-payment-options-configuration-available-routes-authorization_url"><code>authorization_url</code></a></li>
+<li><a href="#capabilities-payment-options-configuration-available-routes-capture_authorization_url"><code>capture_authorization_url</code></a></li>
+<li><a href="#capabilities-payment-options-configuration-available-routes-void_authorization_url"><code>void_authorization_url</code></a></li>
+<li><a href="#capabilities-payment-options-configuration-available-routes-refund_url"><code>refund_url</code></a></li>
 </ul>
+<h3 id='capabilities-payment-options-configuration'>Configuration</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/app_payment_options'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{
+    "data": {
+      "type": "app_payment_options",
+      "attributes": {}
+    }
+  }'</span>
+</code></pre></div>
+<p>After a user installs your payment app, you must create a PaymentOption record using Booqable&#39;s Payment Options API endpoint. The PaymentOption enables Booqable to show new payment options in the UI using the <a href="#reference-routes">routes configured in your app&#39;s <code>meta.json</code> file</a>. Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app&#39;s endpoints using JWT tokens for security.</p>
+
+<p>You should create the PaymentOption right after the app exchanges the authorization code for an access token or when a user has provided all necessary settings for your app to function.</p>
+<h4 id='capabilities-payment-options-configuration-available-routes'>Available Routes</h4><h5 id='capabilities-payment-options-configuration-available-routes-charge_url'><code>charge_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
+</span><span class="c1">// POST https://my-payments-app.com/charge</span><span class="w">
+</span></code></pre></div>
+<p>Process payment charges.</p>
+
+<p>This route is called when a user initiates a payment during checkout. Booqable sends the payment details including the total amount, customer address, and a return URL where the user should be redirected after payment completion. Your app should respond with a unique charge ID and a redirect URL where the user can complete the payment.</p>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-charge_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customer_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St, City, State, Country"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"return_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://booqable.com/example-end-of-payment-callback"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>booqable_id</code></td>
+<td>The unique identifier of this charge in Booqable&#39;s system</td>
+</tr>
+<tr>
+<td><code>customer_address</code></td>
+<td>Customer&#39;s billing address for payment processing</td>
+</tr>
+<tr>
+<td><code>total_in_cents</code></td>
+<td>Total amount to charge in cents (e.g., 5000 = $50.00)</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>Currency code for the payment (e.g., &quot;USD&quot;, &quot;EUR&quot;)</td>
+</tr>
+<tr>
+<td><code>return_url</code></td>
+<td>URL where the user should be redirected after payment completion</td>
+</tr>
+</tbody></table>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-charge_url-code-response-parameters'>Response Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charge_123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"redirect_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-payments-app.com/redirect"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Unique identifier for the charge, in your payment app&#39;s system</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td>URL where the user should be redirected to, from Booqable, to complete the payment</td>
+</tr>
+</tbody></table>
+<h5 id='capabilities-payment-options-configuration-available-routes-cancel_charge_url'><code>cancel_charge_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
+</span><span class="c1">// PUT https://my-payments-app.com/charge/charge_123/cancel</span><span class="w">
+</span></code></pre></div>
+<p>Cancel a payment charge.</p>
+
+<p>This route is called when a payment needs to be cancelled, typically when an order is cancelled or when a shopping cart is invalidated. The charge ID from your app is passed in the URL path, and you should respond with a success status to confirm the cancellation.</p>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-cancel_charge_url-code-request-parameters'>Request Parameters</h6>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>:id</code> (URL path)</td>
+<td>The charge ID, in your payment app&#39;s system, to cancel</td>
+</tr>
+</tbody></table>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-cancel_charge_url-code-response'>Response</h6>
+<p>The response should be an HTTP 200 OK status.</p>
+<h5 id='capabilities-payment-options-configuration-available-routes-authorization_url'><code>authorization_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
+</span><span class="c1">// POST https://my-payments-app.com/authorization</span><span class="w">
+</span></code></pre></div>
+<p>Create payment authorizations for deposit/capture flows.</p>
+
+<p>This route is called when creating a payment authorization for later capture, typically used for deposit and hold scenarios where funds are authorized but not immediately charged. The response should include an authorization ID and redirect URL for the user to complete the authorization process.</p>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-authorization_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customer_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St, City, State"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"return_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://booqable.com/example-end-of-authorization-callback"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>booqable_id</code></td>
+<td>The unique identifier of this authorization in Booqable&#39;s system</td>
+</tr>
+<tr>
+<td><code>customer_address</code></td>
+<td>Customer&#39;s billing address for payment processing</td>
+</tr>
+<tr>
+<td><code>total_in_cents</code></td>
+<td>Total amount to authorize in cents (e.g., 5000 = $50.00)</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>Currency code for the authorization (e.g., &quot;USD&quot;, &quot;EUR&quot;)</td>
+</tr>
+<tr>
+<td><code>return_url</code></td>
+<td>URL where the user should be redirected after authorization completion</td>
+</tr>
+</tbody></table>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-authorization_url-code-response-parameters'>Response Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authorization_123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"redirect_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-payments-app.com/redirect"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Unique identifier for the authorization in your payment app&#39;s system</td>
+</tr>
+<tr>
+<td><code>redirect_url</code></td>
+<td>URL where the user should be redirected to, from Booqable, to complete the authorization</td>
+</tr>
+</tbody></table>
+<h5 id='capabilities-payment-options-configuration-available-routes-capture_authorization_url'><code>capture_authorization_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
+</span><span class="c1">// PUT https://my-payments-app.com/authorization/authorization_123/capture</span><span class="w">
+</span></code></pre></div>
+<p>Capture funds from a previous authorization.</p>
+
+<p>This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID.</p>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-capture_authorization_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total_in_cents</code></td>
+<td>Final amount to capture in cents (e.g., 5000 = $50.00)</td>
+</tr>
+<tr>
+<td><code>booqable_id</code></td>
+<td>The unique identifier of this charge in Booqable&#39;s system</td>
+</tr>
+</tbody></table>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-capture_authorization_url-code-response'>Response</h6>
+<p>The response should be an HTTP 200 OK status.</p>
+<h5 id='capabilities-payment-options-configuration-available-routes-void_authorization_url'><code>void_authorization_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
+</span><span class="c1">// PUT https://my-payments-app.com/authorization/authorization_123/void</span><span class="w">
+</span></code></pre></div>
+<p>Void/cancel a payment authorization.</p>
+
+<p>This route is called when cancelling an unused authorization, typically when an order is cancelled before the authorization is captured or when the authorization expires. The authorization ID from your app is passed in the URL path, and you should respond with a success status to confirm the void operation.</p>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-void_authorization_url-code-request-parameters'>Request Parameters</h6>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>:id</code> (URL path)</td>
+<td>The authorization ID, in your payment app&#39;s system, to void</td>
+</tr>
+</tbody></table>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-void_authorization_url-code-response'>Response</h6>
+<p>The response should be an HTTP 200 OK status.</p>
+<h5 id='capabilities-payment-options-configuration-available-routes-refund_url'><code>refund_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
+</span><span class="c1">// POST https://my-payments-app.com/refund</span><span class="w">
+</span></code></pre></div>
+<p>Process payment refunds.</p>
+
+<p>This route is called when processing a refund for a completed payment. Booqable sends the refund details including the original charge ID, refund amount, and currency. Your app should respond with a unique refund ID to track the refund operation.</p>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-refund_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"charge_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original_charge_id"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>booqable_id</code></td>
+<td>The unique identifier of this refund in Booqable&#39;s system</td>
+</tr>
+<tr>
+<td><code>charge_id</code></td>
+<td>ID of the original charge being refunded</td>
+</tr>
+<tr>
+<td><code>total_in_cents</code></td>
+<td>Refund amount in cents (e.g., 5000 = $50.00)</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>Currency code for the refund (e.g., &quot;USD&quot;, &quot;EUR&quot;)</td>
+</tr>
+</tbody></table>
+<h6 id='capabilities-payment-options-configuration-available-routes-code-refund_url-code-response-parameters'>Response Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refund_123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Unique identifier for the refund, in your payment app&#39;s system</td>
+</tr>
+</tbody></table>
 <h1 id='reference'>Reference</h1><h2 id='reference-config-meta-json'><code>/config/meta.json</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-1-0.json#"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme_app"</span><span class="p">,</span><span class="w">
