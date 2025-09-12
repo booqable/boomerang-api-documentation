@@ -19,7 +19,7 @@ curl --request POST \
   }'
 ```
 
-After a user installs your delivery carrier app, you must create a delivery carrier record using Booqable's [Carriers API endpoint](/v4.html#app-carriers). The carrier requires:
+After a user installs your delivery carrier app, you must create a delivery carrier record using Booqable's [Carriers API endpoint](/internal.html#app-carriers). The carrier requires:
 
 * `identifier` - A unique identifier for your carrier.
 * `rates_url` - The URL where Booqable will send rate calculation requests.

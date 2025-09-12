@@ -44,7 +44,7 @@ curl --request POST \
   }'
 ```
 
-After a user installs your payment app, you must create a PaymentOption record using Booqable's Payment Options API endpoint. The PaymentOption enables Booqable to show new payment options in the UI using the [routes configured in your app's `meta.json` file](#reference-routes). Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app's endpoints using JWT tokens for security.
+After a user installs your payment app, you must create a PaymentOption record using Booqable's [Payment Options API endpoint](/internal.html#app-payment-options). The PaymentOption enables Booqable to show new payment options in the UI using the [routes configured in your app's `meta.json` file](#reference-routes). Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app's endpoints using JWT tokens for security.
 
 You should create the PaymentOption right after the app exchanges the authorization code for an access token or when a user has provided all necessary settings for your app to function.
 
