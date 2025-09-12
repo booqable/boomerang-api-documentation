@@ -435,15 +435,15 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>TODO</p>
+<p>Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They&#39;re distributed through the Booqable App Store, where users can discover, install, and manage them through a streamlined interface. Apps can extend functionality through various capabilities including delivery carriers for custom shipping rates, payment options for checkout processing, theme blocks for website customization, and tracking scripts for analytics integration.</p>
 <h1 id='quick-start'>Quick Start</h1>
-<p>TODO summary</p>
+<p>TODO section summary</p>
 
 <ul>
-<li>how to create a tracking pixel app</li>
-<li>how to create a custom content block app</li>
-<li>how to create a delivery carrier app</li>
-<li>how to create a payment option app</li>
+<li>TODO how to create a tracking pixel app</li>
+<li>TODO how to create a custom content block app</li>
+<li>TODO how to create a delivery carrier app</li>
+<li>TODO how to create a payment option app</li>
 </ul>
 <h1 id='how-apps-work'>How Apps Work</h1>
 <p>Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They&#39;re distributed through the Booqable App Store, where users can discover and manage them. Configuration is managed through a file tree and allows you to control store listings and app details.</p>
@@ -1172,7 +1172,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <li><strong>App ready</strong> - The app is now connected and ready to use.</li>
 </ol>
 <h1 id='capabilities'>Capabilities</h1>
-<p>TODO summary</p>
+<p>Apps can extend Booqable&#39;s functionality through various capabilities that integrate with different parts of the platform. These capabilities include delivery carriers for custom shipping rates, payment options for checkout processing, theme blocks for website customization, and tracking scripts for analytics integration. Each capability provides specific APIs and configuration options that allow apps to seamlessly integrate with Booqable&#39;s core features.</p>
 <h2 id='capabilities-tracking-scripts'>Tracking Scripts</h2>
 <p>Tracking scripts allow your app to inject JavaScript code into the customer-facing websites to track user behavior and integrate with analytics services like Google Analytics, Meta Pixel and others.</p>
 <h3 id='capabilities-tracking-scripts-configuration'>Configuration</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1534,7 +1534,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
     }
   }'</span>
 </code></pre></div>
-<p>After a user installs your delivery carrier app, you must create a delivery carrier record using Booqable&#39;s <a href="v4.html#app-carriers">Carriers API endpoint</a>. The carrier requires:</p>
+<p>After a user installs your delivery carrier app, you must create a delivery carrier record using Booqable&#39;s <a href="internal.html#app-carriers">Carriers API endpoint</a>. The carrier requires:</p>
 
 <ul>
 <li><code>identifier</code> - A unique identifier for your carrier.</li>
@@ -1651,7 +1651,7 @@ token=&lt;JWT token&gt;
     }
   }'</span>
 </code></pre></div>
-<p>After a user installs your payment app, you must create a PaymentOption record using Booqable&#39;s Payment Options API endpoint. The PaymentOption enables Booqable to show new payment options in the UI using the <a href="#reference-routes">routes configured in your app&#39;s <code>meta.json</code> file</a>. Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app&#39;s endpoints using JWT tokens for security.</p>
+<p>After a user installs your payment app, you must create a PaymentOption record using Booqable&#39;s <a href="internal.html#app-payment-options">Payment Options API endpoint</a>. The PaymentOption enables Booqable to show new payment options in the UI using the <a href="#reference-routes">routes configured in your app&#39;s <code>meta.json</code> file</a>. Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app&#39;s endpoints using JWT tokens for security.</p>
 
 <p>You should create the PaymentOption right after the app exchanges the authorization code for an access token or when a user has provided all necessary settings for your app to function.</p>
 <h4 id='capabilities-payment-options-configuration-available-routes'>Available Routes</h4><h5 id='capabilities-payment-options-configuration-available-routes-charge_url'><code>charge_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">

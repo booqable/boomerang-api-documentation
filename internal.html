@@ -2405,6 +2405,52 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#apps" class="toc-h1 toc-link" data-title="Apps" title="Apps"><strong>Apps</strong></a>
+          </li>
+          <li>
+            <a href="#app-carriers" class="toc-h1 toc-link" data-title="App carriers" title="App carriers">App carriers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#app-carriers-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#app-carriers-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#app-carriers-list-app-carriers" class="toc-h2 toc-link" data-title="List app carriers" title="List app carriers">List app carriers</a>
+                  </li>
+                  <li>
+                    <a href="#app-carriers-fetch-an-app-carrier" class="toc-h2 toc-link" data-title="Fetch an app carrier" title="Fetch an app carrier">Fetch an app carrier</a>
+                  </li>
+                  <li>
+                    <a href="#app-carriers-create-an-app-carrier" class="toc-h2 toc-link" data-title="Create an app carrier" title="Create an app carrier">Create an app carrier</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#app-payment-options" class="toc-h1 toc-link" data-title="App payment options" title="App payment options">App payment options</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#app-payment-options-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#app-payment-options-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#app-payment-options-list-app-payment-options" class="toc-h2 toc-link" data-title="List app payment options" title="List app payment options">List app payment options</a>
+                  </li>
+                  <li>
+                    <a href="#app-payment-options-fetch-an-app-payment-option" class="toc-h2 toc-link" data-title="Fetch an app payment option" title="Fetch an app payment option">Fetch an app payment option</a>
+                  </li>
+                  <li>
+                    <a href="#app-payment-options-create-an-app-payment-option" class="toc-h2 toc-link" data-title="Create an app payment option" title="Create an app payment option">Create an app payment option</a>
+                  </li>
+                  <li>
+                    <a href="#app-payment-options-delete-an-app-payment-option" class="toc-h2 toc-link" data-title="Delete an app payment option" title="Delete an app payment option">Delete an app payment option</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -52265,6 +52311,681 @@ Check each individual operation to see which relations can be included as a side
   </li>
   <li><code>stock_item</code></li>
 </ul>
+<h1 id='apps'><strong>Apps</strong></h1><h1 id='app-carriers'>App carriers</h1>
+<p>AppCarriers represent delivery carriers available through third-party delivery apps integrated
+with Booqable. These carriers are provided by external delivery applications that extend
+Booqable&#39;s delivery capabilities beyond the built-in options.</p>
+
+<p>For more information about delivery apps see <a href="apps.html#capabilities-delivery-carriers">the Apps documentation</a>.</p>
+<h2 id='app-carriers-relationships'>Relationships</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>app_subscription</code></td>
+<td><strong><a href="#app-subscriptions">App subscription</a></strong> <code>required</code><br>The <a href="#app-subscriptions">AppSubscription</a> that provides this carrier.</td>
+</tr>
+<tr>
+<td><code>tax_category</code></td>
+<td><strong><a href="#tax-categories">Tax category</a></strong> <code>optional</code><br>The <a href="#tax-categories">TaxCategory</a> associated with this carrier for tax calculations.</td>
+</tr>
+</tbody></table>
+
+<p>Check matching attributes under <a href="#app-carriers-fields">Fields</a> to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.</p>
+<h2 id='app-carriers-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>app_subscription_id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>The <a href="#app-subscriptions">AppSubscription</a> that provides this carrier.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was created.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td><strong>string</strong> <br>Unique identifier for this carrier.</td>
+</tr>
+<tr>
+<td><code>rates_url</code></td>
+<td><strong>string</strong> <br>URL endpoint for fetching delivery rates from this carrier.</td>
+</tr>
+<tr>
+<td><code>tax_category_id</code></td>
+<td><strong>uuid</strong> <code>nullable</code><br>The <a href="#tax-categories">TaxCategory</a> associated with this carrier for tax calculations.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was last updated.</td>
+</tr>
+</tbody></table>
+<h2 id='app-carriers-list-app-carriers'>List app carriers</h2>
+<blockquote>
+<p>How to fetch a list of app carriers:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/app_carriers'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1c37032-4250-4b3c-85a3-e38618c75e92"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_carriers"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-05-14T04:07:06.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-05-14T04:07:06.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrier-1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"rates_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://deliveries1.test/rates"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"app_subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b3452ba3-cafd-4c4b-8259-e086c1925a49"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='app-carriers-list-app-carriers-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/app_carriers</code></p>
+<h3 id='app-carriers-list-app-carriers-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[app_carriers]=created_at,updated_at,identifier</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-carriers-list-app-carriers-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>app_subscription_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td><strong>string</strong> <br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>rates_url</code></td>
+<td><strong>string</strong> <br><code>eq</code>, <code>not_eq</code>, <code>eql</code>, <code>not_eql</code>, <code>prefix</code>, <code>not_prefix</code>, <code>suffix</code>, <code>not_suffix</code>, <code>match</code>, <code>not_match</code></td>
+</tr>
+<tr>
+<td><code>tax_category_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-carriers-list-app-carriers-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-carriers-list-app-carriers-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='app-carriers-fetch-an-app-carrier'>Fetch an app carrier</h2>
+<blockquote>
+<p>How to fetch an app carrier:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/app_carriers/35747d6a-20da-4e41-884b-63593049abeb'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35747d6a-20da-4e41-884b-63593049abeb"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_carriers"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-07-22T07:28:04.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-07-22T07:28:04.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"carrier-2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rates_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://deliveries2.test/rates"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"app_subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a483a4e-4a38-41de-89f7-ae6fdbeeab51"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='app-carriers-fetch-an-app-carrier-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/app_carriers/{id}</code></p>
+<h3 id='app-carriers-fetch-an-app-carrier-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[app_carriers]=created_at,updated_at,identifier</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-carriers-fetch-an-app-carrier-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='app-carriers-create-an-app-carrier'>Create an app carrier</h2>
+<p>App carriers are typically created by third-party delivery apps through the Booqable Apps API.</p>
+
+<blockquote>
+<p>How to create an app carrier:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST
+       <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/app_carriers'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data</span> <span class="s1">'{
+         "data": {
+           "type": "app_carriers",
+           "attributes": {
+             "identifier": "my-deliver-express",
+             "rates_url": "https://my-deliver-express.example.com/api/rates"
+           }
+         }
+       }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a6b05d0c-2ee8-45c6-8008-87d0aaa1ff26"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_carriers"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-07T00:40:10.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-07T00:40:10.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-deliver-express"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rates_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-deliver-express.example.com/api/rates"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tax_category_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"app_subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67c8f03d-d36e-4d7d-8c4d-bffa03a309c6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='app-carriers-create-an-app-carrier-http-request'>HTTP Request</h3>
+<p><code>POST /api/4/app_carriers</code></p>
+<h3 id='app-carriers-create-an-app-carrier-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[app_carriers]=created_at,updated_at,identifier</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-carriers-create-an-app-carrier-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][identifier]</code></td>
+<td><strong>string</strong> <br>Unique identifier for this carrier.</td>
+</tr>
+<tr>
+<td><code>data[attributes][rates_url]</code></td>
+<td><strong>string</strong> <br>URL endpoint for fetching delivery rates from this carrier.</td>
+</tr>
+<tr>
+<td><code>data[attributes][tax_category_id]</code></td>
+<td><strong>uuid</strong> <br>The <a href="#tax-categories">TaxCategory</a> associated with this carrier for tax calculations.</td>
+</tr>
+</tbody></table>
+<h3 id='app-carriers-create-an-app-carrier-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='app-payment-options'>App payment options</h1>
+<p>AppPaymentOptions represent payment methods available through third-party payment apps integrated
+with Booqable. These options are provided by external payment applications that extend Booqable&#39;s
+payment capabilities beyond the built-in Stripe integration.</p>
+
+<p>For more information about payment apps see <a href="apps.html#capabilities-payment-options">the Apps documentation</a>.</p>
+<h2 id='app-payment-options-relationships'>Relationships</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>app_subscription</code></td>
+<td><strong><a href="#app-subscriptions">App subscription</a></strong> <code>required</code><br>The <a href="#app-subscriptions">AppSubscription</a> that provides this payment option.</td>
+</tr>
+</tbody></table>
+
+<p>Check matching attributes under <a href="#app-payment-options-fields">Fields</a> to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.</p>
+<h2 id='app-payment-options-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>app_subscription_id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>The <a href="#app-subscriptions">AppSubscription</a> that provides this payment option.</td>
+</tr>
+<tr>
+<td><code>authorization_url</code></td>
+<td><strong>string</strong> <code>readonly</code><br>API endpoint for creating payment authorization for deposit/capture flows.</td>
+</tr>
+<tr>
+<td><code>cancel_charge_url</code></td>
+<td><strong>string</strong> <code>readonly</code><br>API endpoint for canceling a payment charge.</td>
+</tr>
+<tr>
+<td><code>capture_authorization_url</code></td>
+<td><strong>string</strong> <code>readonly</code><br>API endpoint for capturing funds from a previous authorization.</td>
+</tr>
+<tr>
+<td><code>charge_url</code></td>
+<td><strong>string</strong> <code>readonly</code><br>API endpoint for processing payment charges.</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was created.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td><strong>string</strong> <code>readonly</code><br>Unique identifier for this payment option.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><strong>string</strong> <code>readonly</code><br>Human-readable display name for this payment option.</td>
+</tr>
+<tr>
+<td><code>refund_url</code></td>
+<td><strong>string</strong> <code>readonly</code><br>API endpoint for processing payment refunds.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was last updated.</td>
+</tr>
+<tr>
+<td><code>void_authorization_url</code></td>
+<td><strong>string</strong> <code>readonly</code><br>API endpoint for voiding/canceling a payment authorization.</td>
+</tr>
+</tbody></table>
+<h2 id='app-payment-options-list-app-payment-options'>List app payment options</h2>
+<blockquote>
+<p>How to fetch a list of app payment options:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/app_payment_options'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acc05ce7-a5cc-4bd5-851c-975119830032"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_payment_options"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-28T01:01:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-28T01:01:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment Option 1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment_option_1"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/charge"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/authorize"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/refund"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"app_subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64206567-0594-458d-8253-8a9119e7e100"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='app-payment-options-list-app-payment-options-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/app_payment_options</code></p>
+<h3 id='app-payment-options-list-app-payment-options-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[app_payment_options]=created_at,updated_at,name</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=app_subscription</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-payment-options-list-app-payment-options-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-payment-options-list-app-payment-options-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-payment-options-list-app-payment-options-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li><code>app_subscription</code></li>
+</ul>
+<h2 id='app-payment-options-fetch-an-app-payment-option'>Fetch an app payment option</h2>
+<blockquote>
+<p>How to fetch an app payment option:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/app_payment_options/a2a19063-15d5-467b-862e-14d019be14da'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a2a19063-15d5-467b-862e-14d019be14da"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_payment_options"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-12-22T10:47:02.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-12-22T10:47:02.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment Option 2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment_option_2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/authorize"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/refund"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"app_subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84997b55-9943-4525-8429-126a29b47fd3"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='app-payment-options-fetch-an-app-payment-option-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/app_payment_options/{id}</code></p>
+<h3 id='app-payment-options-fetch-an-app-payment-option-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[app_payment_options]=created_at,updated_at,name</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=app_subscription</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-payment-options-fetch-an-app-payment-option-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li><code>app_subscription</code></li>
+</ul>
+<h2 id='app-payment-options-create-an-app-payment-option'>Create an app payment option</h2>
+<p>App payment options are typically created by third-party apps through the Booqable Apps API.</p>
+
+<p>The name, identifier, and payment operation routes are automatically copied from the app&#39;s meta.json
+configuration when the payment option is created and cannot be overridden.</p>
+
+<p>The payment option will be available for use in checkout flows once created.</p>
+
+<blockquote>
+<p>How to create an app payment option:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST
+       <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/app_payment_options'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data</span> <span class="s1">'{
+         "data": {
+           "type": "app_payment_options",
+           "attributes": {}
+         }
+       }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"480cd4d8-51bf-412c-8f8c-9700781a11f8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_payment_options"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-18T20:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-18T20:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mailchimp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mypay-express"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"app_subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602e8f3e-5561-4715-8f86-327c5798f16a"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='app-payment-options-create-an-app-payment-option-http-request'>HTTP Request</h3>
+<p><code>POST /api/4/app_payment_options</code></p>
+<h3 id='app-payment-options-create-an-app-payment-option-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[app_payment_options]=created_at,updated_at,name</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-payment-options-create-an-app-payment-option-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='app-payment-options-delete-an-app-payment-option'>Delete an app payment option</h2>
+<p>Deleting an app payment option removes it from the available payment methods.
+This action is typically performed by the app that created the payment option.</p>
+
+<p>Once deleted, the payment option will no longer appear in checkout flows
+and cannot be used for new payments.</p>
+
+<blockquote>
+<p>How to delete an app payment option:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> DELETE
+       <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/app_payment_options/a9252fdf-79ec-4ae6-82ea-8efdd117d845'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a9252fdf-79ec-4ae6-82ea-8efdd117d845"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app_payment_options"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-02-15T23:56:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-02-15T23:56:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment Option 4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment_option_4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/charge"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/authorize"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/refund"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"app_subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fc24b32a-1edd-4fb8-8f1a-ed416f9b7227"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='app-payment-options-delete-an-app-payment-option-http-request'>HTTP Request</h3>
+<p><code>DELETE /api/4/app_payment_options/{id}</code></p>
+<h3 id='app-payment-options-delete-an-app-payment-option-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[app_payment_options]=created_at,updated_at,name</code></td>
+</tr>
+</tbody></table>
+<h3 id='app-payment-options-delete-an-app-payment-option-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 
       </div>
       <div class="dark-box">
