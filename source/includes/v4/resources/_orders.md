@@ -22,7 +22,11 @@ Orders are the heart of every rental operation. They hold configuration and info
 - `canceled` The order is canceled. Items will be available for other rentals.
 - `archived` The order won't show up in default search results.
 
-To transition an Order to the next status, create an [OrderStatusTransition](#order-status-transitions).
+To book products on an order, use the [OrderFulfillment](#order-fulfillments) API to
+submit `book_product`, `book_stock_items`, and `book_bundle` actions.
+
+Products can be booked on an Order in any status except for `canceled` and `archived`.
+A `stopped` order will transition back to `started` when additional products are booked.
 
 <aside class="warning">
   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.
@@ -38,8 +42,13 @@ Orders typically follow this workflow:
 4. `started` → `stopped` (return/completion) through [OrderFulfillment](#order-fulfillments)
 5. `stopped` → `archived` through [OrderStatusTransition](#order-status-transitions)
 
-Note that `concept` and `reserved` states can be skipped.
-An order can go from `new` to `started` directly when items are picked up.
+[Booking](#order-fulfillments) products usually happens when an order is in the `new` or `concept` state,
+but technically booking is possible in any state except for `canceled` and `archived`. When booking
+additional products on a `reserved`, `started` or `stopped` order, the products are immediately reserved.
+When booking products on a `stopped` order, the order reverts to the `started` state.
+
+The `concept` and `reserved` states can be skipped.
+An order can go from `new` to `started` directly when products or stock items are picked up.
 
 ## Shortage Handling
 
@@ -184,7 +193,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "orders",
         "attributes": {
           "created_at": "2015-02-09T00:29:01.000000+00:00",
-          "updated_at": "2015-02-09T00:30:01.000000+00:00",
+          "updated_at": "2015-02-09T00:29:01.000000+00:00",
           "number": 1,
           "status": "reserved",
           "statuses": [
@@ -197,8 +206,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-09-02T02:52:01.000000+00:00",
-          "stops_at": "1969-10-02T02:52:01.000000+00:00",
+          "starts_at": "1969-08-29T04:25:01.000000+00:00",
+          "stops_at": "1969-09-28T04:25:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -414,14 +423,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-09-09T09:38:04Z",
-                       "lte": "2025-09-12T09:38:04Z"
+                       "gte": "2025-09-13T08:04:38Z",
+                       "lte": "2025-09-16T08:04:38Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-09-09T09:38:04Z",
-                       "lte": "2025-09-12T09:38:04Z"
+                       "gte": "2025-09-13T08:04:38Z",
+                       "lte": "2025-09-16T08:04:38Z"
                      }
                    }
                  ]
@@ -791,8 +800,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-01-28T12:10:01.000000+00:00",
-        "stops_at": "1970-02-27T12:10:01.000000+00:00",
+        "starts_at": "1970-01-24T13:44:01.000000+00:00",
+        "stops_at": "1970-02-23T13:44:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -932,6 +941,9 @@ This request accepts the following includes:
 When creating an order it is possible to choose the initial status. Accepted statuses
 are `new`, `concept`, `draft` and `reserved`.
 
+The created Order is empty (contains no products or other lines). To book products,
+stock items or bundles on an order, use the [OrderFulfillment](#order-fulfillments) API.
+
 <aside class="warning">
   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.
   For a short while both values will be accepted when using this API to create a new Order,
@@ -986,8 +998,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:32:01.000000+00:00",
-        "stops_at": "2026-11-03T14:32:01.000000+00:00",
+        "starts_at": "2026-09-25T14:36:01.000000+00:00",
+        "stops_at": "2026-11-03T14:36:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,

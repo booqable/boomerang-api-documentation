@@ -110,10 +110,10 @@ Check each individual operation to see which relations can be included as a side
           "archived_at": null,
           "planning_type": "order",
           "quantity": 1,
-          "starts_at": "1972-10-12T07:39:00.000000+00:00",
-          "stops_at": "1972-11-11T07:39:00.000000+00:00",
-          "reserved_from": "1972-10-12T07:39:00.000000+00:00",
-          "reserved_till": "1972-11-11T07:39:00.000000+00:00",
+          "starts_at": "1972-10-08T09:12:00.000000+00:00",
+          "stops_at": "1972-11-07T09:12:00.000000+00:00",
+          "reserved_from": "1972-10-08T09:12:00.000000+00:00",
+          "reserved_till": "1972-11-07T09:12:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -169,7 +169,7 @@ Name | Description
 `location_shortage_amount` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `order_id` | **uuid** <br>`eq`, `not_eq`
 `parent_planning_id` | **uuid** <br>`eq`, `not_eq`
-`planning_type` | **enum** <br>`eq`
+`planning_type` | **string** <br>`eq`, `not_eq`
 `product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -244,12 +244,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-09-09T09:38:44Z"
+                       "gte": "2025-09-13T08:05:17Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-09-12T09:38:44Z"
+                       "lte": "2025-09-16T08:05:17Z"
                      }
                    }
                  ]
@@ -259,12 +259,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-09-09T09:38:44Z"
+                       "gte": "2025-09-13T08:05:17Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-09-12T09:38:44Z"
+                       "lte": "2025-09-16T08:05:17Z"
                      }
                    }
                  ]
@@ -325,7 +325,7 @@ Name | Description
 `location_shortage_amount` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `order_id` | **uuid** <br>`eq`, `not_eq`
 `parent_planning_id` | **uuid** <br>`eq`, `not_eq`
-`planning_type` | **enum** <br>`eq`
+`planning_type` | **string** <br>`eq`, `not_eq`
 `product_type` | **string** <br>`eq`, `not_eq`
 `q` | **string** <br>`eq`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -401,10 +401,10 @@ This request accepts the following includes:
         "archived_at": null,
         "planning_type": "order",
         "quantity": 1,
-        "starts_at": "1977-11-05T04:04:01.000000+00:00",
-        "stops_at": "1977-12-05T04:04:01.000000+00:00",
-        "reserved_from": "1977-11-05T04:04:01.000000+00:00",
-        "reserved_till": "1977-12-05T04:04:01.000000+00:00",
+        "starts_at": "1977-11-01T05:37:01.000000+00:00",
+        "stops_at": "1977-12-01T05:37:01.000000+00:00",
+        "reserved_from": "1977-11-01T05:37:01.000000+00:00",
+        "reserved_till": "1977-12-01T05:37:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,

@@ -65,6 +65,7 @@ Check each individual operation to see which relations can be included as a side
 `starts_at` | **datetime** <br>When the StockItem is scheduled to be picked up or delivered. This date/time indicates when the specific StockItem will begin its rental period, aligning with the planning's start date. This date/time is not updated when a StockItem is picked up earlier or later than originally scheduled. 
 `status` | **enum** `readonly`<br>Status of this StockItemPlanning. A StockItemPlanning becomes "stopped" when the StockItem is returned. The Order it belongs to might not be completely stopped (partial return). Otherwise, the status mostly follows the status of the Order.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a StockItem is "unspecified" from an Order through the OrderFulfillment API. When an Order is archived, `status` of StockItemPlannings is set to `archived`, but the `archived` attribute remains false.<br>Possible status values: - `new`: When the order is in new state. - `concept`: When the order is in concept state. - `reserved`: When the StockItem is reserved for this order. The parent Order can already be `started` due to partial pickups. - `started`: When the StockItem has been picked up or delivered. - `stopped`: When the StockItem has been returned. The parent Order can still be `started` due to partial returns. - `archived`: When the parent Order has been archived. - `canceled`: When the parent Order has been canceled.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside><br> One of: `new`, `concept`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `stock_item_id` | **uuid** `readonly`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
+`stock_item_planning_type` | **enum** `readonly`<br>The type of planning this StockItemPlanning belongs to. This field indicates whether the StockItem is allocated for a regular order or for downtime.<br>One of: `order`, `downtime`.<br>`order` - The StockItem is allocated for a regular rental order.<br>`downtime` - The StockItem is allocated for downtime.<br>This attribute helps distinguish between order-related and downtime-related StockItem allocations, which may have different business logic and display requirements. 
 `stopped` | **boolean** <br>Whether the StockItem is stopped, meaning it has been returned by the customer and is available again for other rentals. This is set to `true` when staff performs a "Stop" action through the [OrderFulfillments](#order-fulfillments) resource. A StockItem must be started before it can be stopped. Once stopped, the item becomes available for other bookings. 
 `stops_at` | **datetime** <br>When the StockItem is scheduled to be returned. This date/time indicates when the specific StockItem will end its rental period, aligning with the planning's stop date. This date/time is not updated when a StockItem is returned earlier or later than originally scheduled. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -99,6 +100,7 @@ Check each individual operation to see which relations can be included as a side
           "started": false,
           "stopped": false,
           "status": "concept",
+          "stock_item_planning_type": "order",
           "stock_item_id": "cb6d24a2-3cdf-47ad-8b45-e484a3447f07",
           "planning_id": "a0d6b272-7ad6-4a19-8c78-7a77546685b6",
           "order_id": "a7840ea8-9a1c-473b-8218-df29c7e23ae3",
@@ -148,6 +150,7 @@ Name | Description
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `status` | **enum** <br>`eq`
 `stock_item_id` | **uuid** <br>`eq`, `not_eq`
+`stock_item_planning_type` | **enum** <br>`eq`
 `stopped` | **boolean** <br>`eq`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -225,6 +228,7 @@ This request accepts the following includes:
         "started": false,
         "stopped": false,
         "status": "concept",
+        "stock_item_planning_type": "order",
         "stock_item_id": "43333d08-17a4-4fba-8d4e-d72ca065b58e",
         "planning_id": "1d924e5e-e519-4099-8a55-2bb0ad9b1658",
         "order_id": "a14b0c0b-28ec-40a9-8731-70f3e67ba44e",

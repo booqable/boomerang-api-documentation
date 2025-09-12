@@ -25,6 +25,8 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `charge_duration_in_seconds` | **integer** <br>How many seconds were charged. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`downtime_count` | **integer** <br>How many downtimes occurred for this product. 
+`downtime_duration_in_seconds` | **integer** <br>How many seconds of downtime occurred for this product. 
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>Stock item identifier. 
 `location_id` | **uuid** <br>[Location](#locations) where the stock item is stored. 
@@ -58,12 +60,14 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:46:00.000000+00:00",
+          "created_at": "2028-06-15T10:13:00.000000+00:00",
           "product_name": "Product 1000061",
           "identifier": "id1000172",
           "charge_duration_in_seconds": 7200,
           "planned_duration_in_seconds": 7200,
           "rented_count": 1,
+          "downtime_count": 0,
+          "downtime_duration_in_seconds": 0,
           "revenue_in_cents": 2000,
           "stock_item_id": "900e48a7-b2af-464c-830a-b2f0a09aebf5",
           "product_id": "2e16282a-9ed0-48f3-8810-cb74f0570bc0",
@@ -75,12 +79,14 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:46:00.000000+00:00",
+          "created_at": "2028-06-15T10:13:00.000000+00:00",
           "product_name": "Product 1000061",
           "identifier": "id1000173",
           "charge_duration_in_seconds": 0,
           "planned_duration_in_seconds": 0,
           "rented_count": 0,
+          "downtime_count": 0,
+          "downtime_duration_in_seconds": 0,
           "revenue_in_cents": 2000,
           "stock_item_id": "6ce9ed33-92eb-48b1-8528-75f4d4503cc9",
           "product_id": "2e16282a-9ed0-48f3-8810-cb74f0570bc0",

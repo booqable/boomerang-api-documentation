@@ -97,14 +97,19 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`attention_required` | **array** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
+`item_type` | **enum** <br>`eq`
 `location_id` | **uuid** <br>`eq`, `not_eq`
 `product_id` | **uuid** <br>`eq`, `not_eq`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`reason` | **enum** <br>`eq`
+`reason` | **enum** <br>`eq`, `not_eq`
+`reasons` | **array** <br>`eq`, `not_eq`
+`start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **enum** <br>`eq`
+`status` | **enum** <br>`eq`, `not_eq`
+`statuses` | **array** <br>`eq`, `not_eq`
 `stock_item_id` | **uuid** <br>`eq`, `not_eq`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -116,6 +121,10 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`attention_required` | **array** <br>`count`
+`item_type` | **array** <br>`count`
+`reason` | **array** <br>`count`
+`status` | **array** <br>`count`
 `total` | **array** <br>`count`
 
 

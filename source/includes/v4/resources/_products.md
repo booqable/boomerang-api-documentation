@@ -70,7 +70,7 @@ Check each individual operation to see which relations can be included as a side
 `price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`product_type` | **enum** `readonly`<br>Type of product.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future. </aside><br> One of: `rental`, `consumable`, `sales_item`, `service`.
+`product_type` | **enum** `readonly`<br>Type of product.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future. </aside><br> One of: `rental`, `sales_item`, `service`, `consumable`.
 `properties` | **hash** `readonly`<br>Key value pairs of associated properties. This is the same data as provided by the properties relation, but without information about type and position. 
 `seo_description` | **string** `readonly` `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `readonly` `nullable`<br>SEO title tag. 
