@@ -122,6 +122,10 @@ includes:
   - v4/resources/report_sales_items
   - v4/resources/report_stock_items
 
+  - v4/headers/apps
+  - v4/resources/app_carriers
+  - v4/resources/app_payment_options
+
 search: true
 
 code_clipboard: true
