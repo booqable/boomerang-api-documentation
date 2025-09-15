@@ -104,14 +104,15 @@ Name | Description
 `location_id` | **uuid** <br>`eq`, `not_eq`
 `product_id` | **uuid** <br>`eq`, `not_eq`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`range` | **hash** <br>`eq`
 `reason` | **enum** <br>`eq`, `not_eq`
 `reasons` | **array** <br>`eq`, `not_eq`
 `start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
-`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`, `compare`
 `status` | **enum** <br>`eq`, `not_eq`
 `statuses` | **array** <br>`eq`, `not_eq`
 `stock_item_id` | **uuid** <br>`eq`, `not_eq`
-`stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`, `compare`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
