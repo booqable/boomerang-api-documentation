@@ -24,7 +24,7 @@
     "category": {
       "type": "string",
       "description": "Category classification for organizing apps in the app store.",
-      "enum": ["tracking", "payment", "translation", "maps", "marketing", "social"]
+      "enum": ["tracking", "payment", "translation", "maps", "marketing", "social", "widget"]
     },
     "author": {
       "type": "string",
@@ -313,7 +313,7 @@
         "type": {
           "type": "string",
           "description": "Type of the setting field.",
-          "enum": ["text", "number", "select", "header"]
+          "enum": ["text", "textarea", "number", "select", "header"]
         },
         "label": {
           "type": "string",
