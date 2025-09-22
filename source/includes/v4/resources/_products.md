@@ -56,8 +56,8 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `allow_shortage` | **boolean** `readonly`<br>Whether shortages are allowed. 
-`buffer_time_after` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
-`buffer_time_before` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
+`buffer_time_after` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
+`buffer_time_before` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `deposit_in_cents` | **integer** `readonly`<br>The value to use for deposit calculations. 
 `description` | **string** `readonly` `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** `readonly`<br>Whether discounts should be applied to this item (note that price rules will still apply). 
@@ -162,7 +162,7 @@ Check each individual operation to see which relations can be included as a side
           "name": "iPad Pro - blue",
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
-          "sku": "PRODUCT 1000055",
+          "sku": "PRODUCT 1000056",
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",

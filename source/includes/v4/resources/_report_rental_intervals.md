@@ -20,6 +20,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `date` | **date** <br>Interval date.
+`downtime_count` | **integer** <br>Times the product was in downtime.
 `id` | **uuid** `readonly`<br>Primary key.
 `interval` | **string** <br>The interval of the breakdown.
 `product_id` | **uuid** <br>The [Product](#products) whose rental performance is reported.
@@ -50,6 +51,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-12",
           "rented_count": 0,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -61,6 +63,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-13",
           "rented_count": 0,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -72,6 +75,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-14",
           "rented_count": 0,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -83,6 +87,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-15",
           "rented_count": 0,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -94,6 +99,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-16",
           "rented_count": 1,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -105,6 +111,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-17",
           "rented_count": 0,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -116,6 +123,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-18",
           "rented_count": 1,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -127,6 +135,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-19",
           "rented_count": 0,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -138,6 +147,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-20",
           "rented_count": 1,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -149,6 +159,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "date": "2028-12-21",
           "rented_count": 0,
+          "downtime_count": 0,
           "interval": "day",
           "product_id": "11b593b2-23b2-4a0d-8630-f08bdc6a363f"
         },
@@ -169,7 +180,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[report_rental_intervals]=date,rented_count,interval`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[report_rental_intervals]=date,rented_count,downtime_count`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=product`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`

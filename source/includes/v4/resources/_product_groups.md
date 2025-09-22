@@ -81,8 +81,8 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `allow_shortage` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
-`buffer_time_after` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
-`buffer_time_before` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
+`buffer_time_after` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
+`buffer_time_before` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `deposit_in_cents` | **integer** <br>The value to use for deposit calculations. 
 `description` | **string** `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
@@ -652,8 +652,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
-`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
-`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
+`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
+`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
@@ -803,8 +803,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][allow_shortage]` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
-`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and webhooks. 
-`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and webhooks. 
+`data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
+`data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 

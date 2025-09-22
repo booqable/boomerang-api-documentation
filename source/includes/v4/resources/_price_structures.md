@@ -111,6 +111,7 @@ Name | Description
 `archived` | **boolean** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
+`name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `price_structure_type` | **enum** <br>`eq`, `not_eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`

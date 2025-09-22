@@ -23,11 +23,13 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `charge_duration_in_seconds` | **integer** `readonly`<br>How many seconds were charged.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`downtime_count` | **integer** `readonly`<br>How many downtimes occurred for this product during the period.
+`downtime_duration_in_seconds` | **integer** `readonly`<br>Total duration in seconds that this product was in downtime during the period.
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** `readonly`<br>Product name.
-`planned_duration_in_seconds` | **integer** `readonly`<br>How many seconds the product was planned.
 `product_id` | **uuid** <br>The rental [Product](#products) whose performance is reported.
 `quantity` | **integer** `readonly`<br>Quantity in stock during period.
+`rent_duration_in_seconds` | **integer** `readonly`<br>How many seconds the product was rented out.
 `rented_count` | **integer** `readonly`<br>How many times the product was rented out.
 `revenue_in_cents` | **integer** `readonly`<br>Revenue during period.
 
@@ -53,11 +55,13 @@ Check each individual operation to see which relations can be included as a side
         "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
         "type": "report_rentals",
         "attributes": {
-          "created_at": "2019-11-25T23:43:00.000000+00:00",
-          "name": "Product 1000059",
+          "created_at": "2019-11-25T23:44:00.000000+00:00",
+          "name": "Product 1000060",
           "charge_duration_in_seconds": 14400,
-          "planned_duration_in_seconds": 14400,
+          "rent_duration_in_seconds": 14400,
           "rented_count": 2,
+          "downtime_count": 0,
+          "downtime_duration_in_seconds": 0,
           "revenue_in_cents": 4000,
           "quantity": 10,
           "product_id": "c71a94f5-ca5b-4748-8f7a-ce7f18b4bb8a"

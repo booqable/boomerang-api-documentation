@@ -140,6 +140,66 @@ This request accepts the following includes:
 </ul>
 
 
+## Fetch a downtime
+
+
+> How to fetch a downtime:
+
+```shell
+  curl --get 'https://example.booqable.com/api/4/downtimes/cd2fa85a-5a6f-4457-82f6-df2947a24802'
+       --header 'content-type: application/json'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "cd2fa85a-5a6f-4457-82f6-df2947a24802",
+      "type": "downtimes",
+      "attributes": {
+        "created_at": "2025-02-04T09:29:00.000000+00:00",
+        "updated_at": "2025-02-04T09:29:00.000000+00:00",
+        "reason": "maintenance",
+        "status": "reserved",
+        "quantity": 1,
+        "starts_at": "2025-02-06T09:29:00.000000+00:00",
+        "stops_at": "2025-02-09T09:29:00.000000+00:00",
+        "location_id": "3305a2ee-8824-477b-849c-ca245b5969ab",
+        "product_id": "0e170e53-01e4-4b73-858a-e96a6e1b9e79",
+        "stock_item_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`GET /api/4/downtimes/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[downtimes]=created_at,updated_at,reason`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=location,product,stock_item`
+
+
+### Includes
+
+This request accepts the following includes:
+
+<ul>
+  <li><code>location</code></li>
+  <li><code>product</code></li>
+  <li><code>stock_item</code></li>
+</ul>
+
+
 ## Create a downtime
 
 

@@ -30,10 +30,10 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>Stock item identifier. 
 `location_id` | **uuid** <br>[Location](#locations) where the stock item is stored. 
-`planned_duration_in_seconds` | **integer** <br>How many seconds the product was planned. 
 `product_id` | **uuid** <br>The [Product](#products) whose performance is reported. 
 `product_name` | **string** <br>Product name. 
 `q` | **string** `writeonly`<br>Query for a specific stock item. 
+`rent_duration_in_seconds` | **integer** <br>How many seconds the product was rented out. 
 `rented_count` | **integer** <br>How many times the product was rented out. 
 `revenue_in_cents` | **integer** <br>Revenue during period. 
 `stock_item_id` | **uuid** <br>The [StockItem](#stock-items) whose performance is reported. 
@@ -60,11 +60,11 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:36:00.000000+00:00",
-          "product_name": "Product 1000061",
+          "created_at": "2028-06-15T11:37:00.000000+00:00",
+          "product_name": "Product 1000062",
           "identifier": "id1000172",
           "charge_duration_in_seconds": 7200,
-          "planned_duration_in_seconds": 7200,
+          "rent_duration_in_seconds": 7200,
           "rented_count": 1,
           "downtime_count": 0,
           "downtime_duration_in_seconds": 0,
@@ -79,11 +79,11 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:36:00.000000+00:00",
-          "product_name": "Product 1000061",
+          "created_at": "2028-06-15T11:37:00.000000+00:00",
+          "product_name": "Product 1000062",
           "identifier": "id1000173",
           "charge_duration_in_seconds": 0,
-          "planned_duration_in_seconds": 0,
+          "rent_duration_in_seconds": 0,
           "rented_count": 0,
           "downtime_count": 0,
           "downtime_duration_in_seconds": 0,

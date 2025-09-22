@@ -261,8 +261,8 @@ Allowed attribute keys:
 
 - `taxable`
 - `tax_category_id`
-- `lag_time`
-- `lead_time`
+- `buffer_time_before`
+- `buffer_time_after`
 - `price_type`
 - `price_period`
 - `flat_fee_price_in_cents`

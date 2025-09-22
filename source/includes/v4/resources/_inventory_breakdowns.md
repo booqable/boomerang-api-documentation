@@ -26,6 +26,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`downtime_count` | **integer** <br>The amount of items that are in downtime for product and location. 
 `from` | **datetime** <br>When the amount of items will be available (only for status `expected`). 
 `id` | **uuid** `readonly`<br>Primary key.
 `inventory_breakdown_type` | **string** <br>One of `regular` or `temporary`. 
@@ -64,6 +65,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "stock_count": 100,
           "started": 50,
+          "downtime_count": 0,
           "status": "in_stock",
           "inventory_breakdown_type": "regular",
           "location_id": "93539676-0eec-4298-8221-d37c766028c4",
@@ -78,6 +80,7 @@ Check each individual operation to see which relations can be included as a side
           "till": "2020-08-15T02:26:01.000000+00:00",
           "stock_count": 5,
           "started": 0,
+          "downtime_count": 0,
           "status": "in_stock",
           "inventory_breakdown_type": "temporary",
           "location_id": "93539676-0eec-4298-8221-d37c766028c4",
@@ -136,6 +139,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "from": "2017-11-18T03:35:00.000000+00:00",
           "stock_count": 12,
+          "downtime_count": 0,
           "status": "expected",
           "inventory_breakdown_type": "regular",
           "location_id": "53f12674-6a2f-4878-804c-eb4dd3aa204f",
@@ -150,6 +154,7 @@ Check each individual operation to see which relations can be included as a side
           "from": "2017-11-18T03:35:00.000000+00:00",
           "till": "2017-12-19T03:35:00.000000+00:00",
           "stock_count": 5,
+          "downtime_count": 0,
           "status": "expected",
           "inventory_breakdown_type": "temporary",
           "location_id": "53f12674-6a2f-4878-804c-eb4dd3aa204f",
@@ -208,6 +213,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "till": "2022-08-20T18:59:00.000000+00:00",
           "stock_count": 22,
+          "downtime_count": 0,
           "status": "expired",
           "inventory_breakdown_type": "temporary",
           "location_id": "8a5cbdf6-c713-419f-868e-14208fd6df91",
