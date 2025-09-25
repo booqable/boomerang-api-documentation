@@ -183,7 +183,8 @@ This request accepts the following includes:
 App payment options are typically created by third-party apps through the Booqable Apps API.
 
 The name, identifier, and payment operation routes are automatically copied from the app's meta.json
-configuration when the payment option is created and cannot be overridden.
+configuration when the payment option is created if they are not provided in the attributes
+of the POST request body.
 
 The payment option will be available for use in checkout flows once created.
 
@@ -238,6 +239,10 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,name`
+`authorization_url` | **string** <br>API endpoint for creating payment authorization for deposit/capture flows. 
+`charge_url` | **string** <br>API endpoint for processing payment charges. 
+`identifier` | **string** <br>Unique identifier for this payment option. 
+`name` | **string** <br>Human-readable display name for this payment option. 
 
 
 ### Includes
