@@ -101,7 +101,9 @@ Check each individual operation to see which relations can be included as a side
               "tags": 5,
               "away_modes": 0
             },
-            "features": []
+            "features": [
+              "destroy_bundles"
+            ]
           },
           {
             "name": "medium",
@@ -121,6 +123,7 @@ Check each individual operation to see which relations can be included as a side
               "away_modes": 2
             },
             "features": [
+              "destroy_bundles",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -156,6 +159,7 @@ Check each individual operation to see which relations can be included as a side
               "away_modes": null
             },
             "features": [
+              "destroy_bundles",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -196,6 +200,7 @@ Check each individual operation to see which relations can be included as a side
               "away_modes": null
             },
             "features": [
+              "destroy_bundles",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -240,6 +245,7 @@ Check each individual operation to see which relations can be included as a side
               "api",
               "custom_domain",
               "sales_items",
+              "destroy_bundles",
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
@@ -277,6 +283,7 @@ Check each individual operation to see which relations can be included as a side
               "api",
               "custom_domain",
               "sales_items",
+              "destroy_bundles",
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
@@ -319,6 +326,7 @@ Check each individual operation to see which relations can be included as a side
               "api",
               "custom_domain",
               "sales_items",
+              "destroy_bundles",
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
@@ -598,6 +606,7 @@ Check each individual operation to see which relations can be included as a side
               "api",
               "custom_domain",
               "sales_items",
+              "destroy_bundles",
               "bundles",
               "buffer_times",
               "prevent_last_minute_reservations",
@@ -673,7 +682,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1758533426"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1759138237"
         }
       },
       {

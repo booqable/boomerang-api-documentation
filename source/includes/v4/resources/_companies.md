@@ -258,6 +258,7 @@ Name | Description
             "api",
             "custom_domain",
             "sales_items",
+            "destroy_bundles",
             "bundles",
             "buffer_times",
             "prevent_last_minute_reservations",

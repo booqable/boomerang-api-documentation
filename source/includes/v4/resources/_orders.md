@@ -206,8 +206,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-08-19T03:01:01.000000+00:00",
-          "stops_at": "1969-09-18T03:01:01.000000+00:00",
+          "starts_at": "1969-08-12T03:01:01.000000+00:00",
+          "stops_at": "1969-09-11T03:01:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -225,27 +225,27 @@ Check each individual operation to see which relations can be included as a side
             "delivery_address": null,
             "billing_address": null
           },
-          "amount_in_cents": 87393,
+          "amount_in_cents": 87392,
           "amount_paid_in_cents": 0,
-          "amount_to_be_paid_in_cents": 87393,
+          "amount_to_be_paid_in_cents": 87392,
           "deposit_in_cents": 10000,
           "deposit_held_in_cents": 0,
           "deposit_paid_in_cents": 0,
           "deposit_to_be_paid_in_cents": 10000,
           "deposit_refunded_in_cents": 0,
           "deposit_to_refund_in_cents": 0,
-          "total_in_cents": 97393,
+          "total_in_cents": 97392,
           "total_paid_in_cents": 0,
-          "total_to_be_paid_in_cents": 97393,
+          "total_to_be_paid_in_cents": 97392,
           "total_discount_in_cents": 8025,
           "coupon_discount_in_cents": 0,
           "discount_in_cents": 8025,
           "grand_total_in_cents": 72225,
-          "grand_total_with_tax_in_cents": 87393,
+          "grand_total_with_tax_in_cents": 87392,
           "paid_in_cents": 0,
           "price_in_cents": 80250,
-          "tax_in_cents": 15168,
-          "to_be_paid_in_cents": 97393,
+          "tax_in_cents": 15167,
+          "to_be_paid_in_cents": 97392,
           "discount_type": "percentage",
           "discount_percentage": 10.0,
           "billing_address_property_id": null,
@@ -423,14 +423,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-09-23T09:28:15Z",
-                       "lte": "2025-09-26T09:28:15Z"
+                       "gte": "2025-09-30T09:29:02Z",
+                       "lte": "2025-10-03T09:29:02Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-09-23T09:28:15Z",
-                       "lte": "2025-09-26T09:28:15Z"
+                       "gte": "2025-09-30T09:29:02Z",
+                       "lte": "2025-10-03T09:29:02Z"
                      }
                    }
                  ]
@@ -800,8 +800,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1970-01-14T12:20:01.000000+00:00",
-        "stops_at": "1970-02-13T12:20:01.000000+00:00",
+        "starts_at": "1970-01-07T12:19:01.000000+00:00",
+        "stops_at": "1970-02-06T12:19:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -819,27 +819,27 @@ This request accepts the following includes:
           "delivery_address": null,
           "billing_address": null
         },
-        "amount_in_cents": 87393,
+        "amount_in_cents": 87392,
         "amount_paid_in_cents": 0,
-        "amount_to_be_paid_in_cents": 87393,
+        "amount_to_be_paid_in_cents": 87392,
         "deposit_in_cents": 10000,
         "deposit_held_in_cents": 0,
         "deposit_paid_in_cents": 0,
         "deposit_to_be_paid_in_cents": 10000,
         "deposit_refunded_in_cents": 0,
         "deposit_to_refund_in_cents": 0,
-        "total_in_cents": 97393,
+        "total_in_cents": 97392,
         "total_paid_in_cents": 0,
-        "total_to_be_paid_in_cents": 97393,
+        "total_to_be_paid_in_cents": 97392,
         "total_discount_in_cents": 8025,
         "coupon_discount_in_cents": 0,
         "discount_in_cents": 8025,
         "grand_total_in_cents": 72225,
-        "grand_total_with_tax_in_cents": 87393,
+        "grand_total_with_tax_in_cents": 87392,
         "paid_in_cents": 0,
         "price_in_cents": 80250,
-        "tax_in_cents": 15168,
-        "to_be_paid_in_cents": 97393,
+        "tax_in_cents": 15167,
+        "to_be_paid_in_cents": 97392,
         "discount_type": "percentage",
         "discount_percentage": 10.0,
         "billing_address_property_id": null,
@@ -998,8 +998,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:27:01.000000+00:00",
-        "stops_at": "2026-11-03T14:27:01.000000+00:00",
+        "starts_at": "2026-09-25T14:26:01.000000+00:00",
+        "stops_at": "2026-11-03T14:26:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1199,9 +1199,9 @@ When updating a customer on an order the following settings will be applied and 
       "id": "b7fc4715-4681-4fbf-8786-f911532c94f1",
       "type": "orders",
       "attributes": {
-        "grand_total_with_tax_in_cents": 97103,
+        "grand_total_with_tax_in_cents": 97102,
         "price_in_cents": 80250,
-        "to_be_paid_in_cents": 197103,
+        "to_be_paid_in_cents": 197102,
         "customer_id": "62778da7-58fa-4717-8474-a9bcd8c003b4",
         "tax_region_id": null
       },
@@ -1242,7 +1242,7 @@ When updating a customer on an order the following settings will be applied and 
         "deposit_type": "percentage",
         "deposit_in_cents": 10000,
         "deposit_paid_in_cents": 0,
-        "to_be_paid_in_cents": 97393
+        "to_be_paid_in_cents": 97392
       },
       "relationships": {}
     },

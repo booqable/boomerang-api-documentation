@@ -103,6 +103,8 @@ Name | Description
 `item_type` | **enum** <br>`eq`
 `location_id` | **uuid** <br>`eq`, `not_eq`
 `product_id` | **uuid** <br>`eq`, `not_eq`
+`product_ids` | **array** <br>`eq`
+`q` | **string** <br>`eq`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `range` | **hash** <br>`eq`
 `reason` | **enum** <br>`eq`, `not_eq`

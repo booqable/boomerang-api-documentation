@@ -20,14 +20,14 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `app_subscription_id` | **uuid** `readonly`<br>The [AppSubscription](#app-subscriptions) that provides this payment option. 
-`authorization_url` | **string** `readonly`<br>API endpoint for creating payment authorization for deposit/capture flows. 
+`authorization_url` | **string** <br>API endpoint for creating payment authorization for deposit/capture flows. 
 `cancel_charge_url` | **string** `readonly`<br>API endpoint for canceling a payment charge. 
 `capture_authorization_url` | **string** `readonly`<br>API endpoint for capturing funds from a previous authorization. 
-`charge_url` | **string** `readonly`<br>API endpoint for processing payment charges. 
+`charge_url` | **string** <br>API endpoint for processing payment charges. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** `readonly`<br>Unique identifier for this payment option. 
-`name` | **string** `readonly`<br>Human-readable display name for this payment option. 
+`identifier` | **string** <br>Unique identifier for this payment option. 
+`name` | **string** <br>Human-readable display name for this payment option. 
 `refund_url` | **string** `readonly`<br>API endpoint for processing payment refunds. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `void_authorization_url` | **string** `readonly`<br>API endpoint for voiding/canceling a payment authorization. 
@@ -54,15 +54,15 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2017-12-28T01:01:01.000000+00:00",
           "updated_at": "2017-12-28T01:01:01.000000+00:00",
-          "name": "Payment Option 1",
-          "identifier": "payment_option_1",
-          "charge_url": "https://example.com/charge",
-          "authorization_url": "https://example.com/authorize",
           "refund_url": "https://example.com/refund",
           "cancel_charge_url": null,
           "capture_authorization_url": null,
           "void_authorization_url": null,
-          "app_subscription_id": "64206567-0594-458d-8253-8a9119e7e100"
+          "app_subscription_id": "64206567-0594-458d-8253-8a9119e7e100",
+          "name": "Payment Option 1",
+          "identifier": "payment_option_1",
+          "charge_url": "https://example.com/charge",
+          "authorization_url": "https://example.com/authorize"
         },
         "relationships": {}
       }
@@ -81,7 +81,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,refund_url`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscription`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -139,15 +139,15 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2028-12-22T10:47:02.000000+00:00",
         "updated_at": "2028-12-22T10:47:02.000000+00:00",
-        "name": "Payment Option 2",
-        "identifier": "payment_option_2",
-        "charge_url": "https://example.com/charge",
-        "authorization_url": "https://example.com/authorize",
         "refund_url": "https://example.com/refund",
         "cancel_charge_url": null,
         "capture_authorization_url": null,
         "void_authorization_url": null,
-        "app_subscription_id": "84997b55-9943-4525-8429-126a29b47fd3"
+        "app_subscription_id": "84997b55-9943-4525-8429-126a29b47fd3",
+        "name": "Payment Option 2",
+        "identifier": "payment_option_2",
+        "charge_url": "https://example.com/charge",
+        "authorization_url": "https://example.com/authorize"
       },
       "relationships": {}
     },
@@ -165,7 +165,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,refund_url`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscription`
 
 
@@ -183,7 +183,8 @@ This request accepts the following includes:
 App payment options are typically created by third-party apps through the Booqable Apps API.
 
 The name, identifier, and payment operation routes are automatically copied from the app's meta.json
-configuration when the payment option is created and cannot be overridden.
+configuration when the payment option is created if they are not provided in the attributes
+of the POST request body.
 
 The payment option will be available for use in checkout flows once created.
 
@@ -211,15 +212,15 @@ The payment option will be available for use in checkout flows once created.
       "attributes": {
         "created_at": "2021-12-18T20:37:00.000000+00:00",
         "updated_at": "2021-12-18T20:37:00.000000+00:00",
-        "name": "Mailchimp",
-        "identifier": "mypay-express",
-        "charge_url": null,
-        "authorization_url": null,
         "refund_url": null,
         "cancel_charge_url": null,
         "capture_authorization_url": null,
         "void_authorization_url": null,
-        "app_subscription_id": "602e8f3e-5561-4715-8f86-327c5798f16a"
+        "app_subscription_id": "602e8f3e-5561-4715-8f86-327c5798f16a",
+        "name": "Mailchimp",
+        "identifier": "mypay-express",
+        "charge_url": null,
+        "authorization_url": null
       },
       "relationships": {}
     },
@@ -237,7 +238,19 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,refund_url`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][authorization_url]` | **string** <br>API endpoint for creating payment authorization for deposit/capture flows. 
+`data[attributes][charge_url]` | **string** <br>API endpoint for processing payment charges. 
+`data[attributes][identifier]` | **string** <br>Unique identifier for this payment option. 
+`data[attributes][name]` | **string** <br>Human-readable display name for this payment option. 
 
 
 ### Includes
@@ -269,15 +282,15 @@ and cannot be used for new payments.
       "attributes": {
         "created_at": "2027-02-15T23:56:01.000000+00:00",
         "updated_at": "2027-02-15T23:56:01.000000+00:00",
-        "name": "Payment Option 4",
-        "identifier": "payment_option_4",
-        "charge_url": "https://example.com/charge",
-        "authorization_url": "https://example.com/authorize",
         "refund_url": "https://example.com/refund",
         "cancel_charge_url": null,
         "capture_authorization_url": null,
         "void_authorization_url": null,
-        "app_subscription_id": "fc24b32a-1edd-4fb8-8f1a-ed416f9b7227"
+        "app_subscription_id": "fc24b32a-1edd-4fb8-8f1a-ed416f9b7227",
+        "name": "Payment Option 4",
+        "identifier": "payment_option_4",
+        "charge_url": "https://example.com/charge",
+        "authorization_url": "https://example.com/authorize"
       },
       "relationships": {}
     },
@@ -295,7 +308,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,name`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_payment_options]=created_at,updated_at,refund_url`
 
 
 ### Includes

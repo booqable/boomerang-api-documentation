@@ -358,7 +358,7 @@ This request accepts the following includes:
       "type": "stock_items",
       "attributes": {
         "created_at": "2019-01-10T06:59:11.000000+00:00",
-        "updated_at": "2019-01-10T07:00:11.000000+00:00",
+        "updated_at": "2019-01-10T06:59:11.000000+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "12346",
