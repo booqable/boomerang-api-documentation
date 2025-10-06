@@ -2266,6 +2266,7 @@ token=&lt;JWT token&gt;
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Signup Form"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/signup-form.liquid"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"settings_iframe_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/settings"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2294,6 +2295,12 @@ token=&lt;JWT token&gt;
 <td>array of string</td>
 <td>true</td>
 <td>List of sections where the block can be placed.</td>
+</tr>
+<tr>
+<td><code>settings_iframe_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>URL of the theme block&#39;s configuration page to embed in the Booqable theme editor sidebar.</td>
 </tr>
 <tr>
 <td><code>settings</code></td>

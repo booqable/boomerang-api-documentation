@@ -3089,7 +3089,7 @@ Check each individual operation to see which relations can be included as a side
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/barcodes'</span>
        <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
-       <span class="nt">--data-urlencode</span> <span class="s1">'filter[number]=aHR0cDovL2JxYmwuaXQvMWFhZTY0ZjItN2YwZS00NjEyLThiOGMtOWY2ZWMzM2ZiZWY3'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[number]=aHR0cDovL2JxYmwuaXQvMGJjNGM1MWMtMTZhYy00NmJmLWJiMjktNjM2MTkyZWU5MTc0'</span>
        <span class="nt">--data-urlencode</span> <span class="s1">'include=owner'</span>
 </code></pre></div>
 <blockquote>
@@ -6010,6 +6010,10 @@ Check each individual operation to see which relations can be included as a side
 <td><strong>string</strong> <br>A description of this collection.</td>
 </tr>
 <tr>
+<td><code>external_image_url</code></td>
+<td><strong>string</strong> <code>writeonly</code><br>URL to an image on the web, use this field to add a photo.</td>
+</tr>
+<tr>
 <td><code>hierarchical_name</code></td>
 <td><strong>array[string]</strong> <code>readonly</code> <code>extra</code><br>Names of all parents, with the name of this collection as last.</td>
 </tr>
@@ -6031,7 +6035,7 @@ Check each individual operation to see which relations can be included as a side
 </tr>
 <tr>
 <td><code>item_count</code></td>
-<td><strong>integer</strong> <br>Number of collection items in this collection. Includes collection items in this collection, but not in nested collections.</td>
+<td><strong>integer</strong> <br>Number of collection items in this collection that are visible in the store. Only includes items where <code>show_in_store</code> is <code>true</code>. Includes collection items in this collection, but not in nested collections.<br>This count is automatically recalculated when items are added, removed, or when their <code>show_in_store</code> status changes.</td>
 </tr>
 <tr>
 <td><code>name</code></td>
@@ -6405,12 +6409,16 @@ Check each individual operation to see which relations can be included as a side
 <td><strong>enum</strong> <br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: <code>static</code>, <code>dynamic</code>.</td>
 </tr>
 <tr>
+<td><code>data[attributes][external_image_url]</code></td>
+<td><strong>string</strong> <br>URL to an image on the web, use this field to add a photo.</td>
+</tr>
+<tr>
 <td><code>data[attributes][image_base64]</code></td>
 <td><strong>string</strong> <br>Base64 encoded photo, use this field to add a photo.</td>
 </tr>
 <tr>
 <td><code>data[attributes][item_count]</code></td>
-<td><strong>integer</strong> <br>Number of collection items in this collection. Includes collection items in this collection, but not in nested collections.</td>
+<td><strong>integer</strong> <br>Number of collection items in this collection that are visible in the store. Only includes items where <code>show_in_store</code> is <code>true</code>. Includes collection items in this collection, but not in nested collections.<br>This count is automatically recalculated when items are added, removed, or when their <code>show_in_store</code> status changes.</td>
 </tr>
 <tr>
 <td><code>data[attributes][name]</code></td>
@@ -6549,12 +6557,16 @@ Check each individual operation to see which relations can be included as a side
 <td><strong>enum</strong> <br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: <code>static</code>, <code>dynamic</code>.</td>
 </tr>
 <tr>
+<td><code>data[attributes][external_image_url]</code></td>
+<td><strong>string</strong> <br>URL to an image on the web, use this field to add a photo.</td>
+</tr>
+<tr>
 <td><code>data[attributes][image_base64]</code></td>
 <td><strong>string</strong> <br>Base64 encoded photo, use this field to add a photo.</td>
 </tr>
 <tr>
 <td><code>data[attributes][item_count]</code></td>
-<td><strong>integer</strong> <br>Number of collection items in this collection. Includes collection items in this collection, but not in nested collections.</td>
+<td><strong>integer</strong> <br>Number of collection items in this collection that are visible in the store. Only includes items where <code>show_in_store</code> is <code>true</code>. Includes collection items in this collection, but not in nested collections.<br>This count is automatically recalculated when items are added, removed, or when their <code>show_in_store</code> status changes.</td>
 </tr>
 <tr>
 <td><code>data[attributes][name]</code></td>
@@ -6675,6 +6687,10 @@ Check each individual operation to see which relations can be included as a side
 
 <p>CollectionItems cannot be changed directly, but their position can be updated
 through the <a href="#sortings">Sortings</a> resource.</p>
+
+<p>When a CollectionItem is created or destroyed, the parent <a href="#collections">Collection</a>
+<code>item_count</code> is automatically recalculated to reflect only items that are visible
+in the store (<code>show_in_store: true</code>).</p>
 <h2 id='collection-items-relationships'>Relationships</h2>
 <table><thead>
 <tr>
@@ -7599,6 +7615,7 @@ A company holds information and configuration about an account.</p>
             </span><span class="s2">"permissions"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"exports"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"coupons"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"downtimes"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"shop_tracking"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"sso"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"iprestrictions"</span><span class="p">,</span><span class="w">
@@ -11689,8 +11706,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"footer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-04-20T14:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-05-20T14:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-04-13T13:52:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-05-13T13:52:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"start_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f4f9473-239b-4b05-8bb3-e9f933d42d64"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"stop_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f4f9473-239b-4b05-8bb3-e9f933d42d64"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"revised"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -11932,7 +11949,7 @@ Check each individual operation to see which relations can be included as a side
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"documents"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-18T03:33:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-18T03:33:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-18T03:34:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"archived_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
@@ -13270,7 +13287,7 @@ and accounting, it wouldn&#39;t need to manage your products and stock levels.</
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"employees"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-09-07T07:00:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-16T03:53:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-03-23T04:03:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
@@ -13499,7 +13516,7 @@ and accounting, it wouldn&#39;t need to manage your products and stock levels.</
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"employees"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-03T04:30:00.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-11T16:23:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-18T16:33:00.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
@@ -13558,7 +13575,7 @@ and accounting, it wouldn&#39;t need to manage your products and stock levels.</
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"employees"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-16T17:49:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-24T05:42:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T05:52:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
@@ -13620,7 +13637,7 @@ and accounting, it wouldn&#39;t need to manage your products and stock levels.</
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"employees"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-04-16T02:37:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2032-12-22T14:30:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2032-12-29T14:40:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
@@ -13843,7 +13860,7 @@ Check each individual operation to see which relations can be included as a side
           </span><span class="nl">"has_two_factor_autentication"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nl">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=404"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"large_avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=mm&amp;size=200"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"third_party_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ccdaa36-f317-4feb-8a06-003668fc0c59-1759138031"</span><span class="w">
+          </span><span class="nl">"third_party_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ccdaa36-f317-4feb-8a06-003668fc0c59-1759743452"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -13921,7 +13938,7 @@ Note that you can also update other fields.:</p>
           </span><span class="nl">"has_two_factor_autentication"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nl">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=404"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"large_avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=mm&amp;size=200"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"third_party_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1759138033"</span><span class="w">
+          </span><span class="nl">"third_party_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1759743454"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -15159,8 +15176,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6a8292cc-4002-4f8e-8da2-1e182dbacc08"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"products"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-22T07:38:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-22T07:38:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-29T07:49:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-29T07:49:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"products"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nl">"archived_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -15206,8 +15223,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ac6ad52-9587-4088-8fd8-af88a9295a8e"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"products"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-22T07:38:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-22T07:38:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-29T07:49:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-29T07:49:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"products"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nl">"archived_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -16620,8 +16637,8 @@ Check each individual operation to see which relations can be included as a side
           </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">2505600</span><span class="p">,</span><span class="w">
           </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-02-09T05:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-03-10T05:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-02-02T05:28:00.000000+00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-03-03T05:28:00.000000+00:00"</span><span class="p">,</span><span class="w">
               </span><span class="nl">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pickup day"</span><span class="w">
@@ -16639,8 +16656,8 @@ Check each individual operation to see which relations can be included as a side
                 </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">7750</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                   </span><span class="p">{</span><span class="w">
-                    </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-02-22T17:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
-                    </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-03-10T05:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-02-15T17:28:00.000000+00:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1978-03-03T05:28:00.000000+00:00"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339200</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"372 hours"</span><span class="p">,</span><span class="w">
                     </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">7750</span><span class="w">
@@ -16865,8 +16882,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">2505600</span><span class="p">,</span><span class="w">
         </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-04-13T12:14:02.000000+00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-05-12T12:14:02.000000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-04-06T12:03:02.000000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-05-05T12:03:02.000000+00:00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pickup day"</span><span class="w">
@@ -16884,8 +16901,8 @@ Check each individual operation to see which relations can be included as a side
               </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">7750</span><span class="p">,</span><span class="w">
               </span><span class="nl">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-04-27T00:14:02.000000+00:00"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-05-12T12:14:02.000000+00:00"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-04-20T00:03:02.000000+00:00"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-05-05T12:03:02.000000+00:00"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339200</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"372 hours"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">7750</span><span class="w">
@@ -17394,8 +17411,8 @@ Sections allow to add some organization to orders.</p>
         </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">2505600</span><span class="p">,</span><span class="w">
         </span><span class="nl">"price_rule_values"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"charge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-06-03T22:50:02.000000+00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-07-02T22:50:02.000000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-05-27T22:39:02.000000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-06-25T22:39:02.000000+00:00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pickup day"</span><span class="w">
@@ -17413,8 +17430,8 @@ Sections allow to add some organization to orders.</p>
               </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">7750</span><span class="p">,</span><span class="w">
               </span><span class="nl">"adjustments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-06-17T10:50:02.000000+00:00"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-07-02T22:50:02.000000+00:00"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-06-10T10:39:02.000000+00:00"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1973-06-25T22:39:02.000000+00:00"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"charge_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">1339200</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"charge_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"372 hours"</span><span class="p">,</span><span class="w">
                   </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">7750</span><span class="w">
@@ -19449,8 +19466,8 @@ Check each individual operation to see which relations can be included as a side
             </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1969-08-12T03:01:01.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1969-09-11T03:01:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1969-08-05T02:50:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1969-09-04T02:50:01.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -19943,14 +19960,14 @@ Check each individual operation to see which relations can be included as a side
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-09-30T09:29:02Z",
-                       "lte": "2025-10-03T09:29:02Z"
+                       "gte": "2025-10-07T09:39:50Z",
+                       "lte": "2025-10-10T09:39:50Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-09-30T09:29:02Z",
-                       "lte": "2025-10-03T09:29:02Z"
+                       "gte": "2025-10-07T09:39:50Z",
+                       "lte": "2025-10-10T09:39:50Z"
                      }
                    }
                  ]
@@ -20593,8 +20610,8 @@ Check each individual operation to see which relations can be included as a side
           </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-07T12:19:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-02-06T12:19:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1969-12-31T12:09:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-30T12:09:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -20792,8 +20809,8 @@ stock items or bundles on an order, use the <a href="#order-fulfillments">OrderF
           </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-09-25T14:26:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-03T14:26:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-09-25T14:31:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-03T14:31:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
         </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -26622,19 +26639,19 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-17T07:25:01.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-17T07:25:01.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/1759138167-506784191960463-0003-0966/upload.png"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/large_1759138167-506784191960463-0003-0966/upload.jpg"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/xlarge_1759138167-506784191960463-0003-0966/upload.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/upload.png"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/large_upload.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/xlarge_upload.jpg"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kJHQkdGygkk6YAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0wOS0yOVQwOToyOToyNyswMDowMDR/M+YAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMDktMjlUMDk6Mjk6MjcrMDA6MDBFIotaAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kKBgkoGNOkquQAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0xMC0wNlQwOTo0MDoyNCswMDowMPDFmZQAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMTAtMDZUMDk6NDA6MjQrMDA6MDCBmCEoAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/1759138167-506784191960463-0003-0966/upload.png"</span><span class="w">
+            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/84696b61e5664464f6ccb00e1fda1b0b/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/upload.png"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"182cbf22-6a51-4729-81a3-190d3cbb3c57"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_groups"</span><span class="w">
@@ -26743,19 +26760,19 @@ Check each individual operation to see which relations can be included as a side
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-01T02:59:00.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-01T02:59:00.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/1759138168-693483960993667-0004-5843/upload.png"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/large_1759138168-693483960993667-0004-5843/upload.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/xlarge_1759138168-693483960993667-0004-5843/upload.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/upload.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/large_upload.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/xlarge_upload.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kJHQkdHLZABgUAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0wOS0yOVQwOToyOToyOCswMDowMMI3Qw8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMDktMjlUMDk6Mjk6MjgrMDA6MDCzavuzAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kKBgkoGaSjmnIAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0xMC0wNlQwOTo0MDoyNSswMDowMFaykiAAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMTAtMDZUMDk6NDA6MjUrMDA6MDAn7yqcAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/1759138168-693483960993667-0004-5843/upload.png"</span><span class="w">
+          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/ed619234e7d3d43630945e706eff6913/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/upload.png"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"850b4eb4-0a7a-4316-8eef-e66a40d0e055"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_groups"</span><span class="w">
@@ -26819,19 +26836,19 @@ Check each individual operation to see which relations can be included as a side
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-05-28T22:17:00.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-05-28T22:17:00.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/1759138169-376212998253651-0006-8379/my_product_image.png"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/large_1759138169-376212998253651-0006-8379/my_product_image.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/xlarge_1759138169-376212998253651-0006-8379/my_product_image.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/my_product_image.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/large_my_product_image.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/xlarge_my_product_image.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kJHQkdHcFHNpMAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0wOS0yOVQwOToyOToyOSswMDowMGRASLsAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMDktMjlUMDk6Mjk6MjkrMDA6MDAVHfAHAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kKBgkoG0qt+14AAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0xMC0wNlQwOTo0MDoyNyswMDowMMEtgwkAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMTAtMDZUMDk6NDA6MjcrMDA6MDCwcDu1AAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/1759138169-376212998253651-0006-8379/my_product_image.png"</span><span class="w">
+          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/354d68b26fcffd8f9a3c21cae0ba8d0d/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/my_product_image.png"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ef74fb8-c1c9-47af-8fac-bcab35a7a867"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_groups"</span><span class="w">
@@ -26938,19 +26955,19 @@ Check each individual operation to see which relations can be included as a side
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-16T09:31:00.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-12-16T09:31:00.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/1759138170-507792140863026-0007-1048/upload.png"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/large_1759138170-507792140863026-0007-1048/upload.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/xlarge_1759138170-507792140863026-0007-1048/upload.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/upload.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/large_upload.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/xlarge_upload.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
           </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kJHQkdHlhOZykAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0wOS0yOVQwOToyOTozMCswMDowMD1yDfYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMDktMjlUMDk6Mjk6MzArMDA6MDBML7VKAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kKBgkoHNTJbv0AAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0xMC0wNlQwOTo0MDoyOCswMDowMDdl8+AAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMTAtMDZUMDk6NDA6MjgrMDA6MDBGOEtcAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/1759138170-507792140863026-0007-1048/upload.png"</span><span class="w">
+          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/8188eebd3991392b266b288655dfde98/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/upload.png"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"266622d8-4266-4054-8c2c-617ae1a4b11e"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_groups"</span><span class="w">
@@ -27045,19 +27062,19 @@ Check each individual operation to see which relations can be included as a side
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-11-22T09:49:03.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-11-22T09:49:03.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/1759138171-352586242480262-0008-9981/upload.png"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/large_1759138171-352586242480262-0008-9981/upload.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/xlarge_1759138171-352586242480262-0008-9981/upload.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/upload.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/large_upload.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xlarge_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/xlarge_upload.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kJHQkdHy9JV78AAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0wOS0yOVQwOToyOTozMSswMDowMJsFBkIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMDktMjlUMDk6Mjk6MzErMDA6MDDqWL7+AAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEX///7+///////+//7//v///v7+/v7+/v/9/v73/f78/v7Z8v6H2/1g1/184v3P9f74+/602v5XuP01tvwvvvwoxfw80f2b6v7z/P7t8f6Zu/5VnP5Jof1Eqf0+sf03ufwvwPwtyf1x3v3h+P7k5f+Pnf9ihP5cjP5Wlf5PnP5Io/5Cq/08s/01u/wswvxY1P3S9P7k3P6Nf/JlYtxbZMxVachPb8xTgNxem/VRoP5FpP1Arf06tfwxvPxPzf3M8f7p4PmMadRgQ69YR6NSSaBQT6F1fLe7w93g6PfD2v57s/5NoP1Ep/0/r/1Uyf3Z8/76+PygechlM6RiOaJcPKFpVKutp9Lw8Pfy9v6szf5fpP5IoP1Dqf06sP13zv32/P7p3fF8OqtqKKFsNaWRcL7a0ur9/f7X5v6CtP5Rnv1Fov1NsP3a7/728fmtfsmcZ7/JsN328vn09/681f6Ctv6Ow/7v9/78+v37+fz6+/76/P7k06ScAAAAAWJLR0QCZgt8ZAAAAAd0SU1FB+kKBgkoHaPOXmsAAAGRSURBVCjPNVIHVxYxENzb7F4+sCHNLk1RQVFQ7A1EARvYKKIiKNiwUKy/3pm9j7x395JMMmU3IlIUWiiGiKRCTS2JcKlAMDAXF3ETKZMkNyPKS/hwXLEhKblLhWigwelSp01g45XALOOCePxJTigQEDikcs4k9gpNajEVSinVchbhHIcKbNcaGsOtukMwTDCHljt27tq9p4Z8iRwW7KpZm/Y2t7S2te/brwDIKhFW5cDBQ4ePHO3o7OruqZzm0BU5drz3xMlTff2nzwycPUcPtCBZdHDo/IXhi5cuX7l67fqNm7dUk9FS1tsjo3fG7t4bn5i8/+Dho5bHU5pCR6efPH32/MXMLFZz8y8XXr1+swgLzPN2afnd+5XVUK59+Pjp85c11IrI12/ff6xXYc10Y3Pr5y+VMrz9/lPSOQsCgfLvP8Ylgqge3o2xWQ/84FjQJ60KrznXG1bgrOl287TeXq4Zx6LmxfZZIJDyDB3ja8laJuzyFURP8GpgghUnJRZsH42HHalaCwQ1dDbWLfF9+H+O8CGkTfhjrQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0xMC0wNlQwOTo0MDoyOSswMDowMJES+FQAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMTAtMDZUMDk6NDA6MjkrMDA6MDDgT0DoAAAAAElFTkSuQmCC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"photo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/1759138171-352586242480262-0008-9981/upload.png"</span><span class="w">
+          </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/5e3caf7997ce0b0563ffc6e824afbe2a/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/upload.png"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98ee3afa-9bdc-4ccd-850a-61157c8e2a39"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_groups"</span><span class="w">
@@ -27085,11 +27102,8 @@ Check each individual operation to see which relations can be included as a side
 <h3 id='photos-delete-a-photo-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='plannings'>Plannings</h1>
-<p>Plannings contain information about the quantitative planning of an item.
-The item can either be a <a href="#products">Product</a> or a <a href="#bundles">Bundle</a>. Plannings define when an item
-is available during a given period. Plannings are never directly created or
-updated through their resource; instead, they are always managed by booking
-items to an <a href="#orders">Order</a>, updating or deleting its associated <a href="#lines">Line</a>, or transitioning status.</p>
+<p>Plannings track the quantitative planned activities (order or downtime) of an item. Planned activities will make an item unavailable for other activities during a given period. Planning records are never directly created or updated.
+The item can either be a <a href="#products">Product</a> or a <a href="#bundles">Bundle</a>.</p>
 <h2 id='plannings-product-plannings-vs-bundle-plannings'>Product Plannings vs Bundle Plannings</h2>
 <p>There are two types of Plannings:</p>
 
@@ -27149,15 +27163,15 @@ These may differ from the planned dates due to buffer times.</p></li>
 </tr>
 <tr>
 <td><code>start_location</code></td>
-<td><strong><a href="#locations">Location</a></strong> <code>required</code><br>The <a href="#locations">Location</a> where the customer will pick up the item.</td>
+<td><strong><a href="#locations">Location</a></strong> <code>required</code><br>The <a href="#locations">Location</a> where the planned activity begins. For order plannings, this is where the customer will pick up the item.</td>
 </tr>
 <tr>
 <td><code>stock_item_plannings</code></td>
-<td><strong><a href="#stock-item-plannings">Stock item plannings</a></strong> <code>hasmany</code><br>The <a href="#stock-items">StockItems</a> specified for this Planning, and their current status. For trackable products, this association contains the specific inventory items assigned to this planning. <br/> The number of StockItemPlannings can be less than <code>planning.quantity</code>. This is because stock items may not yet be specified (assigned) for this planning.<br>Stock items are typically specified through the <a href="#order-fulfillments">OrderFulfillments</a> resource, which creates the corresponding StockItemPlannings linking specific inventory items to this planning.</td>
+<td><strong><a href="#stock-item-plannings">Stock item plannings</a></strong> <code>hasmany</code><br>The <a href="#stock-items">StockItems</a> specified for this Planning, and their current status. For trackable products, this association contains the specific inventory items assigned to this planning. <br/> The number of StockItemPlannings can be less than <code>planning.quantity</code>. This is because stock items may not yet be specified (assigned) for this planning.<br>For order plannings, stock items are typically specified through the <a href="#order-fulfillments">OrderFulfillments</a> resource, which creates the corresponding StockItemPlannings linking specific inventory items to this planning.</td>
 </tr>
 <tr>
 <td><code>stop_location</code></td>
-<td><strong><a href="#locations">Location</a></strong> <code>required</code><br>The <a href="#locations">Location</a> where the customer will return the product.</td>
+<td><strong><a href="#locations">Location</a></strong> <code>required</code><br>The <a href="#locations">Location</a> where the planned activity ends. For order plannings, this is where the customer will return the product.</td>
 </tr>
 </tbody></table>
 
@@ -27229,7 +27243,7 @@ Check each individual operation to see which relations can be included as a side
 </tr>
 <tr>
 <td><code>reserved</code></td>
-<td><strong>boolean</strong> <code>readonly</code><br>Whether items are reserved. When <code>true</code>, this Planning affects availability calculations and the items are not available for other orders during the reserved period. This is set to <code>true</code> when an Order transitions from <code>concept</code> to <code>reserved</code> status.</td>
+<td><strong>boolean</strong> <code>readonly</code><br>Whether items are reserved. When <code>true</code>, this Planning affects availability calculations and the items are not available for other plannings during the reserved period. For order plannings, this is set to <code>true</code> when an Order transitions from <code>concept</code> to <code>reserved</code> status.</td>
 </tr>
 <tr>
 <td><code>reserved_from</code></td>
@@ -27245,15 +27259,15 @@ Check each individual operation to see which relations can be included as a side
 </tr>
 <tr>
 <td><code>start_location_id</code></td>
-<td><strong>uuid</strong> <code>readonly</code><br>The <a href="#locations">Location</a> where the customer will pick up the item.</td>
+<td><strong>uuid</strong> <code>readonly</code><br>The <a href="#locations">Location</a> where the planned activity begins. For order plannings, this is where the customer will pick up the item.</td>
 </tr>
 <tr>
 <td><code>started</code></td>
-<td><strong>integer</strong> <br>Amount of items started (picked up or delivered to the customer). This value increases when staff performs start actions through the <a href="#order-fulfillments">OrderFulfillments</a> resource. Cannot exceed <code>quantity</code>. When all items are started (<code>started</code> equals <code>quantity</code>), the Planning is considered fully started. This attribute is omitted when this is a parent planning for a Bundle.</td>
+<td><strong>integer</strong> <br>Amount of items that have begun their planned activity. For order plannings, this represents items picked up or delivered to the customer. This value increases when staff performs start actions. Cannot exceed <code>quantity</code>. When all items are started (<code>started</code> equals <code>quantity</code>), the Planning is considered fully started. This attribute is omitted when this is a parent planning for a Bundle.</td>
 </tr>
 <tr>
 <td><code>starts_at</code></td>
-<td><strong>datetime</strong> <code>readonly</code><br>When the start action (pickup/delivery) is planned to occur. This is the scheduled date/time shown to staff and customers for the beginning of the rental.</td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the planned activity is scheduled to begin. For order plannings, this represents when pickup/delivery is planned to occur and is shown to staff and customers as the beginning of the rental.</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -27261,15 +27275,15 @@ Check each individual operation to see which relations can be included as a side
 </tr>
 <tr>
 <td><code>stop_location_id</code></td>
-<td><strong>uuid</strong> <code>readonly</code><br>The <a href="#locations">Location</a> where the customer will return the product.</td>
+<td><strong>uuid</strong> <code>readonly</code><br>The <a href="#locations">Location</a> where the planned activity ends. For order plannings, this is where the customer will return the product.</td>
 </tr>
 <tr>
 <td><code>stopped</code></td>
-<td><strong>integer</strong> <br>Amount of items stopped (returned by the customer). This value increases when staff performs stop actions through the <a href="#order-fulfillments">OrderFulfillments</a> resource. Cannot exceed <code>quantity</code> and <code>started</code> (items must be started before they can be stopped). When all items are stopped (<code>stopped</code> equals <code>quantity</code>), the Planning is considered fully completed.<br><a href="#products">Products</a> with <code>product_type == consumable</code> are never returned, and the <code>stopped</code> attribute will always remain zero.<br>This attribute is omitted when this is a parent planning for a <a href="#bundles">Bundle</a>.</td>
+<td><strong>integer</strong> <br>Amount of items that have completed their planned activity. For order plannings, this represents items returned by the customer. This value increases when staff performs stop actions. Cannot exceed <code>quantity</code> and <code>started</code> (items must be started before they can be stopped). When all items are stopped (<code>stopped</code> equals <code>quantity</code>), the Planning is considered fully completed.<br>For order plannings with <a href="#products">Products</a> that have <code>product_type == consumable</code>, items are never returned, and the <code>stopped</code> attribute will always remain zero.<br>This attribute is omitted when this is a parent planning for a <a href="#bundles">Bundle</a>.</td>
 </tr>
 <tr>
 <td><code>stops_at</code></td>
-<td><strong>datetime</strong> <code>readonly</code><br>When the stop action (return) is planned to occur. This is the scheduled date/time shown to staff and customers for the end of the rental.</td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the planned activity is scheduled to end. For order plannings, this represents when return is planned to occur and is shown to staff and customers as the end of the rental.</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
@@ -27298,10 +27312,10 @@ Check each individual operation to see which relations can be included as a side
           </span><span class="nl">"archived_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"planning_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-09-21T07:48:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-10-21T07:48:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-09-21T07:48:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-10-21T07:48:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-09-14T07:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-10-14T07:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-09-14T07:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1972-10-14T07:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reserved"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -27535,12 +27549,12 @@ Check each individual operation to see which relations can be included as a side
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-09-30T09:29:38Z"
+                       "gte": "2025-10-07T09:40:38Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-10-03T09:29:38Z"
+                       "lte": "2025-10-10T09:40:38Z"
                      }
                    }
                  ]
@@ -27550,12 +27564,12 @@ Check each individual operation to see which relations can be included as a side
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-09-30T09:29:38Z"
+                       "gte": "2025-10-07T09:40:38Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-10-03T09:29:38Z"
+                       "lte": "2025-10-10T09:40:38Z"
                      }
                    }
                  ]
@@ -27792,10 +27806,10 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"archived_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"planning_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-10-15T04:13:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-11-14T04:13:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-10-15T04:13:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-11-14T04:13:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-10-08T04:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-11-07T04:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-10-08T04:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reserved_till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1977-11-07T04:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reserved"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reserved"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -28021,8 +28035,8 @@ Check each individual operation to see which relations can be included as a side
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"496355f5-1c79-4b05-86e8-fb9f00c27d78"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"price_rules"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-05T04:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-05T04:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-04T04:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-04T04:39:00.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Off season"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"rule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"range_of_dates"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"match_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"span"</span><span class="p">,</span><span class="w">
@@ -28186,8 +28200,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"match_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"span"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"adjustment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-08-26T15:12:07.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-10-26T15:12:07.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-08-19T15:01:07.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2027-10-19T15:01:07.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"from_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"till_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -28236,8 +28250,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"match_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"span"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"adjustment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-11-13T18:30:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-01-13T18:30:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-11-06T18:19:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-01-06T18:19:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"from_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"till_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -28385,8 +28399,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"match_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"span"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"adjustment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-02-18T20:23:07.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-04-20T20:23:07.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-02-11T20:12:07.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-04-13T20:12:07.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"from_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"till_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -28663,8 +28677,8 @@ Check each individual operation to see which relations can be included as a side
           </span><span class="nl">"match_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"span"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"adjustment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2032-01-21T23:25:05.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2032-03-22T23:25:05.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2032-01-14T23:14:05.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2032-03-15T23:14:05.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"from_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"till_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -28742,8 +28756,8 @@ Check each individual operation to see which relations can be included as a side
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e4fe0b61-208f-4525-8281-39ceec698804"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"price_rulesets"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-25T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-25T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-24T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-24T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"archived_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seasonal ruleset"</span><span class="p">,</span><span class="w">
@@ -28765,8 +28779,8 @@ Check each individual operation to see which relations can be included as a side
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fe521f82-f68d-479c-843d-7420dbcf18ae"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"price_rules"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-25T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-25T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-24T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-10-24T15:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Off season"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"rule_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"range_of_dates"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"match_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"span"</span><span class="p">,</span><span class="w">
@@ -28935,8 +28949,8 @@ Check each individual operation to see which relations can be included as a side
           </span><span class="nl">"match_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"span"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"adjustment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-06-02T12:38:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-08-02T12:38:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-05-26T12:27:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"till"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-07-26T12:27:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"from_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"till_day"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"from_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -34951,10 +34965,6 @@ to select the format string for the date library being used.</p>
 <td><strong>Boolean</strong><br>Whether deposit should be paid during checkout</td>
 </tr>
 <tr>
-<td><code>payment_methods</code></td>
-<td><strong>Array</strong><br>List of enabled payment methods, any of <code>ideal</code>, <code>bancontact</code>, <code>eps</code>, <code>alipay</code>, <code>p24</code>, <code>creditcard</code>, <code>paypal</code></td>
-</tr>
-<tr>
 <td><code>use_toc</code></td>
 <td><strong>Boolean</strong><br>Whether the agreement should be accepted during checkout</td>
 </tr>
@@ -35420,7 +35430,6 @@ to select the format string for the date library being used.</p>
           </span><span class="nl">"payment_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"payment_strategy_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
           </span><span class="nl">"payment_deposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"payment_methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
           </span><span class="nl">"security_deposit_explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
           </span><span class="nl">"pay_later"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nl">"pay_later_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pay later"</span><span class="p">,</span><span class="w">
@@ -39392,8 +39401,8 @@ Check each individual operation to see which relations can be included as a side
             </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:32:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-03T17:32:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-30T17:21:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-03T17:21:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -39572,7 +39581,7 @@ Check each individual operation to see which relations can be included as a side
           </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-08-08T18:28:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-08-08T18:28:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"available_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-08-06T18:27:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"available_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-08-06T18:16:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"finalized"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"672d6735-92fa-4198-8145-116e1191847d"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"058a8f0f-d1ac-4363-8778-a6c4476ee292"</span><span class="p">,</span><span class="w">
@@ -41069,8 +41078,8 @@ and the data payload that was sent.</p>
             </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-25T18:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-29T18:02:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-25T17:51:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-03-29T17:51:01.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="nl">"discount_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"discount_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
@@ -41220,8 +41229,8 @@ and the data payload that was sent.</p>
             </span><span class="nl">"started"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"stopped"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
           </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-23T17:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-27T17:37:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-23T17:26:00.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-27T17:26:00.000000+00:00"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deposit_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"percentage"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"deposit_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w">
           </span><span class="nl">"entirely_started"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
