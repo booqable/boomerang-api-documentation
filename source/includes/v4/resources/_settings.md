@@ -101,7 +101,6 @@ Name | Description
 `payment_strategy` | **String**<br>One of `none` (no payment required at checkout), `full` (full payment required at checkout), `partial` (partial payment required at checkout)
 `payment_strategy_value` | **Integer**<br>Percentage to be paid at checkout (for payment_strategy `partial`)
 `payment_deposit` | **Boolean**<br>Whether deposit should be paid during checkout
-`payment_methods` | **Array**<br>List of enabled payment methods, any of `ideal`, `bancontact`, `eps`, `alipay`, `p24`, `creditcard`, `paypal`
 `use_toc` | **Boolean**<br>Whether the agreement should be accepted during checkout
 `toc_label` | **String**<br>The label of the agreement checkbox
 `toc_content` | **String**<br>The contents of the actual agreement
@@ -320,7 +319,6 @@ Name | Description
           "payment_strategy": "none",
           "payment_strategy_value": 30,
           "payment_deposit": false,
-          "payment_methods": [],
           "security_deposit_explanation": "",
           "pay_later": false,
           "pay_later_title": "Pay later",

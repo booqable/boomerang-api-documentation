@@ -264,6 +264,12 @@
           },
           "examples": [["header", "footer"], ["app"]]
         },
+        "settings_iframe_url": {
+          "type": "string",
+          "description": "URL of the theme block's configuration page to embed in the Booqable theme editor sidebar.",
+          "format": "uri",
+          "examples": ["https://example.com/settings"]
+        },
         "settings": {
           "type": "object",
           "description": "Configuration settings for the theme block.",

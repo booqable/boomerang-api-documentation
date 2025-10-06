@@ -277,6 +277,7 @@ Name | Description
             "permissions",
             "exports",
             "coupons",
+            "downtimes",
             "shop_tracking",
             "sso",
             "iprestrictions",

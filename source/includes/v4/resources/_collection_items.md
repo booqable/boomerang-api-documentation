@@ -5,6 +5,10 @@ An item in a [Collection](#collections).
 CollectionItems cannot be changed directly, but their position can be updated
 through the [Sortings](#sortings) resource.
 
+When a CollectionItem is created or destroyed, the parent [Collection](#collections)
+`item_count` is automatically recalculated to reflect only items that are visible
+in the store (`show_in_store: true`).
+
 ## Relationships
 Name | Description
 -- | --

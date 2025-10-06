@@ -46,7 +46,6 @@ Check each individual operation to see which relations can be included as a side
 `employee_id` | **uuid** <br>The current [Employee](#employees).
 `extra_charges` | **array** <br>The available extra charges for billing plans (like addons and extra employees/locations).
 `id` | **uuid** <br>Primary key.
-`legacy_paypal_enabled` | **boolean** <br>Whether the legacy PayPal integration should be displayed.
 `locations_updated_at` | **datetime** <br>When locations were last updated.
 `notification_subscriptions_updated_at` | **datetime** <br>When the employee last made a change to their notification subscriptions.
 `operating_rules_updated_at` | **datetime** <br>When the operating rules were last updated.
@@ -102,7 +101,8 @@ Check each individual operation to see which relations can be included as a side
               "away_modes": 0
             },
             "features": [
-              "destroy_bundles"
+              "destroy_bundles",
+              "mobile_app"
             ]
           },
           {
@@ -124,6 +124,7 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
+              "mobile_app",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -138,7 +139,8 @@ Check each individual operation to see which relations can be included as a side
               "coupons",
               "invoice_due_dates",
               "reports",
-              "product_history"
+              "product_history",
+              "downtimes"
             ]
           },
           {
@@ -160,6 +162,7 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
+              "mobile_app",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -175,6 +178,7 @@ Check each individual operation to see which relations can be included as a side
               "invoice_due_dates",
               "reports",
               "product_history",
+              "downtimes",
               "api",
               "permissions",
               "product_shortage_limits",
@@ -201,6 +205,7 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
+              "mobile_app",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -216,6 +221,7 @@ Check each individual operation to see which relations can be included as a side
               "invoice_due_dates",
               "reports",
               "product_history",
+              "downtimes",
               "api",
               "permissions",
               "product_shortage_limits",
@@ -301,7 +307,8 @@ Check each individual operation to see which relations can be included as a side
               "reports",
               "permissions",
               "exports",
-              "coupons"
+              "coupons",
+              "downtimes"
             ]
           },
           {
@@ -345,6 +352,7 @@ Check each individual operation to see which relations can be included as a side
               "permissions",
               "exports",
               "coupons",
+              "downtimes",
               "shop_tracking",
               "sso",
               "iprestrictions",
@@ -353,7 +361,6 @@ Check each individual operation to see which relations can be included as a side
             ]
           }
         ],
-        "legacy_paypal_enabled": true,
         "app_payment_options_available": false,
         "extra_charges": [
           {
@@ -625,6 +632,7 @@ Check each individual operation to see which relations can be included as a side
               "permissions",
               "exports",
               "coupons",
+              "downtimes",
               "shop_tracking",
               "sso",
               "iprestrictions",
@@ -682,7 +690,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1759138237"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1759743708"
         }
       },
       {
@@ -756,7 +764,6 @@ Check each individual operation to see which relations can be included as a side
             "payment_strategy": "none",
             "payment_strategy_value": 30,
             "payment_deposit": false,
-            "payment_methods": [],
             "security_deposit_explanation": "",
             "pay_later": false,
             "pay_later_title": "Pay later",
