@@ -1,15 +1,30 @@
 # Emails
 
 Emails allow you to easily communicate with your customers by using optional templates.
-Booqable keeps a history of emails being sent for orders or customers.
+Booqable keeps a complete history of all emails sent for orders or customers, making it
+easy to track customer communications and maintain a clear audit trail.
+
+## Creating Emails
+
+Emails can be created manually through the API or automatically triggered by certain
+system events. When creating an email, you can either provide the content directly
+(subject and body) or reference an [EmailTemplate](#email-templates) that will be
+rendered using data from associated resources.
+
+## Sending Process
+
+After an email is created and validated, it's automatically queued for delivery through
+Booqable's email service. The `sent` attribute indicates whether the email was successfully
+handed off to the mail server, while `has_error` shows if any problems occurred during
+the sending process. Emails are processed asynchronously to ensure fast API responses.
 
 ## Relationships
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** `required`<br>Customer this email is associated with. Attributes from this order are available when rendering the template. 
-`email_template` | **[Email template](#email-templates)** `required`<br>The template used to generate this email. 
-`employee` | **[Employee](#employees)** `required`<br>Employee who sent the email. 
-`order` | **[Order](#orders)** `required`<br>The order this email is associated with. Attributes from this order are available when rendering the template. 
+`customer` | **[Customer](#customers)** `required`<br>The [Customer](#customers) this email is associated with. When specified and using an [EmailTemplate](#email-templates), customer data is available during template rendering. This relationship is useful for customer-specific communications that aren't tied to a particular order, or for providing customer context when an order relationship is also present. The customer's email address is typically used as the default recipient. 
+`email_template` | **[Email template](#email-templates)** `required`<br>The [EmailTemplate](#email-templates) used to generate this email's content. When specified, the template is rendered with data from the associated resources to populate the email's subject and body. Templates allow for consistent, branded communication with dynamic content. 
+`employee` | **[Employee](#employees)** `required`<br>The [Employee](#employees) who created and sent this email. This is automatically set to the current user when the email is created and cannot be modified. The employee relationship tracks who initiated the communication and may be used for reply-to addresses or signature information in the email content. 
+`order` | **[Order](#orders)** `required`<br>The [Order](#orders) this email is associated with. When an email is linked to an order and uses an [EmailTemplate](#email-templates), the template can access order data during rendering. Linking an email to an order also helps maintain a clear communication history for that rental transaction. 
 
 
 Check matching attributes under [Fields](#emails-fields) to see which relations can be written.
@@ -19,19 +34,20 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`body` | **string** <br>Email body. 
-`created_at` | **datetime** `readonly`<br>When the email was created by the user, or automatically by Booqable. At this time, the email has not been sent yet. 
-`customer_id` | **uuid** `readonly-after-create`<br>Customer this email is associated with. Attributes from this order are available when rendering the template. 
-`document_ids` | **array** <br>Documents to send as attachments to the email. 
-`email_template_id` | **uuid** `readonly-after-create`<br>The template used to generate this email. 
-`employee_id` | **uuid** `readonly`<br>Employee who sent the email. 
-`has_error` | **boolean** `readonly`<br>Whether any errors occurred when sending this email. 
+`body` | **string** <br>The main content of the email. When providing the body directly (without using an [EmailTemplate](#email-templates)), this is the final text that will be sent. When using a template, this field is automatically populated by rendering the template with data from associated resources. 
+`created_at` | **datetime** `readonly`<br>When the email was created by the user or automatically by Booqable. At this time, the email has not been sent yet and may still be in the process of being prepared. Once the email is created and validated, it will be queued for delivery. 
+`customer_id` | **uuid** `readonly-after-create`<br>The [Customer](#customers) this email is associated with. When specified and using an [EmailTemplate](#email-templates), customer data is available during template rendering. This relationship is useful for customer-specific communications that aren't tied to a particular order, or for providing customer context when an order relationship is also present. The customer's email address is typically used as the default recipient. 
+`document_ids` | **array** <br>Array of [Document](#documents) IDs to attach to the email. These documents will be included as PDF attachments when the email is sent. Common use cases include attaching quotes, contracts, or invoices to customer communications. 
+`email_template_id` | **uuid** `readonly-after-create`<br>The [EmailTemplate](#email-templates) used to generate this email's content. When specified, the template is rendered with data from the associated resources to populate the email's subject and body. Templates allow for consistent, branded communication with dynamic content. 
+`employee_id` | **uuid** `readonly`<br>The [Employee](#employees) who created and sent this email. This is automatically set to the current user when the email is created and cannot be modified. The employee relationship tracks who initiated the communication and may be used for reply-to addresses or signature information in the email content. 
+`has_error` | **boolean** `readonly`<br>Whether any errors occurred when attempting to send this email. Returns `true` if the email encountered problems during sending (such as invalid addresses, server issues, or other delivery failures). When `true`, additional error details may be available to help diagnose the issue. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>The order this email is associated with. Attributes from this order are available when rendering the template. 
-`recipients` | **string** <br>Comma separated list of recipient email addresses, all addresses must be valid for the email to send. 
-`sent` | **boolean** `readonly`<br>Whether the email was sent successfully. 
-`subject` | **string** <br>Email subject. 
-`updated_at` | **datetime** `readonly`<br>The last time the email was updated. Typically this is updated after a delivery attempt has failed. 
+`order_id` | **uuid** `readonly-after-create`<br>The [Order](#orders) this email is associated with. When an email is linked to an order and uses an [EmailTemplate](#email-templates), the template can access order data during rendering. Linking an email to an order also helps maintain a clear communication history for that rental transaction. 
+`payment_id` | **uuid** `writeonly`<br>Payment to use when rendering an [EmailTemplate](#email-templates). When provided, payment data is available during template rendering, which is useful for sending payment requests or payment confirmation emails with payment-specific information such as payment links. 
+`recipients` | **string** <br>Comma-separated list of recipient email addresses. All addresses must be valid and properly formatted for the email to be sent. The system validates each address before sending. Multiple recipients can be specified, but there is a limit on the maximum number of recipients per email to prevent abuse. The limit is 10 recipients per email. 
+`sent` | **boolean** `readonly`<br>Whether the email was sent successfully. Returns `true` if the email has been delivered to the mail server, `false` if it hasn't been sent yet or if sending failed. Note that this indicates successful handoff to the mail server, not necessarily that the recipient received the email. 
+`subject` | **string** <br>The subject line of the email. When providing the subject directly (without using an [EmailTemplate](#email-templates)), this is the exact text that will appear in the recipient's inbox. When using a template, this field is automatically populated by rendering the template's subject with the available data from associated resources. 
+`updated_at` | **datetime** `readonly`<br>The last time the email was updated. This timestamp changes when the email status is modified, such as after a delivery attempt succeeds or fails. Updates may also occur when error information is recorded or when the email is retried after a failed delivery attempt. 
 
 
 ## List emails
@@ -242,13 +258,14 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][body]` | **string** <br>Email body. 
-`data[attributes][customer_id]` | **uuid** <br>Customer this email is associated with. Attributes from this order are available when rendering the template. 
-`data[attributes][document_ids][]` | **array** <br>Documents to send as attachments to the email. 
-`data[attributes][email_template_id]` | **uuid** <br>The template used to generate this email. 
-`data[attributes][order_id]` | **uuid** <br>The order this email is associated with. Attributes from this order are available when rendering the template. 
-`data[attributes][recipients]` | **string** <br>Comma separated list of recipient email addresses, all addresses must be valid for the email to send. 
-`data[attributes][subject]` | **string** <br>Email subject. 
+`data[attributes][body]` | **string** <br>The main content of the email. When providing the body directly (without using an [EmailTemplate](#email-templates)), this is the final text that will be sent. When using a template, this field is automatically populated by rendering the template with data from associated resources. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this email is associated with. When specified and using an [EmailTemplate](#email-templates), customer data is available during template rendering. This relationship is useful for customer-specific communications that aren't tied to a particular order, or for providing customer context when an order relationship is also present. The customer's email address is typically used as the default recipient. 
+`data[attributes][document_ids][]` | **array** <br>Array of [Document](#documents) IDs to attach to the email. These documents will be included as PDF attachments when the email is sent. Common use cases include attaching quotes, contracts, or invoices to customer communications. 
+`data[attributes][email_template_id]` | **uuid** <br>The [EmailTemplate](#email-templates) used to generate this email's content. When specified, the template is rendered with data from the associated resources to populate the email's subject and body. Templates allow for consistent, branded communication with dynamic content. 
+`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) this email is associated with. When an email is linked to an order and uses an [EmailTemplate](#email-templates), the template can access order data during rendering. Linking an email to an order also helps maintain a clear communication history for that rental transaction. 
+`data[attributes][payment_id]` | **uuid** <br>Payment to use when rendering an [EmailTemplate](#email-templates). When provided, payment data is available during template rendering, which is useful for sending payment requests or payment confirmation emails with payment-specific information such as payment links. 
+`data[attributes][recipients]` | **string** <br>Comma-separated list of recipient email addresses. All addresses must be valid and properly formatted for the email to be sent. The system validates each address before sending. Multiple recipients can be specified, but there is a limit on the maximum number of recipients per email to prevent abuse. The limit is 10 recipients per email. 
+`data[attributes][subject]` | **string** <br>The subject line of the email. When providing the subject directly (without using an [EmailTemplate](#email-templates)), this is the exact text that will appear in the recipient's inbox. When using a template, this field is automatically populated by rendering the template's subject with the available data from associated resources. 
 
 
 ### Includes

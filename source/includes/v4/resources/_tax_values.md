@@ -162,13 +162,14 @@ This request does not accept any includes
           ],
           "status_counts": {
             "new": 0,
+            "draft": 0,
             "concept": 0,
             "reserved": 0,
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-01-30T17:21:00.000000+00:00",
-          "stops_at": "2018-02-03T17:21:00.000000+00:00",
+          "starts_at": "2018-01-30T17:33:00.000000+00:00",
+          "stops_at": "2018-02-03T17:33:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,

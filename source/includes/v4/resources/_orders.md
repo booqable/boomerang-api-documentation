@@ -200,14 +200,15 @@ Check each individual operation to see which relations can be included as a side
             "reserved"
           ],
           "status_counts": {
+            "draft": 0,
             "concept": 0,
             "new": 0,
             "reserved": 1,
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-08-05T02:50:01.000000+00:00",
-          "stops_at": "1969-09-04T02:50:01.000000+00:00",
+          "starts_at": "1969-07-29T03:02:01.000000+00:00",
+          "stops_at": "1969-08-28T03:02:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -423,14 +424,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-10-07T09:39:50Z",
-                       "lte": "2025-10-10T09:39:50Z"
+                       "gte": "2025-10-14T09:27:36Z",
+                       "lte": "2025-10-17T09:27:36Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-10-07T09:39:50Z",
-                       "lte": "2025-10-10T09:39:50Z"
+                       "gte": "2025-10-14T09:27:36Z",
+                       "lte": "2025-10-17T09:27:36Z"
                      }
                    }
                  ]
@@ -629,6 +630,7 @@ Returns an existing or new order for the current employee.
         ],
         "status_counts": {
           "new": 0,
+          "draft": 0,
           "concept": 0,
           "reserved": 0,
           "started": 0,
@@ -794,14 +796,15 @@ This request accepts the following includes:
           "reserved"
         ],
         "status_counts": {
+          "draft": 0,
           "concept": 0,
           "new": 0,
           "reserved": 1,
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-12-31T12:09:01.000000+00:00",
-        "stops_at": "1970-01-30T12:09:01.000000+00:00",
+        "starts_at": "1969-12-24T12:21:01.000000+00:00",
+        "stops_at": "1970-01-23T12:21:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -993,13 +996,14 @@ When the following attributes are not specified, a sensible default will be pick
         ],
         "status_counts": {
           "new": 0,
+          "draft": 0,
           "concept": 0,
           "reserved": 0,
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:31:01.000000+00:00",
-        "stops_at": "2026-11-03T14:31:01.000000+00:00",
+        "starts_at": "2026-09-25T14:28:01.000000+00:00",
+        "stops_at": "2026-11-03T14:28:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
