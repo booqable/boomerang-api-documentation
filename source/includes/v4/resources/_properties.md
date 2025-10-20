@@ -76,6 +76,17 @@ Properties can have different types and behave differently. These are the `value
 | `country_id` | **`uuid`** |
 | `province_id` | **`uuid`** |
 
+### Using Address Properties with Orders
+
+Address properties are commonly used to set delivery and billing addresses on [Orders](#orders).
+You can provide either string values (like `country: "United States"`) or UUIDs (like `country_id: "uuid-here"`)
+for location fields. Using UUIDs is more precise but requires looking up [Country](#countries) and
+[Province](#provinces) IDs first.
+
+When creating an address property with `identifier` set to `delivery_address` or `billing_address` as part of
+an order's `properties_attributes`, the order will automatically link to it. See the
+[Orders documentation](#orders-setting-delivery-and-billing-addresses) for complete examples.
+
 ## Relationships
 Name | Description
 -- | --
@@ -290,7 +301,7 @@ To delete a property, set the `_destroy` attribute to `true`.
         "archived_at": null,
         "number": 1,
         "name": "John Doe",
-        "email": "john-69@doe.test",
+        "email": "john-71@doe.test",
         "deposit_type": "default",
         "deposit_value": 0.0,
         "discount_percentage": 0.0,
@@ -369,7 +380,7 @@ This request does not accept any includes
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-70@doe.test",
+          "email": "john-72@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,
@@ -497,7 +508,7 @@ This request accepts the following includes:
           "archived_at": null,
           "number": 1,
           "name": "John Doe",
-          "email": "john-71@doe.test",
+          "email": "john-73@doe.test",
           "deposit_type": "default",
           "deposit_value": 0.0,
           "discount_percentage": 0.0,

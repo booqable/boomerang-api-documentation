@@ -115,7 +115,6 @@ Check each individual operation to see which relations can be included as a side
 `confirm_shortage` | **boolean** `writeonly`<br>Whether to confirm a shortage when updating quantity on a line. When a line has an associated planning and you increase the quantity, the planning's quantity will also be increased. If this results in a shortage (requested quantity exceeds available inventory), the update will fail with a shortage error.<br>Setting this to `true` confirms that you want to proceed with the update despite the shortage. This is useful when you know you'll be able to fulfill the order through other means, such as acquiring additional inventory before the rental period.<br>Overriding shortage warnings is only possible when the ProductGroup is configured to allow shortage. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `discountable` | **boolean** <br>Whether line is discountable. 
-`display_price_in_cents` | **integer** `readonly`<br>Price of this line to display based on the tax setting of the company (inclusive vs. exclusive). 
 `extra_information` | **string** `nullable`<br>Extra information about the line. 
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly` `nullable`<br>The Product or Bundle that was booked, when this Line has an associated Planning. 
@@ -130,7 +129,7 @@ Check each individual operation to see which relations can be included as a side
 `planning_id` | **uuid** `readonly` `nullable`<br>The [Planning](#plannings) for which this Line was created that contains the logistical information related to this Line. 
 `position` | **integer** `nullable`<br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `price_each_in_cents` | **integer** <br>Price of each line. 
-`price_in_cents` | **integer** `readonly`<br>Price of each line x quantity. 
+`price_in_cents` | **integer** `readonly`<br>Price of each line x quantity, based on the tax setting of the company (inclusive vs. exclusive). 
 `price_rule_values` | **hash** `readonly` `nullable`<br>Breakdown of applied price rules. This is a complex structure that contains detailed information about how price rules affected the final price calculation, including: - Which price rules were applied - What time periods they applied to - How they affected the pricing - The resulting price adjustments<br>This data is particularly useful for understanding why a line has its current price and for providing transparent pricing explanations to customers. 
 `price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structures) used to calculate the price. 
 `price_tile_id` | **uuid** `nullable`<br>The [PriceTile](#price-tiles) that was selected to calculate the price. 
@@ -173,14 +172,13 @@ Check each individual operation to see which relations can be included as a side
           "original_charge_label": null,
           "price_each_in_cents": 80250,
           "price_in_cents": 80250,
-          "display_price_in_cents": 80250,
           "position": 1,
           "charge_label": "29 days",
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1978-01-26T05:41:00.000000+00:00",
-              "till": "1978-02-24T05:41:00.000000+00:00",
+              "from": "1978-01-19T01:53:00.000000+00:00",
+              "till": "1978-02-17T01:53:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -198,8 +196,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-02-08T17:41:00.000000+00:00",
-                    "till": "1978-02-24T05:41:00.000000+00:00",
+                    "from": "1978-02-01T13:53:00.000000+00:00",
+                    "till": "1978-02-17T01:53:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -338,14 +336,13 @@ This request accepts the following includes:
         "original_charge_label": null,
         "price_each_in_cents": 80250,
         "price_in_cents": 80250,
-        "display_price_in_cents": 80250,
         "position": 1,
         "charge_label": "29 days",
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1977-03-30T12:16:02.000000+00:00",
-            "till": "1977-04-28T12:16:02.000000+00:00",
+            "from": "1977-03-23T08:28:02.000000+00:00",
+            "till": "1977-04-21T08:28:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -363,8 +360,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1977-04-13T00:16:02.000000+00:00",
-                  "till": "1977-04-28T12:16:02.000000+00:00",
+                  "from": "1977-04-05T20:28:02.000000+00:00",
+                  "till": "1977-04-21T08:28:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -493,7 +490,6 @@ Order totals are automatically re-calculated after the creation of a new line an
         "original_charge_label": null,
         "price_each_in_cents": 1000,
         "price_in_cents": 1000,
-        "display_price_in_cents": 1000,
         "position": 1,
         "charge_label": null,
         "charge_length": null,
@@ -638,7 +634,6 @@ Order totals are automatically re-calculated after updating a line and an invoic
         "original_charge_label": null,
         "price_each_in_cents": 1000,
         "price_in_cents": 1000,
-        "display_price_in_cents": 1000,
         "position": 1,
         "charge_label": "29 days",
         "charge_length": 2505600,
@@ -771,14 +766,13 @@ This request accepts the following includes:
         "original_charge_label": null,
         "price_each_in_cents": 80250,
         "price_in_cents": 80250,
-        "display_price_in_cents": 80250,
         "position": 1,
         "charge_label": "29 days",
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1973-05-20T22:51:02.000000+00:00",
-            "till": "1973-06-18T22:51:02.000000+00:00",
+            "from": "1973-05-13T19:04:02.000000+00:00",
+            "till": "1973-06-11T19:04:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -796,8 +790,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1973-06-03T10:51:02.000000+00:00",
-                  "till": "1973-06-18T22:51:02.000000+00:00",
+                  "from": "1973-05-27T07:04:02.000000+00:00",
+                  "till": "1973-06-11T19:04:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

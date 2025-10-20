@@ -25,6 +25,7 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `location_id` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`product_group_id` | **uuid** <br>The ID of the product group that contains the affected product. 
 `product_id` | **uuid** <br>The product that is affected by the downtime. 
 `quantity` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
 `reason` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
@@ -61,8 +62,9 @@ Check each individual operation to see which relations can be included as a side
           "quantity": 1,
           "starts_at": "2020-11-24T16:53:01.000000+00:00",
           "stops_at": "2020-11-27T16:53:01.000000+00:00",
-          "location_id": "f10a87a6-8788-42b0-88db-615bf92db1f2",
-          "product_id": "7deebeb2-e361-43f5-8209-64fb69710a8a",
+          "product_group_id": "f10a87a6-8788-42b0-88db-615bf92db1f2",
+          "location_id": "7deebeb2-e361-43f5-8209-64fb69710a8a",
+          "product_id": "be7e39ff-8419-42fd-86ff-90924169c070",
           "stock_item_id": null
         },
         "relationships": {}
@@ -102,6 +104,7 @@ Name | Description
 `id` | **uuid** <br>`eq`, `not_eq`
 `item_type` | **enum** <br>`eq`
 `location_id` | **uuid** <br>`eq`, `not_eq`
+`product_group_id` | **uuid** <br>`eq`, `not_eq`
 `product_id` | **uuid** <br>`eq`, `not_eq`
 `product_ids` | **array** <br>`eq`
 `q` | **string** <br>`eq`
@@ -167,8 +170,9 @@ This request accepts the following includes:
         "quantity": 1,
         "starts_at": "2025-02-06T09:29:00.000000+00:00",
         "stops_at": "2025-02-09T09:29:00.000000+00:00",
-        "location_id": "3305a2ee-8824-477b-849c-ca245b5969ab",
-        "product_id": "0e170e53-01e4-4b73-858a-e96a6e1b9e79",
+        "product_group_id": "3305a2ee-8824-477b-849c-ca245b5969ab",
+        "location_id": "0e170e53-01e4-4b73-858a-e96a6e1b9e79",
+        "product_id": "13feb573-d7cb-420c-8f0d-1d501b67d67b",
         "stock_item_id": null
       },
       "relationships": {}
@@ -241,6 +245,7 @@ This request accepts the following includes:
         "quantity": 2,
         "starts_at": "2025-03-04T00:50:00.000000+00:00",
         "stops_at": "2025-03-07T00:50:00.000000+00:00",
+        "product_group_id": "a6fefc90-3a3f-4c0a-8bc4-bc726f0d07a8",
         "location_id": "b6dd4e89-cdf4-4fce-8f25-c5250d0d3abf",
         "product_id": "fede9ba2-69e2-4bca-8507-1b90260ccadc",
         "stock_item_id": null
@@ -272,6 +277,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][location_id]` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`data[attributes][product_group_id]` | **uuid** <br>The ID of the product group that contains the affected product. 
 `data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. 
 `data[attributes][quantity]` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
 `data[attributes][reason]` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
@@ -327,8 +333,9 @@ This request accepts the following includes:
         "quantity": 1,
         "starts_at": "2024-09-06T18:37:01.000000+00:00",
         "stops_at": "2024-09-11T18:37:01.000000+00:00",
-        "location_id": "5ca11407-358f-410f-83d0-4f3b4fb235b1",
-        "product_id": "59f0c994-63f5-4e25-878d-ced2a7e51ab9",
+        "product_group_id": "5ca11407-358f-410f-83d0-4f3b4fb235b1",
+        "location_id": "59f0c994-63f5-4e25-878d-ced2a7e51ab9",
+        "product_id": "628613ab-b024-4a77-8257-0da3ac3be5c1",
         "stock_item_id": null
       },
       "relationships": {}
@@ -357,6 +364,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][location_id]` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`data[attributes][product_group_id]` | **uuid** <br>The ID of the product group that contains the affected product. 
 `data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. 
 `data[attributes][quantity]` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
 `data[attributes][reason]` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.

@@ -60,9 +60,9 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:36:00.000000+00:00",
+          "created_at": "2028-06-15T15:23:00.000000+00:00",
           "product_name": "Product 1000062",
-          "identifier": "id1000172",
+          "identifier": "id1000178",
           "charge_duration_in_seconds": 7200,
           "rent_duration_in_seconds": 7200,
           "rented_count": 1,
@@ -79,9 +79,9 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T11:36:00.000000+00:00",
+          "created_at": "2028-06-15T15:23:00.000000+00:00",
           "product_name": "Product 1000062",
-          "identifier": "id1000173",
+          "identifier": "id1000179",
           "charge_duration_in_seconds": 0,
           "rent_duration_in_seconds": 0,
           "rented_count": 0,

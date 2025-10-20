@@ -162,7 +162,7 @@ Check each individual operation to see which relations can be included as a side
           "name": "iPad Pro - blue",
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
-          "sku": "PRODUCT 1000056",
+          "sku": "PRODUCT 1000059",
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",
@@ -506,7 +506,7 @@ This request accepts the following includes:
       "type": "products",
       "attributes": {
         "created_at": "2022-10-14T09:41:00.000000+00:00",
-        "updated_at": "2022-10-14T09:41:00.000000+00:00",
+        "updated_at": "2022-10-14T09:42:00.000000+00:00",
         "type": "products",
         "archived": false,
         "archived_at": null,

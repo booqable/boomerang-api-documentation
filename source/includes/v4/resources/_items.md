@@ -218,7 +218,7 @@ Name | Description
 `slug` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sorting_weight` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tag_list` | **string** <br>`eq`
-`tax_category_id` | **uuid** <br>`eq`, `not_eq`
+`tax_category_id` | **uuid** <br>`eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
 `tracking_type` | **enum** <br>`eq`
@@ -388,7 +388,7 @@ Name | Description
 `slug` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sorting_weight` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tag_list` | **string** <br>`eq`
-`tax_category_id` | **uuid** <br>`eq`, `not_eq`
+`tax_category_id` | **uuid** <br>`eq`
 `taxable` | **boolean** <br>`eq`
 `trackable` | **boolean** <br>`eq`
 `tracking_type` | **enum** <br>`eq`

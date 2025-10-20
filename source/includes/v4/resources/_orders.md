@@ -85,6 +85,96 @@ Deposits can be calculated and applied in different ways:
 
 The `deposit_value` field determines the percentage or fixed amount, and various deposit-related fields track payment and refund status.
 
+## Setting Delivery and Billing Addresses
+
+Delivery and billing addresses are stored as [Properties](#properties) of type `address` that belong to the order.
+The `delivery_address` and `billing_address` attributes are **read-only** and display formatted address strings
+for easy display in templates and interfaces.
+
+To set addresses, you have two main approaches:
+
+### Method 1: Reference Existing Address Properties
+
+If you already have address properties (e.g., saved to a customer), reference them directly:
+
+```json
+{
+  "data": {
+    "type": "orders",
+    "attributes": {
+      "customer_id": "customer-uuid-here",
+      "fulfillment_type": "delivery",
+      "delivery_address_property_id": "address-property-uuid-here",
+      "billing_address_property_id": "billing-address-property-uuid-here",
+      "starts_at": "2025-01-01T10:00:00Z",
+      "stops_at": "2025-01-03T10:00:00Z"
+    }
+  }
+}
+```
+
+This approach is recommended when reusing existing addresses and provides full control over address validation.
+
+### Method 2: Create Addresses Inline
+
+Create address properties as part of the order using `properties_attributes`. This is convenient for one-off orders:
+
+```json
+{
+  "data": {
+    "type": "orders",
+    "attributes": {
+      "customer_id": "customer-uuid-here",
+      "fulfillment_type": "delivery",
+      "starts_at": "2025-01-01T10:00:00Z",
+      "stops_at": "2025-01-03T10:00:00Z",
+      "properties_attributes": [
+        {
+          "identifier": "delivery_address",
+          "name": "Delivery Address",
+          "property_type": "address",
+          "address1": "123 Main Street",
+          "address2": "Apt 4B",
+          "city": "Springfield",
+          "region": "IL",
+          "zipcode": "62701",
+          "country": "United States"
+        },
+        {
+          "identifier": "billing_address",
+          "name": "Billing Address",
+          "property_type": "address",
+          "address1": "456 Business Ave",
+          "city": "Springfield",
+          "region": "IL",
+          "zipcode": "62702",
+          "country": "United States"
+        }
+      ]
+    }
+  }
+}
+```
+
+**Automatic Linking:** When you create address properties with `identifier` set to `delivery_address` or `billing_address`,
+the order automatically links to them via `delivery_address_property_id` and `billing_address_property_id`.
+
+**Required fields for address properties:**
+- `identifier`: Must be `delivery_address` or `billing_address` for automatic linking
+- `name`: Descriptive name for the address
+- `property_type`: Must be set to `address`
+- `address1`: Primary street address
+- `city`: City name
+- `zipcode`: Postal code
+- `country`: Country name (or `country_id` for precision)
+
+**Optional but recommended:**
+- `region`: State/province (or `province_id` for precision)
+- `address2`: Secondary address line (apartment, suite, etc.)
+
+Address validation requirements vary by country. For international orders, consider using `country_id` and `province_id`
+instead of string values for more reliable address handling. See the [Properties](#properties) documentation for complete field details.
+
 ## Relationships
 Name | Description
 -- | --
@@ -116,14 +206,14 @@ Check each individual operation to see which relations can be included as a side
 `amount_in_cents` | **integer** `readonly`<br>The rental amount excluding taxes. 
 `amount_paid_in_cents` | **integer** `readonly`<br>The portion of the rental amount that has been paid. 
 `amount_to_be_paid_in_cents` | **integer** `readonly`<br>The portion of the rental amount that still needs to be paid. 
-`billing_address_property_id` | **uuid** <br>The property id of the billing address. 
+`billing_address_property_id` | **uuid** <br>The UUID of the address [Property](#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `confirm_shortage` | **boolean** `writeonly`<br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
 `coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`). 
 `coupon_id` | **uuid** `nullable`<br>The [Coupon](#coupons) added to this Order. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `customer_id` | **uuid** `nullable`<br>The [Customer](#customers) this Order is for. 
-`delivery_address` | **string** <br>The delivery address. 
-`delivery_address_property_id` | **uuid** <br>The property id of the delivery address. 
+`delivery_address` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for detailed examples. 
+`delivery_address_property_id` | **uuid** <br>The UUID of the address [Property](#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `deposit_held_in_cents` | **integer** `readonly`<br>Amount of deposit held. 
 `deposit_in_cents` | **integer** `readonly`<br>Deposit. 
 `deposit_paid_in_cents` | **integer** `readonly`<br>How much of the deposit is paid. 
@@ -153,7 +243,7 @@ Check each individual operation to see which relations can be included as a side
 `payment_status` | **enum** `readonly`<br>Indicates next step to take with respect to payment for this order. Values include `paid` (fully paid), `partially_paid` (some payments made), `overpaid` (more paid than required), `payment_due` (balance still due), or `process_deposit` (deposit needs processing).<br> One of: `paid`, `partially_paid`, `overpaid`, `payment_due`, `process_deposit`.
 `price_in_cents` | **integer** `readonly`<br>Subtotal excl. taxes (excl. deposit). 
 `properties` | **hash** `readonly`<br>A hash containing all property identifiers and values (include the properties relation if you need more detailed information). Properties of orders can be updated in bulk by writing to the `properties_attributes` attribute. 
-`properties_attributes` | **array** `writeonly`<br>Assign this attribute to create/update properties as subresource of order in a single request. 
+`properties_attributes` | **array** `writeonly`<br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
 `shortage` | **boolean** `readonly`<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
 `start_location_id` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
@@ -207,8 +297,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-07-29T03:02:01.000000+00:00",
-          "stops_at": "1969-08-28T03:02:01.000000+00:00",
+          "starts_at": "1969-07-21T23:15:01.000000+00:00",
+          "stops_at": "1969-08-20T23:15:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -424,14 +514,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-10-14T09:27:36Z",
-                       "lte": "2025-10-17T09:27:36Z"
+                       "gte": "2025-10-21T13:14:55Z",
+                       "lte": "2025-10-24T13:14:55Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-10-14T09:27:36Z",
-                       "lte": "2025-10-17T09:27:36Z"
+                       "gte": "2025-10-21T13:14:55Z",
+                       "lte": "2025-10-24T13:14:55Z"
                      }
                    }
                  ]
@@ -803,8 +893,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-12-24T12:21:01.000000+00:00",
-        "stops_at": "1970-01-23T12:21:01.000000+00:00",
+        "starts_at": "1969-12-17T08:34:01.000000+00:00",
+        "stops_at": "1970-01-16T08:34:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1002,8 +1092,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:28:01.000000+00:00",
-        "stops_at": "2026-11-03T14:28:01.000000+00:00",
+        "starts_at": "2026-09-25T14:40:01.000000+00:00",
+        "stops_at": "2026-11-03T14:40:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1059,6 +1149,120 @@ When the following attributes are not specified, a sensible default will be pick
   }
 ```
 
+> Create an order with delivery address:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/orders'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "orders",
+           "attributes": {
+             "customer_id": "3a27640b-1429-4e99-8731-797893bb4e7a",
+             "fulfillment_type": "delivery",
+             "starts_at": "2018-04-05T18:58:00.000000+00:00",
+             "stops_at": "2018-05-14T18:58:00.000000+00:00",
+             "start_location_id": "46d00ab8-c063-4a54-8b94-db5d2eff88fe",
+             "stop_location_id": "46d00ab8-c063-4a54-8b94-db5d2eff88fe",
+             "properties_attributes": [
+               {
+                 "identifier": "delivery_address",
+                 "name": "Delivery address",
+                 "property_type": "address",
+                 "address1": "81801 Overseas Hwy",
+                 "address2": "Suite 100",
+                 "city": "Islamorada",
+                 "region": "Florida",
+                 "zipcode": "33036",
+                 "country": "United States"
+               }
+             ]
+           }
+         }
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "a627b12b-8d33-4094-8653-d80ec942410b",
+      "type": "orders",
+      "attributes": {
+        "created_at": "2018-04-02T18:58:00.000000+00:00",
+        "updated_at": "2018-04-02T18:58:00.000000+00:00",
+        "number": null,
+        "status": "new",
+        "statuses": [
+          "new"
+        ],
+        "status_counts": {
+          "new": 0,
+          "draft": 0,
+          "concept": 0,
+          "reserved": 0,
+          "started": 0,
+          "stopped": 0
+        },
+        "starts_at": "2018-04-05T18:58:00.000000+00:00",
+        "stops_at": "2018-05-14T18:58:00.000000+00:00",
+        "deposit_type": "percentage",
+        "deposit_value": 100.0,
+        "entirely_started": true,
+        "entirely_stopped": false,
+        "location_shortage": false,
+        "shortage": false,
+        "payment_status": "paid",
+        "override_period_restrictions": false,
+        "has_signed_contract": false,
+        "item_count": 0,
+        "tag_list": [],
+        "properties": {
+          "delivery_address": "81801 Overseas Hwy\nSuite 100\n33036 Islamorada Florida\nUnited States",
+          "billing_address": "81801 Overseas Hwy\nSuite 100\n33036 Islamorada Florida\nUnited States"
+        },
+        "amount_in_cents": 0,
+        "amount_paid_in_cents": 0,
+        "amount_to_be_paid_in_cents": null,
+        "deposit_in_cents": 0,
+        "deposit_held_in_cents": 0,
+        "deposit_paid_in_cents": 0,
+        "deposit_to_be_paid_in_cents": null,
+        "deposit_refunded_in_cents": 0,
+        "deposit_to_refund_in_cents": 0,
+        "total_in_cents": 0,
+        "total_paid_in_cents": 0,
+        "total_to_be_paid_in_cents": 0,
+        "total_discount_in_cents": 0,
+        "coupon_discount_in_cents": 0,
+        "discount_in_cents": 0,
+        "grand_total_in_cents": 0,
+        "grand_total_with_tax_in_cents": 0,
+        "paid_in_cents": 0,
+        "price_in_cents": 0,
+        "tax_in_cents": 0,
+        "to_be_paid_in_cents": 0,
+        "discount_type": "percentage",
+        "discount_percentage": 0.0,
+        "billing_address_property_id": null,
+        "delivery_address_property_id": "c145ac19-ea96-40c6-8d7c-9dc81eec5035",
+        "fulfillment_type": "delivery",
+        "delivery_address": "81801 Overseas Hwy\nSuite 100\n33036 Islamorada Florida\nUnited States",
+        "customer_id": "3a27640b-1429-4e99-8731-797893bb4e7a",
+        "tax_region_id": null,
+        "coupon_id": null,
+        "start_location_id": "46d00ab8-c063-4a54-8b94-db5d2eff88fe",
+        "stop_location_id": "46d00ab8-c063-4a54-8b94-db5d2eff88fe",
+        "order_delivery_rate_id": null
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
 ### HTTP Request
 
 `POST /api/4/orders`
@@ -1079,12 +1283,12 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][billing_address_property_id]` | **uuid** <br>The property id of the billing address. 
+`data[attributes][billing_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
 `data[attributes][coupon_id]` | **uuid** <br>The [Coupon](#coupons) added to this Order. 
 `data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this Order is for. 
-`data[attributes][delivery_address]` | **string** <br>The delivery address. 
-`data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
+`data[attributes][delivery_address]` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for detailed examples. 
+`data[attributes][delivery_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
@@ -1093,7 +1297,7 @@ Name | Description
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
-`data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
+`data[attributes][properties_attributes][]` | **array** <br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
 `data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
@@ -1321,12 +1525,12 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][billing_address_property_id]` | **uuid** <br>The property id of the billing address. 
+`data[attributes][billing_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
 `data[attributes][coupon_id]` | **uuid** <br>The [Coupon](#coupons) added to this Order. 
 `data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this Order is for. 
-`data[attributes][delivery_address]` | **string** <br>The delivery address. 
-`data[attributes][delivery_address_property_id]` | **uuid** <br>The property id of the delivery address. 
+`data[attributes][delivery_address]` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for detailed examples. 
+`data[attributes][delivery_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
@@ -1335,7 +1539,7 @@ Name | Description
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
-`data[attributes][properties_attributes][]` | **array** <br>Assign this attribute to create/update properties as subresource of order in a single request. 
+`data[attributes][properties_attributes][]` | **array** <br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When items become unavailable, changing this value may result in shortages
 `data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `concept`, `draft` and `reserved`.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future.   For a short while both values will be accepted when using this API to create a new Order,   but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `concept`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.

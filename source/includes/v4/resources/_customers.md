@@ -133,7 +133,7 @@ Name | Description
 `q` | **string** <br>`eq`
 `stripe_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **string** <br>`eq`
-`tax_region_id` | **uuid** <br>`eq`, `not_eq`
+`tax_region_id` | **uuid** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -147,6 +147,7 @@ Name | Description
 `discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
 `legal_type` | **array** <br>`count`
 `tag_list` | **array** <br>`count`
+`tax_region_id` | **array** <br>`count`
 `total` | **array** <br>`count`
 
 
@@ -267,7 +268,7 @@ Name | Description
 `q` | **string** <br>`eq`
 `stripe_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tag_list` | **string** <br>`eq`
-`tax_region_id` | **uuid** <br>`eq`, `not_eq`
+`tax_region_id` | **uuid** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
 
@@ -281,6 +282,7 @@ Name | Description
 `discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
 `legal_type` | **array** <br>`count`
 `tag_list` | **array** <br>`count`
+`tax_region_id` | **array** <br>`count`
 `total` | **array** <br>`count`
 
 
