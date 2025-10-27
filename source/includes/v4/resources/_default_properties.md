@@ -19,6 +19,7 @@ When creating properties they are connected with their default when one of the f
 
  Name | Description
 -- | --
+`can_change_property_type` | **boolean** `readonly`<br>Whether the `property_type` can be changed for this default property.<br>Returns `true` for new records. For persisted records this is `false` when:<br>- derived properties already exist that reference this default property, or - one-off properties exist for the same owner that would be linked by matching   `identifier` or case-insensitive `name`. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `editable` | **boolean** `readonly`<br>Whether this property is editable. 
 `id` | **uuid** `readonly`<br>Primary key.
@@ -61,6 +62,7 @@ When creating properties they are connected with their default when one of the f
           "property_type": "phone",
           "show_on": [],
           "validation_required": false,
+          "can_change_property_type": true,
           "owner_type": "customers",
           "select_options": [],
           "editable": true
@@ -144,6 +146,7 @@ This request does not accept any includes
         "property_type": "phone",
         "show_on": [],
         "validation_required": false,
+        "can_change_property_type": true,
         "owner_type": "customers",
         "select_options": [],
         "editable": true
@@ -206,6 +209,7 @@ This request does not accept any includes
         "property_type": "phone",
         "show_on": [],
         "validation_required": false,
+        "can_change_property_type": true,
         "owner_type": "customers",
         "select_options": [],
         "editable": true
@@ -283,6 +287,7 @@ This request does not accept any includes
         "property_type": "text_field",
         "show_on": [],
         "validation_required": false,
+        "can_change_property_type": true,
         "owner_type": "customers",
         "select_options": [],
         "editable": true
@@ -351,6 +356,7 @@ This request does not accept any includes
         "property_type": "phone",
         "show_on": [],
         "validation_required": false,
+        "can_change_property_type": true,
         "owner_type": "customers",
         "select_options": [],
         "editable": true

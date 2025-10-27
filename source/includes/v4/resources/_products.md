@@ -70,7 +70,7 @@ Check each individual operation to see which relations can be included as a side
 `price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`product_type` | **enum** `readonly`<br>Type of product.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future. </aside><br> One of: `rental`, `sales_item`, `service`, `consumable`.
+`product_type` | **enum** `readonly`<br>Type of product.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `properties` | **hash** `readonly`<br>Key value pairs of associated properties. This is the same data as provided by the properties relation, but without information about type and position. 
 `seo_description` | **string** `readonly` `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `readonly` `nullable`<br>SEO title tag. 
@@ -252,7 +252,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **string** <br>`eq`, `not_eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -427,7 +427,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
-`product_type` | **string** <br>`eq`, `not_eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -506,7 +506,7 @@ This request accepts the following includes:
       "type": "products",
       "attributes": {
         "created_at": "2022-10-14T09:41:00.000000+00:00",
-        "updated_at": "2022-10-14T09:42:00.000000+00:00",
+        "updated_at": "2022-10-14T09:41:00.000000+00:00",
         "type": "products",
         "archived": false,
         "archived_at": null,

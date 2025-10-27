@@ -457,7 +457,7 @@ This request accepts the following includes:
         "updated_at": "2027-06-16T04:31:07.000000+00:00",
         "archived": true,
         "archived_at": "2027-06-16T04:31:07.000000+00:00",
-        "name": "Sales Tax (Deleted)",
+        "name": "Sales Tax (Archived)",
         "default": false
       },
       "relationships": {}

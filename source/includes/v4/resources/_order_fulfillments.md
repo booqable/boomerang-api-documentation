@@ -157,7 +157,7 @@ product needs to have started. The quantity can
 be the same as the started quantity, or less when
 a subset of items is returned.
 
-Consumables and Services cannot be stopped.
+Sales items and Services cannot be stopped.
 
 ```json
 {

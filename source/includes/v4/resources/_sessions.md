@@ -49,6 +49,7 @@ Check each individual operation to see which relations can be included as a side
 `locations_updated_at` | **datetime** <br>When locations were last updated.
 `notification_subscriptions_updated_at` | **datetime** <br>When the employee last made a change to their notification subscriptions.
 `operating_rules_updated_at` | **datetime** <br>When the operating rules were last updated.
+`pricing_strategies` | **hash** <br>The available pricing strategies and their configuration
 `supported_fulfillment_types` | **array[string]** <br>Currently supported fulfillment types by the company's locations.
 
 
@@ -84,6 +85,143 @@ Check each individual operation to see which relations can be included as a side
         "supported_fulfillment_types": [],
         "billing_plans": [
           {
+            "name": "essential",
+            "month_price": 35,
+            "year_price": 348,
+            "restrictions": {
+              "employees": 2,
+              "email_max_recipients": 100,
+              "rate_limit_max": 50,
+              "rate_limit_period": 60,
+              "locations": 1,
+              "allow_extra_locations": true,
+              "allow_extra_employees": true,
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1
+            },
+            "features": [
+              "online_bookings",
+              "advanced_pricing",
+              "api",
+              "custom_domain",
+              "sales_items",
+              "destroy_bundles",
+              "bundles",
+              "buffer_times",
+              "prevent_last_minute_reservations",
+              "packing_slips",
+              "notes",
+              "manual_email_templates",
+              "product_shortage_limits",
+              "product_history",
+              "away_mode",
+              "customer_discount_percentage",
+              "mobile_app",
+              "product_security_deposit",
+              "invoice_due_dates",
+              "zapier"
+            ],
+            "pricing_strategy": "essential_pro_premium"
+          },
+          {
+            "name": "pro",
+            "month_price": 95,
+            "year_price": 948,
+            "restrictions": {
+              "employees": 5,
+              "email_max_recipients": 200,
+              "rate_limit_max": 100,
+              "rate_limit_period": 60,
+              "locations": 1,
+              "allow_extra_locations": true,
+              "allow_extra_employees": true,
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1
+            },
+            "features": [
+              "online_bookings",
+              "advanced_pricing",
+              "api",
+              "custom_domain",
+              "sales_items",
+              "destroy_bundles",
+              "bundles",
+              "buffer_times",
+              "prevent_last_minute_reservations",
+              "packing_slips",
+              "notes",
+              "manual_email_templates",
+              "product_shortage_limits",
+              "product_history",
+              "away_mode",
+              "customer_discount_percentage",
+              "mobile_app",
+              "product_security_deposit",
+              "invoice_due_dates",
+              "zapier",
+              "barcodes",
+              "reports",
+              "permissions",
+              "exports",
+              "coupons",
+              "downtimes"
+            ],
+            "pricing_strategy": "essential_pro_premium"
+          },
+          {
+            "name": "premium",
+            "month_price": 299,
+            "year_price": 2988,
+            "restrictions": {
+              "employees": 15,
+              "email_max_recipients": 500,
+              "rate_limit_max": 250,
+              "rate_limit_period": 60,
+              "locations": 3,
+              "allow_extra_locations": true,
+              "allow_extra_employees": true,
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1
+            },
+            "features": [
+              "online_bookings",
+              "advanced_pricing",
+              "api",
+              "custom_domain",
+              "sales_items",
+              "destroy_bundles",
+              "bundles",
+              "buffer_times",
+              "prevent_last_minute_reservations",
+              "packing_slips",
+              "notes",
+              "manual_email_templates",
+              "product_shortage_limits",
+              "product_history",
+              "away_mode",
+              "customer_discount_percentage",
+              "mobile_app",
+              "product_security_deposit",
+              "invoice_due_dates",
+              "zapier",
+              "barcodes",
+              "reports",
+              "permissions",
+              "exports",
+              "coupons",
+              "downtimes",
+              "shop_tracking",
+              "sso",
+              "iprestrictions",
+              "2fa_enforcing",
+              "remove_powered_by"
+            ],
+            "pricing_strategy": "essential_pro_premium"
+          },
+          {
             "name": "small",
             "month_price": 34,
             "year_price": 324,
@@ -102,8 +240,10 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
-              "mobile_app"
-            ]
+              "mobile_app",
+              "zapier"
+            ],
+            "pricing_strategy": "small_medium_large_scale"
           },
           {
             "name": "medium",
@@ -118,13 +258,14 @@ Check each individual operation to see which relations can be included as a side
               "allow_extra_locations": false,
               "allow_extra_employees": false,
               "manual_email_templates": 3,
-              "custom_fields": null,
-              "tags": null,
+              "custom_fields": -1,
+              "tags": -1,
               "away_modes": 2
             },
             "features": [
               "destroy_bundles",
               "mobile_app",
+              "zapier",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -141,7 +282,8 @@ Check each individual operation to see which relations can be included as a side
               "reports",
               "product_history",
               "downtimes"
-            ]
+            ],
+            "pricing_strategy": "small_medium_large_scale"
           },
           {
             "name": "large",
@@ -155,14 +297,15 @@ Check each individual operation to see which relations can be included as a side
               "locations": 1,
               "allow_extra_locations": true,
               "allow_extra_employees": true,
-              "manual_email_templates": null,
-              "custom_fields": null,
-              "tags": null,
-              "away_modes": null
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1,
+              "away_modes": -1
             },
             "features": [
               "destroy_bundles",
               "mobile_app",
+              "zapier",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -184,7 +327,8 @@ Check each individual operation to see which relations can be included as a side
               "product_shortage_limits",
               "exports",
               "remove_powered_by"
-            ]
+            ],
+            "pricing_strategy": "small_medium_large_scale"
           },
           {
             "name": "scale",
@@ -198,14 +342,15 @@ Check each individual operation to see which relations can be included as a side
               "locations": 1,
               "allow_extra_locations": true,
               "allow_extra_employees": true,
-              "manual_email_templates": null,
-              "custom_fields": null,
-              "tags": null,
-              "away_modes": null
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1,
+              "away_modes": -1
             },
             "features": [
               "destroy_bundles",
               "mobile_app",
+              "zapier",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -227,138 +372,168 @@ Check each individual operation to see which relations can be included as a side
               "product_shortage_limits",
               "exports",
               "remove_powered_by"
-            ]
+            ],
+            "pricing_strategy": "small_medium_large_scale"
           },
           {
-            "name": "essential",
+            "name": "start",
             "month_price": 35,
             "year_price": 348,
             "restrictions": {
-              "employees": 2,
+              "employees": 1,
               "email_max_recipients": 100,
               "rate_limit_max": 50,
               "rate_limit_period": 60,
               "locations": 1,
-              "allow_extra_locations": true,
-              "allow_extra_employees": true,
-              "manual_email_templates": null,
-              "custom_fields": null,
-              "tags": null
+              "allow_extra_locations": false,
+              "allow_extra_employees": false,
+              "manual_email_templates": 0,
+              "custom_fields": 3,
+              "tags": -1,
+              "away_modes": 2
             },
             "features": [
-              "online_bookings",
-              "advanced_pricing",
-              "api",
-              "custom_domain",
-              "sales_items",
               "destroy_bundles",
-              "bundles",
-              "buffer_times",
-              "prevent_last_minute_reservations",
-              "packing_slips",
-              "notes",
-              "manual_email_templates",
-              "product_shortage_limits",
-              "product_history",
-              "away_mode",
-              "customer_discount_percentage",
               "mobile_app",
-              "product_security_deposit",
-              "invoice_due_dates"
-            ]
+              "sales_items",
+              "buffer_times",
+              "notes",
+              "packing_slips",
+              "away_mode"
+            ],
+            "pricing_strategy": "start_grow_scale_custom"
           },
           {
-            "name": "pro",
-            "month_price": 95,
-            "year_price": 948,
+            "name": "grow",
+            "month_price": 87,
+            "year_price": 828,
             "restrictions": {
-              "employees": 5,
+              "employees": 6,
               "email_max_recipients": 200,
               "rate_limit_max": 100,
               "rate_limit_period": 60,
               "locations": 1,
-              "allow_extra_locations": true,
-              "allow_extra_employees": true,
-              "manual_email_templates": null,
-              "custom_fields": null,
-              "tags": null
+              "allow_extra_locations": false,
+              "allow_extra_employees": false,
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1,
+              "away_modes": -1
             },
             "features": [
-              "online_bookings",
-              "advanced_pricing",
-              "api",
-              "custom_domain",
-              "sales_items",
               "destroy_bundles",
-              "bundles",
-              "buffer_times",
-              "prevent_last_minute_reservations",
-              "packing_slips",
-              "notes",
-              "manual_email_templates",
-              "product_shortage_limits",
-              "product_history",
-              "away_mode",
-              "customer_discount_percentage",
               "mobile_app",
+              "sales_items",
+              "buffer_times",
+              "notes",
+              "packing_slips",
+              "away_mode",
+              "advanced_pricing",
+              "bundles",
+              "prevent_last_minute_reservations",
+              "manual_email_templates",
+              "customer_discount_percentage",
               "product_security_deposit",
+              "coupons",
               "invoice_due_dates",
-              "barcodes",
               "reports",
+              "product_history",
+              "downtimes",
               "permissions",
               "exports",
-              "coupons",
-              "downtimes"
-            ]
+              "zapier"
+            ],
+            "pricing_strategy": "start_grow_scale_custom"
           },
           {
-            "name": "premium",
-            "month_price": 299,
-            "year_price": 2988,
+            "name": "scale_v2",
+            "month_price": 187,
+            "year_price": 1788,
             "restrictions": {
-              "employees": 15,
+              "employees": 11,
               "email_max_recipients": 500,
               "rate_limit_max": 250,
               "rate_limit_period": 60,
-              "locations": 3,
+              "locations": 1,
               "allow_extra_locations": true,
               "allow_extra_employees": true,
-              "manual_email_templates": null,
-              "custom_fields": null,
-              "tags": null
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1,
+              "away_modes": -1
             },
             "features": [
-              "online_bookings",
-              "advanced_pricing",
-              "api",
-              "custom_domain",
-              "sales_items",
               "destroy_bundles",
-              "bundles",
-              "buffer_times",
-              "prevent_last_minute_reservations",
-              "packing_slips",
-              "notes",
-              "manual_email_templates",
-              "product_shortage_limits",
-              "product_history",
-              "away_mode",
-              "customer_discount_percentage",
               "mobile_app",
+              "sales_items",
+              "buffer_times",
+              "notes",
+              "packing_slips",
+              "away_mode",
+              "advanced_pricing",
+              "bundles",
+              "prevent_last_minute_reservations",
+              "manual_email_templates",
+              "customer_discount_percentage",
               "product_security_deposit",
+              "coupons",
               "invoice_due_dates",
-              "barcodes",
               "reports",
+              "product_history",
+              "downtimes",
               "permissions",
               "exports",
-              "coupons",
-              "downtimes",
-              "shop_tracking",
-              "sso",
-              "iprestrictions",
-              "2fa_enforcing",
+              "zapier",
+              "api",
+              "product_shortage_limits",
               "remove_powered_by"
-            ]
+            ],
+            "pricing_strategy": "start_grow_scale_custom"
+          },
+          {
+            "name": "custom",
+            "month_price": 419,
+            "year_price": 4188,
+            "restrictions": {
+              "employees": 20,
+              "email_max_recipients": 2000,
+              "rate_limit_max": 250,
+              "rate_limit_period": 60,
+              "locations": 1,
+              "allow_extra_locations": true,
+              "allow_extra_employees": true,
+              "manual_email_templates": -1,
+              "custom_fields": -1,
+              "tags": -1,
+              "away_modes": -1
+            },
+            "features": [
+              "destroy_bundles",
+              "mobile_app",
+              "sales_items",
+              "buffer_times",
+              "notes",
+              "packing_slips",
+              "away_mode",
+              "advanced_pricing",
+              "bundles",
+              "prevent_last_minute_reservations",
+              "manual_email_templates",
+              "customer_discount_percentage",
+              "product_security_deposit",
+              "coupons",
+              "invoice_due_dates",
+              "reports",
+              "product_history",
+              "downtimes",
+              "permissions",
+              "exports",
+              "zapier",
+              "api",
+              "product_shortage_limits",
+              "remove_powered_by"
+            ],
+            "pricing_strategy": "start_grow_scale_custom"
           }
         ],
         "app_payment_options_available": false,
@@ -414,23 +589,27 @@ Check each individual operation to see which relations can be included as a side
               "small",
               "medium",
               "large",
-              "scale"
+              "scale",
+              "start",
+              "grow",
+              "scale_v2",
+              "custom"
             ]
           },
           {
             "name": "mobile_app",
-            "month_price": 24,
-            "year_price": 228,
-            "per_employee": false,
+            "month_price": 12,
+            "year_price": 108,
+            "per_employee": true,
             "features": [
               "mobile_app"
             ],
-            "default": null,
+            "default": true,
             "available_on": [
-              "small",
-              "medium",
-              "large",
-              "scale"
+              "start",
+              "grow",
+              "scale_v2",
+              "custom"
             ]
           },
           {
@@ -443,7 +622,8 @@ Check each individual operation to see which relations can be included as a side
             ],
             "default": null,
             "available_on": [
-              "scale"
+              "scale",
+              "custom"
             ]
           },
           {
@@ -456,7 +636,8 @@ Check each individual operation to see which relations can be included as a side
             ],
             "default": null,
             "available_on": [
-              "scale"
+              "scale",
+              "custom"
             ]
           },
           {
@@ -483,10 +664,54 @@ Check each individual operation to see which relations can be included as a side
             "default": true,
             "available_on": [
               "large",
-              "scale"
+              "scale",
+              "grow",
+              "scale_v2",
+              "custom"
             ]
           }
-        ]
+        ],
+        "pricing_strategies": {
+          "essential_pro_premium": {
+            "allows_custom_checkout_settings": false,
+            "allows_addons": false,
+            "base_plans": [
+              "essential",
+              "pro",
+              "premium"
+            ],
+            "default_plan": "essential",
+            "trial_plan": "premium",
+            "highest_plan": "premium",
+            "uses_expiring_extra_charges": true
+          },
+          "small_medium_large_scale": {
+            "allows_custom_checkout_settings": true,
+            "allows_addons": true,
+            "base_plans": [
+              "small",
+              "medium",
+              "large"
+            ],
+            "default_plan": "medium",
+            "trial_plan": "large",
+            "highest_plan": "scale",
+            "uses_expiring_extra_charges": false
+          },
+          "start_grow_scale_custom": {
+            "allows_custom_checkout_settings": true,
+            "allows_addons": true,
+            "base_plans": [
+              "start",
+              "grow",
+              "scale_v2"
+            ],
+            "default_plan": "grow",
+            "trial_plan": "scale_v2",
+            "highest_plan": "custom",
+            "uses_expiring_extra_charges": false
+          }
+        }
       },
       "relationships": {
         "company": {
@@ -585,8 +810,8 @@ Check each individual operation to see which relations can be included as a side
             "canceled": false,
             "canceled_at": null,
             "on_hold": false,
-            "product": "Scale",
-            "plan_id": "scale_month",
+            "plan_identifier": "scale",
+            "active_subscription_plan_and_interval": "scale_month",
             "interval": "month",
             "current_period_end": null,
             "extra_employees": 0,
@@ -601,7 +826,7 @@ Check each individual operation to see which relations can be included as a side
               "barcodes"
             ],
             "checkout_settings": {},
-            "amount_in_cents": 58000,
+            "amount_in_cents": 56800,
             "discount_in_cents": 0,
             "balance_in_cents": 0,
             "coupon": null,
@@ -617,6 +842,7 @@ Check each individual operation to see which relations can be included as a side
             "allowed_features": [
               "destroy_bundles",
               "mobile_app",
+              "zapier",
               "advanced_pricing",
               "sales_items",
               "bundles",
@@ -697,7 +923,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1760966195"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1761557461"
         }
       },
       {

@@ -11,12 +11,11 @@ Product groups are not plannable on orders. Products are the resource that is pl
 - **Rental:** Rental products are your main products that you rent out.
   Even if your main product is officially a service, in Booqable you will
   want to add it as a rental product.
-- **Consumable:** Consumable products are products that you do not plan on getting back.
+- **Sales items:** Sales items are products that you do not plan on getting back.
   These are meant to be small items that you plan on selling along with a rental but do
   not expect to be returned with the rest of the order.
-  <aside class="warning inline">
-    The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.
-  </aside>
+  The <code>sales_item</code> type used to be called <code>consumable</code>.
+  v1 apis and webhooks will return <code>consumable</code>.
 - **Service:** Service Item or Service Products are the optional extra services (or items)
   you want to offer to your products. These are not trackable, therefore they do not have an identifier.
 
@@ -24,9 +23,9 @@ Product groups are not plannable on orders. Products are the resource that is pl
 
 The tracking type determines how the product is tracked.
 
-- **None:** Products are not tracked (only for product_type `service`, `consumable`)
+- **None:** Products are not tracked (only for product_type `service`, `sales_item`)
 - **Trackable:** Trackable Products tend to be the larger ticket items; the products you want to know specifically who has what stock item of what product and when. With trackable products, every stock item has its own identifier so you can assign and track the individual products (only for product_type `rental`).
-- **Bulk:** Bulk products are for those products you don't necessarily need to track each specific stock item but rather you just need to know how many you have in stock. These tend to be your smaller ticket items or items that are quicker to replace in bulk if some are lost (only for product_type `rental`, `consumable`).
+- **Bulk:** Bulk products are for those products you don't necessarily need to track each specific stock item but rather you just need to know how many you have in stock. These tend to be your smaller ticket items or items that are quicker to replace in bulk if some are lost (only for product_type `rental`, `sales_item`).
 
 ### Pricing Types
 
@@ -95,7 +94,7 @@ Check each individual operation to see which relations can be included as a side
 `price_ruleset_id` | **uuid** `nullable`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `price_structure_id` | **uuid** `nullable`<br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `price_type` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`product_type` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `rental`, `sales_item`, `service`, `consumable`.
+`product_type` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `properties` | **hash** `readonly`<br>Hash of properties. Sideload the properties relation when more information is needed. 
 `seo_description` | **string** `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `nullable`<br>SEO title tag. 
@@ -229,7 +228,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **string** <br>`eq`, `not_eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -393,7 +392,7 @@ Name | Description
 `price_structure_id` | **uuid** <br>`eq`, `not_eq`
 `price_type` | **enum** <br>`eq`
 `product_group_id` | **uuid** <br>`eq`
-`product_type` | **string** <br>`eq`, `not_eq`
+`product_type` | **enum** <br>`eq`
 `q` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `seo_title` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -667,7 +666,7 @@ Name | Description
 `data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `rental`, `sales_item`, `service`, `consumable`.
+`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
 `data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 
@@ -818,7 +817,7 @@ Name | Description
 `data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
-`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br><aside class="warning inline">   The <code>consumable</code> type will be renamed to <code>sales_item</code> in the near future.   For a short while, both attribute values will be accepted when creating a ProductGroup. </aside><br> One of: `rental`, `sales_item`, `service`, `consumable`.
+`data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
 `data[attributes][remote_photo_url]` | **string** <br>URL to an image on the web. 
 `data[attributes][seo_description]` | **string** <br>SEO meta description tag. 

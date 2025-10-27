@@ -230,8 +230,8 @@ Name | Description
           "canceled": false,
           "canceled_at": null,
           "on_hold": false,
-          "product": "Scale",
-          "plan_id": "scale_month",
+          "plan_identifier": "scale",
+          "active_subscription_plan_and_interval": "scale_month",
           "interval": "month",
           "current_period_end": null,
           "extra_employees": 0,
@@ -246,7 +246,7 @@ Name | Description
             "barcodes"
           ],
           "checkout_settings": {},
-          "amount_in_cents": 58000,
+          "amount_in_cents": 56800,
           "discount_in_cents": 0,
           "balance_in_cents": 0,
           "coupon": null,
@@ -262,6 +262,7 @@ Name | Description
           "allowed_features": [
             "destroy_bundles",
             "mobile_app",
+            "zapier",
             "advanced_pricing",
             "sales_items",
             "bundles",

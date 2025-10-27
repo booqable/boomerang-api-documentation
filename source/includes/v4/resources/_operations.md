@@ -218,7 +218,7 @@ Exports data as CSV.
 | Key                 | Type          | Possible values                                                                                                               | Description                                                                                                      |
 |---------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `type`              | string        | `export`                                                                                                                      | Required to start this specific operation.                                                                       |
-| `data.target_type`  | string        | `product_groups`, `bundles`, `customers`, `orders`, `documents`, `report_rentals`, `report_consumables`, 'report_stock_items' | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
+| `data.target_type`  | string        | `product_groups`, `bundles`, `customers`, `orders`, `documents`, `report_rentals`, `report_sales_items`, 'report_stock_items' | The type of resource that should have the associated tags updated. Only one resource per operation is supported. |
 | `data.target_ids`   | array[uuid]   | `[{id}, {id}]`                                                                                                                | An array of primary keys for the entities that should have the associated tags updated.                          |
 
 ### Artifact
