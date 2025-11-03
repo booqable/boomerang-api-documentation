@@ -114,8 +114,7 @@ Name | Description
 `reasons` | **array** <br>`eq`, `not_eq`
 `start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`, `compare`
-`status` | **enum** <br>`eq`, `not_eq`
-`statuses` | **array** <br>`eq`, `not_eq`
+`status` | **array** <br>`eq`, `not_eq`
 `stock_item_id` | **uuid** <br>`eq`, `not_eq`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`, `compare`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`

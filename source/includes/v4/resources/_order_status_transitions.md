@@ -12,11 +12,6 @@ It is however possible to revert to the `started` or the `stopped` status.
 It is not possible to resurrect a canceled [Order](#orders).
 [Duplicating](#order-duplications) a canceled [Order](#orders) is possible.
 
-<aside class="warning">
-  The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.
-  For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible.
-</aside>
-
 ### Errors
 
 When the [Order](#orders) cannot be transitioned, and `error.code` is `items_not_available`,
@@ -62,8 +57,8 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** <br>The [Order](#orders) whose status is changed. 
 `revert` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `draft` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
-`transition_from` | **enum** <br>The current status of the [Order](#orders).<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `concept`.
-`transition_to` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `concept`.
+`transition_from` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`.
+`transition_to` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ## Transition
@@ -474,8 +469,8 @@ Name | Description
 `data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](#orders). 
 `data[attributes][order_id]` | **uuid** <br>The [Order](#orders) whose status is changed. 
 `data[attributes][revert]` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `draft` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
-`data[attributes][transition_from]` | **enum** <br>The current status of the [Order](#orders).<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `concept`.
-`data[attributes][transition_to]` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br><aside class="warning inline">   The <code>concept</code> status is deprecated and will be renamed to <code>draft</code> in the near future.   For a short while both values will be  accepted by this API, but the new value <code>draft</code> should be used as soon as possible. </aside><br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `concept`.
+`data[attributes][transition_from]` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`.
+`data[attributes][transition_to]` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ### Includes

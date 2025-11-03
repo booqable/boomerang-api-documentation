@@ -68,14 +68,14 @@ Check each individual operation to see which relations can be included as a side
 `parent_planning_id` | **uuid** `readonly`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
 `planning_type` | **enum** `readonly`<br>Type of planning. Can be `order` for regular rental plannings created through [Orders](#orders), or `downtime` for operational periods when items are unavailable due to maintenance, repairs, or other reasons. Downtime plannings don't belong to an order and are managed separately.<br> One of: `order`, `downtime`.
 `quantity` | **integer** `readonly`<br>Total planned quantity of items. This affects availability calculations and represents how many items are being booked/reserved. Changing this value may result in shortages if additional items are not available for the rental period. 
-`reserved` | **boolean** `readonly`<br>Whether items are reserved. When `true`, this Planning affects availability calculations and the items are not available for other plannings during the reserved period. For order plannings, this is set to `true` when an Order transitions from `concept` to `reserved` status. 
+`reserved` | **boolean** `readonly`<br>Whether items are reserved. When `true`, this Planning affects availability calculations and the items are not available for other plannings during the reserved period. For order plannings, this is set to `true` when an Order transitions from `draft` to `reserved` status. 
 `reserved_from` | **datetime** `readonly`<br>When the items actually become unavailable in the system. May differ from `starts_at` due to buffer time. This is the actual time used for availability calculations. 
 `reserved_till` | **datetime** `readonly`<br>When the items actually become available again in the system. May differ from `stops_at` due to buffer time. This is the actual time used for availability calculations. 
 `shortage_amount` | **integer** <br>Amount of items short across all locations in the same cluster. This represents how many more items would be needed in total to satisfy this planning. A value greater than zero indicates a system-wide shortage that can't be solved by transfers between locations. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
 `start_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the planned activity begins. For order plannings, this is where the customer will pick up the item. 
 `started` | **integer** <br>Amount of items that have begun their planned activity. For order plannings, this represents items picked up or delivered to the customer. This value increases when staff performs start actions. Cannot exceed `quantity`. When all items are started (`started` equals `quantity`), the Planning is considered fully started. This attribute is omitted when this is a parent planning for a Bundle. 
 `starts_at` | **datetime** `readonly`<br>When the planned activity is scheduled to begin. For order plannings, this represents when pickup/delivery is planned to occur and is shown to staff and customers as the beginning of the rental. 
-`status` | **enum** `readonly`<br>Status of this planning. A planning can become "stopped" before the order it belongs to is stopped. Otherwise, the status mostly follows the status of the order.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a Planning is removed from an Order through the Lines resource. When an Order is archived, `status` of Plannings is set to `archived`, but the `archived` attribute remains false.<br><aside class="warning inline">   The <code>concept</code> status will be renamed to <code>draft</code> in the near future. </aside><br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`, `concept`.
+`status` | **enum** `readonly`<br>Status of this planning. A planning can become "stopped" before the order it belongs to is stopped. Otherwise, the status mostly follows the status of the order.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a Planning is removed from an Order through the Lines resource. When an Order is archived, `status` of Plannings is set to `archived`, but the `archived` attribute remains false.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `stop_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the planned activity ends. For order plannings, this is where the customer will return the product. 
 `stopped` | **integer** <br>Amount of items that have completed their planned activity. For order plannings, this represents items returned by the customer. This value increases when staff performs stop actions. Cannot exceed `quantity` and `started` (items must be started before they can be stopped). When all items are stopped (`stopped` equals `quantity`), the Planning is considered fully completed.<br>For order plannings with [Products](#products) that have `product_type == consumable`, items are never returned, and the `stopped` attribute will always remain zero.<br>This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
 `stops_at` | **datetime** `readonly`<br>When the planned activity is scheduled to end. For order plannings, this represents when return is planned to occur and is shown to staff and customers as the end of the rental. 
@@ -107,10 +107,10 @@ Check each individual operation to see which relations can be included as a side
           "archived_at": null,
           "planning_type": "order",
           "quantity": 1,
-          "starts_at": "1972-08-24T07:48:00.000000+00:00",
-          "stops_at": "1972-09-23T07:48:00.000000+00:00",
-          "reserved_from": "1972-08-24T07:48:00.000000+00:00",
-          "reserved_till": "1972-09-23T07:48:00.000000+00:00",
+          "starts_at": "1972-08-17T07:49:00.000000+00:00",
+          "stops_at": "1972-09-16T07:49:00.000000+00:00",
+          "reserved_from": "1972-08-17T07:49:00.000000+00:00",
+          "reserved_till": "1972-09-16T07:49:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -177,7 +177,7 @@ Name | Description
 `start_location_id` | **uuid** <br>`eq`, `not_eq`
 `started` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **enum** <br>`eq`, `not_eq`
+`status` | **enum** <br>`eq`
 `stop_location_id` | **uuid** <br>`eq`, `not_eq`
 `stopped` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -241,12 +241,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-10-28T09:29:55Z"
+                       "gte": "2025-11-04T09:28:58Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-10-31T09:29:55Z"
+                       "lte": "2025-11-07T09:28:58Z"
                      }
                    }
                  ]
@@ -256,12 +256,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-10-28T09:29:55Z"
+                       "gte": "2025-11-04T09:28:58Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-10-31T09:29:55Z"
+                       "lte": "2025-11-07T09:28:58Z"
                      }
                    }
                  ]
@@ -333,7 +333,7 @@ Name | Description
 `start_location_id` | **uuid** <br>`eq`, `not_eq`
 `started` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **enum** <br>`eq`, `not_eq`
+`status` | **enum** <br>`eq`
 `stop_location_id` | **uuid** <br>`eq`, `not_eq`
 `stopped` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -393,15 +393,15 @@ This request accepts the following includes:
       "type": "plannings",
       "attributes": {
         "created_at": "2023-04-14T01:42:01.000000+00:00",
-        "updated_at": "2023-04-14T01:42:01.000000+00:00",
+        "updated_at": "2023-04-14T01:43:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "planning_type": "order",
         "quantity": 1,
-        "starts_at": "1977-09-17T04:13:01.000000+00:00",
-        "stops_at": "1977-10-17T04:13:01.000000+00:00",
-        "reserved_from": "1977-09-17T04:13:01.000000+00:00",
-        "reserved_till": "1977-10-17T04:13:01.000000+00:00",
+        "starts_at": "1977-09-10T04:14:01.000000+00:00",
+        "stops_at": "1977-10-10T04:14:01.000000+00:00",
+        "reserved_from": "1977-09-10T04:14:01.000000+00:00",
+        "reserved_till": "1977-10-10T04:14:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,

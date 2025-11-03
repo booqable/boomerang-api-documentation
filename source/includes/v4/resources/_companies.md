@@ -277,6 +277,7 @@ Name | Description
             "coupons",
             "invoice_due_dates",
             "reports",
+            "availability_reports",
             "product_history",
             "downtimes",
             "api",

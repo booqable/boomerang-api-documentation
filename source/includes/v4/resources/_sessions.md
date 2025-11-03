@@ -163,6 +163,7 @@ Check each individual operation to see which relations can be included as a side
               "zapier",
               "barcodes",
               "reports",
+              "availability_reports",
               "permissions",
               "exports",
               "coupons",
@@ -209,6 +210,7 @@ Check each individual operation to see which relations can be included as a side
               "zapier",
               "barcodes",
               "reports",
+              "availability_reports",
               "permissions",
               "exports",
               "coupons",
@@ -280,6 +282,7 @@ Check each individual operation to see which relations can be included as a side
               "coupons",
               "invoice_due_dates",
               "reports",
+              "availability_reports",
               "product_history",
               "downtimes"
             ],
@@ -320,6 +323,7 @@ Check each individual operation to see which relations can be included as a side
               "coupons",
               "invoice_due_dates",
               "reports",
+              "availability_reports",
               "product_history",
               "downtimes",
               "api",
@@ -365,6 +369,7 @@ Check each individual operation to see which relations can be included as a side
               "coupons",
               "invoice_due_dates",
               "reports",
+              "availability_reports",
               "product_history",
               "downtimes",
               "api",
@@ -399,7 +404,8 @@ Check each individual operation to see which relations can be included as a side
               "buffer_times",
               "notes",
               "packing_slips",
-              "away_mode"
+              "away_mode",
+              "availability_reports"
             ],
             "pricing_strategy": "start_grow_scale_custom"
           },
@@ -428,6 +434,7 @@ Check each individual operation to see which relations can be included as a side
               "notes",
               "packing_slips",
               "away_mode",
+              "availability_reports",
               "advanced_pricing",
               "bundles",
               "prevent_last_minute_reservations",
@@ -470,6 +477,7 @@ Check each individual operation to see which relations can be included as a side
               "notes",
               "packing_slips",
               "away_mode",
+              "availability_reports",
               "advanced_pricing",
               "bundles",
               "prevent_last_minute_reservations",
@@ -515,6 +523,7 @@ Check each individual operation to see which relations can be included as a side
               "notes",
               "packing_slips",
               "away_mode",
+              "availability_reports",
               "advanced_pricing",
               "bundles",
               "prevent_last_minute_reservations",
@@ -650,7 +659,8 @@ Check each individual operation to see which relations can be included as a side
             ],
             "default": null,
             "available_on": [
-              "scale"
+              "scale",
+              "custom"
             ]
           },
           {
@@ -857,6 +867,7 @@ Check each individual operation to see which relations can be included as a side
               "coupons",
               "invoice_due_dates",
               "reports",
+              "availability_reports",
               "product_history",
               "downtimes",
               "api",
@@ -923,7 +934,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1761557461"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1762162203"
         }
       },
       {

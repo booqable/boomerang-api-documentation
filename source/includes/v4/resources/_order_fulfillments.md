@@ -594,7 +594,7 @@ This request accepts the following includes:
           "reserved": false,
           "started": false,
           "stopped": false,
-          "status": "concept",
+          "status": "draft",
           "stock_item_planning_type": "order",
           "stock_item_id": "1cf99ea9-3582-4711-8d60-f289187d90b5",
           "planning_id": "efda8344-0d43-4bf2-8360-2eaf863301df",
