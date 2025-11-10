@@ -94,18 +94,6 @@ This resource is particularly useful for:
           },
           "d2dfb182-9417-4d6d-8c84-6e49e5cbc505": {
             "location": {
-              "stock_count": 5,
-              "available": 4,
-              "plannable": 4
-            },
-            "cluster": {
-              "stock_count": 5,
-              "available": 4,
-              "plannable": 4
-            }
-          },
-          "ce177ce8-97ec-40ef-80ab-7a527dab74ce": {
-            "location": {
               "stock_count": 10,
               "available": 8,
               "plannable": 8

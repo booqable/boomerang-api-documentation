@@ -73,7 +73,7 @@ Check each individual operation to see which relations can be included as a side
           "updated_at": "2026-11-20T19:16:00.000000+00:00",
           "number": "http://bqbl.it/c3fbfdf6-d756-4d88-89c7-974df32dc31f",
           "barcode_type": "qr_code",
-          "image_url": "http://company-name-25.lvh.me/barcodes/c3fbfdf6-d756-4d88-89c7-974df32dc31f/image",
+          "image_url": "http://company-name-28.lvh.me/barcodes/c3fbfdf6-d756-4d88-89c7-974df32dc31f/image",
           "owner_id": "2318a321-06f9-4303-8d23-b46cfb189aeb",
           "owner_type": "customers"
         },
@@ -106,7 +106,7 @@ Check each individual operation to see which relations can be included as a side
           "updated_at": "2021-09-12T13:49:00.000000+00:00",
           "number": "http://bqbl.it/9882a0de-d425-4c34-8a53-f65dd35dd375",
           "barcode_type": "qr_code",
-          "image_url": "http://company-name-26.lvh.me/barcodes/9882a0de-d425-4c34-8a53-f65dd35dd375/image",
+          "image_url": "http://company-name-29.lvh.me/barcodes/9882a0de-d425-4c34-8a53-f65dd35dd375/image",
           "owner_id": "48f38dad-4082-4377-8d28-c793e2d1c814",
           "owner_type": "customers"
         },
@@ -156,7 +156,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvZTZmZGZmZTQtMDhmNy00YjJkLTgzNDAtYWI5ZjE0MTExN2Ix'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvZTBlYmNmODgtZjhlZS00NmQ3LWJjZWUtMDRhZTQ0OWYzZTU5'
        --data-urlencode 'include=owner'
 ```
 
@@ -173,7 +173,7 @@ Check each individual operation to see which relations can be included as a side
           "updated_at": "2023-09-26T19:48:00.000000+00:00",
           "number": "http://bqbl.it/78a5e268-fca0-450a-855f-49f29ef29ef3",
           "barcode_type": "qr_code",
-          "image_url": "http://company-name-27.lvh.me/barcodes/78a5e268-fca0-450a-855f-49f29ef29ef3/image",
+          "image_url": "http://company-name-30.lvh.me/barcodes/78a5e268-fca0-450a-855f-49f29ef29ef3/image",
           "owner_id": "ab6232e0-b056-4bf8-8bc7-99c41f2782de",
           "owner_type": "customers"
         },
@@ -304,7 +304,7 @@ This request accepts the following includes:
         "updated_at": "2023-11-26T10:01:03.000000+00:00",
         "number": "http://bqbl.it/60d46666-056c-4072-8fd0-cae57d7a90ff",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-28.lvh.me/barcodes/60d46666-056c-4072-8fd0-cae57d7a90ff/image",
+        "image_url": "http://company-name-31.lvh.me/barcodes/60d46666-056c-4072-8fd0-cae57d7a90ff/image",
         "owner_id": "9a08fa5a-eddb-4502-8e1e-60dbd303cb58",
         "owner_type": "customers"
       },
@@ -415,7 +415,7 @@ This request accepts the following includes:
         "updated_at": "2019-09-24T03:44:00.000000+00:00",
         "number": "http://bqbl.it/954b9fd3-271d-4ab4-8a7e-87e89b15c0a0",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-29.lvh.me/barcodes/954b9fd3-271d-4ab4-8a7e-87e89b15c0a0/image",
+        "image_url": "http://company-name-32.lvh.me/barcodes/954b9fd3-271d-4ab4-8a7e-87e89b15c0a0/image",
         "owner_id": "9d177e60-f890-4d0a-8dc6-44d61d8cca22",
         "owner_type": "customers"
       },
@@ -503,7 +503,7 @@ This request accepts the following includes:
         "updated_at": "2021-10-11T03:09:01.000000+00:00",
         "number": "https://myfancysite.com",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-30.lvh.me/barcodes/d4f58d8f-2318-44f4-8097-9dbe2a9ddaf2/image",
+        "image_url": "http://company-name-33.lvh.me/barcodes/d4f58d8f-2318-44f4-8097-9dbe2a9ddaf2/image",
         "owner_id": "a8f4104c-a6da-44d0-8505-a590b71bb780",
         "owner_type": "customers"
       },
@@ -582,7 +582,7 @@ This request accepts the following includes:
         "updated_at": "2023-03-27T06:20:00.000000+00:00",
         "number": "http://bqbl.it/ac988a7e-ebdc-45af-8638-9783aeb4594e",
         "barcode_type": "qr_code",
-        "image_url": "http://company-name-31.lvh.me/barcodes/ac988a7e-ebdc-45af-8638-9783aeb4594e/image",
+        "image_url": "http://company-name-34.lvh.me/barcodes/ac988a7e-ebdc-45af-8638-9783aeb4594e/image",
         "owner_id": "20fbc832-70a9-45dd-84fd-848ee269b502",
         "owner_type": "customers"
       },

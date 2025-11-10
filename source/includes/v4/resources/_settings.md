@@ -311,6 +311,7 @@ Name | Description
           "use_prices": true,
           "display_price": "period",
           "show_powered_by": true,
+          "default_collection_sort": "name",
           "use_order_lag_time": false,
           "order_lag_time_value": null,
           "order_lag_time_interval": null,

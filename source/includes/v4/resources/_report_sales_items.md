@@ -51,8 +51,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "4d363f2a-947b-4b3e-87d7-4b872034c7e5",
         "type": "report_sales_items",
         "attributes": {
-          "created_at": "2024-01-27T21:06:50.000000+00:00",
-          "name": "Product 1000061",
+          "created_at": "2024-01-27T21:07:50.000000+00:00",
+          "name": "Product 1000063",
           "sold": 2,
           "revenue_in_cents": 10000,
           "product_id": "a9383693-1d72-4916-828c-315b2662eaf4"

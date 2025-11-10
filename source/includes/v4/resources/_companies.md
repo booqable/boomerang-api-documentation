@@ -35,6 +35,7 @@ A company holds information and configuration about an account.
 `favicon_url` | **string** `readonly`<br>Company favicon URL. 
 `financial_line_1` | **string** <br>First extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
 `financial_line_2` | **string** <br>Second extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
+`has_to_pay_vat` | **boolean** `readonly`<br>Whether the company has to pay VAT. 
 `id` | **uuid** `readonly`<br>Primary key.
 `in_europe` | **boolean** `readonly`<br>Whether company is situated in Europe. 
 `installed_online_store` | **boolean** `readonly`<br>If the online store is installed, this boolean will return true. 
@@ -88,7 +89,7 @@ A company holds information and configuration about an account.
         "updated_at": "2025-12-03T02:00:00.000000+00:00",
         "name": "iRent",
         "slug": "irent",
-        "email": "mail71@company.com",
+        "email": "mail74@company.com",
         "billing_email": null,
         "phone": null,
         "website": "www.booqable.com",
@@ -116,6 +117,7 @@ A company holds information and configuration about an account.
         "financial_line_2": "Leeuwarden",
         "vat_number": null,
         "in_europe": null,
+        "has_to_pay_vat": false,
         "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,
@@ -239,6 +241,7 @@ Name | Description
           "extra_locations": 0,
           "addons": [
             "online_bookings",
+            "website_builder",
             "mobile_app",
             "sso",
             "ip_restrictions",
@@ -246,7 +249,7 @@ Name | Description
             "barcodes"
           ],
           "checkout_settings": {},
-          "amount_in_cents": 56800,
+          "amount_in_cents": 59200,
           "discount_in_cents": 0,
           "balance_in_cents": 0,
           "coupon": null,
@@ -285,9 +288,11 @@ Name | Description
             "product_shortage_limits",
             "exports",
             "remove_powered_by",
-            "online_bookings",
             "custom_domain",
-            "shop_tracking",
+            "custom_scripts",
+            "website_integration",
+            "website_builder",
+            "tap_to_pay",
             "sso",
             "iprestrictions",
             "2fa_enforcing",
@@ -363,7 +368,7 @@ This request does not accept any includes
         "updated_at": "2020-02-19T10:28:01.000000+00:00",
         "name": "iRent LLC",
         "slug": "irent",
-        "email": "mail73@company.com",
+        "email": "mail76@company.com",
         "billing_email": null,
         "phone": null,
         "website": "www.booqable.com",
@@ -391,6 +396,7 @@ This request does not accept any includes
         "financial_line_2": "Leeuwarden",
         "vat_number": null,
         "in_europe": null,
+        "has_to_pay_vat": false,
         "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,

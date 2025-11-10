@@ -107,10 +107,10 @@ Check each individual operation to see which relations can be included as a side
           "archived_at": null,
           "planning_type": "order",
           "quantity": 1,
-          "starts_at": "1972-08-17T07:49:00.000000+00:00",
-          "stops_at": "1972-09-16T07:49:00.000000+00:00",
-          "reserved_from": "1972-08-17T07:49:00.000000+00:00",
-          "reserved_till": "1972-09-16T07:49:00.000000+00:00",
+          "starts_at": "1972-08-10T07:48:00.000000+00:00",
+          "stops_at": "1972-09-09T07:48:00.000000+00:00",
+          "reserved_from": "1972-08-10T07:48:00.000000+00:00",
+          "reserved_till": "1972-09-09T07:48:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -241,12 +241,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-11-04T09:28:58Z"
+                       "gte": "2025-11-11T09:29:52Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-11-07T09:28:58Z"
+                       "lte": "2025-11-14T09:29:52Z"
                      }
                    }
                  ]
@@ -256,12 +256,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-11-04T09:28:58Z"
+                       "gte": "2025-11-11T09:29:52Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-11-07T09:28:58Z"
+                       "lte": "2025-11-14T09:29:52Z"
                      }
                    }
                  ]
@@ -393,15 +393,15 @@ This request accepts the following includes:
       "type": "plannings",
       "attributes": {
         "created_at": "2023-04-14T01:42:01.000000+00:00",
-        "updated_at": "2023-04-14T01:43:01.000000+00:00",
+        "updated_at": "2023-04-14T01:42:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "planning_type": "order",
         "quantity": 1,
-        "starts_at": "1977-09-10T04:14:01.000000+00:00",
-        "stops_at": "1977-10-10T04:14:01.000000+00:00",
-        "reserved_from": "1977-09-10T04:14:01.000000+00:00",
-        "reserved_till": "1977-10-10T04:14:01.000000+00:00",
+        "starts_at": "1977-09-03T04:13:01.000000+00:00",
+        "stops_at": "1977-10-03T04:13:01.000000+00:00",
+        "reserved_from": "1977-09-03T04:13:01.000000+00:00",
+        "reserved_till": "1977-10-03T04:13:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,

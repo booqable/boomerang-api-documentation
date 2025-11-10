@@ -101,7 +101,6 @@ Check each individual operation to see which relations can be included as a side
               "tags": -1
             },
             "features": [
-              "online_bookings",
               "advanced_pricing",
               "api",
               "custom_domain",
@@ -120,7 +119,9 @@ Check each individual operation to see which relations can be included as a side
               "mobile_app",
               "product_security_deposit",
               "invoice_due_dates",
-              "zapier"
+              "zapier",
+              "website_builder",
+              "website_integration"
             ],
             "pricing_strategy": "essential_pro_premium"
           },
@@ -141,7 +142,6 @@ Check each individual operation to see which relations can be included as a side
               "tags": -1
             },
             "features": [
-              "online_bookings",
               "advanced_pricing",
               "api",
               "custom_domain",
@@ -161,6 +161,8 @@ Check each individual operation to see which relations can be included as a side
               "product_security_deposit",
               "invoice_due_dates",
               "zapier",
+              "website_builder",
+              "website_integration",
               "barcodes",
               "reports",
               "availability_reports",
@@ -188,7 +190,6 @@ Check each individual operation to see which relations can be included as a side
               "tags": -1
             },
             "features": [
-              "online_bookings",
               "advanced_pricing",
               "api",
               "custom_domain",
@@ -208,6 +209,8 @@ Check each individual operation to see which relations can be included as a side
               "product_security_deposit",
               "invoice_due_dates",
               "zapier",
+              "website_builder",
+              "website_integration",
               "barcodes",
               "reports",
               "availability_reports",
@@ -215,7 +218,7 @@ Check each individual operation to see which relations can be included as a side
               "exports",
               "coupons",
               "downtimes",
-              "shop_tracking",
+              "custom_scripts",
               "sso",
               "iprestrictions",
               "2fa_enforcing",
@@ -399,12 +402,12 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
-              "mobile_app",
               "sales_items",
               "buffer_times",
               "notes",
               "packing_slips",
               "away_mode",
+              "custom_domain",
               "availability_reports"
             ],
             "pricing_strategy": "start_grow_scale_custom"
@@ -428,12 +431,12 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
-              "mobile_app",
               "sales_items",
               "buffer_times",
               "notes",
               "packing_slips",
               "away_mode",
+              "custom_domain",
               "availability_reports",
               "advanced_pricing",
               "bundles",
@@ -448,7 +451,9 @@ Check each individual operation to see which relations can be included as a side
               "downtimes",
               "permissions",
               "exports",
-              "zapier"
+              "zapier",
+              "website_integration",
+              "custom_scripts"
             ],
             "pricing_strategy": "start_grow_scale_custom"
           },
@@ -471,12 +476,12 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
-              "mobile_app",
               "sales_items",
               "buffer_times",
               "notes",
               "packing_slips",
               "away_mode",
+              "custom_domain",
               "availability_reports",
               "advanced_pricing",
               "bundles",
@@ -492,6 +497,8 @@ Check each individual operation to see which relations can be included as a side
               "permissions",
               "exports",
               "zapier",
+              "website_integration",
+              "custom_scripts",
               "api",
               "product_shortage_limits",
               "remove_powered_by"
@@ -517,12 +524,12 @@ Check each individual operation to see which relations can be included as a side
             },
             "features": [
               "destroy_bundles",
-              "mobile_app",
               "sales_items",
               "buffer_times",
               "notes",
               "packing_slips",
               "away_mode",
+              "custom_domain",
               "availability_reports",
               "advanced_pricing",
               "bundles",
@@ -538,6 +545,8 @@ Check each individual operation to see which relations can be included as a side
               "permissions",
               "exports",
               "zapier",
+              "website_integration",
+              "custom_scripts",
               "api",
               "product_shortage_limits",
               "remove_powered_by"
@@ -589,16 +598,29 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 228,
             "per_employee": false,
             "features": [
-              "online_bookings",
               "custom_domain",
-              "shop_tracking"
+              "custom_scripts",
+              "website_integration",
+              "website_builder"
             ],
             "default": true,
             "available_on": [
               "small",
               "medium",
               "large",
-              "scale",
+              "scale"
+            ]
+          },
+          {
+            "name": "website_builder",
+            "month_price": 24,
+            "year_price": 228,
+            "per_employee": false,
+            "features": [
+              "website_builder"
+            ],
+            "default": true,
+            "available_on": [
               "start",
               "grow",
               "scale_v2",
@@ -611,7 +633,8 @@ Check each individual operation to see which relations can be included as a side
             "year_price": 108,
             "per_employee": true,
             "features": [
-              "mobile_app"
+              "mobile_app",
+              "tap_to_pay"
             ],
             "default": true,
             "available_on": [
@@ -751,9 +774,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 297",
-          "slug": "company-name-297",
-          "email": "mail300@company.com",
+          "name": "Company name 300",
+          "slug": "company-name-300",
+          "email": "mail303@company.com",
           "billing_email": null,
           "phone": null,
           "website": "www.booqable.com",
@@ -781,6 +804,7 @@ Check each individual operation to see which relations can be included as a side
           "financial_line_2": "Leeuwarden",
           "vat_number": null,
           "in_europe": null,
+          "has_to_pay_vat": false,
           "continent": null,
           "custom_domain": null,
           "custom_domain_validation": null,
@@ -829,6 +853,7 @@ Check each individual operation to see which relations can be included as a side
             "extra_locations": 0,
             "addons": [
               "online_bookings",
+              "website_builder",
               "mobile_app",
               "sso",
               "ip_restrictions",
@@ -836,7 +861,7 @@ Check each individual operation to see which relations can be included as a side
               "barcodes"
             ],
             "checkout_settings": {},
-            "amount_in_cents": 56800,
+            "amount_in_cents": 59200,
             "discount_in_cents": 0,
             "balance_in_cents": 0,
             "coupon": null,
@@ -875,9 +900,11 @@ Check each individual operation to see which relations can be included as a side
               "product_shortage_limits",
               "exports",
               "remove_powered_by",
-              "online_bookings",
               "custom_domain",
-              "shop_tracking",
+              "custom_scripts",
+              "website_integration",
+              "website_builder",
+              "tap_to_pay",
               "sso",
               "iprestrictions",
               "2fa_enforcing",
@@ -934,7 +961,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1762162203"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1762767052"
         }
       },
       {
@@ -1000,6 +1027,7 @@ Check each individual operation to see which relations can be included as a side
             "use_prices": true,
             "display_price": "period",
             "show_powered_by": true,
+            "default_collection_sort": "name",
             "use_order_lag_time": false,
             "order_lag_time_value": null,
             "order_lag_time_interval": null,
