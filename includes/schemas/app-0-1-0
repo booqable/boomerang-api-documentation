@@ -46,7 +46,7 @@
 </tr>
 <tr>
 <td><code>category</code></td>
-<td>one of: <code>tracking</code>, <code>payment</code>, <code>translation</code>, <code>maps</code>, <code>marketing</code>, <code>social</code>, <code>widget</code></td>
+<td>one of: <code>tracking</code>, <code>payment</code>, <code>translation</code>, <code>maps</code>, <code>marketing</code>, <code>social</code>, <code>widget</code>, <code>fulfillment</code></td>
 <td>true</td>
 <td>Category classification for organizing apps in the app store.</td>
 </tr>

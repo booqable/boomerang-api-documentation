@@ -24,7 +24,7 @@
     "category": {
       "type": "string",
       "description": "Category classification for organizing apps in the app store.",
-      "enum": ["tracking", "payment", "translation", "maps", "marketing", "social", "widget"]
+      "enum": ["tracking", "payment", "translation", "maps", "marketing", "social", "widget", "fulfillment"]
     },
     "author": {
       "type": "string",
