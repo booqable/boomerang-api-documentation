@@ -45,6 +45,7 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether the bundle is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the bundle was archived. 
 `bundle_items_attributes` | **array** `writeonly`<br>Writing to this attribute allows to create or update bundle items at the same time as the bundle itself. 
+`create_url_redirect` | **boolean** `writeonly`<br>When `true`, automatically creates a URL redirect when the bundle's slug is changed. This ensures that old URLs continue to work after renaming the bundle. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `description` | **string** `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** <br>Whether discounts should be applied to items in this bundle. 
@@ -523,6 +524,7 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 10.0,
           "position": 1,
+          "photo_id": null,
           "bundle_id": "2f4b77bd-2e6d-4454-8933-babc61ed151f",
           "product_group_id": "1a247a34-c748-422e-8f6e-1a6d3992c656",
           "product_id": "ca3c0fbf-03ac-4a05-8a65-d5bab132b59d"
@@ -540,6 +542,7 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 2,
+          "photo_id": null,
           "bundle_id": "2f4b77bd-2e6d-4454-8933-babc61ed151f",
           "product_group_id": "bf793cc3-ff25-497e-8a92-6cf9a8d99fa0",
           "product_id": "07b0cf35-6809-4bec-8350-2dbe5a39a565"
@@ -557,6 +560,7 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 10.0,
           "position": 3,
+          "photo_id": null,
           "bundle_id": "2f4b77bd-2e6d-4454-8933-babc61ed151f",
           "product_group_id": "1a247a34-c748-422e-8f6e-1a6d3992c656",
           "product_id": "ca3c0fbf-03ac-4a05-8a65-d5bab132b59d"
@@ -574,6 +578,7 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 4,
+          "photo_id": null,
           "bundle_id": "2f4b77bd-2e6d-4454-8933-babc61ed151f",
           "product_group_id": "bf793cc3-ff25-497e-8a92-6cf9a8d99fa0",
           "product_id": "07b0cf35-6809-4bec-8350-2dbe5a39a565"
@@ -606,6 +611,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][bundle_items_attributes][]` | **array** <br>Writing to this attribute allows to create or update bundle items at the same time as the bundle itself. 
+`data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the bundle's slug is changed. This ensures that old URLs continue to work after renaming the bundle. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to items in this bundle. 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 
 `data[attributes][extra_information]` | **string** <br>Extra information about the bundle, shown on orders and documents. 
@@ -739,6 +745,7 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 2,
+          "photo_id": null,
           "bundle_id": "ed81707b-f578-4a6e-82e8-062f3b5ae2d9",
           "product_group_id": "a9609021-9ac0-45e8-8bfa-03c58a577154",
           "product_id": "abff6839-af87-4377-857e-2b217552945d"
@@ -756,6 +763,7 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 3,
+          "photo_id": null,
           "bundle_id": "ed81707b-f578-4a6e-82e8-062f3b5ae2d9",
           "product_group_id": "a9609021-9ac0-45e8-8bfa-03c58a577154",
           "product_id": "abff6839-af87-4377-857e-2b217552945d"
@@ -788,6 +796,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][bundle_items_attributes][]` | **array** <br>Writing to this attribute allows to create or update bundle items at the same time as the bundle itself. 
+`data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the bundle's slug is changed. This ensures that old URLs continue to work after renaming the bundle. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to items in this bundle. 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 
 `data[attributes][extra_information]` | **string** <br>Extra information about the bundle, shown on orders and documents. 

@@ -59,6 +59,7 @@ Check each individual operation to see which relations can be included as a side
 `archived_at` | **datetime** `readonly` `nullable`<br>When the product group was archived. 
 `base_price_in_cents` | **integer** `readonly`<br>The value that is being calculated with (based on the current `price_type`). 
 `confirm_shortage` | **boolean** `writeonly`<br>Set this to `true` to override certain shortage warnings. 
+`create_url_redirect` | **boolean** `writeonly`<br>When `true`, automatically creates a URL redirect when the product group's slug is changed. This ensures that old URLs continue to work after renaming the product group. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `flat_fee_price_in_cents` | **integer** <br>Use this value when price type is `simple`. 
 `id` | **uuid** `readonly`<br>Primary key.
@@ -654,6 +655,7 @@ Name | Description
 `data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
 `data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
+`data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the product group's slug is changed. This ensures that old URLs continue to work after renaming the product group. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 
@@ -805,6 +807,7 @@ Name | Description
 `data[attributes][buffer_time_after]` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
 `data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
+`data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the product group's slug is changed. This ensures that old URLs continue to work after renaming the product group. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 

@@ -260,7 +260,7 @@ Name | Description
           "coupon_duration_in_months": null,
           "strategy": "charge_automatically",
           "source": null,
-          "pricing_strategy": "small_medium_large_scale",
+          "pricing_strategy": null,
           "enabled_features": [],
           "allowed_features": [
             "destroy_bundles",

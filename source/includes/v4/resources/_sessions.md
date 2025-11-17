@@ -872,7 +872,7 @@ Check each individual operation to see which relations can be included as a side
             "coupon_duration_in_months": null,
             "strategy": "charge_automatically",
             "source": null,
-            "pricing_strategy": "small_medium_large_scale",
+            "pricing_strategy": null,
             "enabled_features": [],
             "allowed_features": [
               "destroy_bundles",
@@ -961,7 +961,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1762767052"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1763371915"
         }
       },
       {

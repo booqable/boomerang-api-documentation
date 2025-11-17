@@ -20,6 +20,7 @@ Check each individual operation to see which relations can be included as a side
 `all_children` | **array** `readonly` `extra`<br>All child collections. 
 `all_parents` | **array** `readonly` `extra`<br>All parent collections. 
 `collection_type` | **enum** `readonly-after-create`<br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: `static`, `dynamic`.
+`create_url_redirect` | **boolean** `writeonly`<br>When `true`, automatically creates a URL redirect when the collection's slug is changed. This ensures that old URLs continue to work after renaming the collection. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `depth` | **integer** `readonly`<br>How deep this collection sits in the hierarchy. Depth 1 represents top-level collections, depth 2 represents children, and depth 3 represents grandchildren. Nesting is limited to 3 levels. 
 `description` | **string** <br>A description of this collection. 
@@ -288,6 +289,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][collection_type]` | **enum** <br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: `static`, `dynamic`.
+`data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the collection's slug is changed. This ensures that old URLs continue to work after renaming the collection. 
 `data[attributes][external_image_url]` | **string** <br>URL to an image on the web, use this field to add a photo. 
 `data[attributes][image_base64]` | **string** <br>Base64 encoded photo, use this field to add a photo. 
 `data[attributes][item_count]` | **integer** <br>Number of collection items in this collection that are visible in the store. Only includes items where `show_in_store` is `true`. Includes collection items in this collection, but not in nested collections.<br>This count is automatically recalculated when items are added, removed, or when their `show_in_store` status changes. 
@@ -394,6 +396,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][collection_type]` | **enum** <br>Dynamic collections are automatically updated. Static collections are defined by the user.<br> One of: `static`, `dynamic`.
+`data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the collection's slug is changed. This ensures that old URLs continue to work after renaming the collection. 
 `data[attributes][external_image_url]` | **string** <br>URL to an image on the web, use this field to add a photo. 
 `data[attributes][image_base64]` | **string** <br>Base64 encoded photo, use this field to add a photo. 
 `data[attributes][item_count]` | **integer** <br>Number of collection items in this collection that are visible in the store. Only includes items where `show_in_store` is `true`. Includes collection items in this collection, but not in nested collections.<br>This count is automatically recalculated when items are added, removed, or when their `show_in_store` status changes. 

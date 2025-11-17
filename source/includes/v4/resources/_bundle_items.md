@@ -37,6 +37,7 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `discount_percentage` | **float** <br>The discount percentage for this product when rented out as part of a bundle. 
 `id` | **uuid** `readonly`<br>Primary key.
+`photo_id` | **string** <br>The ID of the photo associated with this bundle item. When a specific product is assigned to the bundle item, this will be the product's photo. Otherwise, it will be the product group's photo. 
 `position` | **integer** <br>Position of this bundle item within the bundle. I.e sorting relative to other bundle items. 
 `product_group_id` | **uuid** `readonly-after-create`<br>When the `product` relation is non-null, then this is the ProductGroup that the Product belongs to. When the `product` relation is null, then this is the ProductGroup that the user has to choose a product variation from.
 `product_id` | **uuid** `nullable`<br>When non-null, then this is the prespecified Product that will be booked. When null, then the user has to choose a product variation from the `product_group`. This relation is required when `product_group` does not have variations.
@@ -71,6 +72,7 @@ Check each individual operation to see which relations can be included as a side
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 1,
+          "photo_id": null,
           "bundle_id": "b484afb9-abf3-4598-8fce-44d5d5c62784",
           "product_group_id": "935f7965-5c06-44eb-8472-f9aa3f1e036e",
           "product_id": "567ad7e5-6130-401e-84a8-d966a6ae6717"
@@ -113,6 +115,7 @@ Name | Description
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discount_percentage` | **float** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
+`photo_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `position` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
 `product_id` | **uuid** <br>`eq`, `not_eq`
@@ -139,12 +142,35 @@ This request accepts the following includes:
     <code>product</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
     </ul>
   </li>
   <li>
     <code>product_group</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>products</code>
+          <ul>
+            <li>
+                  <code>price_structure</code>
+                  <ul>
+                    <li><code>price_tiles</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -175,6 +201,7 @@ This request accepts the following includes:
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 1,
+        "photo_id": null,
         "bundle_id": "2201586a-dcc4-4803-8d2c-2e6d02541f2b",
         "product_group_id": "08475ef9-150e-4113-8035-9a10812b06e9",
         "product_id": "56cf4f31-b9ac-4968-8899-b81f09e246a6"
@@ -209,12 +236,35 @@ This request accepts the following includes:
     <code>product</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
     </ul>
   </li>
   <li>
     <code>product_group</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>products</code>
+          <ul>
+            <li>
+                  <code>price_structure</code>
+                  <ul>
+                    <li><code>price_tiles</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -258,6 +308,7 @@ This request accepts the following includes:
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 2,
+        "photo_id": null,
         "bundle_id": "aadf38b5-6d5e-4c54-8d7b-7cce2b00801a",
         "product_group_id": "9bc50456-e92e-4162-8610-8f8ca7323b5b",
         "product_id": "6fb4ee32-8b29-439a-856d-9847696afb13"
@@ -290,6 +341,7 @@ Name | Description
 -- | --
 `data[attributes][bundle_id]` | **uuid** <br>The Bundle this BundleItem is part of. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage for this product when rented out as part of a bundle. 
+`data[attributes][photo_id]` | **string** <br>The ID of the photo associated with this bundle item. When a specific product is assigned to the bundle item, this will be the product's photo. Otherwise, it will be the product group's photo. 
 `data[attributes][position]` | **integer** <br>Position of this bundle item within the bundle. I.e sorting relative to other bundle items. 
 `data[attributes][product_group_id]` | **uuid** <br>When the `product` relation is non-null, then this is the ProductGroup that the Product belongs to. When the `product` relation is null, then this is the ProductGroup that the user has to choose a product variation from.
 `data[attributes][product_id]` | **uuid** <br>When non-null, then this is the prespecified Product that will be booked. When null, then the user has to choose a product variation from the `product_group`. This relation is required when `product_group` does not have variations.
@@ -306,12 +358,35 @@ This request accepts the following includes:
     <code>product</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
     </ul>
   </li>
   <li>
     <code>product_group</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>products</code>
+          <ul>
+            <li>
+                  <code>price_structure</code>
+                  <ul>
+                    <li><code>price_tiles</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -353,6 +428,7 @@ This request accepts the following includes:
         "quantity": 3,
         "discount_percentage": 20.0,
         "position": 1,
+        "photo_id": null,
         "bundle_id": "f53691b2-481e-4f06-8b42-70a8260e0bea",
         "product_group_id": "997ec012-e358-4a2c-8bb9-97674479ed4f",
         "product_id": "73f4eef3-b748-4cd0-8f75-0e013f461872"
@@ -385,6 +461,7 @@ Name | Description
 -- | --
 `data[attributes][bundle_id]` | **uuid** <br>The Bundle this BundleItem is part of. 
 `data[attributes][discount_percentage]` | **float** <br>The discount percentage for this product when rented out as part of a bundle. 
+`data[attributes][photo_id]` | **string** <br>The ID of the photo associated with this bundle item. When a specific product is assigned to the bundle item, this will be the product's photo. Otherwise, it will be the product group's photo. 
 `data[attributes][position]` | **integer** <br>Position of this bundle item within the bundle. I.e sorting relative to other bundle items. 
 `data[attributes][product_group_id]` | **uuid** <br>When the `product` relation is non-null, then this is the ProductGroup that the Product belongs to. When the `product` relation is null, then this is the ProductGroup that the user has to choose a product variation from.
 `data[attributes][product_id]` | **uuid** <br>When non-null, then this is the prespecified Product that will be booked. When null, then the user has to choose a product variation from the `product_group`. This relation is required when `product_group` does not have variations.
@@ -401,12 +478,35 @@ This request accepts the following includes:
     <code>product</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
     </ul>
   </li>
   <li>
     <code>product_group</code>
     <ul>
       <li><code>photo</code></li>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
+      <li>
+          <code>products</code>
+          <ul>
+            <li>
+                  <code>price_structure</code>
+                  <ul>
+                    <li><code>price_tiles</code></li>
+                  </ul>
+            </li>
+          </ul>
+      </li>
     </ul>
   </li>
 </ul>
@@ -438,6 +538,7 @@ This request accepts the following includes:
         "quantity": 2,
         "discount_percentage": 15.0,
         "position": 1,
+        "photo_id": null,
         "bundle_id": "04391a33-673f-4548-89e1-44e58bdfb28a",
         "product_group_id": "bb5d0ce6-7858-4bcf-8875-352bd5587852",
         "product_id": "98855843-4132-4178-8120-0393eaf5604f"
