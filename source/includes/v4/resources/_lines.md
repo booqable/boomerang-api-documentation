@@ -177,8 +177,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1977-12-22T05:39:00.000000+00:00",
-              "till": "1978-01-20T05:39:00.000000+00:00",
+              "from": "1977-12-15T05:38:00.000000+00:00",
+              "till": "1978-01-13T05:38:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -196,8 +196,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1978-01-04T17:39:00.000000+00:00",
-                    "till": "1978-01-20T05:39:00.000000+00:00",
+                    "from": "1977-12-28T17:38:00.000000+00:00",
+                    "till": "1978-01-13T05:38:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -341,8 +341,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1977-02-23T12:14:02.000000+00:00",
-            "till": "1977-03-24T12:14:02.000000+00:00",
+            "from": "1977-02-16T12:13:02.000000+00:00",
+            "till": "1977-03-17T12:13:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -360,8 +360,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1977-03-09T00:14:02.000000+00:00",
-                  "till": "1977-03-24T12:14:02.000000+00:00",
+                  "from": "1977-03-02T00:13:02.000000+00:00",
+                  "till": "1977-03-17T12:13:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -771,8 +771,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1973-04-15T22:50:02.000000+00:00",
-            "till": "1973-05-14T22:50:02.000000+00:00",
+            "from": "1973-04-08T22:49:02.000000+00:00",
+            "till": "1973-05-07T22:49:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -790,8 +790,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1973-04-29T10:50:02.000000+00:00",
-                  "till": "1973-05-14T22:50:02.000000+00:00",
+                  "from": "1973-04-22T10:49:02.000000+00:00",
+                  "till": "1973-05-07T22:49:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

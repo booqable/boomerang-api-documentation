@@ -183,7 +183,9 @@ Check each individual operation to see which relations can be included as a side
               "stock_count": 1,
               "reserved": 0,
               "needed": 2,
-              "shortage": 1
+              "shortage": 1,
+              "orders": [],
+              "downtimes": []
             }
           ]
         }
@@ -230,7 +232,9 @@ Check each individual operation to see which relations can be included as a side
               "stock_count": 1,
               "reserved": 0,
               "needed": 2,
-              "shortage": 1
+              "shortage": 1,
+              "orders": [],
+              "downtimes": []
             }
           ],
           "blocking": []
@@ -321,7 +325,13 @@ Check each individual operation to see which relations can be included as a side
               ],
               "available": [
                 "c18a3863-071f-467f-8a25-d6b087473135"
-              ]
+              ],
+              "orders": [
+                {
+                  "id": "09f4dbde-e49d-4919-89d2-c962c107b7a9"
+                }
+              ],
+              "downtimes": []
             }
           ]
         }
