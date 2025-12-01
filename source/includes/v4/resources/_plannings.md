@@ -107,10 +107,10 @@ Check each individual operation to see which relations can be included as a side
           "archived_at": null,
           "planning_type": "order",
           "quantity": 1,
-          "starts_at": "1972-07-20T07:45:00.000000+00:00",
-          "stops_at": "1972-08-19T07:45:00.000000+00:00",
-          "reserved_from": "1972-07-20T07:45:00.000000+00:00",
-          "reserved_till": "1972-08-19T07:45:00.000000+00:00",
+          "starts_at": "1972-07-20T02:37:00.000000+00:00",
+          "stops_at": "1972-08-19T02:37:00.000000+00:00",
+          "reserved_from": "1972-07-20T02:37:00.000000+00:00",
+          "reserved_till": "1972-08-19T02:37:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -241,12 +241,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-12-02T09:32:17Z"
+                       "gte": "2025-12-02T14:40:11Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2025-12-05T09:32:17Z"
+                       "lte": "2025-12-05T14:40:11Z"
                      }
                    }
                  ]
@@ -256,12 +256,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2025-12-02T09:32:17Z"
+                       "gte": "2025-12-02T14:40:11Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2025-12-05T09:32:17Z"
+                       "lte": "2025-12-05T14:40:11Z"
                      }
                    }
                  ]
@@ -398,10 +398,10 @@ This request accepts the following includes:
         "archived_at": null,
         "planning_type": "order",
         "quantity": 1,
-        "starts_at": "1977-08-13T04:10:01.000000+00:00",
-        "stops_at": "1977-09-12T04:10:01.000000+00:00",
-        "reserved_from": "1977-08-13T04:10:01.000000+00:00",
-        "reserved_till": "1977-09-12T04:10:01.000000+00:00",
+        "starts_at": "1977-08-12T23:02:01.000000+00:00",
+        "stops_at": "1977-09-11T23:02:01.000000+00:00",
+        "reserved_from": "1977-08-12T23:02:01.000000+00:00",
+        "reserved_till": "1977-09-11T23:02:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,
