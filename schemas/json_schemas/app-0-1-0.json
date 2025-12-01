@@ -21,11 +21,10 @@
       "description": "Display name of the app as shown to users.",
       "examples": ["ACME App"]
     },
-
     "category": {
       "type": "string",
       "description": "Category classification for organizing apps in the app store.",
-      "enum": ["tracking", "payment", "translation", "maps", "marketing", "social"]
+      "enum": ["tracking", "payment", "translation", "maps", "marketing", "social", "widget", "fulfillment"]
     },
     "author": {
       "type": "string",
@@ -76,6 +75,13 @@
     },
     "ui_extension": {
       "$ref": "#/definitions/UIExtensions"
+    },
+    "global_settings": {
+      "type": "object",
+      "description": "Global, user-configurable settings for the app.",
+      "additionalProperties": {
+        "$ref": "#/definitions/GlobalSetting"
+      }
     }
   },
   "additionalProperties": false,
@@ -102,7 +108,6 @@
     "BaseURL": {
       "type": "object",
       "description": "Base URLs for different environments where the app is hosted.",
-      "required": ["development", "production"],
       "properties": {
         "development": {
           "type": "string",
@@ -194,6 +199,9 @@
         },
         "themes": {
           "$ref": "#/definitions/ThemeSettings"
+        },
+        "tracking_script": {
+          "$ref": "#/definitions/TrackingScriptSettings"
         }
       }
     },
@@ -205,6 +213,18 @@
           "type": "string",
           "description": "URL path for the app configuration iframe.",
           "examples": ["/admin/apps/my-app/config"]
+        }
+      }
+    },
+    "TrackingScriptSettings": {
+      "type": "object",
+      "description": "Settings for apps that provide tracking scripts, like Google Analytics or Meta Pixel.",
+      "required": ["template"],
+      "properties": {
+        "template": {
+          "type": "string",
+          "description": "Path to the JavaScript template file for the tracking script.",
+          "examples": ["templates/index.js.liquid"]
         }
       }
     },
@@ -244,11 +264,50 @@
           },
           "examples": [["header", "footer"], ["app"]]
         },
+        "settings_iframe_url": {
+          "type": "string",
+          "description": "URL of the theme block's configuration page to embed in the Booqable theme editor sidebar.",
+          "format": "uri",
+          "examples": ["https://example.com/settings"]
+        },
         "settings": {
           "type": "object",
           "description": "Configuration settings for the theme block.",
           "additionalProperties": {
             "$ref": "#/definitions/ThemeBlockSetting"
+          }
+        }
+      }
+    },
+    "GlobalSetting": {
+      "type": "object",
+      "description": "App-level configuration options.",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Type of the setting field.",
+          "enum": ["text", "number", "textarea", "select", "header"]
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Whether this setting is required for the app to function.",
+          "default": false
+        },
+        "default": {
+          "description": "Default value for the setting.",
+          "examples": ["Default Title", 60, true]
+        },
+        "pattern": {
+          "type": "string",
+          "description": "Regex pattern for validation of text/textarea fields.",
+          "examples": [".*\\.mydomain\\.com/.*"]
+        },
+        "options": {
+          "type": "array",
+          "description": "Options for select type settings.",
+          "items": {
+            "$ref": "#/definitions/SelectOption"
           }
         }
       }
@@ -260,7 +319,7 @@
         "type": {
           "type": "string",
           "description": "Type of the setting field.",
-          "enum": ["text", "number", "select", "header"]
+          "enum": ["text", "textarea", "number", "select", "header"]
         },
         "label": {
           "type": "string",
@@ -280,7 +339,7 @@
         "content": {
           "type": "string",
           "description": "Content for header type settings.",
-          "examples": ["Lorem Ipsum"]
+          "examples": ["Mobile Settings", "Desktop Settings"]
         },
         "options": {
           "type": "array",
