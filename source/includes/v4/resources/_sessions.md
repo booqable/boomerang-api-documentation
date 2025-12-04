@@ -501,7 +501,8 @@ Check each individual operation to see which relations can be included as a side
               "custom_scripts",
               "api",
               "product_shortage_limits",
-              "remove_powered_by"
+              "remove_powered_by",
+              "activity_logs"
             ],
             "pricing_strategy": "start_grow_scale_custom"
           },
@@ -549,7 +550,8 @@ Check each individual operation to see which relations can be included as a side
               "custom_scripts",
               "api",
               "product_shortage_limits",
-              "remove_powered_by"
+              "remove_powered_by",
+              "activity_logs"
             ],
             "pricing_strategy": "start_grow_scale_custom"
           }
@@ -774,9 +776,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 300",
-          "slug": "company-name-300",
-          "email": "mail303@company.com",
+          "name": "Company name 301",
+          "slug": "company-name-301",
+          "email": "mail304@company.com",
           "billing_email": null,
           "phone": null,
           "website": "www.booqable.com",
@@ -844,12 +846,12 @@ Check each individual operation to see which relations can be included as a side
             "canceled": false,
             "canceled_at": null,
             "on_hold": false,
-            "plan_identifier": "scale",
-            "active_subscription_plan_and_interval": "scale_month",
+            "plan_identifier": "custom",
+            "active_subscription_plan_and_interval": "custom_month",
             "interval": "month",
             "current_period_end": null,
             "extra_employees": 0,
-            "extra_employees_left": 14,
+            "extra_employees_left": 19,
             "extra_locations": 0,
             "addons": [
               "online_bookings",
@@ -861,7 +863,7 @@ Check each individual operation to see which relations can be included as a side
               "barcodes"
             ],
             "checkout_settings": {},
-            "amount_in_cents": 59200,
+            "amount_in_cents": 51200,
             "discount_in_cents": 0,
             "balance_in_cents": 0,
             "coupon": null,
@@ -876,34 +878,35 @@ Check each individual operation to see which relations can be included as a side
             "enabled_features": [],
             "allowed_features": [
               "destroy_bundles",
-              "mobile_app",
-              "zapier",
-              "advanced_pricing",
               "sales_items",
-              "bundles",
               "buffer_times",
-              "prevent_last_minute_reservations",
-              "packing_slips",
               "notes",
-              "manual_email_templates",
+              "packing_slips",
               "away_mode",
+              "custom_domain",
+              "availability_reports",
+              "advanced_pricing",
+              "bundles",
+              "prevent_last_minute_reservations",
+              "manual_email_templates",
               "customer_discount_percentage",
               "product_security_deposit",
               "coupons",
               "invoice_due_dates",
               "reports",
-              "availability_reports",
               "product_history",
               "downtimes",
-              "api",
               "permissions",
-              "product_shortage_limits",
               "exports",
-              "remove_powered_by",
-              "custom_domain",
-              "custom_scripts",
+              "zapier",
               "website_integration",
+              "custom_scripts",
+              "api",
+              "product_shortage_limits",
+              "remove_powered_by",
+              "activity_logs",
               "website_builder",
+              "mobile_app",
               "tap_to_pay",
               "sso",
               "iprestrictions",
@@ -911,7 +914,7 @@ Check each individual operation to see which relations can be included as a side
               "barcodes"
             ],
             "restrictions": {
-              "employees": 15,
+              "employees": 20,
               "email_max_recipients": 2000,
               "rate_limit_max": 250,
               "rate_limit_period": 60,
@@ -961,7 +964,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1764761694"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1764854331"
         }
       },
       {

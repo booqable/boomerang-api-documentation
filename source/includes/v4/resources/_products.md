@@ -162,7 +162,7 @@ Check each individual operation to see which relations can be included as a side
           "name": "iPad Pro - blue",
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
-          "sku": "PRODUCT 1000061",
+          "sku": "PRODUCT 1000063",
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",
