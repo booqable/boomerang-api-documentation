@@ -62,6 +62,8 @@ A company holds information and configuration about an account.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `use_billing_address` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
 `vat_number` | **string** <br>Company's VAT number, used in customer communication and to define tax exempts. 
+`vat_reverse_charge_applicable` | **boolean** `readonly`<br>Whether VAT reverse charge is applicable for the company. 
+`vat_validation_status` | **string** `readonly`<br>Status of the VAT number validation. 
 `website` | **string** <br>Website. 
 `year_business_start` | **string** `readonly`<br>Year when company started, given during signup. 
 `zipcode` | **string** <br>Zipcode. 
@@ -118,6 +120,8 @@ A company holds information and configuration about an account.
         "vat_number": null,
         "in_europe": null,
         "has_to_pay_vat": false,
+        "vat_reverse_charge_applicable": false,
+        "vat_validation_status": "pending",
         "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,
@@ -398,6 +402,8 @@ This request does not accept any includes
         "vat_number": null,
         "in_europe": null,
         "has_to_pay_vat": false,
+        "vat_reverse_charge_applicable": false,
+        "vat_validation_status": "pending",
         "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,

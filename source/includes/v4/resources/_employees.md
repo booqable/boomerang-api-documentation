@@ -37,7 +37,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
 `owner` | **boolean** `readonly`<br>Whether this employee is the account owner. 
 `password` | **string** `writeonly`<br>Set a new password. 
 `password_confirmation` | **string** `writeonly`<br>Confirm new password. 
-`permissions` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
+`permissions` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
 `remove_avatar` | **boolean** `writeonly`<br>Remove current avatar. 
 `third_party_id` | **string** <br>ID used for third party tools. 
 `time_to_confirm` | **integer** `readonly`<br>Time in days left to confirm. 
@@ -66,7 +66,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2024-05-21T08:05:00.000000+00:00",
+          "updated_at": "2024-05-26T03:47:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
@@ -89,7 +89,8 @@ and accounting, it wouldn't need to manage your products and stock levels.
             "revert_orders",
             "delete_invoices",
             "make_invoice_revisions",
-            "override_rental_period"
+            "override_rental_period",
+            "activity_logs"
           ],
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/f3eb64211cf620aa291957f1f66d5f39.png?d=404",
@@ -192,7 +193,8 @@ This request does not accept any includes
           "revert_orders",
           "delete_invoices",
           "make_invoice_revisions",
-          "override_rental_period"
+          "override_rental_period",
+          "activity_logs"
         ],
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/b9e4d02e55a6d091223dfb568620be4b.png?d=404",
@@ -249,7 +251,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2022-08-16T20:35:00.000000+00:00",
+        "updated_at": "2022-08-21T16:17:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
@@ -272,7 +274,8 @@ This request does not accept any includes
           "revert_orders",
           "delete_invoices",
           "make_invoice_revisions",
-          "override_rental_period"
+          "override_rental_period",
+          "activity_logs"
         ],
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/716558eb15f1e4801c770410e3eed8fe.png?d=404",
@@ -310,7 +313,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2020-08-29T09:54:01.000000+00:00",
+        "updated_at": "2020-09-03T05:36:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -333,7 +336,8 @@ This request does not accept any includes
           "revert_orders",
           "delete_invoices",
           "make_invoice_revisions",
-          "override_rental_period"
+          "override_rental_period",
+          "activity_logs"
         ],
         "has_two_factor_autentication": false,
         "avatar_url": "https://gravatar.com/avatar/8a0e879db54c50c14de0c4203a4e7a93.png?d=404",
@@ -374,7 +378,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2033-02-26T18:42:01.000000+00:00",
+        "updated_at": "2033-03-03T14:24:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -429,7 +433,7 @@ Name | Description
 `data[attributes][locale]` | **string** <br>Locale of the employee, used as application locale. 
 `data[attributes][password]` | **string** <br>Set a new password. 
 `data[attributes][password_confirmation]` | **string** <br>Confirm new password. 
-`data[attributes][permissions][]` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
+`data[attributes][permissions][]` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
 `data[attributes][remove_avatar]` | **boolean** <br>Remove current avatar. 
 `data[attributes][third_party_id]` | **string** <br>ID used for third party tools. 
 `data[attributes][viewed_whats_new_at]` | **datetime** <br>Date when this employee viewed product updates for the last time. 

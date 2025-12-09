@@ -135,8 +135,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2024-02-26T11:51:00.000000+00:00",
-          "updated_at": "2024-02-26T11:51:00.000000+00:00",
+          "created_at": "2024-03-02T07:33:00.000000+00:00",
+          "updated_at": "2024-03-02T07:33:00.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
@@ -182,8 +182,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
         "type": "products",
         "attributes": {
-          "created_at": "2024-02-26T11:51:00.000000+00:00",
-          "updated_at": "2024-02-26T11:51:00.000000+00:00",
+          "created_at": "2024-03-02T07:33:00.000000+00:00",
+          "updated_at": "2024-03-02T07:33:00.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
