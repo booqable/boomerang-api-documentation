@@ -94,8 +94,8 @@ Check each individual operation to see which relations can be included as a side
             "country": "Netherlands",
             "country_id": null,
             "province_id": null,
-            "latitude": "1",
-            "longitude": "1",
+            "latitude": null,
+            "longitude": null,
             "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
           }
         },
@@ -212,8 +212,8 @@ This request accepts the following includes:
           "country": "Netherlands",
           "country_id": null,
           "province_id": null,
-          "latitude": "1",
-          "longitude": "1",
+          "latitude": null,
+          "longitude": null,
           "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
         }
       },
@@ -319,8 +319,8 @@ This request accepts the following includes:
           "country": "Netherlands",
           "country_id": null,
           "province_id": null,
-          "latitude": "1",
-          "longitude": "1",
+          "latitude": null,
+          "longitude": null,
           "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
         }
       },
@@ -468,8 +468,8 @@ Note that disassociating clusters may result in a shortage error.
           "country": "Netherlands",
           "country_id": null,
           "province_id": null,
-          "latitude": "1",
-          "longitude": "1",
+          "latitude": null,
+          "longitude": null,
           "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
         }
       },
@@ -680,8 +680,8 @@ To archive a location make sure that:
           "country": "Netherlands",
           "country_id": null,
           "province_id": null,
-          "latitude": "1",
-          "longitude": "1",
+          "latitude": null,
+          "longitude": null,
           "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
         }
       },
