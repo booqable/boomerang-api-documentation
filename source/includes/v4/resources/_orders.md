@@ -285,7 +285,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "orders",
         "attributes": {
           "created_at": "2015-02-09T00:29:01.000000+00:00",
-          "updated_at": "2015-02-09T00:30:01.000000+00:00",
+          "updated_at": "2015-02-09T00:29:01.000000+00:00",
           "number": 1,
           "status": "reserved",
           "statuses": [
@@ -298,8 +298,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-05-29T22:44:01.000000+00:00",
-          "stops_at": "1969-06-28T22:44:01.000000+00:00",
+          "starts_at": "1969-05-27T03:45:01.000000+00:00",
+          "stops_at": "1969-06-26T03:45:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -350,6 +350,41 @@ Check each individual operation to see which relations can be included as a side
           "start_location_id": "595f65d5-8218-4704-83ae-39aff6d1aeb4",
           "stop_location_id": "595f65d5-8218-4704-83ae-39aff6d1aeb4",
           "order_delivery_rate_id": null
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
+```
+
+> How to filter orders by status:
+
+```shell
+  curl --get 'https://example.booqable.com/api/4/orders'
+       --header 'content-type: application/json'
+       --data-urlencode 'fields[orders]=id,status'
+       --data-urlencode 'filter[status][not_eq]=canceled'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": [
+      {
+        "id": "80e68988-4d7a-4b50-8cc8-50513571e45f",
+        "type": "orders",
+        "attributes": {
+          "status": "reserved"
+        },
+        "relationships": {}
+      },
+      {
+        "id": "86d30e5b-2a69-4ac0-87c1-676ac1ae338f",
+        "type": "orders",
+        "attributes": {
+          "status": "reserved"
         },
         "relationships": {}
       }
@@ -423,7 +458,7 @@ Name | Description
 `start_location_id` | **uuid** <br>`eq`, `not_eq`
 `start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **enum** <br>`eq`
+`status` | **enum** <br>`eq`, `not_eq`
 `statuses` | **array** <br>`eq`, `not_eq`
 `stock_item_id` | **uuid** <br>`eq`
 `stop_location_id` | **uuid** <br>`eq`, `not_eq`
@@ -515,14 +550,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-12-13T13:46:02Z",
-                       "lte": "2025-12-16T13:46:02Z"
+                       "gte": "2025-12-16T08:44:27Z",
+                       "lte": "2025-12-19T08:44:27Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-12-13T13:46:02Z",
-                       "lte": "2025-12-16T13:46:02Z"
+                       "gte": "2025-12-16T08:44:27Z",
+                       "lte": "2025-12-19T08:44:27Z"
                      }
                    }
                  ]
@@ -624,7 +659,7 @@ Name | Description
 `start_location_id` | **uuid** <br>`eq`, `not_eq`
 `start_or_stop_time` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`, `between`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **enum** <br>`eq`
+`status` | **enum** <br>`eq`, `not_eq`
 `statuses` | **array** <br>`eq`, `not_eq`
 `stock_item_id` | **uuid** <br>`eq`
 `stop_location_id` | **uuid** <br>`eq`, `not_eq`
@@ -893,8 +928,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-10-25T08:02:01.000000+00:00",
-        "stops_at": "1969-11-24T08:02:01.000000+00:00",
+        "starts_at": "1969-10-22T13:04:01.000000+00:00",
+        "stops_at": "1969-11-21T13:04:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1091,8 +1126,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:39:01.000000+00:00",
-        "stops_at": "2026-11-03T14:39:01.000000+00:00",
+        "starts_at": "2026-09-25T14:26:01.000000+00:00",
+        "stops_at": "2026-11-03T14:26:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1204,8 +1239,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:57:00.000000+00:00",
-        "stops_at": "2018-05-14T18:57:00.000000+00:00",
+        "starts_at": "2018-04-05T18:44:00.000000+00:00",
+        "stops_at": "2018-05-14T18:44:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
