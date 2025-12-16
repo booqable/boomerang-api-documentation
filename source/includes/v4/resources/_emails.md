@@ -37,7 +37,8 @@ Check each individual operation to see which relations can be included as a side
 `body` | **string** <br>The main content of the email. When providing the body directly (without using an [EmailTemplate](#email-templates)), this is the final text that will be sent. When using a template, this field is automatically populated by rendering the template with data from associated resources. 
 `created_at` | **datetime** `readonly`<br>When the email was created by the user or automatically by Booqable. At this time, the email has not been sent yet and may still be in the process of being prepared. Once the email is created and validated, it will be queued for delivery. 
 `customer_id` | **uuid** `readonly-after-create`<br>The [Customer](#customers) this email is associated with. When specified and using an [EmailTemplate](#email-templates), customer data is available during template rendering. This relationship is useful for customer-specific communications that aren't tied to a particular order, or for providing customer context when an order relationship is also present. The customer's email address is typically used as the default recipient. 
-`document_ids` | **array** <br>Array of [Document](#documents) IDs to attach to the email. These documents will be included as PDF attachments when the email is sent. Common use cases include attaching quotes, contracts, or invoices to customer communications. 
+`document_id` | **uuid** `writeonly`<br>Single [Document](#documents) ID to use for template variable rendering. When provided along with an [EmailTemplate](#email-templates), the document's data becomes available for use in template variables (e.g., `{{document.number}}`). This is useful for sending document-specific notifications where the document details should appear in the email content. Note that this is different from `document_ids`, which attaches documents as PDF files. 
+`document_ids` | **array** <br>Array of [Document](#documents) IDs to attach to the email as PDF attachments. When the email is sent, each document will be rendered as a PDF and included as an attachment. Common use cases include attaching quotes, contracts, or invoices to customer communications. Note that this is different from `document_id`, which is used for template variable rendering. 
 `email_template_id` | **uuid** `readonly-after-create`<br>The [EmailTemplate](#email-templates) used to generate this email's content. When specified, the template is rendered with data from the associated resources to populate the email's subject and body. Templates allow for consistent, branded communication with dynamic content. 
 `employee_id` | **uuid** `readonly`<br>The [Employee](#employees) who created and sent this email. This is automatically set to the current user when the email is created and cannot be modified. The employee relationship tracks who initiated the communication and may be used for reply-to addresses or signature information in the email content. 
 `has_error` | **boolean** `readonly`<br>Whether any errors occurred when attempting to send this email. Returns `true` if the email encountered problems during sending (such as invalid addresses, server issues, or other delivery failures). When `true`, additional error details may be available to help diagnose the issue. 
@@ -198,11 +199,57 @@ This request accepts the following includes:
              "recipients": "customer1@example.com,customer2@example.com",
              "subject": "Order confirmation",
              "body": "Hi {{customer.name}}",
-             "email_template_id": "4b2e6043-c307-4b1c-8f2d-872b85d20fc4",
-             "order_id": "c504d320-966c-4b0d-88fb-9490bc6483e5",
-             "customer_id": "c353e670-ad55-43ad-803b-3e12456726de",
+             "order_id": "4b2e6043-c307-4b1c-8f2d-872b85d20fc4",
+             "customer_id": "c504d320-966c-4b0d-88fb-9490bc6483e5"
+           }
+         }
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "c353e670-ad55-43ad-803b-3e12456726de",
+      "type": "emails",
+      "attributes": {
+        "created_at": "2025-09-16T16:16:01.000000+00:00",
+        "updated_at": "2025-09-16T16:16:01.000000+00:00",
+        "subject": "Order confirmation",
+        "body": "Hi {{customer.name}}",
+        "recipients": "customer1@example.com,customer2@example.com",
+        "has_error": false,
+        "sent": false,
+        "document_ids": [],
+        "order_id": "4b2e6043-c307-4b1c-8f2d-872b85d20fc4",
+        "customer_id": "c504d320-966c-4b0d-88fb-9490bc6483e5",
+        "email_template_id": null,
+        "employee_id": "b308505b-b1cb-485c-8d0e-7d937d2f38a5"
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+> How to create an email with document attachments:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/emails'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "emails",
+           "attributes": {
+             "recipients": "customer@example.com",
+             "subject": "Your documents",
+             "body": "Please find your contract and invoice attached.",
+             "order_id": "d5ff0679-a951-40b3-8992-5e24d9d1fed6",
              "document_ids": [
-               "b308505b-b1cb-485c-8d0e-7d937d2f38a5"
+               "50671ff8-1979-4d54-870d-6be618a45e02",
+               "65e1703c-23b4-4308-8060-dd2907fc31f1"
              ]
            }
          }
@@ -214,23 +261,70 @@ This request accepts the following includes:
 ```json
   {
     "data": {
-      "id": "b0779013-b390-48c6-8286-123716b0a3e1",
+      "id": "45705775-955c-424f-827d-74195d93ef5c",
       "type": "emails",
       "attributes": {
-        "created_at": "2025-09-16T16:16:01.000000+00:00",
-        "updated_at": "2025-09-16T16:16:01.000000+00:00",
-        "subject": "Order confirmation",
-        "body": "Hi {{customer.name}}",
-        "recipients": "customer1@example.com,customer2@example.com",
+        "created_at": "2020-08-08T15:59:01.000000+00:00",
+        "updated_at": "2020-08-08T15:59:01.000000+00:00",
+        "subject": "Your documents",
+        "body": "Please find your contract and invoice attached.",
+        "recipients": "customer@example.com",
         "has_error": false,
         "sent": false,
         "document_ids": [
-          "b308505b-b1cb-485c-8d0e-7d937d2f38a5"
+          "50671ff8-1979-4d54-870d-6be618a45e02",
+          "65e1703c-23b4-4308-8060-dd2907fc31f1"
         ],
-        "order_id": "c504d320-966c-4b0d-88fb-9490bc6483e5",
-        "customer_id": "c353e670-ad55-43ad-803b-3e12456726de",
-        "email_template_id": "4b2e6043-c307-4b1c-8f2d-872b85d20fc4",
-        "employee_id": "1a34d41c-d99a-49de-8090-cb632e9ef172"
+        "order_id": "d5ff0679-a951-40b3-8992-5e24d9d1fed6",
+        "customer_id": null,
+        "email_template_id": null,
+        "employee_id": "f079a7d1-a859-4ce4-8eba-2bfb94e6368b"
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+> How to create an email with document data for template variables:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/emails'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "emails",
+           "attributes": {
+             "recipients": "customer@example.com",
+             "order_id": "98e52620-64f4-4a5f-8c97-d0f8c805356a",
+             "email_template_id": "9b479f1c-f504-4326-82f2-03e10f8610a5",
+             "document_id": "47da83dc-a5fe-4551-8f1a-928020e2315e"
+           }
+         }
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "aabceaef-b518-4ac9-8857-16e80c5c0932",
+      "type": "emails",
+      "attributes": {
+        "created_at": "2018-04-11T19:57:01.000000+00:00",
+        "updated_at": "2018-04-11T19:57:01.000000+00:00",
+        "subject": "Invoice 1",
+        "body": "<p>Your invoice 1 is ready.</p>\n",
+        "recipients": "customer@example.com",
+        "has_error": false,
+        "sent": false,
+        "document_ids": [],
+        "order_id": "98e52620-64f4-4a5f-8c97-d0f8c805356a",
+        "customer_id": null,
+        "email_template_id": "9b479f1c-f504-4326-82f2-03e10f8610a5",
+        "employee_id": "5ce314b7-cf2f-473c-8d7f-325e488fb7a4"
       },
       "relationships": {}
     },
@@ -260,7 +354,8 @@ Name | Description
 -- | --
 `data[attributes][body]` | **string** <br>The main content of the email. When providing the body directly (without using an [EmailTemplate](#email-templates)), this is the final text that will be sent. When using a template, this field is automatically populated by rendering the template with data from associated resources. 
 `data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this email is associated with. When specified and using an [EmailTemplate](#email-templates), customer data is available during template rendering. This relationship is useful for customer-specific communications that aren't tied to a particular order, or for providing customer context when an order relationship is also present. The customer's email address is typically used as the default recipient. 
-`data[attributes][document_ids][]` | **array** <br>Array of [Document](#documents) IDs to attach to the email. These documents will be included as PDF attachments when the email is sent. Common use cases include attaching quotes, contracts, or invoices to customer communications. 
+`data[attributes][document_id]` | **uuid** <br>Single [Document](#documents) ID to use for template variable rendering. When provided along with an [EmailTemplate](#email-templates), the document's data becomes available for use in template variables (e.g., `{{document.number}}`). This is useful for sending document-specific notifications where the document details should appear in the email content. Note that this is different from `document_ids`, which attaches documents as PDF files. 
+`data[attributes][document_ids][]` | **array** <br>Array of [Document](#documents) IDs to attach to the email as PDF attachments. When the email is sent, each document will be rendered as a PDF and included as an attachment. Common use cases include attaching quotes, contracts, or invoices to customer communications. Note that this is different from `document_id`, which is used for template variable rendering. 
 `data[attributes][email_template_id]` | **uuid** <br>The [EmailTemplate](#email-templates) used to generate this email's content. When specified, the template is rendered with data from the associated resources to populate the email's subject and body. Templates allow for consistent, branded communication with dynamic content. 
 `data[attributes][order_id]` | **uuid** <br>The [Order](#orders) this email is associated with. When an email is linked to an order and uses an [EmailTemplate](#email-templates), the template can access order data during rendering. Linking an email to an order also helps maintain a clear communication history for that rental transaction. 
 `data[attributes][payment_id]` | **uuid** <br>Payment to use when rendering an [EmailTemplate](#email-templates). When provided, payment data is available during template rendering, which is useful for sending payment requests or payment confirmation emails with payment-specific information such as payment links. 

@@ -222,6 +222,7 @@ Name | Description
           "canceled_at": null,
           "on_hold": false,
           "plan_identifier": "custom",
+          "plan_pricing_strategy": "start_grow_scale_custom",
           "active_subscription_plan_and_interval": "custom_month",
           "interval": "month",
           "current_period_end": null,
