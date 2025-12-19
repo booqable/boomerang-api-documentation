@@ -55,7 +55,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
         "type": "report_rentals",
         "attributes": {
-          "created_at": "2019-11-26T05:20:00.000000+00:00",
+          "created_at": "2019-11-26T01:05:00.000000+00:00",
           "name": "Product 1000064",
           "charge_duration_in_seconds": 14400,
           "rent_duration_in_seconds": 14400,

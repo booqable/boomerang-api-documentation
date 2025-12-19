@@ -7,6 +7,10 @@ any manual changes that may have been made.
 The `OrderPriceRecalculation` resource allows to request a recalculation for the
 entire order and all its lines.
 
+Optionally, a specific `charge_length` can be provided to set a custom charge
+period for all items on the order. When `charge_length` is omitted, prices are
+recalculated based on the order's rental period.
+
 To recalculate the price of an individual line, set the `charge_length` of the
 line to `null` as described [here](#lines-fields).
 
@@ -23,6 +27,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`charge_length` | **integer** `writeonly` `readonly-after-create`<br>Charge length in seconds to apply to all items on the order. When provided, all items will be charged for this specific period, overriding any product-specific pricing rules. When omitted, prices are recalculated based on the order's rental period. 
 `id` | **uuid** `readonly`<br>Primary key.
 `order_id` | **uuid** `readonly-after-create`<br>[Order](#orders) that needs to be recalculated. 
 
@@ -62,6 +67,39 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
+> Set a specific charge period for all items:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/order_price_recalculations'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "order_price_recalculations",
+           "attributes": {
+             "order_id": "4242e277-f72e-40fb-85a8-26abd0f26b3d",
+             "charge_length": 172800
+           }
+         }
+       }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "a79ed17b-4853-4591-8039-b1df6c21c646",
+      "type": "order_price_recalculations",
+      "attributes": {
+        "order_id": "4242e277-f72e-40fb-85a8-26abd0f26b3d"
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
 ### HTTP Request
 
 `POST /api/4/order_price_recalculations`
@@ -82,6 +120,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
+`data[attributes][charge_length]` | **integer** <br>Charge length in seconds to apply to all items on the order. When provided, all items will be charged for this specific period, overriding any product-specific pricing rules. When omitted, prices are recalculated based on the order's rental period. 
 `data[attributes][order_id]` | **uuid** <br>[Order](#orders) that needs to be recalculated. 
 
 

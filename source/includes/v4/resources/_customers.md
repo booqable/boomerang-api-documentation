@@ -126,7 +126,7 @@ Name | Description
 `email` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `email_marketing_consented` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`legal_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`legal_type` | **string** <br>`eq`
 `merge_suggestion_customer_id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -145,6 +145,7 @@ Name | Description
 -- | --
 `archived` | **array** <br>`count`
 `discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
+`email_marketing_consented` | **array** <br>`count`
 `legal_type` | **array** <br>`count`
 `tag_list` | **array** <br>`count`
 `tax_region_id` | **array** <br>`count`
@@ -261,7 +262,7 @@ Name | Description
 `email` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `email_marketing_consented` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`legal_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`legal_type` | **string** <br>`eq`
 `merge_suggestion_customer_id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `number` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -280,6 +281,7 @@ Name | Description
 -- | --
 `archived` | **array** <br>`count`
 `discount_percentage` | **array** <br>`maximum`, `minimum`, `average`
+`email_marketing_consented` | **array** <br>`count`
 `legal_type` | **array** <br>`count`
 `tag_list` | **array** <br>`count`
 `tax_region_id` | **array** <br>`count`
