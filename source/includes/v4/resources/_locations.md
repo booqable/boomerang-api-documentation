@@ -68,7 +68,7 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "name": "Warehouse",
-          "code": "LOC1000034",
+          "code": "LOC1000033",
           "location_type": "rental",
           "address_line_1": "Blokhuisplein 40",
           "address_line_2": "Department II",
@@ -83,7 +83,7 @@ Check each individual operation to see which relations can be included as a side
             "pickup"
           ],
           "main_address": {
-            "meets_validation_requirements": false,
+            "meets_validation_requirements": true,
             "first_name": null,
             "last_name": null,
             "address1": "Blokhuisplein 40",
@@ -92,11 +92,11 @@ Check each individual operation to see which relations can be included as a side
             "region": "Friesland",
             "zipcode": "8911LJ",
             "country": "Netherlands",
-            "country_id": null,
+            "country_id": "a21c7b3f-031d-4642-8128-3950e505170e",
             "province_id": null,
             "latitude": null,
             "longitude": null,
-            "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
+            "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden\nNetherlands"
           }
         },
         "relationships": {}
@@ -186,7 +186,7 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "name": "Warehouse",
-        "code": "LOC1000035",
+        "code": "LOC1000034",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -201,7 +201,7 @@ This request accepts the following includes:
           "pickup"
         ],
         "main_address": {
-          "meets_validation_requirements": false,
+          "meets_validation_requirements": true,
           "first_name": null,
           "last_name": null,
           "address1": "Blokhuisplein 40",
@@ -210,11 +210,11 @@ This request accepts the following includes:
           "region": "Friesland",
           "zipcode": "8911LJ",
           "country": "Netherlands",
-          "country_id": null,
+          "country_id": "7bd3e269-0893-4070-84ec-02621281dfb7",
           "province_id": null,
           "latitude": null,
           "longitude": null,
-          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
+          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden\nNetherlands"
         }
       },
       "relationships": {}
@@ -308,7 +308,7 @@ This request accepts the following includes:
           "pickup"
         ],
         "main_address": {
-          "meets_validation_requirements": false,
+          "meets_validation_requirements": true,
           "first_name": null,
           "last_name": null,
           "address1": "Blokhuisplein 40",
@@ -317,11 +317,11 @@ This request accepts the following includes:
           "region": "Friesland",
           "zipcode": "8911LJ",
           "country": "Netherlands",
-          "country_id": null,
+          "country_id": "b96c2137-478b-49f8-801c-2aa4b0a54679",
           "province_id": null,
           "latitude": null,
           "longitude": null,
-          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
+          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden\nNetherlands"
         }
       },
       "relationships": {
@@ -439,7 +439,7 @@ Note that disassociating clusters may result in a shortage error.
         "archived": false,
         "archived_at": null,
         "name": "Old warehouse",
-        "code": "LOC1000037",
+        "code": "LOC1000036",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -457,7 +457,7 @@ Note that disassociating clusters may result in a shortage error.
           "pickup"
         ],
         "main_address": {
-          "meets_validation_requirements": false,
+          "meets_validation_requirements": true,
           "first_name": null,
           "last_name": null,
           "address1": "Blokhuisplein 40",
@@ -466,11 +466,11 @@ Note that disassociating clusters may result in a shortage error.
           "region": "Friesland",
           "zipcode": "8911LJ",
           "country": "Netherlands",
-          "country_id": null,
+          "country_id": "0b069f37-e603-4916-872d-3e560231c600",
           "province_id": null,
           "latitude": null,
           "longitude": null,
-          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
+          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden\nNetherlands"
         }
       },
       "relationships": {
@@ -654,7 +654,7 @@ To archive a location make sure that:
         "archived": true,
         "archived_at": "2020-03-03T14:31:02.000000+00:00",
         "name": "Warehouse",
-        "code": "LOC1000040",
+        "code": "LOC1000039",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -669,7 +669,7 @@ To archive a location make sure that:
           "pickup"
         ],
         "main_address": {
-          "meets_validation_requirements": false,
+          "meets_validation_requirements": true,
           "first_name": null,
           "last_name": null,
           "address1": "Blokhuisplein 40",
@@ -678,11 +678,11 @@ To archive a location make sure that:
           "region": "Friesland",
           "zipcode": "8911LJ",
           "country": "Netherlands",
-          "country_id": null,
+          "country_id": "560394ea-598c-43e6-8936-f4c3e2efffa1",
           "province_id": null,
           "latitude": null,
           "longitude": null,
-          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden Friesland\nNetherlands"
+          "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden\nNetherlands"
         }
       },
       "relationships": {}

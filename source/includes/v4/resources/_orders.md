@@ -298,8 +298,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-05-20T02:54:01.000000+00:00",
-          "stops_at": "1969-06-19T02:54:01.000000+00:00",
+          "starts_at": "1969-05-19T21:11:01.000000+00:00",
+          "stops_at": "1969-06-18T21:11:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -550,14 +550,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2025-12-23T09:35:05Z",
-                       "lte": "2025-12-26T09:35:05Z"
+                       "gte": "2025-12-23T15:18:44Z",
+                       "lte": "2025-12-26T15:18:44Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2025-12-23T09:35:05Z",
-                       "lte": "2025-12-26T09:35:05Z"
+                       "gte": "2025-12-23T15:18:44Z",
+                       "lte": "2025-12-26T15:18:44Z"
                      }
                    }
                  ]
@@ -928,8 +928,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-10-15T12:13:01.000000+00:00",
-        "stops_at": "1969-11-14T12:13:01.000000+00:00",
+        "starts_at": "1969-10-15T06:30:01.000000+00:00",
+        "stops_at": "1969-11-14T06:30:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1126,8 +1126,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:35:01.000000+00:00",
-        "stops_at": "2026-11-03T14:35:01.000000+00:00",
+        "starts_at": "2026-09-25T14:37:01.000000+00:00",
+        "stops_at": "2026-11-03T14:37:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1239,8 +1239,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:53:00.000000+00:00",
-        "stops_at": "2018-05-14T18:53:00.000000+00:00",
+        "starts_at": "2018-04-05T18:55:00.000000+00:00",
+        "stops_at": "2018-05-14T18:55:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1253,8 +1253,8 @@ When the following attributes are not specified, a sensible default will be pick
         "item_count": 0,
         "tag_list": [],
         "properties": {
-          "delivery_address": "81801 Overseas Hwy\nSuite 100\n33036 Islamorada Florida\nUnited States",
-          "billing_address": "81801 Overseas Hwy\nSuite 100\n33036 Islamorada Florida\nUnited States"
+          "delivery_address": "81801 Overseas Hwy\nSuite 100\nIslamorada Florida 33036\nUnited States",
+          "billing_address": "81801 Overseas Hwy\nSuite 100\nIslamorada Florida 33036\nUnited States"
         },
         "amount_in_cents": 0,
         "amount_paid_in_cents": 0,
@@ -1282,7 +1282,7 @@ When the following attributes are not specified, a sensible default will be pick
         "billing_address_property_id": null,
         "delivery_address_property_id": "c145ac19-ea96-40c6-8d7c-9dc81eec5035",
         "fulfillment_type": "delivery",
-        "delivery_address": "81801 Overseas Hwy\nSuite 100\n33036 Islamorada Florida\nUnited States",
+        "delivery_address": "81801 Overseas Hwy\nSuite 100\nIslamorada Florida 33036\nUnited States",
         "customer_id": "3a27640b-1429-4e99-8731-797893bb4e7a",
         "tax_region_id": null,
         "coupon_id": null,
