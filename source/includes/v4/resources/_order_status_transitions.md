@@ -331,7 +331,8 @@ Check each individual operation to see which relations can be included as a side
                   "id": "09f4dbde-e49d-4919-89d2-c962c107b7a9",
                   "stock_item_ids": [
                     "c5c86b0e-7898-4c3d-8c33-425011f8ed0b"
-                  ]
+                  ],
+                  "quantity": 1
                 }
               ],
               "downtimes": []
