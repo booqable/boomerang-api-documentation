@@ -73,14 +73,6 @@ Name | Description
 `sso_forced` | **Boolean**<br>Whether to force SSO
 `iprestrictions_enabled` | **Boolean**<br>Whether IP restrictions are enabled
 
-#### Address
-
-Settings on how to display addresses
-
-Name | Description
--- | --
-`fields_order` | **Array**<br>Order of how the fields are displayed, e.g. `["zipcode", "city", "region"]`
-
 #### Store
 
 Settings for the online store
@@ -295,13 +287,7 @@ Name | Description
           "2fa_forced": false,
           "iprestrictions_enabled": false
         },
-        "address": {
-          "fields_order": [
-            "zipcode",
-            "city",
-            "region"
-          ]
-        },
+        "address": {},
         "store": {
           "enabled": true,
           "public": true,

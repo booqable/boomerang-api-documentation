@@ -75,35 +75,6 @@ Check each individual operation to see which relations can be included as a side
         "id": "7d3ef505-b175-4f03-8151-9d77c4e8d823",
         "type": "item_prices",
         "attributes": {
-          "item_id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
-          "bundle_id": null,
-          "bundle_item_id": null,
-          "from": "2028-03-25T10:11:00.000000+00:00",
-          "till": "2028-04-07T10:11:00.000000+00:00",
-          "original_charge_length": 1123200,
-          "charge_length": 1123200,
-          "original_charge_label": "13 days",
-          "charge_label": "13 days",
-          "original_price_each_in_cents": 74100,
-          "price_each_in_cents": 74100,
-          "price_rule_values": null,
-          "price_structure_id": null,
-          "price_ruleset_id": null,
-          "price_tile_id": null
-        },
-        "relationships": {
-          "item": {
-            "data": {
-              "type": "products",
-              "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e"
-            }
-          }
-        }
-      },
-      {
-        "id": "1200d3ab-3efd-419e-8837-dbefde64a5c8",
-        "type": "item_prices",
-        "attributes": {
           "item_id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
           "bundle_id": null,
           "bundle_item_id": null,
@@ -128,62 +99,44 @@ Check each individual operation to see which relations can be included as a side
             }
           }
         }
+      },
+      {
+        "id": "1200d3ab-3efd-419e-8837-dbefde64a5c8",
+        "type": "item_prices",
+        "attributes": {
+          "item_id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
+          "bundle_id": null,
+          "bundle_item_id": null,
+          "from": "2028-03-25T10:11:00.000000+00:00",
+          "till": "2028-04-07T10:11:00.000000+00:00",
+          "original_charge_length": 1123200,
+          "charge_length": 1123200,
+          "original_charge_label": "13 days",
+          "charge_label": "13 days",
+          "original_price_each_in_cents": 74100,
+          "price_each_in_cents": 74100,
+          "price_rule_values": null,
+          "price_structure_id": null,
+          "price_ruleset_id": null,
+          "price_tile_id": null
+        },
+        "relationships": {
+          "item": {
+            "data": {
+              "type": "products",
+              "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e"
+            }
+          }
+        }
       }
     ],
     "included": [
       {
-        "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
-        "type": "products",
-        "attributes": {
-          "created_at": "2024-03-16T07:35:00.000000+00:00",
-          "updated_at": "2024-03-16T07:35:00.000000+00:00",
-          "type": "products",
-          "archived": false,
-          "archived_at": null,
-          "name": "Product 1000011",
-          "group_name": "Product 1000011",
-          "slug": "product-1000011",
-          "sku": "PRODUCT 1000013",
-          "buffer_time_before": 0,
-          "buffer_time_after": 0,
-          "product_type": "rental",
-          "tracking_type": "bulk",
-          "trackable": false,
-          "has_variations": false,
-          "variation": false,
-          "extra_information": null,
-          "photo_url": null,
-          "description": null,
-          "excerpt": null,
-          "show_in_store": true,
-          "sorting_weight": 1,
-          "base_price_in_cents": 5700,
-          "price_type": "simple",
-          "price_period": "day",
-          "deposit_in_cents": 0,
-          "discountable": true,
-          "taxable": true,
-          "seo_title": null,
-          "seo_description": null,
-          "tag_list": [],
-          "properties": {},
-          "photo_id": null,
-          "tax_category_id": null,
-          "price_ruleset_id": null,
-          "price_structure_id": null,
-          "allow_shortage": false,
-          "shortage_limit": 0,
-          "variation_values": [],
-          "product_group_id": "248e9f40-8ade-4dd1-8bbc-2049129c3146"
-        },
-        "relationships": {}
-      },
-      {
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2024-03-16T07:35:00.000000+00:00",
-          "updated_at": "2024-03-16T07:35:00.000000+00:00",
+          "created_at": "2024-03-16T17:48:00.000000+00:00",
+          "updated_at": "2024-03-16T17:48:00.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
@@ -207,6 +160,53 @@ Check each individual operation to see which relations can be included as a side
           "base_price_in_cents": 100,
           "price_type": "simple",
           "price_period": "hour",
+          "deposit_in_cents": 0,
+          "discountable": true,
+          "taxable": true,
+          "seo_title": null,
+          "seo_description": null,
+          "tag_list": [],
+          "properties": {},
+          "photo_id": null,
+          "tax_category_id": null,
+          "price_ruleset_id": null,
+          "price_structure_id": null,
+          "allow_shortage": false,
+          "shortage_limit": 0,
+          "variation_values": [],
+          "product_group_id": "248e9f40-8ade-4dd1-8bbc-2049129c3146"
+        },
+        "relationships": {}
+      },
+      {
+        "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
+        "type": "products",
+        "attributes": {
+          "created_at": "2024-03-16T17:48:00.000000+00:00",
+          "updated_at": "2024-03-16T17:48:00.000000+00:00",
+          "type": "products",
+          "archived": false,
+          "archived_at": null,
+          "name": "Product 1000011",
+          "group_name": "Product 1000011",
+          "slug": "product-1000011",
+          "sku": "PRODUCT 1000013",
+          "buffer_time_before": 0,
+          "buffer_time_after": 0,
+          "product_type": "rental",
+          "tracking_type": "bulk",
+          "trackable": false,
+          "has_variations": false,
+          "variation": false,
+          "extra_information": null,
+          "photo_url": null,
+          "description": null,
+          "excerpt": null,
+          "show_in_store": true,
+          "sorting_weight": 1,
+          "base_price_in_cents": 5700,
+          "price_type": "simple",
+          "price_period": "day",
           "deposit_in_cents": 0,
           "discountable": true,
           "taxable": true,
