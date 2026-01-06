@@ -39,7 +39,7 @@ Webhooks are only available for a limited time after the event occurred.
       "attributes": {
         "created_at": "2014-03-27T18:03:01.000000+00:00",
         "updated_at": "2014-03-27T18:03:01.000000+00:00",
-        "event": "order.created",
+        "event": "order.updated",
         "version": 1,
         "resource_type": "orders",
         "data": {
@@ -80,8 +80,8 @@ Webhooks are only available for a limited time after the event occurred.
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2014-03-25T17:53:01.000000+00:00",
-          "stops_at": "2014-03-29T17:53:01.000000+00:00",
+          "starts_at": "2014-03-25T18:01:01.000000+00:00",
+          "stops_at": "2014-03-29T18:01:01.000000+00:00",
           "customer_id": null,
           "discount_type": "percentage",
           "discount_percentage": 0.0,
@@ -214,7 +214,7 @@ Webhooks are only available for a limited time after the event occurred.
       "attributes": {
         "created_at": "2018-06-25T17:38:00.000000+00:00",
         "updated_at": "2018-06-25T17:38:00.000000+00:00",
-        "event": "order.created",
+        "event": "order.updated",
         "version": 4,
         "resource_type": "orders",
         "data": {
@@ -233,8 +233,8 @@ Webhooks are only available for a limited time after the event occurred.
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "2018-06-23T17:28:00.000000+00:00",
-          "stops_at": "2018-06-27T17:28:00.000000+00:00",
+          "starts_at": "2018-06-23T17:36:00.000000+00:00",
+          "stops_at": "2018-06-27T17:36:00.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 100.0,
           "entirely_started": true,
