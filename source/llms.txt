@@ -1,0 +1,30 @@
+# Booqable Developer Documentation
+
+> Official developer documentation for Booqable, a rental management software platform. We offer a RESTful JSON:API as well as the ability to create your own 3rd party app that runs inside Booqable.
+
+
+## 3rd Party Apps
+
+Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They're distributed through the Booqable App Store, where users can discover, install, and manage them through a streamlined interface. Apps can extend functionality through various capabilities including delivery carriers for custom shipping rates, payment options for checkout processing, theme blocks for website customization, and tracking scripts for analytics integration.
+
+- [App Store](https://developers.booqable.com/apps/installation.md): How apps appear in the Booqable App Store and installation flow
+- [Configuration](https://developers.booqable.com/apps/configuration.md): App folder structure, meta.json, plans.json, and locale files
+- [Configuration Schema](https://developers.booqable.com/apps/app-0-1-0.md): Documentation for app configuration options.
+- [Configuration JSON Schema File](https://developers.booqable.com/schemas/app-0-1-0.json): JSON schema file covering app configuration options.
+- [OAuth Authentication](https://developers.booqable.com/apps/oauth2.md): Securely connect to Booqable's API on behalf of users
+- [Iframe Page](https://developers.booqable.com/apps/iframe.md): Embed custom interfaces in the Booqable admin dashboard
+- [User Framework](https://developers.booqable.com/apps/user_framework.md): JavaScript APIs for templates, event tracking, and consent management
+- [Webhooks](https://developers.booqable.com/apps/webhooks.md): Subscribe to app lifecycle events (installed, configured, uninstalled)
+- [Tracking Scripts](https://developers.booqable.com/apps/tracking_scripts.md): Inject analytics JavaScript into customer websites
+- [Theme Blocks](https://developers.booqable.com/apps/theme_blocks.md): Add custom HTML content blocks to customer websites
+- [Delivery Carriers](https://developers.booqable.com/apps/delivery_carriers.md): Provide custom shipping rates for orders
+- [Payment Options](https://developers.booqable.com/apps/payment_options.md): Add custom payment methods for checkout
+
+
+## API Basics
+
+The API is RESTful and follows the JSON:API specification. Base URL is `https://{your_company_slug}.booqable.com/api/4/`.
+
+- [Introduction](https://developers.booqable.com/v4.html#introduction): API overview, endpoints, filtering, and response types
+- [Authentication](https://developers.booqable.com/v4.html#authentication): Access tokens and request signing methods
+- [Errors](https://developers.booqable.com/v4.html#errors): Error codes and response handling
