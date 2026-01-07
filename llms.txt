@@ -1,0 +1,142 @@
+# Booqable Developer Documentation
+
+> Official developer documentation for Booqable, a rental management software platform. We offer a RESTful JSON:API as well as the ability to create your own 3rd party app that runs inside Booqable.
+
+
+## 3rd Party Apps
+
+Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They're distributed through the Booqable App Store, where users can discover, install, and manage them through a streamlined interface. Apps can extend functionality through various capabilities including delivery carriers for custom shipping rates, payment options for checkout processing, theme blocks for website customization, and tracking scripts for analytics integration.
+
+- [App Store](https://developers.booqable.com/apps/installation.md): How apps appear in the Booqable App Store and installation flow
+- [Configuration](https://developers.booqable.com/apps/configuration.md): App folder structure, meta.json, plans.json, and locale files
+- [Configuration Schema](https://developers.booqable.com/apps/app-0-1-0.md): Documentation for app configuration options.
+- [Configuration JSON Schema File](https://developers.booqable.com/schemas/app-0-1-0.json): JSON schema file covering app configuration options.
+- [OAuth Authentication](https://developers.booqable.com/apps/oauth2.md): Securely connect to Booqable's API on behalf of users
+- [Iframe Page](https://developers.booqable.com/apps/iframe.md): Embed custom interfaces in the Booqable admin dashboard
+- [User Framework](https://developers.booqable.com/apps/user_framework.md): JavaScript APIs for templates, event tracking, and consent management
+- [Webhooks](https://developers.booqable.com/apps/webhooks.md): Subscribe to app lifecycle events (installed, configured, uninstalled)
+- [Tracking Scripts](https://developers.booqable.com/apps/tracking_scripts.md): Inject analytics JavaScript into customer websites
+- [Theme Blocks](https://developers.booqable.com/apps/theme_blocks.md): Add custom HTML content blocks to customer websites
+- [Delivery Carriers](https://developers.booqable.com/apps/delivery_carriers.md): Provide custom shipping rates for orders
+- [Payment Options](https://developers.booqable.com/apps/payment_options.md): Add custom payment methods for checkout
+
+
+## API Basics
+
+The API is RESTful and follows the JSON:API specification. Base URL is `https://{your_company_slug}.booqable.com/api/4/`.
+
+- [Introduction](https://developers.booqable.com/v4.html#introduction): API overview, endpoints, filtering, and response types
+- [Authentication](https://developers.booqable.com/v4.html#authentication): Access tokens and request signing methods
+- [Errors](https://developers.booqable.com/v4.html#errors): Error codes and response handling
+
+
+## API Resources
+
+- [Activity Logs](https://developers.booqable.com/api/activity_logs.md)
+- [App Carriers](https://developers.booqable.com/api/app_carriers.md)
+- [App Payment Options](https://developers.booqable.com/api/app_payment_options.md)
+- [Assets](https://developers.booqable.com/api/assets.md)
+- [Authentication Methods](https://developers.booqable.com/api/authentication_methods.md)
+- [Availabilities](https://developers.booqable.com/api/availabilities.md)
+- [Barcodes](https://developers.booqable.com/api/barcodes.md)
+- [Billing Invoices](https://developers.booqable.com/api/billing_invoices.md)
+- [Bulk Upserts](https://developers.booqable.com/api/bulk_upserts.md)
+- [Bundle Items](https://developers.booqable.com/api/bundle_items.md)
+- [Bundles](https://developers.booqable.com/api/bundles.md)
+- [Checkout Items](https://developers.booqable.com/api/checkout_items.md)
+- [Clusters](https://developers.booqable.com/api/clusters.md)
+- [Collection Items](https://developers.booqable.com/api/collection_items.md)
+- [Collection Trees](https://developers.booqable.com/api/collection_trees.md)
+- [Collections](https://developers.booqable.com/api/collections.md)
+- [Companies](https://developers.booqable.com/api/companies.md)
+- [Countries](https://developers.booqable.com/api/countries.md)
+- [Counts](https://developers.booqable.com/api/counts.md)
+- [Coupons](https://developers.booqable.com/api/coupons.md)
+- [Currencies](https://developers.booqable.com/api/currencies.md)
+- [Customers](https://developers.booqable.com/api/customers.md)
+- [Default Properties](https://developers.booqable.com/api/default_properties.md)
+- [Delivery Distance Calculations](https://developers.booqable.com/api/delivery_distance_calculations.md)
+- [Deposit Holds](https://developers.booqable.com/api/deposit_holds.md)
+- [Device Tokens](https://developers.booqable.com/api/device_tokens.md)
+- [Documents](https://developers.booqable.com/api/documents.md)
+- [Downtimes](https://developers.booqable.com/api/downtimes.md)
+- [Email Templates](https://developers.booqable.com/api/email_templates.md)
+- [Emails](https://developers.booqable.com/api/emails.md)
+- [Employee Invitations](https://developers.booqable.com/api/employee_invitations.md)
+- [Employees](https://developers.booqable.com/api/employees.md)
+- [Exports](https://developers.booqable.com/api/exports.md)
+- [Inventory Breakdowns](https://developers.booqable.com/api/inventory_breakdowns.md)
+- [Inventory Level Intervals](https://developers.booqable.com/api/inventory_level_intervals.md)
+- [Inventory Levels](https://developers.booqable.com/api/inventory_levels.md)
+- [Invoice Finalizations](https://developers.booqable.com/api/invoice_finalizations.md)
+- [Invoice Revisions](https://developers.booqable.com/api/invoice_revisions.md)
+- [Ip Addresses](https://developers.booqable.com/api/ip_addresses.md)
+- [Item Prices](https://developers.booqable.com/api/item_prices.md)
+- [Items](https://developers.booqable.com/api/items.md)
+- [Line Charge Suggestions](https://developers.booqable.com/api/line_charge_suggestions.md)
+- [Lines](https://developers.booqable.com/api/lines.md)
+- [Locations](https://developers.booqable.com/api/locations.md)
+- [Login Activities](https://developers.booqable.com/api/login_activities.md)
+- [Menus](https://developers.booqable.com/api/menus.md)
+- [Merges](https://developers.booqable.com/api/merges.md)
+- [Notes](https://developers.booqable.com/api/notes.md)
+- [Notification Subscriptions](https://developers.booqable.com/api/notification_subscriptions.md)
+- [Operating Rules](https://developers.booqable.com/api/operating_rules.md)
+- [Operations](https://developers.booqable.com/api/operations.md)
+- [Order Delivery Rate Recalculations](https://developers.booqable.com/api/order_delivery_rate_recalculations.md)
+- [Order Delivery Rates](https://developers.booqable.com/api/order_delivery_rates.md)
+- [Order Duplications](https://developers.booqable.com/api/order_duplications.md)
+- [Order Fulfillments](https://developers.booqable.com/api/order_fulfillments.md)
+- [Order Planning Availabilities](https://developers.booqable.com/api/order_planning_availabilities.md)
+- [Order Price Recalculations](https://developers.booqable.com/api/order_price_recalculations.md)
+- [Order Status Transitions](https://developers.booqable.com/api/order_status_transitions.md)
+- [Orders](https://developers.booqable.com/api/orders.md)
+- [Payment Authorizations](https://developers.booqable.com/api/payment_authorizations.md)
+- [Payment Charges](https://developers.booqable.com/api/payment_charges.md)
+- [Payment Methods](https://developers.booqable.com/api/payment_methods.md)
+- [Payment Profiles](https://developers.booqable.com/api/payment_profiles.md)
+- [Payment Refunds](https://developers.booqable.com/api/payment_refunds.md)
+- [Payments](https://developers.booqable.com/api/payments.md)
+- [Photos](https://developers.booqable.com/api/photos.md)
+- [Plannings](https://developers.booqable.com/api/plannings.md)
+- [Price Rules](https://developers.booqable.com/api/price_rules.md)
+- [Price Rulesets](https://developers.booqable.com/api/price_rulesets.md)
+- [Price Structures](https://developers.booqable.com/api/price_structures.md)
+- [Price Tiles](https://developers.booqable.com/api/price_tiles.md)
+- [Product Group Duplications](https://developers.booqable.com/api/product_group_duplications.md)
+- [Product Groups](https://developers.booqable.com/api/product_groups.md)
+- [Product Trackers](https://developers.booqable.com/api/product_trackers.md)
+- [Products](https://developers.booqable.com/api/products.md)
+- [Properties](https://developers.booqable.com/api/properties.md)
+- [Provinces](https://developers.booqable.com/api/provinces.md)
+- [Publications](https://developers.booqable.com/api/publications.md)
+- [Refundable Payment Charges](https://developers.booqable.com/api/refundable_payment_charges.md)
+- [Rendered Emails](https://developers.booqable.com/api/rendered_emails.md)
+- [Report Rental Intervals](https://developers.booqable.com/api/report_rental_intervals.md)
+- [Report Rentals](https://developers.booqable.com/api/report_rentals.md)
+- [Report Sales Items](https://developers.booqable.com/api/report_sales_items.md)
+- [Report Stock Items](https://developers.booqable.com/api/report_stock_items.md)
+- [Sessions](https://developers.booqable.com/api/sessions.md)
+- [Settings](https://developers.booqable.com/api/settings.md)
+- [Signatures](https://developers.booqable.com/api/signatures.md)
+- [Sortings](https://developers.booqable.com/api/sortings.md)
+- [Stock Adjustments](https://developers.booqable.com/api/stock_adjustments.md)
+- [Stock Counts](https://developers.booqable.com/api/stock_counts.md)
+- [Stock Item Archivations](https://developers.booqable.com/api/stock_item_archivations.md)
+- [Stock Item Plannings](https://developers.booqable.com/api/stock_item_plannings.md)
+- [Stock Item Suggestions](https://developers.booqable.com/api/stock_item_suggestions.md)
+- [Stock Item Trackers](https://developers.booqable.com/api/stock_item_trackers.md)
+- [Stock Items](https://developers.booqable.com/api/stock_items.md)
+- [Stripe Accounts](https://developers.booqable.com/api/stripe_accounts.md)
+- [Tags](https://developers.booqable.com/api/tags.md)
+- [Tax Categories](https://developers.booqable.com/api/tax_categories.md)
+- [Tax Rates](https://developers.booqable.com/api/tax_rates.md)
+- [Tax Regions](https://developers.booqable.com/api/tax_regions.md)
+- [Tax Values](https://developers.booqable.com/api/tax_values.md)
+- [Themes](https://developers.booqable.com/api/themes.md)
+- [Transfers](https://developers.booqable.com/api/transfers.md)
+- [Url Redirects](https://developers.booqable.com/api/url_redirects.md)
+- [User Invitations](https://developers.booqable.com/api/user_invitations.md)
+- [Users](https://developers.booqable.com/api/users.md)
+- [Webhook Endpoints](https://developers.booqable.com/api/webhook_endpoints.md)
+- [Webhooks](https://developers.booqable.com/api/webhooks.md)
