@@ -205,7 +205,7 @@ class JSONSchemaMarkdownGenerator
       markdown_absolute_path.dirname.mkpath
       markdown_absolute_path.write(markdown_text)
       @cache[cache_key] = Digest::MD5.hexdigest(markdown_text)
-      @log.puts "   📝 generated #{markdown_relative_path}"
+      @log.puts "    \e[1;32mgenerate\e[0m  #{markdown_relative_path}"
     end
   end
 
@@ -237,7 +237,7 @@ class JSONSchemaMarkdownGeneratorExtension < Middleman::Extension
       begin
         @generator.generate_markdown_for_json_schema(schema_path)
       rescue => error
-        $stderr.puts "       ERROR  failed to generate markdown for #{schema_path}: #{error.class}: #{error.message}"
+        $stderr.puts "     \e[1;31merror\e[0m  failed to generate markdown for #{schema_path}: #{error.class}: #{error.message}"
         $stderr.puts error.backtrace
       end
     end

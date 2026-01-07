@@ -1,6 +1,9 @@
 # Unique header generation
 require './lib/nesting_unique_head.rb'
 
+# llms.txt support
+require './lib/llms_txt.rb'
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
@@ -52,6 +55,7 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   # activate :gzip
+  activate :llms_txt
 end
 
 # Deploy Configuration
