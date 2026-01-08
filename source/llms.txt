@@ -25,6 +25,6 @@ Booqable Apps are modular extensions that enhance the Booqable platform by addin
 
 The API is RESTful and follows the JSON:API specification. Base URL is `https://{your_company_slug}.booqable.com/api/4/`.
 
-- [Introduction](https://developers.booqable.com/v4.html#introduction): API overview, endpoints, filtering, and response types
-- [Authentication](https://developers.booqable.com/v4.html#authentication): Access tokens and request signing methods
-- [Errors](https://developers.booqable.com/v4.html#errors): Error codes and response handling
+- [Introduction](https://developers.booqable.com/api/introduction.md): API overview, endpoints, filtering, and response types
+- [Authentication](https://developers.booqable.com/api/authentication.md): Access tokens and request signing methods
+- [Errors](https://developers.booqable.com/api/errors.md): Error codes and response handling
