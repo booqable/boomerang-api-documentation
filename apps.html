@@ -1656,10 +1656,45 @@ token=&lt;JWT token&gt;
 <p>You should create the PaymentOption right after the app exchanges the authorization code for an access token or when a user has provided all necessary settings for your app to function.</p>
 <h4 id='capabilities-payment-options-configuration-available-routes'>Available Routes</h4><h5 id='capabilities-payment-options-configuration-available-routes-charge_url'><code>charge_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
 </span><span class="c1">// POST https://my-payments-app.com/charge</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>┌──────────────┐                    ┌──────────────┐                    ┌─────────────┐
+│   Booqable   │                    │  Payment App │                    │  Customer   │
+└──────┬───────┘                    └──────┬───────┘                    └──────┬──────┘
+       │                                   │                                   │
+       │  1. POST to charge_url            │                                   │
+       │──────────────────────────────────&gt;│                                   │
+       │                                   │                                   │
+       │  2. Return { id, redirect_url }   │                                   │
+       │&lt;──────────────────────────────────│                                   │
+       │                                   │                                   │
+       │  3. Booqable redirects to `redirect_url`                              │
+       │──────────────────────────────────&gt;│                                   │
+       │                                   │                                   │
+       │                                   │  4. Customer completes payment    │
+       │                                   │&lt;──────────────────────────────────│
+       │                                   │                                   │
+       │  5. PUT /api/4/payment_charges    │                                   │
+       │&lt;──────────────────────────────────│                                   │
+       │         (update status)           │                                   │
+       │                                   │                                   │
+       │  6. Redirect to `return_url`      │                                   │
+       │&lt;──────────────────────────────────│                                   │
+       │                                   │                                   │
+       │  7. Customer sees success page    │                                   │
+       │&lt;──────────────────────────────────────────────────────────────────────│
+</code></pre></div>
 <p>Process payment charges.</p>
 
 <p>This route is called when a user initiates a payment during checkout. Booqable sends the payment details including the total amount, customer address, and a return URL where the user should be redirected after payment completion. Your app should respond with a unique charge ID and a redirect URL where the user can complete the payment.</p>
+
+<p><em>Flow:</em></p>
+
+<ol>
+<li>Booqable sends a <code>POST</code> request to your <code>charge_url</code> with the payment details.</li>
+<li>Respond with your internal charge <code>id</code> and a <code>redirect_url</code> for the customer.</li>
+<li>Booqable redirects the customer to your <code>redirect_url</code> to complete payment.</li>
+<li>Once the customer completes payment, <a href="v4.html#payment-charges-update-a-payment-charge">update the PaymentCharge</a> status (<code>succeeded</code>, <code>failed</code>).</li>
+<li>Redirect the customer back to the <code>return_url</code> provided in step 1.</li>
+</ol>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-charge_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"customer_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St, City, State, Country"</span><span class="p">,</span><span class="w">
@@ -1721,6 +1756,16 @@ token=&lt;JWT token&gt;
 <p>Cancel a payment charge.</p>
 
 <p>This route is called when a payment needs to be cancelled, typically when an order is cancelled or when a shopping cart is invalidated. The charge ID from your app is passed in the URL path, and you should respond with a success status to confirm the cancellation.</p>
+
+<p><em>Flow:</em></p>
+
+<ol>
+<li>Booqable sends a <code>PUT</code> request to your <code>cancel_charge_url</code> with your charge ID in the URL path.</li>
+<li>Cancel the pending charge on your payment provider (if applicable).</li>
+<li>Respond with HTTP 200 OK to confirm cancellation.</li>
+</ol>
+
+<p><strong>Note:</strong> No API callback is required. Booqable handles the status update internally after receiving your success response. Errors are logged but don&#39;t block cancellation on Booqable&#39;s side.</p>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-cancel_charge_url-code-request-parameters'>Request Parameters</h6>
 <table><thead>
 <tr>
@@ -1737,10 +1782,42 @@ token=&lt;JWT token&gt;
 <p>The response should be an HTTP 200 OK status.</p>
 <h5 id='capabilities-payment-options-configuration-available-routes-authorization_url'><code>authorization_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
 </span><span class="c1">// POST https://my-payments-app.com/authorization</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>┌──────────────┐                    ┌──────────────┐                    ┌─────────────┐
+│   Booqable   │                    │  Payment App │                    │  Customer   │
+└──────┬───────┘                    └──────┬───────┘                    └──────┬──────┘
+       │                                   │                                   │
+       │  1. POST to authorization_url     │                                   │
+       │──────────────────────────────────&gt;│                                   │
+       │                                   │                                   │
+       │  2. Return { id, redirect_url }   │                                   │
+       │&lt;──────────────────────────────────│                                   │
+       │                                   │                                   │
+       │  3. Booqable redirects to `redirect_url`                              │
+       │──────────────────────────────────&gt;│                                   │
+       │                                   │                                   │
+       │                                   │  4. Customer authorizes hold      │
+       │                                   │&lt;──────────────────────────────────│
+       │                                   │                                   │
+       │  5. PUT /api/4/payment_authorizations                                 │
+       │&lt;──────────────────────────────────│                                   │
+       │          (update status)          │                                   │
+       │                                   │                                   │
+       │  6. Redirect to `return_url`      │                                   │
+       │&lt;──────────────────────────────────│                                   │
+</code></pre></div>
 <p>Create payment authorizations for deposit/capture flows.</p>
 
 <p>This route is called when creating a payment authorization for later capture, typically used for deposit and hold scenarios where funds are authorized but not immediately charged. The response should include an authorization ID and redirect URL for the user to complete the authorization process.</p>
+
+<p><em>Flow:</em></p>
+
+<ol>
+<li>Booqable sends a <code>POST</code> request to your <code>authorization_url</code> with the authorization details.</li>
+<li>Respond with your internal authorization <code>id</code> and a <code>redirect_url</code> for the customer.</li>
+<li>Booqable redirects the customer to your <code>redirect_url</code> to complete the authorization.</li>
+<li>Once the customer authorizes the hold, <a href="v4.html#payment-authorizations-update-a-payment-authorization">update the PaymentAuthorization</a> status (<code>succeeded</code>, <code>failed</code>).</li>
+<li>Redirect the customer back to the <code>return_url</code> provided in step 1.</li>
+</ol>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-authorization_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"customer_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St, City, State"</span><span class="p">,</span><span class="w">
@@ -1798,10 +1875,34 @@ token=&lt;JWT token&gt;
 </tbody></table>
 <h5 id='capabilities-payment-options-configuration-available-routes-capture_authorization_url'><code>capture_authorization_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
 </span><span class="c1">// PUT https://my-payments-app.com/authorization/authorization_123/capture</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>┌──────────────┐                    ┌──────────────┐
+│   Booqable   │                    │  Payment App │
+└──────┬───────┘                    └──────┬───────┘
+       │                                   │
+       │  1. PUT to capture_authorization_url
+       │──────────────────────────────────&gt;│
+       │                                   │
+       │                                   │  2. Capture funds on provider
+       │                                   │
+       │  3. Return 200 OK                 │
+       │&lt;──────────────────────────────────│
+       │                                   │
+       │  4. PUT /api/4/payment_charges    │
+       │&lt;──────────────────────────────────│
+       │          (update status)          │
+</code></pre></div>
 <p>Capture funds from a previous authorization.</p>
 
 <p>This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID.</p>
+
+<p><em>Flow:</em></p>
+
+<ol>
+<li>Booqable sends a <code>PUT</code> request to your <code>capture_authorization_url</code> with the authorization ID in the URL path.</li>
+<li>Capture the funds on your payment provider.</li>
+<li>Respond with HTTP 200 OK and your capture <code>id</code>.</li>
+<li><a href="v4.html#payment-charges-update-a-payment-charge">Update the PaymentCharge</a> status.</li>
+</ol>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-capture_authorization_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="w">
@@ -1815,21 +1916,34 @@ token=&lt;JWT token&gt;
 </thead><tbody>
 <tr>
 <td><code>total_in_cents</code></td>
-<td>Final amount to capture in cents (e.g., 5000 = $50.00)</td>
+<td>Final amount to capture in cents (may be less than or equal to the authorized amount)</td>
 </tr>
 <tr>
 <td><code>booqable_id</code></td>
-<td>The unique identifier of this charge in Booqable&#39;s system</td>
+<td>The unique identifier of the new <a href="v4.html#payment-charges">PaymentCharge</a> representing the captured funds</td>
 </tr>
 </tbody></table>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-capture_authorization_url-code-response'>Response</h6>
-<p>The response should be an HTTP 200 OK status.</p>
-<h5 id='capabilities-payment-options-configuration-available-routes-void_authorization_url'><code>void_authorization_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
+<p>The response should be an HTTP 200 OK status with an optional <code>id</code> field.</p>
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your-capture-id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h5 id='capabilities-payment-options-configuration-available-routes-void_authorization_url'><code>void_authorization_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
 </span><span class="c1">// PUT https://my-payments-app.com/authorization/authorization_123/void</span><span class="w">
 </span></code></pre></div>
 <p>Void/cancel a payment authorization.</p>
 
 <p>This route is called when cancelling an unused authorization, typically when an order is cancelled before the authorization is captured or when the authorization expires. The authorization ID from your app is passed in the URL path, and you should respond with a success status to confirm the void operation.</p>
+
+<p><em>Flow:</em></p>
+
+<ol>
+<li>Booqable sends a <code>PUT</code> request to your <code>void_authorization_url</code> with the authorization ID in the URL path.</li>
+<li>Release the held funds on your payment provider.</li>
+<li>Respond with HTTP 200 OK to confirm the void.</li>
+</ol>
+
+<p><strong>Note:</strong> No API callback is required. Booqable handles the status update internally after receiving your success response.</p>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-void_authorization_url-code-request-parameters'>Request Parameters</h6>
 <table><thead>
 <tr>
@@ -1846,10 +1960,34 @@ token=&lt;JWT token&gt;
 <p>The response should be an HTTP 200 OK status.</p>
 <h5 id='capabilities-payment-options-configuration-available-routes-refund_url'><code>refund_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
 </span><span class="c1">// POST https://my-payments-app.com/refund</span><span class="w">
-</span></code></pre></div>
+</span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>┌──────────────┐                    ┌──────────────┐
+│   Booqable   │                    │  Payment App │
+└──────┬───────┘                    └──────┬───────┘
+       │                                   │
+       │  1. POST to refund_url            │
+       │──────────────────────────────────&gt;│
+       │                                   │
+       │  2. Return { id }                 │
+       │&lt;──────────────────────────────────│
+       │                                   │
+       │                                   │  3. Process refund on provider
+       │                                   │
+       │  4. PUT to /api/4/payment_refunds │
+       │&lt;──────────────────────────────────│
+       │          (update status)          │
+</code></pre></div>
 <p>Process payment refunds.</p>
 
 <p>This route is called when processing a refund for a completed payment. Booqable sends the refund details including the original charge ID, refund amount, and currency. Your app should respond with a unique refund ID to track the refund operation.</p>
+
+<p><em>Flow:</em></p>
+
+<ol>
+<li>Booqable sends a <code>POST</code> request to your <code>refund_url</code> with the refund details.</li>
+<li>Respond immediately with your internal refund <code>id</code> (the refund is saved as <code>pending</code> in Booqable).</li>
+<li>Process the refund on your payment provider (may be synchronous or asynchronous).</li>
+<li><a href="v4.html#payment-refunds-update-a-payment-refund">Update the PaymentRefund</a> status (<code>succeeded</code>, <code>failed</code>).</li>
+</ol>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-refund_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"booqable_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"charge_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"original_charge_id"</span><span class="p">,</span><span class="w">
@@ -1865,11 +2003,11 @@ token=&lt;JWT token&gt;
 </thead><tbody>
 <tr>
 <td><code>booqable_id</code></td>
-<td>The unique identifier of this refund in Booqable&#39;s system</td>
+<td>The unique identifier of this <a href="v4.html#payment-refunds">PaymentRefund</a> in Booqable&#39;s system</td>
 </tr>
 <tr>
 <td><code>charge_id</code></td>
-<td>ID of the original charge being refunded</td>
+<td>Your internal charge ID (<code>provider_id</code> from the original charge) being refunded</td>
 </tr>
 <tr>
 <td><code>total_in_cents</code></td>
@@ -1895,6 +2033,18 @@ token=&lt;JWT token&gt;
 <td>Unique identifier for the refund, in your payment app&#39;s system</td>
 </tr>
 </tbody></table>
+<h3 id='capabilities-payment-options-notes'>Notes</h3>
+<ul>
+<li>For <code>charge_url</code> and <code>authorization_url</code> flows, always update the payment status via the Booqable API <strong>before</strong> redirecting the customer back to the <code>return_url</code>. The callback page polls the payment status and will wait indefinitely if the status is never updated.</li>
+<li>Even when a payment fails, update the status to <code>failed</code> before redirecting. Otherwise, the callback page polls indefinitely waiting for a status change.</li>
+<li>Always store the <code>booqable_id</code> from the initial request. You&#39;ll need it to update the payment status later, especially for asynchronous payment processing.</li>
+<li>Use the correct HTTP methods for the route:
+
+<ul>
+<li><code>charge_url</code>, <code>authorization_url</code>, <code>refund_url</code> use <strong>POST</strong> to create new resources.</li>
+<li><code>cancel_charge_url</code>, <code>void_authorization_url</code>, <code>capture_authorization_url</code> use <strong>PUT</strong> to update existing resources.</li>
+</ul></li>
+</ul>
 <h1 id='reference'>Reference</h1><h2 id='reference-config-meta-json'><code>/config/meta.json</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-1-0.json#"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme_app"</span><span class="p">,</span><span class="w">
