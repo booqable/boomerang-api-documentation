@@ -187,9 +187,13 @@ Check each individual operation to see which relations can be included as a side
               "shortage": 1,
               "item_id": "f5273ac1-25df-4451-82dd-a11908f80b33",
               "mutation": -1,
-              "order_ids": [
-                "48e3654d-1bd3-4805-8dc4-28a9702fd4be"
+              "orders": [
+                {
+                  "id": "48e3654d-1bd3-4805-8dc4-28a9702fd4be",
+                  "quantity": 1
+                }
               ],
+              "downtimes": [],
               "location_id": "a850b1a1-8829-4508-8ce1-2fa8e886fce6",
               "available": 0,
               "plannable": 0,
@@ -242,9 +246,13 @@ Check each individual operation to see which relations can be included as a side
               "shortage": 1,
               "item_id": "56a2701d-0c44-442b-881b-2332c08e358c",
               "mutation": -1,
-              "order_ids": [
-                "9ab41c24-253e-4ca3-8714-4e2ae2dbcaeb"
+              "orders": [
+                {
+                  "id": "9ab41c24-253e-4ca3-8714-4e2ae2dbcaeb",
+                  "quantity": 1
+                }
               ],
+              "downtimes": [],
               "location_id": "bffaaa23-5b23-494f-8775-986f7429fbae",
               "available": 0,
               "plannable": 1,

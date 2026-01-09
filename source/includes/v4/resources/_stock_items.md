@@ -222,6 +222,7 @@ This request accepts the following includes:
   <li>
     <code>product</code>
     <ul>
+      <li><code>photo</code></li>
       <li><code>product_group</code></li>
     </ul>
   </li>
