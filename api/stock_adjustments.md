@@ -342,9 +342,13 @@ This request accepts the following includes:
               "shortage": 4,
               "item_id": "5046c7b4-f597-4e3b-8cc2-fbdb26e612e3",
               "mutation": -5,
-              "order_ids": [
-                "27eb795b-c0c7-466c-8c90-40d5c6025995"
+              "orders": [
+                {
+                  "id": "27eb795b-c0c7-466c-8c90-40d5c6025995",
+                  "quantity": 4
+                }
               ],
+              "downtimes": [],
               "location_id": "fba46066-c280-4b90-8c5b-665a49e893c7",
               "available": 1,
               "plannable": 1,

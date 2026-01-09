@@ -557,9 +557,13 @@ Note that disassociating clusters may result in a shortage error.
               "shortage": 2,
               "item_id": "f198dfab-a4ce-4068-84c3-b706d007c30d",
               "mutation": 0,
-              "order_ids": [
-                "42d674fe-c02a-4b91-834c-92069417c0ed"
+              "orders": [
+                {
+                  "id": "42d674fe-c02a-4b91-834c-92069417c0ed",
+                  "quantity": 2
+                }
               ],
+              "downtimes": [],
               "location_id": "f224137a-3275-466e-8502-c1e66ea8444c",
               "available": -2,
               "plannable": -2,

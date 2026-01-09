@@ -282,6 +282,17 @@ This request accepts the following includes:
       <li><code>price_tiles</code></li>
     </ul>
   </li>
+  <li>
+    <code>products</code>
+    <ul>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
   <li><code>properties</code></li>
 </ul>
 
@@ -450,6 +461,17 @@ This request accepts the following includes:
     <code>price_structure</code>
     <ul>
       <li><code>price_tiles</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>products</code>
+    <ul>
+      <li>
+          <code>price_structure</code>
+          <ul>
+            <li><code>price_tiles</code></li>
+          </ul>
+      </li>
     </ul>
   </li>
   <li><code>properties</code></li>
