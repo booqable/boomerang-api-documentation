@@ -119,6 +119,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly` `nullable`<br>The Product or Bundle that was booked, when this Line has an associated Planning. 
 `line_type` | **enum** `readonly-after-create`<br>Type of line. Can be one of: - `charge`: Regular charge line for rental items or custom charges - `section`: Visual section for organizing lines (no financial impact) - `deposit_charge`: Deposit charge line - `proration`: Partial charge for partial rental periods (invoices only) - `refund`: Refund line with negative amount - `delivery_rate`: Delivery charge based on carrier rates - `legacy_migration`: Legacy proration line<br>Only `charge` and `section` line types can be created through the resource. Other types are created by the system.<br> One of: `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`, `delivery_rate`.
+`nested_position` | **integer** `readonly` `nullable`<br>The ordering of lines within a bundle. 
 `order_id` | **uuid** `readonly`<br>The [Order](#orders) this Line belongs to. 
 `original_charge_label` | **string** `nullable`<br>The original charge label of the product (without price rule adjustments). 
 `original_charge_length` | **integer** `readonly`<br>The original charge length of the product (without price rule adjustments). 
@@ -173,12 +174,13 @@ Check each individual operation to see which relations can be included as a side
           "price_each_in_cents": 80250,
           "price_in_cents": 80250,
           "position": 1,
+          "nested_position": 0,
           "charge_label": "29 days",
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1977-10-30T04:03:00.000000+00:00",
-              "till": "1977-11-28T04:03:00.000000+00:00",
+              "from": "1977-10-25T00:41:00.000000+00:00",
+              "till": "1977-11-23T00:41:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -196,8 +198,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1977-11-12T16:03:00.000000+00:00",
-                    "till": "1977-11-28T04:03:00.000000+00:00",
+                    "from": "1977-11-07T12:41:00.000000+00:00",
+                    "till": "1977-11-23T00:41:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -337,12 +339,13 @@ This request accepts the following includes:
         "price_each_in_cents": 80250,
         "price_in_cents": 80250,
         "position": 1,
+        "nested_position": 0,
         "charge_label": "29 days",
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1977-01-01T10:38:02.000000+00:00",
-            "till": "1977-01-30T10:38:02.000000+00:00",
+            "from": "1976-12-27T07:16:02.000000+00:00",
+            "till": "1977-01-25T07:16:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -360,8 +363,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1977-01-14T22:38:02.000000+00:00",
-                  "till": "1977-01-30T10:38:02.000000+00:00",
+                  "from": "1977-01-09T19:16:02.000000+00:00",
+                  "till": "1977-01-25T07:16:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -491,6 +494,7 @@ Order totals are automatically re-calculated after the creation of a new line an
         "price_each_in_cents": 1000,
         "price_in_cents": 1000,
         "position": 1,
+        "nested_position": 0,
         "charge_label": null,
         "charge_length": null,
         "price_rule_values": null,
@@ -635,6 +639,7 @@ Order totals are automatically re-calculated after updating a line and an invoic
         "price_each_in_cents": 1000,
         "price_in_cents": 1000,
         "position": 1,
+        "nested_position": 0,
         "charge_label": "29 days",
         "charge_length": 2505600,
         "price_rule_values": null,
@@ -767,12 +772,13 @@ This request accepts the following includes:
         "price_each_in_cents": 80250,
         "price_in_cents": 80250,
         "position": 1,
+        "nested_position": 0,
         "charge_label": "29 days",
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1973-02-21T21:14:02.000000+00:00",
-            "till": "1973-03-22T21:14:02.000000+00:00",
+            "from": "1973-02-16T17:52:02.000000+00:00",
+            "till": "1973-03-17T17:52:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -790,8 +796,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1973-03-07T09:14:02.000000+00:00",
-                  "till": "1973-03-22T21:14:02.000000+00:00",
+                  "from": "1973-03-02T05:52:02.000000+00:00",
+                  "till": "1973-03-17T17:52:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
