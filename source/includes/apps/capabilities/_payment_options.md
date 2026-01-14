@@ -48,6 +48,8 @@ After a user installs your payment app, you must create a PaymentOption record u
 
 You should create the PaymentOption right after the app exchanges the authorization code for an access token or when a user has provided all necessary settings for your app to function.
 
+**Tip:** If you're using the [Booqable App Rails engine](https://github.com/booqable/booqable_app_rails), you can schedule the PaymentOption creation in a background job from the `AppInstalledJob` hook.
+
 
 #### Available Routes
 
@@ -254,10 +256,10 @@ This route is called when creating a payment authorization for later capture, ty
        │  1. PUT to capture_authorization_url
        │──────────────────────────────────>│
        │                                   │
-       │                                   │  2. Capture funds on provider
-       │                                   │
-       │  3. Return 200 OK                 │
+       │  2. Return 200 OK with { id }     │
        │<──────────────────────────────────│
+       │                                   │
+       │                                   │  3. Capture funds on provider
        │                                   │
        │  4. PUT /api/4/payment_charges    │
        │<──────────────────────────────────│
@@ -266,14 +268,14 @@ This route is called when creating a payment authorization for later capture, ty
 
 Capture funds from a previous authorization.
 
-This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID.
+This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID. Your app should respond immediately with a capture ID. After the actual capture of the funds is complete you must update the PaymentCharge status via the Booqable API.
 
 *Flow:*
 
 1. Booqable sends a `PUT` request to your `capture_authorization_url` with the authorization ID in the URL path.
-2. Capture the funds on your payment provider.
-3. Respond with HTTP 200 OK and your capture `id`.
-4. [Update the PaymentCharge](/v4.html#payment-charges-update-a-payment-charge) status.
+2. Respond immediately with HTTP 200 OK and your capture `id` (the charge is saved as `pending` in Booqable).
+3. Capture the funds on your payment provider.
+4. [Update the PaymentCharge](/v4.html#payment-charges-update-a-payment-charge) status (`succeeded`, `failed`).
 
 ###### Request Parameters
 
@@ -288,6 +290,8 @@ This route is called when capturing previously authorized funds, completing the 
 |-----------|-------------|
 | `total_in_cents` | Final amount to capture in cents (may be less than or equal to the authorized amount) |
 | `booqable_id` | The unique identifier of the new [PaymentCharge](/v4.html#payment-charges) representing the captured funds |
+
+**Note:** Authorizations can only be captured once. If you capture less than the authorized amount, the remaining funds are released back to the customer.
 
 ###### Response
 
@@ -361,7 +365,7 @@ This route is called when processing a refund for a completed payment. Booqable 
 
 1. Booqable sends a `POST` request to your `refund_url` with the refund details.
 2. Respond immediately with your internal refund `id` (the refund is saved as `pending` in Booqable).
-3. Process the refund on your payment provider (may be synchronous or asynchronous).
+3. Process the refund on your payment provider.
 4. [Update the PaymentRefund](/v4.html#payment-refunds-update-a-payment-refund) status (`succeeded`, `failed`).
 
 ###### Request Parameters
