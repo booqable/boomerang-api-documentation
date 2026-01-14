@@ -1654,6 +1654,8 @@ token=&lt;JWT token&gt;
 <p>After a user installs your payment app, you must create a PaymentOption record using Booqable&#39;s <a href="internal.html#app-payment-options">Payment Options API endpoint</a>. The PaymentOption enables Booqable to show new payment options in the UI using the <a href="#reference-routes">routes configured in your app&#39;s <code>meta.json</code> file</a>. Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app&#39;s endpoints using JWT tokens for security.</p>
 
 <p>You should create the PaymentOption right after the app exchanges the authorization code for an access token or when a user has provided all necessary settings for your app to function.</p>
+
+<p><strong>Tip:</strong> If you&#39;re using the <a href="https://github.com/booqable/booqable_app_rails">Booqable App Rails engine</a>, you can schedule the PaymentOption creation in a background job from the <code>AppInstalledJob</code> hook.</p>
 <h4 id='capabilities-payment-options-configuration-available-routes'>Available Routes</h4><h5 id='capabilities-payment-options-configuration-available-routes-charge_url'><code>charge_url</code></h5><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// Example:</span><span class="w">
 </span><span class="c1">// POST https://my-payments-app.com/charge</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>┌──────────────┐                    ┌──────────────┐                    ┌─────────────┐
@@ -1882,10 +1884,10 @@ token=&lt;JWT token&gt;
        │  1. PUT to capture_authorization_url
        │──────────────────────────────────&gt;│
        │                                   │
-       │                                   │  2. Capture funds on provider
-       │                                   │
-       │  3. Return 200 OK                 │
+       │  2. Return 200 OK with { id }     │
        │&lt;──────────────────────────────────│
+       │                                   │
+       │                                   │  3. Capture funds on provider
        │                                   │
        │  4. PUT /api/4/payment_charges    │
        │&lt;──────────────────────────────────│
@@ -1893,15 +1895,15 @@ token=&lt;JWT token&gt;
 </code></pre></div>
 <p>Capture funds from a previous authorization.</p>
 
-<p>This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID.</p>
+<p>This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID. Your app should respond immediately with a capture ID. After the actual capture of the funds is complete you must update the PaymentCharge status via the Booqable API.</p>
 
 <p><em>Flow:</em></p>
 
 <ol>
 <li>Booqable sends a <code>PUT</code> request to your <code>capture_authorization_url</code> with the authorization ID in the URL path.</li>
+<li>Respond immediately with HTTP 200 OK and your capture <code>id</code> (the charge is saved as <code>pending</code> in Booqable).</li>
 <li>Capture the funds on your payment provider.</li>
-<li>Respond with HTTP 200 OK and your capture <code>id</code>.</li>
-<li><a href="v4.html#payment-charges-update-a-payment-charge">Update the PaymentCharge</a> status.</li>
+<li><a href="v4.html#payment-charges-update-a-payment-charge">Update the PaymentCharge</a> status (<code>succeeded</code>, <code>failed</code>).</li>
 </ol>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-capture_authorization_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"total_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
@@ -1923,6 +1925,8 @@ token=&lt;JWT token&gt;
 <td>The unique identifier of the new <a href="v4.html#payment-charges">PaymentCharge</a> representing the captured funds</td>
 </tr>
 </tbody></table>
+
+<p><strong>Note:</strong> Authorizations can only be captured once. If you capture less than the authorized amount, the remaining funds are released back to the customer.</p>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-capture_authorization_url-code-response'>Response</h6>
 <p>The response should be an HTTP 200 OK status with an optional <code>id</code> field.</p>
 <div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
@@ -1985,7 +1989,7 @@ token=&lt;JWT token&gt;
 <ol>
 <li>Booqable sends a <code>POST</code> request to your <code>refund_url</code> with the refund details.</li>
 <li>Respond immediately with your internal refund <code>id</code> (the refund is saved as <code>pending</code> in Booqable).</li>
-<li>Process the refund on your payment provider (may be synchronous or asynchronous).</li>
+<li>Process the refund on your payment provider.</li>
 <li><a href="v4.html#payment-refunds-update-a-payment-refund">Update the PaymentRefund</a> status (<code>succeeded</code>, <code>failed</code>).</li>
 </ol>
 <h6 id='capabilities-payment-options-configuration-available-routes-code-refund_url-code-request-parameters'>Request Parameters</h6><div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
