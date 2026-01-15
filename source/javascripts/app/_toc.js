@@ -24,11 +24,26 @@
     $("#nav-button").removeClass('open');
   };
 
+  var scrollTocToActiveLink = function($tocWrapper, $activeLink) {
+    if (!$activeLink.length) return;
+
+    var linkOffset = $activeLink.offset().top;
+    var wrapperOffset = $tocWrapper.offset().top;
+    var wrapperHeight = $tocWrapper.height();
+    var linkRelativeTop = linkOffset - wrapperOffset + $tocWrapper.scrollTop();
+
+    $tocWrapper.animate({
+      scrollTop: linkRelativeTop - (wrapperHeight / 3)
+    }, 200);
+  };
+
   function loadToc($toc, tocLinkSelector, tocListSelector, scrollOffset) {
     var headerHeights = {};
     var pageHeight = 0;
     var windowHeight = 0;
     var originalTitle = document.title;
+    var $tocWrapper = $(".toc-wrapper");
+    var initialScrollDone = false;
 
     var recacheHeights = function() {
       headerHeights = {};
@@ -76,7 +91,12 @@
         $best.parents(tocListSelector).addClass("active").siblings(tocLinkSelector).addClass('active-parent');
         $best.siblings(tocListSelector).addClass("active");
         $toc.find(tocListSelector).filter(":not(.active)").slideUp(150);
-        $toc.find(tocListSelector).filter(".active").slideDown(150);
+        $toc.find(tocListSelector).filter(".active").slideDown(150, function() {
+          if (!initialScrollDone && window.location.hash) {
+            initialScrollDone = true;
+            scrollTocToActiveLink($tocWrapper, $best);
+          }
+        });
         if (window.history.replaceState) {
           window.history.replaceState(null, "", best);
         }
