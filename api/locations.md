@@ -560,7 +560,7 @@ Note that disassociating clusters may result in a shortage error.
               "orders": [
                 {
                   "id": "42d674fe-c02a-4b91-834c-92069417c0ed",
-                  "quantity": 2
+                  "conflicts": 2
                 }
               ],
               "downtimes": [],

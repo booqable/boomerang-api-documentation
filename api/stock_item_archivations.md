@@ -190,7 +190,7 @@ Check each individual operation to see which relations can be included as a side
               "orders": [
                 {
                   "id": "48e3654d-1bd3-4805-8dc4-28a9702fd4be",
-                  "quantity": 1
+                  "conflicts": 1
                 }
               ],
               "downtimes": [],
@@ -249,7 +249,7 @@ Check each individual operation to see which relations can be included as a side
               "orders": [
                 {
                   "id": "9ab41c24-253e-4ca3-8714-4e2ae2dbcaeb",
-                  "quantity": 1
+                  "conflicts": 1
                 }
               ],
               "downtimes": [],

@@ -719,7 +719,14 @@ Check each individual operation to see which relations can be included as a side
             "default_plan": "essential",
             "trial_plan": "premium",
             "highest_plan": "premium",
-            "uses_expiring_extra_charges": true
+            "uses_expiring_extra_charges": true,
+            "available_versions": [
+              "initial",
+              "october_2025"
+            ],
+            "available_currencies": [
+              "usd"
+            ]
           },
           "small_medium_large_scale": {
             "allows_custom_checkout_settings": true,
@@ -732,7 +739,13 @@ Check each individual operation to see which relations can be included as a side
             "default_plan": "medium",
             "trial_plan": "large",
             "highest_plan": "scale",
-            "uses_expiring_extra_charges": false
+            "uses_expiring_extra_charges": false,
+            "available_versions": [
+              "initial"
+            ],
+            "available_currencies": [
+              "usd"
+            ]
           },
           "start_grow_scale_custom": {
             "allows_custom_checkout_settings": true,
@@ -745,7 +758,15 @@ Check each individual operation to see which relations can be included as a side
             "default_plan": "grow",
             "trial_plan": "scale_v2",
             "highest_plan": "custom",
-            "uses_expiring_extra_charges": false
+            "uses_expiring_extra_charges": false,
+            "available_versions": [
+              "initial",
+              "usd_eur"
+            ],
+            "available_currencies": [
+              "usd",
+              "eur"
+            ]
           }
         }
       },
@@ -954,7 +975,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1768400839"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1768835319"
         }
       },
       {
