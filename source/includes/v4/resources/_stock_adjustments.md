@@ -345,7 +345,7 @@ This request accepts the following includes:
               "orders": [
                 {
                   "id": "27eb795b-c0c7-466c-8c90-40d5c6025995",
-                  "quantity": 4
+                  "conflicts": 4
                 }
               ],
               "downtimes": [],

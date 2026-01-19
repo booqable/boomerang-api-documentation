@@ -332,7 +332,7 @@ Check each individual operation to see which relations can be included as a side
                   "stock_item_ids": [
                     "c5c86b0e-7898-4c3d-8c33-425011f8ed0b"
                   ],
-                  "quantity": 1
+                  "conflicts": 1
                 }
               ],
               "downtimes": []
