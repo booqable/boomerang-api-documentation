@@ -138,6 +138,11 @@ Check each individual operation to see which relations can be included as a side
           "legal_type": "person",
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
+          "order_count": 0,
+          "revenue_in_cents": 0,
+          "balance_due_in_cents": 0,
+          "last_order_at": null,
+          "average_order_value_in_cents": 0,
           "properties": {},
           "tag_list": [],
           "stripe_id": null,
@@ -156,7 +161,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvOTI2MTcyNDAtZDc5My00YzBjLWFkN2MtMzQwNGNiYjRmMDg2'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvOTVjMmZkNTgtNmJiMy00OTE5LTk5YTUtMjMzMTNlMDU1MDNk'
        --data-urlencode 'include=owner'
 ```
 
@@ -205,6 +210,11 @@ Check each individual operation to see which relations can be included as a side
           "legal_type": "person",
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
+          "order_count": 0,
+          "revenue_in_cents": 0,
+          "balance_due_in_cents": 0,
+          "last_order_at": null,
+          "average_order_value_in_cents": 0,
           "properties": {},
           "tag_list": [],
           "stripe_id": null,
@@ -335,6 +345,11 @@ This request accepts the following includes:
           "legal_type": "person",
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
+          "order_count": 0,
+          "revenue_in_cents": 0,
+          "balance_due_in_cents": 0,
+          "last_order_at": null,
+          "average_order_value_in_cents": 0,
           "properties": {},
           "tag_list": [],
           "stripe_id": null,

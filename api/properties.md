@@ -189,6 +189,11 @@ To delete a property, set the `_destroy` attribute to `true`.
         "legal_type": "person",
         "email_marketing_consented": false,
         "email_marketing_consent_updated_at": null,
+        "order_count": 0,
+        "revenue_in_cents": 0,
+        "balance_due_in_cents": 0,
+        "last_order_at": null,
+        "average_order_value_in_cents": 0,
         "properties": {
           "phone": "+316000000"
         },
@@ -247,6 +252,11 @@ To delete a property, set the `_destroy` attribute to `true`.
         "legal_type": "person",
         "email_marketing_consented": false,
         "email_marketing_consent_updated_at": null,
+        "order_count": 0,
+        "revenue_in_cents": 0,
+        "balance_due_in_cents": 0,
+        "last_order_at": null,
+        "average_order_value_in_cents": 0,
         "properties": {
           "phone": "+316000000"
         },
@@ -308,6 +318,11 @@ To delete a property, set the `_destroy` attribute to `true`.
         "legal_type": "person",
         "email_marketing_consented": false,
         "email_marketing_consent_updated_at": null,
+        "order_count": 0,
+        "revenue_in_cents": 0,
+        "balance_due_in_cents": 0,
+        "last_order_at": null,
+        "average_order_value_in_cents": 0,
         "properties": {
           "birthday": "01-01-1970"
         },
@@ -387,6 +402,11 @@ This request does not accept any includes
           "legal_type": "person",
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
+          "order_count": 0,
+          "revenue_in_cents": 0,
+          "balance_due_in_cents": 0,
+          "last_order_at": null,
+          "average_order_value_in_cents": 0,
           "properties": {
             "phone": "+316000000"
           },
@@ -515,6 +535,11 @@ This request accepts the following includes:
           "legal_type": "person",
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
+          "order_count": 0,
+          "revenue_in_cents": 0,
+          "balance_due_in_cents": 0,
+          "last_order_at": null,
+          "average_order_value_in_cents": 0,
           "properties": {
             "phone": "+316000000"
           },
@@ -626,6 +651,11 @@ This request accepts the following includes:
           "legal_type": "person",
           "email_marketing_consented": false,
           "email_marketing_consent_updated_at": null,
+          "order_count": 0,
+          "revenue_in_cents": 0,
+          "balance_due_in_cents": 0,
+          "last_order_at": null,
+          "average_order_value_in_cents": 0,
           "properties": {
             "phone": "+316000000"
           },
