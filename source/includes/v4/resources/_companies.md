@@ -302,7 +302,8 @@ Name | Description
             "tags": null,
             "away_modes": null
           },
-          "currency": "usd"
+          "currency": "usd",
+          "current_currency": "usd"
         }
       }
     },
