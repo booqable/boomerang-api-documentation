@@ -142,8 +142,10 @@ Check each individual operation to see which relations can be included as a side
         "meta": {
           "blocking": [
             {
-              "order_ids": [
-                "809e9c77-25f8-4f0e-8a50-7c1e884681d5"
+              "orders": [
+                {
+                  "id": "809e9c77-25f8-4f0e-8a50-7c1e884681d5"
+                }
               ]
             }
           ]

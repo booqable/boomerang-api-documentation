@@ -714,8 +714,14 @@ To archive a location make sure that:
         "title": "Location has orders",
         "detail": "This location has running or future orders",
         "meta": {
-          "order_ids": [
-            "0d8a3816-e267-4375-8cd1-cf1340de963d"
+          "blocking": [
+            {
+              "orders": [
+                {
+                  "id": "0d8a3816-e267-4375-8cd1-cf1340de963d"
+                }
+              ]
+            }
           ]
         }
       }
