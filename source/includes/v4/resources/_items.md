@@ -84,6 +84,7 @@ The description of the relationships and attributes of these resources can be fo
           "price_type": "simple",
           "price_period": "day",
           "deposit_in_cents": 10000,
+          "default_purchase_cost_in_cents": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -136,6 +137,7 @@ The description of the relationships and attributes of these resources can be fo
           "price_type": "simple",
           "price_period": "day",
           "deposit_in_cents": 10000,
+          "default_purchase_cost_in_cents": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -194,6 +196,7 @@ Name | Description
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `conditions` | **hash** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`default_purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `discountable` | **boolean** <br>`eq`
@@ -364,6 +367,7 @@ Name | Description
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `conditions` | **hash** <br>`eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`default_purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `discountable` | **boolean** <br>`eq`
@@ -475,6 +479,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 10000,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
