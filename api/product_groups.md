@@ -83,6 +83,7 @@ Check each individual operation to see which relations can be included as a side
 `allow_shortage` | **boolean** <br>Whether shortages are allowed. Changing this setting affects availability, and can trigger a shortage warning. 
 `buffer_time_after` | **integer** <br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
 `buffer_time_before` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
+`default_purchase_cost_in_cents` | **integer** <br>The default cost of the product for ROI calculations. 
 `deposit_in_cents` | **integer** <br>The value to use for deposit calculations. 
 `description` | **string** `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
@@ -156,6 +157,7 @@ Check each individual operation to see which relations can be included as a side
           "price_type": "simple",
           "price_period": "day",
           "deposit_in_cents": 0,
+          "default_purchase_cost_in_cents": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -213,6 +215,7 @@ Name | Description
 `buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`default_purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `discountable` | **boolean** <br>`eq`
@@ -257,6 +260,7 @@ Name | Description
 -- | --
 `archived` | **array** <br>`count`
 `base_price_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`default_purchase_cost_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `discountable` | **array** <br>`count`
 `price_period` | **array** <br>`count`
@@ -394,6 +398,7 @@ Name | Description
 `buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`default_purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `discountable` | **boolean** <br>`eq`
@@ -438,6 +443,7 @@ Name | Description
 -- | --
 `archived` | **array** <br>`count`
 `base_price_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`default_purchase_cost_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `discountable` | **array** <br>`count`
 `price_period` | **array** <br>`count`
@@ -522,6 +528,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -639,6 +646,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -690,6 +698,7 @@ Name | Description
 `data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the product group's slug is changed. This ensures that old URLs continue to work after renaming the product group. 
+`data[attributes][default_purchase_cost_in_cents]` | **integer** <br>The default cost of the product for ROI calculations. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 
@@ -794,6 +803,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -842,6 +852,7 @@ Name | Description
 `data[attributes][buffer_time_before]` | **integer** <br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
 `data[attributes][confirm_shortage]` | **boolean** <br>Set this to `true` to override certain shortage warnings. 
 `data[attributes][create_url_redirect]` | **boolean** <br>When `true`, automatically creates a URL redirect when the product group's slug is changed. This ensures that old URLs continue to work after renaming the product group. 
+`data[attributes][default_purchase_cost_in_cents]` | **integer** <br>The default cost of the product for ROI calculations. 
 `data[attributes][deposit_in_cents]` | **integer** <br>The value to use for deposit calculations. 
 `data[attributes][discountable]` | **boolean** <br>Whether discounts should be applied to this product groups and products in it (note that price rules will still apply). 
 `data[attributes][excerpt]` | **string** <br>Excerpt used in the online store. 
@@ -937,6 +948,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,

@@ -58,6 +58,7 @@ Check each individual operation to see which relations can be included as a side
 `allow_shortage` | **boolean** `readonly`<br>Whether shortages are allowed. 
 `buffer_time_after` | **integer** `readonly`<br>The amount of seconds the item should be unavailable after a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lag_time` in the v1 api and v1 webhooks. 
 `buffer_time_before` | **integer** `readonly`<br>The amount of seconds the item should be unavailable before a reservation. Changing this setting affects availability, and can trigger a shortage warning.<br>This attribute is called `lead_time` in the v1 api and v1 webhooks. 
+`default_purchase_cost_in_cents` | **integer** `readonly`<br>The default cost of the product for ROI calculations. 
 `deposit_in_cents` | **integer** `readonly`<br>The value to use for deposit calculations. 
 `description` | **string** `readonly` `nullable`<br>Description used in the online store. 
 `discountable` | **boolean** `readonly`<br>Whether discounts should be applied to this item (note that price rules will still apply). 
@@ -131,6 +132,7 @@ Check each individual operation to see which relations can be included as a side
           "price_type": "simple",
           "price_period": "day",
           "deposit_in_cents": 0,
+          "default_purchase_cost_in_cents": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -180,6 +182,7 @@ Check each individual operation to see which relations can be included as a side
           "price_type": "simple",
           "price_period": "day",
           "deposit_in_cents": 0,
+          "default_purchase_cost_in_cents": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -237,6 +240,7 @@ Name | Description
 `buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`default_purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `discountable` | **boolean** <br>`eq`
@@ -412,6 +416,7 @@ Name | Description
 `buffer_time_before` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `collection_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`default_purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `deposit_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `description` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `discountable` | **boolean** <br>`eq`
@@ -531,6 +536,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -644,6 +650,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -770,6 +777,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -885,6 +893,7 @@ This request accepts the following includes:
         "price_type": "simple",
         "price_period": "day",
         "deposit_in_cents": 0,
+        "default_purchase_cost_in_cents": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
