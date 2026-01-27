@@ -44,6 +44,8 @@ Check each individual operation to see which relations can be included as a side
 `product_id` | **uuid** `readonly-after-create`<br>The [Product](#products) this StockItem is one instance of. 
 `properties` | **hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties). 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this stock item. 
+`purchase_cost_in_cents` | **integer** `nullable`<br>The purchase cost of this specific stock item for ROI calculations. 
+`purchased_at` | **datetime** `nullable`<br>When this stock item was purchased. 
 `status` | **enum** `readonly`<br>Whether item is out with a customer or in-store/warehouse.<br> One of: `archived`, `expected`, `in_stock`, `started`, `overdue`, `expired`, `in_downtime`.
 `stock_item_type` | **enum** `readonly`<br>Based on the values of `from` and `till`.<br> One of: `regular`, `temporary`.
 `till` | **datetime** `nullable`<br>When item will be out of stock (temporary items). 
@@ -78,6 +80,8 @@ Check each individual operation to see which relations can be included as a side
           "from": null,
           "till": null,
           "stock_item_type": "regular",
+          "purchase_cost_in_cents": null,
+          "purchased_at": null,
           "product_group_id": "33aa5e86-cf21-4867-8ce8-6ca8000eee14",
           "properties": {},
           "product_id": "ab39f2f5-e082-4520-8ba6-57e483d3686a",
@@ -124,6 +128,8 @@ Name | Description
 `location_id` | **uuid** <br>`eq`, `not_eq`
 `product_group_id` | **uuid** <br>`eq`, `not_eq`
 `product_id` | **uuid** <br>`eq`, `not_eq`
+`purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`purchased_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `q` | **string** <br>`eq`
 `status` | **enum** <br>`eq`
 `stock_item_type` | **enum** <br>`eq`
@@ -187,6 +193,8 @@ This request accepts the following includes:
         "from": null,
         "till": null,
         "stock_item_type": "regular",
+        "purchase_cost_in_cents": null,
+        "purchased_at": null,
         "product_group_id": "20441cdb-ca45-49d3-887f-91258ef2c191",
         "properties": {},
         "product_id": "62127110-28f1-4b13-84de-f7287c9f9691",
@@ -273,6 +281,8 @@ This request accepts the following includes:
         "from": null,
         "till": null,
         "stock_item_type": "regular",
+        "purchase_cost_in_cents": null,
+        "purchased_at": null,
         "product_group_id": "d798843c-7589-4a94-85cd-e47efc86c6ab",
         "properties": {},
         "product_id": "8ba34c4e-02e7-46c8-87c1-741102785936",
@@ -310,6 +320,8 @@ Name | Description
 `data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
 `data[attributes][product_id]` | **uuid** <br>The [Product](#products) this StockItem is one instance of. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
+`data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost of this specific stock item for ROI calculations. 
+`data[attributes][purchased_at]` | **datetime** <br>When this stock item was purchased. 
 `data[attributes][till]` | **datetime** <br>When item will be out of stock (temporary items). 
 
 
@@ -367,6 +379,8 @@ This request accepts the following includes:
         "from": null,
         "till": null,
         "stock_item_type": "regular",
+        "purchase_cost_in_cents": null,
+        "purchased_at": null,
         "product_group_id": "4fd29b75-0981-44f0-893f-c9e5885ec5f6",
         "properties": {},
         "product_id": "797648e2-ccc4-4117-832c-6b0a19709ee5",
@@ -404,6 +418,8 @@ Name | Description
 `data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
 `data[attributes][product_id]` | **uuid** <br>The [Product](#products) this StockItem is one instance of. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
+`data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost of this specific stock item for ROI calculations. 
+`data[attributes][purchased_at]` | **datetime** <br>When this stock item was purchased. 
 `data[attributes][till]` | **datetime** <br>When item will be out of stock (temporary items). 
 
 
