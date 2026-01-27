@@ -74,6 +74,8 @@ Check each individual operation to see which relations can be included as a side
           "from": null,
           "till": null,
           "stock_item_type": "regular",
+          "purchase_cost_in_cents": null,
+          "purchased_at": null,
           "product_group_id": "7acf92e9-02ae-4343-8ffa-f074055db051",
           "properties": {},
           "product_id": "7cf5c623-5550-475a-845d-6a9e218d7343",
