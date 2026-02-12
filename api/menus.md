@@ -171,7 +171,6 @@ This request accepts the following includes:
           "target_id": null,
           "target_type": "Static",
           "generate_sub_menu_items": false,
-          "generated": false,
           "sorting_weight": null
         },
         "relationships": {}
@@ -189,7 +188,6 @@ This request accepts the following includes:
           "target_id": null,
           "target_type": "Static",
           "generate_sub_menu_items": false,
-          "generated": false,
           "sorting_weight": null
         },
         "relationships": {}
@@ -207,7 +205,6 @@ This request accepts the following includes:
           "target_id": null,
           "target_type": "Static",
           "generate_sub_menu_items": false,
-          "generated": false,
           "sorting_weight": null
         },
         "relationships": {}
@@ -431,7 +428,6 @@ This request accepts the following includes:
           "target_id": null,
           "target_type": "Static",
           "generate_sub_menu_items": false,
-          "generated": false,
           "sorting_weight": null
         },
         "relationships": {}
@@ -449,7 +445,6 @@ This request accepts the following includes:
           "target_id": null,
           "target_type": "Static",
           "generate_sub_menu_items": false,
-          "generated": false,
           "sorting_weight": null
         },
         "relationships": {}
@@ -467,7 +462,6 @@ This request accepts the following includes:
           "target_id": null,
           "target_type": "Static",
           "generate_sub_menu_items": false,
-          "generated": false,
           "sorting_weight": null
         },
         "relationships": {}

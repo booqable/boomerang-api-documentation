@@ -38,6 +38,7 @@ The tracking type determines how the product is tracked.
 ## Relationships
 Name | Description
 -- | --
+`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>The [CollectionItems](#collection-items) associated with this product group. These represent the collections this product group belongs to. 
 `inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this item. 
 `photo` | **[Photo](#photos)** `optional`<br>Primary [Photo](#photos) of this product group. 
 `photos` | **[Photos](#photos)** `hasmany`<br>All [Photos](#photos) of this product group. The primary `photo` must be selected from this set. 

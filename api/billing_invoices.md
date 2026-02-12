@@ -9,7 +9,7 @@ Invoices received from Booqable
 `amount_due_in_cents` | **integer** `readonly`<br>Amount that still needs to be paid. 
 `attempt_count` | **integer** `readonly`<br>Amount of attempts for auto collection. 
 `attempted` | **boolean** `readonly`<br>Whether automatic collection was attempted. 
-`billing_reason` | **enum** `readonly`<br>Why the invoice is billed.<br> One of: `subscription`, `manual`, `subscription_cycle`, `refund`, `uncollectible`, `subscription_update`, `subscription_create`.
+`billing_reason` | **enum** `readonly`<br>Why the invoice is billed.<br> One of: `subscription`, `manual`, `subscription_cycle`, `refund`, `uncollectible`, `subscription_update`, `subscription_create`, `processing_fee`.
 `coupon` | **string** `readonly`<br>Applied coupon. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** `readonly`<br>Currency. 
@@ -78,7 +78,7 @@ Invoices received from Booqable
           "ending_balance_in_cents": null,
           "next_payment_attempt_at": null,
           "coupon": null,
-          "url": "http://billing.lvh.me:/invoices/bafa6d2a3e8b9b3465b0e13f8fb99ad7/6f0d4e15ba9aaaded564e226878c6282"
+          "url": "http://billing.lvh.me/invoices/bafa6d2a3e8b9b3465b0e13f8fb99ad7/6f0d4e15ba9aaaded564e226878c6282"
         }
       }
     ],
@@ -180,7 +180,7 @@ This request does not accept any includes
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
-        "url": "http://billing.lvh.me:/invoices/9e70fd43d310a37d8ffdf8304c22eab2/4e1d21ac302d121a2fdbb6210b3302b6"
+        "url": "http://billing.lvh.me/invoices/9e70fd43d310a37d8ffdf8304c22eab2/4e1d21ac302d121a2fdbb6210b3302b6"
       }
     },
     "meta": {}

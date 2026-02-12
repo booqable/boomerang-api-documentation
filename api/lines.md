@@ -90,6 +90,7 @@ To correctly sort all lines so they appear as they do within Booqable:
 ## Relationships
 Name | Description
 -- | --
+`bundle_item` | **[Bundle item](#bundle-items)** `optional`<br>The [BundleItem](#bundle-items) for which this Line was created that contains the information about item definition within bundle. 
 `item` | **[Item](#items)** `optional`<br>The Product or Bundle that was booked, when this Line has an associated Planning. 
 `nested_lines` | **[Lines](#lines)** `hasmany`<br>When `item` is a Bundle, then there is a nested line that corresponds for each BundleItem. 
 `order` | **[Order](#orders)** `required`<br>The [Order](#orders) this Line belongs to. 
@@ -110,6 +111,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `archived` | **boolean** `readonly`<br>Whether line is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the line was archived. 
+`bundle_item_id` | **uuid** `readonly` `nullable`<br>The [BundleItem](#bundle-items) for which this Line was created that contains the information about item definition within bundle. 
 `charge_label` | **string** `nullable`<br>Charge label. 
 `charge_length` | **integer** `nullable`<br>The charge length in seconds. It can be different than the time planned. Setting `charge_length` to `null` will trigger recalculation of the price based on order period and price rules. <br/> To recalculate prices for the entire order, use [OrderPriceRecalculation](#order-price-recalculations). 
 `confirm_shortage` | **boolean** `writeonly`<br>Whether to confirm a shortage when updating quantity on a line. When a line has an associated planning and you increase the quantity, the planning's quantity will also be increased. If this results in a shortage (requested quantity exceeds available inventory), the update will fail with a shortage error.<br>Setting this to `true` confirms that you want to proceed with the update despite the shortage. This is useful when you know you'll be able to fulfill the order through other means, such as acquiring additional inventory before the rental period.<br>Overriding shortage warnings is only possible when the ProductGroup is configured to allow shortage. 
@@ -179,8 +181,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1977-10-12T06:41:00.000000+00:00",
-              "till": "1977-11-10T06:41:00.000000+00:00",
+              "from": "1977-09-26T00:19:00.000000+00:00",
+              "till": "1977-10-25T00:19:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -198,8 +200,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1977-10-25T18:41:00.000000+00:00",
-                    "till": "1977-11-10T06:41:00.000000+00:00",
+                    "from": "1977-10-09T12:19:00.000000+00:00",
+                    "till": "1977-10-25T00:19:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -220,6 +222,7 @@ Check each individual operation to see which relations can be included as a side
           "price_tile_id": null,
           "planning_id": "9cf6e39a-f13f-46c3-89db-f1fd269f1bfd",
           "parent_line_id": null,
+          "bundle_item_id": null,
           "owner_id": "db61e960-dc39-40c0-8967-af01657ec0d0",
           "owner_type": "orders"
         },
@@ -257,6 +260,7 @@ Name | Description
 -- | --
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`bundle_item_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `discountable` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
@@ -344,8 +348,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1976-12-14T13:16:02.000000+00:00",
-            "till": "1977-01-12T13:16:02.000000+00:00",
+            "from": "1976-11-28T06:54:02.000000+00:00",
+            "till": "1976-12-27T06:54:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -363,8 +367,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1976-12-28T01:16:02.000000+00:00",
-                  "till": "1977-01-12T13:16:02.000000+00:00",
+                  "from": "1976-12-11T18:54:02.000000+00:00",
+                  "till": "1976-12-27T06:54:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -385,6 +389,7 @@ This request accepts the following includes:
         "price_tile_id": null,
         "planning_id": "01296b4b-a633-4808-8993-91a287f01c9b",
         "parent_line_id": null,
+        "bundle_item_id": null,
         "owner_id": "a206e703-8fe7-4045-826a-36b938ea47d4",
         "owner_type": "orders"
       },
@@ -509,6 +514,7 @@ Order totals are automatically re-calculated after the creation of a new line an
         "price_tile_id": null,
         "planning_id": null,
         "parent_line_id": null,
+        "bundle_item_id": null,
         "owner_id": "e429675c-a2e8-46c3-88f4-316a4bdd2e5d",
         "owner_type": "orders"
       },
@@ -654,6 +660,7 @@ Order totals are automatically re-calculated after updating a line and an invoic
         "price_tile_id": null,
         "planning_id": "cdd8227f-b71f-41ae-83a9-4e47d0c1a2b6",
         "parent_line_id": null,
+        "bundle_item_id": null,
         "owner_id": "33b62e2b-8553-4919-8719-0de973ab048e",
         "owner_type": "orders"
       },
@@ -777,8 +784,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1973-02-03T23:52:02.000000+00:00",
-            "till": "1973-03-04T23:52:02.000000+00:00",
+            "from": "1973-01-18T17:30:02.000000+00:00",
+            "till": "1973-02-16T17:30:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -796,8 +803,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1973-02-17T11:52:02.000000+00:00",
-                  "till": "1973-03-04T23:52:02.000000+00:00",
+                  "from": "1973-02-01T05:30:02.000000+00:00",
+                  "till": "1973-02-16T17:30:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -818,6 +825,7 @@ This request accepts the following includes:
         "price_tile_id": null,
         "planning_id": "372352f3-b88b-4b67-80e6-e89b803c2fb4",
         "parent_line_id": null,
+        "bundle_item_id": null,
         "owner_id": "78b392bd-6db0-4fb7-8eee-93b320eb554e",
         "owner_type": "orders"
       },

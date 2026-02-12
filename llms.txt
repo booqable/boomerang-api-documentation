@@ -65,6 +65,7 @@ The API is RESTful and follows the JSON:API specification. Base URL is `https://
 - [Employee Invitations](https://developers.booqable.com/api/employee_invitations.md)
 - [Employees](https://developers.booqable.com/api/employees.md)
 - [Exports](https://developers.booqable.com/api/exports.md)
+- [Integrations](https://developers.booqable.com/api/integrations.md)
 - [Inventory Breakdowns](https://developers.booqable.com/api/inventory_breakdowns.md)
 - [Inventory Level Intervals](https://developers.booqable.com/api/inventory_level_intervals.md)
 - [Inventory Levels](https://developers.booqable.com/api/inventory_levels.md)
