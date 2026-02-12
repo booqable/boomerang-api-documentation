@@ -161,7 +161,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvN2YwNDEwNjQtODkwMS00NzM1LWE5NDAtYzE2YzcwZTVmY2Fl'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvMTRhYjRmNGMtOTk1Zi00MDg1LTg4M2QtNzAzMzQ3MTY5NTdh'
        --data-urlencode 'include=owner'
 ```
 

@@ -39,6 +39,7 @@ Check each individual operation to see which relations can be included as a side
 `charge_length` | **integer** <br>Length of charge period in seconds. 
 `from` | **datetime** <br>Start of charge period. 
 `id` | **uuid** `readonly`<br>Primary key.
+`ignore_discount` | **boolean** <br>When `true` and calculating bundle prices with `bundle_id`, returns base prices without applying bundle item discounts. This is useful for displaying original prices before discounts in a price breakdown. 
 `item_id` | **uuid** <br>The item or items to calculate price for. When `item_id` is a bundle, returns aggregated bundle price. 
 `original_charge_label` | **string** `readonly`<br>Label of charge period before charge rules are applied. 
 `original_charge_length` | **integer** `readonly`<br>Length of charge period before charge rules are applied. 
@@ -48,6 +49,7 @@ Check each individual operation to see which relations can be included as a side
 `price_ruleset_id` | **uuid** <br>The advanced pricing rules that apply. 
 `price_structure_id` | **uuid** <br>Optional price structure to use, if the item has a price structure associated with it that will be used by default. 
 `price_tile_id` | **uuid** `readonly`<br>The price tile that was selected from the price structure. 
+`product_group_id` | **uuid** <br>Filter by product group ID. When provided, calculates the price for the cheapest product within the group. This is useful for displaying base prices when a specific product variant hasn't been selected yet. 
 `till` | **datetime** <br>End of charge period. 
 
 
@@ -77,6 +79,8 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "item_id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
           "bundle_id": null,
+          "product_group_id": null,
+          "ignore_discount": null,
           "bundle_item_id": null,
           "from": "2028-03-25T10:11:00.000000+00:00",
           "till": "2028-04-07T10:11:00.000000+00:00",
@@ -106,6 +110,8 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "item_id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
           "bundle_id": null,
+          "product_group_id": null,
+          "ignore_discount": null,
           "bundle_item_id": null,
           "from": "2028-03-25T10:11:00.000000+00:00",
           "till": "2028-04-07T10:11:00.000000+00:00",
@@ -135,8 +141,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2024-04-20T06:36:00.000000+00:00",
-          "updated_at": "2024-04-20T06:36:00.000000+00:00",
+          "created_at": "2024-05-06T12:58:00.000000+00:00",
+          "updated_at": "2024-05-06T12:58:00.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
@@ -183,8 +189,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
         "type": "products",
         "attributes": {
-          "created_at": "2024-04-20T06:36:00.000000+00:00",
-          "updated_at": "2024-04-20T06:36:00.000000+00:00",
+          "created_at": "2024-05-06T12:58:00.000000+00:00",
+          "updated_at": "2024-05-06T12:58:00.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
@@ -253,6 +259,8 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "item_id": "f513ca7d-c6b0-432c-84fa-1b60f29a4cfa",
           "bundle_id": null,
+          "product_group_id": null,
+          "ignore_discount": null,
           "bundle_item_id": null,
           "from": null,
           "till": null,
@@ -341,7 +349,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[item_prices]=item_id,bundle_id,bundle_item_id`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[item_prices]=item_id,bundle_id,product_group_id`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_tile,price_structure,item`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -359,10 +367,12 @@ Name | Description
 `bundle_id` | **uuid** <br>`eq`
 `charge_length` | **integer** <br>`eq`
 `from` | **datetime** <br>`eq`
+`ignore_discount` | **boolean** <br>`eq`
 `item_id` | **uuid** <br>`eq`
 `original_charge_length` | **integer** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`
 `price_structure_id` | **uuid** <br>`eq`
+`product_group_id` | **uuid** <br>`eq`
 `till` | **datetime** <br>`eq`
 
 
@@ -410,6 +420,8 @@ This request accepts the following includes:
         "attributes": {
           "item_id": "110e4aa1-a067-43bf-8c44-3d4257e8f56f",
           "bundle_id": "b9e2b713-7588-4a9c-818a-5b1b9dfcc5b3",
+          "product_group_id": null,
+          "ignore_discount": null,
           "bundle_item_id": "57ae6884-05fd-4f06-8858-7a2a200ea445",
           "from": "2016-08-19T23:57:00.000000+00:00",
           "till": "2016-09-01T23:57:00.000000+00:00",
@@ -441,7 +453,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[item_prices]=item_id,bundle_id,bundle_item_id`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[item_prices]=item_id,bundle_id,product_group_id`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=price_tile,price_structure,item`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
@@ -459,10 +471,12 @@ Name | Description
 `bundle_id` | **uuid** <br>`eq`
 `charge_length` | **integer** <br>`eq`
 `from` | **datetime** <br>`eq`
+`ignore_discount` | **boolean** <br>`eq`
 `item_id` | **uuid** <br>`eq`
 `original_charge_length` | **integer** <br>`eq`
 `price_ruleset_id` | **uuid** <br>`eq`
 `price_structure_id` | **uuid** <br>`eq`
+`product_group_id` | **uuid** <br>`eq`
 `till` | **datetime** <br>`eq`
 
 

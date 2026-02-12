@@ -11,7 +11,7 @@ To remove [StockItems](#stock-items), use the [StockItemArchivation](#stock-item
 and the `error.code` attribute will have the value `shortage`.
 When the shortage is within the shortage limit of the product,
 a warning is returned. Otherwise a blocking error is returned.
-A warning can be overriden by setting `confirm_shortage` to `true`.
+A warning can be overridden by setting `confirm_shortage` to `true`.
 The orders that would be affected by the shortage can be found in
 either `meta.blocking[0].order_ids` or `meta.warning[0].order_ids`.
 
@@ -36,6 +36,8 @@ Check each individual operation to see which relations can be included as a side
 `location_id` | **uuid** <br>The [Location](#locations) where stock is adjusted. 
 `prefix` | **string** `nullable`<br>The prefix to use to generate identifiers for [StockItems](#stock-items). When left empty, the SKU from the product will be used. When adding temporary stock, `TMP-` will be added automatically. 
 `product_id` | **uuid** <br>The [Product](#products) whose stock needs to be adjusted. 
+`purchase_cost_in_cents` | **integer** `nullable`<br>The purchase cost of each created [StockItem](#stock-items) in cents. 
+`purchased_at` | **datetime** `nullable`<br>The datetime when the stock was purchased. 
 `quantity` | **integer** <br>How much stock to add or remove. For trackable [Products](#products) this means the number of [StockItems](#stock-items) that will be created. Removing stock by setting a negative quantity is only possible for bulk products. 
 `till` | **datetime** `nullable`<br>The date till which the stock will be available. When this date is set, the stock will be considered "temporary". 
 
@@ -75,6 +77,8 @@ Check each individual operation to see which relations can be included as a side
         "from": "2027-09-21T19:27:03.000000+00:00",
         "till": null,
         "prefix": null,
+        "purchase_cost_in_cents": null,
+        "purchased_at": null,
         "confirm_shortage": null,
         "product_id": "70fad66c-5710-4baa-8b5c-37c053fff200",
         "location_id": "6badcd2f-233c-4360-87fd-d83ee972a0ab"
@@ -110,6 +114,8 @@ Name | Description
 `data[attributes][location_id]` | **uuid** <br>The [Location](#locations) where stock is adjusted. 
 `data[attributes][prefix]` | **string** <br>The prefix to use to generate identifiers for [StockItems](#stock-items). When left empty, the SKU from the product will be used. When adding temporary stock, `TMP-` will be added automatically. 
 `data[attributes][product_id]` | **uuid** <br>The [Product](#products) whose stock needs to be adjusted. 
+`data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost of each created [StockItem](#stock-items) in cents. 
+`data[attributes][purchased_at]` | **datetime** <br>The datetime when the stock was purchased. 
 `data[attributes][quantity]` | **integer** <br>How much stock to add or remove. For trackable [Products](#products) this means the number of [StockItems](#stock-items) that will be created. Removing stock by setting a negative quantity is only possible for bulk products. 
 `data[attributes][till]` | **datetime** <br>The date till which the stock will be available. When this date is set, the stock will be considered "temporary". 
 
@@ -159,6 +165,8 @@ This request accepts the following includes:
         "from": null,
         "till": null,
         "prefix": "XYZ",
+        "purchase_cost_in_cents": null,
+        "purchased_at": null,
         "confirm_shortage": null,
         "product_id": "43137334-e017-444b-8a72-de5aae265a4c",
         "location_id": "264e9817-aaea-42f0-83ac-07dc2d679915"
@@ -253,6 +261,8 @@ Name | Description
 `data[attributes][location_id]` | **uuid** <br>The [Location](#locations) where stock is adjusted. 
 `data[attributes][prefix]` | **string** <br>The prefix to use to generate identifiers for [StockItems](#stock-items). When left empty, the SKU from the product will be used. When adding temporary stock, `TMP-` will be added automatically. 
 `data[attributes][product_id]` | **uuid** <br>The [Product](#products) whose stock needs to be adjusted. 
+`data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost of each created [StockItem](#stock-items) in cents. 
+`data[attributes][purchased_at]` | **datetime** <br>The datetime when the stock was purchased. 
 `data[attributes][quantity]` | **integer** <br>How much stock to add or remove. For trackable [Products](#products) this means the number of [StockItems](#stock-items) that will be created. Removing stock by setting a negative quantity is only possible for bulk products. 
 `data[attributes][till]` | **datetime** <br>The date till which the stock will be available. When this date is set, the stock will be considered "temporary". 
 
@@ -300,6 +310,8 @@ This request accepts the following includes:
         "from": null,
         "till": null,
         "prefix": null,
+        "purchase_cost_in_cents": null,
+        "purchased_at": null,
         "confirm_shortage": null,
         "product_id": "54f3efb8-a875-4087-8e5f-a9d7119ec553",
         "location_id": "1c9abb03-c9a9-4275-8a23-5e93b7d94e4c"
@@ -397,6 +409,8 @@ Name | Description
 `data[attributes][location_id]` | **uuid** <br>The [Location](#locations) where stock is adjusted. 
 `data[attributes][prefix]` | **string** <br>The prefix to use to generate identifiers for [StockItems](#stock-items). When left empty, the SKU from the product will be used. When adding temporary stock, `TMP-` will be added automatically. 
 `data[attributes][product_id]` | **uuid** <br>The [Product](#products) whose stock needs to be adjusted. 
+`data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost of each created [StockItem](#stock-items) in cents. 
+`data[attributes][purchased_at]` | **datetime** <br>The datetime when the stock was purchased. 
 `data[attributes][quantity]` | **integer** <br>How much stock to add or remove. For trackable [Products](#products) this means the number of [StockItems](#stock-items) that will be created. Removing stock by setting a negative quantity is only possible for bulk products. 
 `data[attributes][till]` | **datetime** <br>The date till which the stock will be available. When this date is set, the stock will be considered "temporary". 
 

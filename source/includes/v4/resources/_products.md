@@ -21,6 +21,7 @@ products when variations are enabled:
 Name | Description
 -- | --
 `barcode` | **[Barcode](#barcodes)** `optional`<br>The [Barcode](#barcodes) that points to this product. 
+`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>The [CollectionItems](#collection-items) associated with this item. These represent the collections this item belongs to. 
 `inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this product. 
 `photo` | **[Photo](#photos)** `optional`<br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
 `price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
