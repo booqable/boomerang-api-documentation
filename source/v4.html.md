@@ -21,6 +21,7 @@ includes:
 
   - v4/headers/resources
   - v4/resources/authentication_methods
+  - v4/resources/availabilities
   - v4/resources/barcodes
   - v4/resources/bundles
   - v4/resources/bundle_items
