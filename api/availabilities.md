@@ -1,11 +1,14 @@
 # Availabilities
 
-Availabilities provide calendar-based information about when products, stock items, orders, carts, or downtimes
-are available or unavailable. This endpoint returns a collection of availability records, with each record
-representing a specific date or time slot with its availability status.
+Availabilities is the primary endpoint for checking whether products can be booked for specific dates and times.
+It provides calendar-based information about when products, orders, carts, or downtimes
+are available or unavailable, accounting for business rules like buffer times and existing reservations.
 
 The availability endpoint returns individual availability records as a standard JSON:API collection, where
 each record includes detailed status information for a specific date or time interval.
+
+**Note:** For raw inventory data (stock counts, planned quantities) for reporting purposes,
+see the [Inventory levels](#inventory-levels) and [Inventory level intervals](#inventory-level-intervals) endpoints.
 
 ## Subject Types
 

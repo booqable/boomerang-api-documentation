@@ -1,7 +1,13 @@
 # Inventory level intervals
 
-Inventory level intervals provide a breakdown of stock quantity information by an interval.
-It returns data about availability, stock counts, and what is planned on orders.
+Inventory level intervals provide a breakdown of raw inventory data by a given time interval.
+They return stock counts, planned quantities, and needed quantities aggregated per interval for reporting purposes.
+
+**Note:** Inventory level intervals are not suitable for determining whether a product can be booked.
+They represent the underlying data layer and do not account for business rules like buffer times,
+shortage handling, or order status considerations.
+
+To check product availability for bookings, use the [Availabilities](#availabilities) endpoint instead.
 
 ## Relationships
 Name | Description
