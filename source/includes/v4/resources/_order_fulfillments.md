@@ -1,6 +1,15 @@
 # Order fulfillments
 
-Takes an [Order](#orders) through the fulfillment process.
+The primary resource for adding products to orders and managing inventory allocation.
+Use OrderFulfillment to book products, stock items, and bundles onto an [Order](#orders),
+as well as to start and stop items during the rental lifecycle.
+
+Booking through this resource creates [Plannings](#plannings) and [Lines](#lines) that track
+inventory allocation. Products booked this way will affect availability and appear on the
+availability calendar.
+
+See [How to Build a Booking Flow](#orders-how-to-build-a-booking-flow) for a complete
+step-by-step guide on creating orders and booking products via the API.
 
 ## Actions
 

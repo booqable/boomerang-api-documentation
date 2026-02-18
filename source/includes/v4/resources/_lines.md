@@ -7,6 +7,16 @@ Lines can only be created for orders. On invoices, lines are automatically gener
 based on price changes of the order. For quotes and contracts, lines are generated through
 the [Document](#documents) resource.
 
+<aside class="warning">
+  The Lines resource is for creating <strong>custom charges and sections only</strong>.
+  Lines created through this resource do not reserve inventory or affect product availability.
+  To add products to an order and allocate inventory, use the
+  <a href="#order-fulfillments">OrderFulfillment</a> resource with
+  <code>book_product</code>, <code>book_stock_items</code>, or <code>book_bundle</code> actions.
+  See <a href="#orders-how-to-build-a-booking-flow">How to Build a Booking Flow</a> for a
+  complete step-by-step guide.
+</aside>
+
 ## Kinds of Lines
 
 1. **Planning lines** Lines that have an associated Planning. These lines cannot be created through
@@ -181,8 +191,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1977-09-21T00:54:00.000000+00:00",
-              "till": "1977-10-20T00:54:00.000000+00:00",
+              "from": "1977-09-19T22:34:00.000000+00:00",
+              "till": "1977-10-18T22:34:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -200,8 +210,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1977-10-04T12:54:00.000000+00:00",
-                    "till": "1977-10-20T00:54:00.000000+00:00",
+                    "from": "1977-10-03T10:34:00.000000+00:00",
+                    "till": "1977-10-18T22:34:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -348,8 +358,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1976-11-23T07:29:02.000000+00:00",
-            "till": "1976-12-22T07:29:02.000000+00:00",
+            "from": "1976-11-22T05:09:02.000000+00:00",
+            "till": "1976-12-21T05:09:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -367,8 +377,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1976-12-06T19:29:02.000000+00:00",
-                  "till": "1976-12-22T07:29:02.000000+00:00",
+                  "from": "1976-12-05T17:09:02.000000+00:00",
+                  "till": "1976-12-21T05:09:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -457,6 +467,12 @@ This request accepts the following includes:
 Lines created through this endpoint, so-called custom lines, can only have the type `charge` or `section`.
 Custom `charge` lines enable you to add charges not (directly) connected to a product to an order.
 Sections allow to add some organization to orders.
+
+<aside class="warning">
+  <strong>Important:</strong> Lines created through this endpoint do not allocate inventory
+  or affect product availability. To book products onto an order and reserve inventory,
+  use the <a href="#order-fulfillments">OrderFulfillment</a> resource instead.
+</aside>
 
 Order totals are automatically re-calculated after the creation of a new line and an invoice sync will be triggered if changes are relevant.
 
@@ -784,8 +800,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1973-01-13T18:05:02.000000+00:00",
-            "till": "1973-02-11T18:05:02.000000+00:00",
+            "from": "1973-01-12T15:45:02.000000+00:00",
+            "till": "1973-02-10T15:45:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -803,8 +819,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1973-01-27T06:05:02.000000+00:00",
-                  "till": "1973-02-11T18:05:02.000000+00:00",
+                  "from": "1973-01-26T03:45:02.000000+00:00",
+                  "till": "1973-02-10T15:45:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
