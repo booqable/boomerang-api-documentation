@@ -277,6 +277,7 @@ Name | Description
             "zapier",
             "website_integration",
             "custom_scripts",
+            "customer_report",
             "api",
             "product_shortage_limits",
             "remove_powered_by",

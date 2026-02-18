@@ -52,6 +52,36 @@ When booking products on a `stopped` order, the order reverts to the `started` s
 The `draft` and `reserved` states can be skipped.
 An order can go from `new` to `started` directly when products or stock items are picked up.
 
+## How to Build a Booking Flow
+
+When building a custom integration that creates orders and reserves inventory,
+follow these steps:
+
+<aside class="warning">
+  Do <strong>not</strong> use the <a href="#lines">Lines</a> resource to add products to an order.
+  Lines created through the Lines resource are custom charge lines and
+  <strong>do not allocate inventory</strong>.
+  Use <a href="#order-fulfillments">OrderFulfillment</a> to book products.
+</aside>
+
+1. **Create an Order** using `POST /api/4/orders` with `starts_at` and `stops_at` to define
+   the rental period. Optionally assign a [Customer](#customers) and set the initial status
+   to `new` or `draft`.
+
+2. **Book products onto the Order** using `POST /api/4/order_fulfillments` with one of the
+   booking actions: `book_product`, `book_stock_items`, or `book_bundle`. This creates
+   [Plannings](#plannings) and [Lines](#lines) that allocate inventory and affect product
+   availability. See [OrderFulfillment](#order-fulfillments) for details on each action.
+
+3. **Reserve the Order** using `POST /api/4/order_status_transitions` with
+   `transition_to: "reserved"`. This finalizes the availability: items become unavailable
+   for other orders during the rental period, and the order receives a unique order number.
+
+4. **Start and stop items** (optional) when the rental begins and ends. Use
+   [OrderFulfillment](#order-fulfillments) with `start_product`, `start_stock_items`,
+   `stop_product`, or `stop_stock_items` actions. The order status transitions to `started`
+   and `stopped` automatically as items are picked up and returned.
+
 ## Shortage Handling
 
 There are two types of shortage indicators:
@@ -298,8 +328,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-03-23T22:16:01.000000+00:00",
-          "stops_at": "1969-04-22T22:16:01.000000+00:00",
+          "starts_at": "1969-03-22T19:56:01.000000+00:00",
+          "stops_at": "1969-04-21T19:56:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -550,14 +580,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-02-18T14:13:35Z",
-                       "lte": "2026-02-21T14:13:35Z"
+                       "gte": "2026-02-19T16:33:58Z",
+                       "lte": "2026-02-22T16:33:58Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-02-18T14:13:35Z",
-                       "lte": "2026-02-21T14:13:35Z"
+                       "gte": "2026-02-19T16:33:58Z",
+                       "lte": "2026-02-22T16:33:58Z"
                      }
                    }
                  ]
@@ -928,8 +958,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-08-19T07:35:01.000000+00:00",
-        "stops_at": "1969-09-18T07:35:01.000000+00:00",
+        "starts_at": "1969-08-18T05:14:01.000000+00:00",
+        "stops_at": "1969-09-17T05:14:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1126,8 +1156,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:27:01.000000+00:00",
-        "stops_at": "2026-11-03T14:27:01.000000+00:00",
+        "starts_at": "2026-09-25T14:36:01.000000+00:00",
+        "stops_at": "2026-11-03T14:36:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1239,8 +1269,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:45:00.000000+00:00",
-        "stops_at": "2018-05-14T18:45:00.000000+00:00",
+        "starts_at": "2018-04-05T18:54:00.000000+00:00",
+        "stops_at": "2018-05-14T18:54:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
