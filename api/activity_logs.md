@@ -28,6 +28,7 @@ Check each individual operation to see which relations can be included as a side
 `employee_id` | **uuid** `readonly` `nullable`<br>The employee who performed the action. 
 `has_data` | **boolean** `readonly`<br>Indicates whether the `data` attribute is non-empty. 
 `id` | **uuid** `readonly`<br>Primary key.
+`support` | **boolean** `readonly`<br>Indicates whether the activity was performed during a Booqable support session. 
 
 
 ## Fetch an activity log
@@ -57,6 +58,7 @@ Check each individual operation to see which relations can be included as a side
           }
         },
         "has_data": true,
+        "support": false,
         "employee_id": "cb36f18a-3074-4d16-8fce-a210f9f04d34"
       },
       "relationships": {}
@@ -119,6 +121,7 @@ This request accepts the following includes:
             }
           },
           "has_data": true,
+          "support": false,
           "employee_id": "ff248409-aa04-4660-8634-3b46a6cf6cf5"
         },
         "relationships": {}
