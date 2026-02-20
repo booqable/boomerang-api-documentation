@@ -7,13 +7,17 @@ For bulk products, stock can be added (positive quantity) or removed (negative q
 For trackable products, [StockItems](#stock-items) are created.
 To remove [StockItems](#stock-items), use the [StockItemArchivation](#stock-item-archivations) resource.
 
+To view historical stock mutations, use the [StockCounts](#stock-counts) resource.
+
 **Removing stock can cause shortage.** The request will fail,
 and the `error.code` attribute will have the value `shortage`.
 When the shortage is within the shortage limit of the product,
 a warning is returned. Otherwise a blocking error is returned.
 A warning can be overridden by setting `confirm_shortage` to `true`.
-The orders that would be affected by the shortage can be found in
-either `meta.blocking[0].order_ids` or `meta.warning[0].order_ids`.
+The affected orders and downtimes can be found in
+`errors[0].meta.blocking[].orders[]` or `errors[0].meta.warning[].orders[]`,
+where each order has an `id` and `conflicts` count. Downtimes are available
+at `errors[0].meta.blocking[].downtimes[]` and `errors[0].meta.warning[].downtimes[]`.
 
 ## Relationships
 Name | Description
