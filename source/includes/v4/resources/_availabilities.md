@@ -96,6 +96,7 @@ Name | Description
 `subject_id` | **uuid** `required`<br>`eq`
 `subject_type` | **string** `required`<br>`eq`
 `type` | **string** <br>`eq`
+`use_business_hours` | **boolean** <br>`eq`
 `year` | **integer** `required`<br>`eq`
 
 
@@ -123,6 +124,7 @@ This request does not accept any includes
        --data-urlencode 'filter[month]=10'
        --data-urlencode 'filter[subject_id]=6774b37c-a832-4868-8ae9-b9c90cb5c75e'
        --data-urlencode 'filter[subject_type]=item'
+       --data-urlencode 'filter[use_business_hours]=true'
        --data-urlencode 'filter[year]=2024'
 ```
 
@@ -869,6 +871,7 @@ Name | Description
 `subject_id` | **uuid** `required`<br>`eq`
 `subject_type` | **string** `required`<br>`eq`
 `type` | **string** <br>`eq`
+`use_business_hours` | **boolean** <br>`eq`
 `year` | **integer** `required`<br>`eq`
 
 
@@ -2288,6 +2291,7 @@ Name | Description
 `subject_id` | **uuid** `required`<br>`eq`
 `subject_type` | **string** `required`<br>`eq`
 `type` | **string** <br>`eq`
+`use_business_hours` | **boolean** <br>`eq`
 `year` | **integer** `required`<br>`eq`
 
 
