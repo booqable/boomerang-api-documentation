@@ -35,6 +35,8 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly`<br>The ID of the [Product](#products) associated with this stock count. 
 `location_id` | **uuid** `readonly`<br>The [Location](#locations) where the stock change occurred. 
+`purchase_cost_in_cents` | **integer** `readonly`<br>The purchase cost per item in cents at the time of the stock addition. When `null`, the product's default purchase cost applies for regular stock. 
+`purchased_at` | **datetime** `readonly`<br>The date the stock was purchased. When `null`, no purchase date was recorded. 
 `quantity` | **integer** `readonly`<br>The quantity change. Positive values represent stock added, negative values represent stock removed. 
 `till` | **datetime** `readonly`<br>The date until which the stock is available. When `null`, the stock is available indefinitely. When set, the stock is temporary and only available within the `from`/`till` date range. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -65,6 +67,8 @@ Check each individual operation to see which relations can be included as a side
         "quantity": -3,
         "from": null,
         "till": null,
+        "purchase_cost_in_cents": null,
+        "purchased_at": null,
         "item_id": "480d5713-c9f2-42be-82df-091b67419717",
         "location_id": "dd6222d4-350d-45fd-88cb-8d72163b9abe",
         "product": {
@@ -142,6 +146,8 @@ Check each individual operation to see which relations can be included as a side
         "quantity": 10,
         "from": null,
         "till": null,
+        "purchase_cost_in_cents": 5000,
+        "purchased_at": "2015-08-24T23:33:01.000000+00:00",
         "item_id": "480d5713-c9f2-42be-82df-091b67419717",
         "location_id": "dd6222d4-350d-45fd-88cb-8d72163b9abe",
         "product": {
@@ -248,6 +254,8 @@ Name | Description
 `item_id` | **uuid** <br>`eq`, `not_eq`
 `location_id` | **uuid** <br>`eq`, `not_eq`
 `product_group_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`purchase_cost_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`purchased_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `quantity` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `till` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -259,6 +267,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`quantity` | **array** <br>`sum`
 `total` | **array** <br>`count`
 
 
