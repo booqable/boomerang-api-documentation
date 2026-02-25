@@ -268,6 +268,7 @@ Name | Description
             "customer_discount_percentage",
             "product_security_deposit",
             "coupons",
+            "coupons_advanced",
             "invoice_due_dates",
             "reports",
             "product_history",
