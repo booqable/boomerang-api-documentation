@@ -4,9 +4,8 @@ StockCounts represent individual stock mutations for a [Product](#products) at a
 [Location](#locations). Each record tracks a quantity change — either an addition
 (positive quantity) or a removal (negative quantity).
 
-StockCounts are created through [StockAdjustments](#stock-adjustments) and cannot be
-modified directly. This resource provides read-only access for listing and filtering
-historical stock changes.
+StockCounts are created through [StockAdjustments](#stock-adjustments). The `purchase_cost_in_cents`
+and `purchased_at` fields can be updated after creation to correct purchase tracking information.
 
 ## Temporary vs regular stock
 
@@ -35,8 +34,8 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly`<br>The ID of the [Product](#products) associated with this stock count. 
 `location_id` | **uuid** `readonly`<br>The [Location](#locations) where the stock change occurred. 
-`purchase_cost_in_cents` | **integer** `readonly`<br>The purchase cost per item in cents at the time of the stock addition. When `null`, the product's default purchase cost applies for regular stock. 
-`purchased_at` | **datetime** `readonly`<br>The date the stock was purchased. When `null`, no purchase date was recorded. 
+`purchase_cost_in_cents` | **integer** `nullable`<br>The purchase cost per item in cents at the time of the stock addition. Can be updated after creation. When `null`, the product's default purchase cost applies for regular stock. 
+`purchased_at` | **datetime** `nullable`<br>The date the stock was purchased. Can be updated after creation. When `null`, no purchase date was recorded. 
 `quantity` | **integer** `readonly`<br>The quantity change. Positive values represent stock added, negative values represent stock removed. 
 `till` | **datetime** `readonly`<br>The date until which the stock is available. When `null`, the stock is available indefinitely. When set, the stock is temporary and only available within the `from`/`till` date range. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -147,7 +146,7 @@ Check each individual operation to see which relations can be included as a side
         "from": null,
         "till": null,
         "purchase_cost_in_cents": 5000,
-        "purchased_at": "2015-08-24T23:33:01.000000+00:00",
+        "purchased_at": "2015-08-23T20:35:01.000000+00:00",
         "item_id": "480d5713-c9f2-42be-82df-091b67419717",
         "location_id": "dd6222d4-350d-45fd-88cb-8d72163b9abe",
         "product": {
@@ -280,3 +279,75 @@ This request accepts the following includes:
   <li><code>product</code></li>
 </ul>
 
+
+## Update a stock count
+
+
+> Update purchase cost and date for a stock count:
+
+```shell
+  curl --request PUT
+       --url 'https://example.booqable.com/api/4/stock_counts/affd4954-5230-4ad4-8eb4-134ffa2cf42a'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "id": "affd4954-5230-4ad4-8eb4-134ffa2cf42a",
+           "type": "stock_counts",
+           "attributes": {
+             "purchase_cost_in_cents": 7500,
+             "purchased_at": "2021-08-22T01:36:00.000000+00:00"
+           }
+         }
+       }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "affd4954-5230-4ad4-8eb4-134ffa2cf42a",
+      "type": "stock_counts",
+      "attributes": {
+        "created_at": "2021-10-07T14:44:00.000000+00:00",
+        "updated_at": "2021-10-07T14:44:00.000000+00:00",
+        "quantity": 5,
+        "from": null,
+        "till": null,
+        "purchase_cost_in_cents": 7500,
+        "purchased_at": "2021-08-22T01:36:00.000000+00:00",
+        "item_id": "5221bd12-20b5-4ce8-82d8-ba26c0f59f00",
+        "location_id": "fb427bd8-2348-4301-87ae-2b440f8b80b6"
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`PUT /api/4/stock_counts/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[stock_counts]=created_at,updated_at,quantity`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost per item in cents at the time of the stock addition. Can be updated after creation. When `null`, the product's default purchase cost applies for regular stock. 
+`data[attributes][purchased_at]` | **datetime** <br>The date the stock was purchased. Can be updated after creation. When `null`, no purchase date was recorded. 
+
+
+### Includes
+
+This request does not accept any includes
