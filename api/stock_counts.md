@@ -146,7 +146,7 @@ Check each individual operation to see which relations can be included as a side
         "from": null,
         "till": null,
         "purchase_cost_in_cents": 5000,
-        "purchased_at": "2015-08-23T20:35:01.000000+00:00",
+        "purchased_at": "2015-08-22T19:13:01.000000+00:00",
         "item_id": "480d5713-c9f2-42be-82df-091b67419717",
         "location_id": "dd6222d4-350d-45fd-88cb-8d72163b9abe",
         "product": {
@@ -309,8 +309,8 @@ This request accepts the following includes:
       "id": "affd4954-5230-4ad4-8eb4-134ffa2cf42a",
       "type": "stock_counts",
       "attributes": {
-        "created_at": "2021-10-07T14:44:00.000000+00:00",
-        "updated_at": "2021-10-07T14:44:00.000000+00:00",
+        "created_at": "2021-10-08T16:06:00.000000+00:00",
+        "updated_at": "2021-10-08T16:06:00.000000+00:00",
         "quantity": 5,
         "from": null,
         "till": null,

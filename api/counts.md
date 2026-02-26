@@ -6,6 +6,7 @@ Get the counts for resources in an account.
 
  Name | Description
 -- | --
+`app_payment_option_count` | **integer** `readonly`<br>Amount of active app payment options in an account. 
 `archived_order_count` | **integer** `readonly`<br>Amount of orders with the status archived. 
 `created_at` | **datetime** `readonly`<br>The time at which the resources were counted. 
 `employee_count` | **integer** `readonly`<br>Amount of active employees in an account. 
@@ -52,6 +53,7 @@ Get the counts for resources in an account.
         "location_count": 0,
         "employee_count": 1,
         "payment_profile_count": 0,
+        "app_payment_option_count": 0,
         "overdue_invoice_count": 0,
         "manual_order_count": 0,
         "manual_reserved_order_count": 0,
