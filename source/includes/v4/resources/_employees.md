@@ -34,7 +34,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
 `lastname` | **string** <br>Last name of the employee. 
 `locale` | **string** <br>Locale of the employee, used as application locale. 
 `name` | **string** `readonly`<br>Full name of the employee. 
-`owner` | **boolean** `readonly`<br>Whether this employee is the account owner. 
+`owner` | **boolean** <br>Whether this employee is the account owner. 
 `password` | **string** `writeonly`<br>Set a new password. 
 `password_confirmation` | **string** `writeonly`<br>Confirm new password. 
 `permissions` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
@@ -66,7 +66,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2024-08-12T07:32:00.000000+00:00",
+          "updated_at": "2024-08-13T08:53:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
@@ -251,7 +251,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2022-11-07T20:02:00.000000+00:00",
+        "updated_at": "2022-11-08T21:23:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
@@ -313,7 +313,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2020-11-20T09:21:01.000000+00:00",
+        "updated_at": "2020-11-21T10:42:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -378,7 +378,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2033-05-20T18:09:01.000000+00:00",
+        "updated_at": "2033-05-21T19:30:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -431,6 +431,7 @@ Name | Description
 `data[attributes][firstname]` | **string** <br>First name of the employee. 
 `data[attributes][lastname]` | **string** <br>Last name of the employee. 
 `data[attributes][locale]` | **string** <br>Locale of the employee, used as application locale. 
+`data[attributes][owner]` | **boolean** <br>Whether this employee is the account owner. 
 `data[attributes][password]` | **string** <br>Set a new password. 
 `data[attributes][password_confirmation]` | **string** <br>Confirm new password. 
 `data[attributes][permissions][]` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
