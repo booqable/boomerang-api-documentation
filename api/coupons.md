@@ -16,8 +16,10 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the coupon was archived. 
 `coupon_type` | **string** <br>How the discount is calculated. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`ends_at` | **datetime** `nullable`<br>Optional end date for redeeming the coupon. Saved at the end of the selected day. 
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>The code that customers need to type in. 
+`starts_at` | **datetime** `nullable`<br>Optional start date for redeeming the coupon. Saved at the start of the selected day. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `value` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
@@ -48,7 +50,9 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
           "identifier": "SUMMER20OFF",
           "coupon_type": "percentage",
           "value": 20,
-          "active": true
+          "active": true,
+          "starts_at": null,
+          "ends_at": null
         }
       }
     ],
@@ -85,8 +89,10 @@ Name | Description
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `coupon_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`ends_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
 `identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `value` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
@@ -128,7 +134,9 @@ This request does not accept any includes
         "identifier": "SUMMER20OFF",
         "coupon_type": "percentage",
         "value": 20,
-        "active": true
+        "active": true,
+        "starts_at": null,
+        "ends_at": null
       }
     },
     "meta": {}
@@ -188,7 +196,9 @@ This request does not accept any includes
         "identifier": "WINTERDISCOUNT",
         "coupon_type": "cents",
         "value": 2000,
-        "active": true
+        "active": true,
+        "starts_at": null,
+        "ends_at": null
       }
     },
     "meta": {}
@@ -216,7 +226,9 @@ Name | Description
 -- | --
 `data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment. 
 `data[attributes][coupon_type]` | **string** <br>How the discount is calculated. 
+`data[attributes][ends_at]` | **datetime** <br>Optional end date for redeeming the coupon. Saved at the end of the selected day. 
 `data[attributes][identifier]` | **string** <br>The code that customers need to type in. 
+`data[attributes][starts_at]` | **datetime** <br>Optional start date for redeeming the coupon. Saved at the start of the selected day. 
 `data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
 
@@ -261,7 +273,9 @@ When updating a coupon the existing one is archived and a new one gets created:
         "identifier": "SUMMER30OFF",
         "coupon_type": "percentage",
         "value": 30,
-        "active": false
+        "active": false,
+        "starts_at": null,
+        "ends_at": null
       }
     },
     "meta": {}
@@ -300,7 +314,9 @@ When updating a coupon the existing one is archived and a new one gets created:
         "identifier": "SUMMER20OFF",
         "coupon_type": "percentage",
         "value": 20,
-        "active": false
+        "active": false,
+        "starts_at": null,
+        "ends_at": null
       }
     },
     "meta": {}
@@ -328,7 +344,9 @@ Name | Description
 -- | --
 `data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment. 
 `data[attributes][coupon_type]` | **string** <br>How the discount is calculated. 
+`data[attributes][ends_at]` | **datetime** <br>Optional end date for redeeming the coupon. Saved at the end of the selected day. 
 `data[attributes][identifier]` | **string** <br>The code that customers need to type in. 
+`data[attributes][starts_at]` | **datetime** <br>Optional start date for redeeming the coupon. Saved at the start of the selected day. 
 `data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
 
@@ -361,7 +379,9 @@ This request does not accept any includes
         "identifier": "SUMMER20OFF",
         "coupon_type": "percentage",
         "value": 20,
-        "active": true
+        "active": true,
+        "starts_at": null,
+        "ends_at": null
       }
     },
     "meta": {}
