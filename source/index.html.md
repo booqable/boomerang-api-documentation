@@ -37,6 +37,7 @@ includes:
   - v4/resources/delivery_distance_calculations
   - v4/resources/deposit_holds
   - v4/resources/documents
+  - v4/resources/downtimes
   - v4/resources/emails
   - v4/resources/email_templates
   - v4/resources/employees
