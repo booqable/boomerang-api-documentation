@@ -760,6 +760,29 @@
               </ul>
           </li>
           <li>
+            <a href="#downtimes" class="toc-h1 toc-link" data-title="Downtimes" title="Downtimes">Downtimes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#downtimes-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#downtimes-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#downtimes-list-downtimes" class="toc-h2 toc-link" data-title="List downtimes" title="List downtimes">List downtimes</a>
+                  </li>
+                  <li>
+                    <a href="#downtimes-fetch-a-downtime" class="toc-h2 toc-link" data-title="Fetch a downtime" title="Fetch a downtime">Fetch a downtime</a>
+                  </li>
+                  <li>
+                    <a href="#downtimes-create-a-downtime" class="toc-h2 toc-link" data-title="Create a downtime" title="Create a downtime">Create a downtime</a>
+                  </li>
+                  <li>
+                    <a href="#downtimes-update-a-downtime" class="toc-h2 toc-link" data-title="Update a downtime" title="Update a downtime">Update a downtime</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#emails" class="toc-h1 toc-link" data-title="Emails" title="Emails">Emails</a>
               <ul class="toc-list-h2">
                   <li>
@@ -15146,6 +15169,573 @@ Check each individual operation to see which relations can be included as a side
 </tr>
 </tbody></table>
 <h3 id='documents-archive-a-document-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='downtimes'>Downtimes</h1>
+<p>Downtimes represent periods when products are unavailable for rental due to maintenance,
+repairs, or other operational reasons. This allows you to block product availability outside of regular
+rental bookings, ensuring accurate inventory management and scheduling.</p>
+
+<p>Downtimes can be used to schedule maintenance periods for equipment, mark products as temporarily unavailable
+due to repairs, handle missing or misplaced products, or block availability for operational reasons.</p>
+<h2 id='downtimes-relationships'>Relationships</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>location</code></td>
+<td><strong><a href="#locations">Location</a></strong> <code>required</code><br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place.</td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td><strong><a href="#products">Product</a></strong> <code>required</code><br>The product that is affected by the downtime.</td>
+</tr>
+<tr>
+<td><code>stock_item</code></td>
+<td><strong><a href="#stock-items">Stock item</a></strong> <code>optional</code><br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products.</td>
+</tr>
+</tbody></table>
+
+<p>Check matching attributes under <a href="#downtimes-fields">Fields</a> to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.</p>
+<h2 id='downtimes-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was created.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>uuid</strong> <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place.</td>
+</tr>
+<tr>
+<td><code>product_group_id</code></td>
+<td><strong>uuid</strong> <br>The ID of the product group that contains the affected product.</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>uuid</strong> <br>The product that is affected by the downtime.</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td><strong>integer</strong> <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><strong>enum</strong> <br>The reason why the product is unavailable.<br> One of: <code>maintenance</code>, <code>repair</code>, <code>missing</code>.</td>
+</tr>
+<tr>
+<td><code>starts_at</code></td>
+<td><strong>datetime</strong> <br>When the downtime period begins. The product becomes unavailable for rental from this date/time.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>enum</strong> <br>The current status of the downtime period. Can be scheduled, started, stopped, or canceled. Defaults to scheduled when created.<br> One of: <code>reserved</code>, <code>started</code>, <code>stopped</code>, <code>canceled</code>.</td>
+</tr>
+<tr>
+<td><code>stock_item_id</code></td>
+<td><strong>uuid</strong> <code>nullable</code><br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products.</td>
+</tr>
+<tr>
+<td><code>stops_at</code></td>
+<td><strong>datetime</strong> <br>When the downtime period ends. The product becomes available for rental again after this date/time.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was last updated.</td>
+</tr>
+</tbody></table>
+<h2 id='downtimes-list-downtimes'>List downtimes</h2>
+<blockquote>
+<p>How to fetch a list of downtimes:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/downtimes'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1f5276f-fc8b-4fc0-880b-6d7e0c715f2b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"downtimes"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-22T16:53:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-22T16:53:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maintenance"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reserved"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-24T16:53:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-27T16:53:01.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f10a87a6-8788-42b0-88db-615bf92db1f2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7deebeb2-e361-43f5-8209-64fb69710a8a"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be7e39ff-8419-42fd-86ff-90924169c070"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='downtimes-list-downtimes-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/downtimes</code></p>
+<h3 id='downtimes-list-downtimes-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[downtimes]=created_at,updated_at,reason</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=location,product,stock_item</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-list-downtimes-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>attention_required</code></td>
+<td><strong>array</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>item_type</code></td>
+<td><strong>enum</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>product_group_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>product_ids</code></td>
+<td><strong>array</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td><strong>string</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td><strong>integer</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td><strong>hash</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><strong>enum</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>reasons</code></td>
+<td><strong>array</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>start_or_stop_time</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code>, <code>between</code></td>
+</tr>
+<tr>
+<td><code>starts_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code>, <code>between</code>, <code>compare</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>array</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>stock_item_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>stops_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code>, <code>between</code>, <code>compare</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-list-downtimes-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>attention_required</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>item_type</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-list-downtimes-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li><code>location</code></li>
+  <li><code>product</code></li>
+  <li><code>stock_item</code></li>
+</ul>
+<h2 id='downtimes-fetch-a-downtime'>Fetch a downtime</h2>
+<blockquote>
+<p>How to fetch a downtime:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/downtimes/cd2fa85a-5a6f-4457-82f6-df2947a24802'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cd2fa85a-5a6f-4457-82f6-df2947a24802"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"downtimes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-04T09:29:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-04T09:29:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maintenance"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reserved"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-06T09:29:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-09T09:29:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3305a2ee-8824-477b-849c-ca245b5969ab"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0e170e53-01e4-4b73-858a-e96a6e1b9e79"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13feb573-d7cb-420c-8f0d-1d501b67d67b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='downtimes-fetch-a-downtime-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/downtimes/{id}</code></p>
+<h3 id='downtimes-fetch-a-downtime-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[downtimes]=created_at,updated_at,reason</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=location,product,stock_item</code></td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-fetch-a-downtime-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li><code>location</code></li>
+  <li><code>product</code></li>
+  <li><code>stock_item</code></li>
+</ul>
+<h2 id='downtimes-create-a-downtime'>Create a downtime</h2>
+<blockquote>
+<p>How to create a downtime:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST
+       <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/downtimes'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data</span> <span class="s1">'{
+         "data": {
+           "type": "downtimes",
+           "attributes": {
+             "reason": "maintenance",
+             "quantity": 2,
+             "starts_at": "2025-03-04T00:50:00.000000+00:00",
+             "stops_at": "2025-03-07T00:50:00.000000+00:00",
+             "location_id": "b6dd4e89-cdf4-4fce-8f25-c5250d0d3abf",
+             "product_id": "fede9ba2-69e2-4bca-8507-1b90260ccadc"
+           }
+         }
+       }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f6e632f2-c8ab-4755-8331-04c9b1a082a9"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"downtimes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-03-02T00:50:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-03-02T00:50:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maintenance"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reserved"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-03-04T00:50:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-03-07T00:50:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a6fefc90-3a3f-4c0a-8bc4-bc726f0d07a8"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b6dd4e89-cdf4-4fce-8f25-c5250d0d3abf"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fede9ba2-69e2-4bca-8507-1b90260ccadc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='downtimes-create-a-downtime-http-request'>HTTP Request</h3>
+<p><code>POST /api/4/downtimes</code></p>
+<h3 id='downtimes-create-a-downtime-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[downtimes]=created_at,updated_at,reason</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=location,product,stock_item</code></td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-create-a-downtime-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][location_id]</code></td>
+<td><strong>uuid</strong> <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place.</td>
+</tr>
+<tr>
+<td><code>data[attributes][product_group_id]</code></td>
+<td><strong>uuid</strong> <br>The ID of the product group that contains the affected product.</td>
+</tr>
+<tr>
+<td><code>data[attributes][product_id]</code></td>
+<td><strong>uuid</strong> <br>The product that is affected by the downtime.</td>
+</tr>
+<tr>
+<td><code>data[attributes][quantity]</code></td>
+<td><strong>integer</strong> <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable.</td>
+</tr>
+<tr>
+<td><code>data[attributes][reason]</code></td>
+<td><strong>enum</strong> <br>The reason why the product is unavailable.<br> One of: <code>maintenance</code>, <code>repair</code>, <code>missing</code>.</td>
+</tr>
+<tr>
+<td><code>data[attributes][starts_at]</code></td>
+<td><strong>datetime</strong> <br>When the downtime period begins. The product becomes unavailable for rental from this date/time.</td>
+</tr>
+<tr>
+<td><code>data[attributes][status]</code></td>
+<td><strong>enum</strong> <br>The current status of the downtime period. Can be scheduled, started, stopped, or canceled. Defaults to scheduled when created.<br> One of: <code>reserved</code>, <code>started</code>, <code>stopped</code>, <code>canceled</code>.</td>
+</tr>
+<tr>
+<td><code>data[attributes][stock_item_id]</code></td>
+<td><strong>uuid</strong> <br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products.</td>
+</tr>
+<tr>
+<td><code>data[attributes][stops_at]</code></td>
+<td><strong>datetime</strong> <br>When the downtime period ends. The product becomes available for rental again after this date/time.</td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-create-a-downtime-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li><code>location</code></li>
+  <li><code>product</code></li>
+  <li><code>stock_item</code></li>
+</ul>
+<h2 id='downtimes-update-a-downtime'>Update a downtime</h2>
+<blockquote>
+<p>How to update a downtime:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> PUT
+       <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/downtimes/ba7609ab-6b5d-46ef-84c8-2f55f2cff204'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data</span> <span class="s1">'{
+         "data": {
+           "type": "downtimes",
+           "id": "ba7609ab-6b5d-46ef-84c8-2f55f2cff204",
+           "attributes": {
+             "status": "started"
+           }
+         }
+       }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ba7609ab-6b5d-46ef-84c8-2f55f2cff204"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"downtimes"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-06T18:37:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-06T18:37:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maintenance"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"started"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-06T18:37:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-09-11T18:37:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ca11407-358f-410f-83d0-4f3b4fb235b1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59f0c994-63f5-4e25-878d-ced2a7e51ab9"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"628613ab-b024-4a77-8257-0da3ac3be5c1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"stock_item_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='downtimes-update-a-downtime-http-request'>HTTP Request</h3>
+<p><code>PUT /api/4/downtimes/{id}</code></p>
+<h3 id='downtimes-update-a-downtime-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[downtimes]=created_at,updated_at,reason</code></td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-update-a-downtime-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][location_id]</code></td>
+<td><strong>uuid</strong> <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place.</td>
+</tr>
+<tr>
+<td><code>data[attributes][product_group_id]</code></td>
+<td><strong>uuid</strong> <br>The ID of the product group that contains the affected product.</td>
+</tr>
+<tr>
+<td><code>data[attributes][product_id]</code></td>
+<td><strong>uuid</strong> <br>The product that is affected by the downtime.</td>
+</tr>
+<tr>
+<td><code>data[attributes][quantity]</code></td>
+<td><strong>integer</strong> <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable.</td>
+</tr>
+<tr>
+<td><code>data[attributes][reason]</code></td>
+<td><strong>enum</strong> <br>The reason why the product is unavailable.<br> One of: <code>maintenance</code>, <code>repair</code>, <code>missing</code>.</td>
+</tr>
+<tr>
+<td><code>data[attributes][starts_at]</code></td>
+<td><strong>datetime</strong> <br>When the downtime period begins. The product becomes unavailable for rental from this date/time.</td>
+</tr>
+<tr>
+<td><code>data[attributes][status]</code></td>
+<td><strong>enum</strong> <br>The current status of the downtime period. Can be scheduled, started, stopped, or canceled. Defaults to scheduled when created.<br> One of: <code>reserved</code>, <code>started</code>, <code>stopped</code>, <code>canceled</code>.</td>
+</tr>
+<tr>
+<td><code>data[attributes][stock_item_id]</code></td>
+<td><strong>uuid</strong> <br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products.</td>
+</tr>
+<tr>
+<td><code>data[attributes][stops_at]</code></td>
+<td><strong>datetime</strong> <br>When the downtime period ends. The product becomes available for rental again after this date/time.</td>
+</tr>
+</tbody></table>
+<h3 id='downtimes-update-a-downtime-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='emails'>Emails</h1>
 <p>Emails allow you to easily communicate with your customers by using optional templates.
