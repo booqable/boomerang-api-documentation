@@ -1,0 +1,465 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://developers.booqable.com/schemas/app-0-2-0.json#",
+  "title": "Booqable App Configuration Schema",
+  "description": "Schema for the configuration file that defines Booqable apps.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema version for the app configuration.",
+      "const": "https://developers.booqable.com/schemas/app-0-2-0.json#"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the app, used internally.",
+      "pattern": "^[a-z_]+$",
+      "examples": ["liquid_conf", "acme_app"]
+    },
+    "version": {
+      "type": "string",
+      "description": "Version number or status of the app.",
+      "examples": ["1.0.0", "2.1.3", "beta"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Internal name for the app, not shown to end users.",
+      "examples": ["MyApp", "Acme Product"]
+    },
+    "author": {
+      "type": "string",
+      "description": "Name of the app developer or company.",
+      "examples": ["Booqable"]
+    },
+    "app_store": { "$ref": "#/definitions/AppStoreInfo" },
+    "plans": {
+      "type": "array",
+      "description": "Subscription plans for the app.",
+      "items": { "$ref": "#/definitions/AppPlan" },
+      "default": []
+    },
+    "configuration_page": {
+      "$ref": "#/definitions/ConfigurationPage",
+      "description": "Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page."
+    },
+    "tracking_script": {
+      "$ref": "#/definitions/TrackingScript",
+      "description": "Settings for apps that provide tracking scripts meant to be installed in store pages."
+    },
+    "theme_blocks": {
+      "type": "array",
+      "description": "Website blocks provided by this app for use in the website editor.",
+      "items": { "$ref": "#/definitions/ThemeBlock" }
+    }
+  },
+  "required": ["$schema", "id", "version", "name", "author", "app_store"],
+  "additionalProperties": false,
+  "definitions": {
+    "AppStoreInfo": {
+      "type": "object",
+      "description": "App store listing metadata (title, description, category, images, support).",
+      "properties": {
+        "title": { "$ref": "#/definitions/LocalizableString" },
+        "description": { "$ref": "#/definitions/AppStoreDescription" },
+        "support": { "$ref": "#/definitions/AppStoreSupport" },
+        "category": {
+          "type": "string",
+          "description": "Category classification for organizing apps in the app store.",
+          "enum": ["tracking", "payment", "translation", "maps", "marketing", "social", "widget", "fulfillment"]
+        },
+        "card_image": { "$ref": "#/definitions/AssetReference" },
+        "icon": { "$ref": "#/definitions/AssetReference" }
+      },
+      "required": ["title", "description", "category", "card_image", "icon"],
+      "additionalProperties": false
+    },
+    "AppStoreDescription": {
+      "type": "object",
+      "description": "Short and long copy for the app store listing.",
+      "properties": {
+        "short": { "$ref": "#/definitions/LocalizableString" },
+        "long": { "$ref": "#/definitions/LocalizableString" }
+      },
+      "required": ["short", "long"],
+      "additionalProperties": false
+    },
+    "AppStoreSupport": {
+      "type": "object",
+      "description": "How to get help with the app.",
+      "properties": {
+        "email": { "$ref": "#/definitions/LocalizableString" },
+        "website": { "$ref": "#/definitions/LocalizableString" },
+        "youtube": {
+          "type": "string",
+          "description": "YouTube video ID for an embedded support video.",
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "examples": ["4tDyXghOQbI"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "AppPlan": {
+      "type": "object",
+      "description": "Subscription plan (e.g. free, pro) with price and app-store copy.",
+      "properties": {
+        "id": { "type": "string", "examples": ["free", "pro"] },
+        "price_in_cents": { "type": "integer", "minimum": 0 },
+        "app_store": { "$ref": "#/definitions/AppPlanStoreInfo" },
+        "features": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/PlanFeature" },
+          "default": []
+        },
+        "paid_during_beta": {
+          "type": "boolean",
+          "description": "When true, plan remains paid during beta; when false, plan is free during beta.",
+          "default": false
+        }
+      },
+      "required": ["id", "price_in_cents", "app_store"],
+      "additionalProperties": false
+    },
+    "AppPlanStoreInfo": {
+      "type": "object",
+      "description": "Per-plan title, description, and feature list shown in the app store.",
+      "properties": {
+        "title": { "$ref": "#/definitions/LocalizableString" },
+        "description": { "$ref": "#/definitions/LocalizableString" },
+        "features": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/LocalizableString" },
+          "default": []
+        }
+      },
+      "required": ["title"],
+      "additionalProperties": false
+    },
+    "PlanFeature": {
+      "type": "object",
+      "description": "Feature flag for a plan (id and whether it is enabled).",
+      "properties": {
+        "id": { "type": "string" },
+        "enabled": { "type": "boolean" }
+      },
+      "required": ["id", "enabled"],
+      "additionalProperties": false
+    },
+    "ConfigurationPage": {
+      "type": "object",
+      "description": "Root of the configuration page: ordered list of blocks (banners, forms, guides, iframes).",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ConfigurationPageBlock" }
+        }
+      },
+      "required": ["content"],
+      "additionalProperties": false
+    },
+    "ConfigurationPageBlock": {
+      "description": "One of Banner, Form, Guide, or Iframe block.",
+      "oneOf": [
+        { "$ref": "#/definitions/BannerBlock" },
+        { "$ref": "#/definitions/FormBlock" },
+        { "$ref": "#/definitions/GuideBlock" },
+        { "$ref": "#/definitions/IframeBlock" }
+      ]
+    },
+    "BlockConditionIf": {
+      "type": "string",
+      "description": "When to show the block: only when the app is configured, or only when unconfigured. Omit to always show.",
+      "enum": ["configured", "unconfigured"],
+      "examples": ["unconfigured", "configured"]
+    },
+    "BannerBlock": {
+      "type": "object",
+      "description": "Banner block: heading, text, optional link, and style (neutral/info/warning).",
+      "properties": {
+        "type": { "const": "Banner" },
+        "heading": { "$ref": "#/definitions/LocalizableString" },
+        "text": { "$ref": "#/definitions/LocalizableString" },
+        "link": { "$ref": "#/definitions/Link" },
+        "nature": {
+          "type": "string",
+          "description": "Banner style; default is neutral.",
+          "enum": ["neutral", "info", "warning"],
+          "default": "neutral"
+        },
+        "if": { "$ref": "#/definitions/BlockConditionIf" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "Link": {
+      "type": "object",
+      "description": "Clickable link with text and URL; optionally rendered as a button.",
+      "properties": {
+        "text": { "$ref": "#/definitions/LocalizableString" },
+        "url": { "type": "string", "format": "uri" },
+        "display_as_button": { "type": "boolean", "default": false }
+      },
+      "required": ["text", "url"],
+      "additionalProperties": false
+    },
+    "FormBlock": {
+      "type": "object",
+      "description": "Form block: heading and fields whose values are saved as app settings.",
+      "properties": {
+        "type": { "const": "Form" },
+        "heading": { "$ref": "#/definitions/FormBlockHeading" },
+        "fields": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/FormBlockField" },
+          "default": []
+        },
+        "if": { "$ref": "#/definitions/BlockConditionIf" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "FormBlockHeading": {
+      "type": "object",
+      "description": "Optional title and/or body text above a form block.",
+      "properties": {
+        "title": { "$ref": "#/definitions/LocalizableString" },
+        "text": { "$ref": "#/definitions/LocalizableString" }
+      },
+      "additionalProperties": false
+    },
+    "FormBlockField": {
+      "type": "object",
+      "description": "Single form field (name, input type, label, validation, and for select: options and multi).",
+      "properties": {
+        "name": { "type": "string" },
+        "type": {
+          "type": "string",
+          "description": "Input type; must match a type supported by the back-office form (InputField).",
+          "enum": [
+            "text",
+            "textarea",
+            "number",
+            "password",
+            "quantity",
+            "select",
+            "price",
+            "email",
+            "color",
+            "time",
+            "datepicker",
+            "checkboxGroup",
+            "buttonGroup",
+            "radio",
+            "radioGroup",
+            "checkbox",
+            "timeSelect",
+            "phone",
+            "contentEditor",
+            "url",
+            "font",
+            "code",
+            "search",
+            "duration",
+            "multiInput",
+            "dateButton",
+            "timeButton",
+            "timeslots",
+            "durations",
+            "range"
+          ]
+        },
+        "label": { "$ref": "#/definitions/LocalizableString" },
+        "required": { "type": "boolean", "default": false },
+        "description": { "$ref": "#/definitions/LocalizableString" },
+        "placeholder": { "$ref": "#/definitions/LocalizableString" },
+        "options": {
+          "type": "array",
+          "description": "Required for select type.",
+          "items": { "$ref": "#/definitions/SelectFieldOption" }
+        },
+        "multi": {
+          "type": "boolean",
+          "description": "Allow multiple selection for select fields."
+        },
+        "pattern": {
+          "type": "string",
+          "description": "Regex pattern for validating text/textarea fields. The value must match this pattern.",
+          "examples": [".*\\.mydomain\\.com/.*"]
+        }
+      },
+      "required": ["name", "type"],
+      "additionalProperties": false
+    },
+    "SelectFieldOption": {
+      "type": "object",
+      "description": "One option for a select or multi-select field (value and label).",
+      "properties": {
+        "value": { "type": "string" },
+        "label": { "$ref": "#/definitions/LocalizableString" }
+      },
+      "required": ["value", "label"],
+      "additionalProperties": false
+    },
+    "GuideBlock": {
+      "type": "object",
+      "description": "Guide block: ordered steps with title, text, and optional image per step.",
+      "properties": {
+        "type": { "const": "Guide" },
+        "steps": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/GuideBlockStep" },
+          "default": []
+        },
+        "if": { "$ref": "#/definitions/BlockConditionIf" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "GuideBlockStep": {
+      "type": "object",
+      "description": "One step in a guide (title, optional text, optional image).",
+      "properties": {
+        "title": { "$ref": "#/definitions/LocalizableString" },
+        "text": { "$ref": "#/definitions/LocalizableString" },
+        "image": { "$ref": "#/definitions/AssetReference" }
+      },
+      "required": ["title"],
+      "additionalProperties": false
+    },
+    "IframeBlock": {
+      "type": "object",
+      "description": "Embedded iframe (e.g. external config or docs URL).",
+      "properties": {
+        "type": { "const": "Iframe" },
+        "url": { "type": "string", "format": "uri" },
+        "if": { "$ref": "#/definitions/BlockConditionIf" }
+      },
+      "required": ["type", "url"],
+      "additionalProperties": false
+    },
+    "ThemeBlock": {
+      "type": "object",
+      "description": "A website block provided by the app.",
+      "properties": {
+        "name": { "$ref": "#/definitions/LocalizableString", "description": "Display name for the block in the website editor." },
+        "template": {
+          "$ref": "#/definitions/AssetPath",
+          "description": "Path to the Liquid template file for the block."
+        },
+        "allowed_sections": {
+          "type": "array",
+          "description": "Section types where this block may be placed.",
+          "items": { "type": "string", "enum": ["header", "footer", "app"] }
+        },
+        "cookies_required": {
+          "type": "boolean",
+          "description": "Display a notice in this block's settings about the block not rendering without website visitors providing cookie consent.",
+          "default": false
+        },
+        "settings_iframe_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Embed an iframe in the website editor sidebar for this block's settings, instead of the usual controls."
+        },
+        "settings": {
+          "type": "object",
+          "description": "Which settings are available for this block in the website editor.",
+          "additionalProperties": { "$ref": "#/definitions/ThemeBlockSetting" }
+        }
+      },
+      "required": ["name", "template", "allowed_sections"],
+      "additionalProperties": false
+    },
+    "ThemeBlockSetting": {
+      "type": "object",
+      "description": "One setting for a theme block. Renders in the website editor sidebar.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Type of the setting field.",
+          "enum": ["header", "divider", "text", "textarea", "number", "color", "checkbox"]
+        },
+        "content": { "$ref": "#/definitions/LocalizableString", "description": "Text for header type." },
+        "label": { "$ref": "#/definitions/LocalizableString", "description": "Display label for the setting." },
+        "placeholder": { "$ref": "#/definitions/LocalizableString", "description": "Hint text inside the input. Applies to text, textarea." },
+        "default": { "type": "string", "description": "Default value." },
+        "min": { "type": "number", "description": "A minimum value for number typed fields." },
+        "max": { "type": "number", "description": "A maximum value for number typed fields." },
+        "step": { "type": "number", "description": "A step increment for number typed fields." }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "TrackingScript": {
+      "type": "object",
+      "description": "Settings controlling JavaScript files added to store pages for tracking purposes.",
+      "properties": {
+        "template": {
+          "$ref": "#/definitions/AssetPath",
+          "description": "Path to the JavaScript template file for the tracking script."
+        }
+      },
+      "required": ["template"],
+      "additionalProperties": false
+    },
+    "AssetPath": {
+      "description": "A reference to a file bundled with the app.",
+      "type": "object",
+      "properties": {
+        "asset": {
+          "type": "string",
+          "description": "Path to the file relative to the app root.",
+          "examples": ["templates/widget.liquid", "assets/icon.png"]
+        }
+      },
+      "required": ["asset"],
+      "additionalProperties": false
+    },
+    "AssetReference": {
+      "description": "A URL to an external asset or a reference to a file bundled with the app.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "URL to an external asset."
+            }
+          },
+          "required": ["url"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "asset": {
+              "type": "string",
+              "description": "Path to the file relative to the app root.",
+              "examples": ["assets/icon.png"]
+            }
+          },
+          "required": ["asset"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "LocalizableString": {
+      "description": "Plain string or a reference to a string in the app localization files.",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "localization_key": {
+              "type": "string",
+              "description": "Key used to look up the string in localization files.",
+              "examples": ["app.title", "app.description.short"]
+            }
+          },
+          "required": ["localization_key"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

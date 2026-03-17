@@ -1,0 +1,842 @@
+<h1 id='reference'>Reference</h1><h2 id='reference-config-meta-json'><code>/config/meta.json</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-2-0.json#"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liquid_conf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyApp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Booqable"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">ConfigurationPage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">TrackingScript</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>$schema</code></td>
+<td>string</td>
+<td>true</td>
+<td>Schema version for the app configuration.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>true</td>
+<td>Unique identifier for the app, used internally.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>true</td>
+<td>Version number or status of the app.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>true</td>
+<td>Internal name for the app, not shown to end users.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>string</td>
+<td>true</td>
+<td>Name of the app developer or company.</td>
+</tr>
+<tr>
+<td><code>app_store</code></td>
+<td><a href="#reference-appstoreinfo"><code>AppStoreInfo</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>plans</code></td>
+<td>array of <a href="#appplan"><code>AppPlan</code></a></td>
+<td>false</td>
+<td>Subscription plans for the app.</td>
+</tr>
+<tr>
+<td><code>configuration_page</code></td>
+<td><a href="#reference-configurationpage"><code>ConfigurationPage</code></a></td>
+<td>false</td>
+<td>Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page.</td>
+</tr>
+<tr>
+<td><code>tracking_script</code></td>
+<td><a href="#reference-trackingscript"><code>TrackingScript</code></a></td>
+<td>false</td>
+<td>Settings for apps that provide tracking scripts meant to be installed in store pages.</td>
+</tr>
+<tr>
+<td><code>theme_blocks</code></td>
+<td>array of <a href="#themeblock"><code>ThemeBlock</code></a></td>
+<td>false</td>
+<td>Website blocks provided by this app for use in the website editor.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreDescription</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreSupport</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"card_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><a href="#reference-appstoredescription"><code>AppStoreDescription</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>support</code></td>
+<td><a href="#reference-appstoresupport"><code>AppStoreSupport</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>one of: <code>tracking</code>, <code>payment</code>, <code>translation</code>, <code>maps</code>, <code>marketing</code>, <code>social</code>, <code>widget</code>, <code>fulfillment</code></td>
+<td>true</td>
+<td>Category classification for organizing apps in the app store.</td>
+</tr>
+<tr>
+<td><code>card_image</code></td>
+<td><a href="#reference-assetreference"><code>AssetReference</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><a href="#reference-assetreference"><code>AssetReference</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-appstoredescription'><code>AppStoreDescription</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"short"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>short</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-appstoresupport'><code>AppStoreSupport</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4tDyXghOQbI"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>website</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>youtube</code></td>
+<td>string</td>
+<td>false</td>
+<td>YouTube video ID for an embedded support video.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-appplan'><code>AppPlan</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppPlanStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"paid_during_beta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>price_in_cents</code></td>
+<td>integer</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>app_store</code></td>
+<td><a href="#reference-appplanstoreinfo"><code>AppPlanStoreInfo</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>features</code></td>
+<td>array of <a href="#planfeature"><code>PlanFeature</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paid_during_beta</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, plan remains paid during beta; when false, plan is free during beta.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-appplanstoreinfo'><code>AppPlanStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>features</code></td>
+<td>array of <a href="#localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-planfeature'><code>PlanFeature</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>boolean</td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-configurationpage'><code>ConfigurationPage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>content</code></td>
+<td>array of <a href="#configurationpageblock"><code>ConfigurationPageBlock</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-configurationpageblock'><code>ConfigurationPageBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='reference-blockconditionif'><code>BlockConditionIf</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='reference-bannerblock'><code>BannerBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banner"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Link</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"nature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"neutral"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>heading</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>link</code></td>
+<td><a href="#reference-link"><code>Link</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>nature</code></td>
+<td>one of: <code>neutral</code>, <code>info</code>, <code>warning</code></td>
+<td>false</td>
+<td>Banner style; default is neutral.</td>
+</tr>
+<tr>
+<td><code>if</code></td>
+<td><a href="#reference-blockconditionif"><code>BlockConditionIf</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-link'><code>Link</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"display_as_button"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>text</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>display_as_button</code></td>
+<td>boolean</td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-formblock'><code>FormBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Form"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">FormBlockHeading</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>heading</code></td>
+<td><a href="#reference-formblockheading"><code>FormBlockHeading</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>array of <a href="#formblockfield"><code>FormBlockField</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>if</code></td>
+<td><a href="#reference-blockconditionif"><code>BlockConditionIf</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-formblockheading'><code>FormBlockHeading</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-formblockfield'><code>FormBlockField</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"multi"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">".*</span><span class="se">\.</span><span class="s2">mydomain</span><span class="se">\.</span><span class="s2">com/.*"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>one of: <code>text</code>, <code>textarea</code>, <code>number</code>, <code>password</code>, <code>quantity</code>, <code>select</code>, <code>price</code>, <code>email</code>, <code>color</code>, <code>time</code>, <code>datepicker</code>, <code>checkboxGroup</code>, <code>buttonGroup</code>, <code>radio</code>, <code>radioGroup</code>, <code>checkbox</code>, <code>timeSelect</code>, <code>phone</code>, <code>contentEditor</code>, <code>url</code>, <code>font</code>, <code>code</code>, <code>search</code>, <code>duration</code>, <code>multiInput</code>, <code>dateButton</code>, <code>timeButton</code>, <code>timeslots</code>, <code>durations</code>, <code>range</code></td>
+<td>true</td>
+<td>Input type; must match a type supported by the back-office form (InputField).</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>boolean</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>array of <a href="#selectfieldoption"><code>SelectFieldOption</code></a></td>
+<td>false</td>
+<td>Required for select type.</td>
+</tr>
+<tr>
+<td><code>multi</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Allow multiple selection for select fields.</td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>string</td>
+<td>false</td>
+<td>Regex pattern for validating text/textarea fields. The value must match this pattern.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-selectfieldoption'><code>SelectFieldOption</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>value</code></td>
+<td>string</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-guideblock'><code>GuideBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guide"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps</code></td>
+<td>array of <a href="#guideblockstep"><code>GuideBlockStep</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>if</code></td>
+<td><a href="#reference-blockconditionif"><code>BlockConditionIf</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-guideblockstep'><code>GuideBlockStep</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td><a href="#reference-assetreference"><code>AssetReference</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-iframeblock'><code>IframeBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iframe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>if</code></td>
+<td><a href="#reference-blockconditionif"><code>BlockConditionIf</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-themeblock'><code>ThemeBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"cookies_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings_iframe_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td>Display name for the block in the website editor.</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td><a href="#reference-assetpath"><code>AssetPath</code></a></td>
+<td>true</td>
+<td>Path to the Liquid template file for the block.</td>
+</tr>
+<tr>
+<td><code>allowed_sections</code></td>
+<td>array of string</td>
+<td>true</td>
+<td>Section types where this block may be placed.</td>
+</tr>
+<tr>
+<td><code>cookies_required</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Display a notice in this block&#39;s settings about the block not rendering without website visitors providing cookie consent.</td>
+</tr>
+<tr>
+<td><code>settings_iframe_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>Embed an iframe in the website editor sidebar for this block&#39;s settings, instead of the usual controls.</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td>object</td>
+<td>false</td>
+<td>Which settings are available for this block in the website editor.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-themeblocksetting'><code>ThemeBlockSetting</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"header"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"min"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"step"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>one of: <code>header</code>, <code>divider</code>, <code>text</code>, <code>textarea</code>, <code>number</code>, <code>color</code>, <code>checkbox</code></td>
+<td>true</td>
+<td>Type of the setting field.</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td>Text for header type.</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td>Display label for the setting.</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td>Hint text inside the input. Applies to text, textarea.</td>
+</tr>
+<tr>
+<td><code>default</code></td>
+<td>string</td>
+<td>false</td>
+<td>Default value.</td>
+</tr>
+<tr>
+<td><code>min</code></td>
+<td>number</td>
+<td>false</td>
+<td>A minimum value for number typed fields.</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>number</td>
+<td>false</td>
+<td>A maximum value for number typed fields.</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td>number</td>
+<td>false</td>
+<td>A step increment for number typed fields.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-trackingscript'><code>TrackingScript</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>template</code></td>
+<td><a href="#reference-assetpath"><code>AssetPath</code></a></td>
+<td>true</td>
+<td>Path to the JavaScript template file for the tracking script.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-assetpath'><code>AssetPath</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/widget.liquid"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>asset</code></td>
+<td>string</td>
+<td>true</td>
+<td>Path to the file relative to the app root.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-assetreference'><code>AssetReference</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='reference-localizablestring'><code>LocalizableString</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
