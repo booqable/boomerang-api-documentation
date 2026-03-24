@@ -94,6 +94,14 @@ module MarkdownGenerator
     buffer.puts
   end
 
+  # JSON Schema allows `type` to be an array for a union of primitive types, e.g. ["string", "number"].
+  def self.normalize_type_for_example(type)
+    return type unless type.is_a?(Array)
+
+    preference = %w[string object array boolean number integer]
+    type.find { |t| preference.include?(t) } || type.first
+  end
+
   def self.generate_example_value(buffer, property, indentation:)
     if property.ref
       buffer.write '{ /* ', property.ref.split("/").last, ' */ }'
@@ -106,7 +114,7 @@ module MarkdownGenerator
         property.examples.first
       end
 
-      case property.type
+      case normalize_type_for_example(property.type)
       when "string"
         example_value ||= if property.format == "email"
           "support@example.com"
@@ -129,7 +137,7 @@ module MarkdownGenerator
         if example_value
           buffer.write example_value.inspect
         else
-          raise "Don't know how to generate example value for #{property.type} (#{property.inspect})"
+          raise "Don't know how to generate example value for `#{property.type.inspect}` (#{property.inspect})"
         end
       end
     end
@@ -157,6 +165,8 @@ module MarkdownGenerator
     if property.ref
       ref_name = property.ref.split("/").last
       "[`#{ref_name}`](#reference-#{ref_name.downcase})"
+    elsif property.type.is_a?(Array)
+      property.type.map { |t| "`#{t}`" }.join(" \\| ")
     elsif property.type == "array" && property.items
       if property.items["$ref"]
         ref_name = property.items["$ref"].split("/").last
