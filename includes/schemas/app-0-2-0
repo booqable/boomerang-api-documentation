@@ -8,7 +8,10 @@
   </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">ConfigurationPage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">TrackingScript</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">OauthConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentsConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -78,6 +81,24 @@
 <td>array of <a href="#themeblock"><code>ThemeBlock</code></a></td>
 <td>false</td>
 <td>Website blocks provided by this app for use in the website editor.</td>
+</tr>
+<tr>
+<td><code>oauth</code></td>
+<td><a href="#reference-oauthconfig"><code>OauthConfig</code></a></td>
+<td>false</td>
+<td>OAuth integration for apps that require Booqable to grant access on behalf of the user.</td>
+</tr>
+<tr>
+<td><code>base_url</code></td>
+<td>string</td>
+<td>false</td>
+<td>Base URL to use when providing relative URLs elsewhere in this configuration file.</td>
+</tr>
+<tr>
+<td><code>payments</code></td>
+<td><a href="#reference-paymentsconfig"><code>PaymentsConfig</code></a></td>
+<td>false</td>
+<td>Payment integration for apps that process charges, authorizations, and refunds.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -644,7 +665,7 @@
 </tbody></table>
 <h2 id='reference-iframeblock'><code>IframeBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iframe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -664,7 +685,7 @@
 </tr>
 <tr>
 <td><code>url</code></td>
-<td>string</td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
 <td>true</td>
 <td></td>
 </tr>
@@ -680,7 +701,7 @@
   </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"cookies_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"settings_iframe_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settings_iframe_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -718,7 +739,7 @@
 </tr>
 <tr>
 <td><code>settings_iframe_url</code></td>
-<td>string</td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
 <td>false</td>
 <td>Embed an iframe in the website editor sidebar for this block&#39;s settings, instead of the usual controls.</td>
 </tr>
@@ -774,9 +795,9 @@
 </tr>
 <tr>
 <td><code>default</code></td>
-<td>string</td>
+<td><code>string</code> \</td>
+<td><code>number</code></td>
 <td>false</td>
-<td>Default value.</td>
 </tr>
 <tr>
 <td><code>min</code></td>
@@ -837,6 +858,134 @@
 </tbody></table>
 <h2 id='reference-assetreference'><code>AssetReference</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-localizablestring'><code>LocalizableString</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span></code></pre></div><h2 id='reference-locatableurl'><code>LocatableUrl</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='reference-absoluteurl'><code>AbsoluteUrl</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='reference-relativeurl'><code>RelativeUrl</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"relative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>relative</code></td>
+<td>string</td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-localizablestring'><code>LocalizableString</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='reference-paymentsconfig'><code>PaymentsConfig</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentRoutes</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pay_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>routes</code></td>
+<td><a href="#reference-paymentroutes"><code>PaymentRoutes</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pay_button</code></td>
+<td><a href="#reference-assetpath"><code>AssetPath</code></a></td>
+<td>false</td>
+<td>SVG asset used as the payment button in the checkout flow.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-paymentroutes'><code>PaymentRoutes</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>charge_url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>cancel_charge_url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>authorization_url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>capture_authorization_url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>void_authorization_url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>refund_url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-oauthconfig'><code>OauthConfig</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"redirect_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/deliveries/oauth/callback"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>redirect_url</code></td>
+<td>string</td>
+<td>true</td>
+<td>Relative path the OAuth provider redirects to after authorization.</td>
+</tr>
+<tr>
+<td><code>scopes</code></td>
+<td>array of string</td>
+<td>true</td>
+<td>OAuth scopes the app requests.</td>
+</tr>
+</tbody></table>

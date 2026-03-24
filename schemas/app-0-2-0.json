@@ -50,6 +50,19 @@
       "type": "array",
       "description": "Website blocks provided by this app for use in the website editor.",
       "items": { "$ref": "#/definitions/ThemeBlock" }
+    },
+    "oauth": {
+      "$ref": "#/definitions/OauthConfig",
+      "description": "OAuth integration for apps that require Booqable to grant access on behalf of the user."
+    },
+    "base_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Base URL to use when providing relative URLs elsewhere in this configuration file."
+    },
+    "payments": {
+      "$ref": "#/definitions/PaymentsConfig",
+      "description": "Payment integration for apps that process charges, authorizations, and refunds."
     }
   },
   "required": ["$schema", "id", "version", "name", "author", "app_store"],
@@ -116,8 +129,7 @@
           "default": false
         }
       },
-      "required": ["id", "price_in_cents", "app_store"],
-      "additionalProperties": false
+      "required": ["id", "price_in_cents", "app_store"]
     },
     "AppPlanStoreInfo": {
       "type": "object",
@@ -330,7 +342,7 @@
       "description": "Embedded iframe (e.g. external config or docs URL).",
       "properties": {
         "type": { "const": "Iframe" },
-        "url": { "type": "string", "format": "uri" },
+        "url": { "$ref": "#/definitions/LocatableUrl" },
         "if": { "$ref": "#/definitions/BlockConditionIf" }
       },
       "required": ["type", "url"],
@@ -356,8 +368,7 @@
           "default": false
         },
         "settings_iframe_url": {
-          "type": "string",
-          "format": "uri",
+          "$ref": "#/definitions/LocatableUrl",
           "description": "Embed an iframe in the website editor sidebar for this block's settings, instead of the usual controls."
         },
         "settings": {
@@ -381,7 +392,7 @@
         "content": { "$ref": "#/definitions/LocalizableString", "description": "Text for header type." },
         "label": { "$ref": "#/definitions/LocalizableString", "description": "Display label for the setting." },
         "placeholder": { "$ref": "#/definitions/LocalizableString", "description": "Hint text inside the input. Applies to text, textarea." },
-        "default": { "type": "string", "description": "Default value." },
+        "default": { "type": ["string", "number"], "description": "Default value." },
         "min": { "type": "number", "description": "A minimum value for number typed fields." },
         "max": { "type": "number", "description": "A maximum value for number typed fields." },
         "step": { "type": "number", "description": "A step increment for number typed fields." }
@@ -443,6 +454,27 @@
         }
       ]
     },
+    "LocatableUrl": {
+      "description": "An absolute URL string or a relative URL object resolved against base_url.",
+      "oneOf": [
+        { "$ref": "#/definitions/AbsoluteUrl" },
+        { "$ref": "#/definitions/RelativeUrl" }
+      ]
+    },
+    "AbsoluteUrl": {
+      "description": "An absolute URL string.",
+      "type": "string",
+      "format": "uri"
+    },
+    "RelativeUrl": {
+      "description": "A relative URL resolved against the app's base_url at runtime.",
+      "type": "object",
+      "properties": {
+        "relative": { "type": "string", "pattern": "^(?![a-zA-Z][a-zA-Z0-9+.-]*:)(?!//).+" }
+      },
+      "required": ["relative"],
+      "additionalProperties": false
+    },
     "LocalizableString": {
       "description": "Plain string or a reference to a string in the app localization files.",
       "oneOf": [
@@ -460,6 +492,52 @@
           "additionalProperties": false
         }
       ]
+    },
+    "PaymentsConfig": {
+      "type": "object",
+      "description": "Payment integration settings.",
+      "properties": {
+        "routes": { "$ref": "#/definitions/PaymentRoutes" },
+        "pay_button": {
+          "$ref": "#/definitions/AssetPath",
+          "description": "SVG asset used as the payment button in the checkout flow."
+        }
+      },
+      "required": ["routes"],
+      "additionalProperties": false
+    },
+    "PaymentRoutes": {
+      "type": "object",
+      "description": "URL paths for payment operations, resolved against base_url at runtime.",
+      "properties": {
+        "charge_url":                { "$ref": "#/definitions/LocatableUrl" },
+        "cancel_charge_url":         { "$ref": "#/definitions/LocatableUrl" },
+        "authorization_url":         { "$ref": "#/definitions/LocatableUrl" },
+        "capture_authorization_url": { "$ref": "#/definitions/LocatableUrl" },
+        "void_authorization_url":    { "$ref": "#/definitions/LocatableUrl" },
+        "refund_url":                { "$ref": "#/definitions/LocatableUrl" }
+      },
+      "additionalProperties": false
+    },
+    "OauthConfig": {
+      "type": "object",
+      "description": "OAuth configuration for the app.",
+      "properties": {
+        "redirect_url": {
+          "type": "string",
+          "description": "Relative path the OAuth provider redirects to after authorization.",
+          "examples": ["/deliveries/oauth/callback"],
+          "pattern": "^/(?!//)(?!.*://).+"
+        },
+        "scopes": {
+          "type": "array",
+          "description": "OAuth scopes the app requests.",
+          "items": { "type": "string", "enum": ["full_access"] },
+          "minItems": 1
+        }
+      },
+      "required": ["redirect_url", "scopes"],
+      "additionalProperties": false
     }
   }
 }
