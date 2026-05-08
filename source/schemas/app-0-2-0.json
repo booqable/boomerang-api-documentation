@@ -13,7 +13,7 @@
     "id": {
       "type": "string",
       "description": "Unique identifier for the app, used internally.",
-      "pattern": "^[a-z_]+$",
+      "pattern": "^[a-z][a-z0-9_]*$",
       "examples": ["liquid_conf", "acme_app"]
     },
     "version": {
@@ -499,8 +499,8 @@
       "properties": {
         "routes": { "$ref": "#/definitions/PaymentRoutes" },
         "pay_button": {
-          "$ref": "#/definitions/AssetPath",
-          "description": "SVG asset used as the payment button in the checkout flow."
+          "$ref": "#/definitions/AssetReference",
+          "description": "Asset reference (path or URL) used as the payment button in the checkout flow, typically an SVG."
         }
       },
       "required": ["routes"],
