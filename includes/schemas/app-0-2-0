@@ -885,7 +885,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='reference-paymentsconfig'><code>PaymentsConfig</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentRoutes</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"pay_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"pay_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -904,9 +904,9 @@
 </tr>
 <tr>
 <td><code>pay_button</code></td>
-<td><a href="#reference-assetpath"><code>AssetPath</code></a></td>
+<td><a href="#reference-assetreference"><code>AssetReference</code></a></td>
 <td>false</td>
-<td>SVG asset used as the payment button in the checkout flow.</td>
+<td>Asset reference (path or URL) used as the payment button in the checkout flow, typically an SVG.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-paymentroutes'><code>PaymentRoutes</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
