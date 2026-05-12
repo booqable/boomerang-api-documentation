@@ -7,11 +7,13 @@ rental bookings, ensuring accurate inventory management and scheduling.
 Downtimes can be used to schedule maintenance periods for equipment, mark products as temporarily unavailable
 due to repairs, handle missing or misplaced products, or block availability for operational reasons.
 
+Downtimes can only be created for rental products. Sales items, service products, and bundles cannot be scheduled for downtime.
+
 ## Relationships
 Name | Description
 -- | --
 `location` | **[Location](#locations)** `required`<br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
-`product` | **[Product](#products)** `required`<br>The product that is affected by the downtime. 
+`product` | **[Product](#products)** `required`<br>The product that is affected by the downtime. Must be a rental product — sales items, service products, and bundles cannot be scheduled for downtime. 
 `stock_item` | **[Stock item](#stock-items)** `optional`<br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
 
 
@@ -26,7 +28,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `location_id` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
 `product_group_id` | **uuid** <br>The ID of the product group that contains the affected product. 
-`product_id` | **uuid** <br>The product that is affected by the downtime. 
+`product_id` | **uuid** <br>The product that is affected by the downtime. Must be a rental product — sales items, service products, and bundles cannot be scheduled for downtime. 
 `quantity` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
 `reason` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
 `starts_at` | **datetime** <br>When the downtime period begins. The product becomes unavailable for rental from this date/time. 
@@ -277,7 +279,7 @@ Name | Description
 -- | --
 `data[attributes][location_id]` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
 `data[attributes][product_group_id]` | **uuid** <br>The ID of the product group that contains the affected product. 
-`data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. 
+`data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. Must be a rental product — sales items, service products, and bundles cannot be scheduled for downtime. 
 `data[attributes][quantity]` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
 `data[attributes][reason]` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
 `data[attributes][starts_at]` | **datetime** <br>When the downtime period begins. The product becomes unavailable for rental from this date/time. 
@@ -364,7 +366,7 @@ Name | Description
 -- | --
 `data[attributes][location_id]` | **uuid** <br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
 `data[attributes][product_group_id]` | **uuid** <br>The ID of the product group that contains the affected product. 
-`data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. 
+`data[attributes][product_id]` | **uuid** <br>The product that is affected by the downtime. Must be a rental product — sales items, service products, and bundles cannot be scheduled for downtime. 
 `data[attributes][quantity]` | **integer** <br>The number of products affected by this downtime. Defaults to 1. For bulk products, you can specify higher quantities to indicate how many products are unavailable. 
 `data[attributes][reason]` | **enum** <br>The reason why the product is unavailable.<br> One of: `maintenance`, `repair`, `missing`.
 `data[attributes][starts_at]` | **datetime** <br>When the downtime period begins. The product becomes unavailable for rental from this date/time. 

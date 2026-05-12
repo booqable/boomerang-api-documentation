@@ -86,7 +86,7 @@ Check each individual operation to see which relations can be included as a side
           "order_count": 0,
           "revenue_in_cents": 0,
           "balance_due_in_cents": 0,
-          "last_order_at": null,
+          "latest_order_at": null,
           "average_order_value_in_cents": 0,
           "properties": {},
           "tag_list": [],

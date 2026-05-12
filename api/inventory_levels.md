@@ -1,13 +1,15 @@
 # Inventory levels
 
+**Deprecated.** This endpoint will be removed in a future version.
+Use the [Availabilities](#availabilities) endpoint for accurate product availability data
+that correctly accounts for buffer times and other business rules.
+
 Inventory levels provide raw inventory data snapshots for reporting purposes.
 They describe stock counts, planned quantities, and needed quantities for given items at specific points in time.
 
 **Note:** Inventory levels are not suitable for determining whether a product can be booked.
 They represent the underlying data layer and do not account for business rules like buffer times,
 shortage handling, or order status considerations.
-
-To check product availability for bookings, use the [Availabilities](#availabilities) endpoint instead.
 
 ## Relationships
 Name | Description

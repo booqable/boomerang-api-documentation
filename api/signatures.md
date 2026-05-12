@@ -8,9 +8,7 @@ be set accordingly on the associated order.
 ## Relationships
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** `required`<br>The associated [Customer](#customers).
 `document` | **[Document](#documents)** `required`<br>The associated contract or quote [Document](#documents).
-`order` | **[Order](#orders)** `required`<br>The associated [Order](#orders).
 
 
 Check matching attributes under [Fields](#signatures-fields) to see which relations can be written.
@@ -20,11 +18,18 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`customer_id` | **uuid** `readonly`<br>The associated [Customer](#customers).
-`document_id` | **uuid** `readonly-after-create`<br>The associated contract or quote [Document](#documents).
+`created_at` | **datetime** `readonly`<br>When the resource was created.
+`customer_id` | **uuid** `readonly`<br>ID of the associated customer.
+`document_id` | **uuid** <br>The associated contract or quote [Document](#documents).
+`document_pdf_url` | **string** `readonly`<br>URL to the signed document PDF.
+`first_name` | **string** `readonly`<br>First name of the person signing the document.
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly`<br>The associated [Order](#orders).
+`ip_address` | **string** `readonly`<br>IP address of the signer.
+`last_name` | **string** `readonly`<br>Last name of the person signing the document.
+`order_id` | **uuid** `readonly`<br>ID of the associated order.
 `signature_base64` | **string** `writeonly`<br>Base64 encoded signature, use this field to store a signature.
+`signature_image_url` | **string** `readonly`<br>URL to the signature image.
+`updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
 ## Sign a contract
@@ -59,21 +64,20 @@ Check each individual operation to see which relations can be included as a side
       "id": "914a141f-72ee-48a6-8d8f-75f19df8096a",
       "type": "signatures",
       "attributes": {
-        "document_id": "6ea8048b-b423-4dfb-8076-da8361155b47",
+        "first_name": null,
+        "last_name": null,
+        "document_pdf_url": null,
+        "signature_image_url": null,
+        "ip_address": null,
         "order_id": "57b1b33c-c25e-4c82-85f1-a1fc25d65fd4",
-        "customer_id": "538b2f72-8ad8-419f-8f8f-f5b2c8e07381"
+        "customer_id": "538b2f72-8ad8-419f-8f8f-f5b2c8e07381",
+        "document_id": "6ea8048b-b423-4dfb-8076-da8361155b47"
       },
       "relationships": {
         "document": {
           "data": {
             "type": "documents",
             "id": "6ea8048b-b423-4dfb-8076-da8361155b47"
-          }
-        },
-        "order": {
-          "data": {
-            "type": "orders",
-            "id": "57b1b33c-c25e-4c82-85f1-a1fc25d65fd4"
           }
         }
       }
@@ -138,7 +142,14 @@ Check each individual operation to see which relations can be included as a side
           "tax_region_id": null,
           "coupon_id": null
         },
-        "relationships": {}
+        "relationships": {
+          "order": {
+            "data": {
+              "type": "orders",
+              "id": "57b1b33c-c25e-4c82-85f1-a1fc25d65fd4"
+            }
+          }
+        }
       },
       {
         "id": "57b1b33c-c25e-4c82-85f1-a1fc25d65fd4",
@@ -163,7 +174,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[signatures]=document_id,order_id,customer_id`
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[signatures]=created_at,updated_at,first_name`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=document,order,customer`
 
 
@@ -183,7 +194,13 @@ This request accepts the following includes:
 
 <ul>
   <li><code>customer</code></li>
-  <li><code>document</code></li>
+  <li>
+    <code>document</code>
+    <ul>
+      <li><code>customer</code></li>
+      <li><code>order</code></li>
+    </ul>
+  </li>
   <li><code>order</code></li>
 </ul>
 

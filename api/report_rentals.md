@@ -28,10 +28,13 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** `readonly`<br>Product name.
 `product_id` | **uuid** <br>The rental [Product](#products) whose performance is reported.
+`profit_in_cents` | **integer** `readonly`<br>Profit during period, calculated as revenue minus the purchase cost. 
+`purchase_cost_in_cents` | **integer** `readonly`<br>The total purchase cost of all stock held during the reporting period.
 `quantity` | **integer** `readonly`<br>Quantity in stock during period.
 `rent_duration_in_seconds` | **integer** `readonly`<br>How many seconds the product was rented out.
 `rented_count` | **integer** `readonly`<br>How many times the product was rented out.
 `revenue_in_cents` | **integer** `readonly`<br>Revenue during period.
+`roi_percentage` | **float** `readonly`<br>Return on investment in percentage points, calculated as (profit divided by purchase cost) multiplied by 100. 
 
 
 ## List performance for rental products
@@ -55,14 +58,17 @@ Check each individual operation to see which relations can be included as a side
         "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
         "type": "report_rentals",
         "attributes": {
-          "created_at": "2019-11-26T09:44:00.000000+00:00",
+          "created_at": "2019-11-26T05:02:00.000000+00:00",
           "name": "Product 1000064",
           "charge_duration_in_seconds": 14400,
           "rent_duration_in_seconds": 14400,
           "rented_count": 2,
           "downtime_count": 0,
           "downtime_duration_in_seconds": 0,
+          "purchase_cost_in_cents": null,
           "revenue_in_cents": 4000,
+          "profit_in_cents": null,
+          "roi_percentage": null,
           "quantity": 10,
           "product_id": "c71a94f5-ca5b-4748-8f7a-ce7f18b4bb8a"
         },

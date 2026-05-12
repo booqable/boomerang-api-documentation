@@ -30,7 +30,7 @@ Name | Description
 -- | --
 `bundle_items` | **[Bundle items](#bundle-items)** `hasmany`<br>The bundle items that make up this bundle. 
 `collection_items` | **[Collection items](#collection-items)** `hasmany`<br>The [CollectionItems](#collection-items) associated with this bundle. These represent the collections this bundle belongs to. 
-`inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this bundle. Because bundles do not exist on a physical level (they are a collection of products), the returned availability will be the maximum number of bundles that can be made from the available products (bundle availability is restricted by the least available product). 
+`inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](#availabilities) endpoint instead. Availability of this bundle. Because bundles do not exist on a physical level (they are a collection of products), the returned availability will be the maximum number of bundles that can be made from the available products (bundle availability is restricted by the least available product). 
 `photo` | **[Photo](#photos)** `optional`<br>Primary photo of this bundle. 
 `photos` | **[Photos](#photos)** `hasmany`<br>All photos of this bundle. The primary `photo` must be selected from this set. 
 `tax_category` | **[Tax category](#tax-categories)** `optional`<br>Tax category for tax calculations. When present, this tax category overrides the tax category of the individual products. 

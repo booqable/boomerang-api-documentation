@@ -66,7 +66,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T21:37:00.000000+00:00",
+          "created_at": "2028-06-15T16:55:00.000000+00:00",
           "product_name": "Product 1000066",
           "identifier": "id1000190",
           "charge_duration_in_seconds": 7200,
@@ -91,7 +91,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T21:37:00.000000+00:00",
+          "created_at": "2028-06-15T16:55:00.000000+00:00",
           "product_name": "Product 1000066",
           "identifier": "id1000191",
           "charge_duration_in_seconds": 0,
@@ -103,7 +103,7 @@ Check each individual operation to see which relations can be included as a side
           "default_purchase_cost_in_cents": null,
           "purchased_at": null,
           "temporary": false,
-          "revenue_in_cents": 2000,
+          "revenue_in_cents": 0,
           "profit_in_cents": null,
           "roi_percentage": null,
           "stock_item_id": "6ce9ed33-92eb-48b1-8528-75f4d4503cc9",
@@ -142,6 +142,7 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`archived` | **boolean** <br>`eq`
 `from` | **datetime** <br>`eq`
 `location_id` | **uuid** <br>`eq`
 `product_id` | **uuid** <br>`eq`

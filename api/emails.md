@@ -156,6 +156,7 @@ Name | Description
 `customer_id` | **uuid** <br>`eq`, `not_eq`
 `email_template_id` | **uuid** <br>`eq`, `not_eq`
 `employee_id` | **uuid** <br>`eq`, `not_eq`
+`has_document_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `has_error` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`
 `order_id` | **uuid** <br>`eq`, `not_eq`

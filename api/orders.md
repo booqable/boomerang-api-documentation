@@ -241,6 +241,7 @@ Check each individual operation to see which relations can be included as a side
 `billing_address_property_id` | **uuid** <br>The UUID of the address [Property](#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `confirm_shortage` | **boolean** `writeonly`<br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
 `coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`). 
+`coupon_errors` | **hash** `readonly`<br>Validation errors for the last coupon applied to the order. Contains the coupon identifier and error codes explaining why the coupon was invalidated. 
 `coupon_id` | **uuid** `nullable`<br>The [Coupon](#coupons) added to this Order. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `customer_id` | **uuid** `nullable`<br>The [Customer](#customers) this Order is for. 
@@ -258,6 +259,7 @@ Check each individual operation to see which relations can be included as a side
 `discount_percentage` | **float** `readonly`<br>The discount percentage applied to this order. May update if order amount changes and type is `fixed`. 
 `discount_type` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `discount_value` | **float** `writeonly`<br>The value to use for `discount_type`. 
+`dismiss_coupon_errors` | **boolean** `writeonly`<br>When set to `true`, dismisses the coupon error warnings on the order and clears the stored coupon errors. 
 `entirely_started` | **boolean** `readonly`<br>Whether all items on the order are started. 
 `entirely_stopped` | **boolean** `readonly`<br>Whether all items on the order are stopped. 
 `fulfillment_type` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
@@ -328,8 +330,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1969-03-13T17:00:01.000000+00:00",
-          "stops_at": "1969-04-12T17:00:01.000000+00:00",
+          "starts_at": "1968-12-29T21:42:01.000000+00:00",
+          "stops_at": "1969-01-28T21:42:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -374,6 +376,7 @@ Check each individual operation to see which relations can be included as a side
           "delivery_address_property_id": null,
           "fulfillment_type": "pickup",
           "delivery_address": null,
+          "coupon_errors": null,
           "customer_id": "5e7fb1d5-a69a-4dad-8f6c-0a321ec6da2c",
           "tax_region_id": null,
           "coupon_id": null,
@@ -580,14 +583,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-02-28T19:29:18Z",
-                       "lte": "2026-03-03T19:29:18Z"
+                       "gte": "2026-05-13T14:47:07Z",
+                       "lte": "2026-05-16T14:47:07Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-02-28T19:29:18Z",
-                       "lte": "2026-03-03T19:29:18Z"
+                       "gte": "2026-05-13T14:47:07Z",
+                       "lte": "2026-05-16T14:47:07Z"
                      }
                    }
                  ]
@@ -835,6 +838,7 @@ Returns an existing or new order for the current employee.
         "delivery_address_property_id": null,
         "fulfillment_type": "pickup",
         "delivery_address": null,
+        "coupon_errors": null,
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
@@ -958,8 +962,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-08-09T02:19:01.000000+00:00",
-        "stops_at": "1969-09-08T02:19:01.000000+00:00",
+        "starts_at": "1969-05-27T07:01:01.000000+00:00",
+        "stops_at": "1969-06-26T07:01:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1004,6 +1008,7 @@ This request accepts the following includes:
         "delivery_address_property_id": null,
         "fulfillment_type": "pickup",
         "delivery_address": null,
+        "coupon_errors": null,
         "customer_id": "af4ff106-fdde-49e2-83ec-57302f00cd68",
         "tax_region_id": null,
         "coupon_id": null,
@@ -1156,8 +1161,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:26:01.000000+00:00",
-        "stops_at": "2026-11-03T14:26:01.000000+00:00",
+        "starts_at": "2026-09-25T14:38:01.000000+00:00",
+        "stops_at": "2026-11-03T14:38:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1200,6 +1205,7 @@ When the following attributes are not specified, a sensible default will be pick
         "delivery_address_property_id": null,
         "fulfillment_type": "pickup",
         "delivery_address": null,
+        "coupon_errors": null,
         "customer_id": null,
         "tax_region_id": null,
         "coupon_id": null,
@@ -1269,8 +1275,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:44:00.000000+00:00",
-        "stops_at": "2018-05-14T18:44:00.000000+00:00",
+        "starts_at": "2018-04-05T18:56:00.000000+00:00",
+        "stops_at": "2018-05-14T18:56:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1313,6 +1319,7 @@ When the following attributes are not specified, a sensible default will be pick
         "delivery_address_property_id": "c145ac19-ea96-40c6-8d7c-9dc81eec5035",
         "fulfillment_type": "delivery",
         "delivery_address": "81801 Overseas Hwy\nSuite 100\nIslamorada Florida 33036\nUnited States",
+        "coupon_errors": null,
         "customer_id": "3a27640b-1429-4e99-8731-797893bb4e7a",
         "tax_region_id": null,
         "coupon_id": null,
@@ -1356,6 +1363,7 @@ Name | Description
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
+`data[attributes][dismiss_coupon_errors]` | **boolean** <br>When set to `true`, dismisses the coupon error warnings on the order and clears the stored coupon errors. 
 `data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 
@@ -1471,9 +1479,9 @@ When updating a customer on an order the following settings will be applied and 
       "id": "b7fc4715-4681-4fbf-8786-f911532c94f1",
       "type": "orders",
       "attributes": {
-        "grand_total_with_tax_in_cents": 97102,
+        "grand_total_with_tax_in_cents": 97103,
         "price_in_cents": 80250,
-        "to_be_paid_in_cents": 197102,
+        "to_be_paid_in_cents": 197103,
         "customer_id": "62778da7-58fa-4717-8474-a9bcd8c003b4",
         "tax_region_id": null
       },
@@ -1609,6 +1617,7 @@ Name | Description
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
 `data[attributes][discount_value]` | **float** <br>The value to use for `discount_type`. 
+`data[attributes][dismiss_coupon_errors]` | **boolean** <br>When set to `true`, dismisses the coupon error warnings on the order and clears the stored coupon errors. 
 `data[attributes][fulfillment_type]` | **enum** <br>Indicates the process used to fulfill this order. Values can be `pickup` (customer collects items from a location) or `delivery` (items are delivered to the customer's address). This affects which address fields are required and whether delivery charges apply.<br> One of: `pickup`, `delivery`.
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 

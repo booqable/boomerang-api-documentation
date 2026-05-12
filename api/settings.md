@@ -57,12 +57,8 @@ Configuration for [orders](#orders) (these settings also apply to the online sto
 Name | Description
 -- | --
 `use_times` | **Boolean**<br>Whether time selection is enabled, if not, full days are always planned and calculated
-`start_type` | **String**<br>Behavior of default start time, one of `fixed`, `relative`
-`start_relative_offset` | **Integer**<br>Offset in seconds from now, used when `start_type` is `relative`
-`start_fixed_at` | **String**<br>Fixed time of day, e.g. `14:00`, used when `start_type` is `fixed`
-`stop_type` | **String**<br>Behavior of default stop time, one of `fixed`, `relative`
-`stop_relative_offset` | **Integer**<br>Offset in seconds from now, used when `stop_type` is `relative`
-`stop_fixed_at` | **String**<br>Fixed time of day, e.g. `14:00`, used when `stop_type` is `fixed`
+`start_fixed_at` | **String**<br>Fixed start time of day, e.g. `14:00`
+`stop_fixed_at` | **String**<br>Fixed stop time of day, e.g. `14:00`
 
 #### Security
 
@@ -275,11 +271,7 @@ Name | Description
         },
         "orders": {
           "use_times": true,
-          "start_type": "fixed",
-          "start_relative_offset": 0,
           "start_fixed_at": "09:00",
-          "stop_type": "fixed",
-          "stop_relative_offset": 48,
           "stop_fixed_at": "15:00"
         },
         "security": {
@@ -298,11 +290,17 @@ Name | Description
           "display_price": "period",
           "show_powered_by": true,
           "default_collection_sort": "name",
+          "cross_sell.enabled": false,
+          "cross_sell.title": "Recommended products",
+          "cross_sell.subtitle": "Add matching items to make sure you have everything you need",
+          "cross_sell.layout": "list",
+          "cross_sell.show_only_available": true,
+          "cross_sell.maximum_products": 4,
           "use_order_lag_time": false,
           "order_lag_time_value": null,
           "order_lag_time_interval": null,
           "behaviors.add_button": "show_cart",
-          "behaviors.location_picker": "start_stop",
+          "behaviors.location_picker": "start",
           "payment_strategy": "none",
           "payment_strategy_value": 30,
           "payment_deposit": false,

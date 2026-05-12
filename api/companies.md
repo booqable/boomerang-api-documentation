@@ -31,32 +31,30 @@ A company holds information and configuration about an account.
 `default_timezone` | **string** <br>Company's default timezone. 
 `development` | **boolean** `readonly`<br>Whether this is a development account. 
 `email` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
+`euvat_member` | **boolean** `readonly`<br>Whether company is in an EU VAT member country. 
 `favicon_base64` | **string** `writeonly`<br>To upload a favicon send it as a base64 encoded string. 
 `favicon_url` | **string** `readonly`<br>Company favicon URL. 
 `financial_line_1` | **string** <br>First extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
 `financial_line_2` | **string** <br>Second extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
 `has_to_pay_vat` | **boolean** `readonly`<br>Whether the company has to pay VAT. 
 `id` | **uuid** `readonly`<br>Primary key.
-`in_europe` | **boolean** `readonly`<br>Whether company is situated in Europe. 
+`in_eur_country` | **boolean** `readonly`<br>Whether company is in a country that uses EUR. 
 `installed_online_store` | **boolean** `readonly`<br>If the online store is installed, this boolean will return true. 
 `logo_base64` | **string** `writeonly`<br>To update a logo send it as base64 encoded string. 
 `logo_url` | **string** `readonly`<br>URL of the uploaded logo. 
 `main_address` | **hash** `readonly`<br>A hash with the company main address fields. Use it when fetching the company. See `address` property type for more information. 
 `main_address_attributes` | **hash** `writeonly`<br>A hash with the company main address fields. Use it when updating the company main address. See `address` property type for more information. 
 `market` | **string** <br>The market the company operates in. 
-`medium` | **string** `readonly`<br>UTM medium present during signup. 
 `name` | **string** <br>Name of the company. 
 `pending_subscription` | **boolean** `readonly`<br>Whether the company has a pending subscription. 
 `phone` | **string** <br>Phone number. 
 `region` | **string** <br>Region. 
 `remove_favicon` | **boolean** `writeonly`<br>Remove current favicon. 
 `remove_logo` | **boolean** `writeonly`<br>Remove current logo. 
-`revenue_last_year` | **string** `readonly`<br>Revenue last year given during signup. 
 `shop_theme_id` | **uuid** <br>ID of installed shop theme. 
+`shop_theme_published` | **boolean** `readonly`<br>Whether the installed shop theme has been published. When `true`, the website-builder theme is rendered to storefront visitors. When `false`, the storefront falls back to the default booking-page theme. 
 `slug` | **string** `readonly`<br>Company's slug, the part of the domain name before `booqable.com`. 
-`source` | **string** `readonly`<br>UTM source present during signup. 
 `subscription` | **hash** `readonly` `extra`<br>Details about the subscription. 
-`team_size` | **string** `readonly`<br>Team size given during signup. 
 `tenant_token` | **string** `readonly`<br>Token. 
 `third_party_id` | **string** <br>ID used for third party tools. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -65,7 +63,6 @@ A company holds information and configuration about an account.
 `vat_reverse_charge_applicable` | **boolean** `readonly`<br>Whether VAT reverse charge is applicable for the company. 
 `vat_validation_status` | **string** `readonly`<br>Status of the VAT number validation. 
 `website` | **string** <br>Website. 
-`year_business_start` | **string** `readonly`<br>Year when company started, given during signup. 
 `zipcode` | **string** <br>Zipcode. 
 
 
@@ -91,7 +88,7 @@ A company holds information and configuration about an account.
         "updated_at": "2025-12-03T02:00:00.000000+00:00",
         "name": "iRent",
         "slug": "irent",
-        "email": "mail74@company.com",
+        "email": "mail75@company.com",
         "billing_email": null,
         "phone": null,
         "website": null,
@@ -118,7 +115,8 @@ A company holds information and configuration about an account.
         "financial_line_1": null,
         "financial_line_2": null,
         "vat_number": null,
-        "in_europe": null,
+        "in_eur_country": false,
+        "euvat_member": false,
         "has_to_pay_vat": false,
         "vat_reverse_charge_applicable": false,
         "vat_validation_status": "pending",
@@ -127,14 +125,10 @@ A company holds information and configuration about an account.
         "custom_domain_validation": null,
         "development": false,
         "shop_theme_id": null,
+        "shop_theme_published": false,
         "installed_online_store": false,
-        "source": null,
-        "medium": null,
         "tenant_token": "e08844f444c33fcafbe78fef211e194c",
         "pending_subscription": false,
-        "team_size": null,
-        "revenue_last_year": null,
-        "year_business_start": null,
         "address": "Netherlands",
         "main_address": null,
         "billing_address": null,
@@ -261,6 +255,7 @@ Name | Description
             "away_mode",
             "custom_domain",
             "availability_reports",
+            "fulfillment_reports",
             "advanced_pricing",
             "bundles",
             "prevent_last_minute_reservations",
@@ -279,6 +274,8 @@ Name | Description
             "website_integration",
             "custom_scripts",
             "customer_report",
+            "roi_reports",
+            "company_performance_report",
             "api",
             "product_shortage_limits",
             "remove_powered_by",
@@ -362,7 +359,7 @@ This request does not accept any includes
         "updated_at": "2020-02-19T10:28:01.000000+00:00",
         "name": "iRent LLC",
         "slug": "irent",
-        "email": "mail76@company.com",
+        "email": "mail77@company.com",
         "billing_email": null,
         "phone": null,
         "website": null,
@@ -389,7 +386,8 @@ This request does not accept any includes
         "financial_line_1": null,
         "financial_line_2": null,
         "vat_number": null,
-        "in_europe": null,
+        "in_eur_country": false,
+        "euvat_member": false,
         "has_to_pay_vat": false,
         "vat_reverse_charge_applicable": false,
         "vat_validation_status": "pending",
@@ -398,14 +396,10 @@ This request does not accept any includes
         "custom_domain_validation": null,
         "development": false,
         "shop_theme_id": null,
+        "shop_theme_published": false,
         "installed_online_store": false,
-        "source": null,
-        "medium": null,
         "tenant_token": "7a1067c6345a05d4627e8ec7bdeadbe6",
         "pending_subscription": false,
-        "team_size": null,
-        "revenue_last_year": null,
-        "year_business_start": null,
         "address": "Netherlands",
         "main_address": null,
         "billing_address": null,
