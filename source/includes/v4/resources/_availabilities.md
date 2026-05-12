@@ -7,8 +7,8 @@ are available or unavailable, accounting for business rules like buffer times an
 The availability endpoint returns individual availability records as a standard JSON:API collection, where
 each record includes detailed status information for a specific date or time interval.
 
-**Note:** For raw inventory data (stock counts, planned quantities) for reporting purposes,
-see the [Inventory levels](#inventory-levels) and [Inventory level intervals](#inventory-level-intervals) endpoints.
+**Note:** The [Inventory levels](#inventory-levels) and [Inventory level intervals](#inventory-level-intervals) endpoints
+are deprecated. This endpoint is the recommended way to check product availability.
 
 ## Subject Types
 

@@ -22,7 +22,7 @@ Name | Description
 -- | --
 `barcode` | **[Barcode](#barcodes)** `optional`<br>The [Barcode](#barcodes) that points to this product. 
 `collection_items` | **[Collection items](#collection-items)** `hasmany`<br>The [CollectionItems](#collection-items) associated with this item. These represent the collections this item belongs to. 
-`inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>Availability of this product. 
+`inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](#availabilities) endpoint instead. Availability of this product. 
 `photo` | **[Photo](#photos)** `optional`<br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
 `price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_structure` | **[Price structure](#price-structures)** `optional`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
@@ -165,7 +165,7 @@ Check each individual operation to see which relations can be included as a side
           "name": "iPad Pro - blue",
           "group_name": "iPad Pro",
           "slug": "ipad-pro-blue",
-          "sku": "PRODUCT 1000063",
+          "sku": "PRODUCT 1000062",
           "buffer_time_before": 0,
           "buffer_time_after": 0,
           "product_type": "rental",

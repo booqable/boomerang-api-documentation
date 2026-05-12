@@ -8,7 +8,7 @@ A convenient way to bulk update positions for supported resources.
 -- | --
 `id` | **uuid** `readonly`<br>Primary key.
 `ids` | **array[string]** `writeonly`<br>Array of ids, positions are determined by the order of the array.
-`type` | **enum** `writeonly`<br>Type of resource to update.<br>One of: `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`.
+`type` | **enum** `writeonly`<br>Type of resource to update.<br>One of: `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`, `recommendations`.
 
 
 ## Sort resources
@@ -93,7 +93,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][ids]` | **array[string]** <br>Array of ids, positions are determined by the order of the array.
-`data[attributes][type]` | **enum** <br>Type of resource to update.<br>One of: `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`.
+`data[attributes][type]` | **enum** <br>Type of resource to update.<br>One of: `bundle_items`, `default_properties`, `lines`, `photos`, `properties`, `tax_rates`, `collection_items`, `products`, `recommendations`.
 
 
 ### Includes

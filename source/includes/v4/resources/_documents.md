@@ -30,6 +30,7 @@ Name | Description
 `lines` | **[Lines](#lines)** `hasmany`<br>The lines of this document. 
 `order` | **[Order](#orders)** `required`<br>The order this document is for. 
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom properties associated with this document. 
+`signature` | **[Signature](#signatures)** `optional`<br>The signature associated with this document, if any. 
 `tax_region` | **[Tax region](#tax-regions)** `optional`<br>The associated tax region. 
 `tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The calculated taxes, one value for each applicable tax rate. 
 
@@ -242,9 +243,9 @@ Name | Description
 `revised` | **boolean** <br>`eq`
 `revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
-`start_location_id` | **uuid** <br>`eq`, `not_eq`
+`start_location_id` | **uuid** <br>`eq`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **enum** <br>`eq`
+`status` | **string** <br>`eq`
 `stop_location_id` | **uuid** <br>`eq`, `not_eq`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tag_list` | **string** <br>`eq`
@@ -423,9 +424,9 @@ Name | Description
 `revised` | **boolean** <br>`eq`
 `revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
-`start_location_id` | **uuid** <br>`eq`, `not_eq`
+`start_location_id` | **uuid** <br>`eq`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`status` | **enum** <br>`eq`
+`status` | **string** <br>`eq`
 `stop_location_id` | **uuid** <br>`eq`, `not_eq`
 `stops_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `tag_list` | **string** <br>`eq`
@@ -566,7 +567,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,properties,customer`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=signature,coupon,properties`
 
 
 ### Includes
@@ -615,6 +616,7 @@ This request accepts the following includes:
     </ul>
   </li>
   <li><code>properties</code></li>
+  <li><code>signature</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
 </ul>
@@ -664,8 +666,8 @@ This request accepts the following includes:
         "body": "",
         "footer": "",
         "reference": null,
-        "starts_at": "1976-11-20T04:01:01.000000+00:00",
-        "stops_at": "1976-12-20T04:01:01.000000+00:00",
+        "starts_at": "1976-09-07T08:43:01.000000+00:00",
+        "stops_at": "1976-10-07T08:43:01.000000+00:00",
         "start_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "stop_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "revised": false,
@@ -720,7 +722,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,properties,customer`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=signature,coupon,properties`
 
 
 ### Request body
@@ -801,6 +803,7 @@ This request accepts the following includes:
     </ul>
   </li>
   <li><code>properties</code></li>
+  <li><code>signature</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
 </ul>
@@ -906,7 +909,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[documents]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon,properties,customer`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=signature,coupon,properties`
 
 
 ### Request body
@@ -987,6 +990,7 @@ This request accepts the following includes:
     </ul>
   </li>
   <li><code>properties</code></li>
+  <li><code>signature</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
 </ul>

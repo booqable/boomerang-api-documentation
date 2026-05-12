@@ -3,10 +3,31 @@
 Create codes to discount orders by a fixed amount or a percentage.
 Customers can redeem the codes online at checkout. Coupons can also be added to orders in the back office.
 
+Updates made to a coupon are not automatically reflected in orders that already have
+the coupon applied. To update the discount on existing orders, this must be done manually.
+
 <aside class="notice">
   Availability of the coupons feature depends on the current pricing plan.
 </aside>
 
+<aside class="notice">
+  When the coupons improvements feature is not yet enabled for the account, updating a coupon
+  archives the existing one and creates a new one. Advanced fields (<code>starts_at</code>,
+  <code>ends_at</code>, <code>stackable</code>, <code>eligible_item_type</code>,
+  <code>eligible_item_ids</code>, <code>max_redemptions</code>, <code>one_per_customer</code>,
+  <code>minimum_order_amount_in_cents</code>) are silently forced to their legacy defaults
+  and cannot be set via the API until the feature is enabled.
+</aside>
+
+## Relationships
+Name | Description
+-- | --
+`coupon_items` | **[Coupon items](#coupon-items)** `hasmany`<br>The coupon items that define which collections or items are eligible. You can sideload coupon items and their linked items with `include=coupon_items.item`. 
+
+
+Check matching attributes under [Fields](#coupons-fields) to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.
 ## Fields
 
  Name | Description
@@ -14,12 +35,20 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
 `active` | **boolean** <br>Whether coupon can be redeemed at the moment. 
 `archived` | **boolean** `readonly`<br>Whether coupon is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the coupon was archived. 
-`coupon_type` | **string** <br>How the discount is calculated. 
+`coupon_type` | **string** <br>How the discount is calculated. Immutable 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`ends_at` | **datetime** `nullable`<br>Optional end date for redeeming the coupon. Saved at the end of the selected day. 
+`eligible_item_ids` | **array** `writeonly`<br>The IDs of the eligible items. Use Collection IDs when `eligible_item_type` is `collection`, Item IDs when it is `item`, and an empty array for `all`. Only applied when the coupons improvements feature is enabled; otherwise silently ignored. 
+`eligible_item_type` | **enum** <br>Specifies which items the coupon applies to. One of `all`, `collection`, or `item`. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `all`. 
+`ends_at` | **datetime** `nullable`<br>Optional end date for redeeming the coupon. Saved at the end of the selected day. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** <br>The code that customers need to type in. 
-`starts_at` | **datetime** `nullable`<br>Optional start date for redeeming the coupon. Saved at the start of the selected day. 
+`identifier` | **string** <br>The code that customers need to type in. Immutable 
+`max_redemptions` | **integer** `nullable`<br>Optional maximum number of times the coupon can be redeemed. Set to `null` for unlimited redemptions. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`minimum_order_amount_in_cents` | **integer** `nullable`<br>Optional minimum order amount in cents required to redeem this coupon. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`one_per_customer` | **boolean** <br>Optional, whether the coupon can be redeemed only once per customer. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `false`. 
+`redemptions_count` | **integer** `readonly`<br>The number of times the coupon has been redeemed. Read-only. 
+`stackable` | **boolean** <br>Optional, whether the coupon can be combined with a customer discount. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `true`. 
+`starts_at` | **datetime** `nullable`<br>Optional start date for redeeming the coupon. Saved at the start of the selected day. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`tag_list` | **array[string]** <br>Case insensitive tag list. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `value` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
@@ -52,11 +81,86 @@ Customers can redeem the codes online at checkout. Coupons can also be added to 
           "value": 20,
           "active": true,
           "starts_at": null,
-          "ends_at": null
-        }
+          "ends_at": null,
+          "eligible_item_type": "all",
+          "max_redemptions": null,
+          "one_per_customer": false,
+          "minimum_order_amount_in_cents": null,
+          "stackable": true,
+          "tag_list": [],
+          "redemptions_count": 0
+        },
+        "relationships": {}
       }
     ],
     "meta": {}
+  }
+```
+
+> How to filter coupons and request stats:
+
+```shell
+  curl --get 'https://example.booqable.com/api/4/coupons'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[active]=true'
+       --data-urlencode 'filter[q]=WINTER'
+       --data-urlencode 'filter[range][from]=2026-05-12T14:44:56Z'
+       --data-urlencode 'filter[range][till]=2026-05-13T14:44:56Z'
+       --data-urlencode 'filter[tag_list][]=winter'
+       --data-urlencode 'filter[tag_list][]=clearance'
+       --data-urlencode 'stats[active][]=count'
+       --data-urlencode 'stats[tag_list][]=count'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": [
+      {
+        "id": "dcc96986-af97-41b8-8656-f2c03fdce700",
+        "type": "coupons",
+        "attributes": {
+          "created_at": "2027-01-05T00:08:18.000000+00:00",
+          "updated_at": "2027-01-05T00:08:18.000000+00:00",
+          "archived": false,
+          "archived_at": null,
+          "identifier": "WINTERACTIVE",
+          "coupon_type": "percentage",
+          "value": 10,
+          "active": true,
+          "starts_at": "2027-01-03T09:24:18.000000+00:00",
+          "ends_at": "2027-01-07T09:23:18.000000+00:00",
+          "eligible_item_type": "all",
+          "max_redemptions": null,
+          "one_per_customer": false,
+          "minimum_order_amount_in_cents": null,
+          "stackable": true,
+          "tag_list": [
+            "winter"
+          ],
+          "redemptions_count": 0
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {
+      "stats": {
+        "active": {
+          "count": {
+            "false": 1,
+            "true": 3
+          }
+        },
+        "tag_list": {
+          "count": {
+            "clearance": 1,
+            "summer": 1,
+            "winter": 1
+          }
+        }
+      }
+    }
   }
 ```
 
@@ -72,6 +176,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon_items`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -89,10 +194,18 @@ Name | Description
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `coupon_type` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`eligible_item_type` | **enum** <br>`eq`
 `ends_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
 `identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`max_redemptions` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`minimum_order_amount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`one_per_customer` | **boolean** <br>`eq`
+`q` | **string** <br>`eq`
+`range` | **hash** <br>`eq`
+`stackable` | **boolean** <br>`eq`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`tag_list` | **string** <br>`eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `value` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 
@@ -103,12 +216,30 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`active` | **array** <br>`count`
+`tag_list` | **array** <br>`count`
 `total` | **array** <br>`count`
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+<ul>
+  <li>
+    <code>coupon_items</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
 ## Fetch a coupon
 
 
@@ -136,9 +267,110 @@ This request does not accept any includes
         "value": 20,
         "active": true,
         "starts_at": null,
-        "ends_at": null
+        "ends_at": null,
+        "eligible_item_type": "all",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+> How to fetch a coupon with coupon items and linked items:
+
+```shell
+  curl --get 'https://example.booqable.com/api/4/coupons/b5db8114-9326-413d-86dd-48c2b18da21c'
+       --header 'content-type: application/json'
+       --data-urlencode 'include=coupon_items.item'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "b5db8114-9326-413d-86dd-48c2b18da21c",
+      "type": "coupons",
+      "attributes": {
+        "created_at": "2021-05-20T06:22:00.000000+00:00",
+        "updated_at": "2021-05-20T06:22:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "identifier": "SUMMER20OFF",
+        "coupon_type": "percentage",
+        "value": 20,
+        "active": true,
+        "starts_at": null,
+        "ends_at": null,
+        "eligible_item_type": "all",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {
+        "coupon_items": {
+          "data": [
+            {
+              "type": "coupon_items",
+              "id": "73b91aad-0411-443a-8c63-06f1ea00c9a9"
+            }
+          ]
+        }
       }
     },
+    "included": [
+      {
+        "id": "73b91aad-0411-443a-8c63-06f1ea00c9a9",
+        "type": "coupon_items",
+        "attributes": {
+          "created_at": "2021-05-20T06:22:00.000000+00:00",
+          "updated_at": "2021-05-20T06:22:00.000000+00:00",
+          "item_id": "db8f9f37-6f88-4547-8a8a-99899013000b",
+          "item_type": "Collection",
+          "coupon_id": "b5db8114-9326-413d-86dd-48c2b18da21c"
+        },
+        "relationships": {
+          "item": {
+            "data": {
+              "type": "collections",
+              "id": "db8f9f37-6f88-4547-8a8a-99899013000b"
+            }
+          }
+        }
+      },
+      {
+        "id": "db8f9f37-6f88-4547-8a8a-99899013000b",
+        "type": "collections",
+        "attributes": {
+          "created_at": "2021-05-20T06:22:00.000000+00:00",
+          "updated_at": "2021-05-20T06:22:00.000000+00:00",
+          "name": "Collection 9",
+          "slug": "collection-9",
+          "description": null,
+          "seo_title": null,
+          "seo_description": null,
+          "collection_type": "manual",
+          "system": false,
+          "item_count": 0,
+          "show_in_store": true,
+          "parent_id": null,
+          "depth": 1,
+          "position": null,
+          "image_url": null,
+          "image_large_url": null
+        },
+        "relationships": {}
+      }
+    ],
     "meta": {}
   }
 ```
@@ -154,11 +386,28 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon_items`
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+<ul>
+  <li>
+    <code>coupon_items</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
 ## Create a coupon
 
 
@@ -198,8 +447,71 @@ This request does not accept any includes
         "value": 2000,
         "active": true,
         "starts_at": null,
-        "ends_at": null
-      }
+        "ends_at": null,
+        "eligible_item_type": "all",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+> How to create a coupon for specific collections:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/coupons'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "coupons",
+           "attributes": {
+             "identifier": "COLLECTIONDISCOUNT",
+             "coupon_type": "percentage",
+             "value": 15,
+             "active": true,
+             "eligible_item_type": "collection",
+             "eligible_item_ids": [
+               "6b90732b-0ba8-411c-8295-24c74ea6ca35"
+             ]
+           }
+         }
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "2aaf6061-7ab6-4242-8f3d-53cb9eccc785",
+      "type": "coupons",
+      "attributes": {
+        "created_at": "2026-01-11T05:16:26.000000+00:00",
+        "updated_at": "2026-01-11T05:16:26.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "identifier": "COLLECTIONDISCOUNT",
+        "coupon_type": "percentage",
+        "value": 15,
+        "active": true,
+        "starts_at": null,
+        "ends_at": null,
+        "eligible_item_type": "collection",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {}
     },
     "meta": {}
   }
@@ -216,6 +528,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon_items`
 
 
 ### Request body
@@ -225,16 +538,39 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment. 
-`data[attributes][coupon_type]` | **string** <br>How the discount is calculated. 
-`data[attributes][ends_at]` | **datetime** <br>Optional end date for redeeming the coupon. Saved at the end of the selected day. 
-`data[attributes][identifier]` | **string** <br>The code that customers need to type in. 
-`data[attributes][starts_at]` | **datetime** <br>Optional start date for redeeming the coupon. Saved at the start of the selected day. 
+`data[attributes][coupon_type]` | **string** <br>How the discount is calculated. Immutable 
+`data[attributes][eligible_item_ids][]` | **array** <br>The IDs of the eligible items. Use Collection IDs when `eligible_item_type` is `collection`, Item IDs when it is `item`, and an empty array for `all`. Only applied when the coupons improvements feature is enabled; otherwise silently ignored. 
+`data[attributes][eligible_item_type]` | **enum** <br>Specifies which items the coupon applies to. One of `all`, `collection`, or `item`. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `all`. 
+`data[attributes][ends_at]` | **datetime** <br>Optional end date for redeeming the coupon. Saved at the end of the selected day. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][identifier]` | **string** <br>The code that customers need to type in. Immutable 
+`data[attributes][max_redemptions]` | **integer** <br>Optional maximum number of times the coupon can be redeemed. Set to `null` for unlimited redemptions. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][minimum_order_amount_in_cents]` | **integer** <br>Optional minimum order amount in cents required to redeem this coupon. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][one_per_customer]` | **boolean** <br>Optional, whether the coupon can be redeemed only once per customer. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `false`. 
+`data[attributes][stackable]` | **boolean** <br>Optional, whether the coupon can be combined with a customer discount. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `true`. 
+`data[attributes][starts_at]` | **datetime** <br>Optional start date for redeeming the coupon. Saved at the start of the selected day. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
 `data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+<ul>
+  <li>
+    <code>coupon_items</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
 ## Update a coupon
 
 When updating a coupon the existing one is archived and a new one gets created:
@@ -275,8 +611,16 @@ When updating a coupon the existing one is archived and a new one gets created:
         "value": 30,
         "active": false,
         "starts_at": null,
-        "ends_at": null
-      }
+        "ends_at": null,
+        "eligible_item_type": "all",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {}
     },
     "meta": {}
   }
@@ -316,8 +660,68 @@ When updating a coupon the existing one is archived and a new one gets created:
         "value": 20,
         "active": false,
         "starts_at": null,
-        "ends_at": null
-      }
+        "ends_at": null,
+        "eligible_item_type": "all",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+> How to update coupon items:
+
+```shell
+  curl --request PUT
+       --url 'https://example.booqable.com/api/4/coupons/50079922-d6ce-447d-8427-2a146dbbdb31'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "id": "50079922-d6ce-447d-8427-2a146dbbdb31",
+           "type": "coupons",
+           "attributes": {
+             "eligible_item_type": "collection",
+             "eligible_item_ids": [
+               "e719920f-7104-4f19-8a34-d298361ef615"
+             ]
+           }
+         }
+       }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "50079922-d6ce-447d-8427-2a146dbbdb31",
+      "type": "coupons",
+      "attributes": {
+        "created_at": "2026-12-24T11:33:01.000000+00:00",
+        "updated_at": "2026-12-24T11:33:01.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "identifier": "SUMMER20OFF",
+        "coupon_type": "percentage",
+        "value": 20,
+        "active": true,
+        "starts_at": null,
+        "ends_at": null,
+        "eligible_item_type": "collection",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {}
     },
     "meta": {}
   }
@@ -334,6 +738,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[coupons]=created_at,updated_at,archived`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=coupon_items`
 
 
 ### Request body
@@ -343,16 +748,39 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][active]` | **boolean** <br>Whether coupon can be redeemed at the moment. 
-`data[attributes][coupon_type]` | **string** <br>How the discount is calculated. 
-`data[attributes][ends_at]` | **datetime** <br>Optional end date for redeeming the coupon. Saved at the end of the selected day. 
-`data[attributes][identifier]` | **string** <br>The code that customers need to type in. 
-`data[attributes][starts_at]` | **datetime** <br>Optional start date for redeeming the coupon. Saved at the start of the selected day. 
+`data[attributes][coupon_type]` | **string** <br>How the discount is calculated. Immutable 
+`data[attributes][eligible_item_ids][]` | **array** <br>The IDs of the eligible items. Use Collection IDs when `eligible_item_type` is `collection`, Item IDs when it is `item`, and an empty array for `all`. Only applied when the coupons improvements feature is enabled; otherwise silently ignored. 
+`data[attributes][eligible_item_type]` | **enum** <br>Specifies which items the coupon applies to. One of `all`, `collection`, or `item`. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `all`. 
+`data[attributes][ends_at]` | **datetime** <br>Optional end date for redeeming the coupon. Saved at the end of the selected day. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][identifier]` | **string** <br>The code that customers need to type in. Immutable 
+`data[attributes][max_redemptions]` | **integer** <br>Optional maximum number of times the coupon can be redeemed. Set to `null` for unlimited redemptions. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][minimum_order_amount_in_cents]` | **integer** <br>Optional minimum order amount in cents required to redeem this coupon. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][one_per_customer]` | **boolean** <br>Optional, whether the coupon can be redeemed only once per customer. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `false`. 
+`data[attributes][stackable]` | **boolean** <br>Optional, whether the coupon can be combined with a customer discount. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `true`. 
+`data[attributes][starts_at]` | **datetime** <br>Optional start date for redeeming the coupon. Saved at the start of the selected day. Only applied when the coupons improvements feature is enabled; otherwise silently forced to `null`. 
+`data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
 `data[attributes][value]` | **integer** <br>A percentage for type `percentage` or a value in cents for `cents`. 
 
 
 ### Includes
 
-This request does not accept any includes
+This request accepts the following includes:
+
+<ul>
+  <li>
+    <code>coupon_items</code>
+    <ul>
+      <li>
+          <code>item</code>
+          <ul>
+            <li><code>photo</code></li>
+          </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
 ## Archive a coupon
 
 
@@ -381,8 +809,16 @@ This request does not accept any includes
         "value": 20,
         "active": true,
         "starts_at": null,
-        "ends_at": null
-      }
+        "ends_at": null,
+        "eligible_item_type": "all",
+        "max_redemptions": null,
+        "one_per_customer": false,
+        "minimum_order_amount_in_cents": null,
+        "stackable": true,
+        "tag_list": [],
+        "redemptions_count": 0
+      },
+      "relationships": {}
     },
     "meta": {}
   }

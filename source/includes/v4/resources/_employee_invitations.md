@@ -25,7 +25,7 @@ Check each individual operation to see which relations can be included as a side
 `firstname` | **string** `writeonly`<br>First name of the employee. 
 `id` | **uuid** <br>Specify employee ID to re-send invitation. 
 `lastname` | **string** `writeonly`<br>Last name of the employee. 
-`permissions` | **array[string]** `writeonly`<br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`. 
+`permissions` | **array[string]** `writeonly`<br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`, `ai_assistant`. 
 
 
 ## Send invitations
@@ -91,7 +91,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=mm&size=200",
-          "third_party_id": "1ccdaa36-f317-4feb-8a06-003668fc0c59-1772220478"
+          "third_party_id": "1ccdaa36-f317-4feb-8a06-003668fc0c59-1778597133"
         }
       }
     ],
@@ -167,12 +167,13 @@ Note that you can also update other fields.:
             "delete_invoices",
             "make_invoice_revisions",
             "override_rental_period",
-            "activity_logs"
+            "activity_logs",
+            "ai_assistant"
           ],
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=mm&size=200",
-          "third_party_id": "a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1772220479"
+          "third_party_id": "a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1778597133"
         }
       }
     ],
@@ -205,7 +206,7 @@ Name | Description
 `data[attributes][firstname]` | **string** <br>First name of the employee. 
 `data[attributes][id]` | **uuid** <br>Specify employee ID to re-send invitation. 
 `data[attributes][lastname]` | **string** <br>Last name of the employee. 
-`data[attributes][permissions]` | **array[string]** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`. 
+`data[attributes][permissions]` | **array[string]** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`, `ai_assistant`. 
 
 
 ### Includes

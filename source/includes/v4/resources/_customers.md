@@ -26,8 +26,8 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `archived` | **boolean** `readonly`<br>Whether customer is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the customer was archived. 
-`average_order_value_in_cents` | **integer** `readonly`<br>The average order value of the customer's confirmed orders (revenue_in_cents / order_count) 
-`balance_due_in_cents` | **integer** `readonly`<br>The total amount remaining to be paid for the customer's confirmed orders (incl. taxes, incl. deposit) 
+`average_order_value_in_cents` | **integer** `readonly`<br>The average order value of the customer's confirmed and reserved orders (revenue_in_cents / order_count) 
+`balance_due_in_cents` | **integer** `readonly`<br>The total amount remaining to be paid for the customer's confirmed and reserved orders (incl. taxes, incl. deposit) 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `deposit_type` | **string** <br>The deposit added to new orders of this customer by default. 
 `deposit_value` | **float** <br>The value to use for `deposit_type`. 
@@ -36,15 +36,15 @@ Check each individual operation to see which relations can be included as a side
 `email_marketing_consent_updated_at` | **datetime** `readonly`<br>When the email marketing consent was last updated. 
 `email_marketing_consented` | **boolean** <br>Whether the customer has consented to receive email marketing. 
 `id` | **uuid** `readonly`<br>Primary key.
-`last_order_at` | **datetime** `readonly`<br>The creation date of the customer's last confirmed order 
+`latest_order_at` | **datetime** `readonly`<br>The creation date of the customer's latest confirmed or reserved order 
 `legal_type` | **string** <br>Either `person` or `commercial`. 
 `merge_suggestion_customer_id` | **uuid** <br>Holds the customer this customer is a possible duplicate of. 
 `name` | **string** <br>Person or Company name. 
 `number` | **integer** `readonly`<br>The assigned number. 
-`order_count` | **integer** `readonly`<br>Number of confirmed orders for this customer (only includes orders in status: started, stopped, archived) 
+`order_count` | **integer** `readonly`<br>Number of confirmed orders for this customer (only includes orders in status: reserved, started, stopped, archived) 
 `properties` | **hash** `readonly`<br>A hash containing all basic property values. This is a simplified representation; sideload the properties relation if you need more detailed information of properties. 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties to be associated with this customer. 
-`revenue_in_cents` | **integer** `readonly`<br>The total order value for the customer's confirmed orders (excl. taxes, excl. deposit) 
+`revenue_in_cents` | **integer** `readonly`<br>The total order value for the customer's confirmed and reserved orders (excl. taxes, excl. deposit) 
 `stripe_id` | **string** <br>The Stripe customer ID. 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
 `tax_region_id` | **uuid** `nullable`<br>Tax region assigned to new orders for this customer. 
@@ -86,7 +86,7 @@ Check each individual operation to see which relations can be included as a side
           "order_count": 0,
           "revenue_in_cents": 0,
           "balance_due_in_cents": 0,
-          "last_order_at": null,
+          "latest_order_at": null,
           "average_order_value_in_cents": 0,
           "properties": {},
           "tag_list": [],
@@ -138,7 +138,7 @@ Name | Description
 `email` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `email_marketing_consented` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`last_order_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`latest_order_at` | **datetime** <br>`gt`, `gte`, `lt`, `lte`
 `legal_type` | **string** <br>`eq`
 `merge_suggestion_customer_id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -279,7 +279,7 @@ Name | Description
 `email` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `email_marketing_consented` | **boolean** <br>`eq`
 `id` | **uuid** <br>`eq`, `not_eq`, `gt`
-`last_order_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`latest_order_at` | **datetime** <br>`gt`, `gte`, `lt`, `lte`
 `legal_type` | **string** <br>`eq`
 `merge_suggestion_customer_id` | **uuid** <br>`eq`, `not_eq`
 `name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
@@ -355,7 +355,7 @@ This request accepts the following includes:
         "order_count": 0,
         "revenue_in_cents": 0,
         "balance_due_in_cents": 0,
-        "last_order_at": null,
+        "latest_order_at": null,
         "average_order_value_in_cents": 0,
         "properties": {},
         "tag_list": [],
@@ -446,7 +446,7 @@ This request accepts the following includes:
         "order_count": 0,
         "revenue_in_cents": 0,
         "balance_due_in_cents": 0,
-        "last_order_at": null,
+        "latest_order_at": null,
         "average_order_value_in_cents": 0,
         "properties": {},
         "tag_list": [],
@@ -550,7 +550,7 @@ This request accepts the following includes:
         "order_count": 0,
         "revenue_in_cents": 0,
         "balance_due_in_cents": 0,
-        "last_order_at": null,
+        "latest_order_at": null,
         "average_order_value_in_cents": 0,
         "properties": {},
         "tag_list": [],
@@ -645,7 +645,7 @@ This request accepts the following includes:
         "order_count": 0,
         "revenue_in_cents": 0,
         "balance_due_in_cents": 0,
-        "last_order_at": null,
+        "latest_order_at": null,
         "average_order_value_in_cents": 0,
         "properties": {},
         "tag_list": [],

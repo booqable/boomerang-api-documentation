@@ -11,7 +11,7 @@ The Tag resource allows to gather names and usage counts of tags that are being 
  Name | Description
 -- | --
 `count` | **integer** <br>How often this tag is used.
-`for` | **enum** `writeonly`<br>The resource to show the tag counts for.<br>One of: `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`.
+`for` | **enum** `writeonly`<br>The resource to show the tag counts for.<br>One of: `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`, `Coupon`.
 `id` | **uuid** `readonly`<br>Primary key.
 `name` | **string** <br>Name of the tag.
 

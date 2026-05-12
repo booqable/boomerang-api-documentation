@@ -250,7 +250,7 @@ This request accepts the following includes:
 ## Create a location
 
 
-> How to create a location and assign it to a cluster:
+> How to create a location:
 
 ```shell
   curl --request POST
@@ -268,13 +268,9 @@ This request accepts the following includes:
              "zipcode": "8911LJ",
              "city": "Leeuwarden",
              "region": "Friesland",
-             "country": "Netherlands",
-             "cluster_ids": [
-               "b6b7e9ad-3c95-41ca-897a-d2bd4270d323"
-             ]
+             "country": "Netherlands"
            }
-         },
-         "include": "clusters"
+         }
        }'
 ```
 
@@ -283,11 +279,11 @@ This request accepts the following includes:
 ```json
   {
     "data": {
-      "id": "d47e53d6-ce3a-42c6-8ca9-98dd789e4cde",
+      "id": "5be434a1-6596-4ee2-85bd-bacf7f605a45",
       "type": "locations",
       "attributes": {
-        "created_at": "2015-05-03T23:16:00.000000+00:00",
-        "updated_at": "2015-05-03T23:16:00.000000+00:00",
+        "created_at": "2026-11-25T21:28:03.000000+00:00",
+        "updated_at": "2026-11-25T21:28:03.000000+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Store",
@@ -299,9 +295,7 @@ This request accepts the following includes:
         "city": "Leeuwarden",
         "region": "Friesland",
         "country": "Netherlands",
-        "cluster_ids": [
-          "b6b7e9ad-3c95-41ca-897a-d2bd4270d323"
-        ],
+        "cluster_ids": [],
         "pickup_enabled": true,
         "delivery_enabled": false,
         "fulfillment_capabilities": [
@@ -317,39 +311,15 @@ This request accepts the following includes:
           "region": "Friesland",
           "zipcode": "8911LJ",
           "country": "Netherlands",
-          "country_id": "b96c2137-478b-49f8-801c-2aa4b0a54679",
+          "country_id": "d26f5233-d408-4d98-8d55-137351a9e4b6",
           "province_id": null,
           "latitude": null,
           "longitude": null,
           "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden\nNetherlands"
         }
       },
-      "relationships": {
-        "clusters": {
-          "data": [
-            {
-              "type": "clusters",
-              "id": "b6b7e9ad-3c95-41ca-897a-d2bd4270d323"
-            }
-          ]
-        }
-      }
+      "relationships": {}
     },
-    "included": [
-      {
-        "id": "b6b7e9ad-3c95-41ca-897a-d2bd4270d323",
-        "type": "clusters",
-        "attributes": {
-          "created_at": "2015-05-03T23:16:00.000000+00:00",
-          "updated_at": "2015-05-03T23:16:00.000000+00:00",
-          "name": "North",
-          "location_ids": [
-            "d47e53d6-ce3a-42c6-8ca9-98dd789e4cde"
-          ]
-        },
-        "relationships": {}
-      }
-    ],
     "meta": {}
   }
 ```
@@ -402,27 +372,21 @@ This request accepts the following includes:
 
 ## Update a location
 
-Note that disassociating clusters may result in a shortage error.
 
-> How to update a location and assign it to multiple clusters:
+> How to update a location:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/4/locations/620301be-6eb5-4f1f-8fdd-7d1539cbcfc2'
+       --url 'https://example.booqable.com/api/4/locations/403f9cbe-54ea-430e-8c50-e38c2f513535'
        --header 'content-type: application/json'
        --data '{
          "data": {
-           "id": "620301be-6eb5-4f1f-8fdd-7d1539cbcfc2",
+           "id": "403f9cbe-54ea-430e-8c50-e38c2f513535",
            "type": "locations",
            "attributes": {
-             "name": "Old warehouse",
-             "cluster_ids": [
-               "e9b03933-5297-4354-875b-0d0a14bc83fb",
-               "23d4e910-0ff5-4c29-8d01-1aa63a1b974d"
-             ]
+             "name": "Old warehouse"
            }
-         },
-         "include": "clusters"
+         }
        }'
 ```
 
@@ -431,11 +395,11 @@ Note that disassociating clusters may result in a shortage error.
 ```json
   {
     "data": {
-      "id": "620301be-6eb5-4f1f-8fdd-7d1539cbcfc2",
+      "id": "403f9cbe-54ea-430e-8c50-e38c2f513535",
       "type": "locations",
       "attributes": {
-        "created_at": "2019-10-04T21:59:02.000000+00:00",
-        "updated_at": "2019-10-04T21:59:02.000000+00:00",
+        "created_at": "2020-12-17T00:44:00.000000+00:00",
+        "updated_at": "2020-12-17T00:44:00.000000+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Old warehouse",
@@ -447,10 +411,7 @@ Note that disassociating clusters may result in a shortage error.
         "city": "Leeuwarden",
         "region": "Friesland",
         "country": "Netherlands",
-        "cluster_ids": [
-          "e9b03933-5297-4354-875b-0d0a14bc83fb",
-          "23d4e910-0ff5-4c29-8d01-1aa63a1b974d"
-        ],
+        "cluster_ids": [],
         "pickup_enabled": true,
         "delivery_enabled": false,
         "fulfillment_capabilities": [
@@ -466,120 +427,16 @@ Note that disassociating clusters may result in a shortage error.
           "region": "Friesland",
           "zipcode": "8911LJ",
           "country": "Netherlands",
-          "country_id": "0b069f37-e603-4916-872d-3e560231c600",
+          "country_id": "d39353e1-4919-44c6-8f39-ec34e382e68d",
           "province_id": null,
           "latitude": null,
           "longitude": null,
           "value": "Blokhuisplein 40\nDepartment II\n8911LJ Leeuwarden\nNetherlands"
         }
       },
-      "relationships": {
-        "clusters": {
-          "data": [
-            {
-              "type": "clusters",
-              "id": "e9b03933-5297-4354-875b-0d0a14bc83fb"
-            },
-            {
-              "type": "clusters",
-              "id": "23d4e910-0ff5-4c29-8d01-1aa63a1b974d"
-            }
-          ]
-        }
-      }
+      "relationships": {}
     },
-    "included": [
-      {
-        "id": "e9b03933-5297-4354-875b-0d0a14bc83fb",
-        "type": "clusters",
-        "attributes": {
-          "created_at": "2019-10-04T21:59:02.000000+00:00",
-          "updated_at": "2019-10-04T21:59:02.000000+00:00",
-          "name": "North",
-          "location_ids": [
-            "620301be-6eb5-4f1f-8fdd-7d1539cbcfc2"
-          ]
-        },
-        "relationships": {}
-      },
-      {
-        "id": "23d4e910-0ff5-4c29-8d01-1aa63a1b974d",
-        "type": "clusters",
-        "attributes": {
-          "created_at": "2019-10-04T21:59:02.000000+00:00",
-          "updated_at": "2019-10-04T21:59:02.000000+00:00",
-          "name": "Central",
-          "location_ids": [
-            "620301be-6eb5-4f1f-8fdd-7d1539cbcfc2"
-          ]
-        },
-        "relationships": {}
-      }
-    ],
     "meta": {}
-  }
-```
-
-> Disassociating cluster resulting in shortage error:
-
-```shell
-  curl --request PUT
-       --url 'https://example.booqable.com/api/4/locations/f224137a-3275-466e-8502-c1e66ea8444c'
-       --header 'content-type: application/json'
-       --data '{
-         "data": {
-           "id": "f224137a-3275-466e-8502-c1e66ea8444c",
-           "type": "locations",
-           "attributes": {
-             "name": "Old warehouse",
-             "cluster_ids": []
-           }
-         },
-         "include": "clusters"
-       }'
-```
-
-> A 422 status response looks like this:
-
-```json
-  {
-    "errors": [
-      {
-        "code": "shortage",
-        "status": "422",
-        "title": "Shortage",
-        "detail": "This will create shortage for running or future orders",
-        "meta": {
-          "warning": [],
-          "blocking": [
-            {
-              "reason": "shortage",
-              "shortage": 2,
-              "item_id": "f198dfab-a4ce-4068-84c3-b706d007c30d",
-              "mutation": 0,
-              "orders": [
-                {
-                  "id": "42d674fe-c02a-4b91-834c-92069417c0ed",
-                  "conflicts": 2
-                }
-              ],
-              "downtimes": [],
-              "location_id": "f224137a-3275-466e-8502-c1e66ea8444c",
-              "available": -2,
-              "plannable": -2,
-              "stock_count": 0,
-              "planned": 2,
-              "needed": 2,
-              "cluster_available": -2,
-              "cluster_plannable": -2,
-              "cluster_stock_count": 0,
-              "cluster_planned": 2,
-              "cluster_needed": 2
-            }
-          ]
-        }
-      }
-    ]
   }
 ```
 
@@ -658,7 +515,7 @@ To archive a location make sure that:
         "archived": true,
         "archived_at": "2020-03-03T14:31:02.000000+00:00",
         "name": "Warehouse",
-        "code": "LOC1000039",
+        "code": "LOC1000037",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
