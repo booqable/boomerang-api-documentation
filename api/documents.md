@@ -47,6 +47,7 @@ Check each individual operation to see which relations can be included as a side
 `archived_at` | **datetime** `readonly` `nullable`<br>When the document was archived. 
 `body` | **string** <br>Custom content displayed on a document, agreement details on a contract, for instance. Applicable to `quote` and `contract`. Populated with setting `{document_type}.body`, but can also be overridden for a specific document. 
 `confirmed` | **boolean** <br>Whether document is confirmed, applies to `quote` and `contract`. 
+`confirmed_at` | **datetime** `readonly`<br>The date and time when the document was confirmed, applies to `quote` and `contract`. 
 `coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`). 
 `coupon_id` | **uuid** `nullable`<br>The associated coupon. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
@@ -142,6 +143,7 @@ Check each individual operation to see which relations can be included as a side
           "finalized": false,
           "sent": false,
           "confirmed": false,
+          "confirmed_at": null,
           "status": "payment_due",
           "signature_url": null,
           "deposit_type": "percentage",
@@ -210,6 +212,7 @@ Name | Description
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `conditions` | **hash** <br>`eq`
 `confirmed` | **boolean** <br>`eq`
+`confirmed_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `coupon_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `coupon_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -391,6 +394,7 @@ Name | Description
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `conditions` | **hash** <br>`eq`
 `confirmed` | **boolean** <br>`eq`
+`confirmed_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `coupon_discount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `coupon_id` | **uuid** <br>`eq`, `not_eq`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -519,6 +523,7 @@ This request accepts the following includes:
         "finalized": false,
         "sent": false,
         "confirmed": false,
+        "confirmed_at": null,
         "status": "payment_due",
         "signature_url": null,
         "deposit_type": "percentage",
@@ -659,21 +664,22 @@ This request accepts the following includes:
         "prefix": null,
         "prefix_with_number": "1",
         "revision": null,
-        "date": "2022-10-17",
+        "date": "2022-10-18",
         "due_date": null,
         "name": "John Doe",
         "address": null,
         "body": "",
         "footer": "",
         "reference": null,
-        "starts_at": "1976-09-07T08:43:01.000000+00:00",
-        "stops_at": "1976-10-07T08:43:01.000000+00:00",
+        "starts_at": "1976-09-05T18:21:01.000000+00:00",
+        "stops_at": "1976-10-05T18:21:01.000000+00:00",
         "start_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "stop_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "revised": false,
         "finalized": true,
         "sent": false,
         "confirmed": false,
+        "confirmed_at": null,
         "status": "unconfirmed",
         "signature_url": null,
         "deposit_type": "percentage",
@@ -861,6 +867,7 @@ This request accepts the following includes:
         "finalized": false,
         "sent": false,
         "confirmed": false,
+        "confirmed_at": null,
         "status": "payment_due",
         "signature_url": null,
         "deposit_type": "percentage",
@@ -1040,6 +1047,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
         "finalized": false,
         "sent": false,
         "confirmed": false,
+        "confirmed_at": null,
         "status": "payment_due",
         "signature_url": null,
         "deposit_type": "percentage",
