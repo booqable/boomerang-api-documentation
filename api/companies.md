@@ -276,6 +276,7 @@ Name | Description
             "customer_report",
             "roi_reports",
             "company_performance_report",
+            "esignatures",
             "api",
             "product_shortage_limits",
             "remove_powered_by",
