@@ -29,6 +29,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `readonly`<br>ID of the associated order.
 `signature_base64` | **string** `writeonly`<br>Base64 encoded signature, use this field to store a signature.
 `signature_image_url` | **string** `readonly`<br>URL to the signature image.
+`status` | **string** `readonly`<br>Status of the signature, can be `pending`, `completed`, or `failed`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -66,6 +67,7 @@ Check each individual operation to see which relations can be included as a side
       "attributes": {
         "first_name": null,
         "last_name": null,
+        "status": "pending",
         "document_pdf_url": null,
         "signature_image_url": null,
         "ip_address": null,

@@ -424,7 +424,8 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "custom_scripts",
                 "customer_report",
                 "roi_reports",
-                "company_performance_report"
+                "company_performance_report",
+                "esignatures"
               ],
               "pricing_strategy": "start_grow_scale_custom"
             },
@@ -475,6 +476,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "customer_report",
                 "roi_reports",
                 "company_performance_report",
+                "esignatures",
                 "api",
                 "product_shortage_limits",
                 "remove_powered_by",
@@ -529,6 +531,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "customer_report",
                 "roi_reports",
                 "company_performance_report",
+                "esignatures",
                 "api",
                 "product_shortage_limits",
                 "remove_powered_by",

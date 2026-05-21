@@ -89,7 +89,7 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2020-06-07T09:36:05.000000+00:00",
           "updated_at": "2020-06-07T09:36:05.000000+00:00",
-          "position": 0,
+          "position": 1,
           "source_product_group_id": "68a3023d-b907-4ad6-8e91-5fab5a36f130",
           "target_product_group_id": "62c3ac7c-6719-4aac-8b5f-5d699652cb78"
         },
@@ -260,7 +260,7 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2022-06-14T13:50:00.000000+00:00",
         "updated_at": "2022-06-14T13:50:00.000000+00:00",
-        "position": 0,
+        "position": 2,
         "source_product_group_id": "d200635f-4483-4df8-82d4-d6e39ba66c25",
         "target_product_group_id": "541f366b-0938-46fe-8ec7-4d18d9837c2a"
       },
