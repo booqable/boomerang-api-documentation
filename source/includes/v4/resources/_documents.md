@@ -87,6 +87,7 @@ Check each individual operation to see which relations can be included as a side
 `revision` | **string** `readonly`<br>Revision number. Only applicable to invoices. Automatically generated when revising an invoice. 
 `sent` | **boolean** <br>Whether document is sent (with Booqable). 
 `signature_url` | **string** `readonly`<br>URL where the signature is stored. 
+`signed` | **boolean** `readonly`<br>Whether the document is signed, applies to `quote` and `contract`. 
 `start_location_id` | **uuid** `readonly`<br>The ID of the pickup location. 
 `starts_at` | **datetime** `readonly`<br>The start date and time of the rental. 
 `status` | **enum** <br>Status (possible values depend on document type).<br> One of: `confirmed`, `unconfirmed`, `revised`, `partially_paid`, `payment_due`, `paid`, `process_deposit`, `overpaid`.
@@ -144,6 +145,7 @@ Check each individual operation to see which relations can be included as a side
           "sent": false,
           "confirmed": false,
           "confirmed_at": null,
+          "signed": false,
           "status": "payment_due",
           "signature_url": null,
           "deposit_type": "percentage",
@@ -246,6 +248,7 @@ Name | Description
 `revised` | **boolean** <br>`eq`
 `revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
+`signed` | **boolean** <br>`eq`
 `start_location_id` | **uuid** <br>`eq`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `status` | **string** <br>`eq`
@@ -428,6 +431,7 @@ Name | Description
 `revised` | **boolean** <br>`eq`
 `revision` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `sent` | **boolean** <br>`eq`
+`signed` | **boolean** <br>`eq`
 `start_location_id` | **uuid** <br>`eq`
 `starts_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `status` | **string** <br>`eq`
@@ -524,6 +528,7 @@ This request accepts the following includes:
         "sent": false,
         "confirmed": false,
         "confirmed_at": null,
+        "signed": false,
         "status": "payment_due",
         "signature_url": null,
         "deposit_type": "percentage",
@@ -664,15 +669,15 @@ This request accepts the following includes:
         "prefix": null,
         "prefix_with_number": "1",
         "revision": null,
-        "date": "2022-10-18",
+        "date": "2022-10-17",
         "due_date": null,
         "name": "John Doe",
         "address": null,
         "body": "",
         "footer": "",
         "reference": null,
-        "starts_at": "1976-08-24T15:53:01.000000+00:00",
-        "stops_at": "1976-09-23T15:53:01.000000+00:00",
+        "starts_at": "1976-08-24T08:29:01.000000+00:00",
+        "stops_at": "1976-09-23T08:29:01.000000+00:00",
         "start_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "stop_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "revised": false,
@@ -680,6 +685,7 @@ This request accepts the following includes:
         "sent": false,
         "confirmed": false,
         "confirmed_at": null,
+        "signed": false,
         "status": "unconfirmed",
         "signature_url": null,
         "deposit_type": "percentage",
@@ -868,6 +874,7 @@ This request accepts the following includes:
         "sent": false,
         "confirmed": false,
         "confirmed_at": null,
+        "signed": false,
         "status": "payment_due",
         "signature_url": null,
         "deposit_type": "percentage",
@@ -1048,6 +1055,7 @@ When archiving an invoice make sure `delete_invoices` permission is enabled.
         "sent": false,
         "confirmed": false,
         "confirmed_at": null,
+        "signed": false,
         "status": "payment_due",
         "signature_url": null,
         "deposit_type": "percentage",

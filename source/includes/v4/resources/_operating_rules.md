@@ -219,8 +219,8 @@ This request does not accept any includes
              "data_type": "away",
              "data": {
                "away": {
-                 "from": "2029-06-20",
-                 "till": "2039-06-20"
+                 "from": "2029-06-19",
+                 "till": "2039-06-19"
                }
              }
            }
@@ -241,8 +241,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2029-06-20",
-            "till": "2039-06-20"
+            "from": "2029-06-19",
+            "till": "2039-06-19"
           }
         }
       }
