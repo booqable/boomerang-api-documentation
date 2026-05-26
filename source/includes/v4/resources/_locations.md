@@ -11,7 +11,6 @@ and return orders or a warehouse that only stocks inventory.
 Name | Description
 -- | --
 `carriers` | **[App carriers](#app-carriers)** `hasmany`<br>The carriers that can do delivery from this location. 
-`clusters` | **[Clusters](#clusters)** `hasmany`<br>The clusters this location is part of. 
 
 
 Check matching attributes under [Fields](#locations-fields) to see which relations can be written.
@@ -26,7 +25,6 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether location is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the location was archived. 
 `city` | **string** <br>Address city. 
-`cluster_ids` | **array** <br>Clusters this location belongs to. 
 `code` | **string** <br>Code used to identify the location. 
 `confirm_has_orders` | **boolean** `writeonly`<br>A flag to confirm an address update when the location has orders. 
 `country` | **string** <br>Address country. 
@@ -68,7 +66,7 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "name": "Warehouse",
-          "code": "LOC1000033",
+          "code": "LOC1000032",
           "location_type": "rental",
           "address_line_1": "Blokhuisplein 40",
           "address_line_2": "Department II",
@@ -76,7 +74,6 @@ Check each individual operation to see which relations can be included as a side
           "city": "Leeuwarden",
           "region": "Friesland",
           "country": "Netherlands",
-          "cluster_ids": [],
           "pickup_enabled": true,
           "delivery_enabled": false,
           "fulfillment_capabilities": [
@@ -133,7 +130,6 @@ Name | Description
 -- | --
 `archived` | **boolean** <br>`eq`
 `archived_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
-`cluster_id` | **uuid** <br>`eq`, `not_eq`
 `code` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `fulfillment_capabilities` | **array[string]** <br>`any_of`
@@ -186,7 +182,7 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "name": "Warehouse",
-        "code": "LOC1000034",
+        "code": "LOC1000033",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -194,7 +190,6 @@ This request accepts the following includes:
         "city": "Leeuwarden",
         "region": "Friesland",
         "country": "Netherlands",
-        "cluster_ids": [],
         "pickup_enabled": true,
         "delivery_enabled": false,
         "fulfillment_capabilities": [
@@ -295,7 +290,6 @@ This request accepts the following includes:
         "city": "Leeuwarden",
         "region": "Friesland",
         "country": "Netherlands",
-        "cluster_ids": [],
         "pickup_enabled": true,
         "delivery_enabled": false,
         "fulfillment_capabilities": [
@@ -347,7 +341,6 @@ Name | Description
 `data[attributes][address_line_1]` | **string** <br>First address line. 
 `data[attributes][address_line_2]` | **string** <br>Second address line. 
 `data[attributes][city]` | **string** <br>Address city. 
-`data[attributes][cluster_ids][]` | **array** <br>Clusters this location belongs to. 
 `data[attributes][code]` | **string** <br>Code used to identify the location. 
 `data[attributes][confirm_has_orders]` | **boolean** <br>A flag to confirm an address update when the location has orders. 
 `data[attributes][country]` | **string** <br>Address country. 
@@ -403,7 +396,7 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "name": "Old warehouse",
-        "code": "LOC1000036",
+        "code": "LOC1000035",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -411,7 +404,6 @@ This request accepts the following includes:
         "city": "Leeuwarden",
         "region": "Friesland",
         "country": "Netherlands",
-        "cluster_ids": [],
         "pickup_enabled": true,
         "delivery_enabled": false,
         "fulfillment_capabilities": [
@@ -463,7 +455,6 @@ Name | Description
 `data[attributes][address_line_1]` | **string** <br>First address line. 
 `data[attributes][address_line_2]` | **string** <br>Second address line. 
 `data[attributes][city]` | **string** <br>Address city. 
-`data[attributes][cluster_ids][]` | **array** <br>Clusters this location belongs to. 
 `data[attributes][code]` | **string** <br>Code used to identify the location. 
 `data[attributes][confirm_has_orders]` | **boolean** <br>A flag to confirm an address update when the location has orders. 
 `data[attributes][country]` | **string** <br>Address country. 
@@ -515,7 +506,7 @@ To archive a location make sure that:
         "archived": true,
         "archived_at": "2020-03-03T14:31:02.000000+00:00",
         "name": "Warehouse",
-        "code": "LOC1000037",
+        "code": "LOC1000036",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -523,7 +514,6 @@ To archive a location make sure that:
         "city": "Leeuwarden",
         "region": "Friesland",
         "country": "Netherlands",
-        "cluster_ids": [],
         "pickup_enabled": true,
         "delivery_enabled": false,
         "fulfillment_capabilities": [
