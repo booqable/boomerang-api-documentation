@@ -20,7 +20,6 @@ Name | Description
 -- | --
 `app_payment_options` | **[App payment options](#app-payment-options)** `hasmany`<br>All app payment options of the company.
 `app_subscriptions` | **[App subscriptions](#app-subscriptions)** `hasmany`<br>All app subscriptions of the company.
-`clusters` | **[Clusters](#clusters)** `hasmany`<br>All [Clusters](#clusters) of the company.
 `company` | **[Company](#companies)** `required`<br>The [Company](#companies).
 `default_properties` | **[Default properties](#default-properties)** `hasmany`<br>All [DefaultProperties](#default-properties) of the company.
 `employee` | **[Employee](#employees)** `required`<br>The current [Employee](#employees).
@@ -38,7 +37,6 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `app_payment_options_available` | **boolean** <br>Whether the app payment options are available in the checkout.
-`clusters_updated_at` | **datetime** <br>When the clusters were last updated.
 `company_id` | **uuid** <br>The [Company](#companies).
 `countries_updated_at` | **datetime** <br>When the countries were last updated.
 `default_properties_updated_at` | **datetime** <br>When the default properties were last updated.
@@ -74,7 +72,6 @@ Check each individual operation to see which relations can be included as a side
         "company_id": "59b0823e-3949-4963-8088-2c23b460c183",
         "employee_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe",
         "locations_updated_at": null,
-        "clusters_updated_at": null,
         "default_properties_updated_at": null,
         "notification_subscriptions_updated_at": "2022-08-21T05:03:01.000000+00:00",
         "countries_updated_at": null,
@@ -110,9 +107,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 321",
-          "slug": "company-name-321",
-          "email": "mail324@company.com",
+          "name": "Company name 315",
+          "slug": "company-name-315",
+          "email": "mail318@company.com",
           "billing_email": null,
           "phone": null,
           "website": null,
@@ -292,7 +289,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1779366478"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1779781138"
         }
       },
       {
@@ -463,7 +460,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[sessions]=company_id,employee_id,locations_updated_at`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,app_payment_options,clusters`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=app_subscriptions,app_payment_options,company`
 
 
 ### Includes
@@ -473,7 +470,6 @@ This request accepts the following includes:
 <ul>
   <li><code>app_payment_options</code></li>
   <li><code>app_subscriptions</code></li>
-  <li><code>clusters</code></li>
   <li><code>company</code></li>
   <li><code>default_properties</code></li>
   <li><code>employee</code></li>
