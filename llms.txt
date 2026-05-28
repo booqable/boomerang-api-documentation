@@ -75,6 +75,7 @@ The API is RESTful and follows the JSON:API specification. Base URL is `https://
 - [Ip Addresses](https://developers.booqable.com/api/ip_addresses.md)
 - [Item Prices](https://developers.booqable.com/api/item_prices.md)
 - [Items](https://developers.booqable.com/api/items.md)
+- [Languages](https://developers.booqable.com/api/languages.md)
 - [Line Charge Suggestions](https://developers.booqable.com/api/line_charge_suggestions.md)
 - [Lines](https://developers.booqable.com/api/lines.md)
 - [Locations](https://developers.booqable.com/api/locations.md)
