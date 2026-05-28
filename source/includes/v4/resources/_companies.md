@@ -256,6 +256,7 @@ Name | Description
             "custom_domain",
             "availability_reports",
             "fulfillment_reports",
+            "cross_sell",
             "advanced_pricing",
             "bundles",
             "prevent_last_minute_reservations",
