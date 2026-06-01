@@ -104,8 +104,8 @@ Check each individual operation to see which relations can be included as a side
        --header 'content-type: application/json'
        --data-urlencode 'filter[active]=true'
        --data-urlencode 'filter[q]=WINTER'
-       --data-urlencode 'filter[range][from]=2026-05-29T11:03:54Z'
-       --data-urlencode 'filter[range][till]=2026-05-30T11:03:54Z'
+       --data-urlencode 'filter[range][from]=2026-06-01T21:23:19Z'
+       --data-urlencode 'filter[range][till]=2026-06-02T21:23:19Z'
        --data-urlencode 'filter[tag_list][]=winter'
        --data-urlencode 'filter[tag_list][]=clearance'
        --data-urlencode 'stats[active][]=count'
@@ -129,8 +129,8 @@ Check each individual operation to see which relations can be included as a side
           "coupon_type": "percentage",
           "value": 10,
           "active": true,
-          "starts_at": "2027-01-03T13:05:18.000000+00:00",
-          "ends_at": "2027-01-07T13:04:18.000000+00:00",
+          "starts_at": "2027-01-03T02:45:18.000000+00:00",
+          "ends_at": "2027-01-07T02:44:18.000000+00:00",
           "eligible_item_type": "all",
           "max_redemptions": null,
           "one_per_customer": false,
@@ -675,21 +675,18 @@ When updating a coupon the existing one is archived and a new one gets created:
   }
 ```
 
-> How to update coupon items:
+> How to deactivate a coupon in-place:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/4/coupons/50079922-d6ce-447d-8427-2a146dbbdb31'
+       --url 'https://example.booqable.com/api/4/coupons/cdbc9c62-d61c-42f2-8d68-75d5f49fe5bd'
        --header 'content-type: application/json'
        --data '{
          "data": {
-           "id": "50079922-d6ce-447d-8427-2a146dbbdb31",
+           "id": "cdbc9c62-d61c-42f2-8d68-75d5f49fe5bd",
            "type": "coupons",
            "attributes": {
-             "eligible_item_type": "collection",
-             "eligible_item_ids": [
-               "e719920f-7104-4f19-8a34-d298361ef615"
-             ]
+             "active": false
            }
          }
        }'
@@ -700,20 +697,20 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
     "data": {
-      "id": "50079922-d6ce-447d-8427-2a146dbbdb31",
+      "id": "cdbc9c62-d61c-42f2-8d68-75d5f49fe5bd",
       "type": "coupons",
       "attributes": {
-        "created_at": "2026-12-24T11:33:01.000000+00:00",
-        "updated_at": "2026-12-24T11:33:01.000000+00:00",
+        "created_at": "2025-12-07T09:05:11.000000+00:00",
+        "updated_at": "2025-12-07T09:05:11.000000+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "SUMMER20OFF",
         "coupon_type": "percentage",
         "value": 20,
-        "active": true,
+        "active": false,
         "starts_at": null,
         "ends_at": null,
-        "eligible_item_type": "collection",
+        "eligible_item_type": "all",
         "max_redemptions": null,
         "one_per_customer": false,
         "minimum_order_amount_in_cents": null,
