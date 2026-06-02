@@ -488,7 +488,6 @@ This request accepts the following includes:
     <code>order</code>
     <ul>
       <li><code>tax_values</code></li>
-      <li><code>transfers</code></li>
     </ul>
   </li>
 </ul>
@@ -669,7 +668,6 @@ This request accepts the following includes:
     <code>order</code>
     <ul>
       <li><code>tax_values</code></li>
-      <li><code>transfers</code></li>
     </ul>
   </li>
 </ul>
@@ -814,7 +812,6 @@ This request accepts the following includes:
     <code>order</code>
     <ul>
       <li><code>tax_values</code></li>
-      <li><code>transfers</code></li>
     </ul>
   </li>
 </ul>
@@ -957,7 +954,6 @@ This request accepts the following includes:
     <code>order</code>
     <ul>
       <li><code>tax_values</code></li>
-      <li><code>transfers</code></li>
     </ul>
   </li>
 </ul>
