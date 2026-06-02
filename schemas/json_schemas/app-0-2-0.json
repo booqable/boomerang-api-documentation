@@ -97,6 +97,12 @@
           "pattern": "^[a-zA-Z0-9_-]+$",
           "examples": ["4tDyXghOQbI"]
         },
+        "setup_minutes": {
+          "type": "integer",
+          "description": "Estimated time in minutes to install and set up the app.",
+          "minimum": 1,
+          "examples": [2, 3, 5, 10]
+        },
         "support": { "$ref": "#/definitions/AppStoreSupport" }
       },
       "required": ["title", "description", "category", "card_image", "icon"],
