@@ -225,7 +225,6 @@ Name | Description
 `stop_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
 `tax_region` | **[Tax region](#tax-regions)** `optional`<br>[TaxRegion](#tax-regions) applied to this Order. 
 `tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one [TaxValue](#tax-values) for each applicable [TaxRate](#tax-rates). 
-`transfers` | **[Transfers](#transfers)** `hasmany`<br>[Transfers](#transfers) that have been generated to solve shortages on this order. 
 
 
 Check matching attributes under [Fields](#orders-fields) to see which relations can be written.
@@ -330,8 +329,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-12-09T01:35:01.000000+00:00",
-          "stops_at": "1969-01-08T01:35:01.000000+00:00",
+          "starts_at": "1968-12-09T01:07:01.000000+00:00",
+          "stops_at": "1969-01-08T01:07:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -583,14 +582,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-06-03T10:54:39Z",
-                       "lte": "2026-06-06T10:54:39Z"
+                       "gte": "2026-06-03T11:22:35Z",
+                       "lte": "2026-06-06T11:22:35Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-06-03T10:54:39Z",
-                       "lte": "2026-06-06T10:54:39Z"
+                       "gte": "2026-06-03T11:22:35Z",
+                       "lte": "2026-06-06T11:22:35Z"
                      }
                    }
                  ]
@@ -926,7 +925,6 @@ This request accepts the following includes:
   <li><code>stop_location</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
-  <li><code>transfers</code></li>
 </ul>
 
 
@@ -962,8 +960,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-05-06T10:54:01.000000+00:00",
-        "stops_at": "1969-06-05T10:54:01.000000+00:00",
+        "starts_at": "1969-05-06T10:26:01.000000+00:00",
+        "stops_at": "1969-06-05T10:26:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1096,7 +1094,6 @@ This request accepts the following includes:
   <li><code>stop_location</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
-  <li><code>transfers</code></li>
 </ul>
 
 
@@ -1161,8 +1158,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:31:01.000000+00:00",
-        "stops_at": "2026-11-03T14:31:01.000000+00:00",
+        "starts_at": "2026-09-25T14:33:01.000000+00:00",
+        "stops_at": "2026-11-03T14:33:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1275,8 +1272,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:49:00.000000+00:00",
-        "stops_at": "2018-05-14T18:49:00.000000+00:00",
+        "starts_at": "2018-04-05T18:51:00.000000+00:00",
+        "stops_at": "2018-05-14T18:51:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1438,7 +1435,6 @@ This request accepts the following includes:
   <li><code>stop_location</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
-  <li><code>transfers</code></li>
 </ul>
 
 
@@ -1692,6 +1688,5 @@ This request accepts the following includes:
   <li><code>stop_location</code></li>
   <li><code>tax_region</code></li>
   <li><code>tax_values</code></li>
-  <li><code>transfers</code></li>
 </ul>
 
