@@ -26,11 +26,6 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`cluster_available` | **integer** `readonly`<br>The available quantity for the cluster the given location is part of. 
-`cluster_needed` | **integer** `readonly`<br>The needed quantity for the cluster the given location is part of. This quantity does not contain what has already been returned for an order (`planned - stopped`). 
-`cluster_plannable` | **integer** `readonly`<br>The planned quantity for the cluster the given location is part of. 
-`cluster_planned` | **integer** `readonly`<br>The planned quantity for the cluster the given location is part of. 
-`cluster_stock_count` | **integer** `readonly`<br>The stock count for the cluster the given location is part of. 
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly`<br>The item to return data for, this can be a single ID or an array of multiple IDs. 
 `location_available` | **integer** `readonly`<br>The available quantity for the given location. 
@@ -69,11 +64,6 @@ Check each individual operation to see which relations can be included as a side
           "location_plannable": 0,
           "location_planned": 0,
           "location_needed": 0,
-          "cluster_available": 0,
-          "cluster_stock_count": 0,
-          "cluster_plannable": 0,
-          "cluster_planned": 0,
-          "cluster_needed": 0,
           "item_id": "d4ef30b8-8959-4262-8dcd-d90c23a4ee8a",
           "location_id": "95c73381-5770-48e8-8a43-af7513a32ed9",
           "order_id": null
@@ -164,11 +154,6 @@ This request accepts the following includes:
           "location_plannable": 0,
           "location_planned": 0,
           "location_needed": 0,
-          "cluster_available": 0,
-          "cluster_stock_count": 0,
-          "cluster_plannable": 0,
-          "cluster_planned": 0,
-          "cluster_needed": 0,
           "item_id": "f13f0c48-b1bd-48ef-81be-94aba9cee2fc",
           "location_id": "fcf25ba2-1c63-4cf3-842b-be17908108c4",
           "order_id": null
