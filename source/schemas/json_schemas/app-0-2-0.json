@@ -149,6 +149,11 @@
           "type": "boolean",
           "description": "When true, plan remains paid during beta; when false, plan is free during beta.",
           "default": false
+        },
+        "most_popular": {
+          "type": "boolean",
+          "description": "When true, this plan is marked as most popular in the app store.",
+          "default": false
         }
       },
       "required": ["id", "price_in_cents", "app_store"]
