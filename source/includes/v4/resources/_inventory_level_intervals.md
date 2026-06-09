@@ -25,14 +25,6 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`cluster_available` | **integer** `readonly`<br>The minimum available quantity for the cluster within the interval. 
-`cluster_max_available` | **integer** `readonly`<br>The maximum available quantity for the cluster within the interval. 
-`cluster_max_needed` | **integer** `readonly`<br>The maximum needed quantity for the cluster within the interval. This quantity does not contain what has already been returned for an order (`planned - stopped`). 
-`cluster_max_planned` | **integer** `readonly`<br>The maximum planned quantity for the cluster within the interval. 
-`cluster_max_stock_count` | **integer** `readonly`<br>The maximum stock count for the cluster within the interval. 
-`cluster_needed` | **integer** `readonly`<br>The minimum needed quantity for the cluster within the interval. This quantity does not contain what has already been returned for an order (`planned - stopped`). 
-`cluster_planned` | **integer** `readonly`<br>The minimum planned quantity for the cluster within the interval. 
-`cluster_stock_count` | **integer** `readonly`<br>The minimum stock count for the cluster within the interval. 
 `from` | **datetime** `readonly`<br>Start of the period to list inventory levels for. 
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly`<br>ID of the item to return data for, this can be a single ID or an array of multiple IDs. 
@@ -82,15 +74,7 @@ Check each individual operation to see which relations can be included as a side
           "location_planned": 0,
           "location_max_planned": 0,
           "location_needed": 0,
-          "location_max_needed": 0,
-          "cluster_available": 4,
-          "cluster_max_available": 4,
-          "cluster_stock_count": 4,
-          "cluster_max_stock_count": 4,
-          "cluster_planned": 0,
-          "cluster_max_planned": 0,
-          "cluster_needed": 0,
-          "cluster_max_needed": 0
+          "location_max_needed": 0
         },
         "relationships": {}
       },
@@ -109,15 +93,7 @@ Check each individual operation to see which relations can be included as a side
           "location_planned": 0,
           "location_max_planned": 0,
           "location_needed": 0,
-          "location_max_needed": 0,
-          "cluster_available": 4,
-          "cluster_max_available": 4,
-          "cluster_stock_count": 4,
-          "cluster_max_stock_count": 4,
-          "cluster_planned": 0,
-          "cluster_max_planned": 0,
-          "cluster_needed": 0,
-          "cluster_max_needed": 0
+          "location_max_needed": 0
         },
         "relationships": {}
       },
@@ -136,15 +112,7 @@ Check each individual operation to see which relations can be included as a side
           "location_planned": 0,
           "location_max_planned": 0,
           "location_needed": 0,
-          "location_max_needed": 0,
-          "cluster_available": 4,
-          "cluster_max_available": 4,
-          "cluster_stock_count": 4,
-          "cluster_max_stock_count": 4,
-          "cluster_planned": 0,
-          "cluster_max_planned": 0,
-          "cluster_needed": 0,
-          "cluster_max_needed": 0
+          "location_max_needed": 0
         },
         "relationships": {}
       },
@@ -163,15 +131,7 @@ Check each individual operation to see which relations can be included as a side
           "location_planned": 0,
           "location_max_planned": 0,
           "location_needed": 0,
-          "location_max_needed": 0,
-          "cluster_available": 4,
-          "cluster_max_available": 4,
-          "cluster_stock_count": 4,
-          "cluster_max_stock_count": 4,
-          "cluster_planned": 0,
-          "cluster_max_planned": 0,
-          "cluster_needed": 0,
-          "cluster_max_needed": 0
+          "location_max_needed": 0
         },
         "relationships": {}
       },
@@ -190,15 +150,7 @@ Check each individual operation to see which relations can be included as a side
           "location_planned": 0,
           "location_max_planned": 0,
           "location_needed": 0,
-          "location_max_needed": 0,
-          "cluster_available": 4,
-          "cluster_max_available": 4,
-          "cluster_stock_count": 4,
-          "cluster_max_stock_count": 4,
-          "cluster_planned": 0,
-          "cluster_max_planned": 0,
-          "cluster_needed": 0,
-          "cluster_max_needed": 0
+          "location_max_needed": 0
         },
         "relationships": {}
       },
@@ -217,15 +169,7 @@ Check each individual operation to see which relations can be included as a side
           "location_planned": 0,
           "location_max_planned": 0,
           "location_needed": 0,
-          "location_max_needed": 0,
-          "cluster_available": 4,
-          "cluster_max_available": 4,
-          "cluster_stock_count": 4,
-          "cluster_max_stock_count": 4,
-          "cluster_planned": 0,
-          "cluster_max_planned": 0,
-          "cluster_needed": 0,
-          "cluster_max_needed": 0
+          "location_max_needed": 0
         },
         "relationships": {}
       },
@@ -244,15 +188,7 @@ Check each individual operation to see which relations can be included as a side
           "location_planned": 0,
           "location_max_planned": 0,
           "location_needed": 0,
-          "location_max_needed": 0,
-          "cluster_available": 4,
-          "cluster_max_available": 4,
-          "cluster_stock_count": 4,
-          "cluster_max_stock_count": 4,
-          "cluster_planned": 0,
-          "cluster_max_planned": 0,
-          "cluster_needed": 0,
-          "cluster_max_needed": 0
+          "location_max_needed": 0
         },
         "relationships": {}
       }
