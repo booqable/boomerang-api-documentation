@@ -201,12 +201,7 @@ Check each individual operation to see which relations can be included as a side
               "plannable": 0,
               "stock_count": 1,
               "planned": 1,
-              "needed": 1,
-              "cluster_available": 0,
-              "cluster_plannable": 0,
-              "cluster_stock_count": 1,
-              "cluster_planned": 1,
-              "cluster_needed": 1
+              "needed": 1
             }
           ]
         }
@@ -260,12 +255,7 @@ Check each individual operation to see which relations can be included as a side
               "plannable": 1,
               "stock_count": 1,
               "planned": 1,
-              "needed": 1,
-              "cluster_available": 0,
-              "cluster_plannable": 1,
-              "cluster_stock_count": 1,
-              "cluster_planned": 1,
-              "cluster_needed": 1
+              "needed": 1
             }
           ],
           "blocking": []
