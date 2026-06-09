@@ -374,12 +374,7 @@ This request accepts the following includes:
               "plannable": 1,
               "stock_count": 5,
               "planned": 4,
-              "needed": 4,
-              "cluster_available": 1,
-              "cluster_plannable": 1,
-              "cluster_stock_count": 5,
-              "cluster_planned": 4,
-              "cluster_needed": 4
+              "needed": 4
             }
           ]
         }
