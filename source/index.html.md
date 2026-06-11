@@ -25,7 +25,6 @@ includes:
   - v4/resources/barcodes
   - v4/resources/bundles
   - v4/resources/bundle_items
-  - v4/resources/clusters
   - v4/resources/collections
   - v4/resources/collection_items
   - v4/resources/collection_trees
@@ -86,7 +85,6 @@ includes:
   - v4/resources/tax_categories
   - v4/resources/tax_rates
   - v4/resources/tax_values
-  - v4/resources/transfers
   - v4/resources/user_invitations
   - v4/resources/users
   - v4/resources/webhook_endpoints
