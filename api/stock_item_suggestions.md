@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly`<br>The Product the suggested stock item belongs to. 
-`status` | **enum** `readonly`<br>Status of the suggested stock item.<br> One of: `available_in_location`, `available_in_cluster`, `overdue`, `unavailable`, `already_booked`.
+`status` | **enum** `readonly`<br>Status of the suggested stock item.<br> One of: `available_in_location`, `overdue`, `unavailable`, `already_booked`.
 `stock_item_id` | **uuid** `readonly`<br>The suggested stock item. 
 
 

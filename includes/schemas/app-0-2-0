@@ -104,10 +104,14 @@
 <h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreDescription</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreSupport</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tracking"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"card_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Link</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4tDyXghOQbI"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"setup_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreSupport</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -131,12 +135,6 @@
 <td></td>
 </tr>
 <tr>
-<td><code>support</code></td>
-<td><a href="#reference-appstoresupport"><code>AppStoreSupport</code></a></td>
-<td>false</td>
-<td></td>
-</tr>
-<tr>
 <td><code>category</code></td>
 <td>one of: <code>tracking</code>, <code>payment</code>, <code>translation</code>, <code>maps</code>, <code>marketing</code>, <code>social</code>, <code>widget</code>, <code>fulfillment</code></td>
 <td>true</td>
@@ -152,6 +150,36 @@
 <td><code>icon</code></td>
 <td><a href="#reference-assetreference"><code>AssetReference</code></a></td>
 <td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>features</code></td>
+<td>array of <a href="#localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td>Bulleted list of key features shown on the app&#39;s store page.</td>
+</tr>
+<tr>
+<td><code>website</code></td>
+<td><a href="#reference-link"><code>Link</code></a></td>
+<td>false</td>
+<td>Product or marketing website link shown in the app&#39;s store page.</td>
+</tr>
+<tr>
+<td><code>youtube</code></td>
+<td>string</td>
+<td>false</td>
+<td>YouTube video ID for an embedded overview/promo video to be shown in the app&#39;s store page.</td>
+</tr>
+<tr>
+<td><code>setup_minutes</code></td>
+<td>integer</td>
+<td>false</td>
+<td>Estimated time in minutes to install and set up the app.</td>
+</tr>
+<tr>
+<td><code>support</code></td>
+<td><a href="#reference-appstoresupport"><code>AppStoreSupport</code></a></td>
+<td>false</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -219,7 +247,8 @@
   </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppPlanStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"paid_during_beta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="nl">"paid_during_beta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"most_popular"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -259,6 +288,12 @@
 <td>boolean</td>
 <td>false</td>
 <td>When true, plan remains paid during beta; when false, plan is free during beta.</td>
+</tr>
+<tr>
+<td><code>most_popular</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>When true, this plan is marked as most popular in the app store.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-appplanstoreinfo'><code>AppPlanStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
