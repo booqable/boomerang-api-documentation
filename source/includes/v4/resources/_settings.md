@@ -332,6 +332,7 @@ Name | Description
         "user": {
           "auth_enabled": false,
           "allow_signup": true,
+          "captcha_enabled": false,
           "allow_guest_checkout": true,
           "require_login_to_browse": false,
           "require_verification": true

@@ -222,7 +222,7 @@ Name | Description
 `properties` | **[Properties](#properties)** `hasmany`<br>Custom but structured data added to this Order. Both Properties linked to [DefaultProperties](#default-properties), and one-off Properties can be added to orders. Properties of Orders can be updated in bulk by writing to the `properties_attributes` attribute. 
 `start_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will pick up the items. 
 `stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](#stock-item-plannings) planned on this Order, and their current status. 
-`stop_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`stop_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will return the items. 
 `tax_region` | **[Tax region](#tax-regions)** `optional`<br>[TaxRegion](#tax-regions) applied to this Order. 
 `tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one [TaxValue](#tax-values) for each applicable [TaxRate](#tax-rates). 
 
@@ -283,7 +283,7 @@ Check each individual operation to see which relations can be included as a side
 `status` | **enum** `readonly-after-create`<br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "draft": 0, "reserved": 2, "started": 5, "stopped": 10 }`. 
 `statuses` | **array** `readonly`<br>Status(es) of planned products. 
-`stop_location_id` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`stop_location_id` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
 `stops_at` | **datetime** `nullable`<br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
 `tax_in_cents` | **integer** `readonly`<br>Total tax. 
@@ -329,8 +329,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-12-02T02:02:01.000000+00:00",
-          "stops_at": "1969-01-01T02:02:01.000000+00:00",
+          "starts_at": "1968-11-29T04:23:01.000000+00:00",
+          "stops_at": "1968-12-29T04:23:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -582,14 +582,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-06-10T10:27:46Z",
-                       "lte": "2026-06-13T10:27:46Z"
+                       "gte": "2026-06-13T08:06:24Z",
+                       "lte": "2026-06-16T08:06:24Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-06-10T10:27:46Z",
-                       "lte": "2026-06-13T10:27:46Z"
+                       "gte": "2026-06-13T08:06:24Z",
+                       "lte": "2026-06-16T08:06:24Z"
                      }
                    }
                  ]
@@ -960,8 +960,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-04-29T11:21:01.000000+00:00",
-        "stops_at": "1969-05-29T11:21:01.000000+00:00",
+        "starts_at": "1969-04-26T13:42:01.000000+00:00",
+        "stops_at": "1969-05-26T13:42:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1158,8 +1158,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:28:01.000000+00:00",
-        "stops_at": "2026-11-03T14:28:01.000000+00:00",
+        "starts_at": "2026-09-25T14:34:01.000000+00:00",
+        "stops_at": "2026-11-03T14:34:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1272,8 +1272,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:46:00.000000+00:00",
-        "stops_at": "2018-05-14T18:46:00.000000+00:00",
+        "starts_at": "2018-04-05T18:52:00.000000+00:00",
+        "stops_at": "2018-05-14T18:52:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1369,7 +1369,7 @@ Name | Description
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
 `data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
-`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
 `data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
 `data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](#tax-regions) applied to this Order. 
@@ -1622,7 +1622,7 @@ Name | Description
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When items become unavailable, changing this value may result in shortages
 `data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
-`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. When the clusters feature is in use, the stop location needs to be in the same cluster as the start location. 
+`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
 `data[attributes][stops_at]` | **datetime** <br>When items become available, changing this value may result in shortages
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
 `data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](#tax-regions) applied to this Order. 
