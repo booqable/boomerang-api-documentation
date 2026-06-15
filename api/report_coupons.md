@@ -11,6 +11,7 @@ Report on how coupons are performing.
  Name | Description
 -- | --
 `active` | **boolean** `readonly`<br>Whether the coupon is active.
+`archived_at` | **datetime** `readonly`<br>When the coupon was archived (deleted).
 `coupon_id` | **uuid** `readonly`<br>The ID of the coupon.
 `coupon_type` | **string** `readonly`<br>The type of discount the coupon applies.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
@@ -51,7 +52,8 @@ Report on how coupons are performing.
           "tag_list": [],
           "redemption_count": 1,
           "total_discount_in_cents": 1000,
-          "ends_at": null
+          "ends_at": null,
+          "archived_at": null
         }
       }
     ],
@@ -88,7 +90,8 @@ Report on how coupons are performing.
           "tag_list": [],
           "redemption_count": 0,
           "total_discount_in_cents": 0,
-          "ends_at": "2027-04-13T12:01:04.000000+00:00"
+          "ends_at": "2027-04-13T12:01:04.000000+00:00",
+          "archived_at": null
         }
       },
       {
@@ -104,7 +107,8 @@ Report on how coupons are performing.
           "tag_list": [],
           "redemption_count": 0,
           "total_discount_in_cents": 0,
-          "ends_at": null
+          "ends_at": null,
+          "archived_at": null
         }
       },
       {
@@ -120,7 +124,8 @@ Report on how coupons are performing.
           "tag_list": [],
           "redemption_count": 2,
           "total_discount_in_cents": 1500,
-          "ends_at": null
+          "ends_at": null,
+          "archived_at": null
         }
       }
     ],
@@ -181,6 +186,7 @@ Results can be aggregated on:
 Name | Description
 -- | --
 `active_coupons` | **array** <br>`count`
+`archived_coupons` | **array** <br>`count`
 `expired_coupons` | **array** <br>`count`
 `inactive_coupons` | **array** <br>`count`
 `redemption_count` | **array** <br>`sum`
