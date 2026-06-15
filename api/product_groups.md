@@ -779,7 +779,7 @@ This request accepts the following includes:
       "type": "product_groups",
       "attributes": {
         "created_at": "2017-06-27T18:12:01.000000+00:00",
-        "updated_at": "2017-06-27T18:13:01.000000+00:00",
+        "updated_at": "2017-06-27T18:12:01.000000+00:00",
         "type": "product_groups",
         "archived": false,
         "archived_at": null,
