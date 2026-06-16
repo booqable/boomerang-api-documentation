@@ -72,6 +72,7 @@ includes:
   - v4/resources/product_groups
   - v4/resources/properties
   - v4/resources/provinces
+  - v4/resources/recommendations
   - v4/resources/settings
   - v4/resources/signatures
   - v4/resources/sortings
