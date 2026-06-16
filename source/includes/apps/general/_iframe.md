@@ -122,11 +122,19 @@ window.parent.postMessage({
 **NAVIGATE**
 Requests Booqable to navigate to a different page.
 
+The `url` must be a **same-origin internal path** (e.g. `/app-store/my-app/settings`). For security, Booqable resolves the URL against its own origin and ignores anything that points to a different origin, as well as `javascript:` and `data:` schemes. Use this to move the user between pages within the Booqable dashboard — not to redirect them to external sites.
+
+The optional `reload` flag controls how the navigation happens:
+
+* `false` (default) — in-app navigation that keeps the single-page app loaded.
+* `true` — a full-page reload. Use this when all data must be refetched and any stale state cleared (for example after your app uninstalls itself and its subscription no longer exists).
+
 ```javascript
 window.parent.postMessage({
   eventName: "NAVIGATE",
   payload: {
-    url: "/app-store/my-app/settings"
+    url: "/app-store/my-app/settings",
+    reload: false
   }
 }, "*")
 ```
