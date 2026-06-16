@@ -789,10 +789,20 @@ Requests user avatar information for display in the iframe.</p>
 </code></pre></div>
 <p><strong>NAVIGATE</strong>
 Requests Booqable to navigate to a different page.</p>
+
+<p>The <code>url</code> must be a <strong>same-origin internal path</strong> (e.g. <code>/app-store/my-app/settings</code>). For security, Booqable resolves the URL against its own origin and ignores anything that points to a different origin, as well as <code>javascript:</code> and <code>data:</code> schemes. Use this to move the user between pages within the Booqable dashboard — not to redirect them to external sites.</p>
+
+<p>The optional <code>reload</code> flag controls how the navigation happens:</p>
+
+<ul>
+<li><code>false</code> (default) — in-app navigation that keeps the single-page app loaded.</li>
+<li><code>true</code> — a full-page reload. Use this when all data must be refetched and any stale state cleared (for example after your app uninstalls itself and its subscription no longer exists).</li>
+</ul>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
   <span class="na">eventName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">NAVIGATE</span><span class="dl">"</span><span class="p">,</span>
   <span class="na">payload</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/app-store/my-app/settings</span><span class="dl">"</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/app-store/my-app/settings</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">reload</span><span class="p">:</span> <span class="kc">false</span>
   <span class="p">}</span>
 <span class="p">},</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">)</span>
 </code></pre></div><h4 id='how-apps-work-iframe-page-message-protocol-messages-from-booqable-to-iframe'>Messages from Booqable to iframe</h4>
