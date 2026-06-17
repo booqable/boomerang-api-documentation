@@ -71,7 +71,7 @@ Check each individual operation to see which relations can be included as a side
 `reserved` | **boolean** `readonly`<br>Whether items are reserved. When `true`, this Planning affects availability calculations and the items are not available for other plannings during the reserved period. For order plannings, this is set to `true` when an Order transitions from `draft` to `reserved` status. 
 `reserved_from` | **datetime** `readonly`<br>When the items actually become unavailable in the system. May differ from `starts_at` due to buffer time. This is the actual time used for availability calculations. 
 `reserved_till` | **datetime** `readonly`<br>When the items actually become available again in the system. May differ from `stops_at` due to buffer time. This is the actual time used for availability calculations. 
-`shortage_amount` | **integer** <br>Amount of items short across all locations in the same cluster. This represents how many more items would be needed in total to satisfy this planning. A value greater than zero indicates a system-wide shortage that can't be solved by transfers between locations. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
+`shortage_amount` | **integer** <br>Amount of items short at the location (legacy column kept in sync with `location_shortage_amount`). A value greater than zero indicates a shortage. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
 `start_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the planned activity begins. For order plannings, this is where the customer will pick up the item. 
 `started` | **integer** <br>Amount of items that have begun their planned activity. For order plannings, this represents items picked up or delivered to the customer. This value increases when staff performs start actions. Cannot exceed `quantity`. When all items are started (`started` equals `quantity`), the Planning is considered fully started. This attribute is omitted when this is a parent planning for a Bundle. 
 `starts_at` | **datetime** `readonly`<br>When the planned activity is scheduled to begin. For order plannings, this represents when pickup/delivery is planned to occur and is shown to staff and customers as the beginning of the rental. 
@@ -107,10 +107,10 @@ Check each individual operation to see which relations can be included as a side
           "archived_at": null,
           "planning_type": "order",
           "quantity": 1,
-          "starts_at": "1972-01-06T03:05:00.000000+00:00",
-          "stops_at": "1972-02-05T03:05:00.000000+00:00",
-          "reserved_from": "1972-01-06T03:05:00.000000+00:00",
-          "reserved_till": "1972-02-05T03:05:00.000000+00:00",
+          "starts_at": "1972-01-04T05:10:00.000000+00:00",
+          "stops_at": "1972-02-03T05:10:00.000000+00:00",
+          "reserved_from": "1972-01-04T05:10:00.000000+00:00",
+          "reserved_till": "1972-02-03T05:10:00.000000+00:00",
           "reserved": true,
           "status": "reserved",
           "started": 0,
@@ -241,12 +241,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-06-16T14:12:38Z"
+                       "gte": "2026-06-18T12:07:28Z"
                      }
                    },
                    {
                      "starts_at": {
-                       "lte": "2026-06-19T14:12:38Z"
+                       "lte": "2026-06-21T12:07:28Z"
                      }
                    }
                  ]
@@ -256,12 +256,12 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "stops_at": {
-                       "gte": "2026-06-16T14:12:38Z"
+                       "gte": "2026-06-18T12:07:28Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "lte": "2026-06-19T14:12:38Z"
+                       "lte": "2026-06-21T12:07:28Z"
                      }
                    }
                  ]
@@ -398,10 +398,10 @@ This request accepts the following includes:
         "archived_at": null,
         "planning_type": "order",
         "quantity": 1,
-        "starts_at": "1977-01-28T23:30:01.000000+00:00",
-        "stops_at": "1977-02-27T23:30:01.000000+00:00",
-        "reserved_from": "1977-01-28T23:30:01.000000+00:00",
-        "reserved_till": "1977-02-27T23:30:01.000000+00:00",
+        "starts_at": "1977-01-27T01:35:01.000000+00:00",
+        "stops_at": "1977-02-26T01:35:01.000000+00:00",
+        "reserved_from": "1977-01-27T01:35:01.000000+00:00",
+        "reserved_till": "1977-02-26T01:35:01.000000+00:00",
         "reserved": true,
         "status": "reserved",
         "started": 0,

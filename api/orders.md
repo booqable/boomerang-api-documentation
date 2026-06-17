@@ -267,7 +267,7 @@ Check each individual operation to see which relations can be included as a side
 `has_signed_contract` | **boolean** `readonly`<br>Whether the order has a signed contract. 
 `id` | **uuid** `readonly`<br>Primary key.
 `item_count` | **integer** `readonly`<br>The number of items on the order. 
-`location_shortage` | **boolean** `readonly`<br>Whether there is a shortage on the pickup location. This is `true` when the requested items are not available at the specific `start_location` selected for the order, even if they might be available at other locations in the same cluster. 
+`location_shortage` | **boolean** `readonly`<br>Whether there is a shortage on the pickup location. This is `true` when the requested items are not available at the specific `start_location` selected for the order. 
 `number` | **integer** `readonly`<br>The unique order number. 
 `order_delivery_rate_attributes` | **hash** `writeonly`<br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `order_delivery_rate_id` | **uuid** `nullable`<br>The id of the order delivery rate. 
@@ -329,8 +329,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-11-25T22:17:01.000000+00:00",
-          "stops_at": "1968-12-25T22:17:01.000000+00:00",
+          "starts_at": "1968-11-24T00:23:01.000000+00:00",
+          "stops_at": "1968-12-24T00:23:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -582,14 +582,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-06-16T14:12:10Z",
-                       "lte": "2026-06-19T14:12:10Z"
+                       "gte": "2026-06-18T12:07:01Z",
+                       "lte": "2026-06-21T12:07:01Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-06-16T14:12:10Z",
-                       "lte": "2026-06-19T14:12:10Z"
+                       "gte": "2026-06-18T12:07:01Z",
+                       "lte": "2026-06-21T12:07:01Z"
                      }
                    }
                  ]
@@ -960,8 +960,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-04-23T07:36:01.000000+00:00",
-        "stops_at": "1969-05-23T07:36:01.000000+00:00",
+        "starts_at": "1969-04-21T09:41:01.000000+00:00",
+        "stops_at": "1969-05-21T09:41:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1158,8 +1158,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:28:01.000000+00:00",
-        "stops_at": "2026-11-03T14:28:01.000000+00:00",
+        "starts_at": "2026-09-25T14:33:01.000000+00:00",
+        "stops_at": "2026-11-03T14:33:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1272,8 +1272,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:46:00.000000+00:00",
-        "stops_at": "2018-05-14T18:46:00.000000+00:00",
+        "starts_at": "2018-04-05T18:51:00.000000+00:00",
+        "stops_at": "2018-05-14T18:51:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,

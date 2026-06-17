@@ -104,8 +104,8 @@ Check each individual operation to see which relations can be included as a side
        --header 'content-type: application/json'
        --data-urlencode 'filter[active]=true'
        --data-urlencode 'filter[q]=WINTER'
-       --data-urlencode 'filter[range][from]=2026-06-15T14:10:15Z'
-       --data-urlencode 'filter[range][till]=2026-06-16T14:10:15Z'
+       --data-urlencode 'filter[range][from]=2026-06-17T12:05:03Z'
+       --data-urlencode 'filter[range][till]=2026-06-18T12:05:03Z'
        --data-urlencode 'filter[tag_list][]=winter'
        --data-urlencode 'filter[tag_list][]=clearance'
        --data-urlencode 'stats[active][]=count'
@@ -129,8 +129,8 @@ Check each individual operation to see which relations can be included as a side
           "coupon_type": "percentage",
           "value": 10,
           "active": true,
-          "starts_at": "2027-01-03T09:58:18.000000+00:00",
-          "ends_at": "2027-01-07T09:57:18.000000+00:00",
+          "starts_at": "2027-01-03T12:03:18.000000+00:00",
+          "ends_at": "2027-01-07T12:02:18.000000+00:00",
           "eligible_item_type": "all",
           "max_redemptions": null,
           "one_per_customer": false,
