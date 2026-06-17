@@ -1578,6 +1578,26 @@
               </ul>
           </li>
           <li>
+            <a href="#recommendations" class="toc-h1 toc-link" data-title="Recommendations" title="Recommendations">Recommendations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#recommendations-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
+                  </li>
+                  <li>
+                    <a href="#recommendations-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#recommendations-list-recommendations" class="toc-h2 toc-link" data-title="List recommendations" title="List recommendations">List recommendations</a>
+                  </li>
+                  <li>
+                    <a href="#recommendations-create-a-recommendation" class="toc-h2 toc-link" data-title="Create a recommendation" title="Create a recommendation">Create a recommendation</a>
+                  </li>
+                  <li>
+                    <a href="#recommendations-delete-a-recommendation" class="toc-h2 toc-link" data-title="Delete a recommendation" title="Delete a recommendation">Delete a recommendation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#settings" class="toc-h1 toc-link" data-title="Settings" title="Settings">Settings</a>
               <ul class="toc-list-h2">
                   <li>
@@ -38392,9 +38412,361 @@ Check each individual operation to see which relations can be included as a side
 </tbody></table>
 <h3 id='provinces-list-provinces-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
+<h1 id='recommendations'>Recommendations</h1>
+<p>Recommendations define which products are suggested alongside a given product group on the web shop.
+They are used to drive cross-sell behavior: when a customer views a product, the recommended
+products are shown as suggestions to add to their order.</p>
+
+<p>Each recommendation links a source <a href="#product-groups">ProductGroup</a> to a target
+<a href="#product-groups">ProductGroup</a>. The source is the product being viewed; the target is the
+product being suggested.</p>
+
+<p>Recommendations are ordered by <code>position</code>, which is managed through the back office.
+A target product group can only appear once per source (uniqueness is enforced), and a product
+group cannot recommend itself.</p>
+
+<p>Recommendations can be created and deleted via the API. Updating a recommendation is not
+supported — to change a suggestion, delete and recreate it.</p>
+<h2 id='recommendations-relationships'>Relationships</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>source_product_group</code></td>
+<td><strong><a href="#product-groups">Product group</a></strong> <code>required</code><br>The <a href="#product-groups">ProductGroup</a> that is being viewed. Recommendations are fetched by filtering on this product group: <code>GET /api/4/recommendations?filter[source_product_group_id]=id</code>.<br>Writable only on creation. Cannot be changed after the recommendation is created.</td>
+</tr>
+<tr>
+<td><code>target_product_group</code></td>
+<td><strong><a href="#product-groups">Product group</a></strong> <code>required</code><br>The <a href="#product-groups">ProductGroup</a> that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: <code>GET /api/4/recommendations?filter[target_product_group_id]=id</code>.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected.</td>
+</tr>
+</tbody></table>
+
+<p>Check matching attributes under <a href="#recommendations-fields">Fields</a> to see which relations can be written.
+<br/ >
+Check each individual operation to see which relations can be included as a sideload.</p>
+<h2 id='recommendations-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was created.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>The display order of this recommendation relative to other recommendations for the same source product group. Lower values appear first. Read-only via the API — managed through the back office only.</td>
+</tr>
+<tr>
+<td><code>source_product_group_id</code></td>
+<td><strong>uuid</strong> <code>readonly-after-create</code><br>The <a href="#product-groups">ProductGroup</a> that is being viewed. Recommendations are fetched by filtering on this product group: <code>GET /api/4/recommendations?filter[source_product_group_id]=id</code>.<br>Writable only on creation. Cannot be changed after the recommendation is created.</td>
+</tr>
+<tr>
+<td><code>target_product_group_id</code></td>
+<td><strong>uuid</strong> <code>readonly-after-create</code><br>The <a href="#product-groups">ProductGroup</a> that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: <code>GET /api/4/recommendations?filter[target_product_group_id]=id</code>.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <code>readonly</code><br>When the resource was last updated.</td>
+</tr>
+</tbody></table>
+<h2 id='recommendations-list-recommendations'>List recommendations</h2>
+<blockquote>
+<p>List recommendations for a product group:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/recommendations'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[source_product_group_id]=90dc35c9-35c7-4dd9-8608-6e0b8413a4d8'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbda3eb5-14ad-422a-8363-ce4cd6fd3e7a"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recommendations"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-08-04T13:36:02.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-08-04T13:36:02.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"source_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90dc35c9-35c7-4dd9-8608-6e0b8413a4d8"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"target_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"088a4c42-2ba9-41ed-8702-0369782c0ea8"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>List product groups recommending a given target:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/recommendations'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[target_product_group_id]=62c3ac7c-6719-4aac-8b5f-5d699652cb78'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a53bd287-0f47-4645-8a9c-7706c3e91c11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recommendations"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-07T09:36:05.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-07T09:36:05.000000+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"source_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68a3023d-b907-4ad6-8e91-5fab5a36f130"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"target_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62c3ac7c-6719-4aac-8b5f-5d699652cb78"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='recommendations-list-recommendations-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/recommendations</code></p>
+<h3 id='recommendations-list-recommendations-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[recommendations]=created_at,updated_at,position</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=source_product_group,target_product_group</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='recommendations-list-recommendations-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>source_product_group_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>target_product_group_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code>, <code>not_eq</code></td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><strong>datetime</strong> <br><code>eq</code>, <code>not_eq</code>, <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code></td>
+</tr>
+</tbody></table>
+<h3 id='recommendations-list-recommendations-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='recommendations-list-recommendations-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li>
+    <code>source_product_group</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+  <li>
+    <code>target_product_group</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
+<h2 id='recommendations-create-a-recommendation'>Create a recommendation</h2>
+<blockquote>
+<p>Create a recommendation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST
+       <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/recommendations'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data</span> <span class="s1">'{
+         "data": {
+           "type": "recommendations",
+           "attributes": {
+             "source_product_group_id": "342a1eca-eb47-438f-8cc6-185b0575683c",
+             "target_product_group_id": "b9941e5a-0ea1-4ac1-8d4b-5fe77f159baa"
+           }
+         }
+       }'</span>
+</code></pre></div>
+<blockquote>
+<p>A 201 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb38ae63-e683-45ae-8e7d-cf0240f343f0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recommendations"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-06-25T23:10:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-06-25T23:10:01.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"342a1eca-eb47-438f-8cc6-185b0575683c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"target_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b9941e5a-0ea1-4ac1-8d4b-5fe77f159baa"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='recommendations-create-a-recommendation-http-request'>HTTP Request</h3>
+<p><code>POST /api/4/recommendations</code></p>
+<h3 id='recommendations-create-a-recommendation-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[recommendations]=created_at,updated_at,position</code></td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><strong>string</strong> <br>List of comma seperated relationships to sideload. <code>?include=target_product_group</code></td>
+</tr>
+</tbody></table>
+<h3 id='recommendations-create-a-recommendation-request-body'>Request body</h3>
+<p>This request accepts the following body:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data[attributes][source_product_group_id]</code></td>
+<td><strong>uuid</strong> <br>The <a href="#product-groups">ProductGroup</a> that is being viewed. Recommendations are fetched by filtering on this product group: <code>GET /api/4/recommendations?filter[source_product_group_id]=id</code>.<br>Writable only on creation. Cannot be changed after the recommendation is created.</td>
+</tr>
+<tr>
+<td><code>data[attributes][target_product_group_id]</code></td>
+<td><strong>uuid</strong> <br>The <a href="#product-groups">ProductGroup</a> that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: <code>GET /api/4/recommendations?filter[target_product_group_id]=id</code>.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected.</td>
+</tr>
+</tbody></table>
+<h3 id='recommendations-create-a-recommendation-includes'>Includes</h3>
+<p>This request accepts the following includes:</p>
+
+<ul>
+  <li>
+    <code>target_product_group</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
+</ul>
+<h2 id='recommendations-delete-a-recommendation'>Delete a recommendation</h2>
+<blockquote>
+<p>Delete a recommendation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> DELETE
+       <span class="nt">--url</span> <span class="s1">'https://example.booqable.com/api/4/recommendations/6ab22c5b-ae38-4464-8199-b70232391a70'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ab22c5b-ae38-4464-8199-b70232391a70"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recommendations"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-14T13:50:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-14T13:50:00.000000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d200635f-4483-4df8-82d4-d6e39ba66c25"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"target_product_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"541f366b-0938-46fe-8ec7-4d18d9837c2a"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='recommendations-delete-a-recommendation-http-request'>HTTP Request</h3>
+<p><code>DELETE /api/4/recommendations/{id}</code></p>
+<h3 id='recommendations-delete-a-recommendation-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[recommendations]=created_at,updated_at,position</code></td>
+</tr>
+</tbody></table>
+<h3 id='recommendations-delete-a-recommendation-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 <h1 id='settings'>Settings</h1>
 <p>Settings are configured globally for a company account. They are divided in the following sections:</p>
-<h4 id='settings-list-provinces-includes-currency'>Currency</h4>
+<h4 id='settings-delete-a-recommendation-includes-currency'>Currency</h4>
 <p>Information on how to display and handle the currency.</p>
 
 <table><thead>
@@ -38428,7 +38800,7 @@ Check each individual operation to see which relations can be included as a side
 <td><strong>String</strong> <code>readonly</code><br>The format</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-defaults'>Defaults</h4>
+<h4 id='settings-delete-a-recommendation-includes-defaults'>Defaults</h4>
 <p>Defaults derived from other resources.</p>
 
 <table><thead>
@@ -38454,7 +38826,7 @@ Check each individual operation to see which relations can be included as a side
 <td><strong>Uuid</strong> <code>readonly</code><br>ID the default tax region</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-pricing'>Pricing</h4>
+<h4 id='settings-delete-a-recommendation-includes-pricing'>Pricing</h4>
 <p>Configuration on how to handle and display pricing</p>
 
 <table><thead>
@@ -38488,7 +38860,7 @@ Check each individual operation to see which relations can be included as a side
 <td><strong>String</strong><br>Where to place the currency symbol, one of <code>left</code>, <code>right</code></td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-dates'>Dates</h4>
+<h4 id='settings-delete-a-recommendation-includes-dates'>Dates</h4>
 <p>Information on how to display dates. The settings below should be used (and combined)
 to select the format string for the date library being used.</p>
 
@@ -38511,7 +38883,7 @@ to select the format string for the date library being used.</p>
 <td><strong>Integer</strong><br>Which day to display as first day of the week (<code>0</code> for Sunday)</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-orders'>Orders</h4>
+<h4 id='settings-delete-a-recommendation-includes-orders'>Orders</h4>
 <p>Configuration for <a href="#orders">orders</a> (these settings also apply to the online store)</p>
 
 <table><thead>
@@ -38533,7 +38905,7 @@ to select the format string for the date library being used.</p>
 <td><strong>String</strong><br>Fixed stop time of day, e.g. <code>14:00</code></td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-security'>Security</h4>
+<h4 id='settings-delete-a-recommendation-includes-security'>Security</h4>
 <p>Global security settings</p>
 
 <table><thead>
@@ -38551,7 +38923,7 @@ to select the format string for the date library being used.</p>
 <td><strong>Boolean</strong><br>Whether IP restrictions are enabled</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-store'>Store</h4>
+<h4 id='settings-delete-a-recommendation-includes-store'>Store</h4>
 <p>Settings for the online store</p>
 
 <table><thead>
@@ -38685,7 +39057,7 @@ to select the format string for the date library being used.</p>
 <td><strong>String</strong><br>Content for the <code>facebook-domain-verification</code> meta tag</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-user'>User</h4>
+<h4 id='settings-delete-a-recommendation-includes-user'>User</h4>
 <p>Settings that apply to <a href="#users">user</a> accounts</p>
 
 <table><thead>
@@ -38711,7 +39083,7 @@ to select the format string for the date library being used.</p>
 <td><strong>Boolean</strong><br>Whether email addresses need to be verified</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-documents'>Documents</h4>
+<h4 id='settings-delete-a-recommendation-includes-documents'>Documents</h4>
 <p>Settings that apply to all <a href="#documents">document</a> types</p>
 
 <table><thead>
@@ -38741,7 +39113,7 @@ to select the format string for the date library being used.</p>
 <td><strong>String</strong><br>The page size to use for pdf downloads, one of <code>a4</code>, <code>letter</code></td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-invoices'>Invoices</h4>
+<h4 id='settings-delete-a-recommendation-includes-invoices'>Invoices</h4>
 <p>Settings that apply to invoices</p>
 
 <table><thead>
@@ -38779,7 +39151,7 @@ to select the format string for the date library being used.</p>
 <td><strong>Integer</strong><br>A period of time during which invoices can await payment, in seconds</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-quotes'>Quotes</h4>
+<h4 id='settings-delete-a-recommendation-includes-quotes'>Quotes</h4>
 <p>Settings that apply to quotes</p>
 
 <table><thead>
@@ -38817,7 +39189,7 @@ to select the format string for the date library being used.</p>
 <td><strong>String</strong><br>Prefix to use for document numbering, e.g. <code>{{year}}</code> or <code>{{customer_number}}</code>, combinations are also possible <code>{{year}}-{{order_number}}</code></td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-contracts'>Contracts</h4>
+<h4 id='settings-delete-a-recommendation-includes-contracts'>Contracts</h4>
 <p>Settings that apply to contracts</p>
 
 <table><thead>
@@ -38855,7 +39227,7 @@ to select the format string for the date library being used.</p>
 <td><strong>String</strong><br>Prefix to use for document numbering, e.g. <code>{{year}}</code> or <code>{{customer_number}}</code>, combinations are also possible <code>{{year}}-{{order_number}}</code></td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-labels'>Labels</h4>
+<h4 id='settings-delete-a-recommendation-includes-labels'>Labels</h4>
 <p>Customization settings for labels</p>
 
 <table><thead>
@@ -38885,7 +39257,7 @@ to select the format string for the date library being used.</p>
 <td><strong>String</strong><br>What to call a packing slip (one of <code>packing_slip</code>, <code>pull_sheet</code>)</td>
 </tr>
 </tbody></table>
-<h4 id='settings-list-provinces-includes-labels'>Labels</h4>
+<h4 id='settings-delete-a-recommendation-includes-labels'>Labels</h4>
 <p>Settings for emails</p>
 
 <table><thead>
