@@ -1,8 +1,9 @@
 # Inventory level intervals
 
 **Deprecated.** This endpoint will be removed in a future version.
-Use the [Availabilities](#availabilities) endpoint for accurate product availability data
-that correctly accounts for buffer times and other business rules.
+Use the [Inventory availabilities](#inventory-availabilities) endpoint to get the number
+of units available for a period, or the [Availabilities](#availabilities) endpoint for a
+calendar of availability statuses. Both account for buffer times and other business rules.
 
 Inventory level intervals provide a breakdown of raw inventory data by a given time interval.
 They return stock counts, planned quantities, and needed quantities aggregated per interval for reporting purposes.
