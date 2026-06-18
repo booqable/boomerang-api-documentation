@@ -8,7 +8,8 @@ The availability endpoint returns individual availability records as a standard 
 each record includes detailed status information for a specific date or time interval.
 
 **Note:** The [Inventory levels](#inventory-levels) and [Inventory level intervals](#inventory-level-intervals) endpoints
-are deprecated. This endpoint is the recommended way to check product availability.
+are deprecated. Use this endpoint for a calendar of availability statuses, or
+[Inventory availabilities](#inventory-availabilities) for the number of units available over a period.
 
 ## Subject Types
 
@@ -33,6 +34,7 @@ Availability can be checked at different time granularities:
 `hour` | **string** `readonly`<br>The hour component (0-23) for time-based availability.<br>Only present when `type` is `time`. For daily availability records, this will be `null`. 
 `id` | **string** `readonly`<br>A unique identifier for this availability record, generated based on the subject, date/time, and interval. 
 `minute` | **string** `readonly`<br>The minute component (typically 0, 15, 30, or 45) for time-based availability.<br>Only present when `type` is `time`. The specific values depend on the `interval` parameter. For daily availability records, this will be `null`. 
+`quantity` | **integer** `readonly`<br>**Dual-purpose attribute** - Meaning depends on context:<br>**As a response attribute** (output): The number of units available for this interval. For `item` subjects this is the bookable quantity of the product. For `cart` subjects it is how many more units are still available for the cart's products. It is `null` for `order` and `downtime` subjects.<br>**As a filter parameter** (input): The number of units to check availability for. Applies to `item` subjects only; it sets the threshold used to decide whether each interval is `available`, `partial`, or `unavailable`. 
 `status` | **string** `readonly`<br>The availability status for this date or time slot.<br>One of: `available`, `partial`, `unavailable`.<br>`available` - Fully available for booking<br>`partial` - Partially available (some items available but not all requested)<br>`unavailable` - Not available for booking 
 `subject_id` | **uuid** `readonly`<br>The ID of the subject this availability record is for. 
 `subject_type` | **string** `readonly`<br>The type of subject this availability record is for.<br>One of: `order`, `cart`, `item`, `downtime`. 
@@ -92,6 +94,7 @@ Name | Description
 `interval` | **integer** <br>`eq`
 `location_id` | **uuid** <br>`eq`
 `month` | **integer** `required`<br>`eq`
+`quantity` | **integer** <br>`eq`
 `starts_at` | **datetime** <br>`eq`
 `subject_id` | **uuid** `required`<br>`eq`
 `subject_type` | **string** `required`<br>`eq`
@@ -144,6 +147,7 @@ This request does not accept any includes
           "date": "2027-02-09",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -158,6 +162,7 @@ This request does not accept any includes
           "date": "2027-02-10",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -172,6 +177,7 @@ This request does not accept any includes
           "date": "2027-02-11",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -186,6 +192,7 @@ This request does not accept any includes
           "date": "2027-02-12",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -200,6 +207,7 @@ This request does not accept any includes
           "date": "2027-02-13",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -214,6 +222,7 @@ This request does not accept any includes
           "date": "2027-02-14",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -228,6 +237,7 @@ This request does not accept any includes
           "date": "2027-02-15",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -242,6 +252,7 @@ This request does not accept any includes
           "date": "2027-02-16",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -256,6 +267,7 @@ This request does not accept any includes
           "date": "2027-02-17",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -270,6 +282,7 @@ This request does not accept any includes
           "date": "2027-02-18",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -284,6 +297,7 @@ This request does not accept any includes
           "date": "2027-02-19",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -298,6 +312,7 @@ This request does not accept any includes
           "date": "2027-02-20",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -312,6 +327,7 @@ This request does not accept any includes
           "date": "2027-02-21",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -326,6 +342,7 @@ This request does not accept any includes
           "date": "2027-02-22",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -340,6 +357,7 @@ This request does not accept any includes
           "date": "2027-02-23",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -354,6 +372,7 @@ This request does not accept any includes
           "date": "2027-02-24",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -368,6 +387,7 @@ This request does not accept any includes
           "date": "2027-02-25",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -382,6 +402,7 @@ This request does not accept any includes
           "date": "2027-02-26",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -396,6 +417,7 @@ This request does not accept any includes
           "date": "2027-02-27",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -410,6 +432,7 @@ This request does not accept any includes
           "date": "2027-02-28",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -424,6 +447,7 @@ This request does not accept any includes
           "date": "2027-03-01",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -438,6 +462,7 @@ This request does not accept any includes
           "date": "2027-03-02",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -452,6 +477,7 @@ This request does not accept any includes
           "date": "2027-03-03",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -466,6 +492,7 @@ This request does not accept any includes
           "date": "2027-03-04",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -480,6 +507,7 @@ This request does not accept any includes
           "date": "2027-03-05",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -494,6 +522,7 @@ This request does not accept any includes
           "date": "2027-03-06",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -508,6 +537,7 @@ This request does not accept any includes
           "date": "2027-03-07",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -522,6 +552,7 @@ This request does not accept any includes
           "date": "2027-03-08",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -536,6 +567,7 @@ This request does not accept any includes
           "date": "2027-03-09",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -550,6 +582,7 @@ This request does not accept any includes
           "date": "2027-03-10",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -564,6 +597,7 @@ This request does not accept any includes
           "date": "2027-03-11",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -578,6 +612,7 @@ This request does not accept any includes
           "date": "2027-03-12",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -592,6 +627,7 @@ This request does not accept any includes
           "date": "2027-03-13",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -606,6 +642,7 @@ This request does not accept any includes
           "date": "2027-03-14",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -620,6 +657,7 @@ This request does not accept any includes
           "date": "2027-03-15",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -634,6 +672,7 @@ This request does not accept any includes
           "date": "2027-03-16",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -648,6 +687,7 @@ This request does not accept any includes
           "date": "2027-03-17",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -662,6 +702,7 @@ This request does not accept any includes
           "date": "2027-03-18",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -676,6 +717,7 @@ This request does not accept any includes
           "date": "2027-03-19",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -690,6 +732,7 @@ This request does not accept any includes
           "date": "2027-03-20",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -704,6 +747,7 @@ This request does not accept any includes
           "date": "2027-03-21",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -718,6 +762,7 @@ This request does not accept any includes
           "date": "2027-03-22",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -732,6 +777,7 @@ This request does not accept any includes
           "date": "2027-03-23",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -746,6 +792,7 @@ This request does not accept any includes
           "date": "2027-03-24",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -760,6 +807,7 @@ This request does not accept any includes
           "date": "2027-03-25",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -774,6 +822,7 @@ This request does not accept any includes
           "date": "2027-03-26",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -788,6 +837,7 @@ This request does not accept any includes
           "date": "2027-03-27",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -802,6 +852,7 @@ This request does not accept any includes
           "date": "2027-03-28",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -816,6 +867,7 @@ This request does not accept any includes
           "date": "2027-03-29",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       },
@@ -830,6 +882,7 @@ This request does not accept any includes
           "date": "2027-03-30",
           "status": "unavailable",
           "available": false,
+          "quantity": 0,
           "type": "date"
         }
       }
@@ -867,6 +920,7 @@ Name | Description
 `interval` | **integer** <br>`eq`
 `location_id` | **uuid** <br>`eq`
 `month` | **integer** `required`<br>`eq`
+`quantity` | **integer** <br>`eq`
 `starts_at` | **datetime** <br>`eq`
 `subject_id` | **uuid** `required`<br>`eq`
 `subject_type` | **string** `required`<br>`eq`
@@ -920,6 +974,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -934,6 +989,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -948,6 +1004,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -962,6 +1019,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -976,6 +1034,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -990,6 +1049,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1004,6 +1064,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1018,6 +1079,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1032,6 +1094,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1046,6 +1109,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1060,6 +1124,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1074,6 +1139,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1088,6 +1154,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1102,6 +1169,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1116,6 +1184,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1130,6 +1199,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1144,6 +1214,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1158,6 +1229,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1172,6 +1244,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1186,6 +1259,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1200,6 +1274,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1214,6 +1289,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1228,6 +1304,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1242,6 +1319,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1256,6 +1334,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1270,6 +1349,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1284,6 +1364,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1298,6 +1379,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1312,6 +1394,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1326,6 +1409,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1340,6 +1424,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1354,6 +1439,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1368,6 +1454,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1382,6 +1469,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1396,6 +1484,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1410,6 +1499,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1424,6 +1514,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1438,6 +1529,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1452,6 +1544,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1466,6 +1559,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1480,6 +1574,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1494,6 +1589,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1508,6 +1604,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1522,6 +1619,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1536,6 +1634,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1550,6 +1649,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1564,6 +1664,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1578,6 +1679,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1592,6 +1694,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1606,6 +1709,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1620,6 +1724,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1634,6 +1739,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1648,6 +1754,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1662,6 +1769,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1676,6 +1784,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1690,6 +1799,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1704,6 +1814,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1718,6 +1829,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1732,6 +1844,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1746,6 +1859,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1760,6 +1874,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1774,6 +1889,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1788,6 +1904,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1802,6 +1919,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1816,6 +1934,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1830,6 +1949,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1844,6 +1964,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1858,6 +1979,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1872,6 +1994,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1886,6 +2009,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1900,6 +2024,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1914,6 +2039,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1928,6 +2054,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1942,6 +2069,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1956,6 +2084,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1970,6 +2099,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1984,6 +2114,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -1998,6 +2129,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2012,6 +2144,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2026,6 +2159,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2040,6 +2174,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2054,6 +2189,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2068,6 +2204,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2082,6 +2219,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2096,6 +2234,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2110,6 +2249,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2124,6 +2264,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2138,6 +2279,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2152,6 +2294,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2166,6 +2309,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2180,6 +2324,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2194,6 +2339,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2208,6 +2354,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2222,6 +2369,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2236,6 +2384,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       },
@@ -2250,6 +2399,7 @@ This request does not accept any includes
           "date": "2016-02-14",
           "status": "available",
           "available": true,
+          "quantity": null,
           "type": "time"
         }
       }
@@ -2287,6 +2437,7 @@ Name | Description
 `interval` | **integer** <br>`eq`
 `location_id` | **uuid** <br>`eq`
 `month` | **integer** `required`<br>`eq`
+`quantity` | **integer** <br>`eq`
 `starts_at` | **datetime** <br>`eq`
 `subject_id` | **uuid** `required`<br>`eq`
 `subject_type` | **string** `required`<br>`eq`

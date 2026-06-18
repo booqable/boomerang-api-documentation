@@ -1,8 +1,9 @@
 # Inventory levels
 
 **Deprecated.** This endpoint will be removed in a future version.
-Use the [Availabilities](#availabilities) endpoint for accurate product availability data
-that correctly accounts for buffer times and other business rules.
+Use the [Inventory availabilities](#inventory-availabilities) endpoint to get the number
+of units available for a period, or the [Availabilities](#availabilities) endpoint for a
+calendar of availability statuses. Both account for buffer times and other business rules.
 
 Inventory levels provide raw inventory data snapshots for reporting purposes.
 They describe stock counts, planned quantities, and needed quantities for given items at specific points in time.
