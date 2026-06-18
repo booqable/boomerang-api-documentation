@@ -2,6 +2,8 @@
 
 Settings are configured globally for a company account. They are divided in the following sections:
 
+When updating, send only the sections documented below. Unknown top-level sections are rejected with a `400 Bad Request` and the whole request fails, leaving all settings unchanged.
+
 #### Currency
 
 Information on how to display and handle the currency.
@@ -201,7 +203,7 @@ Name | Description
 `currency` | **hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource).
 `dashboard` | **hash** `extra`<br>Dashboard settings (Used internally by Booqable).
 `dates` | **hash** <br>Information on how to display dates.
-`defaults` | **hash** `readonly`<br>Defaults derived from other resources.
+`defaults` | **hash** <br>Defaults derived from other resources.
 `deliveries` | **hash** <br>Settings for deliveries.
 `documents` | **hash** <br>Settings that apply to all [document](#documents) types.
 `emails` | **hash** <br>Settings for emails.
