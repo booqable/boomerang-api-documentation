@@ -22,6 +22,7 @@ includes:
   - v4/resources/activity_logs
   - v4/resources/assets
   - v4/resources/authentication_methods
+  - v4/resources/availabilities
   - v4/resources/barcodes
   - v4/resources/billing_invoices
   - v4/resources/bulk_upserts
@@ -42,11 +43,13 @@ includes:
   - v4/resources/deposit_holds
   - v4/resources/device_tokens
   - v4/resources/documents
+  - v4/resources/downtimes
   - v4/resources/email_templates
   - v4/resources/emails
   - v4/resources/employees
   - v4/resources/employee_invitations
   - v4/resources/exports
+  - v4/resources/inventory_availabilities
   - v4/resources/inventory_breakdowns
   - v4/resources/inventory_level_intervals
   - v4/resources/inventory_levels
@@ -91,6 +94,7 @@ includes:
   - v4/resources/properties
   - v4/resources/provinces
   - v4/resources/publications
+  - v4/resources/recommendations
   - v4/resources/rendered_emails
   - v4/resources/sessions
   - v4/resources/settings
