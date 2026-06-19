@@ -27,6 +27,8 @@ Name | Description
 `timezone_offset` | **Integer** `readonly`<br>The UTC offset of the default timezone, in minutes
 `tax_category_id` | **Uuid** `readonly`<br>ID the default tax category
 `tax_region_id` | **Uuid** `readonly`<br>ID the default tax region
+`shop_start_location_id` | **Uuid**<br>ID of the default pickup location for the online store
+`shop_stop_location_id` | **Uuid**<br>ID of the default return location for the online store
 
 #### Pricing
 
@@ -203,7 +205,7 @@ Name | Description
 `currency` | **hash** `readonly`<br>Information on how to display and handle the currency (managed on Company resource).
 `dashboard` | **hash** `extra`<br>Dashboard settings (Used internally by Booqable).
 `dates` | **hash** <br>Information on how to display dates.
-`defaults` | **hash** <br>Defaults derived from other resources.
+`defaults` | **hash** <br>Defaults derived from other resources. Most fields are read-only; only `shop_start_location_id` and `shop_stop_location_id` are writable.
 `deliveries` | **hash** <br>Settings for deliveries.
 `documents` | **hash** <br>Settings that apply to all [document](#documents) types.
 `emails` | **hash** <br>Settings for emails.
