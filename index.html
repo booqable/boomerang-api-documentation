@@ -837,10 +837,24 @@
               </ul>
           </li>
           <li>
+            <a href="#inventory-availabilities" class="toc-h1 toc-link" data-title="Inventory availabilities" title="Inventory availabilities">Inventory availabilities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#inventory-availabilities-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#inventory-availabilities-fetch-availability-for-a-product" class="toc-h2 toc-link" data-title="Fetch availability for a product" title="Fetch availability for a product">Fetch availability for a product</a>
+                  </li>
+                  <li>
+                    <a href="#inventory-availabilities-fetch-availability-for-a-bundle" class="toc-h2 toc-link" data-title="Fetch availability for a bundle" title="Fetch availability for a bundle">Fetch availability for a bundle</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#inventory-breakdowns" class="toc-h1 toc-link" data-title="Inventory breakdowns" title="Inventory breakdowns">Inventory breakdowns</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#inventory-breakdowns-send-invitations-useful-for" class="toc-h2 toc-link" data-title="Useful for" title="Useful for">Useful for</a>
+                    <a href="#inventory-breakdowns-fetch-availability-for-a-bundle-useful-for" class="toc-h2 toc-link" data-title="Useful for" title="Useful for">Useful for</a>
                   </li>
                   <li>
                     <a href="#inventory-breakdowns-relationships" class="toc-h2 toc-link" data-title="Relationships" title="Relationships">Relationships</a>
@@ -17885,6 +17899,263 @@ Note that you can also update other fields.:</p>
 <ul>
   <li><code>employee</code></li>
 </ul>
+<h1 id='inventory-availabilities'>Inventory availabilities</h1>
+<p>Inventory availabilities tell you how many units of a product can be booked for an
+exact period at a given location.</p>
+
+<p>Unlike the <a href="#availabilities">Availabilities</a> endpoint, which returns a calendar of
+statuses (<code>available</code>, <code>partial</code>, <code>unavailable</code>) per day or time slot, this endpoint
+answers a different question: how many units are available for a specific <code>from</code>/<code>till</code>
+range. It is the recommended way to obtain quantity counts and replaces the deprecated
+<a href="#inventory-levels">Inventory levels</a> endpoint for that purpose.</p>
+
+<p>Availability accounts for stock counts and existing reservations. Pass one or more
+<code>item_id</code> values to check multiple products in a single request.</p>
+<h2 id='inventory-availabilities-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>available</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>The number of units available to book for the requested period and location.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br><strong>Required.</strong> The item to return availability for. Accepts a single ID, or an array of IDs to check multiple products in one request. Also returned on each record.</td>
+</tr>
+<tr>
+<td><code>plannable</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>The number of units that can be planned for the requested period and location. When shortage is allowed for the product, this can exceed <code>available</code> by the configured shortage limit.</td>
+</tr>
+</tbody></table>
+<h2 id='inventory-availabilities-fetch-availability-for-a-product'>Fetch availability for a product</h2>
+<blockquote>
+<p>How to fetch availability for a product:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/inventory_availabilities'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[from]=2024-10-01 09:00:00'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[item_id]=2509b56a-90aa-4713-82ae-3494a102e48a'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[location_id]=e27b9b57-dc61-4fd7-8605-c0e7e763d985'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[till]=2024-10-02 09:00:00'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d48ab74-7603-4cc0-8b1b-6abdfd244419"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_availabilities"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2509b56a-90aa-4713-82ae-3494a102e48a"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"plannable"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='inventory-availabilities-fetch-availability-for-a-product-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/inventory_availabilities</code></p>
+<h3 id='inventory-availabilities-fetch-availability-for-a-product-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[inventory_availabilities]=item_id,available,plannable</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-availabilities-fetch-availability-for-a-product-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>configuration</code></td>
+<td><strong>hash</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-availabilities-fetch-availability-for-a-product-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-availabilities-fetch-availability-for-a-product-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='inventory-availabilities-fetch-availability-for-a-bundle'>Fetch availability for a bundle</h2>
+<blockquote>
+<p>How to fetch availability for a bundle using a configuration:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/inventory_availabilities'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[configuration][f44843a5-a88e-42f0-8367-813ef78e6655]=029c12e7-9185-4a6f-850a-3886a4e61c14'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[from]=2024-10-01 09:00:00'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[item_id]=7cb98cae-603f-4077-835a-9b2ff696942e'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[location_id]=98400282-2c37-44df-8002-831789622118'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[till]=2024-10-02 09:00:00'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b45d219c-e452-4f3d-87e9-211dee3ae616"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inventory_availabilities"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7cb98cae-603f-4077-835a-9b2ff696942e"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"plannable"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='inventory-availabilities-fetch-availability-for-a-bundle-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/inventory_availabilities</code></p>
+<h3 id='inventory-availabilities-fetch-availability-for-a-bundle-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[inventory_availabilities]=item_id,available,plannable</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-availabilities-fetch-availability-for-a-bundle-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>configuration</code></td>
+<td><strong>hash</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-availabilities-fetch-availability-for-a-bundle-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='inventory-availabilities-fetch-availability-for-a-bundle-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 <h1 id='inventory-breakdowns'>Inventory breakdowns</h1>
 <p>Fetch quantitative information about product inventory compared to the current time, broken down by:</p>
 
@@ -17894,7 +18165,7 @@ Note that you can also update other fields.:</p>
 <li>Type</li>
 <li>Mutation date(s)</li>
 </ul>
-<h3 id='inventory-breakdowns-send-invitations-useful-for'>Useful for</h3>
+<h3 id='inventory-breakdowns-fetch-availability-for-a-bundle-useful-for'>Useful for</h3>
 <ul>
 <li>Examining what the current inventory looks, and will look, like for products</li>
 <li>Performing an inventory count (total in stock vs. out with a customer)</li>
