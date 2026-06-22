@@ -13,7 +13,11 @@ are deprecated. Use this endpoint for a calendar of availability statuses, or
 
 ## Subject Types
 
-- **order**: Check availability for rescheduling an order's start or stop date
+- **order**: Powers the **order rescheduling calendar** — shows which dates an order's
+  items could be moved to. Each day's status answers "could I reschedule this order to
+  start on this date?", not "how many units are available?". `quantity` is always `null`
+  for order subjects. To check item stock counts during an order's rental period, use
+  [Inventory availabilities](#inventory-availabilities) with the order's item IDs and dates.
 - **cart**: Check availability for a cart
 - **item**: View product availability across a period for booking
 - **downtime**: Check availability for scheduling maintenance or repairs
@@ -49,8 +53,9 @@ Availability can be checked at different time granularities:
 ```shell
   curl --get 'https://example.booqable.com/api/4/availabilities'
        --header 'content-type: application/json'
+       --data-urlencode 'filter[location_id]=1f146c7a-442f-4f04-8afc-d1ab5ffdef32'
        --data-urlencode 'filter[month]=10'
-       --data-urlencode 'filter[subject_id]=1f146c7a-442f-4f04-8afc-d1ab5ffdef32'
+       --data-urlencode 'filter[subject_id]=b573315c-ca87-491c-8599-885868e47953'
        --data-urlencode 'filter[subject_type]=order'
        --data-urlencode 'filter[type]=start'
        --data-urlencode 'filter[year]=2024'
@@ -60,7 +65,1043 @@ Availability can be checked at different time granularities:
 
 ```json
   {
-    "data": [],
+    "data": [
+      {
+        "id": "dc6ade3e-b8b4-4cad-8b7f-286e15d16c3f",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-11",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "9a5c6f71-3382-4d48-8d33-95bb3b5eb83d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-12",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a87f1708-719e-4de3-8214-d3e38f9c4016",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-13",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "796af294-4334-47ab-8dc0-724e29eb00e5",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-14",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8db3a2c6-e205-4275-84bf-36fb29096097",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-15",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8f147dca-3015-41a3-89ec-26c61fa5c73c",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-16",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "bfb6a299-65a0-49cf-892a-ec97464d977d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-17",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "ccc93d98-c869-4fc0-8506-5e6379acd2c2",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-18",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "05e6415a-cfc9-4f50-8a4c-5ba5b568f374",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-19",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "da46a8c4-3882-42b6-89e8-555545da2265",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-20",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f399258c-4ae3-4201-8056-91c0ab4c2c6c",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-21",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "c737cc77-8865-42b3-89fd-a9af5d918b30",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-22",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "c6e21434-1333-40f4-8750-4407ed352441",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-23",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f3c10ef6-9fb6-45ac-8242-734853065509",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-24",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "480e2882-ec82-49fc-8e89-419a36e0dcda",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-25",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "6dcd080e-a831-4788-8fff-98b56daff416",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-26",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "67854dbc-a55c-417d-8f89-78c512479e93",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-27",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "50b03515-8262-426d-886e-10b87adb042a",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-28",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "9ba5838f-cf3b-43e4-803b-37fe8a899dfb",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-29",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "039b6aed-466f-47b7-8c1e-30f61d6b4fcf",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-09-30",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "82466055-dd84-4954-87ea-34f905a8c2c3",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-01",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "20b2189b-0d1a-410a-85e5-fa9c2681b3c7",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-02",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8cb2dd9f-240a-4d1d-8e29-a1750e7dc890",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-03",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8cfb811b-a13c-42d8-8d4e-090a642cbde6",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-04",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a19ed7ed-2374-4583-842b-1c8d6c17e4b4",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-05",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "68216ee6-70a4-4182-8aca-dc3f35cecf18",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-06",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "10f1e8d3-c57d-4477-86ac-3ce3dbbd3bad",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-07",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "7c322ea3-90f4-478b-88f2-b651255a1456",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-08",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "29a0fe7c-bab7-4995-8420-4b2f31a924d6",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-09",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "0a79bf9f-e47f-4978-8f6c-e0d65b18ec80",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-10",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a50bbc4d-ccb3-45b2-81e0-87111ac027a0",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-11",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "e5eaa0ef-ab29-484d-89c0-e232a898b04d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-12",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "84fb4a1a-3f8c-4de3-8b87-77b768477fab",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-13",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "294a3c7c-c24c-4b36-89a7-b6bf5c2d63ee",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-14",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "bb72b259-5463-4086-83c7-f8df583f839d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-15",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "fbde4496-a80a-404e-808d-20b295657ded",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-16",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "4fa4413f-63a5-40f1-8fb2-56478d47391b",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-17",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "cb3758a2-44d2-49ca-813f-f913409c5e34",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-18",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "96b240fb-8dac-47a9-8181-37afacff49c9",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-19",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "111d28b5-6fc9-4885-88a1-188887a646e6",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-20",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "c46fadcd-e938-47b7-8a55-d663408e545c",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-21",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "229631db-fb2e-41d9-8e41-6ff3485ff7f8",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-22",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "725bb1f1-c0d5-4022-89ae-2bb2c002575e",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-23",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "4a0c996a-e72f-4380-8351-611d63590397",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-24",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "c582f08c-6942-4e9c-8052-734830f912fd",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-25",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "9cafff4b-a6e0-4e41-8704-a0959623ab51",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-26",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "fa46c654-921e-481b-800b-9b341df5cff0",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-27",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f95935d5-64c6-4229-8296-d24af743e22b",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-28",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "cbb799fa-2980-4e57-8ba6-16c02aade904",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-29",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f7450fcd-d615-48fd-80ee-7f45c5a3e9bb",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-30",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f0b34adc-c77a-4382-8dc4-9cfe134dc2e1",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-10-31",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f5cd9b53-a68b-4bd2-81ef-4352ffac4684",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-01",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "5c1421b8-e3e8-407c-8d5c-f7119f0c2665",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-02",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "c7bad96d-872c-4917-83e8-3b02a97ecc27",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-03",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "3ee64364-1a15-4bf3-86c2-e4f0dec9f1c3",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-04",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "0ee71bdb-9820-45f6-812a-09d643b2c1fe",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-05",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "5e7d2eab-c3dd-48fb-8e78-54b210d82a10",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-06",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "9f26677a-0086-4c33-8dec-5ddd993f0574",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-07",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "dc7d9769-1392-43d2-88ef-989ad494299b",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-08",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "3056db31-c4b5-41c6-8005-6817880dd730",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-09",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f27a8e3e-278b-4970-8e5a-cff57f7a6bd1",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-10",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "67ffbc1a-a68c-488a-87dc-328aace13754",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-11",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "541c595b-7ebe-4315-87cf-8552fc86cc1d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-12",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "d8fad8de-2413-4115-8730-8e2bc5666f1c",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-13",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "ab24168d-b8bd-4f0a-85f5-9ebd79ce38c1",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-14",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "44d75b5a-2223-4cc5-8a77-80c74c0d9a56",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-15",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "254be8b4-2206-4daa-8957-1d78adf52d02",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-16",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "c565ae5c-ade5-48a5-818f-465eb5ef5790",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-17",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      },
+      {
+        "id": "12429c7b-f736-42e7-878e-7be4c121d3b8",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "order",
+          "subject_id": "b573315c-ca87-491c-8599-885868e47953",
+          "hour": null,
+          "minute": null,
+          "date": "2019-11-18",
+          "status": "available",
+          "available": true,
+          "quantity": null,
+          "type": "date"
+        }
+      }
+    ],
     "meta": {}
   }
 ```
@@ -127,7 +1168,6 @@ This request does not accept any includes
        --data-urlencode 'filter[month]=10'
        --data-urlencode 'filter[subject_id]=6774b37c-a832-4868-8ae9-b9c90cb5c75e'
        --data-urlencode 'filter[subject_type]=item'
-       --data-urlencode 'filter[use_business_hours]=true'
        --data-urlencode 'filter[year]=2024'
 ```
 
@@ -145,9 +1185,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-09",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -160,9 +1200,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-10",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -175,9 +1215,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-11",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -190,9 +1230,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-12",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -205,9 +1245,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-13",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -220,9 +1260,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-14",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -235,9 +1275,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-15",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -250,9 +1290,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-16",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -265,9 +1305,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-17",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -280,9 +1320,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-18",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -295,9 +1335,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-19",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -310,9 +1350,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-20",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -325,9 +1365,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-21",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -340,9 +1380,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-22",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -355,9 +1395,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-23",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -370,9 +1410,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-24",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -385,9 +1425,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-25",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -400,9 +1440,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-26",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -415,9 +1455,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-27",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -430,9 +1470,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-02-28",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -445,9 +1485,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-01",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -460,9 +1500,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-02",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -475,9 +1515,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-03",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -490,9 +1530,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-04",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -505,9 +1545,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-05",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -520,9 +1560,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-06",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -535,9 +1575,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-07",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -550,9 +1590,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-08",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -565,9 +1605,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-09",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -580,9 +1620,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-10",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -595,9 +1635,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-11",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -610,9 +1650,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-12",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -625,9 +1665,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-13",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -640,9 +1680,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-14",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -655,9 +1695,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-15",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -670,9 +1710,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-16",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -685,9 +1725,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-17",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -700,9 +1740,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-18",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -715,9 +1755,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-19",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -730,9 +1770,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-20",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -745,9 +1785,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-21",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -760,9 +1800,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-22",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -775,9 +1815,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-23",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -790,9 +1830,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-24",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -805,9 +1845,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-25",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -820,9 +1860,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-26",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -835,9 +1875,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-27",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -850,9 +1890,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-28",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -865,9 +1905,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-29",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       },
@@ -880,9 +1920,9 @@ This request does not accept any includes
           "hour": null,
           "minute": null,
           "date": "2027-03-30",
-          "status": "unavailable",
-          "available": false,
-          "quantity": 0,
+          "status": "available",
+          "available": true,
+          "quantity": 2,
           "type": "date"
         }
       }
@@ -955,6 +1995,7 @@ This request does not accept any includes
        --data-urlencode 'filter[starts_at]=2024-10-05 08:00:00'
        --data-urlencode 'filter[subject_id]=63836de4-14a2-4da9-858b-a33f8e574a0d'
        --data-urlencode 'filter[subject_type]=downtime'
+       --data-urlencode 'filter[type]=start'
        --data-urlencode 'filter[year]=2024'
 ```
 
@@ -1692,8 +2733,8 @@ This request does not accept any includes
           "hour": "12",
           "minute": "00",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
@@ -1707,8 +2748,8 @@ This request does not accept any includes
           "hour": "12",
           "minute": "15",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
@@ -1722,8 +2763,8 @@ This request does not accept any includes
           "hour": "12",
           "minute": "30",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
@@ -1737,8 +2778,8 @@ This request does not accept any includes
           "hour": "12",
           "minute": "45",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
@@ -1752,8 +2793,8 @@ This request does not accept any includes
           "hour": "13",
           "minute": "00",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
@@ -1767,8 +2808,8 @@ This request does not accept any includes
           "hour": "13",
           "minute": "15",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
@@ -1782,8 +2823,8 @@ This request does not accept any includes
           "hour": "13",
           "minute": "30",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
@@ -1797,8 +2838,8 @@ This request does not accept any includes
           "hour": "13",
           "minute": "45",
           "date": "2016-02-14",
-          "status": "available",
-          "available": true,
+          "status": "unavailable",
+          "available": false,
           "quantity": null,
           "type": "time"
         }
