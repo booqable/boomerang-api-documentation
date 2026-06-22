@@ -98,6 +98,91 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Fetch availability for multiple products
+
+
+> How to fetch availability for multiple products in a single request:
+
+```shell
+  curl --get 'https://example.booqable.com/api/4/inventory_availabilities'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[from]=2024-10-01 09:00:00'
+       --data-urlencode 'filter[item_id]=fe19079c-1da4-42ae-8ca6-d49f9050d3b5,4af1f1f3-0bfd-42ac-829c-7c3689d01f0a'
+       --data-urlencode 'filter[location_id]=bf398e27-c89a-40f3-8746-fb58f4c37035'
+       --data-urlencode 'filter[till]=2024-10-02 09:00:00'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": [
+      {
+        "id": "1f6e1a25-3918-4d17-85a7-baf393575775",
+        "type": "inventory_availabilities",
+        "attributes": {
+          "item_id": "4af1f1f3-0bfd-42ac-829c-7c3689d01f0a",
+          "available": 2,
+          "plannable": 2
+        }
+      },
+      {
+        "id": "ef4e8aad-a1b6-4662-880e-997f1abd1d1d",
+        "type": "inventory_availabilities",
+        "attributes": {
+          "item_id": "fe19079c-1da4-42ae-8ca6-d49f9050d3b5",
+          "available": 2,
+          "plannable": 2
+        }
+      }
+    ],
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`GET /api/4/inventory_availabilities`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[inventory_availabilities]=item_id,available,plannable`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`configuration` | **hash** <br>`eq`
+`from` | **datetime** `required`<br>`eq`
+`item_id` | **uuid** `required`<br>`eq`
+`location_id` | **uuid** `required`<br>`eq`
+`till` | **datetime** `required`<br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes
 ## Fetch availability for a bundle
 
 

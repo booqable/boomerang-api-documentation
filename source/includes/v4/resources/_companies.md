@@ -296,6 +296,7 @@ Name | Description
             "rate_limit_max": 250,
             "rate_limit_period": 60,
             "api_monthly_calls": 1000000,
+            "ai_monthly_tokens": 8000000,
             "locations": 1,
             "allow_extra_locations": true,
             "allow_extra_employees": true,

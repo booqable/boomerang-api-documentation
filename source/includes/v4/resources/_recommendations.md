@@ -191,7 +191,7 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2026-06-25T23:10:01.000000+00:00",
         "updated_at": "2026-06-25T23:10:01.000000+00:00",
-        "position": 0,
+        "position": 1,
         "source_product_group_id": "342a1eca-eb47-438f-8cc6-185b0575683c",
         "target_product_group_id": "b9941e5a-0ea1-4ac1-8d4b-5fe77f159baa"
       },
