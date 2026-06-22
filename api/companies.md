@@ -305,7 +305,8 @@ Name | Description
             "away_modes": null
           },
           "currency": "usd",
-          "current_currency": "usd"
+          "current_currency": "usd",
+          "api_usage_count": 0
         }
       }
     },

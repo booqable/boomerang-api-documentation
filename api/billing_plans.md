@@ -7,6 +7,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
 
  Name | Description
 -- | --
+`api_overage_rates` | **hash** <br>Per-call overage fee charged once a plan's monthly API call limit is reached, keyed by plan identifier.
 `billing_plans` | **array** <br>The available billing plans with their pricing, features, and restrictions.
 `extra_charges` | **array** <br>The available extra charges for billing plans (like addons and extra employees/locations).
 `id` | **uuid** `readonly`<br>Primary key.
@@ -194,6 +195,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "email_max_recipients": 100,
                 "rate_limit_max": 50,
                 "rate_limit_period": 60,
+                "api_monthly_calls": 10000,
                 "locations": 1,
                 "allow_extra_locations": false,
                 "allow_extra_employees": false,
@@ -218,6 +220,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "email_max_recipients": 200,
                 "rate_limit_max": 100,
                 "rate_limit_period": 60,
+                "api_monthly_calls": 10000,
                 "locations": 1,
                 "allow_extra_locations": false,
                 "allow_extra_employees": false,
@@ -362,6 +365,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "email_max_recipients": 100,
                 "rate_limit_max": 50,
                 "rate_limit_period": 60,
+                "api_monthly_calls": 10000,
                 "locations": 1,
                 "allow_extra_locations": false,
                 "allow_extra_employees": false,
@@ -762,6 +766,22 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "eur"
               ]
             }
+          },
+          "api_overage_rates": {
+            "trial": 0.0015,
+            "essential": 0.0015,
+            "pro": 0.0015,
+            "small": 0.0015,
+            "medium": 0.0015,
+            "start": 0.0015,
+            "grow": 0.0015,
+            "premium": 0.001,
+            "hold": 0.001,
+            "free_hold": 0.001,
+            "large": 0.001,
+            "scale": 0.001,
+            "scale_v2": 0.001,
+            "custom": 0.001
           }
         }
       }
@@ -794,6 +814,7 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`api_overage_rates` | **hash** <br>`eq`
 `billing_plans` | **array** <br>`eq`
 `extra_charges` | **array** <br>`eq`
 `pricing_strategies` | **hash** <br>`eq`
