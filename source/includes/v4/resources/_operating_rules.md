@@ -379,8 +379,8 @@ This request does not accept any includes
            "attributes": {
              "data": {
                "away": {
-                 "from": "2010-06-18",
-                 "till": "2012-03-18"
+                 "from": "2010-06-17",
+                 "till": "2012-03-17"
                }
              }
            }
@@ -401,8 +401,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2010-06-18",
-            "till": "2012-03-18"
+            "from": "2010-06-17",
+            "till": "2012-03-17"
           }
         }
       }
