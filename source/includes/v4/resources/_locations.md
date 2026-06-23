@@ -115,7 +115,7 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carriers`
+`include` | **string** <br>List of comma separated relationships to sideload. `?include=carriers`
 `meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
 `page[number]` | **string** <br>The page to request.
 `page[size]` | **string** <br>The amount of items per page.
@@ -228,7 +228,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carriers`
+`include` | **string** <br>List of comma separated relationships to sideload. `?include=carriers`
 
 
 ### Includes
@@ -327,7 +327,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carriers`
+`include` | **string** <br>List of comma separated relationships to sideload. `?include=carriers`
 
 
 ### Request body
@@ -440,7 +440,7 @@ This request accepts the following parameters:
 Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[locations]=created_at,updated_at,archived`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=carriers`
+`include` | **string** <br>List of comma separated relationships to sideload. `?include=carriers`
 
 
 ### Request body
