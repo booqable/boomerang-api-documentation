@@ -309,6 +309,7 @@ Name | Description
           "payment_strategy_value": 30,
           "payment_deposit": false,
           "security_deposit_explanation": "",
+          "stripe_billing_address_collection": "auto",
           "pay_later": false,
           "pay_later_title": "Pay later",
           "pay_later_terms": "",
