@@ -84,9 +84,9 @@ follow these steps:
 
 ## Shortage Handling
 
-There are two types of shortage indicators:
-- `shortage`: Indicates there's a shortage anywhere in the system
-- `location_shortage`: Indicates there's a shortage specifically at the pickup location
+Shortage is reported through `location_shortage`, which is `true` when the requested items are not available at the order's pickup location (`start_location`).
+
+The `shortage` attribute is **deprecated**: it duplicates `location_shortage` and is being phased out. Use `location_shortage` instead.
 
 When updating an order causes a shortage, you'll receive an error response with details about the shortage. To confirm and proceed despite the shortage, include `confirm_shortage: true` in your update request.
 
@@ -277,7 +277,7 @@ Check each individual operation to see which relations can be included as a side
 `price_in_cents` | **integer** `readonly`<br>Subtotal excl. taxes (excl. deposit). 
 `properties` | **hash** `readonly`<br>A hash containing all property identifiers and values (include the properties relation if you need more detailed information). Properties of orders can be updated in bulk by writing to the `properties_attributes` attribute. 
 `properties_attributes` | **array** `writeonly`<br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
-`shortage` | **boolean** `readonly`<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
+`shortage` | **boolean** `readonly`<br>**Deprecated.** Duplicates `location_shortage` and is being phased out. Use `location_shortage` instead.<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
 `start_location_id` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
 `starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
 `status` | **enum** `readonly-after-create`<br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
@@ -329,8 +329,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-11-12T02:21:01.000000+00:00",
-          "stops_at": "1968-12-12T02:21:01.000000+00:00",
+          "starts_at": "1968-11-12T02:08:01.000000+00:00",
+          "stops_at": "1968-12-12T02:08:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -582,14 +582,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-06-30T10:08:33Z",
-                       "lte": "2026-07-03T10:08:33Z"
+                       "gte": "2026-06-30T10:21:38Z",
+                       "lte": "2026-07-03T10:21:38Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-06-30T10:08:33Z",
-                       "lte": "2026-07-03T10:08:33Z"
+                       "gte": "2026-06-30T10:21:38Z",
+                       "lte": "2026-07-03T10:21:38Z"
                      }
                    }
                  ]
@@ -960,8 +960,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-04-09T11:40:01.000000+00:00",
-        "stops_at": "1969-05-09T11:40:01.000000+00:00",
+        "starts_at": "1969-04-09T11:27:01.000000+00:00",
+        "stops_at": "1969-05-09T11:27:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1158,8 +1158,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:32:01.000000+00:00",
-        "stops_at": "2026-11-03T14:32:01.000000+00:00",
+        "starts_at": "2026-09-25T14:34:01.000000+00:00",
+        "stops_at": "2026-11-03T14:34:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1272,8 +1272,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:50:00.000000+00:00",
-        "stops_at": "2018-05-14T18:50:00.000000+00:00",
+        "starts_at": "2018-04-05T18:52:00.000000+00:00",
+        "stops_at": "2018-05-14T18:52:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
