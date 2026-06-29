@@ -202,7 +202,6 @@ Check each individual operation to see which relations can be included as a side
               "custom_domain",
               "availability_reports",
               "fulfillment_reports",
-              "cross_sell",
               "advanced_pricing",
               "bundles",
               "prevent_last_minute_reservations",
@@ -224,6 +223,7 @@ Check each individual operation to see which relations can be included as a side
               "roi_reports",
               "company_performance_report",
               "esignatures",
+              "cross_sell",
               "api",
               "product_shortage_limits",
               "remove_powered_by",
@@ -293,7 +293,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1782375703"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1782727774"
         }
       },
       {
@@ -352,7 +352,7 @@ Check each individual operation to see which relations can be included as a side
             "default_collection_sort": "name",
             "cross_sell.enabled": false,
             "cross_sell.title": "Recommended products",
-            "cross_sell.subtitle": "Add matching items to make sure you have everything you need",
+            "cross_sell.subtitle": "Complete your order with these recommended items",
             "cross_sell.layout": "list",
             "cross_sell.show_only_available": true,
             "cross_sell.maximum_products": 4,

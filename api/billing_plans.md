@@ -391,8 +391,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "away_mode",
                 "custom_domain",
                 "availability_reports",
-                "fulfillment_reports",
-                "cross_sell"
+                "fulfillment_reports"
               ],
               "pricing_strategy": "start_grow_scale_custom"
             },
@@ -425,7 +424,6 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "custom_domain",
                 "availability_reports",
                 "fulfillment_reports",
-                "cross_sell",
                 "advanced_pricing",
                 "bundles",
                 "prevent_last_minute_reservations",
@@ -446,7 +444,8 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "customer_report",
                 "roi_reports",
                 "company_performance_report",
-                "esignatures"
+                "esignatures",
+                "cross_sell"
               ],
               "pricing_strategy": "start_grow_scale_custom"
             },
@@ -479,7 +478,6 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "custom_domain",
                 "availability_reports",
                 "fulfillment_reports",
-                "cross_sell",
                 "advanced_pricing",
                 "bundles",
                 "prevent_last_minute_reservations",
@@ -501,6 +499,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "roi_reports",
                 "company_performance_report",
                 "esignatures",
+                "cross_sell",
                 "api",
                 "product_shortage_limits",
                 "remove_powered_by",
@@ -537,7 +536,6 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "custom_domain",
                 "availability_reports",
                 "fulfillment_reports",
-                "cross_sell",
                 "advanced_pricing",
                 "bundles",
                 "prevent_last_minute_reservations",
@@ -559,6 +557,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "roi_reports",
                 "company_performance_report",
                 "esignatures",
+                "cross_sell",
                 "api",
                 "product_shortage_limits",
                 "remove_powered_by",

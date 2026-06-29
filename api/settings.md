@@ -296,7 +296,7 @@ Name | Description
           "default_collection_sort": "name",
           "cross_sell.enabled": false,
           "cross_sell.title": "Recommended products",
-          "cross_sell.subtitle": "Add matching items to make sure you have everything you need",
+          "cross_sell.subtitle": "Complete your order with these recommended items",
           "cross_sell.layout": "list",
           "cross_sell.show_only_available": true,
           "cross_sell.maximum_products": 4,
