@@ -77,7 +77,15 @@
         "category": {
           "type": "string",
           "description": "Category classification for organizing apps in the app store.",
-          "enum": ["tracking", "payment", "translation", "maps", "marketing", "social", "widget", "fulfillment"]
+          "enum": ["accessibility", "accounting", "crm", "fulfillment", "maps", "marketing", "payment", "social", "tracking", "translation", "website", "widget"]
+        },
+        "categories": {
+          "type": "array",
+          "description": "Category classification for organizing apps in the app store.",
+          "items": {
+            "type": "string",
+            "enum": ["accessibility", "accounting", "crm", "fulfillment", "maps", "marketing", "payment", "social", "tracking", "translation", "website", "widget"]
+          }
         },
         "card_image": { "$ref": "#/definitions/AssetReference" },
         "icon": { "$ref": "#/definitions/AssetReference" },
