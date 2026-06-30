@@ -74,14 +74,44 @@
       "properties": {
         "title": { "$ref": "#/definitions/LocalizableString" },
         "description": { "$ref": "#/definitions/AppStoreDescription" },
-        "support": { "$ref": "#/definitions/AppStoreSupport" },
         "category": {
           "type": "string",
           "description": "Category classification for organizing apps in the app store.",
-          "enum": ["tracking", "payment", "translation", "maps", "marketing", "social", "widget", "fulfillment"]
+          "enum": ["accessibility", "accounting", "crm", "fulfillment", "maps", "marketing", "payment", "social", "tracking", "translation", "website", "widget"]
+        },
+        "categories": {
+          "type": "array",
+          "description": "Category classification for organizing apps in the app store.",
+          "items": {
+            "type": "string",
+            "enum": ["accessibility", "accounting", "crm", "fulfillment", "maps", "marketing", "payment", "social", "tracking", "translation", "website", "widget"]
+          }
         },
         "card_image": { "$ref": "#/definitions/AssetReference" },
-        "icon": { "$ref": "#/definitions/AssetReference" }
+        "icon": { "$ref": "#/definitions/AssetReference" },
+        "features": {
+          "type": "array",
+          "description": "Bulleted list of key features shown on the app's store page.",
+          "items": { "$ref": "#/definitions/LocalizableString" },
+          "default": []
+        },
+        "website": {
+          "$ref": "#/definitions/Link",
+          "description": "Product or marketing website link shown in the app's store page."
+        },
+        "youtube": {
+          "type": "string",
+          "description": "YouTube video ID for an embedded overview/promo video to be shown in the app's store page.",
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "examples": ["4tDyXghOQbI"]
+        },
+        "setup_minutes": {
+          "type": "integer",
+          "description": "Estimated time in minutes to install and set up the app.",
+          "minimum": 1,
+          "examples": [2, 3, 5, 10]
+        },
+        "support": { "$ref": "#/definitions/AppStoreSupport" }
       },
       "required": ["title", "description", "category", "card_image", "icon"],
       "additionalProperties": false
@@ -126,6 +156,11 @@
         "paid_during_beta": {
           "type": "boolean",
           "description": "When true, plan remains paid during beta; when false, plan is free during beta.",
+          "default": false
+        },
+        "most_popular": {
+          "type": "boolean",
+          "description": "When true, this plan is marked as most popular in the app store.",
           "default": false
         }
       },
