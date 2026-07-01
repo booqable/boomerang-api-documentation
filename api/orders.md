@@ -329,8 +329,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-11-12T01:35:01.000000+00:00",
-          "stops_at": "1968-12-12T01:35:01.000000+00:00",
+          "starts_at": "1968-11-10T01:35:01.000000+00:00",
+          "stops_at": "1968-12-10T01:35:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -582,14 +582,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-06-30T10:54:11Z",
-                       "lte": "2026-07-03T10:54:11Z"
+                       "gte": "2026-07-02T10:54:43Z",
+                       "lte": "2026-07-05T10:54:43Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-06-30T10:54:11Z",
-                       "lte": "2026-07-03T10:54:11Z"
+                       "gte": "2026-07-02T10:54:43Z",
+                       "lte": "2026-07-05T10:54:43Z"
                      }
                    }
                  ]
@@ -960,8 +960,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-04-09T10:54:01.000000+00:00",
-        "stops_at": "1969-05-09T10:54:01.000000+00:00",
+        "starts_at": "1969-04-07T10:54:01.000000+00:00",
+        "stops_at": "1969-05-07T10:54:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,

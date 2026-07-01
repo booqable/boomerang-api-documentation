@@ -104,7 +104,6 @@
 <h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreDescription</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accessibility"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"card_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -134,12 +133,6 @@
 <td><a href="#reference-appstoredescription"><code>AppStoreDescription</code></a></td>
 <td>true</td>
 <td></td>
-</tr>
-<tr>
-<td><code>category</code></td>
-<td>one of: <code>accessibility</code>, <code>accounting</code>, <code>crm</code>, <code>fulfillment</code>, <code>maps</code>, <code>marketing</code>, <code>payment</code>, <code>social</code>, <code>tracking</code>, <code>translation</code>, <code>website</code>, <code>widget</code></td>
-<td>true</td>
-<td>Category classification for organizing apps in the app store.</td>
 </tr>
 <tr>
 <td><code>categories</code></td>

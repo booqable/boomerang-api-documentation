@@ -70,15 +70,10 @@
   "definitions": {
     "AppStoreInfo": {
       "type": "object",
-      "description": "App store listing metadata (title, description, category, images, support).",
+      "description": "Information about the app to display in the app store.",
       "properties": {
         "title": { "$ref": "#/definitions/LocalizableString" },
         "description": { "$ref": "#/definitions/AppStoreDescription" },
-        "category": {
-          "type": "string",
-          "description": "Category classification for organizing apps in the app store.",
-          "enum": ["accessibility", "accounting", "crm", "fulfillment", "maps", "marketing", "payment", "social", "tracking", "translation", "website", "widget"]
-        },
         "categories": {
           "type": "array",
           "description": "Category classification for organizing apps in the app store.",
@@ -113,7 +108,7 @@
         },
         "support": { "$ref": "#/definitions/AppStoreSupport" }
       },
-      "required": ["title", "description", "category", "card_image", "icon"],
+      "required": ["title", "description", "card_image", "icon"],
       "additionalProperties": false
     },
     "AppStoreDescription": {
