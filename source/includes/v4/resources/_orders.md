@@ -73,11 +73,25 @@ follow these steps:
    [Plannings](#plannings) and [Lines](#lines) that allocate inventory and affect product
    availability. See [OrderFulfillment](#order-fulfillments) for details on each action.
 
-3. **Reserve the Order** using `POST /api/4/order_status_transitions` with
+3. **Set custom prices** (optional) — if you calculate prices outside Booqable.
+   To use your own price, update each [Line](#lines) with `PUT /api/4/lines/{id}`, sending only
+   `price_each_in_cents`. This switches the Line to manual pricing, so Booqable will not
+   recalculate it.
+   <ul>
+     <li>
+       Getting the Line `id`: add `?include=changed_lines` to the booking request in step 2.
+     </li>
+     <li>
+      Bundles: set the price on each component (child) Line, exactly as above — 
+      the parent bundle Line's total is the sum of its components.
+     </li>
+   </ul>
+
+4. **Reserve the Order** using `POST /api/4/order_status_transitions` with
    `transition_to: "reserved"`. This finalizes the availability: items become unavailable
    for other orders during the rental period, and the order receives a unique order number.
 
-4. **Start and stop items** (optional) when the rental begins and ends. Use
+5. **Start and stop items** (optional) when the rental begins and ends. Use
    [OrderFulfillment](#order-fulfillments) with `start_product`, `start_stock_items`,
    `stop_product`, or `stop_stock_items` actions. The order status transitions to `started`
    and `stopped` automatically as items are picked up and returned.
