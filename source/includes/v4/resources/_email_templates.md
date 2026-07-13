@@ -12,8 +12,8 @@ see [our help center](https://help.booqable.com/en/articles/3832164-emails-types
 -- | --
 `automated` | **boolean** `readonly`<br>When `true`, this template is used by built-in features and cannot be deleted. Updating is possible. 
 `body` | **string** <br>Email body template. 
-`context` | **enum** `readonly`<br>Which resource or process the template applies to. Read-only and derived from `contexts` for backwards compatibility; set `contexts` when creating or updating templates via the API.<br> One of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`, `all`, `document`.
-`contexts` | **array[string]** <br>Tags describing where this template may be used (for example order emails vs contract emails).<br>Must contain at least one tag. To make a template available in all contexts, include all tags.<br>Any of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`. 
+`context` | **enum** `readonly`<br>Which resource or process the template applies to. Read-only and derived from `contexts` for backwards compatibility; set `contexts` when creating or updating templates via the API.<br> One of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`, `signature`, `all`, `document`.
+`contexts` | **array[string]** <br>Tags describing where this template may be used (for example order emails vs contract emails).<br>Must contain at least one tag. To make a template available in all contexts, include all tags.<br>Any of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`, `signature`. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `default` | **boolean** `readonly`<br>Whether this is a system default template. 
 `id` | **uuid** `readonly`<br>Primary key.
@@ -237,7 +237,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][body]` | **string** <br>Email body template. 
-`data[attributes][contexts]` | **array[string]** <br>Tags describing where this template may be used (for example order emails vs contract emails).<br>Must contain at least one tag. To make a template available in all contexts, include all tags.<br>Any of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`. 
+`data[attributes][contexts]` | **array[string]** <br>Tags describing where this template may be used (for example order emails vs contract emails).<br>Must contain at least one tag. To make a template available in all contexts, include all tags.<br>Any of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`, `signature`. 
 `data[attributes][name]` | **string** <br>Name of the template. 
 `data[attributes][subject]` | **string** <br>Email subject line template. 
 
@@ -354,7 +354,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][body]` | **string** <br>Email body template. 
-`data[attributes][contexts]` | **array[string]** <br>Tags describing where this template may be used (for example order emails vs contract emails).<br>Must contain at least one tag. To make a template available in all contexts, include all tags.<br>Any of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`. 
+`data[attributes][contexts]` | **array[string]** <br>Tags describing where this template may be used (for example order emails vs contract emails).<br>Must contain at least one tag. To make a template available in all contexts, include all tags.<br>Any of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`, `signature`. 
 `data[attributes][name]` | **string** <br>Name of the template. 
 `data[attributes][subject]` | **string** <br>Email subject line template. 
 
