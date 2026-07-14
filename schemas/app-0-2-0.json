@@ -42,6 +42,10 @@
       "$ref": "#/definitions/ConfigurationPage",
       "description": "Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page."
     },
+    "iframe_page": {
+      "$ref": "#/definitions/IframePage",
+      "description": "Settings for apps that are operated through an embedded external page."
+    },
     "tracking_script": {
       "$ref": "#/definitions/TrackingScript",
       "description": "Settings for apps that provide tracking scripts meant to be installed in store pages."
@@ -365,6 +369,15 @@
         "image": { "$ref": "#/definitions/AssetReference" }
       },
       "required": ["title"],
+      "additionalProperties": false
+    },
+    "IframePage": {
+      "type": "object",
+      "description": "Settings for the page embedding the external page apps are operated through.",
+      "properties": {
+        "url": { "$ref": "#/definitions/LocatableUrl" }
+      },
+      "required": ["url"],
       "additionalProperties": false
     },
     "IframeBlock": {

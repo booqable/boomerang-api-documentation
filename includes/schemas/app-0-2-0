@@ -7,6 +7,7 @@
   </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">ConfigurationPage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"iframe_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">IframePage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">TrackingScript</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">OauthConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -69,6 +70,12 @@
 <td><a href="#reference-configurationpage"><code>ConfigurationPage</code></a></td>
 <td>false</td>
 <td>Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page.</td>
+</tr>
+<tr>
+<td><code>iframe_page</code></td>
+<td><a href="#reference-iframepage"><code>IframePage</code></a></td>
+<td>false</td>
+<td>Settings for apps that are operated through an embedded external page.</td>
 </tr>
 <tr>
 <td><code>tracking_script</code></td>
@@ -695,6 +702,25 @@
 <td><code>image</code></td>
 <td><a href="#reference-assetreference"><code>AssetReference</code></a></td>
 <td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-iframepage'><code>IframePage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>true</td>
 <td></td>
 </tr>
 </tbody></table>

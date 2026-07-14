@@ -572,7 +572,6 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
-  <li><code>barcode</code></li>
   <li><code>photo</code></li>
   <li>
     <code>price_structure</code>
@@ -737,7 +736,6 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
-  <li><code>barcode</code></li>
   <li><code>photo</code></li>
   <li>
     <code>price_structure</code>
@@ -891,7 +889,6 @@ Name | Description
 This request accepts the following includes:
 
 <ul>
-  <li><code>barcode</code></li>
   <li><code>photo</code></li>
   <li>
     <code>price_structure</code>
