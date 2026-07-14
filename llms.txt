@@ -43,6 +43,7 @@ The API is RESTful and follows the JSON:API specification. Base URL is `https://
 - [Billing Plans](https://developers.booqable.com/api/billing_plans.md)
 - [Bulk Upserts](https://developers.booqable.com/api/bulk_upserts.md)
 - [Bundle Items](https://developers.booqable.com/api/bundle_items.md)
+- [Bundle Prices](https://developers.booqable.com/api/bundle_prices.md)
 - [Bundles](https://developers.booqable.com/api/bundles.md)
 - [Checkout Items](https://developers.booqable.com/api/checkout_items.md)
 - [Collection Items](https://developers.booqable.com/api/collection_items.md)
