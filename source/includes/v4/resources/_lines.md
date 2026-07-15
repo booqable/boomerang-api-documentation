@@ -69,9 +69,9 @@ the line is owned by a document. This makes it easier to retrieve the order cont
 
 ### Bundles
 
-Nested lines contain information about individual items in a Bundle; for these lines,
-the quantity and price information cannot be updated directly but should be updated
-through the parent line instead.
+Nested lines represent the individual items in a Bundle. Their quantity and price can be
+updated directly, the same as any other line — for example, send `price_each_in_cents` on
+a component line to set a custom price.
 
 ### Sorting Lines
 
@@ -191,8 +191,8 @@ Check each individual operation to see which relations can be included as a side
           "charge_length": 2505600,
           "price_rule_values": {
             "charge": {
-              "from": "1977-04-27T02:26:00.000000+00:00",
-              "till": "1977-05-26T02:26:00.000000+00:00",
+              "from": "1977-04-26T05:05:00.000000+00:00",
+              "till": "1977-05-25T05:05:00.000000+00:00",
               "adjustments": [
                 {
                   "name": "Pickup day"
@@ -210,8 +210,8 @@ Check each individual operation to see which relations can be included as a side
                 "price_in_cents": 7750,
                 "adjustments": [
                   {
-                    "from": "1977-05-10T14:26:00.000000+00:00",
-                    "till": "1977-05-26T02:26:00.000000+00:00",
+                    "from": "1977-05-09T17:05:00.000000+00:00",
+                    "till": "1977-05-25T05:05:00.000000+00:00",
                     "charge_length": 1339200,
                     "charge_label": "372 hours",
                     "price_in_cents": 7750
@@ -358,8 +358,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1976-06-29T09:01:02.000000+00:00",
-            "till": "1976-07-28T09:01:02.000000+00:00",
+            "from": "1976-06-28T11:40:02.000000+00:00",
+            "till": "1976-07-27T11:40:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -377,8 +377,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1976-07-12T21:01:02.000000+00:00",
-                  "till": "1976-07-28T09:01:02.000000+00:00",
+                  "from": "1976-07-11T23:40:02.000000+00:00",
+                  "till": "1976-07-27T11:40:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750
@@ -800,8 +800,8 @@ This request accepts the following includes:
         "charge_length": 2505600,
         "price_rule_values": {
           "charge": {
-            "from": "1972-08-19T19:37:02.000000+00:00",
-            "till": "1972-09-17T19:37:02.000000+00:00",
+            "from": "1972-08-18T22:16:02.000000+00:00",
+            "till": "1972-09-16T22:16:02.000000+00:00",
             "adjustments": [
               {
                 "name": "Pickup day"
@@ -819,8 +819,8 @@ This request accepts the following includes:
               "price_in_cents": 7750,
               "adjustments": [
                 {
-                  "from": "1972-09-02T07:37:02.000000+00:00",
-                  "till": "1972-09-17T19:37:02.000000+00:00",
+                  "from": "1972-09-01T10:16:02.000000+00:00",
+                  "till": "1972-09-16T22:16:02.000000+00:00",
                   "charge_length": 1339200,
                   "charge_label": "372 hours",
                   "price_in_cents": 7750

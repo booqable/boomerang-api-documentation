@@ -73,11 +73,18 @@ follow these steps:
    [Plannings](#plannings) and [Lines](#lines) that allocate inventory and affect product
    availability. See [OrderFulfillment](#order-fulfillments) for details on each action.
 
-3. **Reserve the Order** using `POST /api/4/order_status_transitions` with
+3. **Set custom prices** (optional) if you calculate prices outside Booqable. To use your
+   own price instead of Booqable's, update each [Line](#lines) with `PUT /api/4/lines/{id}`,
+   sending only `price_each_in_cents`; this switches the Line to manual pricing, so Booqable
+   will not automatically recalculate it.
+   Add `?include=changed_lines` to the booking request in step 2 to get the created Line ids.
+   For bundles, set the price on each component (child) Line the same way — the parent bundle Line's total is the sum of its components.
+
+4. **Reserve the Order** using `POST /api/4/order_status_transitions` with
    `transition_to: "reserved"`. This finalizes the availability: items become unavailable
    for other orders during the rental period, and the order receives a unique order number.
 
-4. **Start and stop items** (optional) when the rental begins and ends. Use
+5. **Start and stop items** (optional) when the rental begins and ends. Use
    [OrderFulfillment](#order-fulfillments) with `start_product`, `start_stock_items`,
    `stop_product`, or `stop_stock_items` actions. The order status transitions to `started`
    and `stopped` automatically as items are picked up and returned.
@@ -329,8 +336,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-10-27T23:48:01.000000+00:00",
-          "stops_at": "1968-11-26T23:48:01.000000+00:00",
+          "starts_at": "1968-10-27T02:28:01.000000+00:00",
+          "stops_at": "1968-11-26T02:28:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -582,14 +589,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-07-15T12:41:33Z",
-                       "lte": "2026-07-18T12:41:33Z"
+                       "gte": "2026-07-16T10:01:55Z",
+                       "lte": "2026-07-19T10:01:55Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-07-15T12:41:33Z",
-                       "lte": "2026-07-18T12:41:33Z"
+                       "gte": "2026-07-16T10:01:55Z",
+                       "lte": "2026-07-19T10:01:55Z"
                      }
                    }
                  ]
@@ -960,8 +967,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-03-25T09:07:01.000000+00:00",
-        "stops_at": "1969-04-24T09:07:01.000000+00:00",
+        "starts_at": "1969-03-24T11:47:01.000000+00:00",
+        "stops_at": "1969-04-23T11:47:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1158,8 +1165,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:29:01.000000+00:00",
-        "stops_at": "2026-11-03T14:29:01.000000+00:00",
+        "starts_at": "2026-09-25T14:39:01.000000+00:00",
+        "stops_at": "2026-11-03T14:39:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1272,8 +1279,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:47:00.000000+00:00",
-        "stops_at": "2018-05-14T18:47:00.000000+00:00",
+        "starts_at": "2018-04-05T18:56:00.000000+00:00",
+        "stops_at": "2018-05-14T18:56:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
