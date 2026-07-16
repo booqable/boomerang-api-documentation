@@ -500,14 +500,6 @@ This request accepts the following includes:
             {
               "type": "bundle_items",
               "id": "f6e42e06-fab0-4f46-8f8e-ea8a9422304b"
-            },
-            {
-              "type": "bundle_items",
-              "id": "ae082f3d-ff30-456b-8adb-5b4919c8417a"
-            },
-            {
-              "type": "bundle_items",
-              "id": "0a030633-4d84-4191-8e44-c52eb68d811a"
             }
           ]
         }
@@ -543,42 +535,6 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 2,
-          "photo_id": null,
-          "bundle_id": "2f4b77bd-2e6d-4454-8933-babc61ed151f",
-          "product_group_id": "bf793cc3-ff25-497e-8a92-6cf9a8d99fa0",
-          "product_id": "07b0cf35-6809-4bec-8350-2dbe5a39a565"
-        },
-        "relationships": {}
-      },
-      {
-        "id": "ae082f3d-ff30-456b-8adb-5b4919c8417a",
-        "type": "bundle_items",
-        "attributes": {
-          "created_at": "2020-05-21T17:38:00.000000+00:00",
-          "updated_at": "2020-05-21T17:38:00.000000+00:00",
-          "archived": false,
-          "archived_at": null,
-          "quantity": 2,
-          "discount_percentage": 10.0,
-          "position": 3,
-          "photo_id": null,
-          "bundle_id": "2f4b77bd-2e6d-4454-8933-babc61ed151f",
-          "product_group_id": "1a247a34-c748-422e-8f6e-1a6d3992c656",
-          "product_id": "ca3c0fbf-03ac-4a05-8a65-d5bab132b59d"
-        },
-        "relationships": {}
-      },
-      {
-        "id": "0a030633-4d84-4191-8e44-c52eb68d811a",
-        "type": "bundle_items",
-        "attributes": {
-          "created_at": "2020-05-21T17:38:00.000000+00:00",
-          "updated_at": "2020-05-21T17:38:00.000000+00:00",
-          "archived": false,
-          "archived_at": null,
-          "quantity": 2,
-          "discount_percentage": 15.0,
-          "position": 4,
           "photo_id": null,
           "bundle_id": "2f4b77bd-2e6d-4454-8933-babc61ed151f",
           "product_group_id": "bf793cc3-ff25-497e-8a92-6cf9a8d99fa0",
@@ -725,10 +681,6 @@ This request accepts the following includes:
             {
               "type": "bundle_items",
               "id": "ddfe9f02-abf5-48bd-8fba-334decb8c339"
-            },
-            {
-              "type": "bundle_items",
-              "id": "d5abce78-6f6d-46ef-8e46-876a07eb7133"
             }
           ]
         }
@@ -746,24 +698,6 @@ This request accepts the following includes:
           "quantity": 2,
           "discount_percentage": 15.0,
           "position": 2,
-          "photo_id": null,
-          "bundle_id": "ed81707b-f578-4a6e-82e8-062f3b5ae2d9",
-          "product_group_id": "a9609021-9ac0-45e8-8bfa-03c58a577154",
-          "product_id": "abff6839-af87-4377-857e-2b217552945d"
-        },
-        "relationships": {}
-      },
-      {
-        "id": "d5abce78-6f6d-46ef-8e46-876a07eb7133",
-        "type": "bundle_items",
-        "attributes": {
-          "created_at": "2023-01-20T01:56:00.000000+00:00",
-          "updated_at": "2023-01-20T01:56:00.000000+00:00",
-          "archived": false,
-          "archived_at": null,
-          "quantity": 2,
-          "discount_percentage": 15.0,
-          "position": 3,
           "photo_id": null,
           "bundle_id": "ed81707b-f578-4a6e-82e8-062f3b5ae2d9",
           "product_group_id": "a9609021-9ac0-45e8-8bfa-03c58a577154",
