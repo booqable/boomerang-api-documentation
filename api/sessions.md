@@ -294,7 +294,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1784109765"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1784195555"
         }
       },
       {
@@ -328,7 +328,8 @@ Check each individual operation to see which relations can be included as a side
           "dates": {
             "format": "DD-MM-YYYY",
             "use_am_pm": false,
-            "first_day_of_week": 0
+            "first_day_of_week": 0,
+            "use_new_period_picker": false
           },
           "orders": {
             "use_times": true,
