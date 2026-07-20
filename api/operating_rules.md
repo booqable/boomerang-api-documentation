@@ -219,8 +219,8 @@ This request does not accept any includes
              "data_type": "away",
              "data": {
                "away": {
-                 "from": "2029-04-29",
-                 "till": "2039-04-29"
+                 "from": "2029-04-25",
+                 "till": "2039-04-25"
                }
              }
            }
@@ -241,8 +241,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2029-04-29",
-            "till": "2039-04-29"
+            "from": "2029-04-25",
+            "till": "2039-04-25"
           }
         }
       }
@@ -379,8 +379,8 @@ This request does not accept any includes
            "attributes": {
              "data": {
                "away": {
-                 "from": "2010-05-25",
-                 "till": "2012-02-23"
+                 "from": "2010-05-21",
+                 "till": "2012-02-19"
                }
              }
            }
@@ -401,8 +401,8 @@ This request does not accept any includes
         "data_type": "away",
         "data": {
           "away": {
-            "from": "2010-05-25",
-            "till": "2012-02-23"
+            "from": "2010-05-21",
+            "till": "2012-02-19"
           }
         }
       }

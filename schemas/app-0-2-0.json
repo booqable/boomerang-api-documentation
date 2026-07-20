@@ -281,36 +281,22 @@
           "type": "string",
           "description": "Input type; must match a type supported by the back-office form (InputField).",
           "enum": [
-            "text",
-            "textarea",
+            "buttonGroup",
+            "checkbox",
+            "checkboxGroup",
+            "code",
+            "color",
+            "contentEditor",
+            "datepicker",
+            "email",
             "number",
             "password",
-            "quantity",
-            "select",
-            "price",
-            "email",
-            "color",
-            "time",
-            "datepicker",
-            "checkboxGroup",
-            "buttonGroup",
-            "radio",
-            "radioGroup",
-            "checkbox",
-            "timeSelect",
             "phone",
-            "contentEditor",
-            "url",
-            "font",
-            "code",
-            "search",
-            "duration",
-            "multiInput",
-            "dateButton",
-            "timeButton",
-            "timeslots",
-            "durations",
-            "range"
+            "radioGroup",
+            "range",
+            "select",
+            "text",
+            "textarea"
           ]
         },
         "label": { "$ref": "#/definitions/LocalizableString" },
@@ -330,6 +316,18 @@
           "type": "string",
           "description": "Regex pattern for validating text/textarea fields. The value must match this pattern.",
           "examples": [".*\\.mydomain\\.com/.*"]
+        },
+        "min": {
+          "type": "number",
+          "description": "Minimum value for number/range fields."
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value for number/range fields."
+        },
+        "step": {
+          "type": "number",
+          "description": "Step increment for number/range fields."
         }
       },
       "required": ["name", "type"],
@@ -350,6 +348,7 @@
       "description": "Guide block: ordered steps with title, text, and optional image per step.",
       "properties": {
         "type": { "const": "Guide" },
+        "title": { "$ref": "#/definitions/LocalizableString" },
         "steps": {
           "type": "array",
           "items": { "$ref": "#/definitions/GuideBlockStep" },
