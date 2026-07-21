@@ -121,7 +121,7 @@ This request does not accept any includes
         "id": "1f6e1a25-3918-4d17-85a7-baf393575775",
         "type": "inventory_availabilities",
         "attributes": {
-          "item_id": "4af1f1f3-0bfd-42ac-829c-7c3689d01f0a",
+          "item_id": "fe19079c-1da4-42ae-8ca6-d49f9050d3b5",
           "available": 2,
           "plannable": 2
         }
@@ -130,7 +130,7 @@ This request does not accept any includes
         "id": "ef4e8aad-a1b6-4662-880e-997f1abd1d1d",
         "type": "inventory_availabilities",
         "attributes": {
-          "item_id": "fe19079c-1da4-42ae-8ca6-d49f9050d3b5",
+          "item_id": "4af1f1f3-0bfd-42ac-829c-7c3689d01f0a",
           "available": 2,
           "plannable": 2
         }
