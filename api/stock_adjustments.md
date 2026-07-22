@@ -219,8 +219,8 @@ This request accepts the following includes:
         "id": "05afa8b9-28ef-4f99-802e-5ac8c3184127",
         "type": "stock_items",
         "attributes": {
-          "created_at": "2021-11-06T07:43:00.000000+00:00",
-          "updated_at": "2021-11-06T07:43:00.000000+00:00",
+          "created_at": "2021-11-06T07:42:00.000000+00:00",
+          "updated_at": "2021-11-06T07:42:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "identifier": "XYZ-2",

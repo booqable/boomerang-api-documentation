@@ -50,6 +50,7 @@ Check each individual operation to see which relations can be included as a side
 `type` | **string** `readonly`<br>Always `product`. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `variation_values` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
+`weight` | **hash** `nullable`<br>The weight of this variation as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). This value is writable if the group has variations enabled, otherwise it's inherited from the group. Writes may omit the unit, in which case the variation keeps its current unit or — when it never had one — the smallest unit for the company's unit system (grams for metric, ounces for imperial). Values are stored as sent and never converted between units. 
 
 
 ## Inherited Fields
@@ -134,6 +135,7 @@ Check each individual operation to see which relations can be included as a side
           "price_period": "day",
           "deposit_in_cents": 0,
           "default_purchase_cost_in_cents": null,
+          "weight": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -184,6 +186,7 @@ Check each individual operation to see which relations can be included as a side
           "price_period": "day",
           "deposit_in_cents": 0,
           "default_purchase_cost_in_cents": null,
+          "weight": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -538,6 +541,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -652,6 +656,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -700,6 +705,7 @@ Name | Description
 `data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
+`data[attributes][weight]` | **hash** <br>The weight of this variation as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). This value is writable if the group has variations enabled, otherwise it's inherited from the group. Writes may omit the unit, in which case the variation keeps its current unit or — when it never had one — the smallest unit for the company's unit system (grams for metric, ounces for imperial). Values are stored as sent and never converted between units. 
 
 
 ### Includes
@@ -779,6 +785,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -827,6 +834,7 @@ Name | Description
 `data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
+`data[attributes][weight]` | **hash** <br>The weight of this variation as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). This value is writable if the group has variations enabled, otherwise it's inherited from the group. Writes may omit the unit, in which case the variation keeps its current unit or — when it never had one — the smallest unit for the company's unit system (grams for metric, ounces for imperial). Values are stored as sent and never converted between units. 
 
 
 ### Includes
@@ -895,6 +903,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,

@@ -356,6 +356,7 @@ Name | Description
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "show_free_lines": true,
+          "show_weights": false,
           "hide_section_lines": false,
           "prefix": "{{year}}-{{order_number}}",
           "default_due_period": null
@@ -366,6 +367,7 @@ Name | Description
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "show_free_lines": true,
+          "show_weights": false,
           "hide_section_lines": false,
           "prefix": "{{year}}-{{customer_number}}"
         },
@@ -375,6 +377,7 @@ Name | Description
           "show_product_photos": true,
           "show_stock_identifiers": false,
           "show_free_lines": true,
+          "show_weights": false,
           "hide_section_lines": false,
           "prefix": null
         },
