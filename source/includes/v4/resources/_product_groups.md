@@ -75,6 +75,8 @@ Check each individual operation to see which relations can be included as a side
 `type` | **string** `readonly`<br>Always product group. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `variation_fields` | **array** <br>Array of fields that distinguish variations (e.g. color or size). `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
+`weight` | **hash** `nullable`<br>The weight of the product group as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). When the group has variations enabled, `weight_per_variation` controls whether this value cascades to the variations or each variation carries its own weight and unit. Writes may omit the unit, in which case the group keeps its current unit or — when it never had one — the smallest unit for the company's unit system (grams for metric, ounces for imperial). Values are stored as sent and never converted between units. 
+`weight_per_variation` | **boolean** <br>Only meaningful when the group has variations enabled. When `false` (the default) the group's weight is shared: it cascades to every variation, including newly added ones. When `true` each variation carries its own weight and unit, and the group's weight leaves them untouched. 
 
 
 ## Inherited Fields
@@ -159,6 +161,7 @@ Check each individual operation to see which relations can be included as a side
           "price_period": "day",
           "deposit_in_cents": 0,
           "default_purchase_cost_in_cents": null,
+          "weight": null,
           "discountable": true,
           "taxable": true,
           "seo_title": null,
@@ -172,6 +175,7 @@ Check each individual operation to see which relations can be included as a side
           "allow_shortage": false,
           "shortage_limit": 0,
           "variation_fields": [],
+          "weight_per_variation": false,
           "flat_fee_price_in_cents": 0,
           "structure_price_in_cents": 0,
           "stock_item_properties": []
@@ -530,6 +534,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -543,6 +548,7 @@ This request accepts the following includes:
         "allow_shortage": false,
         "shortage_limit": 0,
         "variation_fields": [],
+        "weight_per_variation": false,
         "flat_fee_price_in_cents": 0,
         "structure_price_in_cents": 0,
         "stock_item_properties": []
@@ -647,6 +653,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -663,6 +670,7 @@ This request accepts the following includes:
         "allow_shortage": false,
         "shortage_limit": 0,
         "variation_fields": [],
+        "weight_per_variation": false,
         "flat_fee_price_in_cents": 0,
         "structure_price_in_cents": 0,
         "stock_item_properties": []
@@ -729,6 +737,8 @@ Name | Description
 `data[attributes][trackable]` | **boolean** <br>Whether stock items are tracked. 
 `data[attributes][tracking_type]` | **enum** <br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.
 `data[attributes][variation_fields][]` | **array** <br>Array of fields that distinguish variations (e.g. color or size). `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
+`data[attributes][weight]` | **hash** <br>The weight of the product group as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). When the group has variations enabled, `weight_per_variation` controls whether this value cascades to the variations or each variation carries its own weight and unit. Writes may omit the unit, in which case the group keeps its current unit or — when it never had one — the smallest unit for the company's unit system (grams for metric, ounces for imperial). Values are stored as sent and never converted between units. 
+`data[attributes][weight_per_variation]` | **boolean** <br>Only meaningful when the group has variations enabled. When `false` (the default) the group's weight is shared: it cascades to every variation, including newly added ones. When `true` each variation carries its own weight and unit, and the group's weight leaves them untouched. 
 
 
 ### Includes
@@ -803,6 +813,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -816,6 +827,7 @@ This request accepts the following includes:
         "allow_shortage": false,
         "shortage_limit": 0,
         "variation_fields": [],
+        "weight_per_variation": false,
         "flat_fee_price_in_cents": 0,
         "structure_price_in_cents": 0,
         "stock_item_properties": []
@@ -882,6 +894,8 @@ Name | Description
 `data[attributes][trackable]` | **boolean** <br>Whether stock items are tracked. 
 `data[attributes][tracking_type]` | **enum** <br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.
 `data[attributes][variation_fields][]` | **array** <br>Array of fields that distinguish variations (e.g. color or size). `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
+`data[attributes][weight]` | **hash** <br>The weight of the product group as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). When the group has variations enabled, `weight_per_variation` controls whether this value cascades to the variations or each variation carries its own weight and unit. Writes may omit the unit, in which case the group keeps its current unit or — when it never had one — the smallest unit for the company's unit system (grams for metric, ounces for imperial). Values are stored as sent and never converted between units. 
+`data[attributes][weight_per_variation]` | **boolean** <br>Only meaningful when the group has variations enabled. When `false` (the default) the group's weight is shared: it cascades to every variation, including newly added ones. When `true` each variation carries its own weight and unit, and the group's weight leaves them untouched. 
 
 
 ### Includes
@@ -947,6 +961,7 @@ This request accepts the following includes:
         "price_period": "day",
         "deposit_in_cents": 0,
         "default_purchase_cost_in_cents": null,
+        "weight": null,
         "discountable": true,
         "taxable": true,
         "seo_title": null,
@@ -960,6 +975,7 @@ This request accepts the following includes:
         "allow_shortage": false,
         "shortage_limit": 0,
         "variation_fields": [],
+        "weight_per_variation": false,
         "flat_fee_price_in_cents": 0,
         "structure_price_in_cents": 0,
         "stock_item_properties": []
