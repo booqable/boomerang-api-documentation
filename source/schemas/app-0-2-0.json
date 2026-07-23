@@ -40,11 +40,11 @@
     },
     "configuration_page": {
       "$ref": "#/definitions/ConfigurationPage",
-      "description": "Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page."
+      "description": "Defines a UI for configuring the app."
     },
     "iframe_page": {
       "$ref": "#/definitions/IframePage",
-      "description": "Settings for apps that are operated through an embedded external page."
+      "description": "An embedded page for the daily operations of the app."
     },
     "tracking_script": {
       "$ref": "#/definitions/TrackingScript",
@@ -192,18 +192,18 @@
     },
     "ConfigurationPage": {
       "type": "object",
-      "description": "Root of the configuration page: ordered list of blocks (banners, forms, guides, iframes).",
+      "description": "An embedded page or a list of UI blocks for configuring the app.",
       "properties": {
         "content": {
           "type": "array",
           "items": { "$ref": "#/definitions/ConfigurationPageBlock" }
-        }
+        },
+        "iframe": { "$ref": "#/definitions/ConfigurationIframe" }
       },
-      "required": ["content"],
       "additionalProperties": false
     },
     "ConfigurationPageBlock": {
-      "description": "One of Banner, Form, Guide, or Iframe block.",
+      "description": "A UI block for use in the app's configuration page.",
       "oneOf": [
         { "$ref": "#/definitions/BannerBlock" },
         { "$ref": "#/definitions/FormBlock" },
@@ -372,7 +372,16 @@
     },
     "IframePage": {
       "type": "object",
-      "description": "Settings for the page embedding the external page apps are operated through.",
+      "description": "An embedded page for the daily operations of the app.",
+      "properties": {
+        "url": { "$ref": "#/definitions/LocatableUrl" }
+      },
+      "required": ["url"],
+      "additionalProperties": false
+    },
+    "ConfigurationIframe": {
+      "type": "object",
+      "description": "An embedded page for the configuration of the app.",
       "properties": {
         "url": { "$ref": "#/definitions/LocatableUrl" }
       },
