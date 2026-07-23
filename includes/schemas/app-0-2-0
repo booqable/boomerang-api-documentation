@@ -69,13 +69,13 @@
 <td><code>configuration_page</code></td>
 <td><a href="#reference-configurationpage"><code>ConfigurationPage</code></a></td>
 <td>false</td>
-<td>Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page.</td>
+<td>Defines a UI for configuring the app.</td>
 </tr>
 <tr>
 <td><code>iframe_page</code></td>
 <td><a href="#reference-iframepage"><code>IframePage</code></a></td>
 <td>false</td>
-<td>Settings for apps that are operated through an embedded external page.</td>
+<td>An embedded page for the daily operations of the app.</td>
 </tr>
 <tr>
 <td><code>tracking_script</code></td>
@@ -363,7 +363,8 @@
 </tr>
 </tbody></table>
 <h2 id='reference-configurationpage'><code>ConfigurationPage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">ConfigurationIframe</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -377,7 +378,13 @@
 <tr>
 <td><code>content</code></td>
 <td>array of <a href="#configurationpageblock"><code>ConfigurationPageBlock</code></a></td>
-<td>true</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>iframe</code></td>
+<td><a href="#reference-configurationiframe"><code>ConfigurationIframe</code></a></td>
+<td>false</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -734,6 +741,25 @@
 </tr>
 </tbody></table>
 <h2 id='reference-iframepage'><code>IframePage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-configurationiframe'><code>ConfigurationIframe</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>

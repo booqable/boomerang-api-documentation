@@ -407,7 +407,7 @@ This request accepts the following includes:
       "type": "users",
       "attributes": {
         "created_at": "2025-07-19T12:22:01.000000+00:00",
-        "updated_at": "2025-07-19T12:23:01.000000+00:00",
+        "updated_at": "2025-07-19T12:22:01.000000+00:00",
         "first_name": "John",
         "last_name": "Doe",
         "name": "John Doe",
