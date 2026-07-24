@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://developers.booqable.com/schemas/app-0-2-0.json#",
+  "$id": "https://developers.booqable.com/schemas/app-0-3-0.json#",
   "title": "Booqable App Configuration Schema",
   "description": "Schema for the configuration file that defines Booqable apps.",
   "type": "object",
@@ -8,7 +8,7 @@
     "$schema": {
       "type": "string",
       "description": "Schema version for the app configuration.",
-      "const": "https://developers.booqable.com/schemas/app-0-2-0.json#"
+      "const": "https://developers.booqable.com/schemas/app-0-3-0.json#"
     },
     "id": {
       "type": "string",
@@ -40,11 +40,11 @@
     },
     "configuration_page": {
       "$ref": "#/definitions/ConfigurationPage",
-      "description": "Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page."
+      "description": "Defines a UI for configuring the app."
     },
     "iframe_page": {
       "$ref": "#/definitions/IframePage",
-      "description": "Settings for apps that are operated through an embedded external page."
+      "description": "An embedded page for the daily operations of the app."
     },
     "tracking_script": {
       "$ref": "#/definitions/TrackingScript",
@@ -191,24 +191,37 @@
       "additionalProperties": false
     },
     "ConfigurationPage": {
-      "type": "object",
-      "description": "Root of the configuration page: ordered list of blocks (banners, forms, guides, iframes).",
-      "properties": {
-        "content": {
-          "type": "array",
-          "items": { "$ref": "#/definitions/ConfigurationPageBlock" }
+      "description": "An embedded page or a list of UI blocks for configuring the app. Exactly one of `content` or `iframe` must be given.",
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "A list of UI blocks for configuring the app.",
+          "properties": {
+            "content": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/ConfigurationPageBlock" }
+            }
+          },
+          "required": ["content"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "description": "An embedded page for the configuration of the app.",
+          "properties": {
+            "iframe": { "$ref": "#/definitions/ConfigurationIframe" }
+          },
+          "required": ["iframe"],
+          "additionalProperties": false
         }
-      },
-      "required": ["content"],
-      "additionalProperties": false
+      ]
     },
     "ConfigurationPageBlock": {
-      "description": "One of Banner, Form, Guide, or Iframe block.",
+      "description": "A UI block for use in the app's configuration page.",
       "oneOf": [
         { "$ref": "#/definitions/BannerBlock" },
         { "$ref": "#/definitions/FormBlock" },
-        { "$ref": "#/definitions/GuideBlock" },
-        { "$ref": "#/definitions/IframeBlock" }
+        { "$ref": "#/definitions/GuideBlock" }
       ]
     },
     "BlockConditionIf": {
@@ -249,10 +262,11 @@
     },
     "FormBlock": {
       "type": "object",
-      "description": "Form block: heading and fields whose values are saved as app settings.",
+      "description": "Form with fields whose values are saved as app settings.",
       "properties": {
         "type": { "const": "Form" },
-        "heading": { "$ref": "#/definitions/FormBlockHeading" },
+        "title": { "$ref": "#/definitions/LocalizableString" },
+        "preamble": { "$ref": "#/definitions/LocalizableString" },
         "fields": {
           "type": "array",
           "items": { "$ref": "#/definitions/FormBlockField" },
@@ -260,16 +274,7 @@
         },
         "if": { "$ref": "#/definitions/BlockConditionIf" }
       },
-      "required": ["type"],
-      "additionalProperties": false
-    },
-    "FormBlockHeading": {
-      "type": "object",
-      "description": "Optional title and/or body text above a form block.",
-      "properties": {
-        "title": { "$ref": "#/definitions/LocalizableString" },
-        "text": { "$ref": "#/definitions/LocalizableString" }
-      },
+      "required": ["type", "title"],
       "additionalProperties": false
     },
     "FormBlockField": {
@@ -356,7 +361,7 @@
         },
         "if": { "$ref": "#/definitions/BlockConditionIf" }
       },
-      "required": ["type"],
+      "required": ["type", "title"],
       "additionalProperties": false
     },
     "GuideBlockStep": {
@@ -372,22 +377,20 @@
     },
     "IframePage": {
       "type": "object",
-      "description": "Settings for the page embedding the external page apps are operated through.",
+      "description": "An embedded page for the daily operations of the app.",
       "properties": {
         "url": { "$ref": "#/definitions/LocatableUrl" }
       },
       "required": ["url"],
       "additionalProperties": false
     },
-    "IframeBlock": {
+    "ConfigurationIframe": {
       "type": "object",
-      "description": "Embedded iframe (e.g. external config or docs URL).",
+      "description": "An embedded page for the configuration of the app.",
       "properties": {
-        "type": { "const": "Iframe" },
-        "url": { "$ref": "#/definitions/LocatableUrl" },
-        "if": { "$ref": "#/definitions/BlockConditionIf" }
+        "url": { "$ref": "#/definitions/LocatableUrl" }
       },
-      "required": ["type", "url"],
+      "required": ["url"],
       "additionalProperties": false
     },
     "ThemeBlock": {
