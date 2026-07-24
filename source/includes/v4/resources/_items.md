@@ -102,7 +102,6 @@ The description of the relationships and attributes of these resources can be fo
           "allow_shortage": true,
           "shortage_limit": 3,
           "variation_fields": [],
-          "weight_per_variation": false,
           "flat_fee_price_in_cents": 1995,
           "structure_price_in_cents": 0,
           "stock_item_properties": []
@@ -156,6 +155,7 @@ The description of the relationships and attributes of these resources can be fo
           "price_structure_id": null,
           "allow_shortage": true,
           "shortage_limit": 3,
+          "weight_overridden": false,
           "variation_values": [],
           "product_group_id": "c721f29a-0574-4af4-8fb2-ab4715f97998"
         },
@@ -502,7 +502,6 @@ This request accepts the following includes:
         "allow_shortage": true,
         "shortage_limit": 3,
         "variation_fields": [],
-        "weight_per_variation": false,
         "flat_fee_price_in_cents": 1995,
         "structure_price_in_cents": 0,
         "stock_item_properties": []

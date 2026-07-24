@@ -141,8 +141,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6a8292cc-4002-4f8e-8da2-1e182dbacc08",
         "type": "products",
         "attributes": {
-          "created_at": "2024-10-14T06:50:00.000000+00:00",
-          "updated_at": "2024-10-14T06:50:00.000000+00:00",
+          "created_at": "2024-10-15T05:44:00.000000+00:00",
+          "updated_at": "2024-10-15T05:44:00.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
@@ -181,6 +181,7 @@ Check each individual operation to see which relations can be included as a side
           "price_structure_id": null,
           "allow_shortage": false,
           "shortage_limit": 0,
+          "weight_overridden": false,
           "variation_values": [],
           "product_group_id": "248e9f40-8ade-4dd1-8bbc-2049129c3146"
         },
@@ -190,8 +191,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "6ac6ad52-9587-4088-8fd8-af88a9295a8e",
         "type": "products",
         "attributes": {
-          "created_at": "2024-10-14T06:50:00.000000+00:00",
-          "updated_at": "2024-10-14T06:50:00.000000+00:00",
+          "created_at": "2024-10-15T05:44:00.000000+00:00",
+          "updated_at": "2024-10-15T05:44:00.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
@@ -230,6 +231,7 @@ Check each individual operation to see which relations can be included as a side
           "price_structure_id": null,
           "allow_shortage": false,
           "shortage_limit": 0,
+          "weight_overridden": false,
           "variation_values": [],
           "product_group_id": "88d23396-b095-4122-82f6-992f846605af"
         },
@@ -332,6 +334,7 @@ Check each individual operation to see which relations can be included as a side
           "price_structure_id": null,
           "allow_shortage": false,
           "shortage_limit": 0,
+          "weight_overridden": false,
           "variation_values": [],
           "product_group_id": "c9235b08-a9f1-43e5-8ae8-cf204f682b53"
         },
