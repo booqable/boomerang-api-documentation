@@ -1488,6 +1488,17 @@
               </ul>
           </li>
           <li>
+            <a href="#order-planning-availabilities" class="toc-h1 toc-link" data-title="Order planning availabilities" title="Order planning availabilities">Order planning availabilities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#order-planning-availabilities-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#order-planning-availabilities-get-availability-information-for-an-order" class="toc-h2 toc-link" data-title="Get availability information for an order" title="Get availability information for an order">Get availability information for an order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#order-price-recalculations" class="toc-h1 toc-link" data-title="Order price recalculations" title="Order price recalculations">Order price recalculations</a>
               <ul class="toc-list-h2">
                   <li>
@@ -35391,6 +35402,194 @@ Check each individual operation to see which relations can be included as a side
     </ul>
   </li>
 </ul>
+<h1 id='order-planning-availabilities'>Order planning availabilities</h1>
+<p>OrderPlanningAvailabilities provide real-time availability information for all
+plannings within an order. This resource calculates how many items are available
+for each planning, taking into account current stock levels and other reservations.</p>
+
+<p>The availability data helps determine if an order can be fulfilled and identifies
+which items may have shortages. For each planning, it provides availability
+information at the location level.</p>
+
+<p>This resource is particularly useful for:
+- Checking availability before confirming an order
+- Identifying potential stock shortages
+- Understanding the impact of order changes on availability</p>
+<h2 id='order-planning-availabilities-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>available</code></td>
+<td><strong>hash</strong> <code>readonly</code><br>A hash containing availability information for each planning in the order, keyed by planning ID. Each planning&#39;s availability includes location level data with stock counts, current availability, and plannable quantities.<br>For products, the availability shows: - <code>stock_count</code>: Total items in stock at the location - <code>available</code>: Currently available items (stock minus existing reservations) - <code>plannable</code>: Items that can be planned (same as available)<br>For bundles, the availability is calculated based on the most constraining component. If a bundle requires 2 chairs and 1 table, the bundle availability is limited by whichever component has fewer available sets.<br>Untracked items (those with tracking_type &quot;none&quot;) are excluded from the availability calculations. Only active plannings and their archived nested plannings (where the parent is active) are included in the response.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>The unique identifier of the <a href="#orders">Order</a> to check availability for. This parameter is required and must reference an existing order.</td>
+</tr>
+</tbody></table>
+<h2 id='order-planning-availabilities-get-availability-information-for-an-order'>Get availability information for an order</h2>
+<blockquote>
+<p>Get availability for order with product:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/order_planning_availabilities'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[order_id]=c4a20067-f418-4f6b-878b-dc836a1be672'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c4a20067-f418-4f6b-878b-dc836a1be672"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_planning_availabilities"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c4a20067-f418-4f6b-878b-dc836a1be672"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"578fab68-900d-4de2-8087-050726faf188"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"stock_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"plannable"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Get availability for order with bundle:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/order_planning_availabilities'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[order_id]=86cf4f6c-e110-4f4c-864b-bd56a15df8cb'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86cf4f6c-e110-4f4c-864b-bd56a15df8cb"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_planning_availabilities"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86cf4f6c-e110-4f4c-864b-bd56a15df8cb"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"aa3ed5fb-c746-4f03-8f07-4ef053626745"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"stock_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"plannable"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"d2dfb182-9417-4d6d-8c84-6e49e5cbc505"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"stock_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"plannable"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Get availability for order without plannings:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/order_planning_availabilities'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[order_id]=6ffeda8c-b0af-4303-8b84-2e55b397ab9a'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ffeda8c-b0af-4303-8b84-2e55b397ab9a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order_planning_availabilities"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ffeda8c-b0af-4303-8b84-2e55b397ab9a"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"available"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='order-planning-availabilities-get-availability-information-for-an-order-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/order_planning_availabilities</code></p>
+<h3 id='order-planning-availabilities-get-availability-information-for-an-order-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[order_planning_availabilities]=order_id,available</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-planning-availabilities-get-availability-information-for-an-order-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-planning-availabilities-get-availability-information-for-an-order-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='order-planning-availabilities-get-availability-information-for-an-order-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
 <h1 id='order-price-recalculations'>Order price recalculations</h1>
 <p>When the rental period of an order is changed, the prices of individual lines
 and the total price of the order are not automatically recalculated to preserve
