@@ -1,5 +1,5 @@
 <h1 id='reference'>Reference</h1><h2 id='reference-config-meta-json'><code>/config/meta.json</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-2-0.json#"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-3-0.json#"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liquid_conf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyApp"</span><span class="p">,</span><span class="w">
@@ -69,13 +69,13 @@
 <td><code>configuration_page</code></td>
 <td><a href="#reference-configurationpage"><code>ConfigurationPage</code></a></td>
 <td>false</td>
-<td>Optional configuration page content (banners, forms, guides, iframes). Omit the key when the app has no configuration page.</td>
+<td>Defines a UI for configuring the app.</td>
 </tr>
 <tr>
 <td><code>iframe_page</code></td>
 <td><a href="#reference-iframepage"><code>IframePage</code></a></td>
 <td>false</td>
-<td>Settings for apps that are operated through an embedded external page.</td>
+<td>An embedded page for the daily operations of the app.</td>
 </tr>
 <tr>
 <td><code>tracking_script</code></td>
@@ -363,25 +363,8 @@
 </tr>
 </tbody></table>
 <h2 id='reference-configurationpage'><code>ConfigurationPage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>content</code></td>
-<td>array of <a href="#configurationpageblock"><code>ConfigurationPageBlock</code></a></td>
-<td>true</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='reference-configurationpageblock'><code>ConfigurationPageBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span></code></pre></div><h2 id='reference-configurationpageblock'><code>ConfigurationPageBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='reference-blockconditionif'><code>BlockConditionIf</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -474,7 +457,8 @@
 </tbody></table>
 <h2 id='reference-formblock'><code>FormBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Form"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">FormBlockHeading</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"preamble"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -494,8 +478,14 @@
 <td></td>
 </tr>
 <tr>
-<td><code>heading</code></td>
-<td><a href="#reference-formblockheading"><code>FormBlockHeading</code></a></td>
+<td><code>title</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td><code>preamble</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
 <td>false</td>
 <td></td>
 </tr>
@@ -508,32 +498,6 @@
 <tr>
 <td><code>if</code></td>
 <td><a href="#reference-blockconditionif"><code>BlockConditionIf</code></a></td>
-<td>false</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='reference-formblockheading'><code>FormBlockHeading</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>title</code></td>
-<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
-<td>false</td>
-<td></td>
-</tr>
-<tr>
-<td><code>text</code></td>
-<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
 <td>false</td>
 <td></td>
 </tr>
@@ -684,7 +648,7 @@
 <tr>
 <td><code>title</code></td>
 <td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
-<td>false</td>
+<td>true</td>
 <td></td>
 </tr>
 <tr>
@@ -752,10 +716,8 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-iframeblock'><code>IframeBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iframe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<h2 id='reference-configurationiframe'><code>ConfigurationIframe</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -767,21 +729,9 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>type</code></td>
-<td></td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
 <td><code>url</code></td>
 <td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
 <td>true</td>
-<td></td>
-</tr>
-<tr>
-<td><code>if</code></td>
-<td><a href="#reference-blockconditionif"><code>BlockConditionIf</code></a></td>
-<td>false</td>
 <td></td>
 </tr>
 </tbody></table>
