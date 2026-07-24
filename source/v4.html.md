@@ -56,6 +56,7 @@ includes:
   - v4/resources/order_delivery_rate_recalculations
   - v4/resources/order_delivery_rates
   - v4/resources/order_fulfillments
+  - v4/resources/order_planning_availabilities
   - v4/resources/order_price_recalculations
   - v4/resources/order_status_transitions
   - v4/resources/payments
