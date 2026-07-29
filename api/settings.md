@@ -212,7 +212,6 @@ Name | Description
 `emails` | **hash** <br>Settings for emails.
 `feature_enrollments` | **hash** `extra`<br>Feature enrollments settings (Used internally by Booqable).
 `id` | **uuid** <br>Primary key.
-`instructions` | **hash** `extra`<br>Settings for in app instructions (Used internally by Booqable).
 `invoices` | **hash** <br>Settings that apply to invoices.
 `labels` | **hash** <br>Customization settings for labels.
 `onboarding` | **hash** `extra`<br>Onboarding settings (Used internally by Booqable).
