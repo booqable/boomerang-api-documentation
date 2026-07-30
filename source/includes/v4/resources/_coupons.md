@@ -104,8 +104,8 @@ Check each individual operation to see which relations can be included as a side
        --header 'content-type: application/json'
        --data-urlencode 'filter[active]=true'
        --data-urlencode 'filter[q]=WINTER'
-       --data-urlencode 'filter[range][from]=2026-07-29T12:01:45Z'
-       --data-urlencode 'filter[range][till]=2026-07-30T12:01:45Z'
+       --data-urlencode 'filter[range][from]=2026-07-30T11:17:19Z'
+       --data-urlencode 'filter[range][till]=2026-07-31T11:17:19Z'
        --data-urlencode 'filter[tag_list][]=winter'
        --data-urlencode 'filter[tag_list][]=clearance'
        --data-urlencode 'stats[active][]=count'
@@ -129,8 +129,8 @@ Check each individual operation to see which relations can be included as a side
           "coupon_type": "percentage",
           "value": 10,
           "active": true,
-          "starts_at": "2027-01-03T12:07:18.000000+00:00",
-          "ends_at": "2027-01-07T12:06:18.000000+00:00",
+          "starts_at": "2027-01-03T12:51:18.000000+00:00",
+          "ends_at": "2027-01-07T12:50:18.000000+00:00",
           "eligible_item_type": "all",
           "max_redemptions": null,
           "one_per_customer": false,
@@ -573,22 +573,23 @@ This request accepts the following includes:
 
 ## Update a coupon
 
-When updating a coupon the existing one is archived and a new one gets created:
+A coupon is updated in place. Only `active` and `tag_list` can be changed;
+all other attributes are immutable once the coupon is created.
 
-> How to update a coupon:
+> How to update a coupon's tags:
 
 ```shell
   curl --request PUT
-       --url 'https://example.booqable.com/api/4/coupons/90aa7e25-800f-4f23-84c2-1f077eaea4dd'
+       --url 'https://example.booqable.com/api/4/coupons/96755b27-9f5c-48c6-8dc4-7aa203d74cc3'
        --header 'content-type: application/json'
        --data '{
          "data": {
-           "id": "90aa7e25-800f-4f23-84c2-1f077eaea4dd",
+           "id": "96755b27-9f5c-48c6-8dc4-7aa203d74cc3",
            "type": "coupons",
            "attributes": {
-             "identifier": "SUMMER30OFF",
-             "coupon_type": "percentage",
-             "value": 30
+             "tag_list": [
+               "seasonal"
+             ]
            }
          }
        }'
@@ -599,17 +600,17 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
     "data": {
-      "id": "f3f44405-c4fe-424e-8fe4-bfdfe6a7f761",
+      "id": "96755b27-9f5c-48c6-8dc4-7aa203d74cc3",
       "type": "coupons",
       "attributes": {
-        "created_at": "2021-03-12T23:40:01.000000+00:00",
-        "updated_at": "2021-03-12T23:40:01.000000+00:00",
+        "created_at": "2022-01-20T21:24:01.000000+00:00",
+        "updated_at": "2022-01-20T21:24:01.000000+00:00",
         "archived": false,
         "archived_at": null,
-        "identifier": "SUMMER30OFF",
+        "identifier": "SUMMER20OFF",
         "coupon_type": "percentage",
-        "value": 30,
-        "active": false,
+        "value": 20,
+        "active": true,
         "starts_at": null,
         "ends_at": null,
         "eligible_item_type": "all",
@@ -617,7 +618,9 @@ When updating a coupon the existing one is archived and a new one gets created:
         "one_per_customer": false,
         "minimum_order_amount_in_cents": null,
         "stackable": true,
-        "tag_list": [],
+        "tag_list": [
+          "seasonal"
+        ],
         "redemptions_count": 0
       },
       "relationships": {}
@@ -648,60 +651,11 @@ When updating a coupon the existing one is archived and a new one gets created:
 ```json
   {
     "data": {
-      "id": "aa069e77-af42-4e2c-862a-53a56308bcc0",
+      "id": "8c0f8005-b948-4ddc-855b-6825e4159246",
       "type": "coupons",
       "attributes": {
         "created_at": "2022-08-10T18:19:00.000000+00:00",
         "updated_at": "2022-08-10T18:19:00.000000+00:00",
-        "archived": false,
-        "archived_at": null,
-        "identifier": "SUMMER20OFF",
-        "coupon_type": "percentage",
-        "value": 20,
-        "active": false,
-        "starts_at": null,
-        "ends_at": null,
-        "eligible_item_type": "all",
-        "max_redemptions": null,
-        "one_per_customer": false,
-        "minimum_order_amount_in_cents": null,
-        "stackable": true,
-        "tag_list": [],
-        "redemptions_count": 0
-      },
-      "relationships": {}
-    },
-    "meta": {}
-  }
-```
-
-> How to deactivate a coupon in-place:
-
-```shell
-  curl --request PUT
-       --url 'https://example.booqable.com/api/4/coupons/cdbc9c62-d61c-42f2-8d68-75d5f49fe5bd'
-       --header 'content-type: application/json'
-       --data '{
-         "data": {
-           "id": "cdbc9c62-d61c-42f2-8d68-75d5f49fe5bd",
-           "type": "coupons",
-           "attributes": {
-             "active": false
-           }
-         }
-       }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-    "data": {
-      "id": "cdbc9c62-d61c-42f2-8d68-75d5f49fe5bd",
-      "type": "coupons",
-      "attributes": {
-        "created_at": "2025-12-07T09:05:11.000000+00:00",
-        "updated_at": "2025-12-07T09:05:11.000000+00:00",
         "archived": false,
         "archived_at": null,
         "identifier": "SUMMER20OFF",
