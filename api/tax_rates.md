@@ -253,7 +253,7 @@ This request accepts the following includes:
         "id": "12188347-ab4b-416c-8b2d-44bf5802abbc",
         "type": "tax_regions",
         "attributes": {
-          "created_at": "2021-02-16T04:50:00.000000+00:00",
+          "created_at": "2021-02-16T04:49:00.000000+00:00",
           "updated_at": "2021-02-16T04:50:00.000000+00:00",
           "archived": false,
           "archived_at": null,
