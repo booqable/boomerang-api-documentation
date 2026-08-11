@@ -42,8 +42,8 @@
       "$ref": "#/definitions/ConfigurationPage",
       "description": "Defines a UI for configuring the app."
     },
-    "iframe_page": {
-      "$ref": "#/definitions/IframePage",
+    "main_page": {
+      "$ref": "#/definitions/MainPage",
       "description": "An embedded page for the daily operations of the app."
     },
     "tracking_script": {
@@ -190,6 +190,24 @@
       "required": ["id", "enabled"],
       "additionalProperties": false
     },
+    "MainPage": {
+      "type": "object",
+      "description": "An embedded page for the daily operations of the app.",
+      "properties": {
+        "iframe": { "$ref": "#/definitions/Iframe" }
+      },
+      "required": ["iframe"],
+      "additionalProperties": false
+    },
+    "Iframe": {
+      "type": "object",
+      "description": "An embedded iframe.",
+      "properties": {
+        "url": { "$ref": "#/definitions/LocatableUrl" }
+      },
+      "required": ["url"],
+      "additionalProperties": false
+    },
     "ConfigurationPage": {
       "description": "An embedded page or a list of UI blocks for configuring the app. Exactly one of `content` or `iframe` must be given.",
       "oneOf": [
@@ -209,7 +227,7 @@
           "type": "object",
           "description": "An embedded page for the configuration of the app.",
           "properties": {
-            "iframe": { "$ref": "#/definitions/ConfigurationIframe" }
+            "iframe": { "$ref": "#/definitions/Iframe" }
           },
           "required": ["iframe"],
           "additionalProperties": false
@@ -373,24 +391,6 @@
         "image": { "$ref": "#/definitions/AssetReference" }
       },
       "required": ["title"],
-      "additionalProperties": false
-    },
-    "IframePage": {
-      "type": "object",
-      "description": "An embedded page for the daily operations of the app.",
-      "properties": {
-        "url": { "$ref": "#/definitions/LocatableUrl" }
-      },
-      "required": ["url"],
-      "additionalProperties": false
-    },
-    "ConfigurationIframe": {
-      "type": "object",
-      "description": "An embedded page for the configuration of the app.",
-      "properties": {
-        "url": { "$ref": "#/definitions/LocatableUrl" }
-      },
-      "required": ["url"],
       "additionalProperties": false
     },
     "ThemeBlock": {

@@ -7,7 +7,7 @@
   </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">ConfigurationPage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"iframe_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">IframePage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"main_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">MainPage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">TrackingScript</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">OauthConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -72,8 +72,8 @@
 <td>Defines a UI for configuring the app.</td>
 </tr>
 <tr>
-<td><code>iframe_page</code></td>
-<td><a href="#reference-iframepage"><code>IframePage</code></a></td>
+<td><code>main_page</code></td>
+<td><a href="#reference-mainpage"><code>MainPage</code></a></td>
 <td>false</td>
 <td>An embedded page for the daily operations of the app.</td>
 </tr>
@@ -358,6 +358,44 @@
 <tr>
 <td><code>enabled</code></td>
 <td>boolean</td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-mainpage'><code>MainPage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Iframe</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>iframe</code></td>
+<td><a href="#reference-iframe"><code>Iframe</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-iframe'><code>Iframe</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
 <td>true</td>
 <td></td>
 </tr>
@@ -694,44 +732,6 @@
 <td><code>image</code></td>
 <td><a href="#reference-assetreference"><code>AssetReference</code></a></td>
 <td>false</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='reference-iframepage'><code>IframePage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>url</code></td>
-<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
-<td>true</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='reference-configurationiframe'><code>ConfigurationIframe</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>url</code></td>
-<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
-<td>true</td>
 <td></td>
 </tr>
 </tbody></table>
