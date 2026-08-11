@@ -194,7 +194,8 @@
       "type": "object",
       "description": "An embedded page for the daily operations of the app.",
       "properties": {
-        "iframe": { "$ref": "#/definitions/Iframe" }
+        "iframe": { "$ref": "#/definitions/Iframe" },
+        "if": { "$ref": "#/definitions/RenderCondition" }
       },
       "required": ["iframe"],
       "additionalProperties": false
@@ -242,9 +243,9 @@
         { "$ref": "#/definitions/GuideBlock" }
       ]
     },
-    "BlockConditionIf": {
+    "RenderCondition": {
       "type": "string",
-      "description": "When to show the block: only when the app is configured, or only when unconfigured. Omit to always show.",
+      "description": "When to render: only when the app is configured, or only when unconfigured. Omit to always render.",
       "enum": ["configured", "unconfigured"],
       "examples": ["unconfigured", "configured"]
     },
@@ -262,7 +263,7 @@
           "enum": ["neutral", "info", "warning"],
           "default": "neutral"
         },
-        "if": { "$ref": "#/definitions/BlockConditionIf" }
+        "if": { "$ref": "#/definitions/RenderCondition" }
       },
       "required": ["type"],
       "additionalProperties": false
@@ -290,7 +291,7 @@
           "items": { "$ref": "#/definitions/FormBlockField" },
           "default": []
         },
-        "if": { "$ref": "#/definitions/BlockConditionIf" }
+        "if": { "$ref": "#/definitions/RenderCondition" }
       },
       "required": ["type", "title"],
       "additionalProperties": false
@@ -377,7 +378,7 @@
           "items": { "$ref": "#/definitions/GuideBlockStep" },
           "default": []
         },
-        "if": { "$ref": "#/definitions/BlockConditionIf" }
+        "if": { "$ref": "#/definitions/RenderCondition" }
       },
       "required": ["type", "title"],
       "additionalProperties": false
