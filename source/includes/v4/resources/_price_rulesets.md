@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2031-03-23T21:35:05.000000+00:00",
-          "till": "2031-05-23T21:35:05.000000+00:00",
+          "from": "2031-03-11T22:21:05.000000+00:00",
+          "till": "2031-05-11T22:21:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -221,7 +221,7 @@ This request accepts the following includes:
                  "match_strategy": "span",
                  "value": 25,
                  "from": "2014-09-24T15:02:01.000000+00:00",
-                 "till": "2014-11-24T15:02:01.000000+00:00"
+                 "till": "2014-11-25T15:02:01.000000+00:00"
                }
              ]
            }
@@ -238,8 +238,8 @@ This request accepts the following includes:
       "id": "e4fe0b61-208f-4525-8281-39ceec698804",
       "type": "price_rulesets",
       "attributes": {
-        "created_at": "2014-10-24T15:02:01.000000+00:00",
-        "updated_at": "2014-10-24T15:02:01.000000+00:00",
+        "created_at": "2014-10-25T15:02:01.000000+00:00",
+        "updated_at": "2014-10-25T15:02:01.000000+00:00",
         "archived": false,
         "archived_at": null,
         "name": "Seasonal ruleset",
@@ -261,15 +261,15 @@ This request accepts the following includes:
         "id": "fe521f82-f68d-479c-843d-7420dbcf18ae",
         "type": "price_rules",
         "attributes": {
-          "created_at": "2014-10-24T15:02:01.000000+00:00",
-          "updated_at": "2014-10-24T15:02:01.000000+00:00",
+          "created_at": "2014-10-25T15:02:01.000000+00:00",
+          "updated_at": "2014-10-25T15:02:01.000000+00:00",
           "name": "Off season",
           "rule_type": "range_of_dates",
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 25.0,
           "from": "2014-09-24T15:02:01.000000+00:00",
-          "till": "2014-11-24T15:02:01.000000+00:00",
+          "till": "2014-11-25T15:02:01.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -424,8 +424,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2027-08-03T10:48:00.000000+00:00",
-          "till": "2027-10-03T10:48:00.000000+00:00",
+          "from": "2027-07-22T11:34:00.000000+00:00",
+          "till": "2027-09-21T11:34:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,

@@ -456,6 +456,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "roi_reports",
                 "company_performance_report",
                 "esignatures",
+                "public_order_page",
                 "cross_sell",
                 "api"
               ],
@@ -512,11 +513,13 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "roi_reports",
                 "company_performance_report",
                 "esignatures",
+                "public_order_page",
                 "cross_sell",
                 "api",
                 "product_shortage_limits",
                 "remove_powered_by",
-                "activity_logs"
+                "activity_logs",
+                "2fa_enforcing"
               ],
               "pricing_strategy": "start_grow_scale_custom"
             },
@@ -571,11 +574,13 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "roi_reports",
                 "company_performance_report",
                 "esignatures",
+                "public_order_page",
                 "cross_sell",
                 "api",
                 "product_shortage_limits",
                 "remove_powered_by",
-                "activity_logs"
+                "activity_logs",
+                "2fa_enforcing"
               ],
               "pricing_strategy": "start_grow_scale_custom"
             }
@@ -707,8 +712,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
               ],
               "default": null,
               "available_on": [
-                "scale",
-                "custom"
+                "scale"
               ]
             },
             {
