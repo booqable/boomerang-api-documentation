@@ -408,8 +408,32 @@
 </tr>
 </tbody></table>
 <h2 id='reference-configurationpage'><code>ConfigurationPage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Iframe</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-configurationpageblock'><code>ConfigurationPageBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>content</code></td>
+<td>array of <a href="#configurationpageblock"><code>ConfigurationPageBlock</code></a></td>
+<td>false</td>
+<td>A list of UI blocks for configuring the app.</td>
+</tr>
+<tr>
+<td><code>iframe</code></td>
+<td><a href="#reference-iframe"><code>Iframe</code></a></td>
+<td>false</td>
+<td>An embedded page for the configuration of the app.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-configurationpageblock'><code>ConfigurationPageBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='reference-rendercondition'><code>RenderCondition</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">

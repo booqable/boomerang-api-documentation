@@ -210,30 +210,24 @@
       "additionalProperties": false
     },
     "ConfigurationPage": {
-      "description": "An embedded page or a list of UI blocks for configuring the app. Exactly one of `content` or `iframe` must be given.",
-      "oneOf": [
-        {
-          "type": "object",
+      "type": "object",
+      "description": "A list of UI blocks and/or an embedded page for configuring the app. At least one of `content` or `iframe` must be given; when both are given, `iframe` takes priority and `content` is not rendered (a transitional shape for apps migrating to `iframe`, kept alive for the old UI's benefit).",
+      "properties": {
+        "content": {
+          "type": "array",
           "description": "A list of UI blocks for configuring the app.",
-          "properties": {
-            "content": {
-              "type": "array",
-              "items": { "$ref": "#/definitions/ConfigurationPageBlock" }
-            }
-          },
-          "required": ["content"],
-          "additionalProperties": false
+          "items": { "$ref": "#/definitions/ConfigurationPageBlock" }
         },
-        {
-          "type": "object",
-          "description": "An embedded page for the configuration of the app.",
-          "properties": {
-            "iframe": { "$ref": "#/definitions/Iframe" }
-          },
-          "required": ["iframe"],
-          "additionalProperties": false
+        "iframe": {
+          "$ref": "#/definitions/Iframe",
+          "description": "An embedded page for the configuration of the app."
         }
-      ]
+      },
+      "anyOf": [
+        { "required": ["content"] },
+        { "required": ["iframe"] }
+      ],
+      "additionalProperties": false
     },
     "ConfigurationPageBlock": {
       "description": "A UI block for use in the app's configuration page.",
