@@ -290,6 +290,7 @@ Name | Description
           "public": true,
           "send_order_confirmation": true,
           "brand_color": "#136DEB",
+          "availability_color": "sage",
           "use_availability": true,
           "use_prices": true,
           "display_price": "period",

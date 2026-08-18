@@ -46,6 +46,10 @@
       "$ref": "#/definitions/MainPage",
       "description": "An embedded page for the daily operations of the app."
     },
+    "status": {
+      "$ref": "#/definitions/AppStatus",
+      "description": "Options controlling the app status reported inside Booqable."
+    },
     "tracking_script": {
       "$ref": "#/definitions/TrackingScript",
       "description": "Settings for apps that provide tracking scripts meant to be installed in store pages."
@@ -207,6 +211,22 @@
         "url": { "$ref": "#/definitions/LocatableUrl" }
       },
       "required": ["url"],
+      "additionalProperties": false
+    },
+    "AppStatus": {
+      "type": "object",
+      "description": "Customize this app's status reported inside Booqable.",
+      "properties": {
+        "dynamic": {
+          "type": "object",
+          "description": "Fetch a live status message from an HTTPS endpoint. Called directly from the browser. The endpoint must respond with an `Access-Control-Allow-Origin` header allowing the back-office origins, and its body must be the plain-text message.",
+          "properties": {
+            "endpoint": { "$ref": "#/definitions/LocatableUrl" }
+          },
+          "required": ["endpoint"],
+          "additionalProperties": false
+        }
+      },
       "additionalProperties": false
     },
     "ConfigurationPage": {
