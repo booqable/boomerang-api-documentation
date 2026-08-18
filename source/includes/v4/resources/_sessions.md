@@ -209,6 +209,7 @@ Check each individual operation to see which relations can be included as a side
               "fulfillment_reports",
               "website_integration",
               "product_performance_report",
+              "cross_sell",
               "advanced_pricing",
               "prevent_last_minute_reservations",
               "manual_email_templates",
@@ -227,7 +228,6 @@ Check each individual operation to see which relations can be included as a side
               "company_performance_report",
               "esignatures",
               "public_order_page",
-              "cross_sell",
               "api",
               "product_shortage_limits",
               "remove_powered_by",
@@ -297,7 +297,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1786452418"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1787058464"
         }
       },
       {
@@ -350,6 +350,7 @@ Check each individual operation to see which relations can be included as a side
             "public": true,
             "send_order_confirmation": true,
             "brand_color": "#136DEB",
+            "availability_color": "sage",
             "use_availability": true,
             "use_prices": true,
             "display_price": "period",
