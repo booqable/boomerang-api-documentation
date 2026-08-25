@@ -73,7 +73,8 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "notes",
                 "manual_email_templates",
                 "product_shortage_limits",
-                "away_mode"
+                "away_mode",
+                "emails_bcc"
               ],
               "pricing_strategy": "essential_pro_premium"
             },
@@ -117,6 +118,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "manual_email_templates",
                 "product_shortage_limits",
                 "away_mode",
+                "emails_bcc",
                 "barcodes",
                 "reports",
                 "product_performance_report",
@@ -172,6 +174,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "manual_email_templates",
                 "product_shortage_limits",
                 "away_mode",
+                "emails_bcc",
                 "barcodes",
                 "reports",
                 "product_performance_report",
@@ -213,7 +216,8 @@ and pricing strategies. This data is used by the backoffice to display plan opti
               "features": [
                 "destroy_bundles",
                 "mobile_app",
-                "zapier"
+                "zapier",
+                "emails_bcc"
               ],
               "pricing_strategy": "small_medium_large_scale"
             },
@@ -240,6 +244,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "destroy_bundles",
                 "mobile_app",
                 "zapier",
+                "emails_bcc",
                 "advanced_pricing",
                 "sales_items",
                 "bundles",
@@ -287,6 +292,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "destroy_bundles",
                 "mobile_app",
                 "zapier",
+                "emails_bcc",
                 "advanced_pricing",
                 "sales_items",
                 "bundles",
@@ -339,6 +345,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "destroy_bundles",
                 "mobile_app",
                 "zapier",
+                "emails_bcc",
                 "advanced_pricing",
                 "sales_items",
                 "bundles",
@@ -402,6 +409,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "fulfillment_reports",
                 "website_integration",
                 "product_performance_report",
+                "emails_bcc",
                 "cross_sell"
               ],
               "pricing_strategy": "start_grow_scale_custom"
@@ -440,6 +448,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "fulfillment_reports",
                 "website_integration",
                 "product_performance_report",
+                "emails_bcc",
                 "cross_sell",
                 "advanced_pricing",
                 "prevent_last_minute_reservations",
@@ -497,6 +506,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "fulfillment_reports",
                 "website_integration",
                 "product_performance_report",
+                "emails_bcc",
                 "cross_sell",
                 "advanced_pricing",
                 "prevent_last_minute_reservations",
@@ -558,6 +568,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "fulfillment_reports",
                 "website_integration",
                 "product_performance_report",
+                "emails_bcc",
                 "cross_sell",
                 "advanced_pricing",
                 "prevent_last_minute_reservations",

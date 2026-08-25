@@ -88,7 +88,7 @@ A company holds information and configuration about an account.
         "updated_at": "2025-12-03T02:00:00.000000+00:00",
         "name": "iRent",
         "slug": "irent",
-        "email": "mail70@company.com",
+        "email": "mail71@company.com",
         "billing_email": null,
         "phone": null,
         "website": null,
@@ -261,6 +261,7 @@ Name | Description
             "fulfillment_reports",
             "website_integration",
             "product_performance_report",
+            "emails_bcc",
             "cross_sell",
             "advanced_pricing",
             "prevent_last_minute_reservations",
@@ -291,6 +292,9 @@ Name | Description
             "sso",
             "iprestrictions",
             "barcodes"
+          ],
+          "features_excluded_during_trial": [
+            "emails_bcc"
           ],
           "restrictions": {
             "employees": 20,
@@ -366,7 +370,7 @@ This request does not accept any includes
         "updated_at": "2020-02-19T10:28:01.000000+00:00",
         "name": "iRent LLC",
         "slug": "irent",
-        "email": "mail72@company.com",
+        "email": "mail73@company.com",
         "billing_email": null,
         "phone": null,
         "website": null,

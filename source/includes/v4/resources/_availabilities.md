@@ -1130,6 +1130,7 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`configuration` | **hash** <br>`eq`
 `day` | **integer** <br>`eq`
 `duration_period` | **string** <br>`eq`
 `interval` | **integer** <br>`eq`
@@ -1955,6 +1956,7 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`configuration` | **hash** <br>`eq`
 `day` | **integer** <br>`eq`
 `duration_period` | **string** <br>`eq`
 `interval` | **integer** <br>`eq`
@@ -3473,6 +3475,835 @@ This request can be filtered on:
 
 Name | Description
 -- | --
+`configuration` | **hash** <br>`eq`
+`day` | **integer** <br>`eq`
+`duration_period` | **string** <br>`eq`
+`interval` | **integer** <br>`eq`
+`location_id` | **uuid** <br>`eq`
+`month` | **integer** `required`<br>`eq`
+`quantity` | **integer** <br>`eq`
+`starts_at` | **datetime** <br>`eq`
+`subject_id` | **uuid** `required`<br>`eq`
+`subject_type` | **string** `required`<br>`eq`
+`type` | **string** <br>`eq`
+`use_business_hours` | **boolean** <br>`eq`
+`year` | **integer** `required`<br>`eq`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **array** <br>`count`
+
+
+### Includes
+
+This request does not accept any includes
+## Fetch availability for a bundle
+
+
+> Check the availability calendar for a configured bundle:
+
+```shell
+  curl --get 'https://example.booqable.com/api/4/availabilities'
+       --header 'content-type: application/json'
+       --data-urlencode 'filter[configuration][beb7f530-feae-4139-81f4-aa1a654044fa]=124e828e-951f-4d9e-8bb1-e3e7c88339c0'
+       --data-urlencode 'filter[configuration][1b76c069-34ce-41f1-832c-12204cc02cfb]=5caa7043-e868-4b9b-87e5-0072aa1dbb6f'
+       --data-urlencode 'filter[location_id]=74fd927a-120b-403e-82a1-13c6ec0c2a38'
+       --data-urlencode 'filter[month]=10'
+       --data-urlencode 'filter[subject_id]=09378612-31d0-427c-8ac3-6762e912b06e'
+       --data-urlencode 'filter[subject_type]=item'
+       --data-urlencode 'filter[year]=2024'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": [
+      {
+        "id": "0229e50b-fa10-452a-8053-45b108790a8d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-21",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "daa35827-a7f8-4069-815b-20aefabfc2a4",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-22",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "c38d6420-fee2-45ea-867e-4e70fad34a62",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-23",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "630e8ce9-a113-4574-8016-78fd15ae1d1a",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-24",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a22aec41-4333-478d-85b7-1ab956e2aef1",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-25",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "20ee9663-5200-4516-89c8-67fe1f59d50b",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-26",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "64848344-8eb2-4354-8b7d-996b168385c7",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-27",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "b5992e6d-eb41-4ad0-8671-9442eb9c21dd",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-28",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "b3a275d1-e0b2-4af8-822a-ff46fd18aee6",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-29",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "e3c2c705-8535-42ba-8dde-424c8a850fdf",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-30",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "99be0652-1c01-41cd-8fe2-4ee9664ae7ac",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-07-31",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "30827a76-a68e-4b7e-8b1e-4e8a415b65db",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-01",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "d7286381-3038-4e69-85af-8556358ca6e8",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-02",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "cf876b95-4621-437d-8d91-eb5009c1b1d0",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-03",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "b73d135a-9bd5-4284-8757-7a47d25269fa",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-04",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a1af539f-5ecd-45d6-8a70-094bc6a4b517",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-05",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "decd1185-1226-4bdc-8a01-5761b83c0ab9",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-06",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "18cc7b77-24bc-44db-8fc4-0a3dd11c52cc",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-07",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "1c616982-7051-4803-8a1f-8b34dda8a0c1",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-08",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a15d6917-1632-47a3-8b9b-1958a0dd3a29",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-09",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "99356877-8eea-46b5-8851-2d110a8af78a",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-10",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "9715d038-5e16-440a-8452-563594362ba6",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-11",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "3a1ee9ec-ce37-4999-817a-034dadb33cdc",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-12",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "73504acf-b495-4ca1-8bf9-9f90fcf0ce6c",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-13",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "790d7a0a-4840-4514-8c83-c90e135d5274",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-14",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "1fc9bb4f-e9d3-4137-84e9-c8de0dcccf61",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-15",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a36324d6-06ca-4375-8655-416262afe79f",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-16",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "d9e7694a-6cd4-4990-8821-bb91695f4b43",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-17",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "021dbef9-e76d-4606-8e80-be491b67ec54",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-18",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8b1bce12-97b4-4db0-80d7-c532b7156d64",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-19",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "3e922bd4-43e5-4f72-8323-9f7963061f4d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-20",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "21b671f2-903d-4b4e-851e-2f68b0709f5d",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-21",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "f3344d43-36f4-43f6-85cd-ab7d19b38edc",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-22",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "2a5f8b0e-958a-484e-8ffe-b9a392fa17c6",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-23",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8ec9e5fe-d9cc-4889-8c49-a3b920a6ead5",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-24",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8009f4e2-7232-4910-888c-ceb2a1d693a2",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-25",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "2c518abb-e651-41fb-8f58-ec5a78b4e2f8",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-26",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "e1e0eb4f-f6ba-43b0-8e8f-6a4345b701c3",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-27",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "b8b926e0-8e8a-4eeb-83d2-9e9f1efde882",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-28",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "16913a35-1aac-4f6b-8f9d-9bb0d96040bf",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-29",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "b9b7db78-a0ef-45c8-86d1-6044bc96e886",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-30",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "57498690-58f0-4bcb-8bed-aa22a3a80949",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-08-31",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "d6d5f9b6-c2b5-4bc9-801e-7531acb1bd2f",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-01",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "15b6fb87-667d-491e-8229-13639bbc9b0b",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-02",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "0b5969e0-dce2-4bd2-8406-202a273fd8ea",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-03",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "7a5d98ab-fcb3-4016-871a-355b037b4d12",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-04",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "8e0830d9-080c-4673-8cc4-c135b1f4f9b6",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-05",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "fac3beb9-60f8-4f56-8447-93ddf5eca276",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-06",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "a2465473-1ed6-4e4e-8172-d6baf963ce7a",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-07",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      },
+      {
+        "id": "dadc3dc2-7188-4c47-8840-46d7306a07e2",
+        "type": "availabilities",
+        "attributes": {
+          "subject_type": "item",
+          "subject_id": "09378612-31d0-427c-8ac3-6762e912b06e",
+          "hour": null,
+          "minute": null,
+          "date": "2023-09-08",
+          "status": "available",
+          "available": true,
+          "quantity": 2,
+          "type": "date"
+        }
+      }
+    ],
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`GET /api/4/availabilities`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[availabilities]=subject_type,subject_id,hour`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`configuration` | **hash** <br>`eq`
 `day` | **integer** <br>`eq`
 `duration_period` | **string** <br>`eq`
 `interval` | **integer** <br>`eq`
