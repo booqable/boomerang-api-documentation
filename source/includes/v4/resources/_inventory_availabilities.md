@@ -18,7 +18,7 @@ Availability accounts for stock counts and existing reservations. Pass one or mo
 -- | --
 `available` | **integer** `readonly`<br>The number of units available to book for the requested period and location. 
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** `readonly`<br>**Required.** The item to return availability for. Accepts a single ID, or an array of IDs to check multiple products in one request. Also returned on each record. 
+`item_id` | **uuid** `readonly`<br>**Required.** The item to return availability for. Accepts a single ID, or an array of IDs to check multiple products in one request. Also returned on each record.<br>Items without inventory (`tracking_type` `none`, e.g. services) don't have availability to report, so they're omitted from the response even when requested. 
 `plannable` | **integer** `readonly`<br>The number of units that can be planned for the requested period and location. When shortage is allowed for the product, this can exceed `available` by the configured shortage limit. 
 
 
