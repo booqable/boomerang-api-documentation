@@ -48,8 +48,8 @@ Fetches a list of active (unarchived) Stripe accounts for the company. Only acti
           "updated_at": "2018-04-02T22:03:02.000000+00:00",
           "account_id": "acct_1234567890",
           "email": "stripe@example.com",
-          "domain_id": "pmd_1234567890_#<#<Class:0x00007f5182f37958>:0x00007f517170e7b0>",
-          "domain_name": "example#<#<Class:0x00007f5182f37958>:0x00007f517170e7b0>.com",
+          "domain_id": "pmd_1234567890_#<#<Class:0x00007f55ca85c088>:0x00007f55d9e7f8c0>",
+          "domain_name": "example#<#<Class:0x00007f55ca85c088>:0x00007f55d9e7f8c0>.com",
           "publishable_key": "pk_test_12345"
         }
       }
@@ -126,8 +126,8 @@ Fetches a single Stripe account by its ID. Only active (unarchived) accounts can
         "updated_at": "2017-11-15T08:20:00.000000+00:00",
         "account_id": "acct_1234567890",
         "email": "stripe@example.com",
-        "domain_id": "pmd_1234567890_#<#<Class:0x00007f5182f37958>:0x00007f5172806310>",
-        "domain_name": "example#<#<Class:0x00007f5182f37958>:0x00007f5172806310>.com",
+        "domain_id": "pmd_1234567890_#<#<Class:0x00007f55ca85c088>:0x00007f55da4bacd0>",
+        "domain_name": "example#<#<Class:0x00007f55ca85c088>:0x00007f55da4bacd0>.com",
         "publishable_key": "pk_test_12345"
       }
     },
@@ -172,11 +172,11 @@ Disconnects a Stripe account. This prevents it from being used for new payments 
       "attributes": {
         "created_at": "2026-03-06T20:52:03.000000+00:00",
         "updated_at": "2026-03-06T20:52:03.000000+00:00",
-        "account_id": "acct_1234567890_#<#<Class:0x00007f5182f37958>:0x00007f5171bf6f98>",
-        "email": "stripe_#<#<Class:0x00007f5182f37958>:0x00007f5171bf6f98>@example.com",
-        "domain_id": "pmd_1234567890_#<#<Class:0x00007f5182f37958>:0x00007f5171bf6f98>",
-        "domain_name": "example#<#<Class:0x00007f5182f37958>:0x00007f5171bf6f98>.com",
-        "publishable_key": "pk_test_1234567890_#<#<Class:0x00007f5182f37958>:0x00007f5171bf6f98>"
+        "account_id": "acct_1234567890_#<#<Class:0x00007f55ca85c088>:0x00007f55daa7c308>",
+        "email": "stripe_#<#<Class:0x00007f55ca85c088>:0x00007f55daa7c308>@example.com",
+        "domain_id": "pmd_1234567890_#<#<Class:0x00007f55ca85c088>:0x00007f55daa7c308>",
+        "domain_name": "example#<#<Class:0x00007f55ca85c088>:0x00007f55daa7c308>.com",
+        "publishable_key": "pk_test_1234567890_#<#<Class:0x00007f55ca85c088>:0x00007f55daa7c308>"
       }
     },
     "meta": {}
