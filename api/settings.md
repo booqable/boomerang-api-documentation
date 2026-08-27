@@ -73,6 +73,7 @@ Name | Description
 -- | --
 `sso_forced` | **Boolean**<br>Whether to force SSO
 `iprestrictions_enabled` | **Boolean**<br>Whether IP restrictions are enabled
+`confirm_email_on_new_devices` | **Boolean**<br>Whether to require email confirmation when signing in from an unrecognized device
 
 #### Store
 
@@ -282,7 +283,8 @@ Name | Description
         "security": {
           "sso_forced": false,
           "2fa_forced": false,
-          "iprestrictions_enabled": false
+          "iprestrictions_enabled": false,
+          "confirm_email_on_new_devices": true
         },
         "address": {},
         "store": {
