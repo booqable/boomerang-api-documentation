@@ -301,7 +301,7 @@ Check each individual operation to see which relations can be included as a side
           "has_two_factor_autentication": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1787659616"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1787829329"
         }
       },
       {
@@ -346,7 +346,8 @@ Check each individual operation to see which relations can be included as a side
           "security": {
             "sso_forced": false,
             "2fa_forced": false,
-            "iprestrictions_enabled": false
+            "iprestrictions_enabled": false,
+            "confirm_email_on_new_devices": true
           },
           "address": {},
           "store": {
