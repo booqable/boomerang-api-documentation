@@ -98,6 +98,7 @@ Name | Description
 -- | --
 `action` | **enum** `required`<br>`eq`
 `from` | **datetime** <br>`eq`
+`include_out_of_window` | **boolean** <br>`eq`
 `item_id` | **uuid** `required`<br>`eq`
 `location_id` | **uuid** <br>`eq`
 `order_id` | **uuid** `required`<br>`eq`
