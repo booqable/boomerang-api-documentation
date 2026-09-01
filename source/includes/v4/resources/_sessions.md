@@ -146,6 +146,8 @@ Check each individual operation to see which relations can be included as a side
           "continent": null,
           "custom_domain": null,
           "custom_domain_validation": null,
+          "custom_email": null,
+          "custom_email_validation": null,
           "development": false,
           "shop_theme_id": null,
           "shop_theme_published": false,
@@ -210,6 +212,7 @@ Check each individual operation to see which relations can be included as a side
               "website_integration",
               "product_performance_report",
               "emails_bcc",
+              "custom_email",
               "cross_sell",
               "advanced_pricing",
               "prevent_last_minute_reservations",
@@ -242,7 +245,8 @@ Check each individual operation to see which relations can be included as a side
               "barcodes"
             ],
             "features_excluded_during_trial": [
-              "emails_bcc"
+              "emails_bcc",
+              "custom_email"
             ],
             "restrictions": {
               "employees": 20,
@@ -302,7 +306,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1788261444"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1788262089"
         }
       },
       {
