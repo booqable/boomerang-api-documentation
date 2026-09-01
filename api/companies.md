@@ -28,6 +28,8 @@ A company holds information and configuration about an account.
 `currency` | **string** <br>Currency of the company. 
 `custom_domain` | **string** <br>Custom domain to use for hosted store and checkout. 
 `custom_domain_validation` | **hash** <br>Validation details for the custom domain. 
+`custom_email` | **string** <br>Email address the company wants to send emails from. It is only used once the domain is authenticated; until then, emails fall back to Booqable's sending domain. 
+`custom_email_validation` | **hash** `readonly`<br>SPF, DKIM and Return-Path records for the custom email domain and their verification status. 
 `default_timezone` | **string** <br>Company's default timezone. 
 `development` | **boolean** `readonly`<br>Whether this is a development account. 
 `email` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
@@ -123,6 +125,8 @@ A company holds information and configuration about an account.
         "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,
+        "custom_email": null,
+        "custom_email_validation": null,
         "development": false,
         "shop_theme_id": null,
         "shop_theme_published": false,
@@ -262,6 +266,7 @@ Name | Description
             "website_integration",
             "product_performance_report",
             "emails_bcc",
+            "custom_email",
             "cross_sell",
             "advanced_pricing",
             "prevent_last_minute_reservations",
@@ -294,7 +299,8 @@ Name | Description
             "barcodes"
           ],
           "features_excluded_during_trial": [
-            "emails_bcc"
+            "emails_bcc",
+            "custom_email"
           ],
           "restrictions": {
             "employees": 20,
@@ -405,6 +411,8 @@ This request does not accept any includes
         "continent": null,
         "custom_domain": null,
         "custom_domain_validation": null,
+        "custom_email": null,
+        "custom_email_validation": null,
         "development": false,
         "shop_theme_id": null,
         "shop_theme_published": false,
@@ -458,6 +466,7 @@ Name | Description
 `data[attributes][currency]` | **string** <br>Currency of the company. 
 `data[attributes][custom_domain]` | **string** <br>Custom domain to use for hosted store and checkout. 
 `data[attributes][custom_domain_validation]` | **hash** <br>Validation details for the custom domain. 
+`data[attributes][custom_email]` | **string** <br>Email address the company wants to send emails from. It is only used once the domain is authenticated; until then, emails fall back to Booqable's sending domain. 
 `data[attributes][default_timezone]` | **string** <br>Company's default timezone. 
 `data[attributes][email]` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
 `data[attributes][favicon_base64]` | **string** <br>To upload a favicon send it as a base64 encoded string. 
