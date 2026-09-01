@@ -12,6 +12,7 @@ Invoices received from Booqable
 `billing_reason` | **enum** `readonly`<br>Why the invoice is billed.<br> One of: `subscription`, `manual`, `subscription_cycle`, `refund`, `uncollectible`, `subscription_update`, `subscription_create`, `processing_fee`.
 `coupon` | **string** `readonly`<br>Applied coupon. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
+`credited_invoice_id` | **uuid** `readonly`<br>ID of the invoice this invoice credits, when it is a refund or a forgiven invoice. 
 `currency` | **string** `readonly`<br>Currency. 
 `currency_object` | **hash** `readonly`<br>Currency object with details about the currency. 
 `date` | **date** `readonly`<br>Invoice date. 
@@ -78,6 +79,7 @@ Invoices received from Booqable
           "ending_balance_in_cents": null,
           "next_payment_attempt_at": null,
           "coupon": null,
+          "credited_invoice_id": null,
           "url": "http://billing.booqable.localhost/invoices/bafa6d2a3e8b9b3465b0e13f8fb99ad7/6f0d4e15ba9aaaded564e226878c6282"
         }
       }
@@ -180,6 +182,7 @@ This request does not accept any includes
         "ending_balance_in_cents": null,
         "next_payment_attempt_at": null,
         "coupon": null,
+        "credited_invoice_id": null,
         "url": "http://billing.booqable.localhost/invoices/9e70fd43d310a37d8ffdf8304c22eab2/4e1d21ac302d121a2fdbb6210b3302b6"
       }
     },
