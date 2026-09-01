@@ -157,8 +157,8 @@ This request does not accept any includes
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2031-02-22T22:22:05.000000+00:00",
-          "till": "2031-04-24T22:22:05.000000+00:00",
+          "from": "2031-02-19T00:10:05.000000+00:00",
+          "till": "2031-04-21T00:10:05.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -221,7 +221,7 @@ This request accepts the following includes:
                  "match_strategy": "span",
                  "value": 25,
                  "from": "2014-09-24T15:02:01.000000+00:00",
-                 "till": "2014-11-25T15:02:01.000000+00:00"
+                 "till": "2014-11-24T15:02:01.000000+00:00"
                }
              ]
            }
@@ -269,7 +269,7 @@ This request accepts the following includes:
           "adjustment_strategy": "percentage",
           "value": 25.0,
           "from": "2014-09-24T15:02:01.000000+00:00",
-          "till": "2014-11-25T15:02:01.000000+00:00",
+          "till": "2014-11-24T15:02:01.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
@@ -424,8 +424,8 @@ This request accepts the following includes:
           "match_strategy": "span",
           "adjustment_strategy": "percentage",
           "value": 30.0,
-          "from": "2027-07-05T11:35:00.000000+00:00",
-          "till": "2027-09-04T11:35:00.000000+00:00",
+          "from": "2027-07-01T13:23:00.000000+00:00",
+          "till": "2027-08-31T13:23:00.000000+00:00",
           "from_day": null,
           "till_day": null,
           "from_time": null,
