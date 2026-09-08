@@ -152,7 +152,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "bh5ufR6ci8n7NZpkrfExFt2T",
+          "tenant_token": "WLSRvnqVAsu8qrSgBj9HgUD7",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -283,6 +283,7 @@ Check each individual operation to see which relations can be included as a side
           "email": "john@doe.com",
           "unconfirmed_email": null,
           "viewed_whats_new_at": "2022-08-21T05:03:01.000000+00:00",
+          "ui_state": {},
           "active": true,
           "owner": true,
           "confirmed": true,
@@ -306,7 +307,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1788853955"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1788862239"
         }
       },
       {

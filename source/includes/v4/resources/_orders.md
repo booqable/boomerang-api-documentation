@@ -336,8 +336,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-09-02T04:38:01.000000+00:00",
-          "stops_at": "1968-10-02T04:38:01.000000+00:00",
+          "starts_at": "1968-09-02T02:20:01.000000+00:00",
+          "stops_at": "1968-10-02T02:20:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -589,14 +589,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-09-09T07:51:44Z",
-                       "lte": "2026-09-12T07:51:44Z"
+                       "gte": "2026-09-09T10:09:40Z",
+                       "lte": "2026-09-12T10:09:40Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-09-09T07:51:44Z",
-                       "lte": "2026-09-12T07:51:44Z"
+                       "gte": "2026-09-09T10:09:40Z",
+                       "lte": "2026-09-12T10:09:40Z"
                      }
                    }
                  ]
@@ -967,8 +967,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-01-28T13:57:01.000000+00:00",
-        "stops_at": "1969-02-27T13:57:01.000000+00:00",
+        "starts_at": "1969-01-28T11:39:01.000000+00:00",
+        "stops_at": "1969-02-27T11:39:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1165,8 +1165,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2026-09-25T14:34:01.000000+00:00",
-        "stops_at": "2026-11-03T14:34:01.000000+00:00",
+        "starts_at": "2026-09-25T14:31:01.000000+00:00",
+        "stops_at": "2026-11-03T14:31:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
@@ -1279,8 +1279,8 @@ When the following attributes are not specified, a sensible default will be pick
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "2018-04-05T18:52:00.000000+00:00",
-        "stops_at": "2018-05-14T18:52:00.000000+00:00",
+        "starts_at": "2018-04-05T18:49:00.000000+00:00",
+        "stops_at": "2018-05-14T18:49:00.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 100.0,
         "entirely_started": true,
