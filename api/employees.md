@@ -41,6 +41,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
 `remove_avatar` | **boolean** `writeonly`<br>Remove current avatar. 
 `third_party_id` | **string** <br>ID used for third party tools. 
 `time_to_confirm` | **integer** `readonly`<br>Time in days left to confirm. 
+`ui_state` | **hash** <br>Interface state remembered for this employee, such as a dismissed onboarding hint. Writes merge into what is already stored. 
 `unconfirmed_email` | **string** `readonly`<br>Unconfirmed e-mail address if present. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `viewed_whats_new_at` | **datetime** <br>Date when this employee viewed product updates for the last time. 
@@ -67,7 +68,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2025-02-23T02:16:00.000000+00:00",
+          "updated_at": "2025-02-23T04:34:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
@@ -75,6 +76,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
           "email": "john@doe.com",
           "unconfirmed_email": null,
           "viewed_whats_new_at": "2023-06-07T12:19:00.000000+00:00",
+          "ui_state": {},
           "active": true,
           "owner": true,
           "confirmed": true,
@@ -181,6 +183,7 @@ This request does not accept any includes
         "email": "john@doe.com",
         "unconfirmed_email": null,
         "viewed_whats_new_at": "2017-02-10T06:59:00.000000+00:00",
+        "ui_state": {},
         "active": true,
         "owner": true,
         "confirmed": true,
@@ -256,7 +259,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2023-05-21T14:46:00.000000+00:00",
+        "updated_at": "2023-05-21T17:04:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
@@ -264,6 +267,7 @@ This request does not accept any includes
         "email": "jane@doe.com",
         "unconfirmed_email": null,
         "viewed_whats_new_at": "2021-07-24T23:16:00.000000+00:00",
+        "ui_state": {},
         "active": true,
         "owner": false,
         "confirmed": true,
@@ -320,7 +324,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2021-06-03T04:05:01.000000+00:00",
+        "updated_at": "2021-06-03T06:23:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -328,6 +332,7 @@ This request does not accept any includes
         "email": "jane@doe.com",
         "unconfirmed_email": null,
         "viewed_whats_new_at": "2019-08-07T12:35:01.000000+00:00",
+        "ui_state": {},
         "active": false,
         "owner": false,
         "confirmed": true,
@@ -387,7 +392,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2033-12-01T12:53:01.000000+00:00",
+        "updated_at": "2033-12-01T15:11:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -395,6 +400,7 @@ This request does not accept any includes
         "email": "jane@doe.com",
         "unconfirmed_email": null,
         "viewed_whats_new_at": "2032-02-04T21:23:01.000000+00:00",
+        "ui_state": {},
         "active": true,
         "owner": false,
         "confirmed": true,
@@ -447,6 +453,7 @@ Name | Description
 `data[attributes][permissions][]` | **array** <br>Zero or more from: `reports`, `products`, `settings`, `security_settings`, `account`, `exports`, `cancel_orders`, `revert_orders`, `delete_invoices`, `make_invoice_revisions`, `override_rental_period`, `activity_logs`, `ai_assistant`. All permissions are always returned when the roles & permissions feature is not included in the current pricing plan or if the employee is the account owner. 
 `data[attributes][remove_avatar]` | **boolean** <br>Remove current avatar. 
 `data[attributes][third_party_id]` | **string** <br>ID used for third party tools. 
+`data[attributes][ui_state]` | **hash** <br>Interface state remembered for this employee, such as a dismissed onboarding hint. Writes merge into what is already stored. 
 `data[attributes][viewed_whats_new_at]` | **datetime** <br>Date when this employee viewed product updates for the last time. 
 
 

@@ -83,6 +83,7 @@ Check each individual operation to see which relations can be included as a side
           "email": "john@doe.com",
           "unconfirmed_email": null,
           "viewed_whats_new_at": "2020-01-26T19:11:05.000000+00:00",
+          "ui_state": {},
           "active": true,
           "owner": false,
           "confirmed": false,
@@ -92,7 +93,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": "https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/31ff5e6c9b0f2e3b5d27340dd84e003a.png?d=mm&size=200",
-          "third_party_id": "1ccdaa36-f317-4feb-8a06-003668fc0c59-1788853840"
+          "third_party_id": "1ccdaa36-f317-4feb-8a06-003668fc0c59-1788862105"
         }
       }
     ],
@@ -152,6 +153,7 @@ Note that you can also update other fields.:
           "email": "jane@doe.com",
           "unconfirmed_email": null,
           "viewed_whats_new_at": "2020-05-11T21:58:00.000000+00:00",
+          "ui_state": {},
           "active": true,
           "owner": true,
           "confirmed": true,
@@ -175,7 +177,7 @@ Note that you can also update other fields.:
           "website_bo_eligible": false,
           "avatar_url": "https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/98d4e49bbf9d94d0b9c6155e3e6ad46c.png?d=mm&size=200",
-          "third_party_id": "a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1788853840"
+          "third_party_id": "a5f55cdd-7e5a-46ea-84db-1c8352c8fa06-1788862105"
         }
       }
     ],
