@@ -71,6 +71,10 @@
     "payments": {
       "$ref": "#/definitions/PaymentsConfig",
       "description": "Payment integration for apps that process charges, authorizations, and refunds."
+    },
+    "lifecycle": {
+      "$ref": "#/definitions/Lifecycle",
+      "description": "Customizes what merchants see at moments of the app's install lifecycle."
     }
   },
   "required": ["$schema", "id", "version", "name", "author", "app_store"],
@@ -140,6 +144,43 @@
           "description": "YouTube video ID for an embedded support video.",
           "pattern": "^[a-zA-Z0-9_-]+$",
           "examples": ["4tDyXghOQbI"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lifecycle": {
+      "type": "object",
+      "description": "Hooks into moments of the app's install lifecycle. Each hook customizes what Booqable shows merchants at that moment.",
+      "properties": {
+        "post_install": {
+          "$ref": "#/definitions/LifecycleHook",
+          "description": "Shown right after the app has been installed. Use it to point merchants at setup steps the app still needs."
+        }
+      },
+      "additionalProperties": false
+    },
+    "LifecycleHook": {
+      "type": "object",
+      "properties": {
+        "message": { "$ref": "#/definitions/LifecycleMessage" }
+      },
+      "additionalProperties": false
+    },
+    "LifecycleMessage": {
+      "type": "object",
+      "description": "Copy shown to the merchant. Each field falls back to Booqable's generic copy when omitted.",
+      "properties": {
+        "heading": { "$ref": "#/definitions/LocalizableString" },
+        "body": { "$ref": "#/definitions/LocalizableString" },
+        "action": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "$ref": "#/definitions/LocalizableString",
+              "description": "Label of the button that dismisses the message."
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

@@ -13,7 +13,8 @@
   </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">OauthConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentsConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentsConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"lifecycle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Lifecycle</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -113,6 +114,12 @@
 <td><a href="#reference-paymentsconfig"><code>PaymentsConfig</code></a></td>
 <td>false</td>
 <td>Payment integration for apps that process charges, authorizations, and refunds.</td>
+</tr>
+<tr>
+<td><code>lifecycle</code></td>
+<td><a href="#reference-lifecycle"><code>Lifecycle</code></a></td>
+<td>false</td>
+<td>Customizes what merchants see at moments of the app&#39;s install lifecycle.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -254,6 +261,77 @@
 <td>string</td>
 <td>false</td>
 <td>YouTube video ID for an embedded support video.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-lifecycle'><code>Lifecycle</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"post_install"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LifecycleHook</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>post_install</code></td>
+<td><a href="#reference-lifecyclehook"><code>LifecycleHook</code></a></td>
+<td>false</td>
+<td>Shown right after the app has been installed. Use it to point merchants at setup steps the app still needs.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-lifecyclehook'><code>LifecycleHook</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LifecycleMessage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>message</code></td>
+<td><a href="#reference-lifecyclemessage"><code>LifecycleMessage</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-lifecyclemessage'><code>LifecycleMessage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"action"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>heading</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>object</td>
+<td>false</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='reference-appplan'><code>AppPlan</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

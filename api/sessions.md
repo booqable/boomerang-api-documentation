@@ -152,7 +152,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "32af84390e700e5f1863434446a4a235",
+          "tenant_token": "bh5ufR6ci8n7NZpkrfExFt2T",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -304,9 +304,9 @@ Check each individual operation to see which relations can be included as a side
           ],
           "has_two_factor_autentication": false,
           "website_bo_eligible": false,
-          "avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/7bd9d8bc934d602725599b5ee37929d6.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1788358662"
+          "avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=404",
+          "large_avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=mm&size=200",
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1788853955"
         }
       },
       {
@@ -465,7 +465,8 @@ Check each individual operation to see which relations can be included as a side
             "footer_content": "### {{company.name}}\n{{#company.email}}[{{company.email}}](mailto:{{company.email}}){{/company.email}}\n{{#company.phone}}[{{company.phone}}](tel:{{company.phone}}){{/company.phone}}\n{{#company.website}}[{{company.website}}]({{company.website}}){{/company.website}}\n{{#company.financialLine1}}{{company.financialLine1}}{{/company.financialLine1}}\n{{#company.financialLine2}}{{company.financialLine2}}{{/company.financialLine2}}\n{{company.address}}\n"
           },
           "deliveries": {
-            "distance_unit": "metric"
+            "distance_unit": "metric",
+            "default_weight_unit": null
           }
         }
       }
