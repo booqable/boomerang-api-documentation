@@ -12,7 +12,6 @@ see [our help center](https://help.booqable.com/en/articles/3832164-emails-types
 -- | --
 `automated` | **boolean** `readonly`<br>When `true`, this template is used by built-in features and cannot be deleted. Updating is possible. 
 `body` | **string** <br>Email body template. 
-`context` | **enum** `readonly`<br>Which resource or process the template applies to. Read-only and derived from `contexts` for backwards compatibility; set `contexts` when creating or updating templates via the API.<br> One of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`, `signature`, `all`, `document`.
 `contexts` | **array[string]** <br>Tags describing where this template may be used (for example order emails vs contract emails).<br>Must contain at least one tag. To make a template available in all contexts, include all tags.<br>Any of: `order`, `invoice`, `contract`, `quote`, `payment`, `user`, `signature`. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `default` | **boolean** `readonly`<br>Whether this is a system default template. 
@@ -47,7 +46,6 @@ see [our help center](https://help.booqable.com/en/articles/3832164-emails-types
           "name": "Webshop confirmation",
           "identifier": "webshop_confirmation",
           "subject": "We received your order",
-          "context": "order",
           "contexts": [
             "order"
           ],
@@ -86,7 +84,6 @@ This request can be filtered on:
 Name | Description
 -- | --
 `automated` | **boolean** <br>`eq`
-`context` | **enum** <br>`eq`
 `contexts` | **array[string]** <br>`any_of`
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `default` | **boolean** <br>`eq`
@@ -131,7 +128,6 @@ This request does not accept any includes
         "name": "Webshop confirmation",
         "identifier": "webshop_confirmation",
         "subject": "We received your order",
-        "context": "order",
         "contexts": [
           "order"
         ],
@@ -204,7 +200,6 @@ This request accepts the following includes:
         "name": "Webshop confirmation",
         "identifier": "webshop_confirmation",
         "subject": "We received your order (#{{order.number}})",
-        "context": "order",
         "contexts": [
           "order"
         ],
@@ -278,7 +273,6 @@ This request does not accept any includes
         "name": "Order confirmation",
         "identifier": "webshop_confirmation",
         "subject": "We received your order",
-        "context": "order",
         "contexts": [
           "order"
         ],
@@ -321,7 +315,6 @@ This request does not accept any includes
         "name": "Order confirmation",
         "identifier": "webshop_confirmation",
         "subject": "We received your order",
-        "context": "order",
         "contexts": [
           "order"
         ],
@@ -386,7 +379,6 @@ This request does not accept any includes
         "name": "Sales Tax",
         "identifier": "sales_tax",
         "subject": "This is a subject!",
-        "context": "order",
         "contexts": [
           "order"
         ],
