@@ -14,6 +14,7 @@
   </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">OauthConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentsConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"required_apps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"lifecycle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Lifecycle</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -114,6 +115,12 @@
 <td><a href="#reference-paymentsconfig"><code>PaymentsConfig</code></a></td>
 <td>false</td>
 <td>Payment integration for apps that process charges, authorizations, and refunds.</td>
+</tr>
+<tr>
+<td><code>required_apps</code></td>
+<td>array of <a href="#requiredapp"><code>RequiredApp</code></a></td>
+<td>false</td>
+<td>Other Booqable apps that must be installed before this app can be installed. The app store shows the requirement (and the required app&#39;s price) up front and blocks installation until it is met.</td>
 </tr>
 <tr>
 <td><code>lifecycle</code></td>
@@ -261,6 +268,32 @@
 <td>string</td>
 <td>false</td>
 <td>YouTube video ID for an embedded support video.</td>
+</tr>
+</tbody></table>
+<h2 id='reference-requiredapp'><code>RequiredApp</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deliveries"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>true</td>
+<td>Identifier of the required app, matching its own <code>id</code>.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
+<td>false</td>
+<td>Explains why the app is required. Falls back to Booqable&#39;s generic copy when omitted.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-lifecycle'><code>Lifecycle</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">

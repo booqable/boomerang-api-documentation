@@ -72,6 +72,12 @@
       "$ref": "#/definitions/PaymentsConfig",
       "description": "Payment integration for apps that process charges, authorizations, and refunds."
     },
+    "required_apps": {
+      "type": "array",
+      "description": "Other Booqable apps that must be installed before this app can be installed. The app store shows the requirement (and the required app's price) up front and blocks installation until it is met.",
+      "items": { "$ref": "#/definitions/RequiredApp" },
+      "default": []
+    },
     "lifecycle": {
       "$ref": "#/definitions/Lifecycle",
       "description": "Customizes what merchants see at moments of the app's install lifecycle."
@@ -146,6 +152,24 @@
           "examples": ["4tDyXghOQbI"]
         }
       },
+      "additionalProperties": false
+    },
+    "RequiredApp": {
+      "type": "object",
+      "description": "Another Booqable app this app depends on.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the required app, matching its own `id`.",
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "examples": ["deliveries"]
+        },
+        "description": {
+          "$ref": "#/definitions/LocalizableString",
+          "description": "Explains why the app is required. Falls back to Booqable's generic copy when omitted."
+        }
+      },
+      "required": ["id"],
       "additionalProperties": false
     },
     "Lifecycle": {
