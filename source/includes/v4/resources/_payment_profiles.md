@@ -29,7 +29,7 @@ Disconnecting a PaymentProfile:
  Name | Description
 -- | --
 `active` | **boolean** <br>Whether this payment profile is currently active and can process payments. Inactive profiles are preserved for historical reference but cannot be used for new transactions.<br>When a profile is disconnected, this is set to `false` rather than deleting the record. 
-`config` | **hash** <br>Provider-specific configuration data stored as key-value pairs. This includes settings like API keys, webhook endpoints, and provider-specific options. The exact contents depend on the provider type.<br>This field is write-only and cannot be retrieved through the API for security reasons. 
+`config` | **hash** <br>Provider-specific configuration data stored as key-value pairs. The exact contents depend on the provider type.<br>For security reasons only non-secret keys are returned through the API (`email`, `uid`, `publishable_key`, `payment_method_domain_id`, `payment_method_domain_name`). Secret credentials such as API keys are never exposed. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `provider` | **string** <br>The payment service provider for this profile. Determines which external service is used for processing payments and what configuration options are available.<br>Always returns `stripe` as this is the only supported provider. 
@@ -62,7 +62,6 @@ Fetches a list of active payment profiles for the company. Only active profiles 
           "config": {
             "email": "pp@example.com",
             "uid": "acct_EXAMPLE",
-            "api_key": "sk_test_EXAMPLE",
             "publishable_key": "pk_test_EXAMPLE"
           }
         }
@@ -140,7 +139,6 @@ Fetches a single payment profile by its ID. Returns both active and inactive pro
         "config": {
           "email": "pp@example.com",
           "uid": "acct_EXAMPLE",
-          "api_key": "sk_test_EXAMPLE",
           "publishable_key": "pk_test_EXAMPLE"
         }
       }
@@ -191,7 +189,6 @@ Disconnects (archives) a payment profile by marking it as inactive. This prevent
         "config": {
           "email": "pp@example.com",
           "uid": "acct_EXAMPLE",
-          "api_key": "sk_test_EXAMPLE",
           "publishable_key": "pk_test_EXAMPLE"
         }
       }
