@@ -332,6 +332,7 @@ Name | Description
           "require_delivery_address_when_selecting_rental_period": true,
           "delivery_country_names": [],
           "website": null,
+          "checkout_background_color": "#F3F3F3",
           "checkout_scripts": "",
           "google_analytics_id": null,
           "google_anlaytics_options": "{}",

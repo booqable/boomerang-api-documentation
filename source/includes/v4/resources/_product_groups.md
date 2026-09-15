@@ -94,7 +94,7 @@ Check each individual operation to see which relations can be included as a side
 `group_name` | **string** `readonly`<br>Same as `name`. 
 `has_variations` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
 `name` | **string** <br>Name of the item. 
-`price_period` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
+`price_period` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
 `price_ruleset_id` | **uuid** `nullable`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `price_structure_id` | **uuid** `nullable`<br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `price_type` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
@@ -711,7 +711,7 @@ Name | Description
 `data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
-`data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
+`data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
 `data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
@@ -866,7 +866,7 @@ Name | Description
 `data[attributes][has_variations]` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
-`data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
+`data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
 `data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
 `data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
