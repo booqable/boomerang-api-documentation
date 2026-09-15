@@ -70,7 +70,7 @@ Check each individual operation to see which relations can be included as a side
 `group_name` | **string** `readonly`<br>The name of the product group. 
 `has_variations` | **boolean** `readonly`<br>Whether variations are enabled. Not applicable for product_type `service`. 
 `name` | **string** `readonly`<br>Name of the item (based on product group and `variations_values`). 
-`price_period` | **enum** `readonly`<br>The period which is the base for price calculation when price type `simple`.<br> One of: `hour`, `day`, `week`, `month`.
+`price_period` | **enum** `readonly`<br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
 `price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.

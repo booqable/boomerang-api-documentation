@@ -57,7 +57,7 @@ A company holds information and configuration about an account.
 `shop_theme_published` | **boolean** `readonly`<br>Whether the installed shop theme has been published. When `true`, the website-builder theme is rendered to storefront visitors. When `false`, the storefront falls back to the default booking-page theme. 
 `slug` | **string** `readonly`<br>Company's slug, the part of the domain name before `booqable.com`. 
 `subscription` | **hash** `readonly` `extra`<br>Details about the subscription. 
-`tenant_token` | **string** `readonly`<br>Token. 
+`tenant_token` | **string** `readonly`<br>Public identifier used as the directory prefix of upload URLs. Must not be treated as a secret. 
 `third_party_id` | **string** <br>ID used for third party tools. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `use_billing_address` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
@@ -131,7 +131,7 @@ A company holds information and configuration about an account.
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "UHJhAu7K3iiuYnC4k54oMT78",
+        "tenant_token": "FWNHVrRvvEe1WDo6WffRKp9U",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
@@ -417,7 +417,7 @@ This request does not accept any includes
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "8EayZYXvk23BNC8wY2dUEbdG",
+        "tenant_token": "usfWcQc6QhrXkZnY87qWHh9U",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
