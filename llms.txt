@@ -38,6 +38,7 @@ The API is RESTful and follows the JSON:API specification. Base URL is `https://
 - [Assets](https://developers.booqable.com/api/assets.md)
 - [Authentication Methods](https://developers.booqable.com/api/authentication_methods.md)
 - [Availabilities](https://developers.booqable.com/api/availabilities.md)
+- [Availability Breakdowns](https://developers.booqable.com/api/availability_breakdowns.md)
 - [Barcodes](https://developers.booqable.com/api/barcodes.md)
 - [Billing Invoices](https://developers.booqable.com/api/billing_invoices.md)
 - [Billing Plans](https://developers.booqable.com/api/billing_plans.md)

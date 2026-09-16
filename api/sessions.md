@@ -109,9 +109,9 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2022-08-21T05:03:01.000000+00:00",
           "updated_at": "2022-08-21T05:03:01.000000+00:00",
-          "name": "Company name 321",
-          "slug": "company-name-321",
-          "email": "mail324@company.com",
+          "name": "Company name 323",
+          "slug": "company-name-323",
+          "email": "mail326@company.com",
           "billing_email": null,
           "phone": null,
           "website": null,
@@ -152,7 +152,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "RrgYb65PRHRubmbht21xPBz5",
+          "tenant_token": "WjAsShAZqX44Nn92uxaWXevv",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -307,7 +307,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1789467033"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1789555633"
         }
       },
       {
