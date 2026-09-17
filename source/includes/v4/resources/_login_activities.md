@@ -9,7 +9,7 @@ A list of all login attempts for the current employee.
 `city` | **string** `readonly` `nullable`<br>City from where login attempt was performed. 
 `country` | **string** `readonly` `nullable`<br>Country from where login attempt was performed. 
 `created_at` | **datetime** `readonly`<br>The time at which the login was attempted. 
-`failure_reason` | **enum** `readonly` `nullable`<br>Why the login failed.<br> One of: `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`.
+`failure_reason` | **enum** `readonly` `nullable`<br>Why the login failed.<br> One of: `not_found_in_database`, `inactive`, `unconfirmed`, `invalid`, `invited`, `locked`.
 `id` | **uuid** `readonly`<br>Primary key.
 `ip` | **string** `readonly`<br>IP address of the login attempt. 
 `region` | **string** `readonly` `nullable`<br>Region from where login attempt was performed. 
