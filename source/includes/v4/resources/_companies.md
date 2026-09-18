@@ -30,7 +30,7 @@ A company holds information and configuration about an account.
 `custom_domain_validation` | **hash** <br>Validation details for the custom domain. 
 `custom_email` | **string** <br>Email address the company wants to send emails from. It is only used once the domain is authenticated; until then, emails fall back to Booqable's sending domain. 
 `custom_email_validation` | **hash** `readonly`<br>SPF, DKIM and Return-Path records for the custom email domain and their verification status. 
-`default_timezone` | **string** <br>Company's default timezone.<br>Rental dates and other wall-clock timestamps are stored as local time and are not rewritten when the time zone changes. Only how "now" is interpreted changes, for example for minimum lead time, opening hours, report periods and dates on documents. See [Dates and time zones](#dates-and-time-zones). 
+`default_timezone` | **string** <br>Company's default timezone.<br>Rental dates and other local timestamps are stored as the date and time at the company's location and are not rewritten when the time zone changes. Only how "now" is interpreted changes, for example for preventing last-minute reservations (`use_order_lag_time`), opening hours, report periods and dates on documents. See [Dates and time zones](#dates-and-time-zones). 
 `development` | **boolean** `readonly`<br>Whether this is a development account. 
 `email` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
 `euvat_member` | **boolean** `readonly`<br>Whether company is in an EU VAT member country. 
@@ -131,7 +131,7 @@ A company holds information and configuration about an account.
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "bQ2GdTo2ivRqCrShXAyF6wu9",
+        "tenant_token": "vmWemNUSbDBqZQ3c4yNDqKJX",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
@@ -417,7 +417,7 @@ This request does not accept any includes
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "bkQnszQuYkahj1ahU6bNkn3H",
+        "tenant_token": "MjnSPv7CpjKQQmfME24ApWKE",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
@@ -467,7 +467,7 @@ Name | Description
 `data[attributes][custom_domain]` | **string** <br>Custom domain to use for hosted store and checkout. 
 `data[attributes][custom_domain_validation]` | **hash** <br>Validation details for the custom domain. 
 `data[attributes][custom_email]` | **string** <br>Email address the company wants to send emails from. It is only used once the domain is authenticated; until then, emails fall back to Booqable's sending domain. 
-`data[attributes][default_timezone]` | **string** <br>Company's default timezone.<br>Rental dates and other wall-clock timestamps are stored as local time and are not rewritten when the time zone changes. Only how "now" is interpreted changes, for example for minimum lead time, opening hours, report periods and dates on documents. See [Dates and time zones](#dates-and-time-zones). 
+`data[attributes][default_timezone]` | **string** <br>Company's default timezone.<br>Rental dates and other local timestamps are stored as the date and time at the company's location and are not rewritten when the time zone changes. Only how "now" is interpreted changes, for example for preventing last-minute reservations (`use_order_lag_time`), opening hours, report periods and dates on documents. See [Dates and time zones](#dates-and-time-zones). 
 `data[attributes][email]` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
 `data[attributes][favicon_base64]` | **string** <br>To upload a favicon send it as a base64 encoded string. 
 `data[attributes][financial_line_1]` | **string** <br>First extra financial information line (like bank account) used in customer communication, on documents, and as the reply-to address for emails that are being sent. 
