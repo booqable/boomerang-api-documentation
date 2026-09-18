@@ -52,6 +52,24 @@ When booking products on a `stopped` order, the order reverts to the `started` s
 The `draft` and `reserved` states can be skipped.
 An order can go from `new` to `started` directly when products or stock items are picked up.
 
+## Rental Period and Time Zones
+
+`starts_at` and `stops_at` are wall-clock times in the company's time zone, written as if they were UTC.
+`2026-07-01T10:00:00Z` means 10:00 at the company's location, whatever the company's time zone is.
+Send these values with a `Z` suffix or without an offset, and do not convert them to real UTC.
+A value with a real offset such as `+02:00` is shifted to UTC before it is stored, so it ends up two
+hours earlier than intended.
+
+Responses return these values as `...+00:00`. Record timestamps such as `created_at` and `updated_at`
+are real UTC instants and cannot be compared to rental dates directly.
+See [Dates and time zones](#dates-and-time-zones) for the convention across the API.
+
+## Searching
+
+`filter[q]` searches orders by order number (exact match), customer name, e-mail and address, tags,
+and the values of custom fields ([Properties](#properties)). Use it to look an order up by a reference
+you stored in a custom field or tag.
+
 ## How to Build a Booking Flow
 
 When building a custom integration that creates orders and reserves inventory,
@@ -286,12 +304,12 @@ Check each individual operation to see which relations can be included as a side
 `properties_attributes` | **array** `writeonly`<br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
 `shortage` | **boolean** `readonly`<br>**Deprecated.** Duplicates `location_shortage` and is being phased out. Use `location_shortage` instead.<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
 `start_location_id` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
-`starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
+`starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period.<br>Wall-clock time in the company's time zone, see [Rental Period and Time Zones](#rental-period-and-time-zones). 
 `status` | **enum** `readonly-after-create`<br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "draft": 0, "reserved": 2, "started": 5, "stopped": 10 }`. 
 `statuses` | **array** `readonly`<br>Status(es) of planned products. 
 `stop_location_id` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
-`stops_at` | **datetime** `nullable`<br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
+`stops_at` | **datetime** `nullable`<br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders.<br>Wall-clock time in the company's time zone, see [Rental Period and Time Zones](#rental-period-and-time-zones). 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
 `tax_in_cents` | **integer** `readonly`<br>Total tax. 
 `tax_region_id` | **uuid** `nullable`<br>[TaxRegion](#tax-regions) applied to this Order. 
@@ -336,8 +354,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-08-24T02:54:01.000000+00:00",
-          "stops_at": "1968-09-23T02:54:01.000000+00:00",
+          "starts_at": "1968-08-23T06:21:01.000000+00:00",
+          "stops_at": "1968-09-22T06:21:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -589,14 +607,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-09-18T09:35:08Z",
-                       "lte": "2026-09-21T09:35:08Z"
+                       "gte": "2026-09-19T06:08:45Z",
+                       "lte": "2026-09-22T06:08:45Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-09-18T09:35:08Z",
-                       "lte": "2026-09-21T09:35:08Z"
+                       "gte": "2026-09-19T06:08:45Z",
+                       "lte": "2026-09-22T06:08:45Z"
                      }
                    }
                  ]
@@ -967,8 +985,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1969-01-19T12:13:01.000000+00:00",
-        "stops_at": "1969-02-18T12:13:01.000000+00:00",
+        "starts_at": "1969-01-18T15:40:01.000000+00:00",
+        "stops_at": "1969-02-17T15:40:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
@@ -1374,10 +1392,10 @@ Name | Description
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
 `data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
-`data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period. 
+`data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period.<br>Wall-clock time in the company's time zone, see [Rental Period and Time Zones](#rental-period-and-time-zones). 
 `data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
-`data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders. 
+`data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders.<br>Wall-clock time in the company's time zone, see [Rental Period and Time Zones](#rental-period-and-time-zones). 
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
 `data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](#tax-regions) applied to this Order. 
 

@@ -68,6 +68,20 @@ event. Includes are not recursive (ie. `bundle.updated` will NOT include `bundle
 | `product_group` | `photo`, `price_ruleset`, `price_structure`, `tax_category` |
 | `product` | `barcode` |
 
+### Delivery and Retries
+
+Webhooks are delivered with a `POST` request that carries only a `Content-Type` and a
+`User-Agent: Booqable Webhooks` header. Payloads are not signed. Treat a webhook as a notification
+and fetch the resource through the API before acting on its contents.
+
+A delivery counts as successful when your endpoint responds with a 2xx status. Any other status, a
+timeout or a connection error counts as a failure and is retried three times: after 10 seconds,
+30 seconds and 60 seconds. After the fourth failed attempt the delivery is dropped. Endpoints are
+not disabled after repeated failures.
+
+Responding with `410 Gone` is not retried and deletes the webhook endpoint together with all events
+subscribed on it. Only return `410` when you deliberately want to unsubscribe.
+
 ## Fields
 
  Name | Description

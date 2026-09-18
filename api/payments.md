@@ -24,6 +24,9 @@ While each payment type has its own specific statuses, common concepts include:
 - Processing states like `started`, `action_required`, or `processing`
 - Terminal states like `succeeded`, `failed`, `canceled`, or `expired`
 
+`status` and `mode` are returned for every payment but cannot be used as filters on this endpoint.
+Filter on `type`, `order_id`, `customer_id` or `succeeded_at` and inspect `status` in the response.
+
 ## Financial Tracking
 
 All payment records maintain:
