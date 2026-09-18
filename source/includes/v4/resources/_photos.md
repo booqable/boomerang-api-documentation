@@ -56,20 +56,20 @@ Check each individual operation to see which relations can be included as a side
         "attributes": {
           "created_at": "2015-06-17T07:25:01.000000+00:00",
           "updated_at": "2015-06-17T07:25:01.000000+00:00",
-          "original_url": "/uploads/71v7N6oUHjLHvHT95jTftTwE/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/upload.png",
-          "large_url": "/uploads/71v7N6oUHjLHvHT95jTftTwE/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/large_upload.jpg",
-          "xlarge_url": "/uploads/71v7N6oUHjLHvHT95jTftTwE/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/xlarge_upload.jpg",
+          "original_url": "/uploads/WUku8XEK8b3BX6hgj7GoiizZ/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/upload.png",
+          "large_url": "/uploads/WUku8XEK8b3BX6hgj7GoiizZ/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/large_upload.jpg",
+          "xlarge_url": "/uploads/WUku8XEK8b3BX6hgj7GoiizZ/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/xlarge_upload.jpg",
           "coordinates": {
             "x": "0.00",
             "y": "0.00"
           },
           "alt_text": null,
-          "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkRCSMcO8fQbgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xN1QwOTozNToyOCswMDowMFPlfC4AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMTdUMDk6MzU6MjgrMDA6MDAiuMSSAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE3VDA5OjM1OjI4KzAwOjAwda3lTQAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
+          "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkSBgkAWUSo2gAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xOFQwNjowOTowMCswMDowMAhrAbQAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMThUMDY6MDk6MDArMDA6MDB5NrkIAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE4VDA2OjA5OjAwKzAwOjAwLiOY1wAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
           "position": 1,
           "width": null,
           "height": null,
           "photo": {
-            "url": "/uploads/71v7N6oUHjLHvHT95jTftTwE/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/upload.png"
+            "url": "/uploads/WUku8XEK8b3BX6hgj7GoiizZ/photo/photo/1ba0ace1-dcf6-4d18-8296-444c10c904b1/upload.png"
           },
           "owner_id": "182cbf22-6a51-4729-81a3-190d3cbb3c57",
           "owner_type": "product_groups"
@@ -144,20 +144,20 @@ This request does not accept any includes
       "attributes": {
         "created_at": "2022-08-01T02:59:00.000000+00:00",
         "updated_at": "2022-08-01T02:59:00.000000+00:00",
-        "original_url": "/uploads/P3W21cpmu4wWZ3J8dh6tmHCj/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/upload.png",
-        "large_url": "/uploads/P3W21cpmu4wWZ3J8dh6tmHCj/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/large_upload.jpg",
-        "xlarge_url": "/uploads/P3W21cpmu4wWZ3J8dh6tmHCj/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/xlarge_upload.jpg",
+        "original_url": "/uploads/SLyCdPSrjjR84HcbxaW1FQkY/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/upload.png",
+        "large_url": "/uploads/SLyCdPSrjjR84HcbxaW1FQkY/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/large_upload.jpg",
+        "xlarge_url": "/uploads/SLyCdPSrjjR84HcbxaW1FQkY/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/xlarge_upload.jpg",
         "coordinates": {
           "x": "0.00",
           "y": "0.00"
         },
         "alt_text": null,
-        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkRCSMdTMDg+AAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xN1QwOTozNToyOSswMDowMPWSd5oAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMTdUMDk6MzU6MjkrMDA6MDCEz88mAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE3VDA5OjM1OjI5KzAwOjAw09ru+QAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkSBgkBLkOYTAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xOFQwNjowOTowMSswMDowMK4cCgAAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMThUMDY6MDk6MDErMDA6MDDfQbK8AAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE4VDA2OjA5OjAxKzAwOjAwiFSTYwAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
         "position": 1,
         "width": null,
         "height": null,
         "photo": {
-          "url": "/uploads/P3W21cpmu4wWZ3J8dh6tmHCj/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/upload.png"
+          "url": "/uploads/SLyCdPSrjjR84HcbxaW1FQkY/photo/photo/93237a3f-2869-4ac3-8dbb-fabd864e9f81/upload.png"
         },
         "owner_id": "850b4eb4-0a7a-4316-8eef-e66a40d0e055",
         "owner_type": "product_groups"
@@ -223,20 +223,20 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2024-05-28T22:17:00.000000+00:00",
         "updated_at": "2024-05-28T22:17:00.000000+00:00",
-        "original_url": "/uploads/gRhnu9Y7S7F8b7311WLruAc7/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/my_product_image.png",
-        "large_url": "/uploads/gRhnu9Y7S7F8b7311WLruAc7/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/large_my_product_image.jpg",
-        "xlarge_url": "/uploads/gRhnu9Y7S7F8b7311WLruAc7/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/xlarge_my_product_image.jpg",
+        "original_url": "/uploads/benfAYxyirrM9ECuTSmXUg2s/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/my_product_image.png",
+        "large_url": "/uploads/benfAYxyirrM9ECuTSmXUg2s/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/large_my_product_image.jpg",
+        "xlarge_url": "/uploads/benfAYxyirrM9ECuTSmXUg2s/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/xlarge_my_product_image.jpg",
         "coordinates": {
           "x": 0,
           "y": 0
         },
         "alt_text": null,
-        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkRCSMfos6B1AAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xN1QwOTozNTozMSswMDowMArXOWMAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMTdUMDk6MzU6MzErMDA6MDB7ioHfAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE3VDA5OjM1OjMxKzAwOjAwLJ+gAAAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkSBgkCt0rJ9gAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xOFQwNjowOTowMiswMDowMJ/0EJ0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMThUMDY6MDk6MDIrMDA6MDDuqaghAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE4VDA2OjA5OjAyKzAwOjAwubyJ/gAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
         "position": 2,
         "width": null,
         "height": null,
         "photo": {
-          "url": "/uploads/gRhnu9Y7S7F8b7311WLruAc7/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/my_product_image.png"
+          "url": "/uploads/benfAYxyirrM9ECuTSmXUg2s/photo/photo/a8eb63bc-693b-4335-865c-8dbf5462fc14/my_product_image.png"
         },
         "owner_id": "5ef74fb8-c1c9-47af-8fac-bcab35a7a867",
         "owner_type": "product_groups"
@@ -321,20 +321,20 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2024-12-16T09:31:00.000000+00:00",
         "updated_at": "2024-12-16T09:31:00.000000+00:00",
-        "original_url": "/uploads/zQ8Bh9vjTfapUdA8juC423Yk/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/upload.png",
-        "large_url": "/uploads/zQ8Bh9vjTfapUdA8juC423Yk/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/large_upload.jpg",
-        "xlarge_url": "/uploads/zQ8Bh9vjTfapUdA8juC423Yk/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/xlarge_upload.jpg",
+        "original_url": "/uploads/J4Y13p2TXgTRP2EtHHHubie6/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/upload.png",
+        "large_url": "/uploads/J4Y13p2TXgTRP2EtHHHubie6/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/large_upload.jpg",
+        "xlarge_url": "/uploads/J4Y13p2TXgTRP2EtHHHubie6/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/xlarge_upload.jpg",
         "coordinates": {
           "x": 10,
           "y": 100
         },
         "alt_text": "Red bike, front view",
-        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkRCSMgFKis6QAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xN1QwOTozNTozMiswMDowMDs/I/4AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMTdUMDk6MzU6MzIrMDA6MDBKYptCAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE3VDA5OjM1OjMyKzAwOjAwHXe6nQAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkSBgkDwE35YAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xOFQwNjowOTowMyswMDowMDmDGykAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMThUMDY6MDk6MDMrMDA6MDBI3qOVAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE4VDA2OjA5OjAzKzAwOjAwH8uCSgAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
         "position": 1,
         "width": null,
         "height": null,
         "photo": {
-          "url": "/uploads/zQ8Bh9vjTfapUdA8juC423Yk/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/upload.png"
+          "url": "/uploads/J4Y13p2TXgTRP2EtHHHubie6/photo/photo/f25879e9-ea1c-4b0f-8cc7-9b2eb23b96c0/upload.png"
         },
         "owner_id": "266622d8-4266-4054-8c2c-617ae1a4b11e",
         "owner_type": "product_groups"
@@ -406,20 +406,20 @@ This request accepts the following includes:
       "attributes": {
         "created_at": "2025-11-22T09:49:03.000000+00:00",
         "updated_at": "2025-11-22T09:49:03.000000+00:00",
-        "original_url": "/uploads/7uNjQm49hRfLLjsAU4jsUqQs/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/upload.png",
-        "large_url": "/uploads/7uNjQm49hRfLLjsAU4jsUqQs/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/large_upload.jpg",
-        "xlarge_url": "/uploads/7uNjQm49hRfLLjsAU4jsUqQs/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/xlarge_upload.jpg",
+        "original_url": "/uploads/jR7KBy6UXsWA6iG17uiUEQtj/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/upload.png",
+        "large_url": "/uploads/jR7KBy6UXsWA6iG17uiUEQtj/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/large_upload.jpg",
+        "xlarge_url": "/uploads/jR7KBy6UXsWA6iG17uiUEQtj/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/xlarge_upload.jpg",
         "coordinates": {
           "x": "0.00",
           "y": "0.00"
         },
         "alt_text": null,
-        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkRCSMhY6+cfwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xN1QwOTozNTozMyswMDowMJ1IKEoAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMTdUMDk6MzU6MzMrMDA6MDDsFZD2AAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE3VDA5OjM1OjMzKzAwOjAwuwCxKQAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
+        "preview": "iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFWUExURf////7///j+/9ry/4fc/mHY/nzj/tD2//n8/7Ta/1e5/Ta2/S++/SnG/TzS/Zzq/vT9/+7y/5m8/lWd/kmh/kSq/T6x/Te5/S/B/S3J/XHf/uP5/+Xm/4+d/2KF/1yN/1aV/1Cd/0mk/kKs/Tyz/TW7/S3D/VnV/dP0/+Td/45/8mVi3FxlzVZpyVBvzFSB3F+b9lGh/kal/kGu/Tu2/TG9/VDN/c3y/+rh+o1p1GBEsFlHo1NKoVFQonZ8t7zE3uHo+MTb/3y0/k2h/kWn/T+w/Ta3/VXJ/dr0//r4/KB6yWUzpGI6ol08ompVrK2o0/Hx+PL3/63O/2Cl/kih/jqx/XjO/vb8/+nd8X06q2ooomw1ppFxvtrT6tfm/4O1/lGe/kWi/k6w/dvw//bx+q5/yp1nv8mw3ffz+vX4/73W/4O2/o7E/u/4//37/vz6/fr8//v8/yD7uT4AAAABYktHRACIBR1IAAAAB3RJTUUH6gkSBgkEXilswwAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wOS0xOFQwNjowOTowNCswMDowMPwkJacAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDktMThUMDY6MDk6MDQrMDA6MDCNeZ0bAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA5LTE4VDA2OjA5OjA0KzAwOjAw2my8xAAAAJ9JREFUKM9jYBjqgJGJEbsEMwsrGzsWcQ5OLm4eXj5+AXQJQSFhEVExcQlJKWlUCRlZOXkFRSVlFVU1dQ1kCU0tbR1dPX0DQyNjE1Mzc4SEhaWVtY2tnb2Do5Ozi6ubuwdMwtPL28fXzz8AyAwMCg4RDQ0Lh8pEREZFx8RCOXHxCYlJyVBOSmpaegbc6Mys7JxcGCcvH8WhBYUDHRvkAwBOtRlAVFW3EgAAAABJRU5ErkJggg==",
         "position": 1,
         "width": null,
         "height": null,
         "photo": {
-          "url": "/uploads/7uNjQm49hRfLLjsAU4jsUqQs/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/upload.png"
+          "url": "/uploads/jR7KBy6UXsWA6iG17uiUEQtj/photo/photo/d9aa6a55-20cb-4b4e-8dc1-b546e4d3abf0/upload.png"
         },
         "owner_id": "98ee3afa-9bdc-4ccd-850a-61157c8e2a39",
         "owner_type": "product_groups"
