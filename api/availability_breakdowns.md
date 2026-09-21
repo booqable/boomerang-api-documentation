@@ -6,7 +6,7 @@ units can still be booked, this endpoint answers *why*: it splits the product's 
 the parts a merchant can act on, such as units planned on other orders, units in downtime, or
 stock that has not arrived yet.
 
-A breakdown is resolved for a single trackable rental product. Pass `order_id` to split the
+A breakdown is resolved for a single product with inventory (trackable or bulk). Pass `order_id` to split the
 planned quantity into the order being viewed and all other orders.
 
 The counters are not meant to add up to the stock count. `available_now` and the shortage
@@ -23,7 +23,7 @@ downtime counters are sums over the whole period.
 `in_downtime` | **integer** `readonly`<br>Number of stock items with a reserved or started downtime overlapping the period at this location. 
 `in_other_orders` | **integer** `readonly`<br>Quantity planned on other orders that reduces availability. Concept and canceled orders are excluded. 
 `in_this_order` | **integer** `readonly`<br>Quantity planned on the order given as `order_id`, regardless of the order's status. A concept order still reports its planned quantity here even though it does not reduce availability. 
-`item_id` | **uuid** `readonly`<br>**Required.** The product to return a breakdown for. Must be a trackable rental product. Also returned on the record. 
+`item_id` | **uuid** `readonly`<br>**Required.** The product to return a breakdown for. Must be a product with inventory (trackable or bulk); bundles and product groups are not accepted. Also returned on the record. 
 `over_shortage_limit` | **integer** `readonly`<br>Overbooked quantity beyond the product's shortage limit. When shortage is not allowed for the product, the whole shortage is reported here. 
 `within_shortage_limit` | **integer** `readonly`<br>Overbooked quantity that the product's shortage limit allows. 
 
