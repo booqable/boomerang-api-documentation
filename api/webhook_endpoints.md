@@ -44,6 +44,26 @@ The content-type of the payload for v1 webhooks is `application/x-www-form-urlen
 
 The content-type of the payload for v4 webhooks is `application/json`.
 
+### Verifying v4 webhooks
+
+Every v4 delivery carries an `X-Booqable-Signature` header so your application can verify
+that the payload was sent by Booqable and has not been tampered with:
+
+```
+X-Booqable-Signature: t=1700000000,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
+```
+
+`t` is the Unix timestamp of the delivery and `v1` is a hex-encoded HMAC-SHA256 of the
+string `"<t>.<raw request body>"`, keyed with the endpoint's `secret`. To verify:
+
+1. Read `t` and `v1` from the header.
+2. Compute `HMAC_SHA256(secret, t + "." + raw_body)` over the raw, unparsed request body.
+3. Compare it to `v1` using a constant-time comparison.
+4. Optionally reject deliveries whose `t` is too old to protect against replays.
+
+The `secret` is returned only in the response of the request that creates the
+endpoint, so store it at that time; it cannot be retrieved later. v1 webhooks are not signed.
+
 ### Included Resources
 
 Resources included in the payload are delivered in the same format as
@@ -89,6 +109,7 @@ subscribed on it. Only return `410` when you deliberately want to unsubscribe.
 `created_at` | **datetime** `readonly`<br>When the webhook endpoint was first registered. 
 `events` | **array[string]** <br>The events that will trigger the webhook. <br/> One or more from: `app.configured`, `app.installed`, `app.plan_changed`, `app.uninstalled`, `bundle.archived`, `bundle.created`, `bundle.updated`, `bundle_item.archived`, `bundle_item.created`, `bundle_item.updated`, `cart.completed_checkout`, `company.destroyed`, `company.updated`, `contract.archived`, `contract.confirmed`, `contract.created`, `contract.signed`, `contract.updated`, `customer.archived`, `customer.created`, `customer.updated`, `invoice.archived`, `invoice.created`, `invoice.finalized`, `invoice.revised`, `invoice.updated`, `order.archived`, `order.canceled`, `order.reserved`, `order.reverted`, `order.saved_as_concept`, `order.saved_as_draft`, `order.started`, `order.stopped`, `order.updated`, `payment.completed`, `product.created`, `product_group.archived`, `product_group.created`, `product_group.updated`, `quote.archived`, `quote.confirmed`, `quote.created`, `quote.signed`, `quote.updated`. 
 `id` | **uuid** `readonly`<br>Primary key.
+`secret` | **string** `readonly`<br>Key used to compute the `X-Booqable-Signature` header on v4 deliveries. Only returned when the endpoint is created. See "Verifying v4 webhooks" above. 
 `updated_at` | **datetime** `readonly`<br>When the webhook endpoint was last updated. 
 `url` | **string** <br>The URL that will receive the webhook payload. 
 `version` | **enum** <br>The version of the webhook payload.<br> One of: `1`, `4`.
@@ -205,7 +226,8 @@ This request does not accept any includes
           "customer.created",
           "customer.updated"
         ],
-        "version": 1
+        "version": 1,
+        "secret": "whsec_example_secret_do_not_use"
       }
     },
     "meta": {}
@@ -248,7 +270,8 @@ This request does not accept any includes
           "customer.created",
           "customer.updated"
         ],
-        "version": 4
+        "version": 4,
+        "secret": "whsec_example_secret_do_not_use"
       }
     },
     "meta": {}
