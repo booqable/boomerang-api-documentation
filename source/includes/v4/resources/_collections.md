@@ -28,7 +28,7 @@ Check each individual operation to see which relations can be included as a side
 `hierarchical_name` | **array[string]** `readonly` `extra`<br>Names of all parents, with the name of this collection as last. 
 `id` | **uuid** `readonly`<br>Primary key.
 `image_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to add a photo. 
-`image_large_url` | **string** `readonly`<br>URL of the large image for this collection. 
+`image_large_url` | **string** `readonly`<br>URL of the image resized on the fly to fit within 800x800 pixels. Transparency is preserved; the served format depends on the client's `Accept` header (WebP where supported). 
 `image_url` | **string** `readonly`<br>URL of the image for this collection. 
 `item_count` | **integer** <br>Number of collection items in this collection that are visible in the store. Only includes items where `show_in_store` is `true`. Includes collection items in this collection, but not in nested collections.<br>This count is automatically recalculated when items are added, removed, or when their `show_in_store` status changes. 
 `name` | **string** <br>Name of this collection. 
