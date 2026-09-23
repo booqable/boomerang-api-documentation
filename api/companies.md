@@ -30,6 +30,7 @@ A company holds information and configuration about an account.
 `custom_domain_validation` | **hash** <br>Validation details for the custom domain. 
 `custom_email` | **string** <br>Email address the company wants to send emails from. It is only used once the domain is authenticated; until then, emails fall back to Booqable's sending domain. 
 `custom_email_validation` | **hash** `readonly`<br>SPF, DKIM and Return-Path records for the custom email domain and their verification status. 
+`default_store_language` | **string** <br>Language the online store falls back to when the visitor's browser language is not available.<br>A locale such as `nl`, with a region where it matters, such as `pt_BR`. 
 `default_timezone` | **string** <br>Company's default timezone.<br>Rental dates and other local timestamps are stored as the date and time at the company's location and are not rewritten when the time zone changes. Only how "now" is interpreted changes, for example for preventing last-minute reservations (`use_order_lag_time`), opening hours, report periods and dates on documents. See [Dates and time zones](#dates-and-time-zones). 
 `development` | **boolean** `readonly`<br>Whether this is a development account. 
 `email` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
@@ -59,6 +60,7 @@ A company holds information and configuration about an account.
 `subscription` | **hash** `readonly` `extra`<br>Details about the subscription. 
 `tenant_token` | **string** `readonly`<br>Public identifier used as the directory prefix of upload URLs. Must not be treated as a secret. 
 `third_party_id` | **string** <br>ID used for third party tools. 
+`translation_instructions` | **string** <br>Custom instructions, such as tone of voice, applied to every language that is auto-translated for the company. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `use_billing_address` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
 `vat_number` | **string** <br>Company's VAT number, used in customer communication and to define tax exempts. 
@@ -128,10 +130,12 @@ A company holds information and configuration about an account.
         "custom_email": null,
         "custom_email_validation": null,
         "development": false,
+        "default_store_language": "en",
+        "translation_instructions": null,
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "P9uDrUD8ySJ6GNsdZkhFPqc8",
+        "tenant_token": "c6nvX5RUjPsi5RwEVUNscZNe",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
@@ -414,10 +418,12 @@ This request does not accept any includes
         "custom_email": null,
         "custom_email_validation": null,
         "development": false,
+        "default_store_language": "en",
+        "translation_instructions": null,
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "CVbX3XGeVoHURwDUdcRdNwQp",
+        "tenant_token": "3FywHqg3WYg99Yode5fBHwBu",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
@@ -467,6 +473,7 @@ Name | Description
 `data[attributes][custom_domain]` | **string** <br>Custom domain to use for hosted store and checkout. 
 `data[attributes][custom_domain_validation]` | **hash** <br>Validation details for the custom domain. 
 `data[attributes][custom_email]` | **string** <br>Email address the company wants to send emails from. It is only used once the domain is authenticated; until then, emails fall back to Booqable's sending domain. 
+`data[attributes][default_store_language]` | **string** <br>Language the online store falls back to when the visitor's browser language is not available.<br>A locale such as `nl`, with a region where it matters, such as `pt_BR`. 
 `data[attributes][default_timezone]` | **string** <br>Company's default timezone.<br>Rental dates and other local timestamps are stored as the date and time at the company's location and are not rewritten when the time zone changes. Only how "now" is interpreted changes, for example for preventing last-minute reservations (`use_order_lag_time`), opening hours, report periods and dates on documents. See [Dates and time zones](#dates-and-time-zones). 
 `data[attributes][email]` | **string** <br>Used in customer communication, on documents and as the reply-to address for emails that are being sent. 
 `data[attributes][favicon_base64]` | **string** <br>To upload a favicon send it as a base64 encoded string. 
@@ -482,6 +489,7 @@ Name | Description
 `data[attributes][remove_logo]` | **boolean** <br>Remove current logo. 
 `data[attributes][shop_theme_id]` | **uuid** <br>ID of installed shop theme. 
 `data[attributes][third_party_id]` | **string** <br>ID used for third party tools. 
+`data[attributes][translation_instructions]` | **string** <br>Custom instructions, such as tone of voice, applied to every language that is auto-translated for the company. 
 `data[attributes][use_billing_address]` | **boolean** <br>Whether to use billing address on invoices received from Booqable. 
 `data[attributes][vat_number]` | **string** <br>Company's VAT number, used in customer communication and to define tax exempts. 
 `data[attributes][website]` | **string** <br>Website. 
