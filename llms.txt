@@ -142,6 +142,7 @@ The API is RESTful and follows the JSON:API specification. Base URL is `https://
 - [Tax Regions](https://developers.booqable.com/api/tax_regions.md)
 - [Tax Values](https://developers.booqable.com/api/tax_values.md)
 - [Themes](https://developers.booqable.com/api/themes.md)
+- [Translations](https://developers.booqable.com/api/translations.md)
 - [Url Redirects](https://developers.booqable.com/api/url_redirects.md)
 - [User Invitations](https://developers.booqable.com/api/user_invitations.md)
 - [Users](https://developers.booqable.com/api/users.md)
