@@ -4,12 +4,10 @@ Booqable apps are modular extensions that add new functionality to a Booqable ac
 
 An app is fundamentally one file — a `booqable.json` manifest — plus whatever templates, assets, and backend code it needs. Depending on what your app does, it can:
 
-| You want to...                                 | Build |
-|-------------------------------------------------|-------|
-| Add an analytics/marketing script                | [Tracking Scripts](#capabilities-tracking-scripts) |
-| Add custom content blocks to the website builder | [Theme Blocks](#capabilities-theme-blocks) |
-| Offer custom shipping rates at checkout           | [Delivery Carriers](#capabilities-delivery-carriers) |
-| Process payments, authorizations, or refunds      | [Payment Options](#capabilities-payment-options) |
-| Embed a full page or dashboard inside Booqable    | [Embedded Pages](#capabilities-embedded-pages) |
+- **Add an analytics/marketing script** — see [Tracking Scripts](#capabilities-tracking-scripts)
+- **Add custom content blocks to the website builder** — see [Theme Blocks](#capabilities-theme-blocks)
+- **Offer custom shipping rates at checkout** — see [Delivery Carriers](#capabilities-delivery-carriers)
+- **Process payments, authorizations, or refunds** — see [Payment Options](#capabilities-payment-options)
+- **Embed a full page or dashboard inside Booqable** — see [Embedded Pages](#capabilities-embedded-pages)
 
 An app can combine more than one of these — the [example payment app](https://github.com/booqable/example-payments-app) on GitHub shows a complete OAuth + payment-options + embedded-page integration if you want a working reference to read alongside these docs.
