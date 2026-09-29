@@ -33,7 +33,7 @@ Theme blocks allow your app to inject custom HTML content into the customer webs
 }
 ```
 
-To enable theme blocks in your app you need to configure the [`themes`](#reference-themesettings) settings in your `meta.json` file. The `blocks` property specifies an array of theme blocks that can be added to the customer's website. Each theme block must specify a [Liquid](https://shopify.github.io/liquid/) template file that will be rendered as HTML in the customer's website. You can constrain which sections of the customer's website the block is meant to be rendered in — header, footer, or body (app) — and optionally specify a set of user-configurable settings that will be available during rendering.
+To enable theme blocks in your app you need to configure the [`themes`](#reference-themesettings) settings in your `booqable.json` file. The `blocks` property specifies an array of theme blocks that can be added to the customer's website. Each theme block must specify a [Liquid](https://shopify.github.io/liquid/) template file that will be rendered as HTML in the customer's website. You can constrain which sections of the customer's website the block is meant to be rendered in — header, footer, or body (app) — and optionally specify a set of user-configurable settings that will be available during rendering.
 
 
 ### Block configuration
@@ -98,7 +98,7 @@ Theme blocks can have [configurable settings](#reference-themeblocksetting) that
 ### Global settings integration
 
 ```jsonc
-// meta.json
+// booqable.json
 {
   // ...
   "global_settings": {
@@ -125,7 +125,7 @@ Theme blocks can have [configurable settings](#reference-themeblocksetting) that
 </div>
 ```
 
-You can also access your app's global settings in the theme block templates using Liquid syntax. When rendering templates all global settings defined in your `meta.json` are available as template variables.
+You can also access your app's global settings in the theme block templates using Liquid syntax. When rendering templates all global settings defined in your `booqable.json` are available as template variables.
 
 
 ### App ID
@@ -162,7 +162,7 @@ When you register your app using `registerApp`, Booqable will automatically mana
 ### Example implementation
 
 ```jsonc
-// meta.json
+// booqable.json
 {
   // ...
   "ui_extension": {

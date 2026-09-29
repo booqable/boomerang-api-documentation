@@ -60,7 +60,7 @@ module MarkdownGenerator
     buffer = StringIO.new
 
     generate_preamble(buffer)
-    generate_schema_section(buffer, schema, "`/config/meta.json`")
+    generate_schema_section(buffer, schema, "`booqable.json`")
     schema.definitions.each do |definition|
       generate_schema_section(buffer, definition.schema, "`#{definition.name}`")
     end

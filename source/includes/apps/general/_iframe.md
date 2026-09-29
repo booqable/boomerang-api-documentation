@@ -40,7 +40,7 @@ The iframe is automatically sized to fit the content and provides a secure commu
 }
 ```
 
-Iframe pages are configured in your app's `meta.json` file using the [`ui_extension.frames` property](#reference-framesettings). When a frame is accessed, Booqable automatically appends authentication and context parameters to the URL, including the JWT token and locale information.
+Iframe pages are configured in your app's `booqable.json` file using the [`ui_extension.frames` property](#reference-framesettings). When a frame is accessed, Booqable automatically appends authentication and context parameters to the URL, including the JWT token and locale information.
 
 ### Authentication token
 
