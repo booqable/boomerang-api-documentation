@@ -1,7 +1,7 @@
 require "json"
 require "stringio"
 
-JSONSchema = Struct.new(:properties, :definitions, keyword_init: true)
+JSONSchema = Struct.new(:properties, :definitions, :description, keyword_init: true)
 Property = Struct.new(:name, :type, :description, :required, :examples, :const, :enum, :format, :items, :ref, keyword_init: true)
 Definition = Struct.new(:name, :schema, keyword_init: true)
 
@@ -20,7 +20,7 @@ class JSONSchemaParser
     required_properties = hash["required"] || []
     properties = parse_properties(hash["properties"] || {}, required_properties)
 
-    JSONSchema.new(properties:, definitions:)
+    JSONSchema.new(properties:, definitions:, description: hash["description"])
   end
 
   def self.parse_properties(properties_hash, required_properties)
@@ -76,6 +76,10 @@ module MarkdownGenerator
   def self.generate_schema_section(buffer, schema, header)
     buffer.puts "## #{header}"
     buffer.puts
+    if schema.description
+      buffer.puts schema.description
+      buffer.puts
+    end
     generate_example_json(buffer, schema)
     generate_properties_table(buffer, schema)
   end
@@ -176,6 +180,8 @@ module MarkdownGenerator
       end
     elsif property.enum
       "one of: `#{property.enum.join("`, `")}`"
+    elsif property.const
+      "constant: `#{property.const.inspect}`"
     else
       property.type
     end
