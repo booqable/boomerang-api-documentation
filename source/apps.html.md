@@ -20,7 +20,7 @@ includes:
   - apps/capabilities/delivery_carriers
   - apps/capabilities/payment_options
 
-  - schemas/app-0-1-0.md
+  - schemas/app-0-3-0.md
 
 search: true
 

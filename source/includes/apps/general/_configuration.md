@@ -23,7 +23,7 @@ There are 4 main folders in a Booqable app:
 
 This is the main configuration file for the app. It defines the app's metadata, capabilities, and plans. It is required for every app and is validated against a JSON schema.
 
-Latest: [0.1.0 JSON Schema](/schemas/app-0-1-0.json) / [0.1.0 Reference](#reference)
+Latest: [0.3.0 JSON Schema](/schemas/app-0-3-0.json) / [0.3.0 Reference](#reference)
 
 
 #### Capabilities
