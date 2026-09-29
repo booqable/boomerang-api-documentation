@@ -1,9 +1,10 @@
 require "json"
 require "stringio"
 
-JSONSchema = Struct.new(:properties, :definitions, :description, keyword_init: true)
+JSONSchema = Struct.new(:properties, :definitions, :description, :one_of, :scalar, keyword_init: true)
 Property = Struct.new(:name, :type, :description, :required, :examples, :const, :enum, :format, :items, :ref, keyword_init: true)
 Definition = Struct.new(:name, :schema, keyword_init: true)
+Alternative = Struct.new(:ref, :schema, keyword_init: true)
 
 class JSONSchemaParser
 
@@ -19,8 +20,30 @@ class JSONSchemaParser
     end
     required_properties = hash["required"] || []
     properties = parse_properties(hash["properties"] || {}, required_properties)
+    one_of = hash["oneOf"]&.map { |alt| parse_alternative(alt, definitions) }
+    scalar = parse_scalar(hash, properties, one_of)
 
-    JSONSchema.new(properties:, definitions:, description: hash["description"])
+    JSONSchema.new(properties:, definitions:, description: hash["description"], one_of:, scalar:)
+  end
+
+  def self.parse_alternative(alt, definitions)
+    if alt["$ref"]
+      Alternative.new(ref: alt["$ref"].split("/").last, schema: nil)
+    else
+      Alternative.new(ref: nil, schema: parse_schema(alt, definitions))
+    end
+  end
+
+  def self.parse_scalar(hash, properties, one_of)
+    return nil unless properties.empty? && one_of.nil? && hash["type"] && hash["type"] != "object"
+
+    Property.new(
+      type: hash["type"],
+      format: hash["format"],
+      enum: hash["enum"],
+      examples: hash["examples"],
+      const: hash["const"]
+    )
   end
 
   def self.parse_properties(properties_hash, required_properties)
@@ -80,8 +103,62 @@ module MarkdownGenerator
       buffer.puts schema.description
       buffer.puts
     end
-    generate_example_json(buffer, schema)
-    generate_properties_table(buffer, schema)
+
+    if schema.one_of
+      generate_one_of(buffer, schema)
+    elsif schema.scalar
+      generate_scalar_example(buffer, schema)
+    else
+      generate_example_json(buffer, schema)
+      generate_properties_table(buffer, schema)
+    end
+  end
+
+  def self.generate_scalar_example(buffer, schema)
+    buffer.puts "```json"
+    generate_example_value(buffer, schema.scalar, indentation: "")
+    buffer.puts
+    buffer.puts "```"
+    buffer.puts
+  end
+
+  def self.generate_one_of(buffer, schema)
+    buffer.puts "One of the following:"
+    buffer.puts
+
+    schema.one_of.each do |alt|
+      if alt.ref
+        buffer.puts "- [`#{alt.ref}`](#reference-#{alt.ref.downcase})"
+      elsif alt.schema.scalar
+        buffer.write "- A plain `#{alt.schema.scalar.type}`, e.g. "
+        buffer.write generate_alternative_example(alt.schema.scalar)
+        buffer.puts
+      else
+        buffer.write "- `", generate_alternative_object_example(alt.schema.properties), "`"
+        descriptions = alt.schema.properties.filter_map { |p| "`#{p.name}`: #{p.description}" if p.description }
+        buffer.write " — #{descriptions.join('; ')}" if descriptions.any?
+        buffer.puts
+      end
+    end
+    buffer.puts
+  end
+
+  def self.generate_alternative_example(property)
+    value = StringIO.new
+    generate_example_value(value, property, indentation: "")
+    "`#{value.string}`"
+  end
+
+  def self.generate_alternative_object_example(properties)
+    example = StringIO.new
+    example.write "{ "
+    properties.each_with_index do |property, i|
+      example.write ", " if i > 0
+      example.write '"', property.name, '": '
+      generate_example_value(example, property, indentation: "")
+    end
+    example.write " }"
+    example.string
   end
 
   def self.generate_example_json(buffer, schema)
@@ -174,7 +251,7 @@ module MarkdownGenerator
     elsif property.type == "array" && property.items
       if property.items["$ref"]
         ref_name = property.items["$ref"].split("/").last
-        "array of [`#{ref_name}`](##{ref_name.downcase})"
+        "array of [`#{ref_name}`](#reference-#{ref_name.downcase})"
       else
         "array of #{property.items["type"]}"
       end
