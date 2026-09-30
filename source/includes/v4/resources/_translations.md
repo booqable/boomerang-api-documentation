@@ -5,7 +5,9 @@ belongs to a [Language](#languages) and is uniquely identified by its `key` and
 `namespace` within that language.
 
 Create a translation to override the default text for a key, update it to change the
-override, and destroy it to fall back to the default text again.
+override, and destroy it to fall back to the default text again. To change many
+translations at once, use a [BulkUpsert](#bulk-upserts) with `type: translations`
+and `data: [{ key, value, namespace }]`; a blank `value` removes the override.
 
 ## Relationships
 Name | Description

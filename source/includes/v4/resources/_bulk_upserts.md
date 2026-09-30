@@ -27,7 +27,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `data` | **array** `writeonly`<br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. 
 `id` | **uuid** `readonly`<br>Primary key.
-`type` | **enum** `writeonly`<br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`.
+`type` | **enum** `writeonly`<br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`, `translations`.
 
 
 ## Upsert bulk data
@@ -171,6 +171,72 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
+> How to upsert translations in bulk:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/bulk_upserts'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "bulk_upserts",
+           "attributes": {
+             "type": "translations",
+             "data": [
+               {
+                 "key": "document.date",
+                 "value": "Datum",
+                 "namespace": "user"
+               },
+               {
+                 "key": "document.total",
+                 "value": "",
+                 "namespace": "user"
+               }
+             ]
+           }
+         },
+         "include": "results"
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "095c1df8-c511-4f5c-8f79-7bb7491db4c4",
+      "type": "bulk_upserts",
+      "relationships": {
+        "results": {
+          "data": [
+            {
+              "type": "translations",
+              "id": "ed432cae-a28b-4f9b-8e90-124615154f0c"
+            }
+          ]
+        }
+      }
+    },
+    "included": [
+      {
+        "id": "ed432cae-a28b-4f9b-8e90-124615154f0c",
+        "type": "translations",
+        "attributes": {
+          "created_at": "2028-11-10T17:32:00.000000+00:00",
+          "updated_at": "2028-11-10T17:32:00.000000+00:00",
+          "key": "document.date",
+          "value": "Datum",
+          "namespace": "user",
+          "language_id": "75afc0e9-5d68-420e-8cc2-7eae8ae4d50f"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
+```
+
 ### HTTP Request
 
 `POST /api/4/bulk_upserts`
@@ -191,7 +257,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][data][]` | **array** <br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. 
-`data[attributes][type]` | **enum** <br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`.
+`data[attributes][type]` | **enum** <br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`, `translations`.
 
 
 ### Includes
