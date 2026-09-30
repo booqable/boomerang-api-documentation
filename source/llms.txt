@@ -8,9 +8,9 @@
 Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They're distributed through the Booqable App Store, where users can discover, install, and manage them through a streamlined interface. Apps can extend functionality through various capabilities including delivery carriers for custom shipping rates, payment options for checkout processing, theme blocks for website customization, and tracking scripts for analytics integration.
 
 - [App Store](https://developers.booqable.com/apps/installation.md): How apps appear in the Booqable App Store and installation flow
-- [Configuration](https://developers.booqable.com/apps/configuration.md): App folder structure, meta.json, plans.json, and locale files
-- [Configuration Schema](https://developers.booqable.com/apps/app-0-1-0.md): Documentation for app configuration options.
-- [Configuration JSON Schema File](https://developers.booqable.com/schemas/app-0-1-0.json): JSON schema file covering app configuration options.
+- [Configuration](https://developers.booqable.com/apps/configuration.md): App folder structure, booqable.json, plans, and locale files
+- [Configuration Schema](https://developers.booqable.com/apps/app-0-3-0.md): Documentation for app configuration options.
+- [Configuration JSON Schema File](https://developers.booqable.com/schemas/app-0-3-0.json): JSON schema file covering app configuration options.
 - [OAuth Authentication](https://developers.booqable.com/apps/oauth2.md): Securely connect to Booqable's API on behalf of users
 - [Iframe Page](https://developers.booqable.com/apps/iframe.md): Embed custom interfaces in the Booqable admin dashboard
 - [User Framework](https://developers.booqable.com/apps/user_framework.md): JavaScript APIs for templates, event tracking, and consent management

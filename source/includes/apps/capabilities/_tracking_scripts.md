@@ -14,14 +14,14 @@ Tracking scripts allow your app to inject JavaScript code into the customer-faci
 }
 ```
 
-To enable tracking scripts in your app you need to configure the [`tracking_script`](#reference-trackingscriptsettings) settings in your `meta.json` file. The `template` property specifies the path to your JavaScript template file that will be rendered and injected into the customer's website.
+To enable tracking scripts in your app you need to configure the [`tracking_script`](#reference-trackingscriptsettings) settings in your `booqable.json` file. The `template` property specifies the path to your JavaScript template file that will be rendered and injected into the customer's website.
 
 **Only JavaScript templates are allowed for tracking scripts.** Your template must be a [Liquid](https://shopify.github.io/liquid/) file that contains only valid JavaScript code after rendering.
 
 ### Global settings integration
 
 ```jsonc
-// meta.json
+// booqable.json
 {
   // ...
   "global_settings": {
@@ -39,7 +39,7 @@ const apiKey = '{{ api_key }}'
 this.initializeTracking(apiKey)
 ```
 
-You can access your app's global settings in the app templates using Liquid syntax. When rendering templates all global settings defined in your `meta.json` are available as template variables.
+You can access your app's global settings in the app templates using Liquid syntax. When rendering templates all global settings defined in your `booqable.json` are available as template variables.
 
 
 ### User framework
@@ -57,7 +57,7 @@ When you register your app using `registerApp`, Booqable will automatically mana
 ### Example implementation
 
 ```jsonc
-// meta.json
+// booqable.json
 {
   // ...
   "ui_extension": {

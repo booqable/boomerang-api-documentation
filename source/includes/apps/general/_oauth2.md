@@ -24,7 +24,7 @@ When an app has OAuth authentication enabled, Booqable handles the OAuth flow on
 }
 ```
 
-To enable OAuth authentication for your app, you need to [configure the `oauth` object in your app's `meta.json`](#reference-oauthsettings) file.
+To enable OAuth authentication for your app, you need to [configure the `oauth` object in your app's `booqable.json`](#reference-oauthsettings) file.
 
 - **`client_id`**: An OAuth client ID that identifies your app to Booqable's API endpoints. Must follow the format `{32-random-characters}.public.apps.{app_identifier}`.
 - **`client_secret`**: An OAuth client secret that Booqable uses to authenticate your app. Must follow the format `{64-random-characters}.private.apps.{app_identifier}`.
