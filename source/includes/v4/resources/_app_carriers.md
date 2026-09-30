@@ -224,3 +224,71 @@ Name | Description
 ### Includes
 
 This request does not accept any includes
+## Update an app carrier
+
+
+> How to update an app carrier:
+
+```shell
+  curl --request PUT
+       --url 'https://example.booqable.com/api/4/app_carriers/3e91e411-6273-4c3a-89c5-3efa13a86a17'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "id": "3e91e411-6273-4c3a-89c5-3efa13a86a17",
+           "type": "app_carriers",
+           "attributes": {
+             "rates_url": "https://my-deliver-express.example.com/api/v2/rates"
+           }
+         }
+       }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "3e91e411-6273-4c3a-89c5-3efa13a86a17",
+      "type": "app_carriers",
+      "attributes": {
+        "created_at": "2015-08-28T09:41:00.000000+00:00",
+        "updated_at": "2015-08-28T09:41:00.000000+00:00",
+        "identifier": "carrier-4",
+        "rates_url": "https://my-deliver-express.example.com/api/v2/rates",
+        "tax_category_id": null,
+        "app_subscription_id": "67c16eeb-67a0-4a02-8cb7-65531eb4fbb1"
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`PUT /api/4/app_carriers/{id}`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[app_carriers]=created_at,updated_at,identifier`
+
+
+### Request body
+
+This request accepts the following body:
+
+Name | Description
+-- | --
+`data[attributes][identifier]` | **string** <br>Unique identifier for this carrier. 
+`data[attributes][rates_url]` | **string** <br>URL endpoint for fetching delivery rates from this carrier. 
+`data[attributes][tax_category_id]` | **uuid** <br>The [TaxCategory](#tax-categories) associated with this carrier for tax calculations. 
+
+
+### Includes
+
+This request does not accept any includes
