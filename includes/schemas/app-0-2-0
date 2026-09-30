@@ -1,4 +1,6 @@
-<h1 id='reference'>Reference</h1><h2 id='reference-config-meta-json'><code>/config/meta.json</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h1 id='reference'>Reference</h1><h2 id='reference-booqable-json'><code>booqable.json</code></h2>
+<p>Schema for the configuration file that defines Booqable apps.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-2-0.json#"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liquid_conf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
@@ -25,7 +27,7 @@
 </thead><tbody>
 <tr>
 <td><code>$schema</code></td>
-<td>string</td>
+<td>constant: <code>&quot;https://developers.booqable.com/schemas/app-0-2-0.json#&quot;</code></td>
 <td>true</td>
 <td>Schema version for the app configuration.</td>
 </tr>
@@ -61,7 +63,7 @@
 </tr>
 <tr>
 <td><code>plans</code></td>
-<td>array of <a href="#appplan"><code>AppPlan</code></a></td>
+<td>array of <a href="#reference-appplan"><code>AppPlan</code></a></td>
 <td>false</td>
 <td>Subscription plans for the app.</td>
 </tr>
@@ -85,7 +87,7 @@
 </tr>
 <tr>
 <td><code>theme_blocks</code></td>
-<td>array of <a href="#themeblock"><code>ThemeBlock</code></a></td>
+<td>array of <a href="#reference-themeblock"><code>ThemeBlock</code></a></td>
 <td>false</td>
 <td>Website blocks provided by this app for use in the website editor.</td>
 </tr>
@@ -108,7 +110,9 @@
 <td>Payment integration for apps that process charges, authorizations, and refunds.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2>
+<p>Information about the app to display in the app store.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreDescription</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
@@ -161,7 +165,7 @@
 </tr>
 <tr>
 <td><code>features</code></td>
-<td>array of <a href="#localizablestring"><code>LocalizableString</code></a></td>
+<td>array of <a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
 <td>false</td>
 <td>Bulleted list of key features shown on the app&#39;s store page.</td>
 </tr>
@@ -190,7 +194,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-appstoredescription'><code>AppStoreDescription</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-appstoredescription'><code>AppStoreDescription</code></h2>
+<p>Short and long copy for the app store listing.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"short"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -216,7 +222,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-appstoresupport'><code>AppStoreSupport</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-appstoresupport'><code>AppStoreSupport</code></h2>
+<p>How to get help with the app.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4tDyXghOQbI"</span><span class="w">
@@ -249,7 +257,9 @@
 <td>YouTube video ID for an embedded support video.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-appplan'><code>AppPlan</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-appplan'><code>AppPlan</code></h2>
+<p>Subscription plan (e.g. free, pro) with price and app-store copy.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppPlanStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -286,7 +296,7 @@
 </tr>
 <tr>
 <td><code>features</code></td>
-<td>array of <a href="#planfeature"><code>PlanFeature</code></a></td>
+<td>array of <a href="#reference-planfeature"><code>PlanFeature</code></a></td>
 <td>false</td>
 <td></td>
 </tr>
@@ -303,7 +313,9 @@
 <td>When true, this plan is marked as most popular in the app store.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-appplanstoreinfo'><code>AppPlanStoreInfo</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-appplanstoreinfo'><code>AppPlanStoreInfo</code></h2>
+<p>Per-plan title, description, and feature list shown in the app store.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
@@ -331,12 +343,14 @@
 </tr>
 <tr>
 <td><code>features</code></td>
-<td>array of <a href="#localizablestring"><code>LocalizableString</code></a></td>
+<td>array of <a href="#reference-localizablestring"><code>LocalizableString</code></a></td>
 <td>false</td>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-planfeature'><code>PlanFeature</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-planfeature'><code>PlanFeature</code></h2>
+<p>Feature flag for a plan (id and whether it is enabled).</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -362,7 +376,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-configurationpage'><code>ConfigurationPage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-configurationpage'><code>ConfigurationPage</code></h2>
+<p>Root of the configuration page: ordered list of blocks (banners, forms, guides, iframes).</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -376,16 +392,28 @@
 </thead><tbody>
 <tr>
 <td><code>content</code></td>
-<td>array of <a href="#configurationpageblock"><code>ConfigurationPageBlock</code></a></td>
+<td>array of <a href="#reference-configurationpageblock"><code>ConfigurationPageBlock</code></a></td>
 <td>true</td>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-configurationpageblock'><code>ConfigurationPageBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-blockconditionif'><code>BlockConditionIf</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-bannerblock'><code>BannerBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-configurationpageblock'><code>ConfigurationPageBlock</code></h2>
+<p>One of Banner, Form, Guide, or Iframe block.</p>
+
+<p>One of the following:</p>
+
+<ul>
+<li><a href="#reference-bannerblock"><code>BannerBlock</code></a></li>
+<li><a href="#reference-formblock"><code>FormBlock</code></a></li>
+<li><a href="#reference-guideblock"><code>GuideBlock</code></a></li>
+<li><a href="#reference-iframeblock"><code>IframeBlock</code></a></li>
+</ul>
+<h2 id='reference-blockconditionif'><code>BlockConditionIf</code></h2>
+<p>When to show the block: only when the app is configured, or only when unconfigured. Omit to always show.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"configured"</span><span class="w">
+</span></code></pre></div><h2 id='reference-bannerblock'><code>BannerBlock</code></h2>
+<p>Banner block: heading, text, optional link, and style (neutral/info/warning).</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banner"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -404,7 +432,7 @@
 </thead><tbody>
 <tr>
 <td><code>type</code></td>
-<td></td>
+<td>constant: <code>&quot;Banner&quot;</code></td>
 <td>true</td>
 <td></td>
 </tr>
@@ -439,7 +467,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-link'><code>Link</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-link'><code>Link</code></h2>
+<p>Clickable link with text and URL; optionally rendered as a button.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"display_as_button"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -472,7 +502,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-formblock'><code>FormBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-formblock'><code>FormBlock</code></h2>
+<p>Form block: heading and fields whose values are saved as app settings.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Form"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">FormBlockHeading</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
@@ -489,7 +521,7 @@
 </thead><tbody>
 <tr>
 <td><code>type</code></td>
-<td></td>
+<td>constant: <code>&quot;Form&quot;</code></td>
 <td>true</td>
 <td></td>
 </tr>
@@ -501,7 +533,7 @@
 </tr>
 <tr>
 <td><code>fields</code></td>
-<td>array of <a href="#formblockfield"><code>FormBlockField</code></a></td>
+<td>array of <a href="#reference-formblockfield"><code>FormBlockField</code></a></td>
 <td>false</td>
 <td></td>
 </tr>
@@ -512,7 +544,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-formblockheading'><code>FormBlockHeading</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-formblockheading'><code>FormBlockHeading</code></h2>
+<p>Optional title and/or body text above a form block.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -538,7 +572,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-formblockfield'><code>FormBlockField</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-formblockfield'><code>FormBlockField</code></h2>
+<p>Single form field (name, input type, label, validation, and for select: options and multi).</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buttonGroup"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -599,7 +635,7 @@
 </tr>
 <tr>
 <td><code>options</code></td>
-<td>array of <a href="#selectfieldoption"><code>SelectFieldOption</code></a></td>
+<td>array of <a href="#reference-selectfieldoption"><code>SelectFieldOption</code></a></td>
 <td>false</td>
 <td>Required for select type.</td>
 </tr>
@@ -634,7 +670,9 @@
 <td>Step increment for number/range fields.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-selectfieldoption'><code>SelectFieldOption</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-selectfieldoption'><code>SelectFieldOption</code></h2>
+<p>One option for a select or multi-select field (value and label).</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -660,7 +698,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-guideblock'><code>GuideBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-guideblock'><code>GuideBlock</code></h2>
+<p>Guide block: ordered steps with title, text, and optional image per step.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guide"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
@@ -677,7 +717,7 @@
 </thead><tbody>
 <tr>
 <td><code>type</code></td>
-<td></td>
+<td>constant: <code>&quot;Guide&quot;</code></td>
 <td>true</td>
 <td></td>
 </tr>
@@ -689,7 +729,7 @@
 </tr>
 <tr>
 <td><code>steps</code></td>
-<td>array of <a href="#guideblockstep"><code>GuideBlockStep</code></a></td>
+<td>array of <a href="#reference-guideblockstep"><code>GuideBlockStep</code></a></td>
 <td>false</td>
 <td></td>
 </tr>
@@ -700,7 +740,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-guideblockstep'><code>GuideBlockStep</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-guideblockstep'><code>GuideBlockStep</code></h2>
+<p>One step in a guide (title, optional text, optional image).</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
@@ -733,7 +775,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-iframepage'><code>IframePage</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-iframepage'><code>IframePage</code></h2>
+<p>Settings for the page embedding the external page apps are operated through.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -752,7 +796,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-iframeblock'><code>IframeBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-iframeblock'><code>IframeBlock</code></h2>
+<p>Embedded iframe (e.g. external config or docs URL).</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iframe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
@@ -768,7 +814,7 @@
 </thead><tbody>
 <tr>
 <td><code>type</code></td>
-<td></td>
+<td>constant: <code>&quot;Iframe&quot;</code></td>
 <td>true</td>
 <td></td>
 </tr>
@@ -785,7 +831,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-themeblock'><code>ThemeBlock</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-themeblock'><code>ThemeBlock</code></h2>
+<p>A website block provided by the app.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
@@ -839,7 +887,9 @@
 <td>Which settings are available for this block in the website editor.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-themeblocksetting'><code>ThemeBlockSetting</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-themeblocksetting'><code>ThemeBlockSetting</code></h2>
+<p>One setting for a theme block. Renders in the website editor sidebar.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"header"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -907,7 +957,9 @@
 <td>A step increment for number typed fields.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-trackingscript'><code>TrackingScript</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-trackingscript'><code>TrackingScript</code></h2>
+<p>Settings controlling JavaScript files added to store pages for tracking purposes.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -926,7 +978,9 @@
 <td>Path to the JavaScript template file for the tracking script.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-assetpath'><code>AssetPath</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-assetpath'><code>AssetPath</code></h2>
+<p>A reference to a file bundled with the app.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/widget.liquid"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -945,13 +999,30 @@
 <td>Path to the file relative to the app root.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-assetreference'><code>AssetReference</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-locatableurl'><code>LocatableUrl</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-absoluteurl'><code>AbsoluteUrl</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-relativeurl'><code>RelativeUrl</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-assetreference'><code>AssetReference</code></h2>
+<p>A URL to an external asset or a reference to a file bundled with the app.</p>
+
+<p>One of the following:</p>
+
+<ul>
+<li><code>{ &quot;url&quot;: &quot;https://example.com&quot; }</code> — <code>url</code>: URL to an external asset.</li>
+<li><code>{ &quot;asset&quot;: &quot;assets/icon.png&quot; }</code> — <code>asset</code>: Path to the file relative to the app root.</li>
+</ul>
+<h2 id='reference-locatableurl'><code>LocatableUrl</code></h2>
+<p>An absolute URL string or a relative URL object resolved against base_url.</p>
+
+<p>One of the following:</p>
+
+<ul>
+<li><a href="#reference-absoluteurl"><code>AbsoluteUrl</code></a></li>
+<li><a href="#reference-relativeurl"><code>RelativeUrl</code></a></li>
+</ul>
+<h2 id='reference-absoluteurl'><code>AbsoluteUrl</code></h2>
+<p>An absolute URL string.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"https://example.com"</span><span class="w">
+</span></code></pre></div><h2 id='reference-relativeurl'><code>RelativeUrl</code></h2>
+<p>A relative URL resolved against the app&#39;s base_url at runtime.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"relative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -970,9 +1041,18 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-localizablestring'><code>LocalizableString</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='reference-paymentsconfig'><code>PaymentsConfig</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-localizablestring'><code>LocalizableString</code></h2>
+<p>Plain string or a reference to a string in the app localization files.</p>
+
+<p>One of the following:</p>
+
+<ul>
+<li>A plain <code>string</code>, e.g. <code>&quot;lorem ipsum&quot;</code></li>
+<li><code>{ &quot;localization_key&quot;: &quot;app.title&quot; }</code> — <code>localization_key</code>: Key used to look up the string in localization files.</li>
+</ul>
+<h2 id='reference-paymentsconfig'><code>PaymentsConfig</code></h2>
+<p>Payment integration settings.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentRoutes</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"pay_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -998,7 +1078,9 @@
 <td>Asset reference (path or URL) used as the payment button in the checkout flow, typically an SVG.</td>
 </tr>
 </tbody></table>
-<h2 id='reference-paymentroutes'><code>PaymentRoutes</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-paymentroutes'><code>PaymentRoutes</code></h2>
+<p>URL paths for payment operations, resolved against base_url at runtime.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
@@ -1052,7 +1134,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-oauthconfig'><code>OauthConfig</code></h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h2 id='reference-oauthconfig'><code>OauthConfig</code></h2>
+<p>OAuth configuration for the app.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"redirect_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/deliveries/oauth/callback"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">

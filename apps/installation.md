@@ -37,9 +37,9 @@ And when users choose to install your app, they are guided through the installat
 The full list of customizable app store elements is:
 
 * **Title:** The title of your app and it is displayed in several spots throughout the app store and the Booqable UI. Configured in [locale files](#how-apps-work-configuration-locale-files).
-* **Author:** A byline for the app. It's displayed mainly in the app store. Configured in [`meta.json`](#reference-config-meta-json).
-* **Banner:** A banner image to make your app stand out in the app store listings. Configured in [`meta.json`](#reference-config-meta-json).
-* **Icon:** A small icon to represent your app in the app store and few other places in the Booqable UI. Configured in [`meta.json`](#reference-config-meta-json).
+* **Author:** A byline for the app. It's displayed mainly in the app store. Configured in [`booqable.json`](#reference-booqable-json).
+* **Banner:** A banner image to make your app stand out in the app store listings. Configured in [`booqable.json`](#reference-booqable-json).
+* **Icon:** A small icon to represent your app in the app store and few other places in the Booqable UI. Configured in [`booqable.json`](#reference-booqable-json).
 * **Short description:** A short summary of your app, mainly for users to quickly understand what the app does when browsing the app store. Configured in [locale files](#how-apps-work-configuration-locale-files).
 * **Long description:** Your app's description is displayed in the app store detail page, after users clicked through from the app store listings. Configured in [locale files](#how-apps-work-configuration-locale-files).
 
