@@ -182,7 +182,7 @@ This request accepts the following includes:
 
 App payment options are typically created by third-party apps through the Booqable Apps API.
 
-The name, identifier, and payment operation routes are automatically copied from the app's meta.json
+The name, identifier, and payment operation routes are automatically copied from the app's booqable.json
 configuration when the payment option is created if they are not provided in the attributes
 of the POST request body.
 

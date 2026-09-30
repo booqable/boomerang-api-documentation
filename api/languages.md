@@ -1,18 +1,16 @@
 # Languages
 
-Languages hold the custom translations that override Booqable's built-in copy for a
-single locale.
-Custom translations are currently stored only against English, so the language always
-resolves to `en`.
+Languages group the custom [Translations](#translations) that override Booqable's
+built-in copy for a single locale.
 
-To change copy, update the language and pass `translations_attributes`. Each entry is
-matched by its `key` and `namespace`: send a `value` to set or update the translation,
-or send a blank `value` to reset that key back to the default.
+A language is identified by its locale code (`identifier`). There can be only one
+language per locale within a company. Languages are read-only; custom translations
+are currently written to and applied for the `en` language only.
 
 ## Relationships
 Name | Description
 -- | --
-`translations` | **[Translations](#translations)** `hasmany`<br>The custom translations belonging to this language. 
+`translations` | **[Translations](#translations)** `hasmany`<br>The custom [Translations](#translations) belonging to this language. 
 
 
 Check matching attributes under [Fields](#languages-fields) to see which relations can be written.
@@ -26,17 +24,97 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** `readonly`<br>The locale code of the language, for example `en`. 
 `name` | **string** `readonly`<br>The display name of the language. 
-`translations_attributes` | **array** `writeonly`<br>Write-only. An array used to set, update, or remove custom translations in a single request. Each entry is matched by `key` and `namespace`: send a `value` to set or update it, or a blank `value` to reset that key back to the default. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
-## Fetch the language
+## List languages
 
 
-> How to fetch the language with its custom translations:
+> How to fetch a list of languages:
 
 ```shell
-  curl --get 'https://example.booqable.com/api/4/language'
+  curl --get 'https://example.booqable.com/api/4/languages'
+       --header 'content-type: application/json'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": [
+      {
+        "id": "d237dff7-4ab8-4167-85da-338862a209ae",
+        "type": "languages",
+        "attributes": {
+          "created_at": "2028-03-19T02:52:00.000000+00:00",
+          "updated_at": "2028-03-19T02:52:00.000000+00:00",
+          "identifier": "en",
+          "name": "English"
+        },
+        "relationships": {}
+      }
+    ],
+    "meta": {}
+  }
+```
+
+### HTTP Request
+
+`GET /api/4/languages`
+
+### Request params
+
+This request accepts the following parameters:
+
+Name | Description
+-- | --
+`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
+`filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
+`include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
+`meta` | **hash** <br>Metadata to send along. `?meta[total][]=count`
+`page[number]` | **string** <br>The page to request.
+`page[size]` | **string** <br>The amount of items per page.
+`sort` | **string** <br>How to sort the data. `?sort=attribute1,-attribute2`
+
+
+### Filters
+
+This request can be filtered on:
+
+Name | Description
+-- | --
+`created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+`id` | **uuid** <br>`eq`, `not_eq`
+`identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`name` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
+
+
+### Meta
+
+Results can be aggregated on:
+
+Name | Description
+-- | --
+`total` | **array** <br>`count`
+
+
+### Includes
+
+This request accepts the following includes:
+
+<ul>
+  <li><code>translations</code></li>
+</ul>
+
+
+## Fetch a language
+
+
+> How to fetch a language with its custom translations:
+
+```shell
+  curl --get 'https://example.booqable.com/api/4/languages/4e0f3246-00ad-4449-8ba0-f86bce4f5c86'
        --header 'content-type: application/json'
        --data-urlencode 'include=translations'
 ```
@@ -46,20 +124,20 @@ Check each individual operation to see which relations can be included as a side
 ```json
   {
     "data": {
-      "id": "4599065b-283d-4b2f-8620-361092d31a8b",
+      "id": "4e0f3246-00ad-4449-8ba0-f86bce4f5c86",
       "type": "languages",
       "attributes": {
-        "created_at": "2015-01-19T16:15:01.000000+00:00",
-        "updated_at": "2015-01-19T16:15:01.000000+00:00",
+        "created_at": "2022-06-17T04:06:04.000000+00:00",
+        "updated_at": "2022-06-17T04:06:04.000000+00:00",
         "identifier": "en",
-        "name": "En"
+        "name": "English"
       },
       "relationships": {
         "translations": {
           "data": [
             {
               "type": "translations",
-              "id": "47c30754-2e17-4759-8323-54e9fe558a89"
+              "id": "c526b429-0f15-4fa4-891b-73b9a91de734"
             }
           ]
         }
@@ -67,15 +145,15 @@ Check each individual operation to see which relations can be included as a side
     },
     "included": [
       {
-        "id": "47c30754-2e17-4759-8323-54e9fe558a89",
+        "id": "c526b429-0f15-4fa4-891b-73b9a91de734",
         "type": "translations",
         "attributes": {
-          "created_at": "2015-01-19T16:15:01.000000+00:00",
-          "updated_at": "2015-01-19T16:15:01.000000+00:00",
+          "created_at": "2022-06-17T04:06:04.000000+00:00",
+          "updated_at": "2022-06-17T04:06:04.000000+00:00",
           "key": "document.date",
           "value": "Datum",
           "namespace": "user",
-          "language_id": "4599065b-283d-4b2f-8620-361092d31a8b"
+          "language_id": "4e0f3246-00ad-4449-8ba0-f86bce4f5c86"
         },
         "relationships": {}
       }
@@ -96,83 +174,6 @@ Name | Description
 -- | --
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
-
-
-### Includes
-
-This request accepts the following includes:
-
-<ul>
-  <li><code>translations</code></li>
-</ul>
-
-
-## Update the language
-
-
-> How to add a custom translation:
-
-```shell
-  curl --request PUT
-       --url 'https://example.booqable.com/api/4/language'
-       --header 'content-type: application/json'
-       --data '{
-         "data": {
-           "type": "languages",
-           "id": "en",
-           "attributes": {
-             "translations_attributes": [
-               {
-                 "key": "document.date",
-                 "value": "Datum",
-                 "namespace": "user"
-               }
-             ]
-           }
-         }
-       }'
-```
-
-> A 200 status response looks like this:
-
-```json
-  {
-    "data": {
-      "id": "f457c429-abc1-467f-8a99-a8f4c0248a2a",
-      "type": "languages",
-      "attributes": {
-        "created_at": "2028-10-18T21:17:05.000000+00:00",
-        "updated_at": "2028-10-18T21:17:05.000000+00:00",
-        "identifier": "en",
-        "name": "En"
-      },
-      "relationships": {}
-    },
-    "meta": {}
-  }
-```
-
-### HTTP Request
-
-`PUT /api/4/languages/{id}`
-
-### Request params
-
-This request accepts the following parameters:
-
-Name | Description
--- | --
-`fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
-`include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
-
-
-### Request body
-
-This request accepts the following body:
-
-Name | Description
--- | --
-`data[attributes][translations_attributes][]` | **array** <br>Write-only. An array used to set, update, or remove custom translations in a single request. Each entry is matched by `key` and `namespace`: send a `value` to set or update it, or a blank `value` to reset that key back to the default. 
 
 
 ### Includes
