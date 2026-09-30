@@ -418,7 +418,8 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "product_performance_report",
                 "emails_bcc",
                 "custom_email",
-                "cross_sell"
+                "cross_sell",
+                "advanced_pricing"
               ],
               "pricing_strategy": "start_grow_scale_custom"
             },
