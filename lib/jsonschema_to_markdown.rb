@@ -115,7 +115,7 @@ module MarkdownGenerator
   end
 
   def self.generate_scalar_example(buffer, schema)
-    buffer.puts "```json"
+    buffer.puts "```jsonc"
     generate_example_value(buffer, schema.scalar, indentation: "")
     buffer.puts
     buffer.puts "```"
@@ -162,7 +162,7 @@ module MarkdownGenerator
   end
 
   def self.generate_example_json(buffer, schema)
-    buffer.puts "```json"
+    buffer.puts "```jsonc"
     buffer.puts "{"
     schema.properties.each do |property|
       indentation = "  "
