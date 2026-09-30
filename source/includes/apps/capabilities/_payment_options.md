@@ -2,23 +2,26 @@
 
 This capability allows your app to add custom payment options for users during checkout.
 
-
 ### Routes
 
-```json
+```jsonc
+// booqable.json
 {
-  "routes": {
-    "charge_url": "/paypal/charge",
-    "cancel_charge_url": "/paypal/charge/:id/cancel",
-    "authorization_url": "/paypal/auth",
-    "capture_authorization_url": "/paypal/auth/:id/capture",
-    "void_authorization_url": "/paypal/auth/:id/void",
-    "refund_url": "/paypal/refund",
+  "payments": {
+    "routes": {
+      "charge_url": "/mypay/charge",
+      "cancel_charge_url": "/mypay/charge/:id/cancel",
+      "authorization_url": "/mypay/auth",
+      "capture_authorization_url": "/mypay/auth/:id/capture",
+      "void_authorization_url": "/mypay/auth/:id/void",
+      "refund_url": "/mypay/refund"
+    },
+    "pay_button": { "asset": "assets/pay-button.svg" }
   }
 }
 ```
 
-Payment apps define their API routes in the [`routes` section of their `booqable.json` file](#reference-routes). These routes tell Booqable where to send requests for different payment operations.
+Payment apps define their API routes under the [`payments.routes` object of their `booqable.json` file](#reference-paymentroutes). These routes tell Booqable where to send requests for different payment operations. `pay_button` is a separate, optional asset reference rendered as the clickable payment button in checkout.
 
 There are a total of 6 routes available:
 
@@ -29,27 +32,27 @@ There are a total of 6 routes available:
 - [`void_authorization_url`](#capabilities-payment-options-configuration-available-routes-void_authorization_url)
 - [`refund_url`](#capabilities-payment-options-configuration-available-routes-refund_url)
 
-
 ### Configuration
 
-```shell
-curl --request POST \
-  --url 'https://example.booqable.com/api/4/app_payment_options' \
-  --header 'content-type: application/json' \
-  --data '{
-    "data": {
-      "type": "app_payment_options",
-      "attributes": {}
-    }
-  }'
+```jsonc
+// POST /api/4/app_payment_options (request)
+{
+  "data": {
+    "type": "app_payment_options",
+    "attributes": {}
+  }
+}
 ```
 
-After a user installs your payment app, you must create a PaymentOption record using Booqable's [Payment Options API endpoint](/internal.html#app-payment-options). The PaymentOption enables Booqable to show new payment options in the UI using the [routes configured in your app's `booqable.json` file](#reference-routes). Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app's endpoints using JWT tokens for security.
+After a user installs your payment app, you must create a PaymentOption record using Booqable's [Payment Options API endpoint](/internal.html#app-payment-options). The PaymentOption enables Booqable to show new payment options in the UI using the routes configured in your app's `booqable.json` file. Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app's endpoints using JWT tokens for security.
 
-You should create the PaymentOption right after the app exchanges the authorization code for an access token or when a user has provided all necessary settings for your app to function.
+An empty `attributes` object is enough: `name`, `identifier`, and all 6 routes are copied from your manifest automatically.
+
+Create the PaymentOption right after your app exchanges its OAuth code for an access token (see [OAuth](#booqable-interop-oauth)), or once the user has provided any other settings your app needs.
 
 **Tip:** If you're using the [Booqable App Rails engine](https://github.com/booqable/booqable_app_rails), you can schedule the PaymentOption creation in a background job from the `AppInstalledJob` hook.
 
+There's no update endpoint for a payment option once created. To change a route later, archive and recreate it.
 
 #### Available Routes
 
@@ -90,7 +93,7 @@ You should create the PaymentOption right after the app exchanges the authorizat
 
 Process payment charges.
 
-This route is called when a user initiates a payment during checkout. Booqable sends the payment details including the total amount, customer address, and a return URL where the user should be redirected after payment completion. Your app should respond with a unique charge ID and a redirect URL where the user can complete the payment.
+This route is called when a user initiates a payment during checkout. Booqable sends the payment details including the total amount, deposit amount, customer address, and a return URL where the user should be redirected after payment completion. Your app should respond with a unique charge ID and a redirect URL where the user can complete the payment.
 
 *Flow:*
 
@@ -103,10 +106,12 @@ This route is called when a user initiates a payment during checkout. Booqable s
 ###### Request Parameters
 
 ```jsonc
+// POST charge_url (request)
 {
   "booqable_id": "a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c",
   "customer_address": "123 Main St, City, State, Country",
   "total_in_cents": 5000,
+  "deposit_in_cents": 1000,
   "currency": "USD",
   "return_url": "https://booqable.com/example-end-of-payment-callback"
 }
@@ -117,12 +122,14 @@ This route is called when a user initiates a payment during checkout. Booqable s
 | `booqable_id` | The unique identifier of this charge in Booqable's system |
 | `customer_address` | Customer's billing address for payment processing |
 | `total_in_cents` | Total amount to charge in cents (e.g., 5000 = $50.00) |
+| `deposit_in_cents` | The portion of `total_in_cents` that is a deposit, in cents |
 | `currency` | Currency code for the payment (e.g., "USD", "EUR") |
 | `return_url` | URL where the user should be redirected after payment completion |
 
 ###### Response Parameters
 
 ```jsonc
+// your charge_url responds with this (response)
 {
   "id": "charge_123",
   "redirect_url": "https://my-payments-app.com/redirect"
@@ -147,7 +154,7 @@ This route is called when a payment needs to be cancelled, typically when an ord
 
 *Flow:*
 
-1. Booqable sends a `PUT` request to your `cancel_charge_url` with your charge ID in the URL path.
+1. Booqable sends a `PUT` request to your `cancel_charge_url` with your charge ID in the URL path, and no body.
 2. Cancel the pending charge on your payment provider (if applicable).
 3. Respond with HTTP 200 OK to confirm cancellation.
 
@@ -210,6 +217,7 @@ This route is called when creating a payment authorization for later capture, ty
 ###### Request Parameters
 
 ```jsonc
+// POST authorization_url (request)
 {
   "booqable_id": "a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c",
   "customer_address": "123 Main St, City, State",
@@ -218,6 +226,8 @@ This route is called when creating a payment authorization for later capture, ty
   "return_url": "https://booqable.com/example-end-of-authorization-callback"
 }
 ```
+
+Unlike `charge_url`, this request has no `deposit_in_cents` field.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -230,6 +240,7 @@ This route is called when creating a payment authorization for later capture, ty
 ###### Response Parameters
 
 ```jsonc
+// your authorization_url responds with this (response)
 {
   "id": "authorization_123",
   "redirect_url": "https://my-payments-app.com/redirect"
@@ -280,6 +291,7 @@ This route is called when capturing previously authorized funds, completing the 
 ###### Request Parameters
 
 ```jsonc
+// PUT capture_authorization_url/:id (request)
 {
   "total_in_cents": 5000,
   "booqable_id": "a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c"
@@ -298,6 +310,7 @@ This route is called when capturing previously authorized funds, completing the 
 The response should be an HTTP 200 OK status with an optional `id` field.
 
 ```jsonc
+// your capture_authorization_url responds with this (response)
 {
   "id": "your-capture-id"
 }
@@ -316,11 +329,11 @@ This route is called when cancelling an unused authorization, typically when an 
 
 *Flow:*
 
-1. Booqable sends a `PUT` request to your `void_authorization_url` with the authorization ID in the URL path.
+1. Booqable sends a `PUT` request to your `void_authorization_url` with the authorization ID in the URL path, and no body.
 2. Release the held funds on your payment provider.
 3. Respond with HTTP 200 OK to confirm the void.
 
-**Note:** No API callback is required. Booqable handles the status update internally after receiving your success response.
+**Note:** No API callback is required. Booqable handles the status update internally after receiving your success response. A 404 response is treated as an already-voided authorization, not an error.
 
 ###### Request Parameters
 
@@ -359,7 +372,7 @@ The response should be an HTTP 200 OK status.
 
 Process payment refunds.
 
-This route is called when processing a refund for a completed payment. Booqable sends the refund details including the original charge ID, refund amount, and currency. Your app should respond with a unique refund ID to track the refund operation.
+This route is called when processing a refund for a completed payment. Booqable sends the refund details including the original charge ID, refund amount, deposit amount, and currency. Your app should respond with a unique refund ID to track the refund operation.
 
 *Flow:*
 
@@ -371,10 +384,12 @@ This route is called when processing a refund for a completed payment. Booqable 
 ###### Request Parameters
 
 ```jsonc
+// POST refund_url (request)
 {
   "booqable_id": "a3f1c9e2-4b7d-4e8a-9c2b-1f5e6d7a8b9c",
   "charge_id": "original_charge_id",
   "total_in_cents": 5000,
+  "deposit_in_cents": 1000,
   "currency": "USD"
 }
 ```
@@ -384,11 +399,13 @@ This route is called when processing a refund for a completed payment. Booqable 
 | `booqable_id` | The unique identifier of this [PaymentRefund](/v4.html#payment-refunds) in Booqable's system |
 | `charge_id` | Your internal charge ID (`provider_id` from the original charge) being refunded |
 | `total_in_cents` | Refund amount in cents (e.g., 5000 = $50.00) |
+| `deposit_in_cents` | The portion of `total_in_cents` that is a deposit refund, in cents |
 | `currency` | Currency code for the refund (e.g., "USD", "EUR") |
 
 ###### Response Parameters
 
 ```jsonc
+// your refund_url responds with this (response)
 {
   "id": "refund_123"
 }
@@ -398,13 +415,13 @@ This route is called when processing a refund for a completed payment. Booqable 
 |-----------|-------------|
 | `id` | Unique identifier for the refund, in your payment app's system |
 
-
-
 ### Notes
 
+* Every request to your routes is authenticated with a `Bearer` JWT in the `Authorization` header, identifying the company. This token doesn't expire, so treat it as a long-lived credential and validate it on every request, not just accept it once.
 * For `charge_url` and `authorization_url` flows, always update the payment status via the Booqable API **before** redirecting the customer back to the `return_url`. The callback page polls the payment status and will wait indefinitely if the status is never updated.
 * Even when a payment fails, update the status to `failed` before redirecting. Otherwise, the callback page polls indefinitely waiting for a status change.
 * Always store the `booqable_id` from the initial request. You'll need it to update the payment status later, especially for asynchronous payment processing.
 * Use the correct HTTP methods for the route:
   - `charge_url`, `authorization_url`, `refund_url` use **POST** to create new resources.
   - `cancel_charge_url`, `void_authorization_url`, `capture_authorization_url` use **PUT** to update existing resources.
+* A failed request to any route (429, 500, 502, 503, or 504 response) is retried by Booqable up to twice before giving up.

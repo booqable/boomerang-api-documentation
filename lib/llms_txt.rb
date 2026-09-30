@@ -25,7 +25,7 @@ class LlmsTxtExtension < Middleman::Extension
 
   def copy_app_partials(output_dir)
       includes_dir
-        .glob("apps/{general,capabilities}/_*.md")
+        .glob("apps/**/_*.md")
         .reject { |path| path.basename.to_s.match?(/intro\.md$/) }
         .each { |path| copy_partial(path, output_dir) }
   end

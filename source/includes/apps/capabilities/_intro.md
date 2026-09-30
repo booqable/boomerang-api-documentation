@@ -1,3 +1,5 @@
 # Capabilities
 
-Apps can extend Booqable's functionality through various capabilities that integrate with different parts of the platform. These capabilities include delivery carriers for custom shipping rates, payment options for checkout processing, theme blocks for website customization, and tracking scripts for analytics integration. Each capability provides specific APIs and configuration options that allow apps to seamlessly integrate with Booqable's core features.
+Each section below covers one thing your app can do inside Booqable: [Tracking Scripts](#capabilities-tracking-scripts), [Theme Blocks](#capabilities-theme-blocks), [Delivery Carriers](#capabilities-delivery-carriers), [Payment Options](#capabilities-payment-options), and [Embedded Pages](#capabilities-embedded-pages). [User Framework](#capabilities-user-framework) sits alongside them, but it isn't something you pick on its own. It's the JavaScript API shared by Tracking Scripts and Theme Blocks.
+
+Read only the sections relevant to what you're building. A real app commonly combines more than one, for example a payment app that also embeds a settings page.
