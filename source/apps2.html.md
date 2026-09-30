@@ -4,7 +4,7 @@ title: Documentation for Booqable 3rd Party Apps (Draft Restructure)
 includes:
   - apps2/basics/orientation
   - apps2/basics/manifest
-  - apps2/basics/install_lifecycle
+  - apps2/basics/store_listing
 
   - apps2/capabilities/intro
   - apps2/capabilities/tracking_scripts
