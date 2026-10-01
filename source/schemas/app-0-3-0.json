@@ -489,7 +489,7 @@
         },
         "cookies_required": {
           "type": "boolean",
-          "description": "Display a notice in this block's settings about the block not rendering without website visitors providing cookie consent.",
+          "description": "Display a notice in this block's settings that the block needs website visitors' cookie consent. This does not stop the block from rendering.",
           "default": false
         },
         "settings_iframe_url": {

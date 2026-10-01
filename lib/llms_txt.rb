@@ -2,6 +2,8 @@
 #
 class LlmsTxtExtension < Middleman::Extension
 
+  SITE_URL = "https://developers.booqable.com"
+
   def after_build(_builder)
     build_dir = app.root_path.join(app.config[:build_dir])
 
@@ -25,15 +27,15 @@ class LlmsTxtExtension < Middleman::Extension
 
   def copy_app_partials(output_dir)
       includes_dir
-        .glob("apps/{general,capabilities}/_*.md")
+        .glob("apps/**/_*.md")
         .reject { |path| path.basename.to_s.match?(/intro\.md$/) }
-        .each { |path| copy_partial(path, output_dir) }
+        .each { |path| copy_partial(path, output_dir, page: "apps.html") }
   end
 
   def copy_schema_docs(output_dir)
     includes_dir
       .glob("schemas/*.md")
-      .each { |path| copy_partial(path, output_dir) }
+      .each { |path| copy_partial(path, output_dir, page: "apps.html") }
   end
 
   def copy_api_files(build_dir)
@@ -48,24 +50,40 @@ class LlmsTxtExtension < Middleman::Extension
   def copy_api_intro_partials(output_dir)
     includes_dir
       .glob("v4/_{introduction,authentication,errors}.md")
-      .each { |path| copy_partial(path, output_dir) }
+      .each { |path| copy_partial(path, output_dir, page: "v4.html") }
   end
 
   def copy_api_resource_partials(output_dir)
-    includes_dir
-      .glob("v4/resources/*.md")
-      .each { |path| copy_partial(path, output_dir) }
+    public_resource_partials
+      .each { |path| copy_partial(path, output_dir, page: "v4.html") }
   end
 
-  def copy_partial(path, output_dir)
+  # Only the resources included in the public v4 page, not every file in the
+  # directory: the rest belong to the internal docs.
+  def public_resource_partials
+    front_matter = YAML.safe_load(File.read(app.root_path.join("source", "v4.html.md")).split(/^---\s*$/)[1])
+
+    front_matter["includes"]
+      .grep(%r{\Av4/resources/})
+      .map { |name| includes_dir.join("v4", "resources", "_#{File.basename(name)}.md") }
+      .sort
+  end
+
+  # Links are relative to the combined page the partial is included in, so they
+  # break once it is copied out on its own: hash-only links point at anchors that
+  # only exist on that page, and root-relative links need the site's host.
+  def copy_partial(path, output_dir, page:)
     filename = File.basename(path).sub(/^_/, "")
-    FileUtils.cp(path, output_dir.join(filename))
+    content = File.read(path)
+      .gsub("](#", "](#{SITE_URL}/#{page}#")
+      .gsub(%r{\]\(/(?!/)}, "](#{SITE_URL}/")
+    output_dir.join(filename).write(content)
     puts "        \e[1;32mcopy\e[0m  #{output_dir.basename}/#{filename}"
   end
 
   def append_api_links_to_llms_txt(build_dir)
     llms_txt_path = build_dir.join("llms.txt")
-    resource_partials = includes_dir.glob("v4/resources/*.md").sort
+    resource_partials = public_resource_partials
 
     make_md_link = ->(path) do
       filename = File.basename(path).sub(/^_/, "")

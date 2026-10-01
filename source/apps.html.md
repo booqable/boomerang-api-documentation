@@ -2,23 +2,23 @@
 title: Documentation for Booqable 3rd Party Apps
 
 includes:
-  - apps/introduction
-
-  - apps/tutorials/intro
-
-  - apps/general/intro
-  - apps/general/configuration
-  - apps/general/installation
-  - apps/general/iframe
-  - apps/general/user_framework
-  - apps/general/webhooks
-  - apps/general/oauth2
+  - apps/basics/orientation
+  - apps/basics/manifest
+  - apps/basics/store_listing
 
   - apps/capabilities/intro
   - apps/capabilities/tracking_scripts
   - apps/capabilities/theme_blocks
+  - apps/capabilities/user_framework
   - apps/capabilities/delivery_carriers
   - apps/capabilities/payment_options
+  - apps/capabilities/embedded_pages
+
+  - apps/configuration
+
+  - apps/interop/intro
+  - apps/interop/oauth
+  - apps/interop/webhooks
 
   - schemas/app-0-3-0.md
 

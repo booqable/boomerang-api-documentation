@@ -5,20 +5,22 @@
 
 ## 3rd Party Apps
 
-Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They're distributed through the Booqable App Store, where users can discover, install, and manage them through a streamlined interface. Apps can extend functionality through various capabilities including delivery carriers for custom shipping rates, payment options for checkout processing, theme blocks for website customization, and tracking scripts for analytics integration.
+Booqable Apps are modular extensions that enhance the Booqable platform by adding new features or integrating with external services. They're distributed through the Booqable App Store, where users can discover, install, and manage them through a streamlined interface. Apps can add tracking scripts, theme blocks, delivery carriers, payment options, or embedded pages.
 
-- [App Store](https://developers.booqable.com/apps/installation.md): How apps appear in the Booqable App Store and installation flow
-- [Configuration](https://developers.booqable.com/apps/configuration.md): App folder structure, booqable.json, plans, and locale files
-- [Configuration Schema](https://developers.booqable.com/apps/app-0-3-0.md): Documentation for app configuration options.
-- [Configuration JSON Schema File](https://developers.booqable.com/schemas/app-0-3-0.json): JSON schema file covering app configuration options.
-- [OAuth Authentication](https://developers.booqable.com/apps/oauth2.md): Securely connect to Booqable's API on behalf of users
-- [Iframe Page](https://developers.booqable.com/apps/iframe.md): Embed custom interfaces in the Booqable admin dashboard
-- [User Framework](https://developers.booqable.com/apps/user_framework.md): JavaScript APIs for templates, event tracking, and consent management
-- [Webhooks](https://developers.booqable.com/apps/webhooks.md): Subscribe to app lifecycle events (installed, configured, uninstalled)
+- [Orientation](https://developers.booqable.com/apps/orientation.md): What a Booqable app is, and which of the above to build
+- [App Manifest](https://developers.booqable.com/apps/manifest.md): The booqable.json file, folder conventions, and schema validation
+- [App Store Listing](https://developers.booqable.com/apps/store_listing.md): Store listing and plan pricing fields
 - [Tracking Scripts](https://developers.booqable.com/apps/tracking_scripts.md): Inject analytics JavaScript into customer websites
 - [Theme Blocks](https://developers.booqable.com/apps/theme_blocks.md): Add custom HTML content blocks to customer websites
+- [User Framework](https://developers.booqable.com/apps/user_framework.md): JavaScript APIs for templates, event tracking, and consent management
 - [Delivery Carriers](https://developers.booqable.com/apps/delivery_carriers.md): Provide custom shipping rates for orders
 - [Payment Options](https://developers.booqable.com/apps/payment_options.md): Add custom payment methods for checkout
+- [Embedded Pages](https://developers.booqable.com/apps/embedded_pages.md): Embed a full custom interface inside Booqable
+- [Configuration](https://developers.booqable.com/apps/configuration.md): Settings pages (content blocks or an embedded iframe), plan pricing, and locale files
+- [Configuration Schema](https://developers.booqable.com/apps/app-0-3-0.md): Documentation for app configuration options.
+- [Configuration JSON Schema File](https://developers.booqable.com/schemas/app-0-3-0.json): JSON schema file covering app configuration options.
+- [OAuth](https://developers.booqable.com/apps/oauth.md): Securely connect to Booqable's API on behalf of users
+- [Webhooks](https://developers.booqable.com/apps/webhooks.md): Subscribe to app lifecycle events (installed, configured, uninstalled)
 
 
 ## API Basics
