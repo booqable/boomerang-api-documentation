@@ -2,6 +2,8 @@
 #
 class LlmsTxtExtension < Middleman::Extension
 
+  SITE_URL = "https://developers.booqable.com"
+
   def after_build(_builder)
     build_dir = app.root_path.join(app.config[:build_dir])
 
@@ -27,13 +29,13 @@ class LlmsTxtExtension < Middleman::Extension
       includes_dir
         .glob("apps/**/_*.md")
         .reject { |path| path.basename.to_s.match?(/intro\.md$/) }
-        .each { |path| copy_partial(path, output_dir) }
+        .each { |path| copy_partial(path, output_dir, page: "apps.html") }
   end
 
   def copy_schema_docs(output_dir)
     includes_dir
       .glob("schemas/*.md")
-      .each { |path| copy_partial(path, output_dir) }
+      .each { |path| copy_partial(path, output_dir, page: "apps.html") }
   end
 
   def copy_api_files(build_dir)
@@ -48,18 +50,24 @@ class LlmsTxtExtension < Middleman::Extension
   def copy_api_intro_partials(output_dir)
     includes_dir
       .glob("v4/_{introduction,authentication,errors}.md")
-      .each { |path| copy_partial(path, output_dir) }
+      .each { |path| copy_partial(path, output_dir, page: "v4.html") }
   end
 
   def copy_api_resource_partials(output_dir)
     includes_dir
       .glob("v4/resources/*.md")
-      .each { |path| copy_partial(path, output_dir) }
+      .each { |path| copy_partial(path, output_dir, page: "v4.html") }
   end
 
-  def copy_partial(path, output_dir)
+  # Links are relative to the combined page the partial is included in, so they
+  # break once it is copied out on its own: hash-only links point at anchors that
+  # only exist on that page, and root-relative links need the site's host.
+  def copy_partial(path, output_dir, page:)
     filename = File.basename(path).sub(/^_/, "")
-    FileUtils.cp(path, output_dir.join(filename))
+    content = File.read(path)
+      .gsub("](#", "](#{SITE_URL}/#{page}#")
+      .gsub(%r{\]\(/(?!/)}, "](#{SITE_URL}/")
+    output_dir.join(filename).write(content)
     puts "        \e[1;32mcopy\e[0m  #{output_dir.basename}/#{filename}"
   end
 
