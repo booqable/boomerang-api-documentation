@@ -44,8 +44,12 @@ Plan pricing and store-facing copy are declared directly in `booqable.json`'s `p
 ## Locale files
 
 ```jsonc
-"title": "Gizmo App"                          // hardcoded
-"title": { "localization_key": "app.title" }  // localized
+// hardcoded
+{ "title": "Gizmo App" }
+```
+```jsonc
+// localized
+{ "title": { "localization_key": "app.title" } }
 ```
 
 A lot of the strings in `booqable.json` (titles, descriptions, labels, banner text, and so on) accept either a hardcoded value, or a reference to a translated string.

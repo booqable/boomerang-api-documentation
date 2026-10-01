@@ -16,6 +16,7 @@ When an app has OAuth authentication enabled, Booqable handles the OAuth flow on
 ```jsonc
 // booqable.json
 {
+  "base_url": "https://my-app.com",
   "oauth": {
     "redirect_url": "/oauth/callback",
     "scopes": ["full_access"]
