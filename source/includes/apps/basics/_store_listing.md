@@ -13,11 +13,12 @@ Your app's store listing — the card in the App Store, its detail page, and its
 - **`setup_minutes`** — "Setup time" on the detail page.
 - **`support`** — populates the Support tab.
 
-Each plan under `plans` has its own listing fields:
+The `plans` field itself is optional, defaulting to an empty array for a free app, for example, but if given then each plan under it has its own listing fields:
 
-- **`id`** — a stable identifier for the plan (e.g. `free`, `pro`).
-- **`price_in_cents`** — required.
-- **`app_store.title`** / **`app_store.description`** / **`app_store.features`** — the plan's own store-facing copy shown on the plan picker.
+- **`id`** — a stable identifier for the plan (e.g. `free`, `pro`). Required.
+- **`price_in_cents`** — integer, `0` or more. Required.
+- **`app_store.title`** — the plan's name on the plan picker. Required.
+- **`app_store.description`** / **`app_store.features`** — optional store-facing copy shown on the plan picker.
 - **`features`** — internal feature flags (`{id, enabled}`) your app reads to know which capabilities are active for a given subscription — distinct from the display copy above.
 - **`most_popular`** — shows a "Most popular" pill on the plan picker.
-- **`paid_during_beta`** — when `false` (the default), the plan is free while your app is in Booqable's beta program; `true` keeps it paid throughout.
+- **`paid_during_beta`** — paid plans are shown as free while your manifest's `version` is `"beta"`. Set to `true` to keep this plan paid during beta. Defaults to `false`.
