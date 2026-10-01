@@ -98,8 +98,8 @@ has status `pending`. Poll the signature by fetching it
         "id": "6ea8048b-b423-4dfb-8076-da8361155b47",
         "type": "documents",
         "attributes": {
-          "created_at": "2025-11-01T01:57:01.000000+00:00",
-          "updated_at": "2025-11-01T01:57:01.000000+00:00",
+          "created_at": "2025-11-01T01:56:01.000000+00:00",
+          "updated_at": "2025-11-01T01:56:01.000000+00:00",
           "archived": false,
           "archived_at": null,
           "document_type": "contract",

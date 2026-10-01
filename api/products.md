@@ -161,8 +161,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "e78aa4d3-4a0b-4904-8980-60f6cc41d84d",
         "type": "products",
         "attributes": {
-          "created_at": "2017-02-21T06:59:03.000000+00:00",
-          "updated_at": "2017-02-21T06:59:03.000000+00:00",
+          "created_at": "2017-02-21T06:58:03.000000+00:00",
+          "updated_at": "2017-02-21T06:58:03.000000+00:00",
           "type": "products",
           "archived": false,
           "archived_at": null,
