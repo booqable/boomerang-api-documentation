@@ -23,7 +23,7 @@ Booqable.registerApp('marketing', {
 })
 ```
 
-Your template's top-level code runs immediately when Booqable inserts it into the page, with or without `registerApp`. What `registerApp` actually gets you is a structured `init` callback that fires later (on the window `load` event), plus the `onConsent`/`onDeny` consent hooks below. If your script doesn't need to wait for page load or react to consent, you don't need `registerApp` at all.
+Your template's top-level code runs with or without `registerApp`. In a theme block it runs as the page is parsed. In a tracking script it runs on the window `load` event, since the script is wrapped in a `load` handler. What `registerApp` actually gets you is a structured `init` callback that fires on the window `load` event, plus the `onConsent`/`onDeny` consent hooks below. If your script doesn't need to react to consent, you don't need `registerApp` at all. Call `registerApp` synchronously at the top level of your template. Registering later, for example inside a timeout or a callback, won't get `init`.
 
 The first argument is a category: `marketing` or `essential`. In practice almost every real app registers as `marketing`. The two categories aren't symmetric (see below), and `essential` is rarely used.
 
@@ -48,23 +48,22 @@ Booqable.on('completed', function () {
 })
 ```
 
-Available events: `viewProduct`, `addToCart`, `removeFromCart`, `viewCart`, `information`, `payment`, `completed`, `page-change`.
+Available events: `viewProduct`, `addToCart`, `removeFromCart`, `information`, `payment`, `completed`, `page-change`.
 
 Only `viewProduct`, `addToCart`, and `removeFromCart` receive a `data` argument directly. Every other event fires with no argument at all, so read [`Booqable.cartData`](#capabilities-user-framework-booqable-cartdata) instead.
 
-`page-change` fires on each checkout-step transition (cart, information, payment, completed). It does **not** fire on ordinary storefront navigation (home, product, listing, or static pages).
+`page-change` fires once per checkout page load (information, payment, completed). It does **not** fire on ordinary storefront navigation (home, product, listing, or static pages).
 
 ### `Booqable.cartData`
 
-Maintained by Booqable. Your app should only read it, never assign to it. It includes:
+Only available in the checkout events (`information`, `payment`, `completed`). Your app should only read it, never assign to it. It includes:
 
 `cartId`, `orderId`, `orderNumber`, `currency`, `coupon`, `couponDiscount`, `deposit`, `toBePaid`, `totalDueLater`, `grandTotal`, `grandTotalWithTax`, `tax`, `deliveryPrice`, `items`, `email`, `name`.
 
 ### Utilities
 
 - **`Booqable.loadScript(url)`** / **`Booqable.unloadScript(url)`**: load or remove an external script, deduplicated by exact URL.
-- **`Booqable.jQuery(callback)`**: loads jQuery **3.3.1** specifically (pinned, from a fixed CDN URL) and calls `callback` once it's ready. Deduplicated by exact script URL, so if the merchant's theme already loads a different jQuery build from a different URL, you'll end up with two separate jQuery instances on the page.
-- **`Booqable._defer(condition, fn)`**: retries `fn` roughly every 50ms until `condition` passes, up to 200 attempts (about 10 seconds), then silently gives up with no error and no callback. Don't rely on it for something that must eventually run.
+- **`Booqable.jQuery(callback)`**: runs `callback` once jQuery is available on the page as `window.$`, loading jQuery if needed. The version isn't guaranteed. If the theme already provides jQuery, you get that one.
 
 `window.Booqable` also exposes additional methods used internally by Booqable's own first-party integrations. These aren't part of this API and may change without notice, so stick to what's documented here.
 
