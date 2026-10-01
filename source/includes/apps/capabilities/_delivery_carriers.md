@@ -21,7 +21,7 @@ Delivery carriers let your app offer custom shipping rates at checkout. Unlike t
 
 - **`identifier`**: a stable key for this carrier.
 - **`rates_url`**: where Booqable sends rate requests.
-- **`tax_category`**: optional, writable. Associates this carrier with a tax category used to calculate tax on its delivery rates.
+- **`tax_category_id`**: optional, writable. Associates this carrier with a tax category used to calculate tax on its delivery rates.
 
 A carrier can also be updated later with `PATCH`/`PUT /api/4/app_carriers/{id}`, same attributes.
 
