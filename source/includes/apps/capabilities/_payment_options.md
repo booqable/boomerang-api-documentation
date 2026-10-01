@@ -7,21 +7,22 @@ This capability allows your app to add custom payment options for users during c
 ```jsonc
 // booqable.json
 {
+  "base_url": "https://my-payments-app.com",
   "payments": {
     "routes": {
-      "charge_url": "/mypay/charge",
-      "cancel_charge_url": "/mypay/charge/:id/cancel",
-      "authorization_url": "/mypay/auth",
-      "capture_authorization_url": "/mypay/auth/:id/capture",
-      "void_authorization_url": "/mypay/auth/:id/void",
-      "refund_url": "/mypay/refund"
+      "charge_url": { "relative": "/mypay/charge" },
+      "cancel_charge_url": { "relative": "/mypay/charge/:id/cancel" },
+      "authorization_url": { "relative": "/mypay/auth" },
+      "capture_authorization_url": { "relative": "/mypay/auth/:id/capture" },
+      "void_authorization_url": { "relative": "/mypay/auth/:id/void" },
+      "refund_url": { "relative": "/mypay/refund" }
     },
     "pay_button": { "asset": "assets/pay-button.svg" }
   }
 }
 ```
 
-Payment apps define their API routes under the [`payments.routes` object of their `booqable.json` file](#reference-paymentroutes). These routes tell Booqable where to send requests for different payment operations. `pay_button` is a separate, optional asset reference rendered as the clickable payment button in checkout.
+Payment apps define their API routes under the [`payments.routes` object of their `booqable.json` file](#reference-paymentroutes). These routes tell Booqable where to send requests for different payment operations. Routes are relative to your manifest's `base_url`, or absolute URLs. `pay_button` is a separate, optional asset reference rendered as the clickable payment button in checkout.
 
 There are a total of 6 routes available:
 
@@ -120,7 +121,7 @@ This route is called when a user initiates a payment during checkout. Booqable s
 | Parameter | Description |
 |-----------|-------------|
 | `booqable_id` | The unique identifier of this charge in Booqable's system |
-| `customer_address` | Customer's billing address for payment processing |
+| `customer_address` | The customer's default address as a single line, or `null` if there isn't one |
 | `total_in_cents` | Total amount to charge in cents (e.g., 5000 = $50.00) |
 | `deposit_in_cents` | The portion of `total_in_cents` that is a deposit, in cents |
 | `currency` | Currency code for the payment (e.g., "USD", "EUR") |
@@ -154,7 +155,7 @@ This route is called when a payment needs to be cancelled, typically when an ord
 
 *Flow:*
 
-1. Booqable sends a `PUT` request to your `cancel_charge_url` with your charge ID in the URL path, and no body.
+1. Booqable sends a `PUT` request to your `cancel_charge_url` with your charge ID in the URL path and an empty JSON body (`{}`).
 2. Cancel the pending charge on your payment provider (if applicable).
 3. Respond with HTTP 200 OK to confirm cancellation.
 
@@ -232,7 +233,7 @@ Unlike `charge_url`, this request has no `deposit_in_cents` field.
 | Parameter | Description |
 |-----------|-------------|
 | `booqable_id` | The unique identifier of this authorization in Booqable's system |
-| `customer_address` | Customer's billing address for payment processing |
+| `customer_address` | The customer's default address as a single line, or `null` if there isn't one |
 | `total_in_cents` | Total amount to authorize in cents (e.g., 5000 = $50.00) |
 | `currency` | Currency code for the authorization (e.g., "USD", "EUR") |
 | `return_url` | URL where the user should be redirected after authorization completion |
@@ -267,7 +268,7 @@ Unlike `charge_url`, this request has no `deposit_in_cents` field.
        │  1. PUT to capture_authorization_url
        │──────────────────────────────────>│
        │                                   │
-       │  2. Return 200 OK with { id }     │
+       │  2. Return 200 OK                 │
        │<──────────────────────────────────│
        │                                   │
        │                                   │  3. Capture funds on provider
@@ -279,12 +280,12 @@ Unlike `charge_url`, this request has no `deposit_in_cents` field.
 
 Capture funds from a previous authorization.
 
-This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID. Your app should respond immediately with a capture ID. After the actual capture of the funds is complete you must update the PaymentCharge status via the Booqable API.
+This route is called when capturing previously authorized funds, completing the deposit and hold flow. The authorization ID from your app is passed in the URL path, and the request body contains the final amount to capture along with the Booqable charge ID. Your app should respond immediately with HTTP 200 OK. After the actual capture of the funds is complete you must update the PaymentCharge status via the Booqable API.
 
 *Flow:*
 
 1. Booqable sends a `PUT` request to your `capture_authorization_url` with the authorization ID in the URL path.
-2. Respond immediately with HTTP 200 OK and your capture `id` (the charge is saved as `pending` in Booqable).
+2. Respond immediately with HTTP 200 OK (the charge is saved as `started` in Booqable).
 3. Capture the funds on your payment provider.
 4. [Update the PaymentCharge](/v4.html#payment-charges-update-a-payment-charge) status (`succeeded`, `failed`).
 
@@ -307,14 +308,7 @@ This route is called when capturing previously authorized funds, completing the 
 
 ###### Response
 
-The response should be an HTTP 200 OK status with an optional `id` field.
-
-```jsonc
-// your capture_authorization_url responds with this (response)
-{
-  "id": "your-capture-id"
-}
-```
+The response should be an HTTP 200 OK status. The body is ignored. If you respond with an error status, Booqable discards the new PaymentCharge and the capture fails. Include a JSON `error` message to explain why.
 
 ##### `void_authorization_url`
 
@@ -329,7 +323,7 @@ This route is called when cancelling an unused authorization, typically when an 
 
 *Flow:*
 
-1. Booqable sends a `PUT` request to your `void_authorization_url` with the authorization ID in the URL path, and no body.
+1. Booqable sends a `PUT` request to your `void_authorization_url` with the authorization ID in the URL path and an empty JSON body (`{}`).
 2. Release the held funds on your payment provider.
 3. Respond with HTTP 200 OK to confirm the void.
 
