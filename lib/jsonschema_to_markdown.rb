@@ -120,6 +120,10 @@ module MarkdownGenerator
     buffer.puts
     buffer.puts "```"
     buffer.puts
+    if schema.scalar.enum&.any?
+      buffer.puts "One of: `#{schema.scalar.enum.join("`, `")}`"
+      buffer.puts
+    end
   end
 
   def self.generate_one_of(buffer, schema)
@@ -204,7 +208,7 @@ module MarkdownGenerator
         else
           "lorem ipsum"
         end
-        buffer.write '"', example_value, '"'
+        buffer.write example_value.to_json
       when "number", "integer"
         example_value ||= 42
         buffer.write example_value
@@ -253,7 +257,11 @@ module MarkdownGenerator
         ref_name = property.items["$ref"].split("/").last
         "array of [`#{ref_name}`](#reference-#{ref_name.downcase})"
       else
-        "array of #{property.items["type"]}"
+        if property.items["enum"]
+          "array of one of: `#{property.items["enum"].join("`, `")}`"
+        else
+          "array of #{property.items["type"]}"
+        end
       end
     elsif property.enum
       "one of: `#{property.enum.join("`, `")}`"
