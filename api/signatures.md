@@ -8,10 +8,10 @@ be set accordingly on the associated order.
 ## Relationships
 Name | Description
 -- | --
-`document` | **[Document](#documents)** `required`<br>The associated contract or quote [Document](#documents).
+`document` | **[Document](https://developers.booqable.com/v4.html#documents)** `required`<br>The associated contract or quote [Document](https://developers.booqable.com/v4.html#documents).
 
 
-Check matching attributes under [Fields](#signatures-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#signatures-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -22,7 +22,7 @@ Check each individual operation to see which relations can be included as a side
 `consent_text` | **string** `writeonly`<br>The consent statement presented to the signer at the time of signing, e.g. `I consent to sign and accept this agreement.` Stored for auditing purposes.
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `customer_id` | **uuid** `readonly`<br>ID of the associated customer.
-`document_id` | **uuid** <br>The associated contract or quote [Document](#documents).
+`document_id` | **uuid** <br>The associated contract or quote [Document](https://developers.booqable.com/v4.html#documents).
 `document_pdf_url` | **string** `readonly`<br>URL to the signed document PDF.
 `first_name` | **string** <br>First name of the person signing the document.
 `id` | **uuid** `readonly`<br>Primary key.
@@ -184,7 +184,7 @@ Name | Description
 -- | --
 `data[attributes][consent_given]` | **boolean** <br>Whether the signer consented to signing the document electronically. Must be `true` to create a signature.
 `data[attributes][consent_text]` | **string** <br>The consent statement presented to the signer at the time of signing, e.g. `I consent to sign and accept this agreement.` Stored for auditing purposes.
-`data[attributes][document_id]` | **uuid** <br>The associated contract or quote [Document](#documents).
+`data[attributes][document_id]` | **uuid** <br>The associated contract or quote [Document](https://developers.booqable.com/v4.html#documents).
 `data[attributes][first_name]` | **string** <br>First name of the person signing the document.
 `data[attributes][last_name]` | **string** <br>Last name of the person signing the document.
 `data[attributes][signature_base64]` | **string** <br>(deprecated) Do not use this field, use `signature_image_base64` instead.

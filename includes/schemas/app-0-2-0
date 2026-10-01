@@ -1,20 +1,20 @@
 <h1 id='reference'>Reference</h1><h2 id='reference-booqable-json'><code>booqable.json</code></h2>
 <p>Schema for the configuration file that defines Booqable apps.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"$schema"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.booqable.com/schemas/app-0-2-0.json#"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liquid_conf"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyApp"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Booqable"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">ConfigurationPage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"iframe_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">IframePage</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">TrackingScript</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">OauthConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AppStoreInfo */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ConfigurationPage */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"iframe_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* IframePage */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* TrackingScript */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"oauth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* OauthConfig */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"base_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentsConfig</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* PaymentsConfig */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -112,17 +112,17 @@
 </tbody></table>
 <h2 id='reference-appstoreinfo'><code>AppStoreInfo</code></h2>
 <p>Information about the app to display in the app store.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreDescription</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"card_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Link</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AppStoreDescription */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"card_image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AssetReference */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AssetReference */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* Link */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4tDyXghOQbI"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"setup_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppStoreSupport</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AppStoreSupport */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -147,7 +147,7 @@
 </tr>
 <tr>
 <td><code>categories</code></td>
-<td>array of string</td>
+<td>array of one of: <code>accessibility</code>, <code>accounting</code>, <code>crm</code>, <code>fulfillment</code>, <code>maps</code>, <code>marketing</code>, <code>payment</code>, <code>social</code>, <code>tracking</code>, <code>translation</code>, <code>website</code>, <code>widget</code></td>
 <td>false</td>
 <td>Category classification for organizing apps in the app store.</td>
 </tr>
@@ -196,9 +196,9 @@
 </tbody></table>
 <h2 id='reference-appstoredescription'><code>AppStoreDescription</code></h2>
 <p>Short and long copy for the app store listing.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"short"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"short"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"long"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -224,9 +224,9 @@
 </tbody></table>
 <h2 id='reference-appstoresupport'><code>AppStoreSupport</code></h2>
 <p>How to get help with the app.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4tDyXghOQbI"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -259,11 +259,11 @@
 </tbody></table>
 <h2 id='reference-appplan'><code>AppPlan</code></h2>
 <p>Subscription plan (e.g. free, pro) with price and app-store copy.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AppPlanStoreInfo</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"app_store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AppPlanStoreInfo */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"paid_during_beta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"most_popular"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -315,10 +315,10 @@
 </tbody></table>
 <h2 id='reference-appplanstoreinfo'><code>AppPlanStoreInfo</code></h2>
 <p>Per-plan title, description, and feature list shown in the app store.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -350,7 +350,7 @@
 </tbody></table>
 <h2 id='reference-planfeature'><code>PlanFeature</code></h2>
 <p>Feature flag for a plan (id and whether it is enabled).</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -378,8 +378,8 @@
 </tbody></table>
 <h2 id='reference-configurationpage'><code>ConfigurationPage</code></h2>
 <p>Root of the configuration page: ordered list of blocks (banners, forms, guides, iframes).</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -410,16 +410,18 @@
 </ul>
 <h2 id='reference-blockconditionif'><code>BlockConditionIf</code></h2>
 <p>When to show the block: only when the app is configured, or only when unconfigured. Omit to always show.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"configured"</span><span class="w">
-</span></code></pre></div><h2 id='reference-bannerblock'><code>BannerBlock</code></h2>
+<div class="highlight"><pre class="highlight json-doc"><code><span class="s2">"configured"</span><span class="w">
+</span></code></pre></div>
+<p>One of: <code>configured</code>, <code>unconfigured</code></p>
+<h2 id='reference-bannerblock'><code>BannerBlock</code></h2>
 <p>Banner block: heading, text, optional link, and style (neutral/info/warning).</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banner"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">Link</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* Link */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"nature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"neutral"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* BlockConditionIf */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -469,8 +471,8 @@
 </tbody></table>
 <h2 id='reference-link'><code>Link</code></h2>
 <p>Clickable link with text and URL; optionally rendered as a button.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"display_as_button"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -504,11 +506,11 @@
 </tbody></table>
 <h2 id='reference-formblock'><code>FormBlock</code></h2>
 <p>Form block: heading and fields whose values are saved as app settings.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Form"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">FormBlockHeading</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"heading"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* FormBlockHeading */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* BlockConditionIf */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -546,9 +548,9 @@
 </tbody></table>
 <h2 id='reference-formblockheading'><code>FormBlockHeading</code></h2>
 <p>Optional title and/or body text above a form block.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -574,16 +576,16 @@
 </tbody></table>
 <h2 id='reference-formblockfield'><code>FormBlockField</code></h2>
 <p>Single form field (name, input type, label, validation, and for select: options and multi).</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buttonGroup"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"multi"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">".*</span><span class="se">\.</span><span class="s2">mydomain</span><span class="se">\.</span><span class="s2">com/.*"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">".*</span><span class="se">\\</span><span class="s2">.mydomain</span><span class="se">\\</span><span class="s2">.com/.*"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"min"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="nl">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="nl">"step"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="w">
@@ -672,9 +674,9 @@
 </tbody></table>
 <h2 id='reference-selectfieldoption'><code>SelectFieldOption</code></h2>
 <p>One option for a select or multi-select field (value and label).</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -700,11 +702,11 @@
 </tbody></table>
 <h2 id='reference-guideblock'><code>GuideBlock</code></h2>
 <p>Guide block: ordered steps with title, text, and optional image per step.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guide"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* BlockConditionIf */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -742,10 +744,10 @@
 </tbody></table>
 <h2 id='reference-guideblockstep'><code>GuideBlockStep</code></h2>
 <p>One step in a guide (title, optional text, optional image).</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AssetReference */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -777,8 +779,8 @@
 </tbody></table>
 <h2 id='reference-iframepage'><code>IframePage</code></h2>
 <p>Settings for the page embedding the external page apps are operated through.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -798,10 +800,10 @@
 </tbody></table>
 <h2 id='reference-iframeblock'><code>IframeBlock</code></h2>
 <p>Embedded iframe (e.g. external config or docs URL).</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Iframe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">BlockConditionIf</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* BlockConditionIf */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -833,13 +835,13 @@
 </tbody></table>
 <h2 id='reference-themeblock'><code>ThemeBlock</code></h2>
 <p>A website block provided by the app.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">],</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AssetPath */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"cookies_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"settings_iframe_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"settings_iframe_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -864,7 +866,7 @@
 </tr>
 <tr>
 <td><code>allowed_sections</code></td>
-<td>array of string</td>
+<td>array of one of: <code>header</code>, <code>footer</code>, <code>app</code></td>
 <td>true</td>
 <td>Section types where this block may be placed.</td>
 </tr>
@@ -889,11 +891,11 @@
 </tbody></table>
 <h2 id='reference-themeblocksetting'><code>ThemeBlockSetting</code></h2>
 <p>One setting for a theme block. Renders in the website editor sidebar.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"header"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocalizableString</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"placeholder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocalizableString */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"min"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
   </span><span class="nl">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
@@ -959,8 +961,8 @@
 </tbody></table>
 <h2 id='reference-trackingscript'><code>TrackingScript</code></h2>
 <p>Settings controlling JavaScript files added to store pages for tracking purposes.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetPath</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AssetPath */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -980,7 +982,7 @@
 </tbody></table>
 <h2 id='reference-assetpath'><code>AssetPath</code></h2>
 <p>A reference to a file bundled with the app.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/widget.liquid"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1019,10 +1021,10 @@
 </ul>
 <h2 id='reference-absoluteurl'><code>AbsoluteUrl</code></h2>
 <p>An absolute URL string.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"https://example.com"</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="s2">"https://example.com"</span><span class="w">
 </span></code></pre></div><h2 id='reference-relativeurl'><code>RelativeUrl</code></h2>
 <p>A relative URL resolved against the app&#39;s base_url at runtime.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"relative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lorem ipsum"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1052,9 +1054,9 @@
 </ul>
 <h2 id='reference-paymentsconfig'><code>PaymentsConfig</code></h2>
 <p>Payment integration settings.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">PaymentRoutes</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"pay_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">AssetReference</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* PaymentRoutes */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"pay_button"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AssetReference */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -1080,13 +1082,13 @@
 </tbody></table>
 <h2 id='reference-paymentroutes'><code>PaymentRoutes</code></h2>
 <p>URL paths for payment operations, resolved against base_url at runtime.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">LocatableUrl</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"cancel_charge_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"capture_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"void_authorization_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"refund_url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -1136,9 +1138,9 @@
 </tbody></table>
 <h2 id='reference-oauthconfig'><code>OauthConfig</code></h2>
 <p>OAuth configuration for the app.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"redirect_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/deliveries/oauth/callback"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -1157,7 +1159,7 @@
 </tr>
 <tr>
 <td><code>scopes</code></td>
-<td>array of string</td>
+<td>array of one of: <code>full_access</code></td>
 <td>true</td>
 <td>OAuth scopes the app requests.</td>
 </tr>

@@ -1,6 +1,6 @@
 # Webhooks
 
-Webhooks represent individual notifications that have been sent to your [WebhookEndpoints](#webhook-endpoints).
+Webhooks represent individual notifications that have been sent to your [WebhookEndpoints](https://developers.booqable.com/v4.html#webhook-endpoints).
 They contain information about the event that occurred, the version of the webhook,
 and the data payload that was sent.
 

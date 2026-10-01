@@ -14,11 +14,11 @@ set a password before the account is active. (See *status*)
 ## Relationships
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** `required`<br>Customer who owns this account.
-`notes` | **[Notes](#notes)** `hasmany`<br>Notes about this user.
+`customer` | **[Customer](https://developers.booqable.com/v4.html#customers)** `required`<br>Customer who owns this account.
+`notes` | **[Notes](https://developers.booqable.com/v4.html#notes)** `hasmany`<br>Notes about this user.
 
 
-Check matching attributes under [Fields](#users-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#users-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

@@ -7,9 +7,9 @@ are available or unavailable, accounting for business rules like buffer times an
 The availability endpoint returns individual availability records as a standard JSON:API collection, where
 each record includes detailed status information for a specific date or time interval.
 
-**Note:** The [Inventory levels](#inventory-levels) and [Inventory level intervals](#inventory-level-intervals) endpoints
+**Note:** The [Inventory levels](https://developers.booqable.com/v4.html#inventory-levels) and [Inventory level intervals](https://developers.booqable.com/v4.html#inventory-level-intervals) endpoints
 are deprecated. Use this endpoint for a calendar of availability statuses, or
-[Inventory availabilities](#inventory-availabilities) for the number of units available over a period.
+[Inventory availabilities](https://developers.booqable.com/v4.html#inventory-availabilities) for the number of units available over a period.
 
 ## Subject Types
 
@@ -17,7 +17,7 @@ are deprecated. Use this endpoint for a calendar of availability statuses, or
   items could be moved to. Each day's status answers "could I reschedule this order to
   start on this date?", not "how many units are available?". `quantity` is always `null`
   for order subjects. To check item stock counts during an order's rental period, use
-  [Inventory availabilities](#inventory-availabilities) with the order's item IDs and dates.
+  [Inventory availabilities](https://developers.booqable.com/v4.html#inventory-availabilities) with the order's item IDs and dates.
 - **cart**: Check availability for a cart
 - **item**: View product availability across a period for booking
 - **downtime**: Check availability for scheduling maintenance or repairs

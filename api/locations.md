@@ -10,10 +10,10 @@ and return orders or a warehouse that only stocks inventory.
 ## Relationships
 Name | Description
 -- | --
-`carriers` | **[App carriers](#app-carriers)** `hasmany`<br>The carriers that can do delivery from this location. 
+`carriers` | **[App carriers](https://developers.booqable.com/v4.html#app-carriers)** `hasmany`<br>The carriers that can do delivery from this location. 
 
 
-Check matching attributes under [Fields](#locations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#locations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

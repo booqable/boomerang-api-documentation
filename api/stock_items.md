@@ -3,7 +3,7 @@
 For trackable products, each stock item is tracked and managed individually.
 Each stock item has a unique identifier that helps to keep track of it throughout Booqable.
 
-To create multiple StockItems in a single request, use the [StockAdjustment](#stock-adjustments) resource.
+To create multiple StockItems in a single request, use the [StockAdjustment](https://developers.booqable.com/v4.html#stock-adjustments) resource.
 
 ## Statuses
 
@@ -18,14 +18,14 @@ To create multiple StockItems in a single request, use the [StockAdjustment](#st
 ## Relationships
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** `optional`<br>Barcode to quickly identify this StockItem. 
-`location` | **[Location](#locations)** `required`<br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`product` | **[Product](#products)** `required`<br>The [Product](#products) this StockItem is one instance of. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom data associated with this StockItem. 
-`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](#stock-item-plannings) that represent the planning and reservation history of this specific StockItem. This includes both rental orders and downtime periods assigned to this StockItem. 
+`barcode` | **[Barcode](https://developers.booqable.com/v4.html#barcodes)** `optional`<br>Barcode to quickly identify this StockItem. 
+`location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
+`product` | **[Product](https://developers.booqable.com/v4.html#products)** `required`<br>The [Product](https://developers.booqable.com/v4.html#products) this StockItem is one instance of. 
+`properties` | **[Properties](https://developers.booqable.com/v4.html#properties)** `hasmany`<br>Custom data associated with this StockItem. 
+`stock_item_plannings` | **[Stock item plannings](https://developers.booqable.com/v4.html#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](https://developers.booqable.com/v4.html#stock-item-plannings) that represent the planning and reservation history of this specific StockItem. This includes both rental orders and downtime periods assigned to this StockItem. 
 
 
-Check matching attributes under [Fields](#stock-items-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#stock-items-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -40,8 +40,8 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>Unique identifier (like serial number). 
 `location_id` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`product_group_id` | **uuid** `readonly`<br>The [ProductGroup](#product-groups) this StockItem belongs to. 
-`product_id` | **uuid** `readonly-after-create`<br>The [Product](#products) this StockItem is one instance of. 
+`product_group_id` | **uuid** `readonly`<br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this StockItem belongs to. 
+`product_id` | **uuid** `readonly-after-create`<br>The [Product](https://developers.booqable.com/v4.html#products) this StockItem is one instance of. 
 `properties` | **hash** `readonly`<br>A hash containing all basic property values (include properties if you need more detailed information about properties). 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this stock item. 
 `purchase_cost_in_cents` | **integer** `nullable`<br>The purchase cost of this specific stock item for ROI calculations. 
@@ -318,7 +318,7 @@ Name | Description
 `data[attributes][from]` | **datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date). 
 `data[attributes][identifier]` | **string** <br>Unique identifier (like serial number). 
 `data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`data[attributes][product_id]` | **uuid** <br>The [Product](#products) this StockItem is one instance of. 
+`data[attributes][product_id]` | **uuid** <br>The [Product](https://developers.booqable.com/v4.html#products) this StockItem is one instance of. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
 `data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost of this specific stock item for ROI calculations. 
 `data[attributes][purchased_at]` | **datetime** <br>When this stock item was purchased. 
@@ -416,7 +416,7 @@ Name | Description
 `data[attributes][from]` | **datetime** <br>When the stock item will be available in stock (temporary items or expected arrival date). 
 `data[attributes][identifier]` | **string** <br>Unique identifier (like serial number). 
 `data[attributes][location_id]` | **uuid** <br>Location where this StockItem currently resides. This is the start location of the order if the StockItem is currently out with a customer. 
-`data[attributes][product_id]` | **uuid** <br>The [Product](#products) this StockItem is one instance of. 
+`data[attributes][product_id]` | **uuid** <br>The [Product](https://developers.booqable.com/v4.html#products) this StockItem is one instance of. 
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this stock item. 
 `data[attributes][purchase_cost_in_cents]` | **integer** <br>The purchase cost of this specific stock item for ROI calculations. 
 `data[attributes][purchased_at]` | **datetime** <br>When this stock item was purchased. 

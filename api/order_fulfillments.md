@@ -1,14 +1,14 @@
 # Order fulfillments
 
 The primary resource for adding products to orders and managing inventory allocation.
-Use OrderFulfillment to book products, stock items, and bundles onto an [Order](#orders),
+Use OrderFulfillment to book products, stock items, and bundles onto an [Order](https://developers.booqable.com/v4.html#orders),
 as well as to start and stop items during the rental lifecycle.
 
-Booking through this resource creates [Plannings](#plannings) and [Lines](#lines) that track
+Booking through this resource creates [Plannings](https://developers.booqable.com/v4.html#plannings) and [Lines](https://developers.booqable.com/v4.html#lines) that track
 inventory allocation. Products booked this way will affect availability and appear on the
 availability calendar.
 
-See [How to Build a Booking Flow](#orders-how-to-build-a-booking-flow) for a complete
+See [How to Build a Booking Flow](https://developers.booqable.com/v4.html#orders-how-to-build-a-booking-flow) for a complete
 step-by-step guide on creating orders and booking products via the API.
 
 ## Actions
@@ -20,15 +20,15 @@ be combined in the same request.
 
 #### Book a Bundle
 
-Books a [Bundle](#bundles) on an [Order](#orders).
+Books a [Bundle](https://developers.booqable.com/v4.html#bundles) on an [Order](https://developers.booqable.com/v4.html#orders).
 
-For each unspecified [BundleItem](#bundle-items) a product variation needs to be selected.
-Specified [BundleItems](#bundle-items) are automatically booked. These must not be included
-in the request. When a [Bundle](#bundles) only contains specified [BundleItems](#bundle-items), an empty
+For each unspecified [BundleItem](https://developers.booqable.com/v4.html#bundle-items) a product variation needs to be selected.
+Specified [BundleItems](https://developers.booqable.com/v4.html#bundle-items) are automatically booked. These must not be included
+in the request. When a [Bundle](https://developers.booqable.com/v4.html#bundles) only contains specified [BundleItems](https://developers.booqable.com/v4.html#bundle-items), an empty
 list of product variations must be provided.
 
-The `quantity` attribute sets the quantity of the [Bundle](#bundles) itself,
-and multiplies the quantities of all products in the [Bundle](#bundles).
+The `quantity` attribute sets the quantity of the [Bundle](https://developers.booqable.com/v4.html#bundles) itself,
+and multiplies the quantities of all products in the [Bundle](https://developers.booqable.com/v4.html#bundles).
 
 The `confirm_shortage` attribute (on the resource, not on the action),
 overrides shortage warnings when booking on a reserved or started order.
@@ -110,7 +110,7 @@ Adds or removes one or more StockItems from an existing Planning.
 
 It is not possible to specify more StockItems than there is
 remaining quantity left on the Planning.
-[StockItems](#stock-items) that have already been started cannot be removed.
+[StockItems](https://developers.booqable.com/v4.html#stock-items) that have already been started cannot be removed.
 
 ```json
 {
@@ -199,13 +199,13 @@ errors and other kinds of inventory errors.
 ## Relationships
 Name | Description
 -- | --
-`changed_lines` | **[Lines](#lines)** `hasmany`<br>The [Lines](#lines) that have (indirectly) been created or changed by the fulfillment actions. 
-`changed_plannings` | **[Plannings](#plannings)** `hasmany`<br>The [Plannings](#plannings) that have (indirectly) been created or changed by the fulfillment actions. 
-`changed_stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](#stock-item-plannings) that have (indirectly) been created or changed by the fulfillment actions. 
-`order` | **[Order](#orders)** `required`<br>The [Order](#orders) to be fulfilled. 
+`changed_lines` | **[Lines](https://developers.booqable.com/v4.html#lines)** `hasmany`<br>The [Lines](https://developers.booqable.com/v4.html#lines) that have (indirectly) been created or changed by the fulfillment actions. 
+`changed_plannings` | **[Plannings](https://developers.booqable.com/v4.html#plannings)** `hasmany`<br>The [Plannings](https://developers.booqable.com/v4.html#plannings) that have (indirectly) been created or changed by the fulfillment actions. 
+`changed_stock_item_plannings` | **[Stock item plannings](https://developers.booqable.com/v4.html#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](https://developers.booqable.com/v4.html#stock-item-plannings) that have (indirectly) been created or changed by the fulfillment actions. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>The [Order](https://developers.booqable.com/v4.html#orders) to be fulfilled. 
 
 
-Check matching attributes under [Fields](#order-fulfillments-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#order-fulfillments-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -213,9 +213,9 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `actions` | **array** `writeonly`<br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`confirm_shortage` | **boolean** `writeonly`<br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
+`confirm_shortage` | **boolean** `writeonly`<br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](https://developers.booqable.com/v4.html#orders). 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>The [Order](#orders) to be fulfilled. 
+`order_id` | **uuid** `readonly-after-create`<br>The [Order](https://developers.booqable.com/v4.html#orders) to be fulfilled. 
 
 
 ## Book
@@ -457,8 +457,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
-`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](https://developers.booqable.com/v4.html#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) to be fulfilled. 
 
 
 ### Includes
@@ -637,8 +637,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
-`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](https://developers.booqable.com/v4.html#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) to be fulfilled. 
 
 
 ### Includes
@@ -781,8 +781,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
-`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](https://developers.booqable.com/v4.html#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) to be fulfilled. 
 
 
 ### Includes
@@ -923,8 +923,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][actions][]` | **array** <br>Array of actions to be performed. The actions are executed atomically, and succeed as a whole, or fail as a whole. 
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](#orders). 
-`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) to be fulfilled. 
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings when booking products on a reserved or started [Order](https://developers.booqable.com/v4.html#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) to be fulfilled. 
 
 
 ### Includes

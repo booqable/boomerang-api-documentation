@@ -57,7 +57,7 @@ Name | Description
 
 #### Orders
 
-Configuration for [orders](#orders) (these settings also apply to the online store)
+Configuration for [orders](https://developers.booqable.com/v4.html#orders) (these settings also apply to the online store)
 
 Name | Description
 -- | --
@@ -98,9 +98,9 @@ Name | Description
 `use_toc` | **Boolean**<br>Whether the agreement should be accepted during checkout
 `toc_label` | **String**<br>The label of the agreement checkbox
 `toc_content` | **String**<br>The contents of the actual agreement
-`use_business_hours` | **Boolean**<br>Whether to take opening hours into account while selecting a period (see [operating rules](#operating-rules) for more information)
-`use_away_mode` | **Boolean**<br>Whether away mode is enabled (see [operating rules](#operating-rules) for more information)
-`period_type` | **String**<br>How the period picker is setup, one of `freely` (free selection), `timeslot_duration` (select a day, time and duration), `timeslot_fixed` (fixed timeslots for days). See [operating rules](#operating-rules) for more information
+`use_business_hours` | **Boolean**<br>Whether to take opening hours into account while selecting a period (see [operating rules](https://developers.booqable.com/v4.html#operating-rules) for more information)
+`use_away_mode` | **Boolean**<br>Whether away mode is enabled (see [operating rules](https://developers.booqable.com/v4.html#operating-rules) for more information)
+`period_type` | **String**<br>How the period picker is setup, one of `freely` (free selection), `timeslot_duration` (select a day, time and duration), `timeslot_fixed` (fixed timeslots for days). See [operating rules](https://developers.booqable.com/v4.html#operating-rules) for more information
 `use_times` | **Boolean**<br>Whether to use time selection in the online store
 `use_coupons_in_checkout` | **Boolean**<br>Whether supplying coupons during checkout is enabled
 `time_increment` | **Integer**<br>Time increments for time selection (e.g. `15`, `30`, `60`)
@@ -115,7 +115,7 @@ Name | Description
 
 #### User
 
-Settings that apply to [user](#users) accounts
+Settings that apply to [user](https://developers.booqable.com/v4.html#users) accounts
 
 Name | Description
 -- | --
@@ -126,7 +126,7 @@ Name | Description
 
 #### Documents
 
-Settings that apply to all [document](#documents) types
+Settings that apply to all [document](https://developers.booqable.com/v4.html#documents) types
 
 Name | Description
 -- | --
@@ -209,21 +209,21 @@ Name | Description
 `dates` | **hash** <br>Information on how to display dates.
 `defaults` | **hash** <br>Defaults derived from other resources. Most fields are read-only; only `shop_start_location_id` and `shop_stop_location_id` are writable.
 `deliveries` | **hash** <br>Settings for deliveries.
-`documents` | **hash** <br>Settings that apply to all [document](#documents) types.
+`documents` | **hash** <br>Settings that apply to all [document](https://developers.booqable.com/v4.html#documents) types.
 `emails` | **hash** <br>Settings for emails.
 `feature_enrollments` | **hash** `extra`<br>Feature enrollments settings (Used internally by Booqable).
 `id` | **uuid** <br>Primary key.
 `invoices` | **hash** <br>Settings that apply to invoices.
 `labels` | **hash** <br>Customization settings for labels.
 `onboarding` | **hash** `extra`<br>Onboarding settings (Used internally by Booqable).
-`orders` | **hash** <br>Configuration for [orders](#orders) (these settings also apply to the online store).
+`orders` | **hash** <br>Configuration for [orders](https://developers.booqable.com/v4.html#orders) (these settings also apply to the online store).
 `pricing` | **hash** <br>Configuration on how to handle and display pricing.
 `quotes` | **hash** <br>Settings that apply to quotes.
 `security` | **hash** <br>Global security settings.
 `setup_checklist` | **hash** `extra`<br>Setup checklist settings (Used internally by Booqable).
 `store` | **hash** <br>Settings for the online store.
 `tracking` | **hash** `extra`<br>Tracking settings (Used internally by Booqable).
-`user` | **hash** <br>Settings that apply to [user](#users) accounts.
+`user` | **hash** <br>Settings that apply to [user](https://developers.booqable.com/v4.html#users) accounts.
 
 
 ## Fetch settings

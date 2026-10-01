@@ -5,10 +5,10 @@ Recalculates the delivery rate of a delivery order.
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>[Order](#orders) that needs recalculation of its rates. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>[Order](https://developers.booqable.com/v4.html#orders) that needs recalculation of its rates. 
 
 
-Check matching attributes under [Fields](#order-delivery-rate-recalculations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#order-delivery-rate-recalculations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -17,7 +17,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `destination_coordinates` | **array** `readonly`<br>Coordinates of the delivery address as `[longitude, latitude]`. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** <br>[Order](#orders) that needs recalculation of its rates. 
+`order_id` | **uuid** <br>[Order](https://developers.booqable.com/v4.html#orders) that needs recalculation of its rates. 
 `origin_coordinates` | **array** `readonly`<br>Coordinates of the delivery origin as `[longitude, latitude]`. 
 `route_restricted` | **boolean** `readonly`<br>Whether the calculated route has restrictions (e.g. it violates a blocked road). The rate is still calculated from the route's distance, but the route should be reviewed. 
 
@@ -86,7 +86,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][order_id]` | **uuid** <br>[Order](#orders) that needs recalculation of its rates. 
+`data[attributes][order_id]` | **uuid** <br>[Order](https://developers.booqable.com/v4.html#orders) that needs recalculation of its rates. 
 
 
 ### Includes

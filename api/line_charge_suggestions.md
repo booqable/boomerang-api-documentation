@@ -15,10 +15,10 @@ can be calculated based on the chosen Product variations.
 ## Relationships
 Name | Description
 -- | --
-`line` | **[Line](#lines)** `required`<br>The Line that this suggestion is for. 
+`line` | **[Line](https://developers.booqable.com/v4.html#lines)** `required`<br>The Line that this suggestion is for. 
 
 
-Check matching attributes under [Fields](#line-charge-suggestions-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#line-charge-suggestions-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

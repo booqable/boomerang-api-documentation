@@ -6,7 +6,7 @@ Default properties show up in forms within Booqable and can be connected
 to [checkout fields](https://help.booqable.com/en/articles/2170728-can-i-create-custom-checkout-fields).
 
 Default properties are searchable, show up in exports and can be used in email templates.
-The actual values of those properties are stored in the [Property](#properties) resource.
+The actual values of those properties are stored in the [Property](https://developers.booqable.com/v4.html#properties) resource.
 
 Properties inherit their configuration from a default property when they are connected.
 

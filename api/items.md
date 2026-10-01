@@ -2,9 +2,9 @@
 
 The Item resource makes it possible to fetch (and search!) the following resources in a single request:
 
-- [Product groups](#product-groups)
-- [Products](#products)
-- [Bundles](#bundles)
+- [Product groups](https://developers.booqable.com/v4.html#product-groups)
+- [Products](https://developers.booqable.com/v4.html#products)
+- [Bundles](https://developers.booqable.com/v4.html#bundles)
 
 The description of the relationships and attributes of these resources can be found in their respective sections
 

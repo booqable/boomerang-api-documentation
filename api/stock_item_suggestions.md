@@ -11,11 +11,11 @@ The suggestions are sorted:
 ## Relationships
 Name | Description
 -- | --
-`item` | **[Item](#items)** `required`<br>The Product the suggested stock item belongs to. 
-`stock_item` | **[Stock item](#stock-items)** `required`<br>The suggested stock item. 
+`item` | **[Item](https://developers.booqable.com/v4.html#items)** `required`<br>The Product the suggested stock item belongs to. 
+`stock_item` | **[Stock item](https://developers.booqable.com/v4.html#stock-items)** `required`<br>The suggested stock item. 
 
 
-Check matching attributes under [Fields](#stock-item-suggestions-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#stock-item-suggestions-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

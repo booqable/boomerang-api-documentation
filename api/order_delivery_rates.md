@@ -6,12 +6,12 @@ This data is relevant only for orders that have a `delivery` fulfillment type.
 ## Relationships
 Name | Description
 -- | --
-`carrier` | **[App carrier](#app-carriers)** `optional`<br>The selected carrier for this order. 
-`order` | **[Order](#orders)** `optional`<br>The delivery [Order](#orders) this rate is for. 
-`tax_category` | **[Tax category](#tax-categories)** `optional`<br>The tax category for custom delivery rates. When a carrier is selected, the carrier's tax category is used instead. 
+`carrier` | **[App carrier](https://developers.booqable.com/v4.html#app-carriers)** `optional`<br>The selected carrier for this order. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `optional`<br>The delivery [Order](https://developers.booqable.com/v4.html#orders) this rate is for. 
+`tax_category` | **[Tax category](https://developers.booqable.com/v4.html#tax-categories)** `optional`<br>The tax category for custom delivery rates. When a carrier is selected, the carrier's tax category is used instead. 
 
 
-Check matching attributes under [Fields](#order-delivery-rates-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#order-delivery-rates-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -23,7 +23,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>The identifier of the delivery rate. 
 `minimum_order_amount_in_cents` | **integer** <br>The minimum order amount in cents for this delivery rate. 
-`order_id` | **uuid** `writeonly`<br>The delivery [Order](#orders) this rate is for. 
+`order_id` | **uuid** `writeonly`<br>The delivery [Order](https://developers.booqable.com/v4.html#orders) this rate is for. 
 `price_in_cents` | **integer** <br>The price of the delivery rate in cents. 
 `rate_id` | **string** <br>The rate ID returned by a delivery app. 
 `signed_attributes` | **string** <br>The signed attributes returned by a delivery app. 
@@ -267,7 +267,7 @@ Name | Description
 `data[attributes][carrier_id]` | **uuid** <br>The selected carrier for this order. 
 `data[attributes][identifier]` | **string** <br>The identifier of the delivery rate. 
 `data[attributes][minimum_order_amount_in_cents]` | **integer** <br>The minimum order amount in cents for this delivery rate. 
-`data[attributes][order_id]` | **uuid** <br>The delivery [Order](#orders) this rate is for. 
+`data[attributes][order_id]` | **uuid** <br>The delivery [Order](https://developers.booqable.com/v4.html#orders) this rate is for. 
 `data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
 `data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
 `data[attributes][signed_attributes]` | **string** <br>The signed attributes returned by a delivery app. 
@@ -353,7 +353,7 @@ Name | Description
 `data[attributes][carrier_id]` | **uuid** <br>The selected carrier for this order. 
 `data[attributes][identifier]` | **string** <br>The identifier of the delivery rate. 
 `data[attributes][minimum_order_amount_in_cents]` | **integer** <br>The minimum order amount in cents for this delivery rate. 
-`data[attributes][order_id]` | **uuid** <br>The delivery [Order](#orders) this rate is for. 
+`data[attributes][order_id]` | **uuid** <br>The delivery [Order](https://developers.booqable.com/v4.html#orders) this rate is for. 
 `data[attributes][price_in_cents]` | **integer** <br>The price of the delivery rate in cents. 
 `data[attributes][rate_id]` | **string** <br>The rate ID returned by a delivery app. 
 `data[attributes][signed_attributes]` | **string** <br>The signed attributes returned by a delivery app. 

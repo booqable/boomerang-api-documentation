@@ -1,7 +1,7 @@
 # Employee invitations
 
 Employees give access to a Booqable account. You can invite employees by sending an invitation.
-For more info about employees see [Employees](#employees).
+For more info about employees see [Employees](https://developers.booqable.com/v4.html#employees).
 
 <aside class="notice">
   Note: The maximum number of seats for team members depends on the current pricing plan.
@@ -10,10 +10,10 @@ For more info about employees see [Employees](#employees).
 ## Relationships
 Name | Description
 -- | --
-`employee` | **[Employee](#employees)** `optional`<br>The employee that is invited. 
+`employee` | **[Employee](https://developers.booqable.com/v4.html#employees)** `optional`<br>The employee that is invited. 
 
 
-Check matching attributes under [Fields](#employee-invitations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#employee-invitations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

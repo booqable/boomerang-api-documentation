@@ -30,10 +30,10 @@ Note that when using URLs as numbers, it's advised to base64 encode the number b
 ## Relationships
 Name | Description
 -- | --
-`owner` | **[Customer](#customers), [Product](#products), [Order](#orders), [Stock item](#stock-items)** `required`<br>The resource pointed to by this Barcode. 
+`owner` | **[Customer](https://developers.booqable.com/v4.html#customers), [Product](https://developers.booqable.com/v4.html#products), [Order](https://developers.booqable.com/v4.html#orders), [Stock item](https://developers.booqable.com/v4.html#stock-items)** `required`<br>The resource pointed to by this Barcode. 
 
 
-Check matching attributes under [Fields](#barcodes-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#barcodes-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

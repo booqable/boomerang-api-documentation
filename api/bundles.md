@@ -5,7 +5,7 @@ This makes it possible to offer customers a set of products that logically
 go together as a single package, for a single price, and with a combined
 availability.
 
-Bundles are composed from [BundleItems](#bundle-items), which describe
+Bundles are composed from [BundleItems](https://developers.booqable.com/v4.html#bundle-items), which describe
 which products are included, how many of them, and the discount for each product.
 
 There are two types of bundles:
@@ -28,15 +28,15 @@ There are two types of bundles:
 ## Relationships
 Name | Description
 -- | --
-`bundle_items` | **[Bundle items](#bundle-items)** `hasmany`<br>The bundle items that make up this bundle. 
-`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>The [CollectionItems](#collection-items) associated with this bundle. These represent the collections this bundle belongs to. 
-`inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](#availabilities) endpoint instead. Availability of this bundle. Because bundles do not exist on a physical level (they are a collection of products), the returned availability will be the maximum number of bundles that can be made from the available products (bundle availability is restricted by the least available product). 
-`photo` | **[Photo](#photos)** `optional`<br>Primary photo of this bundle. 
-`photos` | **[Photos](#photos)** `hasmany`<br>All photos of this bundle. The primary `photo` must be selected from this set. 
-`tax_category` | **[Tax category](#tax-categories)** `optional`<br>Tax category for tax calculations. When present, this tax category overrides the tax category of the individual products. 
+`bundle_items` | **[Bundle items](https://developers.booqable.com/v4.html#bundle-items)** `hasmany`<br>The bundle items that make up this bundle. 
+`collection_items` | **[Collection items](https://developers.booqable.com/v4.html#collection-items)** `hasmany`<br>The [CollectionItems](https://developers.booqable.com/v4.html#collection-items) associated with this bundle. These represent the collections this bundle belongs to. 
+`inventory_levels` | **[Inventory levels](https://developers.booqable.com/v4.html#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](https://developers.booqable.com/v4.html#availabilities) endpoint instead. Availability of this bundle. Because bundles do not exist on a physical level (they are a collection of products), the returned availability will be the maximum number of bundles that can be made from the available products (bundle availability is restricted by the least available product). 
+`photo` | **[Photo](https://developers.booqable.com/v4.html#photos)** `optional`<br>Primary photo of this bundle. 
+`photos` | **[Photos](https://developers.booqable.com/v4.html#photos)** `hasmany`<br>All photos of this bundle. The primary `photo` must be selected from this set. 
+`tax_category` | **[Tax category](https://developers.booqable.com/v4.html#tax-categories)** `optional`<br>Tax category for tax calculations. When present, this tax category overrides the tax category of the individual products. 
 
 
-Check matching attributes under [Fields](#bundles-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#bundles-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -57,7 +57,7 @@ Check each individual operation to see which relations can be included as a side
 `photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
 `photo_id` | **uuid** `readonly` `nullable`<br>Primary photo of this bundle. 
 `photo_url` | **string** `readonly`<br>Main photo URL. 
-`product_type` | **enum** `readonly`<br>Always `bundle`. This attribute exists because bundles are a kind of [Item](#items).<br> Always `bundle`
+`product_type` | **enum** `readonly`<br>Always `bundle`. This attribute exists because bundles are a kind of [Item](https://developers.booqable.com/v4.html#items).<br> Always `bundle`
 `remote_photo_url` | **string** `writeonly`<br>URL to an image on the web. 
 `seo_description` | **string** `nullable`<br>SEO meta description tag. 
 `seo_title` | **string** `nullable`<br>SEO title tag. 
@@ -67,7 +67,7 @@ Check each individual operation to see which relations can be included as a side
 `tag_list` | **array** <br>List of tags. 
 `tax_category_id` | **uuid** `nullable`<br>Tax category for tax calculations. When present, this tax category overrides the tax category of the individual products. 
 `taxable` | **boolean** <br>Whether this bundle is taxable. 
-`type` | **string** `readonly`<br>Always `bundles`. This attribute exists because bundles are a kind of [Item](#items). 
+`type` | **string** `readonly`<br>Always `bundles`. This attribute exists because bundles are a kind of [Item](https://developers.booqable.com/v4.html#items). 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 

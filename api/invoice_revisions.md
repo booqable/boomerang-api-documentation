@@ -11,12 +11,12 @@ made to the order since the last finalized invoice).
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>The order for which the last invoice needs to be revised.
-`revised_invoice` | **[Document](#documents)** `required`<br>The finalized invoice that was revised.
-`revision_invoice` | **[Document](#documents)** `required`<br>The replacement invoice that was generated.
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>The order for which the last invoice needs to be revised.
+`revised_invoice` | **[Document](https://developers.booqable.com/v4.html#documents)** `required`<br>The finalized invoice that was revised.
+`revision_invoice` | **[Document](https://developers.booqable.com/v4.html#documents)** `required`<br>The replacement invoice that was generated.
 
 
-Check matching attributes under [Fields](#invoice-revisions-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#invoice-revisions-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

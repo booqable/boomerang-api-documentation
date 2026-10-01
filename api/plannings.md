@@ -1,26 +1,26 @@
 # Plannings
 
 Plannings track the quantitative planned activities (order or downtime) of an item. Planned activities will make an item unavailable for other activities during a given period. Planning records are never directly created or updated.
-The item can either be a [Product](#products) or a [Bundle](#bundles).
+The item can either be a [Product](https://developers.booqable.com/v4.html#products) or a [Bundle](https://developers.booqable.com/v4.html#bundles).
 
 ## Product Plannings vs Bundle Plannings
 
 There are two types of Plannings:
 
-1. **Product Plannings**: These represent the planning of a single [Product](#products).
+1. **Product Plannings**: These represent the planning of a single [Product](https://developers.booqable.com/v4.html#products).
 
-2. **Bundle Plannings**: These represent the planning of a [Bundle](#bundles) (a group of [Products](#products)). Some attributes
-   are omitted for Bundle Plannings because they don't apply at the [Bundle](#bundles) level.
+2. **Bundle Plannings**: These represent the planning of a [Bundle](https://developers.booqable.com/v4.html#bundles) (a group of [Products](https://developers.booqable.com/v4.html#products)). Some attributes
+   are omitted for Bundle Plannings because they don't apply at the [Bundle](https://developers.booqable.com/v4.html#bundles) level.
 
 ## Nested Plannings
 
-Nested Plannings contain information about individual [Products](#products) in a [Bundle](#bundles).
-Note that nested Plannings cannot be deleted directly; the parent [Line](#lines)
+Nested Plannings contain information about individual [Products](https://developers.booqable.com/v4.html#products) in a [Bundle](https://developers.booqable.com/v4.html#bundles).
+Note that nested Plannings cannot be deleted directly; the parent [Line](https://developers.booqable.com/v4.html#lines)
 should be deleted instead.
 
-When a [Bundle](#bundles) is booked:
-- A parent Planning is created for the [Bundle](#bundles) itself
-- Nested Plannings are created for each [Product](#products) within the [Bundle](#bundles)
+When a [Bundle](https://developers.booqable.com/v4.html#bundles) is booked:
+- A parent Planning is created for the [Bundle](https://developers.booqable.com/v4.html#bundles) itself
+- Nested Plannings are created for each [Product](https://developers.booqable.com/v4.html#products) within the [Bundle](https://developers.booqable.com/v4.html#bundles)
 - The nested Plannings have their `parent_planning_id` set to the ID of the parent Planning
 
 ## Reservation vs Planning Dates
@@ -36,18 +36,18 @@ Plannings use two sets of dates that serve different purposes:
 ## Relationships
 Name | Description
 -- | --
-`downtime` | **[Downtime](#downtimes)** `optional`<br>The [Downtime](#downtimes) this Planning belongs to. This association is present when `planning_type: "downtime"`. A downtime represents a period when items are unavailable for rental due to maintenance, repairs, or other operational reasons. It is not associated with a customer order. 
-`item` | **[Item](#items)** `required`<br>The [Product](#products) or [Bundle](#bundles) that was booked. 
-`nested_plannings` | **[Plannings](#plannings)** `hasmany`<br>When `item` is a [Bundle](#bundles), then there is a nested planning that corresponds for each [BundleItem](#bundle-items). 
-`order` | **[Order](#orders)** `optional`<br>The [Order](#orders) this Planning belongs to. 
-`order_line` | **[Line](#lines)** `optional`<br>The [Line](#lines) which holds financial information for this Planning. 
-`parent_planning` | **[Planning](#plannings)** `required`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
-`start_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the planned activity begins. For order plannings, this is where the customer will pick up the item. 
-`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItems](#stock-items) specified for this Planning, and their current status. For trackable products, this association contains the specific inventory items assigned to this planning. <br/> The number of StockItemPlannings can be less than `planning.quantity`. This is because stock items may not yet be specified (assigned) for this planning.<br>For order plannings, stock items are typically specified through the [OrderFulfillments](#order-fulfillments) resource, which creates the corresponding StockItemPlannings linking specific inventory items to this planning. 
-`stop_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the planned activity ends. For order plannings, this is where the customer will return the product. 
+`downtime` | **[Downtime](https://developers.booqable.com/v4.html#downtimes)** `optional`<br>The [Downtime](https://developers.booqable.com/v4.html#downtimes) this Planning belongs to. This association is present when `planning_type: "downtime"`. A downtime represents a period when items are unavailable for rental due to maintenance, repairs, or other operational reasons. It is not associated with a customer order. 
+`item` | **[Item](https://developers.booqable.com/v4.html#items)** `required`<br>The [Product](https://developers.booqable.com/v4.html#products) or [Bundle](https://developers.booqable.com/v4.html#bundles) that was booked. 
+`nested_plannings` | **[Plannings](https://developers.booqable.com/v4.html#plannings)** `hasmany`<br>When `item` is a [Bundle](https://developers.booqable.com/v4.html#bundles), then there is a nested planning that corresponds for each [BundleItem](https://developers.booqable.com/v4.html#bundle-items). 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `optional`<br>The [Order](https://developers.booqable.com/v4.html#orders) this Planning belongs to. 
+`order_line` | **[Line](https://developers.booqable.com/v4.html#lines)** `optional`<br>The [Line](https://developers.booqable.com/v4.html#lines) which holds financial information for this Planning. 
+`parent_planning` | **[Planning](https://developers.booqable.com/v4.html#plannings)** `required`<br>When present, this Planning is part of a [Bundle](https://developers.booqable.com/v4.html#bundles) and corresponds to a [BundleItem](https://developers.booqable.com/v4.html#bundle-items). Inverse of the `nested_plannings` relation. 
+`start_location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the planned activity begins. For order plannings, this is where the customer will pick up the item. 
+`stock_item_plannings` | **[Stock item plannings](https://developers.booqable.com/v4.html#stock-item-plannings)** `hasmany`<br>The [StockItems](https://developers.booqable.com/v4.html#stock-items) specified for this Planning, and their current status. For trackable products, this association contains the specific inventory items assigned to this planning. <br/> The number of StockItemPlannings can be less than `planning.quantity`. This is because stock items may not yet be specified (assigned) for this planning.<br>For order plannings, stock items are typically specified through the [OrderFulfillments](https://developers.booqable.com/v4.html#order-fulfillments) resource, which creates the corresponding StockItemPlannings linking specific inventory items to this planning. 
+`stop_location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the planned activity ends. For order plannings, this is where the customer will return the product. 
 
 
-Check matching attributes under [Fields](#plannings-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#plannings-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -57,27 +57,27 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether planning is archived.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a Planning is removed from an Order through the Lines resource. When an Order is archived, `status` of Plannings is set to `archived`, but the `archived` attribute remains false. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the planning was archived. Indicates when the `archived` attribute was set to true. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`downtime_id` | **uuid** `readonly` `nullable`<br>The [Downtime](#downtimes) this Planning belongs to. This association is present when `planning_type: "downtime"`. A downtime represents a period when items are unavailable for rental due to maintenance, repairs, or other operational reasons. It is not associated with a customer order. 
+`downtime_id` | **uuid** `readonly` `nullable`<br>The [Downtime](https://developers.booqable.com/v4.html#downtimes) this Planning belongs to. This association is present when `planning_type: "downtime"`. A downtime represents a period when items are unavailable for rental due to maintenance, repairs, or other operational reasons. It is not associated with a customer order. 
 `fulfillment_type` | **string** `writeonly`<br>The type of fulfillment for this planning. 
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** `readonly`<br>The [Product](#products) or [Bundle](#bundles) that was booked. 
+`item_id` | **uuid** `readonly`<br>The [Product](https://developers.booqable.com/v4.html#products) or [Bundle](https://developers.booqable.com/v4.html#bundles) that was booked. 
 `item_name` | **string** `writeonly`<br>Allows sorting plannings by item name. 
-`location_shortage_amount` | **integer** <br>Amount of items short at the specific location. This represents how many more items would be needed at the `start_location` to fully satisfy this planning. A value greater than zero indicates a location shortage. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
-`order_id` | **uuid** `readonly` `nullable`<br>The [Order](#orders) this Planning belongs to. 
+`location_shortage_amount` | **integer** <br>Amount of items short at the specific location. This represents how many more items would be needed at the `start_location` to fully satisfy this planning. A value greater than zero indicates a location shortage. This attribute is omitted when this is a parent planning for a [Bundle](https://developers.booqable.com/v4.html#bundles). 
+`order_id` | **uuid** `readonly` `nullable`<br>The [Order](https://developers.booqable.com/v4.html#orders) this Planning belongs to. 
 `order_number` | **integer** `writeonly`<br>Allows sorting plannings by order number. 
-`parent_planning_id` | **uuid** `readonly`<br>When present, this Planning is part of a [Bundle](#bundles) and corresponds to a [BundleItem](#bundle-items). Inverse of the `nested_plannings` relation. 
-`planning_type` | **enum** `readonly`<br>Type of planning. Can be `order` for regular rental plannings created through [Orders](#orders), or `downtime` for operational periods when items are unavailable due to maintenance, repairs, or other reasons. Downtime plannings don't belong to an order and are managed separately.<br> One of: `order`, `downtime`.
+`parent_planning_id` | **uuid** `readonly`<br>When present, this Planning is part of a [Bundle](https://developers.booqable.com/v4.html#bundles) and corresponds to a [BundleItem](https://developers.booqable.com/v4.html#bundle-items). Inverse of the `nested_plannings` relation. 
+`planning_type` | **enum** `readonly`<br>Type of planning. Can be `order` for regular rental plannings created through [Orders](https://developers.booqable.com/v4.html#orders), or `downtime` for operational periods when items are unavailable due to maintenance, repairs, or other reasons. Downtime plannings don't belong to an order and are managed separately.<br> One of: `order`, `downtime`.
 `quantity` | **integer** `readonly`<br>Total planned quantity of items. This affects availability calculations and represents how many items are being booked/reserved. Changing this value may result in shortages if additional items are not available for the rental period. 
 `reserved` | **boolean** `readonly`<br>Whether items are reserved. When `true`, this Planning affects availability calculations and the items are not available for other plannings during the reserved period. For order plannings, this is set to `true` when an Order transitions from `draft` to `reserved` status. 
 `reserved_from` | **datetime** `readonly`<br>When the items actually become unavailable in the system. May differ from `starts_at` due to buffer time. This is the actual time used for availability calculations. 
 `reserved_till` | **datetime** `readonly`<br>When the items actually become available again in the system. May differ from `stops_at` due to buffer time. This is the actual time used for availability calculations. 
-`shortage_amount` | **integer** <br>**Deprecated.** Duplicates `location_shortage_amount` and is being phased out. Use `location_shortage_amount` instead.<br>Amount of items short at the location. A value greater than zero indicates a shortage. This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
-`start_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the planned activity begins. For order plannings, this is where the customer will pick up the item. 
+`shortage_amount` | **integer** <br>**Deprecated.** Duplicates `location_shortage_amount` and is being phased out. Use `location_shortage_amount` instead.<br>Amount of items short at the location. A value greater than zero indicates a shortage. This attribute is omitted when this is a parent planning for a [Bundle](https://developers.booqable.com/v4.html#bundles). 
+`start_location_id` | **uuid** `readonly`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the planned activity begins. For order plannings, this is where the customer will pick up the item. 
 `started` | **integer** <br>Amount of items that have begun their planned activity. For order plannings, this represents items picked up or delivered to the customer. This value increases when staff performs start actions. Cannot exceed `quantity`. When all items are started (`started` equals `quantity`), the Planning is considered fully started. This attribute is omitted when this is a parent planning for a Bundle. 
 `starts_at` | **datetime** `readonly`<br>When the planned activity is scheduled to begin. For order plannings, this represents when pickup/delivery is planned to occur and is shown to staff and customers as the beginning of the rental. 
 `status` | **enum** `readonly`<br>Status of this planning. A planning can become "stopped" before the order it belongs to is stopped. Otherwise, the status mostly follows the status of the order.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a Planning is removed from an Order through the Lines resource. When an Order is archived, `status` of Plannings is set to `archived`, but the `archived` attribute remains false.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
-`stop_location_id` | **uuid** `readonly`<br>The [Location](#locations) where the planned activity ends. For order plannings, this is where the customer will return the product. 
-`stopped` | **integer** <br>Amount of items that have completed their planned activity. For order plannings, this represents items returned by the customer. This value increases when staff performs stop actions. Cannot exceed `quantity` and `started` (items must be started before they can be stopped). When all items are stopped (`stopped` equals `quantity`), the Planning is considered fully completed.<br>For order plannings with [Products](#products) that have `product_type == consumable`, items are never returned, and the `stopped` attribute will always remain zero.<br>This attribute is omitted when this is a parent planning for a [Bundle](#bundles). 
+`stop_location_id` | **uuid** `readonly`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the planned activity ends. For order plannings, this is where the customer will return the product. 
+`stopped` | **integer** <br>Amount of items that have completed their planned activity. For order plannings, this represents items returned by the customer. This value increases when staff performs stop actions. Cannot exceed `quantity` and `started` (items must be started before they can be stopped). When all items are stopped (`stopped` equals `quantity`), the Planning is considered fully completed.<br>For order plannings with [Products](https://developers.booqable.com/v4.html#products) that have `product_type == consumable`, items are never returned, and the `stopped` attribute will always remain zero.<br>This attribute is omitted when this is a parent planning for a [Bundle](https://developers.booqable.com/v4.html#bundles). 
 `stops_at` | **datetime** `readonly`<br>When the planned activity is scheduled to end. For order plannings, this represents when return is planned to occur and is shown to staff and customers as the end of the rental. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 

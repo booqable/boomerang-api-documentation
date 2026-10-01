@@ -12,12 +12,12 @@ Downtimes can only be created for rental products. Sales items, service products
 ## Relationships
 Name | Description
 -- | --
-`location` | **[Location](#locations)** `required`<br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
-`product` | **[Product](#products)** `required`<br>The product that is affected by the downtime. Must be a rental product — sales items, service products, and bundles cannot be scheduled for downtime. 
-`stock_item` | **[Stock item](#stock-items)** `optional`<br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
+`location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>The location where the downtime occurs. This helps track where maintenance or repairs are taking place. 
+`product` | **[Product](https://developers.booqable.com/v4.html#products)** `required`<br>The product that is affected by the downtime. Must be a rental product — sales items, service products, and bundles cannot be scheduled for downtime. 
+`stock_item` | **[Stock item](https://developers.booqable.com/v4.html#stock-items)** `optional`<br>The specific stock item that is unavailable during the downtime period. Only applicable for tracked products. 
 
 
-Check matching attributes under [Fields](#downtimes-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#downtimes-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

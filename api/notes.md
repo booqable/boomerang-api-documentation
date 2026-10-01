@@ -5,11 +5,11 @@ Allows you to leave notes attached to other resources.
 ## Relationships
 Name | Description
 -- | --
-`employee` | **[Employee](#employees)** `required`<br>The [Employee](#employees) who created this note. 
-`owner` | **[Customer](#customers), [Product group](#product-groups), [Product](#products), [Stock item](#stock-items), [Bundle](#bundles), [Order](#orders), [Document](#documents), [User](#users)** `required`<br>The resource this note is about. 
+`employee` | **[Employee](https://developers.booqable.com/v4.html#employees)** `required`<br>The [Employee](https://developers.booqable.com/v4.html#employees) who created this note. 
+`owner` | **[Customer](https://developers.booqable.com/v4.html#customers), [Product group](https://developers.booqable.com/v4.html#product-groups), [Product](https://developers.booqable.com/v4.html#products), [Stock item](https://developers.booqable.com/v4.html#stock-items), [Bundle](https://developers.booqable.com/v4.html#bundles), [Order](https://developers.booqable.com/v4.html#orders), [Document](https://developers.booqable.com/v4.html#documents), [User](https://developers.booqable.com/v4.html#users)** `required`<br>The resource this note is about. 
 
 
-Check matching attributes under [Fields](#notes-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#notes-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -18,7 +18,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `body` | **string** <br>The content of the note. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`employee_id` | **uuid** `readonly`<br>The [Employee](#employees) who created this note. 
+`employee_id` | **uuid** `readonly`<br>The [Employee](https://developers.booqable.com/v4.html#employees) who created this note. 
 `id` | **uuid** `readonly`<br>Primary key.
 `owner_id` | **uuid** `readonly-after-create`<br>The resource this note is about. 
 `owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `customers`, `product_groups`, `products`, `stock_items`, `bundles`, `orders`, `documents`, `users`.

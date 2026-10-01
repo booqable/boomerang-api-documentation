@@ -22,10 +22,10 @@ the coupon applied. To update the discount on existing orders, this must be done
 ## Relationships
 Name | Description
 -- | --
-`coupon_items` | **[Coupon items](#coupon-items)** `hasmany`<br>The coupon items that define which collections or items are eligible. You can sideload coupon items and their linked items with `include=coupon_items.item`. 
+`coupon_items` | **[Coupon items](https://developers.booqable.com/v4.html#coupon-items)** `hasmany`<br>The coupon items that define which collections or items are eligible. You can sideload coupon items and their linked items with `include=coupon_items.item`. 
 
 
-Check matching attributes under [Fields](#coupons-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#coupons-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

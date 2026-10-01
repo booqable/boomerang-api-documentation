@@ -1,6 +1,6 @@
 # Price rules
 
-A price rule contains a single pricing adjustment rule and belongs to a [PriceRuleset](#price-rulesets).
+A price rule contains a single pricing adjustment rule and belongs to a [PriceRuleset](https://developers.booqable.com/v4.html#price-rulesets).
 
 A price rule can have one of these types:
 
@@ -27,10 +27,10 @@ as well as these adjustment strategies:
 ## Relationships
 Name | Description
 -- | --
-`price_ruleset` | **[Price ruleset](#price-rulesets)** `required`<br>The advanced pricing ruleset this rule is part of. 
+`price_ruleset` | **[Price ruleset](https://developers.booqable.com/v4.html#price-rulesets)** `required`<br>The advanced pricing ruleset this rule is part of. 
 
 
-Check matching attributes under [Fields](#price-rules-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#price-rules-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

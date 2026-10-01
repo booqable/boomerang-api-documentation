@@ -1,35 +1,35 @@
 # Order status transitions
 
-Transitions an [Order](#orders) from one status to another status.
+Transitions an [Order](https://developers.booqable.com/v4.html#orders) from one status to another status.
 
-See [Order](#orders-statuses) for a description of the different statuses.
+See [Order](https://developers.booqable.com/v4.html#orders-statuses) for a description of the different statuses.
 
 Note that you cannot transition to `started` or to `stopped`.
-The [Order](#orders) will transition to those statuses automatically when
-starting or stopping items through the [OrderFulfillment](#order-fulfillments) resource.
+The [Order](https://developers.booqable.com/v4.html#orders) will transition to those statuses automatically when
+starting or stopping items through the [OrderFulfillment](https://developers.booqable.com/v4.html#order-fulfillments) resource.
 It is however possible to revert to the `started` or the `stopped` status.
 
-It is not possible to resurrect a canceled [Order](#orders).
-[Duplicating](#order-duplications) a canceled [Order](#orders) is possible.
+It is not possible to resurrect a canceled [Order](https://developers.booqable.com/v4.html#orders).
+[Duplicating](https://developers.booqable.com/v4.html#order-duplications) a canceled [Order](https://developers.booqable.com/v4.html#orders) is possible.
 
 ### Errors
 
-When the [Order](#orders) cannot be transitioned, and `error.code` is `items_not_available`,
+When the [Order](https://developers.booqable.com/v4.html#orders) cannot be transitioned, and `error.code` is `items_not_available`,
 then the `error.meta.blocking.*.reason` or `error.meta.warning.*.reason`
 attribute contains one of the following reasons:
 
 - `stock_item_specified`
-  One or more of the [StockItems](#stock-items) on this [Order](#orders) have also been planned
-  for other current or future [Orders](#orders). The [Product](#products) is specified in
+  One or more of the [StockItems](https://developers.booqable.com/v4.html#stock-items) on this [Order](https://developers.booqable.com/v4.html#orders) have also been planned
+  for other current or future [Orders](https://developers.booqable.com/v4.html#orders). The [Product](https://developers.booqable.com/v4.html#products) is specified in
   the `error.meta.blocking.*.item_id` attribute
-  and `error.meta.blocking.*.unavailable` contains the problematic [StockItems](#stock-items).
+  and `error.meta.blocking.*.unavailable` contains the problematic [StockItems](https://developers.booqable.com/v4.html#stock-items).
 
 - `shortage`
-  A shortage would be created for one or more of the [Products](#products) on this [Order](#orders).
+  A shortage would be created for one or more of the [Products](https://developers.booqable.com/v4.html#products) on this [Order](https://developers.booqable.com/v4.html#orders).
   When the shortages would be within the shortage limits of the products,
   a warning is returned. Otherwise a blocking error is returned.
-  When reserving an [Order](#orders), a warning can be overridden by setting `confirm_shortage` to `true`.
-  The [Product](#products) is specified in the `error.meta.warning.*.item_id` or
+  When reserving an [Order](https://developers.booqable.com/v4.html#orders), a warning can be overridden by setting `confirm_shortage` to `true`.
+  The [Product](https://developers.booqable.com/v4.html#products) is specified in the `error.meta.warning.*.item_id` or
   `error.meta.blocking.*.item_id` attribute.
 
 Note that is is possible to get multiple warnings and errors of different
@@ -37,28 +37,28 @@ types at the same time.
 
 ### Permissions
 
-- Canceling an [Order](#orders) requires the `cancel_orders` permission.
-- Reverting an [Order](#orders) requires the `revert_orders` permission.
+- Canceling an [Order](https://developers.booqable.com/v4.html#orders) requires the `cancel_orders` permission.
+- Reverting an [Order](https://developers.booqable.com/v4.html#orders) requires the `revert_orders` permission.
 
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>The [Order](#orders) whose status is changed. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>The [Order](https://developers.booqable.com/v4.html#orders) whose status is changed. 
 
 
-Check matching attributes under [Fields](#order-status-transitions-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#order-status-transitions-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
 
  Name | Description
 -- | --
-`confirm_shortage` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](#orders). 
+`confirm_shortage` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](https://developers.booqable.com/v4.html#orders). 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** <br>The [Order](#orders) whose status is changed. 
-`revert` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `draft` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
-`transition_from` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`.
-`transition_to` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`order_id` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) whose status is changed. 
+`revert` | **boolean** <br>Indicates if this transition reverts the [Order](https://developers.booqable.com/v4.html#orders) back to an earlier status. "Earlier status" does not require this specific [Order](https://developers.booqable.com/v4.html#orders) to ever have been in that status (e.g. `draft` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](https://developers.booqable.com/v4.html#orders) in general. 
+`transition_from` | **enum** <br>The current status of the [Order](https://developers.booqable.com/v4.html#orders).<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`.
+`transition_to` | **enum** <br>The new status of the [Order](https://developers.booqable.com/v4.html#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ## Transition
@@ -480,11 +480,11 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](#orders). 
-`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) whose status is changed. 
-`data[attributes][revert]` | **boolean** <br>Indicates if this transition reverts the [Order](#orders) back to an earlier status. "Earlier status" does not require this specific [Order](#orders) to ever have been in that status (e.g. `draft` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](#orders) in general. 
-`data[attributes][transition_from]` | **enum** <br>The current status of the [Order](#orders).<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`.
-`data[attributes][transition_to]` | **enum** <br>The new status of the [Order](#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
+`data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings. This is only possible when _reserving_ an [Order](https://developers.booqable.com/v4.html#orders). 
+`data[attributes][order_id]` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) whose status is changed. 
+`data[attributes][revert]` | **boolean** <br>Indicates if this transition reverts the [Order](https://developers.booqable.com/v4.html#orders) back to an earlier status. "Earlier status" does not require this specific [Order](https://developers.booqable.com/v4.html#orders) to ever have been in that status (e.g. `draft` can have been skipped). "Earlier" means earlier in the conceptual progressing of statuses of [Orders](https://developers.booqable.com/v4.html#orders) in general. 
+`data[attributes][transition_from]` | **enum** <br>The current status of the [Order](https://developers.booqable.com/v4.html#orders).<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`.
+`data[attributes][transition_to]` | **enum** <br>The new status of the [Order](https://developers.booqable.com/v4.html#orders). It is only possible to transition to `started` or `stopped` in combination with `revert: true`.<br> One of: `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 
 
 ### Includes

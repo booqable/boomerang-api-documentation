@@ -3,16 +3,16 @@
 Authentication methods define ways to authenticate with the API. They are always scoped to
 the currently signed-in employee.
 
-See [Authentication](#authentication) for more information on authenticating with the API.
+See [Authentication](https://developers.booqable.com/v4.html#authentication) for more information on authenticating with the API.
 
 ## Relationships
 Name | Description
 -- | --
-`company` | **[Company](#companies)** `required`<br>The company this authentication method belongs to. 
-`employee` | **[Employee](#employees)** `required`<br>The employee this authentication method belongs to. 
+`company` | **[Company](https://developers.booqable.com/v4.html#companies)** `required`<br>The company this authentication method belongs to. 
+`employee` | **[Employee](https://developers.booqable.com/v4.html#employees)** `required`<br>The employee this authentication method belongs to. 
 
 
-Check matching attributes under [Fields](#authentication-methods-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#authentication-methods-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

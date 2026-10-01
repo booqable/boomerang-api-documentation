@@ -4,9 +4,9 @@ Payments represent financial transactions in Booqable, including charges, author
 
 The three payment types are:
 
-- **[PaymentCharges](#payment-charges)**: Direct charges for orders or carts
-- **[PaymentAuthorizations](#payment-authorizations)**: Pre-authorizations that can be captured later
-- **[PaymentRefunds](#payment-refunds)**: Refunds for previously charged amounts
+- **[PaymentCharges](https://developers.booqable.com/v4.html#payment-charges)**: Direct charges for orders or carts
+- **[PaymentAuthorizations](https://developers.booqable.com/v4.html#payment-authorizations)**: Pre-authorizations that can be captured later
+- **[PaymentRefunds](https://developers.booqable.com/v4.html#payment-refunds)**: Refunds for previously charged amounts
 
 Payments can be processed through various providers:
 

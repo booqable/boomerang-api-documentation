@@ -1,35 +1,35 @@
 # Collection items
 
-An item in a [Collection](#collections).
+An item in a [Collection](https://developers.booqable.com/v4.html#collections).
 
 CollectionItems cannot be changed directly, but their position can be updated
-through the [Sortings](#sortings) resource.
+through the [Sortings](https://developers.booqable.com/v4.html#sortings) resource.
 
-When a CollectionItem is created or destroyed, the parent [Collection](#collections)
+When a CollectionItem is created or destroyed, the parent [Collection](https://developers.booqable.com/v4.html#collections)
 `item_count` is automatically recalculated to reflect only items that are visible
 in the store (`show_in_store: true`).
 
 ## Relationships
 Name | Description
 -- | --
-`collection` | **[Collection](#collections)** `required`<br>The [Collection](#collections) this CollectionItem is part of. 
-`item` | **[Item](#items)** `required`<br>The item. Can be a [ProductGroup](#product-groups) or a [Bundle](#bundles). 
+`collection` | **[Collection](https://developers.booqable.com/v4.html#collections)** `required`<br>The [Collection](https://developers.booqable.com/v4.html#collections) this CollectionItem is part of. 
+`item` | **[Item](https://developers.booqable.com/v4.html#items)** `required`<br>The item. Can be a [ProductGroup](https://developers.booqable.com/v4.html#product-groups) or a [Bundle](https://developers.booqable.com/v4.html#bundles). 
 
 
-Check matching attributes under [Fields](#collection-items-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#collection-items-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
 
  Name | Description
 -- | --
-`collection_id` | **uuid** `readonly-after-create`<br>The [Collection](#collections) this CollectionItem is part of. 
+`collection_id` | **uuid** `readonly-after-create`<br>The [Collection](https://developers.booqable.com/v4.html#collections) this CollectionItem is part of. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `implicit` | **boolean** `readonly`<br>A value of `true` indicates that this item was not added explicitly, but instead is included in one of the child Collections. 
-`item_id` | **uuid** `readonly-after-create`<br>The item. Can be a [ProductGroup](#product-groups) or a [Bundle](#bundles). 
+`item_id` | **uuid** `readonly-after-create`<br>The item. Can be a [ProductGroup](https://developers.booqable.com/v4.html#product-groups) or a [Bundle](https://developers.booqable.com/v4.html#bundles). 
 `position` | **integer** `readonly`<br>Position of this item within the Collection. I.e sorting relative to other CollectionItems. 
-`source_collections` | **array** `readonly` `extra`<br>The child [Collection](#collections)(s) which explicitly include the [ProductGroup](#product-groups)/[Bundle](#bundles), and are the source(s) for this CollectionItem. 
+`source_collections` | **array** `readonly` `extra`<br>The child [Collection](https://developers.booqable.com/v4.html#collections)(s) which explicitly include the [ProductGroup](https://developers.booqable.com/v4.html#product-groups)/[Bundle](https://developers.booqable.com/v4.html#bundles), and are the source(s) for this CollectionItem. 
 
 
 ## List collection items
@@ -185,8 +185,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][collection_id]` | **uuid** <br>The [Collection](#collections) this CollectionItem is part of. 
-`data[attributes][item_id]` | **uuid** <br>The item. Can be a [ProductGroup](#product-groups) or a [Bundle](#bundles). 
+`data[attributes][collection_id]` | **uuid** <br>The [Collection](https://developers.booqable.com/v4.html#collections) this CollectionItem is part of. 
+`data[attributes][item_id]` | **uuid** <br>The item. Can be a [ProductGroup](https://developers.booqable.com/v4.html#product-groups) or a [Bundle](https://developers.booqable.com/v4.html#bundles). 
 
 
 ### Includes

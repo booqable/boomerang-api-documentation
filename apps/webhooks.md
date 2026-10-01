@@ -2,7 +2,7 @@
 
 Apps can subscribe to webhook events to receive real-time notifications when certain actions occur in Booqable. This allows your app to respond to user actions and maintain synchronization with the platform.
 
-To learn more about how to use webhooks see the [Webhook Endpoints documentation](/v4.html#webhook-endpoints).
+To learn more about how to use webhooks see the [Webhook Endpoints documentation](https://developers.booqable.com/v4.html#webhook-endpoints).
 
 ### Available app events
 
@@ -12,7 +12,7 @@ There are four webhook events specifically related to app lifecycle:
 Triggered when a user installs your app from the Booqable App Store.
 
 #### `app.configured`
-Triggered when all required app settings have been configured and the app becomes fully functional.
+Triggered every time the subscription is saved while the app is configured, not only on the one-time transition into being configured. If a merchant edits already-configured settings again later, this fires again.
 
 #### `app.plan_changed`
 Triggered when a user upgrades or downgrades their app subscription plan.
@@ -22,44 +22,36 @@ Triggered when a user removes your app from their Booqable account.
 
 ### Webhook payload example
 
-```json
+```jsonc
+// app.installed payload
 {
   "id": "22799991-8bc7-4823-a4d1-7eb6329d21b2",
-  "created_at": "2025-08-02T11:12:18.145359+00:00",
-  "updated_at": "2025-08-02T11:12:18.145359+00:00",
-  "identifier": "mailchimp",
-  "app_id": "a2a94184-00f3-424f-bc36-c46a84eb1461",
-  "plan_id": "18ad296f-16af-4172-a3de-44bd1218543f",
-  "category": "marketing",
-  "icon_cropped_url": null,
-  "price_in_cents": 1000,
-  "paid": true,
-  "free_during_beta": false,
-  "configured": false,
-  "name": "Mailchimp",
-  "provider_name": "Booqable",
-  "settings": {
-    "api_key": {
-      "type": "text",
-      "required": true,
-      "label": "API key",
-      "placeholder": "UA-12345678-1"
-    }
-  },
-  "settings_values": {},
-  "config_url": null,
-  "support": {
-    "email": "support@booqable.com",
-    "website": "https://help.booqable.com"
-  },
-  "features": {},
-  "oauth_status": null,
-  "frames": null,
-  "theme_blocks": []
+  "created_at": "2026-08-02T11:12:18.145359+00:00",
+  "updated_at": "2026-08-02T11:12:18.145359+00:00",
+  "event": "app.installed",
+  "version": 4,
+  "resource_type": "app_subscriptions",
+  "data": {
+    "id": "5d0c1f7a-93be-4a62-b0f5-6c1e2d8a4b37",
+    "created_at": "2026-08-02T11:12:18.011273+00:00",
+    "updated_at": "2026-08-02T11:12:18.011273+00:00",
+    "identifier": "mailchimp",
+    "app_id": "a2a94184-00f3-424f-bc36-c46a84eb1461",
+    "plan_id": "18ad296f-16af-4172-a3de-44bd1218543f",
+    "categories": ["marketing"],
+    "price_in_cents": 1000,
+    "paid": true,
+    "free_during_beta": false,
+    "configured": false,
+    "name": "Mailchimp",
+    "provider_name": "Booqable",
+    "settings_values": {},
+    "configuration": { /* your manifest, with references resolved */ },
+    "features": {},
+    "oauth_status": "pending",
+    "theme_blocks": []
+  }
 }
 ```
 
-To the right is an example of a payload for the app installation event.
-
-All app webhook events use the same payload structure with only the `event` field value varying between `app.installed`, `app.configured`, `app.plan_changed`, and `app.uninstalled`.
-
+All app webhook events share this envelope: `event`, `version`, and `resource_type` describe what happened, and the actual subscription fields are nested under `data`. Only `event` varies between `app.installed`, `app.configured`, `app.plan_changed`, and `app.uninstalled`.

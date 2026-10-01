@@ -5,7 +5,7 @@ They contain information about pricing, planning, or markup.
 
 Lines can only be created for orders. On invoices, lines are automatically generated
 based on price changes of the order. For quotes and contracts, lines are generated through
-the [Document](#documents) resource.
+the [Document](https://developers.booqable.com/v4.html#documents) resource.
 
 <aside class="warning">
   The Lines resource is for creating <strong>custom charges and sections only</strong>.
@@ -20,7 +20,7 @@ the [Document](#documents) resource.
 ## Kinds of Lines
 
 1. **Planning lines** Lines that have an associated Planning. These lines cannot be created through
-   the Line resource but are created by submitting a `book_*` action to [OrderFulfillments](#order-fulfillments).
+   the Line resource but are created by submitting a `book_*` action to [OrderFulfillments](https://developers.booqable.com/v4.html#order-fulfillments).
    Updating or destroying a line linked to a planning will also destroy the planning.
 
 2. **Custom lines** Lines created through the resource that don't have a planning associated with them.
@@ -100,19 +100,19 @@ To correctly sort all lines so they appear as they do within Booqable:
 ## Relationships
 Name | Description
 -- | --
-`bundle_item` | **[Bundle item](#bundle-items)** `optional`<br>The [BundleItem](#bundle-items) for which this Line was created that contains the information about item definition within bundle. 
-`item` | **[Item](#items)** `optional`<br>The Product or Bundle that was booked, when this Line has an associated Planning. 
-`nested_lines` | **[Lines](#lines)** `hasmany`<br>When `item` is a Bundle, then there is a nested line that corresponds for each BundleItem. 
-`order` | **[Order](#orders)** `required`<br>The [Order](#orders) this Line belongs to. 
-`owner` | **[Order](#orders), [Document](#documents)** `required`<br>The resource this Line belongs to. Either the [Order](#orders) directly, or a [Document](#documents). 
-`parent_line` | **[Line](#lines)** `optional`<br>When present, this Line is part of a Bundle and corresponds to a BundleItem. Inverse of the `nested_lines` relation. 
-`planning` | **[Planning](#plannings)** `optional`<br>The [Planning](#plannings) for which this Line was created that contains the logistical information related to this Line. 
-`price_structure` | **[Price structure](#price-structures)** `optional`<br>The [PriceStructure](#price-structures) used to calculate the price. 
-`price_tile` | **[Price tile](#price-tiles)** `optional`<br>The [PriceTile](#price-tiles) that was selected to calculate the price. 
-`tax_category` | **[Tax category](#tax-categories)** `optional`<br>[TaxCategory](#tax-categories) applied to this Line. 
+`bundle_item` | **[Bundle item](https://developers.booqable.com/v4.html#bundle-items)** `optional`<br>The [BundleItem](https://developers.booqable.com/v4.html#bundle-items) for which this Line was created that contains the information about item definition within bundle. 
+`item` | **[Item](https://developers.booqable.com/v4.html#items)** `optional`<br>The Product or Bundle that was booked, when this Line has an associated Planning. 
+`nested_lines` | **[Lines](https://developers.booqable.com/v4.html#lines)** `hasmany`<br>When `item` is a Bundle, then there is a nested line that corresponds for each BundleItem. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>The [Order](https://developers.booqable.com/v4.html#orders) this Line belongs to. 
+`owner` | **[Order](https://developers.booqable.com/v4.html#orders), [Document](https://developers.booqable.com/v4.html#documents)** `required`<br>The resource this Line belongs to. Either the [Order](https://developers.booqable.com/v4.html#orders) directly, or a [Document](https://developers.booqable.com/v4.html#documents). 
+`parent_line` | **[Line](https://developers.booqable.com/v4.html#lines)** `optional`<br>When present, this Line is part of a Bundle and corresponds to a BundleItem. Inverse of the `nested_lines` relation. 
+`planning` | **[Planning](https://developers.booqable.com/v4.html#plannings)** `optional`<br>The [Planning](https://developers.booqable.com/v4.html#plannings) for which this Line was created that contains the logistical information related to this Line. 
+`price_structure` | **[Price structure](https://developers.booqable.com/v4.html#price-structures)** `optional`<br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structures) used to calculate the price. 
+`price_tile` | **[Price tile](https://developers.booqable.com/v4.html#price-tiles)** `optional`<br>The [PriceTile](https://developers.booqable.com/v4.html#price-tiles) that was selected to calculate the price. 
+`tax_category` | **[Tax category](https://developers.booqable.com/v4.html#tax-categories)** `optional`<br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) applied to this Line. 
 
 
-Check matching attributes under [Fields](#lines-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#lines-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -121,9 +121,9 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `archived` | **boolean** `readonly`<br>Whether line is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the line was archived. 
-`bundle_item_id` | **uuid** `readonly` `nullable`<br>The [BundleItem](#bundle-items) for which this Line was created that contains the information about item definition within bundle. 
+`bundle_item_id` | **uuid** `readonly` `nullable`<br>The [BundleItem](https://developers.booqable.com/v4.html#bundle-items) for which this Line was created that contains the information about item definition within bundle. 
 `charge_label` | **string** `nullable`<br>Charge label. 
-`charge_length` | **integer** `nullable`<br>The charge length in seconds. It can be different than the time planned. Setting `charge_length` to `null` will trigger recalculation of the price based on order period and price rules. <br/> To recalculate prices for the entire order, use [OrderPriceRecalculation](#order-price-recalculations). 
+`charge_length` | **integer** `nullable`<br>The charge length in seconds. It can be different than the time planned. Setting `charge_length` to `null` will trigger recalculation of the price based on order period and price rules. <br/> To recalculate prices for the entire order, use [OrderPriceRecalculation](https://developers.booqable.com/v4.html#order-price-recalculations). 
 `confirm_shortage` | **boolean** `writeonly`<br>Whether to confirm a shortage when updating quantity on a line. When a line has an associated planning and you increase the quantity, the planning's quantity will also be increased. If this results in a shortage (requested quantity exceeds available inventory), the update will fail with a shortage error.<br>Setting this to `true` confirms that you want to proceed with the update despite the shortage. This is useful when you know you'll be able to fulfill the order through other means, such as acquiring additional inventory before the rental period.<br>Overriding shortage warnings is only possible when the ProductGroup is configured to allow shortage. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `discountable` | **boolean** <br>Whether line is discountable. 
@@ -132,23 +132,23 @@ Check each individual operation to see which relations can be included as a side
 `item_id` | **uuid** `readonly` `nullable`<br>The Product or Bundle that was booked, when this Line has an associated Planning. 
 `line_type` | **enum** `readonly-after-create`<br>Type of line. Can be one of: - `charge`: Regular charge line for rental items or custom charges - `section`: Visual section for organizing lines (no financial impact) - `deposit_charge`: Deposit charge line - `proration`: Partial charge for partial rental periods (invoices only) - `refund`: Refund line with negative amount - `delivery_rate`: Delivery charge based on carrier rates - `legacy_migration`: Legacy proration line<br>Only `charge` and `section` line types can be created through the resource. Other types are created by the system.<br> One of: `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`, `delivery_rate`.
 `nested_position` | **integer** `readonly` `nullable`<br>The ordering of lines within a bundle. 
-`order_id` | **uuid** `readonly`<br>The [Order](#orders) this Line belongs to. 
+`order_id` | **uuid** `readonly`<br>The [Order](https://developers.booqable.com/v4.html#orders) this Line belongs to. 
 `original_charge_label` | **string** `nullable`<br>The original charge label of the product (without price rule adjustments). 
 `original_charge_length` | **integer** `readonly`<br>The original charge length of the product (without price rule adjustments). 
 `original_price_each_in_cents` | **integer** `readonly`<br>The original price of the product (without price rule adjustments). 
-`owner_id` | **uuid** `readonly-after-create`<br>The resource this Line belongs to. Either the [Order](#orders) directly, or a [Document](#documents). 
+`owner_id` | **uuid** `readonly-after-create`<br>The resource this Line belongs to. Either the [Order](https://developers.booqable.com/v4.html#orders) directly, or a [Document](https://developers.booqable.com/v4.html#documents). 
 `owner_type` | **enum** `readonly-after-create`<br>The resource type of the owner.<br>One of: `orders`, `documents`.
 `parent_line_id` | **uuid** `readonly` `nullable`<br>When present, this Line is part of a Bundle and corresponds to a BundleItem. Inverse of the `nested_lines` relation. 
-`planning_id` | **uuid** `readonly` `nullable`<br>The [Planning](#plannings) for which this Line was created that contains the logistical information related to this Line. 
-`position` | **integer** `nullable`<br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
+`planning_id` | **uuid** `readonly` `nullable`<br>The [Planning](https://developers.booqable.com/v4.html#plannings) for which this Line was created that contains the logistical information related to this Line. 
+`position` | **integer** `nullable`<br>The ordering of lines on an order or document. See [this section](https://developers.booqable.com/v4.html#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `price_each_in_cents` | **integer** <br>Price of each line. 
 `price_in_cents` | **integer** `readonly`<br>Price of each line x quantity, based on the tax setting of the company (inclusive vs. exclusive). 
 `price_rule_values` | **hash** `readonly` `nullable`<br>Breakdown of applied price rules. This is a complex structure that contains detailed information about how price rules affected the final price calculation, including: - Which price rules were applied - What time periods they applied to - How they affected the pricing - The resulting price adjustments<br>This data is particularly useful for understanding why a line has its current price and for providing transparent pricing explanations to customers. 
-`price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structures) used to calculate the price. 
-`price_tile_id` | **uuid** `nullable`<br>The [PriceTile](#price-tiles) that was selected to calculate the price. 
+`price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structures) used to calculate the price. 
+`price_tile_id` | **uuid** `nullable`<br>The [PriceTile](https://developers.booqable.com/v4.html#price-tiles) that was selected to calculate the price. 
 `quantity` | **integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error. 
 `relevant` | **boolean** `readonly`<br>When `false` this line should not be shown to users. It is only needed for calculation of prorations. 
-`tax_category_id` | **uuid** `nullable`<br>[TaxCategory](#tax-categories) applied to this Line. 
+`tax_category_id` | **uuid** `nullable`<br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) applied to this Line. 
 `taxable` | **boolean** <br>Whether line is taxable. 
 `title` | **string** `nullable`<br>Title of the line. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -561,19 +561,19 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][charge_label]` | **string** <br>Charge label. 
-`data[attributes][charge_length]` | **integer** <br>The charge length in seconds. It can be different than the time planned. Setting `charge_length` to `null` will trigger recalculation of the price based on order period and price rules. <br/> To recalculate prices for the entire order, use [OrderPriceRecalculation](#order-price-recalculations). 
+`data[attributes][charge_length]` | **integer** <br>The charge length in seconds. It can be different than the time planned. Setting `charge_length` to `null` will trigger recalculation of the price based on order period and price rules. <br/> To recalculate prices for the entire order, use [OrderPriceRecalculation](https://developers.booqable.com/v4.html#order-price-recalculations). 
 `data[attributes][confirm_shortage]` | **boolean** <br>Whether to confirm a shortage when updating quantity on a line. When a line has an associated planning and you increase the quantity, the planning's quantity will also be increased. If this results in a shortage (requested quantity exceeds available inventory), the update will fail with a shortage error.<br>Setting this to `true` confirms that you want to proceed with the update despite the shortage. This is useful when you know you'll be able to fulfill the order through other means, such as acquiring additional inventory before the rental period.<br>Overriding shortage warnings is only possible when the ProductGroup is configured to allow shortage. 
 `data[attributes][discountable]` | **boolean** <br>Whether line is discountable. 
 `data[attributes][extra_information]` | **string** <br>Extra information about the line. 
 `data[attributes][line_type]` | **enum** <br>Type of line. Can be one of: - `charge`: Regular charge line for rental items or custom charges - `section`: Visual section for organizing lines (no financial impact) - `deposit_charge`: Deposit charge line - `proration`: Partial charge for partial rental periods (invoices only) - `refund`: Refund line with negative amount - `delivery_rate`: Delivery charge based on carrier rates - `legacy_migration`: Legacy proration line<br>Only `charge` and `section` line types can be created through the resource. Other types are created by the system.<br> One of: `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`, `delivery_rate`.
 `data[attributes][original_charge_label]` | **string** <br>The original charge label of the product (without price rule adjustments). 
-`data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the [Order](#orders) directly, or a [Document](#documents). 
+`data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the [Order](https://developers.booqable.com/v4.html#orders) directly, or a [Document](https://developers.booqable.com/v4.html#documents). 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `orders`, `documents`.
-`data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
+`data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](https://developers.booqable.com/v4.html#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
-`data[attributes][price_tile_id]` | **uuid** <br>The [PriceTile](#price-tiles) that was selected to calculate the price. 
+`data[attributes][price_tile_id]` | **uuid** <br>The [PriceTile](https://developers.booqable.com/v4.html#price-tiles) that was selected to calculate the price. 
 `data[attributes][quantity]` | **integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error. 
-`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](#tax-categories) applied to this Line. 
+`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) applied to this Line. 
 `data[attributes][taxable]` | **boolean** <br>Whether line is taxable. 
 `data[attributes][title]` | **string** <br>Title of the line. 
 
@@ -707,19 +707,19 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][charge_label]` | **string** <br>Charge label. 
-`data[attributes][charge_length]` | **integer** <br>The charge length in seconds. It can be different than the time planned. Setting `charge_length` to `null` will trigger recalculation of the price based on order period and price rules. <br/> To recalculate prices for the entire order, use [OrderPriceRecalculation](#order-price-recalculations). 
+`data[attributes][charge_length]` | **integer** <br>The charge length in seconds. It can be different than the time planned. Setting `charge_length` to `null` will trigger recalculation of the price based on order period and price rules. <br/> To recalculate prices for the entire order, use [OrderPriceRecalculation](https://developers.booqable.com/v4.html#order-price-recalculations). 
 `data[attributes][confirm_shortage]` | **boolean** <br>Whether to confirm a shortage when updating quantity on a line. When a line has an associated planning and you increase the quantity, the planning's quantity will also be increased. If this results in a shortage (requested quantity exceeds available inventory), the update will fail with a shortage error.<br>Setting this to `true` confirms that you want to proceed with the update despite the shortage. This is useful when you know you'll be able to fulfill the order through other means, such as acquiring additional inventory before the rental period.<br>Overriding shortage warnings is only possible when the ProductGroup is configured to allow shortage. 
 `data[attributes][discountable]` | **boolean** <br>Whether line is discountable. 
 `data[attributes][extra_information]` | **string** <br>Extra information about the line. 
 `data[attributes][line_type]` | **enum** <br>Type of line. Can be one of: - `charge`: Regular charge line for rental items or custom charges - `section`: Visual section for organizing lines (no financial impact) - `deposit_charge`: Deposit charge line - `proration`: Partial charge for partial rental periods (invoices only) - `refund`: Refund line with negative amount - `delivery_rate`: Delivery charge based on carrier rates - `legacy_migration`: Legacy proration line<br>Only `charge` and `section` line types can be created through the resource. Other types are created by the system.<br> One of: `section`, `deposit_charge`, `proration`, `charge`, `legacy_migration`, `delivery_rate`.
 `data[attributes][original_charge_label]` | **string** <br>The original charge label of the product (without price rule adjustments). 
-`data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the [Order](#orders) directly, or a [Document](#documents). 
+`data[attributes][owner_id]` | **uuid** <br>The resource this Line belongs to. Either the [Order](https://developers.booqable.com/v4.html#orders) directly, or a [Document](https://developers.booqable.com/v4.html#documents). 
 `data[attributes][owner_type]` | **enum** <br>The resource type of the owner.<br>One of: `orders`, `documents`.
-`data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
+`data[attributes][position]` | **integer** <br>The ordering of lines on an order or document. See [this section](https://developers.booqable.com/v4.html#lines-fetching-an-item-sorting-lines) to understand how to sort when using bundles. 
 `data[attributes][price_each_in_cents]` | **integer** <br>Price of each line. 
-`data[attributes][price_tile_id]` | **uuid** <br>The [PriceTile](#price-tiles) that was selected to calculate the price. 
+`data[attributes][price_tile_id]` | **uuid** <br>The [PriceTile](https://developers.booqable.com/v4.html#price-tiles) that was selected to calculate the price. 
 `data[attributes][quantity]` | **integer** <br>The quantity to calculate with. When updating quantity of a line with an associated planning, the planning also gets updated, which may lead to a shortage error. 
-`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](#tax-categories) applied to this Line. 
+`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) applied to this Line. 
 `data[attributes][taxable]` | **boolean** <br>Whether line is taxable. 
 `data[attributes][title]` | **string** <br>Title of the line. 
 

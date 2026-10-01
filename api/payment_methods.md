@@ -30,7 +30,7 @@ as ready by the payment flow.
 
 ## Customer Association
 
-PaymentMethods belong to [Customers](#customers) and represent payment options available for that
+PaymentMethods belong to [Customers](https://developers.booqable.com/v4.html#customers) and represent payment options available for that
 specific customer. A customer can have multiple PaymentMethods, allowing them to choose between
 different cards or payment options when paying.
 
@@ -47,10 +47,10 @@ they may be automatically generated based on the payment method details.
 ## Relationships
 Name | Description
 -- | --
-`customer` | **[Customer](#customers)** `optional`<br>The [Customer](#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
+`customer` | **[Customer](https://developers.booqable.com/v4.html#customers)** `optional`<br>The [Customer](https://developers.booqable.com/v4.html#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
 
 
-Check matching attributes under [Fields](#payment-methods-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#payment-methods-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -58,7 +58,7 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`customer_id` | **uuid** `readonly-after-create` `nullable`<br>The [Customer](#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
+`customer_id` | **uuid** `readonly-after-create` `nullable`<br>The [Customer](https://developers.booqable.com/v4.html#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
 `details` | **hash** `readonly-after-create`<br>Provider-specific details about the payment method stored as a JSON object. The structure and contents vary by provider and method type. For cards, this might include card brand, last four digits, expiration date, and card network metadata.<br>This data is typically populated automatically from provider webhooks or API responses and provides additional context about the payment method without containing sensitive data. 
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** `readonly-after-create`<br>Unique identifier for the payment method from the provider's system. For Stripe, this would be the Stripe payment method ID (e.g., "pm_1234567890"). For app payment methods, this could be an internal reference.<br>This identifier is used to reference the actual payment details stored securely with the provider and cannot be changed after creation. 
@@ -222,7 +222,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](https://developers.booqable.com/v4.html#customers) who owns this payment method. PaymentMethods must belong to a customer to be created (required for Stripe payment methods).<br>When a PaymentMethod is detached (via DELETE endpoint), this relationship is removed, effectively disabling the payment method for future use while preserving the historical record.<br>The customer relationship can only be set during creation and can only be removed through the detach operation. 
 `data[attributes][details]` | **hash** <br>Provider-specific details about the payment method stored as a JSON object. The structure and contents vary by provider and method type. For cards, this might include card brand, last four digits, expiration date, and card network metadata.<br>This data is typically populated automatically from provider webhooks or API responses and provides additional context about the payment method without containing sensitive data. 
 `data[attributes][identifier]` | **string** <br>Unique identifier for the payment method from the provider's system. For Stripe, this would be the Stripe payment method ID (e.g., "pm_1234567890"). For app payment methods, this could be an internal reference.<br>This identifier is used to reference the actual payment details stored securely with the provider and cannot be changed after creation. 
 `data[attributes][label_primary]` | **string** <br>Primary label for displaying the payment method to customers. This is typically the card brand and last four digits (e.g., "Visa •••• 4242") or a custom name given by the customer.<br>If not provided during creation, this may be automatically generated based on the payment method details from the provider. Can be updated after creation to provide custom labeling. 

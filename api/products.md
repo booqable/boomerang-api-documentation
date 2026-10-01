@@ -20,18 +20,18 @@ products when variations are enabled:
 ## Relationships
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** `optional`<br>The [Barcode](#barcodes) that points to this product. 
-`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>The [CollectionItems](#collection-items) associated with this item. These represent the collections this item belongs to. 
-`inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](#availabilities) endpoint instead. Availability of this product. 
-`photo` | **[Photo](#photos)** `optional`<br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
-`price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
-`price_structure` | **[Price structure](#price-structures)** `optional`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
-`product_group` | **[Product group](#product-groups)** `required`<br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this product, based on [DefaultProperties](#default-properties). These are inherited from the [ProductGroup](#product-groups) this product belongs to. While it is possible to sideload properties for products, it is not possible to assign them. 
-`tax_category` | **[Tax category](#tax-categories)** `optional`<br>[TaxCategory](#tax-categories) for tax calculations. 
+`barcode` | **[Barcode](https://developers.booqable.com/v4.html#barcodes)** `optional`<br>The [Barcode](https://developers.booqable.com/v4.html#barcodes) that points to this product. 
+`collection_items` | **[Collection items](https://developers.booqable.com/v4.html#collection-items)** `hasmany`<br>The [CollectionItems](https://developers.booqable.com/v4.html#collection-items) associated with this item. These represent the collections this item belongs to. 
+`inventory_levels` | **[Inventory levels](https://developers.booqable.com/v4.html#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](https://developers.booqable.com/v4.html#availabilities) endpoint instead. Availability of this product. 
+`photo` | **[Photo](https://developers.booqable.com/v4.html#photos)** `optional`<br>[Photo](https://developers.booqable.com/v4.html#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). It is not possible to assign a [Photo](https://developers.booqable.com/v4.html#photos) to a Product variation that is not part of the Photos of the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). 
+`price_ruleset` | **[Price ruleset](https://developers.booqable.com/v4.html#price-rulesets)** `optional`<br>The [PriceRuleset](https://developers.booqable.com/v4.html#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. 
+`price_structure` | **[Price structure](https://developers.booqable.com/v4.html#price-structures)** `optional`<br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. 
+`product_group` | **[Product group](https://developers.booqable.com/v4.html#product-groups)** `required`<br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
+`properties` | **[Properties](https://developers.booqable.com/v4.html#properties)** `hasmany`<br>Custom structured data about this product, based on [DefaultProperties](https://developers.booqable.com/v4.html#default-properties). These are inherited from the [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. While it is possible to sideload properties for products, it is not possible to assign them. 
+`tax_category` | **[Tax category](https://developers.booqable.com/v4.html#tax-categories)** `optional`<br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) for tax calculations. 
 
 
-Check matching attributes under [Fields](#products-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#products-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -43,9 +43,9 @@ Check each individual operation to see which relations can be included as a side
 `base_price_in_cents` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`photo_id` | **uuid** `nullable`<br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
+`photo_id` | **uuid** `nullable`<br>[Photo](https://developers.booqable.com/v4.html#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). It is not possible to assign a [Photo](https://developers.booqable.com/v4.html#photos) to a Product variation that is not part of the Photos of the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). 
 `photo_url` | **string** `readonly` `nullable`<br>Main photo URL. 
-`product_group_id` | **uuid** `readonly-after-create`<br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
+`product_group_id` | **uuid** `readonly-after-create`<br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `sorting_weight` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `type` | **string** `readonly`<br>Always `product`. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -71,8 +71,8 @@ Check each individual operation to see which relations can be included as a side
 `has_variations` | **boolean** `readonly`<br>Whether variations are enabled. Not applicable for product_type `service`. 
 `name` | **string** `readonly`<br>Name of the item (based on product group and `variations_values`). 
 `price_period` | **enum** `readonly`<br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
-`price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
-`price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](#product-groups) this product belongs to. 
+`price_ruleset_id` | **uuid** `readonly` `nullable`<br>The [PriceRuleset](https://developers.booqable.com/v4.html#price-ruleset) to use for advanced price calculations. This is inherited from the [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. 
+`price_structure_id` | **uuid** `readonly` `nullable`<br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structure) to use when this product uses tiered pricing. This is inherited from the [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. 
 `price_type` | **enum** `readonly`<br>They way prices are calculated for this product.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `product_type` | **enum** `readonly`<br>Type of product.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `properties` | **hash** `readonly`<br>Key value pairs of associated properties. This is the same data as provided by the properties relation, but without information about type and position. 
@@ -83,7 +83,7 @@ Check each individual operation to see which relations can be included as a side
 `sku` | **string** `readonly`<br>Stock keeping unit. 
 `slug` | **string** `readonly`<br>Slug of the product. 
 `tag_list` | **array** `readonly`<br>List of tags. 
-`tax_category_id` | **uuid** `readonly` `nullable`<br>[TaxCategory](#tax-categories) for tax calculations. 
+`tax_category_id` | **uuid** `readonly` `nullable`<br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) for tax calculations. 
 `taxable` | **boolean** `readonly`<br>Whether the item is taxable. 
 `trackable` | **boolean** `readonly`<br>Whether stock items are tracked. 
 `tracking_type` | **enum** `readonly`<br>How the product is tracked.<br> One of: `none`, `bulk`, `trackable`.
@@ -706,8 +706,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][photo_id]` | **uuid** <br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
-`data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
+`data[attributes][photo_id]` | **uuid** <br>[Photo](https://developers.booqable.com/v4.html#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). It is not possible to assign a [Photo](https://developers.booqable.com/v4.html#photos) to a Product variation that is not part of the Photos of the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). 
+`data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 `data[attributes][weight]` | **hash** <br>The weight of this variation as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). Inherited from the product group unless overridden: write a value to override, or `{ "value": null }` to remove the override and inherit again. Writes may omit the unit, in which case the variation keeps its own unit; when the weight was inherited (no unit of its own), the smallest unit for the company's unit system is used (grams for metric, ounces for imperial) — send the unit explicitly to keep the group's. Values are stored as sent and never converted between units. 
@@ -836,8 +836,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][base_price_in_cents]` | **integer** <br>The value that is being calculated with. This value is writable if group has variations enabled, otherwise it's inherited from the group. 
-`data[attributes][photo_id]` | **uuid** <br>[Photo](#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](#product-groups). It is not possible to assign a [Photo](#photos) to a Product variation that is not part of the Photos of the [ProductGroup](#product-groups). 
-`data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
+`data[attributes][photo_id]` | **uuid** <br>[Photo](https://developers.booqable.com/v4.html#photos) of this Product variation. This must be one of the photos associated with the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). It is not possible to assign a [Photo](https://developers.booqable.com/v4.html#photos) to a Product variation that is not part of the Photos of the [ProductGroup](https://developers.booqable.com/v4.html#product-groups). 
+`data[attributes][product_group_id]` | **uuid** <br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) this product belongs to. When a product group _does not_ have variations, there will be exactly one product record. When variations are enabled, then there can be multiple product records. 
 `data[attributes][sorting_weight]` | **integer** <br>Defines sorting of variations within a product group. The lower the weight - the higher it shows up in lists. 
 `data[attributes][variation_values]` | **array[string]** <br>List of values corresponding to the fields defined in `product_group.variation_fields`. Values should be in the same order as the fields. `product_group.variation_fields` are the keys, and `product.variation_values` are the values, and they are matched by their index in the arrays. 
 `data[attributes][weight]` | **hash** <br>The weight of this variation as `{ "value": <number>, "unit": "g" &vert; "kg" &vert; "oz" &vert; "lb" }` (the units Shopify supports). Inherited from the product group unless overridden: write a value to override, or `{ "value": null }` to remove the override and inherit again. Writes may omit the unit, in which case the variation keeps its own unit; when the weight was inherited (no unit of its own), the smallest unit for the company's unit system is used (grams for metric, ounces for imperial) — send the unit explicitly to keep the group's. Values are stored as sent and never converted between units. 

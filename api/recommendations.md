@@ -4,8 +4,8 @@ Recommendations define which products are suggested alongside a given product gr
 They are used to drive cross-sell behavior: when a customer views a product, the recommended
 products are shown as suggestions to add to their order.
 
-Each recommendation links a source [ProductGroup](#product-groups) to a target
-[ProductGroup](#product-groups). The source is the product being viewed; the target is the
+Each recommendation links a source [ProductGroup](https://developers.booqable.com/v4.html#product-groups) to a target
+[ProductGroup](https://developers.booqable.com/v4.html#product-groups). The source is the product being viewed; the target is the
 product being suggested.
 
 Recommendations are ordered by `position`, which is managed through the back office.
@@ -18,11 +18,11 @@ supported — to change a suggestion, delete and recreate it.
 ## Relationships
 Name | Description
 -- | --
-`source_product_group` | **[Product group](#product-groups)** `required`<br>The [ProductGroup](#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
-`target_product_group` | **[Product group](#product-groups)** `required`<br>The [ProductGroup](#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
+`source_product_group` | **[Product group](https://developers.booqable.com/v4.html#product-groups)** `required`<br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
+`target_product_group` | **[Product group](https://developers.booqable.com/v4.html#product-groups)** `required`<br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
 
 
-Check matching attributes under [Fields](#recommendations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#recommendations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -32,8 +32,8 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `position` | **integer** `readonly`<br>The display order of this recommendation relative to other recommendations for the same source product group. Lower values appear first. Read-only via the API — managed through the back office only. 
-`source_product_group_id` | **uuid** `readonly-after-create`<br>The [ProductGroup](#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
-`target_product_group_id` | **uuid** `readonly-after-create`<br>The [ProductGroup](#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
+`source_product_group_id` | **uuid** `readonly-after-create`<br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
+`target_product_group_id` | **uuid** `readonly-after-create`<br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -221,8 +221,8 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][source_product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
-`data[attributes][target_product_group_id]` | **uuid** <br>The [ProductGroup](#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
+`data[attributes][source_product_group_id]` | **uuid** <br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
+`data[attributes][target_product_group_id]` | **uuid** <br>The [ProductGroup](https://developers.booqable.com/v4.html#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
 
 
 ### Includes

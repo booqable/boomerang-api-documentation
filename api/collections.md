@@ -2,15 +2,15 @@
 
 Collections are used to create a hierarchy of products.
 
-To change the ordering of items within a collection, use [Sortings](#sortings).
+To change the ordering of items within a collection, use [Sortings](https://developers.booqable.com/v4.html#sortings).
 
 ## Relationships
 Name | Description
 -- | --
-`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>All items that make up this collection. Each collection item adds either a [ProductGroup](#product-groups) or a [Bundle](#bundles) to this collection. 
+`collection_items` | **[Collection items](https://developers.booqable.com/v4.html#collection-items)** `hasmany`<br>All items that make up this collection. Each collection item adds either a [ProductGroup](https://developers.booqable.com/v4.html#product-groups) or a [Bundle](https://developers.booqable.com/v4.html#bundles) to this collection. 
 
 
-Check matching attributes under [Fields](#collections-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#collections-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

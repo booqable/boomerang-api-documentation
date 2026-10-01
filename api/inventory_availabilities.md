@@ -3,11 +3,11 @@
 Inventory availabilities tell you how many units of a product can be booked for an
 exact period at a given location.
 
-Unlike the [Availabilities](#availabilities) endpoint, which returns a calendar of
+Unlike the [Availabilities](https://developers.booqable.com/v4.html#availabilities) endpoint, which returns a calendar of
 statuses (`available`, `partial`, `unavailable`) per day or time slot, this endpoint
 answers a different question: how many units are available for a specific `from`/`till`
 range. It is the recommended way to obtain quantity counts and replaces the deprecated
-[Inventory levels](#inventory-levels) endpoint for that purpose.
+[Inventory levels](https://developers.booqable.com/v4.html#inventory-levels) endpoint for that purpose.
 
 Availability accounts for stock counts and existing reservations. Pass one or more
 `item_id` values to check multiple products in a single request.

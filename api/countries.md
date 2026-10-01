@@ -6,10 +6,10 @@ including the information required to validate the format of addresses.
 ## Relationships
 Name | Description
 -- | --
-`provinces` | **[Provinces](#provinces)** `hasmany`<br>The provinces/states of this country (or any other administrative subdivision). 
+`provinces` | **[Provinces](https://developers.booqable.com/v4.html#provinces)** `hasmany`<br>The provinces/states of this country (or any other administrative subdivision). 
 
 
-Check matching attributes under [Fields](#countries-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#countries-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

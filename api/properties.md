@@ -78,23 +78,23 @@ Properties can have different types and behave differently. These are the `value
 
 ### Using Address Properties with Orders
 
-Address properties are commonly used to set delivery and billing addresses on [Orders](#orders).
+Address properties are commonly used to set delivery and billing addresses on [Orders](https://developers.booqable.com/v4.html#orders).
 You can provide either string values (like `country: "United States"`) or UUIDs (like `country_id: "uuid-here"`)
-for location fields. Using UUIDs is more precise but requires looking up [Country](#countries) and
-[Province](#provinces) IDs first.
+for location fields. Using UUIDs is more precise but requires looking up [Country](https://developers.booqable.com/v4.html#countries) and
+[Province](https://developers.booqable.com/v4.html#provinces) IDs first.
 
 When creating an address property with `identifier` set to `delivery_address` or `billing_address` as part of
 an order's `properties_attributes`, the order will automatically link to it. See the
-[Orders documentation](#orders-setting-delivery-and-billing-addresses) for complete examples.
+[Orders documentation](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for complete examples.
 
 ## Relationships
 Name | Description
 -- | --
-`default_property` | **[Default property](#default-properties)** `optional`<br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
-`owner` | **[Customer](#customers), [Document](#documents), [Order](#orders), [Product group](#product-groups), [Stock item](#stock-items)** `required`<br>The resource this property is about. 
+`default_property` | **[Default property](https://developers.booqable.com/v4.html#default-properties)** `optional`<br>The [DefaultProperty](https://developers.booqable.com/v4.html#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
+`owner` | **[Customer](https://developers.booqable.com/v4.html#customers), [Document](https://developers.booqable.com/v4.html#documents), [Order](https://developers.booqable.com/v4.html#orders), [Product group](https://developers.booqable.com/v4.html#product-groups), [Stock item](https://developers.booqable.com/v4.html#stock-items)** `required`<br>The resource this property is about. 
 
 
-Check matching attributes under [Fields](#properties-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#properties-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -107,7 +107,7 @@ Check each individual operation to see which relations can be included as a side
 `country` | **string** <br>For type `address`. 
 `country_id` | **string** <br>For type `address`. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`default_property_id` | **uuid** `nullable`<br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
+`default_property_id` | **uuid** `nullable`<br>The [DefaultProperty](https://developers.booqable.com/v4.html#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
 `first_name` | **string** <br>For type `address`. 
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>Key that will be used in exports, responses and custom field variables in templates. 
@@ -696,7 +696,7 @@ Name | Description
 `data[attributes][city]` | **string** <br>For type `address`. 
 `data[attributes][country]` | **string** <br>For type `address`. 
 `data[attributes][country_id]` | **string** <br>For type `address`. 
-`data[attributes][default_property_id]` | **uuid** <br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
+`data[attributes][default_property_id]` | **uuid** <br>The [DefaultProperty](https://developers.booqable.com/v4.html#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
 `data[attributes][first_name]` | **string** <br>For type `address`. 
 `data[attributes][identifier]` | **string** <br>Key that will be used in exports, responses and custom field variables in templates. 
 `data[attributes][last_name]` | **string** <br>For type `address`. 
@@ -797,7 +797,7 @@ Name | Description
 `data[attributes][city]` | **string** <br>For type `address`. 
 `data[attributes][country]` | **string** <br>For type `address`. 
 `data[attributes][country_id]` | **string** <br>For type `address`. 
-`data[attributes][default_property_id]` | **uuid** <br>The [DefaultProperty](#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
+`data[attributes][default_property_id]` | **uuid** <br>The [DefaultProperty](https://developers.booqable.com/v4.html#default-properties) this property is linked to. Properties without default property are called "one-off" properties. 
 `data[attributes][first_name]` | **string** <br>For type `address`. 
 `data[attributes][identifier]` | **string** <br>Key that will be used in exports, responses and custom field variables in templates. 
 `data[attributes][last_name]` | **string** <br>For type `address`. 

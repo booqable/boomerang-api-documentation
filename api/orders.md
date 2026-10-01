@@ -28,7 +28,7 @@ Orders are the heart of every rental operation. They hold configuration and info
 - `canceled` The order is canceled. Items will be available for other rentals.
 - `archived` The order won't show up in default search results.
 
-To book products on an order, use the [OrderFulfillment](#order-fulfillments) API to
+To book products on an order, use the [OrderFulfillment](https://developers.booqable.com/v4.html#order-fulfillments) API to
 submit `book_product`, `book_stock_items`, and `book_bundle` actions.
 
 Products can be booked on an Order in any status except for `canceled` and `archived`.
@@ -38,13 +38,13 @@ A `stopped` order will transition back to `started` when additional products are
 
 Orders typically follow this workflow:
 
-1. `new` → `draft` through [OrderStatusTransition](#order-status-transitions)
-2. `draft` → `reserved` through [OrderStatusTransition](#order-status-transitions)
-3. `reserved` → `started` (pickup/delivery) through [OrderFulfillment](#order-fulfillments)
-4. `started` → `stopped` (return/completion) through [OrderFulfillment](#order-fulfillments)
-5. `stopped` → `archived` through [OrderStatusTransition](#order-status-transitions)
+1. `new` → `draft` through [OrderStatusTransition](https://developers.booqable.com/v4.html#order-status-transitions)
+2. `draft` → `reserved` through [OrderStatusTransition](https://developers.booqable.com/v4.html#order-status-transitions)
+3. `reserved` → `started` (pickup/delivery) through [OrderFulfillment](https://developers.booqable.com/v4.html#order-fulfillments)
+4. `started` → `stopped` (return/completion) through [OrderFulfillment](https://developers.booqable.com/v4.html#order-fulfillments)
+5. `stopped` → `archived` through [OrderStatusTransition](https://developers.booqable.com/v4.html#order-status-transitions)
 
-[Booking](#order-fulfillments) products usually happens when an order is in the `new` or `draft` state,
+[Booking](https://developers.booqable.com/v4.html#order-fulfillments) products usually happens when an order is in the `new` or `draft` state,
 but technically booking is possible in any state except for `canceled` and `archived`. When booking
 additional products on a `reserved`, `started` or `stopped` order, the products are immediately reserved.
 When booking products on a `stopped` order, the order reverts to the `started` state.
@@ -63,12 +63,12 @@ hours earlier than intended.
 
 Responses return these values as `...+00:00`. Record timestamps such as `created_at` and `updated_at`
 are real UTC instants and cannot be compared to rental dates directly.
-See [Dates and time zones](#dates-and-time-zones) for the convention across the API.
+See [Dates and time zones](https://developers.booqable.com/v4.html#dates-and-time-zones) for the convention across the API.
 
 ## Searching
 
 `filter[q]` searches orders by order number (exact match), customer name, e-mail and address, tags,
-and the values of custom fields ([Properties](#properties)). Use it to look an order up by a reference
+and the values of custom fields ([Properties](https://developers.booqable.com/v4.html#properties)). Use it to look an order up by a reference
 you stored in a custom field or tag.
 
 ## How to Build a Booking Flow
@@ -84,16 +84,16 @@ follow these steps:
 </aside>
 
 1. **Create an Order** using `POST /api/4/orders` with `starts_at` and `stops_at` to define
-   the rental period. Optionally assign a [Customer](#customers) and set the initial status
+   the rental period. Optionally assign a [Customer](https://developers.booqable.com/v4.html#customers) and set the initial status
    to `new` or `draft`.
 
 2. **Book products onto the Order** using `POST /api/4/order_fulfillments` with one of the
    booking actions: `book_product`, `book_stock_items`, or `book_bundle`. This creates
-   [Plannings](#plannings) and [Lines](#lines) that allocate inventory and affect product
-   availability. See [OrderFulfillment](#order-fulfillments) for details on each action.
+   [Plannings](https://developers.booqable.com/v4.html#plannings) and [Lines](https://developers.booqable.com/v4.html#lines) that allocate inventory and affect product
+   availability. See [OrderFulfillment](https://developers.booqable.com/v4.html#order-fulfillments) for details on each action.
 
 3. **Set custom prices** (optional) if you calculate prices outside Booqable. To use your
-   own price instead of Booqable's, update each [Line](#lines) with `PUT /api/4/lines/{id}`,
+   own price instead of Booqable's, update each [Line](https://developers.booqable.com/v4.html#lines) with `PUT /api/4/lines/{id}`,
    sending only `price_each_in_cents`; this switches the Line to manual pricing, so Booqable
    will not automatically recalculate it.
    Add `?include=changed_lines` to the booking request in step 2 to get the created Line ids.
@@ -104,7 +104,7 @@ follow these steps:
    for other orders during the rental period, and the order receives a unique order number.
 
 5. **Start and stop items** (optional) when the rental begins and ends. Use
-   [OrderFulfillment](#order-fulfillments) with `start_product`, `start_stock_items`,
+   [OrderFulfillment](https://developers.booqable.com/v4.html#order-fulfillments) with `start_product`, `start_stock_items`,
    `stop_product`, or `stop_stock_items` actions. The order status transitions to `started`
    and `stopped` automatically as items are picked up and returned.
 
@@ -145,7 +145,7 @@ The `deposit_value` field determines the percentage or fixed amount, and various
 
 ## Setting Delivery and Billing Addresses
 
-Delivery and billing addresses are stored as [Properties](#properties) of type `address` that belong to the order.
+Delivery and billing addresses are stored as [Properties](https://developers.booqable.com/v4.html#properties) of type `address` that belong to the order.
 The `delivery_address` and `billing_address` attributes are **read-only** and display formatted address strings
 for easy display in templates and interfaces.
 
@@ -231,29 +231,29 @@ the order automatically links to them via `delivery_address_property_id` and `bi
 - `address2`: Secondary address line (apartment, suite, etc.)
 
 Address validation requirements vary by country. For international orders, consider using `country_id` and `province_id`
-instead of string values for more reliable address handling. See the [Properties](#properties) documentation for complete field details.
+instead of string values for more reliable address handling. See the [Properties](https://developers.booqable.com/v4.html#properties) documentation for complete field details.
 
 ## Relationships
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** `optional`<br>The QR code automatically generated for this Order. 
-`coupon` | **[Coupon](#coupons)** `optional`<br>The [Coupon](#coupons) added to this Order. 
-`customer` | **[Customer](#customers)** `optional`<br>The [Customer](#customers) this Order is for. 
-`documents` | **[Documents](#documents)** `hasmany`<br>[Documents](#documents) (quotes, contracts, invoices) related to this order. 
-`lines` | **[Lines](#lines)** `hasmany`<br>All the [Lines](#lines) of this Order. There is an automatically generated line for every Planning. In addition there can be manually added lines for custom charges, deposit holds and sections. 
-`notes` | **[Notes](#notes)** `hasmany`<br>[Notes](#notes) about this Order. 
-`order_delivery_rate` | **[Order delivery rate](#order-delivery-rates)** `optional`<br>Information about the cost of delivery for this Order. 
-`payments` | **[Payments](#payments)** `hasmany`<br>[Payments](#payments) (charges, authorizations, refunds) related to this order. 
-`plannings` | **[Plannings](#plannings)** `hasmany`<br>The [Plannings](#plannings) for this Order, containing the booked quantities and current status for all Products on this Order. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom but structured data added to this Order. Both Properties linked to [DefaultProperties](#default-properties), and one-off Properties can be added to orders. Properties of Orders can be updated in bulk by writing to the `properties_attributes` attribute. 
-`start_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will pick up the items. 
-`stock_item_plannings` | **[Stock item plannings](#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](#stock-item-plannings) planned on this Order, and their current status. 
-`stop_location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the customer will return the items. 
-`tax_region` | **[Tax region](#tax-regions)** `optional`<br>[TaxRegion](#tax-regions) applied to this Order. 
-`tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one [TaxValue](#tax-values) for each applicable [TaxRate](#tax-rates). 
+`barcode` | **[Barcode](https://developers.booqable.com/v4.html#barcodes)** `optional`<br>The QR code automatically generated for this Order. 
+`coupon` | **[Coupon](https://developers.booqable.com/v4.html#coupons)** `optional`<br>The [Coupon](https://developers.booqable.com/v4.html#coupons) added to this Order. 
+`customer` | **[Customer](https://developers.booqable.com/v4.html#customers)** `optional`<br>The [Customer](https://developers.booqable.com/v4.html#customers) this Order is for. 
+`documents` | **[Documents](https://developers.booqable.com/v4.html#documents)** `hasmany`<br>[Documents](https://developers.booqable.com/v4.html#documents) (quotes, contracts, invoices) related to this order. 
+`lines` | **[Lines](https://developers.booqable.com/v4.html#lines)** `hasmany`<br>All the [Lines](https://developers.booqable.com/v4.html#lines) of this Order. There is an automatically generated line for every Planning. In addition there can be manually added lines for custom charges, deposit holds and sections. 
+`notes` | **[Notes](https://developers.booqable.com/v4.html#notes)** `hasmany`<br>[Notes](https://developers.booqable.com/v4.html#notes) about this Order. 
+`order_delivery_rate` | **[Order delivery rate](https://developers.booqable.com/v4.html#order-delivery-rates)** `optional`<br>Information about the cost of delivery for this Order. 
+`payments` | **[Payments](https://developers.booqable.com/v4.html#payments)** `hasmany`<br>[Payments](https://developers.booqable.com/v4.html#payments) (charges, authorizations, refunds) related to this order. 
+`plannings` | **[Plannings](https://developers.booqable.com/v4.html#plannings)** `hasmany`<br>The [Plannings](https://developers.booqable.com/v4.html#plannings) for this Order, containing the booked quantities and current status for all Products on this Order. 
+`properties` | **[Properties](https://developers.booqable.com/v4.html#properties)** `hasmany`<br>Custom but structured data added to this Order. Both Properties linked to [DefaultProperties](https://developers.booqable.com/v4.html#default-properties), and one-off Properties can be added to orders. Properties of Orders can be updated in bulk by writing to the `properties_attributes` attribute. 
+`start_location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will pick up the items. 
+`stock_item_plannings` | **[Stock item plannings](https://developers.booqable.com/v4.html#stock-item-plannings)** `hasmany`<br>The [StockItemPlannings](https://developers.booqable.com/v4.html#stock-item-plannings) planned on this Order, and their current status. 
+`stop_location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will return the items. 
+`tax_region` | **[Tax region](https://developers.booqable.com/v4.html#tax-regions)** `optional`<br>[TaxRegion](https://developers.booqable.com/v4.html#tax-regions) applied to this Order. 
+`tax_values` | **[Tax values](https://developers.booqable.com/v4.html#tax-values)** `hasmany`<br>The taxes calculated for this order. There is one [TaxValue](https://developers.booqable.com/v4.html#tax-values) for each applicable [TaxRate](https://developers.booqable.com/v4.html#tax-rates). 
 
 
-Check matching attributes under [Fields](#orders-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#orders-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -263,15 +263,15 @@ Check each individual operation to see which relations can be included as a side
 `amount_in_cents` | **integer** `readonly`<br>The rental amount excluding taxes. 
 `amount_paid_in_cents` | **integer** `readonly`<br>The portion of the rental amount that has been paid. 
 `amount_to_be_paid_in_cents` | **integer** `readonly`<br>The portion of the rental amount that still needs to be paid. 
-`billing_address_property_id` | **uuid** <br>The UUID of the address [Property](#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
-`confirm_shortage` | **boolean** `writeonly`<br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
+`billing_address_property_id` | **uuid** <br>The UUID of the address [Property](https://developers.booqable.com/v4.html#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
+`confirm_shortage` | **boolean** `writeonly`<br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](https://developers.booqable.com/v4.html#product-groups) is configured to allow shortage. 
 `coupon_discount_in_cents` | **integer** `readonly`<br>Coupon discount (incl. or excl. taxes based on `tax_strategy`). 
 `coupon_errors` | **hash** `readonly`<br>Validation errors for the last coupon applied to the order. Contains the coupon identifier and error codes explaining why the coupon was invalidated. 
-`coupon_id` | **uuid** `nullable`<br>The [Coupon](#coupons) added to this Order. 
+`coupon_id` | **uuid** `nullable`<br>The [Coupon](https://developers.booqable.com/v4.html#coupons) added to this Order. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
-`customer_id` | **uuid** `nullable`<br>The [Customer](#customers) this Order is for. 
-`delivery_address` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for detailed examples. 
-`delivery_address_property_id` | **uuid** <br>The UUID of the address [Property](#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
+`customer_id` | **uuid** `nullable`<br>The [Customer](https://developers.booqable.com/v4.html#customers) this Order is for. 
+`delivery_address` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](https://developers.booqable.com/v4.html#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for detailed examples. 
+`delivery_address_property_id` | **uuid** <br>The UUID of the address [Property](https://developers.booqable.com/v4.html#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `deposit_held_in_cents` | **integer** `readonly`<br>Amount of deposit held. 
 `deposit_in_cents` | **integer** `readonly`<br>Deposit. 
 `deposit_paid_in_cents` | **integer** `readonly`<br>How much of the deposit is paid. 
@@ -302,18 +302,18 @@ Check each individual operation to see which relations can be included as a side
 `payment_status` | **enum** `readonly`<br>Indicates next step to take with respect to payment for this order. Values include `paid` (fully paid), `partially_paid` (some payments made), `overpaid` (more paid than required), `payment_due` (balance still due), or `process_deposit` (deposit needs processing).<br> One of: `paid`, `partially_paid`, `overpaid`, `payment_due`, `process_deposit`.
 `price_in_cents` | **integer** `readonly`<br>Subtotal excl. taxes (excl. deposit). 
 `properties` | **hash** `readonly`<br>A hash containing all property identifiers and values (include the properties relation if you need more detailed information). Properties of orders can be updated in bulk by writing to the `properties_attributes` attribute. 
-`properties_attributes` | **array** `writeonly`<br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
+`properties_attributes` | **array** `writeonly`<br>Create or update [Properties](https://developers.booqable.com/v4.html#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](https://developers.booqable.com/v4.html#properties) for all available address fields. 
 `shortage` | **boolean** `readonly`<br>**Deprecated.** Duplicates `location_shortage` and is being phased out. Use `location_shortage` instead.<br>Whether there is a shortage for this order. This indicates that the requested quantity of one or more items cannot be fulfilled during the specified rental period. 
-`start_location_id` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
-`starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](#rental-period-and-time-zones). 
+`start_location_id` | **uuid** <br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will pick up the items. 
+`starts_at` | **datetime** `nullable`<br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](https://developers.booqable.com/v4.html#rental-period-and-time-zones). 
 `status` | **enum** `readonly-after-create`<br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `status_counts` | **hash** `readonly`<br>An object containing the status counts of planned products, like `{ "draft": 0, "reserved": 2, "started": 5, "stopped": 10 }`. 
 `statuses` | **array** `readonly`<br>Status(es) of planned products. 
-`stop_location_id` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
-`stops_at` | **datetime** `nullable`<br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](#rental-period-and-time-zones). 
+`stop_location_id` | **uuid** <br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will return the items. 
+`stops_at` | **datetime** `nullable`<br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](https://developers.booqable.com/v4.html#rental-period-and-time-zones). 
 `tag_list` | **array[string]** <br>Case insensitive tag list. 
 `tax_in_cents` | **integer** `readonly`<br>Total tax. 
-`tax_region_id` | **uuid** `nullable`<br>[TaxRegion](#tax-regions) applied to this Order. 
+`tax_region_id` | **uuid** `nullable`<br>[TaxRegion](https://developers.booqable.com/v4.html#tax-regions) applied to this Order. 
 `to_be_paid_in_cents` | **integer** `readonly`<br>Amount that (still) has to be paid. 
 `total_discount_in_cents` | **integer** `readonly`<br>Total discount (incl. or excl. taxes based on `tax_strategy`). 
 `total_in_cents` | **integer** `readonly`<br>The total order amount including rental amount, taxes, and deposit. 
@@ -1129,7 +1129,7 @@ When creating an order it is possible to choose the initial status. Accepted sta
 are `new`, `draft` and `reserved`.
 
 The created Order is empty (contains no products or other lines). To book products,
-stock items or bundles on an order, use the [OrderFulfillment](#order-fulfillments) API.
+stock items or bundles on an order, use the [OrderFulfillment](https://developers.booqable.com/v4.html#order-fulfillments) API.
 
 <aside class="warning">
     The <code>draft</code> status used to be named <code>concept</code>.
@@ -1376,12 +1376,12 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][billing_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
-`data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
-`data[attributes][coupon_id]` | **uuid** <br>The [Coupon](#coupons) added to this Order. 
-`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this Order is for. 
-`data[attributes][delivery_address]` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for detailed examples. 
-`data[attributes][delivery_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
+`data[attributes][billing_address_property_id]` | **uuid** <br>The UUID of the address [Property](https://developers.booqable.com/v4.html#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
+`data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](https://developers.booqable.com/v4.html#product-groups) is configured to allow shortage. 
+`data[attributes][coupon_id]` | **uuid** <br>The [Coupon](https://developers.booqable.com/v4.html#coupons) added to this Order. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](https://developers.booqable.com/v4.html#customers) this Order is for. 
+`data[attributes][delivery_address]` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](https://developers.booqable.com/v4.html#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for detailed examples. 
+`data[attributes][delivery_address_property_id]` | **uuid** <br>The UUID of the address [Property](https://developers.booqable.com/v4.html#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
@@ -1391,14 +1391,14 @@ Name | Description
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
-`data[attributes][properties_attributes][]` | **array** <br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
-`data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
-`data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](#rental-period-and-time-zones). 
+`data[attributes][properties_attributes][]` | **array** <br>Create or update [Properties](https://developers.booqable.com/v4.html#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](https://developers.booqable.com/v4.html#properties) for all available address fields. 
+`data[attributes][start_location_id]` | **uuid** <br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will pick up the items. 
+`data[attributes][starts_at]` | **datetime** <br>When the items on the order become unavailable. This is the date/time when the rental period officially begins. Changing this date may result in shortages if the items are no longer available for the new time period.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](https://developers.booqable.com/v4.html#rental-period-and-time-zones). 
 `data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
-`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
-`data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](#rental-period-and-time-zones). 
+`data[attributes][stop_location_id]` | **uuid** <br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will return the items. 
+`data[attributes][stops_at]` | **datetime** <br>When the items on the order become available again. This is the date/time when the rental period officially ends, and inventory becomes available for other orders after this point. Extending this date may result in shortages if the items are already booked for other orders.<br>Date and time at the company's location, with no time zone conversion applied. See [Rental Period and Time Zones](https://developers.booqable.com/v4.html#rental-period-and-time-zones). 
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
-`data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](#tax-regions) applied to this Order. 
+`data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](https://developers.booqable.com/v4.html#tax-regions) applied to this Order. 
 
 
 ### Includes
@@ -1629,12 +1629,12 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][billing_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
-`data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](#product-groups) is configured to allow shortage. 
-`data[attributes][coupon_id]` | **uuid** <br>The [Coupon](#coupons) added to this Order. 
-`data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this Order is for. 
-`data[attributes][delivery_address]` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for detailed examples. 
-`data[attributes][delivery_address_property_id]` | **uuid** <br>The UUID of the address [Property](#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
+`data[attributes][billing_address_property_id]` | **uuid** <br>The UUID of the address [Property](https://developers.booqable.com/v4.html#properties) to use as the billing address. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
+`data[attributes][confirm_shortage]` | **boolean** <br>When set to `true`, this confirms a shortage warning during an update operation. Use this parameter when you receive a shortage warning but want to proceed with the update despite the shortage. Overriding shortage is only possible when the affected [ProductGroup](https://developers.booqable.com/v4.html#product-groups) is configured to allow shortage. 
+`data[attributes][coupon_id]` | **uuid** <br>The [Coupon](https://developers.booqable.com/v4.html#coupons) added to this Order. 
+`data[attributes][customer_id]` | **uuid** <br>The [Customer](https://developers.booqable.com/v4.html#customers) this Order is for. 
+`data[attributes][delivery_address]` | **string** <br>**Read-only.** A formatted string representation of the delivery address. This attribute cannot be written to directly.<br>To set the delivery address, use either `delivery_address_property_id` to reference an existing address [Property](https://developers.booqable.com/v4.html#properties), or use `properties_attributes` to create the address inline. See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for detailed examples. 
+`data[attributes][delivery_address_property_id]` | **uuid** <br>The UUID of the address [Property](https://developers.booqable.com/v4.html#properties) to use as the delivery address. Required when `fulfillment_type` is `delivery`. The property must be of type `address` and should belong either to the order or to the customer.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for details on how to set addresses. 
 `data[attributes][deposit_type]` | **enum** <br>How deposit is calculated.<br> One of: `none`, `percentage_total`, `percentage`, `fixed`.
 `data[attributes][deposit_value]` | **float** <br>The value to use for `deposit_type`. 
 `data[attributes][discount_type]` | **enum** <br>Type of discount.<br> One of: `percentage`, `fixed`.
@@ -1644,14 +1644,14 @@ Name | Description
 `data[attributes][order_delivery_rate_attributes]` | **hash** <br>Assign this attribute to create/update the order delivery rate as subresource of order in a single request. 
 `data[attributes][order_delivery_rate_id]` | **uuid** <br>The id of the order delivery rate. 
 `data[attributes][override_period_restrictions]` | **boolean** <br>Force free period selection when there are restrictions enabled for the order period picker. 
-`data[attributes][properties_attributes][]` | **array** <br>Create or update [Properties](#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](#properties) for all available address fields. 
-`data[attributes][start_location_id]` | **uuid** <br>The [Location](#locations) where the customer will pick up the items. 
+`data[attributes][properties_attributes][]` | **array** <br>Create or update [Properties](https://developers.booqable.com/v4.html#properties) as part of the order in a single request. This is useful for setting custom fields and addresses inline without creating separate property resources first.<br>To set a delivery or billing address, include a property with `identifier` set to `delivery_address` or `billing_address` and provide the address fields (`address1`, `city`, `zipcode`, `country`, etc.). The order will automatically link to this address via `delivery_address_property_id` or `billing_address_property_id`.<br>See [Setting Delivery and Billing Addresses](https://developers.booqable.com/v4.html#orders-setting-delivery-and-billing-addresses) for complete examples and [Properties](https://developers.booqable.com/v4.html#properties) for all available address fields. 
+`data[attributes][start_location_id]` | **uuid** <br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will pick up the items. 
 `data[attributes][starts_at]` | **datetime** <br>When items become unavailable, changing this value may result in shortages
 `data[attributes][status]` | **enum** <br>Simplified status of the order. An order can be in a mixed state (i.e. partially started or stopped).<br>The `statuses` attribute contains the full list of current statuses, and `status_counts` specifies how many items are in each state.<br>This attribute can only be written when creating an order. Accepted statuses are `new`, `draft` and `reserved`.<br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
-`data[attributes][stop_location_id]` | **uuid** <br>The [Location](#locations) where the customer will return the items. 
+`data[attributes][stop_location_id]` | **uuid** <br>The [Location](https://developers.booqable.com/v4.html#locations) where the customer will return the items. 
 `data[attributes][stops_at]` | **datetime** <br>When items become available, changing this value may result in shortages
 `data[attributes][tag_list]` | **array[string]** <br>Case insensitive tag list. 
-`data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](#tax-regions) applied to this Order. 
+`data[attributes][tax_region_id]` | **uuid** <br>[TaxRegion](https://developers.booqable.com/v4.html#tax-regions) applied to this Order. 
 
 
 ### Includes

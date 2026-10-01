@@ -1,16 +1,16 @@
 # Bundle items
 
-Bundle items define which products (variations) and product groups are included in a [Bundle](#bundles).
+Bundle items define which products (variations) and product groups are included in a [Bundle](https://developers.booqable.com/v4.html#bundles).
 When bundles are booked on an order, the quantity and discount percentage defined
 in a bundle item will be applied.
 
 There are two types of bundle items:
 
   - _"fixed"_ or _"specified"_: The `product_id` is set and fixed, and the customer does not get to choose.
-  These BundleItems do **not** need to be specified when [booking](#order-fulfillments-actions) a bundle.
+  These BundleItems do **not** need to be specified when [booking](https://developers.booqable.com/v4.html#order-fulfillments-actions) a bundle.
 
   - _"unspecified"_: The `product_id` is `null`, and the customer gets to choose one of the product variations.
-  These BundleItems **must** to be specified when [booking](#order-fulfillments-actions) a bundle.
+  These BundleItems **must** to be specified when [booking](https://developers.booqable.com/v4.html#order-fulfillments-actions) a bundle.
 
 <aside class="notice">
   Availability of the bundles feature depends on the current pricing plan.
@@ -19,12 +19,12 @@ There are two types of bundle items:
 ## Relationships
 Name | Description
 -- | --
-`bundle` | **[Bundle](#bundles)** `required`<br>The Bundle this BundleItem is part of. 
-`product` | **[Product](#products)** `optional`<br>When non-null, then this is the prespecified Product that will be booked. When null, then the user has to choose a product variation from the `product_group`. This relation is required when `product_group` does not have variations.
-`product_group` | **[Product group](#product-groups)** `required`<br>When the `product` relation is non-null, then this is the ProductGroup that the Product belongs to. When the `product` relation is null, then this is the ProductGroup that the user has to choose a product variation from.
+`bundle` | **[Bundle](https://developers.booqable.com/v4.html#bundles)** `required`<br>The Bundle this BundleItem is part of. 
+`product` | **[Product](https://developers.booqable.com/v4.html#products)** `optional`<br>When non-null, then this is the prespecified Product that will be booked. When null, then the user has to choose a product variation from the `product_group`. This relation is required when `product_group` does not have variations.
+`product_group` | **[Product group](https://developers.booqable.com/v4.html#product-groups)** `required`<br>When the `product` relation is non-null, then this is the ProductGroup that the Product belongs to. When the `product` relation is null, then this is the ProductGroup that the user has to choose a product variation from.
 
 
-Check matching attributes under [Fields](#bundle-items-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#bundle-items-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

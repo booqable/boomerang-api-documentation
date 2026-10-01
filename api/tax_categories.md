@@ -7,10 +7,10 @@ an order. An order's total tax rate is the sum of all product taxes on that orde
 ## Relationships
 Name | Description
 -- | --
-`tax_rates` | **[Tax rates](#tax-rates)** `hasmany`<br>The different rates that need to be charged. <br/> Rates can be created/updated through the TaxRate resource by writing the `tax_rates_attributes` attribute. 
+`tax_rates` | **[Tax rates](https://developers.booqable.com/v4.html#tax-rates)** `hasmany`<br>The different rates that need to be charged. <br/> Rates can be created/updated through the TaxRate resource by writing the `tax_rates_attributes` attribute. 
 
 
-Check matching attributes under [Fields](#tax-categories-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#tax-categories-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

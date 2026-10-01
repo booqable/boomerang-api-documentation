@@ -1,8 +1,8 @@
 # Inventory levels
 
 **Deprecated.** This endpoint will be removed in a future version.
-Use the [Inventory availabilities](#inventory-availabilities) endpoint to get the number
-of units available for a period, or the [Availabilities](#availabilities) endpoint for a
+Use the [Inventory availabilities](https://developers.booqable.com/v4.html#inventory-availabilities) endpoint to get the number
+of units available for a period, or the [Availabilities](https://developers.booqable.com/v4.html#availabilities) endpoint for a
 calendar of availability statuses. Both account for buffer times and other business rules.
 
 Inventory levels provide raw inventory data snapshots for reporting purposes.
@@ -15,12 +15,12 @@ shortage handling, or order status considerations.
 ## Relationships
 Name | Description
 -- | --
-`item` | **[Item](#items)** `required`<br>The item to return data for, this can be a single ID or an array of multiple IDs. 
-`location` | **[Location](#locations)** `required`<br>The location to filter on. 
-`order` | **[Order](#orders)** `required`<br>The order to filter on. 
+`item` | **[Item](https://developers.booqable.com/v4.html#items)** `required`<br>The item to return data for, this can be a single ID or an array of multiple IDs. 
+`location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>The location to filter on. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>The order to filter on. 
 
 
-Check matching attributes under [Fields](#inventory-levels-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#inventory-levels-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

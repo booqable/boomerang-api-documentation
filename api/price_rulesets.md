@@ -9,10 +9,10 @@ Price rulesets are used to create elaborate pricing adjustments using the advanc
 ## Relationships
 Name | Description
 -- | --
-`price_rules` | **[Price rules](#price-rules)** `hasmany`<br>The rules included in this ruleset.
+`price_rules` | **[Price rules](https://developers.booqable.com/v4.html#price-rules)** `hasmany`<br>The rules included in this ruleset.
 
 
-Check matching attributes under [Fields](#price-rulesets-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#price-rulesets-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

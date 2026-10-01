@@ -30,10 +30,10 @@ following values:
 ## Relationships
 Name | Description
 -- | --
-`stock_item` | **[Stock item](#stock-items)** `required`<br>The [StockItem](#stock-items) that needs to be archived.
+`stock_item` | **[Stock item](https://developers.booqable.com/v4.html#stock-items)** `required`<br>The [StockItem](https://developers.booqable.com/v4.html#stock-items) that needs to be archived.
 
 
-Check matching attributes under [Fields](#stock-item-archivations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#stock-item-archivations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -42,7 +42,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `confirm_shortage` | **boolean** <br>A value of `true` overrides shortage warnings.
 `id` | **uuid** `readonly`<br>Primary key.
-`stock_item_id` | **uuid** <br>The [StockItem](#stock-items) that needs to be archived.
+`stock_item_id` | **uuid** <br>The [StockItem](https://developers.booqable.com/v4.html#stock-items) that needs to be archived.
 
 
 ## Archive
@@ -320,7 +320,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][confirm_shortage]` | **boolean** <br>A value of `true` overrides shortage warnings.
-`data[attributes][stock_item_id]` | **uuid** <br>The [StockItem](#stock-items) that needs to be archived.
+`data[attributes][stock_item_id]` | **uuid** <br>The [StockItem](https://developers.booqable.com/v4.html#stock-items) that needs to be archived.
 
 
 ### Includes

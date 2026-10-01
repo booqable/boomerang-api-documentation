@@ -6,12 +6,12 @@ during a given period.
 
 StockItemPlannings are never directly created or updated through their resource;
 instead they are created by booking or specifying StockItems; they are updated by
-starting or stopping them. See the [OrderFulfillments](#order-fulfillments) resource
+starting or stopping them. See the [OrderFulfillments](https://developers.booqable.com/v4.html#order-fulfillments) resource
 for examples.
 
 ## Purpose and Relationship to Plannings
 
-While a [Planning](#plannings) represents the quantitative planning of items (how many), a StockItemPlanning
+While a [Planning](https://developers.booqable.com/v4.html#plannings) represents the quantitative planning of items (how many), a StockItemPlanning
 represents the specific trackable StockItem assigned to fulfill that Planning. The relationship is:
 
 - A Planning may have multiple StockItemPlannings (one for each trackable StockItem)
@@ -21,7 +21,7 @@ represents the specific trackable StockItem assigned to fulfill that Planning. T
 
 StockItemPlannings follow a specific lifecycle:
 
-1. **Creation**: They are created when StockItems are booked or specified on a Planning via [OrderFulfillments](#order-fulfillments)
+1. **Creation**: They are created when StockItems are booked or specified on a Planning via [OrderFulfillments](https://developers.booqable.com/v4.html#order-fulfillments)
 2. **Reservation**: When reserved, the specific StockItem becomes unavailable for other orders
 3. **Start**: When the StockItem is marked as started (picked up or delivered)
 4. **Stop**: When the StockItem is marked as stopped (returned)
@@ -40,13 +40,13 @@ StockItemPlannings provide several key benefits:
 ## Relationships
 Name | Description
 -- | --
-`downtime` | **[Downtime](#downtimes)** `optional`<br>The Downtime this StockItemPlanning is associated with when the planning is for downtime rather than an order. Either order or downtime will be present, but not both. 
-`order` | **[Order](#orders)** `optional`<br>The Order this StockItemPlanning is part of. 
-`planning` | **[Planning](#plannings)** `required`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
-`stock_item` | **[Stock item](#stock-items)** `required`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
+`downtime` | **[Downtime](https://developers.booqable.com/v4.html#downtimes)** `optional`<br>The Downtime this StockItemPlanning is associated with when the planning is for downtime rather than an order. Either order or downtime will be present, but not both. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `optional`<br>The Order this StockItemPlanning is part of. 
+`planning` | **[Planning](https://developers.booqable.com/v4.html#plannings)** `required`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
+`stock_item` | **[Stock item](https://developers.booqable.com/v4.html#stock-items)** `required`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
 
 
-Check matching attributes under [Fields](#stock-item-plannings-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#stock-item-plannings-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -61,12 +61,12 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `readonly` `nullable`<br>The Order this StockItemPlanning is part of. 
 `planning_id` | **uuid** `readonly`<br>The Planning for which this StockItemPlanning specifies a StockItem. 
 `reserved` | **boolean** <br>Whether StockItem is reserved, meaning it's unavailable for other orders. This is set to `true` when the order status is changed to "reserved" or when the StockItem is specifically assigned to the planning. When reserved, the item cannot be booked for other orders during the same period. 
-`started` | **boolean** <br>Whether the StockItem is started, meaning it has been picked up by the customer or delivered. This is set to `true` when staff performs a "Start" action through the [OrderFulfillments](#order-fulfillments) resource. Once started, the item is physically out with the customer and its status can be tracked independently of other items on the same order. 
+`started` | **boolean** <br>Whether the StockItem is started, meaning it has been picked up by the customer or delivered. This is set to `true` when staff performs a "Start" action through the [OrderFulfillments](https://developers.booqable.com/v4.html#order-fulfillments) resource. Once started, the item is physically out with the customer and its status can be tracked independently of other items on the same order. 
 `starts_at` | **datetime** <br>When the StockItem is scheduled to be picked up or delivered. This date/time indicates when the specific StockItem will begin its rental period, aligning with the planning's start date. This date/time is not updated when a StockItem is picked up earlier or later than originally scheduled. 
 `status` | **enum** `readonly`<br>Status of this StockItemPlanning. A StockItemPlanning becomes "stopped" when the StockItem is returned. The Order it belongs to might not be completely stopped (partial return). Otherwise, the status mostly follows the status of the Order.<br>Note that there are two concepts of "archiving". The `archived` attribute is set to true when a StockItem is "unspecified" from an Order through the OrderFulfillment API. When an Order is archived, `status` of StockItemPlannings is set to `archived`, but the `archived` attribute remains false.<br>Possible status values: - `new`: When the order is in new state. - `draft`: When the order is in draft state. - `reserved`: When the StockItem is reserved for this order. The parent Order can already be `started` due to partial pickups. - `started`: When the StockItem has been picked up or delivered. - `stopped`: When the StockItem has been returned. The parent Order can still be `started` due to partial returns. - `archived`: When the parent Order has been archived. - `canceled`: When the parent Order has been canceled.<br><aside class="warning">   The <code>draft</code> status used to be named <code>concept</code>. </aside><br> One of: `new`, `draft`, `reserved`, `started`, `stopped`, `archived`, `canceled`.
 `stock_item_id` | **uuid** `readonly`<br>The StockItem being specified, and whose status through the fulfillment process is tracked by this StockItemPlanning. 
 `stock_item_planning_type` | **enum** `readonly`<br>The type of planning this StockItemPlanning belongs to. This field indicates whether the StockItem is allocated for a regular order or for downtime.<br>One of: `order`, `downtime`.<br>`order` - The StockItem is allocated for a regular rental order.<br>`downtime` - The StockItem is allocated for downtime.<br>This attribute helps distinguish between order-related and downtime-related StockItem allocations, which may have different business logic and display requirements. 
-`stopped` | **boolean** <br>Whether the StockItem is stopped, meaning it has been returned by the customer and is available again for other rentals. This is set to `true` when staff performs a "Stop" action through the [OrderFulfillments](#order-fulfillments) resource. A StockItem must be started before it can be stopped. Once stopped, the item becomes available for other bookings. 
+`stopped` | **boolean** <br>Whether the StockItem is stopped, meaning it has been returned by the customer and is available again for other rentals. This is set to `true` when staff performs a "Stop" action through the [OrderFulfillments](https://developers.booqable.com/v4.html#order-fulfillments) resource. A StockItem must be started before it can be stopped. Once stopped, the item becomes available for other bookings. 
 `stops_at` | **datetime** <br>When the StockItem is scheduled to be returned. This date/time indicates when the specific StockItem will end its rental period, aligning with the planning's stop date. This date/time is not updated when a StockItem is returned earlier or later than originally scheduled. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 

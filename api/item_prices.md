@@ -18,15 +18,15 @@ When calculating prices for bundles, you have two options:
 ## Relationships
 Name | Description
 -- | --
-`bundle` | **[Bundle](#bundles)** `required`<br>The bundle that this price is for when `bundle_id` is provided in the filter. 
-`bundle_item` | **[Bundle item](#bundle-items)** `required`<br>The bundle item that this price is for. Only present when `bundle_id` is provided in the filter, which returns detailed prices for each bundle item. 
-`item` | **[Item](#items)** `required`<br>The item or items to calculate price for. When `item_id` is a bundle, returns aggregated bundle price. 
-`price_ruleset` | **[Price ruleset](#price-rulesets)** `required`<br>The advanced pricing rules that apply. 
-`price_structure` | **[Price structure](#price-structures)** `required`<br>Optional price structure to use, if the item has a price structure associated with it that will be used by default. 
-`price_tile` | **[Price tile](#price-tiles)** `required`<br>The price tile that was selected from the price structure. 
+`bundle` | **[Bundle](https://developers.booqable.com/v4.html#bundles)** `required`<br>The bundle that this price is for when `bundle_id` is provided in the filter. 
+`bundle_item` | **[Bundle item](https://developers.booqable.com/v4.html#bundle-items)** `required`<br>The bundle item that this price is for. Only present when `bundle_id` is provided in the filter, which returns detailed prices for each bundle item. 
+`item` | **[Item](https://developers.booqable.com/v4.html#items)** `required`<br>The item or items to calculate price for. When `item_id` is a bundle, returns aggregated bundle price. 
+`price_ruleset` | **[Price ruleset](https://developers.booqable.com/v4.html#price-rulesets)** `required`<br>The advanced pricing rules that apply. 
+`price_structure` | **[Price structure](https://developers.booqable.com/v4.html#price-structures)** `required`<br>Optional price structure to use, if the item has a price structure associated with it that will be used by default. 
+`price_tile` | **[Price tile](https://developers.booqable.com/v4.html#price-tiles)** `required`<br>The price tile that was selected from the price structure. 
 
 
-Check matching attributes under [Fields](#item-prices-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#item-prices-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

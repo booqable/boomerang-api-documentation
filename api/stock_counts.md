@@ -1,10 +1,10 @@
 # Stock counts
 
-StockCounts represent individual stock mutations for a [Product](#products) at a
-[Location](#locations). Each record tracks a quantity change — either an addition
+StockCounts represent individual stock mutations for a [Product](https://developers.booqable.com/v4.html#products) at a
+[Location](https://developers.booqable.com/v4.html#locations). Each record tracks a quantity change — either an addition
 (positive quantity) or a removal (negative quantity).
 
-StockCounts are created through [StockAdjustments](#stock-adjustments). The `purchase_cost_in_cents`
+StockCounts are created through [StockAdjustments](https://developers.booqable.com/v4.html#stock-adjustments). The `purchase_cost_in_cents`
 and `purchased_at` fields can be updated after creation to correct purchase tracking information.
 
 ## Temporary vs regular stock
@@ -18,11 +18,11 @@ When `from` is `null`, the stock has no specific start date and is available imm
 ## Relationships
 Name | Description
 -- | --
-`location` | **[Location](#locations)** `required`<br>The [Location](#locations) where the stock change occurred. 
-`product` | **[Product](#products)** `required`<br>The [Product](#products) whose stock was adjusted. 
+`location` | **[Location](https://developers.booqable.com/v4.html#locations)** `required`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the stock change occurred. 
+`product` | **[Product](https://developers.booqable.com/v4.html#products)** `required`<br>The [Product](https://developers.booqable.com/v4.html#products) whose stock was adjusted. 
 
 
-Check matching attributes under [Fields](#stock-counts-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#stock-counts-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -32,8 +32,8 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When this stock count was created. 
 `from` | **datetime** `readonly`<br>The date from which the stock is available. When `null`, the stock has no specific start date and is available immediately. 
 `id` | **uuid** `readonly`<br>Primary key.
-`item_id` | **uuid** `readonly`<br>The ID of the [Product](#products) associated with this stock count. 
-`location_id` | **uuid** `readonly`<br>The [Location](#locations) where the stock change occurred. 
+`item_id` | **uuid** `readonly`<br>The ID of the [Product](https://developers.booqable.com/v4.html#products) associated with this stock count. 
+`location_id` | **uuid** `readonly`<br>The [Location](https://developers.booqable.com/v4.html#locations) where the stock change occurred. 
 `purchase_cost_in_cents` | **integer** `nullable`<br>The purchase cost per item in cents at the time of the stock addition. Can be updated after creation. When `null`, the product's default purchase cost applies for regular stock. 
 `purchased_at` | **datetime** `nullable`<br>The date the stock was purchased. Can be updated after creation. When `null`, no purchase date was recorded. 
 `quantity` | **integer** `readonly`<br>The quantity change. Positive values represent stock added, negative values represent stock removed. 

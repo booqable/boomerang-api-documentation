@@ -38,18 +38,18 @@ The tracking type determines how the product is tracked.
 ## Relationships
 Name | Description
 -- | --
-`collection_items` | **[Collection items](#collection-items)** `hasmany`<br>The [CollectionItems](#collection-items) associated with this product group. These represent the collections this product group belongs to. 
-`inventory_levels` | **[Inventory levels](#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](#availabilities) endpoint instead. Availability of this item. 
-`photo` | **[Photo](#photos)** `optional`<br>Primary [Photo](#photos) of this product group. 
-`photos` | **[Photos](#photos)** `hasmany`<br>All [Photos](#photos) of this product group. The primary `photo` must be selected from this set. 
-`price_ruleset` | **[Price ruleset](#price-rulesets)** `optional`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
-`price_structure` | **[Price structure](#price-structures)** `optional`<br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
-`products` | **[Products](#products)** `hasmany`<br>When this product group does **not** have variations: there will be exactly one product. When this product group **does** have variations: one or more products. These products can be distinguished by their `variation_values`. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this product group, based on [DefaultProperties](#default-properties). These properties apply to all products in the same product group. 
-`tax_category` | **[Tax category](#tax-categories)** `optional`<br>[TaxCategory](#tax-categories) for tax calculations. 
+`collection_items` | **[Collection items](https://developers.booqable.com/v4.html#collection-items)** `hasmany`<br>The [CollectionItems](https://developers.booqable.com/v4.html#collection-items) associated with this product group. These represent the collections this product group belongs to. 
+`inventory_levels` | **[Inventory levels](https://developers.booqable.com/v4.html#inventory-levels)** `hasmany`<br>**Deprecated.** Use the [Availabilities](https://developers.booqable.com/v4.html#availabilities) endpoint instead. Availability of this item. 
+`photo` | **[Photo](https://developers.booqable.com/v4.html#photos)** `optional`<br>Primary [Photo](https://developers.booqable.com/v4.html#photos) of this product group. 
+`photos` | **[Photos](https://developers.booqable.com/v4.html#photos)** `hasmany`<br>All [Photos](https://developers.booqable.com/v4.html#photos) of this product group. The primary `photo` must be selected from this set. 
+`price_ruleset` | **[Price ruleset](https://developers.booqable.com/v4.html#price-rulesets)** `optional`<br>The [PriceRuleset](https://developers.booqable.com/v4.html#price-ruleset) used for advanced price calculations. 
+`price_structure` | **[Price structure](https://developers.booqable.com/v4.html#price-structures)** `optional`<br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structure) to use when this product group uses tiered pricing. 
+`products` | **[Products](https://developers.booqable.com/v4.html#products)** `hasmany`<br>When this product group does **not** have variations: there will be exactly one product. When this product group **does** have variations: one or more products. These products can be distinguished by their `variation_values`. 
+`properties` | **[Properties](https://developers.booqable.com/v4.html#properties)** `hasmany`<br>Custom structured data about this product group, based on [DefaultProperties](https://developers.booqable.com/v4.html#default-properties). These properties apply to all products in the same product group. 
+`tax_category` | **[Tax category](https://developers.booqable.com/v4.html#tax-categories)** `optional`<br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) for tax calculations. 
 
 
-Check matching attributes under [Fields](#product-groups-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#product-groups-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -65,7 +65,7 @@ Check each individual operation to see which relations can be included as a side
 `flat_fee_price_in_cents` | **integer** <br>Use this value when price type is `simple`. 
 `id` | **uuid** `readonly`<br>Primary key.
 `photo_base64` | **string** `writeonly`<br>Base64 encoded photo, use this field to store a main photo. 
-`photo_id` | **uuid** `readonly` `nullable`<br>Primary [Photo](#photos) of this product group. 
+`photo_id` | **uuid** `readonly` `nullable`<br>Primary [Photo](https://developers.booqable.com/v4.html#photos) of this product group. 
 `photo_url` | **string** `readonly` `nullable`<br>Main photo URL. 
 `properties_attributes` | **array** `writeonly`<br>Create or update multiple properties associated with this product group. 
 `remote_photo_url` | **string** `writeonly`<br>URL to an image on the web. 
@@ -95,8 +95,8 @@ Check each individual operation to see which relations can be included as a side
 `has_variations` | **boolean** <br>Whether variations are enabled. Variations can be enabled after a product group has been created, but variations cannot be disabled once they have been enabled. Product group of product_type `service` cannot have variations. 
 `name` | **string** <br>Name of the item. 
 `price_period` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
-`price_ruleset_id` | **uuid** `nullable`<br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
-`price_structure_id` | **uuid** `nullable`<br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
+`price_ruleset_id` | **uuid** `nullable`<br>The [PriceRuleset](https://developers.booqable.com/v4.html#price-ruleset) used for advanced price calculations. 
+`price_structure_id` | **uuid** `nullable`<br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structure) to use when this product group uses tiered pricing. 
 `price_type` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `product_type` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `properties` | **hash** `readonly`<br>Hash of properties. Sideload the properties relation when more information is needed. 
@@ -107,11 +107,11 @@ Check each individual operation to see which relations can be included as a side
 `sku` | **string** <br>Stock keeping unit. 
 `slug` | **string** <br>Slug of the item. 
 `tag_list` | **array[string]** <br>List of tags. 
-`tax_category_id` | **uuid** `nullable`<br>[TaxCategory](#tax-categories) for tax calculations. 
+`tax_category_id` | **uuid** `nullable`<br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) for tax calculations. 
 `taxable` | **boolean** <br>Whether this product group is taxable. 
 `trackable` | **boolean** `readonly-after-create`<br>Whether stock items are tracked. 
 `tracking_type` | **enum** `readonly-after-create`<br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.
-`variation` | **boolean** `readonly`<br>Whether this Item is a variation in a [ProductGroup](#product-groups). 
+`variation` | **boolean** `readonly`<br>Whether this Item is a variation in a [ProductGroup](https://developers.booqable.com/v4.html#product-groups). 
 
 
 ## List product groups
@@ -712,8 +712,8 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
 `data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
-`data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
-`data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
+`data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](https://developers.booqable.com/v4.html#price-ruleset) used for advanced price calculations. 
+`data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
@@ -728,7 +728,7 @@ Name | Description
 `data[attributes][stock_item_properties]` | **array[string]** <br>Names of custom properties for stock items of this product group. 
 `data[attributes][structure_price_in_cents]` | **integer** <br>Use this value when price type is `structure` or `private_structure`. 
 `data[attributes][tag_list]` | **array[string]** <br>List of tags. 
-`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](#tax-categories) for tax calculations. 
+`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) for tax calculations. 
 `data[attributes][taxable]` | **boolean** <br>Whether this product group is taxable. 
 `data[attributes][trackable]` | **boolean** <br>Whether stock items are tracked. 
 `data[attributes][tracking_type]` | **enum** <br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.
@@ -867,8 +867,8 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of the item. 
 `data[attributes][photo_base64]` | **string** <br>Base64 encoded photo, use this field to store a main photo. 
 `data[attributes][price_period]` | **enum** <br>The period which is the base for price calculation when price type `simple`.<br> One of: `minute`, `hour`, `day`, `week`, `month`.
-`data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](#price-ruleset) used for advanced price calculations. 
-`data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](#price-structure) to use when this product group uses tiered pricing. 
+`data[attributes][price_ruleset_id]` | **uuid** <br>The [PriceRuleset](https://developers.booqable.com/v4.html#price-ruleset) used for advanced price calculations. 
+`data[attributes][price_structure_id]` | **uuid** <br>The [PriceStructure](https://developers.booqable.com/v4.html#price-structure) to use when this product group uses tiered pricing. 
 `data[attributes][price_type]` | **enum** <br>How prices are calculated for this product group and all products in it.<br> One of: `structure`, `private_structure`, `fixed`, `simple`, `none`.
 `data[attributes][product_type]` | **enum** <br>Type of product. Can only be set when creating a ProductGroup.<br>The <code>sales_item</code> type used to be called <code>consumable</code>. v1 apis and webhooks will return <code>consumable</code>.<br> One of: `rental`, `sales_item`, `service`.
 `data[attributes][properties_attributes][]` | **array** <br>Create or update multiple properties associated with this product group. 
@@ -883,7 +883,7 @@ Name | Description
 `data[attributes][stock_item_properties]` | **array[string]** <br>Names of custom properties for stock items of this product group. 
 `data[attributes][structure_price_in_cents]` | **integer** <br>Use this value when price type is `structure` or `private_structure`. 
 `data[attributes][tag_list]` | **array[string]** <br>List of tags. 
-`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](#tax-categories) for tax calculations. 
+`data[attributes][tax_category_id]` | **uuid** <br>[TaxCategory](https://developers.booqable.com/v4.html#tax-categories) for tax calculations. 
 `data[attributes][taxable]` | **boolean** <br>Whether this product group is taxable. 
 `data[attributes][trackable]` | **boolean** <br>Whether stock items are tracked. 
 `data[attributes][tracking_type]` | **enum** <br>How the product is tracked. Can only be set when creating a ProductGroup.<br> One of: `none`, `bulk`, `trackable`.

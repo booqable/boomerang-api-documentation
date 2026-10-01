@@ -18,11 +18,11 @@ one of the following values: `hour`, `day`, `week`, `month`, `year`.
 ## Relationships
 Name | Description
 -- | --
-`price_tiles` | **[Price tiles](#price-tiles)** `hasmany`<br>The tiles (or tiers) within this price structure. <br/> Tiles can be created/updated through the PriceStructure resource by writing the `price_tiles_attributes` attribute. 
-`product_group` | **[Product group](#product-groups)** `required`<br>The product group for `private` price structures. 
+`price_tiles` | **[Price tiles](https://developers.booqable.com/v4.html#price-tiles)** `hasmany`<br>The tiles (or tiers) within this price structure. <br/> Tiles can be created/updated through the PriceStructure resource by writing the `price_tiles_attributes` attribute. 
+`product_group` | **[Product group](https://developers.booqable.com/v4.html#product-groups)** `required`<br>The product group for `private` price structures. 
 
 
-Check matching attributes under [Fields](#price-structures-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#price-structures-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

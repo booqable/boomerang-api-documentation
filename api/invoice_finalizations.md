@@ -9,10 +9,10 @@ generated with prorated changes.
 ## Relationships
 Name | Description
 -- | --
-`document` | **[Document](#documents)** `required`<br>The invoice that needs to be finalized.
+`document` | **[Document](https://developers.booqable.com/v4.html#documents)** `required`<br>The invoice that needs to be finalized.
 
 
-Check matching attributes under [Fields](#invoice-finalizations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#invoice-finalizations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

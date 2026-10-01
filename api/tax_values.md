@@ -6,11 +6,11 @@ They hold information about the amount taxed for a specific rate.
 ## Relationships
 Name | Description
 -- | --
-`owner` | **[Order](#orders), [Document](#documents)** `required`<br>The order or cart.
-`tax_rate` | **[Tax rate](#tax-rates)** `required`<br>The rate used to calculated this tax.
+`owner` | **[Order](https://developers.booqable.com/v4.html#orders), [Document](https://developers.booqable.com/v4.html#documents)** `required`<br>The order or cart.
+`tax_rate` | **[Tax rate](https://developers.booqable.com/v4.html#tax-rates)** `required`<br>The rate used to calculated this tax.
 
 
-Check matching attributes under [Fields](#tax-values-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#tax-values-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

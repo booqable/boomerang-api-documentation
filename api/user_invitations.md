@@ -7,10 +7,10 @@ so the user can confirm their email before the account is active.
 ## Relationships
 Name | Description
 -- | --
-`user` | **[User](#users)** `required`<br>The user to send the invitation to.
+`user` | **[User](https://developers.booqable.com/v4.html#users)** `required`<br>The user to send the invitation to.
 
 
-Check matching attributes under [Fields](#user-invitations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#user-invitations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

@@ -19,7 +19,7 @@ This resource is particularly useful for:
 -- | --
 `available` | **hash** `readonly`<br>A hash containing availability information for each planning in the order, keyed by planning ID. Each planning's availability includes location level data with stock counts, current availability, and plannable quantities.<br>For products, the availability shows: - `stock_count`: Total items in stock at the location - `available`: Currently available items (stock minus existing reservations) - `plannable`: Items that can be planned (same as available)<br>For bundles, the availability is calculated based on the most constraining component. If a bundle requires 2 chairs and 1 table, the bundle availability is limited by whichever component has fewer available sets.<br>Untracked items (those with tracking_type "none") are excluded from the availability calculations. Only active plannings and their archived nested plannings (where the parent is active) are included in the response. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly`<br>The unique identifier of the [Order](#orders) to check availability for. This parameter is required and must reference an existing order. 
+`order_id` | **uuid** `readonly`<br>The unique identifier of the [Order](https://developers.booqable.com/v4.html#orders) to check availability for. This parameter is required and must reference an existing order. 
 
 
 ## Get availability information for an order

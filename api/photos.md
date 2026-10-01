@@ -5,10 +5,10 @@ Photos are displayed on documents and in the online store to let customers see h
 ## Relationships
 Name | Description
 -- | --
-`owner` | **[Product group](#product-groups), [Bundle](#bundles)** `required`<br>The thing pictured in this photo. 
+`owner` | **[Product group](https://developers.booqable.com/v4.html#product-groups), [Bundle](https://developers.booqable.com/v4.html#bundles)** `required`<br>The thing pictured in this photo. 
 
 
-Check matching attributes under [Fields](#photos-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#photos-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

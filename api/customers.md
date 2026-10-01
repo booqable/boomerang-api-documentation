@@ -9,15 +9,15 @@ or when assigned a new customer.
 ## Relationships
 Name | Description
 -- | --
-`barcode` | **[Barcode](#barcodes)** `optional`<br>The barcode pointing to this customer. 
-`merge_suggestion_customer` | **[Customer](#customers)** `required`<br>Holds the customer this customer is a possible duplicate of. 
-`notes` | **[Notes](#notes)** `hasmany`<br>Notes added about (and invisible for) customers. 
-`payment_methods` | **[Payment methods](#payment-methods)** `hasmany`<br>[PaymentMethods](#payment-methods) associated with the customer. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom structured data about this customer, based on [DefaultProperties](#default-properties). Properties of customers can be updated in bulk by writing to the `properties_attributes` attribute. 
-`tax_region` | **[Tax region](#tax-regions)** `optional`<br>Tax region assigned to new orders for this customer. 
+`barcode` | **[Barcode](https://developers.booqable.com/v4.html#barcodes)** `optional`<br>The barcode pointing to this customer. 
+`merge_suggestion_customer` | **[Customer](https://developers.booqable.com/v4.html#customers)** `required`<br>Holds the customer this customer is a possible duplicate of. 
+`notes` | **[Notes](https://developers.booqable.com/v4.html#notes)** `hasmany`<br>Notes added about (and invisible for) customers. 
+`payment_methods` | **[Payment methods](https://developers.booqable.com/v4.html#payment-methods)** `hasmany`<br>[PaymentMethods](https://developers.booqable.com/v4.html#payment-methods) associated with the customer. 
+`properties` | **[Properties](https://developers.booqable.com/v4.html#properties)** `hasmany`<br>Custom structured data about this customer, based on [DefaultProperties](https://developers.booqable.com/v4.html#default-properties). Properties of customers can be updated in bulk by writing to the `properties_attributes` attribute. 
+`tax_region` | **[Tax region](https://developers.booqable.com/v4.html#tax-regions)** `optional`<br>Tax region assigned to new orders for this customer. 
 
 
-Check matching attributes under [Fields](#customers-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#customers-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields

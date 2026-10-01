@@ -5,11 +5,11 @@ A deposit hold is the resource responsible for managing the held deposit on an o
 ## Relationships
 Name | Description
 -- | --
-`deposit_line` | **[Line](#lines)** `required`<br>The [Line](#lines) that was created or updated to hold the deposit. 
-`order` | **[Order](#orders)** `required`<br>The [Order](#orders) a new deposit needs to be added to. 
+`deposit_line` | **[Line](https://developers.booqable.com/v4.html#lines)** `required`<br>The [Line](https://developers.booqable.com/v4.html#lines) that was created or updated to hold the deposit. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>The [Order](https://developers.booqable.com/v4.html#orders) a new deposit needs to be added to. 
 
 
-Check matching attributes under [Fields](#deposit-holds-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#deposit-holds-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -17,9 +17,9 @@ Check each individual operation to see which relations can be included as a side
  Name | Description
 -- | --
 `amount_in_cents` | **integer** `writeonly`<br>Amount to hold. If the order already has a hold, the amount will be added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
-`deposit_line_id` | **uuid** `readonly`<br>The [Line](#lines) that was created or updated to hold the deposit. 
+`deposit_line_id` | **uuid** `readonly`<br>The [Line](https://developers.booqable.com/v4.html#lines) that was created or updated to hold the deposit. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** <br>The [Order](#orders) a new deposit needs to be added to. 
+`order_id` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) a new deposit needs to be added to. 
 `reason` | **string** `writeonly`<br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 
 
@@ -82,7 +82,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][amount_in_cents]` | **integer** <br>Amount to hold. If the order already has a hold, the amount will be added to the previous one. The hold is clamped to `order.deposit_in_cents`. 
-`data[attributes][order_id]` | **uuid** <br>The [Order](#orders) a new deposit needs to be added to. 
+`data[attributes][order_id]` | **uuid** <br>The [Order](https://developers.booqable.com/v4.html#orders) a new deposit needs to be added to. 
 `data[attributes][reason]` | **string** <br>Reason for the hold. If the order already has a hold, the reason will overwrite the previous one. 
 
 

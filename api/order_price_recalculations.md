@@ -12,15 +12,15 @@ period for all items on the order. When `charge_length` is omitted, prices are
 recalculated based on the order's rental period.
 
 To recalculate the price of an individual line, set the `charge_length` of the
-line to `null` as described [here](#lines-fields).
+line to `null` as described [here](https://developers.booqable.com/v4.html#lines-fields).
 
 ## Relationships
 Name | Description
 -- | --
-`order` | **[Order](#orders)** `required`<br>[Order](#orders) that needs to be recalculated. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>[Order](https://developers.booqable.com/v4.html#orders) that needs to be recalculated. 
 
 
-Check matching attributes under [Fields](#order-price-recalculations-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#order-price-recalculations-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
@@ -29,7 +29,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `charge_length` | **integer** `writeonly` `readonly-after-create`<br>Charge length in seconds to apply to all items on the order. When provided, all items will be charged for this specific period, overriding any product-specific pricing rules. When omitted, prices are recalculated based on the order's rental period. 
 `id` | **uuid** `readonly`<br>Primary key.
-`order_id` | **uuid** `readonly-after-create`<br>[Order](#orders) that needs to be recalculated. 
+`order_id` | **uuid** `readonly-after-create`<br>[Order](https://developers.booqable.com/v4.html#orders) that needs to be recalculated. 
 
 
 ## Recalculate prices
@@ -121,7 +121,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][charge_length]` | **integer** <br>Charge length in seconds to apply to all items on the order. When provided, all items will be charged for this specific period, overriding any product-specific pricing rules. When omitted, prices are recalculated based on the order's rental period. 
-`data[attributes][order_id]` | **uuid** <br>[Order](#orders) that needs to be recalculated. 
+`data[attributes][order_id]` | **uuid** <br>[Order](https://developers.booqable.com/v4.html#orders) that needs to be recalculated. 
 
 
 ### Includes

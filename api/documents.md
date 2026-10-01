@@ -25,17 +25,17 @@ when payments are made for the associated order.
 ## Relationships
 Name | Description
 -- | --
-`coupon` | **[Coupon](#coupons)** `optional`<br>The associated coupon. 
-`customer` | **[Customer](#customers)** `optional`<br>The associated customer. 
-`lines` | **[Lines](#lines)** `hasmany`<br>The lines of this document. 
-`order` | **[Order](#orders)** `required`<br>The order this document is for. 
-`properties` | **[Properties](#properties)** `hasmany`<br>Custom properties associated with this document. 
-`signature` | **[Signature](#signatures)** `optional`<br>The signature associated with this document, if any. 
-`tax_region` | **[Tax region](#tax-regions)** `optional`<br>The associated tax region. 
-`tax_values` | **[Tax values](#tax-values)** `hasmany`<br>The calculated taxes, one value for each applicable tax rate. 
+`coupon` | **[Coupon](https://developers.booqable.com/v4.html#coupons)** `optional`<br>The associated coupon. 
+`customer` | **[Customer](https://developers.booqable.com/v4.html#customers)** `optional`<br>The associated customer. 
+`lines` | **[Lines](https://developers.booqable.com/v4.html#lines)** `hasmany`<br>The lines of this document. 
+`order` | **[Order](https://developers.booqable.com/v4.html#orders)** `required`<br>The order this document is for. 
+`properties` | **[Properties](https://developers.booqable.com/v4.html#properties)** `hasmany`<br>Custom properties associated with this document. 
+`signature` | **[Signature](https://developers.booqable.com/v4.html#signatures)** `optional`<br>The signature associated with this document, if any. 
+`tax_region` | **[Tax region](https://developers.booqable.com/v4.html#tax-regions)** `optional`<br>The associated tax region. 
+`tax_values` | **[Tax values](https://developers.booqable.com/v4.html#tax-values)** `hasmany`<br>The calculated taxes, one value for each applicable tax rate. 
 
 
-Check matching attributes under [Fields](#documents-fields) to see which relations can be written.
+Check matching attributes under [Fields](https://developers.booqable.com/v4.html#documents-fields) to see which relations can be written.
 <br/ >
 Check each individual operation to see which relations can be included as a sideload.
 ## Fields
