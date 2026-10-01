@@ -18,13 +18,13 @@ Embedded pages let your app present a full custom interface directly inside the 
 }
 ```
 
-The `url` can be either a relative path (resolved against your manifest's `base_url`) or an absolute URL. Booqable embeds it in an iframe, sized to fit the content, and communicates with it over a `postMessage` protocol described below.
+The `url` is either an absolute URL string, or a relative object like `{ "relative": "/dashboard" }` that is resolved against your manifest's `base_url` (required for relative URLs). Booqable embeds it in an iframe and communicates with it over a `postMessage` protocol described below.
 
 The exact same mechanism is also available as a `configuration_page.iframe`, an alternative to declarative content blocks for your app's settings page. See [Configuration](#configuration) for that specific field; everything below (the auth token, the message protocol) applies identically to both.
 
 ### Authentication token
 
-The iframe URL includes a JWT token as a query parameter, generated and appended by Booqable automatically. It contains:
+The iframe URL includes a `token` query parameter: a JWT signed with HS256 using your app's OAuth client secret. Its payload contains:
 
 * **Company ID** and **Company Slug**
 * **User Email** of the current employee
@@ -49,7 +49,7 @@ The iframe and Booqable communicate through a standardized postMessage protocol.
 #### Messages from iframe to Booqable
 
 **SET_IFRAME_HEIGHT**
-Adjusts the iframe height to fit the content.
+Sets the iframe height in pixels.
 
 ```javascript
 window.parent.postMessage({
@@ -99,7 +99,7 @@ window.parent.postMessage({
 **NAVIGATE**
 Requests Booqable to navigate to a different page.
 
-The `url` must be a **same-origin internal path** (e.g. `/app-store/my-app/settings`). For security, Booqable resolves the URL against its own origin and ignores anything that points to a different origin, as well as `javascript:` and `data:` schemes. Use this to move the user between pages within the Booqable dashboard, not to redirect them to external sites.
+The `url` must be a **same-origin internal path** (e.g. `/app-store/installed`). For security, Booqable resolves the URL against its own origin and ignores anything that points to a different origin, as well as `javascript:` and `data:` schemes. Use this to move the user between pages within the Booqable dashboard, not to redirect them to external sites.
 
 The optional `reload` flag controls how the navigation happens:
 
@@ -110,7 +110,7 @@ The optional `reload` flag controls how the navigation happens:
 window.parent.postMessage({
   eventName: "NAVIGATE",
   payload: {
-    url: "/app-store/my-app/settings",
+    url: "/app-store/installed",
     reload: false
   }
 }, "*")
