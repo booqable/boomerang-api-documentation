@@ -31,7 +31,7 @@ Content blocks let you declaratively define the content of your settings page. I
 
 Field types for `Form`: `text`, `textarea`, `password`, `email`, `phone`, `number`, `range`, `color`, `code`, `contentEditor`, `datepicker`, `select`, `checkbox`, `checkboxGroup`, `radioGroup`, `buttonGroup`.
 
-Any block can be shown conditionally with `if`: `configured` (only once the app is configured), `unconfigured` (only until then). If omitted the block is always shown.
+Any block can be shown conditionally with `if`: `configured` (only once the app is configured), `unconfigured` (only until then). An app counts as configured once all of its required form fields have a value, which is immediately if it has none. If omitted the block is always shown.
 
 ## Embedded settings page
 
