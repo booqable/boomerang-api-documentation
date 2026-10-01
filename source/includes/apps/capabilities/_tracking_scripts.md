@@ -1,6 +1,6 @@
 ## Tracking Scripts
 
-Tracking scripts let your app inject a JavaScript file into every storefront page — useful for analytics, marketing pixels, and similar integrations.
+Tracking scripts let your app inject JavaScript into every storefront page — useful for analytics, marketing pixels, and similar integrations.
 
 ```jsonc
 // booqable.json
@@ -11,9 +11,11 @@ Tracking scripts let your app inject a JavaScript file into every storefront pag
 }
 ```
 
-Only JavaScript is allowed: the referenced template must be a [Liquid](https://shopify.github.io/liquid/) file that renders to valid JavaScript.
+Only JavaScript is allowed: the referenced template must be a [Liquid](https://shopify.github.io/liquid/) file that renders to valid JavaScript. It is inlined into the page inside a `load` handler and is not validated, so a syntax error will break your script. Declarations at the top level are not global, so attach anything other code needs to `window`.
 
 Merchant-entered values (like an API key) come from a `configuration_page` form field, not a manifest key — see [Configuration](#configuration). Whatever the merchant enters is available in your template as a variable named after the field, e.g. `const apiKey = '{{ api_key }}'`.
+
+Your script only renders once the app is installed and configured, so if you have required form fields, nothing is injected until the merchant has saved them.
 
 Inside your template, use the [User Framework](#capabilities-user-framework) to hook into storefront events (`viewProduct`, `addToCart`, checkout steps, ...) and to register for cookie consent.
 
