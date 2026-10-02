@@ -14,6 +14,6 @@ Error Code | Meaning
 410 | Gone -- The resource requested has been removed from our servers.
 418 | I'm a teapot.
 422 | Unprocessible Entity -- Something wen't wrong saving your data.
-429 | Too Many Requests -- You're doing too many requests! Slow down!
+429 | Too Many Requests -- You exceeded the per-minute rate limit, see [Rate limits and usage](#rate-limits-and-usage).
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
