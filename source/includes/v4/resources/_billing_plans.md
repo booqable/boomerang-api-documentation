@@ -478,7 +478,8 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "company_performance_report",
                 "esignatures",
                 "public_order_page",
-                "api"
+                "api",
+                "address_autocomplete"
               ],
               "pricing_strategy": "start_grow_scale_custom"
             },
@@ -538,6 +539,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "esignatures",
                 "public_order_page",
                 "api",
+                "address_autocomplete",
                 "product_shortage_limits",
                 "remove_powered_by",
                 "activity_logs",
@@ -601,6 +603,7 @@ and pricing strategies. This data is used by the backoffice to display plan opti
                 "esignatures",
                 "public_order_page",
                 "api",
+                "address_autocomplete",
                 "product_shortage_limits",
                 "remove_powered_by",
                 "activity_logs",

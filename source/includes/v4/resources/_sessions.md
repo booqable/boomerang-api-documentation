@@ -154,7 +154,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "G3uJj2cBWMtoxo31L1vLnddZ",
+          "tenant_token": "3MPLHN6eZAsxmuG9G8S8YmYj",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -235,6 +235,7 @@ Check each individual operation to see which relations can be included as a side
               "esignatures",
               "public_order_page",
               "api",
+              "address_autocomplete",
               "product_shortage_limits",
               "remove_powered_by",
               "activity_logs",
@@ -309,7 +310,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=404",
           "large_avatar_url": "https://gravatar.com/avatar/32af84390e700e5f1863434446a4a235.png?d=mm&size=200",
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1790849879"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1791206932"
         }
       },
       {
@@ -357,7 +358,9 @@ Check each individual operation to see which relations can be included as a side
             "iprestrictions_enabled": false,
             "confirm_email_on_new_devices": true
           },
-          "address": {},
+          "address": {
+            "autocomplete_enabled": true
+          },
           "store": {
             "enabled": true,
             "public": true,

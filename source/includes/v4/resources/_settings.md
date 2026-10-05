@@ -286,7 +286,9 @@ Name | Description
           "iprestrictions_enabled": false,
           "confirm_email_on_new_devices": true
         },
-        "address": {},
+        "address": {
+          "autocomplete_enabled": true
+        },
         "store": {
           "enabled": true,
           "public": true,
