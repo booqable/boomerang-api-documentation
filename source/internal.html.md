@@ -23,6 +23,7 @@ includes:
   - v4/resources/assets
   - v4/resources/authentication_methods
   - v4/resources/availabilities
+  - v4/resources/availability_breakdowns
   - v4/resources/barcodes
   - v4/resources/billing_invoices
   - v4/resources/bulk_upserts
