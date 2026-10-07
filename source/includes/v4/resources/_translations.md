@@ -7,12 +7,13 @@ belongs to a [Language](#languages) and is uniquely identified by its `key` and
 Create a translation to override the default text for a key, update it to change the
 override, and destroy it to fall back to the default text again. To change many
 translations at once, use a [BulkUpsert](#bulk-upserts) with `type: translations`
-and `data: [{ key, value, namespace }]`; a blank `value` removes the override.
+and `data: [{ key, value, namespace }]`; a blank `value` removes the override and
+`language_id` picks the language, English when left out.
 
 ## Relationships
 Name | Description
 -- | --
-`language` | **[Language](#languages)** `required`<br>The [Language](#languages) this translation belongs to. Translations are always stored on the company's default language (`en`), which is created on first use. 
+`language` | **[Language](#languages)** `required`<br>The [Language](#languages) this translation belongs to. Defaults to the English language (`en`), which is created on first use. Can only be set on create. 
 
 
 Check matching attributes under [Fields](#translations-fields) to see which relations can be written.
@@ -25,7 +26,7 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `key` | **string** `readonly-after-create`<br>The dot-separated translation key that is overridden, for example `document.date`. Can only be set on create. 
-`language_id` | **uuid** `readonly`<br>The [Language](#languages) this translation belongs to. Translations are always stored on the company's default language (`en`), which is created on first use. 
+`language_id` | **uuid** <br>The [Language](#languages) this translation belongs to. Defaults to the English language (`en`), which is created on first use. Can only be set on create. 
 `namespace` | **string** `readonly-after-create`<br>The namespace the key lives in. Defaults to `user`. Can only be set on create. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `value` | **string** `nullable`<br>The custom text shown instead of the default translation. 
@@ -234,6 +235,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][key]` | **string** <br>The dot-separated translation key that is overridden, for example `document.date`. Can only be set on create. 
+`data[attributes][language_id]` | **uuid** <br>The [Language](#languages) this translation belongs to. Defaults to the English language (`en`), which is created on first use. Can only be set on create. 
 `data[attributes][namespace]` | **string** <br>The namespace the key lives in. Defaults to `user`. Can only be set on create. 
 `data[attributes][value]` | **string** <br>The custom text shown instead of the default translation. 
 
@@ -309,6 +311,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][key]` | **string** <br>The dot-separated translation key that is overridden, for example `document.date`. Can only be set on create. 
+`data[attributes][language_id]` | **uuid** <br>The [Language](#languages) this translation belongs to. Defaults to the English language (`en`), which is created on first use. Can only be set on create. 
 `data[attributes][namespace]` | **string** <br>The namespace the key lives in. Defaults to `user`. Can only be set on create. 
 `data[attributes][value]` | **string** <br>The custom text shown instead of the default translation. 
 

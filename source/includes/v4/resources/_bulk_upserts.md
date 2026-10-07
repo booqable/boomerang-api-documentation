@@ -27,6 +27,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `data` | **array** `writeonly`<br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. 
 `id` | **uuid** `readonly`<br>Primary key.
+`language_id` | **uuid** `writeonly`<br>For `translations` only: the [Language](#languages) the translations belong to, the English language when left out. 
 `type` | **enum** `writeonly`<br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`, `translations`.
 
 
@@ -257,6 +258,7 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][data][]` | **array** <br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. 
+`data[attributes][language_id]` | **uuid** <br>For `translations` only: the [Language](#languages) the translations belong to, the English language when left out. 
 `data[attributes][type]` | **enum** <br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`, `translations`.
 
 
