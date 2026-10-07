@@ -1,7 +1,7 @@
 # Availability breakdowns
 
 Availability breakdowns explain where the units of a product went for an exact period at a
-given location. Where [Inventory availabilities](#inventory-availabilities) answer *how many*
+given location. Where [Inventory availabilities](https://developers.booqable.com/v4.html#inventory-availabilities) answer *how many*
 units can still be booked, this endpoint answers *why*: it splits the product's inventory into
 the parts a merchant can act on, such as units planned on other orders, units in downtime, or
 stock that has not arrived yet.

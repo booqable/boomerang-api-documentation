@@ -472,6 +472,20 @@
               </ul>
           </li>
           <li>
+            <a href="#availability-breakdowns" class="toc-h1 toc-link" data-title="Availability breakdowns" title="Availability breakdowns">Availability breakdowns</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#availability-breakdowns-fields" class="toc-h2 toc-link" data-title="Fields" title="Fields">Fields</a>
+                  </li>
+                  <li>
+                    <a href="#availability-breakdowns-fetch-an-availability-breakdown-for-a-product" class="toc-h2 toc-link" data-title="Fetch an availability breakdown for a product" title="Fetch an availability breakdown for a product">Fetch an availability breakdown for a product</a>
+                  </li>
+                  <li>
+                    <a href="#availability-breakdowns-fetch-an-availability-breakdown-for-a-product-in-an-order" class="toc-h2 toc-link" data-title="Fetch an availability breakdown for a product in an order" title="Fetch an availability breakdown for a product in an order">Fetch an availability breakdown for a product in an order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#barcodes" class="toc-h1 toc-link" data-title="Barcodes" title="Barcodes">Barcodes</a>
               <ul class="toc-list-h2">
                   <li>
@@ -8904,6 +8918,294 @@ for order subjects. To check item stock counts during an order&#39;s rental peri
 </tr>
 </tbody></table>
 <h3 id='availabilities-fetch-availability-for-a-bundle-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h1 id='availability-breakdowns'>Availability breakdowns</h1>
+<p>Availability breakdowns explain where the units of a product went for an exact period at a
+given location. Where <a href="#inventory-availabilities">Inventory availabilities</a> answer <em>how many</em>
+units can still be booked, this endpoint answers <em>why</em>: it splits the product&#39;s inventory into
+the parts a merchant can act on, such as units planned on other orders, units in downtime, or
+stock that has not arrived yet.</p>
+
+<p>A breakdown is resolved for a single product with inventory (trackable or bulk). Pass <code>order_id</code> to split the
+planned quantity into the order being viewed and all other orders.</p>
+
+<p>The counters are not meant to add up to the stock count. <code>available_now</code> and the shortage
+counters are derived from the lowest availability across the period, while the planning and
+downtime counters are sums over the whole period.</p>
+<h2 id='availability-breakdowns-fields'>Fields</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>available_now</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>Units that can be booked for the period, excluding stock that has not arrived yet. Never negative.</td>
+</tr>
+<tr>
+<td><code>expected</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>Stock in transit: stock items with status <code>expected</code> at this location that arrive on or before <code>from</code> and stay for the whole period.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br>Primary key.</td>
+</tr>
+<tr>
+<td><code>in_downtime</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>Number of stock items with a reserved or started downtime overlapping the period at this location.</td>
+</tr>
+<tr>
+<td><code>in_other_orders</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>Quantity planned on other orders that reduces availability. Concept and canceled orders are excluded.</td>
+</tr>
+<tr>
+<td><code>in_this_order</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>Quantity planned on the order given as <code>order_id</code>, regardless of the order&#39;s status. A concept order still reports its planned quantity here even though it does not reduce availability.</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>uuid</strong> <code>readonly</code><br><strong>Required.</strong> The product to return a breakdown for. Must be a product with inventory (trackable or bulk); bundles and product groups are not accepted. Also returned on the record.</td>
+</tr>
+<tr>
+<td><code>over_shortage_limit</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>Overbooked quantity beyond the product&#39;s shortage limit. When shortage is not allowed for the product, the whole shortage is reported here.</td>
+</tr>
+<tr>
+<td><code>within_shortage_limit</code></td>
+<td><strong>integer</strong> <code>readonly</code><br>Overbooked quantity that the product&#39;s shortage limit allows.</td>
+</tr>
+</tbody></table>
+<h2 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product'>Fetch an availability breakdown for a product</h2>
+<blockquote>
+<p>How to fetch an availability breakdown for a product:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/availability_breakdowns'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[from]=2024-10-01 09:00:00'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[item_id]=0a4c51dc-281c-4853-8967-d7eda4390e69'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[location_id]=adc4904e-9f2a-45ca-84f6-f2656a972aa1'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[till]=2024-10-02 09:00:00'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d37e9b8-370a-4c30-87ad-f47c7973c7e3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"availability_breakdowns"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a4c51dc-281c-4853-8967-d7eda4390e69"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"available_now"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"in_this_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"in_other_orders"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"in_downtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"within_shortage_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"over_shortage_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/availability_breakdowns</code></p>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[availability_breakdowns]=item_id,available_now,expected</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>from</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-includes'>Includes</h3>
+<p>This request does not accept any includes</p>
+<h2 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-in-an-order'>Fetch an availability breakdown for a product in an order</h2>
+<blockquote>
+<p>How to split the breakdown between the order being viewed and other orders:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--get</span> <span class="s1">'https://example.booqable.com/api/4/availability_breakdowns'</span>
+       <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[from]=2024-10-01 09:00:00 UTC'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[item_id]=8df0fde5-1e01-49e9-8efd-f8ced49d483a'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[location_id]=a9fa3896-99bd-4bc6-825f-9363ac528e48'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[order_id]=6ec38271-844b-40a0-8adf-82859b1f62fa'</span>
+       <span class="nt">--data-urlencode</span> <span class="s1">'filter[till]=2024-10-02 09:00:00 UTC'</span>
+</code></pre></div>
+<blockquote>
+<p>A 200 status response looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8a6a42bb-7eb4-4c97-85f9-253ceac9d61d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"availability_breakdowns"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8df0fde5-1e01-49e9-8efd-f8ced49d483a"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"available_now"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"expected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"in_this_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"in_other_orders"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"in_downtime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"within_shortage_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"over_shortage_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-in-an-order-http-request'>HTTP Request</h3>
+<p><code>GET /api/4/availability_breakdowns</code></p>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-in-an-order-request-params'>Request params</h3>
+<p>This request accepts the following parameters:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>fields[]</code></td>
+<td><strong>array</strong> <br>List of comma separated fields to include instead of the default fields. <code>?fields[availability_breakdowns]=item_id,available_now,expected</code></td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><strong>hash</strong> <br>The filters to apply <code>?filter[attribute][eq]=value</code></td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td><strong>hash</strong> <br>Metadata to send along. <code>?meta[total][]=count</code></td>
+</tr>
+<tr>
+<td><code>page[number]</code></td>
+<td><strong>string</strong> <br>The page to request.</td>
+</tr>
+<tr>
+<td><code>page[size]</code></td>
+<td><strong>string</strong> <br>The amount of items per page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><strong>string</strong> <br>How to sort the data. <code>?sort=attribute1,-attribute2</code></td>
+</tr>
+</tbody></table>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-in-an-order-filters'>Filters</h3>
+<p>This request can be filtered on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>from</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>location_id</code></td>
+<td><strong>uuid</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><strong>uuid</strong> <br><code>eq</code></td>
+</tr>
+<tr>
+<td><code>till</code></td>
+<td><strong>datetime</strong> <code>required</code><br><code>eq</code></td>
+</tr>
+</tbody></table>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-in-an-order-meta'>Meta</h3>
+<p>Results can be aggregated on:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>total</code></td>
+<td><strong>array</strong> <br><code>count</code></td>
+</tr>
+</tbody></table>
+<h3 id='availability-breakdowns-fetch-an-availability-breakdown-for-a-product-in-an-order-includes'>Includes</h3>
 <p>This request does not accept any includes</p>
 <h1 id='barcodes'>Barcodes</h1>
 <p>You can assign Barcodes to Product (variations), individually tracked StockItems,
