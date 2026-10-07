@@ -100,7 +100,6 @@
             "enum": ["accessibility", "accounting", "crm", "fulfillment", "maps", "marketing", "payment", "social", "tracking", "translation", "website", "widget"]
           }
         },
-        "card_image": { "$ref": "#/definitions/AssetReference" },
         "icon": { "$ref": "#/definitions/AssetReference" },
         "features": {
           "type": "array",
@@ -126,7 +125,7 @@
         },
         "support": { "$ref": "#/definitions/AppStoreSupport" }
       },
-      "required": ["title", "description", "card_image", "icon"],
+      "required": ["title", "description", "icon"],
       "additionalProperties": false
     },
     "AppStoreDescription": {
@@ -296,7 +295,7 @@
     },
     "ConfigurationPage": {
       "type": "object",
-      "description": "A list of UI blocks and/or an embedded page for configuring the app. At least one of `content` or `iframe` must be given; when both are given, `iframe` takes priority and `content` is not rendered (a transitional shape for apps migrating to `iframe`, kept alive for the old UI's benefit).",
+      "description": "A list of UI blocks or an embedded page for configuring the app. Exactly one of `content` or `iframe` must be given.",
       "properties": {
         "content": {
           "type": "array",
@@ -308,7 +307,7 @@
           "description": "An embedded page for the configuration of the app."
         }
       },
-      "anyOf": [
+      "oneOf": [
         { "required": ["content"] },
         { "required": ["iframe"] }
       ],
