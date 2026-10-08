@@ -355,8 +355,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-08-04T00:59:01.000000+00:00",
-          "stops_at": "1968-09-03T00:59:01.000000+00:00",
+          "starts_at": "1968-08-03T04:19:01.000000+00:00",
+          "stops_at": "1968-09-02T04:19:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -608,14 +608,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-10-08T11:30:58Z",
-                       "lte": "2026-10-11T11:30:58Z"
+                       "gte": "2026-10-09T08:11:01Z",
+                       "lte": "2026-10-12T08:11:01Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-10-08T11:30:58Z",
-                       "lte": "2026-10-11T11:30:58Z"
+                       "gte": "2026-10-09T08:11:01Z",
+                       "lte": "2026-10-12T08:11:01Z"
                      }
                    }
                  ]
@@ -973,7 +973,7 @@ This request accepts the following includes:
       "type": "orders",
       "attributes": {
         "created_at": "2015-07-07T09:48:01.000000+00:00",
-        "updated_at": "2015-07-07T09:49:01.000000+00:00",
+        "updated_at": "2015-07-07T09:48:01.000000+00:00",
         "number": 1,
         "status": "reserved",
         "statuses": [
@@ -986,8 +986,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1968-12-30T10:18:01.000000+00:00",
-        "stops_at": "1969-01-29T10:18:01.000000+00:00",
+        "starts_at": "1968-12-29T13:37:01.000000+00:00",
+        "stops_at": "1969-01-28T13:37:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
