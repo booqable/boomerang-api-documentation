@@ -80,7 +80,7 @@ Invoices received from Booqable
           "next_payment_attempt_at": null,
           "coupon": null,
           "credited_invoice_id": null,
-          "url": "http://billing.booqable.localhost/invoices/hW9nmFJ8GUN2jp7ShJBMyYS9/i14Y8XBX9AkTDhG7gdnHNxyZ"
+          "url": "http://billing.booqable.localhost/invoices/Z33Wj6TN9AFfpzAsvBjVvzMD/V1QYvwbFyTPh5hWafhcSL3wo"
         }
       }
     ],
@@ -183,7 +183,7 @@ This request does not accept any includes
         "next_payment_attempt_at": null,
         "coupon": null,
         "credited_invoice_id": null,
-        "url": "http://billing.booqable.localhost/invoices/QpetwW4Kk796w2De8j1iZWSC/hxf5RGSFDCT1DseLxmkXPyRp"
+        "url": "http://billing.booqable.localhost/invoices/Roe4JqM6xq5zVRLDi3YB6TRX/cAzrLuDdLE1JdPJNQdULP9mV"
       }
     },
     "meta": {}
