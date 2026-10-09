@@ -4,8 +4,8 @@ Languages group the custom [Translations](#translations) that override Booqable'
 built-in copy for a single locale.
 
 A language is identified by its locale code (`identifier`). There can be only one
-language per locale within a company, and only the locales Booqable ships store texts
-for can be added. Publishing a language makes it available in the store. Removing a
+language per locale within a company, and any living left-to-right language can be
+added. Publishing a language makes it available in the store. Removing a
 language removes its custom translations with it; the default store language cannot
 be removed.
 
@@ -24,7 +24,7 @@ Check each individual operation to see which relations can be included as a side
 -- | --
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
-`identifier` | **string** `readonly-after-create`<br>The locale code of the language, one of the locales Booqable ships store texts for, for example `en` or `pt_BR`. Can only be set on create. 
+`identifier` | **string** `readonly-after-create`<br>The locale code of the language: an ISO 639-1 code such as `sv`, or a regional variant such as `pt_BR`. Right-to-left languages are not offered. Can only be set on create. 
 `name` | **string** <br>The display name of the language. Defaults to the English name of the locale. 
 `published` | **boolean** <br>Whether the language is available in the store. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -251,7 +251,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][identifier]` | **string** <br>The locale code of the language, one of the locales Booqable ships store texts for, for example `en` or `pt_BR`. Can only be set on create. 
+`data[attributes][identifier]` | **string** <br>The locale code of the language: an ISO 639-1 code such as `sv`, or a regional variant such as `pt_BR`. Right-to-left languages are not offered. Can only be set on create. 
 `data[attributes][name]` | **string** <br>The display name of the language. Defaults to the English name of the locale. 
 `data[attributes][published]` | **boolean** <br>Whether the language is available in the store. 
 
@@ -325,7 +325,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][identifier]` | **string** <br>The locale code of the language, one of the locales Booqable ships store texts for, for example `en` or `pt_BR`. Can only be set on create. 
+`data[attributes][identifier]` | **string** <br>The locale code of the language: an ISO 639-1 code such as `sv`, or a regional variant such as `pt_BR`. Right-to-left languages are not offered. Can only be set on create. 
 `data[attributes][name]` | **string** <br>The display name of the language. Defaults to the English name of the locale. 
 `data[attributes][published]` | **boolean** <br>Whether the language is available in the store. 
 

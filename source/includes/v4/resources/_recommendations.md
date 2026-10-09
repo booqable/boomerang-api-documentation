@@ -18,8 +18,8 @@ supported — to change a suggestion, delete and recreate it.
 ## Relationships
 Name | Description
 -- | --
-`source_product_group` | **[Product group](#product-groups)** `required`<br>The [ProductGroup](#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
-`target_product_group` | **[Product group](#product-groups)** `required`<br>The [ProductGroup](#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
+`source_product_group` | **[Item](#items)** `required`<br>The [ProductGroup](#product-groups) that is being viewed. Recommendations are fetched by filtering on this product group: `GET /api/4/recommendations?filter[source_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. 
+`target_product_group` | **[Item](#items)** `required`<br>The [ProductGroup](#product-groups) that is being recommended. This is the product that will appear as a suggestion when the source product group is viewed.<br>To find every product group that recommends a given product, filter by this relation: `GET /api/4/recommendations?filter[target_product_group_id]=id`.<br>Writable only on creation. Cannot be changed after the recommendation is created. Each target product group can only appear once per source — duplicate combinations are rejected. 
 
 
 Check matching attributes under [Fields](#recommendations-fields) to see which relations can be written.
