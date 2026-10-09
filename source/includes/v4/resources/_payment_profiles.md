@@ -183,7 +183,7 @@ Disconnects (archives) a payment profile by marking it as inactive. This prevent
       "type": "payment_profiles",
       "attributes": {
         "created_at": "2022-07-16T07:18:05.000000+00:00",
-        "updated_at": "2022-07-16T07:19:05.000000+00:00",
+        "updated_at": "2022-07-16T07:18:05.000000+00:00",
         "provider": "stripe",
         "active": false,
         "config": {

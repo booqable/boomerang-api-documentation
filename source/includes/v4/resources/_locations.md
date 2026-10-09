@@ -25,7 +25,7 @@ Check each individual operation to see which relations can be included as a side
 `archived` | **boolean** `readonly`<br>Whether location is archived. 
 `archived_at` | **datetime** `readonly` `nullable`<br>When the location was archived. 
 `city` | **string** <br>Address city. 
-`code` | **string** <br>Code used to identify the location. 
+`code` | **string** <br>Code used to identify the location, stored in uppercase. A new or changed code takes at most 3 characters; a longer code saved earlier stays valid. 
 `confirm_has_orders` | **boolean** `writeonly`<br>A flag to confirm an address update when the location has orders. 
 `country` | **string** <br>Address country. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
@@ -66,7 +66,7 @@ Check each individual operation to see which relations can be included as a side
           "archived": false,
           "archived_at": null,
           "name": "Warehouse",
-          "code": "LOC1000033",
+          "code": "00Y",
           "location_type": "rental",
           "address_line_1": "Blokhuisplein 40",
           "address_line_2": "Department II",
@@ -182,7 +182,7 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "name": "Warehouse",
-        "code": "LOC1000034",
+        "code": "00Z",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -341,7 +341,7 @@ Name | Description
 `data[attributes][address_line_1]` | **string** <br>First address line. 
 `data[attributes][address_line_2]` | **string** <br>Second address line. 
 `data[attributes][city]` | **string** <br>Address city. 
-`data[attributes][code]` | **string** <br>Code used to identify the location. 
+`data[attributes][code]` | **string** <br>Code used to identify the location, stored in uppercase. A new or changed code takes at most 3 characters; a longer code saved earlier stays valid. 
 `data[attributes][confirm_has_orders]` | **boolean** <br>A flag to confirm an address update when the location has orders. 
 `data[attributes][country]` | **string** <br>Address country. 
 `data[attributes][location_type]` | **enum** <br>Determines if the location can be seen in the online store.<br> One of: `rental`, `internal`.
@@ -396,7 +396,7 @@ This request accepts the following includes:
         "archived": false,
         "archived_at": null,
         "name": "Old warehouse",
-        "code": "LOC1000036",
+        "code": "011",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
@@ -455,7 +455,7 @@ Name | Description
 `data[attributes][address_line_1]` | **string** <br>First address line. 
 `data[attributes][address_line_2]` | **string** <br>Second address line. 
 `data[attributes][city]` | **string** <br>Address city. 
-`data[attributes][code]` | **string** <br>Code used to identify the location. 
+`data[attributes][code]` | **string** <br>Code used to identify the location, stored in uppercase. A new or changed code takes at most 3 characters; a longer code saved earlier stays valid. 
 `data[attributes][confirm_has_orders]` | **boolean** <br>A flag to confirm an address update when the location has orders. 
 `data[attributes][country]` | **string** <br>Address country. 
 `data[attributes][location_type]` | **enum** <br>Determines if the location can be seen in the online store.<br> One of: `rental`, `internal`.
@@ -506,7 +506,7 @@ To archive a location make sure that:
         "archived": true,
         "archived_at": "2020-03-03T14:31:02.000000+00:00",
         "name": "Warehouse",
-        "code": "LOC1000037",
+        "code": "012",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
