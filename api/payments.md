@@ -164,6 +164,8 @@ These amounts are immutable once set to maintain financial integrity.
           "deposit_refunded_in_cents": 0,
           "total_refundable_in_cents": 5000,
           "total_refunded_in_cents": 0,
+          "amount_available_to_refund_in_cents": 5000,
+          "deposit_available_to_refund_in_cents": 0,
           "payment_method_id": null,
           "payment_authorization_id": null
         },
@@ -300,6 +302,8 @@ This request accepts the following includes:
         "deposit_refunded_in_cents": 0,
         "total_refundable_in_cents": 5000,
         "total_refunded_in_cents": 0,
+        "amount_available_to_refund_in_cents": 5000,
+        "deposit_available_to_refund_in_cents": 0,
         "payment_method_id": null,
         "payment_authorization_id": null
       },

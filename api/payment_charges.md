@@ -104,16 +104,18 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`amount_available_to_refund_in_cents` | **integer** `readonly`<br>Main amount that can be refunded right now in cents.<br>Equals `amount_refundable_in_cents` minus the main amount of refunds that are still in progress (`created`, `pending` or `action_required`). A new [PaymentRefund](https://developers.booqable.com/v4.html#payment-refunds) can refund at most this as `amount_in_cents`, and at most `amount_available_to_refund_in_cents` + `deposit_available_to_refund_in_cents` in total. Negative on a charge whose main amount was refunded more than it held, which then also lowers the total. Read-only, and not available for filtering or sorting. 
 `amount_in_cents` | **integer** <br>Main charge amount in cents (excluding deposit).<br>This typically represents the rental charges, services, or products. Must be non-negative and cannot be changed after creation. 
-`amount_refundable_in_cents` | **integer** `readonly`<br>Remaining main amount that can still be refunded in cents.<br>Starts equal to `amount_in_cents` for succeeded charges and decreases as refunds are processed. 
+`amount_refundable_in_cents` | **integer** `readonly`<br>Remaining main amount that can still be refunded in cents.<br>Starts equal to `amount_in_cents` for succeeded charges and decreases as refunds succeed.<br>Refunds that are still in progress (`created`, `pending` or `action_required`) are not subtracted yet. Use `amount_available_to_refund_in_cents` to know how much can be refunded right now. 
 `amount_refunded_in_cents` | **integer** `readonly`<br>Total main amount already refunded in cents.<br>Sum of all refund amounts applied to the main charge amount. Increases as refunds are processed. 
 `canceled_at` | **datetime** `readonly`<br>Timestamp when the charge was canceled.<br>Will be `null` for charges that haven't been canceled. Charges can be canceled before completion, but not after they've succeeded. 
 `cart_id` | **uuid** `readonly-after-create`<br>The [Cart](https://developers.booqable.com/v4.html#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** <br>Three-letter ISO 4217 currency code (e.g., `USD`, `EUR`).<br>All amounts for this charge are in this currency. Must match the currency of the associated order or cart. 
 `customer_id` | **uuid** `readonly-after-create`<br>The [Customer](https://developers.booqable.com/v4.html#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
+`deposit_available_to_refund_in_cents` | **integer** `readonly`<br>Deposit amount that can be refunded right now in cents.<br>Equals `deposit_refundable_in_cents` minus the deposit amount of refunds that are still in progress (`created`, `pending` or `action_required`). A new [PaymentRefund](https://developers.booqable.com/v4.html#payment-refunds) can refund at most this as `deposit_in_cents`, and at most `amount_available_to_refund_in_cents` + `deposit_available_to_refund_in_cents` in total. Negative on a charge whose deposit was refunded more than it held, which then also lowers the total. Read-only, and not available for filtering or sorting. 
 `deposit_in_cents` | **integer** <br>Deposit amount in cents.<br>Deposits are held separately from the main amount and may have different refund rules. Cannot be changed after creation. 
-`deposit_refundable_in_cents` | **integer** `readonly`<br>Remaining deposit amount that can still be refunded in cents.<br>Starts equal to `deposit_in_cents` for succeeded charges and decreases as deposit refunds are processed. 
+`deposit_refundable_in_cents` | **integer** `readonly`<br>Remaining deposit amount that can still be refunded in cents.<br>Starts equal to `deposit_in_cents` for succeeded charges and decreases as deposit refunds succeed.<br>Refunds that are still in progress (`created`, `pending` or `action_required`) are not subtracted yet. Use `deposit_available_to_refund_in_cents` to know how much can be refunded right now. 
 `deposit_refunded_in_cents` | **integer** `readonly`<br>Total deposit amount already refunded in cents.<br>Sum of all refund amounts applied to the deposit. Increases as deposit refunds are processed. 
 `description` | **string** <br>Optional description for this charge that can be displayed to customers.<br>Use this to provide context about what the charge is for, especially for partial payments or custom amounts. 
 `employee_id` | **uuid** `readonly`<br>The [Employee](https://developers.booqable.com/v4.html#employees) who created or processed this payment.<br>Automatically set by the system and cannot be modified through the API. 
@@ -134,7 +136,7 @@ Check each individual operation to see which relations can be included as a side
 `status` | **enum** <br>Current status of the charge in its lifecycle.<br>One of: `created`, `started`, `action_required`, `processing`, `succeeded`, `failed`, `canceled`, `expired`.<br>Status transitions follow specific rules - for example, a charge can move from `created` to `started`, but not directly to `succeeded` without going through `processing`. 
 `succeeded_at` | **datetime** <br>Timestamp when the charge successfully completed.<br>Will be `null` for charges that haven't succeeded yet. Once set, the charge is considered successful and funds have been collected. 
 `total_in_cents` | **integer** <br>Total charge amount in cents.<br>Always equals `amount_in_cents` + `deposit_in_cents`. This is the total amount the customer will be charged. 
-`total_refundable_in_cents` | **integer** `readonly`<br>Total amount still available for refund in cents.<br>Always equals `amount_refundable_in_cents` + `deposit_refundable_in_cents`. Use this to check maximum refund amount. 
+`total_refundable_in_cents` | **integer** `readonly`<br>Total amount still available for refund in cents.<br>Always equals `amount_refundable_in_cents` + `deposit_refundable_in_cents`.<br>Refunds that are still in progress (`created`, `pending` or `action_required`) are not subtracted yet. To check the maximum refund amount, use `amount_available_to_refund_in_cents` + `deposit_available_to_refund_in_cents` instead. 
 `total_refunded_in_cents` | **integer** `readonly`<br>Total amount already refunded in cents.<br>Always equals `amount_refunded_in_cents` + `deposit_refunded_in_cents`. Tracks the complete refund history. 
 `type` | **string** `readonly`<br>Always returns `payment_charges`.<br>To retrieve charges along with other payment types, use the [Payments](https://developers.booqable.com/v4.html#payments) endpoint which returns all payment types. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -201,6 +203,8 @@ Check each individual operation to see which relations can be included as a side
         "deposit_refunded_in_cents": 0,
         "total_refundable_in_cents": 15000,
         "total_refunded_in_cents": 0,
+        "amount_available_to_refund_in_cents": 10000,
+        "deposit_available_to_refund_in_cents": 5000,
         "payment_method_id": null,
         "payment_authorization_id": null
       },
@@ -332,6 +336,8 @@ This request accepts the following includes:
         "deposit_refunded_in_cents": 0,
         "total_refundable_in_cents": 5000,
         "total_refunded_in_cents": 0,
+        "amount_available_to_refund_in_cents": 5000,
+        "deposit_available_to_refund_in_cents": 0,
         "payment_method_id": null,
         "payment_authorization_id": null
       },
@@ -452,6 +458,8 @@ This request accepts the following includes:
         "deposit_refunded_in_cents": 0,
         "total_refundable_in_cents": 5000,
         "total_refunded_in_cents": 0,
+        "amount_available_to_refund_in_cents": 5000,
+        "deposit_available_to_refund_in_cents": 0,
         "payment_method_id": null,
         "payment_authorization_id": null
       },
