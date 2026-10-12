@@ -10,6 +10,9 @@
   </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ConfigurationPage */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"main_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* MainPage */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"order_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* OrderPage */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"customer_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* CustomerPage */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"product_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* ProductPage */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* AppStatus */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"tracking_script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* TrackingScript */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">],</span><span class="w">
@@ -81,6 +84,24 @@
 <td><a href="#reference-mainpage"><code>MainPage</code></a></td>
 <td>false</td>
 <td>An embedded page for the daily operations of the app.</td>
+</tr>
+<tr>
+<td><code>order_page</code></td>
+<td><a href="#reference-orderpage"><code>OrderPage</code></a></td>
+<td>false</td>
+<td>Extends the order page in the back office.</td>
+</tr>
+<tr>
+<td><code>customer_page</code></td>
+<td><a href="#reference-customerpage"><code>CustomerPage</code></a></td>
+<td>false</td>
+<td>Extends the customer page in the back office.</td>
+</tr>
+<tr>
+<td><code>product_page</code></td>
+<td><a href="#reference-productpage"><code>ProductPage</code></a></td>
+<td>false</td>
+<td>Extends the product page in the back office.</td>
 </tr>
 <tr>
 <td><code>status</code></td>
@@ -540,6 +561,90 @@
 <td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
 <td>true</td>
 <td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-orderpage'><code>OrderPage</code></h2>
+<p>Additions this app makes to the order page in the back office.</p>
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* SidebarFrame */</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sidebar_frame</code></td>
+<td><a href="#reference-sidebarframe"><code>SidebarFrame</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-customerpage'><code>CustomerPage</code></h2>
+<p>Additions this app makes to the customer page in the back office.</p>
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* SidebarFrame */</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sidebar_frame</code></td>
+<td><a href="#reference-sidebarframe"><code>SidebarFrame</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-productpage'><code>ProductPage</code></h2>
+<p>Additions this app makes to the product page in the back office.</p>
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* SidebarFrame */</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sidebar_frame</code></td>
+<td><a href="#reference-sidebarframe"><code>SidebarFrame</code></a></td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='reference-sidebarframe'><code>SidebarFrame</code></h2>
+<p>An embedded panel in the page&#39;s sidebar. Each app can add one per page.</p>
+<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>url</code></td>
+<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
+<td>true</td>
+<td>URL of the page to embed in the panel&#39;s iframe. Booqable appends signed query parameters identifying the company and the record being viewed.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-appstatus'><code>AppStatus</code></h2>

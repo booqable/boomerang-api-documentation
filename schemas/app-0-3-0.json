@@ -46,6 +46,18 @@
       "$ref": "#/definitions/MainPage",
       "description": "An embedded page for the daily operations of the app."
     },
+    "order_page": {
+      "$ref": "#/definitions/OrderPage",
+      "description": "Extends the order page in the back office."
+    },
+    "customer_page": {
+      "$ref": "#/definitions/CustomerPage",
+      "description": "Extends the customer page in the back office."
+    },
+    "product_page": {
+      "$ref": "#/definitions/ProductPage",
+      "description": "Extends the product page in the back office."
+    },
     "status": {
       "$ref": "#/definitions/AppStatus",
       "description": "Options controlling the app status reported inside Booqable."
@@ -273,6 +285,45 @@
       "description": "An embedded iframe.",
       "properties": {
         "url": { "$ref": "#/definitions/LocatableUrl" }
+      },
+      "required": ["url"],
+      "additionalProperties": false
+    },
+    "OrderPage": {
+      "type": "object",
+      "description": "Additions this app makes to the order page in the back office.",
+      "properties": {
+        "sidebar_frame": { "$ref": "#/definitions/SidebarFrame" }
+      },
+      "required": ["sidebar_frame"],
+      "additionalProperties": false
+    },
+    "CustomerPage": {
+      "type": "object",
+      "description": "Additions this app makes to the customer page in the back office.",
+      "properties": {
+        "sidebar_frame": { "$ref": "#/definitions/SidebarFrame" }
+      },
+      "required": ["sidebar_frame"],
+      "additionalProperties": false
+    },
+    "ProductPage": {
+      "type": "object",
+      "description": "Additions this app makes to the product page in the back office.",
+      "properties": {
+        "sidebar_frame": { "$ref": "#/definitions/SidebarFrame" }
+      },
+      "required": ["sidebar_frame"],
+      "additionalProperties": false
+    },
+    "SidebarFrame": {
+      "type": "object",
+      "description": "An embedded panel in the page's sidebar. Each app can add one per page.",
+      "properties": {
+        "url": {
+          "$ref": "#/definitions/LocatableUrl",
+          "description": "URL of the page to embed in the panel's iframe. Booqable appends signed query parameters identifying the company and the record being viewed."
+        }
       },
       "required": ["url"],
       "additionalProperties": false
