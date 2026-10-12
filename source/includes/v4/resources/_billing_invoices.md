@@ -23,7 +23,7 @@ Invoices received from Booqable
 `period_end_at` | **date** `readonly`<br>Period end date. 
 `period_start_at` | **date** `readonly`<br>Period start date. 
 `starting_balance_in_cents` | **integer** `readonly`<br>Starting balance in cents (if credit was used). 
-`status` | **enum** `readonly`<br>Status of the invoice.<br> One of: `refunded`, `partially_refunded`, `credit`, `paid`, `forgiven`, `voided`, `overdue`, `draft`, `open`.
+`status` | **enum** `readonly`<br>Status of the invoice.<br> One of: `refunded`, `partially_refunded`, `credit`, `paid`, `forgiven`, `voided`, `pending`, `overdue`, `draft`, `open`.
 `strategy` | **enum** `readonly`<br>How the invoice is billed.<br> One of: `send_invoice`, `charge_automatically`.
 `subtotal_in_cents` | **integer** `readonly`<br>Subtotal in cents (without discount and taxes). 
 `total_in_cents` | **integer** `readonly`<br>Total in cents. 
@@ -80,7 +80,7 @@ Invoices received from Booqable
           "next_payment_attempt_at": null,
           "coupon": null,
           "credited_invoice_id": null,
-          "url": "http://billing.booqable.localhost/invoices/XxnLW5p4FDeJ4YkV9GgTdYfs/WkinjMGADw896oTq7zvf4AsR"
+          "url": "http://billing.booqable.localhost/invoices/zdZf9WWgJ7apGJYngjQNfjDk/u9v6dNUYtrhA73ji99yarFVi"
         }
       }
     ],
@@ -183,7 +183,7 @@ This request does not accept any includes
         "next_payment_attempt_at": null,
         "coupon": null,
         "credited_invoice_id": null,
-        "url": "http://billing.booqable.localhost/invoices/zAG3puBKLsL8EDPaBmdpVx4z/h8f6uWbi3LdRcNTKLCj5tkrU"
+        "url": "http://billing.booqable.localhost/invoices/R4fASSWcGcRUUern1yev5TV4/xY2QAb9HJAETSkRR2T2rjyj7"
       }
     },
     "meta": {}

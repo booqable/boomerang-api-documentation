@@ -64,7 +64,10 @@ Refunds can be processed through various providers:
 The system enforces several rules to ensure refund integrity:
 
 - Cannot refund more than the original charge amount
-- Cannot refund more than the remaining refundable amount
+- Cannot refund more than the remaining refundable amount. Refunds that are still in progress
+  (`created`, `pending` or `action_required`) count against it, see
+  `amount_available_to_refund_in_cents` and `deposit_available_to_refund_in_cents` on the
+  [PaymentCharge](#payment-charges)
 - Provider must match the charge provider or be `none` for manual refunds
 - Currency must match the original charge currency
 
@@ -86,13 +89,13 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`amount_in_cents` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge. 
+`amount_in_cents` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge, after subtracting refunds that are still in progress. 
 `canceled_at` | **datetime** `readonly`<br>Timestamp when the refund was canceled.<br>Will be `null` for refunds that haven't been canceled. Refunds can only be canceled before they succeed. 
 `cart_id` | **uuid** `readonly-after-create`<br>The [Cart](#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `currency` | **string** <br>Three-letter ISO 4217 currency code (e.g., `USD`, `EUR`).<br>Always matches the currency of the original charge. Cannot be changed as refunds must be in the same currency as the original payment. 
 `customer_id` | **uuid** `readonly-after-create`<br>The [Customer](#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
-`deposit_in_cents` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge. 
+`deposit_in_cents` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge, after subtracting refunds that are still in progress. 
 `description` | **string** <br>Human-readable description of the refund reason or details.<br>Use this to provide context about why the refund was issued, special circumstances, or internal notes. This description may be visible to customers on receipts or statements depending on provider configuration. 
 `employee_id` | **uuid** `readonly`<br>The [Employee](#employees) who created or processed this payment.<br>Automatically set by the system and cannot be modified through the API. 
 `expired_at` | **datetime** `readonly`<br>Timestamp when the refund expired.<br>Most refunds don't expire, but this field is available for consistency with other payment types. Typically remains `null`. 
@@ -197,11 +200,11 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][amount_in_cents]` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge. 
+`data[attributes][amount_in_cents]` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge, after subtracting refunds that are still in progress. 
 `data[attributes][cart_id]` | **uuid** <br>The [Cart](#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
 `data[attributes][currency]` | **string** <br>Three-letter ISO 4217 currency code (e.g., `USD`, `EUR`).<br>Always matches the currency of the original charge. Cannot be changed as refunds must be in the same currency as the original payment. 
 `data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
-`data[attributes][deposit_in_cents]` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge. 
+`data[attributes][deposit_in_cents]` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge, after subtracting refunds that are still in progress. 
 `data[attributes][failure_reason]` | **string** <br>Detailed explanation of why the refund failed.<br>Contains provider-specific error messages or codes that help diagnose the failure. Only populated when status is `failed`. 
 `data[attributes][order_id]` | **uuid** <br>The [Order](#orders) this payment is associated with. Most payments are order-related.<br>Can only be set during payment creation. Either `order` or `cart` should be specified, not both. 
 `data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) this refund is applied to.<br>Links the refund to the original successful charge being refunded. This relationship is required for connected refunds but optional for standalone manual refunds. The charge tracks cumulative refunded amounts across all associated refunds.<br>When a refund succeeds, it automatically updates the charge's refunded and refundable amounts. 
@@ -316,11 +319,11 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][amount_in_cents]` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge. 
+`data[attributes][amount_in_cents]` | **integer** <br>Main refund amount in cents (excluding deposit).<br>This represents the portion of the original charge's main amount being refunded. Must be non-negative and cannot exceed the remaining refundable amount on the charge, after subtracting refunds that are still in progress. 
 `data[attributes][cart_id]` | **uuid** <br>The [Cart](#carts) this payment is associated with. Once a cart is checked out and becomes an order, payments should be associated with the order instead.<br>Can only be set during payment creation. 
 `data[attributes][currency]` | **string** <br>Three-letter ISO 4217 currency code (e.g., `USD`, `EUR`).<br>Always matches the currency of the original charge. Cannot be changed as refunds must be in the same currency as the original payment. 
 `data[attributes][customer_id]` | **uuid** <br>The [Customer](#customers) this payment belongs to.<br>Can only be set during creation. When not specified, it's inherited from the associated order or cart. 
-`data[attributes][deposit_in_cents]` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge. 
+`data[attributes][deposit_in_cents]` | **integer** <br>Deposit refund amount in cents.<br>This represents the portion of the original charge's deposit amount being refunded. Must be non-negative and cannot exceed the remaining refundable deposit on the charge, after subtracting refunds that are still in progress. 
 `data[attributes][failure_reason]` | **string** <br>Detailed explanation of why the refund failed.<br>Contains provider-specific error messages or codes that help diagnose the failure. Only populated when status is `failed`. 
 `data[attributes][order_id]` | **uuid** <br>The [Order](#orders) this payment is associated with. Most payments are order-related.<br>Can only be set during payment creation. Either `order` or `cart` should be specified, not both. 
 `data[attributes][payment_charge_id]` | **uuid** <br>The [PaymentCharge](#payment-charges) this refund is applied to.<br>Links the refund to the original successful charge being refunded. This relationship is required for connected refunds but optional for standalone manual refunds. The charge tracks cumulative refunded amounts across all associated refunds.<br>When a refund succeeds, it automatically updates the charge's refunded and refundable amounts. 
