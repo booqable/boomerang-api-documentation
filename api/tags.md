@@ -13,6 +13,7 @@ The Tag resource allows to gather names and usage counts of tags that are being 
 `count` | **integer** <br>How often this tag is used.
 `for` | **enum** `writeonly`<br>The resource to show the tag counts for.<br>One of: `Order`, `Customer`, `ProductGroup`, `Bundle`, `Document`, `Coupon`.
 `id` | **uuid** `readonly`<br>Primary key.
+`include_inactive` | **boolean** `writeonly`<br>Filter parameter. Optional. Defaults to `false`.<br>By default only tags on active records are counted. For orders that leaves out the ones whose status is `new`, `archived` or `canceled`; for every other resource it leaves out archived records.<br>Set this to `true` to count tags on those records too. 
 `name` | **string** <br>Name of the tag.
 
 
@@ -78,6 +79,7 @@ This request can be filtered on:
 Name | Description
 -- | --
 `for` | **enum** `required`<br>`eq`
+`include_inactive` | **boolean** <br>`eq`
 
 
 ### Meta

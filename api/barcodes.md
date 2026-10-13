@@ -125,8 +125,8 @@ Check each individual operation to see which relations can be included as a side
         "id": "48f38dad-4082-4377-8d28-c793e2d1c814",
         "type": "customers",
         "attributes": {
-          "created_at": "2021-09-12T13:48:00.000000+00:00",
-          "updated_at": "2021-09-12T13:48:00.000000+00:00",
+          "created_at": "2021-09-12T13:49:00.000000+00:00",
+          "updated_at": "2021-09-12T13:49:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "number": 1,
@@ -161,7 +161,7 @@ Check each individual operation to see which relations can be included as a side
 ```shell
   curl --get 'https://example.booqable.com/api/4/barcodes'
        --header 'content-type: application/json'
-       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvYjU1Mzk1NDUtNWIxNy00NDlmLTkzMDEtZWNjNTM3Y2EwNjEx'
+       --data-urlencode 'filter[number]=aHR0cDovL2JxYmwuaXQvYWVkOTBhNTEtZWI0OC00ZTY2LWFhZjQtZTdjY2JhYTU5MjJl'
        --data-urlencode 'include=owner'
 ```
 
