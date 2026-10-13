@@ -103,7 +103,7 @@ Name | Description
 `period_type` | **String**<br>How the period picker is setup, one of `freely` (free selection), `timeslot_duration` (select a day, time and duration), `timeslot_fixed` (fixed timeslots for days). See [operating rules](#operating-rules) for more information
 `use_times` | **Boolean**<br>Whether to use time selection in the online store
 `use_coupons_in_checkout` | **Boolean**<br>Whether supplying coupons during checkout is enabled
-`time_increment` | **Integer**<br>Time increments for time selection (e.g. `15`, `30`, `60`)
+`time_increment` | **Integer**<br>Time increments for time selection, in minutes (one of `5`, `10`, `15`, `20`, `30`, `60`)
 `show_product_availability` | **Boolean**<br>Whether to show detailed product availability for products
 `hide_product_availability_quantities` | **Boolean**<br>Whether hide quantities in the product availability calendar
 `show_cart_availability` | **Boolean**<br>Whether to show on which dates the products in a cart are available during the period selection
