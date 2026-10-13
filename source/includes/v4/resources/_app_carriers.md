@@ -157,7 +157,9 @@ Name | Description
 This request does not accept any includes
 ## Create an app carrier
 
-App carriers are typically created by third-party delivery apps through the Booqable Apps API.
+App carriers are created by third-party delivery apps through the Booqable Apps API,
+authenticated with the app's OAuth access token. Requests authenticated with an API key
+are rejected with a `403` and the error code `app_subscription_required`.
 
 > How to create an app carrier:
 
