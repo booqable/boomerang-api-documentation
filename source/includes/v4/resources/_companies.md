@@ -29,7 +29,7 @@ A company holds information and configuration about an account.
 `custom_domain` | **string** <br>Custom domain to use for hosted store and checkout. 
 `custom_domain_validation` | **hash** <br>Validation details for the custom domain. 
 `custom_email` | **string** <br>Email address the company wants to send emails from. It is only used once the domain is authenticated; until then, emails fall back to Booqable's sending domain. 
-`custom_email_validation` | **hash** `readonly`<br>SPF, DKIM and Return-Path records for the custom email domain and their verification status. 
+`custom_email_validation` | **hash** `readonly`<br>Ownership, DKIM and Return-Path records for the custom email domain and their verification status. 
 `default_store_language` | **string** <br>Language the online store falls back to when the visitor's browser language is not available.<br>A locale such as `nl`, with a region where it matters, such as `pt_BR`. 
 `default_timezone` | **string** <br>Company's default timezone.<br>Rental dates and other local timestamps are stored as the date and time at the company's location and are not rewritten when the time zone changes. Only how "now" is interpreted changes, for example for preventing last-minute reservations (`use_order_lag_time`), opening hours, report periods and dates on documents. See [Dates and time zones](#dates-and-time-zones). 
 `development` | **boolean** `readonly`<br>Whether this is a development account. 
@@ -135,7 +135,7 @@ A company holds information and configuration about an account.
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "FXDKXRcuvW7hPenrSvWsZ86T",
+        "tenant_token": "aheZ3Y9jZ45R8nruhFTM33ML",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
@@ -424,7 +424,7 @@ This request does not accept any includes
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "r4UwTenHg6KWA2BjxgLHxg1L",
+        "tenant_token": "3ag5wHg6E9MYPgSSd155nJXv",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,

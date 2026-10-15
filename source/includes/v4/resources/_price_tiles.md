@@ -25,7 +25,7 @@ Check each individual operation to see which relations can be included as a side
 `name` | **string** <br>Name of the tile, which will be used as charge label in the store and on lines.
 `period` | **enum** <br>Period.<br>One of: `minutes`, `hours`, `days`, `weeks`, `months`, `years`.
 `price_structure_id` | **uuid** `readonly-after-create`<br>[PriceStructure](#price-structure) this price tile is part of. 
-`quantity` | **integer** <br>Used in combination with period (e.g. `3` with period `days`).
+`quantity` | **float** <br>Used in combination with period (e.g. `3` with period `days`).
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -51,7 +51,7 @@ Check each individual operation to see which relations can be included as a side
           "created_at": "2024-06-11T13:44:00.000000+00:00",
           "updated_at": "2024-06-11T13:44:00.000000+00:00",
           "name": "3 hours",
-          "quantity": 3,
+          "quantity": 3.0,
           "length": 10800,
           "multiplier": 3.0,
           "period": "hours",
@@ -128,7 +128,7 @@ This request does not accept any includes
         "created_at": "2024-10-25T02:33:08.000000+00:00",
         "updated_at": "2024-10-25T02:33:08.000000+00:00",
         "name": "3 hours",
-        "quantity": 3,
+        "quantity": 3.0,
         "length": 10800,
         "multiplier": 3.0,
         "period": "hours",
@@ -197,7 +197,7 @@ This request accepts the following includes:
         "created_at": "2023-05-15T06:12:04.000000+00:00",
         "updated_at": "2023-05-15T06:12:04.000000+00:00",
         "name": "3 hours",
-        "quantity": 3,
+        "quantity": 3.0,
         "length": 10800,
         "multiplier": 3.0,
         "period": "hours",
@@ -233,7 +233,7 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of the tile, which will be used as charge label in the store and on lines.
 `data[attributes][period]` | **enum** <br>Period.<br>One of: `minutes`, `hours`, `days`, `weeks`, `months`, `years`.
 `data[attributes][price_structure_id]` | **uuid** <br>[PriceStructure](#price-structure) this price tile is part of. 
-`data[attributes][quantity]` | **integer** <br>Used in combination with period (e.g. `3` with period `days`).
+`data[attributes][quantity]` | **float** <br>Used in combination with period (e.g. `3` with period `days`).
 
 
 ### Includes
@@ -279,7 +279,7 @@ This request accepts the following includes:
         "created_at": "2027-02-09T08:16:02.000000+00:00",
         "updated_at": "2027-02-09T08:16:02.000000+00:00",
         "name": "4 days",
-        "quantity": 4,
+        "quantity": 4.0,
         "length": 345600,
         "multiplier": 4.0,
         "period": "days",
@@ -315,7 +315,7 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of the tile, which will be used as charge label in the store and on lines.
 `data[attributes][period]` | **enum** <br>Period.<br>One of: `minutes`, `hours`, `days`, `weeks`, `months`, `years`.
 `data[attributes][price_structure_id]` | **uuid** <br>[PriceStructure](#price-structure) this price tile is part of. 
-`data[attributes][quantity]` | **integer** <br>Used in combination with period (e.g. `3` with period `days`).
+`data[attributes][quantity]` | **float** <br>Used in combination with period (e.g. `3` with period `days`).
 
 
 ### Includes
@@ -349,7 +349,7 @@ This request accepts the following includes:
         "created_at": "2021-11-04T04:21:00.000000+00:00",
         "updated_at": "2021-11-04T04:21:00.000000+00:00",
         "name": "3 hours",
-        "quantity": 3,
+        "quantity": 3.0,
         "length": 10800,
         "multiplier": 3.0,
         "period": "hours",
