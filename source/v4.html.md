@@ -18,6 +18,7 @@ includes:
   - v4/introduction
   - v4/authentication
   - v4/errors
+  - v4/rate_limits
 
   - v4/headers/resources
   - v4/resources/authentication_methods
