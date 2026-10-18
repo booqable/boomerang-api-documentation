@@ -12,7 +12,7 @@ Booqable Apps are modular extensions that enhance the Booqable platform by addin
 - [App Store Listing](https://developers.booqable.com/apps/store_listing.md): Store listing and plan pricing fields
 - [Tracking Scripts](https://developers.booqable.com/apps/tracking_scripts.md): Inject analytics JavaScript into customer websites
 - [Theme Blocks](https://developers.booqable.com/apps/theme_blocks.md): Add custom HTML content blocks to customer websites
-- [User Framework](https://developers.booqable.com/apps/user_framework.md): JavaScript APIs for templates, event tracking, and consent management
+- [User Framework](https://developers.booqable.com/apps/user_framework.md): JavaScript APIs for templates, event tracking, consent management, and landing params
 - [Delivery Carriers](https://developers.booqable.com/apps/delivery_carriers.md): Provide custom shipping rates for orders
 - [Payment Options](https://developers.booqable.com/apps/payment_options.md): Add custom payment methods for checkout
 - [Embedded Pages](https://developers.booqable.com/apps/embedded_pages.md): Embed a full custom interface inside Booqable

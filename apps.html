@@ -710,6 +710,37 @@
 </ul>
 
 <p>Practical implication: don&#39;t assume <code>onConsent</code>/<code>onDeny</code> reflect real, deliberate visitor consent. A merchant without the cookie notice enabled effectively grants blanket consent to every app on every page load. If your integration has real compliance requirements, treat this as a merchant configuration issue to flag, not something your app code can enforce on its own.</p>
+<h3 id='capabilities-user-framework-landing-params'>Landing params</h3>
+<p>When a visitor lands on the store with query params, Booqable saves them and adds them to cart and checkout links. That way a script that only loads after consent, or one running on the checkout&#39;s domain, can still read a click ID from the current URL.</p>
+
+<p>Declare the params your script reads in <code>registerApp</code>:</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">registerApp</span><span class="p">(</span><span class="dl">'</span><span class="s1">marketing</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My App</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">tracking</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">landingParams</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">clickIdParam</span><span class="p">:</span> <span class="dl">'</span><span class="s1">myref</span><span class="dl">'</span><span class="p">,</span> <span class="na">extraParams</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">mysub</span><span class="dl">'</span><span class="p">]</span> <span class="p">}</span> <span class="c1">// ?myref=123&amp;mysub=newsletter</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div>
+<ul>
+<li><code>clickIdParam</code>: the param carrying the click ID. It&#39;s kept for 30 days.</li>
+<li><code>extraParams</code>: params that belong to that click, like a sub-ID. They&#39;re only forwarded together with the click they arrived with, so a new click never carries an older click&#39;s extras.</li>
+</ul>
+
+<p>Links to another domain (such as the checkout of an embedded store) get the saved params for up to 30 days. Links on the same site only get them during the visit they arrived in, except well-known ad click IDs such as <code>gclid</code>, which are kept there for 30 days too.</p>
+<h3 id='capabilities-user-framework-booqable-capturelandingparams'><code>Booqable.captureLandingParams</code></h3>
+<p>Once your script has stored the click ID itself, for example in a cookie, call this so Booqable stops adding your declared params to links on the same site:</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">captureLandingParams</span><span class="p">(</span><span class="dl">"</span><span class="s2">My App</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// the name you passed to registerApp</span>
+</code></pre></div>
+<ul>
+<li>It applies to your declared params that are in the current page&#39;s URL.</li>
+<li>If several apps declare the same param, it&#39;s captured once all of them have called this.</li>
+<li>It&#39;s optional. Params of apps that never call it keep being forwarded.</li>
+<li>Call it only once the click is actually recorded. Calling it right in <code>onConsent</code>, before your library has loaded, can lose the click if the visitor leaves the page first.</li>
+</ul>
+
+<p>Links to another domain are not affected.</p>
 <h3 id='capabilities-user-framework-events'>Events</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">addToCart</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// data: { value, currency, items: [{ item_id, item_name, quantity, price }] }</span>
 <span class="p">})</span>

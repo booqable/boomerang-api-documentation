@@ -36,6 +36,43 @@ The first argument is a category: `marketing` or `essential`. In practice almost
 
 Practical implication: don't assume `onConsent`/`onDeny` reflect real, deliberate visitor consent. A merchant without the cookie notice enabled effectively grants blanket consent to every app on every page load. If your integration has real compliance requirements, treat this as a merchant configuration issue to flag, not something your app code can enforce on its own.
 
+### Landing params
+
+When a visitor lands on the store with query params, Booqable saves them and adds them to cart and checkout links. That way a script that only loads after consent, or one running on the checkout's domain, can still read a click ID from the current URL.
+
+Declare the params your script reads in `registerApp`:
+
+```javascript
+Booqable.registerApp('marketing', {
+  name: "My App",
+  tracking: {
+    landingParams: [
+      { clickIdParam: 'myref', extraParams: ['mysub'] } // ?myref=123&mysub=newsletter
+    ]
+  }
+})
+```
+
+- `clickIdParam`: the param carrying the click ID. It's kept for 30 days.
+- `extraParams`: params that belong to that click, like a sub-ID. They're only forwarded together with the click they arrived with, so a new click never carries an older click's extras.
+
+Links to another domain (such as the checkout of an embedded store) get the saved params for up to 30 days. Links on the same site only get them during the visit they arrived in, except well-known ad click IDs such as `gclid`, which are kept there for 30 days too.
+
+### `Booqable.captureLandingParams`
+
+Once your script has stored the click ID itself, for example in a cookie, call this so Booqable stops adding your declared params to links on the same site:
+
+```javascript
+Booqable.captureLandingParams("My App") // the name you passed to registerApp
+```
+
+- It applies to your declared params that are in the current page's URL.
+- If several apps declare the same param, it's captured once all of them have called this.
+- It's optional. Params of apps that never call it keep being forwarded.
+- Call it only once the click is actually recorded. Calling it right in `onConsent`, before your library has loaded, can lose the click if the visitor leaves the page first.
+
+Links to another domain are not affected.
+
 ### Events
 
 ```javascript
