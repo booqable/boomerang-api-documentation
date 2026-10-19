@@ -68,7 +68,7 @@ and accounting, it wouldn't need to manage your products and stock levels.
         "type": "employees",
         "attributes": {
           "created_at": "2021-09-07T07:00:00.000000+00:00",
-          "updated_at": "2025-04-01T00:05:00.000000+00:00",
+          "updated_at": "2025-04-05T00:17:00.000000+00:00",
           "name": "John Doe",
           "firstname": "John",
           "lastname": "Doe",
@@ -98,8 +98,8 @@ and accounting, it wouldn't need to manage your products and stock levels.
           ],
           "has_two_factor_autentication": false,
           "website_bo_eligible": false,
-          "avatar_url": "https://gravatar.com/avatar/f3eb64211cf620aa291957f1f66d5f39.png?d=404",
-          "large_avatar_url": "https://gravatar.com/avatar/f3eb64211cf620aa291957f1f66d5f39.png?d=mm&size=200",
+          "avatar_url": null,
+          "large_avatar_url": null,
           "third_party_id": "9e27ff9f-0909-42c7-81b2-3bb9f34ad507-1679574840"
         }
       }
@@ -205,8 +205,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "website_bo_eligible": false,
-        "avatar_url": "https://gravatar.com/avatar/b9e4d02e55a6d091223dfb568620be4b.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/b9e4d02e55a6d091223dfb568620be4b.png?d=mm&size=200",
+        "avatar_url": null,
+        "large_avatar_url": null,
         "third_party_id": "4c367dac-4839-49f3-89e4-ff584a1f30e0-1679574840"
       }
     },
@@ -259,7 +259,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2016-10-03T04:30:00.000000+00:00",
-        "updated_at": "2023-06-27T12:35:00.000000+00:00",
+        "updated_at": "2023-07-01T12:47:00.000000+00:00",
         "name": "Jane Doe",
         "firstname": "Jane",
         "lastname": "Doe",
@@ -289,8 +289,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "website_bo_eligible": false,
-        "avatar_url": "https://gravatar.com/avatar/716558eb15f1e4801c770410e3eed8fe.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/716558eb15f1e4801c770410e3eed8fe.png?d=mm&size=200",
+        "avatar_url": null,
+        "large_avatar_url": null,
         "third_party_id": "cebcf411-1b2a-402f-8d77-43c67daf282f-1579642440"
       }
     },
@@ -324,7 +324,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2014-10-16T17:49:01.000000+00:00",
-        "updated_at": "2021-07-10T01:54:01.000000+00:00",
+        "updated_at": "2021-07-14T02:06:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -354,8 +354,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "website_bo_eligible": false,
-        "avatar_url": "https://gravatar.com/avatar/8a0e879db54c50c14de0c4203a4e7a93.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/8a0e879db54c50c14de0c4203a4e7a93.png?d=mm&size=200",
+        "avatar_url": null,
+        "large_avatar_url": null,
         "third_party_id": "b40a7c1c-5190-4d54-8cea-405d36944a87-1579642440"
       }
     },
@@ -392,7 +392,7 @@ This request does not accept any includes
       "type": "employees",
       "attributes": {
         "created_at": "2027-04-16T02:37:01.000000+00:00",
-        "updated_at": "2034-01-07T10:42:01.000000+00:00",
+        "updated_at": "2034-01-11T10:54:01.000000+00:00",
         "name": "John Doe",
         "firstname": "John",
         "lastname": "Doe",
@@ -411,8 +411,8 @@ This request does not accept any includes
         ],
         "has_two_factor_autentication": false,
         "website_bo_eligible": false,
-        "avatar_url": "https://gravatar.com/avatar/ae75ea2be6c7d7aa987d98145aa7618c.png?d=404",
-        "large_avatar_url": "https://gravatar.com/avatar/ae75ea2be6c7d7aa987d98145aa7618c.png?d=mm&size=200",
+        "avatar_url": null,
+        "large_avatar_url": null,
         "third_party_id": "94b3f0ff-ef32-49be-8f5f-7aa6916cc901-1579642440"
       }
     },
