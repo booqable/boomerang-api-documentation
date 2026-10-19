@@ -104,6 +104,8 @@ Name | Description
 `use_times` | **Boolean**<br>Whether to use time selection in the online store
 `use_coupons_in_checkout` | **Boolean**<br>Whether supplying coupons during checkout is enabled
 `time_increment` | **Integer**<br>Time increments for time selection, in minutes (one of `5`, `10`, `15`, `20`, `30`, `60`)
+`prefill_default_times` | **Boolean**<br>Whether the default order times are filled in as soon as a date is selected, skipping time selection
+`prefill_default_times_scope` | **String**<br>Where `prefill_default_times` applies, one of `back_office` or `all` (back office and online store)
 `show_product_availability` | **Boolean**<br>Whether to show detailed product availability for products
 `hide_product_availability_quantities` | **Boolean**<br>Whether hide quantities in the product availability calendar
 `show_cart_availability` | **Boolean**<br>Whether to show on which dates the products in a cart are available during the period selection
@@ -325,9 +327,12 @@ Name | Description
           "use_business_hours": false,
           "use_away_mode": false,
           "period_type": "freely",
+          "default_fixed_duration": null,
           "use_times": true,
           "use_coupons_in_checkout": true,
           "time_increment": 60,
+          "prefill_default_times": false,
+          "prefill_default_times_scope": "back_office",
           "show_product_availability": true,
           "hide_product_availability_quantities": false,
           "show_cart_availability": true,
