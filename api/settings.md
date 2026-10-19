@@ -53,7 +53,7 @@ Name | Description
 `format` | **String**<br>How dates should be formatted. Supported formats are `DD-MM-YYYY`, `MM-DD-YYYY` and `YYYY-MM-DD`.
 `use_am_pm` | **Boolean**<br>Whether to use 24h clock or AM/PM
 `first_day_of_week` | **Integer**<br>Which day to display as first day of the week (`0` for Sunday)
-`use_new_period_picker` | **Boolean**<br>Opt-in to the new period picker for orders and carts (companies created after July 7th 2026 at 07:00 UTC always use the new period picker, regardless of this value).
+`use_new_period_picker` | **Boolean**<br>Whether to use the new period picker for orders and carts. Defaults to `true` (companies created after July 7th 2026 at 07:00 UTC always use the new period picker, regardless of this value).
 
 #### Orders
 
