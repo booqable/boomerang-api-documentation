@@ -7,8 +7,9 @@ belongs to a [Language](#languages) and is uniquely identified by its `key` and
 Create a translation to override the default text for a key, update it to change the
 override, and destroy it to fall back to the default text again. To change many
 translations at once, use a [BulkUpsert](#bulk-upserts) with `type: translations`
-and `data: [{ key, value, namespace }]`; a blank `value` removes the override and
-`language_id` picks the language, English when left out.
+and `data: [{ key, value, namespace }]`; a blank `value` removes the override, an entry
+with `needs_review` and no `value` only sets that flag, and `language_id` picks the
+language, English when left out.
 
 ## Relationships
 Name | Description
@@ -28,6 +29,7 @@ Check each individual operation to see which relations can be included as a side
 `key` | **string** `readonly-after-create`<br>The dot-separated translation key that is overridden, for example `document.date`. Can only be set on create. 
 `language_id` | **uuid** <br>The [Language](#languages) this translation belongs to. Defaults to the English language (`en`), which is created on first use. Can only be set on create. 
 `namespace` | **string** `readonly-after-create`<br>The namespace the key lives in. Defaults to `user`. Can only be set on create. 
+`needs_review` | **boolean** `readonly`<br>Whether Booqable changed the English of this key after the text was written, so it is worth another look. Saving a new `value` clears it; a [BulkUpsert](#bulk-upserts) entry with `needs_review: false` and no `value` marks the text reviewed as it is. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `value` | **string** `nullable`<br>The custom text shown instead of the default translation. 
 
@@ -57,6 +59,7 @@ Check each individual operation to see which relations can be included as a side
           "key": "document.date",
           "value": "Datum",
           "namespace": "user",
+          "needs_review": false,
           "language_id": "6729f5aa-0edd-4734-8fe8-bafaebd5272e"
         },
         "relationships": {}
@@ -141,6 +144,7 @@ This request accepts the following includes:
         "key": "document.date",
         "value": "Datum",
         "namespace": "user",
+        "needs_review": false,
         "language_id": "2b187c81-22c0-475e-80cf-722bc28bd134"
       },
       "relationships": {}
@@ -206,6 +210,7 @@ This request accepts the following includes:
         "key": "document.date",
         "value": "Datum",
         "namespace": "user",
+        "needs_review": false,
         "language_id": "72dd2d6e-acd4-4e91-83eb-3b84f3c879a9"
       },
       "relationships": {}
@@ -282,6 +287,7 @@ This request accepts the following includes:
         "key": "document.date",
         "value": "Verzenddatum",
         "namespace": "user",
+        "needs_review": false,
         "language_id": "75b34be9-3d8e-4dae-8de7-e3d5b2ccf822"
       },
       "relationships": {}
@@ -349,6 +355,7 @@ This request accepts the following includes:
         "key": "document.date",
         "value": "Datum",
         "namespace": "user",
+        "needs_review": false,
         "language_id": "43da6ff9-6d48-41d4-8278-0125813f2445"
       },
       "relationships": {}

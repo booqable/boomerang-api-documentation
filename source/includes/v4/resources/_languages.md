@@ -159,6 +159,7 @@ This request accepts the following includes:
           "key": "document.date",
           "value": "Datum",
           "namespace": "user",
+          "needs_review": false,
           "language_id": "4e0f3246-00ad-4449-8ba0-f86bce4f5c86"
         },
         "relationships": {}
