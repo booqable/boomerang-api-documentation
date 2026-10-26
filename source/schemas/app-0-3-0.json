@@ -274,17 +274,20 @@
       "type": "object",
       "description": "An embedded page for the daily operations of the app.",
       "properties": {
-        "iframe": { "$ref": "#/definitions/Iframe" },
+        "iframe": { "$ref": "#/definitions/Frame" },
         "if": { "$ref": "#/definitions/RenderCondition" }
       },
       "required": ["iframe"],
       "additionalProperties": false
     },
-    "Iframe": {
+    "Frame": {
       "type": "object",
-      "description": "An embedded iframe.",
+      "description": "A page of the app, embedded in Booqable in an iframe.",
       "properties": {
-        "url": { "$ref": "#/definitions/LocatableUrl" }
+        "url": {
+          "$ref": "#/definitions/LocatableUrl",
+          "description": "URL of the page to embed. Booqable appends signed query parameters identifying the company and the employee."
+        }
       },
       "required": ["url"],
       "additionalProperties": false
@@ -293,7 +296,10 @@
       "type": "object",
       "description": "Additions this app makes to the order page in the back office.",
       "properties": {
-        "sidebar_frame": { "$ref": "#/definitions/SidebarFrame" }
+        "sidebar_frame": {
+          "$ref": "#/definitions/Frame",
+          "description": "An embedded panel in the order page's sidebar. Its URL also gets the ID of the order being viewed as `order_id`."
+        }
       },
       "required": ["sidebar_frame"],
       "additionalProperties": false
@@ -302,7 +308,10 @@
       "type": "object",
       "description": "Additions this app makes to the customer page in the back office.",
       "properties": {
-        "sidebar_frame": { "$ref": "#/definitions/SidebarFrame" }
+        "sidebar_frame": {
+          "$ref": "#/definitions/Frame",
+          "description": "An embedded panel in the customer page's sidebar. Its URL also gets the ID of the customer being viewed as `customer_id`."
+        }
       },
       "required": ["sidebar_frame"],
       "additionalProperties": false
@@ -311,21 +320,12 @@
       "type": "object",
       "description": "Additions this app makes to the product page in the back office.",
       "properties": {
-        "sidebar_frame": { "$ref": "#/definitions/SidebarFrame" }
-      },
-      "required": ["sidebar_frame"],
-      "additionalProperties": false
-    },
-    "SidebarFrame": {
-      "type": "object",
-      "description": "An embedded panel in the page's sidebar. Each app can add one per page.",
-      "properties": {
-        "url": {
-          "$ref": "#/definitions/LocatableUrl",
-          "description": "URL of the page to embed in the panel's iframe. Booqable appends signed query parameters identifying the company and the record being viewed."
+        "sidebar_frame": {
+          "$ref": "#/definitions/Frame",
+          "description": "An embedded panel in the product page's sidebar. Its URL also gets the ID of the product being viewed as `product_group_id`."
         }
       },
-      "required": ["url"],
+      "required": ["sidebar_frame"],
       "additionalProperties": false
     },
     "AppStatus": {
@@ -354,7 +354,7 @@
           "items": { "$ref": "#/definitions/ConfigurationPageBlock" }
         },
         "iframe": {
-          "$ref": "#/definitions/Iframe",
+          "$ref": "#/definitions/Frame",
           "description": "An embedded page for the configuration of the app."
         }
       },

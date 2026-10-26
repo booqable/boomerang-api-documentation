@@ -656,7 +656,7 @@ This request accepts the following includes:
       "type": "bundles",
       "attributes": {
         "created_at": "2023-01-20T01:56:00.000000+00:00",
-        "updated_at": "2023-01-20T01:56:00.000000+00:00",
+        "updated_at": "2023-01-20T01:57:00.000000+00:00",
         "archived": false,
         "archived_at": null,
         "type": "bundles",
@@ -693,8 +693,8 @@ This request accepts the following includes:
         "id": "ddfe9f02-abf5-48bd-8fba-334decb8c339",
         "type": "bundle_items",
         "attributes": {
-          "created_at": "2023-01-20T01:56:00.000000+00:00",
-          "updated_at": "2023-01-20T01:56:00.000000+00:00",
+          "created_at": "2023-01-20T01:57:00.000000+00:00",
+          "updated_at": "2023-01-20T01:57:00.000000+00:00",
           "archived": false,
           "archived_at": null,
           "quantity": 2,
