@@ -299,7 +299,8 @@ This request accepts the following includes:
       },
       "relationships": {}
     },
-    "meta": {}
+    "meta": {},
+    "included": []
   }
 ```
 

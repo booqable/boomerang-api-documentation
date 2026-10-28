@@ -318,6 +318,7 @@ Name | Description
           "payment_deposit": false,
           "security_deposit_explanation": "",
           "stripe_billing_address_collection": "auto",
+          "stripe_enabled": true,
           "pay_later": false,
           "pay_later_title": "Pay later",
           "pay_later_terms": "",

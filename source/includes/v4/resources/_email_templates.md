@@ -6,6 +6,8 @@ Booqable comes with a couple of default templates which can be updated but not d
 For more information about using variables for dynamic data in email templates
 see [our help center](https://help.booqable.com/en/articles/3832164-emails-types-and-templates)
 
+The maximum number of custom email templates depends on the current pricing plan.
+
 ## Fields
 
  Name | Description

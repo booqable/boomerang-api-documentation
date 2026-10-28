@@ -223,7 +223,8 @@ This request does not accept any includes
       },
       "relationships": {}
     },
-    "meta": {}
+    "meta": {},
+    "included": []
   }
 ```
 

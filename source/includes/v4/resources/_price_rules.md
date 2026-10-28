@@ -115,7 +115,8 @@ Check each individual operation to see which relations can be included as a side
       },
       "relationships": {}
     },
-    "meta": {}
+    "meta": {},
+    "included": []
   }
 ```
 
@@ -207,8 +208,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 10.0,
-        "from": "2026-07-30T12:57:07.000000+00:00",
-        "till": "2026-09-29T12:57:07.000000+00:00",
+        "from": "2026-07-28T15:42:07.000000+00:00",
+        "till": "2026-09-27T15:42:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -259,8 +260,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2024-10-17T16:15:01.000000+00:00",
-        "till": "2024-12-17T16:15:01.000000+00:00",
+        "from": "2024-10-15T19:00:01.000000+00:00",
+        "till": "2024-12-15T19:00:01.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
@@ -357,8 +358,8 @@ This request accepts the following includes:
         "match_strategy": "span",
         "adjustment_strategy": "percentage",
         "value": 5.0,
-        "from": "2025-01-22T18:08:07.000000+00:00",
-        "till": "2025-03-24T18:08:07.000000+00:00",
+        "from": "2025-01-20T20:53:07.000000+00:00",
+        "till": "2025-03-22T20:53:07.000000+00:00",
         "from_day": null,
         "till_day": null,
         "from_time": null,
