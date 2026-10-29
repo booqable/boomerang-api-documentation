@@ -53,7 +53,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "b7bd3a96-0096-491d-8604-a097786fcb8f",
         "type": "report_service_items",
         "attributes": {
-          "created_at": "2027-09-06T10:00:02.000000+00:00",
+          "created_at": "2027-09-06T13:20:02.000000+00:00",
           "name": "Product 1000065",
           "sold": 2,
           "revenue_in_cents": 10000,
