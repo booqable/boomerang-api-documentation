@@ -25,10 +25,10 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`data` | **array** `writeonly`<br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. 
+`data` | **array** `writeonly`<br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. For `content_translations`, each object has a `key`, the row key the store texts list a text of the merchant's own content under (such as `products.<id>.name`), and either a `value`, where a blank value removes the text, or `needs_review: false` without a value, which marks the text reviewed. `needs_review: true` is ignored. 
 `id` | **uuid** `readonly`<br>Primary key.
-`language_id` | **uuid** `writeonly`<br>For `translations` only: the [Language](#languages) the translations belong to, the English language when left out. 
-`type` | **enum** `writeonly`<br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`, `translations`.
+`language_id` | **uuid** `writeonly`<br>For `translations` and `content_translations` only: the [Language](#languages) the texts belong to. Translations go to the English language when it is left out; content translations need it. 
+`type` | **enum** `writeonly`<br>Type of data being submitted.<br> One of: `content_translations`, `coupons`, `operating_rules`, `translations`.
 
 
 ## Upsert bulk data
@@ -172,6 +172,46 @@ Check each individual operation to see which relations can be included as a side
   }
 ```
 
+> How to upsert content translations in bulk:
+
+```shell
+  curl --request POST
+       --url 'https://example.booqable.com/api/4/bulk_upserts'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "type": "bulk_upserts",
+           "attributes": {
+             "type": "content_translations",
+             "language_id": "701a40b3-3a29-46de-8d69-276e16fd6ad7",
+             "data": [
+               {
+                 "key": "products.eb098f7f-fbf8-4624-8266-a2f01d1a96ea.name",
+                 "value": "Tält"
+               },
+               {
+                 "key": "products.eb098f7f-fbf8-4624-8266-a2f01d1a96ea.description",
+                 "value": "<p>Rymmer fyra.</p>"
+               }
+             ]
+           }
+         }
+       }'
+```
+
+> A 201 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "2e335692-6173-485c-827e-1463f0325fcb",
+      "type": "bulk_upserts",
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
 > How to upsert translations in bulk:
 
 ```shell
@@ -258,9 +298,9 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][data][]` | **array** <br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. 
-`data[attributes][language_id]` | **uuid** <br>For `translations` only: the [Language](#languages) the translations belong to, the English language when left out. 
-`data[attributes][type]` | **enum** <br>Type of data being submitted.<br> One of: `coupons`, `operating_rules`, `translations`.
+`data[attributes][data][]` | **array** <br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. For `content_translations`, each object has a `key`, the row key the store texts list a text of the merchant's own content under (such as `products.<id>.name`), and either a `value`, where a blank value removes the text, or `needs_review: false` without a value, which marks the text reviewed. `needs_review: true` is ignored. 
+`data[attributes][language_id]` | **uuid** <br>For `translations` and `content_translations` only: the [Language](#languages) the texts belong to. Translations go to the English language when it is left out; content translations need it. 
+`data[attributes][type]` | **enum** <br>Type of data being submitted.<br> One of: `content_translations`, `coupons`, `operating_rules`, `translations`.
 
 
 ### Includes
