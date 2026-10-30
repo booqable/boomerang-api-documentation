@@ -58,7 +58,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
         "type": "report_rentals",
         "attributes": {
-          "created_at": "2019-11-26T01:48:00.000000+00:00",
+          "created_at": "2019-11-26T00:38:00.000000+00:00",
           "name": "Product 1000063",
           "charge_duration_in_seconds": 14400,
           "rent_duration_in_seconds": 14400,
@@ -105,6 +105,7 @@ This request can be filtered on:
 Name | Description
 -- | --
 `archived` | **boolean** <br>`eq`
+`collection_id` | **uuid** <br>`eq`
 `from` | **datetime** <br>`eq`
 `location_id` | **uuid** <br>`eq`
 `product_id` | **uuid** <br>`eq`
