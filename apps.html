@@ -816,7 +816,7 @@
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>When a customer requests delivery rates at checkout, Booqable sends a <code>POST</code> request to your <code>rates_url</code> with a form-encoded body (<code>application/x-www-form-urlencoded</code>) containing:</p>
+<p>When a customer requests delivery rates at checkout, Booqable sends a <code>POST</code> request to your <code>rates_url</code> with a JSON body (<code>application/json</code>) containing:</p>
 
 <ul>
 <li><code>distance</code>, <code>distance_unit</code> (<code>metric</code> by default)</li>
@@ -824,10 +824,9 @@
 <li><code>origin_address</code>, <code>origin_coordinates</code>, <code>destination_address</code>, <code>destination_coordinates</code></li>
 <li><code>starts_at</code>, <code>stops_at</code></li>
 <li><code>products</code>: an array of <code>{ id, title, price_in_cents, quantity }</code></li>
-<li><code>token</code>: a JWT identifying the request as coming from Booqable</li>
 </ul>
 
-<p>Coordinates are sent as a <code>&quot;lat,lng&quot;</code> string and addresses as single-line strings. <code>token</code> is a JWT signed with your app&#39;s OAuth client secret; verify it to confirm the request came from Booqable.</p>
+<p>Coordinates are sent as a <code>&quot;lat,lng&quot;</code> string and addresses as single-line strings. The request carries a <code>Bearer</code> JWT in the <code>Authorization</code> header, signed with your app&#39;s OAuth client secret; verify it to confirm the request came from Booqable.</p>
 
 <p>Booqable waits 3 seconds for a response before treating the request as failed.</p>
 
