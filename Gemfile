@@ -1,4 +1,4 @@
-ruby '3.3.5'
+ruby '3.4.12'
 source 'https://rubygems.org'
 
 # Middleman
@@ -11,3 +11,10 @@ gem 'redcarpet', '~> 3.5.0'
 gem 'nokogiri', '~> 1.14.3'
 gem 'sass'
 gem 'webrick'
+
+# No longer default gems from Ruby 3.4
+gem 'mutex_m'
+gem 'base64'
+gem 'bigdecimal'
+gem 'logger'
+gem 'csv'
