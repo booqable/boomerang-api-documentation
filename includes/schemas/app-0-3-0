@@ -517,7 +517,7 @@
 <h2 id='reference-mainpage'><code>MainPage</code></h2>
 <p>An embedded page for the daily operations of the app.</p>
 <div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* Iframe */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* Frame */</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"if"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* RenderCondition */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -531,7 +531,7 @@
 </thead><tbody>
 <tr>
 <td><code>iframe</code></td>
-<td><a href="#reference-iframe"><code>Iframe</code></a></td>
+<td><a href="#reference-frame"><code>Frame</code></a></td>
 <td>true</td>
 <td></td>
 </tr>
@@ -542,8 +542,8 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='reference-iframe'><code>Iframe</code></h2>
-<p>An embedded iframe.</p>
+<h2 id='reference-frame'><code>Frame</code></h2>
+<p>A page of the app, embedded in Booqable in an iframe.</p>
 <div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -560,13 +560,13 @@
 <td><code>url</code></td>
 <td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
 <td>true</td>
-<td></td>
+<td>URL of the page to embed. Booqable appends signed query parameters identifying the company and the employee.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-orderpage'><code>OrderPage</code></h2>
 <p>Additions this app makes to the order page in the back office.</p>
 <div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* SidebarFrame */</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* Frame */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -579,15 +579,15 @@
 </thead><tbody>
 <tr>
 <td><code>sidebar_frame</code></td>
-<td><a href="#reference-sidebarframe"><code>SidebarFrame</code></a></td>
+<td><a href="#reference-frame"><code>Frame</code></a></td>
 <td>true</td>
-<td></td>
+<td>An embedded panel in the order page&#39;s sidebar. Its URL also gets the ID of the order being viewed as <code>order_id</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-customerpage'><code>CustomerPage</code></h2>
 <p>Additions this app makes to the customer page in the back office.</p>
 <div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* SidebarFrame */</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* Frame */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -600,15 +600,15 @@
 </thead><tbody>
 <tr>
 <td><code>sidebar_frame</code></td>
-<td><a href="#reference-sidebarframe"><code>SidebarFrame</code></a></td>
+<td><a href="#reference-frame"><code>Frame</code></a></td>
 <td>true</td>
-<td></td>
+<td>An embedded panel in the customer page&#39;s sidebar. Its URL also gets the ID of the customer being viewed as <code>customer_id</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-productpage'><code>ProductPage</code></h2>
 <p>Additions this app makes to the product page in the back office.</p>
 <div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* SidebarFrame */</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* Frame */</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -621,30 +621,9 @@
 </thead><tbody>
 <tr>
 <td><code>sidebar_frame</code></td>
-<td><a href="#reference-sidebarframe"><code>SidebarFrame</code></a></td>
+<td><a href="#reference-frame"><code>Frame</code></a></td>
 <td>true</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='reference-sidebarframe'><code>SidebarFrame</code></h2>
-<p>An embedded panel in the page&#39;s sidebar. Each app can add one per page.</p>
-<div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>url</code></td>
-<td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
-<td>true</td>
-<td>URL of the page to embed in the panel&#39;s iframe. Booqable appends signed query parameters identifying the company and the record being viewed.</td>
+<td>An embedded panel in the product page&#39;s sidebar. Its URL also gets the ID of the product being viewed as <code>product_group_id</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-appstatus'><code>AppStatus</code></h2>

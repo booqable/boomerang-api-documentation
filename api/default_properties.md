@@ -69,7 +69,8 @@ When creating properties they are connected with their default when one of the f
         }
       }
     ],
-    "meta": {}
+    "meta": {},
+    "included": []
   }
 ```
 
@@ -152,7 +153,8 @@ This request does not accept any includes
         "editable": true
       }
     },
-    "meta": {}
+    "meta": {},
+    "included": []
   }
 ```
 

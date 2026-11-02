@@ -58,8 +58,10 @@ An order can go from `new` to `started` directly when products or stock items ar
 applied. They are written using UTC notation.
 `2026-07-01T10:00:00Z` means 10:00 at the company's location, whatever the company's time zone is.
 Send these values with a `Z` suffix or without an offset, and do not convert them to real UTC.
-A value with a real offset such as `+02:00` is shifted to UTC before it is stored, so it ends up two
-hours earlier than intended.
+When writing, an offset such as `+02:00` is ignored and the time is kept as written:
+`2026-07-01T10:00:00+02:00` is stored as `2026-07-01T10:00:00Z`.
+Filters still convert the offset, so `filter[starts_at]` with that same string compares against
+`2026-07-01T08:00:00Z`. Use the `Z` form in filters.
 
 Responses return these values as `...+00:00`. Record timestamps such as `created_at` and `updated_at`
 are real UTC instants and cannot be compared to rental dates directly.
@@ -355,8 +357,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-07-19T03:04:01.000000+00:00",
-          "stops_at": "1968-08-18T03:04:01.000000+00:00",
+          "starts_at": "1968-07-11T23:06:01.000000+00:00",
+          "stops_at": "1968-08-10T23:06:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -608,14 +610,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-10-24T09:25:35Z",
-                       "lte": "2026-10-27T09:25:35Z"
+                       "gte": "2026-10-31T13:23:22Z",
+                       "lte": "2026-11-03T13:23:22Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-10-24T09:25:35Z",
-                       "lte": "2026-10-27T09:25:35Z"
+                       "gte": "2026-10-31T13:23:22Z",
+                       "lte": "2026-11-03T13:23:22Z"
                      }
                    }
                  ]
@@ -986,8 +988,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1968-12-14T12:23:01.000000+00:00",
-        "stops_at": "1969-01-13T12:23:01.000000+00:00",
+        "starts_at": "1968-12-07T08:25:01.000000+00:00",
+        "stops_at": "1969-01-06T08:25:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
