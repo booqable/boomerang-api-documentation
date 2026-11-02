@@ -46,16 +46,15 @@ A carrier can also be updated later with `PATCH`/`PUT /api/4/app_carriers/{id}`,
 }
 ```
 
-When a customer requests delivery rates at checkout, Booqable sends a `POST` request to your `rates_url` with a form-encoded body (`application/x-www-form-urlencoded`) containing:
+When a customer requests delivery rates at checkout, Booqable sends a `POST` request to your `rates_url` with a JSON body (`application/json`) containing:
 
 - `distance`, `distance_unit` (`metric` by default)
 - `order_amount_in_cents`
 - `origin_address`, `origin_coordinates`, `destination_address`, `destination_coordinates`
 - `starts_at`, `stops_at`
 - `products`: an array of `{ id, title, price_in_cents, quantity }`
-- `token`: a JWT identifying the request as coming from Booqable
 
-Coordinates are sent as a `"lat,lng"` string and addresses as single-line strings. `token` is a JWT signed with your app's OAuth client secret; verify it to confirm the request came from Booqable.
+Coordinates are sent as a `"lat,lng"` string and addresses as single-line strings. The request carries a `Bearer` JWT in the `Authorization` header, signed with your app's OAuth client secret; verify it to confirm the request came from Booqable.
 
 Booqable waits 3 seconds for a response before treating the request as failed.
 
