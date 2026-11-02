@@ -154,7 +154,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "NFDtSWH91bvjX6nntpHKr2jp",
+          "tenant_token": "jaPBCUWfF6mVxc7bEixBb4X1",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -311,7 +311,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": null,
           "large_avatar_url": null,
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1793366640"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1793618963"
         }
       },
       {
