@@ -154,7 +154,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "HxNCA1s1dC1FPrvbRhwmQpWZ",
+          "tenant_token": "wZsLnthRGPaT4ddPpj6TExWh",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -311,7 +311,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": null,
           "large_avatar_url": null,
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1793699786"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1793711120"
         }
       },
       {
@@ -384,6 +384,7 @@ Check each individual operation to see which relations can be included as a side
             "order_lag_time_interval": null,
             "behaviors.add_button": "show_cart",
             "behaviors.location_picker": "start",
+            "default_fulfillment_type": "pickup",
             "payment_strategy": "none",
             "payment_strategy_value": 30,
             "payment_deposit": false,
