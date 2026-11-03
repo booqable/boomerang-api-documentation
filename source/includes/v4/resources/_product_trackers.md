@@ -14,7 +14,6 @@ Name | Description
 `employee` | **[Employee](#employees)** `required`<br>The [Employee](#employees) who handled the pickup/return. 
 `order` | **[Order](#orders)** `required`<br>The [Order](#orders) the pickup/return was part of. 
 `product` | **[Product](#products)** `required`<br>The [Product](#products) that was picked up/returned. 
-`stock_item_trackers` | **[Stock item trackers](#stock-item-trackers)** `hasmany`<br>The [StockItems](#stock-items) that were picked up/returned. 
 
 
 Check matching attributes under [Fields](#product-trackers-fields) to see which relations can be written.

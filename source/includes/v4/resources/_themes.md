@@ -10,7 +10,6 @@ Name | Description
 -- | --
 `assets` | **[Assets](#assets)** `hasmany`<br>The assets that make up this theme. 
 `original_theme` | **[Theme](#themes)** `required`<br>The original theme, from which this theme is derived. 
-`theme` | **[Theme](#themes)** `required`<br>Either the installed theme, or the original theme. 
 
 
 Check matching attributes under [Fields](#themes-fields) to see which relations can be written.
@@ -33,7 +32,7 @@ Check each individual operation to see which relations can be included as a side
 `preview_image_medium_url` | **string** `readonly`<br>Theme medium image preview image URL. 
 `preview_url` | **string** <br>The URL where the theme could be previewed. 
 `root_theme` | **string** `readonly` `extra`<br>The root theme name. 
-`theme_id` | **uuid** `readonly-after-create`<br>Either the installed theme, or the original theme. 
+`theme_id` | **uuid** `readonly-after-create`<br>ID of the [original theme](#themes) to install. Required on create. 
 `theme_type` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`, `simple_store`.
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `version` | **string** <br>Theme version. 
@@ -68,11 +67,11 @@ Check each individual operation to see which relations can be included as a side
           "market": null,
           "preview_url": null,
           "detail_url": null,
+          "theme_id": "f24f2dff-91ed-49dd-88ff-65218acbbff2",
           "preview_image_long_url": null,
           "preview_image_medium_url": null,
           "preview_image_large_url": null,
-          "installed": true,
-          "theme_id": "f24f2dff-91ed-49dd-88ff-65218acbbff2"
+          "installed": true
         },
         "relationships": {}
       }
@@ -108,11 +107,11 @@ Check each individual operation to see which relations can be included as a side
           "market": null,
           "preview_url": null,
           "detail_url": null,
+          "theme_id": null,
           "preview_image_long_url": null,
           "preview_image_medium_url": null,
           "preview_image_large_url": null,
-          "installed": false,
-          "theme_id": null
+          "installed": false
         },
         "relationships": {}
       }
@@ -209,11 +208,11 @@ This request does not accept any includes
         "market": null,
         "preview_url": null,
         "detail_url": null,
+        "theme_id": "60be3d8d-1bab-4210-876e-ba676d2a0330",
         "preview_image_long_url": null,
         "preview_image_medium_url": null,
         "preview_image_large_url": null,
-        "installed": true,
-        "theme_id": "60be3d8d-1bab-4210-876e-ba676d2a0330"
+        "installed": true
       },
       "relationships": {}
     },
@@ -247,7 +246,7 @@ Name | Description
 `data[attributes][market]` | **string** <br>The market (industry) which fits best for the theme. 
 `data[attributes][name]` | **string** <br>Name of the theme. 
 `data[attributes][preview_url]` | **string** <br>The URL where the theme could be previewed. 
-`data[attributes][theme_id]` | **uuid** <br>Either the installed theme, or the original theme. 
+`data[attributes][theme_id]` | **uuid** <br>ID of the [original theme](#themes) to install. Required on create. 
 `data[attributes][theme_type]` | **enum** <br>Theme type, determines where the theme can be found. Custom themes are private.<br> One of: `marketplace`, `official`, `custom`, `simple_store`.
 `data[attributes][version]` | **string** <br>Theme version. 
 
@@ -290,11 +289,11 @@ This request accepts the following includes:
         "market": null,
         "preview_url": null,
         "detail_url": null,
+        "theme_id": "533e9931-4e57-40d5-8eed-eb3a64dd99db",
         "preview_image_long_url": null,
         "preview_image_medium_url": null,
         "preview_image_large_url": null,
-        "installed": true,
-        "theme_id": "533e9931-4e57-40d5-8eed-eb3a64dd99db"
+        "installed": true
       },
       "relationships": {}
     },
