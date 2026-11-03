@@ -106,6 +106,7 @@ Name | Description
 `time_increment` | **Integer**<br>Time increments for time selection, in minutes (one of `5`, `10`, `15`, `20`, `30`, `60`)
 `prefill_default_times` | **Boolean**<br>Whether the default order times are filled in as soon as a date is selected, skipping time selection
 `prefill_default_times_scope` | **String**<br>Where `prefill_default_times` applies, one of `back_office` or `all` (back office and online store)
+`default_fulfillment_type` | **String**<br>Fulfillment method preselected in the online store when both are available, one of `pickup` or `delivery`
 `show_product_availability` | **Boolean**<br>Whether to show detailed product availability for products
 `hide_product_availability_quantities` | **Boolean**<br>Whether hide quantities in the product availability calendar
 `show_cart_availability` | **Boolean**<br>Whether to show on which dates the products in a cart are available during the period selection
@@ -313,6 +314,7 @@ Name | Description
           "order_lag_time_interval": null,
           "behaviors.add_button": "show_cart",
           "behaviors.location_picker": "start",
+          "default_fulfillment_type": "pickup",
           "payment_strategy": "none",
           "payment_strategy_value": 30,
           "payment_deposit": false,
