@@ -155,7 +155,12 @@ This request accepts the following includes:
 <ul>
   <li><code>barcode</code></li>
   <li><code>location</code></li>
-  <li><code>product</code></li>
+  <li>
+    <code>product</code>
+    <ul>
+      <li><code>photo</code></li>
+    </ul>
+  </li>
   <li><code>properties</code></li>
   <li>
     <code>stock_item_plannings</code>

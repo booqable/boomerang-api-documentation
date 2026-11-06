@@ -620,6 +620,7 @@ This request accepts the following includes:
     <code>order</code>
     <ul>
       <li><code>coupon</code></li>
+      <li><code>order_delivery_rate</code></li>
       <li><code>properties</code></li>
       <li><code>start_location</code></li>
       <li><code>stop_location</code></li>
@@ -676,8 +677,8 @@ This request accepts the following includes:
         "body": "",
         "footer": "",
         "reference": null,
-        "starts_at": "1976-03-16T10:25:01.000000+00:00",
-        "stops_at": "1976-04-15T10:25:01.000000+00:00",
+        "starts_at": "1976-03-13T10:07:01.000000+00:00",
+        "stops_at": "1976-04-12T10:07:01.000000+00:00",
         "start_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "stop_location_id": "2f4f9473-239b-4b05-8bb3-e9f933d42d64",
         "revised": false,
@@ -809,6 +810,7 @@ This request accepts the following includes:
     <code>order</code>
     <ul>
       <li><code>coupon</code></li>
+      <li><code>order_delivery_rate</code></li>
       <li><code>properties</code></li>
       <li><code>start_location</code></li>
       <li><code>stop_location</code></li>
@@ -998,6 +1000,7 @@ This request accepts the following includes:
     <code>order</code>
     <ul>
       <li><code>coupon</code></li>
+      <li><code>order_delivery_rate</code></li>
       <li><code>properties</code></li>
       <li><code>start_location</code></li>
       <li><code>stop_location</code></li>

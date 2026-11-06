@@ -154,7 +154,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "wZsLnthRGPaT4ddPpj6TExWh",
+          "tenant_token": "9wiNu1Ps4uDaCjDbMwXEedPJ",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -216,10 +216,10 @@ Check each individual operation to see which relations can be included as a side
               "product_performance_report",
               "emails_bcc",
               "custom_email",
+              "manual_email_templates",
               "cross_sell",
               "advanced_pricing",
               "prevent_last_minute_reservations",
-              "manual_email_templates",
               "customer_discount_percentage",
               "product_security_deposit",
               "coupons_advanced",
@@ -250,7 +250,8 @@ Check each individual operation to see which relations can be included as a side
             ],
             "features_excluded_during_trial": [
               "emails_bcc",
-              "custom_email"
+              "custom_email",
+              "custom_scripts"
             ],
             "restrictions": {
               "employees": 20,
@@ -311,7 +312,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": null,
           "large_avatar_url": null,
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1793711120"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1793971391"
         }
       },
       {
