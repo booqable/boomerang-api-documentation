@@ -25,7 +25,7 @@ Check each individual operation to see which relations can be included as a side
 `id` | **uuid** `readonly`<br>Primary key.
 `item_id` | **uuid** `readonly`<br>The Product the suggested stock item belongs to. 
 `status` | **enum** `readonly`<br>Status of the suggested stock item.<br> One of: `available_in_location`, `overdue`, `unavailable`, `already_booked`.
-`stock_item_id` | **uuid** `readonly`<br>The suggested stock item. 
+`stock_item_id` | **uuid** `readonly`<br>The suggested stock item.<br>Filter parameter. Optional. Filter on it to get the suggestions of specific stock items only, like the status of a stock item for an order. 
 
 
 ## List stock item suggestions
@@ -104,6 +104,7 @@ Name | Description
 `order_id` | **uuid** `required`<br>`eq`
 `q` | **string** <br>`eq`
 `status` | **enum** <br>`eq`
+`stock_item_id` | **uuid** <br>`eq`
 `till` | **datetime** <br>`eq`
 
 

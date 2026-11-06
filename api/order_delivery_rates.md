@@ -26,6 +26,7 @@ Check each individual operation to see which relations can be included as a side
 `order_id` | **uuid** `writeonly`<br>The delivery [Order](https://developers.booqable.com/v4.html#orders) this rate is for. 
 `price_in_cents` | **integer** <br>The price of the delivery rate in cents. 
 `rate_id` | **string** <br>The rate ID returned by a delivery app. 
+`route_restricted` | **boolean** `readonly`<br>Whether the route from the order's start location to its delivery address uses a restricted road. The price is unchanged. 
 `signed_attributes` | **string** <br>The signed attributes returned by a delivery app. 
 `tax_category_id` | **uuid** `nullable`<br>The tax category for custom delivery rates. When a carrier is selected, the carrier's tax category is used instead. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
@@ -77,7 +78,11 @@ Check each individual operation to see which relations can be included as a side
           ]
         }
       }
-    ]
+    ],
+    "meta": {
+      "route_restricted": false,
+      "route_restricted_signature": "IntcInJvdXRlX3Jlc3RyaWN0ZWRcIjpmYWxzZX0i--5383f134e7c6547b4d0f7e956b4def91b76c22c7"
+    }
   }
 ```
 
@@ -113,6 +118,7 @@ Name | Description
 `minimum_order_amount_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `price_in_cents` | **integer** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `rate_id` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`route_restricted` | **boolean** <br>`eq`
 `signed_attributes` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
 `updated_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
@@ -162,6 +168,7 @@ This request accepts the following includes:
         "price_in_cents": 10000,
         "rate_id": null,
         "minimum_order_amount_in_cents": 0,
+        "route_restricted": false,
         "tax_category_id": null,
         "signed_attributes": null,
         "carrier_id": "5d74673e-ac2b-4853-8a69-66982a001b26"
@@ -234,6 +241,7 @@ This request accepts the following includes:
         "price_in_cents": 5000,
         "rate_id": null,
         "minimum_order_amount_in_cents": 1000,
+        "route_restricted": false,
         "tax_category_id": "3b1f144e-04a1-4bc3-829d-e1eb2c56f060",
         "signed_attributes": null,
         "carrier_id": null
@@ -320,6 +328,7 @@ This request accepts the following includes:
         "price_in_cents": 5000,
         "rate_id": null,
         "minimum_order_amount_in_cents": 0,
+        "route_restricted": false,
         "tax_category_id": null,
         "signed_attributes": null,
         "carrier_id": "02309205-57de-4518-85c4-551531c6aba6"

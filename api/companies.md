@@ -135,7 +135,7 @@ A company holds information and configuration about an account.
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "EAjAEint6W2Cy8L2mrD4nAMe",
+        "tenant_token": "Ao1piTX3CL5nUYxWQayxifUk",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
@@ -272,10 +272,10 @@ Name | Description
             "product_performance_report",
             "emails_bcc",
             "custom_email",
+            "manual_email_templates",
             "cross_sell",
             "advanced_pricing",
             "prevent_last_minute_reservations",
-            "manual_email_templates",
             "customer_discount_percentage",
             "product_security_deposit",
             "coupons_advanced",
@@ -306,7 +306,8 @@ Name | Description
           ],
           "features_excluded_during_trial": [
             "emails_bcc",
-            "custom_email"
+            "custom_email",
+            "custom_scripts"
           ],
           "restrictions": {
             "employees": 20,
@@ -425,7 +426,7 @@ This request does not accept any includes
         "shop_theme_id": null,
         "shop_theme_published": false,
         "installed_online_store": false,
-        "tenant_token": "o4aTEyjy9fAvDTBoHdk4YEyr",
+        "tenant_token": "MBefh36LrGWcgWjh653t58tz",
         "pending_subscription": false,
         "address": "Netherlands",
         "main_address": null,
