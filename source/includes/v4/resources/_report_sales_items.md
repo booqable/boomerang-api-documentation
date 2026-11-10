@@ -4,6 +4,9 @@ Report on how sales items are performing. The report is filterable
 by date and can be requested by one of the following revenue types:
 `invoices`, `orders`.
 
+`stats[collection_id]=count` returns the number of products each collection would report on its own.
+These counts apply every other filter but ignore `collection_id`.
+
 <aside class="notice">
   Availability of this report depends on the current pricing plan.
 </aside>
@@ -51,7 +54,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "4d363f2a-947b-4b3e-87d7-4b872034c7e5",
         "type": "report_sales_items",
         "attributes": {
-          "created_at": "2024-01-28T01:00:50.000000+00:00",
+          "created_at": "2024-01-28T05:16:50.000000+00:00",
           "name": "Product 1000064",
           "sold": 2,
           "revenue_in_cents": 10000,
@@ -104,6 +107,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`collection_id` | **array** <br>`count`
 `tag_list` | **array** <br>`count`
 `total` | **array** <br>`count`
 

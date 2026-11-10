@@ -4,6 +4,9 @@ Report on how stock items are performing. The report is filterable by date
 and can be requested by one of the following revenue types:
 `invoices`, `orders`.
 
+`stats[collection_id]=count` returns the number of stock items each collection would report on its own.
+These counts apply every other filter but ignore `collection_id`.
+
 <aside class="notice">
   Availability of this report depends on the current pricing plan.
 </aside>
@@ -66,7 +69,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "5f25a378-68e0-4a95-863a-9adc03ae17e7",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T15:30:00.000000+00:00",
+          "created_at": "2028-06-15T19:46:00.000000+00:00",
           "product_name": "Product 1000066",
           "identifier": "id1000217",
           "charge_duration_in_seconds": 7200,
@@ -91,7 +94,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "48182ded-c678-4f69-86e3-3889e19faf6d",
         "type": "report_stock_items",
         "attributes": {
-          "created_at": "2028-06-15T15:30:00.000000+00:00",
+          "created_at": "2028-06-15T19:46:00.000000+00:00",
           "product_name": "Product 1000066",
           "identifier": "id1000218",
           "charge_duration_in_seconds": 0,
@@ -159,6 +162,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`collection_id` | **array** <br>`count`
 `total` | **array** <br>`count`
 
 

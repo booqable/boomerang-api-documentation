@@ -4,6 +4,9 @@ Report on how rental products are performing. The report is filterable by date
 and can be requested by one of the following revenue types:
 `invoices`, `orders`.
 
+`stats[collection_id]=count` returns the number of products each collection would report on its own.
+These counts apply every other filter but ignore `collection_id`.
+
 <aside class="notice">
   Availability of this report depends on the current pricing plan.
 </aside>
@@ -58,7 +61,7 @@ Check each individual operation to see which relations can be included as a side
         "id": "ea8dd06c-43e0-4211-8e56-7e9d41e46f35",
         "type": "report_rentals",
         "attributes": {
-          "created_at": "2019-11-26T03:37:00.000000+00:00",
+          "created_at": "2019-11-26T07:53:00.000000+00:00",
           "name": "Product 1000063",
           "charge_duration_in_seconds": 14400,
           "rent_duration_in_seconds": 14400,
@@ -122,6 +125,7 @@ Results can be aggregated on:
 
 Name | Description
 -- | --
+`collection_id` | **array** <br>`count`
 `tag_list` | **array** <br>`count`
 `total` | **array** <br>`count`
 `tracking_type` | **array** <br>`count`
