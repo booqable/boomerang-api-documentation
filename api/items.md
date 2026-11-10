@@ -241,6 +241,7 @@ Name | Description
 -- | --
 `archived` | **array** <br>`count`
 `base_price_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`collection_id` | **array** <br>`count`
 `deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `discountable` | **array** <br>`count`
 `price_period` | **array** <br>`count`
@@ -413,6 +414,7 @@ Name | Description
 -- | --
 `archived` | **array** <br>`count`
 `base_price_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
+`collection_id` | **array** <br>`count`
 `deposit_in_cents` | **array** <br>`sum`, `maximum`, `minimum`, `average`
 `discountable` | **array** <br>`count`
 `price_period` | **array** <br>`count`
