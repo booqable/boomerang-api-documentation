@@ -101,6 +101,7 @@ Name | Description
 `use_business_hours` | **Boolean**<br>Whether to take opening hours into account while selecting a period (see [operating rules](https://developers.booqable.com/v4.html#operating-rules) for more information)
 `use_away_mode` | **Boolean**<br>Whether away mode is enabled (see [operating rules](https://developers.booqable.com/v4.html#operating-rules) for more information)
 `period_type` | **String**<br>How the period picker is setup, one of `freely` (free selection), `timeslot_duration` (select a day, time and duration), `timeslot_fixed` (fixed timeslots for days). See [operating rules](https://developers.booqable.com/v4.html#operating-rules) for more information
+`single_day_rental` | **Boolean**<br>Whether customers select a single day instead of a start and end. Used with the `freely` period type: with `use_times` off only a date is selected, with it on a time range within that date
 `use_times` | **Boolean**<br>Whether to use time selection in the online store
 `use_coupons_in_checkout` | **Boolean**<br>Whether supplying coupons during checkout is enabled
 `time_increment` | **Integer**<br>Time increments for time selection, in minutes (one of `5`, `10`, `15`, `20`, `30`, `60`)
@@ -330,6 +331,7 @@ Name | Description
           "use_business_hours": false,
           "use_away_mode": false,
           "period_type": "freely",
+          "single_day_rental": false,
           "default_fixed_duration": null,
           "use_times": true,
           "use_coupons_in_checkout": true,
