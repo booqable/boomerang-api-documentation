@@ -154,7 +154,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "Fgwk4MVYejLWa6TnCDh5KJz3",
+          "tenant_token": "fEXGuwpLMpRn1Ez1Y7NUBwNX",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -312,7 +312,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": null,
           "large_avatar_url": null,
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1794332385"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1794476843"
         }
       },
       {
@@ -401,6 +401,7 @@ Check each individual operation to see which relations can be included as a side
             "use_business_hours": false,
             "use_away_mode": false,
             "period_type": "freely",
+            "single_day_rental": false,
             "default_fixed_duration": null,
             "use_times": true,
             "use_coupons_in_checkout": true,

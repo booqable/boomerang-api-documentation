@@ -344,7 +344,7 @@ Check each individual operation to see which relations can be included as a side
         "type": "orders",
         "attributes": {
           "created_at": "2015-02-09T00:29:01.000000+00:00",
-          "updated_at": "2015-02-09T00:30:01.000000+00:00",
+          "updated_at": "2015-02-09T00:29:01.000000+00:00",
           "number": 1,
           "status": "reserved",
           "statuses": [
@@ -357,8 +357,8 @@ Check each individual operation to see which relations can be included as a side
             "started": 0,
             "stopped": 0
           },
-          "starts_at": "1968-06-30T18:51:01.000000+00:00",
-          "stops_at": "1968-07-30T18:51:01.000000+00:00",
+          "starts_at": "1968-06-29T02:43:01.000000+00:00",
+          "stops_at": "1968-07-29T02:43:01.000000+00:00",
           "deposit_type": "percentage",
           "deposit_value": 10.0,
           "entirely_started": false,
@@ -610,14 +610,14 @@ Use advanced search to make logical filter groups with and/or operators.
                  "attributes": [
                    {
                      "starts_at": {
-                       "gte": "2026-11-11T17:39:03Z",
-                       "lte": "2026-11-14T17:39:03Z"
+                       "gte": "2026-11-13T09:46:45Z",
+                       "lte": "2026-11-16T09:46:45Z"
                      }
                    },
                    {
                      "stops_at": {
-                       "gte": "2026-11-11T17:39:03Z",
-                       "lte": "2026-11-14T17:39:03Z"
+                       "gte": "2026-11-13T09:46:45Z",
+                       "lte": "2026-11-16T09:46:45Z"
                      }
                    }
                  ]
@@ -988,8 +988,8 @@ This request accepts the following includes:
           "started": 0,
           "stopped": 0
         },
-        "starts_at": "1968-11-26T04:09:01.000000+00:00",
-        "stops_at": "1968-12-26T04:09:01.000000+00:00",
+        "starts_at": "1968-11-24T12:02:01.000000+00:00",
+        "stops_at": "1968-12-24T12:02:01.000000+00:00",
         "deposit_type": "percentage",
         "deposit_value": 10.0,
         "entirely_started": false,
