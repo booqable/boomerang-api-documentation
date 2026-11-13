@@ -107,6 +107,29 @@ GET /api/4/orders.json?include=customer
 ```
 
 
+## Dates and time zones
+
+All datetimes use ISO 8601. The API has two kinds of datetime, and they are not interchangeable:
+
+- **Wall-clock dates** describe a moment in the company's own time zone, written as if it were UTC. This covers rental periods (`starts_at`, `stops_at`), planning dates, availability periods (`filter[from]`, `filter[till]`) and other dates a customer or employee picks. `2026-07-01T10:00:00Z` means 10:00 at the company's location, whatever the company's time zone is.
+- **Record timestamps** such as `created_at`, `updated_at` and `succeeded_at` are real UTC instants.
+
+Send wall-clock dates with a `Z` suffix or without an offset, and do not convert them to real UTC. A value with a real offset, such as `2026-07-01T10:00:00+02:00`, is shifted to UTC before it is stored and would be saved as 08:00 local time.
+
+Responses return every datetime as `...+00:00` with microseconds.
+
+The company's time zone is `default_timezone` on the [Company](#companies) resource. Changing it does not rewrite stored wall-clock dates; it only changes how "now" is interpreted for things like minimum lead time, opening hours, report periods and dates on documents.
+
+> A wall-clock date and a record timestamp on the same order:
+
+```json
+{
+  "starts_at": "2026-07-01T10:00:00.000000+00:00",
+  "created_at": "2026-06-14T08:23:51.204811+00:00"
+}
+```
+
+
 ## Fields
 
 For every resource, fields can be written, read, filtered, sorted, and aggregated. The behavior of fields is described for each resource.
