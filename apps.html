@@ -397,6 +397,9 @@
                     <a href="#booqable-interop-oauth" class="toc-h2 toc-link" data-title="OAuth" title="OAuth">OAuth</a>
                   </li>
                   <li>
+                    <a href="#booqable-interop-signed-requests" class="toc-h2 toc-link" data-title="Signed requests" title="Signed requests">Signed requests</a>
+                  </li>
+                  <li>
                     <a href="#booqable-interop-webhooks" class="toc-h2 toc-link" data-title="Webhooks" title="Webhooks">Webhooks</a>
                   </li>
               </ul>
@@ -799,42 +802,104 @@
 </ul>
 
 <p>A carrier can also be updated later with <code>PATCH</code>/<code>PUT /api/4/app_carriers/{id}</code>, same attributes.</p>
-<h3 id='capabilities-delivery-carriers-fetching-rates'>Fetching rates</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// your rates_url responds with this (response)</span><span class="w">
+<h3 id='capabilities-delivery-carriers-rate-requests'>Rate requests</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// POST {rates_url}?company_id=3b5e8f0c-2a41-4c7d-9e16-8d0f4a7b2c95&amp;ts=1798761600&amp;v=1&amp;signature=… (request)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.813</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"distance_unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">300000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Industrieweg 4,,1021 KZ,Amsterdam,Noord-Holland,Netherlands"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin_coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.9265,52.3912"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin_location_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e1a4c2d8-5b37-4f90-8c6e-2d7b9a1f3e64"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Keizersgracht 123,,1015 CJ,Amsterdam,Noord-Holland,Netherlands"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_coordinates"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.884,52.3752"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1015 CJ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Noord-Holland"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"destination_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"starts_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-12-04T09:00:00+01:00"</span><span class="p">,</span><span class="w"> </span><span class="c1">// only through GET /api/4/order_delivery_rates</span><span class="w">
+  </span><span class="nl">"stops_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-12-06T17:00:00+01:00"</span><span class="p">,</span><span class="w"> </span><span class="c1">// same</span><span class="w">
+  </span><span class="nl">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c1">// same</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9d2f6b1a-7c4e-4a85-b3d0-6e8f1c2a5b47"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Party tent 6x3m"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300000.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Whenever Booqable needs a delivery price, at checkout or in the back office, it sends a JSON <code>POST</code> to every active carrier&#39;s <code>rates_url</code>:</p>
+
+<ul>
+<li><strong><code>distance</code></strong>: driving distance from origin to destination, in the shop&#39;s <code>distance_unit</code> (<code>metric</code> for km, <code>imperial</code> for miles).</li>
+<li><strong><code>order_amount_in_cents</code></strong>: the order total before delivery and discounts, including tax if the shop&#39;s prices include it.</li>
+<li><strong><code>origin_address</code></strong>, <strong><code>destination_address</code></strong>: one comma-separated line: address lines, postcode, city, region, country.</li>
+<li><strong><code>origin_coordinates</code></strong>, <strong><code>destination_coordinates</code></strong>: <code>&quot;lng,lat&quot;</code>, longitude first.</li>
+<li><strong><code>destination_zipcode</code></strong>, <strong><code>destination_region</code></strong>, <strong><code>destination_country</code></strong>: the destination&#39;s postcode, region and ISO alpha-2 country code.</li>
+<li><strong><code>origin_location_id</code></strong>, <strong><code>origin_country</code></strong>: the location Booqable picked to deliver from, which <code>distance</code> is measured from, and its country.</li>
+<li><strong><code>starts_at</code></strong>, <strong><code>stops_at</code></strong>, <strong><code>products</code></strong>: the rental period and product lines, each line with the product&#39;s <code>id</code>, <code>title</code>, <code>quantity</code> and <code>price_in_cents</code> (the line total, as a decimal string). Only filled in when rates are fetched through <a href="v4.html#order-delivery-rates"><code>GET /api/4/order_delivery_rates</code></a>; otherwise <code>null</code>, <code>null</code> and <code>[]</code>.</li>
+</ul>
+
+<p>Every key is always present, with <code>null</code> for unknown values. Every <code>_in_cents</code> amount, in the request and in your response, is in hundredths of the main currency unit, whatever the currency: ¥3,000 is <code>300000</code>.</p>
+
+<p>The request is <a href="#booqable-interop-signed-requests">signed</a>; verify it before you answer. Booqable waits 3 seconds and doesn&#39;t retry. If you time out or don&#39;t answer with a valid JSON <code>200</code>, Booqable skips your carrier. If you don&#39;t serve a request, for example because it&#39;s outside your coverage, respond with an empty <code>data</code> array.</p>
+<h3 id='capabilities-delivery-carriers-responding-with-rates'>Responding with rates</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// your rates_url responds with this (response)</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard-shipping"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery_rates"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard-shipping"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c4d9e7a1-6f2b-4e83-9a5c-1b8d3f0e7a26"</span><span class="p">,</span><span class="w"> </span><span class="c1">// id returned when you registered the carrier</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard shipping"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard shipping"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70"</span><span class="p">,</span><span class="w"> </span><span class="c1">// id returned when you registered the carrier</span><span class="w">
-        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delivered between 9:00 and 17:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flat"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10 km"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"free_delivery_threshold_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"express-shipping"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery_rates"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"carrier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c4d9e7a1-6f2b-4e83-9a5c-1b8d3f0e7a26"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Express shipping"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Express shipping"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calculated"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">4250</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.82 km"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minimum_order_amount_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"free_delivery_threshold_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"under_minimum_order_amount"</span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>When a customer requests delivery rates at checkout, Booqable sends a <code>POST</code> request to your <code>rates_url</code> with a JSON body (<code>application/json</code>) containing:</p>
+<p>Respond with <code>Content-Type: application/json</code> and a JSON:API list of the rates you offer for this request. Each rate has a string <code>id</code>, a <code>type</code> of <code>delivery_rates</code>, and these <code>attributes</code>:</p>
 
 <ul>
-<li><code>distance</code>, <code>distance_unit</code> (<code>metric</code> by default)</li>
-<li><code>order_amount_in_cents</code></li>
-<li><code>origin_address</code>, <code>origin_coordinates</code>, <code>destination_address</code>, <code>destination_coordinates</code></li>
-<li><code>starts_at</code>, <code>stops_at</code></li>
-<li><code>products</code>: an array of <code>{ id, title, price_in_cents, quantity }</code></li>
+<li><strong><code>carrier_id</code></strong> (required): the id Booqable returned when you registered the carrier.</li>
+<li><strong><code>price_in_cents</code></strong> (required): the delivery price.</li>
+<li><strong><code>identifier</code></strong> (required), <strong><code>label</code></strong>: the rate&#39;s name. Booqable shows <code>identifier</code>; an order placed at checkout is named after <code>label</code>. Send the same name in both.</li>
+<li><strong><code>description</code></strong>: optional text shown under the name.</li>
+<li><strong><code>type</code></strong>: <code>flat</code> or <code>calculated</code>. For a <code>flat</code> rate, Booqable shows <code>range</code> as &quot;up to 10 km&quot;.</li>
+<li><strong><code>range</code></strong>: the distance to show, such as <code>&quot;10 km&quot;</code>, or <code>null</code> to show none.</li>
+<li><strong><code>minimum_order_amount_in_cents</code></strong>: the minimum order for this rate, or <code>null</code> when there&#39;s none.</li>
+<li><strong><code>free_delivery_threshold_in_cents</code></strong>: the order amount from which this rate is free, or <code>null</code> when there&#39;s none. Return a <code>price_in_cents</code> of 0 yourself once <code>order_amount_in_cents</code> reaches it: the back office uses your price as is. Checkout shows the threshold to the customer until it&#39;s reached.</li>
+<li><strong><code>errors</code></strong>: why the rate can&#39;t be used for this order. Checkout shows a rate with errors but won&#39;t let the customer pick it, and Booqable avoids such rates when it picks one itself. Booqable doesn&#39;t check the minimum order: send <code>under_minimum_order_amount</code> when the order is below it, and checkout shows the customer the minimum amount.</li>
 </ul>
 
-<p>Coordinates are sent as a <code>&quot;lat,lng&quot;</code> string and addresses as single-line strings. The request carries a <code>Bearer</code> JWT in the <code>Authorization</code> header, signed with your app&#39;s OAuth client secret; verify it to confirm the request came from Booqable.</p>
+<p>Keep each rate&#39;s <code>id</code> the same across requests: Booqable stores it on the order and uses it to find the rate again when the order changes.</p>
 
-<p>Booqable waits 3 seconds for a response before treating the request as failed.</p>
+<p>If the response isn&#39;t a JSON <code>200</code>, or any rate lacks an <code>id</code>, <code>attributes</code> or the <code>delivery_rates</code> type, Booqable discards your whole response.</p>
 
-<p>Booqable sends this request to every active carrier on every rates request. If you don&#39;t serve a request, for example because the destination is outside your coverage, respond with an empty <code>data</code> array. If your carrier fails or times out, Booqable skips it and uses the rates from the other carriers.</p>
-
-<p>Each rate&#39;s own <code>identifier</code> is yours to choose (e.g. <code>standard-shipping</code>, <code>express-shipping</code>) and is separate from the carrier&#39;s <code>identifier</code> used at registration. <code>label</code> is shown to the customer; if omitted, the rate&#39;s <code>identifier</code> is used.</p>
-
-<p>Each rate must have an <code>id</code>, a <code>type</code> of <code>delivery_rates</code>, and <code>attributes</code> including <code>carrier_id</code> (the id Booqable returned when you registered the carrier) and <code>price_in_cents</code>. If any rate in the response is invalid, Booqable discards the entire response for your carrier.</p>
+<p>Booqable passes your rates&#39; attributes as they are to the shop&#39;s checkout and to API clients, for example through <a href="v4.html#order-delivery-rates"><code>GET /api/4/order_delivery_rates</code></a>, so don&#39;t put anything private in them.</p>
 <h3 id='capabilities-delivery-carriers-uninstalling'>Uninstalling</h3>
 <p>Uninstalling the app archives all of its carriers, removes their location links, and re-enables pickup at any location left without a carrier.</p>
 <h2 id='capabilities-payment-options'>Payment Options</h2>
@@ -875,7 +940,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>After a user installs your payment app, you must create a PaymentOption record using Booqable&#39;s <a href="internal.html#app-payment-options">Payment Options API endpoint</a>. The PaymentOption enables Booqable to show new payment options in the UI using the routes configured in your app&#39;s <code>booqable.json</code> file. Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app&#39;s endpoints using JWT tokens for security.</p>
+<p>After a user installs your payment app, you must create a PaymentOption record using Booqable&#39;s <a href="internal.html#app-payment-options">Payment Options API endpoint</a>. The PaymentOption enables Booqable to show new payment options in the UI using the routes configured in your app&#39;s <code>booqable.json</code> file. Users can then select your payment method during checkout, and Booqable will make <a href="#booqable-interop-signed-requests">signed requests</a> to your app&#39;s endpoints.</p>
 
 <p>An empty <code>attributes</code> object is enough: <code>name</code>, <code>identifier</code>, and all 6 routes are copied from your manifest automatically.</p>
 
@@ -1283,7 +1348,7 @@
 </tbody></table>
 <h3 id='capabilities-payment-options-notes'>Notes</h3>
 <ul>
-<li>Every request to your routes is authenticated with a <code>Bearer</code> JWT in the <code>Authorization</code> header, identifying the company. This token doesn&#39;t expire, so treat it as a long-lived credential and validate it on every request, not just accept it once.</li>
+<li>Every request to your routes is <a href="#booqable-interop-signed-requests">signed</a>: Booqable adds <code>company_id</code>, <code>ts</code>, <code>v</code> and <code>signature</code> to the route&#39;s query string, covering the body too. Verify the signature on every request. A retry (see below) resends the same signed request.</li>
 <li>For <code>charge_url</code> and <code>authorization_url</code> flows, always update the payment status via the Booqable API <strong>before</strong> redirecting the customer back to the <code>return_url</code>. The callback page polls the payment status and will wait indefinitely if the status is never updated.</li>
 <li>Even when a payment fails, update the status to <code>failed</code> before redirecting. Otherwise, the callback page polls indefinitely waiting for a status change.</li>
 <li>Always store the <code>booqable_id</code> from the initial request. You&#39;ll need it to update the payment status later, especially for asynchronous payment processing.</li>
@@ -1313,18 +1378,11 @@
 </span></code></pre></div>
 <p>The <code>url</code> is either an absolute URL string, or a relative object like <code>{ &quot;relative&quot;: &quot;/dashboard&quot; }</code> that is resolved against your manifest&#39;s <code>base_url</code> (required for relative URLs). Booqable embeds it in an iframe and communicates with it over a <code>postMessage</code> protocol described below.</p>
 
-<p>The exact same mechanism is also available as a <code>configuration_page.iframe</code>, an alternative to declarative content blocks for your app&#39;s settings page. See <a href="#configuration">Configuration</a> for that specific field; everything below (the auth token, the message protocol) applies identically to both.</p>
-<h3 id='capabilities-embedded-pages-authentication-token'>Authentication token</h3>
-<p>The iframe URL includes a <code>token</code> query parameter: a JWT signed with HS256 using your app&#39;s OAuth client secret. Its payload contains:</p>
+<p>The exact same mechanism is also available as a <code>configuration_page.iframe</code>, an alternative to declarative content blocks for your app&#39;s settings page. See <a href="#configuration">Configuration</a> for that specific field; everything below (the signed URL, the message protocol) applies identically to both.</p>
+<h3 id='capabilities-embedded-pages-signed-url'>Signed URL</h3>
+<p>Booqable <a href="#booqable-interop-signed-requests">signs</a> the iframe URL each time it loads it, adding <code>company_id</code>, <code>employee_id</code> (the employee viewing the page) and <code>locale</code> to its query string. Verify the signature before showing anything. Booqable only loads the page once the merchant has authorized your app through <a href="#booqable-interop-oauth">OAuth</a>.</p>
 
-<ul>
-<li><strong>Company ID</strong> and <strong>Company Slug</strong></li>
-<li><strong>User Email</strong> of the current employee</li>
-<li><strong>Currency settings</strong>: <code>currency</code>, <code>currency_position</code>, <code>currency_format</code></li>
-<li><strong>Distance Unit</strong>: the company&#39;s preferred distance unit for deliveries</li>
-</ul>
-
-<p>This token doesn&#39;t expire. Treat it as a long-lived credential: validate it on every request rather than assuming freshness.</p>
+<p>A signature is only valid for 5 minutes, so verify it on the first load and keep your own session for the pages the iframe navigates to after that, without relying on cookies: browsers often block them in iframes. A short-lived token in your URLs works. Fetch anything else you need, such as the company&#39;s currency settings, through the <a href="v4.html">API</a>.</p>
 <h3 id='capabilities-embedded-pages-message-protocol'>Message protocol</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="nl">eventName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">MESSAGE_TYPE</span><span class="dl">"</span><span class="p">,</span>
   <span class="nx">payload</span><span class="p">:</span> <span class="p">{</span>
@@ -1522,7 +1580,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 
 <p>Any block can be shown conditionally with <code>if</code>: <code>configured</code> (only once the app is configured), <code>unconfigured</code> (only until then). An app counts as configured once all of its required form fields have a value, which is immediately if it has none. If omitted the block is always shown.</p>
 <h2 id='configuration-embedded-settings-page'>Embedded settings page</h2>
-<p><code>configuration_page.iframe</code> replaces content blocks with a full embedded page, using the exact same mechanism (manifest shape, auth token, <code>postMessage</code> protocol) as <a href="#capabilities-embedded-pages">Embedded Pages</a>. See that section for the details.</p>
+<p><code>configuration_page.iframe</code> replaces content blocks with a full embedded page, using the exact same mechanism (manifest shape, signed URL, <code>postMessage</code> protocol) as <a href="#capabilities-embedded-pages">Embedded Pages</a>. See that section for the details.</p>
 <h2 id='configuration-plans'>Plans</h2>
 <p>Plan pricing and store-facing copy are declared directly in <code>booqable.json</code>&#39;s <code>plans</code> array. See <a href="#the-basics-app-store-listing">App Store Listing</a> for the field reference. There&#39;s no separate plans file.</p>
 <h2 id='configuration-locale-files'>Locale files</h2><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// hardcoded</span><span class="w">
@@ -1554,7 +1612,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 
 <p>If a locale is missing a key your manifest references, provisioning fails with a validation error.</p>
 <h1 id='booqable-interop'>Booqable Interop</h1>
-<p>The two sections below only apply if your app has its own backend: <a href="#booqable-interop-oauth">OAuth</a> lets it call Booqable&#39;s API on a user&#39;s behalf, and <a href="#booqable-interop-webhooks">Webhooks</a> let it react to events without polling.</p>
+<p>The sections below only apply if your app has its own backend: <a href="#booqable-interop-oauth">OAuth</a> lets it call Booqable&#39;s API on a user&#39;s behalf, <a href="#booqable-interop-signed-requests">Signed requests</a> lets it check that a request really comes from Booqable, and <a href="#booqable-interop-webhooks">Webhooks</a> let it react to events without polling.</p>
 <h2 id='booqable-interop-oauth'>OAuth</h2>
 <p>Booqable apps can use OAuth authentication to securely connect with <a href="v4.html">Booqable&#39;s API</a> on behalf of the user, without requiring them to share their credentials directly.</p>
 <h3 id='booqable-interop-oauth-how-oauth-works-in-booqable-apps'>How OAuth works in Booqable apps</h3>
@@ -1581,6 +1639,112 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <li><strong><code>redirect_url</code></strong>: the path Booqable redirects to after authorization. A relative path, prefixed with your app&#39;s <code>base_url</code>.</li>
 <li><strong><code>scopes</code></strong>: the OAuth scopes your app requests. Currently the only scope available is <code>full_access</code>.</li>
 </ul>
+<h2 id='booqable-interop-signed-requests'>Signed requests</h2>
+<p>Booqable signs these requests and iframe URLs with your app&#39;s OAuth client secret. Verify the signature before you trust anything in them.</p>
+
+<ul>
+<li><a href="#capabilities-delivery-carriers">Delivery carrier</a> rate requests</li>
+<li>calls to your <a href="#capabilities-payment-options">payment option</a> routes</li>
+<li><a href="#capabilities-embedded-pages">embedded pages</a>, including a <code>configuration_page.iframe</code></li>
+<li>sidebar frames (a <a href="#reference-frame"><code>Frame</code></a> under <code>sidebar_frame</code>)</li>
+<li>the <code>dynamic</code> <a href="#reference-appstatus">status</a> endpoint</li>
+</ul>
+
+<p>Theme block settings iframes aren&#39;t signed. Webhook deliveries carry a <code>token</code> query param instead: an HS256 JWT signed with your client secret that expires after 10 minutes.</p>
+<h3 id='booqable-interop-signed-requests-signed-params'>Signed params</h3><div class="highlight"><pre class="highlight plaintext"><code>POST https://example.com/api/rates?company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&amp;region=eu&amp;ts=1798761600&amp;v=1&amp;signature=15eb8124970543dc99cdf437ddd0b2c63c351abb9adb3eab94af7b13bc2fabe2
+</code></pre></div>
+<p>Booqable adds these query params to the URL you configured, keeping the params it already has (<code>region=eu</code> in the example), and sorts them by name:</p>
+
+<ul>
+<li><strong><code>company_id</code></strong>: the company the request is for. Some requests add more context params; each capability lists its own.</li>
+<li><strong><code>v</code></strong>: the signing version, currently <code>1</code>.</li>
+<li><strong><code>ts</code></strong>: when Booqable signed the request, in Unix seconds.</li>
+<li><strong><code>signature</code></strong>: the HMAC described below, always last.</li>
+</ul>
+
+<p>Every other param in the query string, including your own, is covered by the signature. Your URL can&#39;t already contain a param Booqable adds or repeat a param, and a <code>+</code> in it is read as a space.</p>
+<h3 id='booqable-interop-signed-requests-verifying-a-request'>Verifying a request</h3><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"openssl"</span>
+<span class="nb">require</span> <span class="s2">"digest"</span>
+
+<span class="no">MAX_AGE</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># seconds</span>
+
+<span class="k">def</span> <span class="nf">verify!</span><span class="p">(</span><span class="nb">method</span><span class="p">:,</span> <span class="n">path</span><span class="p">:,</span> <span class="n">raw_query</span><span class="p">:,</span> <span class="n">body</span><span class="p">:,</span> <span class="n">secret</span><span class="p">:,</span> <span class="ss">now: </span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">)</span>
+  <span class="n">pairs</span> <span class="o">=</span> <span class="n">raw_query</span><span class="p">.</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"&amp;"</span><span class="p">).</span><span class="nf">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:empty?</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">pair</span><span class="o">|</span>
+    <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">pair</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"="</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">decode</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">decode</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">to_s</span><span class="p">)]</span>
+  <span class="k">end</span>
+
+  <span class="n">keys</span> <span class="o">=</span> <span class="n">pairs</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="s2">"repeated param"</span> <span class="k">if</span> <span class="n">keys</span><span class="p">.</span><span class="nf">uniq</span><span class="p">.</span><span class="nf">size</span> <span class="o">!=</span> <span class="n">keys</span><span class="p">.</span><span class="nf">size</span>
+
+  <span class="n">params</span> <span class="o">=</span> <span class="n">pairs</span><span class="p">.</span><span class="nf">to_h</span>
+  <span class="k">raise</span> <span class="s2">"unsupported version"</span> <span class="k">unless</span> <span class="n">params</span><span class="p">[</span><span class="s2">"v"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"1"</span>
+  <span class="k">raise</span> <span class="s2">"stale"</span> <span class="k">unless</span> <span class="n">params</span><span class="p">[</span><span class="s2">"ts"</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">match?</span><span class="p">(</span><span class="sr">/\A\d+\z/</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+    <span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="nf">to_i</span> <span class="o">-</span> <span class="n">params</span><span class="p">[</span><span class="s2">"ts"</span><span class="p">].</span><span class="nf">to_i</span><span class="p">).</span><span class="nf">abs</span> <span class="o">&lt;=</span> <span class="no">MAX_AGE</span>
+
+  <span class="n">query</span> <span class="o">=</span> <span class="n">pairs</span>
+    <span class="p">.</span><span class="nf">reject</span> <span class="p">{</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">_</span><span class="o">|</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">"signature"</span> <span class="p">}</span>
+    <span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span> <span class="p">[</span><span class="n">encode</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">encode</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span> <span class="p">}</span>
+    <span class="p">.</span><span class="nf">sort_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span> <span class="s2">"</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">=</span><span class="si">#{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+    <span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s2">"&amp;"</span><span class="p">)</span>
+
+  <span class="n">message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"v1"</span><span class="p">,</span> <span class="nb">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="no">Digest</span><span class="o">::</span><span class="no">SHA256</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="n">body</span><span class="p">)].</span><span class="nf">join</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+  <span class="n">expected</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="s2">"SHA256"</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+  <span class="n">signature</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"signature"</span><span class="p">].</span><span class="nf">to_s</span>
+
+  <span class="k">unless</span> <span class="n">expected</span><span class="p">.</span><span class="nf">bytesize</span> <span class="o">==</span> <span class="n">signature</span><span class="p">.</span><span class="nf">bytesize</span> <span class="o">&amp;&amp;</span>
+      <span class="no">OpenSSL</span><span class="p">.</span><span class="nf">fixed_length_secure_compare</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">signature</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="s2">"bad signature"</span>
+  <span class="k">end</span>
+
+  <span class="n">params</span><span class="p">.</span><span class="nf">except</span><span class="p">(</span><span class="s2">"signature"</span><span class="p">,</span> <span class="s2">"v"</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># Percent-decodes only; "+" stays a "+".</span>
+<span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+  <span class="n">component</span><span class="p">.</span><span class="nf">b</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/%\h\h/</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">escape</span><span class="o">|</span> <span class="n">escape</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">].</span><span class="nf">hex</span><span class="p">.</span><span class="nf">chr</span> <span class="p">}.</span><span class="nf">force_encoding</span><span class="p">(</span><span class="no">Encoding</span><span class="o">::</span><span class="no">UTF_8</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># Encodes every byte except A-Z, a-z, 0-9, "-", ".", "_" and "~".</span>
+<span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+  <span class="n">component</span><span class="p">.</span><span class="nf">b</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[^A-Za-z0-9\-._~]/n</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">byte</span><span class="o">|</span> <span class="nb">format</span><span class="p">(</span><span class="s2">"%%%02X"</span><span class="p">,</span> <span class="n">byte</span><span class="p">.</span><span class="nf">ord</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>To verify a request:</p>
+
+<ol>
+<li>Read the raw query string as it arrived, not your framework&#39;s parsed params, which may drop repeated keys, decode <code>+</code> as a space, or reorder params.</li>
+<li>Split it on <code>&amp;</code>, then each pair on the first <code>=</code>, and percent-decode keys and values.</li>
+<li>Reject the request if any key appears more than once, if <code>v</code> isn&#39;t <code>1</code>, if <code>signature</code> is missing, or if <code>ts</code> is more than 5 minutes away from your clock, in either direction.</li>
+<li>Build the canonical query: every pair except <code>signature</code>, keys and values percent-encoded as in RFC 3986 (every byte except <code>A-Z a-z 0-9 - . _ ~</code>, as uppercase <code>%XX</code>), sorted by the encoded key in byte order, joined as <code>key=value</code> with <code>&amp;</code>.</li>
+<li>Build the message from these five lines, joined by <code>\n</code> with no trailing newline:
+
+<ul>
+<li><code>v1</code></li>
+<li>the HTTP method in uppercase, such as <code>GET</code> or <code>POST</code></li>
+<li>the request path as sent, still percent-encoded, without the query string; <code>/</code> if it&#39;s empty</li>
+<li>the canonical query</li>
+<li>the SHA-256 of the raw request body, in lowercase hex. An empty body, as on every <code>GET</code>, hashes the empty string.</li>
+</ul></li>
+<li>Compute the HMAC-SHA256 of the message with your app&#39;s OAuth client secret, in lowercase hex, and compare it with <code>signature</code> in constant time.</li>
+</ol>
+
+<p>The body is part of the signature, so hash the bytes you received, before parsing them as JSON.</p>
+
+<p>A signature proves the request came from Booqable within the last 5 minutes. It doesn&#39;t stop the same request from being sent twice within that time, so make the endpoints it reaches safe to repeat. Keep <code>signature</code> out of your logs.</p>
+<h3 id='booqable-interop-signed-requests-test-vector'>Test vector</h3>
+<p>Take the request above, sent with the client secret <code>test-secret</code> and this body:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"distance"</span><span class="p">:</span><span class="mf">12.5</span><span class="p">,</span><span class="nl">"destination_zipcode"</span><span class="p">:</span><span class="s2">"1011 AB"</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Its message is:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>v1
+POST
+/api/rates
+company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&amp;region=eu&amp;ts=1798761600&amp;v=1
+9bb1626b22cbfdd5409cf13c9922f207146e8370abf7840c50e4f640cac42695
+</code></pre></div>
+<p>and its signature is <code>15eb8124970543dc99cdf437ddd0b2c63c351abb9adb3eab94af7b13bc2fabe2</code>. The timestamp is fixed, so check against it with your clock set to <code>ts</code>, such as <code>now: Time.at(1798761600)</code> in the snippet above.</p>
 <h2 id='booqable-interop-webhooks'>Webhooks</h2>
 <p>Apps can subscribe to webhook events to receive real-time notifications when certain actions occur in Booqable. This allows your app to respond to user actions and maintain synchronization with the platform.</p>
 
