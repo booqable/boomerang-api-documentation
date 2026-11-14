@@ -25,7 +25,51 @@ Delivery carriers let your app offer custom shipping rates at checkout. Unlike t
 
 A carrier can also be updated later with `PATCH`/`PUT /api/4/app_carriers/{id}`, same attributes.
 
-### Fetching rates
+### Rate requests
+
+```jsonc
+// POST {rates_url}?company_id=3b5e8f0c-2a41-4c7d-9e16-8d0f4a7b2c95&ts=1798761600&v=1&signature=… (request)
+{
+  "distance": 4.813,
+  "distance_unit": "metric",
+  "order_amount_in_cents": 300000,
+  "origin_address": "Industrieweg 4,,1021 KZ,Amsterdam,Noord-Holland,Netherlands",
+  "origin_coordinates": "4.9265,52.3912",
+  "origin_location_id": "e1a4c2d8-5b37-4f90-8c6e-2d7b9a1f3e64",
+  "origin_country": "NL",
+  "destination_address": "Keizersgracht 123,,1015 CJ,Amsterdam,Noord-Holland,Netherlands",
+  "destination_coordinates": "4.884,52.3752",
+  "destination_zipcode": "1015 CJ",
+  "destination_region": "Noord-Holland",
+  "destination_country": "NL",
+  "starts_at": "2026-12-04T09:00:00+01:00", // only through GET /api/4/order_delivery_rates
+  "stops_at": "2026-12-06T17:00:00+01:00", // same
+  "products": [ // same
+    {
+      "id": "9d2f6b1a-7c4e-4a85-b3d0-6e8f1c2a5b47",
+      "title": "Party tent 6x3m",
+      "price_in_cents": "300000.0",
+      "quantity": 1.0
+    }
+  ]
+}
+```
+
+Whenever Booqable needs a delivery price, at checkout or in the back office, it sends a JSON `POST` to every active carrier's `rates_url`:
+
+- **`distance`**: driving distance from origin to destination, in the shop's `distance_unit` (`metric` for km, `imperial` for miles).
+- **`order_amount_in_cents`**: the order total before delivery and discounts, including tax if the shop's prices include it.
+- **`origin_address`**, **`destination_address`**: one comma-separated line: address lines, postcode, city, region, country.
+- **`origin_coordinates`**, **`destination_coordinates`**: `"lng,lat"`, longitude first.
+- **`destination_zipcode`**, **`destination_region`**, **`destination_country`**: the destination's postcode, region and ISO alpha-2 country code.
+- **`origin_location_id`**, **`origin_country`**: the location Booqable picked to deliver from, which `distance` is measured from, and its country.
+- **`starts_at`**, **`stops_at`**, **`products`**: the rental period and product lines, each line with the product's `id`, `title`, `quantity` and `price_in_cents` (the line total, as a decimal string). Only filled in when rates are fetched through [`GET /api/4/order_delivery_rates`](/v4.html#order-delivery-rates); otherwise `null`, `null` and `[]`.
+
+Every key is always present, with `null` for unknown values. Every `_in_cents` amount, in the request and in your response, is in hundredths of the main currency unit, whatever the currency: ¥3,000 is `300000`.
+
+The request is [signed](#booqable-interop-signed-requests); verify it before you answer. Booqable waits 3 seconds and doesn't retry. If you time out or don't answer with a valid JSON `200`, Booqable skips your carrier. If you don't serve a request, for example because it's outside your coverage, respond with an empty `data` array.
+
+### Responding with rates
 
 ```jsonc
 // your rates_url responds with this (response)
@@ -45,20 +89,6 @@ A carrier can also be updated later with `PATCH`/`PUT /api/4/app_carriers/{id}`,
   ]
 }
 ```
-
-When a customer requests delivery rates at checkout, Booqable sends a `POST` request to your `rates_url` with a JSON body (`application/json`) containing:
-
-- `distance`, `distance_unit` (`metric` by default)
-- `order_amount_in_cents`
-- `origin_address`, `origin_coordinates`, `destination_address`, `destination_coordinates`
-- `starts_at`, `stops_at`
-- `products`: an array of `{ id, title, price_in_cents, quantity }`
-
-Coordinates are sent as a `"lat,lng"` string and addresses as single-line strings. The request carries a `Bearer` JWT in the `Authorization` header, signed with your app's OAuth client secret; verify it to confirm the request came from Booqable.
-
-Booqable waits 3 seconds for a response before treating the request as failed.
-
-Booqable sends this request to every active carrier on every rates request. If you don't serve a request, for example because the destination is outside your coverage, respond with an empty `data` array. If your carrier fails or times out, Booqable skips it and uses the rates from the other carriers.
 
 Each rate's own `identifier` is yours to choose (e.g. `standard-shipping`, `express-shipping`) and is separate from the carrier's `identifier` used at registration. `label` is shown to the customer; if omitted, the rate's `identifier` is used.
 
