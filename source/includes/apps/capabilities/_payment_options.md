@@ -45,7 +45,7 @@ There are a total of 6 routes available:
 }
 ```
 
-After a user installs your payment app, you must create a PaymentOption record using Booqable's [Payment Options API endpoint](/internal.html#app-payment-options). The PaymentOption enables Booqable to show new payment options in the UI using the routes configured in your app's `booqable.json` file. Users can then select your payment method during checkout, and Booqable will make authenticated requests to your app's endpoints using JWT tokens for security.
+After a user installs your payment app, you must create a PaymentOption record using Booqable's [Payment Options API endpoint](/internal.html#app-payment-options). The PaymentOption enables Booqable to show new payment options in the UI using the routes configured in your app's `booqable.json` file. Users can then select your payment method during checkout, and Booqable will make [signed requests](#booqable-interop-signed-requests) to your app's endpoints.
 
 An empty `attributes` object is enough: `name`, `identifier`, and all 6 routes are copied from your manifest automatically.
 
@@ -411,7 +411,7 @@ This route is called when processing a refund for a completed payment. Booqable 
 
 ### Notes
 
-* Every request to your routes is authenticated with a `Bearer` JWT in the `Authorization` header, identifying the company. This token doesn't expire, so treat it as a long-lived credential and validate it on every request, not just accept it once.
+* Every request to your routes is [signed](#booqable-interop-signed-requests): Booqable adds `company_id`, `ts`, `v` and `signature` to the route's query string, covering the body too. Verify the signature on every request. A retry (see below) resends the same signed request.
 * For `charge_url` and `authorization_url` flows, always update the payment status via the Booqable API **before** redirecting the customer back to the `return_url`. The callback page polls the payment status and will wait indefinitely if the status is never updated.
 * Even when a payment fails, update the status to `failed` before redirecting. Otherwise, the callback page polls indefinitely waiting for a status change.
 * Always store the `booqable_id` from the initial request. You'll need it to update the payment status later, especially for asynchronous payment processing.

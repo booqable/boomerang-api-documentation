@@ -35,7 +35,7 @@ Any block can be shown conditionally with `if`: `configured` (only once the app 
 
 ## Embedded settings page
 
-`configuration_page.iframe` replaces content blocks with a full embedded page, using the exact same mechanism (manifest shape, auth token, `postMessage` protocol) as [Embedded Pages](#capabilities-embedded-pages). See that section for the details.
+`configuration_page.iframe` replaces content blocks with a full embedded page, using the exact same mechanism (manifest shape, signed URL, `postMessage` protocol) as [Embedded Pages](#capabilities-embedded-pages). See that section for the details.
 
 ## Plans
 

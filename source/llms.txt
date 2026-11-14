@@ -20,6 +20,7 @@ Booqable Apps are modular extensions that enhance the Booqable platform by addin
 - [Configuration Schema](https://developers.booqable.com/apps/app-0-3-0.md): Documentation for app configuration options.
 - [Configuration JSON Schema File](https://developers.booqable.com/schemas/app-0-3-0.json): JSON schema file covering app configuration options.
 - [OAuth](https://developers.booqable.com/apps/oauth.md): Securely connect to Booqable's API on behalf of users
+- [Signed requests](https://developers.booqable.com/apps/signed_requests.md): Verify that a request or iframe URL comes from Booqable
 - [Webhooks](https://developers.booqable.com/apps/webhooks.md): Subscribe to app lifecycle events (installed, configured, uninstalled)
 
 
