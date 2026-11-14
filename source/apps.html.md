@@ -18,6 +18,7 @@ includes:
 
   - apps/interop/intro
   - apps/interop/oauth
+  - apps/interop/signed_requests
   - apps/interop/webhooks
 
   - schemas/app-0-3-0.md
