@@ -79,20 +79,55 @@ The request is [signed](#booqable-interop-signed-requests); verify it before you
       "id": "standard-shipping",
       "type": "delivery_rates",
       "attributes": {
-        "identifier": "standard-shipping",
+        "carrier_id": "c4d9e7a1-6f2b-4e83-9a5c-1b8d3f0e7a26", // id returned when you registered the carrier
+        "identifier": "Standard shipping",
         "label": "Standard shipping",
-        "carrier_id": "7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70", // id returned when you registered the carrier
-        "price_in_cents": 500,
-        "minimum_order_amount_in_cents": 0
+        "description": "Delivered between 9:00 and 17:00",
+        "type": "flat",
+        "price_in_cents": 2500,
+        "range": "10 km",
+        "minimum_order_amount_in_cents": null,
+        "free_delivery_threshold_in_cents": 500000,
+        "errors": []
+      }
+    },
+    {
+      "id": "express-shipping",
+      "type": "delivery_rates",
+      "attributes": {
+        "carrier_id": "c4d9e7a1-6f2b-4e83-9a5c-1b8d3f0e7a26",
+        "identifier": "Express shipping",
+        "label": "Express shipping",
+        "description": null,
+        "type": "calculated",
+        "price_in_cents": 4250,
+        "range": "4.82 km",
+        "minimum_order_amount_in_cents": 400000,
+        "free_delivery_threshold_in_cents": null,
+        "errors": ["under_minimum_order_amount"]
       }
     }
   ]
 }
 ```
 
-Each rate's own `identifier` is yours to choose (e.g. `standard-shipping`, `express-shipping`) and is separate from the carrier's `identifier` used at registration. `label` is shown to the customer; if omitted, the rate's `identifier` is used.
+Respond with `Content-Type: application/json` and a JSON:API list of the rates you offer for this request. Each rate has a string `id`, a `type` of `delivery_rates`, and these `attributes`:
 
-Each rate must have an `id`, a `type` of `delivery_rates`, and `attributes` including `carrier_id` (the id Booqable returned when you registered the carrier) and `price_in_cents`. If any rate in the response is invalid, Booqable discards the entire response for your carrier.
+- **`carrier_id`** (required): the id Booqable returned when you registered the carrier.
+- **`price_in_cents`** (required): the delivery price.
+- **`identifier`** (required), **`label`**: the rate's name. Booqable shows `identifier`; an order placed at checkout is named after `label`. Send the same name in both.
+- **`description`**: optional text shown under the name.
+- **`type`**: `flat` or `calculated`. For a `flat` rate, Booqable shows `range` as "up to 10 km".
+- **`range`**: the distance to show, such as `"10 km"`, or `null` to show none.
+- **`minimum_order_amount_in_cents`**: the minimum order for this rate, or `null` when there's none.
+- **`free_delivery_threshold_in_cents`**: the order amount from which this rate is free, or `null` when there's none. Return a `price_in_cents` of 0 yourself once `order_amount_in_cents` reaches it: the back office uses your price as is. Checkout shows the threshold to the customer until it's reached.
+- **`errors`**: why the rate can't be used for this order. Checkout shows a rate with errors but won't let the customer pick it, and Booqable avoids such rates when it picks one itself. Booqable doesn't check the minimum order: send `under_minimum_order_amount` when the order is below it, and checkout shows the customer the minimum amount.
+
+Keep each rate's `id` the same across requests: Booqable stores it on the order and uses it to find the rate again when the order changes.
+
+If the response isn't a JSON `200`, or any rate lacks an `id`, `attributes` or the `delivery_rates` type, Booqable discards your whole response.
+
+Booqable passes your rates' attributes as they are to the shop's checkout and to API clients, for example through [`GET /api/4/order_delivery_rates`](/v4.html#order-delivery-rates), so don't put anything private in them.
 
 ### Uninstalling
 
