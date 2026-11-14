@@ -2173,7 +2173,8 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <h2 id='reference-frame'><code>Frame</code></h2>
 <p>A page of the app, embedded in Booqable in an iframe.</p>
 <div class="highlight"><pre class="highlight json-doc"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c">/* LocatableUrl */</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="c">/* ... */</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -2189,6 +2190,12 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <td><a href="#reference-locatableurl"><code>LocatableUrl</code></a></td>
 <td>true</td>
 <td>URL of the page to embed. Booqable appends signed query parameters identifying the company and the employee.</td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td>array of one of: <code>clipboard-write</code></td>
+<td>false</td>
+<td>Permissions Policy features delegated to the frame, by their policy name. Features not listed aren&#39;t delegated.</td>
 </tr>
 </tbody></table>
 <h2 id='reference-orderpage'><code>OrderPage</code></h2>

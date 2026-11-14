@@ -287,6 +287,12 @@
         "url": {
           "$ref": "#/definitions/LocatableUrl",
           "description": "URL of the page to embed. Booqable appends signed query parameters identifying the company and the employee."
+        },
+        "permissions": {
+          "type": "array",
+          "description": "Permissions Policy features delegated to the frame, by their policy name. Features not listed aren't delegated.",
+          "items": { "type": "string", "enum": ["clipboard-write"] },
+          "uniqueItems": true
         }
       },
       "required": ["url"],
