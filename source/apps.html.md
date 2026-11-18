@@ -13,12 +13,14 @@ includes:
   - apps/capabilities/delivery_carriers
   - apps/capabilities/payment_options
   - apps/capabilities/embedded_pages
+  - apps/capabilities/sidebar_frames
 
   - apps/configuration
 
   - apps/interop/intro
   - apps/interop/oauth
   - apps/interop/signed_requests
+  - apps/interop/frames
   - apps/interop/webhooks
 
   - schemas/app-0-3-0.md

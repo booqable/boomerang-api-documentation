@@ -5,8 +5,8 @@ Booqable signs these requests and iframe URLs with your app's OAuth client secre
 - [Delivery carrier](#capabilities-delivery-carriers) rate requests
 - calls to your [payment option](#capabilities-payment-options) routes
 - [embedded pages](#capabilities-embedded-pages), including a `configuration_page.iframe`
-- sidebar frames (a [`Frame`](#reference-frame) under `sidebar_frame`)
-- the `dynamic` [status](#reference-appstatus) endpoint
+- [sidebar frames](#capabilities-sidebar-frames)
+- the [status message](#configuration-status-message) endpoint
 
 Theme block settings iframes aren't signed. Webhook deliveries carry a `token` query param instead: an HS256 JWT signed with your client secret that expires after 10 minutes.
 
@@ -93,7 +93,7 @@ To verify a request:
 
 The body is part of the signature, so hash the bytes you received, before parsing them as JSON.
 
-A signature proves the request came from Booqable within the last 5 minutes. It doesn't stop the same request from being sent twice within that time, so make the endpoints it reaches safe to repeat. Keep `signature` out of your logs.
+A signature proves the request came from Booqable within the last 5 minutes. It doesn't stop the same request from being sent twice within that time, so make the endpoints it reaches safe to repeat. A valid signature also doesn't mean every param you need is there, so check that `company_id` is present before you use it. Keep `signature` out of your logs.
 
 ### Test vector
 
@@ -114,3 +114,19 @@ company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&region=eu&ts=1798761600&v=1
 ```
 
 and its signature is `15eb8124970543dc99cdf437ddd0b2c63c351abb9adb3eab94af7b13bc2fabe2`. The timestamp is fixed, so check against it with your clock set to `ts`, such as `now: Time.at(1798761600)` in the snippet above.
+
+```
+GET https://example.com/panels/order?company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&employee_id=2b6e4f1a-8c3d-4e5f-9a7b-6c1d2e3f4a5b&locale=en&order_id=9d8c7b6a-5e4f-4a3b-8c2d-1e0f9a8b7c6d&ts=1798761600&v=1&signature=266a51dba11a32f3abe1cadf05e166c3aac6ec155641608ff01fe2aa1faa9761
+```
+
+Iframe URLs are signed the same way, as a `GET` with an empty body. With the same secret, the [sidebar frame](#capabilities-sidebar-frames) URL above has this message:
+
+```
+v1
+GET
+/panels/order
+company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&employee_id=2b6e4f1a-8c3d-4e5f-9a7b-6c1d2e3f4a5b&locale=en&order_id=9d8c7b6a-5e4f-4a3b-8c2d-1e0f9a8b7c6d&ts=1798761600&v=1
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+```
+
+and its signature is `266a51dba11a32f3abe1cadf05e166c3aac6ec155641608ff01fe2aa1faa9761`.
