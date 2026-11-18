@@ -13,6 +13,7 @@ includes:
   - apps/capabilities/delivery_carriers
   - apps/capabilities/payment_options
   - apps/capabilities/embedded_pages
+  - apps/capabilities/sidebar_frames
 
   - apps/configuration
 

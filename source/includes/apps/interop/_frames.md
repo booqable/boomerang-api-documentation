@@ -1,6 +1,6 @@
 ## Frames
 
-Booqable shows your app's pages in iframes: [embedded pages](#capabilities-embedded-pages) (including a `configuration_page.iframe`), sidebar frames, and [theme block](#capabilities-theme-blocks) settings. Every one of them runs under the rules below.
+Booqable shows your app's pages in iframes: [embedded pages](#capabilities-embedded-pages) (including a `configuration_page.iframe`), [sidebar frames](#capabilities-sidebar-frames), and [theme block](#capabilities-theme-blocks) settings. Every one of them runs under the rules below.
 
 ### Sandbox
 
@@ -50,7 +50,7 @@ window.parent.postMessage({
 A frame talks to Booqable with `window.parent.postMessage`. Each kind of frame accepts its own messages:
 
 - **Embedded pages**: `SET_IFRAME_HEIGHT`, `SET_FLASH_MESSAGE`, `REFRESH_SUBSCRIPTION`, `GET_AVATAR` and `NAVIGATE`, described in [Message protocol](#capabilities-embedded-pages-message-protocol).
-- **Sidebar frames**: `SET_IFRAME_HEIGHT` only.
+- **Sidebar frames**: `SET_IFRAME_HEIGHT` only, described in [Sizing the panel](#capabilities-sidebar-frames-sizing-the-panel).
 - **Theme block settings**: `SET_APP_BLOCK_SETTINGS` and `REFRESH_PAGE_PREVIEW`, described in [Theme Blocks](#capabilities-theme-blocks).
 
 Booqable ignores, without an error:

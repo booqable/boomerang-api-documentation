@@ -5,7 +5,7 @@ Booqable signs these requests and iframe URLs with your app's OAuth client secre
 - [Delivery carrier](#capabilities-delivery-carriers) rate requests
 - calls to your [payment option](#capabilities-payment-options) routes
 - [embedded pages](#capabilities-embedded-pages), including a `configuration_page.iframe`
-- sidebar frames (a [`Frame`](#reference-frame) under `sidebar_frame`)
+- [sidebar frames](#capabilities-sidebar-frames)
 - the `dynamic` [status](#reference-appstatus) endpoint
 
 Theme block settings iframes aren't signed. Webhook deliveries carry a `token` query param instead: an HS256 JWT signed with your client secret that expires after 10 minutes.
