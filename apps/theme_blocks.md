@@ -22,7 +22,7 @@ Theme blocks let your app add custom content (widgets, forms, embeds) that merch
 - **`template`**: a Liquid template, rendered as HTML wherever the merchant places the block.
 - **`allowed_sections`**: required. The section types the block can be placed in: `header`, `footer`, or `app` (body sections). The block only appears in the theme editor's picker for those sections.
 - **`cookies_required`**: shows a notice in the theme editor that this block needs visitor cookie consent. It does not stop the block from rendering. To gate your scripts, register with `Booqable.registerApp` (see below).
-- **`settings_iframe_url`**: embeds a full iframe in the website editor's sidebar for this block's settings, instead of the declarative `settings` below.
+- **`settings_iframe_url`**: embeds a full iframe in the website editor's sidebar for this block's settings, instead of the declarative `settings` below (see [Settings frame](https://developers.booqable.com/apps.html#capabilities-theme-blocks-settings-frame)).
 - **`settings`**: declarative sidebar controls, keyed by name (see below).
 
 ### Settings types
@@ -49,3 +49,33 @@ Each block instance gets a unique `app_id` variable during rendering, useful for
   <style>#{{ app_id }} .widget { /* ... */ }</style>
 </div>
 ```
+
+### Settings frame
+
+```jsonc
+// booqable.json
+{
+  "theme_blocks": [
+    {
+      "name": "Reviews",
+      "template": { "asset": "templates/reviews.liquid" },
+      "allowed_sections": ["app"],
+      "settings_iframe_url": "https://my-app.com/blocks/settings"
+    }
+  ]
+}
+```
+
+A settings frame replaces the declarative controls with a page of your own, filling the editor's sidebar. It runs under the [Frames](https://developers.booqable.com/apps.html#booqable-interop-frames) rules, and can't ask for any browser feature.
+
+Its URL isn't [signed](https://developers.booqable.com/apps.html#booqable-interop-signed-requests): Booqable adds no company or employee, so your page gets no proof of who is editing. It adds the block's text, number and true/false settings as query params, along with `block_id`, `block_template` and `block_position`, which identify the block.
+
+```javascript
+// in your settings frame
+window.parent.postMessage({
+  eventName: "SET_APP_BLOCK_SETTINGS",
+  payload: { newSettings: { widget_id: "abc123" } }
+}, "*")
+```
+
+Post `SET_APP_BLOCK_SETTINGS` to change the block's settings: Booqable then reloads your frame with the new settings in its URL, so save anything else the page holds first. Post `REFRESH_PAGE_PREVIEW` to reload the editor's preview. These are the only messages a settings frame can send.

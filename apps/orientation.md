@@ -9,5 +9,6 @@ An app is fundamentally one file — a `booqable.json` manifest — plus whateve
 - **Offer custom shipping rates at checkout** — see [Delivery Carriers](https://developers.booqable.com/apps.html#capabilities-delivery-carriers)
 - **Process payments, authorizations, or refunds** — see [Payment Options](https://developers.booqable.com/apps.html#capabilities-payment-options)
 - **Embed a full page or dashboard inside Booqable** — see [Embedded Pages](https://developers.booqable.com/apps.html#capabilities-embedded-pages)
+- **Show a panel next to an order, customer or product** — see [Sidebar Frames](https://developers.booqable.com/apps.html#capabilities-sidebar-frames)
 
 An app can combine more than one of these — the [example payment app](https://github.com/booqable/example-payments-app) on GitHub shows a complete OAuth + payment-options + embedded-page integration if you want a working reference to read alongside these docs.

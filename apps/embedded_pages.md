@@ -20,11 +20,11 @@ Embedded pages let your app present a full custom interface directly inside the 
 
 The `url` is either an absolute URL string, or a relative object like `{ "relative": "/dashboard" }` that is resolved against your manifest's `base_url` (required for relative URLs). Booqable embeds it in an iframe and communicates with it over a `postMessage` protocol described below.
 
-The exact same mechanism is also available as a `configuration_page.iframe`, an alternative to declarative content blocks for your app's settings page. See [Configuration](https://developers.booqable.com/apps.html#configuration) for that specific field; everything below (the signed URL, the message protocol) applies identically to both.
+The exact same mechanism is also available as a `configuration_page.iframe`, an alternative to declarative content blocks for your app's settings page. See [Configuration](https://developers.booqable.com/apps.html#configuration) for that specific field; everything below (the signed URL, the message protocol) applies identically to both. Both run under the [Frames](https://developers.booqable.com/apps.html#booqable-interop-frames) rules.
 
 ### Signed URL
 
-Booqable [signs](https://developers.booqable.com/apps.html#booqable-interop-signed-requests) the iframe URL each time it loads it, adding `company_id`, `employee_id` (the employee viewing the page) and `locale` to its query string. Verify the signature before showing anything. Booqable only loads the page once the merchant has authorized your app through [OAuth](https://developers.booqable.com/apps.html#booqable-interop-oauth).
+Booqable [signs](https://developers.booqable.com/apps.html#booqable-interop-signed-requests) the iframe URL each time it loads it, adding `company_id`, `employee_id` (the employee viewing the page) and `locale` to its query string. Verify the signature before showing anything. Booqable only loads the page once the merchant has authorized your app through [OAuth](https://developers.booqable.com/apps.html#booqable-interop-oauth). Pages load before your app is configured, so show your own setup steps until then.
 
 A signature is only valid for 5 minutes, so verify it on the first load and keep your own session for the pages the iframe navigates to after that, without relying on cookies: browsers often block them in iframes. A short-lived token in your URLs works. Fetch anything else you need, such as the company's currency settings, through the [API](https://developers.booqable.com/v4.html).
 
@@ -153,9 +153,9 @@ To the right is an example of a configuration interface.
   </form>
 
   <script>
-    // Security: validate message origin. Match the domain or a subdomain of
-    // it, never just a string suffix: "evilbooqable.com".endsWith("booqable.com")
-    // is true, so a plain endsWith check here would accept a look-alike domain.
+    // Security: only accept messages from the window embedding this page, on
+    // a Booqable origin. Match the domain or a subdomain of it, never just a
+    // string suffix: "evilbooqable.com".endsWith("booqable.com") is true.
     const ALLOWED_DOMAINS = ['booqable.com'];
 
     function isValidOrigin(origin) {
@@ -181,10 +181,8 @@ To the right is an example of a configuration interface.
 
     // Listen for messages from Booqable
     window.addEventListener('message', function(event) {
-      if (!isValidOrigin(event.origin)) {
-        console.warn('Unauthorized origin:', event.origin);
-        return;
-      }
+      if (event.source !== window.parent || !isValidOrigin(event.origin)) return;
+      if (typeof event.data !== 'object' || event.data === null) return;
 
       if (event.data.eventName === 'SET_AVATAR') {
         console.log('Received avatar:', event.data.payload.avatar);

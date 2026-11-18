@@ -37,6 +37,25 @@ Any block can be shown conditionally with `if`: `configured` (only once the app 
 
 `configuration_page.iframe` replaces content blocks with a full embedded page, using the exact same mechanism (manifest shape, signed URL, `postMessage` protocol) as [Embedded Pages](https://developers.booqable.com/apps.html#capabilities-embedded-pages). See that section for the details.
 
+## Status message
+
+```jsonc
+// booqable.json
+{
+  "status": {
+    "dynamic": { "endpoint": { "relative": "/status" } }
+  }
+}
+```
+
+Your app can show a live status message, such as "Last synced 5 minutes ago", on its page in the App Store. Booqable fetches the [`status`](https://developers.booqable.com/apps.html#reference-appstatus) endpoint from the employee's browser with a `GET` request, [signed](https://developers.booqable.com/apps.html#booqable-interop-signed-requests) like an embedded page's URL, and without cookies. So the endpoint must:
+
+- verify the signature on every request
+- allow any origin with `Access-Control-Allow-Origin: *`, since the back office answers on more than one host
+- answer with a short plain-text message
+
+Booqable only asks once your app is configured and has no open issues. If the endpoint fails or takes longer than 5 seconds, Booqable shows its own message instead.
+
 ## Plans
 
 Plan pricing and store-facing copy are declared directly in `booqable.json`'s `plans` array. See [App Store Listing](https://developers.booqable.com/apps.html#the-basics-app-store-listing) for the field reference. There's no separate plans file.

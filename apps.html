@@ -371,6 +371,9 @@
                   <li>
                     <a href="#capabilities-embedded-pages" class="toc-h2 toc-link" data-title="Embedded Pages" title="Embedded Pages">Embedded Pages</a>
                   </li>
+                  <li>
+                    <a href="#capabilities-sidebar-frames" class="toc-h2 toc-link" data-title="Sidebar Frames" title="Sidebar Frames">Sidebar Frames</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -381,6 +384,9 @@
                   </li>
                   <li>
                     <a href="#configuration-embedded-settings-page" class="toc-h2 toc-link" data-title="Embedded settings page" title="Embedded settings page">Embedded settings page</a>
+                  </li>
+                  <li>
+                    <a href="#configuration-status-message" class="toc-h2 toc-link" data-title="Status message" title="Status message">Status message</a>
                   </li>
                   <li>
                     <a href="#configuration-plans" class="toc-h2 toc-link" data-title="Plans" title="Plans">Plans</a>
@@ -398,6 +404,9 @@
                   </li>
                   <li>
                     <a href="#booqable-interop-signed-requests" class="toc-h2 toc-link" data-title="Signed requests" title="Signed requests">Signed requests</a>
+                  </li>
+                  <li>
+                    <a href="#booqable-interop-frames" class="toc-h2 toc-link" data-title="Frames" title="Frames">Frames</a>
                   </li>
                   <li>
                     <a href="#booqable-interop-webhooks" class="toc-h2 toc-link" data-title="Webhooks" title="Webhooks">Webhooks</a>
@@ -542,6 +551,7 @@
 <li><strong>Offer custom shipping rates at checkout</strong> — see <a href="#capabilities-delivery-carriers">Delivery Carriers</a></li>
 <li><strong>Process payments, authorizations, or refunds</strong> — see <a href="#capabilities-payment-options">Payment Options</a></li>
 <li><strong>Embed a full page or dashboard inside Booqable</strong> — see <a href="#capabilities-embedded-pages">Embedded Pages</a></li>
+<li><strong>Show a panel next to an order, customer or product</strong> — see <a href="#capabilities-sidebar-frames">Sidebar Frames</a></li>
 </ul>
 
 <p>An app can combine more than one of these — the <a href="https://github.com/booqable/example-payments-app">example payment app</a> on GitHub shows a complete OAuth + payment-options + embedded-page integration if you want a working reference to read alongside these docs.</p>
@@ -588,7 +598,7 @@
 <li><strong><code>paid_during_beta</code></strong> — paid plans are shown as free while your manifest&#39;s <code>version</code> is <code>&quot;beta&quot;</code>. Set to <code>true</code> to keep this plan paid during beta. Defaults to <code>false</code>.</li>
 </ul>
 <h1 id='capabilities'>Capabilities</h1>
-<p>Each section below covers one thing your app can do inside Booqable: <a href="#capabilities-tracking-scripts">Tracking Scripts</a>, <a href="#capabilities-theme-blocks">Theme Blocks</a>, <a href="#capabilities-delivery-carriers">Delivery Carriers</a>, <a href="#capabilities-payment-options">Payment Options</a>, and <a href="#capabilities-embedded-pages">Embedded Pages</a>. <a href="#capabilities-user-framework">User Framework</a> sits alongside them, but it isn&#39;t something you pick on its own. It&#39;s the JavaScript API shared by Tracking Scripts and Theme Blocks.</p>
+<p>Each section below covers one thing your app can do inside Booqable: <a href="#capabilities-tracking-scripts">Tracking Scripts</a>, <a href="#capabilities-theme-blocks">Theme Blocks</a>, <a href="#capabilities-delivery-carriers">Delivery Carriers</a>, <a href="#capabilities-payment-options">Payment Options</a>, <a href="#capabilities-embedded-pages">Embedded Pages</a>, and <a href="#capabilities-sidebar-frames">Sidebar Frames</a>. <a href="#capabilities-user-framework">User Framework</a> sits alongside them, but it isn&#39;t something you pick on its own. It&#39;s the JavaScript API shared by Tracking Scripts and Theme Blocks.</p>
 
 <p>Read only the sections relevant to what you&#39;re building. A real app commonly combines more than one, for example a payment app that also embeds a settings page.</p>
 <h2 id='capabilities-tracking-scripts'>Tracking Scripts</h2>
@@ -654,7 +664,7 @@
 <li><strong><code>template</code></strong>: a Liquid template, rendered as HTML wherever the merchant places the block.</li>
 <li><strong><code>allowed_sections</code></strong>: required. The section types the block can be placed in: <code>header</code>, <code>footer</code>, or <code>app</code> (body sections). The block only appears in the theme editor&#39;s picker for those sections.</li>
 <li><strong><code>cookies_required</code></strong>: shows a notice in the theme editor that this block needs visitor cookie consent. It does not stop the block from rendering. To gate your scripts, register with <code>Booqable.registerApp</code> (see below).</li>
-<li><strong><code>settings_iframe_url</code></strong>: embeds a full iframe in the website editor&#39;s sidebar for this block&#39;s settings, instead of the declarative <code>settings</code> below.</li>
+<li><strong><code>settings_iframe_url</code></strong>: embeds a full iframe in the website editor&#39;s sidebar for this block&#39;s settings, instead of the declarative <code>settings</code> below (see <a href="#capabilities-theme-blocks-settings-frame">Settings frame</a>).</li>
 <li><strong><code>settings</code></strong>: declarative sidebar controls, keyed by name (see below).</li>
 </ul>
 <h3 id='capabilities-theme-blocks-settings-types'>Settings types</h3>
@@ -679,7 +689,29 @@
 <div class="highlight"><pre class="highlight liquid tab-liquid"><code>&lt;div id="<span class="p">{{</span><span class="w"> </span><span class="nv">app_id</span><span class="w"> </span><span class="p">}}</span>"&gt;
   &lt;style&gt;#<span class="p">{{</span><span class="w"> </span><span class="nv">app_id</span><span class="w"> </span><span class="p">}}</span> .widget { /* ... */ }&lt;/style&gt;
 &lt;/div&gt;
-</code></pre></div><h2 id='capabilities-user-framework'>User Framework</h2>
+</code></pre></div><h3 id='capabilities-theme-blocks-settings-frame'>Settings frame</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// booqable.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"theme_blocks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Reviews"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"template"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templates/reviews.liquid"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"allowed_sections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"app"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"settings_iframe_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-app.com/blocks/settings"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A settings frame replaces the declarative controls with a page of your own, filling the editor&#39;s sidebar. It runs under the <a href="#booqable-interop-frames">Frames</a> rules, and can&#39;t ask for any browser feature.</p>
+
+<p>Its URL isn&#39;t <a href="#booqable-interop-signed-requests">signed</a>: Booqable adds no company or employee, so your page gets no proof of who is editing. It adds the block&#39;s text, number and true/false settings as query params, along with <code>block_id</code>, <code>block_template</code> and <code>block_position</code>, which identify the block.</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// in your settings frame</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+  <span class="na">eventName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SET_APP_BLOCK_SETTINGS</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="p">{</span> <span class="na">newSettings</span><span class="p">:</span> <span class="p">{</span> <span class="na">widget_id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">abc123</span><span class="dl">"</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">},</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div>
+<p>Post <code>SET_APP_BLOCK_SETTINGS</code> to change the block&#39;s settings: Booqable then reloads your frame with the new settings in its URL, so save anything else the page holds first. Post <code>REFRESH_PAGE_PREVIEW</code> to reload the editor&#39;s preview. These are the only messages a settings frame can send.</p>
+<h2 id='capabilities-user-framework'>User Framework</h2>
 <p>The User Framework is a client-side JavaScript API, available as <code>window.Booqable</code> inside your <a href="#capabilities-tracking-scripts">Tracking Scripts</a> and <a href="#capabilities-theme-blocks">Theme Blocks</a> templates. It doesn&#39;t apply to any other capability.</p>
 <h3 id='capabilities-user-framework-registering-your-app'>Registering your app</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">Booqable</span><span class="p">.</span><span class="nx">registerApp</span><span class="p">(</span><span class="dl">'</span><span class="s1">marketing</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My App</span><span class="dl">"</span><span class="p">,</span>
@@ -1352,13 +1384,14 @@
 <li>For <code>charge_url</code> and <code>authorization_url</code> flows, always update the payment status via the Booqable API <strong>before</strong> redirecting the customer back to the <code>return_url</code>. The callback page polls the payment status and will wait indefinitely if the status is never updated.</li>
 <li>Even when a payment fails, update the status to <code>failed</code> before redirecting. Otherwise, the callback page polls indefinitely waiting for a status change.</li>
 <li>Always store the <code>booqable_id</code> from the initial request. You&#39;ll need it to update the payment status later, especially for asynchronous payment processing.</li>
+<li>The same <code>booqable_id</code> can arrive more than once. Handle it without failing, for example by returning the payment you already started for it.</li>
 <li>Use the correct HTTP methods for the route:
 
 <ul>
 <li><code>charge_url</code>, <code>authorization_url</code>, <code>refund_url</code> use <strong>POST</strong> to create new resources.</li>
 <li><code>cancel_charge_url</code>, <code>void_authorization_url</code>, <code>capture_authorization_url</code> use <strong>PUT</strong> to update existing resources.</li>
 </ul></li>
-<li>A failed request to any route (429, 500, 502, 503, or 504 response) is retried by Booqable up to twice before giving up.</li>
+<li>If your route doesn&#39;t answer in time, Booqable resends the same signed request up to twice. Error responses aren&#39;t retried.</li>
 </ul>
 <h2 id='capabilities-embedded-pages'>Embedded Pages</h2>
 <p>Embedded pages let your app present a full custom interface directly inside the Booqable UI, loaded in an iframe. This is the right choice when your app needs a dedicated page or dashboard of its own. For example:</p>
@@ -1378,9 +1411,9 @@
 </span></code></pre></div>
 <p>The <code>url</code> is either an absolute URL string, or a relative object like <code>{ &quot;relative&quot;: &quot;/dashboard&quot; }</code> that is resolved against your manifest&#39;s <code>base_url</code> (required for relative URLs). Booqable embeds it in an iframe and communicates with it over a <code>postMessage</code> protocol described below.</p>
 
-<p>The exact same mechanism is also available as a <code>configuration_page.iframe</code>, an alternative to declarative content blocks for your app&#39;s settings page. See <a href="#configuration">Configuration</a> for that specific field; everything below (the signed URL, the message protocol) applies identically to both.</p>
+<p>The exact same mechanism is also available as a <code>configuration_page.iframe</code>, an alternative to declarative content blocks for your app&#39;s settings page. See <a href="#configuration">Configuration</a> for that specific field; everything below (the signed URL, the message protocol) applies identically to both. Both run under the <a href="#booqable-interop-frames">Frames</a> rules.</p>
 <h3 id='capabilities-embedded-pages-signed-url'>Signed URL</h3>
-<p>Booqable <a href="#booqable-interop-signed-requests">signs</a> the iframe URL each time it loads it, adding <code>company_id</code>, <code>employee_id</code> (the employee viewing the page) and <code>locale</code> to its query string. Verify the signature before showing anything. Booqable only loads the page once the merchant has authorized your app through <a href="#booqable-interop-oauth">OAuth</a>.</p>
+<p>Booqable <a href="#booqable-interop-signed-requests">signs</a> the iframe URL each time it loads it, adding <code>company_id</code>, <code>employee_id</code> (the employee viewing the page) and <code>locale</code> to its query string. Verify the signature before showing anything. Booqable only loads the page once the merchant has authorized your app through <a href="#booqable-interop-oauth">OAuth</a>. Pages load before your app is configured, so show your own setup steps until then.</p>
 
 <p>A signature is only valid for 5 minutes, so verify it on the first load and keep your own session for the pages the iframe navigates to after that, without relying on cookies: browsers often block them in iframes. A short-lived token in your URLs works. Fetch anything else you need, such as the company&#39;s currency settings, through the <a href="v4.html">API</a>.</p>
 <h3 id='capabilities-embedded-pages-message-protocol'>Message protocol</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
@@ -1480,9 +1513,9 @@ Provides avatar information in response to a GET_AVATAR request.</p>
   <span class="nt">&lt;/form&gt;</span>
 
   <span class="nt">&lt;script&gt;</span>
-    <span class="c1">// Security: validate message origin. Match the domain or a subdomain of</span>
-    <span class="c1">// it, never just a string suffix: "evilbooqable.com".endsWith("booqable.com")</span>
-    <span class="c1">// is true, so a plain endsWith check here would accept a look-alike domain.</span>
+    <span class="c1">// Security: only accept messages from the window embedding this page, on</span>
+    <span class="c1">// a Booqable origin. Match the domain or a subdomain of it, never just a</span>
+    <span class="c1">// string suffix: "evilbooqable.com".endsWith("booqable.com") is true.</span>
     <span class="kd">const</span> <span class="nx">ALLOWED_DOMAINS</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">booqable.com</span><span class="dl">'</span><span class="p">];</span>
 
     <span class="kd">function</span> <span class="nx">isValidOrigin</span><span class="p">(</span><span class="nx">origin</span><span class="p">)</span> <span class="p">{</span>
@@ -1508,10 +1541,8 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 
     <span class="c1">// Listen for messages from Booqable</span>
     <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isValidOrigin</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">'</span><span class="s1">Unauthorized origin:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">origin</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
-      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">source</span> <span class="o">!==</span> <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span> <span class="o">||</span> <span class="o">!</span><span class="nx">isValidOrigin</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">origin</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">object</span><span class="dl">'</span> <span class="o">||</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
       <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">eventName</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">SET_AVATAR</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Received avatar:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">avatar</span><span class="p">);</span>
@@ -1551,7 +1582,48 @@ Provides avatar information in response to a GET_AVATAR request.</p>
   <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</code></pre></div><h1 id='configuration'>Configuration</h1>
+</code></pre></div><h2 id='capabilities-sidebar-frames'>Sidebar Frames</h2>
+<p>Sidebar frames let your app show a panel in the sidebar of an order, a customer or a product in the Booqable back office, about the record being viewed. For example, a delivery app can show the delivery status of the order the employee is looking at.</p>
+<h3 id='capabilities-sidebar-frames-adding-a-panel'>Adding a panel</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// booqable.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"order_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sidebar_frame"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"relative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/panels/order"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Each of <code>order_page</code>, <code>customer_page</code> and <code>product_page</code> takes one <code>sidebar_frame</code>, a <a href="#reference-frame"><code>Frame</code></a> like any other app page, so an app has at most one panel per sidebar. The panel runs under the <a href="#booqable-interop-frames">Frames</a> rules, can ask for <code>permissions</code> like any frame, and needs the same <a href="#booqable-interop-frames-response-headers">response headers</a>.</p>
+
+<p>Panels sit below Booqable&#39;s own panels, in alphabetical order by app name. Employees can reorder and collapse panels, so don&#39;t rely on your panel&#39;s position.</p>
+<h3 id='capabilities-sidebar-frames-what-the-panel-receives'>What the panel receives</h3><div class="highlight"><pre class="highlight plaintext"><code>GET https://my-app.com/panels/order?company_id=…&amp;employee_id=…&amp;locale=en&amp;order_id=…&amp;ts=1798761600&amp;v=1&amp;signature=…
+</code></pre></div>
+<p>Booqable <a href="#booqable-interop-signed-requests">signs</a> the panel URL each time it loads it, adding:</p>
+
+<ul>
+<li><strong><code>company_id</code></strong>: the company the record belongs to.</li>
+<li><strong><code>employee_id</code></strong>: the employee viewing the record.</li>
+<li><strong><code>locale</code></strong>: the employee&#39;s language.</li>
+<li><strong><code>order_id</code></strong>, <strong><code>customer_id</code></strong> or <strong><code>product_group_id</code></strong>: the record being viewed, depending on the sidebar.</li>
+</ul>
+
+<p>Verify the signature before showing anything. Booqable only loads the panel once the merchant has authorized and configured your app. Until then the panel says &quot;This app is not set up yet.&quot; and links to your app&#39;s page in Booqable. If the URL breaks the <a href="#booqable-interop-frames-frame-urls">frame URL rules</a>, it says &quot;This app is unavailable.&quot;</p>
+<h3 id='capabilities-sidebar-frames-sizing-the-panel'>Sizing the panel</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// in your panel</span>
+<span class="k">new</span> <span class="nx">ResizeObserver</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+    <span class="na">eventName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SET_IFRAME_HEIGHT</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="p">{</span> <span class="na">height</span><span class="p">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">getBoundingClientRect</span><span class="p">().</span><span class="nx">height</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">},</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">observe</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">)</span>
+</code></pre></div>
+<p>The panel stays hidden until your page reports its height, so post <code>SET_IFRAME_HEIGHT</code> once it loads and again whenever its height changes. Booqable caps the height at 1000 pixels. It&#39;s the only message a panel can send.</p>
+
+<p>If no height arrives within 10 seconds, the panel says &quot;This app did not respond.&quot; until one does. Panels load even when an employee has collapsed them, and reload with a freshly signed URL when an employee reorders them.</p>
+<h3 id='capabilities-sidebar-frames-staying-signed-in'>Staying signed in</h3>
+<p>A signature is only valid for 5 minutes, so anything that loads your panel&#39;s URL again later, such as a link, a form or a reload, needs a session of your own. Verify the signature on the first load, then carry a short-lived token in your URLs: browsers often block cookies in iframes.</p>
+
+<p>Only the signed first load proves <code>locale</code> and the record id. Once you&#39;ve moved on to your own session, treat them as ordinary params.</p>
+
+<p>Panels are shown to every employee who can view the record, but a session started from a panel reaches the rest of your app too. Before showing or changing anything sensitive, check the employee&#39;s permissions through the <a href="v4.html#employees">API</a>. Keep the session token out of URLs you hand to other services, such as a callback URL a merchant pastes into a third-party dashboard.</p>
+<h1 id='configuration'>Configuration</h1>
 <p>Every app&#39;s settings page is built one of two ways: declarative content blocks, or an embedded iframe. Plan pricing and locale files are also covered here.</p>
 <h2 id='configuration-content-blocks'>Content blocks</h2><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// booqable.json</span><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -1581,6 +1653,22 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <p>Any block can be shown conditionally with <code>if</code>: <code>configured</code> (only once the app is configured), <code>unconfigured</code> (only until then). An app counts as configured once all of its required form fields have a value, which is immediately if it has none. If omitted the block is always shown.</p>
 <h2 id='configuration-embedded-settings-page'>Embedded settings page</h2>
 <p><code>configuration_page.iframe</code> replaces content blocks with a full embedded page, using the exact same mechanism (manifest shape, signed URL, <code>postMessage</code> protocol) as <a href="#capabilities-embedded-pages">Embedded Pages</a>. See that section for the details.</p>
+<h2 id='configuration-status-message'>Status message</h2><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// booqable.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"dynamic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"relative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/status"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Your app can show a live status message, such as &quot;Last synced 5 minutes ago&quot;, on its page in the App Store. Booqable fetches the <a href="#reference-appstatus"><code>status</code></a> endpoint from the employee&#39;s browser with a <code>GET</code> request, <a href="#booqable-interop-signed-requests">signed</a> like an embedded page&#39;s URL, and without cookies. So the endpoint must:</p>
+
+<ul>
+<li>verify the signature on every request</li>
+<li>allow any origin with <code>Access-Control-Allow-Origin: *</code>, since the back office answers on more than one host</li>
+<li>answer with a short plain-text message</li>
+</ul>
+
+<p>Booqable only asks once your app is configured and has no open issues. If the endpoint fails or takes longer than 5 seconds, Booqable shows its own message instead.</p>
 <h2 id='configuration-plans'>Plans</h2>
 <p>Plan pricing and store-facing copy are declared directly in <code>booqable.json</code>&#39;s <code>plans</code> array. See <a href="#the-basics-app-store-listing">App Store Listing</a> for the field reference. There&#39;s no separate plans file.</p>
 <h2 id='configuration-locale-files'>Locale files</h2><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// hardcoded</span><span class="w">
@@ -1612,7 +1700,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 
 <p>If a locale is missing a key your manifest references, provisioning fails with a validation error.</p>
 <h1 id='booqable-interop'>Booqable Interop</h1>
-<p>The sections below only apply if your app has its own backend: <a href="#booqable-interop-oauth">OAuth</a> lets it call Booqable&#39;s API on a user&#39;s behalf, <a href="#booqable-interop-signed-requests">Signed requests</a> lets it check that a request really comes from Booqable, and <a href="#booqable-interop-webhooks">Webhooks</a> let it react to events without polling.</p>
+<p>The sections below only apply if your app has its own backend: <a href="#booqable-interop-oauth">OAuth</a> lets it call Booqable&#39;s API on a user&#39;s behalf, <a href="#booqable-interop-signed-requests">Signed requests</a> lets it check that a request really comes from Booqable, <a href="#booqable-interop-frames">Frames</a> covers the rules its pages run under inside Booqable, and <a href="#booqable-interop-webhooks">Webhooks</a> let it react to events without polling.</p>
 <h2 id='booqable-interop-oauth'>OAuth</h2>
 <p>Booqable apps can use OAuth authentication to securely connect with <a href="v4.html">Booqable&#39;s API</a> on behalf of the user, without requiring them to share their credentials directly.</p>
 <h3 id='booqable-interop-oauth-how-oauth-works-in-booqable-apps'>How OAuth works in Booqable apps</h3>
@@ -1646,8 +1734,8 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <li><a href="#capabilities-delivery-carriers">Delivery carrier</a> rate requests</li>
 <li>calls to your <a href="#capabilities-payment-options">payment option</a> routes</li>
 <li><a href="#capabilities-embedded-pages">embedded pages</a>, including a <code>configuration_page.iframe</code></li>
-<li>sidebar frames (a <a href="#reference-frame"><code>Frame</code></a> under <code>sidebar_frame</code>)</li>
-<li>the <code>dynamic</code> <a href="#reference-appstatus">status</a> endpoint</li>
+<li><a href="#capabilities-sidebar-frames">sidebar frames</a></li>
+<li>the <a href="#configuration-status-message">status message</a> endpoint</li>
 </ul>
 
 <p>Theme block settings iframes aren&#39;t signed. Webhook deliveries carry a <code>token</code> query param instead: an HS256 JWT signed with your client secret that expires after 10 minutes.</p>
@@ -1732,7 +1820,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 
 <p>The body is part of the signature, so hash the bytes you received, before parsing them as JSON.</p>
 
-<p>A signature proves the request came from Booqable within the last 5 minutes. It doesn&#39;t stop the same request from being sent twice within that time, so make the endpoints it reaches safe to repeat. Keep <code>signature</code> out of your logs.</p>
+<p>A signature proves the request came from Booqable within the last 5 minutes. It doesn&#39;t stop the same request from being sent twice within that time, so make the endpoints it reaches safe to repeat. A valid signature also doesn&#39;t mean every param you need is there, so check that <code>company_id</code> is present before you use it. Keep <code>signature</code> out of your logs.</p>
 <h3 id='booqable-interop-signed-requests-test-vector'>Test vector</h3>
 <p>Take the request above, sent with the client secret <code>test-secret</code> and this body:</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"distance"</span><span class="p">:</span><span class="mf">12.5</span><span class="p">,</span><span class="nl">"destination_zipcode"</span><span class="p">:</span><span class="s2">"1011 AB"</span><span class="p">}</span><span class="w">
@@ -1745,6 +1833,69 @@ company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&amp;region=eu&amp;ts=1798761600&
 9bb1626b22cbfdd5409cf13c9922f207146e8370abf7840c50e4f640cac42695
 </code></pre></div>
 <p>and its signature is <code>15eb8124970543dc99cdf437ddd0b2c63c351abb9adb3eab94af7b13bc2fabe2</code>. The timestamp is fixed, so check against it with your clock set to <code>ts</code>, such as <code>now: Time.at(1798761600)</code> in the snippet above.</p>
+<div class="highlight"><pre class="highlight plaintext"><code>GET https://example.com/panels/order?company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&amp;employee_id=2b6e4f1a-8c3d-4e5f-9a7b-6c1d2e3f4a5b&amp;locale=en&amp;order_id=9d8c7b6a-5e4f-4a3b-8c2d-1e0f9a8b7c6d&amp;ts=1798761600&amp;v=1&amp;signature=266a51dba11a32f3abe1cadf05e166c3aac6ec155641608ff01fe2aa1faa9761
+</code></pre></div>
+<p>Iframe URLs are signed the same way, as a <code>GET</code> with an empty body. With the same secret, the <a href="#capabilities-sidebar-frames">sidebar frame</a> URL above has this message:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>v1
+GET
+/panels/order
+company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&amp;employee_id=2b6e4f1a-8c3d-4e5f-9a7b-6c1d2e3f4a5b&amp;locale=en&amp;order_id=9d8c7b6a-5e4f-4a3b-8c2d-1e0f9a8b7c6d&amp;ts=1798761600&amp;v=1
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+</code></pre></div>
+<p>and its signature is <code>266a51dba11a32f3abe1cadf05e166c3aac6ec155641608ff01fe2aa1faa9761</code>.</p>
+<h2 id='booqable-interop-frames'>Frames</h2>
+<p>Booqable shows your app&#39;s pages in iframes: <a href="#capabilities-embedded-pages">embedded pages</a> (including a <code>configuration_page.iframe</code>), <a href="#capabilities-sidebar-frames">sidebar frames</a>, and <a href="#capabilities-theme-blocks-settings-frame">theme block settings</a>. Every one of them runs under the rules below.</p>
+<h3 id='booqable-interop-frames-sandbox'>Sandbox</h3>
+<p>Every frame is sandboxed. Scripts, forms and popups work, and the page keeps its own origin. The main things that don&#39;t:</p>
+
+<ul>
+<li><strong>Native dialogs.</strong> <code>alert()</code>, <code>confirm()</code> and <code>prompt()</code> are blocked, and <code>confirm()</code> always returns <code>false</code>. Show your own dialog inside the page instead, such as a <code>&lt;dialog&gt;</code> element.</li>
+<li><strong>Navigating Booqable&#39;s tab.</strong> A link or form with <code>target=&quot;_top&quot;</code> is blocked. An embedded page can send Booqable to one of its own pages with the <code>NAVIGATE</code> message.</li>
+</ul>
+
+<p>Popups aren&#39;t sandboxed, so run flows that need a whole tab, such as connecting a third-party account with OAuth, in a popup. When the flow ends, close the popup and refresh your frame.</p>
+<h3 id='booqable-interop-frames-browser-features'>Browser features</h3><div class="highlight"><pre class="highlight json-doc"><code><span class="c1">// booqable.json</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nl">"configuration_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"iframe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"relative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/settings"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"clipboard-write"</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Frames can&#39;t use the camera, microphone, geolocation, payments, screen capture, USB devices or fullscreen, and can&#39;t write to the clipboard. A frame that needs clipboard writes, for a copy button, asks for it with <code>permissions</code>, as in the example.</p>
+
+<p><code>clipboard-write</code> is the only feature a frame can ask for on any <a href="#reference-frame"><code>Frame</code></a> (for now). Theme block settings frames can&#39;t ask for it. Some browsers refuse clipboard writes in frames anyway, so fall back to <code>document.execCommand(&quot;copy&quot;)</code>, and only tell the user it was copied when a copy really happened.</p>
+<h3 id='booqable-interop-frames-referrer'>Referrer</h3>
+<p>Frames load without a referrer: your pages get no <code>Referer</code> header, and <code>document.referrer</code> is empty.</p>
+<h3 id='booqable-interop-frames-response-headers'>Response headers</h3><div class="highlight"><pre class="highlight plaintext"><code>Content-Security-Policy: frame-ancestors https://*.booqable.com
+Referrer-Policy: no-referrer
+</code></pre></div>
+<p>Send these headers with every page Booqable embeds, so only Booqable can embed it and a signed URL doesn&#39;t leak to the sites your page links to. Keep <code>signature</code> and any session token of yours out of your logs.</p>
+<h3 id='booqable-interop-frames-frame-urls'>Frame URLs</h3>
+<p>Booqable shows &quot;This app is unavailable.&quot; instead of a frame it won&#39;t load. A frame URL must use <code>https</code>, have a plain ASCII host (use punycode for other characters), and have no credentials or fragment. It can&#39;t point at the merchant&#39;s own Booqable back office, and a <a href="#booqable-interop-signed-requests">signed</a> frame URL can&#39;t already contain a param Booqable adds.</p>
+<h3 id='booqable-interop-frames-messages'>Messages</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="c1">// in your frame</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+  <span class="na">eventName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">SET_IFRAME_HEIGHT</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">payload</span><span class="p">:</span> <span class="p">{</span> <span class="na">height</span><span class="p">:</span> <span class="mi">320</span> <span class="p">}</span>
+<span class="p">},</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div>
+<p>A frame talks to Booqable with <code>window.parent.postMessage</code>. Each kind of frame accepts its own messages:</p>
+
+<ul>
+<li><strong>Embedded pages</strong>: <code>SET_IFRAME_HEIGHT</code>, <code>SET_FLASH_MESSAGE</code>, <code>REFRESH_SUBSCRIPTION</code>, <code>GET_AVATAR</code> and <code>NAVIGATE</code>, described in <a href="#capabilities-embedded-pages-message-protocol">Message protocol</a>.</li>
+<li><strong>Sidebar frames</strong>: <code>SET_IFRAME_HEIGHT</code> only, described in <a href="#capabilities-sidebar-frames-sizing-the-panel">Sizing the panel</a>.</li>
+<li><strong>Theme block settings</strong>: <code>SET_APP_BLOCK_SETTINGS</code> and <code>REFRESH_PAGE_PREVIEW</code>, described in <a href="#capabilities-theme-blocks-settings-frame">Settings frame</a>.</li>
+</ul>
+
+<p>Booqable ignores, without an error:</p>
+
+<ul>
+<li>a message that isn&#39;t an object of the form <code>{ eventName, payload }</code>, such as a JSON string</li>
+<li>a message from any window other than the frame itself</li>
+<li>a message from an origin other than the origin of the frame&#39;s URL, for example after the frame redirected to another domain</li>
+</ul>
 <h2 id='booqable-interop-webhooks'>Webhooks</h2>
 <p>Apps can subscribe to webhook events to receive real-time notifications when certain actions occur in Booqable. This allows your app to respond to user actions and maintain synchronization with the platform.</p>
 
