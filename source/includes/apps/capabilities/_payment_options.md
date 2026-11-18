@@ -415,7 +415,8 @@ This route is called when processing a refund for a completed payment. Booqable 
 * For `charge_url` and `authorization_url` flows, always update the payment status via the Booqable API **before** redirecting the customer back to the `return_url`. The callback page polls the payment status and will wait indefinitely if the status is never updated.
 * Even when a payment fails, update the status to `failed` before redirecting. Otherwise, the callback page polls indefinitely waiting for a status change.
 * Always store the `booqable_id` from the initial request. You'll need it to update the payment status later, especially for asynchronous payment processing.
+* The same `booqable_id` can arrive more than once. Handle it without failing, for example by returning the payment you already started for it.
 * Use the correct HTTP methods for the route:
   - `charge_url`, `authorization_url`, `refund_url` use **POST** to create new resources.
   - `cancel_charge_url`, `void_authorization_url`, `capture_authorization_url` use **PUT** to update existing resources.
-* A failed request to any route (429, 500, 502, 503, or 504 response) is retried by Booqable up to twice before giving up.
+* If your route doesn't answer in time, Booqable resends the same signed request up to twice. Error responses aren't retried.
