@@ -25,7 +25,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
-`data` | **array** `writeonly`<br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. For `content_translations`, each object has a `key`, the row key the store texts list a text of the merchant's own content under (such as `products.<id>.name`), and either a `value`, where a blank value removes the text, or `needs_review: false` without a value, which marks the text reviewed. `needs_review: true` is ignored. 
+`data` | **array** `writeonly`<br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. For `content_translations`, each object has a `key`, the row key the store texts list a text of the merchant's own content under (such as `product_groups.<id>.name`), and either a `value`, where a blank value removes the text, or `needs_review: false` without a value, which marks the text reviewed. `needs_review: true` is ignored. 
 `id` | **uuid** `readonly`<br>Primary key.
 `language_id` | **uuid** `writeonly`<br>For `translations` and `content_translations` only: the [Language](#languages) the texts belong to. Translations go to the English language when it is left out; content translations need it. 
 `type` | **enum** `writeonly`<br>Type of data being submitted.<br> One of: `content_translations`, `coupons`, `operating_rules`, `translations`.
@@ -186,11 +186,11 @@ Check each individual operation to see which relations can be included as a side
              "language_id": "701a40b3-3a29-46de-8d69-276e16fd6ad7",
              "data": [
                {
-                 "key": "products.eb098f7f-fbf8-4624-8266-a2f01d1a96ea.name",
+                 "key": "product_groups.eb098f7f-fbf8-4624-8266-a2f01d1a96ea.name",
                  "value": "Tält"
                },
                {
-                 "key": "products.eb098f7f-fbf8-4624-8266-a2f01d1a96ea.description",
+                 "key": "product_groups.eb098f7f-fbf8-4624-8266-a2f01d1a96ea.description",
                  "value": "<p>Rymmer fyra.</p>"
                }
              ]
@@ -298,7 +298,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
-`data[attributes][data][]` | **array** <br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. For `content_translations`, each object has a `key`, the row key the store texts list a text of the merchant's own content under (such as `products.<id>.name`), and either a `value`, where a blank value removes the text, or `needs_review: false` without a value, which marks the text reviewed. `needs_review: true` is ignored. 
+`data[attributes][data][]` | **array** <br>Array of objects, all objects must contain valid data for the specified type, see documentation for specific resource for more details. For `content_translations`, each object has a `key`, the row key the store texts list a text of the merchant's own content under (such as `product_groups.<id>.name`), and either a `value`, where a blank value removes the text, or `needs_review: false` without a value, which marks the text reviewed. `needs_review: true` is ignored. 
 `data[attributes][language_id]` | **uuid** <br>For `translations` and `content_translations` only: the [Language](#languages) the texts belong to. Translations go to the English language when it is left out; content translations need it. 
 `data[attributes][type]` | **enum** <br>Type of data being submitted.<br> One of: `content_translations`, `coupons`, `operating_rules`, `translations`.
 
