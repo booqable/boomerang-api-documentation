@@ -13,7 +13,7 @@ Sidebar frames let your app show a panel in the sidebar of an order, a customer 
 }
 ```
 
-Each of `order_page`, `customer_page` and `product_page` takes one `sidebar_frame`, a [`Frame`](#reference-frame) like any other app page, so an app has at most one panel per sidebar. The panel runs under the [Frames](#booqable-interop-frames) rules, and can ask for `permissions` like any frame.
+Each of `order_page`, `customer_page` and `product_page` takes one `sidebar_frame`, a [`Frame`](#reference-frame) like any other app page, so an app has at most one panel per sidebar. The panel runs under the [Frames](#booqable-interop-frames) rules, can ask for `permissions` like any frame, and needs the same [response headers](#booqable-interop-frames-response-headers).
 
 Panels sit below Booqable's own panels, in alphabetical order by app name. Employees can reorder and collapse panels, so don't rely on your panel's position.
 
@@ -39,9 +39,9 @@ Verify the signature before showing anything. Booqable only loads the panel once
 new ResizeObserver(() => {
   window.parent.postMessage({
     eventName: "SET_IFRAME_HEIGHT",
-    payload: { height: document.body.scrollHeight }
+    payload: { height: Math.ceil(document.documentElement.getBoundingClientRect().height) }
   }, "*")
-}).observe(document.body)
+}).observe(document.documentElement)
 ```
 
 The panel stays hidden until your page reports its height, so post `SET_IFRAME_HEIGHT` once it loads and again whenever its height changes. Booqable caps the height at 1000 pixels. It's the only message a panel can send.
@@ -55,12 +55,3 @@ A signature is only valid for 5 minutes, so anything that loads your panel's URL
 Only the signed first load proves `locale` and the record id. Once you've moved on to your own session, treat them as ordinary params.
 
 Panels are shown to every employee who can view the record, but a session started from a panel reaches the rest of your app too. Before showing or changing anything sensitive, check the employee's permissions through the [API](/v4.html#employees). Keep the session token out of URLs you hand to other services, such as a callback URL a merchant pastes into a third-party dashboard.
-
-### Securing the panel page
-
-```
-Content-Security-Policy: frame-ancestors https://*.booqable.com
-Referrer-Policy: no-referrer
-```
-
-Send these headers with your panel pages, so only Booqable can embed them and the signed URL doesn't leak to the sites your panel links to. Keep `signature` and your session token out of your logs.

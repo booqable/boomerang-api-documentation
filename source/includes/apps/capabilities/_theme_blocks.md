@@ -68,7 +68,7 @@ Each block instance gets a unique `app_id` variable during rendering, useful for
 
 A settings frame replaces the declarative controls with a page of your own, filling the editor's sidebar. It runs under the [Frames](#booqable-interop-frames) rules, and can't ask for any browser feature.
 
-Its URL isn't [signed](#booqable-interop-signed-requests): Booqable adds no company or employee, so your page gets no proof of who is editing. It adds the block's current settings as query params, along with `block_id`, `block_template` and `block_position`, which identify the block.
+Its URL isn't [signed](#booqable-interop-signed-requests): Booqable adds no company or employee, so your page gets no proof of who is editing. It adds the block's text, number and true/false settings as query params, along with `block_id`, `block_template` and `block_position`, which identify the block.
 
 ```javascript
 // in your settings frame
@@ -78,4 +78,4 @@ window.parent.postMessage({
 }, "*")
 ```
 
-Post `SET_APP_BLOCK_SETTINGS` to change the block's settings, and `REFRESH_PAGE_PREVIEW` to reload the editor's preview. These are the only messages a settings frame can send.
+Post `SET_APP_BLOCK_SETTINGS` to change the block's settings: Booqable then reloads your frame with the new settings in its URL, so save anything else the page holds first. Post `REFRESH_PAGE_PREVIEW` to reload the editor's preview. These are the only messages a settings frame can send.

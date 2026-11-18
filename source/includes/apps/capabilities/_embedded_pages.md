@@ -24,7 +24,7 @@ The exact same mechanism is also available as a `configuration_page.iframe`, an 
 
 ### Signed URL
 
-Booqable [signs](#booqable-interop-signed-requests) the iframe URL each time it loads it, adding `company_id`, `employee_id` (the employee viewing the page) and `locale` to its query string. Verify the signature before showing anything. Booqable only loads the page once the merchant has authorized your app through [OAuth](#booqable-interop-oauth). A configuration page loads before your app is configured, so it should show your own setup steps until then.
+Booqable [signs](#booqable-interop-signed-requests) the iframe URL each time it loads it, adding `company_id`, `employee_id` (the employee viewing the page) and `locale` to its query string. Verify the signature before showing anything. Booqable only loads the page once the merchant has authorized your app through [OAuth](#booqable-interop-oauth). Pages load before your app is configured, so show your own setup steps until then.
 
 A signature is only valid for 5 minutes, so verify it on the first load and keep your own session for the pages the iframe navigates to after that, without relying on cookies: browsers often block them in iframes. A short-lived token in your URLs works. Fetch anything else you need, such as the company's currency settings, through the [API](/v4.html).
 
@@ -130,25 +130,6 @@ Provides avatar information in response to a GET_AVATAR request.
   }
 }
 ```
-
-### Status message
-
-```jsonc
-// booqable.json
-{
-  "status": {
-    "dynamic": { "endpoint": { "relative": "/status" } }
-  }
-}
-```
-
-Your app can show a live status message, such as "Last synced 5 minutes ago", on its page in the App Store. Booqable fetches the [`status`](#reference-appstatus) endpoint from the employee's browser with a `GET` request, signed like the page URL, and without cookies. So the endpoint must:
-
-- verify the signature on every request
-- allow the back office's origin with an `Access-Control-Allow-Origin` header
-- answer with the message as plain text
-
-Booqable only asks once your app is configured and has no open issues. If the endpoint fails or takes longer than 5 seconds, Booqable shows its own message instead.
 
 ### Implementation example
 

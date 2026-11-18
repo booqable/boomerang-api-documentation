@@ -4,7 +4,7 @@ Booqable shows your app's pages in iframes: [embedded pages](#capabilities-embed
 
 ### Sandbox
 
-Every frame is sandboxed. Scripts, forms and popups work, and the page keeps its own origin. Two things don't:
+Every frame is sandboxed. Scripts, forms and popups work, and the page keeps its own origin. The main things that don't:
 
 - **Native dialogs.** `alert()`, `confirm()` and `prompt()` are blocked, and `confirm()` always returns `false`. Show your own dialog inside the page instead, such as a `<dialog>` element.
 - **Navigating Booqable's tab.** A link or form with `target="_top"` is blocked. An embedded page can send Booqable to one of its own pages with the `NAVIGATE` message.
@@ -32,6 +32,15 @@ Frames can't use the camera, microphone, geolocation, payments, screen capture, 
 ### Referrer
 
 Frames load without a referrer: your pages get no `Referer` header, and `document.referrer` is empty.
+
+### Response headers
+
+```
+Content-Security-Policy: frame-ancestors https://*.booqable.com
+Referrer-Policy: no-referrer
+```
+
+Send these headers with every page Booqable embeds, so only Booqable can embed it and a signed URL doesn't leak to the sites your page links to. Keep `signature` and any session token of yours out of your logs.
 
 ### Frame URLs
 
