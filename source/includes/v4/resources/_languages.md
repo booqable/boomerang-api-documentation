@@ -27,6 +27,7 @@ Check each individual operation to see which relations can be included as a side
 `identifier` | **string** `readonly-after-create`<br>The locale code of the language: an ISO 639-1 code such as `sv`, or a regional variant such as `pt_BR`. Right-to-left languages are not offered. Can only be set on create. 
 `name` | **string** <br>The display name of the language. Defaults to the English name of the locale. 
 `published` | **boolean** <br>Whether the language is available in the store. 
+`review_count` | **integer** `readonly` `extra`<br>How many of the language's own texts ask for review: custom translations saved against English that changed since, and merchant content whose source changed since. Read-only. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
 
@@ -72,6 +73,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[languages]=review_count`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
 `filter` | **hash** <br>The filters to apply `?filter[attribute][eq]=value`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
@@ -179,6 +181,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[languages]=review_count`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
 
@@ -242,6 +245,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[languages]=review_count`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
 
@@ -316,6 +320,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[languages]=review_count`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
 
@@ -381,6 +386,7 @@ This request accepts the following parameters:
 
 Name | Description
 -- | --
+`extra_fields[]` | **array** <br>List of comma separated fields to include in addition to the default fields. `?extra_fields[languages]=review_count`
 `fields[]` | **array** <br>List of comma separated fields to include instead of the default fields. `?fields[languages]=created_at,updated_at,identifier`
 `include` | **string** <br>List of comma seperated relationships to sideload. `?include=translations`
 
