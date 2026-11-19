@@ -20,6 +20,7 @@ Check each individual operation to see which relations can be included as a side
 
  Name | Description
 -- | --
+`add_carrier_ids` | **array_of_uuids** `writeonly`<br>The IDs of delivery carriers to add to this location. Carriers that are not listed stay as they are. An already linked carrier is ignored. The carriers change in the same save as the other attributes, so `pickup_enabled: false` with at least one carrier creates a delivery only location, or switches a location to delivery only, in one request. Adding a carrier needs a main address (see `main_address_attributes`); without one the request fails with a `main_address` error. An unknown ID, or an archived carrier that is not linked yet, fails with a `carrier_ids` error. 
 `address_line_1` | **string** <br>First address line. 
 `address_line_2` | **string** <br>Second address line. 
 `archived` | **boolean** `readonly`<br>Whether location is archived. 
@@ -38,6 +39,7 @@ Check each individual operation to see which relations can be included as a side
 `name` | **string** <br>Name of the location. 
 `pickup_enabled` | **boolean** <br>Whether the location supports pickup. 
 `region` | **string** <br>Address region. 
+`remove_carrier_ids` | **array_of_uuids** `writeonly`<br>The IDs of delivery carriers to remove from this location, when updating it. Carriers that are not listed stay as they are. A carrier that is not linked, or that is also listed in `add_carrier_ids`, is ignored. A location without carriers keeps pickup, even when `pickup_enabled` is `false`. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 `zipcode` | **string** <br>Address ZIP code. 
 
@@ -336,6 +338,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
+`data[attributes][add_carrier_ids]` | **array_of_uuids** <br>The IDs of delivery carriers to add to this location. Carriers that are not listed stay as they are. An already linked carrier is ignored. The carriers change in the same save as the other attributes, so `pickup_enabled: false` with at least one carrier creates a delivery only location, or switches a location to delivery only, in one request. Adding a carrier needs a main address (see `main_address_attributes`); without one the request fails with a `main_address` error. An unknown ID, or an archived carrier that is not linked yet, fails with a `carrier_ids` error. 
 `data[attributes][address_line_1]` | **string** <br>First address line. 
 `data[attributes][address_line_2]` | **string** <br>Second address line. 
 `data[attributes][city]` | **string** <br>Address city. 
@@ -348,6 +351,7 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of the location. 
 `data[attributes][pickup_enabled]` | **boolean** <br>Whether the location supports pickup. 
 `data[attributes][region]` | **string** <br>Address region. 
+`data[attributes][remove_carrier_ids]` | **array_of_uuids** <br>The IDs of delivery carriers to remove from this location, when updating it. Carriers that are not listed stay as they are. A carrier that is not linked, or that is also listed in `add_carrier_ids`, is ignored. A location without carriers keeps pickup, even when `pickup_enabled` is `false`. 
 `data[attributes][zipcode]` | **string** <br>Address ZIP code. 
 
 
@@ -429,6 +433,75 @@ This request accepts the following includes:
   }
 ```
 
+> How to switch a location to delivery only:
+
+```shell
+  curl --request PUT
+       --url 'https://example.booqable.com/api/4/locations/b3fd4bfb-497a-4d23-86f6-c2e510736bae'
+       --header 'content-type: application/json'
+       --data '{
+         "data": {
+           "id": "b3fd4bfb-497a-4d23-86f6-c2e510736bae",
+           "type": "locations",
+           "attributes": {
+             "pickup_enabled": false,
+             "add_carrier_ids": [
+               "703a28a0-f5a2-4c20-8252-2bb6ce42c440"
+             ]
+           }
+         }
+       }'
+```
+
+> A 200 status response looks like this:
+
+```json
+  {
+    "data": {
+      "id": "b3fd4bfb-497a-4d23-86f6-c2e510736bae",
+      "type": "locations",
+      "attributes": {
+        "created_at": "2025-06-15T13:04:00.000000+00:00",
+        "updated_at": "2025-06-15T13:04:00.000000+00:00",
+        "archived": false,
+        "archived_at": null,
+        "name": "Store",
+        "code": "013",
+        "location_type": "rental",
+        "address_line_1": "123 Street",
+        "address_line_2": null,
+        "zipcode": "1234 AB",
+        "city": "Test city",
+        "region": null,
+        "country": "Netherlands",
+        "pickup_enabled": false,
+        "delivery_enabled": true,
+        "fulfillment_capabilities": [
+          "delivery"
+        ],
+        "main_address": {
+          "meets_validation_requirements": true,
+          "first_name": null,
+          "last_name": null,
+          "address1": "123 Street",
+          "address2": null,
+          "city": "Test city",
+          "region": null,
+          "zipcode": "1234 AB",
+          "country": "Netherlands",
+          "country_id": "492b2404-7142-4008-8cd1-772895167c9d",
+          "province_id": null,
+          "latitude": "0",
+          "longitude": "0",
+          "value": "123 Street\n1234 AB Test city\nNetherlands"
+        }
+      },
+      "relationships": {}
+    },
+    "meta": {}
+  }
+```
+
 ### HTTP Request
 
 `PUT /api/4/locations/{id}`
@@ -449,6 +522,7 @@ This request accepts the following body:
 
 Name | Description
 -- | --
+`data[attributes][add_carrier_ids]` | **array_of_uuids** <br>The IDs of delivery carriers to add to this location. Carriers that are not listed stay as they are. An already linked carrier is ignored. The carriers change in the same save as the other attributes, so `pickup_enabled: false` with at least one carrier creates a delivery only location, or switches a location to delivery only, in one request. Adding a carrier needs a main address (see `main_address_attributes`); without one the request fails with a `main_address` error. An unknown ID, or an archived carrier that is not linked yet, fails with a `carrier_ids` error. 
 `data[attributes][address_line_1]` | **string** <br>First address line. 
 `data[attributes][address_line_2]` | **string** <br>Second address line. 
 `data[attributes][city]` | **string** <br>Address city. 
@@ -461,6 +535,7 @@ Name | Description
 `data[attributes][name]` | **string** <br>Name of the location. 
 `data[attributes][pickup_enabled]` | **boolean** <br>Whether the location supports pickup. 
 `data[attributes][region]` | **string** <br>Address region. 
+`data[attributes][remove_carrier_ids]` | **array_of_uuids** <br>The IDs of delivery carriers to remove from this location, when updating it. Carriers that are not listed stay as they are. A carrier that is not linked, or that is also listed in `add_carrier_ids`, is ignored. A location without carriers keeps pickup, even when `pickup_enabled` is `false`. 
 `data[attributes][zipcode]` | **string** <br>Address ZIP code. 
 
 
@@ -502,7 +577,7 @@ To archive a location make sure that:
         "archived": true,
         "archived_at": "2020-03-03T14:31:02.000000+00:00",
         "name": "Warehouse",
-        "code": "012",
+        "code": "014",
         "location_type": "rental",
         "address_line_1": "Blokhuisplein 40",
         "address_line_2": "Department II",
