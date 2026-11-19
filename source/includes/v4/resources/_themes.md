@@ -73,7 +73,7 @@ Check each individual operation to see which relations can be included as a side
           "preview_image_medium_url": null,
           "preview_image_large_url": null,
           "installed": true,
-          "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6IjViMThmODFlLTA5OTktNDhjYy04ZmRiLTRkZGZkNDdmYTM5ZSIsImV4cCI6IjIwMjYtMTEtMTlUMTg6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--cc958bd393d6ae58db92fa25894248d41ffe9407473675c6f1549705596fd900"
+          "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6ImRkMDI3OGY0LWZhZGEtNDM1Ni1iM2M2LWY5YmRhOTBmZTgxYSIsImV4cCI6IjIwMjYtMTEtMTlUMjI6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--cc958bd393d6ae58db92fa25894248d41ffe9407473675c6f1549705596fd900"
         },
         "relationships": {}
       }
@@ -216,7 +216,7 @@ This request does not accept any includes
         "preview_image_medium_url": null,
         "preview_image_large_url": null,
         "installed": true,
-        "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6IjQwMDQ3NDI1LTdkOWYtNGIxYS1iNGEwLWVlYjI5ODcwYTU5NSIsImV4cCI6IjIwMjYtMTEtMTlUMTg6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--49175d2ad7cea453ef0efc2645a298fd8cfe291d5403076df7f370776b837d5b"
+        "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6ImU5NGJiMDIzLWYwNDYtNDFkNS1hNGNiLWIxNDkwZDVkMGIyOSIsImV4cCI6IjIwMjYtMTEtMTlUMjI6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--49175d2ad7cea453ef0efc2645a298fd8cfe291d5403076df7f370776b837d5b"
       },
       "relationships": {}
     },
@@ -298,7 +298,7 @@ This request accepts the following includes:
         "preview_image_medium_url": null,
         "preview_image_large_url": null,
         "installed": true,
-        "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6ImNmOGM4ZTMxLTRiMWYtNDY3NS1iYjcxLTEyNjA5N2M5Njk2ZCIsImV4cCI6IjIwMjYtMTEtMTlUMTg6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--fb542631829fe686f1513997e49577b06f996300db991c2328311ee0611c3462"
+        "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6IjZiNjVjY2I1LTEyZGItNGJmOC04NjkzLWUxMDFiNTE0ZWU0MCIsImV4cCI6IjIwMjYtMTEtMTlUMjI6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--fb542631829fe686f1513997e49577b06f996300db991c2328311ee0611c3462"
       },
       "relationships": {}
     },
