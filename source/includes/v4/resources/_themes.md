@@ -30,6 +30,7 @@ Check each individual operation to see which relations can be included as a side
 `preview_image_large_url` | **string** `readonly`<br>Theme large image preview image URL. 
 `preview_image_long_url` | **string** `readonly`<br>Theme rectangle image preview image URL. 
 `preview_image_medium_url` | **string** `readonly`<br>Theme medium image preview image URL. 
+`preview_token` | **string** `readonly`<br>Short-lived credential for previewing the latest unpublished changes of an installed theme. Pass it as the `theme_id` param of a `/shop/preview` URL on the shop domain. Empty for themes that are not installed. 
 `preview_url` | **string** <br>The URL where the theme could be previewed. 
 `root_theme` | **string** `readonly` `extra`<br>The root theme name. 
 `theme_id` | **uuid** `readonly-after-create`<br>ID of the [original theme](#themes) to install. Required on create. 
@@ -71,7 +72,8 @@ Check each individual operation to see which relations can be included as a side
           "preview_image_long_url": null,
           "preview_image_medium_url": null,
           "preview_image_large_url": null,
-          "installed": true
+          "installed": true,
+          "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6IjRjOTMxODU0LWZhM2QtNDcyOC1hNzQ0LTkwODQzMTc2ZGJjOSIsImV4cCI6IjIwMjYtMTEtMTlUMTI6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--cc958bd393d6ae58db92fa25894248d41ffe9407473675c6f1549705596fd900"
         },
         "relationships": {}
       }
@@ -111,7 +113,8 @@ Check each individual operation to see which relations can be included as a side
           "preview_image_long_url": null,
           "preview_image_medium_url": null,
           "preview_image_large_url": null,
-          "installed": false
+          "installed": false,
+          "preview_token": null
         },
         "relationships": {}
       }
@@ -212,7 +215,8 @@ This request does not accept any includes
         "preview_image_long_url": null,
         "preview_image_medium_url": null,
         "preview_image_large_url": null,
-        "installed": true
+        "installed": true,
+        "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6ImVkNzcxZmUyLTIwOTctNDAyMC04NWE5LWJjZDU4M2RhYzYyOSIsImV4cCI6IjIwMjYtMTEtMTlUMTI6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--49175d2ad7cea453ef0efc2645a298fd8cfe291d5403076df7f370776b837d5b"
       },
       "relationships": {}
     },
@@ -293,7 +297,8 @@ This request accepts the following includes:
         "preview_image_long_url": null,
         "preview_image_medium_url": null,
         "preview_image_large_url": null,
-        "installed": true
+        "installed": true,
+        "preview_token": "eyJfcmFpbHMiOnsiZGF0YSI6ImE0Y2M3MjQxLTI3NzMtNGI2OC1iZTQ4LWE3NTM1MTA0NDQzMSIsImV4cCI6IjIwMjYtMTEtMTlUMTI6MDA6MDAuMDAwWiIsInB1ciI6InNob3BfbmV4dC90aGVtZS93ZWJzaXRlX2J1aWxkZXJfdGhlbWVfcHJldmlldyJ9fQ--fb542631829fe686f1513997e49577b06f996300db991c2328311ee0611c3462"
       },
       "relationships": {}
     },
