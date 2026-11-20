@@ -1736,9 +1736,10 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <li><a href="#capabilities-embedded-pages">embedded pages</a>, including a <code>configuration_page.iframe</code></li>
 <li><a href="#capabilities-sidebar-frames">sidebar frames</a></li>
 <li>the <a href="#configuration-status-message">status message</a> endpoint</li>
+<li><a href="#booqable-interop-webhooks-verifying-deliveries">webhook deliveries</a> to endpoints your app created</li>
 </ul>
 
-<p>Theme block settings iframes aren&#39;t signed. Webhook deliveries carry a <code>token</code> query param instead: an HS256 JWT signed with your client secret that expires after 10 minutes.</p>
+<p>Theme block settings iframes aren&#39;t signed. Webhook deliveries also carry a <code>token</code> query param, an HS256 JWT signed with your client secret that expires after 10 minutes. It&#39;s deprecated and will be removed, so verify the signature instead.</p>
 <h3 id='booqable-interop-signed-requests-signed-params'>Signed params</h3><div class="highlight"><pre class="highlight plaintext"><code>POST https://example.com/api/rates?company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&amp;region=eu&amp;ts=1798761600&amp;v=1&amp;signature=15eb8124970543dc99cdf437ddd0b2c63c351abb9adb3eab94af7b13bc2fabe2
 </code></pre></div>
 <p>Booqable adds these query params to the URL you configured, keeping the params it already has (<code>region=eu</code> in the example), and sorts them by name:</p>
@@ -1818,7 +1819,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <li>Compute the HMAC-SHA256 of the message with your app&#39;s OAuth client secret, in lowercase hex, and compare it with <code>signature</code> in constant time.</li>
 </ol>
 
-<p>The body is part of the signature, so hash the bytes you received, before parsing them as JSON.</p>
+<p>The body is part of the signature, so hash the bytes you received, before parsing them as JSON or form data.</p>
 
 <p>A signature proves the request came from Booqable within the last 5 minutes. It doesn&#39;t stop the same request from being sent twice within that time, so make the endpoints it reaches safe to repeat. A valid signature also doesn&#39;t mean every param you need is there, so check that <code>company_id</code> is present before you use it. Keep <code>signature</code> out of your logs.</p>
 <h3 id='booqable-interop-signed-requests-test-vector'>Test vector</h3>
@@ -1900,6 +1901,14 @@ Referrer-Policy: no-referrer
 <p>Apps can subscribe to webhook events to receive real-time notifications when certain actions occur in Booqable. This allows your app to respond to user actions and maintain synchronization with the platform.</p>
 
 <p>To learn more about how to use webhooks see the <a href="v4.html#webhook-endpoints">Webhook Endpoints documentation</a>.</p>
+<h3 id='booqable-interop-webhooks-verifying-deliveries'>Verifying deliveries</h3>
+<p>Booqable <a href="#booqable-interop-signed-requests">signs</a> every delivery to a webhook endpoint your app created with its OAuth token, as a <code>POST</code>. Besides <code>company_id</code>, the query carries a <code>nonce</code>, a random value that&#39;s new for every delivery attempt, so you can reject one you already accepted within the 5-minute window. Each retry is signed again.</p>
+
+<p>The signed body is the raw request body: JSON for version 4 endpoints, form-encoded for version 1. Hash the bytes as they arrived, before parsing them.</p>
+
+<p>Deliveries also carry a <code>token</code> query param, an HS256 JWT signed with your client secret. It&#39;s deprecated and will be removed, so verify the signature instead.</p>
+
+<p>Answer <code>401</code>, never <code>410</code>, when the signature is missing or wrong: a <code>410</code> tells Booqable the endpoint is gone, and it deletes the endpoint.</p>
 <h3 id='booqable-interop-webhooks-available-app-events'>Available app events</h3>
 <p>There are four webhook events specifically related to app lifecycle:</p>
 <h4 id='booqable-interop-webhooks-available-app-events-app-installed'><code>app.installed</code></h4>

@@ -7,8 +7,9 @@ Booqable signs these requests and iframe URLs with your app's OAuth client secre
 - [embedded pages](https://developers.booqable.com/apps.html#capabilities-embedded-pages), including a `configuration_page.iframe`
 - [sidebar frames](https://developers.booqable.com/apps.html#capabilities-sidebar-frames)
 - the [status message](https://developers.booqable.com/apps.html#configuration-status-message) endpoint
+- [webhook deliveries](https://developers.booqable.com/apps.html#booqable-interop-webhooks-verifying-deliveries) to endpoints your app created
 
-Theme block settings iframes aren't signed. Webhook deliveries carry a `token` query param instead: an HS256 JWT signed with your client secret that expires after 10 minutes.
+Theme block settings iframes aren't signed. Webhook deliveries also carry a `token` query param, an HS256 JWT signed with your client secret that expires after 10 minutes. It's deprecated and will be removed, so verify the signature instead.
 
 ### Signed params
 
@@ -91,7 +92,7 @@ To verify a request:
    - the SHA-256 of the raw request body, in lowercase hex. An empty body, as on every `GET`, hashes the empty string.
 6. Compute the HMAC-SHA256 of the message with your app's OAuth client secret, in lowercase hex, and compare it with `signature` in constant time.
 
-The body is part of the signature, so hash the bytes you received, before parsing them as JSON.
+The body is part of the signature, so hash the bytes you received, before parsing them as JSON or form data.
 
 A signature proves the request came from Booqable within the last 5 minutes. It doesn't stop the same request from being sent twice within that time, so make the endpoints it reaches safe to repeat. A valid signature also doesn't mean every param you need is there, so check that `company_id` is present before you use it. Keep `signature` out of your logs.
 
