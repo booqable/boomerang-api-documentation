@@ -4,6 +4,16 @@ Apps can subscribe to webhook events to receive real-time notifications when cer
 
 To learn more about how to use webhooks see the [Webhook Endpoints documentation](/v4.html#webhook-endpoints).
 
+### Verifying deliveries
+
+Booqable [signs](#booqable-interop-signed-requests) every delivery to a webhook endpoint your app created with its OAuth token, as a `POST`. Besides `company_id`, the query carries a `nonce`, a random value that's new for every delivery attempt, so you can reject one you already accepted within the 5-minute window. Each retry is signed again.
+
+The signed body is the raw request body: JSON for version 4 endpoints, form-encoded for version 1. Hash the bytes as they arrived, before parsing them.
+
+Deliveries also carry a `token` query param, an HS256 JWT signed with your client secret. It's deprecated and will be removed, so verify the signature instead.
+
+Answer `401`, never `410`, when the signature is missing or wrong: a `410` tells Booqable the endpoint is gone, and it deletes the endpoint.
+
 ### Available app events
 
 There are four webhook events specifically related to app lifecycle:
