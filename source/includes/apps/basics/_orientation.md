@@ -1,5 +1,9 @@
 # The Basics
 
+<aside class="warning">
+  <b>NOT AVAILABLE YET:</b> Booqable apps are not open to third-party developers. There is currently no way to register an app, get OAuth credentials or publish to the App Store. This page is unlisted and for internal use; what it describes may change without notice.
+</aside>
+
 Booqable apps are modular extensions that add new functionality to a Booqable account or its online store. They're built by third-party developers and distributed through the App Store, where merchants discover, install, and manage them.
 
 An app is fundamentally one file — a `booqable.json` manifest — plus whatever templates, assets, and backend code it needs. Depending on what your app does, it can:
