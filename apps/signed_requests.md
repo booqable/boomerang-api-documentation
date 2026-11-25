@@ -9,7 +9,7 @@ Booqable signs these requests and iframe URLs with your app's OAuth client secre
 - the [status message](https://developers.booqable.com/apps.html#configuration-status-message) endpoint
 - [webhook deliveries](https://developers.booqable.com/apps.html#booqable-interop-webhooks-verifying-deliveries) to endpoints your app created
 
-Theme block settings iframes aren't signed. Webhook deliveries also carry a `token` query param, an HS256 JWT signed with your client secret that expires after 10 minutes. It's deprecated and will be removed, so verify the signature instead.
+Theme block settings iframes aren't signed.
 
 ### Signed params
 

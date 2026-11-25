@@ -1743,7 +1743,7 @@ Provides avatar information in response to a GET_AVATAR request.</p>
 <li><a href="#booqable-interop-webhooks-verifying-deliveries">webhook deliveries</a> to endpoints your app created</li>
 </ul>
 
-<p>Theme block settings iframes aren&#39;t signed. Webhook deliveries also carry a <code>token</code> query param, an HS256 JWT signed with your client secret that expires after 10 minutes. It&#39;s deprecated and will be removed, so verify the signature instead.</p>
+<p>Theme block settings iframes aren&#39;t signed.</p>
 <h3 id='booqable-interop-signed-requests-signed-params'>Signed params</h3><div class="highlight"><pre class="highlight plaintext"><code>POST https://example.com/api/rates?company_id=7c1f0a52-3b9e-4d6a-8e24-5f2a9c3b1d70&amp;region=eu&amp;ts=1798761600&amp;v=1&amp;signature=15eb8124970543dc99cdf437ddd0b2c63c351abb9adb3eab94af7b13bc2fabe2
 </code></pre></div>
 <p>Booqable adds these query params to the URL you configured, keeping the params it already has (<code>region=eu</code> in the example), and sorts them by name:</p>
@@ -1910,7 +1910,7 @@ Referrer-Policy: no-referrer
 
 <p>The signed body is the raw request body: JSON for version 4 endpoints, form-encoded for version 1. Hash the bytes as they arrived, before parsing them.</p>
 
-<p>Deliveries also carry a <code>token</code> query param, an HS256 JWT signed with your client secret. It&#39;s deprecated and will be removed, so verify the signature instead.</p>
+<p>Your app can&#39;t create or update an endpoint whose URL Booqable couldn&#39;t sign, such as one that already contains <code>nonce</code> or another param Booqable adds, or repeats a param (see <a href="#booqable-interop-signed-requests-signed-params">Signed params</a>). The request fails with a <code>422</code> on <code>url</code>.</p>
 
 <p>Answer <code>401</code>, never <code>410</code>, when the signature is missing or wrong: a <code>410</code> tells Booqable the endpoint is gone, and it deletes the endpoint.</p>
 <h3 id='booqable-interop-webhooks-available-app-events'>Available app events</h3>

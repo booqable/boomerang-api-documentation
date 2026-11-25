@@ -10,7 +10,7 @@ Booqable [signs](https://developers.booqable.com/apps.html#booqable-interop-sign
 
 The signed body is the raw request body: JSON for version 4 endpoints, form-encoded for version 1. Hash the bytes as they arrived, before parsing them.
 
-Deliveries also carry a `token` query param, an HS256 JWT signed with your client secret. It's deprecated and will be removed, so verify the signature instead.
+Your app can't create or update an endpoint whose URL Booqable couldn't sign, such as one that already contains `nonce` or another param Booqable adds, or repeats a param (see [Signed params](https://developers.booqable.com/apps.html#booqable-interop-signed-requests-signed-params)). The request fails with a `422` on `url`.
 
 Answer `401`, never `410`, when the signature is missing or wrong: a `410` tells Booqable the endpoint is gone, and it deletes the endpoint.
 
