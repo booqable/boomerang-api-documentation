@@ -24,7 +24,8 @@ Check each individual operation to see which relations can be included as a side
 `created_at` | **datetime** `readonly`<br>When the resource was created.
 `id` | **uuid** `readonly`<br>Primary key.
 `identifier` | **string** <br>Unique identifier for this carrier. 
-`rates_url` | **string** <br>URL endpoint for fetching delivery rates from this carrier. 
+`import_only` | **boolean** <br>Whether this carrier only marks its locations as delivery locations for orders the app imports, such as a sales channel that prices shipping itself. The online store never offers delivery through it or asks it for rates. 
+`rates_url` | **string** <br>URL endpoint for fetching delivery rates from this carrier. Required unless `import_only` is set, and not called for import-only carriers. 
 `tax_category_id` | **uuid** `nullable`<br>The [TaxCategory](#tax-categories) associated with this carrier for tax calculations. 
 `updated_at` | **datetime** `readonly`<br>When the resource was last updated.
 
@@ -52,6 +53,7 @@ Check each individual operation to see which relations can be included as a side
           "updated_at": "2025-05-14T04:07:06.000000+00:00",
           "identifier": "carrier-1",
           "rates_url": "http://deliveries1.test/rates",
+          "import_only": false,
           "tax_category_id": null,
           "app_subscription_id": "b3452ba3-cafd-4c4b-8259-e086c1925a49"
         },
@@ -90,6 +92,7 @@ Name | Description
 `created_at` | **datetime** <br>`eq`, `not_eq`, `gt`, `gte`, `lt`, `lte`
 `id` | **uuid** <br>`eq`, `not_eq`
 `identifier` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
+`import_only` | **boolean** <br>`eq`
 `location_id` | **uuid** <br>`eq`, `not_eq`
 `rates_url` | **string** <br>`eq`, `not_eq`, `eql`, `not_eql`, `prefix`, `not_prefix`, `suffix`, `not_suffix`, `match`, `not_match`
 `tax_category_id` | **uuid** <br>`eq`, `not_eq`
@@ -130,6 +133,7 @@ This request does not accept any includes
         "updated_at": "2027-07-22T07:28:04.000000+00:00",
         "identifier": "carrier-2",
         "rates_url": "http://deliveries2.test/rates",
+        "import_only": false,
         "tax_category_id": null,
         "app_subscription_id": "6a483a4e-4a38-41de-89f7-ae6fdbeeab51"
       },
@@ -190,6 +194,7 @@ are rejected with a `403` and the error code `app_subscription_required`.
         "updated_at": "2017-07-07T00:40:10.000000+00:00",
         "identifier": "my-deliver-express",
         "rates_url": "https://my-deliver-express.example.com/api/rates",
+        "import_only": false,
         "tax_category_id": null,
         "app_subscription_id": "67c8f03d-d36e-4d7d-8c4d-bffa03a309c6"
       },
@@ -219,7 +224,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][identifier]` | **string** <br>Unique identifier for this carrier. 
-`data[attributes][rates_url]` | **string** <br>URL endpoint for fetching delivery rates from this carrier. 
+`data[attributes][import_only]` | **boolean** <br>Whether this carrier only marks its locations as delivery locations for orders the app imports, such as a sales channel that prices shipping itself. The online store never offers delivery through it or asks it for rates. 
+`data[attributes][rates_url]` | **string** <br>URL endpoint for fetching delivery rates from this carrier. Required unless `import_only` is set, and not called for import-only carriers. 
 `data[attributes][tax_category_id]` | **uuid** <br>The [TaxCategory](#tax-categories) associated with this carrier for tax calculations. 
 
 
@@ -258,6 +264,7 @@ This request does not accept any includes
         "updated_at": "2015-08-28T09:41:00.000000+00:00",
         "identifier": "carrier-4",
         "rates_url": "https://my-deliver-express.example.com/api/v2/rates",
+        "import_only": false,
         "tax_category_id": null,
         "app_subscription_id": "67c16eeb-67a0-4a02-8cb7-65531eb4fbb1"
       },
@@ -287,7 +294,8 @@ This request accepts the following body:
 Name | Description
 -- | --
 `data[attributes][identifier]` | **string** <br>Unique identifier for this carrier. 
-`data[attributes][rates_url]` | **string** <br>URL endpoint for fetching delivery rates from this carrier. 
+`data[attributes][import_only]` | **boolean** <br>Whether this carrier only marks its locations as delivery locations for orders the app imports, such as a sales channel that prices shipping itself. The online store never offers delivery through it or asks it for rates. 
+`data[attributes][rates_url]` | **string** <br>URL endpoint for fetching delivery rates from this carrier. Required unless `import_only` is set, and not called for import-only carriers. 
 `data[attributes][tax_category_id]` | **uuid** <br>The [TaxCategory](#tax-categories) associated with this carrier for tax calculations. 
 
 

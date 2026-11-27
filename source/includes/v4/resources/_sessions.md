@@ -154,7 +154,7 @@ Check each individual operation to see which relations can be included as a side
           "shop_theme_id": null,
           "shop_theme_published": false,
           "installed_online_store": false,
-          "tenant_token": "D73LmduK2QEhdzvLwCMS8DbE",
+          "tenant_token": "R986th6wffxwypEn7he863XP",
           "pending_subscription": false,
           "address": "Netherlands",
           "main_address": null,
@@ -219,6 +219,7 @@ Check each individual operation to see which relations can be included as a side
               "manual_email_templates",
               "cross_sell",
               "advanced_pricing",
+              "automations",
               "prevent_last_minute_reservations",
               "customer_discount_percentage",
               "product_security_deposit",
@@ -266,7 +267,8 @@ Check each individual operation to see which relations can be included as a side
               "manual_email_templates": null,
               "custom_fields": null,
               "tags": null,
-              "away_modes": null
+              "away_modes": null,
+              "automations": null
             },
             "currency": "usd",
             "current_currency": "usd",
@@ -312,7 +314,7 @@ Check each individual operation to see which relations can be included as a side
           "website_bo_eligible": false,
           "avatar_url": null,
           "large_avatar_url": null,
-          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1795113482"
+          "third_party_id": "88189003-4480-4a2a-89b0-a54b3dbb89fe-1795765734"
         }
       },
       {
@@ -375,8 +377,8 @@ Check each individual operation to see which relations can be included as a side
             "show_powered_by": true,
             "default_collection_sort": "name",
             "cross_sell.enabled": false,
-            "cross_sell.title": "Recommended products",
-            "cross_sell.subtitle": "Complete your order with these recommended items",
+            "cross_sell.show_title": true,
+            "cross_sell.show_subtitle": true,
             "cross_sell.layout": "list",
             "cross_sell.show_only_available": true,
             "cross_sell.maximum_products": 4,
